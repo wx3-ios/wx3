@@ -52,8 +52,6 @@
 		77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB941F1AAFED400021A816 /* UIViewController+Helper.m */; };
 		77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94231AAFEE1F0021A816 /* MZLoadingCircle.m */; };
 		77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94261AAFEEBC0021A816 /* UserAgent.m */; };
-		77DB942A1AAFEEE10021A816 /* libGossip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DB94281AAFEEE10021A816 /* libGossip.a */; };
-		77DB942B1AAFEEE10021A816 /* libGossip-i386.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DB94291AAFEEE10021A816 /* libGossip-i386.a */; };
 		77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB942D1AAFF0BE0021A816 /* NSDictionary+Plist.m */; };
 		77DB94341AAFF2120021A816 /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94311AAFF2120021A816 /* ContactsCell.m */; };
 		77DB94351AAFF2120021A816 /* RecentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94331AAFF2120021A816 /* RecentCell.m */; };
@@ -175,9 +173,7 @@
 			files = (
 				777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */,
 				777059B61AAFE48C0097526C /* AddressBookUI.framework in Frameworks */,
-				77DB942A1AAFEEE10021A816 /* libGossip.a in Frameworks */,
 				1F036786D135E645F286F56B /* libPods.a in Frameworks */,
-				77DB942B1AAFEEE10021A816 /* libGossip-i386.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
