@@ -10,6 +10,7 @@
 
 @protocol LoadUserBalanceDelegate;
 @interface BalanceModel : NSObject
+@property (nonatomic,strong) NSArray *dataList;
 @property (nonatomic,weak) id<LoadUserBalanceDelegate>delegate;
 
 -(void)loadUserBalance;
@@ -17,6 +18,6 @@
 
 @protocol LoadUserBalanceDelegate <NSObject>
 -(void)loadUserBalanceSucceed;
--(void)loadUserBalanceFailed;
+-(void)loadUserBalanceFailed:(NSString*)errorMsg;
 
 @end

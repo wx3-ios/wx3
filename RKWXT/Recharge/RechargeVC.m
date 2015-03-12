@@ -66,7 +66,8 @@ enum{
 -(UIView*)viewFortableFootView{
     UIView *footView = [[UIView alloc] init];
     
-    footView.frame = CGRectMake(0, 160, 320, Size.height-160);
+    CGFloat yOffset = 160;
+    footView.frame = CGRectMake(0, yOffset, Size.width, Size.height-yOffset);
     [footView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     return footView;
 }
@@ -161,7 +162,7 @@ enum{
             //            [_rechargeView setDelegate:self];
             //            [_tableView setTableFooterView:_rechargeView];
            
-            [_rechargeView setFrame:CGRectMake(0, 230, Size.width, RechargeViewHeight)];
+            [_rechargeView setFrame:CGRectMake(0, ViewNormalDistance, Size.width, RechargeViewHeight)];
         }completion:^(BOOL finished){
         }];
     }
@@ -171,7 +172,7 @@ enum{
     showRecharge = NO;
     [UIView animateWithDuration:kAnimatedDur animations:^{
 //        [_rechargeView removeFromSuperview];
-        [_rechargeView setFrame:CGRectMake(0, 1000, Size.width, RechargeViewHeight)];
+        [_rechargeView setFrame:CGRectMake(0, ViewBigDistance, Size.width, RechargeViewHeight)];
     }completion:^(BOOL finished) {
     }];
 }

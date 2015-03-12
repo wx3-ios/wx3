@@ -21,10 +21,16 @@
 
 - (NSString*)rootURL:(WXT_UrlFeed_Type)type{
     NSString *url = nil;
-    NSString *rootURL = [NSString stringWithFormat:@"http://api.67call.com/agent/api1.php"];
+    NSString *rootURL = [NSString stringWithFormat:@"http://api.67call.com/agent/api.php"];
     switch (type) {
         case WXT_UrlFeed_Type_LoadBalance:
-            url = @"/get_balance";
+            url = @"";
+            break;
+        case WXT_UrlFeed_Type_Recharge:
+            url = @"";
+            break;
+        case WXT_UrlFeed_Type_Sign:
+            url = @"";
             break;
         default:
             break;

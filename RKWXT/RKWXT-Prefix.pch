@@ -27,6 +27,7 @@
     #import "UIColor+WXT.h"
     #import "UtilTool.h"
     #import "KFLoger.h"
+    #import "WXTUIButton.h"
 #endif
 
 #define __DEBUG__

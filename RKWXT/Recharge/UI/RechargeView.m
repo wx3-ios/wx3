@@ -7,13 +7,15 @@
 //
 
 #import "RechargeView.h"
+#import "RechargeModel.h"
 
 #define EveryCellHeight (44)
 #define Size self.bounds.size
 
-@interface RechargeView(){
+@interface RechargeView()<RechargeDelegate>{
     UITextField *_numTextfield;
     UITextField *_pwdTextfield;
+    RechargeModel *_model;
 }
 @end
 
@@ -25,8 +27,12 @@
 
 -(id)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        [self setFrame:CGRectMake(0, 1000, Size.width, RechargeViewHeight)];
+        [self setFrame:CGRectMake(0, ViewBigDistance, Size.width, RechargeViewHeight)];
         [self setBackgroundColor:[UIColor whiteColor]];
+        
+         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (doneButtonHiden:) name: UIKeyboardWillHideNotification object:nil];
+        _model = [[RechargeModel alloc] init];
+        [_model setDelegate:self];
     }
     return self;
 }
@@ -53,8 +59,9 @@
     CGFloat textfieldHeight = numHeight;
     _numTextfield = [[UITextField alloc] init];
     _numTextfield.frame = CGRectMake(xOffset, (EveryCellHeight-numHeight)/2, textfieldWidth, textfieldHeight);
-    [_numTextfield setKeyboardType:UIKeyboardTypeNumberPad];
+    [_numTextfield setKeyboardType:UIKeyboardTypePhonePad];
     [_numTextfield setPlaceholder:@"请输入卡号"];
+    [_numTextfield addTarget:self action:@selector(startInput) forControlEvents:UIControlEventEditingDidBegin];
     [_numTextfield addTarget:self action:@selector(textfieldReturn:) forControlEvents:UIControlEventTouchDragExit];
     [self addSubview:_numTextfield];
     
@@ -77,8 +84,9 @@
     xOffset += numWidth;
     _pwdTextfield = [[UITextField alloc] init];
     _pwdTextfield.frame = CGRectMake(xOffset, yOffset, textfieldWidth, textfieldHeight);
-    [_pwdTextfield setKeyboardType:UIKeyboardTypeNumberPad];
+    [_pwdTextfield setKeyboardType:UIKeyboardTypePhonePad];
     [_pwdTextfield setPlaceholder:@"请输入密码"];
+    [_pwdTextfield addTarget:self action:@selector(startInput) forControlEvents:UIControlEventEditingDidBegin];
     [_pwdTextfield addTarget:self action:@selector(textfieldReturn:) forControlEvents:UIControlEventTouchDragExit];
     [self addSubview:_pwdTextfield];
     
@@ -123,6 +131,14 @@
     [textfield resignFirstResponder];
 }
 
+-(void)doneButtonHiden:(NSNotification*)notification{
+    [self setFrame:CGRectMake(0, ViewNormalDistance, Size.width, RechargeViewHeight)];
+}
+
+-(void)startInput{
+    [self setFrame:CGRectMake(0, ViewUpDistance, Size.width, RechargeViewHeight)];
+}
+
 -(void)cancel{
     if(_delegate && [_delegate respondsToSelector:@selector(rechargeCancel)]){
         [_delegate rechargeCancel];
@@ -133,8 +149,21 @@
     if(_numTextfield.text.length < 6 || _pwdTextfield.text.length < 6){
         [UtilTool showAlertView:@"帐号或密码格式错误"];
     }
-//    NSString *numberStr = _numTextfield.text;
-//    NSString *pwdStr = _pwdTextfield.text;
+    NSString *numberStr = _numTextfield.text;
+    NSString *pwdStr = _pwdTextfield.text;
+    [_model rechargeWithCardNum:numberStr andPwd:pwdStr];
+}
+
+-(void)rechargeSucceed{
+    [UtilTool showAlertView:@"充值成功"];
+}
+
+-(void)rechargeFailed:(NSString *)errorMsg{
+    if(!errorMsg){
+        [UtilTool showAlertView:@"充值失败"];
+        return;
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 @end

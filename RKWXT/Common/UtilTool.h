@@ -10,6 +10,7 @@
 
 @interface UtilTool : NSObject
 
++(NSString*)getCurDateTime:(int)type;
 //提示框
 + (void)showAlertView:(NSString*)message;
 

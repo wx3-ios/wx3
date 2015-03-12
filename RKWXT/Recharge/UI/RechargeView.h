@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #define RechargeViewHeight (133)
+#define ViewNormalDistance (230)
+#define ViewBigDistance    (1000)
+#define ViewUpDistance     (100)
 
 @protocol RechargeViewDelegate;
 @interface RechargeView : UIView
@@ -17,6 +20,6 @@
 
 @protocol RechargeViewDelegate <NSObject>
 -(void)rechargeCancel;
--(void)rechargeSubmitBaseData;
+//-(void)rechargeSubmitBaseData;
 
 @end

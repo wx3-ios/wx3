@@ -19,7 +19,14 @@
 
 -(id)initWithDic:(NSDictionary*)dic{
     if(self = [super init]){
+        NSString *date = [dic objectForKey:@"expireddate"];
+        [self setDate:date];
         
+        CGFloat balance = [[dic objectForKey:@"balance"] floatValue];
+        [self setMoney:balance];
+        
+        NSString *state = [dic objectForKey:@"state"];
+        [self setStatus:state];
     }
     return self;
 }

@@ -54,12 +54,14 @@
             if (jsonData){
                 NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
                 if (jsonDic){
-                    NSInteger code = [[jsonDic objectForKey:K_URLFeedOBJ_Data_Code] integerValue];
-                    if (code != 0){
-                        retFeedData.code = code;
+//                    NSInteger code = [[jsonDic objectForKey:K_URLFeedOBJ_Data_Code] integerValue];
+                    NSInteger result = [[jsonDic objectForKey:@"success"] integerValue];
+                    if (result != 1){
+                        retFeedData.code = result;
                         retFeedData.errorDesc = [jsonDic objectForKey:K_URLFeedOBJ_Data_ErrorDesc];
                     }else{
-                        retFeedData.data = [jsonDic objectForKey:@"data"];
+//                        retFeedData.data = [jsonDic objectForKey:@"data"];
+                        retFeedData.data = jsonDic;
                     }
                 }else{
                     retFeedData.code = WXT_URLFeedData_ParseError;
@@ -71,6 +73,7 @@
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
+            completion(retFeedData);
         });
     });
 }

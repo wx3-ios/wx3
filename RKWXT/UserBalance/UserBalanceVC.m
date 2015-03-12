@@ -25,8 +25,9 @@ enum{
 
 @interface UserBalanceVC()<UIScrollViewDelegate,LoadUserBalanceDelegate>{
     BalanceModel *_model;
+    BalanceEntity *_entity;
     NSArray *_nameArr;
-    UILabel *_infoLabel;
+    UIScrollView *_scrollerView;
 }
 @end
 
@@ -37,7 +38,7 @@ enum{
     if(self){
         _model = [[BalanceModel alloc] init];
         [_model setDelegate:self];
-        _nameArr = @[@"帐号",@"金额",@"状态",@"有限日期"];
+        _nameArr = @[@"帐号:",@"金额:",@"状态:",@"有限日期:"];
     }
     return self;
 }
@@ -46,15 +47,13 @@ enum{
     [super viewDidLoad];
     [self.navigationController setTitle:@"查询余额"];
     
-    UIScrollView *_scrollerView = [[UIScrollView alloc] init];
+     _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_scrollerView setDelegate:self];
-    [_scrollerView setShowsHorizontalScrollIndicator:NO];
+    [_scrollerView setScrollEnabled:YES];
     [_scrollerView setShowsVerticalScrollIndicator:NO];
-    [_scrollerView setContentOffset:CGPointMake(Size.width, Size.height+10)];
+    [_scrollerView setContentSize:CGSizeMake(Size.width, Size.height+10)];
     [self.view addSubview:_scrollerView];
-    
-    [_scrollerView addSubview:[self showBaseView]];
     [_scrollerView addSubview:[self showRechargeBtn]];
     
     [_model loadUserBalance];
@@ -62,7 +61,7 @@ enum{
 
 -(UIView *)showBaseView{
     CGFloat xOffset = 20;
-    CGFloat yOffset = 25;
+    CGFloat yOffset = 100;
     UIView *baseView = [[UIView alloc] init];
     baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_Balance_Invalid);
     [baseView setBorderRadian:5.0 width:0.5 color:[UIColor grayColor]];
@@ -71,7 +70,7 @@ enum{
     xOffset = 8;
     yOffset = 8;
     CGFloat lineyGap = 0;
-    CGFloat nameLabelWidth = 55;
+    CGFloat nameLabelWidth = 60;
     CGFloat namelabelHeight = 20;
     
     //显示内容
@@ -79,7 +78,7 @@ enum{
     CGFloat infoLabelWidth = 170;
     
     for(int i = 0; i < WXT_Balance_Invalid; i++){
-        yOffset += (i>0?(22+namelabelHeight):0);
+        yOffset += (i>0?(16+namelabelHeight):0);
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, namelabelHeight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
@@ -89,15 +88,34 @@ enum{
         [nameLabel setText:_nameArr[i]];
         [baseView addSubview:nameLabel];
         
-        _infoLabel = [[UILabel alloc] init];
+        UILabel *_infoLabel = [[UILabel alloc] init];
         _infoLabel.frame = CGRectMake(xGap, yOffset, infoLabelWidth, namelabelHeight);
         [_infoLabel setBackgroundColor:[UIColor clearColor]];
         [_infoLabel setTag:i];
         [_infoLabel setTextAlignment:NSTextAlignmentCenter];
         [_infoLabel setFont:WXTFont(15.0)];
         [_infoLabel setTextColor:[UIColor grayColor]];
+        
+        NSString *infoStr = nil;
+        switch (i) {
+            case WXT_Balance_Account:
+                infoStr = @"18613213051";
+                break;
+            case WXT_Balance_Money:
+                infoStr = [NSString stringWithFormat:@"%.2f",_entity.money];
+                break;
+            case WXT_Balance_Status:
+                infoStr = _entity.status;
+                break;
+            case WXT_Balance_Date:
+                infoStr = _entity.date;
+                break;
+            default:
+                break;
+        }
+        [_infoLabel setText:infoStr];
         if(i == WXT_Balance_Money){
-            [_infoLabel setTextColor:[UIColor purpleColor]];
+            [_infoLabel setTextColor:[UIColor redColor]];
         }
         [baseView addSubview:_infoLabel];
         
@@ -115,23 +133,21 @@ enum{
 }
 
 -(UIView*)showRechargeBtn{
-    UIView *btnView = [[UIView alloc] init];
-    
-    
     CGFloat xOffset = 22;
     CGFloat btnHeight = 30;
-    CGFloat yOffset = (1+WXT_Balance_Invalid*EveryCellHeight)+100;
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, btnHeight);
+    CGFloat yOffset = WXT_Balance_Invalid*EveryCellHeight;
+    WXTUIButton *btn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(xOffset, 2.3*yOffset, Size.width-2*xOffset, btnHeight);
 //    [btn setBackgroundColor:WXColorWithInteger(0x000000)];
+//    [btn setBackgroundColor:[UIColor redColor]];
+    [btn setBackgroundImageOfColor:[UIColor redColor] controlState:UIControlStateNormal];
+    [btn setBackgroundImageOfColor:[UIColor grayColor] controlState:UIControlStateSelected];
     [btn setTitle:@"立即充值" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
     [btn addTarget:self action:@selector(gotoRecharge) forControlEvents:UIControlEventTouchUpInside];
-    [btnView addSubview:btn];
     
-    [btnView setFrame:btn.frame];
-    return btnView;
+    return btn;
 }
 
 -(void)gotoRecharge{
@@ -139,11 +155,14 @@ enum{
 }
 
 -(void)loadUserBalanceSucceed{
-    
+    if([_model.dataList count] > 0){
+        _entity = [_model.dataList objectAtIndex:0];
+        [_scrollerView addSubview:[self showBaseView]];
+    }
 }
 
--(void)loadUserBalanceFailed{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"获取余额信息失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+-(void)loadUserBalanceFailed:(NSString *)errorMsg{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:errorMsg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
 }
 

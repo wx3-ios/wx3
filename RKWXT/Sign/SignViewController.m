@@ -10,20 +10,35 @@
 #import "CalendarView.h"
 //#import "MaskView.h"
 #import "T_SignGifView.h"
+#import "SignModel.h"
+#import "SignEntity.h"
+#import "NSDate+Compare.h"
 
 #define kAnimatedDur (0.3)
 #define kMaskMaxAlpha (1.0)
 #define Size self.view.bounds.size
 
-@interface SignViewController()<CalendarDelegate>{
+@interface SignViewController()<CalendarDelegate,SignDelegate>{
     CalendarView *_sampleView;
     UIButton *_closeBtn;
 //    MaskView *_maskView;
     UIButton *_signBtn;
+    SignModel *_model;
+    SignEntity *signEntity;
+    UILabel *_textLabel;
 }
 @end
 
 @implementation SignViewController
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[SignModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -35,7 +50,7 @@
     [self.view addSubview:imgView];
     
     [self createTextLabel];
-    [self createActivityRule];
+//    [self createActivityRule];
 //    [self createCalendar];
     [self createRewardLabel];
     [self createSignBtn];
@@ -50,7 +65,7 @@
 //}
 
 -(void)createTextLabel{
-    CGFloat yOffset = 30;
+    CGFloat yOffset = 60;
     UIImage *img = [UIImage imageNamed:@"signEveryDay.png"];
     UIImageView *imgView = [[UIImageView alloc] init];
     imgView.frame = CGRectMake((Size.width-img.size.width)/2, yOffset, img.size.width,
@@ -76,7 +91,7 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(Size.width-xOffset-img.size.width, yOffset, img.size.width, img.size.height);
     [btn setImage:img forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(showCalendar) forControlEvents:UIControlEventTouchUpInside];
+//    [btn addTarget:self action:@selector(showCalendar) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 }
 
@@ -84,14 +99,13 @@
     CGSize size = self.view.bounds.size;
     CGFloat yOffset = 30;
     CGFloat height = 30;
-    UILabel *textLabel = [[UILabel alloc] init];
-    textLabel.frame = CGRectMake(0, size.height-yOffset-30-30-30, Size.width, height);
-    [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setText:@"我的奖励: 8元"];
-    [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [textLabel setFont:[UIFont systemFontOfSize:14.0]];
-    [textLabel setTextColor:[UIColor whiteColor]];
-    [self.view addSubview:textLabel];
+    _textLabel = [[UILabel alloc] init];
+    _textLabel.frame = CGRectMake(0, size.height-yOffset-30-30-30, Size.width, height);
+    [_textLabel setBackgroundColor:[UIColor clearColor]];
+    [_textLabel setTextAlignment:NSTextAlignmentCenter];
+    [_textLabel setFont:[UIFont systemFontOfSize:14.0]];
+    [_textLabel setTextColor:[UIColor whiteColor]];
+    [self.view addSubview:_textLabel];
 }
 
 -(void)createSignBtn{
@@ -103,6 +117,14 @@
     [_signBtn setImage:[UIImage imageNamed:@"SignNow.png"] forState:UIControlStateNormal];
     [_signBtn addTarget:self action:@selector(signBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_signBtn];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *time = [userDefaults objectForKey:LastSignDate];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[time integerValue]];
+    NSString *timeString = [date YMDHMString:E_YMD];
+    if([timeString isEqualToString:@"今天"]){
+        [_signBtn setEnabled:NO];
+    }
 }
 
 //-(void)showCalendar{
@@ -137,6 +159,7 @@
 //}
 
 -(void)signBtnClicked{
+    [_model signGainMoney];
     T_SignGifView *gifView = [[T_SignGifView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
     [self.view addSubview:gifView];
     [_signBtn setEnabled:NO];
@@ -145,6 +168,19 @@
 
 -(void)showAlert{
     [_signBtn setEnabled:YES];
+}
+
+-(void)signSucceed{
+    [_signBtn setEnabled:NO];
+    if([_model.signArr count] > 0){
+        signEntity = [_model.signArr objectAtIndex:0];
+        [UtilTool showAlertView:signEntity.message];
+        [_textLabel setText:[NSString stringWithFormat:@"我的奖励:%f元",signEntity.money]];
+    }
+}
+
+-(void)signFailed:(NSString *)errorMsg{
+    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)tappedOnDate:(NSDate *)selectedDate{

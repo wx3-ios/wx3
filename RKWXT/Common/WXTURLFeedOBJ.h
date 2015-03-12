@@ -11,6 +11,8 @@
 
 typedef enum {
     WXT_UrlFeed_Type_LoadBalance = 0,
+    WXT_UrlFeed_Type_Recharge,
+    WXT_UrlFeed_Type_Sign,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;
