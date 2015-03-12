@@ -62,6 +62,11 @@
 //        }
 //    }
     
+    //
+    UINavigationBar * navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 44)];
+    
+    [_tableView registerNib:[UINib nibWithNibName:@"ContactsCell" bundle:nil] forCellReuseIdentifier:@"ContactsCell"];
+    
     //add bottom line
     UIView *bottomLineImageView = nil;
     for (UIView *view in self.navigationController.navigationBar.subviews) {
@@ -146,6 +151,10 @@
     }];
 }
 
+-(IBAction)segmentSwitch:(id)sender{
+    
+}
+
 
 - (void)insertKefuInArray:(NSMutableArray *)array
 {
@@ -175,7 +184,7 @@
     //按名字排序每个表中的数据
     //self.searchDisplayController.searchBar.placeholder = [NSString stringWithFormat:@"共有%d个联系人", _contactArray.count];
     _contactArray = contacts;
-    DDLogInfo(@"contactArray count = %lu", contacts.count);
+    NSLog(@"contactArray count = %lu", contacts.count);
     
     /*
      将所有的联系人,按首字母分组

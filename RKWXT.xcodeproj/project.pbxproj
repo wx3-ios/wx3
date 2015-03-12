@@ -29,8 +29,9 @@
 		770BB43C1AAD97700098C214 /* W.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4391AAD97700098C214 /* W.png */; };
 		770BB43F1AAD9D530098C214 /* 启动页（iPhone4）.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB43D1AAD9D530098C214 /* 启动页（iPhone4）.png */; };
 		770BB4401AAD9D530098C214 /* 启动页（iPhone5）.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB43E1AAD9D530098C214 /* 启动页（iPhone5）.png */; };
+		776CFF9E1AB11E07000A1D84 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776CFF9D1AB11E07000A1D84 /* ContactsViewController.m */; };
+		776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 776CFFA71AB1257B000A1D84 /* ARLabel.m */; };
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
-		777059B21AAFE42D0097526C /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 777059B11AAFE42D0097526C /* ContactsViewController.m */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
 		777059B61AAFE48C0097526C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B41AAFE48C0097526C /* AddressBookUI.framework */; };
 		778289501AAD3F61009E9BF3 /* RegistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7782894F1AAD3F61009E9BF3 /* RegistTableViewController.m */; };
@@ -108,10 +109,12 @@
 		770BB4391AAD97700098C214 /* W.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = W.png; sourceTree = "<group>"; };
 		770BB43D1AAD9D530098C214 /* 启动页（iPhone4）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页（iPhone4）.png"; sourceTree = "<group>"; };
 		770BB43E1AAD9D530098C214 /* 启动页（iPhone5）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页（iPhone5）.png"; sourceTree = "<group>"; };
+		776CFF9C1AB11E07000A1D84 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		776CFF9D1AB11E07000A1D84 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		776CFFA61AB1257B000A1D84 /* ARLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLabel.h; sourceTree = "<group>"; };
+		776CFFA71AB1257B000A1D84 /* ARLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLabel.m; sourceTree = "<group>"; };
 		777059AC1AAFDEC40097526C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localize.strings; sourceTree = "<group>"; };
 		777059AE1AAFDEEB0097526C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localize.strings"; sourceTree = "<group>"; };
-		777059B01AAFE42D0097526C /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
-		777059B11AAFE42D0097526C /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		777059B31AAFE48C0097526C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		777059B41AAFE48C0097526C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7782894E1AAD3F61009E9BF3 /* RegistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistTableViewController.h; sourceTree = "<group>"; };
@@ -218,8 +221,6 @@
 				77DB93F61AAFE7890021A816 /* Categories */,
 				77DB93F21AAFE7310021A816 /* Utils */,
 				77DB93E51AAFE6EA0021A816 /* Model */,
-				777059B01AAFE42D0097526C /* ContactsViewController.h */,
-				777059B11AAFE42D0097526C /* ContactsViewController.m */,
 				2563B4861AAAFA7500C04227 /* Resources */,
 				2563B47C1AAAEF2200C04227 /* YRSideViewController */,
 				2563B3EB1AAAD74000C04227 /* AppDelegate.h */,
@@ -362,6 +363,8 @@
 		77DB941D1AAFED330021A816 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				776CFF9C1AB11E07000A1D84 /* ContactsViewController.h */,
+				776CFF9D1AB11E07000A1D84 /* ContactsViewController.m */,
 				77DB941E1AAFED400021A816 /* UIViewController+Helper.h */,
 				77DB941F1AAFED400021A816 /* UIViewController+Helper.m */,
 				77A1B9041AB027D5008C1C85 /* CallViewController.h */,
@@ -373,6 +376,8 @@
 		77DB94211AAFEE130021A816 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				776CFFA61AB1257B000A1D84 /* ARLabel.h */,
+				776CFFA71AB1257B000A1D84 /* ARLabel.m */,
 				77DB94361AAFF35F0021A816 /* ColorLabel.h */,
 				77DB94371AAFF35F0021A816 /* ColorLabel.m */,
 				77DB94221AAFEE1F0021A816 /* MZLoadingCircle.h */,
@@ -570,15 +575,16 @@
 				77DB94181AAFE9DD0021A816 /* WXTWaitingHud.m in Sources */,
 				77DB94351AAFF2120021A816 /* RecentCell.m in Sources */,
 				77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */,
+				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
 				77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */,
 				77DB93FF1AAFE7DC0021A816 /* ChineseToPinyin.m in Sources */,
 				77DB94161AAFE9DD0021A816 /* LoadLabel.m in Sources */,
 				2563B47F1AAAEF2200C04227 /* YRSideViewController.m in Sources */,
 				2563B4821AAAF06D00C04227 /* MainViewController.m in Sources */,
 				77DB94341AAFF2120021A816 /* ContactsCell.m in Sources */,
+				776CFF9E1AB11E07000A1D84 /* ContactsViewController.m in Sources */,
 				2563B43A1AAADD5D00C04227 /* RootViewController.m in Sources */,
 				2563B3EA1AAAD74000C04227 /* main.m in Sources */,
-				777059B21AAFE42D0097526C /* ContactsViewController.m in Sources */,
 				77DB93F11AAFE70D0021A816 /* MessageData.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,

@@ -59,8 +59,8 @@ return shared##className; \
 }
 
 #import "AppDelegate.h"
-//#import "UserAgent.h"
-
+#import "UserAgent.h"
+//#define 
 
 
 #endif

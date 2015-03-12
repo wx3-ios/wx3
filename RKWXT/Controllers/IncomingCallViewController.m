@@ -12,12 +12,12 @@
 #import "ContactUitl.h"
 #import "PhoneData.h"
 #import "RecentData.h"
-#import "NetRequest.h"
+//#import "NetRequest.h"
 #import "NSString+Helper.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AddressBook/AddressBook.h>
-#import "AreaHelper.h"
-#import "RecentHelper.h"
+//#import "AreaHelper.h"
+//#import "RecentHelper.h"
 #import "ARLabel.h"
 #import "FTAnimation.h"
 #import "DTMFView.h"
@@ -88,7 +88,7 @@
     }
     else
     {
-        _subtitleLable.text = [[AreaHelper sharedAreaHelper] queryByPhone:_callPhone];
+//        _subtitleLable.text = [[AreaHelper sharedAreaHelper] queryByPhone:_callPhone];
     }
     _miniSubtitleLabel.text = _subtitleLable.text;
     _miniTitleLabel.text = _titleLabel.text;
@@ -114,7 +114,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+/*
 - (void)addCallLog
 {
     RecentData *recent = [[RecentData alloc]init];
@@ -122,7 +122,7 @@
     recent.date = _callDate;
     recent.area = _phoneData.area;
     [[RecentHelper sharedRecentHelper] insert:recent];
-}
+}*/
 
 
 -(void)setCallTime
@@ -142,16 +142,16 @@
 }
 
 
-
+/*
 - (void)setCall:(GSCall *)call {
     [self willChangeValueForKey:@"call"];
     [_call removeObserver:self forKeyPath:@"status"];
     _call = call;
     [_call addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionInitial context:nil];
     [self didChangeValueForKey:@"call"];
-}
+}*/
 
-
+/*
 - (void)closeAction
 {
     //[USER_AGENT updateBalance:nil];
@@ -162,7 +162,7 @@
     [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
     [self dismissViewControllerAnimated:YES completion:nil];
     
-}
+}*/
 
 
 - (void)dtmfViewShow:(BOOL)show
@@ -362,7 +362,7 @@
 
 #define dtmf delegate
 
-
+/*
 - (void)DTMFView:(DTMFView *)view didPressDTMF:(NSString *)dtmf tone:(NSInteger)tone
 {
     NSLog(@"didPressDTMF=%@ tone=%d", dtmf, tone);
@@ -375,7 +375,7 @@
     if (![self silenced]) {
         AudioServicesPlaySystemSound(tone);
     }
-}
+}*/
 
 
 #pragma mark - WJT VOIP
