@@ -32,6 +32,9 @@
         case WXT_UrlFeed_Type_Sign:
             url = @"";
             break;
+        case WXT_UrlFeed_Type_Login:
+            url = @"";
+            break;
         default:
             break;
     }

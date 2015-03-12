@@ -77,6 +77,11 @@
 		120A2C631AB17B87006A28B1 /* SignNow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C611AB17B87006A28B1 /* SignNow@2x.png */; };
 		120A2C661AB1804E006A28B1 /* SignEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C651AB1804E006A28B1 /* SignEntity.m */; };
 		120A2C691AB18579006A28B1 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C681AB18579006A28B1 /* NSDate+Compare.m */; };
+		120A2C6D1AB19473006A28B1 /* LoginLock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C6A1AB19473006A28B1 /* LoginLock@2x.png */; };
+		120A2C6E1AB19473006A28B1 /* LoginUser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C6B1AB19473006A28B1 /* LoginUser@2x.png */; };
+		120A2C6F1AB19473006A28B1 /* LoginLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C6C1AB19473006A28B1 /* LoginLogo@2x.png */; };
+		120A2C721AB1966B006A28B1 /* WXTUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C711AB1966B006A28B1 /* WXTUITextField.m */; };
+		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
@@ -237,6 +242,14 @@
 		120A2C651AB1804E006A28B1 /* SignEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEntity.m; sourceTree = "<group>"; };
 		120A2C671AB18579006A28B1 /* NSDate+Compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Compare.h"; sourceTree = "<group>"; };
 		120A2C681AB18579006A28B1 /* NSDate+Compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compare.m"; sourceTree = "<group>"; };
+		120A2C6A1AB19473006A28B1 /* LoginLock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginLock@2x.png"; sourceTree = "<group>"; };
+		120A2C6B1AB19473006A28B1 /* LoginUser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUser@2x.png"; sourceTree = "<group>"; };
+		120A2C6C1AB19473006A28B1 /* LoginLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginLogo@2x.png"; sourceTree = "<group>"; };
+		120A2C701AB1966B006A28B1 /* WXTUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUITextField.h; sourceTree = "<group>"; };
+		120A2C711AB1966B006A28B1 /* WXTUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUITextField.m; sourceTree = "<group>"; };
+		120A2C761AB1A48B006A28B1 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		12228A6A1AB1B1D000CF0800 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
+		12228A6B1AB1B1D000CF0800 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B3E91AAAD74000C04227 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -369,6 +382,7 @@
 				120A2BB91AB135DD006A28B1 /* WXTURLFeedOBJ.m */,
 				120A2C671AB18579006A28B1 /* NSDate+Compare.h */,
 				120A2C681AB18579006A28B1 /* NSDate+Compare.m */,
+				120A2C761AB1A48B006A28B1 /* Common.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -478,6 +492,8 @@
 				120A2C0A1AB16907006A28B1 /* UIImage+Render.m */,
 				120A2C0C1AB1699F006A28B1 /* WXTUIButton.h */,
 				120A2C0D1AB1699F006A28B1 /* WXTUIButton.m */,
+				120A2C701AB1966B006A28B1 /* WXTUITextField.h */,
+				120A2C711AB1966B006A28B1 /* WXTUITextField.m */,
 			);
 			path = WXTUIKit;
 			sourceTree = "<group>";
@@ -496,6 +512,7 @@
 			children = (
 				120A2C061AB142D4006A28B1 /* LoginVC.h */,
 				120A2C071AB142D4006A28B1 /* LoginVC.m */,
+				12228A691AB1B1C300CF0800 /* Model */,
 			);
 			path = LoginAndRegist;
 			sourceTree = "<group>";
@@ -558,6 +575,15 @@
 				120A2C3B1AB17AFD006A28B1 /* sign9@2x.png */,
 			);
 			path = SignGifView;
+			sourceTree = "<group>";
+		};
+		12228A691AB1B1C300CF0800 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12228A6A1AB1B1D000CF0800 /* LoginModel.h */,
+				12228A6B1AB1B1D000CF0800 /* LoginModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2563B3DB1AAAD74000C04227 = {
@@ -669,6 +695,9 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				120A2C6A1AB19473006A28B1 /* LoginLock@2x.png */,
+				120A2C6B1AB19473006A28B1 /* LoginUser@2x.png */,
+				120A2C6C1AB19473006A28B1 /* LoginLogo@2x.png */,
 				120A2C171AB17AFD006A28B1 /* activityRule@2x.png */,
 				120A2C181AB17AFD006A28B1 /* signBg.jpg */,
 				120A2C191AB17AFD006A28B1 /* signBg@2x.jpg */,
@@ -906,8 +935,10 @@
 				120A2C3F1AB17AFD006A28B1 /* sign10@2x.png in Resources */,
 				120A2C621AB17B87006A28B1 /* signEveryDay@2x.png in Resources */,
 				120A2C4F1AB17AFD006A28B1 /* sign26@2x.png in Resources */,
+				120A2C6D1AB19473006A28B1 /* LoginLock@2x.png in Resources */,
 				120A2C021AB13900006A28B1 /* Wallet@2x.png in Resources */,
 				120A2C401AB17AFD006A28B1 /* sign11@2x.png in Resources */,
+				120A2C6F1AB19473006A28B1 /* LoginLogo@2x.png in Resources */,
 				120A2C491AB17AFD006A28B1 /* sign20@2x.png in Resources */,
 				2563B3FB1AAAD74000C04227 /* LaunchScreen.xib in Resources */,
 				120A2C471AB17AFD006A28B1 /* sign19@2x.png in Resources */,
@@ -948,6 +979,7 @@
 				120A2C4A1AB17AFD006A28B1 /* sign21@2x.png in Resources */,
 				120A2C4C1AB17AFD006A28B1 /* sign23@2x.png in Resources */,
 				120A2C421AB17AFD006A28B1 /* sign13@2x.png in Resources */,
+				120A2C6E1AB19473006A28B1 /* LoginUser@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1015,6 +1047,7 @@
 				77DB94351AAFF2120021A816 /* RecentCell.m in Sources */,
 				120A2BE71AB135DD006A28B1 /* WXTURLFeedOBJ+Data.m in Sources */,
 				120A2BEB1AB135DD006A28B1 /* RechargeView.m in Sources */,
+				12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */,
 				120A2C161AB17A92006A28B1 /* SignModel.m in Sources */,
 				77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */,
 				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
@@ -1049,6 +1082,7 @@
 				77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */,
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,
+				120A2C721AB1966B006A28B1 /* WXTUITextField.m in Sources */,
 				77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */,
 				120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */,
 				2563B43D1AAADE6200C04227 /* BaseViewController.m in Sources */,

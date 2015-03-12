@@ -28,6 +28,7 @@
     #import "UtilTool.h"
     #import "KFLoger.h"
     #import "WXTUIButton.h"
+    #import "Common.h"
 #endif
 
 #define __DEBUG__
