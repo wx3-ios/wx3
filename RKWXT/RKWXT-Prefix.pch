@@ -22,6 +22,11 @@
 	#import "BaseViewController.h"
 	#import "Constants.h"
 	#import "UserAgent.h"
+
+    #import "UIFont+WXT.h"
+    #import "UIColor+WXT.h"
+    #import "UtilTool.h"
+    #import "KFLoger.h"
 #endif
 
 #define __DEBUG__
