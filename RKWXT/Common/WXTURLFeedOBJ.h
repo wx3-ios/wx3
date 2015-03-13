@@ -14,6 +14,7 @@ typedef enum {
     WXT_UrlFeed_Type_Recharge,
     WXT_UrlFeed_Type_Sign,
     WXT_UrlFeed_Type_Login,
+    WXT_UrlFeed_Type_Regist,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

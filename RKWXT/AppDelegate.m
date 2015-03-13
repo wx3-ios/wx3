@@ -11,7 +11,7 @@
 #import "LeftMenuViewController.h"
 #import "IQKeyboardManager.h"
 #import "DDFileLogger.h"
-#import "LoginVC.h"
+#import "RegistVC.h"
 @interface AppDelegate ()
 
 @end
@@ -65,7 +65,7 @@
 //	_sideViewController.rootViewController = mainCtrl;
 //	_sideViewController.leftViewController = leftMenuCtrl;
 //	self.window.rootViewController = _sideViewController;
-    LoginVC *vc = [[LoginVC alloc] init];
+    RegistVC *vc = [[RegistVC alloc] init];
     [self.window setRootViewController:vc];
     [self.window makeKeyAndVisible];
 }

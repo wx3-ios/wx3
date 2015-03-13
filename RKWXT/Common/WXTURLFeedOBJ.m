@@ -35,6 +35,9 @@
         case WXT_UrlFeed_Type_Login:
             url = @"";
             break;
+        case WXT_UrlFeed_Type_Regist:
+            url = @"";
+            break;
         default:
             break;
     }

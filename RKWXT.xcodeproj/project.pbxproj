@@ -82,6 +82,8 @@
 		120A2C6F1AB19473006A28B1 /* LoginLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C6C1AB19473006A28B1 /* LoginLogo@2x.png */; };
 		120A2C721AB1966B006A28B1 /* WXTUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C711AB1966B006A28B1 /* WXTUITextField.m */; };
 		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
+		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
+		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
@@ -250,6 +252,10 @@
 		120A2C761AB1A48B006A28B1 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		12228A6A1AB1B1D000CF0800 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		12228A6B1AB1B1D000CF0800 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
+		12228A711AB1BABA00CF0800 /* RegistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistVC.h; sourceTree = "<group>"; };
+		12228A721AB1BABA00CF0800 /* RegistVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistVC.m; sourceTree = "<group>"; };
+		12228A741AB1C0F200CF0800 /* RegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistModel.h; sourceTree = "<group>"; };
+		12228A751AB1C0F200CF0800 /* RegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistModel.m; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B3E91AAAD74000C04227 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -512,6 +518,8 @@
 			children = (
 				120A2C061AB142D4006A28B1 /* LoginVC.h */,
 				120A2C071AB142D4006A28B1 /* LoginVC.m */,
+				12228A711AB1BABA00CF0800 /* RegistVC.h */,
+				12228A721AB1BABA00CF0800 /* RegistVC.m */,
 				12228A691AB1B1C300CF0800 /* Model */,
 			);
 			path = LoginAndRegist;
@@ -582,6 +590,8 @@
 			children = (
 				12228A6A1AB1B1D000CF0800 /* LoginModel.h */,
 				12228A6B1AB1B1D000CF0800 /* LoginModel.m */,
+				12228A741AB1C0F200CF0800 /* RegistModel.h */,
+				12228A751AB1C0F200CF0800 /* RegistModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1038,6 +1048,7 @@
 				120A2C0B1AB16907006A28B1 /* UIImage+Render.m in Sources */,
 				120A2BEC1AB135DD006A28B1 /* SignViewController.m in Sources */,
 				2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */,
+				12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */,
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
 				77A1B9061AB027D5008C1C85 /* CallViewController.m in Sources */,
 				120A2BF71AB135DE006A28B1 /* WXTUITableViewCell.m in Sources */,
@@ -1092,6 +1103,7 @@
 				120A2C0E1AB1699F006A28B1 /* WXTUIButton.m in Sources */,
 				2563B4851AAAF22500C04227 /* LeftMenuViewController.m in Sources */,
 				77DB94151AAFE9DD0021A816 /* ProgressView.m in Sources */,
+				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				120A2C081AB142D4006A28B1 /* LoginVC.m in Sources */,
 				120A2BE81AB135DD006A28B1 /* WXTURLFeedOBJ.m in Sources */,
 			);
