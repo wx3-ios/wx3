@@ -11,7 +11,7 @@
 @protocol LoadUserBalanceDelegate;
 @interface BalanceModel : NSObject
 @property (nonatomic,strong) NSArray *dataList;
-@property (nonatomic,weak) id<LoadUserBalanceDelegate>delegate;
+@property (nonatomic,assign) id<LoadUserBalanceDelegate>delegate;
 
 -(void)loadUserBalance;
 @end

@@ -40,9 +40,13 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationController setTitle:@"每日签到"];
     
     UIImageView *imgView = [[UIImageView alloc] init];
     imgView.frame = CGRectMake(0, 0, Size.width, Size.height);
@@ -55,6 +59,7 @@
     [self createRewardLabel];
     [self createSignBtn];
 //    [self createView];
+    [self createBackBtn];
 }
 
 //-(void)createView{
@@ -63,6 +68,19 @@
 //    [_maskView setAlpha:0.0];
 //    [self addSubview:_maskView];
 //}
+
+-(void)createBackBtn{
+    CGFloat xOffset = 20;
+    CGFloat yOffset = 30;
+    UIImage *img = [UIImage imageNamed:@"T_Back.png"];
+    WXTUIButton *backBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(xOffset, yOffset, img.size.width, img.size.height);
+    [backBtn setImage:[UIImage imageNamed:@"T_Back.png"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"T_BackSel.png"] forState:UIControlStateSelected];
+    [backBtn setBackgroundColor:[UIColor clearColor]];
+    [backBtn addTarget:self action:@selector(backToLastPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backBtn];
+}
 
 -(void)createTextLabel{
     CGFloat yOffset = 60;
@@ -181,6 +199,10 @@
 
 -(void)signFailed:(NSString *)errorMsg{
     [UtilTool showAlertView:errorMsg];
+}
+
+-(void)backToLastPage{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)tappedOnDate:(NSDate *)selectedDate{

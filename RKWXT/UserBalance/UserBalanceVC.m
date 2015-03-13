@@ -10,6 +10,7 @@
 #import "UIView+Render.h"
 #import "BalanceEntity.h"
 #import "BalanceModel.h"
+#import "RechargeVC.h"
 
 #define Size self.view.bounds.size
 #define EveryCellHeight (36)
@@ -43,11 +44,15 @@ enum{
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationController setTitle:@"查询余额"];
     
-     _scrollerView = [[UIScrollView alloc] init];
+    _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_scrollerView setDelegate:self];
     [_scrollerView setScrollEnabled:YES];
@@ -56,10 +61,11 @@ enum{
     [self.view addSubview:_scrollerView];
     [_scrollerView addSubview:[self showRechargeBtn]];
     
-    [_model loadUserBalance];
+//    [_model loadUserBalance];
+    [self showBaseView];
 }
 
--(UIView *)showBaseView{
+-(void)showBaseView{
     CGFloat xOffset = 20;
     CGFloat yOffset = 100;
     UIView *baseView = [[UIView alloc] init];
@@ -76,6 +82,8 @@ enum{
     //显示内容
     CGFloat xGap = 75;
     CGFloat infoLabelWidth = 170;
+    
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     
     for(int i = 0; i < WXT_Balance_Invalid; i++){
         yOffset += (i>0?(16+namelabelHeight):0);
@@ -96,10 +104,11 @@ enum{
         [_infoLabel setFont:WXTFont(15.0)];
         [_infoLabel setTextColor:[UIColor grayColor]];
         
+        
         NSString *infoStr = nil;
         switch (i) {
             case WXT_Balance_Account:
-                infoStr = @"18613213051";
+                infoStr = userDefault.user;
                 break;
             case WXT_Balance_Money:
                 infoStr = [NSString stringWithFormat:@"%.2f",_entity.money];
@@ -119,17 +128,15 @@ enum{
         }
         [baseView addSubview:_infoLabel];
         
-        if(i == WXT_Balance_Invalid-1){
-            break;
+        if(i != WXT_Balance_Invalid-1){
+            lineyGap += EveryCellHeight;
+            UILabel *line = [[UILabel alloc] init];
+            line.frame = CGRectMake(0, lineyGap, Size.width-2*xOffset, 0.5);
+            [line setBackgroundColor:[UIColor grayColor]];
+            [baseView addSubview:line];
         }
-        
-        lineyGap += EveryCellHeight;
-        UILabel *line = [[UILabel alloc] init];
-        line.frame = CGRectMake(0, lineyGap, Size.width-2*xOffset, 0.5);
-        [line setBackgroundColor:[UIColor grayColor]];
-        [baseView addSubview:line];
     }
-    return baseView;
+    [_scrollerView addSubview:baseView];
 }
 
 -(UIView*)showRechargeBtn{
@@ -138,26 +145,25 @@ enum{
     CGFloat yOffset = WXT_Balance_Invalid*EveryCellHeight;
     WXTUIButton *btn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(xOffset, 2.3*yOffset, Size.width-2*xOffset, btnHeight);
-//    [btn setBackgroundColor:WXColorWithInteger(0x000000)];
-//    [btn setBackgroundColor:[UIColor redColor]];
-    [btn setBackgroundImageOfColor:[UIColor redColor] controlState:UIControlStateNormal];
+    [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateNormal];
     [btn setBackgroundImageOfColor:[UIColor grayColor] controlState:UIControlStateSelected];
     [btn setTitle:@"立即充值" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
+    [btn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
+    [btn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateSelected];
     [btn addTarget:self action:@selector(gotoRecharge) forControlEvents:UIControlEventTouchUpInside];
     
     return btn;
 }
 
 -(void)gotoRecharge{
-    
+    RechargeVC *rechargeVC = [[RechargeVC alloc] init];
+    [self.navigationController pushViewController:rechargeVC animated:YES];
 }
 
 -(void)loadUserBalanceSucceed{
     if([_model.dataList count] > 0){
         _entity = [_model.dataList objectAtIndex:0];
-        [_scrollerView addSubview:[self showBaseView]];
+        [self showBaseView];
     }
 }
 

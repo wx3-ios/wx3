@@ -30,7 +30,8 @@
 
 -(void)signGainMoney{
     [_signArr removeAllObjects];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"daily_attendance", @"cmd", @"1003227", @"user_id", [NSNumber numberWithInt:2], @"agent_id", @"d426beacee0af27f3922721b4d55147d", @"token", nil];
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"daily_attendance", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", userDefault.token, @"token", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         __block SignModel *blockSelf = self;
         if (retData.code != 1){

@@ -11,8 +11,11 @@
 #import "LeftMenuViewController.h"
 #import "IQKeyboardManager.h"
 #import "DDFileLogger.h"
-#import "RegistVC.h"
-@interface AppDelegate ()
+#import "LoginVC.h"
+#import "WXTUITabBarController.h"
+@interface AppDelegate (){
+    UINavigationController *_navigation;
+}
 
 @end
 
@@ -65,11 +68,30 @@
 //	_sideViewController.rootViewController = mainCtrl;
 //	_sideViewController.leftViewController = leftMenuCtrl;
 //	self.window.rootViewController = _sideViewController;
-    RegistVC *vc = [[RegistVC alloc] init];
-    [self.window setRootViewController:vc];
+    
+    BOOL userInfo = [self checkUserInfo];
+    if(userInfo){
+        WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
+        [tabbar createViewController];
+        [tabbar.navigationController setNavigationBarHidden:NO];
+        _navigation = [[UINavigationController alloc] initWithRootViewController:tabbar];
+    }else{
+        LoginVC *vc = [[LoginVC alloc] init];
+        _navigation = [[UINavigationController alloc] initWithRootViewController:vc];
+        [vc.navigationController setNavigationBarHidden:YES];
+    }
+    
+    [self.window setRootViewController:_navigation];
     [self.window makeKeyAndVisible];
 }
 
+-(BOOL)checkUserInfo{
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    if(!userDefault.user || !userDefault.pwd || !userDefault.token || !userDefault.wxtID){
+        return NO;
+    }
+    return YES;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

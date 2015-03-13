@@ -29,26 +29,18 @@ enum{
 
 @implementation RechargeVC
 
--(void)dealloc{
-    [_rechargeView setDelegate:nil];
-}
-
--(id)init{
-    self = [super init];
-    if(self){
-//        CGFloat yOffset = 380;
-        
-    }
-    return self;
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setTitle:@"充值中心"];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationController setTitle:@"充值中心"];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, HeadViewHeight, Size.width, Size.height-HeadViewHeight);
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-HeadViewHeight);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setScrollEnabled:NO];

@@ -19,9 +19,6 @@
 @implementation BalanceModel
 @synthesize dataList = _dataList;
 
-//d426beacee0af27f3922721b4d55147d //token
-//1003227  //user_id
-
 -(id)init{
     if(self = [super init]){
         _dataList = [[NSMutableArray alloc] init];
@@ -39,10 +36,13 @@
 }
 
 -(void)loadUserBalance{
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_balance", @"cmd", @"1003227", @"user_id", [NSNumber numberWithInt:2], @"agent_id", @"d426beacee0af27f3922721b4d55147d", @"token", nil];
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_balance", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", userDefault.token, @"token", nil];
     __block BalanceModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
-        if (retData.code != WXT_URLFeedData_Succeed){
+        NSDictionary *dic = retData.data;
+        NSInteger secceed = [[dic objectForKey:@"success"] integerValue];
+        if (secceed != 1){
             if (_delegate && [_delegate respondsToSelector:@selector(loadUserBalanceFailed:)]){
                 [_delegate loadUserBalanceFailed:retData.errorDesc];
             }

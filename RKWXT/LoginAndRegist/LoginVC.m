@@ -10,6 +10,9 @@
 #import "UIView+Render.h"
 #import "WXTUITextField.h"
 #import "LoginModel.h"
+#import "WXTUITabBarController.h"
+#import "FetchPwdModel.h"
+#import "RegistVC.h"
 
 #define Size self.view.bounds.size
 #define kMinUserLength (8)
@@ -17,7 +20,7 @@
 #define kFetchPasswordDur (60)
 #define kTableViewXGap (25.0)
 
-@interface LoginVC ()<LoginDelegate>{
+@interface LoginVC ()<LoginDelegate,FetchPwdDelegate>{
     WXTUITextField *_userTextField;
     WXTUITextField *_pwdTextField;
     UIView *_iconShell;
@@ -33,6 +36,7 @@
     
 //    LoginMaskView *_loginMaskView;
     LoginModel *_model;
+    FetchPwdModel *_pwdModel;
 }
 @end
 
@@ -45,8 +49,16 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur:) name:UIKeyboardDidHideNotification object:nil];
         _model = [[LoginModel alloc] init];
         [_model setDelegate:self];
+        
+        _pwdModel = [[FetchPwdModel alloc] init];
+        [_pwdModel setDelegate:self];
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidLoad{
@@ -305,15 +317,28 @@
 }
 
 - (void)fetchPassWord{
+    if(![self checkUserValide]){
+        return;
+    }
+    [_pwdModel fetchPwdWithUserPhone:_userTextField.text];
     [self startFetchPwdTiming];
     [_fetchPwdBtn setEnabled:NO];
     [self textFieldResighFirstResponder];
+    
 }
 
 #pragma mark delegate
 - (void)loginSucceed{
     [self unShowWaitView];
-    [UtilTool showAlertView:@"登陆成功"];
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    [userDefault setUser:_userTextField.text];
+    [userDefault setPwd:_pwdTextField.text];
+    
+    WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
+    [tabbar createViewController];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tabbar];
+    [self presentViewController:nav animated:YES completion:^{
+    }];
 }
 
 -(void)loginFailed:(NSString *)errrorMsg{
@@ -324,19 +349,19 @@
     [UtilTool showAlertView:errrorMsg];
 }
 
-- (void)findPwdFailed:(NSString*)errorMessage{
-//    [self unShowWaitView];
-//    if(!errorMessage){
-//        errorMessage = @"密码获取失败";
-//    }
-//    [UtilTool showTipView:errorMessage];
-//    [self stopFetchPwdTiming];
-//    [self setFetchPasswordButtonTitle];
+- (void)fetchPwdFailed:(NSString*)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"密码获取失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+    [self stopFetchPwdTiming];
+    [self setFetchPasswordButtonTitle];
 }
 
-- (void)findPwdSucceed{
-//    [self unShowWaitView];
-//    [UtilTool showAlertView:[NSString stringWithFormat:@"密码已经发送到你的号码为%@的手机上，请注意查收",_userTextField.text]];
+- (void)fetchPwdSucceed{
+    [self unShowWaitView];
+    [UtilTool showAlertView:[NSString stringWithFormat:@"密码已经发送到你的号码为%@的手机上，请注意查收",_userTextField.text]];
 }
 
 #pragma mark 登陆
@@ -349,14 +374,8 @@
 }
 
 - (void)toRegister{
-//    [[CoordinateController sharedCoordinateController] toRegisterVC:self animated:YES];
-}
-
-- (void)loginUIBegin{
-//    [UIView animateWithDuration:kLoginMaskViewAnimatedDuration animations:^{
-//        [self.baseView setAlpha:1.0];
-//        [self.baseView setTransform:CGAffineTransformMakeScale(1.0, 1.0)];
-//    }];
+    RegistVC *registVC = [[RegistVC alloc] init];
+    [self.navigationController pushViewController:registVC animated:YES];
 }
 
 @end

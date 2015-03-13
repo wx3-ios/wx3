@@ -11,7 +11,7 @@
 @protocol RegistDelegate;
 @interface RegistModel : NSObject
 @property (nonatomic,assign) id<RegistDelegate>delegate;
--(void)registWithUserPhone:(NSString*)userStr;
+-(void)registWithUserPhone:(NSString*)userStr andPwd:(NSString*)pwdStr andSmsID:(NSInteger)smsID andCode:(NSInteger)code andRecommondUser:(NSString*)recommondUserStr;
 @end
 
 @protocol RegistDelegate <NSObject>

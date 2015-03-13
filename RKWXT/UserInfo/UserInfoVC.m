@@ -8,24 +8,34 @@
 
 #import "UserInfoVC.h"
 #import "UserInfoCommonCell.h"
+#import "RechargeVC.h"
+#import "UserBalanceVC.h"
+#import "WXTUITabBarController.h"
+#import "SignViewController.h"
+#import "LoginVC.h"
 
 #define UserBgImageViewHeight (125)
 #define Size self.view.bounds.size
 #define bgImg [UIImage imageNamed:@"PersonalBgImg.jpg"]
 
-@interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
     UITableView *_tableView;
 }
 @end
 
 @implementation UserInfoVC
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
+    _tableView.frame = CGRectMake(0, -20, Size.width, Size.height);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [self.view addSubview:_tableView];
@@ -77,15 +87,15 @@
     CGFloat btnHeight = 35;
     UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    quitBtn.frame = CGRectMake((Size.width-btnWidth)/2, Size.height-yOffset-footViewHeight+(footViewHeight-btnHeight)/2, btnWidth, btnHeight);
-    quitBtn.frame = CGRectMake(0, 400, Size.width, btnHeight);
+    quitBtn.frame = CGRectMake(0, 100, Size.width, btnHeight);
     [quitBtn setBackgroundColor:[UIColor whiteColor]];
     [quitBtn setTitle:@"切换登录帐号" forState:UIControlStateNormal];
     [quitBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [quitBtn setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
     [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:quitBtn];
+    [footView addSubview:quitBtn];
     
-    CGRect rect = CGRectMake(0, 0, Size.width, btnHeight);
+    CGRect rect = CGRectMake(0, 0, Size.width, 300);
     [footView setFrame:rect];
     return footView;
 }
@@ -96,10 +106,6 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 20;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return Size.height-UserBgImageViewHeight-20-3*44;
 }
 
 -(WXTUITableViewCell*)tabelForUserInfoCommonCell:(NSInteger)row{
@@ -122,10 +128,48 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    switch (row) {
+        case WXT_UserInfo_Recharge:
+        {
+            RechargeVC *rechargeVC = [[RechargeVC alloc] init];
+            [self.navigationController pushViewController:rechargeVC animated:YES];
+        }
+            break;
+        case WXT_UserInfo_Balance:
+        {
+            UserBalanceVC *userBalanceVC = [[UserBalanceVC alloc] init];
+            [self.navigationController pushViewController:userBalanceVC animated:YES];
+        }
+            break;
+        case WXT_UserInfo_Sign:
+        {
+            SignViewController *signVC = [[SignViewController alloc] init];
+            [self.navigationController pushViewController:signVC animated:YES];
+        }
+        default:
+            break;
+    }
 }
 
 -(void)quit{
-    KFLog_Normal(YES, @"退出登陆");
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"友情提示" message:@"确定要退出我信通吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSInteger index = buttonIndex;
+    if(index == 1){
+        //清除用户信息
+        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+        [userDefault removeAllUserInfo];
+        
+        LoginVC *loginVC = [[LoginVC alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
+        [self.navigationController presentViewController:navigationController animated:YES completion:^{
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }];
+    }
 }
 
 @end

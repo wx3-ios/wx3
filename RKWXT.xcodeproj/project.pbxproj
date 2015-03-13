@@ -84,6 +84,26 @@
 		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
+		126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */; };
+		126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3D11AB2744600E08A0B /* WXTUserDefault.m */; };
+		126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */; };
+		126CA3DE1AB2790D00E08A0B /* WXTMallVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3DD1AB2790D00E08A0B /* WXTMallVC.m */; };
+		126CA3E71AB2844B00E08A0B /* UIDevice+screenType.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3E61AB2844B00E08A0B /* UIDevice+screenType.m */; };
+		126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3F41AB2B74800E08A0B /* WXTUITabBarController.m */; };
+		126CA3F81AB2B84000E08A0B /* CallVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3F71AB2B84000E08A0B /* CallVC.m */; };
+		126CA4021AB2B9EF00E08A0B /* FindSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3F91AB2B9EF00E08A0B /* FindSelected@2x.png */; };
+		126CA4031AB2B9EF00E08A0B /* FindNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FA1AB2B9EF00E08A0B /* FindNormal@2x.png */; };
+		126CA4041AB2B9EF00E08A0B /* MallSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FB1AB2B9EF00E08A0B /* MallSelected@2x.png */; };
+		126CA4051AB2B9EF00E08A0B /* MallNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FC1AB2B9EF00E08A0B /* MallNormal@2x.png */; };
+		126CA4061AB2B9EF00E08A0B /* CallSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FD1AB2B9EF00E08A0B /* CallSelected@2x.png */; };
+		126CA4071AB2B9EF00E08A0B /* CallNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FE1AB2B9EF00E08A0B /* CallNormal@2x.png */; };
+		126CA4081AB2B9EF00E08A0B /* UserSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FF1AB2B9EF00E08A0B /* UserSelected@2x.png */; };
+		126CA4091AB2B9EF00E08A0B /* UserNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4001AB2B9EF00E08A0B /* UserNormal@2x.png */; };
+		126CA40A1AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4011AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages */; };
+		126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA40E1AB2DB1200E08A0B /* FetchPwdModel.m */; };
+		126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA4111AB2FC9400E08A0B /* GainModel.m */; };
+		126CA4151AB30F5E00E08A0B /* T_Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4131AB30F5E00E08A0B /* T_Back@2x.png */; };
+		126CA4161AB30F5E00E08A0B /* T_BackSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
@@ -256,6 +276,36 @@
 		12228A721AB1BABA00CF0800 /* RegistVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistVC.m; sourceTree = "<group>"; };
 		12228A741AB1C0F200CF0800 /* RegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistModel.h; sourceTree = "<group>"; };
 		12228A751AB1C0F200CF0800 /* RegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistModel.m; sourceTree = "<group>"; };
+		126CA3CC1AB2709D00E08A0B /* WXTUserOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUserOBJ.h; sourceTree = "<group>"; };
+		126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUserOBJ.m; sourceTree = "<group>"; };
+		126CA3CF1AB272EA00E08A0B /* WXTUserdefaultDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXTUserdefaultDefine.h; sourceTree = "<group>"; };
+		126CA3D01AB2744600E08A0B /* WXTUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUserDefault.h; sourceTree = "<group>"; };
+		126CA3D11AB2744600E08A0B /* WXTUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUserDefault.m; sourceTree = "<group>"; };
+		126CA3D91AB278FC00E08A0B /* WXTFindVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTFindVC.h; sourceTree = "<group>"; };
+		126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTFindVC.m; sourceTree = "<group>"; };
+		126CA3DC1AB2790D00E08A0B /* WXTMallVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallVC.h; sourceTree = "<group>"; };
+		126CA3DD1AB2790D00E08A0B /* WXTMallVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallVC.m; sourceTree = "<group>"; };
+		126CA3E51AB2844B00E08A0B /* UIDevice+screenType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+screenType.h"; sourceTree = "<group>"; };
+		126CA3E61AB2844B00E08A0B /* UIDevice+screenType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+screenType.m"; sourceTree = "<group>"; };
+		126CA3F31AB2B74800E08A0B /* WXTUITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUITabBarController.h; sourceTree = "<group>"; };
+		126CA3F41AB2B74800E08A0B /* WXTUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUITabBarController.m; sourceTree = "<group>"; };
+		126CA3F61AB2B84000E08A0B /* CallVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallVC.h; sourceTree = "<group>"; };
+		126CA3F71AB2B84000E08A0B /* CallVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallVC.m; sourceTree = "<group>"; };
+		126CA3F91AB2B9EF00E08A0B /* FindSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindSelected@2x.png"; sourceTree = "<group>"; };
+		126CA3FA1AB2B9EF00E08A0B /* FindNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindNormal@2x.png"; sourceTree = "<group>"; };
+		126CA3FB1AB2B9EF00E08A0B /* MallSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MallSelected@2x.png"; sourceTree = "<group>"; };
+		126CA3FC1AB2B9EF00E08A0B /* MallNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MallNormal@2x.png"; sourceTree = "<group>"; };
+		126CA3FD1AB2B9EF00E08A0B /* CallSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallSelected@2x.png"; sourceTree = "<group>"; };
+		126CA3FE1AB2B9EF00E08A0B /* CallNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallNormal@2x.png"; sourceTree = "<group>"; };
+		126CA3FF1AB2B9EF00E08A0B /* UserSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserSelected@2x.png"; sourceTree = "<group>"; };
+		126CA4001AB2B9EF00E08A0B /* UserNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserNormal@2x.png"; sourceTree = "<group>"; };
+		126CA4011AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = "我信通IOS Android接口文档(1).pages"; sourceTree = "<group>"; };
+		126CA40D1AB2DB1200E08A0B /* FetchPwdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchPwdModel.h; sourceTree = "<group>"; };
+		126CA40E1AB2DB1200E08A0B /* FetchPwdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchPwdModel.m; sourceTree = "<group>"; };
+		126CA4101AB2FC9400E08A0B /* GainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GainModel.h; sourceTree = "<group>"; };
+		126CA4111AB2FC9400E08A0B /* GainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainModel.m; sourceTree = "<group>"; };
+		126CA4131AB30F5E00E08A0B /* T_Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Back@2x.png"; sourceTree = "<group>"; };
+		126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_BackSel@2x.png"; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B3E91AAAD74000C04227 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -389,6 +439,8 @@
 				120A2C671AB18579006A28B1 /* NSDate+Compare.h */,
 				120A2C681AB18579006A28B1 /* NSDate+Compare.m */,
 				120A2C761AB1A48B006A28B1 /* Common.h */,
+				126CA3E51AB2844B00E08A0B /* UIDevice+screenType.h */,
+				126CA3E61AB2844B00E08A0B /* UIDevice+screenType.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -592,8 +644,51 @@
 				12228A6B1AB1B1D000CF0800 /* LoginModel.m */,
 				12228A741AB1C0F200CF0800 /* RegistModel.h */,
 				12228A751AB1C0F200CF0800 /* RegistModel.m */,
+				126CA40D1AB2DB1200E08A0B /* FetchPwdModel.h */,
+				126CA40E1AB2DB1200E08A0B /* FetchPwdModel.m */,
+				126CA4101AB2FC9400E08A0B /* GainModel.h */,
+				126CA4111AB2FC9400E08A0B /* GainModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		126CA3CB1AB26FE600E08A0B /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				126CA3CC1AB2709D00E08A0B /* WXTUserOBJ.h */,
+				126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */,
+				126CA3D01AB2744600E08A0B /* WXTUserDefault.h */,
+				126CA3D11AB2744600E08A0B /* WXTUserDefault.m */,
+				126CA3CF1AB272EA00E08A0B /* WXTUserdefaultDefine.h */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		126CA3D71AB278EB00E08A0B /* WXTFind */ = {
+			isa = PBXGroup;
+			children = (
+				126CA3D91AB278FC00E08A0B /* WXTFindVC.h */,
+				126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */,
+			);
+			path = WXTFind;
+			sourceTree = "<group>";
+		};
+		126CA3D81AB278EB00E08A0B /* WXTMall */ = {
+			isa = PBXGroup;
+			children = (
+				126CA3DC1AB2790D00E08A0B /* WXTMallVC.h */,
+				126CA3DD1AB2790D00E08A0B /* WXTMallVC.m */,
+			);
+			path = WXTMall;
+			sourceTree = "<group>";
+		};
+		126CA3F21AB2B71100E08A0B /* WXTUITabBar */ = {
+			isa = PBXGroup;
+			children = (
+				126CA3F31AB2B74800E08A0B /* WXTUITabBarController.h */,
+				126CA3F41AB2B74800E08A0B /* WXTUITabBarController.m */,
+			);
+			path = WXTUITabBar;
 			sourceTree = "<group>";
 		};
 		2563B3DB1AAAD74000C04227 = {
@@ -635,6 +730,12 @@
 				2563B4361AAADA9B00C04227 /* RegisterViewController.m */,
 				2563B3F11AAAD74000C04227 /* LoginViewController.h */,
 				2563B3F21AAAD74000C04227 /* LoginViewController.m */,
+				126CA3F61AB2B84000E08A0B /* CallVC.h */,
+				126CA3F71AB2B84000E08A0B /* CallVC.m */,
+				126CA3F21AB2B71100E08A0B /* WXTUITabBar */,
+				126CA3D71AB278EB00E08A0B /* WXTFind */,
+				126CA3D81AB278EB00E08A0B /* WXTMall */,
+				126CA3CB1AB26FE600E08A0B /* UserDefaults */,
 				120A2C051AB1427C006A28B1 /* LoginAndRegist */,
 				120A2BB11AB135DD006A28B1 /* Common */,
 				120A2BBA1AB135DD006A28B1 /* Recharge */,
@@ -705,6 +806,8 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				126CA4131AB30F5E00E08A0B /* T_Back@2x.png */,
+				126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */,
 				120A2C6A1AB19473006A28B1 /* LoginLock@2x.png */,
 				120A2C6B1AB19473006A28B1 /* LoginUser@2x.png */,
 				120A2C6C1AB19473006A28B1 /* LoginLogo@2x.png */,
@@ -726,6 +829,15 @@
 				120A2C031AB13CB9006A28B1 /* portrait@2x.png */,
 				120A2C601AB17B87006A28B1 /* signEveryDay@2x.png */,
 				120A2C611AB17B87006A28B1 /* SignNow@2x.png */,
+				126CA3F91AB2B9EF00E08A0B /* FindSelected@2x.png */,
+				126CA3FA1AB2B9EF00E08A0B /* FindNormal@2x.png */,
+				126CA3FB1AB2B9EF00E08A0B /* MallSelected@2x.png */,
+				126CA3FC1AB2B9EF00E08A0B /* MallNormal@2x.png */,
+				126CA3FD1AB2B9EF00E08A0B /* CallSelected@2x.png */,
+				126CA3FE1AB2B9EF00E08A0B /* CallNormal@2x.png */,
+				126CA3FF1AB2B9EF00E08A0B /* UserSelected@2x.png */,
+				126CA4001AB2B9EF00E08A0B /* UserNormal@2x.png */,
+				126CA4011AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -932,6 +1044,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126CA4091AB2B9EF00E08A0B /* UserNormal@2x.png in Resources */,
+				126CA4081AB2B9EF00E08A0B /* UserSelected@2x.png in Resources */,
 				120A2C501AB17AFD006A28B1 /* sign27@2x.png in Resources */,
 				120A2C5B1AB17AFD006A28B1 /* sign5@2x.png in Resources */,
 				120A2C5E1AB17AFD006A28B1 /* sign8@2x.png in Resources */,
@@ -946,10 +1060,12 @@
 				120A2C621AB17B87006A28B1 /* signEveryDay@2x.png in Resources */,
 				120A2C4F1AB17AFD006A28B1 /* sign26@2x.png in Resources */,
 				120A2C6D1AB19473006A28B1 /* LoginLock@2x.png in Resources */,
+				126CA4051AB2B9EF00E08A0B /* MallNormal@2x.png in Resources */,
 				120A2C021AB13900006A28B1 /* Wallet@2x.png in Resources */,
 				120A2C401AB17AFD006A28B1 /* sign11@2x.png in Resources */,
 				120A2C6F1AB19473006A28B1 /* LoginLogo@2x.png in Resources */,
 				120A2C491AB17AFD006A28B1 /* sign20@2x.png in Resources */,
+				126CA40A1AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages in Resources */,
 				2563B3FB1AAAD74000C04227 /* LaunchScreen.xib in Resources */,
 				120A2C471AB17AFD006A28B1 /* sign19@2x.png in Resources */,
 				120A2C561AB17AFD006A28B1 /* sign32@2x.png in Resources */,
@@ -957,7 +1073,9 @@
 				120A2C411AB17AFD006A28B1 /* sign12@2x.png in Resources */,
 				120A2C461AB17AFD006A28B1 /* sign18@2x.png in Resources */,
 				120A2C001AB13900006A28B1 /* RechargeSign@2x.png in Resources */,
+				126CA4061AB2B9EF00E08A0B /* CallSelected@2x.png in Resources */,
 				120A2BFE1AB13900006A28B1 /* Arrow@2x.png in Resources */,
+				126CA4161AB30F5E00E08A0B /* T_BackSel@2x.png in Resources */,
 				120A2C581AB17AFD006A28B1 /* sign34@2x.png in Resources */,
 				120A2C4E1AB17AFD006A28B1 /* sign25@2x.png in Resources */,
 				120A2C3D1AB17AFD006A28B1 /* signBg.jpg in Resources */,
@@ -965,8 +1083,11 @@
 				120A2C531AB17AFD006A28B1 /* sign2@2x.png in Resources */,
 				2563B4881AAAFA7F00C04227 /* 侧边栏背景.jpg in Resources */,
 				120A2C011AB13900006A28B1 /* Sign@2x.png in Resources */,
+				126CA4031AB2B9EF00E08A0B /* FindNormal@2x.png in Resources */,
+				126CA4041AB2B9EF00E08A0B /* MallSelected@2x.png in Resources */,
 				120A2C511AB17AFD006A28B1 /* sign28@2x.png in Resources */,
 				120A2C521AB17AFD006A28B1 /* sign29@2x.png in Resources */,
+				126CA4071AB2B9EF00E08A0B /* CallNormal@2x.png in Resources */,
 				120A2C541AB17AFD006A28B1 /* sign30@2x.png in Resources */,
 				120A2C4B1AB17AFD006A28B1 /* sign22@2x.png in Resources */,
 				120A2C041AB13CB9006A28B1 /* portrait@2x.png in Resources */,
@@ -990,6 +1111,8 @@
 				120A2C4C1AB17AFD006A28B1 /* sign23@2x.png in Resources */,
 				120A2C421AB17AFD006A28B1 /* sign13@2x.png in Resources */,
 				120A2C6E1AB19473006A28B1 /* LoginUser@2x.png in Resources */,
+				126CA4151AB30F5E00E08A0B /* T_Back@2x.png in Resources */,
+				126CA4021AB2B9EF00E08A0B /* FindSelected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,15 +1189,20 @@
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
 				77DB93FF1AAFE7DC0021A816 /* ChineseToPinyin.m in Sources */,
 				77DB94161AAFE9DD0021A816 /* LoadLabel.m in Sources */,
+				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
 				2563B47F1AAAEF2200C04227 /* YRSideViewController.m in Sources */,
 				120A2BEE1AB135DD006A28B1 /* T_SignGifView.m in Sources */,
+				126CA3F81AB2B84000E08A0B /* CallVC.m in Sources */,
+				126CA3DE1AB2790D00E08A0B /* WXTMallVC.m in Sources */,
 				120A2BF21AB135DE006A28B1 /* UserInfoCommonCell.m in Sources */,
 				2563B4821AAAF06D00C04227 /* MainViewController.m in Sources */,
 				77DB94341AAFF2120021A816 /* ContactsCell.m in Sources */,
 				776CFF9E1AB11E07000A1D84 /* ContactsViewController.m in Sources */,
 				120A2BE61AB135DD006A28B1 /* UtilTool.m in Sources */,
 				120A2BE51AB135DD006A28B1 /* URLFeedData.m in Sources */,
+				126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */,
 				120A2BF81AB135DE006A28B1 /* KFLoger.m in Sources */,
+				126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */,
 				2563B43A1AAADD5D00C04227 /* RootViewController.m in Sources */,
 				2563B3EA1AAAD74000C04227 /* main.m in Sources */,
 				120A2BE91AB135DD006A28B1 /* RechargeVC.m in Sources */,
@@ -1082,6 +1210,7 @@
 				120A2C661AB1804E006A28B1 /* SignEntity.m in Sources */,
 				120A2BEA1AB135DD006A28B1 /* RechargeCell.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
+				126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */,
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
 				120A2BF01AB135DE006A28B1 /* BalanceModel.m in Sources */,
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
@@ -1096,8 +1225,11 @@
 				120A2C721AB1966B006A28B1 /* WXTUITextField.m in Sources */,
 				77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */,
 				120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */,
+				126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */,
 				2563B43D1AAADE6200C04227 /* BaseViewController.m in Sources */,
+				126CA3E71AB2844B00E08A0B /* UIDevice+screenType.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
+				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
 				2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
 				120A2C0E1AB1699F006A28B1 /* WXTUIButton.m in Sources */,

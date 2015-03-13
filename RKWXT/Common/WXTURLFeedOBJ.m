@@ -38,6 +38,13 @@
         case WXT_UrlFeed_Type_Regist:
             url = @"";
             break;
+        case WXT_UrlFeed_Type_FetchPwd:
+            url = @"";
+            break;
+        case WXT_UrlFeed_Type_GainNum:
+            url = @"";
+            break;
+            
         default:
             break;
     }
