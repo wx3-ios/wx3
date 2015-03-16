@@ -13,6 +13,8 @@
 #import "DDFileLogger.h"
 #import "LoginVC.h"
 #import "WXTUITabBarController.h"
+#import "WXTVersion.h"
+
 @interface AppDelegate (){
     UINavigationController *_navigation;
 }
@@ -54,6 +56,7 @@
 //#endif
 //    NSLog(@"%@", DOC_PATH);
 	[self initUI];
+    [self checkVersion];
 	return YES;
 }
 
@@ -91,6 +94,12 @@
         return NO;
     }
     return YES;
+}
+
+-(void)checkVersion{
+    WXTVersion *version = [WXTVersion sharedVersion];
+    [version setCheckType:Version_CheckType_System];
+    [version checkVersion];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -44,7 +44,9 @@
         case WXT_UrlFeed_Type_GainNum:
             url = @"";
             break;
-            
+        case WXT_UrlFeed_Type_Version:
+            url = @"";
+            break;
         default:
             break;
     }

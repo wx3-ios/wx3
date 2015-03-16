@@ -75,12 +75,12 @@ enum{
 -(void)createLeftBackBtn{
     CGFloat xOffset = 10;
     CGFloat yOffset = 30;
-    CGFloat btnWidth = 40;
+    CGFloat btnWidth = 50;
     CGFloat btnHeight = 25;
     WXTUIButton *backBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(xOffset, yOffset, btnWidth, btnHeight);
     [backBtn setBackgroundColor:[UIColor clearColor]];
-    [backBtn setTitle:@"返回" forState:UIControlStateNormal];
+    [backBtn setTitle:@"<返回" forState:UIControlStateNormal];
     [backBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
     [backBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backLogin) forControlEvents:UIControlEventTouchUpInside];

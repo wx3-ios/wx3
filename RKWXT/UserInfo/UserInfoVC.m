@@ -13,6 +13,7 @@
 #import "WXTUITabBarController.h"
 #import "SignViewController.h"
 #import "LoginVC.h"
+#import "AboutWxtInfoVC.h"
 
 #define UserBgImageViewHeight (125)
 #define Size self.view.bounds.size
@@ -146,6 +147,12 @@
         case WXT_UserInfo_Sign:
         {
             SignViewController *signVC = [[SignViewController alloc] init];
+            [self.navigationController pushViewController:signVC animated:YES];
+        }
+            break;
+        case WXT_UserInfo_About:
+        {
+            AboutWxtInfoVC *signVC = [[AboutWxtInfoVC alloc] init];
             [self.navigationController pushViewController:signVC animated:YES];
         }
         default:

@@ -51,6 +51,7 @@ enum{
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController.navigationBar setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     self.title = @"余额";
 }
 
@@ -97,8 +98,8 @@ enum{
         nameLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, namelabelHeight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
         [nameLabel setTextAlignment:NSTextAlignmentLeft];
-        [nameLabel setTextColor:[UIColor grayColor]];
-        [nameLabel setFont:WXTFont(13.0)];
+        [nameLabel setTextColor:WXColorWithInteger(0x969696)];
+        [nameLabel setFont:WXTFont(12.0)];
         [nameLabel setText:_nameArr[i]];
         [baseView addSubview:nameLabel];
         
@@ -116,8 +117,8 @@ enum{
     [_infoLabel setBackgroundColor:[UIColor clearColor]];
     [_infoLabel setText:userDefault.user];
     [_infoLabel setTextAlignment:NSTextAlignmentCenter];
-    [_infoLabel setFont:WXTFont(15.0)];
-    [_infoLabel setTextColor:[UIColor grayColor]];
+    [_infoLabel setFont:WXTFont(13.0)];
+    [_infoLabel setTextColor:WXColorWithInteger(0x646464)];
     [baseView addSubview:_infoLabel];
     
     yOffset += 37;
@@ -125,8 +126,8 @@ enum{
     _money.frame = CGRectMake(xGap, yOffset, infoLabelWidth, namelabelHeight);
     [_money setBackgroundColor:[UIColor clearColor]];
     [_money setTextAlignment:NSTextAlignmentCenter];
-    [_money setFont:WXTFont(15.0)];
-    [_money setTextColor:[UIColor redColor]];
+    [_money setFont:WXTFont(13.0)];
+    [_money setTextColor:WXColorWithInteger(0x0c8bdf)];
     [baseView addSubview:_money];
     
     yOffset += 37;
@@ -134,8 +135,8 @@ enum{
     _status.frame = CGRectMake(xGap, yOffset, infoLabelWidth, namelabelHeight);
     [_status setBackgroundColor:[UIColor clearColor]];
     [_status setTextAlignment:NSTextAlignmentCenter];
-    [_status setFont:WXTFont(15.0)];
-    [_status setTextColor:[UIColor grayColor]];
+    [_status setFont:WXTFont(13.0)];
+    [_status setTextColor:WXColorWithInteger(0x646464)];
     [baseView addSubview:_status];
     
     yOffset += 34;
@@ -143,8 +144,8 @@ enum{
     _date.frame = CGRectMake(xGap, yOffset, infoLabelWidth, namelabelHeight);
     [_date setBackgroundColor:[UIColor clearColor]];
     [_date setTextAlignment:NSTextAlignmentCenter];
-    [_date setFont:WXTFont(15.0)];
-    [_date setTextColor:[UIColor grayColor]];
+    [_date setFont:WXTFont(13.0)];
+    [_date setTextColor:WXColorWithInteger(0x646464)];
     [baseView addSubview:_date];
     
     [_scrollerView addSubview:baseView];
@@ -152,15 +153,14 @@ enum{
 
 -(UIView*)showRechargeBtn{
     CGFloat xOffset = 22;
-    CGFloat btnHeight = 30;
+    CGFloat btnHeight = 32;
     CGFloat yOffset = WXT_Balance_Invalid*EveryCellHeight;
     WXTUIButton *btn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(xOffset, 2.3*yOffset, Size.width-2*xOffset, btnHeight);
-    [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateNormal];
-    [btn setBackgroundImageOfColor:[UIColor grayColor] controlState:UIControlStateSelected];
+    [btn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateNormal];
+    [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
     [btn setTitle:@"立即充值" forState:UIControlStateNormal];
-    [btn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
-    [btn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateSelected];
+    [btn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(gotoRecharge) forControlEvents:UIControlEventTouchUpInside];
     
     return btn;

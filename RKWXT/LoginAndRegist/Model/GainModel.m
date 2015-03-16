@@ -23,7 +23,7 @@
         }else{
             NSInteger smsID = [[dic objectForKey:@"sms_id"] integerValue];
             WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-            [userDefault setSmsID:smsID];
+            [userDefault setSmsID:(int)smsID];
             
             if (_delegate && [_delegate respondsToSelector:@selector(gainNumSucceed)]){
                 [_delegate gainNumSucceed];
