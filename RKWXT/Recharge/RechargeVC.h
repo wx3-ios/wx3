@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RechargeVC : UIViewController
+@interface RechargeVC : BaseVC
 
 @end

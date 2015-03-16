@@ -29,6 +29,16 @@
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBgImg.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                     [UIColor whiteColor], UITextAttributeTextColor,
+                                                                     [UIColor colorWithRed:0 green:0.7 blue:0.8 alpha:1], UITextAttributeTextShadowColor,
+                                                                     [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+                                                                     [UIFont fontWithName:@"Arial-Bold" size:0.0], UITextAttributeFont,
+                                                                     nil]];
+}
 
 - (void)viewDidLoad
 {
