@@ -25,7 +25,7 @@
     SignEntity *entity = [SignEntity signWithDictionary:dic];
     [_signArr addObject:entity];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:entity.time forKey:LastSignDate];
+    [userDefault setInteger:entity.time forKey:LastSignDate];
 }
 
 -(void)signGainMoney{
@@ -33,8 +33,9 @@
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"daily_attendance", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", userDefault.token, @"token", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
+        NSDictionary *dic = retData.data;
         __block SignModel *blockSelf = self;
-        if (retData.code != 1){
+        if ([[dic objectForKey:@"success"] integerValue] != 1){
             if (_delegate && [_delegate respondsToSelector:@selector(signFailed:)]){
                 [_delegate signFailed:retData.errorDesc];
             }

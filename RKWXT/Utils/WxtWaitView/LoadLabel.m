@@ -13,7 +13,7 @@
     NSTimer *_animateTimer;
     NSInteger _currentDotCount;
 }
-@property (nonatomic,retain)NSString *loadingText;
+@property (nonatomic,strong) NSString *loadingText;
 @end
 
 @implementation LoadLabel
@@ -21,6 +21,7 @@
 - (id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]){
         [self setTextAlignment:NSTextAlignmentLeft];
+//        _loadingText = @"努力加载中";
     }
     return self;
 }
@@ -28,7 +29,6 @@
 - (void)setLoadText:(NSString*)loadText{
     [self setLoadingText:loadText];
     [self setText:loadText];
-    
 }
 
 - (NSInteger)dotCount{
@@ -60,11 +60,11 @@
     if (_currentDotCount > self.dotCount){
         _currentDotCount = 0;
     }
-    NSString *text = [NSString stringWithString:_loadingText];
-    for (NSInteger i = 0; i < _currentDotCount; i++){
-        text = [text stringByAppendingString:@"."];
-    }
-    [self setText:text];
+//    NSString *text = [NSString stringWithString:_loadingText];
+//    for (NSInteger i = 0; i < _currentDotCount; i++){
+//        text = [text stringByAppendingString:@"."];
+//    }
+//    [self setText:text];
 }
 
 @end

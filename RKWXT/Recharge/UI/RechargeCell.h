@@ -8,7 +8,7 @@
 
 #import "WXTUITableViewCell.h"
 
-#define RechargeCellHeight (60)
+#define RechargeCellHeight (64)
 @interface RechargeCell : WXTUITableViewCell
 
 @end

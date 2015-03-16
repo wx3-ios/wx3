@@ -10,8 +10,8 @@
 
 @interface ProgressView : UIView
 
-@property (nonatomic,retain)UIColor *onColor;
-@property (nonatomic,retain)UIColor *unOnColor;
+@property (nonatomic,strong)UIColor *onColor;
+@property (nonatomic,strong)UIColor *unOnColor;
 @property (nonatomic,assign)CGFloat arcLineWidth;
 
 - (id)initWithCenter:(CGPoint)center radius:(CGFloat)radius;

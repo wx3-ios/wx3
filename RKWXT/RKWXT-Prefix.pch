@@ -33,6 +33,7 @@
     #import "Common.h"
     #import "WXTUserOBJ.h"
     #import "UIDevice+screenType.h"
+    #import "BaseVC.h"
 #endif
 
 #define __DEBUG__

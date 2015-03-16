@@ -367,7 +367,7 @@
 #pragma mark 登陆
 - (void)submit{
     if([self checkUserValide] && [self checkPasswordValide]){
-        [self showWaitView];
+        [self showWaitView:self.view];
         [_model loginWithUser:_userTextField.text andPwd:_pwdTextField.text];
     }
     [self textFieldResighFirstResponder];

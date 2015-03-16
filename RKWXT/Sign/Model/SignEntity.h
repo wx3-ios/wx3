@@ -11,7 +11,7 @@
 @interface SignEntity : NSObject
 @property (nonatomic,assign) CGFloat money;
 @property (nonatomic,strong) NSString *message;
-@property (nonatomic,strong) NSString *time;
+@property (nonatomic,assign) NSInteger time;
 
 +(SignEntity*)signWithDictionary:(NSDictionary*)dic;
 

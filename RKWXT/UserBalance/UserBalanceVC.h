@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseVC.h"
 
-@interface UserBalanceVC : UIViewController
+@interface UserBalanceVC : BaseVC
 
 @end

@@ -68,6 +68,8 @@ enum{
     
     [self createLeftBackBtn];
     [self createUI];
+    
+    [self createRegistBtn];
 }
 
 -(void)createLeftBackBtn{
@@ -210,11 +212,12 @@ enum{
 
 -(void)createRegistBtn{
     CGFloat xOffset = 80;
-    CGFloat yOffset = 300;
+    CGFloat yOffset = 340;
     CGFloat btnHeight = 32;
     WXTUIButton *gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     gainBtn.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, btnHeight);
     [gainBtn setBorderRadian:1.0 width:0.5 color:[UIColor clearColor]];
+    [gainBtn setBorderRadian:10.0 width:0.5 color:[UIColor clearColor]];
     [gainBtn setBackgroundImageOfColor:WXColorWithInteger(0xFFFFFF) controlState:UIControlStateNormal];
     [gainBtn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
     [gainBtn setTitle:@"立即注册" forState:UIControlStateNormal];
@@ -357,7 +360,7 @@ enum{
     if(![self checkRegistInfo]){
         return;
     }
-    [self showWaitView];
+    [self showWaitView:self.view];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:_otherPhone.text];
 }

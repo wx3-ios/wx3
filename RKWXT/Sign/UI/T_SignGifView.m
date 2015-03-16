@@ -16,10 +16,6 @@
 
 @implementation T_SignGifView
 
--(void)dealloc{
-    _delegate = nil;
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

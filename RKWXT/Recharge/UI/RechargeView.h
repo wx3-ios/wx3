@@ -20,6 +20,5 @@
 
 @protocol RechargeViewDelegate <NSObject>
 -(void)rechargeCancel;
-//-(void)rechargeSubmitBaseData;
 
 @end

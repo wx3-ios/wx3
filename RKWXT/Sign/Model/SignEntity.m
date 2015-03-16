@@ -25,7 +25,7 @@
         NSString *msg = [dic objectForKey:@"msg"];
         [self setMessage:msg];
         
-        NSString *time = [dic objectForKey:@"time"];
+        NSInteger time = [[dic objectForKey:@"time"] integerValue];
         [self setTime:time];
     }
     return self;

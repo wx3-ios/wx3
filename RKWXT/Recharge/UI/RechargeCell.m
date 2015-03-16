@@ -20,7 +20,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 14;
-        UIImage *image = [UIImage imageNamed:@""];
+        UIImage *image = [UIImage imageNamed:@"wxtRecharge.png"];
         _imageView = [[UIImageView alloc] init];
         _imageView.frame = CGRectMake(xOffset, (RechargeCellHeight-image.size.height)/2, image.size.width, image.size.height);
         [_imageView setImage:image];
@@ -34,14 +34,14 @@
         [_nameLabel setBackgroundColor:[UIColor clearColor]];
         [_nameLabel setTextAlignment:NSTextAlignmentLeft];
         [_nameLabel setFont:WXTFont(14.0)];
-        //        [_nameLabel setTextColor:WXColorWithInteger(0x000000)];
+        [_nameLabel setTextColor:WXColorWithInteger(0x646464)];
         [self.contentView addSubview:_nameLabel];
     }
     return self;
 }
 
 -(void)load{
-    [_imageView setImage:[UIImage imageNamed:@""]];
+    [_imageView setImage:[UIImage imageNamed:@"wxtRecharge.png"]];
     [_nameLabel setText:@"我信充值卡充值"];
 }
 

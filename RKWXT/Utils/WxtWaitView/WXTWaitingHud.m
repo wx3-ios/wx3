@@ -46,7 +46,7 @@
         [_progressView setAlpha:0.6];
         [_shell addSubview:_progressView];
         
-        UIImage *wxtIcon = [UIImage imageNamed:@"wxtHidIcon.png"];
+        UIImage *wxtIcon = [UIImage imageNamed:@"LoadDataLogo.png"];
         CGSize wxIconSize = wxtIcon.size;
         UIImageView *wxImgView = [[UIImageView alloc] initWithImage:wxtIcon];
         [wxImgView setFrame:CGRectMake((progressViewRadius-wxIconSize.width)*0.5, (progressViewRadius-wxIconSize.height)*0.5, wxIconSize.width, wxIconSize.height)];

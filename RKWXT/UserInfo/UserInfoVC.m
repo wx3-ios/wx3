@@ -38,6 +38,7 @@
     _tableView.frame = CGRectMake(0, -20, Size.width, Size.height);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
+    [_tableView setShowsVerticalScrollIndicator:NO];
     [self.view addSubview:_tableView];
     
     [_tableView setTableHeaderView:[self viewForTableHeadView]];

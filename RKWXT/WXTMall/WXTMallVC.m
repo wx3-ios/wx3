@@ -10,4 +10,9 @@
 
 @implementation WXTMallVC
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor grayColor]];
+}
+
 @end

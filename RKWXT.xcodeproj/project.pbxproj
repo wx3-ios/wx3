@@ -104,6 +104,9 @@
 		126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA4111AB2FC9400E08A0B /* GainModel.m */; };
 		126CA4151AB30F5E00E08A0B /* T_Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4131AB30F5E00E08A0B /* T_Back@2x.png */; };
 		126CA4161AB30F5E00E08A0B /* T_BackSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */; };
+		12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D039F01AB3489200DD7E56 /* BaseVC.m */; };
+		12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8661AB673910039A197 /* wxtRecharge@2x.png */; };
+		12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
@@ -306,6 +309,10 @@
 		126CA4111AB2FC9400E08A0B /* GainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainModel.m; sourceTree = "<group>"; };
 		126CA4131AB30F5E00E08A0B /* T_Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Back@2x.png"; sourceTree = "<group>"; };
 		126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_BackSel@2x.png"; sourceTree = "<group>"; };
+		12D039EF1AB3489200DD7E56 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		12D039F01AB3489200DD7E56 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		12D0C8661AB673910039A197 /* wxtRecharge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxtRecharge@2x.png"; sourceTree = "<group>"; };
+		12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadDataLogo@2x.png"; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B3E91AAAD74000C04227 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -732,6 +739,8 @@
 				2563B3F21AAAD74000C04227 /* LoginViewController.m */,
 				126CA3F61AB2B84000E08A0B /* CallVC.h */,
 				126CA3F71AB2B84000E08A0B /* CallVC.m */,
+				12D039EF1AB3489200DD7E56 /* BaseVC.h */,
+				12D039F01AB3489200DD7E56 /* BaseVC.m */,
 				126CA3F21AB2B71100E08A0B /* WXTUITabBar */,
 				126CA3D71AB278EB00E08A0B /* WXTFind */,
 				126CA3D81AB278EB00E08A0B /* WXTMall */,
@@ -806,6 +815,8 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */,
+				12D0C8661AB673910039A197 /* wxtRecharge@2x.png */,
 				126CA4131AB30F5E00E08A0B /* T_Back@2x.png */,
 				126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */,
 				120A2C6A1AB19473006A28B1 /* LoginLock@2x.png */,
@@ -1099,12 +1110,14 @@
 				770BB4401AAD9D530098C214 /* 启动页（iPhone5）.png in Resources */,
 				770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */,
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
+				12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */,
 				120A2C5F1AB17AFD006A28B1 /* sign9@2x.png in Resources */,
 				120A2C3E1AB17AFD006A28B1 /* signBg@2x.jpg in Resources */,
 				770BB43B1AAD97700098C214 /* 账号图标@2x.png in Resources */,
 				120A2C5C1AB17AFD006A28B1 /* sign6@2x.png in Resources */,
 				120A2C4D1AB17AFD006A28B1 /* sign24@2x.png in Resources */,
 				120A2C591AB17AFD006A28B1 /* sign3@2x.png in Resources */,
+				12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */,
 				770BB43F1AAD9D530098C214 /* 启动页（iPhone4）.png in Resources */,
 				777059AD1AAFDEC40097526C /* Localize.strings in Resources */,
 				120A2C4A1AB17AFD006A28B1 /* sign21@2x.png in Resources */,
@@ -1202,6 +1215,7 @@
 				120A2BE51AB135DD006A28B1 /* URLFeedData.m in Sources */,
 				126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */,
 				120A2BF81AB135DE006A28B1 /* KFLoger.m in Sources */,
+				12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */,
 				126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */,
 				2563B43A1AAADD5D00C04227 /* RootViewController.m in Sources */,
 				2563B3EA1AAAD74000C04227 /* main.m in Sources */,

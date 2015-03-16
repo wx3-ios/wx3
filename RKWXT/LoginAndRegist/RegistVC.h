@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface RegistVC : BaseViewController
+@interface RegistVC : BaseVC
 
 @end

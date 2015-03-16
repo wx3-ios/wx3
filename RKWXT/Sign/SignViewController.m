@@ -137,8 +137,8 @@
     [self.view addSubview:_signBtn];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *time = [userDefaults objectForKey:LastSignDate];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[time integerValue]];
+    NSInteger time = [userDefaults integerForKey:LastSignDate];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
     NSString *timeString = [date YMDHMString:E_YMD];
     if([timeString isEqualToString:@"今天"]){
         [_signBtn setEnabled:NO];
@@ -177,11 +177,13 @@
 //}
 
 -(void)signBtnClicked{
+    [self showWaitView:self.view];
     [_model signGainMoney];
     T_SignGifView *gifView = [[T_SignGifView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
     [self.view addSubview:gifView];
     [_signBtn setEnabled:NO];
-    [self performSelector:@selector(showAlert) withObject:nil afterDelay:kAnimateDuration];
+    
+//    [self performSelector:@selector(showAlert) withObject:nil afterDelay:kAnimateDuration];
 }
 
 -(void)showAlert{
@@ -189,15 +191,22 @@
 }
 
 -(void)signSucceed{
+    [self unShowWaitView];
+    
     [_signBtn setEnabled:NO];
     if([_model.signArr count] > 0){
         signEntity = [_model.signArr objectAtIndex:0];
-        [UtilTool showAlertView:signEntity.message];
+        NSString *message = @"签到成功";
+        if(signEntity.message){
+            message = signEntity.message;
+        }
+        [UtilTool showAlertView:message];
         [_textLabel setText:[NSString stringWithFormat:@"我的奖励:%f元",signEntity.money]];
     }
 }
 
 -(void)signFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
     [UtilTool showAlertView:errorMsg];
 }
 
