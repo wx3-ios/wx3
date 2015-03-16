@@ -107,6 +107,12 @@
 		126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA4111AB2FC9400E08A0B /* GainModel.m */; };
 		126CA4151AB30F5E00E08A0B /* T_Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4131AB30F5E00E08A0B /* T_Back@2x.png */; };
 		126CA4161AB30F5E00E08A0B /* T_BackSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */; };
+		129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */; };
+		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
+		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
+		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
+		1296743B1AB6EB9300597B17 /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1296743A1AB6EB9300597B17 /* ContactDetailVC.m */; };
+		1296743F1AB6EDF900597B17 /* ContactDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1296743E1AB6EDF900597B17 /* ContactDetailCell.m */; };
 		12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D039F01AB3489200DD7E56 /* BaseVC.m */; };
 		12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8661AB673910039A197 /* wxtRecharge@2x.png */; };
 		12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */; };
@@ -323,6 +329,14 @@
 		126CA4111AB2FC9400E08A0B /* GainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainModel.m; sourceTree = "<group>"; };
 		126CA4131AB30F5E00E08A0B /* T_Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Back@2x.png"; sourceTree = "<group>"; };
 		126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_BackSel@2x.png"; sourceTree = "<group>"; };
+		129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ContactInfoBgImg.jpg; sourceTree = "<group>"; };
+		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
+		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
+		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
+		129674391AB6EB9300597B17 /* ContactDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailVC.h; sourceTree = "<group>"; };
+		1296743A1AB6EB9300597B17 /* ContactDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailVC.m; sourceTree = "<group>"; };
+		1296743D1AB6EDF900597B17 /* ContactDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailCell.h; sourceTree = "<group>"; };
+		1296743E1AB6EDF900597B17 /* ContactDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailCell.m; sourceTree = "<group>"; };
 		12D039EF1AB3489200DD7E56 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
 		12D039F01AB3489200DD7E56 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 		12D0C8661AB673910039A197 /* wxtRecharge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxtRecharge@2x.png"; sourceTree = "<group>"; };
@@ -724,6 +738,36 @@
 			path = WXTUITabBar;
 			sourceTree = "<group>";
 		};
+		1296742F1AB6EAE200597B17 /* ContactInfo */ = {
+			isa = PBXGroup;
+			children = (
+				129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */,
+				129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */,
+				129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */,
+				129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */,
+			);
+			path = ContactInfo;
+			sourceTree = "<group>";
+		};
+		129674381AB6EB7000597B17 /* ContactDetail */ = {
+			isa = PBXGroup;
+			children = (
+				129674391AB6EB9300597B17 /* ContactDetailVC.h */,
+				1296743A1AB6EB9300597B17 /* ContactDetailVC.m */,
+				1296743C1AB6EDDF00597B17 /* UI */,
+			);
+			path = ContactDetail;
+			sourceTree = "<group>";
+		};
+		1296743C1AB6EDDF00597B17 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1296743D1AB6EDF900597B17 /* ContactDetailCell.h */,
+				1296743E1AB6EDF900597B17 /* ContactDetailCell.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		12D0C86F1AB684FE0039A197 /* AboutWxtInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +834,7 @@
 				126CA3F71AB2B84000E08A0B /* CallVC.m */,
 				12D039EF1AB3489200DD7E56 /* BaseVC.h */,
 				12D039F01AB3489200DD7E56 /* BaseVC.m */,
+				129674381AB6EB7000597B17 /* ContactDetail */,
 				12D0C86F1AB684FE0039A197 /* AboutWxtInfo */,
 				126CA3F21AB2B71100E08A0B /* WXTUITabBar */,
 				126CA3D71AB278EB00E08A0B /* WXTFind */,
@@ -865,6 +910,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1296742F1AB6EAE200597B17 /* ContactInfo */,
 				12477F0A1AB6E4D100FEE546 /* Default-568h@2x.png */,
 				12477F0B1AB6E4D100FEE546 /* Default@2x.png */,
 				12477F081AB6E46700FEE546 /* Icon-57@2x.png */,
@@ -1113,8 +1159,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				126CA4091AB2B9EF00E08A0B /* UserNormal@2x.png in Resources */,
+				129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */,
 				126CA4081AB2B9EF00E08A0B /* UserSelected@2x.png in Resources */,
 				120A2C501AB17AFD006A28B1 /* sign27@2x.png in Resources */,
+				129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */,
 				120A2C5B1AB17AFD006A28B1 /* sign5@2x.png in Resources */,
 				120A2C5E1AB17AFD006A28B1 /* sign8@2x.png in Resources */,
 				2563B3F61AAAD74000C04227 /* Main.storyboard in Resources */,
@@ -1172,12 +1220,14 @@
 				120A2BFF1AB13900006A28B1 /* PersonalBgImg.jpg in Resources */,
 				120A2C441AB17AFD006A28B1 /* sign15@2x.png in Resources */,
 				770BB4401AAD9D530098C214 /* 启动页（iPhone5）.png in Resources */,
+				129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */,
 				770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */,
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */,
 				120A2C5F1AB17AFD006A28B1 /* sign9@2x.png in Resources */,
 				120A2C3E1AB17AFD006A28B1 /* signBg@2x.jpg in Resources */,
 				770BB43B1AAD97700098C214 /* 账号图标@2x.png in Resources */,
+				129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */,
 				120A2C5C1AB17AFD006A28B1 /* sign6@2x.png in Resources */,
 				120A2C4D1AB17AFD006A28B1 /* sign24@2x.png in Resources */,
 				120A2C591AB17AFD006A28B1 /* sign3@2x.png in Resources */,
@@ -1242,6 +1292,7 @@
 			files = (
 				120A2C691AB18579006A28B1 /* NSDate+Compare.m in Sources */,
 				77DB93FC1AAFE7BB0021A816 /* Tools.m in Sources */,
+				1296743B1AB6EB9300597B17 /* ContactDetailVC.m in Sources */,
 				2563B4371AAADA9B00C04227 /* RegisterViewController.m in Sources */,
 				77DB94171AAFE9DD0021A816 /* UIColor+WXT.m in Sources */,
 				120A2BF51AB135DE006A28B1 /* UIFont+WXT.m in Sources */,
@@ -1250,6 +1301,7 @@
 				2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */,
 				12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */,
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
+				1296743F1AB6EDF900597B17 /* ContactDetailCell.m in Sources */,
 				77A1B9061AB027D5008C1C85 /* CallViewController.m in Sources */,
 				120A2BF71AB135DE006A28B1 /* WXTUITableViewCell.m in Sources */,
 				778289501AAD3F61009E9BF3 /* RegistTableViewController.m in Sources */,

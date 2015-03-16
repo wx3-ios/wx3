@@ -15,6 +15,8 @@
 #import "LoginVC.h"
 #import "AboutWxtInfoVC.h"
 
+#import "ContactDetailVC.h"
+
 #define UserBgImageViewHeight (125)
 #define Size self.view.bounds.size
 #define bgImg [UIImage imageNamed:@"PersonalBgImg.jpg"]
@@ -152,7 +154,8 @@
             break;
         case WXT_UserInfo_About:
         {
-            AboutWxtInfoVC *signVC = [[AboutWxtInfoVC alloc] init];
+//            AboutWxtInfoVC *signVC = [[AboutWxtInfoVC alloc] init];
+            ContactDetailVC *signVC = [[ContactDetailVC alloc] init];
             [self.navigationController pushViewController:signVC animated:YES];
         }
         default:
