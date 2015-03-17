@@ -8,12 +8,12 @@
 
 #import "LoginViewController.h"
 #import "AFNetworking.h"
-#import "LeftMenuViewController.h"
-#import "MainViewController.h"
+//#import "LeftMenuViewController.h"
+//#import "MainViewController.h"
 #import "HttpNetUtils.h"
 #import "MBProgressHUD.h"
 #import "Constants.h"
-#import "YRSideViewController.h"
+//#import "YRSideViewController.h"
 @interface LoginViewController ()
 
 @end
@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];	NSLog(@"%s",__func__);
-    [self rootPager];
+//    [self rootPager];
 //    [HttpNetUtils loginHttpActionWith:@"15338891547" andPasswd:@"123456" andCallback:^(id obj){
 //        if([obj[@"success"] intValue] == 1){
 //            NSLog(@"token:%@\tuser_id:%@",obj[@"token"],obj[@"user_id"]);
@@ -78,22 +78,6 @@
 	// Dispose of any resources that can be recreated.
 }
 
--(void)rootPager{
-	NSLog(@"%s",__func__);
-    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainViewController * mainCtrl = [storyBoard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-    LeftMenuViewController * leftMenuCtrl = [storyBoard instantiateViewControllerWithIdentifier:@"LeftMenu"];
-    YRSideViewController *_sideViewController = [[YRSideViewController alloc] initWithNibName:nil bundle:nil];
-    _sideViewController.rootViewController = mainCtrl;
-    _sideViewController.leftViewController = leftMenuCtrl;
-	
-	
-	_sideViewController.leftViewShowWidth=200;
-	_sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
-//    [self presentViewController:_sideViewController animated:YES completion:nil];
-    [[APP_DELEGATE window] setRootViewController:_sideViewController];
-//    [self.navigationController presentViewController:_sideViewController animated:YES completion:nil];
-}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -124,7 +108,7 @@
                 NSLog(@"token:%@\tuser_id:%@",obj[@"token"],obj[@"user_id"]);
                 [USER_DEFAULT setObject:obj[@"token"] forKey:@"token"];
                 [USER_DEFAULT setObject:obj[@"user_id"] forKey:@"userId"];
-                [self rootPager];
+//                [self rootPager];
             }
         }];
     }

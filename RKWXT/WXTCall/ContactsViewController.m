@@ -49,18 +49,18 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-//    [NOTIFY_CENTER addObserver:self selector:@selector(areaNotification:) name:AreaDataLoadingFinishNotification object:nil];
+    //    [NOTIFY_CENTER addObserver:self selector:@selector(areaNotification:) name:AreaDataLoadingFinishNotification object:nil];
     
-//    _titleView.backgroundColor = THEME_COLOR;
-//    _tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    //    _titleView.backgroundColor = THEME_COLOR;
+    //    _tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     //去掉searchbar背景
-//    for (UIView *view in _searchBar.subviews) {
-//        for (UIView *v in view.subviews) {
-//            if ([v isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-//                [v removeFromSuperview];
-//            }
-//        }
-//    }
+    //    for (UIView *view in _searchBar.subviews) {
+    //        for (UIView *v in view.subviews) {
+    //            if ([v isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+    //                [v removeFromSuperview];
+    //            }
+    //        }
+    //    }
     
     //
     UINavigationBar * navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 44)];
@@ -83,21 +83,21 @@
         bottomLineImageView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), 0.5);
     }
     
-
+    
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
-                        setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}
-                                    forState:UIControlStateNormal];
+     setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}
+     forState:UIControlStateNormal];
     
     //如果已经授权..不显示提示框
     if ([ContactUitl isAuthorized]) {
         self.tableView.tableFooterView = nil;
     }
     
-//    self.kvoController = [FBKVOController controllerWithObserver:self];
-//    [_kvoController observe:_tableView keyPath:@"visibleCells" options:NSKeyValueObservingOptionOld block:^(id observer, id object, NSDictionary *change) {
-//        NSLog(@"visibleCells = %@", _tableView.visibleCells);
-//    }];
+    //    self.kvoController = [FBKVOController controllerWithObserver:self];
+    //    [_kvoController observe:_tableView keyPath:@"visibleCells" options:NSKeyValueObservingOptionOld block:^(id observer, id object, NSDictionary *change) {
+    //        NSLog(@"visibleCells = %@", _tableView.visibleCells);
+    //    }];
 }
 
 -(void)initUI{
@@ -107,7 +107,7 @@
     
     
     searchDisplayController = [[UISearchDisplayController alloc]
-                                initWithSearchBar:_searchBar contentsController:self];
+                               initWithSearchBar:_searchBar contentsController:self];
     [searchDisplayController setSearchResultsDelegate:self];
     [searchDisplayController setSearchResultsDataSource:self];
     [searchDisplayController setDelegate:self];
@@ -150,7 +150,7 @@
 {
     
     if (_contactArray.count == 0) {
-//        [self makeToast:@"暂无联系人搜索"];
+        //        [self makeToast:@"暂无联系人搜索"];
         return;
     }
     
@@ -164,9 +164,9 @@
                         options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                             [_titleView layoutIfNeeded];
                             [_searchBar setShowsCancelButton:YES];
-    } completion:^(BOOL finished) {
-        
-    }];
+                        } completion:^(BOOL finished) {
+                            
+                        }];
 }
 
 -(IBAction)segmentSwitch:(id)sender{
@@ -247,49 +247,49 @@
     
     [self.tableView reloadData];
     
-//    [self updateArea];
+    //    [self updateArea];
 }
 /*
-//更新联系人归属地
-- (void)updateArea
-{
-    AreaHelper *helper = [AreaHelper sharedAreaHelper];
-    if (![helper isLoaded]) {
-        return;
-    }
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        for (ContactData *contact in _contactArray)
-        {
-            for (PhoneData *phone in contact.phoneArray) {
-                if (phone.area) {
-                    continue;
-                }
-                phone.area = [helper queryByPhone:phone.phone];
-            }
-        }
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [_tableView reloadData];
-        });
-    });
-}
-
-- (void)areaNotification:(NSNotification *)notify
-{
-    [self updateArea];
-}*/
+ //更新联系人归属地
+ - (void)updateArea
+ {
+ AreaHelper *helper = [AreaHelper sharedAreaHelper];
+ if (![helper isLoaded]) {
+ return;
+ }
+ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+ 
+ for (ContactData *contact in _contactArray)
+ {
+ for (PhoneData *phone in contact.phoneArray) {
+ if (phone.area) {
+ continue;
+ }
+ phone.area = [helper queryByPhone:phone.phone];
+ }
+ }
+ dispatch_sync(dispatch_get_main_queue(), ^{
+ [_tableView reloadData];
+ });
+ });
+ }
+ 
+ - (void)areaNotification:(NSNotification *)notify
+ {
+ [self updateArea];
+ }*/
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark - UITableViewDataSource Delegate Methods
 
@@ -394,8 +394,8 @@
         contact =  [array objectAtIndex:indexPath.row];
         
         NSString *key = [_contactKeys objectAtIndex:indexPath.section];
-//        NSNumber *indexs = _sectionIndexDictionary[key];
-//        rowsplit = indexs.integerValue + indexPath.row;
+        //        NSNumber *indexs = _sectionIndexDictionary[key];
+        //        rowsplit = indexs.integerValue + indexPath.row;
         alpha = indexPath.row == 0 ? key : @"";//只是第一行显示ALPHA
     }
     ContactsCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"ContactsCell"];
@@ -407,7 +407,7 @@
     cell.alphaLabel.text = alpha;
     cell.textLabel.text = contact.name;
     cell.detailTextLabel.text = contact.phoneArray[0];
-
+    
     return cell;
 }
 
@@ -432,7 +432,7 @@
         [tableView setContentOffset:CGPointZero animated:NO];
         return NSNotFound;
     }
-	return index - 1;//正常的KEY减去搜索那边的偏移
+    return index - 1;//正常的KEY减去搜索那边的偏移
 }
 
 #pragma mark - Content Filtering Methods
@@ -449,27 +449,27 @@
     }
     
     
-	/*
-	 Update the filtered array based on the search text and scope.
-	 */
-	
-	[_filteredListContent removeAllObjects]; // First clear the filtered array.
-	
+    /*
+     Update the filtered array based on the search text and scope.
+     */
+    
+    [_filteredListContent removeAllObjects]; // First clear the filtered array.
+    
     if (searchText == nil || searchText.length == 0) {
         [self.tableView reloadData];
         return;
     }
     
-	/*
-	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
-	 */
-	for (ContactData *qc in _contactArray)
-	{
+    /*
+     Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
+     */
+    for (ContactData *qc in _contactArray)
+    {
         if ([qc compareKeywords:searchText]) {
             [_filteredListContent addObject:qc];
         }
         
-	}
+    }
     [self.tableView reloadData];
 }
 
@@ -480,15 +480,15 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    if (sysVersion >= 7.0) {
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fixSearchControllerPositionOnKeyboardAppear)
-//                                                     name:UIKeyboardWillShowNotification object:nil];
-//        
-//        if (_displayController.isActive) {
-//            // the following is needed if you are return to this controller after dismissing the child controller displayed after selecting one of the search results
-//            [self performSelector:@selector(fixSearchControllerPositionForiOS7) withObject:nil afterDelay:0];
-//        }
-//    }
+    //    if (sysVersion >= 7.0) {
+    //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fixSearchControllerPositionOnKeyboardAppear)
+    //                                                     name:UIKeyboardWillShowNotification object:nil];
+    //
+    //        if (_displayController.isActive) {
+    //            // the following is needed if you are return to this controller after dismissing the child controller displayed after selecting one of the search results
+    //            [self performSelector:@selector(fixSearchControllerPositionForiOS7) withObject:nil afterDelay:0];
+    //        }
+    //    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -553,15 +553,15 @@
 
 #pragma mark - scrollview
 /*
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    NSArray *array = [_tableView indexPathsForVisibleRows];
-    NSLog(@"-----------");
-    for (NSIndexPath *index in array) {
-        NSLog(@"indexpath (%d,%d)", index.section, index.row);
-    }
-}
-*/
+ - (void)scrollViewDidScroll:(UIScrollView *)scrollView
+ {
+ NSArray *array = [_tableView indexPathsForVisibleRows];
+ NSLog(@"-----------");
+ for (NSIndexPath *index in array) {
+ NSLog(@"indexpath (%d,%d)", index.section, index.row);
+ }
+ }
+ */
 
 
 

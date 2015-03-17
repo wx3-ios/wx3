@@ -60,7 +60,8 @@ return shared##className; \
 
 #import "AppDelegate.h"
 #import "UserAgent.h"
-//#define 
+#define   ScreenWidth   [[UIScreen mainScreen] bounds].size.width
+#define   ScreenHeight   [[UIScreen mainScreen] bounds].size.height
 
 
 #endif
