@@ -1,0 +1,50 @@
+//
+//  NSString+Size.m
+//  WXServer
+//
+//  Created by le ting on 7/19/14.
+//  Copyright (c) 2014 le ting. All rights reserved.
+//
+
+#import "NSString+Size.h"
+
+@implementation NSString (Size)
+
+- (CGFloat)stringHeight:(UIFont*)font width:(CGFloat)width{
+    if(self.length==0){
+        return 0.0;
+    }
+    CGSize size = CGSizeMake(width, 20000);
+    if(isIOS7){
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        return [self boundingRectWithSize:size
+                                    options:NSStringDrawingTruncatesLastVisibleLine
+                | NSStringDrawingUsesLineFragmentOrigin
+                | NSStringDrawingUsesFontLeading
+                                 attributes:@{NSFontAttributeName: font}
+                                    context:nil].size.height;
+#endif
+    }
+    else{
+        return [self sizeWithFont:font constrainedToSize:CGSizeMake(width, 20000)
+                      lineBreakMode:NSLineBreakByWordWrapping].height;
+    }
+}
+
+- (CGSize)stringSize:(UIFont*)font{
+    if(self.length==0){
+        return CGSizeZero;
+    }
+    if(isIOS7){
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        return [self sizeWithAttributes:@{NSFontAttributeName: font}];
+#endif
+    }else{
+        return [self sizeWithFont:font];
+    }
+    
+}
++ (CGFloat)stringHeightOfFont:(UIFont*)font{
+    return [@"Elty" stringSize:font].height;
+}
+@end
