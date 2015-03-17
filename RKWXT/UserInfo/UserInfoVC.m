@@ -15,7 +15,6 @@
 #import "LoginVC.h"
 #import "AboutWxtInfoVC.h"
 
-#import "ContactDetailVC.h"
 
 #define UserBgImageViewHeight (125)
 #define Size self.view.bounds.size
@@ -64,6 +63,7 @@
     [iconImageView setImage:iconImg];
     [headView addSubview:iconImageView];
     
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     xOffset += iconImg.size.width+15;
     CGFloat phoneLabelWidth = 140;
     CGFloat phoneLabelHeight = 20;
@@ -71,8 +71,8 @@
     phoneLabel.frame = CGRectMake(xOffset, (UserBgImageViewHeight-yOffset-iconImg.size.height/2-phoneLabelHeight/2), phoneLabelWidth, phoneLabelHeight);
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
     [phoneLabel setTextAlignment:NSTextAlignmentLeft];
-    [phoneLabel setText:@"18613213051"];
     [phoneLabel setFont:WXTFont(18.0)];
+    [phoneLabel setText:userDefault.user];
     [phoneLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
     [headView addSubview:phoneLabel];
     
@@ -85,17 +85,12 @@
     UIView *footView = [[UIView alloc] init];
     [footView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
-//    CGFloat yOffset = 28;
-//    CGFloat footViewHeight = 45;
-//    CGFloat btnWidth = 110;
-    CGFloat btnHeight = 35;
-    UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    quitBtn.frame = CGRectMake((Size.width-btnWidth)/2, Size.height-yOffset-footViewHeight+(footViewHeight-btnHeight)/2, btnWidth, btnHeight);
-    quitBtn.frame = CGRectMake(0, 100, Size.width, btnHeight);
-    [quitBtn setBackgroundColor:[UIColor whiteColor]];
+    CGFloat btnHeight = 45;
+    WXTUIButton *quitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    quitBtn.frame = CGRectMake(0, 60, Size.width, btnHeight);
+    [quitBtn setBackgroundImageOfColor:WXColorWithInteger(0xFFFFFF) controlState:UIControlStateNormal];
     [quitBtn setTitle:@"切换登录帐号" forState:UIControlStateNormal];
-    [quitBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [quitBtn setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
+    [quitBtn setTitleColor:WXColorWithInteger(0x669696) forState:UIControlStateNormal];
     [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:quitBtn];
     
@@ -154,8 +149,7 @@
             break;
         case WXT_UserInfo_About:
         {
-//            AboutWxtInfoVC *signVC = [[AboutWxtInfoVC alloc] init];
-            ContactDetailVC *signVC = [[ContactDetailVC alloc] init];
+            AboutWxtInfoVC *signVC = [[AboutWxtInfoVC alloc] init];
             [self.navigationController pushViewController:signVC animated:YES];
         }
         default:

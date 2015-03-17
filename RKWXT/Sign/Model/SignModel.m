@@ -18,6 +18,14 @@
 
 @implementation SignModel
 
+-(id)init{
+    self = [super init];
+    if(self){
+        _signArr = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 -(void)parseClassifyData:(NSDictionary*)dic{
     if(!dic){
         return;

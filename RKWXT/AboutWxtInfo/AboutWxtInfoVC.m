@@ -73,7 +73,7 @@ enum{
     [_scrollerView addSubview:imgView];
     
     yOffset += img.size.height;
-    CGFloat labelWidth = 90;
+    CGFloat labelWidth = 100;
     CGFloat labelHeight = 25;
     UILabel *textlabel = [[UILabel alloc] init];
     textlabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight);
@@ -86,6 +86,9 @@ enum{
     
     WXTVersion *version = [WXTVersion sharedVersion];
     NSString *currentVersion = [version showCurrentVersion];
+#ifdef Test
+    currentVersion = [version currentVersion];
+#endif
     yOffset += labelHeight;
     UILabel *versionLabel = [[UILabel alloc] init];
     versionLabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight-10);

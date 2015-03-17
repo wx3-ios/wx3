@@ -71,7 +71,7 @@
     [label setText:@"商城"];
     [label setFont:WXTFont(12.0)];
     [label setTextAlignment:NSTextAlignmentCenter];
-    [label setTextColor:[UIColor blueColor]];
+    [label setTextColor:WXColorWithInteger(0x0c8bdf)];
     [tabBar addSubview:label];
     
     //第二个
@@ -81,7 +81,7 @@
     [label0 setText:@"通话"];
     [label0 setFont:WXTFont(12.0)];
     [label0 setTextAlignment:NSTextAlignmentCenter];
-    [label0 setTextColor:[UIColor grayColor]];
+    [label0 setTextColor:WXColorWithInteger(0x808080)];
     [tabBar addSubview:label0];
     
     but0 = [[UIButton alloc] initWithFrame:CGRectMake(xGap, 5, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2)];
@@ -98,7 +98,7 @@
     [label1 setText:@"发现"];
     [label1 setFont:WXTFont(12.0)];
     [label1 setTextAlignment:NSTextAlignmentCenter];
-    [label1 setTextColor:[UIColor grayColor]];
+    [label1 setTextColor:WXColorWithInteger(0x808080)];
     [tabBar addSubview:label1];
     
     but1 = [[UIButton alloc] initWithFrame:CGRectMake(2*xGap, 5, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2)];
@@ -115,7 +115,7 @@
     [label2 setText:@"我"];
     [label2 setFont:WXTFont(12.0)];
     [label2 setTextAlignment:NSTextAlignmentCenter];
-    [label2 setTextColor:[UIColor grayColor]];
+    [label2 setTextColor:WXColorWithInteger(0x808080)];
     [tabBar addSubview:label2];
     
     but2 = [[UIButton alloc] initWithFrame:CGRectMake(3*xGap, 5, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2)];
@@ -133,10 +133,10 @@
         [but0 setImage:[UIImage imageNamed:@"CallNormal.png"] forState:UIControlStateNormal];
         [but1 setImage:[UIImage imageNamed:@"FindNormal.png"] forState:UIControlStateNormal];
         [but2 setImage:[UIImage imageNamed:@"UserNormal.png"] forState:UIControlStateNormal];
-        [label setTextColor:[UIColor blueColor]];
-        [label0 setTextColor:[UIColor grayColor]];
-        [label1 setTextColor:[UIColor grayColor]];
-        [label2 setTextColor:[UIColor grayColor]];
+        [label setTextColor:WXColorWithInteger(0x0c8bdf)];
+        [label0 setTextColor:WXColorWithInteger(0x808080)];
+        [label1 setTextColor:WXColorWithInteger(0x808080)];
+        [label2 setTextColor:WXColorWithInteger(0x808080)];
     }
     
     if(button.tag == 1){
@@ -144,10 +144,10 @@
         [but0 setImage:[UIImage imageNamed:@"CallSelected.png"] forState:UIControlStateNormal];
         [but1 setImage:[UIImage imageNamed:@"FindNormal.png"] forState:UIControlStateNormal];
         [but2 setImage:[UIImage imageNamed:@"UserNormal.png"] forState:UIControlStateNormal];
-        [label setTextColor:[UIColor grayColor]];
-        [label0 setTextColor:[UIColor blueColor]];
-        [label1 setTextColor:[UIColor grayColor]];
-        [label2 setTextColor:[UIColor grayColor]];
+        [label setTextColor:WXColorWithInteger(0x808080)];
+        [label0 setTextColor:WXColorWithInteger(0x0c8bdf)];
+        [label1 setTextColor:WXColorWithInteger(0x808080)];
+        [label2 setTextColor:WXColorWithInteger(0x808080)];
     }
     
     if(button.tag == 2){
@@ -155,10 +155,10 @@
         [but0 setImage:[UIImage imageNamed:@"CallNormal.png"] forState:UIControlStateNormal];
         [but1 setImage:[UIImage imageNamed:@"FindSelected.png"] forState:UIControlStateNormal];
         [but2 setImage:[UIImage imageNamed:@"UserNormal.png"] forState:UIControlStateNormal];
-        [label setTextColor:[UIColor grayColor]];
-        [label0 setTextColor:[UIColor grayColor]];
-        [label1 setTextColor:[UIColor blueColor]];
-        [label2 setTextColor:[UIColor grayColor]];
+        [label setTextColor:WXColorWithInteger(0x808080)];
+        [label0 setTextColor:WXColorWithInteger(0x808080)];
+        [label1 setTextColor:WXColorWithInteger(0x0c8bdf)];
+        [label2 setTextColor:WXColorWithInteger(0x808080)];
     }
     
     if(button.tag == 3){
@@ -166,10 +166,10 @@
         [but0 setImage:[UIImage imageNamed:@"CallNormal.png"] forState:UIControlStateNormal];
         [but1 setImage:[UIImage imageNamed:@"FindNormal.png"] forState:UIControlStateNormal];
         [but2 setImage:[UIImage imageNamed:@"UserSelected.png"] forState:UIControlStateNormal];
-        [label setTextColor:[UIColor grayColor]];
-        [label0 setTextColor:[UIColor grayColor]];
-        [label1 setTextColor:[UIColor grayColor]];
-        [label2 setTextColor:[UIColor blueColor]];
+        [label setTextColor:WXColorWithInteger(0x808080)];
+        [label0 setTextColor:WXColorWithInteger(0x808080)];
+        [label1 setTextColor:WXColorWithInteger(0x808080)];
+        [label2 setTextColor:WXColorWithInteger(0x0c8bdf)];
     }
 }
 

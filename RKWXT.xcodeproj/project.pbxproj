@@ -85,8 +85,6 @@
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
 		12477F091AB6E46800FEE546 /* Icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12477F081AB6E46700FEE546 /* Icon-57@2x.png */; };
-		12477F0C1AB6E4D100FEE546 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12477F0A1AB6E4D100FEE546 /* Default-568h@2x.png */; };
-		12477F0D1AB6E4D100FEE546 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12477F0B1AB6E4D100FEE546 /* Default@2x.png */; };
 		126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */; };
 		126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3D11AB2744600E08A0B /* WXTUserDefault.m */; };
 		126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */; };
@@ -297,8 +295,6 @@
 		12228A741AB1C0F200CF0800 /* RegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistModel.h; sourceTree = "<group>"; };
 		12228A751AB1C0F200CF0800 /* RegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistModel.m; sourceTree = "<group>"; };
 		12477F081AB6E46700FEE546 /* Icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57@2x.png"; sourceTree = "<group>"; };
-		12477F0A1AB6E4D100FEE546 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		12477F0B1AB6E4D100FEE546 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		126CA3CC1AB2709D00E08A0B /* WXTUserOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUserOBJ.h; sourceTree = "<group>"; };
 		126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUserOBJ.m; sourceTree = "<group>"; };
 		126CA3CF1AB272EA00E08A0B /* WXTUserdefaultDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXTUserdefaultDefine.h; sourceTree = "<group>"; };
@@ -911,8 +907,6 @@
 			isa = PBXGroup;
 			children = (
 				1296742F1AB6EAE200597B17 /* ContactInfo */,
-				12477F0A1AB6E4D100FEE546 /* Default-568h@2x.png */,
-				12477F0B1AB6E4D100FEE546 /* Default@2x.png */,
 				12477F081AB6E46700FEE546 /* Icon-57@2x.png */,
 				12D0C8871AB6E2B90039A197 /* Icon-72@2x.png */,
 				12D0C8851AB6DF8E0039A197 /* TopBgImg@2x.png */,
@@ -1172,7 +1166,6 @@
 				120A2C5D1AB17AFD006A28B1 /* sign7@2x.png in Resources */,
 				120A2C571AB17AFD006A28B1 /* sign33@2x.png in Resources */,
 				120A2C481AB17AFD006A28B1 /* sign1@2x.png in Resources */,
-				12477F0C1AB6E4D100FEE546 /* Default-568h@2x.png in Resources */,
 				120A2C3F1AB17AFD006A28B1 /* sign10@2x.png in Resources */,
 				120A2C621AB17B87006A28B1 /* signEveryDay@2x.png in Resources */,
 				120A2C4F1AB17AFD006A28B1 /* sign26@2x.png in Resources */,
@@ -1190,7 +1183,6 @@
 				12D0C8881AB6E2B90039A197 /* Icon-72@2x.png in Resources */,
 				120A2C411AB17AFD006A28B1 /* sign12@2x.png in Resources */,
 				120A2C461AB17AFD006A28B1 /* sign18@2x.png in Resources */,
-				12477F0D1AB6E4D100FEE546 /* Default@2x.png in Resources */,
 				120A2C001AB13900006A28B1 /* RechargeSign@2x.png in Resources */,
 				126CA4061AB2B9EF00E08A0B /* CallSelected@2x.png in Resources */,
 				120A2BFE1AB13900006A28B1 /* Arrow@2x.png in Resources */,

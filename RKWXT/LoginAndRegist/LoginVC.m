@@ -378,4 +378,8 @@
     [self.navigationController pushViewController:registVC animated:YES];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

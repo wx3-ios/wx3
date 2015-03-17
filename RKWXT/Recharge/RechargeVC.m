@@ -33,7 +33,6 @@ enum{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
     self.title = @"充值中心";
-    self.navigationItem.backBarButtonItem.title = @"返回";
 }
 
 -(void)viewDidLoad{
@@ -155,7 +154,6 @@ enum{
             //            _rechargeView = [[RechargeView alloc] initWithFrame:CGRectMake(0, yOffset, Size.width, 120)];
             //            [_rechargeView setDelegate:self];
             //            [_tableView setTableFooterView:_rechargeView];
-           
             [_rechargeView setFrame:CGRectMake(0, ViewNormalDistance, Size.width, RechargeViewHeight)];
         }completion:^(BOOL finished){
         }];
@@ -169,6 +167,11 @@ enum{
         [_rechargeView setFrame:CGRectMake(0, ViewBigDistance, Size.width, RechargeViewHeight)];
     }completion:^(BOOL finished) {
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_rechargeView removeNotification];
 }
 
 @end

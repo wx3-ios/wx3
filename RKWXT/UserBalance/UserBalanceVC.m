@@ -51,7 +51,6 @@ enum{
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController.navigationBar setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     self.title = @"余额";
 }
 
@@ -74,7 +73,7 @@ enum{
 
 -(void)showBaseView{
     CGFloat xOffset = 20;
-    CGFloat yOffset = 100;
+    CGFloat yOffset = 80;
     UIView *baseView = [[UIView alloc] init];
     baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_Balance_Invalid);
     [baseView setBorderRadian:5.0 width:0.5 color:[UIColor grayColor]];
@@ -156,7 +155,8 @@ enum{
     CGFloat btnHeight = 32;
     CGFloat yOffset = WXT_Balance_Invalid*EveryCellHeight;
     WXTUIButton *btn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(xOffset, 2.3*yOffset, Size.width-2*xOffset, btnHeight);
+    btn.frame = CGRectMake(xOffset, 2*yOffset, Size.width-2*xOffset, btnHeight);
+    [btn setBorderRadian:10.0 width:0.5 color:[UIColor clearColor]];
     [btn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateNormal];
     [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
     [btn setTitle:@"立即充值" forState:UIControlStateNormal];

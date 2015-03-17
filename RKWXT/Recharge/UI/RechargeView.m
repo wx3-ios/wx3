@@ -24,7 +24,7 @@
 -(id)init{
     self = [super init];
     if(self){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (doneButtonHiden) name: UIKeyboardWillHideNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyBoardWillHiden) name: UIKeyboardWillHideNotification object:nil];
     }
     return self;
 }
@@ -140,12 +140,12 @@
     [textfield resignFirstResponder];
 }
 
--(void)doneButtonHiden{
+-(void)keyBoardWillHiden{
     [self setFrame:CGRectMake(0, ViewNormalDistance, Size.width, RechargeViewHeight)];
 }
 
 -(void)startInput{
-    [self setFrame:CGRectMake(0, ViewUpDistance, Size.width, RechargeViewHeight)];
+    [self setFrame:CGRectMake(0, ViewUpDistance-50, Size.width, RechargeViewHeight)];
 }
 
 -(void)cancel{
@@ -174,6 +174,10 @@
         return;
     }
     [UtilTool showAlertView:errorMsg];
+}
+
+-(void)removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

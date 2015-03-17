@@ -19,6 +19,14 @@
 @implementation VersionModel
 @synthesize updateArr = _updateArr;
 
+-(id)init{
+    self = [super init];
+    if(self){
+        _updateArr = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 -(void)parseVersionData:(NSDictionary*)dic{
     if(!dic){
         return;
@@ -33,13 +41,13 @@
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"check_ios_update", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", userDefault.token, @"token", currentVersion, @"ver", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Version httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
-        __block VersionModel *model = nil;
+        __block VersionModel *blockSelf = self;
         if ([[dic objectForKey:@"success"] integerValue] != 1){
             if (_delegate && [_delegate respondsToSelector:@selector(checkVersionFailed:)]){
                 [_delegate checkVersionFailed:retData.errorDesc];
             }
         }else{
-            [model parseVersionData:dic];
+            [blockSelf parseVersionData:dic];
             if (_delegate && [_delegate respondsToSelector:@selector(checkVersionSucceed)]){
                 [_delegate checkVersionSucceed];
             }

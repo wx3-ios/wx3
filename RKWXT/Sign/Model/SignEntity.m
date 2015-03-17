@@ -14,7 +14,7 @@
     if(!dic){
         return nil;
     }
-    return [[self class] initWithDic:dic];
+    return [[self alloc] initWithDic:dic];
 }
 
 -(id)initWithDic:(NSDictionary*)dic{

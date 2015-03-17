@@ -51,6 +51,7 @@ enum{
     if(self){
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyBoard) name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur) name:UIKeyboardDidHideNotification object:nil];
+        
         _model = [[RegistModel alloc] init];
         [_model setDelegate:self];
         
@@ -68,7 +69,6 @@ enum{
     
     [self createLeftBackBtn];
     [self createUI];
-    
     [self createRegistBtn];
 }
 
@@ -378,6 +378,10 @@ enum{
 #pragma mark back
 -(void)backLogin{
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
