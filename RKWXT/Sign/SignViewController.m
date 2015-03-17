@@ -142,6 +142,7 @@
     NSString *timeString = [date YMDHMString:E_YMD];
     if([timeString isEqualToString:@"今天"]){
         [_signBtn setEnabled:NO];
+        [_textLabel setText:@"今日已签到"];
     }
 }
 
@@ -201,11 +202,12 @@
             message = signEntity.message;
         }
         [UtilTool showAlertView:message];
-        [_textLabel setText:[NSString stringWithFormat:@"我的奖励:%f元",signEntity.money]];
+        [_textLabel setText:[NSString stringWithFormat:@"我的奖励:%.2f元",signEntity.money]];
     }
 }
 
 -(void)signFailed:(NSString *)errorMsg{
+    [_signBtn setEnabled:YES];
     [self unShowWaitView];
     [UtilTool showAlertView:errorMsg];
 }
