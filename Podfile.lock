@@ -30,6 +30,7 @@ PODS:
   - KVOController (1.0.3)
   - MBProgressHUD (0.9.1)
   - OpenUDID (1.0.0)
+  - Reachability (3.2)
   - RegexKitLite (4.0)
   - Toast (2.4)
 
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - KVOController (~> 1.0.1)
   - MBProgressHUD (~> 0.8)
   - OpenUDID (~> 1.0.0)
+  - Reachability (~> 3.2)
   - RegexKitLite (~> 4.0)
   - Toast (~> 2.2)
 
@@ -52,7 +54,8 @@ SPEC CHECKSUMS:
   KVOController: b1139ef1fc373b6757e4b69493fedd7b56eb1272
   MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
   OpenUDID: 5a23b7477755efc2d7871b57aa79ba3089c40b74
+  Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   Toast: 6a3c2b1d70e426b26d130971c369670eac7aa9ce
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0
