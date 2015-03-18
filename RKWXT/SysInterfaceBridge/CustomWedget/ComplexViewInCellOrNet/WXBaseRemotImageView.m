@@ -26,13 +26,13 @@
 @synthesize initImage = _initImage;
 @synthesize failedImage = _failedImage;
 
-- (void)dealloc{
-    [self removeOBS];
-    RELEASE_SAFELY(_activityIndicatorView);
-    RELEASE_SAFELY(_initImage);
-    RELEASE_SAFELY(_failedImage);
-    [super dealloc];
-}
+//- (void)dealloc{
+//    [self removeOBS];
+//    RELEASE_SAFELY(_activityIndicatorView);
+//    RELEASE_SAFELY(_initImage);
+//    RELEASE_SAFELY(_failedImage);
+//    [super dealloc];
+//}
 
 - (id)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
@@ -43,8 +43,8 @@
         [_activityIndicatorView setCenter:pt];
         [self addSubview:_activityIndicatorView];
         
-        _initImage = [[UIImage imageNamed:kImageInitFileName] retain];
-        _failedImage = [[UIImage imageNamed:kImageFailedFileName] retain];
+        _initImage = [UIImage imageNamed:kImageInitFileName] ;
+        _failedImage = [UIImage imageNamed:kImageFailedFileName] ;
     }
     return self;
 }
