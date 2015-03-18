@@ -25,9 +25,10 @@
 
 - (void)dealloc{
 #warning 泄露留以后解决~
-//    RELEASE_SAFELY(_searchBar);
+    //    RELEASE_SAFELY(_searchBar);
+    RELEASE_SAFELY(_tableView);
     _delegate = nil;
-//    [super dealloc];
+    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame searchContentsVC:(WXUIViewController*)contentsController
