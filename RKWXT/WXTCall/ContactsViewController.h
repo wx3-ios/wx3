@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 jjyo.kwan. All rights reserved.
 //
 
-#import "BaseViewController.h"
+//#import "BaseViewController.h"
 #import "UserAgent.h"
-@interface ContactsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,UISearchDisplayDelegate>{
+@interface ContactsViewController : BaseVC<UITableViewDataSource, UITableViewDelegate,UISearchDisplayDelegate>{
     
     UISearchDisplayController * searchDisplayController;
 }

@@ -27,9 +27,7 @@
 @implementation ProgressView
 
 - (void)dealloc{
-	[_onColor release];
-	[_unOnColor release];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)initWithCenter:(CGPoint)center radius:(CGFloat)radius{

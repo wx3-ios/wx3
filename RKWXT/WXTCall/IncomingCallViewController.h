@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 jjyo.kwan. All rights reserved.
 //
 
-#import "BaseViewController.h"
+//#import "BaseViewController.h"
 
 
-@interface IncomingCallViewController : BaseViewController
+@interface IncomingCallViewController : BaseVC
 
 @property (nonatomic, strong) IBOutlet UIView *headView;
 @property (nonatomic, strong) IBOutlet UIView *miniHeadView;

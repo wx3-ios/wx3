@@ -14,7 +14,7 @@
 #define kMinPhoneLen 7
 @interface ZoneCodeOBJ()
 {
-	NSMutableArray *_zoneCodeList;
+	__unsafe_unretained NSMutableArray *_zoneCodeList;
 }
 @end
 
@@ -22,8 +22,7 @@
 @synthesize zoneCodeList = _zoneCodeList;
 
 - (void)dealloc{
-	RELEASE_SAFELY(_zoneCodeList);
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -40,14 +39,14 @@
 	NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
 	NSArray *zoneCodeDatas = [TxtparseOBJ parseDataFrom:string itemSeparator:@"\n" elementSeparator:@"\t"];
 	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	for(NSArray *zoneCodeItemArray in zoneCodeDatas){
 		ZoneCodeEntity *entity = [ZoneCodeEntity zoneCodeEntityWithArray:zoneCodeItemArray];
 		if (entity){
 			[_zoneCodeList addObject:entity];
 		}
 	}
-	[pool drain];
+//	[pool drain];
 }
 
 + (ZoneCodeOBJ*)sharedZoneCodeOBJ{
@@ -61,7 +60,7 @@
 
 - (WXError*)checkPhone:(NSString*)phone validFor:(ZoneCodeEntity*)zoneCode{
 	NSString *prefix = zoneCode.zoneCode;
-	WXError *error = [[[WXError alloc] init] autorelease];
+	WXError *error = [[WXError alloc] init] ;
 	if ([phone hasPrefix:prefix]){
 		NSInteger phoneLen = [phone length];
 		NSInteger zoneCodeLen = prefix.length;

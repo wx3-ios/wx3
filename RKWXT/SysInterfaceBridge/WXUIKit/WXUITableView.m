@@ -18,13 +18,13 @@
 }
 
 - (void)setBackgroundImage:(UIImage*)image{
-    UIImageView *imgView = [[[UIImageView alloc] initWithImage:image] autorelease];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:image] ;
     [imgView setBackgroundColor:[UIColor clearColor]];
     [self setBackgroundView:imgView];
 }
 
 - (UIView*)defaultFootView{
-    WXUIView *footView = [[[WXUIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 1)] autorelease];
+    WXUIView *footView = [[WXUIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 1)] ;
     [footView setBackgroundColor:[UIColor clearColor]];
     return footView;
 }

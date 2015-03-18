@@ -13,9 +13,7 @@
 @synthesize icon = _icon;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_title);
-    RELEASE_SAFELY(_icon);
-    [super dealloc];
+//    [super dealloc];
 }
 
 @end
