@@ -175,7 +175,6 @@
 		775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841D61AB95A2F0039B129 /* UIImage+iPhone5.m */; };
 		775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841D81AB95A300039B129 /* UIResponder+FirstResponder.m */; };
 		775842E01AB95A300039B129 /* UIView+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841DA1AB95A300039B129 /* UIView+Render.m */; };
-		775842E11AB95A300039B129 /* WXBaseRemotImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841DE1AB95A300039B129 /* WXBaseRemotImageView.m */; };
 		775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841E01AB95A300039B129 /* WXCpxBaseView.m */; };
 		775842E31AB95A300039B129 /* WXCpxBtnImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841E21AB95A300039B129 /* WXCpxBtnImgView.m */; };
 		775842E41AB95A300039B129 /* WXMiltiViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841E41AB95A300039B129 /* WXMiltiViewCell.m */; };
@@ -213,9 +212,6 @@
 		775843041AB95A300039B129 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758422E1AB95A300039B129 /* DDMenuController.m */; };
 		775843051AB95A300039B129 /* StrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842301AB95A300039B129 /* StrikeThroughLabel.m */; };
 		775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842321AB95A300039B129 /* TxtparseOBJ.m */; };
-		775843071AB95A300039B129 /* RemotionFileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842351AB95A300039B129 /* RemotionFileEntity.m */; };
-		775843081AB95A300039B129 /* URLDownloadOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842371AB95A300039B129 /* URLDownloadOBJ.m */; };
-		775843091AB95A300039B129 /* URLNetCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842391AB95A300039B129 /* URLNetCache.m */; };
 		7758430C1AB95A300039B129 /* WXActivityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758423F1AB95A300039B129 /* WXActivityButton.m */; };
 		7758430D1AB95A300039B129 /* WXCheckMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842411AB95A300039B129 /* WXCheckMenu.m */; };
 		7758430E1AB95A300039B129 /* WXError.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842431AB95A300039B129 /* WXError.m */; };
@@ -243,7 +239,6 @@
 		775843261AB95A300039B129 /* WXUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842781AB95A300039B129 /* WXUILabel.m */; };
 		775843271AB95A300039B129 /* WXUINavigationController+SubVCPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758427A1AB95A300039B129 /* WXUINavigationController+SubVCPosition.m */; };
 		775843281AB95A300039B129 /* WXUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758427C1AB95A300039B129 /* WXUINavigationController.m */; };
-		775843291AB95A300039B129 /* WXUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758427E1AB95A300039B129 /* WXUINavigationController.m */; };
 		7758432A1AB95A300039B129 /* WXUIPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842801AB95A300039B129 /* WXUIPageControl.m */; };
 		7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842821AB95A300039B129 /* WXUIScrollView.m */; };
 		7758432C1AB95A300039B129 /* WXUISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842841AB95A300039B129 /* WXUISearchBar.m */; };
@@ -615,8 +610,6 @@
 		775841D81AB95A300039B129 /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		775841D91AB95A300039B129 /* UIView+Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Render.h"; sourceTree = "<group>"; };
 		775841DA1AB95A300039B129 /* UIView+Render.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Render.m"; sourceTree = "<group>"; };
-		775841DD1AB95A300039B129 /* WXBaseRemotImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXBaseRemotImageView.h; sourceTree = "<group>"; };
-		775841DE1AB95A300039B129 /* WXBaseRemotImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXBaseRemotImageView.m; sourceTree = "<group>"; };
 		775841DF1AB95A300039B129 /* WXCpxBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXCpxBaseView.h; sourceTree = "<group>"; };
 		775841E01AB95A300039B129 /* WXCpxBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXCpxBaseView.m; sourceTree = "<group>"; };
 		775841E11AB95A300039B129 /* WXCpxBtnImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXCpxBtnImgView.h; sourceTree = "<group>"; };
@@ -689,12 +682,6 @@
 		775842301AB95A300039B129 /* StrikeThroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrikeThroughLabel.m; sourceTree = "<group>"; };
 		775842311AB95A300039B129 /* TxtparseOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TxtparseOBJ.h; sourceTree = "<group>"; };
 		775842321AB95A300039B129 /* TxtparseOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TxtparseOBJ.m; sourceTree = "<group>"; };
-		775842341AB95A300039B129 /* RemotionFileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemotionFileEntity.h; sourceTree = "<group>"; };
-		775842351AB95A300039B129 /* RemotionFileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemotionFileEntity.m; sourceTree = "<group>"; };
-		775842361AB95A300039B129 /* URLDownloadOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLDownloadOBJ.h; sourceTree = "<group>"; };
-		775842371AB95A300039B129 /* URLDownloadOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLDownloadOBJ.m; sourceTree = "<group>"; };
-		775842381AB95A300039B129 /* URLNetCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLNetCache.h; sourceTree = "<group>"; };
-		775842391AB95A300039B129 /* URLNetCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLNetCache.m; sourceTree = "<group>"; };
 		7758423E1AB95A300039B129 /* WXActivityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXActivityButton.h; sourceTree = "<group>"; };
 		7758423F1AB95A300039B129 /* WXActivityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXActivityButton.m; sourceTree = "<group>"; };
 		775842401AB95A300039B129 /* WXCheckMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXCheckMenu.h; sourceTree = "<group>"; };
@@ -748,8 +735,6 @@
 		7758427A1AB95A300039B129 /* WXUINavigationController+SubVCPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXUINavigationController+SubVCPosition.m"; sourceTree = "<group>"; };
 		7758427B1AB95A300039B129 /* WXUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUINavigationController.h; sourceTree = "<group>"; };
 		7758427C1AB95A300039B129 /* WXUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUINavigationController.m; sourceTree = "<group>"; };
-		7758427D1AB95A300039B129 /* WXUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUINavigationController.h; sourceTree = "<group>"; };
-		7758427E1AB95A300039B129 /* WXUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUINavigationController.m; sourceTree = "<group>"; };
 		7758427F1AB95A300039B129 /* WXUIPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIPageControl.h; sourceTree = "<group>"; };
 		775842801AB95A300039B129 /* WXUIPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIPageControl.m; sourceTree = "<group>"; };
 		775842811AB95A300039B129 /* WXUIScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIScrollView.h; sourceTree = "<group>"; };
@@ -1640,8 +1625,6 @@
 		775841DC1AB95A300039B129 /* ComplexViewInCellOrNet */ = {
 			isa = PBXGroup;
 			children = (
-				775841DD1AB95A300039B129 /* WXBaseRemotImageView.h */,
-				775841DE1AB95A300039B129 /* WXBaseRemotImageView.m */,
 				775841DF1AB95A300039B129 /* WXCpxBaseView.h */,
 				775841E01AB95A300039B129 /* WXCpxBaseView.m */,
 				775841E11AB95A300039B129 /* WXCpxBtnImgView.h */,
@@ -1801,12 +1784,6 @@
 		775842331AB95A300039B129 /* URLNetWork */ = {
 			isa = PBXGroup;
 			children = (
-				775842341AB95A300039B129 /* RemotionFileEntity.h */,
-				775842351AB95A300039B129 /* RemotionFileEntity.m */,
-				775842361AB95A300039B129 /* URLDownloadOBJ.h */,
-				775842371AB95A300039B129 /* URLDownloadOBJ.m */,
-				775842381AB95A300039B129 /* URLNetCache.h */,
-				775842391AB95A300039B129 /* URLNetCache.m */,
 			);
 			path = URLNetWork;
 			sourceTree = "<group>";
@@ -1870,8 +1847,6 @@
 				775842771AB95A300039B129 /* WXUILabel.h */,
 				775842781AB95A300039B129 /* WXUILabel.m */,
 				775842791AB95A300039B129 /* WXUINavigationController */,
-				7758427D1AB95A300039B129 /* WXUINavigationController.h */,
-				7758427E1AB95A300039B129 /* WXUINavigationController.m */,
 				7758427F1AB95A300039B129 /* WXUIPageControl.h */,
 				775842801AB95A300039B129 /* WXUIPageControl.m */,
 				775842811AB95A300039B129 /* WXUIScrollView.h */,
@@ -2539,15 +2514,12 @@
 				775842D31AB95A300039B129 /* NSDate+Compare.m in Sources */,
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
 				775843AE1AB96FF20039B129 /* PinyinFormatter.m in Sources */,
-				775843071AB95A300039B129 /* RemotionFileEntity.m in Sources */,
-				775842E11AB95A300039B129 /* WXBaseRemotImageView.m in Sources */,
 				7758433B1AB95A300039B129 /* AddressBook.m in Sources */,
 				775842B21AB95A300039B129 /* URLFeedData.m in Sources */,
 				120A2BF01AB135DE006A28B1 /* BalanceModel.m in Sources */,
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
 				2563B3F31AAAD74000C04227 /* LoginViewController.m in Sources */,
-				775843081AB95A300039B129 /* URLDownloadOBJ.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				775842BC1AB95A300039B129 /* ContactDetailCell.m in Sources */,
 				775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */,
@@ -2565,7 +2537,6 @@
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
 				775843141AB95A300039B129 /* WXButton.m in Sources */,
 				775843001AB95A300039B129 /* PictureBrowseView.m in Sources */,
-				775843291AB95A300039B129 /* WXUINavigationController.m in Sources */,
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,
 				7758431B1AB95A300039B129 /* YRSideViewController.m in Sources */,
 				775842F61AB95A300039B129 /* PullPsCollectionView.m in Sources */,
@@ -2610,7 +2581,6 @@
 				775843AD1AB96FF20039B129 /* pinyin.c in Sources */,
 				7758433D1AB95A300039B129 /* ContacterEntity.m in Sources */,
 				7758433F1AB95A300039B129 /* WXContacterEntity.m in Sources */,
-				775843091AB95A300039B129 /* URLNetCache.m in Sources */,
 				77DB94151AAFE9DD0021A816 /* ProgressView.m in Sources */,
 				775843731AB96A4B0039B129 /* ContactBaseEntity+Detail.m in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,

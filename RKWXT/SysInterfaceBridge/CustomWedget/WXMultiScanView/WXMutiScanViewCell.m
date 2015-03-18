@@ -11,8 +11,7 @@
 @implementation WXMutiScanViewCell
 
 - (void)dealloc{
-    RELEASE_SAFELY(_reuseIdentifier);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithReuseIdentifier:(NSString*)reuseIdentifier{

@@ -24,9 +24,7 @@
 
 - (void)dealloc{
     _delegate = nil;
-    RELEASE_SAFELY(_navBar);
-    RELEASE_SAFELY(_clipView);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (void)viewDidLoad{
@@ -36,7 +34,7 @@
     [_clipView setImage:_image];
     [self addSubview:_clipView];
     
-    _navBar = [[CrystalNavigationView cstWXNavigationView] retain];
+    _navBar = [CrystalNavigationView cstWXNavigationView];
     [self addSubview:_navBar];
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -57,7 +55,6 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [_clipView addGestureRecognizer:tap];
-    RELEASE_SAFELY(tap);
 }
 
 - (void)tap{

@@ -28,9 +28,7 @@
 @implementation PictureBrowseView
 
 - (void)dealloc{
-	[_maskShell release];
-	[_imageView release];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{

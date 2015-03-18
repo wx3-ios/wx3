@@ -18,17 +18,15 @@
 @implementation WXUIPageControl
 
 - (void)dealloc{
-    RELEASE_SAFELY(_activeImage);
-    RELEASE_SAFELY(_inactiveImage);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _inactiveImage = [[UIImage imagePathed:@"uiPageControlNormal.png"] retain];
-        _activeImage = [[UIImage imagePathed:@"uiPageControlSelect.png"] retain];
+        _inactiveImage = [UIImage imagePathed:@"uiPageControlNormal.png"];
+        _activeImage = [UIImage imagePathed:@"uiPageControlSelect.png"] ;
     }
     return self;
 }
@@ -53,7 +51,7 @@
         }
         
         if(!dot){
-            dot = [[[UIImageView alloc] initWithFrame:dotView.bounds] autorelease];
+            dot = [[UIImageView alloc] initWithFrame:dotView.bounds] ;
             [dotView addSubview:dot];
             
         }

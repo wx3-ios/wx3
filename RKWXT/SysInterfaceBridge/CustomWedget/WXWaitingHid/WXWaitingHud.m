@@ -23,12 +23,8 @@
 @implementation WXWaitingHud
 
 - (void)dealloc{
-	[_progressView stopAnimating];
-	[_progressView release];
 	[_tipLabel stopAnimate];
-	[_tipLabel release];
-	[_shell release];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)initWithParentView:(UIView*)parentView{
@@ -56,7 +52,7 @@
 		
 		UIImage *wxIcon = [UIImage imageNamed:@"woxinHidIcon.png"];
 		CGSize wxIconSize = wxIcon.size;
-		UIImageView *wxImgView = [[[UIImageView alloc] initWithImage:wxIcon] autorelease];
+		UIImageView *wxImgView = [[UIImageView alloc] initWithImage:wxIcon];
 		[wxImgView setFrame:CGRectMake((progressViewRadius-wxIconSize.width)*0.5, (progressViewRadius-wxIconSize.height)*0.5, wxIconSize.width, wxIconSize.height)];
 		[_progressView addSubview:wxImgView];
 		

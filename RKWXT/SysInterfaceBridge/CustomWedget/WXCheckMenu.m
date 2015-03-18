@@ -18,12 +18,11 @@
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_buttonArray);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (id)checkMenuWithTitleArray:(NSArray*)titles normalImageArray:(NSArray*)normalImgArray selectedImageArray:(NSArray*)selectedImgArray{
-    return [[[self alloc] initWithTitleArray:titles normalImageArray:normalImgArray selectedImageArray:selectedImgArray] autorelease];
+    return [[self alloc] initWithTitleArray:titles normalImageArray:normalImgArray selectedImageArray:selectedImgArray];
 }
 
 - (id)initWithTitleArray:(NSArray*)titles normalImageArray:(NSArray*)normalImgArray selectedImageArray:(NSArray*)selectedImgArray{

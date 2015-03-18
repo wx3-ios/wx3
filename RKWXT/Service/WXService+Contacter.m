@@ -40,12 +40,12 @@
     return IT_UploadMyIcon([iconPath cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
-- (NSInteger)uploadDeviceInfo{
-    SS_USHORT sysType = 2;
-    NSString *sysVersion;
-    NSString *deviceName;
-#warning 版本和设备名字没有初始化~
-    return IT_UploadPhoneInfo(sysType, [sysVersion cStringUsingEncoding:NSUTF8StringEncoding],
-                      [deviceName cStringUsingEncoding:NSUTF8StringEncoding]);
-}
+//- (NSInteger)uploadDeviceInfo{
+//    SS_USHORT sysType = 2;
+//    NSString *sysVersion;
+//    NSString *deviceName;
+//#warning 版本和设备名字没有初始化~
+//    return IT_UploadPhoneInfo(sysType, [sysVersion cStringUsingEncoding:NSUTF8StringEncoding],
+//                      [deviceName cStringUsingEncoding:NSUTF8StringEncoding]);
+//}
 @end

@@ -12,8 +12,7 @@
 @synthesize cpxViewInfo;
 
 - (void)dealloc{
-    RELEASE_SAFELY(cpxViewInfo);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (void)load{

@@ -37,7 +37,7 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     if( (self = [super initWithFrame:frame]) )
     {
         _limiteCharacters = NSIntegerMax;
-        _placeholderColor = [[UIColor grayColor] retain];
+        _placeholderColor = [UIColor grayColor];
         [self setBackgroundColor:[UIColor clearColor]];
         [self setPlaceholder:@""];
         [self setPlaceholderColor:[UIColor lightGrayColor]];

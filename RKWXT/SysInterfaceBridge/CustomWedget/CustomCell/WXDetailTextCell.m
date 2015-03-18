@@ -18,8 +18,7 @@
 @synthesize detailImgView = _detailImgView;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_detailImgView);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{

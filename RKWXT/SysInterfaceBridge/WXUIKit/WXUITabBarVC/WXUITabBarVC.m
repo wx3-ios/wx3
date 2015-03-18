@@ -24,17 +24,15 @@
 @synthesize tabBar = _tabBar;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_controllers);
-    RELEASE_SAFELY(_tabBar);
-    [super dealloc];
+//    [super dealloc];
 }
 - (id)initWithControllers:(NSArray*)controllers tabBar:(WXUITabBar*)tabBar{
     if(self = [super init]){
         NSInteger controllerCount = [controllers count];
         NSInteger tabBarItemCount = [[tabBar tabBarItemArray] count];
         NSAssert(controllerCount > 1 && controllerCount == tabBarItemCount, @"controller和tabbarItem的数目不对~");
-        _controllers = [controllers retain];
-        _tabBar = [tabBar retain];
+        _controllers = controllers;
+        _tabBar = tabBar;
         _preSelectedIndex = kInvalidSelectedIndex;
         _selectedIndex = kInvalidSelectedIndex;
     }
@@ -49,7 +47,6 @@
     linLabel.frame = CGRectMake(0, size.height-tabBarSize.height, tabBarSize.width, 0.5);
     [linLabel setBackgroundColor:WXColorWithInteger(0xdcdcdc)];
     [self addSubview:linLabel];
-    RELEASE_SAFELY(linLabel);
     
     [_tabBar setFrame:CGRectMake(0, size.height-tabBarSize.height+0.5, tabBarSize.width, tabBarSize.height)];
     [self addSubview:_tabBar];

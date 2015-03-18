@@ -40,7 +40,6 @@
     NSString *tempText = [self.text copy];
     self.text = @"";
     self.text = tempText;
-    [tempText release];
 }
 
 @end

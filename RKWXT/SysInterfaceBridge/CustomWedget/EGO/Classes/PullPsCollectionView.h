@@ -41,7 +41,7 @@
     BOOL pullTableIsLoadingMore;
     
     // Delegate
-    id<PullPsCollectionViewDelegate> pullDelegate;
+    __unsafe_unretained id<PullPsCollectionViewDelegate> pullDelegate;
 }
 /* The configurable display properties of PullTableView. Set to nil for default values */
 @property (nonatomic, retain) UIImage *pullArrowImage;

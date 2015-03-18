@@ -18,10 +18,9 @@
 @implementation WXContactMonitor
 @synthesize wxContactList = _wxContactList;
 
-- (void)dealloc{
-    RELEASE_SAFELY(_wxContactList);
+- (void)dealloc{;
     [self removeOBS];
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (WXContactMonitor*)sharedWXContactMonitor{
