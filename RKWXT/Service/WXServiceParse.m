@@ -163,7 +163,7 @@ typedef enum {
     if(paramNumber <= 0){
         return;
     }
-    WXError *error = [[[WXError alloc] init] autorelease];
+    WXError *error = [[WXError alloc] init] ;
     NSInteger retCode = [self errorCode:pParam[0]];
     switch (messageID) {
 #pragma mark 账号
@@ -497,7 +497,7 @@ typedef enum {
 		case E_Service_Message_ID_DBStructChanged:
 		{
 			AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-			[app setDbHasChanged:YES];
+//			[app setDbHasChanged:YES];
 		}
 			break;
 		case E_Service_Message_ID_GetOrderCodePayMode:
@@ -548,7 +548,7 @@ typedef enum {
             break;
     }
     if(notificationOBJ){
-        WXError *error = [[[WXError alloc] init] autorelease];
+        WXError *error = [[WXError alloc] init] ;
         [error setErrorMessage:notificationOBJ];
         *pNotificationObject = error;
         KFLog_Normal(YES, @"%@",notificationOBJ);
@@ -578,7 +578,7 @@ typedef enum {
             break;
     }
     if(notificationOBJ){
-        WXError *error = [[[WXError alloc] init] autorelease];
+        WXError *error = [[WXError alloc] init] ;
         [error setErrorMessage:notificationOBJ];
         *pNotificationObject = error;
         KFLog_Normal(YES, @"%@",notificationOBJ);
@@ -664,7 +664,7 @@ typedef enum {
     NSInteger retCode = [self errorCode:pParam[0]];
     if(retCode != 0){
         *pNotificationName = D_Notification_Name_CallDisconnected;
-        WXError *error = [[[WXError alloc] init] autorelease];
+        WXError *error = [[WXError alloc] init] ;
         error.errorCode = E_CallFinishReason_Busy;
         *pNotificationObject = error;
     }
@@ -1024,14 +1024,14 @@ typedef enum {
     }else{
         KFLog_Normal(YES, @"添加订单成功");
         NSString *retCodeStr = [NSString stringWithFormat:@"%ld",(long)retCode];
-        NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init] ;
         if (retCode){
             [dic setObject:retCodeStr forKey:@"retCode"];
         }
         if (orderID){
             [dic setObject:orderID forKey:@"orderID"];
         }
-        [[MyOrderListObj sharedOrderList] removeOrderList];
+//        [[MyOrderListObj sharedOrderList] removeOrderList];
         [notificationCenter postNotificationOnMainThreadWithName:D_Notification_Name_Lib_SubmitOrderSucceed
                                                           object:dic userInfo:nil];
     }
@@ -1129,7 +1129,7 @@ typedef enum {
         KFLog_Normal(YES, @"领取红包成功");
         NSString *jsonString = [NSString stringWithUTF8String:pParam[4]];
         NSString *jsonString1 = [NSString stringWithUTF8String:pParam[3]];
-        NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init] ;
 		if (jsonString){
 			[dic setObject:jsonString forKey:@"balance"];
 		}
@@ -1203,7 +1203,7 @@ typedef enum {
         KFLog_Normal(YES, @"使用红包成功");
         NSString *jsonString = [NSString stringWithUTF8String:pParam[3]];
         NSString *jsonString1 = [NSString stringWithUTF8String:pParam[4]];
-        NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init] ;
         [dic setObject:jsonString forKey:@"balance"];
         [dic setObject:jsonString1 forKey:@"orderNum"];
         [notificationCenter postNotificationOnMainThreadWithName:D_Notification_Name_Lib_UseRedPagerSucceed
@@ -1357,7 +1357,7 @@ typedef enum {
                                                           object:nil userInfo:nil];
     }else{
         KFLog_Normal(YES, @"加载商品详情成功");
-        NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init] ;
         NSString *jsonString6 = [NSString stringWithUTF8String:pParam[6]];
         NSString *jsonString7 = [NSString stringWithUTF8String:pParam[7]];
         NSString *jsonString8 = [NSString stringWithUTF8String:pParam[8]];
@@ -1383,7 +1383,7 @@ typedef enum {
          notificationName:(NSString**)pNotificationName notificationObject:(id*)pNotificationObject{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
-    NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init] ;
     NSString *jsonString0 = [NSString stringWithUTF8String:pParam[0]];
     NSString *jsonString1 = [NSString stringWithUTF8String:pParam[1]];
     NSString *jsonString2 = [NSString stringWithUTF8String:pParam[2]];
@@ -1432,14 +1432,14 @@ typedef enum {
     NSInteger retCode = [self errorCode:pParam[0]];
     if(retCode != 0){
         KFLog_Normal(YES, @"充值 = %d",(int)retCode);
-        NSMutableDictionary *dic1 = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *dic1 = [[NSMutableDictionary alloc] init] ;
         NSString *jsonString4 = [NSString stringWithUTF8String:pParam[4]];
         [dic1 setObject:jsonString4 forKey:@"WoXinResult"];
         [notificationCenter postNotificationOnMainThreadWithName:D_Notification_Name_Lib_RechargeFailed
                                                           object:dic1 userInfo:nil];
     }else{
         KFLog_Normal(YES, @"充值成功");
-        NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         NSString *jsonString2 = [NSString stringWithUTF8String:pParam[2]];
         NSString *jsonString3 = [NSString stringWithUTF8String:pParam[3]];
         NSString *jsonString4 = [NSString stringWithUTF8String:pParam[4]];
@@ -1461,7 +1461,7 @@ typedef enum {
                                                           object:nil userInfo:nil];
     }else{
         KFLog_Normal(YES, @"获取话费余额成功");
-        NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init] ;
         NSString *jsonString1 = [NSString stringWithUTF8String:pParam[1]];
         NSString *jsonString2 = [NSString stringWithUTF8String:pParam[2]];
 		if (jsonString1){

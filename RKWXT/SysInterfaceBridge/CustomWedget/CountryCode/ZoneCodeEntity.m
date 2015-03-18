@@ -19,16 +19,14 @@ enum{
 @implementation ZoneCodeEntity
 
 - (void)dealloc{
-	RELEASE_SAFELY(_zoneName);
-	RELEASE_SAFELY(_zoneCode);
-	[super dealloc];
+//	[super dealloc];
 }
 
 + (ZoneCodeEntity*)zoneCodeEntityWithArray:(NSArray*)objArray{
 	if([objArray count] != E_ZoneCode_Index_Invalid){
 		return nil;
 	}
-	return [[[self alloc] initWithArray:objArray] autorelease];
+	return [[self alloc] initWithArray:objArray] ;
 }
 
 - (id)initWithArray:(NSArray*)objArray{

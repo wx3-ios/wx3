@@ -55,7 +55,7 @@ typedef enum {
     self.viewControllers = nil;
     _gestures  = nil;
     _blackMask = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
 #pragma mark - Load View

@@ -34,10 +34,10 @@
 @synthesize showTime = _showTime;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_tipLabel);
-    RELEASE_SAFELY(_baseView);
-    RELEASE_SAFELY(_tap);
-    [super dealloc];
+//    RELEASE_SAFELY(_tipLabel);
+//    RELEASE_SAFELY(_baseView);
+//    RELEASE_SAFELY(_tap);
+//    [super dealloc];
 }
 
 - (id)initWithTip:(NSString*)tip{
@@ -158,7 +158,7 @@
 - (void)addTap{
     if(_tap){
         [self removeGestureRecognizer:_tap];
-        RELEASE_SAFELY(_tap);
+//        RELEASE_SAFELY(_tap);
     }
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self addGestureRecognizer:_tap];
@@ -171,7 +171,7 @@
 - (void)removeTap{
     if(_tap){
         [self removeGestureRecognizer:_tap];
-        RELEASE_SAFELY(_tap)
+//        RELEASE_SAFELY(_tap)
     }
 }
 

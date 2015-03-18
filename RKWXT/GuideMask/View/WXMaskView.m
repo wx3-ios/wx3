@@ -18,9 +18,7 @@
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_imageView);
     _delegate = nil;
-    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame

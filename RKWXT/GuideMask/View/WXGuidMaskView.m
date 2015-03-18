@@ -21,7 +21,7 @@
 @synthesize eGuideMaskPage = _eGuideMaskPage;
 
 - (void)dealloc{
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame guidMaskViewArray:(NSArray*)imageArray{
@@ -48,9 +48,7 @@
             guideView = aGuideView;
         }
         if(guideView){
-           [self addSubview:guideView];
-            RELEASE_SAFELY(guideView);
-        }
+           [self addSubview:guideView];        }
     }
     return self;
 }
@@ -58,10 +56,10 @@
 //最后一页
 - (WXUIView *)lastPage:(UIImage*)image{
     CGSize size = self.bounds.size;
-    WXUIView *lastPage = [[[WXUIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)] autorelease];
+    WXUIView *lastPage = [[WXUIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)] ;
     CGSize imgSize = image.size;
-    WXUIImageView *imgView = [[[WXUIImageView alloc] initWithFrame:CGRectMake((size.width-imgSize.width)*0.5,
-                             0.5*(size.height-imgSize.height), imgSize.width, imgSize.height)] autorelease];
+    WXUIImageView *imgView = [[WXUIImageView alloc] initWithFrame:CGRectMake((size.width-imgSize.width)*0.5,
+                             0.5*(size.height-imgSize.height), imgSize.width, imgSize.height)] ;
     [imgView setImage:image];
     [lastPage addSubview:imgView];
     return lastPage;
@@ -70,12 +68,12 @@
 - (NSArray*)imageViewsWithImages:(NSArray*)imageArray{
     NSInteger count = [imageArray count];
     NSMutableArray *imgViewArray = [NSMutableArray array];
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for(int i = 0; i < count; i++){
         UIImage *img = [imageArray objectAtIndex:i];
         if(i != count - 1){
             CGSize imgSize = img.size;
-            WXUIImageView *imgView = [[[WXUIImageView alloc] initWithFrame:CGRectMake(0, 0, imgSize.width, imgSize.height)] autorelease];
+            WXUIImageView *imgView = [[WXUIImageView alloc] initWithFrame:CGRectMake(0, 0, imgSize.width, imgSize.height)] ;
             [imgView setImage:img];
             [imgViewArray addObject:imgView];
         }else{
@@ -84,7 +82,7 @@
             [imgViewArray addObject:lastView];
         }
     }
-    [pool drain];
+//    [pool drain];
     return imgViewArray;
 }
 

@@ -24,12 +24,8 @@
 @synthesize defaultSelectedIndex = _defaultSelectedIndex;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_textArray);
-    RELEASE_SAFELY(_iconArray);
-    RELEASE_SAFELY(_cstTitle);
     _delegate = nil;
-    RELEASE_SAFELY(_tableView);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (void)viewDidLoad
@@ -61,7 +57,7 @@
     static NSString *identifier = @"cell";
     WXUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] ;
     }
     NSInteger row = indexPath.row;
     NSString *text = [_textArray objectAtIndex:row];

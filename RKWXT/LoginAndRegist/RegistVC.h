@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "BaseViewController.h"
 
 @interface RegistVC : BaseVC
 

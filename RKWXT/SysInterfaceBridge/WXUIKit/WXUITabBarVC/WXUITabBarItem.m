@@ -22,15 +22,7 @@
 @synthesize status = _status;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_repeatSelectedTitle);
-    RELEASE_SAFELY(_repeatSelectedTitleColor);
-    RELEASE_SAFELY(_repeatSelectedImage);
-    RELEASE_SAFELY(_repeatSelectedBgImage);
-    RELEASE_SAFELY(_selectedBarItemTitle);
-    RELEASE_SAFELY(_selectedBarItemTitleColor);
-    RELEASE_SAFELY(_selectedBarItemImage);
-    RELEASE_SAFELY(_selectedBarItemBgImage);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (WXUITabBarItem*)tabBarItem{
