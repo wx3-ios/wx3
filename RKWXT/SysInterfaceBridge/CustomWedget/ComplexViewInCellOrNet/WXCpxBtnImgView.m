@@ -17,15 +17,14 @@
 @implementation WXCpxBtnImgView
 
 - (void)dealloc{
-    RELEASE_SAFELY(_imgBtn);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _imgBtn = [[WXUIButton buttonWithType:UIButtonTypeCustom] retain];
+        _imgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         [_imgBtn setFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
         [_imgBtn setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleWidth|
          UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleHeight];

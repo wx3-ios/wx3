@@ -23,10 +23,7 @@
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_pageControl);
-    RELEASE_SAFELY(_scrollView);
-    RELEASE_SAFELY(_guideArray);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame guideArray:(NSArray*)guideArray{

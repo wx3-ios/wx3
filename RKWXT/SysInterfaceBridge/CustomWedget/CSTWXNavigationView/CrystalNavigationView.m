@@ -22,8 +22,7 @@
 @implementation CrystalNavigationView
 
 - (void)dealloc{
-    RELEASE_SAFELY(_maskView);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame{

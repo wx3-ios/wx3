@@ -41,7 +41,7 @@ object = _object;
 
 - (void)dealloc {
     self.object = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (void)prepareForReuse {

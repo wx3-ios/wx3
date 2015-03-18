@@ -291,6 +291,7 @@
 		775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BB1AB971CF0039B129 /* WXTUIButton.m */; };
 		775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */; };
 		775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BF1AB971CF0039B129 /* WXTUITextField.m */; };
+		775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */; };
 		776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 776CFFA71AB1257B000A1D84 /* ARLabel.m */; };
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
@@ -304,10 +305,6 @@
 		77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93F81AAFE79D0021A816 /* NSString+Helper.m */; };
 		77DB93FC1AAFE7BB0021A816 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93FB1AAFE7BB0021A816 /* Tools.m */; };
 		77DB93FF1AAFE7DC0021A816 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93FE1AAFE7DC0021A816 /* ChineseToPinyin.m */; };
-		77DB94151AAFE9DD0021A816 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB940E1AAFE9DD0021A816 /* ProgressView.m */; };
-		77DB94161AAFE9DD0021A816 /* LoadLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94101AAFE9DD0021A816 /* LoadLabel.m */; };
-		77DB94171AAFE9DD0021A816 /* UIColor+WXT.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94121AAFE9DD0021A816 /* UIColor+WXT.m */; };
-		77DB94181AAFE9DD0021A816 /* WXTWaitingHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94141AAFE9DD0021A816 /* WXTWaitingHud.m */; };
 		77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB941A1AAFEB9B0021A816 /* NSString+Size.m */; };
 		77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB941F1AAFED400021A816 /* UIViewController+Helper.m */; };
 		77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94231AAFEE1F0021A816 /* MZLoadingCircle.m */; };
@@ -832,6 +829,8 @@
 		775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUITableViewCell.m; sourceTree = "<group>"; };
 		775843BE1AB971CF0039B129 /* WXTUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUITextField.h; sourceTree = "<group>"; };
 		775843BF1AB971CF0039B129 /* WXTUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUITextField.m; sourceTree = "<group>"; };
+		775843C61AB9830F0039B129 /* WXBaseRemotImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXBaseRemotImageView.h; sourceTree = "<group>"; };
+		775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXBaseRemotImageView.m; sourceTree = "<group>"; };
 		776CFFA61AB1257B000A1D84 /* ARLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLabel.h; sourceTree = "<group>"; };
 		776CFFA71AB1257B000A1D84 /* ARLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLabel.m; sourceTree = "<group>"; };
 		777059AC1AAFDEC40097526C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localize.strings; sourceTree = "<group>"; };
@@ -855,14 +854,6 @@
 		77DB93FB1AAFE7BB0021A816 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		77DB93FD1AAFE7DB0021A816 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyin.h; sourceTree = "<group>"; };
 		77DB93FE1AAFE7DC0021A816 /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyin.m; sourceTree = "<group>"; };
-		77DB940D1AAFE9DD0021A816 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
-		77DB940E1AAFE9DD0021A816 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
-		77DB940F1AAFE9DD0021A816 /* LoadLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadLabel.h; sourceTree = "<group>"; };
-		77DB94101AAFE9DD0021A816 /* LoadLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadLabel.m; sourceTree = "<group>"; };
-		77DB94111AAFE9DD0021A816 /* UIColor+WXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WXT.h"; sourceTree = "<group>"; };
-		77DB94121AAFE9DD0021A816 /* UIColor+WXT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WXT.m"; sourceTree = "<group>"; };
-		77DB94131AAFE9DD0021A816 /* WXTWaitingHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTWaitingHud.h; sourceTree = "<group>"; };
-		77DB94141AAFE9DD0021A816 /* WXTWaitingHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTWaitingHud.m; sourceTree = "<group>"; };
 		77DB94191AAFEB9B0021A816 /* NSString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
 		77DB941A1AAFEB9B0021A816 /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		77DB941E1AAFED400021A816 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
@@ -1622,6 +1613,8 @@
 		775841DC1AB95A300039B129 /* ComplexViewInCellOrNet */ = {
 			isa = PBXGroup;
 			children = (
+				775843C61AB9830F0039B129 /* WXBaseRemotImageView.h */,
+				775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */,
 				775841DF1AB95A300039B129 /* WXCpxBaseView.h */,
 				775841E01AB95A300039B129 /* WXCpxBaseView.m */,
 				775841E11AB95A300039B129 /* WXCpxBtnImgView.h */,
@@ -2066,7 +2059,6 @@
 		77DB93F21AAFE7310021A816 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				77DB940C1AAFE9D70021A816 /* WxtWaitView */,
 				77DB93FD1AAFE7DB0021A816 /* ChineseToPinyin.h */,
 				77DB93FE1AAFE7DC0021A816 /* ChineseToPinyin.m */,
 				77DB93FA1AAFE7BB0021A816 /* Tools.h */,
@@ -2090,21 +2082,6 @@
 				77DB93F81AAFE79D0021A816 /* NSString+Helper.m */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		77DB940C1AAFE9D70021A816 /* WxtWaitView */ = {
-			isa = PBXGroup;
-			children = (
-				77DB940D1AAFE9DD0021A816 /* ProgressView.h */,
-				77DB940E1AAFE9DD0021A816 /* ProgressView.m */,
-				77DB940F1AAFE9DD0021A816 /* LoadLabel.h */,
-				77DB94101AAFE9DD0021A816 /* LoadLabel.m */,
-				77DB94111AAFE9DD0021A816 /* UIColor+WXT.h */,
-				77DB94121AAFE9DD0021A816 /* UIColor+WXT.m */,
-				77DB94131AAFE9DD0021A816 /* WXTWaitingHud.h */,
-				77DB94141AAFE9DD0021A816 /* WXTWaitingHud.m */,
-			);
-			path = WxtWaitView;
 			sourceTree = "<group>";
 		};
 		77DB941D1AAFED330021A816 /* Controllers */ = {
@@ -2394,7 +2371,6 @@
 				7758432E1AB95A300039B129 /* WXUISwitch.m in Sources */,
 				7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */,
 				2563B4371AAADA9B00C04227 /* RegisterViewController.m in Sources */,
-				77DB94171AAFE9DD0021A816 /* UIColor+WXT.m in Sources */,
 				775842C61AB95A300039B129 /* it_lib_db.cpp in Sources */,
 				775842E81AB95A300039B129 /* TelNOOBJ.m in Sources */,
 				120A2BEC1AB135DD006A28B1 /* SignViewController.m in Sources */,
@@ -2422,7 +2398,6 @@
 				775842CA1AB95A300039B129 /* it_lib_sms.cpp in Sources */,
 				77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */,
 				775842BD1AB95A300039B129 /* WXGuidMaskView.m in Sources */,
-				77DB94181AAFE9DD0021A816 /* WXTWaitingHud.m in Sources */,
 				77DB94351AAFF2120021A816 /* RecentCell.m in Sources */,
 				7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */,
 				775842CD1AB95A300039B129 /* ss.cpp in Sources */,
@@ -2443,6 +2418,7 @@
 				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
 				775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */,
 				775843101AB95A300039B129 /* WXMutiScanView.m in Sources */,
+				775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */,
 				775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */,
 				77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */,
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
@@ -2453,7 +2429,6 @@
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				775843B21AB96FF20039B129 /* PinYinSearchOBJ.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
-				77DB94161AAFE9DD0021A816 /* LoadLabel.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
 				120A2BEE1AB135DD006A28B1 /* T_SignGifView.m in Sources */,
 				775843151AB95A300039B129 /* WXTouchEventView.m in Sources */,
@@ -2575,7 +2550,6 @@
 				775843AD1AB96FF20039B129 /* pinyin.c in Sources */,
 				7758433D1AB95A300039B129 /* ContacterEntity.m in Sources */,
 				7758433F1AB95A300039B129 /* WXContacterEntity.m in Sources */,
-				77DB94151AAFE9DD0021A816 /* ProgressView.m in Sources */,
 				775843731AB96A4B0039B129 /* ContactBaseEntity+Detail.m in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				120A2C081AB142D4006A28B1 /* LoginVC.m in Sources */,

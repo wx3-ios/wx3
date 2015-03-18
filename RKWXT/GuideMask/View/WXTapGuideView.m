@@ -19,9 +19,7 @@
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_maskView);
-    RELEASE_SAFELY(_imgView);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame image:(UIImage*)image{

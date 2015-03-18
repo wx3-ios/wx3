@@ -9,7 +9,7 @@
 #import "WXCpxBtnImgView.h"
 
 @interface WXBaseRemotImageView : WXCpxBtnImgView
-@property (nonatomic,readonly)UIImage * initImage;
+@property (nonatomic,readonly)UIImage * initiImage;
 @property (nonatomic,readonly)UIImage *failedImage;
 
 #pragma mark 虚函数 在子类执行

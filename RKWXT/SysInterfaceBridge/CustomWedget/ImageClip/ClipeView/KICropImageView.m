@@ -64,9 +64,8 @@
 
 - (void)setImage:(UIImage *)image {
     if (image != _image) {
-        [_image release];
         _image = nil;
-        _image = [image retain];
+        _image = image;
     }
     [[self imageView] setImage:_image];
     
@@ -114,7 +113,7 @@
     CGFloat x = (CGRectGetWidth(self.bounds) - width) / 2;
     CGFloat y = (CGRectGetHeight(self.bounds) - height) / 2;
 
-    [[self maskView] setCropSize:_cropSize];
+//    [[self maskView] setCropSize:_cropSize];
     
     CGFloat top = y;
     CGFloat left = x;
@@ -151,15 +150,11 @@
 }
 
 - (void)dealloc {
-    [_scrollView release];
     _scrollView = nil;
-    [_imageView release];
     _imageView = nil;
-    [_maskView release];
     _maskView = nil;
-    [_image release];
     _image = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 @end
 
