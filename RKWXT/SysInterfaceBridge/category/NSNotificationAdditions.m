@@ -66,8 +66,6 @@
   if( userInfo ) [info setObject:userInfo forKey:@"userInfo"];
     
   [[self class] performSelectorOnMainThread:@selector( _postNotificationName: ) withObject:info waitUntilDone:wait];
-
-  [info release]; //add by gaokaiming [reslove memory leak]
 }
 
 + (void) _postNotificationName:(NSDictionary *) info

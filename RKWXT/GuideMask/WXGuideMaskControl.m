@@ -29,8 +29,7 @@ static NSString *g_imageFileArrays[E_GuideMaskPage_Invalid] ={
 @implementation WXGuideMaskControl
 
 - (void)dealloc{
-    RELEASE_SAFELY(_imageArrays);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (WXGuideMaskControl*)shared{
@@ -49,7 +48,7 @@ static NSString *g_imageFileArrays[E_GuideMaskPage_Invalid] ={
         return nil;
     }
     
-    NSMutableArray *imageArray = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *imageArray = [[NSMutableArray alloc] init] ;
     for(NSString *file in array){
         UIImage *img = [UIImage imagePathed:file];
         if(img){
@@ -95,7 +94,6 @@ static NSString *g_imageFileArrays[E_GuideMaskPage_Invalid] ={
             guideMaskView.eGuideMaskPage = page;
             [superView addSubview:guideMaskView];
             [superView bringSubviewToFront:guideMaskView];
-            RELEASE_SAFELY(guideMaskView);
         }
     }
 }

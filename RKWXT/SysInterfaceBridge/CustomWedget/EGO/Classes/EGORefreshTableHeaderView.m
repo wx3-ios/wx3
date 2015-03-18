@@ -308,11 +308,7 @@
 - (void)dealloc {
 	
 	_delegate=nil;
-	[_activityView release];
-	[_statusLabel release];
-	[_arrowImage release];
-	[_lastUpdatedLabel release];
-    [super dealloc];
+//    [super dealloc];
 }
 
 

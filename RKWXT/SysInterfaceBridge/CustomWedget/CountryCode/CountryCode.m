@@ -27,11 +27,7 @@ enum
 @implementation CountryOBJ
 
 - (void)dealloc{
-    RELEASE_SAFELY(_cnDes);
-    RELEASE_SAFELY(_enDes);
-    RELEASE_SAFELY(_countryCode);
-    RELEASE_SAFELY(_abbreviation)
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (BOOL)isAbbreviation:(NSString*)abbreviation{
@@ -57,8 +53,7 @@ enum
 @synthesize countryOBJList = _countryOBJArray;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_countryOBJArray);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (CountryCode*)sharedCountryCode{
@@ -84,7 +79,7 @@ enum
     NSString *path = [[NSBundle mainBundle] pathForResource:@"countryOBJ" ofType:nil];
     NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     NSArray *countryDatas = [TxtparseOBJ parseDataFrom:string itemSeparator:@"\n" elementSeparator:@"\t"];
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for (NSArray *countryOBJ in countryDatas) {
         if([countryOBJ count] != E_CountryElement_Invalid){
             continue;
@@ -104,9 +99,8 @@ enum
         obj.timeZone = timeZone;
         
         [_countryOBJArray addObject:obj];
-        [obj release]; obj = nil;
     }
-    [pool drain];
+//    [pool drain];
 }
 
 - (NSInteger)indexOfCountryCode:(NSString*)countryCode{

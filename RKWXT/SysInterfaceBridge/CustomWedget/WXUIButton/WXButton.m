@@ -36,22 +36,6 @@
 @synthesize iconImageView = _iconImageView;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_titleLabel);
-    RELEASE_SAFELY(_iconImageView);
-    RELEASE_SAFELY(_backgroundImageView);
-    
-    RELEASE_SAFELY(_normalTitle);
-    RELEASE_SAFELY(_selectedTitle);
-    RELEASE_SAFELY(_disableTitle);
-    RELEASE_SAFELY(_normalTitleColor);
-    RELEASE_SAFELY(_selectedTitleColor);
-    RELEASE_SAFELY(_disableTitleColor);
-    RELEASE_SAFELY(_normalImage);
-    RELEASE_SAFELY(_selectedImage);
-    RELEASE_SAFELY(_disableImage);
-    RELEASE_SAFELY(_normalBgImage);
-    RELEASE_SAFELY(_selectedBgImage);
-    RELEASE_SAFELY(_disableBgImage);
     [super dealloc];
 }
 

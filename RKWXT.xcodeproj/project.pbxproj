@@ -236,8 +236,6 @@
 		7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842651AB95A300039B129 /* WXUIActionSheet.m */; };
 		7758431E1AB95A300039B129 /* WXUIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842671AB95A300039B129 /* WXUIActivityIndicatorView.m */; };
 		7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842691AB95A300039B129 /* WXUIAlertView.m */; };
-		775843201AB95A300039B129 /* WXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758426C1AB95A300039B129 /* WXButton.m */; };
-		775843211AB95A300039B129 /* WXTouchEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758426E1AB95A300039B129 /* WXTouchEventView.m */; };
 		775843221AB95A300039B129 /* WXUIBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842701AB95A300039B129 /* WXUIBaseButton.m */; };
 		775843231AB95A300039B129 /* WXUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842721AB95A300039B129 /* WXUIButton.m */; };
 		775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842741AB95A300039B129 /* WXUIImagePickerController.m */; };
@@ -293,6 +291,12 @@
 		775843B01AB96FF20039B129 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843A51AB96FF20039B129 /* PinyinHelper.m */; };
 		775843B11AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 775843A61AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt */; };
 		775843B21AB96FF20039B129 /* PinYinSearchOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843A81AB96FF20039B129 /* PinYinSearchOBJ.m */; };
+		775843C01AB971CF0039B129 /* UIFont+WXT.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843B51AB971CF0039B129 /* UIFont+WXT.m */; };
+		775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843B71AB971CF0039B129 /* UIImage+Render.m */; };
+		775843C21AB971CF0039B129 /* UIView+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843B91AB971CF0039B129 /* UIView+Render.m */; };
+		775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BB1AB971CF0039B129 /* WXTUIButton.m */; };
+		775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */; };
+		775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BF1AB971CF0039B129 /* WXTUITextField.m */; };
 		776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 776CFFA71AB1257B000A1D84 /* ARLabel.m */; };
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
@@ -731,10 +735,6 @@
 		775842671AB95A300039B129 /* WXUIActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIActivityIndicatorView.m; sourceTree = "<group>"; };
 		775842681AB95A300039B129 /* WXUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIAlertView.h; sourceTree = "<group>"; };
 		775842691AB95A300039B129 /* WXUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIAlertView.m; sourceTree = "<group>"; };
-		7758426B1AB95A300039B129 /* WXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXButton.h; sourceTree = "<group>"; };
-		7758426C1AB95A300039B129 /* WXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXButton.m; sourceTree = "<group>"; };
-		7758426D1AB95A300039B129 /* WXTouchEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTouchEventView.h; sourceTree = "<group>"; };
-		7758426E1AB95A300039B129 /* WXTouchEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTouchEventView.m; sourceTree = "<group>"; };
 		7758426F1AB95A300039B129 /* WXUIBaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIBaseButton.h; sourceTree = "<group>"; };
 		775842701AB95A300039B129 /* WXUIBaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIBaseButton.m; sourceTree = "<group>"; };
 		775842711AB95A300039B129 /* WXUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIButton.h; sourceTree = "<group>"; };
@@ -838,6 +838,18 @@
 		775843A61AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		775843A71AB96FF20039B129 /* PinYinSearchOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinSearchOBJ.h; sourceTree = "<group>"; };
 		775843A81AB96FF20039B129 /* PinYinSearchOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinSearchOBJ.m; sourceTree = "<group>"; };
+		775843B41AB971CF0039B129 /* UIFont+WXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+WXT.h"; sourceTree = "<group>"; };
+		775843B51AB971CF0039B129 /* UIFont+WXT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+WXT.m"; sourceTree = "<group>"; };
+		775843B61AB971CF0039B129 /* UIImage+Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Render.h"; sourceTree = "<group>"; };
+		775843B71AB971CF0039B129 /* UIImage+Render.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Render.m"; sourceTree = "<group>"; };
+		775843B81AB971CF0039B129 /* UIView+Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Render.h"; sourceTree = "<group>"; };
+		775843B91AB971CF0039B129 /* UIView+Render.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Render.m"; sourceTree = "<group>"; };
+		775843BA1AB971CF0039B129 /* WXTUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUIButton.h; sourceTree = "<group>"; };
+		775843BB1AB971CF0039B129 /* WXTUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUIButton.m; sourceTree = "<group>"; };
+		775843BC1AB971CF0039B129 /* WXTUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUITableViewCell.h; sourceTree = "<group>"; };
+		775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUITableViewCell.m; sourceTree = "<group>"; };
+		775843BE1AB971CF0039B129 /* WXTUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUITextField.h; sourceTree = "<group>"; };
+		775843BF1AB971CF0039B129 /* WXTUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUITextField.m; sourceTree = "<group>"; };
 		776CFFA61AB1257B000A1D84 /* ARLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLabel.h; sourceTree = "<group>"; };
 		776CFFA71AB1257B000A1D84 /* ARLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLabel.m; sourceTree = "<group>"; };
 		777059AC1AAFDEC40097526C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localize.strings; sourceTree = "<group>"; };
@@ -1207,6 +1219,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				775843B31AB971CF0039B129 /* WXTUIKit */,
 				775843931AB96FF20039B129 /* WXTutils */,
 				7758435E1AB96A4B0039B129 /* WXTCall */,
 				775843441AB95FAC0039B129 /* Service */,
@@ -1895,10 +1908,6 @@
 		7758426A1AB95A300039B129 /* WXUIButton */ = {
 			isa = PBXGroup;
 			children = (
-				7758426B1AB95A300039B129 /* WXButton.h */,
-				7758426C1AB95A300039B129 /* WXButton.m */,
-				7758426D1AB95A300039B129 /* WXTouchEventView.h */,
-				7758426E1AB95A300039B129 /* WXTouchEventView.m */,
 				7758426F1AB95A300039B129 /* WXUIBaseButton.h */,
 				775842701AB95A300039B129 /* WXUIBaseButton.m */,
 			);
@@ -2048,6 +2057,25 @@
 				775843A61AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt */,
 			);
 			path = PinYin;
+			sourceTree = "<group>";
+		};
+		775843B31AB971CF0039B129 /* WXTUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				775843B41AB971CF0039B129 /* UIFont+WXT.h */,
+				775843B51AB971CF0039B129 /* UIFont+WXT.m */,
+				775843B61AB971CF0039B129 /* UIImage+Render.h */,
+				775843B71AB971CF0039B129 /* UIImage+Render.m */,
+				775843B81AB971CF0039B129 /* UIView+Render.h */,
+				775843B91AB971CF0039B129 /* UIView+Render.m */,
+				775843BA1AB971CF0039B129 /* WXTUIButton.h */,
+				775843BB1AB971CF0039B129 /* WXTUIButton.m */,
+				775843BC1AB971CF0039B129 /* WXTUITableViewCell.h */,
+				775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */,
+				775843BE1AB971CF0039B129 /* WXTUITextField.h */,
+				775843BF1AB971CF0039B129 /* WXTUITextField.m */,
+			);
+			path = WXTUIKit;
 			sourceTree = "<group>";
 		};
 		77DB93E51AAFE6EA0021A816 /* Model */ = {
@@ -2445,6 +2473,7 @@
 				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
 				775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */,
 				775843101AB95A300039B129 /* WXMutiScanView.m in Sources */,
+				775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */,
 				77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */,
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
@@ -2463,8 +2492,10 @@
 				775842CE1AB95A300039B129 /* ss_g711.cpp in Sources */,
 				7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */,
 				775842F21AB95A300039B129 /* WXDropListView.m in Sources */,
+				775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */,
 				120A2BF21AB135DE006A28B1 /* UserInfoCommonCell.m in Sources */,
 				77DB94341AAFF2120021A816 /* ContactsCell.m in Sources */,
+				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
 				775843711AB96A4B0039B129 /* ContactsViewController.m in Sources */,
 				775842DC1AB95A300039B129 /* UIImage+Extend.m in Sources */,
 				775842C31AB95A300039B129 /* it_lib_audio.cpp in Sources */,
@@ -2478,6 +2509,7 @@
 				126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */,
 				775843181AB95A300039B129 /* ProgressView.m in Sources */,
 				775842EB1AB95A300039B129 /* ZoneCodeOBJ.m in Sources */,
+				775843C21AB971CF0039B129 /* UIView+Render.m in Sources */,
 				775842F11AB95A300039B129 /* WXDropListItem.m in Sources */,
 				12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */,
 				775843A91AB96FF20039B129 /* KFLoger.m in Sources */,
@@ -2506,7 +2538,6 @@
 				775842C21AB95A300039B129 /* it_lib_addr_book.cpp in Sources */,
 				775842D31AB95A300039B129 /* NSDate+Compare.m in Sources */,
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
-				775843201AB95A300039B129 /* WXButton.m in Sources */,
 				775843AE1AB96FF20039B129 /* PinyinFormatter.m in Sources */,
 				775843071AB95A300039B129 /* RemotionFileEntity.m in Sources */,
 				775842E11AB95A300039B129 /* WXBaseRemotImageView.m in Sources */,
@@ -2585,14 +2616,15 @@
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				120A2C081AB142D4006A28B1 /* LoginVC.m in Sources */,
 				775842E41AB95A300039B129 /* WXMiltiViewCell.m in Sources */,
+				775843C01AB971CF0039B129 /* UIFont+WXT.m in Sources */,
 				775842E51AB95A300039B129 /* WXRemotionImgBtn.m in Sources */,
 				775842EC1AB95A300039B129 /* CrystalNavigationView.m in Sources */,
 				7758430F1AB95A300039B129 /* WXMultiGuideView.m in Sources */,
 				775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */,
 				12D0C8801AB6C0E60039A197 /* VersionEntity.m in Sources */,
+				775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */,
 				775842C11AB95A300039B129 /* it_lib.cpp in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,
-				775843211AB95A300039B129 /* WXTouchEventView.m in Sources */,
 				775842C91AB95A300039B129 /* it_lib_log.cpp in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,

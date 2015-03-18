@@ -30,8 +30,7 @@
 @synthesize selectedIndex = _selectedIndex;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_tabBarItemArray);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame
