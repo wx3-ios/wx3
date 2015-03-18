@@ -51,7 +51,9 @@
 		label.font = [UIFont boldSystemFontOfSize:13.0f];
 		label.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		label.backgroundColor = [UIColor clearColor];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED <= 60000
 		label.textAlignment = UITextAlignmentCenter;
+#endif
 		[self addSubview:label];
 		_statusLabel=label;
 		
@@ -244,10 +246,7 @@
 - (void)dealloc {
 	
 	_delegate=nil;
-	[_activityView release];
-	[_statusLabel release];
-	[_arrowImage release];
-    [super dealloc];
+//    [super dealloc];
 }
 
 

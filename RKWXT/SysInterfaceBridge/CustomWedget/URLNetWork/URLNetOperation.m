@@ -12,8 +12,7 @@
 @synthesize key;
 
 - (void)dealloc{
-    RELEASE_SAFELY(key);
-    [super dealloc];
+//    [super dealloc];
 }
 
 @end

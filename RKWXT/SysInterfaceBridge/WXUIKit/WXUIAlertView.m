@@ -12,8 +12,7 @@
 @synthesize alertInfo = _alertInfo;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_alertInfo);
-    [super dealloc];
+//    [super dealloc];
 }
 - (id)initWithFrame:(CGRect)frame
 {

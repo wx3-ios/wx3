@@ -50,7 +50,7 @@
     BOOL pullTableIsLoadingMore;
     
     // Delegate
-    id<PullTableViewDelegate> pullDelegate;
+    __unsafe_unretained id<PullTableViewDelegate> pullDelegate;
     
 }
 

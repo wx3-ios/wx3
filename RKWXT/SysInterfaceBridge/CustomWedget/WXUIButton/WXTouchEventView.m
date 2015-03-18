@@ -33,7 +33,7 @@
 
 - (void)dealloc{
     
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)init{

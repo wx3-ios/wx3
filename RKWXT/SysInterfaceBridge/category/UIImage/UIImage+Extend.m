@@ -36,7 +36,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
 -(UIImage *)makeRoundWithcornerWidth:(int)cornerWidth cornerHeight:(int)cornerHeight
 {
 	UIImage * newImage = nil;
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+//    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     int w = self.size.width;
     int h = self.size.height;
     
@@ -54,7 +54,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGImageRef imageMasked = CGBitmapContextCreateImage(context);
     CGContextRelease(context);
     CGColorSpaceRelease(colorSpace);
-    [pool drain];
+//    [pool drain];
     
     newImage = [UIImage imageWithCGImage:imageMasked];
     CGImageRelease(imageMasked);
@@ -270,7 +270,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
         double originSize = size.width*size.height;
         double rat = (MAXSize.width*MAXSize.height)/originSize;
         rat = sqrt(rat);
-        self = [self scaleTo:rat];
+//        self = [self scaleTo:rat];
     }
     //再压缩图片
     NSData *data = UIImageJPEGRepresentation(self, 1.0);

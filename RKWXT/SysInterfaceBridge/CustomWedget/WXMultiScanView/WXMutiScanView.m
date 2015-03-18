@@ -40,10 +40,7 @@ typedef struct {
 - (void)dealloc{
     _delegate = nil;
     _dataSource = nil;
-    RELEASE_SAFELY(_scrollView);
-    RELEASE_SAFELY(_usingCellDictionary);
-    RELEASE_SAFELY(_reusingCellArray);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame direction:(E_MultiScanViewDirection)direction{

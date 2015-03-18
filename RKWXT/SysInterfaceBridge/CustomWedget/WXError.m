@@ -11,13 +11,11 @@
 @implementation WXError
 
 - (void)dealloc{
-    RELEASE_SAFELY(_errorMessage);
-    RELEASE_SAFELY(_errorInfo);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (id)errorWithCode:(NSInteger)code errorMessage:(NSString*)errorMessage{
-    WXError *error = [[[WXError alloc] init] autorelease];
+    WXError *error = [[WXError alloc] init] ;
     if(error){
         [error setErrorCode:code];
         [error setErrorMessage:errorMessage];

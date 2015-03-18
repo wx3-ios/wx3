@@ -39,14 +39,7 @@ typedef enum {
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_menuBtn);
-    RELEASE_SAFELY(_tableView);
-    RELEASE_SAFELY(_font);
-    RELEASE_SAFELY(_textColor);
-    
-    RELEASE_SAFELY(_bgView);
-    RELEASE_SAFELY(_clipeView);
-    [super dealloc];
+//    [super dealloc];
 }
 - (id)initWithFrame:(CGRect)frame menuButton:(WXUIButton*)memuButton dropListFrame:(CGRect)dropListFrame{
     if(self = [super initWithFrame:frame]){
@@ -126,7 +119,7 @@ typedef enum {
     static NSString *identifier = @"identifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] ;
         [cell.textLabel setFont:[self currentFont]];
         [cell.textLabel setTextColor:[self currentTextColor]];
         [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
