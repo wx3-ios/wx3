@@ -18,9 +18,7 @@
 @synthesize backGroundView = _bgImageView;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_bgImageView);
-	RELEASE_SAFELY(_idTag);
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame

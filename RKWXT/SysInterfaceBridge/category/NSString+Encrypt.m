@@ -135,8 +135,6 @@
 		result = [result stringByReplacingCharactersInRange:NSMakeRange(x, 1) withString:[NSString stringWithCharacters:&ch_y length:1]];
 	}
 	
-	[iS release];
-	[iK release];
 	
 	return result;
 }
@@ -145,16 +143,16 @@
 	return [[self class] HloveyRC4:self key:key];
 }
 
-- (NSString*)urlEncoding{
-	NSString *newString = NSMakeCollectable([(NSString *)CFURLCreateStringByAddingPercentEscapes(
-					 kCFAllocatorDefault,
-					 (CFStringRef)self, NULL, CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"),
-					 CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease]);
-	if (newString) {
-		return newString;
-	}
-	return @"";
-}
+//- (NSString*)urlEncoding{
+//	NSString *newString = NSMakeCollectable(CFURLCreateStringByAddingPercentEscapes(
+//					 kCFAllocatorDefault,
+//					 (CFStringRef)self, NULL, CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"),
+//					 CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+//	if (newString) {
+//		return newString;
+//	}
+//	return @"";
+//}
 
 - (NSString *)hexString{
 	NSData *myD = [self dataUsingEncoding:NSUTF8StringEncoding];

@@ -17,8 +17,7 @@
 @implementation WXMiltiViewCell
 
 - (void)dealloc{
-    RELEASE_SAFELY(_WXViews);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{

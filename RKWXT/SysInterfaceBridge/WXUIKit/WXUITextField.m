@@ -51,7 +51,6 @@
         [leftView setFrame:rect];
         [aLeftView addSubview:leftView];
         [self setLeftView:aLeftView];
-        RELEASE_SAFELY(aLeftView);
     }
 }
 @end

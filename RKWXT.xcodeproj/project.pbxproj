@@ -232,7 +232,6 @@
 		7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842651AB95A300039B129 /* WXUIActionSheet.m */; };
 		7758431E1AB95A300039B129 /* WXUIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842671AB95A300039B129 /* WXUIActivityIndicatorView.m */; };
 		7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842691AB95A300039B129 /* WXUIAlertView.m */; };
-		775843221AB95A300039B129 /* WXUIBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842701AB95A300039B129 /* WXUIBaseButton.m */; };
 		775843231AB95A300039B129 /* WXUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842721AB95A300039B129 /* WXUIButton.m */; };
 		775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842741AB95A300039B129 /* WXUIImagePickerController.m */; };
 		775843251AB95A300039B129 /* WXUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842761AB95A300039B129 /* WXUIImageView.m */; };
@@ -722,8 +721,6 @@
 		775842671AB95A300039B129 /* WXUIActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIActivityIndicatorView.m; sourceTree = "<group>"; };
 		775842681AB95A300039B129 /* WXUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIAlertView.h; sourceTree = "<group>"; };
 		775842691AB95A300039B129 /* WXUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIAlertView.m; sourceTree = "<group>"; };
-		7758426F1AB95A300039B129 /* WXUIBaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIBaseButton.h; sourceTree = "<group>"; };
-		775842701AB95A300039B129 /* WXUIBaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIBaseButton.m; sourceTree = "<group>"; };
 		775842711AB95A300039B129 /* WXUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIButton.h; sourceTree = "<group>"; };
 		775842721AB95A300039B129 /* WXUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIButton.m; sourceTree = "<group>"; };
 		775842731AB95A300039B129 /* WXUIImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIImagePickerController.h; sourceTree = "<group>"; };
@@ -1883,8 +1880,6 @@
 		7758426A1AB95A300039B129 /* WXUIButton */ = {
 			isa = PBXGroup;
 			children = (
-				7758426F1AB95A300039B129 /* WXUIBaseButton.h */,
-				775842701AB95A300039B129 /* WXUIBaseButton.m */,
 			);
 			path = WXUIButton;
 			sourceTree = "<group>";
@@ -2563,7 +2558,6 @@
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
 				775843B01AB96FF20039B129 /* PinyinHelper.m in Sources */,
 				775842CC1AB95A300039B129 /* sqlite3.c in Sources */,
-				775843221AB95A300039B129 /* WXUIBaseButton.m in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
 				12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,

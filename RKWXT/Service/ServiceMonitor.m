@@ -14,7 +14,7 @@
 
 - (void)dealloc{
     [self removeServiceOBS];
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (ServiceMonitor*)sharedServiceMonitor{

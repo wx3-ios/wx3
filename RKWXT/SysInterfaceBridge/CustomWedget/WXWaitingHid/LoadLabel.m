@@ -20,8 +20,7 @@
 @implementation LoadLabel
 
 - (void)dealloc{
-	[_loadingText release];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame{

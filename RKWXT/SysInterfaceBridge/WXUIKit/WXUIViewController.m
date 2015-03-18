@@ -24,8 +24,8 @@
     //全频阻塞
     WXWaitingHud *_fullScreenHud;
     
-    CSTWXNavigationView *_cstNavigationView;
-    WXUIView *_baseView;
+    __unsafe_unretained CSTWXNavigationView *_cstNavigationView;
+    __unsafe_unretained WXUIView *_baseView;
     WXUIImageView *_bgImageView;
     WXUIView *_netTipView;
 }
@@ -37,17 +37,10 @@
 @synthesize openKeyboardNotification = _openKeyboardNotification;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_waitingView);
-    RELEASE_SAFELY(_hud);
     [self showFullScreenHud:NO withTip:nil];
-    RELEASE_SAFELY(_fullScreenHud);
-    RELEASE_SAFELY(_baseView);
-    RELEASE_SAFELY(_cstNavigationView);
-    RELEASE_SAFELY(_bgImageView);
-    RELEASE_SAFELY(_netTipView);
     [self removeServiceOBS];
     [self removeKeyboardNotification];
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (void)viewDidLoad
@@ -109,7 +102,7 @@
 			[_fullScreenHud stopAniamte];
 			[_fullScreenHud setHidden:YES];
             [_fullScreenHud removeFromSuperview];
-            RELEASE_SAFELY(_fullScreenHud);
+
         }
     }
 }
@@ -119,7 +112,7 @@
     _netTipView = [[WXUIView alloc] initWithFrame:CGRectMake(0, yOffset, self.bounds.size.width, kNetWorkTipHeight)];
     [_netTipView setBackgroundColor:[UIColor whiteColor]];
     [_netTipView setBackgroundImage:[UIImage imageNamed:@"disconnectBg.png"]];
-    WXUILabel *label = [[[WXUILabel alloc] initWithFrame:_netTipView.bounds] autorelease];
+    WXUILabel *label = [[WXUILabel alloc] initWithFrame:_netTipView.bounds] ;
     [label setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
     [label setTextColor:WXColorWithInteger(0xffffff)];
     [label setTextAlignment:UITextAlignmentCenter];
@@ -156,13 +149,13 @@
 }
 
 - (void)netTipDelayFinished{
-    [self detectAndShowServiceConnectTip];
+//    [self detectAndShowServiceConnectTip];
 }
 
-- (void)detectAndShowServiceConnectTip{
-    BOOL isServiceConnected = [[ServiceMonitor sharedServiceMonitor] isConnected];
-    [self showNetTipView:!isServiceConnected animated:NO];
-}
+//- (void)detectAndShowServiceConnectTip{
+//    BOOL isServiceConnected = [[ServiceMonitor sharedServiceMonitor] isConnected];
+//    [self showNetTipView:!isServiceConnected animated:NO];
+//}
 
 - (void)showNetTipView:(BOOL)show animated:(BOOL)animated{
 	if([self isContanerVC]){
@@ -226,7 +219,7 @@
     if(_cstNavigationView){
         return;
     }
-    _cstNavigationView = [[CSTWXNavigationView cstWXNavigationView] retain];
+    _cstNavigationView = [CSTWXNavigationView cstWXNavigationView] ;
     [self.view addSubview:_cstNavigationView];
     
     CGRect navRect = _cstNavigationView.frame;
@@ -399,7 +392,7 @@
 
 - (void)detectAndShowServiceConnectTipIfNotInDelay{
     if(![NetTipDelay sharedNetTipDelay].isInDelay){
-        [self detectAndShowServiceConnectTip];
+//        [self detectAndShowServiceConnectTip];
     }
 }
 
@@ -409,7 +402,7 @@
         [self addKeyboardNotification];
     }
 //    [self detectAndShowServiceConnectTipIfNotInDelay];
-	[self showNetTipView:![NetWorkMonitor sharedNetWorkMonitor].isConnected animated:YES];
+//	[self showNetTipView:![NetWorkMonitor sharedNetWorkMonitor].isConnected animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

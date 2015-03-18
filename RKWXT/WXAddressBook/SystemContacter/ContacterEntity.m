@@ -32,16 +32,11 @@ static const char *s_ipPre[] ={
 };
 
 - (void)dealloc{
-    RELEASE_SAFELY(_createTime);
-    RELEASE_SAFELY(_modifyTime);
-    RELEASE_SAFELY(_name);
-    RELEASE_SAFELY(_phoneNumbers);
-    RELEASE_SAFELY(_icon);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (id)contacterEntityWithABPerson:(ABRecordRef)person{
-    return [[[self alloc] initWithPerson:person] autorelease];
+    return [[self alloc] initWithPerson:person] ;
 }
 
 - (id)initWithPerson:(ABRecordRef)person{
@@ -52,7 +47,7 @@ static const char *s_ipPre[] ={
             //号码
             self.phoneNumbers = phoneNumbers;
             //姓名
-            NSString *name = (NSString*)ABRecordCopyCompositeName(person);
+            NSString *name = (__bridge NSString*)ABRecordCopyCompositeName(person);
             if(!name){
                 name = [_phoneNumbers objectAtIndex:0];
             }
@@ -61,10 +56,10 @@ static const char *s_ipPre[] ={
             ABRecordID recordID = ABRecordGetRecordID(person);
             [self setRecordID:recordID];
             //创建时间
-            NSDate *createDate = ABRecordCopyValue(person, kABPersonCreationDateProperty);
+            NSDate *createDate = (__bridge NSDate*)ABRecordCopyValue(person, kABPersonCreationDateProperty);
             [self setCreateTime:createDate];
             //修改时间
-            [self setModifyTime:ABRecordCopyValue(person, kABPersonModificationDateProperty)];
+            [self setModifyTime:(__bridge NSDate*)ABRecordCopyValue(person, kABPersonModificationDateProperty)];
         }else{
             return nil;
         }
@@ -79,7 +74,7 @@ static const char *s_ipPre[] ={
     //如果没有联系人就返回空~
     if(phoneCount > 0){
         for(int i = 0; i < phoneCount; i++){
-            NSString *phone = ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+            NSString *phone = (__bridge NSString *)ABMultiValueCopyValueAtIndex(phoneNumbers, i);
             NSString *nakePhone = [self nakedPhone:phone];
             if(nakePhone){
                 NSString *phoneWithCountryCode  = [[TelNOOBJ sharedTelNOOBJ] addCountryCode:@"+86" toTelNumber:nakePhone];
@@ -193,13 +188,13 @@ static const char *s_ipPre[] ={
     return icon;
 }
 
-- (E_ContactRightView)rightViewType{
-    E_ContactRightView rightView = E_ContactRightView_None;
-    if([[self matchWXContacter] count] > 0){
-        rightView = E_ContactRightView_ShowWXIcon;
-    }
-    return rightView;
-}
+//- (E_ContactRightView)rightViewType{
+//    E_ContactRightView rightView = E_ContactRightView_None;
+//    if([[self matchWXContacter] count] > 0){
+//        rightView = E_ContactRightView_ShowWXIcon;
+//    }
+//    return rightView;
+//}
 
 - (BOOL)matchingString:(NSString *)string{
     if(!string || [string length] == 0){
