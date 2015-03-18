@@ -27,7 +27,7 @@
 #define kMargin 8.0
 
 static inline NSString * PSCollectionKeyForIndex(NSInteger index) {
-    return [NSString stringWithFormat:@"%d", index];
+    return [NSString stringWithFormat:@"%ld", index];
 }
 
 static inline NSInteger PSCollectionIndexForKey(NSString *key) {
@@ -202,7 +202,7 @@ indexToRectMap = _indexToRectMap;
     self.visibleViews = nil;
     self.viewKeysToRemove = nil;
     self.indexToRectMap = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
 #pragma mark - Setters
@@ -211,8 +211,8 @@ indexToRectMap = _indexToRectMap;
     if (_loadingView && [_loadingView respondsToSelector:@selector(removeFromSuperview)]) {
         [_loadingView removeFromSuperview];
     }
-    [_loadingView release], _loadingView = nil;
-    _loadingView = [loadingView retain];
+    _loadingView = nil;
+    _loadingView = loadingView ;
     
     [self addSubview:_loadingView];
 }
@@ -404,7 +404,7 @@ indexToRectMap = _indexToRectMap;
             
             // Setup gesture recognizer
             if ([newView.gestureRecognizers count] == 0) {
-                PSCollectionViewTapGestureRecognizer *gr = [[[PSCollectionViewTapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectView:)] autorelease];
+                PSCollectionViewTapGestureRecognizer *gr = [[PSCollectionViewTapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectView:)] ;
                 gr.delegate = self;
                 [newView addGestureRecognizer:gr];
                 newView.userInteractionEnabled = YES;
@@ -421,9 +421,9 @@ indexToRectMap = _indexToRectMap;
     PSCollectionViewCell *view = [self.reuseableViews anyObject];
     if (view) {
         // Found a reusable view, remove it from the set
-        [view retain];
+
         [self.reuseableViews removeObject:view];
-        [view autorelease];
+
     }
     
     return view;

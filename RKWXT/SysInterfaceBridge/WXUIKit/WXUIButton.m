@@ -15,8 +15,7 @@
 @implementation WXUIButton
 
 - (void)dealloc{
-	RELEASE_SAFELY(_buttonInfo);
-	[super dealloc];
+//	[super dealloc];
 }
 
 + (WXUIButton*)buttonWithFrame:(CGRect)frame Target:(id)target selector:(SEL)selector

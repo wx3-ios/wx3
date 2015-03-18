@@ -21,8 +21,7 @@
 @implementation WXFileManager
 
 - (void)dealloc{
-    RELEASE_SAFELY(_cache);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (WXFileManager*)sharedWXFileManager{

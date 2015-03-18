@@ -19,9 +19,8 @@
 @implementation NetWorkMonitor
 
 - (void)dealloc{
-	RELEASE_SAFELY(_hostReach);
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 + (NetWorkMonitor*)sharedNetWorkMonitor{

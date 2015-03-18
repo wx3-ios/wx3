@@ -9,7 +9,7 @@
 #define kMaxIconLength (180*1000)
 
 #import "WXService.h"
-#import "PersonalInfo.h"
+//#import "PersonalInfo.h"
 
 
 @implementation WXService (UserInfo)
@@ -57,9 +57,9 @@
     return YES;
 }
 
-- (BOOL)updateUserInfo:(PersonalInfo*)entity{
-    return [self updateUserInfo:entity.nickName realName:entity.realName bindNumber:entity.bindNumber sex:entity.sex birth:entity.birthString qq:entity.qq signature:entity.signature address:entity.address area:entity.area];
-}
+//- (BOOL)updateUserInfo:(PersonalInfo*)entity{
+//    return [self updateUserInfo:entity.nickName realName:entity.realName bindNumber:entity.bindNumber sex:entity.sex birth:entity.birthString qq:entity.qq signature:entity.signature address:entity.address area:entity.area];
+//}
 
 - (BOOL)updateUserInfo:(NSString*)nickName realName:(NSString*)realName bindNumber:(NSString*)bindNumber
                    sex:(E_Sex)sex birth:(NSString*)birth qq:(NSString*)qq signature:(NSString*)signature
