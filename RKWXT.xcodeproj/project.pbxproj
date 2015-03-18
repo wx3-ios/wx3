@@ -95,8 +95,6 @@
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
-		1296743B1AB6EB9300597B17 /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1296743A1AB6EB9300597B17 /* ContactDetailVC.m */; };
-		1296743F1AB6EDF900597B17 /* ContactDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1296743E1AB6EDF900597B17 /* ContactDetailCell.m */; };
 		12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D039F01AB3489200DD7E56 /* BaseVC.m */; };
 		12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8661AB673910039A197 /* wxtRecharge@2x.png */; };
 		12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */; };
@@ -441,10 +439,6 @@
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
 		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
-		129674391AB6EB9300597B17 /* ContactDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailVC.h; sourceTree = "<group>"; };
-		1296743A1AB6EB9300597B17 /* ContactDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailVC.m; sourceTree = "<group>"; };
-		1296743D1AB6EDF900597B17 /* ContactDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailCell.h; sourceTree = "<group>"; };
-		1296743E1AB6EDF900597B17 /* ContactDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailCell.m; sourceTree = "<group>"; };
 		12D039EF1AB3489200DD7E56 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
 		12D039F01AB3489200DD7E56 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 		12D0C8661AB673910039A197 /* wxtRecharge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxtRecharge@2x.png"; sourceTree = "<group>"; };
@@ -1127,25 +1121,6 @@
 			path = ContactInfo;
 			sourceTree = "<group>";
 		};
-		129674381AB6EB7000597B17 /* ContactDetail */ = {
-			isa = PBXGroup;
-			children = (
-				129674391AB6EB9300597B17 /* ContactDetailVC.h */,
-				1296743A1AB6EB9300597B17 /* ContactDetailVC.m */,
-				1296743C1AB6EDDF00597B17 /* UI */,
-			);
-			path = ContactDetail;
-			sourceTree = "<group>";
-		};
-		1296743C1AB6EDDF00597B17 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				1296743D1AB6EDF900597B17 /* ContactDetailCell.h */,
-				1296743E1AB6EDF900597B17 /* ContactDetailCell.m */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
 		12D0C86F1AB684FE0039A197 /* AboutWxtInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,7 +1194,6 @@
 				2563B3F21AAAD74000C04227 /* LoginViewController.m */,
 				12D039EF1AB3489200DD7E56 /* BaseVC.h */,
 				12D039F01AB3489200DD7E56 /* BaseVC.m */,
-				129674381AB6EB7000597B17 /* ContactDetail */,
 				12D0C86F1AB684FE0039A197 /* AboutWxtInfo */,
 				126CA3F21AB2B71100E08A0B /* WXTUITabBar */,
 				126CA3D71AB278EB00E08A0B /* WXTFind */,
@@ -2363,7 +2337,6 @@
 				775842B81AB95A300039B129 /* WXUnreadSysMsgOBJ.m in Sources */,
 				77DB93FC1AAFE7BB0021A816 /* Tools.m in Sources */,
 				775843331AB95A300039B129 /* WXUITableViewCell.m in Sources */,
-				1296743B1AB6EB9300597B17 /* ContactDetailVC.m in Sources */,
 				775843271AB95A300039B129 /* WXUINavigationController+SubVCPosition.m in Sources */,
 				775842ED1AB95A300039B129 /* CSTWXNavigationView.m in Sources */,
 				775842CF1AB95A300039B129 /* ss_md5.cpp in Sources */,
@@ -2391,7 +2364,6 @@
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
 				775843761AB96A4B0039B129 /* WXContactOptEntity.m in Sources */,
 				775843391AB95A300039B129 /* WXUIWebView.m in Sources */,
-				1296743F1AB6EDF900597B17 /* ContactDetailCell.m in Sources */,
 				775842DD1AB95A300039B129 /* UIImage+Render.m in Sources */,
 				775843161AB95A300039B129 /* WXUIBaseButton.m in Sources */,
 				775843741AB96A4B0039B129 /* ContactBaseEntity.m in Sources */,

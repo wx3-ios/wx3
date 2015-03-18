@@ -7,12 +7,12 @@
 //
 
 #import "BaseVC.h"
-#import "WXTWaitingHud.h"
+#import "WXWaitingHud.h"
 
 #define kTopLayerZPosition 10000.0
 
 @interface BaseVC (){
-    WXTWaitingHud *_hud;
+    WXWaitingHud *_hud;
     UIView *_baseView;
     UIActivityIndicatorView *_waitingView;
 }
@@ -44,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _hud = [[WXTWaitingHud alloc] initWithParentView:self.view];
+    _hud = [[WXWaitingHud alloc] initWithParentView:self.view];
     [_hud setHidden:YES];
     [_hud setFrame:CGRectMake(0, IPHONE_STATUS_BAR_HEIGHT+44, IPHONE_SCREEN_WIDTH, self.view.bounds.size.height-(IPHONE_STATUS_BAR_HEIGHT+44))];
 }
