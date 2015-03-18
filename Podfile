@@ -17,3 +17,6 @@ pod 'CocoaLumberjack', '~> 1.9.0'  #日志
 #pod 'FTUtils', '~> 1.1.1' #动画
 #pod 'AUIAnimatedText' #Label动画
 #pod 'BOZPongRefreshControl', '~> 1.0.0' #tableview refresh
+#pod 'Reachability', '~>  3.2'
+pod 'OpenUDID', '~> 1.0.0'
+#pod 'ASIHTTPRequest', '~> 1.8.2'
