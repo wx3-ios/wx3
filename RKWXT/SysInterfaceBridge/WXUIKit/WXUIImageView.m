@@ -21,6 +21,6 @@
 
 + (WXUIImageView*)imageViewWithImage:(UIImage*)image{
     WXUIImageView *imageView = [[WXUIImageView alloc] initWithImage:image];
-    return [imageView autorelease];
+    return imageView ;
 }
 @end

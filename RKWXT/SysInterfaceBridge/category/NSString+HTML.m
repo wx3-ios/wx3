@@ -124,7 +124,7 @@
         NSString *retString = [result stringByDecodingHTMLEntities];
         
         // Return
-        return [retString retain];
+        return retString ;
         
     }
 }

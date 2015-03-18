@@ -51,8 +51,7 @@ typedef enum {
 @implementation CustomMadeOBJ
 
 - (void)dealloc{
-    RELEASE_SAFELY(_customMadeDic);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (CustomMadeOBJ*)sharedCustomMadeOBJS{
@@ -67,7 +66,7 @@ typedef enum {
 - (id)init{
     if(self = [super init]){
         NSString *path = [[NSBundle mainBundle] pathForResource:@"CustomMade" ofType:@"plist"];
-        _customMadeDic = [[NSDictionary dictionaryWithContentsOfFile:path] retain];
+        _customMadeDic = [NSDictionary dictionaryWithContentsOfFile:path] ;
     }
     return self;
 }
@@ -116,30 +115,30 @@ typedef enum {
 	return isOld;
 }
 
-- (NSString*)distributeAddress{
-	BOOL isDistributeServerAddressOld = [self isDistributeServerAddressOld];
-	if (isDistributeServerAddressOld){
-		return D_DistributeServerOldAddress;
-	}else {
-		return D_DistributeServerNewAddress;
-	}
-}
+//- (NSString*)distributeAddress{
+//	BOOL isDistributeServerAddressOld = [self isDistributeServerAddressOld];
+//	if (isDistributeServerAddressOld){
+//		return D_DistributeServerOldAddress;
+//	}else {
+//		return D_DistributeServerNewAddress;
+//	}
+//}
 
-- (NSString *)serverAddress{
-	NSString *serverAddress = nil;
-	switch (kAppServiceAddressType) {
-		case E_Distribute:
-			serverAddress = [self distributeAddress];
-			break;
-		case E_DistributeBeta:
-			serverAddress = D_DistributeBetaServerAddress;
-			break;
-		case E_Develop:
-			serverAddress = D_DevelopServiceAddress;
-			break;
-	}
-	return serverAddress;
-}
+//- (NSString *)serverAddress{
+//	NSString *serverAddress = nil;
+//	switch (kAppServiceAddressType) {
+//		case E_Distribute:
+//			serverAddress = [self distributeAddress];
+//			break;
+//		case E_DistributeBeta:
+//			serverAddress = D_DistributeBetaServerAddress;
+//			break;
+//		case E_Develop:
+//			serverAddress = D_DevelopServiceAddress;
+//			break;
+//	}
+//	return serverAddress;
+//}
 
 #pragma mark 引导页~
 - (NSDictionary*)guideConfig{

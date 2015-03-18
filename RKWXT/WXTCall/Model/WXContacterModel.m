@@ -13,8 +13,8 @@
 #define kFirstKey @"*"
 
 typedef struct {
-    NSString *name;
-    NSString *iconStr;
+   __unsafe_unretained NSString *name;
+   __unsafe_unretained NSString *iconStr;
 }S_OptContactInfo;
 
 typedef enum {
@@ -45,11 +45,7 @@ static S_OptContactInfo pOptInfo[] = {
 
 - (void)dealloc{
     _delegate = nil;
-    RELEASE_SAFELY(_contactOPTList);
-    RELEASE_SAFELY(_sysContacterDic);
-    RELEASE_SAFELY(_keys);
-    RELEASE_SAFELY(_filterArray);
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)init{
@@ -68,23 +64,23 @@ static S_OptContactInfo pOptInfo[] = {
 - (void)setContactOpts{
     [_contactOPTList removeAllObjects];
     NSInteger count = sizeof(pOptInfo)/sizeof(S_OptContactInfo);
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for(int i = 0; i  < count; i++){
         S_OptContactInfo optInfo = pOptInfo[i];
         WXContactOptEntity *entity = [WXContactOptEntity optEntityWithName:optInfo.name icon:[UIImage imageNamed:optInfo.iconStr] numberRight:0];
         [_contactOPTList addObject:entity];
     }
-    [pool drain];
+//    [pool drain];
 }
 
 - (void)initSystemContacters{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for(char ch = 'A'; ch <= 'Z'; ch++){
         NSMutableArray *array = [NSMutableArray array];
         [_sysContacterDic setObject:array forKey:[NSString stringWithFormat:@"%c",ch]];
     }
     [_sysContacterDic setObject:[NSMutableArray array] forKey:@"#"];
-    [pool drain];
+//    [pool drain];
 }
 
 - (void)emptySystemContacters{
@@ -142,14 +138,14 @@ static S_OptContactInfo pOptInfo[] = {
     return nil;
 }
 
-- (void)matchSearchStringList:(NSString*)string{
-    NSArray *sysContacterList = [AddressBook sharedAddressBook].contactList;
-    for(ContacterEntity *entity in sysContacterList){
-        if([entity matchingString:string]){
-            [_filterArray addObject:entity];
-        }
-    }
-}
+//- (void)matchSearchStringList:(NSString*)string{
+//    NSArray *sysContacterList = [AddressBook sharedAddressBook].contactList;
+//    for(ContacterEntity *entity in sysContacterList){
+//        if([entity matchingString:string]){
+//            [_filterArray addObject:entity];
+//        }
+//    }
+//}
 
 - (void)removeMatchingContact{
     [_filterArray removeAllObjects];

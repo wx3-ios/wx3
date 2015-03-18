@@ -19,9 +19,8 @@
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_textField);
     _delegate = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{

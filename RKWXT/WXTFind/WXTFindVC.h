@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "BaseViewController.h"
+//#import "BaseViewController.h"
 
-@interface WXTFindVC : BaseViewController
+@interface WXTFindVC : BaseVC
 
 @end

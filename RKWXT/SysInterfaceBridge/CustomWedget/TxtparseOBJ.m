@@ -34,14 +34,14 @@
     NSMutableArray *itemArray = [NSMutableArray array];
     NSArray *subStrings = [self elementsFrom:originString separator:itemSeparator];
     
-    NSAutoreleasePool *poor = [[NSAutoreleasePool alloc] init];
+//    NSAutoreleasePool *poor = [[NSAutoreleasePool alloc] init];
     for(NSString *string in subStrings){
         NSArray *_subStrings = [self elementsFrom:string separator:elementSeparator];
         if(_subStrings && [_subStrings count] > 0){
             [itemArray addObject:_subStrings];
         }
     }
-    [poor drain];
+//    [poor drain];
     return itemArray;
 }
 @end

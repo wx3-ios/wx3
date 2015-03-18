@@ -11,13 +11,11 @@
 @implementation WXContactOptEntity
 
 - (void)dealloc{
-    RELEASE_SAFELY(_name);
-    RELEASE_SAFELY(_icon);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (WXContactOptEntity*)optEntityWithName:(NSString*)name icon:(UIImage*)icon numberRight:(NSInteger)numberRight{
-    WXContactOptEntity *entity = [[[WXContactOptEntity alloc] init] autorelease];
+    WXContactOptEntity *entity = [[WXContactOptEntity alloc] init] ;
     [entity setName:name];
     [entity setIcon:icon];
     [entity setNumberRight:numberRight];

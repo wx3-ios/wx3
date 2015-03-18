@@ -10,7 +10,8 @@
 #import "WXTFindVC.h"
 #import "WXTMallVC.h"
 #import "UserInfoVC.h"
-#import "CallVC.h"
+//#import "CallVC.h"
+#import "ContactsViewController.h"
 
 #define kTabBarHeight (50.0)
 
@@ -176,7 +177,7 @@
 //初始化子控制器
 -(void)createViewController{
     WXTMallVC *recentCall = [[WXTMallVC alloc] init];
-    CallVC *callview = [[CallVC alloc]init];
+    ContactsViewController *callview = [[ContactsViewController alloc]init];
     WXTFindVC *phoneView = [[WXTFindVC alloc]init];
     UserInfoVC *infoVC = [[UserInfoVC alloc] init];
     views = [NSArray arrayWithObjects:recentCall,callview,phoneView,infoVC, nil];

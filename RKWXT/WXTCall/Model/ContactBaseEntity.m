@@ -30,7 +30,6 @@
 @implementation ContactPhone
 
 - (void)dealloc{
-    RELEASE_SAFELY(_phone);
-    [super dealloc];
+//    [super dealloc];
 }
 @end
