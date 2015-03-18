@@ -24,14 +24,9 @@
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_filterArray);
-    RELEASE_SAFELY(_searchDisplayController);
-    RELEASE_SAFELY(_dataList);
 #warning 泄露留以后解决~
-    //    RELEASE_SAFELY(_searchBar);
-    RELEASE_SAFELY(_tableView);
     _delegate = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame searchContentsVC:(WXUIViewController*)contentsController
