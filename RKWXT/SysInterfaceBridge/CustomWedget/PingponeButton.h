@@ -12,7 +12,7 @@
 - (void)touchUpInside:(id)sender;
 @end
 @interface PingponeButton : UIView{
-    id<PingponeButtonDelegate> mDelegate;
+    __unsafe_unretained id<PingponeButtonDelegate> mDelegate;
     //是否为乒乓按钮
     BOOL mbPingpongButton;
 }

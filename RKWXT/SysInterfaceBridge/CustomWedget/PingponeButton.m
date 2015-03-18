@@ -26,20 +26,19 @@
 
 - (void)dealloc{
     self.delegate = nil;
-    [_button release]; _button = nil;
-    [_label release]; _label = nil;
-    [_buttonInfo release]; _buttonInfo = nil;
-    
-    [_titleNormalColor release]; _titleNormalColor = nil;
-    [_titleSelectColor release]; _titleSelectColor = nil;
-    [_titleDisableColor release]; _titleDisableColor = nil;
-    [super dealloc];
+//    [_button release]; _button = nil;
+//    [_label release]; _label = nil;
+//    [_buttonInfo release]; _buttonInfo = nil;
+//    [_titleNormalColor release]; _titleNormalColor = nil;
+//    [_titleSelectColor release]; _titleSelectColor = nil;
+//    [_titleDisableColor release]; _titleDisableColor = nil;
+//    [super dealloc];
 }
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _button = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _button = [UIButton buttonWithType:UIButtonTypeCustom] ;
         [self addSubview:_button];
         _label = [[UILabel alloc] init];
         [_label setBackgroundColor:[UIColor clearColor]];
@@ -83,16 +82,16 @@
     CGSize btnSize = CGSizeZero;
     CGSize titleSize = CGSizeZero;
     
-    _titleNormalColor = [normalColor retain];
+    _titleNormalColor = normalColor;
     [_label setTextColor:normalColor];
     btnSize = normalImage.size;
     
     if(selectColor){
-        _titleSelectColor = [selectColor retain];
+        _titleSelectColor = selectColor;
         
     }
     if(disableColor){
-        _titleDisableColor = [disableColor retain];
+        _titleDisableColor = disableColor;
     }
     [_label setText:title];
     UIFont *titleFont = [UIFont systemFontOfSize:14.0];

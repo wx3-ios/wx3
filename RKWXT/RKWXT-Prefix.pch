@@ -22,24 +22,39 @@
 	#import <Foundation/Foundation.h>
     #import "DDTTYLogger.h"    
     #import "Tools.h"
-	#import "BaseViewController.h"
+//	#import "BaseViewController.h"
 	#import "Constants.h"
 	#import "UserAgent.h"
 
     #import "UIFont+WXT.h"
     #import "UIColor+WXT.h"
-    #import "UtilTool.h"
-    #import "KFLoger.h"
     #import "WXTUIButton.h"
     #import "Common.h"
     #import "WXTUserOBJ.h"
     #import "UIDevice+screenType.h"
     #import "BaseVC.h"
-#endif
 
+#import "SysInterfaceBridge.h"
+#import "UtilTool.h"
+#import "KFLoger.h"
+#import "WXFileManager.h"
+#import "WXUserdefault.h"
+#import "WXUserOBJ.h"
+#import "WXPopAlertView.h"
+#import "NSNotificationAdditions.h"
+#import "WXError.h"
+//#import "CoordinateController.h"
+#import "CustomMade.h"
+//#import "ServiceMonitor.h"
+#import "AddressBook.h"
+#import "WXContactMonitor.h"
+#import "Appdelegate.h"
+#import "NSString+Size.h"
+#endif
+/*
 #define __DEBUG__
 #ifdef __DEBUG__
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
 static const int ddLogLevel = LOG_LEVEL_OFF;
-#endif
+#endif*/

@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <AddressBook/AddressBook.h>
-#import "ContactBaseEntity.h"
+//#import "ContactBaseEntity.h"
 
-@interface ContacterEntity : ContactBaseEntity
+@interface ContacterEntity : NSObject
 //定位联系人
 @property (nonatomic,assign)NSInteger recordID;
 @property (nonatomic,retain)NSString *name;

@@ -13,9 +13,9 @@
 @synthesize baseDelegate = _baseDelegate;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_cellInfo);
+//    RELEASE_SAFELY(_cellInfo);
     _baseDelegate = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -50,13 +50,13 @@
         case E_CellDefaultAccessoryViewType_HasNext:
         {
             UIImage *image = [UIImage imageNamed:@"arrow.png"];
-            UIImageView *imageView = [[[UIImageView alloc] initWithImage:image] autorelease];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image] ;
             accessoryView = imageView;
         }
             break;
         case E_CellDefaultAccessoryViewType_Switch:
         {
-            WXUISwitch *wxSwitch = [[[WXUISwitch alloc] init] autorelease];
+            WXUISwitch *wxSwitch = [[WXUISwitch alloc] init] ;
             [wxSwitch addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
             accessoryView = wxSwitch;
         }

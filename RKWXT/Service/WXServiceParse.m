@@ -8,7 +8,7 @@
 
 #import "WXServiceParse.h"
 #import "ServiceCommon.h"
-#import "MyOrderListObj.h"
+//#import "MyOrderListObj.h"
 
 //改变登陆状态的返回值
 enum{

@@ -13,7 +13,7 @@
 
 @interface CSTWXNavigationView()
 {
-    WXUILabel *_titleLable;
+    __unsafe_unretained WXUILabel *_titleLable;
 }
 @property (nonatomic,retain)UIView*_leftNavigationItem;
 @property (nonatomic,retain)UIView *_rightNavigationItem;
@@ -23,10 +23,10 @@
 @synthesize _leftNavigationItem,_rightNavigationItem,titleLable = _titleLable;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_leftNavigationItem);
-    RELEASE_SAFELY(_rightNavigationItem);
-    RELEASE_SAFELY(_titleLable);
-    [super dealloc];
+//    RELEASE_SAFELY(_leftNavigationItem);
+//    RELEASE_SAFELY(_rightNavigationItem);
+//    RELEASE_SAFELY(_titleLable);
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -54,7 +54,7 @@
     if(isIOS7){
         rect.size.height += IPHONE_STATUS_BAR_HEIGHT;
     }
-    return [[[self alloc] initWithFrame:rect] autorelease];
+    return [[self alloc] initWithFrame:rect] ;
 }
 
 - (void)setLeftNavigationItem:(UIView*)btn{

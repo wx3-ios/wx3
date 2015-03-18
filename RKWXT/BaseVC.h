@@ -21,7 +21,7 @@ typedef enum {
 
 @interface BaseVC : UIViewController
 
-- (void)showWaitViewMode:(E_WaiteView_Mode)mode tip:(NSString*)tip;
+- (void)showWaitViewMode:(E_WaiteView_Mode1)mode tip:(NSString*)tip;
 - (void)showWaitView:(UIView*)onView;
 - (void)unShowWaitView;
 

@@ -19,15 +19,15 @@
 @synthesize state = _state;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_btn);
-    RELEASE_SAFELY(_activityIndicatorView);
-    [super dealloc];
+//    RELEASE_SAFELY(_btn);
+//    RELEASE_SAFELY(_activityIndicatorView);
+//    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame buttonType:(UIButtonType)buttonType{
     if(self = [super initWithFrame:frame]){
         CGSize size = frame.size;
-        _btn = [[WXUIButton buttonWithType:buttonType] retain];
+        _btn = [WXUIButton buttonWithType:buttonType] ;
         [_btn setFrame:CGRectMake(0, 0, size.width, size.height)];
         [self addSubview:_btn];
         
