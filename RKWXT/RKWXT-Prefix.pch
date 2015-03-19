@@ -41,7 +41,7 @@
 #import "WXPopAlertView.h"
 #import "NSNotificationAdditions.h"
 #import "WXError.h"
-//#import "CoordinateController.h"
+#import "CoordinateController.h"
 #import "CustomMade.h"
 //#import "ServiceMonitor.h"
 #import "AddressBook.h"

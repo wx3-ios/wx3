@@ -8,7 +8,7 @@
 
 #import "WXKeyPadVC.h"
 #import "KeyPadView.h"
-//#import "WXCallUITabBarVC.h"
+#import "WXCallUITabBarVC.h"
 #import "CallRecord.h"
 #import "CallHistoryCell.h"
 #import "SimpleContacterCell.h"
@@ -386,9 +386,9 @@ typedef enum{
     }
 }
 
-//- (WXCallUITabBarVC*)tabBarVC{
-//    return (WXCallUITabBarVC*)self.parentViewController;
-//}
+- (WXCallUITabBarVC*)tabBarVC{
+    return (WXCallUITabBarVC*)self.parentViewController;
+}
 
 - (void)upKeyBoardButtonClicked{
     if([_keyPadNumber length] > 0){
@@ -405,28 +405,28 @@ typedef enum{
 //	BOOL showTabBar = YES;
     CGRect keyPadRect;
 	CGSize size = self.bounds.size;
-//    switch (status) {
-//        case E_KeyPad_Form_Down:
-//			[self.tabBarVC setTabBarHidden:NO aniamted:NO completion:^{
-//			}];
-//			size = self.bounds.size;
-//            keyPadRect = CGRectMake(0, size.height, size.width, kKeyPadHeight);
-//            break;
-//        case E_KeyPad_Form_PartUp:
-//			[self.tabBarVC setTabBarHidden:NO aniamted:NO completion:^{
-//			}];
-//			size = self.bounds.size;
-//            keyPadRect = CGRectMake(0, size.height - kKeyPadHeight + kBtnHeight, size.width, kKeyPadHeight);
-//            break;
-//        case E_KeyPad_Form_TotalUp:
-//			[self.tabBarVC setTabBarHidden:YES aniamted:NO completion:^{
-//			}];
-//			size = self.bounds.size;
-//            keyPadRect = CGRectMake(0, size.height - kKeyPadHeight, size.width, kKeyPadHeight);
-//            break;
-//        default:
-//            break;
-//    }
+    switch (status) {
+        case E_KeyPad_Form_Down:
+			[self.tabBarVC setTabBarHidden:NO aniamted:NO completion:^{
+			}];
+			size = self.bounds.size;
+            keyPadRect = CGRectMake(0, size.height, size.width, kKeyPadHeight);
+            break;
+        case E_KeyPad_Form_PartUp:
+			[self.tabBarVC setTabBarHidden:NO aniamted:NO completion:^{
+			}];
+			size = self.bounds.size;
+            keyPadRect = CGRectMake(0, size.height - kKeyPadHeight + kBtnHeight, size.width, kKeyPadHeight);
+            break;
+        case E_KeyPad_Form_TotalUp:
+			[self.tabBarVC setTabBarHidden:YES aniamted:NO completion:^{
+			}];
+			size = self.bounds.size;
+            keyPadRect = CGRectMake(0, size.height - kKeyPadHeight, size.width, kKeyPadHeight);
+            break;
+        default:
+            break;
+    }
     [_keyPad setStatus:status];
     if(animated){
         [UIView animateWithDuration:0.3 animations:^{

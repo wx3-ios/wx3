@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AddressBook/AddressBook.h>
-//#import "ContactBaseEntity.h"
+#import "ContactBaseEntity.h"
 
 @interface ContacterEntity : NSObject
 //定位联系人

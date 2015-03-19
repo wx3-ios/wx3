@@ -188,13 +188,13 @@ static const char *s_ipPre[] ={
     return icon;
 }
 
-//- (E_ContactRightView)rightViewType{
-//    E_ContactRightView rightView = E_ContactRightView_None;
-//    if([[self matchWXContacter] count] > 0){
-//        rightView = E_ContactRightView_ShowWXIcon;
-//    }
-//    return rightView;
-//}
+- (E_ContactRightView)rightViewType{
+    E_ContactRightView rightView = E_ContactRightView_None;
+    if([[self matchWXContacter] count] > 0){
+        rightView = E_ContactRightView_ShowWXIcon;
+    }
+    return rightView;
+}
 
 - (BOOL)matchingString:(NSString *)string{
     if(!string || [string length] == 0){

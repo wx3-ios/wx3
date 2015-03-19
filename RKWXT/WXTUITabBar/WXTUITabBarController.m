@@ -13,6 +13,7 @@
 //#import "CallVC.h"
 #import "ContactsViewController.h"
 #import "WXContacterVC.h"
+#import "WXKeyPadVC.h"
 #define kTabBarHeight (50.0)
 
 @interface WXTUITabBarController(){

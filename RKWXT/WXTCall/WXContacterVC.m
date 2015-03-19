@@ -9,7 +9,7 @@
 #import "WXContacterVC.h"
 #import "WXContacterModel.h"
 #import "WXContacterCell.h"
-
+#import "AddressBook.h"
 #define kSectionHeadViewHeight (20.0)
 
 @interface WXContacterVC ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate>{
@@ -32,16 +32,19 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UtilTool colorWithHexString:@"#efeff4"];
     [self setCSTTitle:@"通讯录"];
+    
+//    [self loadSegmentControl];
+    
     [self setBackNavigationBarItem];
     [self addOBS];
     _model = [[WXContacterModel alloc] init];
     CGSize size = self.bounds.size;
-    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 50, size.width, size.height-46)];
+    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 50 + 20, ScreenWidth, ScreenHeight- 100)];
 //    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
     [_tableView setDataSource:self];
     [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];
     [_tableView setDelegate:self];
-    [self addSubview:_tableView];
+    [self.view addSubview:_tableView];
     
     CGFloat searchBarHeight = 44;
     _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 0, size.width, searchBarHeight)];
@@ -57,6 +60,29 @@
     [_searchDisplayController setDelegate:self];
 }
 
+-(void)loadSegmentControl{
+    CGFloat segWidth = 180;
+    CGFloat segHeight = 30;
+    NSArray *nameArr = @[@"通话",@"通讯录"];
+    _segmentControl = [[UISegmentedControl alloc] initWithItems:nameArr];
+    _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT+NAVIGATION_BAR_HEGITH-segHeight, segWidth, segHeight);
+    if(isIOS6){
+        _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
+    }
+    [_segmentControl setSelectedSegmentIndex:0];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
+    _segmentControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+#endif
+    [_segmentControl setBorderRadian:1.0 width:0.2 color:[UIColor grayColor]];
+    [_segmentControl setBackgroundColor:[UIColor whiteColor]];
+    [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
+    [self.navigationController.navigationBar addSubview:_segmentControl];
+}
+
+-(void)segmentControlChange:(UISegmentedControl *)segmentControl{
+    
+}
+
 - (void)addOBS{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(sysContacterChanged)
@@ -69,6 +95,10 @@
 - (void)sysContacterChanged{
     [_model loadSystemContacters];
     [_tableView reloadData];
+}
+
+-(void)getAllPeopleContact{
+    [[AddressBook sharedAddressBook] loadContact];
 }
 
 - (void)wxContactersChanged{
@@ -189,27 +219,27 @@
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     
-//    if(tableView == _tableView){
-//        if(section == 0){
-//            switch (row) {
-////            case E_ContactOPTType_Merchant:
-////                break;
-////            case E_ContactOPTType_WXTeam:
-////                break;
-////            case E_ContactOPTType_MultiChat:
-////                break;
-//            case E_ContactOPTType_WXContacter:
-//                [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
+    if(tableView == _tableView){
+        if(section == 0){
+            switch (row) {
+//            case E_ContactOPTType_Merchant:
 //                break;
-//            }
-//        }else{
-//            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
-//            [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
-//        }
-//    }else{
-//        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
-//        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
-//    }
+//            case E_ContactOPTType_WXTeam:
+//                break;
+//            case E_ContactOPTType_MultiChat:
+//                break;
+            case E_ContactOPTType_WXContacter:
+                [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
+                break;
+            }
+        }else{
+            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
+            [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
+        }
+    }else{
+        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
+        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

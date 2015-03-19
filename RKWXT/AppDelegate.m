@@ -55,6 +55,8 @@
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];// 允许颜色
 #endif
     NSLog(@"%@", DOC_PATH);
+    
+    [[AddressBook sharedAddressBook] loadContact];
 	[self initUI];
     [self checkVersion];
 	return YES;

@@ -331,6 +331,8 @@
 		775C58D21ABA7B75005B6B40 /* WXContactMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B31ABA7B75005B6B40 /* WXContactMonitor.m */; };
 		775C58D31ABA7B75005B6B40 /* WXLibDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B51ABA7B75005B6B40 /* WXLibDB.m */; };
 		775C58D61ABA7D27005B6B40 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58D51ABA7D27005B6B40 /* BaseModel.m */; };
+		775C58D91ABAAF83005B6B40 /* WXCallUITabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58D81ABAAF83005B6B40 /* WXCallUITabBarVC.m */; };
+		775C58DC1ABAB87E005B6B40 /* CoordinateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58DB1ABAB87E005B6B40 /* CoordinateController.m */; };
 		776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 776CFFA71AB1257B000A1D84 /* ARLabel.m */; };
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
@@ -942,6 +944,10 @@
 		775C58B51ABA7B75005B6B40 /* WXLibDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXLibDB.m; sourceTree = "<group>"; };
 		775C58D41ABA7D27005B6B40 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		775C58D51ABA7D27005B6B40 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		775C58D71ABAAF83005B6B40 /* WXCallUITabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXCallUITabBarVC.h; sourceTree = "<group>"; };
+		775C58D81ABAAF83005B6B40 /* WXCallUITabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXCallUITabBarVC.m; sourceTree = "<group>"; };
+		775C58DA1ABAB87E005B6B40 /* CoordinateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateController.h; sourceTree = "<group>"; };
+		775C58DB1ABAB87E005B6B40 /* CoordinateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateController.m; sourceTree = "<group>"; };
 		776CFFA61AB1257B000A1D84 /* ARLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLabel.h; sourceTree = "<group>"; };
 		776CFFA71AB1257B000A1D84 /* ARLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLabel.m; sourceTree = "<group>"; };
 		777059AC1AAFDEC40097526C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localize.strings; sourceTree = "<group>"; };
@@ -2001,6 +2007,8 @@
 		7758435E1AB96A4B0039B129 /* WXTCall */ = {
 			isa = PBXGroup;
 			children = (
+				775C58D71ABAAF83005B6B40 /* WXCallUITabBarVC.h */,
+				775C58D81ABAAF83005B6B40 /* WXCallUITabBarVC.m */,
 				775C58551ABA7A52005B6B40 /* KeyPad */,
 				775C58511ABA68B9005B6B40 /* WXContacterVC.h */,
 				775C58521ABA68B9005B6B40 /* WXContacterVC.m */,
@@ -2314,6 +2322,8 @@
 		77DB941D1AAFED330021A816 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				775C58DA1ABAB87E005B6B40 /* CoordinateController.h */,
+				775C58DB1ABAB87E005B6B40 /* CoordinateController.m */,
 				77DB941E1AAFED400021A816 /* UIViewController+Helper.h */,
 				77DB941F1AAFED400021A816 /* UIViewController+Helper.m */,
 			);
@@ -2740,10 +2750,12 @@
 				775842D91AB95A300039B129 /* UIColor+WX.m in Sources */,
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
 				775C58501ABA68AE005B6B40 /* WXContacterCell.m in Sources */,
+				775C58D91ABAAF83005B6B40 /* WXCallUITabBarVC.m in Sources */,
 				775843141AB95A300039B129 /* WXButton.m in Sources */,
 				775843001AB95A300039B129 /* PictureBrowseView.m in Sources */,
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,
 				7758431B1AB95A300039B129 /* YRSideViewController.m in Sources */,
+				775C58DC1ABAB87E005B6B40 /* CoordinateController.m in Sources */,
 				775842F61AB95A300039B129 /* PullPsCollectionView.m in Sources */,
 				775842D01AB95A300039B129 /* stdafx.cpp in Sources */,
 				77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */,
