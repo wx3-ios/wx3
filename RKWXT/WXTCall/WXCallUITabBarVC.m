@@ -12,11 +12,14 @@
 
 #import "WXCallUITabBarVC.h"
 
-//#import "WXCallHistoryVC.h"
 #import "WXContacterVC.h"
 #import "WXKeyPadVC.h"
+//#import "WXCallHistoryVC.h"
 //#import "WXMessageChatVC.h"
 //#import "RechargeCenterVC.h"
+#import "WXTMallVC.h"
+#import "WXContacterVC.h"
+#import "WXTFindVC.h"
 #import "WXColorConfig.h"
 
 //#import "NewHomePageVC.h"
@@ -40,10 +43,10 @@ enum{
 }
 
 - (id)init{
-//    WXCallHistoryVC *callHistoryVC = [[[WXCallHistoryVC alloc] init] autorelease];
-//    WXMessageChatVC *messageChatVC = [[[WXMessageChatVC alloc] init] autorelease];
-//    RechargeCenterVC *rechargeVC = [[[RechargeCenterVC alloc] init] autorelease];
-//    WXContacterVC *contacterVC = [[[WXContacterVC alloc] init] autorelease];
+    WXTMallVC *callHistoryVC = [[WXTMallVC alloc] init] ;
+    WXContacterVC *messageChatVC = [[WXContacterVC alloc] init];
+    WXTFindVC *rechargeVC = [[WXTFindVC alloc] init];
+    WXContacterVC *contacterVC = [[WXContacterVC alloc] init] ;
 //    NewHomePageVC *newHomeVC = [NewHomePageVC sharedHomePageVC];
 //    _keyPadVC = [[WXKeyPadVC alloc] init];
 //    T_FindVC *findVC = [[[T_FindVC alloc] init] autorelease];
@@ -80,10 +83,10 @@ enum{
     [tabBar setBackgroundColor:kOtherColor(E_App_Other_Color_TabBar)];
     
     #warning 这个结构不好~ 不应该这么写~
-//    if(self = [super initWithControllers:
-//               [NSArray arrayWithObjects:newHomeVC,_keyPadVC,findVC,personalInfoVC, nil] tabBar:tabBar]){
-//        
-//    }
+    if(self = [super initWithControllers:
+               [NSArray arrayWithObjects:callHistoryVC,messageChatVC,rechargeVC,contacterVC, nil] tabBar:tabBar]){
+        
+    }
     return self;
 }
 

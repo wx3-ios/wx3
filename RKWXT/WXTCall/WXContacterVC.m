@@ -216,30 +216,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    
-    if(tableView == _tableView){
-        if(section == 0){
-            switch (row) {
-//            case E_ContactOPTType_Merchant:
+//    NSInteger section = indexPath.section;
+//    NSInteger row = indexPath.row;
+//    
+//    if(tableView == _tableView){
+//        if(section == 0){
+//            switch (row) {
+////            case E_ContactOPTType_Merchant:
+////                break;
+////            case E_ContactOPTType_WXTeam:
+////                break;
+////            case E_ContactOPTType_MultiChat:
+////                break;
+//            case E_ContactOPTType_WXContacter:
+//                [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
 //                break;
-//            case E_ContactOPTType_WXTeam:
-//                break;
-//            case E_ContactOPTType_MultiChat:
-//                break;
-            case E_ContactOPTType_WXContacter:
-                [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
-                break;
-            }
-        }else{
-            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
-            [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
-        }
-    }else{
-        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
-        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
-    }
+//            }
+//        }else{
+//            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
+//            [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
+//        }
+//    }else{
+//        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
+//        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

@@ -126,7 +126,9 @@ typedef enum{
         _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
     }
     [_segmentControl setSelectedSegmentIndex:0];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
     _segmentControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+#endif
     [_segmentControl setBorderRadian:1.0 width:0.2 color:[UIColor grayColor]];
     [_segmentControl setBackgroundColor:[UIColor whiteColor]];
     [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
@@ -386,8 +388,8 @@ typedef enum{
     }
 }
 
-- (WXCallUITabBarVC*)tabBarVC{
-    return (WXCallUITabBarVC*)self.parentViewController;
+- (WXUITabBarVC*)tabBarVC{
+    return (WXUITabBarVC*)self.parentViewController;
 }
 
 - (void)upKeyBoardButtonClicked{
