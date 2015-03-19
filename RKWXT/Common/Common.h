@@ -52,7 +52,7 @@ typedef enum {
 #define D_Notification_Name_WXAddressBookHasChanged @"D_Notification_Name_WXAddressBookHasChanged"//我信通讯录发生了变化~
 #define D_Notification_Name_WXContacterHasChanged @"D_Notification_Name_WXContacterHasChanged"//单个我信联系人发生了变化~
 #define D_Notification_Name_WXContacterAdded @"D_Notification_Name_WXContacterAdded"//增加了一个我信联系人~
-//#define D_Notification_Name_WXContacterDeleted @"D_Notification_Name_WXContacterDeleted"//删除了一个我信联系人~
+#define D_Notification_Name_WXContacterDeleted @"D_Notification_Name_WXContacterDeleted"//删除了一个我信联系人~
 
 #pragma mark 个人信息
 #define D_Notification_Name_PersonalInfoUpload_Failed @"D_Notification_Name_PersonalInfoUpload_Failed"//上传个人信息失败

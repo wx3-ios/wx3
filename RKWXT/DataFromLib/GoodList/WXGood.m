@@ -9,7 +9,7 @@
 #import "WXGood.h"
 #import "it_lib.h"
 #import "ServiceCommon.h"
-#import "NSObject+SBJson.h"
+//#import "NSObject+SBJson.h"
 #import "WXGoodEntity.h"
 
 @interface WXGood()
@@ -23,9 +23,8 @@
 
 - (void)dealloc{
 	_delegate = nil;
-	RELEASE_SAFELY(_goodList);
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -74,26 +73,26 @@
 	[defaultNotificationCenter addObserver:self selector:@selector(allGoodsLoadedFailed) name:D_Notification_Name_Lib_AllGoodsLoadedFailed object:nil];
 }
 
-- (void)allGoodsLoadedSucceed:(NSNotification*)notification{
-	[self setStatus:E_ModelDataStatus_LoadSucceed];
-	KFLog_Normal(YES, @"获取所有商品列表成功");
-	[_goodList removeAllObjects];
-	NSDictionary *dic = notification.object;
-	NSString *jsonString = [dic objectForKey:@"jsonString"];
-	NSString *domain = [dic  objectForKey:@"domain"];
-	NSDictionary *goodsDic = [jsonString JSONValue];
-	NSArray *goodArray = [goodsDic objectForKey:@"data"];
-	for(NSDictionary *goodDic in goodArray){
-		WXGoodEntity *goodEntity = [WXGoodEntity goodWithDictionary:goodDic domain:domain];
-		if(goodEntity){
-			[_goodList addObject:goodEntity];
-		}
-	}
-	
-	if (_delegate && [_delegate respondsToSelector:@selector(allGoodsLoadedSucceed)]){
-		[_delegate allGoodsLoadedSucceed];
-	}
-}
+//- (void)allGoodsLoadedSucceed:(NSNotification*)notification{
+//	[self setStatus:E_ModelDataStatus_LoadSucceed];
+//	KFLog_Normal(YES, @"获取所有商品列表成功");
+//	[_goodList removeAllObjects];
+//	NSDictionary *dic = notification.object;
+//	NSString *jsonString = [dic objectForKey:@"jsonString"];
+//	NSString *domain = [dic  objectForKey:@"domain"];
+//	NSDictionary *goodsDic = [jsonString JSONValue];
+//	NSArray *goodArray = [goodsDic objectForKey:@"data"];
+//	for(NSDictionary *goodDic in goodArray){
+//		WXGoodEntity *goodEntity = [WXGoodEntity goodWithDictionary:goodDic domain:domain];
+//		if(goodEntity){
+//			[_goodList addObject:goodEntity];
+//		}
+//	}
+//	
+//	if (_delegate && [_delegate respondsToSelector:@selector(allGoodsLoadedSucceed)]){
+//		[_delegate allGoodsLoadedSucceed];
+//	}
+//}
 
 - (void)allGoodsLoadedFailed{
 	[self setStatus:E_ModelDataStatus_LoadFailed];

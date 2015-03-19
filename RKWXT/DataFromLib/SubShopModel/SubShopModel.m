@@ -9,7 +9,7 @@
 #import "SubShopModel.h"
 #import "it_lib.h"
 #import "ServiceCommon.h"
-#import "NSObject+SBJson.h"
+//#import "NSObject+SBJson.h"
 
 enum{
 	E_SUBSHOP_SECTION_
@@ -27,9 +27,8 @@ enum{
 @synthesize subShopAreaList = _subShopAreaList;
 
 - (void)dealloc{
-	RELEASE_SAFELY(_subShopAreaList);
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -101,30 +100,30 @@ enum{
 	[notificationCenter addObserver:self selector:@selector(loadSubShopListFailed:) name:D_Notification_Name_Lib_LoadSubShopListFailed object:nil];
 }
 
-- (void)loadSubShopListSucceed:(NSNotification*)notification{
-	_inLoading = NO;
-	if ([self isSubShopListReady]){
-		KFLog_Normal(YES, @"分店早已经加载完成了~ ");
-		return;
-	}
-	NSString *jsonString = notification.object;
-	NSArray *jsonValue = [jsonString JSONValue];
-	
-	for (NSDictionary *dic in jsonValue){
-		SubShopArea *area = [SubShopArea subShopAreaWithDictionary:dic];
-		if (area){
-			[_subShopAreaList addObject:area];
-		}
-	}
-	
-	//区域ID没有设置的情况下~
-	NSInteger defaultAreaID = [WXUserOBJ sharedUserOBJ].areaID;
-	if ([_subShopAreaList count] > 0 && defaultAreaID <= 0){
-		SubShopArea *area = [_subShopAreaList objectAtIndex:0];
-		[area setIsSelected:YES];
-	}
-	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_Model_LoadSubShopListSucceed object:nil];
-}
+//- (void)loadSubShopListSucceed:(NSNotification*)notification{
+//	_inLoading = NO;
+//	if ([self isSubShopListReady]){
+//		KFLog_Normal(YES, @"分店早已经加载完成了~ ");
+//		return;
+//	}
+//	NSString *jsonString = notification.object;
+//	NSArray *jsonValue = [jsonString JSONValue];
+//	
+//	for (NSDictionary *dic in jsonValue){
+//		SubShopArea *area = [SubShopArea subShopAreaWithDictionary:dic];
+//		if (area){
+//			[_subShopAreaList addObject:area];
+//		}
+//	}
+//	
+//	//区域ID没有设置的情况下~
+//	NSInteger defaultAreaID = [WXUserOBJ sharedUserOBJ].areaID;
+//	if ([_subShopAreaList count] > 0 && defaultAreaID <= 0){
+//		SubShopArea *area = [_subShopAreaList objectAtIndex:0];
+//		[area setIsSelected:YES];
+//	}
+//	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_Model_LoadSubShopListSucceed object:nil];
+//}
 
 - (void)loadSubShopListFailed:(NSNotification*)notification{
 	_inLoading = NO;

@@ -27,12 +27,7 @@ typedef enum {
 @implementation WXContacterEntity
 
 - (void)dealloc{
-    RELEASE_SAFELY(_nickName);
-    RELEASE_SAFELY(_rID);
-    RELEASE_SAFELY(_iconPath);
-    RELEASE_SAFELY(_bindID);
-    RELEASE_SAFELY(_remark);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (WXContacterEntity*)wxContacterWithParamArray:(NSArray*)paramArray{
@@ -40,7 +35,7 @@ typedef enum {
     if(!wxID || [wxID isEqualToString:@"0"]){
         return nil;
     }
-    return [[[WXContacterEntity alloc] initWithParamArray:paramArray] autorelease];
+    return [[WXContacterEntity alloc] initWithParamArray:paramArray] ;
 }
 
 + (WXContacterEntity*)increaseWXContacterWithParamArray:(NSArray *)paramArray{
@@ -52,7 +47,7 @@ typedef enum {
     if(!isWX || [isWX isEqualToString:@"0"]){
         return nil;
     }
-    return [[[WXContacterEntity alloc] initWithParamArray:paramArray] autorelease];
+    return [[WXContacterEntity alloc] initWithParamArray:paramArray] ;
 }
 
 - (NSString*)nameShow{
@@ -80,9 +75,9 @@ typedef enum {
     return icon;
 }
 
-- (E_ContactRightView)rightViewType{
-    return E_ContactRightView_ShowWXIcon;
-}
+//- (E_ContactRightView)rightViewType{
+//    return E_ContactRightView_ShowWXIcon;
+//}
 
 - (id)initWithParamArray:(NSArray*)paramArray{
     if(self = [super init]){

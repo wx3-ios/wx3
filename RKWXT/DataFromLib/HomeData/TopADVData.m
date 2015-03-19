@@ -9,7 +9,7 @@
 #import "TopADVData.h"
 #import "it_lib.h"
 #import "ServiceCommon.h"
-#import "NSObject+SBJson.h"
+//#import "NSObject+SBJson.h"
 #import "TopADVEntity.h"
 
 @interface TopADVData()
@@ -21,9 +21,8 @@
 @implementation TopADVData
 
 - (void)dealloc{
-	RELEASE_SAFELY(_topADVList);
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -74,38 +73,38 @@
 							   name:D_Notification_Name_Lib_LoadHomeTopGoodsSucceed object:nil];
 }
 
-- (void)topADVDataLoadSucceed:(NSNotification*)notification{
-	KFLog_Normal(YES, @"顶部广告列表加载成功");
-	[self setStatus:E_ModelDataStatus_LoadSucceed];
-	[_topADVList removeAllObjects];
-	
-	NSString *jsonString = notification.object;
-	NSDictionary *jsonDic = [jsonString JSONValue];
-	NSArray *dicArray = [jsonDic objectForKey:@"data"];
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	for (NSDictionary *dic in dicArray){
-		TopADVEntity *entity = [TopADVEntity topADVEntityWithDictionary:dic];
-		if (entity){
-			[_topADVList addObject:entity];
-		}
-	}
-	[pool drain];
-	[_topADVList sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-		TopADVEntity *item1 = obj1;
-		TopADVEntity *item2 = obj2;
-		if (item1.sortID < item2.sortID){
-			return NSOrderedAscending;
-		}else if (item1.sortID == item2.sortID){
-			return NSOrderedSame;
-		}else{
-			return NSOrderedDescending;
-		}
-	}];
-	
-	if (_delegate && [_delegate respondsToSelector:@selector(topADVDataLoadSucceed)]){
-		[_delegate topADVDataLoadSucceed];
-	}
-}
+//- (void)topADVDataLoadSucceed:(NSNotification*)notification{
+//	KFLog_Normal(YES, @"顶部广告列表加载成功");
+//	[self setStatus:E_ModelDataStatus_LoadSucceed];
+//	[_topADVList removeAllObjects];
+//	
+//	NSString *jsonString = notification.object;
+//	NSDictionary *jsonDic = [jsonString JSONValue];
+//	NSArray *dicArray = [jsonDic objectForKey:@"data"];
+//	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//	for (NSDictionary *dic in dicArray){
+//		TopADVEntity *entity = [TopADVEntity topADVEntityWithDictionary:dic];
+//		if (entity){
+//			[_topADVList addObject:entity];
+//		}
+//	}
+//	[pool drain];
+//	[_topADVList sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//		TopADVEntity *item1 = obj1;
+//		TopADVEntity *item2 = obj2;
+//		if (item1.sortID < item2.sortID){
+//			return NSOrderedAscending;
+//		}else if (item1.sortID == item2.sortID){
+//			return NSOrderedSame;
+//		}else{
+//			return NSOrderedDescending;
+//		}
+//	}];
+//	
+//	if (_delegate && [_delegate respondsToSelector:@selector(topADVDataLoadSucceed)]){
+//		[_delegate topADVDataLoadSucceed];
+//	}
+//}
 
 - (void)topADVDataLoadFailed{
 	KFLog_Normal(YES, @"顶部广告列表加载失败");

@@ -8,18 +8,12 @@
 
 #import "WXGoodEntity.h"
 #import "PinYinSearchOBJ.h"
-#import "T_GoodInfoEntity.h"
+//#import "T_GoodInfoEntity.h"
 
 @implementation WXGoodEntity
 
 - (void)dealloc{
-    RELEASE_SAFELY(_name);
-    RELEASE_SAFELY(_desc);
-    RELEASE_SAFELY(_listImgURL);
-    RELEASE_SAFELY(_detailImgURLArray);
-    RELEASE_SAFELY(_topImageURL);
-	RELEASE_SAFELY(_unit);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (WXGoodEntity*)goodWithDictionary:(NSDictionary*)goodDic domain:(NSString*)domain{
@@ -39,7 +33,7 @@
         return nil;
     }
     
-    return [[[self alloc] initWithGoodDic:goodDic domain:domain] autorelease];
+    return [[self alloc] initWithGoodDic:goodDic domain:domain] ;
 }
 
 - (id)initWithGoodDic:(NSDictionary*)goodDic domain:(NSString*)domain{
@@ -141,9 +135,9 @@
 }
 
 - (NSString*)marketPriceStringWithFloatPointHidden:(BOOL)hidden{
-	if (_marketPrice > kMaxPrice){
-		return @"";
-	}
+//	if (_marketPrice > kMaxPrice){
+//		return @"";
+//	}
 	
 	NSString *fString = [UtilTool convertFloatToString:_marketPrice];
 	fString = [NSString stringWithFormat:@"￥%@",fString];
@@ -154,9 +148,9 @@
 }
 
 - (NSString*)shopPriceStringWithFloatPointHidden:(BOOL)hidden{
-	if (_shopPrice > kMaxPrice){
-		return @"";
-	}
+//	if (_shopPrice > kMaxPrice){
+//		return @"";
+//	}
 	
 	NSString *fString = [UtilTool convertFloatToString:_shopPrice];
 	fString = [NSString stringWithFormat:@"￥%@",fString];

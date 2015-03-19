@@ -19,9 +19,8 @@
 @synthesize callHistoryList = _callHistoryList;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_callHistoryList);
     [self removeOBS];
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (CallRecord*)sharedCallRecord{
@@ -112,7 +111,7 @@
     }
     NSInteger UID = IT_AddCallRecord([phoneNumber cStringUsingEncoding:NSUTF8StringEncoding], recordType, (SS_INT32)startTime, (SS_UINT32)duration);
     if(UID >= 0){
-        CallHistoryEntity *entity = [[[CallHistoryEntity alloc] init] autorelease];
+        CallHistoryEntity *entity = [[CallHistoryEntity alloc] init] ;
         [entity setUID:UID];
         [entity setPhoneNumber:phoneNumber];
         [entity setHistoryType:recordType];

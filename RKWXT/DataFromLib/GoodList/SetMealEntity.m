@@ -18,16 +18,14 @@
 @synthesize foodArray = _foodArray;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_foodArray);
-    RELEASE_SAFELY(_name);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (SetMealEntity*)entityWithDictionary:(NSDictionary*)dic{
     if(!dic){
         return nil;
     }
-    return [[[self alloc] initWithDictionary:dic] autorelease];
+    return [[self alloc] initWithDictionary:dic] ;
 }
 
 - (id)init{
@@ -45,7 +43,7 @@
         
         NSArray *goods = [dic objectForKey:@"data"];
         for(NSDictionary *dic in goods){
-            FootOBJ *footOBJ = [[[FootOBJ alloc] init] autorelease];
+            FootOBJ *footOBJ = [[FootOBJ alloc] init] ;
             [footOBJ setGoodID:[[dic objectForKey:@"id"] integerValue]];
             [footOBJ setNumber:[[dic objectForKey:@"num"] integerValue]];
             [_foodArray addObject:footOBJ];

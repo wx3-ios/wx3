@@ -14,7 +14,7 @@
 
 - (void)dealloc{
 	[self removeServiceConnectedDetector];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -53,17 +53,17 @@
 	return ret;
 }
 
-- (void)serviceConnectedDetected:(NSNotification*)notification{
-	AppDelegate *app = [UIApplication sharedApplication].delegate;
-	//DB库发生了变化~ 但是又没有调用自动登录~ 则这个消息延后处理~
-	if (app.dbHasChanged){
-		if (![WXService sharedService].hasCalledLogin){
-			return;
-		}
-	}
-	if ([self respondsToSelector:@selector(serviceConnectedOK)]){
-		[self serviceConnectedOK];
-	}
-}
+//- (void)serviceConnectedDetected:(NSNotification*)notification{
+//	AppDelegate *app = [UIApplication sharedApplication].delegate;
+//	//DB库发生了变化~ 但是又没有调用自动登录~ 则这个消息延后处理~
+//	if (app.dbHasChanged){
+//		if (![WXService sharedService].hasCalledLogin){
+//			return;
+//		}
+//	}
+//	if ([self respondsToSelector:@selector(serviceConnectedOK)]){
+//		[self serviceConnectedOK];
+//	}
+//}
 
 @end

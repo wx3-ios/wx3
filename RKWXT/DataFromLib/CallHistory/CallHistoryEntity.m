@@ -22,14 +22,11 @@ enum{
 @implementation CallHistoryEntity
 
 - (void)dealloc{
-    RELEASE_SAFELY(_phoneNumber);
-    RELEASE_SAFELY(_wxID);
-    RELEASE_SAFELY(_startTime);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (CallHistoryEntity*)recordWithPramArray:(NSArray*)pramArray{
-    return [[[CallHistoryEntity alloc] initWithParamArray:pramArray] autorelease];
+    return [[CallHistoryEntity alloc] initWithParamArray:pramArray] ;
 }
 
 - (id)initWithParamArray:(NSArray*)pramArray{

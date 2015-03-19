@@ -8,6 +8,6 @@
 
 #import "WXUIViewController.h"
 
-@interface WXContacterVC : WXUIViewController
+@interface WXContacterVC : WXUIViewController<UITabBarDelegate>
 
 @end

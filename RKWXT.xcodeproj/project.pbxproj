@@ -253,12 +253,6 @@
 		775843381AB95A300039B129 /* WXUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758429D1AB95A300039B129 /* WXUIViewController.m */; };
 		775843391AB95A300039B129 /* WXUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758429F1AB95A300039B129 /* WXUIWebView.m */; };
 		7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A11AB95A300039B129 /* WXUIWindow.m */; };
-		7758433B1AB95A300039B129 /* AddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A51AB95A300039B129 /* AddressBook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7758433C1AB95A300039B129 /* ContacterEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A61AB95A300039B129 /* ContacterEntity+Detail.m */; };
-		7758433D1AB95A300039B129 /* ContacterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A81AB95A300039B129 /* ContacterEntity.m */; };
-		7758433E1AB95A300039B129 /* WXContacterEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842AA1AB95A300039B129 /* WXContacterEntity+Detail.m */; };
-		7758433F1AB95A300039B129 /* WXContacterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842AC1AB95A300039B129 /* WXContacterEntity.m */; };
-		775843401AB95A300039B129 /* WXContactMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842AE1AB95A300039B129 /* WXContactMonitor.m */; };
 		775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843461AB95FAC0039B129 /* NetTipDelay.m */; };
 		775843581AB95FAC0039B129 /* ServiceMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758434D1AB95FAC0039B129 /* ServiceMonitor.m */; };
 		775843591AB95FAC0039B129 /* WXService+Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758434E1AB95FAC0039B129 /* WXService+Call.m */; };
@@ -297,6 +291,46 @@
 		775C584D1ABA6435005B6B40 /* RecentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C584A1ABA6435005B6B40 /* RecentCell.m */; };
 		775C58501ABA68AE005B6B40 /* WXContacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C584F1ABA68AE005B6B40 /* WXContacterCell.m */; };
 		775C58531ABA68B9005B6B40 /* WXContacterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58521ABA68B9005B6B40 /* WXContacterVC.m */; };
+		775C58681ABA7A52005B6B40 /* BaseCallHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58571ABA7A52005B6B40 /* BaseCallHistoryCell.m */; };
+		775C58691ABA7A52005B6B40 /* CallHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58591ABA7A52005B6B40 /* CallHistoryCell.m */; };
+		775C586A1ABA7A52005B6B40 /* CallHistoryEntityExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C585B1ABA7A52005B6B40 /* CallHistoryEntityExt.m */; };
+		775C586B1ABA7A52005B6B40 /* KeyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C585D1ABA7A52005B6B40 /* KeyPadView.m */; };
+		775C586C1ABA7A52005B6B40 /* SimpleContacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C585F1ABA7A52005B6B40 /* SimpleContacterCell.m */; };
+		775C586D1ABA7A52005B6B40 /* StrangerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58611ABA7A52005B6B40 /* StrangerEntity.m */; };
+		775C586E1ABA7A52005B6B40 /* SysContacterEntityEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58631ABA7A52005B6B40 /* SysContacterEntityEx.m */; };
+		775C586F1ABA7A52005B6B40 /* WXKeyPadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58651ABA7A52005B6B40 /* WXKeyPadModel.m */; };
+		775C58701ABA7A52005B6B40 /* WXKeyPadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58671ABA7A52005B6B40 /* WXKeyPadVC.m */; };
+		775C58B61ABA7B75005B6B40 /* RedPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58741ABA7B75005B6B40 /* RedPacket.m */; };
+		775C58B71ABA7B75005B6B40 /* RedPacketBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58761ABA7B75005B6B40 /* RedPacketBalance.m */; };
+		775C58B81ABA7B75005B6B40 /* RedPacketEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58781ABA7B75005B6B40 /* RedPacketEntity.m */; };
+		775C58B91ABA7B75005B6B40 /* RedPacketRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C587A1ABA7B75005B6B40 /* RedPacketRule.m */; };
+		775C58BA1ABA7B75005B6B40 /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C587D1ABA7B75005B6B40 /* CallHistoryEntity.m */; };
+		775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C587F1ABA7B75005B6B40 /* CallRecord.m */; };
+		775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58821ABA7B75005B6B40 /* SetMealEntity.m */; };
+		775C58BD1ABA7B75005B6B40 /* WXGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58841ABA7B75005B6B40 /* WXGood.m */; };
+		775C58BE1ABA7B75005B6B40 /* WXGoodCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58861ABA7B75005B6B40 /* WXGoodCategoryModel.m */; };
+		775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58881ABA7B75005B6B40 /* WXGoodEntity.m */; };
+		775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C588A1ABA7B75005B6B40 /* WXGoodListModel.m */; };
+		775C58C11ABA7B75005B6B40 /* WXSetMeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C588C1ABA7B75005B6B40 /* WXSetMeal.m */; };
+		775C58C21ABA7B75005B6B40 /* ActData.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C588F1ABA7B75005B6B40 /* ActData.m */; };
+		775C58C31ABA7B75005B6B40 /* GuessYouLikeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58911ABA7B75005B6B40 /* GuessYouLikeData.m */; };
+		775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58931ABA7B75005B6B40 /* TopADVData.m */; };
+		775C58C51ABA7B75005B6B40 /* TopADVEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58951ABA7B75005B6B40 /* TopADVEntity.m */; };
+		775C58C61ABA7B75005B6B40 /* PersonalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58981ABA7B75005B6B40 /* PersonalInfo.m */; };
+		775C58C71ABA7B75005B6B40 /* ShopDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C589B1ABA7B75005B6B40 /* ShopDesc.m */; };
+		775C58C81ABA7B75005B6B40 /* ShopInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C589D1ABA7B75005B6B40 /* ShopInfo.m */; };
+		775C58C91ABA7B75005B6B40 /* SubShopTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C589F1ABA7B75005B6B40 /* SubShopTime.m */; };
+		775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58A21ABA7B75005B6B40 /* SubShop.m */; };
+		775C58CB1ABA7B75005B6B40 /* SubShopArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58A41ABA7B75005B6B40 /* SubShopArea.m */; };
+		775C58CC1ABA7B75005B6B40 /* SubShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58A61ABA7B75005B6B40 /* SubShopModel.m */; };
+		775C58CD1ABA7B75005B6B40 /* AddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58AA1ABA7B75005B6B40 /* AddressBook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		775C58CE1ABA7B75005B6B40 /* ContacterEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58AB1ABA7B75005B6B40 /* ContacterEntity+Detail.m */; };
+		775C58CF1ABA7B75005B6B40 /* ContacterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58AD1ABA7B75005B6B40 /* ContacterEntity.m */; };
+		775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58AF1ABA7B75005B6B40 /* WXContacterEntity+Detail.m */; };
+		775C58D11ABA7B75005B6B40 /* WXContacterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B11ABA7B75005B6B40 /* WXContacterEntity.m */; };
+		775C58D21ABA7B75005B6B40 /* WXContactMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B31ABA7B75005B6B40 /* WXContactMonitor.m */; };
+		775C58D31ABA7B75005B6B40 /* WXLibDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B51ABA7B75005B6B40 /* WXLibDB.m */; };
+		775C58D61ABA7D27005B6B40 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58D51ABA7D27005B6B40 /* BaseModel.m */; };
 		776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 776CFFA71AB1257B000A1D84 /* ARLabel.m */; };
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
@@ -758,16 +792,6 @@
 		7758429F1AB95A300039B129 /* WXUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIWebView.m; sourceTree = "<group>"; };
 		775842A01AB95A300039B129 /* WXUIWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUIWindow.h; sourceTree = "<group>"; };
 		775842A11AB95A300039B129 /* WXUIWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUIWindow.m; sourceTree = "<group>"; };
-		775842A41AB95A300039B129 /* AddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBook.h; sourceTree = "<group>"; };
-		775842A51AB95A300039B129 /* AddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBook.m; sourceTree = "<group>"; };
-		775842A61AB95A300039B129 /* ContacterEntity+Detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ContacterEntity+Detail.m"; sourceTree = "<group>"; };
-		775842A71AB95A300039B129 /* ContacterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContacterEntity.h; sourceTree = "<group>"; };
-		775842A81AB95A300039B129 /* ContacterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContacterEntity.m; sourceTree = "<group>"; };
-		775842AA1AB95A300039B129 /* WXContacterEntity+Detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXContacterEntity+Detail.m"; sourceTree = "<group>"; };
-		775842AB1AB95A300039B129 /* WXContacterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterEntity.h; sourceTree = "<group>"; };
-		775842AC1AB95A300039B129 /* WXContacterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterEntity.m; sourceTree = "<group>"; };
-		775842AD1AB95A300039B129 /* WXContactMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContactMonitor.h; sourceTree = "<group>"; };
-		775842AE1AB95A300039B129 /* WXContactMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContactMonitor.m; sourceTree = "<group>"; };
 		775843451AB95FAC0039B129 /* NetTipDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetTipDelay.h; sourceTree = "<group>"; };
 		775843461AB95FAC0039B129 /* NetTipDelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetTipDelay.m; sourceTree = "<group>"; };
 		7758434B1AB95FAC0039B129 /* ServiceCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCommon.h; sourceTree = "<group>"; };
@@ -840,6 +864,84 @@
 		775C584F1ABA68AE005B6B40 /* WXContacterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterCell.m; sourceTree = "<group>"; };
 		775C58511ABA68B9005B6B40 /* WXContacterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterVC.h; sourceTree = "<group>"; };
 		775C58521ABA68B9005B6B40 /* WXContacterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterVC.m; sourceTree = "<group>"; };
+		775C58561ABA7A52005B6B40 /* BaseCallHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCallHistoryCell.h; sourceTree = "<group>"; };
+		775C58571ABA7A52005B6B40 /* BaseCallHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCallHistoryCell.m; sourceTree = "<group>"; };
+		775C58581ABA7A52005B6B40 /* CallHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryCell.h; sourceTree = "<group>"; };
+		775C58591ABA7A52005B6B40 /* CallHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallHistoryCell.m; sourceTree = "<group>"; };
+		775C585A1ABA7A52005B6B40 /* CallHistoryEntityExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntityExt.h; sourceTree = "<group>"; };
+		775C585B1ABA7A52005B6B40 /* CallHistoryEntityExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallHistoryEntityExt.m; sourceTree = "<group>"; };
+		775C585C1ABA7A52005B6B40 /* KeyPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPadView.h; sourceTree = "<group>"; };
+		775C585D1ABA7A52005B6B40 /* KeyPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPadView.m; sourceTree = "<group>"; };
+		775C585E1ABA7A52005B6B40 /* SimpleContacterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleContacterCell.h; sourceTree = "<group>"; };
+		775C585F1ABA7A52005B6B40 /* SimpleContacterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleContacterCell.m; sourceTree = "<group>"; };
+		775C58601ABA7A52005B6B40 /* StrangerEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrangerEntity.h; sourceTree = "<group>"; };
+		775C58611ABA7A52005B6B40 /* StrangerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrangerEntity.m; sourceTree = "<group>"; };
+		775C58621ABA7A52005B6B40 /* SysContacterEntityEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysContacterEntityEx.h; sourceTree = "<group>"; };
+		775C58631ABA7A52005B6B40 /* SysContacterEntityEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysContacterEntityEx.m; sourceTree = "<group>"; };
+		775C58641ABA7A52005B6B40 /* WXKeyPadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXKeyPadModel.h; sourceTree = "<group>"; };
+		775C58651ABA7A52005B6B40 /* WXKeyPadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXKeyPadModel.m; sourceTree = "<group>"; };
+		775C58661ABA7A52005B6B40 /* WXKeyPadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXKeyPadVC.h; sourceTree = "<group>"; };
+		775C58671ABA7A52005B6B40 /* WXKeyPadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXKeyPadVC.m; sourceTree = "<group>"; };
+		775C58731ABA7B75005B6B40 /* RedPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPacket.h; sourceTree = "<group>"; };
+		775C58741ABA7B75005B6B40 /* RedPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacket.m; sourceTree = "<group>"; };
+		775C58751ABA7B75005B6B40 /* RedPacketBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPacketBalance.h; sourceTree = "<group>"; };
+		775C58761ABA7B75005B6B40 /* RedPacketBalance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacketBalance.m; sourceTree = "<group>"; };
+		775C58771ABA7B75005B6B40 /* RedPacketEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPacketEntity.h; sourceTree = "<group>"; };
+		775C58781ABA7B75005B6B40 /* RedPacketEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacketEntity.m; sourceTree = "<group>"; };
+		775C58791ABA7B75005B6B40 /* RedPacketRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPacketRule.h; sourceTree = "<group>"; };
+		775C587A1ABA7B75005B6B40 /* RedPacketRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacketRule.m; sourceTree = "<group>"; };
+		775C587C1ABA7B75005B6B40 /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
+		775C587D1ABA7B75005B6B40 /* CallHistoryEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallHistoryEntity.m; sourceTree = "<group>"; };
+		775C587E1ABA7B75005B6B40 /* CallRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallRecord.h; sourceTree = "<group>"; };
+		775C587F1ABA7B75005B6B40 /* CallRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallRecord.m; sourceTree = "<group>"; };
+		775C58811ABA7B75005B6B40 /* SetMealEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMealEntity.h; sourceTree = "<group>"; };
+		775C58821ABA7B75005B6B40 /* SetMealEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMealEntity.m; sourceTree = "<group>"; };
+		775C58831ABA7B75005B6B40 /* WXGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXGood.h; sourceTree = "<group>"; };
+		775C58841ABA7B75005B6B40 /* WXGood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXGood.m; sourceTree = "<group>"; };
+		775C58851ABA7B75005B6B40 /* WXGoodCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXGoodCategoryModel.h; sourceTree = "<group>"; };
+		775C58861ABA7B75005B6B40 /* WXGoodCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXGoodCategoryModel.m; sourceTree = "<group>"; };
+		775C58871ABA7B75005B6B40 /* WXGoodEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXGoodEntity.h; sourceTree = "<group>"; };
+		775C58881ABA7B75005B6B40 /* WXGoodEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXGoodEntity.m; sourceTree = "<group>"; };
+		775C58891ABA7B75005B6B40 /* WXGoodListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXGoodListModel.h; sourceTree = "<group>"; };
+		775C588A1ABA7B75005B6B40 /* WXGoodListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXGoodListModel.m; sourceTree = "<group>"; };
+		775C588B1ABA7B75005B6B40 /* WXSetMeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSetMeal.h; sourceTree = "<group>"; };
+		775C588C1ABA7B75005B6B40 /* WXSetMeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSetMeal.m; sourceTree = "<group>"; };
+		775C588E1ABA7B75005B6B40 /* ActData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActData.h; sourceTree = "<group>"; };
+		775C588F1ABA7B75005B6B40 /* ActData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActData.m; sourceTree = "<group>"; };
+		775C58901ABA7B75005B6B40 /* GuessYouLikeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessYouLikeData.h; sourceTree = "<group>"; };
+		775C58911ABA7B75005B6B40 /* GuessYouLikeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessYouLikeData.m; sourceTree = "<group>"; };
+		775C58921ABA7B75005B6B40 /* TopADVData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopADVData.h; sourceTree = "<group>"; };
+		775C58931ABA7B75005B6B40 /* TopADVData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopADVData.m; sourceTree = "<group>"; };
+		775C58941ABA7B75005B6B40 /* TopADVEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopADVEntity.h; sourceTree = "<group>"; };
+		775C58951ABA7B75005B6B40 /* TopADVEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopADVEntity.m; sourceTree = "<group>"; };
+		775C58971ABA7B75005B6B40 /* PersonalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfo.h; sourceTree = "<group>"; };
+		775C58981ABA7B75005B6B40 /* PersonalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfo.m; sourceTree = "<group>"; };
+		775C589A1ABA7B75005B6B40 /* ShopDesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDesc.h; sourceTree = "<group>"; };
+		775C589B1ABA7B75005B6B40 /* ShopDesc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDesc.m; sourceTree = "<group>"; };
+		775C589C1ABA7B75005B6B40 /* ShopInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfo.h; sourceTree = "<group>"; };
+		775C589D1ABA7B75005B6B40 /* ShopInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfo.m; sourceTree = "<group>"; };
+		775C589E1ABA7B75005B6B40 /* SubShopTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubShopTime.h; sourceTree = "<group>"; };
+		775C589F1ABA7B75005B6B40 /* SubShopTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubShopTime.m; sourceTree = "<group>"; };
+		775C58A11ABA7B75005B6B40 /* SubShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubShop.h; sourceTree = "<group>"; };
+		775C58A21ABA7B75005B6B40 /* SubShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubShop.m; sourceTree = "<group>"; };
+		775C58A31ABA7B75005B6B40 /* SubShopArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubShopArea.h; sourceTree = "<group>"; };
+		775C58A41ABA7B75005B6B40 /* SubShopArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubShopArea.m; sourceTree = "<group>"; };
+		775C58A51ABA7B75005B6B40 /* SubShopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubShopModel.h; sourceTree = "<group>"; };
+		775C58A61ABA7B75005B6B40 /* SubShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubShopModel.m; sourceTree = "<group>"; };
+		775C58A91ABA7B75005B6B40 /* AddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBook.h; sourceTree = "<group>"; };
+		775C58AA1ABA7B75005B6B40 /* AddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBook.m; sourceTree = "<group>"; };
+		775C58AB1ABA7B75005B6B40 /* ContacterEntity+Detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ContacterEntity+Detail.m"; sourceTree = "<group>"; };
+		775C58AC1ABA7B75005B6B40 /* ContacterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContacterEntity.h; sourceTree = "<group>"; };
+		775C58AD1ABA7B75005B6B40 /* ContacterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContacterEntity.m; sourceTree = "<group>"; };
+		775C58AF1ABA7B75005B6B40 /* WXContacterEntity+Detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXContacterEntity+Detail.m"; sourceTree = "<group>"; };
+		775C58B01ABA7B75005B6B40 /* WXContacterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterEntity.h; sourceTree = "<group>"; };
+		775C58B11ABA7B75005B6B40 /* WXContacterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterEntity.m; sourceTree = "<group>"; };
+		775C58B21ABA7B75005B6B40 /* WXContactMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContactMonitor.h; sourceTree = "<group>"; };
+		775C58B31ABA7B75005B6B40 /* WXContactMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContactMonitor.m; sourceTree = "<group>"; };
+		775C58B41ABA7B75005B6B40 /* WXLibDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXLibDB.h; sourceTree = "<group>"; };
+		775C58B51ABA7B75005B6B40 /* WXLibDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXLibDB.m; sourceTree = "<group>"; };
+		775C58D41ABA7D27005B6B40 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		775C58D51ABA7D27005B6B40 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		776CFFA61AB1257B000A1D84 /* ARLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLabel.h; sourceTree = "<group>"; };
 		776CFFA71AB1257B000A1D84 /* ARLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLabel.m; sourceTree = "<group>"; };
 		777059AC1AAFDEC40097526C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localize.strings; sourceTree = "<group>"; };
@@ -1171,6 +1273,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				775C58711ABA7B75005B6B40 /* DataFromLib */,
 				775C581A1ABA5F31005B6B40 /* WXTUtils */,
 				775843B31AB971CF0039B129 /* WXTUIKit */,
 				7758435E1AB96A4B0039B129 /* WXTCall */,
@@ -1180,7 +1283,6 @@
 				7758417B1AB95A2F0039B129 /* GuideMask */,
 				775841861AB95A2F0039B129 /* ServerLib */,
 				775841B61AB95A2F0039B129 /* SysInterfaceBridge */,
-				775842A21AB95A300039B129 /* WXAddressBook */,
 				77DB94251AAFEEBC0021A816 /* UserAgent.h */,
 				77DB94261AAFEEBC0021A816 /* UserAgent.m */,
 				77DB94211AAFEE130021A816 /* Widget */,
@@ -1877,39 +1979,6 @@
 			path = WXUITabBarVC;
 			sourceTree = "<group>";
 		};
-		775842A21AB95A300039B129 /* WXAddressBook */ = {
-			isa = PBXGroup;
-			children = (
-				775842A31AB95A300039B129 /* SystemContacter */,
-				775842A91AB95A300039B129 /* WXContacter */,
-			);
-			path = WXAddressBook;
-			sourceTree = "<group>";
-		};
-		775842A31AB95A300039B129 /* SystemContacter */ = {
-			isa = PBXGroup;
-			children = (
-				775842A41AB95A300039B129 /* AddressBook.h */,
-				775842A51AB95A300039B129 /* AddressBook.m */,
-				775842A61AB95A300039B129 /* ContacterEntity+Detail.m */,
-				775842A71AB95A300039B129 /* ContacterEntity.h */,
-				775842A81AB95A300039B129 /* ContacterEntity.m */,
-			);
-			path = SystemContacter;
-			sourceTree = "<group>";
-		};
-		775842A91AB95A300039B129 /* WXContacter */ = {
-			isa = PBXGroup;
-			children = (
-				775842AA1AB95A300039B129 /* WXContacterEntity+Detail.m */,
-				775842AB1AB95A300039B129 /* WXContacterEntity.h */,
-				775842AC1AB95A300039B129 /* WXContacterEntity.m */,
-				775842AD1AB95A300039B129 /* WXContactMonitor.h */,
-				775842AE1AB95A300039B129 /* WXContactMonitor.m */,
-			);
-			path = WXContacter;
-			sourceTree = "<group>";
-		};
 		775843441AB95FAC0039B129 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -1932,6 +2001,7 @@
 		7758435E1AB96A4B0039B129 /* WXTCall */ = {
 			isa = PBXGroup;
 			children = (
+				775C58551ABA7A52005B6B40 /* KeyPad */,
 				775C58511ABA68B9005B6B40 /* WXContacterVC.h */,
 				775C58521ABA68B9005B6B40 /* WXContacterVC.m */,
 				775C58451ABA6435005B6B40 /* Cells */,
@@ -2039,9 +2109,181 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		775C58551ABA7A52005B6B40 /* KeyPad */ = {
+			isa = PBXGroup;
+			children = (
+				775C58561ABA7A52005B6B40 /* BaseCallHistoryCell.h */,
+				775C58571ABA7A52005B6B40 /* BaseCallHistoryCell.m */,
+				775C58581ABA7A52005B6B40 /* CallHistoryCell.h */,
+				775C58591ABA7A52005B6B40 /* CallHistoryCell.m */,
+				775C585A1ABA7A52005B6B40 /* CallHistoryEntityExt.h */,
+				775C585B1ABA7A52005B6B40 /* CallHistoryEntityExt.m */,
+				775C585C1ABA7A52005B6B40 /* KeyPadView.h */,
+				775C585D1ABA7A52005B6B40 /* KeyPadView.m */,
+				775C585E1ABA7A52005B6B40 /* SimpleContacterCell.h */,
+				775C585F1ABA7A52005B6B40 /* SimpleContacterCell.m */,
+				775C58601ABA7A52005B6B40 /* StrangerEntity.h */,
+				775C58611ABA7A52005B6B40 /* StrangerEntity.m */,
+				775C58621ABA7A52005B6B40 /* SysContacterEntityEx.h */,
+				775C58631ABA7A52005B6B40 /* SysContacterEntityEx.m */,
+				775C58641ABA7A52005B6B40 /* WXKeyPadModel.h */,
+				775C58651ABA7A52005B6B40 /* WXKeyPadModel.m */,
+				775C58661ABA7A52005B6B40 /* WXKeyPadVC.h */,
+				775C58671ABA7A52005B6B40 /* WXKeyPadVC.m */,
+			);
+			path = KeyPad;
+			sourceTree = "<group>";
+		};
+		775C58711ABA7B75005B6B40 /* DataFromLib */ = {
+			isa = PBXGroup;
+			children = (
+				775C58721ABA7B75005B6B40 /* BalanceModel */,
+				775C587B1ABA7B75005B6B40 /* CallHistory */,
+				775C58801ABA7B75005B6B40 /* GoodList */,
+				775C588D1ABA7B75005B6B40 /* HomeData */,
+				775C58961ABA7B75005B6B40 /* PersonalInfo */,
+				775C58991ABA7B75005B6B40 /* ShopInfo */,
+				775C58A01ABA7B75005B6B40 /* SubShopModel */,
+				775C58A71ABA7B75005B6B40 /* WXAddressBook */,
+				775C58B41ABA7B75005B6B40 /* WXLibDB.h */,
+				775C58B51ABA7B75005B6B40 /* WXLibDB.m */,
+			);
+			path = DataFromLib;
+			sourceTree = "<group>";
+		};
+		775C58721ABA7B75005B6B40 /* BalanceModel */ = {
+			isa = PBXGroup;
+			children = (
+				775C58731ABA7B75005B6B40 /* RedPacket.h */,
+				775C58741ABA7B75005B6B40 /* RedPacket.m */,
+				775C58751ABA7B75005B6B40 /* RedPacketBalance.h */,
+				775C58761ABA7B75005B6B40 /* RedPacketBalance.m */,
+				775C58771ABA7B75005B6B40 /* RedPacketEntity.h */,
+				775C58781ABA7B75005B6B40 /* RedPacketEntity.m */,
+				775C58791ABA7B75005B6B40 /* RedPacketRule.h */,
+				775C587A1ABA7B75005B6B40 /* RedPacketRule.m */,
+			);
+			path = BalanceModel;
+			sourceTree = "<group>";
+		};
+		775C587B1ABA7B75005B6B40 /* CallHistory */ = {
+			isa = PBXGroup;
+			children = (
+				775C587C1ABA7B75005B6B40 /* CallHistoryEntity.h */,
+				775C587D1ABA7B75005B6B40 /* CallHistoryEntity.m */,
+				775C587E1ABA7B75005B6B40 /* CallRecord.h */,
+				775C587F1ABA7B75005B6B40 /* CallRecord.m */,
+			);
+			path = CallHistory;
+			sourceTree = "<group>";
+		};
+		775C58801ABA7B75005B6B40 /* GoodList */ = {
+			isa = PBXGroup;
+			children = (
+				775C58811ABA7B75005B6B40 /* SetMealEntity.h */,
+				775C58821ABA7B75005B6B40 /* SetMealEntity.m */,
+				775C58831ABA7B75005B6B40 /* WXGood.h */,
+				775C58841ABA7B75005B6B40 /* WXGood.m */,
+				775C58851ABA7B75005B6B40 /* WXGoodCategoryModel.h */,
+				775C58861ABA7B75005B6B40 /* WXGoodCategoryModel.m */,
+				775C58871ABA7B75005B6B40 /* WXGoodEntity.h */,
+				775C58881ABA7B75005B6B40 /* WXGoodEntity.m */,
+				775C58891ABA7B75005B6B40 /* WXGoodListModel.h */,
+				775C588A1ABA7B75005B6B40 /* WXGoodListModel.m */,
+				775C588B1ABA7B75005B6B40 /* WXSetMeal.h */,
+				775C588C1ABA7B75005B6B40 /* WXSetMeal.m */,
+			);
+			path = GoodList;
+			sourceTree = "<group>";
+		};
+		775C588D1ABA7B75005B6B40 /* HomeData */ = {
+			isa = PBXGroup;
+			children = (
+				775C588E1ABA7B75005B6B40 /* ActData.h */,
+				775C588F1ABA7B75005B6B40 /* ActData.m */,
+				775C58901ABA7B75005B6B40 /* GuessYouLikeData.h */,
+				775C58911ABA7B75005B6B40 /* GuessYouLikeData.m */,
+				775C58921ABA7B75005B6B40 /* TopADVData.h */,
+				775C58931ABA7B75005B6B40 /* TopADVData.m */,
+				775C58941ABA7B75005B6B40 /* TopADVEntity.h */,
+				775C58951ABA7B75005B6B40 /* TopADVEntity.m */,
+			);
+			path = HomeData;
+			sourceTree = "<group>";
+		};
+		775C58961ABA7B75005B6B40 /* PersonalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				775C58971ABA7B75005B6B40 /* PersonalInfo.h */,
+				775C58981ABA7B75005B6B40 /* PersonalInfo.m */,
+			);
+			path = PersonalInfo;
+			sourceTree = "<group>";
+		};
+		775C58991ABA7B75005B6B40 /* ShopInfo */ = {
+			isa = PBXGroup;
+			children = (
+				775C589A1ABA7B75005B6B40 /* ShopDesc.h */,
+				775C589B1ABA7B75005B6B40 /* ShopDesc.m */,
+				775C589C1ABA7B75005B6B40 /* ShopInfo.h */,
+				775C589D1ABA7B75005B6B40 /* ShopInfo.m */,
+				775C589E1ABA7B75005B6B40 /* SubShopTime.h */,
+				775C589F1ABA7B75005B6B40 /* SubShopTime.m */,
+			);
+			path = ShopInfo;
+			sourceTree = "<group>";
+		};
+		775C58A01ABA7B75005B6B40 /* SubShopModel */ = {
+			isa = PBXGroup;
+			children = (
+				775C58A11ABA7B75005B6B40 /* SubShop.h */,
+				775C58A21ABA7B75005B6B40 /* SubShop.m */,
+				775C58A31ABA7B75005B6B40 /* SubShopArea.h */,
+				775C58A41ABA7B75005B6B40 /* SubShopArea.m */,
+				775C58A51ABA7B75005B6B40 /* SubShopModel.h */,
+				775C58A61ABA7B75005B6B40 /* SubShopModel.m */,
+			);
+			path = SubShopModel;
+			sourceTree = "<group>";
+		};
+		775C58A71ABA7B75005B6B40 /* WXAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				775C58A81ABA7B75005B6B40 /* SystemContacter */,
+				775C58AE1ABA7B75005B6B40 /* WXContacter */,
+			);
+			path = WXAddressBook;
+			sourceTree = "<group>";
+		};
+		775C58A81ABA7B75005B6B40 /* SystemContacter */ = {
+			isa = PBXGroup;
+			children = (
+				775C58A91ABA7B75005B6B40 /* AddressBook.h */,
+				775C58AA1ABA7B75005B6B40 /* AddressBook.m */,
+				775C58AB1ABA7B75005B6B40 /* ContacterEntity+Detail.m */,
+				775C58AC1ABA7B75005B6B40 /* ContacterEntity.h */,
+				775C58AD1ABA7B75005B6B40 /* ContacterEntity.m */,
+			);
+			path = SystemContacter;
+			sourceTree = "<group>";
+		};
+		775C58AE1ABA7B75005B6B40 /* WXContacter */ = {
+			isa = PBXGroup;
+			children = (
+				775C58AF1ABA7B75005B6B40 /* WXContacterEntity+Detail.m */,
+				775C58B01ABA7B75005B6B40 /* WXContacterEntity.h */,
+				775C58B11ABA7B75005B6B40 /* WXContacterEntity.m */,
+				775C58B21ABA7B75005B6B40 /* WXContactMonitor.h */,
+				775C58B31ABA7B75005B6B40 /* WXContactMonitor.m */,
+			);
+			path = WXContacter;
+			sourceTree = "<group>";
+		};
 		77DB93E51AAFE6EA0021A816 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				775C58D41ABA7D27005B6B40 /* BaseModel.h */,
+				775C58D51ABA7D27005B6B40 /* BaseModel.m */,
 				77DB93E91AAFE70D0021A816 /* PhoneData.h */,
 				77DB93EA1AAFE70D0021A816 /* PhoneData.m */,
 				77DB93EB1AAFE70D0021A816 /* RecentData.h */,
@@ -2336,6 +2578,7 @@
 				775C58531ABA68B9005B6B40 /* WXContacterVC.m in Sources */,
 				775843011AB95A300039B129 /* PingponeButton.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
+				775C58C61ABA7B75005B6B40 /* PersonalInfo.m in Sources */,
 				775842B81AB95A300039B129 /* WXUnreadSysMsgOBJ.m in Sources */,
 				775843331AB95A300039B129 /* WXUITableViewCell.m in Sources */,
 				775843271AB95A300039B129 /* WXUINavigationController+SubVCPosition.m in Sources */,
@@ -2344,11 +2587,15 @@
 				775842F01AB95A300039B129 /* WXUITextViewCell.m in Sources */,
 				7758432E1AB95A300039B129 /* WXUISwitch.m in Sources */,
 				7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */,
+				775C58BA1ABA7B75005B6B40 /* CallHistoryEntity.m in Sources */,
+				775C586C1ABA7A52005B6B40 /* SimpleContacterCell.m in Sources */,
 				2563B4371AAADA9B00C04227 /* RegisterViewController.m in Sources */,
 				775842C61AB95A300039B129 /* it_lib_db.cpp in Sources */,
 				775842E81AB95A300039B129 /* TelNOOBJ.m in Sources */,
 				120A2BEC1AB135DD006A28B1 /* SignViewController.m in Sources */,
 				775842BE1AB95A300039B129 /* WXMaskView.m in Sources */,
+				775C58CB1ABA7B75005B6B40 /* SubShopArea.m in Sources */,
+				775C58B61ABA7B75005B6B40 /* RedPacket.m in Sources */,
 				7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */,
 				775842D71AB95A300039B129 /* NSString+RC4.m in Sources */,
 				2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */,
@@ -2363,6 +2610,8 @@
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
 				775843591AB95FAC0039B129 /* WXService+Call.m in Sources */,
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
+				775C58B71ABA7B75005B6B40 /* RedPacketBalance.m in Sources */,
+				775C58B91ABA7B75005B6B40 /* RedPacketRule.m in Sources */,
 				775843761AB96A4B0039B129 /* WXContactOptEntity.m in Sources */,
 				775843391AB95A300039B129 /* WXUIWebView.m in Sources */,
 				775842DD1AB95A300039B129 /* UIImage+Render.m in Sources */,
@@ -2374,6 +2623,7 @@
 				7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */,
 				775842CD1AB95A300039B129 /* ss.cpp in Sources */,
 				775842C51AB95A300039B129 /* it_lib_context.cpp in Sources */,
+				775C58C31ABA7B75005B6B40 /* GuessYouLikeData.m in Sources */,
 				120A2BEB1AB135DD006A28B1 /* RechargeView.m in Sources */,
 				775842B91AB95A300039B129 /* WXUserOBJ.m in Sources */,
 				775843231AB95A300039B129 /* WXUIButton.m in Sources */,
@@ -2382,6 +2632,8 @@
 				775842F81AB95A300039B129 /* PSCollectionView.m in Sources */,
 				7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */,
 				7758435B1AB95FAC0039B129 /* WXService+UserInfo.m in Sources */,
+				775C58CE1ABA7B75005B6B40 /* ContacterEntity+Detail.m in Sources */,
+				775C58D21ABA7B75005B6B40 /* WXContactMonitor.m in Sources */,
 				775C584B1ABA6435005B6B40 /* ContactsCell.m in Sources */,
 				12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */,
 				120A2C161AB17A92006A28B1 /* SignModel.m in Sources */,
@@ -2407,19 +2659,26 @@
 				7758431C1AB95A300039B129 /* WXMFMessageComposeVC.m in Sources */,
 				775842CE1AB95A300039B129 /* ss_g711.cpp in Sources */,
 				7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */,
+				775C58D11ABA7B75005B6B40 /* WXContacterEntity.m in Sources */,
 				775842F21AB95A300039B129 /* WXDropListView.m in Sources */,
 				775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */,
+				775C586F1ABA7A52005B6B40 /* WXKeyPadModel.m in Sources */,
 				120A2BF21AB135DE006A28B1 /* UserInfoCommonCell.m in Sources */,
 				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
 				775843711AB96A4B0039B129 /* ContactsViewController.m in Sources */,
 				775842DC1AB95A300039B129 /* UIImage+Extend.m in Sources */,
 				775842C31AB95A300039B129 /* it_lib_audio.cpp in Sources */,
+				775C58701ABA7A52005B6B40 /* WXKeyPadVC.m in Sources */,
+				775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */,
 				775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */,
 				775843251AB95A300039B129 /* WXUIImageView.m in Sources */,
+				775C58C21ABA7B75005B6B40 /* ActData.m in Sources */,
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
 				775C58421ABA5F31005B6B40 /* Tools.m in Sources */,
 				775842B51AB95A300039B129 /* WXTURLFeedOBJ+Data.m in Sources */,
 				775842B11AB95A300039B129 /* WXColorConfig.m in Sources */,
+				775C58B81ABA7B75005B6B40 /* RedPacketEntity.m in Sources */,
+				775C58C11ABA7B75005B6B40 /* WXSetMeal.m in Sources */,
 				775842D61AB95A300039B129 /* NSString+HTML.m in Sources */,
 				775842B01AB95A300039B129 /* CustomMadeOBJ.m in Sources */,
 				126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */,
@@ -2427,6 +2686,7 @@
 				775842EB1AB95A300039B129 /* ZoneCodeOBJ.m in Sources */,
 				775843C21AB971CF0039B129 /* UIView+Render.m in Sources */,
 				775842F11AB95A300039B129 /* WXDropListItem.m in Sources */,
+				775C58D61ABA7D27005B6B40 /* BaseModel.m in Sources */,
 				12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */,
 				7758432C1AB95A300039B129 /* WXUISearchBar.m in Sources */,
 				126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */,
@@ -2435,17 +2695,19 @@
 				775842D41AB95A300039B129 /* NSNotificationAdditions.m in Sources */,
 				775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */,
 				77DB93F11AAFE70D0021A816 /* MessageData.m in Sources */,
+				775C58C51ABA7B75005B6B40 /* TopADVEntity.m in Sources */,
 				775842E61AB95A300039B129 /* CountryCode.m in Sources */,
 				775842B61AB95A300039B129 /* WXTURLFeedOBJ.m in Sources */,
+				775C58BD1ABA7B75005B6B40 /* WXGood.m in Sources */,
 				775842F31AB95A300039B129 /* EGORefreshTableHeaderView.m in Sources */,
 				775842DB1AB95A300039B129 /* UIFont+WX.m in Sources */,
 				120A2C661AB1804E006A28B1 /* SignEntity.m in Sources */,
 				775842F51AB95A300039B129 /* MessageInterceptor.m in Sources */,
 				775843341AB95A300039B129 /* WXUITableViewController.m in Sources */,
 				120A2BEA1AB135DD006A28B1 /* RechargeCell.m in Sources */,
+				775C586B1ABA7A52005B6B40 /* KeyPadView.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
 				126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */,
-				7758433C1AB95A300039B129 /* ContacterEntity+Detail.m in Sources */,
 				775842C01AB95A300039B129 /* WXGuideMaskControl.m in Sources */,
 				7758432F1AB95A300039B129 /* WXUITabBar.m in Sources */,
 				775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */,
@@ -2454,24 +2716,27 @@
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
 				775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */,
 				775C583D1ABA5F31005B6B40 /* PinyinFormatter.m in Sources */,
-				7758433B1AB95A300039B129 /* AddressBook.m in Sources */,
 				775842B21AB95A300039B129 /* URLFeedData.m in Sources */,
 				120A2BF01AB135DE006A28B1 /* BalanceModel.m in Sources */,
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
+				775C586D1ABA7A52005B6B40 /* StrangerEntity.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
 				2563B3F31AAAD74000C04227 /* LoginViewController.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
+				775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */,
 				775842BC1AB95A300039B129 /* ContactDetailCell.m in Sources */,
 				775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */,
 				775842C71AB95A300039B129 /* it_lib_files.cpp in Sources */,
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
+				775C58CC1ABA7B75005B6B40 /* SubShopModel.m in Sources */,
 				775843111AB95A300039B129 /* WXMutiScanViewCell.m in Sources */,
 				775842EE1AB95A300039B129 /* WXDetailTextCell.m in Sources */,
 				7758432A1AB95A300039B129 /* WXUIPageControl.m in Sources */,
 				77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */,
 				775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */,
 				775843041AB95A300039B129 /* DDMenuController.m in Sources */,
+				775C58BE1ABA7B75005B6B40 /* WXGoodCategoryModel.m in Sources */,
 				775842D91AB95A300039B129 /* UIColor+WX.m in Sources */,
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
 				775C58501ABA68AE005B6B40 /* WXContacterCell.m in Sources */,
@@ -2480,7 +2745,6 @@
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,
 				7758431B1AB95A300039B129 /* YRSideViewController.m in Sources */,
 				775842F61AB95A300039B129 /* PullPsCollectionView.m in Sources */,
-				775843401AB95A300039B129 /* WXContactMonitor.m in Sources */,
 				775842D01AB95A300039B129 /* stdafx.cpp in Sources */,
 				77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */,
 				775C583F1ABA5F31005B6B40 /* PinyinHelper.m in Sources */,
@@ -2493,6 +2757,7 @@
 				775842CB1AB95A300039B129 /* reg_msg.cpp in Sources */,
 				775842C41AB95A300039B129 /* it_lib_call.cpp in Sources */,
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
+				775C58CF1ABA7B75005B6B40 /* ContacterEntity.m in Sources */,
 				126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */,
 				775842FF1AB95A300039B129 /* LoadingEntity.m in Sources */,
 				775C58411ABA5F31005B6B40 /* PinYinSearchOBJ.m in Sources */,
@@ -2500,11 +2765,14 @@
 				775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */,
 				775843311AB95A300039B129 /* WXUITabBarVC.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
+				775C586A1ABA7A52005B6B40 /* CallHistoryEntityExt.m in Sources */,
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
 				775842CC1AB95A300039B129 /* sqlite3.c in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
 				12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */,
+				775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
+				775C58691ABA7A52005B6B40 /* CallHistoryCell.m in Sources */,
 				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,
 				775843371AB95A300039B129 /* WXUIView.m in Sources */,
 				775843581AB95FAC0039B129 /* ServiceMonitor.m in Sources */,
@@ -2514,14 +2782,14 @@
 				775C584D1ABA6435005B6B40 /* RecentCell.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
 				775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */,
+				775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */,
 				775843351AB95A300039B129 /* WXUITextField.m in Sources */,
 				775842D51AB95A300039B129 /* NSString+Encrypt.m in Sources */,
 				775842BA1AB95A300039B129 /* WXUserDefault.m in Sources */,
 				775842D81AB95A300039B129 /* NSString+Size.m in Sources */,
-				7758433D1AB95A300039B129 /* ContacterEntity.m in Sources */,
-				7758433F1AB95A300039B129 /* WXContacterEntity.m in Sources */,
 				775C583B1ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m in Sources */,
 				775843731AB96A4B0039B129 /* ContactBaseEntity+Detail.m in Sources */,
+				775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				120A2C081AB142D4006A28B1 /* LoginVC.m in Sources */,
 				775842E41AB95A300039B129 /* WXMiltiViewCell.m in Sources */,
@@ -2531,22 +2799,30 @@
 				775842EC1AB95A300039B129 /* CrystalNavigationView.m in Sources */,
 				7758430F1AB95A300039B129 /* WXMultiGuideView.m in Sources */,
 				775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */,
+				775C58C71ABA7B75005B6B40 /* ShopDesc.m in Sources */,
+				775C586E1ABA7A52005B6B40 /* SysContacterEntityEx.m in Sources */,
+				775C58CD1ABA7B75005B6B40 /* AddressBook.m in Sources */,
 				12D0C8801AB6C0E60039A197 /* VersionEntity.m in Sources */,
 				775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */,
 				775842C11AB95A300039B129 /* it_lib.cpp in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,
+				775C58C81ABA7B75005B6B40 /* ShopInfo.m in Sources */,
 				775842C91AB95A300039B129 /* it_lib_log.cpp in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
+				775C58D31ABA7B75005B6B40 /* WXLibDB.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,
 				775842C81AB95A300039B129 /* it_lib_im.cpp in Sources */,
+				775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */,
+				775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */,
 				775843261AB95A300039B129 /* WXUILabel.m in Sources */,
 				775843021AB95A300039B129 /* BaseSearchEntity.m in Sources */,
+				775C58C91ABA7B75005B6B40 /* SubShopTime.m in Sources */,
 				775842E01AB95A300039B129 /* UIView+Render.m in Sources */,
 				775843701AB96A4B0039B129 /* CallViewController.m in Sources */,
 				775842E31AB95A300039B129 /* WXCpxBtnImgView.m in Sources */,
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
-				7758433E1AB95A300039B129 /* WXContacterEntity+Detail.m in Sources */,
+				775C58681ABA7A52005B6B40 /* BaseCallHistoryCell.m in Sources */,
 				7758431E1AB95A300039B129 /* WXUIActivityIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

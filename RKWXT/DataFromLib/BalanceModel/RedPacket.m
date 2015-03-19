@@ -10,8 +10,8 @@
 #import "RedPacketBalance.h"
 #import "ServiceCommon.h"
 #import "it_lib.h"
-#import "NSObject+SBJson.h"
-#import "SysMsgDef.h"
+//#import "NSObject+SBJson.h"
+//#import "SysMsgDef.h"
 
 @interface RedPacket()
 {
@@ -23,8 +23,7 @@
 
 - (void)dealloc{
 	[self removeOBS];
-	RELEASE_SAFELY(_redPacketList);
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -108,7 +107,7 @@
 	[notificationCenter addObserver:self selector:@selector(loadFailed:) name:D_Notification_Name_Lib_LoadRedPagerFailed object:nil];
 	[notificationCenter addObserver:self selector:@selector(openRedPacketSucceed:) name:D_Notification_Name_Lib_GainRedPagerSucceed object:nil];
 	[notificationCenter addObserver:self selector:@selector(openRedPacketFailed:) name:D_Notification_Name_Lib_GainRedPagerFailed object:nil];
-	[notificationCenter addObserver:self selector:@selector(incommingRedPacket:) name:D_Notification_Name_RewardPacketDetected object:nil];
+//	[notificationCenter addObserver:self selector:@selector(incommingRedPacket:) name:D_Notification_Name_RewardPacketDetected object:nil];
 }
 
 - (void)removeOBS{
@@ -118,7 +117,7 @@
 - (NSArray*)redPacketListWithDictionary:(NSDictionary*)dic{
 	NSMutableArray *list = [NSMutableArray array];
 	NSArray *packetList = [dic objectForKey:@"pack"];
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	for (NSDictionary *aPacket in packetList){
 		NSInteger type = [[aPacket objectForKey:@"type"] integerValue];
 		NSInteger shopID = [[aPacket objectForKey:@"shop_id"] integerValue];
@@ -130,7 +129,7 @@
 			NSString *title = [aDic objectForKey:@"title"];
 			NSString *remark = [aDic objectForKey:@"remark"];
 			NSInteger endDate = [[aDic objectForKey:@"end_date"] integerValue];
-			RedPacketEntity *entity = [[[RedPacketEntity alloc] init] autorelease];
+			RedPacketEntity *entity = [[RedPacketEntity alloc] init] ;
 			[entity setMoney:price];
 			[entity setTitle:title];
 			[entity setRemark:remark];
@@ -142,23 +141,23 @@
 			[list addObject:entity];
 		}
 	}
-	[pool drain];
+//	[pool drain];
 	return list;
 }
 
-- (void)loadedSucceed:(NSNotification*)notification{
-	[self setStatus:E_ModelDataStatus_LoadSucceed];
-	
-	[_redPacketList removeAllObjects];
-	NSString *jsonString = notification.object;
-	NSDictionary *dic = [jsonString JSONValue];
-	NSArray *list = [self redPacketListWithDictionary:dic];
-	if (list){
-		[_redPacketList addObjectsFromArray:list];
-	}
-	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_RedPacketLoadedSucceed object:nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_RedPacketNumberChanged object:nil];
-}
+//- (void)loadedSucceed:(NSNotification*)notification{
+//	[self setStatus:E_ModelDataStatus_LoadSucceed];
+//	
+//	[_redPacketList removeAllObjects];
+//	NSString *jsonString = notification.object;
+//	NSDictionary *dic = [jsonString JSONValue];
+//	NSArray *list = [self redPacketListWithDictionary:dic];
+//	if (list){
+//		[_redPacketList addObjectsFromArray:list];
+//	}
+//	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_RedPacketLoadedSucceed object:nil];
+//	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_RedPacketNumberChanged object:nil];
+//}
 
 - (void)loadFailed:(NSNotification*)notification{
 	[self setStatus:E_ModelDataStatus_LoadFailed];

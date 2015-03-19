@@ -9,7 +9,7 @@
 #import "WXSetMeal.h"
 #import "it_lib.h"
 #import "ServiceCommon.h"
-#import "NSObject+SBJson.h"
+//#import "NSObject+SBJson.h"
 #import "SetMealEntity.h"
 
 @interface WXSetMeal()
@@ -23,9 +23,8 @@
 
 - (void)dealloc{
 	_delegate = nil;
-	RELEASE_SAFELY(_setMealList);
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -75,22 +74,22 @@
 	[notificationCenter addObserver:self selector:@selector(allSetMealLoadedFailed:) name:D_Notification_Name_Lib_LoadSetMealsFailed object:nil];
 }
 
-- (void)allSetMealLoadedSucceed:(NSNotification*)notification{
-	[_setMealList removeAllObjects];
-	NSString *jsonString = notification.object;
-	NSDictionary *setMealsDic = [jsonString JSONValue];
-	NSArray *setMealArray = [setMealsDic objectForKey:@"package"];
-	for(NSDictionary *dic in setMealArray){
-		SetMealEntity *setMealEntity = [SetMealEntity entityWithDictionary:dic];
-		if(setMealEntity){
-			[_setMealList addObject:setMealEntity];
-		}
-	}
-	[self setStatus:E_ModelDataStatus_LoadSucceed];
-	if (_delegate && [_delegate respondsToSelector:@selector(allSetMealLoadedSucceed)]){
-		[_delegate allSetMealLoadedSucceed];
-	}
-}
+//- (void)allSetMealLoadedSucceed:(NSNotification*)notification{
+//	[_setMealList removeAllObjects];
+//	NSString *jsonString = notification.object;
+//	NSDictionary *setMealsDic = [jsonString JSONValue];
+//	NSArray *setMealArray = [setMealsDic objectForKey:@"package"];
+//	for(NSDictionary *dic in setMealArray){
+//		SetMealEntity *setMealEntity = [SetMealEntity entityWithDictionary:dic];
+//		if(setMealEntity){
+//			[_setMealList addObject:setMealEntity];
+//		}
+//	}
+//	[self setStatus:E_ModelDataStatus_LoadSucceed];
+//	if (_delegate && [_delegate respondsToSelector:@selector(allSetMealLoadedSucceed)]){
+//		[_delegate allSetMealLoadedSucceed];
+//	}
+//}
 
 - (void)allSetMealLoadedFailed:(NSNotification*)notification{
 	[self setStatus:E_ModelDataStatus_LoadFailed];

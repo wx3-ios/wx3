@@ -17,9 +17,9 @@ typedef enum {
 }E_WXContacterStatus;
 
 #import <Foundation/Foundation.h>
-#import "ContactBaseEntity.h"
+//#import "ContactBaseEntity.h"
 
-@interface WXContacterEntity : ContactBaseEntity
+@interface WXContacterEntity : NSObject
 @property (nonatomic,retain)NSString *nickName;//昵称~
 @property (nonatomic,retain)NSString *wxID;//我信唯一ID~
 @property (nonatomic,retain)NSString *rID;//lib库分配的唯一ID

@@ -14,7 +14,7 @@
 
 - (void)dealloc{
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{

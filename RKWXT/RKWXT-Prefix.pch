@@ -22,10 +22,9 @@
 	#import <Foundation/Foundation.h>
     #import "DDTTYLogger.h"    
     #import "Tools.h"
-	#import "UtilTool.h"
 	#import "Constants.h"
 	#import "UserAgent.h"
-
+#import "AddressBook.h"
     #import "UIFont+WXT.h"
     #import "WXTUIButton.h"
     #import "Common.h"

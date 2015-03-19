@@ -11,16 +11,14 @@
 @implementation TopADVEntity
 
 - (void)dealloc{
-	RELEASE_SAFELY(_imageURL);
-	RELEASE_SAFELY(_title);
-	[super dealloc];
+//	[super dealloc];
 }
 
 + (TopADVEntity*)topADVEntityWithDictionary:(NSDictionary*)dic{
 	if (!dic){
 		return nil;
 	}
-	return [[[self alloc] initWithDictionary:dic] autorelease];
+	return [[self alloc] initWithDictionary:dic] ;
 }
 
 - (id)initWithDictionary:(NSDictionary*)dic{

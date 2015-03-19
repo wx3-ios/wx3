@@ -11,10 +11,7 @@
 @implementation RedPacketEntity
 
 - (void)dealloc{
-	RELEASE_SAFELY(_title);
-	RELEASE_SAFELY(_remark);
-	RELEASE_SAFELY(_shopName);
-	[super dealloc];
+//	[super dealloc];
 }
 
 @end

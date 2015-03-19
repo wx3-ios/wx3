@@ -250,4 +250,11 @@
     [controller.searchResultsTableView reloadData];
     return YES;
 }
+
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    NSLog(@"%s",__FUNCTION__);
+}
+- (void)tabBar:(UITabBar *)tabBar didBeginCustomizingItems:(NSArray *)items{
+        NSLog(@"%s",__FUNCTION__);
+}
 @end

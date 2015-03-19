@@ -63,5 +63,9 @@ return shared##className; \
 #define   ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define   ScreenHeight   [[UIScreen mainScreen] bounds].size.height
 
+typedef enum {
+    E_Call_Type_Direct = 0, //直拨
+    E_Call_Type_Back,//回拨~
+}E_Call_Type;
 
 #endif

@@ -24,7 +24,7 @@
 @implementation WXGoodListModel
 
 - (void)dealloc{
-    [super dealloc];
+//    [super dealloc];
 }
 
 - (id)init{
@@ -149,7 +149,7 @@
 }
 
 - (NSArray*)goodsFromArray:(NSInteger[])goodIDArray length:(NSInteger)length{
-    NSMutableArray *goods = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *goods = [[NSMutableArray alloc] init] ;
     for (NSInteger index = 0; index < length; index++){
         WXGoodEntity *good = [self goodsOfID:goodIDArray[index]];
         if(good){

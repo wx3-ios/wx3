@@ -9,8 +9,8 @@
 #import "ActData.h"
 #import "it_lib.h"
 #import "ServiceCommon.h"
-#import "NSObject+SBJson.h"
-#import "HomeNavEntity.h"
+//#import "NSObject+SBJson.h"
+//#import "HomeNavEntity.h"
 
 @interface ActData()
 {
@@ -23,9 +23,8 @@
 
 - (void)dealloc{
 	_delegate = nil;
-	RELEASE_SAFELY(_actDataList);
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -86,23 +85,23 @@
 	}
 }
 
-- (void)activityGoodsLoadSucceed:(NSNotification*)notification{
-	[self setStatus:E_ModelDataStatus_LoadSucceed];
-	KFLog_Normal(YES, @"加载活动商品成功");
-	[_actDataList removeAllObjects];
-	
-	NSString *jsonString = notification.object;
-	if(jsonString){
-		NSArray *activityGoods = [[jsonString JSONValue] objectForKey:@"data"];
-		for(NSDictionary *dic in activityGoods){
-			HomeNavEntity *navEntity = [HomeNavEntity homeNavEntityWith:dic];
-			[_actDataList addObject:navEntity];
-		}
-	}
-	if(_delegate && [_delegate respondsToSelector:@selector(loadActiveDataListSucceed)]){
-		[_delegate loadActiveDataListSucceed];
-	}
-}
+//- (void)activityGoodsLoadSucceed:(NSNotification*)notification{
+//	[self setStatus:E_ModelDataStatus_LoadSucceed];
+//	KFLog_Normal(YES, @"加载活动商品成功");
+//	[_actDataList removeAllObjects];
+//	
+//	NSString *jsonString = notification.object;
+//	if(jsonString){
+//		NSArray *activityGoods = [[jsonString JSONValue] objectForKey:@"data"];
+//		for(NSDictionary *dic in activityGoods){
+//			HomeNavEntity *navEntity = [HomeNavEntity homeNavEntityWith:dic];
+//			[_actDataList addObject:navEntity];
+//		}
+//	}
+//	if(_delegate && [_delegate respondsToSelector:@selector(loadActiveDataListSucceed)]){
+//		[_delegate loadActiveDataListSucceed];
+//	}
+//}
 
 - (void)removeOBS{
 	[[NSNotificationCenter defaultCenter] removeObserver:self];

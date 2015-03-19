@@ -14,17 +14,8 @@
 @implementation PersonalInfo
 
 - (void)dealloc{
-    RELEASE_SAFELY(_nickName);
-    RELEASE_SAFELY(_realName);
-    RELEASE_SAFELY(_bindNumber);
-    RELEASE_SAFELY(_birth);
-    RELEASE_SAFELY(_qq);
-    RELEASE_SAFELY(_signature);
-    RELEASE_SAFELY(_address);
-    RELEASE_SAFELY(_area);
-    RELEASE_SAFELY(_iconPath);
     [self removeOBS];
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (PersonalInfo*)sharedPersonal{

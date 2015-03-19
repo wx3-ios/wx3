@@ -17,13 +17,11 @@
 @implementation SubShopArea
 
 - (void)dealloc{
-	RELEASE_SAFELY(_areaName);
-	RELEASE_SAFELY(_subShopList);
-	[super dealloc];
+//	[super dealloc];
 }
 
 + (SubShopArea*)subShopAreaWithDictionary:(NSDictionary*)dic{
-	return [[[[self class] alloc] initWithDic:dic] autorelease];
+	return [[[self class] alloc] initWithDic:dic] ;
 }
 
 - (id)initWithDic:(NSDictionary*)dic{

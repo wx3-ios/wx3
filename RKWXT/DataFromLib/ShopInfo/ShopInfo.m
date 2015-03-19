@@ -9,7 +9,7 @@
 #import "ShopInfo.h"
 #import "it_lib.h"
 #import "ServiceCommon.h"
-#import "NSObject+SBJson.h"
+//#import "NSObject+SBJson.h"
 #import "TxtparseOBJ.h"
 
 enum{
@@ -31,10 +31,8 @@ enum{
 @synthesize descArray = _descArray;
 
 - (void)dealloc{
-	RELEASE_SAFELY(_shopTimeList);
-	RELEASE_SAFELY(_descArray);
 	[self removeOBS];
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -89,30 +87,30 @@ enum{
 	[notificationCenter addObserver:self selector:@selector(loadShopInfoFailed:) name:D_Notification_Name_Lib_LoadOfficeInfoFailed object:nil];
 }
 
-- (void)loadShopInfoSucceed:(NSNotification*)notification{
-	NSString *json = notification.object;
-	NSDictionary *jsonDic = [json JSONValue];
-	[_shopTimeList removeAllObjects];
-	[_descArray removeAllObjects];
-	NSArray *dicArray = [jsonDic objectForKey:@"data"];
-	[self setStatus:E_ModelDataStatus_LoadSucceed];
-	for (NSDictionary *dic in dicArray){
-		ShopDesc *desc = [ShopDesc shopDescribtionWithDictionary:dic];
-		if (desc){
-			[_descArray addObject:desc];
-		}
-		[self setAddress:[jsonDic objectForKey:@"address"]];
-		[self setScheduleDay:[[jsonDic objectForKey:@"destine_day"] integerValue]];
-		[self setShopTel:[jsonDic objectForKey:@"shop_tel"]];
-		[self setPhone:[jsonDic objectForKey:@"tel"]];
-		[self setName:[jsonDic objectForKey:@"name"]];
-		[self setBusiness:[jsonDic objectForKey:@"industry"]];
-		NSString *shopTimeString = [jsonDic objectForKey:@"open_time"];
-		NSArray *openTimeArray = [self openTimeArrayFrom:shopTimeString];
-		[_shopTimeList addObjectsFromArray:openTimeArray];
-	}
-	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_LoadShopInfoSucceed object:nil];
-}
+//- (void)loadShopInfoSucceed:(NSNotification*)notification{
+//	NSString *json = notification.object;
+//	NSDictionary *jsonDic = [json JSONValue];
+//	[_shopTimeList removeAllObjects];
+//	[_descArray removeAllObjects];
+//	NSArray *dicArray = [jsonDic objectForKey:@"data"];
+//	[self setStatus:E_ModelDataStatus_LoadSucceed];
+//	for (NSDictionary *dic in dicArray){
+//		ShopDesc *desc = [ShopDesc shopDescribtionWithDictionary:dic];
+//		if (desc){
+//			[_descArray addObject:desc];
+//		}
+//		[self setAddress:[jsonDic objectForKey:@"address"]];
+//		[self setScheduleDay:[[jsonDic objectForKey:@"destine_day"] integerValue]];
+//		[self setShopTel:[jsonDic objectForKey:@"shop_tel"]];
+//		[self setPhone:[jsonDic objectForKey:@"tel"]];
+//		[self setName:[jsonDic objectForKey:@"name"]];
+//		[self setBusiness:[jsonDic objectForKey:@"industry"]];
+//		NSString *shopTimeString = [jsonDic objectForKey:@"open_time"];
+//		NSArray *openTimeArray = [self openTimeArrayFrom:shopTimeString];
+//		[_shopTimeList addObjectsFromArray:openTimeArray];
+//	}
+//	[[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_LoadShopInfoSucceed object:nil];
+//}
 
 - (NSArray*)openTimeArrayFrom:(NSString*)timeString{
 	if (!timeString){
@@ -121,18 +119,18 @@ enum{
 	
 	NSArray *timeArray = [TxtparseOBJ parseDataFrom:timeString itemSeparator:@"#" elementSeparator:@","];
 	NSMutableArray *subTimeArray = [NSMutableArray array];
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	for (NSArray *comps in timeArray) {
 		if([comps count] != E_ShopTime_Invalid){
 			NSLog(@"解析错误 = %@",comps);
 			continue;
 		}
-		SubShopTime *time = [[[SubShopTime alloc] init] autorelease];
+		SubShopTime *time = [[SubShopTime alloc] init] ;
 		[time setShopTimeBegin:[comps[E_ShopTime_Begin] integerValue]*60];
 		[time setShopTimeEnd:[comps[E_ShopTime_End] integerValue]*60];
 		[subTimeArray addObject:time];
 	}
-	[pool drain];
+//	[pool drain];
 	return subTimeArray;
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "WXContacterEntity.h"
-#import "CallRecord.h"
+//#import "CallRecord.h"
 
 @implementation WXContacterEntity (Detail)
 
@@ -25,15 +25,15 @@
 - (NSArray*)contactPhoneArray{
     NSMutableArray *contactPhoneArray = [NSMutableArray array];
     
-    ContactPhone *contactPhone = [[[ContactPhone alloc] init] autorelease];
-    [contactPhone setPhone:self.bindID];
-    [contactPhone setIsWX:YES];
-    [contactPhoneArray addObject:contactPhone];
+//    ContactPhone *contactPhone = [[[ContactPhone alloc] init] autorelease];
+//    [contactPhone setPhone:self.bindID];
+//    [contactPhone setIsWX:YES];
+//    [contactPhoneArray addObject:contactPhone];
     return contactPhoneArray;
 }
 
-- (NSArray *)callHistory{
-    return [[CallRecord sharedCallRecord] recordForPhoneNumber:self.bindID];
-}
+//- (NSArray *)callHistory{
+//    return [[CallRecord sharedCallRecord] recordForPhoneNumber:self.bindID];
+//}
 
 @end

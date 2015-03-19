@@ -11,13 +11,11 @@
 @implementation SubShop
 
 - (void)dealloc{
-	RELEASE_SAFELY(_shopName);
-	RELEASE_SAFELY(_shopImage);
-	[super dealloc];
+//	[super dealloc];
 }
 
 + (SubShop*)subShopWithDictionary:(NSDictionary*)dic{
-	return [[[[self class] alloc] initWithDic:dic] autorelease];
+	return [[[self class] alloc] initWithDic:dic] ;
 }
 
 - (id)initWithDic:(NSDictionary*)dic{

@@ -11,16 +11,14 @@
 @implementation ShopDesc
 
 - (void)dealloc{
-	RELEASE_SAFELY(_imageURL);
-	RELEASE_SAFELY(_desc);
-	[super dealloc];
+//	[super dealloc];
 }
 
 + (ShopDesc*)shopDescribtionWithDictionary:(NSDictionary*)dictionary{
 	if (!dictionary){
 		return nil;
 	}
-	return [[[self alloc] initWithDictionary:dictionary] autorelease];
+	return [[self alloc] initWithDictionary:dictionary];
 }
 
 - (id)initWithDictionary:(NSDictionary*)dictionary{

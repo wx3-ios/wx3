@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CallUICommon.h"
 
 typedef enum {
     E_CallHistoryType_IncommingUnread = 2,//未接来电

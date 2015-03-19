@@ -22,13 +22,12 @@
 @synthesize contactList = _contactList;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_contactList);
     if(_addressBookRef){
         CFRelease(_addressBookRef);
     }
-    dispatch_release(_loadRecordImageQueue);
+//    dispatch_release(_loadRecordImageQueue);
 	[self removeOBS];
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (AddressBook*)sharedAddressBook{
@@ -92,7 +91,7 @@
 void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictionaryRef info, void *context){
     KFLog_Normal(YES, @"addressBookChanged");
     ABAddressBookRevert(addressBook);
-    AddressBook *sharedAddressBook = (AddressBook*)context;
+    AddressBook *sharedAddressBook = (__bridge AddressBook*)context;
     [sharedAddressBook loadContactInfo];
 }
 
@@ -111,13 +110,12 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
 			NSArray *allPerson = [[NSArray alloc] initWithArray:[selfAddressBook getAllPeopleContact]];
 			NSInteger count = [allPerson count];
 			for(int i = 0; i < count; i++){
-				ABRecordRef person = (ABRecordRef)[allPerson objectAtIndex:i];
+				ABRecordRef person = (__bridge ABRecordRef)[allPerson objectAtIndex:i];
 				ContacterEntity *entity = [ContacterEntity contacterEntityWithABPerson:person];
 				if(ABPersonHasImageData(person)){
-					NSData *imgDate = (NSData*)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
+					NSData *imgDate = (__bridge NSData*)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
 					UIImage *icon = [UIImage imageWithData:imgDate scale:1/4];
 					[entity setIcon:icon];
-					RELEASE_SAFELY(imgDate);
 				}
 				
 				if(entity){
@@ -130,7 +128,6 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
 			if([[ServiceMonitor sharedServiceMonitor] hasLogin]){
 				[selfAddressBook uploadSysContacters:tempArray];
 			}
-			RELEASE_SAFELY(allPerson);
 		}
     });
 }
@@ -176,7 +173,7 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
                           (CFComparatorFunction) ABPersonComparePeopleByName,
                           (void*)ABPersonGetSortOrdering);
         
-        NSMutableArray  *newArray = [[[NSMutableArray alloc] initWithArray:(NSMutableArray*)peopleMutable] autorelease];
+        NSMutableArray  *newArray = [[NSMutableArray alloc] initWithArray:(__bridge NSMutableArray*)peopleMutable];
         CFRelease(people);
         CFRelease(peopleMutable);
         return newArray;

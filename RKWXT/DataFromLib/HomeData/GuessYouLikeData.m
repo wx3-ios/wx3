@@ -9,7 +9,7 @@
 #import "GuessYouLikeData.h"
 #import "it_lib.h"
 #import "ServiceCommon.h"
-#import "NSObject+SBJson.h"
+//#import "NSObject+SBJson.h"
 #import "WXGoodListModel.h"
 
 #define kGuessLikeNumberOnce (4)
@@ -26,9 +26,7 @@
 
 - (void)dealloc{
 	[self removeOBS];
-	RELEASE_SAFELY(_guessGoods);
-	RELEASE_SAFELY(_guessGoodDics);
-	[super dealloc];
+//	[super dealloc];
 }
 
 - (id)init{
@@ -80,25 +78,25 @@
 	[notificationCenter addObserver:self selector:@selector(allGoodsLoadedSucceed:) name:D_Notification_Name_AllGoodsLoadedFinished object:nil];
 }
 
-- (void)guessYouLikeGoodsLoadSucceed:(NSNotification*)notification{
-	[_guessGoods removeAllObjects];
-	[self setStatus:E_ModelDataStatus_LoadSucceed];
-	
-	NSString *jsonString = notification.object;
-	if(jsonString){
-		NSDictionary *dic = [jsonString JSONValue];
-		if (dic){
-			NSArray *topGoods = [[jsonString JSONValue] objectForKey:@"data"];
-			[self setGuessGoodDics:topGoods];
-			NSInteger numberShow = [[dic objectForKey:@"num"] integerValue];
-			if (numberShow < kGuessLikeNumberOnce){
-				numberShow = kGuessLikeNumberOnce;
-			}
-			[[WXGoodListModel sharedGoodListModel] setGuessYouLikeShow:numberShow];
-			[self pickGuessYouLikeGoods];
-		}
-	}
-}
+//- (void)guessYouLikeGoodsLoadSucceed:(NSNotification*)notification{
+//	[_guessGoods removeAllObjects];
+//	[self setStatus:E_ModelDataStatus_LoadSucceed];
+//	
+//	NSString *jsonString = notification.object;
+//	if(jsonString){
+//		NSDictionary *dic = [jsonString JSONValue];
+//		if (dic){
+//			NSArray *topGoods = [[jsonString JSONValue] objectForKey:@"data"];
+//			[self setGuessGoodDics:topGoods];
+//			NSInteger numberShow = [[dic objectForKey:@"num"] integerValue];
+//			if (numberShow < kGuessLikeNumberOnce){
+//				numberShow = kGuessLikeNumberOnce;
+//			}
+//			[[WXGoodListModel sharedGoodListModel] setGuessYouLikeShow:numberShow];
+//			[self pickGuessYouLikeGoods];
+//		}
+//	}
+//}
 
 - (void)pickGuessYouLikeGoods{
 	if ([WXGoodListModel sharedGoodListModel].loadedSucceed && self.status == E_ModelDataStatus_LoadSucceed){
