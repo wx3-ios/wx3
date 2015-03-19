@@ -25,36 +25,36 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //Enabling keyboard manager
-//    [[IQKeyboardManager sharedManager] setEnable:YES];
-//    [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:15];
-//    // Enabling autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard.
-//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
-//    
-//    //Setting toolbar behavious to IQAutoToolbarBySubviews. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order.
-//    [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarBySubviews];
-//    
-//    //Resign textField if touched outside of UITextField/UITextView.
-//    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
-//#if DEBUG
-//    setenv("XcodeColors", "YES", 1);//加载颜色插件
-//    //    NSString *logsDirectory = [DOC_PATH stringByAppendingPathComponent:@"logs"];
-//    //    DDLogFileManagerDefault *fileManager = [[DDLogFileManagerDefault alloc]initWithLogsDirectory:logsDirectory];
-//    //formatter
-//    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    //    [formatter setDateFormat:@"yyyyMMdd"];
-//    //    DDLogFileFormatterDefault *logFormatter = [[DDLogFileFormatterDefault alloc]initWithDateFormatter:formatter];
-//    
-//    DDFileLogger *fileLogger = [[DDFileLogger alloc]init];
-//    fileLogger.maximumFileSize = DEFAULT_LOG_MAX_FILE_SIZE * 4;
-//    fileLogger.rollingFrequency = DEFAULT_LOG_ROLLING_FREQUENCY; // 1 day rolling
-//    //[fileLogger setLogFormatter:logFormatter];
-//    [DDLog addLogger:fileLogger];
-//    
-//    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-//    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];// 允许颜色
-//#endif
-//    NSLog(@"%@", DOC_PATH);
+//    Enabling keyboard manager
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:15];
+    // Enabling autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard.
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+    
+    //Setting toolbar behavious to IQAutoToolbarBySubviews. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order.
+    [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarBySubviews];
+    
+    //Resign textField if touched outside of UITextField/UITextView.
+    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
+#if DEBUG
+    setenv("XcodeColors", "YES", 1);//加载颜色插件
+    //    NSString *logsDirectory = [DOC_PATH stringByAppendingPathComponent:@"logs"];
+    //    DDLogFileManagerDefault *fileManager = [[DDLogFileManagerDefault alloc]initWithLogsDirectory:logsDirectory];
+    //formatter
+    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //    [formatter setDateFormat:@"yyyyMMdd"];
+    //    DDLogFileFormatterDefault *logFormatter = [[DDLogFileFormatterDefault alloc]initWithDateFormatter:formatter];
+    
+    DDFileLogger *fileLogger = [[DDFileLogger alloc]init];
+    fileLogger.maximumFileSize = DEFAULT_LOG_MAX_FILE_SIZE * 4;
+    fileLogger.rollingFrequency = DEFAULT_LOG_ROLLING_FREQUENCY; // 1 day rolling
+    //[fileLogger setLogFormatter:logFormatter];
+    [DDLog addLogger:fileLogger];
+    
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];// 允许颜色
+#endif
+    NSLog(@"%@", DOC_PATH);
 	[self initUI];
     [self checkVersion];
 	return YES;

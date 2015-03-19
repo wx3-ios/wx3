@@ -10,7 +10,10 @@
 #import "ColorLabel.h"
 #import "ContactData.h"
 
-@interface ContactsCell : UITableViewCell
+@interface ContactsCell : UITableViewCell{
+    
+    WXUIImageView * _imageView;
+}
 
 
 @property (nonatomic, strong) IBOutlet UILabel *alphaLabel;

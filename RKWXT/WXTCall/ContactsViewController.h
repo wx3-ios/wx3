@@ -8,7 +8,10 @@
 
 //#import "BaseViewController.h"
 #import "UserAgent.h"
-@interface ContactsViewController : BaseVC<UITableViewDataSource, UITableViewDelegate,UISearchDisplayDelegate>{
+
+#define kContactsIdentifier     @"ContactsCell"
+
+@interface ContactsViewController : WXUIViewController<UITableViewDataSource, UITableViewDelegate,UISearchDisplayDelegate>{
     
     UISearchDisplayController * searchDisplayController;
 }

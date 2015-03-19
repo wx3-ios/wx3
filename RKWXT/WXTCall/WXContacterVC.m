@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 le ting. All rights reserved.
 //
 
-
+#import "WXContacterVC.h"
 #import "WXContacterModel.h"
-//#import "WXContacterCell.h"
+#import "WXContacterCell.h"
 
 #define kSectionHeadViewHeight (20.0)
 
-@interface CallVC ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate>{
+@interface WXContacterVC ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate>{
     WXUITableView *_tableView;
     WXUISearchBar *_searchBar;
     UISearchDisplayController *_searchDisplayController;
@@ -20,7 +20,7 @@
 }
 @end
 
-@implementation CallVC
+@implementation WXContacterVC
 
 - (void)dealloc{
     [self removeOBS];
@@ -30,48 +30,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self setCSTTitle:@"通讯录"];
-//    [self setBackNavigationBarItem];
-//    [self addOBS];
-//    _model = [[WXContacterModel alloc] init];
-//    CGSize size = self.bounds.size;
-//    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 50, size.width, size.height-46)];
-    //    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
-//    [_tableView setDataSource:self];
-//    [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];
-//    [_tableView setDelegate:self];
-//    [self addSubview:_tableView];
+    self.view.backgroundColor = [UtilTool colorWithHexString:@"#efeff4"];
+    [self setCSTTitle:@"通讯录"];
+    [self setBackNavigationBarItem];
+    [self addOBS];
+    _model = [[WXContacterModel alloc] init];
+    CGSize size = self.bounds.size;
+    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 50, size.width, size.height-46)];
+//    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
+    [_tableView setDataSource:self];
+    [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];
+    [_tableView setDelegate:self];
+    [self addSubview:_tableView];
     
     CGFloat searchBarHeight = 44;
-//    _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 0, size.width, searchBarHeight)];
-//    [_searchBar setPlaceholder:@"搜索"];
-//    [_searchBar sizeToFit];
-    //    [_tableView setTableHeaderView:_searchBar];
-    
-//    [self addSubview:_searchBar];
-//    _searchDisplayController = [[UISearchDisplayController alloc]
-//                                initWithSearchBar:_searchBar contentsController:self];
-//    [_searchDisplayController setSearchResultsDelegate:self];
-//    [_searchDisplayController setSearchResultsDataSource:self];
-//    [_searchDisplayController setDelegate:self];
+    _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 0, size.width, searchBarHeight)];
+    [_searchBar setPlaceholder:@"搜索"];
+    [_searchBar sizeToFit];
+//    [_tableView setTableHeaderView:_searchBar];
+
+    [self addSubview:_searchBar];
+    _searchDisplayController = [[UISearchDisplayController alloc]
+                                initWithSearchBar:_searchBar contentsController:self];
+    [_searchDisplayController setSearchResultsDelegate:self];
+    [_searchDisplayController setSearchResultsDataSource:self];
+    [_searchDisplayController setDelegate:self];
 }
 
 - (void)addOBS{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(sysContacterChanged)
-                               name:D_Notification_Name_AddressBookHasChanged object:nil];
+           name:D_Notification_Name_AddressBookHasChanged object:nil];
     [notificationCenter addObserver:self selector:@selector(wxContactersChanged) name:D_Notification_Name_WXAddressBookHasChanged object:nil];
     [notificationCenter addObserver:self selector:@selector(singleContacterChanged:) name:D_Notification_Name_WXContacterHasChanged object:nil];
     [notificationCenter addObserver:self selector:@selector(singleContacterAdded:) name:D_Notification_Name_WXContacterAdded object:nil];
 }
 
 - (void)sysContacterChanged{
-//    [_model loadSystemContacters];
-//    [_tableView reloadData];
+    [_model loadSystemContacters];
+    [_tableView reloadData];
 }
 
 - (void)wxContactersChanged{
-//    [_tableView reloadData];
+    [_tableView reloadData];
 }
 
 - (NSArray*)sysContactersISWX:(WXContacterEntity*)entity{
@@ -116,7 +117,7 @@
 }
 
 - (void)removeOBS{
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:self];
 }
 
@@ -124,7 +125,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     NSInteger section = 1;
     if(_tableView == tableView){
-        //+1为通讯录的其他操作~
+         //+1为通讯录的其他操作~
         section = [[_model allKeys] count];
     }
     return section;
@@ -170,7 +171,7 @@
     static NSString *cellIdentifier = @"cellIdentifier";
     WXContacterCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell){
-        cell = [[[WXContacterCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell = [[WXContacterCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] ;
     }
     id cellInfo = nil;
     if(tableView != _tableView){
@@ -188,27 +189,27 @@
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     
-    if(tableView == _tableView){
-        if(section == 0){
-            switch (row) {
-                    //            case E_ContactOPTType_Merchant:
-                    //                break;
-                    //            case E_ContactOPTType_WXTeam:
-                    //                break;
-                    //            case E_ContactOPTType_MultiChat:
-                    //                break;
-                case E_ContactOPTType_WXContacter:
-                    [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
-                    break;
-            }
-        }else{
-            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
-            [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
-        }
-    }else{
-        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
-        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
-    }
+//    if(tableView == _tableView){
+//        if(section == 0){
+//            switch (row) {
+////            case E_ContactOPTType_Merchant:
+////                break;
+////            case E_ContactOPTType_WXTeam:
+////                break;
+////            case E_ContactOPTType_MultiChat:
+////                break;
+//            case E_ContactOPTType_WXContacter:
+//                [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
+//                break;
+//            }
+//        }else{
+//            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
+//            [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
+//        }
+//    }else{
+//        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
+//        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -222,9 +223,9 @@
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headView = nil;
     if(section > 0 && tableView == _tableView){
-        headView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, kSectionHeadViewHeight)] autorelease];
+        headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, kSectionHeadViewHeight)] ;
         [headView setBackgroundColor:WXColorWithInteger(0xf6f6f6)];
-        WXUILabel *label = [[[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, kSectionHeadViewHeight)] autorelease];
+        WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, kSectionHeadViewHeight)] ;
         [label setTextColor:WXColorWithInteger(0xa0a0a0)];
         [label setText:[[_model allKeys] objectAtIndex:section]];
         [label setFont:WXFont(12.0)];

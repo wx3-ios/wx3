@@ -99,4 +99,8 @@ typedef enum{
 //将float型转化为字符串~
 + (NSString*)convertFloatToStringWithOutNoUseZero:(CGFloat)f;
 + (NSString*)convertFloatToString:(CGFloat)f;
+/**
+ 颜色转换 IOS中十六进制的颜色转换为UIColor
+ */
++ (UIColor *) colorWithHexString: (NSString *)color;
 @end

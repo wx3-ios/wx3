@@ -24,8 +24,6 @@
     //全频阻塞
     WXWaitingHud *_fullScreenHud;
     
-    __unsafe_unretained CSTWXNavigationView *_cstNavigationView;
-    __unsafe_unretained WXUIView *_baseView;
     WXUIImageView *_bgImageView;
     WXUIView *_netTipView;
 }
@@ -46,23 +44,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _baseView = [[WXUIView alloc] initWithFrame:self.view.bounds];
-    [_baseView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin];
-    [self.view addSubview:_baseView];
+//    _baseView = [[WXUIView alloc] initWithFrame:self.view.bounds];
+//    [_baseView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin];
+//    [self.view addSubview:_baseView];
     //如果是tabBarVC的话则不显示导航栏~
-    if(self.wxNavigationController && ![self isKindOfClass:[WXUITabBarVC class]]){
-        [self addNavigationController];
-    }
-    [self setBackgroundColor:[UIColor whiteColor]];
-    _bgImageView = [[WXUIImageView alloc] initWithFrame:_baseView.bounds];
-    [_bgImageView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin
-     | UIViewAutoresizingFlexibleHeight
-     |UIViewAutoresizingFlexibleTopMargin
-     |UIViewAutoresizingFlexibleLeftMargin
-     |UIViewAutoresizingFlexibleWidth
-     |UIViewAutoresizingFlexibleRightMargin];
-    [_baseView addSubview:_bgImageView];
-    
+//    if(self.wxNavigationController && ![self isKindOfClass:[WXUITabBarVC class]]){
+//        [self addNavigationController];
+//    }
+//    [self setBackgroundColor:[UIColor whiteColor]];
+//    _bgImageView = [[WXUIImageView alloc] initWithFrame:_baseView.bounds];
+//    [_bgImageView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin
+//     | UIViewAutoresizingFlexibleHeight
+//     |UIViewAutoresizingFlexibleTopMargin
+//     |UIViewAutoresizingFlexibleLeftMargin
+//     |UIViewAutoresizingFlexibleWidth
+//     |UIViewAutoresizingFlexibleRightMargin];
+//    [_baseView addSubview:_bgImageView];
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
     if ( isIOS7 ){
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;

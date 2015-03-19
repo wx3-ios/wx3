@@ -9,14 +9,16 @@
 #import "ContactsCell.h"
 #import "ContactUitl.h"
 #import "UIView+Sizing.h"
-
+#define kImageViewSize CGSizeMake(30.0,30.0)
 @implementation ContactsCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+        _imageView = [[WXUIImageView alloc] initWithFrame:CGRectMake(0, 0, kImageViewSize.width, kImageViewSize.height)];
+        [_imageView toRound];
+        [self.contentView addSubview:_imageView];
     }
     return self;
 }

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CallVC : UIViewController
+@interface CallVC : WXUIViewController
 
 @end

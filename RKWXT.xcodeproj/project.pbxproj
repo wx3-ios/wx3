@@ -266,23 +266,12 @@
 		7758435B1AB95FAC0039B129 /* WXService+UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843501AB95FAC0039B129 /* WXService+UserInfo.m */; };
 		7758435C1AB95FAC0039B129 /* WXService.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843521AB95FAC0039B129 /* WXService.m */; };
 		7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843541AB95FAC0039B129 /* WXServiceParse.m */; };
-		7758436F1AB96A4B0039B129 /* CallVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843601AB96A4B0039B129 /* CallVC.m */; };
 		775843701AB96A4B0039B129 /* CallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843621AB96A4B0039B129 /* CallViewController.m */; };
 		775843711AB96A4B0039B129 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843641AB96A4B0039B129 /* ContactsViewController.m */; };
 		775843731AB96A4B0039B129 /* ContactBaseEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843681AB96A4B0039B129 /* ContactBaseEntity+Detail.m */; };
 		775843741AB96A4B0039B129 /* ContactBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758436A1AB96A4B0039B129 /* ContactBaseEntity.m */; };
 		775843751AB96A4B0039B129 /* WXContacterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758436C1AB96A4B0039B129 /* WXContacterModel.m */; };
 		775843761AB96A4B0039B129 /* WXContactOptEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758436E1AB96A4B0039B129 /* WXContactOptEntity.m */; };
-		775843A91AB96FF20039B129 /* KFLoger.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843951AB96FF20039B129 /* KFLoger.m */; };
-		775843AA1AB96FF20039B129 /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843991AB96FF20039B129 /* ChineseToPinyinResource.m */; };
-		775843AB1AB96FF20039B129 /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758439B1AB96FF20039B129 /* HanyuPinyinOutputFormat.m */; };
-		775843AC1AB96FF20039B129 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758439D1AB96FF20039B129 /* NSString+PinYin4Cocoa.m */; };
-		775843AD1AB96FF20039B129 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 7758439E1AB96FF20039B129 /* pinyin.c */; };
-		775843AE1AB96FF20039B129 /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843A11AB96FF20039B129 /* PinyinFormatter.m */; };
-		775843AF1AB96FF20039B129 /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843A31AB96FF20039B129 /* PinYinForObjc.m */; };
-		775843B01AB96FF20039B129 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843A51AB96FF20039B129 /* PinyinHelper.m */; };
-		775843B11AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 775843A61AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt */; };
-		775843B21AB96FF20039B129 /* PinYinSearchOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843A81AB96FF20039B129 /* PinYinSearchOBJ.m */; };
 		775843C01AB971CF0039B129 /* UIFont+WXT.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843B51AB971CF0039B129 /* UIFont+WXT.m */; };
 		775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843B71AB971CF0039B129 /* UIImage+Render.m */; };
 		775843C21AB971CF0039B129 /* UIView+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843B91AB971CF0039B129 /* UIView+Render.m */; };
@@ -290,26 +279,38 @@
 		775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */; };
 		775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BF1AB971CF0039B129 /* WXTUITextField.m */; };
 		775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */; };
+		775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */; };
+		775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581E1ABA5F31005B6B40 /* ContactUitl.m */; };
+		775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58201ABA5F31005B6B40 /* KFLoger.m */; };
+		775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58241ABA5F31005B6B40 /* ChineseToPinyinResource.m */; };
+		775C583A1ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58261ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m */; };
+		775C583B1ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58281ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m */; };
+		775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 775C58291ABA5F31005B6B40 /* pinyin.c */; };
+		775C583D1ABA5F31005B6B40 /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C582C1ABA5F31005B6B40 /* PinyinFormatter.m */; };
+		775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C582E1ABA5F31005B6B40 /* PinYinForObjc.m */; };
+		775C583F1ABA5F31005B6B40 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58301ABA5F31005B6B40 /* PinyinHelper.m */; };
+		775C58401ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 775C58311ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt */; };
+		775C58411ABA5F31005B6B40 /* PinYinSearchOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58331ABA5F31005B6B40 /* PinYinSearchOBJ.m */; };
+		775C58421ABA5F31005B6B40 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58351ABA5F31005B6B40 /* Tools.m */; };
+		775C584B1ABA6435005B6B40 /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58471ABA6435005B6B40 /* ContactsCell.m */; };
+		775C584C1ABA6435005B6B40 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C58481ABA6435005B6B40 /* ContactsCell.xib */; };
+		775C584D1ABA6435005B6B40 /* RecentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C584A1ABA6435005B6B40 /* RecentCell.m */; };
+		775C58501ABA68AE005B6B40 /* WXContacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C584F1ABA68AE005B6B40 /* WXContacterCell.m */; };
+		775C58531ABA68B9005B6B40 /* WXContacterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58521ABA68B9005B6B40 /* WXContacterVC.m */; };
 		776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 776CFFA71AB1257B000A1D84 /* ARLabel.m */; };
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
 		777059B61AAFE48C0097526C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B41AAFE48C0097526C /* AddressBookUI.framework */; };
-		77D52CC51AB01EAA00F35A6B /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D52CC41AB01EAA00F35A6B /* ContactsCell.xib */; };
 		77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93E71AAFE6F50021A816 /* ContactData.m */; };
 		77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93EA1AAFE70D0021A816 /* PhoneData.m */; };
 		77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93EC1AAFE70D0021A816 /* RecentData.m */; };
 		77DB93F11AAFE70D0021A816 /* MessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93EE1AAFE70D0021A816 /* MessageData.m */; };
-		77DB93F51AAFE73D0021A816 /* ContactUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93F41AAFE73D0021A816 /* ContactUitl.m */; };
 		77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93F81AAFE79D0021A816 /* NSString+Helper.m */; };
-		77DB93FC1AAFE7BB0021A816 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93FB1AAFE7BB0021A816 /* Tools.m */; };
-		77DB93FF1AAFE7DC0021A816 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93FE1AAFE7DC0021A816 /* ChineseToPinyin.m */; };
 		77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB941A1AAFEB9B0021A816 /* NSString+Size.m */; };
 		77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB941F1AAFED400021A816 /* UIViewController+Helper.m */; };
 		77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94231AAFEE1F0021A816 /* MZLoadingCircle.m */; };
 		77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94261AAFEEBC0021A816 /* UserAgent.m */; };
 		77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB942D1AAFF0BE0021A816 /* NSDictionary+Plist.m */; };
-		77DB94341AAFF2120021A816 /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94311AAFF2120021A816 /* ContactsCell.m */; };
-		77DB94351AAFF2120021A816 /* RecentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94331AAFF2120021A816 /* RecentCell.m */; };
 		77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94371AAFF35F0021A816 /* ColorLabel.m */; };
 		77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB943A1AAFF3830021A816 /* UIView+Sizing.m */; };
 /* End PBXBuildFile section */
@@ -779,8 +780,6 @@
 		775843521AB95FAC0039B129 /* WXService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXService.m; sourceTree = "<group>"; };
 		775843531AB95FAC0039B129 /* WXServiceParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXServiceParse.h; sourceTree = "<group>"; };
 		775843541AB95FAC0039B129 /* WXServiceParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXServiceParse.m; sourceTree = "<group>"; };
-		7758435F1AB96A4B0039B129 /* CallVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallVC.h; sourceTree = "<group>"; };
-		775843601AB96A4B0039B129 /* CallVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallVC.m; sourceTree = "<group>"; };
 		775843611AB96A4B0039B129 /* CallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallViewController.h; sourceTree = "<group>"; };
 		775843621AB96A4B0039B129 /* CallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallViewController.m; sourceTree = "<group>"; };
 		775843631AB96A4B0039B129 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
@@ -792,25 +791,6 @@
 		7758436C1AB96A4B0039B129 /* WXContacterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterModel.m; sourceTree = "<group>"; };
 		7758436D1AB96A4B0039B129 /* WXContactOptEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContactOptEntity.h; sourceTree = "<group>"; };
 		7758436E1AB96A4B0039B129 /* WXContactOptEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContactOptEntity.m; sourceTree = "<group>"; };
-		775843941AB96FF20039B129 /* KFLoger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFLoger.h; sourceTree = "<group>"; };
-		775843951AB96FF20039B129 /* KFLoger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFLoger.m; sourceTree = "<group>"; };
-		775843981AB96FF20039B129 /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
-		775843991AB96FF20039B129 /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
-		7758439A1AB96FF20039B129 /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
-		7758439B1AB96FF20039B129 /* HanyuPinyinOutputFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanyuPinyinOutputFormat.m; sourceTree = "<group>"; };
-		7758439C1AB96FF20039B129 /* NSString+PinYin4Cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin4Cocoa.h"; sourceTree = "<group>"; };
-		7758439D1AB96FF20039B129 /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
-		7758439E1AB96FF20039B129 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
-		7758439F1AB96FF20039B129 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
-		775843A01AB96FF20039B129 /* PinyinFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinFormatter.h; sourceTree = "<group>"; };
-		775843A11AB96FF20039B129 /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
-		775843A21AB96FF20039B129 /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
-		775843A31AB96FF20039B129 /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
-		775843A41AB96FF20039B129 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
-		775843A51AB96FF20039B129 /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
-		775843A61AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
-		775843A71AB96FF20039B129 /* PinYinSearchOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinSearchOBJ.h; sourceTree = "<group>"; };
-		775843A81AB96FF20039B129 /* PinYinSearchOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinSearchOBJ.m; sourceTree = "<group>"; };
 		775843B41AB971CF0039B129 /* UIFont+WXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+WXT.h"; sourceTree = "<group>"; };
 		775843B51AB971CF0039B129 /* UIFont+WXT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+WXT.m"; sourceTree = "<group>"; };
 		775843B61AB971CF0039B129 /* UIImage+Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Render.h"; sourceTree = "<group>"; };
@@ -825,13 +805,47 @@
 		775843BF1AB971CF0039B129 /* WXTUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUITextField.m; sourceTree = "<group>"; };
 		775843C61AB9830F0039B129 /* WXBaseRemotImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXBaseRemotImageView.h; sourceTree = "<group>"; };
 		775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXBaseRemotImageView.m; sourceTree = "<group>"; };
+		775C581B1ABA5F31005B6B40 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyin.h; sourceTree = "<group>"; };
+		775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyin.m; sourceTree = "<group>"; };
+		775C581D1ABA5F31005B6B40 /* ContactUitl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUitl.h; sourceTree = "<group>"; };
+		775C581E1ABA5F31005B6B40 /* ContactUitl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUitl.m; sourceTree = "<group>"; };
+		775C581F1ABA5F31005B6B40 /* KFLoger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFLoger.h; sourceTree = "<group>"; };
+		775C58201ABA5F31005B6B40 /* KFLoger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFLoger.m; sourceTree = "<group>"; };
+		775C58231ABA5F31005B6B40 /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
+		775C58241ABA5F31005B6B40 /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
+		775C58251ABA5F31005B6B40 /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
+		775C58261ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanyuPinyinOutputFormat.m; sourceTree = "<group>"; };
+		775C58271ABA5F31005B6B40 /* NSString+PinYin4Cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin4Cocoa.h"; sourceTree = "<group>"; };
+		775C58281ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
+		775C58291ABA5F31005B6B40 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		775C582A1ABA5F31005B6B40 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		775C582B1ABA5F31005B6B40 /* PinyinFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinFormatter.h; sourceTree = "<group>"; };
+		775C582C1ABA5F31005B6B40 /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
+		775C582D1ABA5F31005B6B40 /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
+		775C582E1ABA5F31005B6B40 /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
+		775C582F1ABA5F31005B6B40 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
+		775C58301ABA5F31005B6B40 /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
+		775C58311ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		775C58321ABA5F31005B6B40 /* PinYinSearchOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinSearchOBJ.h; sourceTree = "<group>"; };
+		775C58331ABA5F31005B6B40 /* PinYinSearchOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinSearchOBJ.m; sourceTree = "<group>"; };
+		775C58341ABA5F31005B6B40 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		775C58351ABA5F31005B6B40 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
+		775C58441ABA632B005B6B40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base; path = Base.lproj/Resources.h; sourceTree = "<group>"; };
+		775C58461ABA6435005B6B40 /* ContactsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsCell.h; sourceTree = "<group>"; };
+		775C58471ABA6435005B6B40 /* ContactsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsCell.m; sourceTree = "<group>"; };
+		775C58481ABA6435005B6B40 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
+		775C58491ABA6435005B6B40 /* RecentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentCell.h; sourceTree = "<group>"; };
+		775C584A1ABA6435005B6B40 /* RecentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentCell.m; sourceTree = "<group>"; };
+		775C584E1ABA68AE005B6B40 /* WXContacterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterCell.h; sourceTree = "<group>"; };
+		775C584F1ABA68AE005B6B40 /* WXContacterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterCell.m; sourceTree = "<group>"; };
+		775C58511ABA68B9005B6B40 /* WXContacterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterVC.h; sourceTree = "<group>"; };
+		775C58521ABA68B9005B6B40 /* WXContacterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterVC.m; sourceTree = "<group>"; };
 		776CFFA61AB1257B000A1D84 /* ARLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLabel.h; sourceTree = "<group>"; };
 		776CFFA71AB1257B000A1D84 /* ARLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLabel.m; sourceTree = "<group>"; };
 		777059AC1AAFDEC40097526C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localize.strings; sourceTree = "<group>"; };
 		777059AE1AAFDEEB0097526C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localize.strings"; sourceTree = "<group>"; };
 		777059B31AAFE48C0097526C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		777059B41AAFE48C0097526C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		77D52CC41AB01EAA00F35A6B /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
 		77DB93E61AAFE6F50021A816 /* ContactData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactData.h; sourceTree = "<group>"; };
 		77DB93E71AAFE6F50021A816 /* ContactData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactData.m; sourceTree = "<group>"; };
 		77DB93E91AAFE70D0021A816 /* PhoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneData.h; sourceTree = "<group>"; };
@@ -840,14 +854,8 @@
 		77DB93EC1AAFE70D0021A816 /* RecentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentData.m; sourceTree = "<group>"; };
 		77DB93ED1AAFE70D0021A816 /* MessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageData.h; sourceTree = "<group>"; };
 		77DB93EE1AAFE70D0021A816 /* MessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageData.m; sourceTree = "<group>"; };
-		77DB93F31AAFE73D0021A816 /* ContactUitl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUitl.h; sourceTree = "<group>"; };
-		77DB93F41AAFE73D0021A816 /* ContactUitl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUitl.m; sourceTree = "<group>"; };
 		77DB93F71AAFE79D0021A816 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
 		77DB93F81AAFE79D0021A816 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
-		77DB93FA1AAFE7BB0021A816 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
-		77DB93FB1AAFE7BB0021A816 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
-		77DB93FD1AAFE7DB0021A816 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyin.h; sourceTree = "<group>"; };
-		77DB93FE1AAFE7DC0021A816 /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyin.m; sourceTree = "<group>"; };
 		77DB94191AAFEB9B0021A816 /* NSString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
 		77DB941A1AAFEB9B0021A816 /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		77DB941E1AAFED400021A816 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
@@ -860,10 +868,6 @@
 		77DB94291AAFEEE10021A816 /* libGossip-i386.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGossip-i386.a"; sourceTree = "<group>"; };
 		77DB942C1AAFF0BE0021A816 /* NSDictionary+Plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Plist.h"; sourceTree = "<group>"; };
 		77DB942D1AAFF0BE0021A816 /* NSDictionary+Plist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Plist.m"; sourceTree = "<group>"; };
-		77DB94301AAFF2120021A816 /* ContactsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsCell.h; sourceTree = "<group>"; };
-		77DB94311AAFF2120021A816 /* ContactsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsCell.m; sourceTree = "<group>"; };
-		77DB94321AAFF2120021A816 /* RecentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentCell.h; sourceTree = "<group>"; };
-		77DB94331AAFF2120021A816 /* RecentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentCell.m; sourceTree = "<group>"; };
 		77DB94361AAFF35F0021A816 /* ColorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorLabel.h; sourceTree = "<group>"; };
 		77DB94371AAFF35F0021A816 /* ColorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorLabel.m; sourceTree = "<group>"; };
 		77DB94391AAFF3830021A816 /* UIView+Sizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sizing.h"; sourceTree = "<group>"; };
@@ -1167,8 +1171,8 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				775C581A1ABA5F31005B6B40 /* WXTUtils */,
 				775843B31AB971CF0039B129 /* WXTUIKit */,
-				775843931AB96FF20039B129 /* WXTutils */,
 				7758435E1AB96A4B0039B129 /* WXTCall */,
 				775843441AB95FAC0039B129 /* Service */,
 				775841551AB95A2F0039B129 /* Common */,
@@ -1177,13 +1181,11 @@
 				775841861AB95A2F0039B129 /* ServerLib */,
 				775841B61AB95A2F0039B129 /* SysInterfaceBridge */,
 				775842A21AB95A300039B129 /* WXAddressBook */,
-				77DB942F1AAFF2090021A816 /* Cells */,
 				77DB94251AAFEEBC0021A816 /* UserAgent.h */,
 				77DB94261AAFEEBC0021A816 /* UserAgent.m */,
 				77DB94211AAFEE130021A816 /* Widget */,
 				77DB941D1AAFED330021A816 /* Controllers */,
 				77DB93F61AAFE7890021A816 /* Categories */,
-				77DB93F21AAFE7310021A816 /* Utils */,
 				77DB93E51AAFE6EA0021A816 /* Model */,
 				2563B4861AAAFA7500C04227 /* Resources */,
 				2563B3EB1AAAD74000C04227 /* AppDelegate.h */,
@@ -1223,6 +1225,7 @@
 				2563B3E91AAAD74000C04227 /* main.m */,
 				2563B43E1AAADEE400C04227 /* RKWXT-Prefix.pch */,
 				2563B4781AAAE46D00C04227 /* Constants.h */,
+				775C58431ABA632B005B6B40 /* Resources.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1929,8 +1932,9 @@
 		7758435E1AB96A4B0039B129 /* WXTCall */ = {
 			isa = PBXGroup;
 			children = (
-				7758435F1AB96A4B0039B129 /* CallVC.h */,
-				775843601AB96A4B0039B129 /* CallVC.m */,
+				775C58511ABA68B9005B6B40 /* WXContacterVC.h */,
+				775C58521ABA68B9005B6B40 /* WXContacterVC.m */,
+				775C58451ABA6435005B6B40 /* Cells */,
 				775843611AB96A4B0039B129 /* CallViewController.h */,
 				775843621AB96A4B0039B129 /* CallViewController.m */,
 				775843631AB96A4B0039B129 /* ContactsViewController.h */,
@@ -1954,48 +1958,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		775843931AB96FF20039B129 /* WXTutils */ = {
-			isa = PBXGroup;
-			children = (
-				775843941AB96FF20039B129 /* KFLoger.h */,
-				775843951AB96FF20039B129 /* KFLoger.m */,
-				775843961AB96FF20039B129 /* PinYinSearch */,
-			);
-			path = WXTutils;
-			sourceTree = "<group>";
-		};
-		775843961AB96FF20039B129 /* PinYinSearch */ = {
-			isa = PBXGroup;
-			children = (
-				775843971AB96FF20039B129 /* PinYin */,
-				775843A71AB96FF20039B129 /* PinYinSearchOBJ.h */,
-				775843A81AB96FF20039B129 /* PinYinSearchOBJ.m */,
-			);
-			path = PinYinSearch;
-			sourceTree = "<group>";
-		};
-		775843971AB96FF20039B129 /* PinYin */ = {
-			isa = PBXGroup;
-			children = (
-				775843981AB96FF20039B129 /* ChineseToPinyinResource.h */,
-				775843991AB96FF20039B129 /* ChineseToPinyinResource.m */,
-				7758439A1AB96FF20039B129 /* HanyuPinyinOutputFormat.h */,
-				7758439B1AB96FF20039B129 /* HanyuPinyinOutputFormat.m */,
-				7758439C1AB96FF20039B129 /* NSString+PinYin4Cocoa.h */,
-				7758439D1AB96FF20039B129 /* NSString+PinYin4Cocoa.m */,
-				7758439E1AB96FF20039B129 /* pinyin.c */,
-				7758439F1AB96FF20039B129 /* pinyin.h */,
-				775843A01AB96FF20039B129 /* PinyinFormatter.h */,
-				775843A11AB96FF20039B129 /* PinyinFormatter.m */,
-				775843A21AB96FF20039B129 /* PinYinForObjc.h */,
-				775843A31AB96FF20039B129 /* PinYinForObjc.m */,
-				775843A41AB96FF20039B129 /* PinyinHelper.h */,
-				775843A51AB96FF20039B129 /* PinyinHelper.m */,
-				775843A61AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt */,
-			);
-			path = PinYin;
-			sourceTree = "<group>";
-		};
 		775843B31AB971CF0039B129 /* WXTUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -2015,6 +1977,68 @@
 			path = WXTUIKit;
 			sourceTree = "<group>";
 		};
+		775C581A1ABA5F31005B6B40 /* WXTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				775C581B1ABA5F31005B6B40 /* ChineseToPinyin.h */,
+				775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */,
+				775C581D1ABA5F31005B6B40 /* ContactUitl.h */,
+				775C581E1ABA5F31005B6B40 /* ContactUitl.m */,
+				775C581F1ABA5F31005B6B40 /* KFLoger.h */,
+				775C58201ABA5F31005B6B40 /* KFLoger.m */,
+				775C58211ABA5F31005B6B40 /* PinYinSearch */,
+				775C58341ABA5F31005B6B40 /* Tools.h */,
+				775C58351ABA5F31005B6B40 /* Tools.m */,
+			);
+			path = WXTUtils;
+			sourceTree = "<group>";
+		};
+		775C58211ABA5F31005B6B40 /* PinYinSearch */ = {
+			isa = PBXGroup;
+			children = (
+				775C58221ABA5F31005B6B40 /* PinYin */,
+				775C58321ABA5F31005B6B40 /* PinYinSearchOBJ.h */,
+				775C58331ABA5F31005B6B40 /* PinYinSearchOBJ.m */,
+			);
+			path = PinYinSearch;
+			sourceTree = "<group>";
+		};
+		775C58221ABA5F31005B6B40 /* PinYin */ = {
+			isa = PBXGroup;
+			children = (
+				775C58231ABA5F31005B6B40 /* ChineseToPinyinResource.h */,
+				775C58241ABA5F31005B6B40 /* ChineseToPinyinResource.m */,
+				775C58251ABA5F31005B6B40 /* HanyuPinyinOutputFormat.h */,
+				775C58261ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m */,
+				775C58271ABA5F31005B6B40 /* NSString+PinYin4Cocoa.h */,
+				775C58281ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m */,
+				775C58291ABA5F31005B6B40 /* pinyin.c */,
+				775C582A1ABA5F31005B6B40 /* pinyin.h */,
+				775C582B1ABA5F31005B6B40 /* PinyinFormatter.h */,
+				775C582C1ABA5F31005B6B40 /* PinyinFormatter.m */,
+				775C582D1ABA5F31005B6B40 /* PinYinForObjc.h */,
+				775C582E1ABA5F31005B6B40 /* PinYinForObjc.m */,
+				775C582F1ABA5F31005B6B40 /* PinyinHelper.h */,
+				775C58301ABA5F31005B6B40 /* PinyinHelper.m */,
+				775C58311ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt */,
+			);
+			path = PinYin;
+			sourceTree = "<group>";
+		};
+		775C58451ABA6435005B6B40 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				775C584E1ABA68AE005B6B40 /* WXContacterCell.h */,
+				775C584F1ABA68AE005B6B40 /* WXContacterCell.m */,
+				775C58461ABA6435005B6B40 /* ContactsCell.h */,
+				775C58471ABA6435005B6B40 /* ContactsCell.m */,
+				775C58481ABA6435005B6B40 /* ContactsCell.xib */,
+				775C58491ABA6435005B6B40 /* RecentCell.h */,
+				775C584A1ABA6435005B6B40 /* RecentCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		77DB93E51AAFE6EA0021A816 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2028,19 +2052,6 @@
 				77DB93E71AAFE6F50021A816 /* ContactData.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		77DB93F21AAFE7310021A816 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				77DB93FD1AAFE7DB0021A816 /* ChineseToPinyin.h */,
-				77DB93FE1AAFE7DC0021A816 /* ChineseToPinyin.m */,
-				77DB93FA1AAFE7BB0021A816 /* Tools.h */,
-				77DB93FB1AAFE7BB0021A816 /* Tools.m */,
-				77DB93F31AAFE73D0021A816 /* ContactUitl.h */,
-				77DB93F41AAFE73D0021A816 /* ContactUitl.m */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		77DB93F61AAFE7890021A816 /* Categories */ = {
@@ -2078,18 +2089,6 @@
 				77DB94231AAFEE1F0021A816 /* MZLoadingCircle.m */,
 			);
 			path = Widget;
-			sourceTree = "<group>";
-		};
-		77DB942F1AAFF2090021A816 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				77DB94301AAFF2120021A816 /* ContactsCell.h */,
-				77DB94311AAFF2120021A816 /* ContactsCell.m */,
-				77DB94321AAFF2120021A816 /* RecentCell.h */,
-				77DB94331AAFF2120021A816 /* RecentCell.m */,
-				77D52CC41AB01EAA00F35A6B /* ContactsCell.xib */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		A85B8011543037120ABCE5BB /* Pods */ = {
@@ -2207,7 +2206,6 @@
 				2563B3F61AAAD74000C04227 /* Main.storyboard in Resources */,
 				770BB43C1AAD97700098C214 /* W.png in Resources */,
 				120A2C631AB17B87006A28B1 /* SignNow@2x.png in Resources */,
-				77D52CC51AB01EAA00F35A6B /* ContactsCell.xib in Resources */,
 				120A2C5D1AB17AFD006A28B1 /* sign7@2x.png in Resources */,
 				120A2C571AB17AFD006A28B1 /* sign33@2x.png in Resources */,
 				120A2C481AB17AFD006A28B1 /* sign1@2x.png in Resources */,
@@ -2246,7 +2244,7 @@
 				12D0C8821AB6D2920039A197 /* AboutWXTVersion@2x.png in Resources */,
 				126CA4031AB2B9EF00E08A0B /* FindNormal@2x.png in Resources */,
 				126CA4041AB2B9EF00E08A0B /* MallSelected@2x.png in Resources */,
-				775843B11AB96FF20039B129 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				775C58401ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				120A2C511AB17AFD006A28B1 /* sign28@2x.png in Resources */,
 				120A2C521AB17AFD006A28B1 /* sign29@2x.png in Resources */,
 				126CA4071AB2B9EF00E08A0B /* CallNormal@2x.png in Resources */,
@@ -2277,6 +2275,7 @@
 				770BB43F1AAD9D530098C214 /* 启动页（iPhone4）.png in Resources */,
 				777059AD1AAFDEC40097526C /* Localize.strings in Resources */,
 				120A2C4A1AB17AFD006A28B1 /* sign21@2x.png in Resources */,
+				775C584C1ABA6435005B6B40 /* ContactsCell.xib in Resources */,
 				120A2C4C1AB17AFD006A28B1 /* sign23@2x.png in Resources */,
 				120A2C421AB17AFD006A28B1 /* sign13@2x.png in Resources */,
 				120A2C6E1AB19473006A28B1 /* LoginUser@2x.png in Resources */,
@@ -2332,10 +2331,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */,
 				7758430C1AB95A300039B129 /* WXActivityButton.m in Sources */,
+				775C58531ABA68B9005B6B40 /* WXContacterVC.m in Sources */,
 				775843011AB95A300039B129 /* PingponeButton.m in Sources */,
+				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
 				775842B81AB95A300039B129 /* WXUnreadSysMsgOBJ.m in Sources */,
-				77DB93FC1AAFE7BB0021A816 /* Tools.m in Sources */,
 				775843331AB95A300039B129 /* WXUITableViewCell.m in Sources */,
 				775843271AB95A300039B129 /* WXUINavigationController+SubVCPosition.m in Sources */,
 				775842ED1AB95A300039B129 /* CSTWXNavigationView.m in Sources */,
@@ -2370,7 +2371,6 @@
 				775842CA1AB95A300039B129 /* it_lib_sms.cpp in Sources */,
 				77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */,
 				775842BD1AB95A300039B129 /* WXGuidMaskView.m in Sources */,
-				77DB94351AAFF2120021A816 /* RecentCell.m in Sources */,
 				7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */,
 				775842CD1AB95A300039B129 /* ss.cpp in Sources */,
 				775842C51AB95A300039B129 /* it_lib_context.cpp in Sources */,
@@ -2382,10 +2382,11 @@
 				775842F81AB95A300039B129 /* PSCollectionView.m in Sources */,
 				7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */,
 				7758435B1AB95FAC0039B129 /* WXService+UserInfo.m in Sources */,
+				775C584B1ABA6435005B6B40 /* ContactsCell.m in Sources */,
 				12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */,
 				120A2C161AB17A92006A28B1 /* SignModel.m in Sources */,
 				77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */,
-				775843AF1AB96FF20039B129 /* PinYinForObjc.m in Sources */,
+				775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */,
 				7758430E1AB95A300039B129 /* WXError.m in Sources */,
 				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
 				775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */,
@@ -2397,9 +2398,7 @@
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
-				77DB93FF1AAFE7DC0021A816 /* ChineseToPinyin.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
-				775843B21AB96FF20039B129 /* PinYinSearchOBJ.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
 				120A2BEE1AB135DD006A28B1 /* T_SignGifView.m in Sources */,
@@ -2411,7 +2410,6 @@
 				775842F21AB95A300039B129 /* WXDropListView.m in Sources */,
 				775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */,
 				120A2BF21AB135DE006A28B1 /* UserInfoCommonCell.m in Sources */,
-				77DB94341AAFF2120021A816 /* ContactsCell.m in Sources */,
 				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
 				775843711AB96A4B0039B129 /* ContactsViewController.m in Sources */,
 				775842DC1AB95A300039B129 /* UIImage+Extend.m in Sources */,
@@ -2419,6 +2417,7 @@
 				775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */,
 				775843251AB95A300039B129 /* WXUIImageView.m in Sources */,
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
+				775C58421ABA5F31005B6B40 /* Tools.m in Sources */,
 				775842B51AB95A300039B129 /* WXTURLFeedOBJ+Data.m in Sources */,
 				775842B11AB95A300039B129 /* WXColorConfig.m in Sources */,
 				775842D61AB95A300039B129 /* NSString+HTML.m in Sources */,
@@ -2429,7 +2428,6 @@
 				775843C21AB971CF0039B129 /* UIView+Render.m in Sources */,
 				775842F11AB95A300039B129 /* WXDropListItem.m in Sources */,
 				12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */,
-				775843A91AB96FF20039B129 /* KFLoger.m in Sources */,
 				7758432C1AB95A300039B129 /* WXUISearchBar.m in Sources */,
 				126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */,
 				2563B3EA1AAAD74000C04227 /* main.m in Sources */,
@@ -2448,14 +2446,14 @@
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
 				126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */,
 				7758433C1AB95A300039B129 /* ContacterEntity+Detail.m in Sources */,
-				7758436F1AB96A4B0039B129 /* CallVC.m in Sources */,
 				775842C01AB95A300039B129 /* WXGuideMaskControl.m in Sources */,
 				7758432F1AB95A300039B129 /* WXUITabBar.m in Sources */,
 				775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */,
 				775842C21AB95A300039B129 /* it_lib_addr_book.cpp in Sources */,
 				775842D31AB95A300039B129 /* NSDate+Compare.m in Sources */,
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
-				775843AE1AB96FF20039B129 /* PinyinFormatter.m in Sources */,
+				775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */,
+				775C583D1ABA5F31005B6B40 /* PinyinFormatter.m in Sources */,
 				7758433B1AB95A300039B129 /* AddressBook.m in Sources */,
 				775842B21AB95A300039B129 /* URLFeedData.m in Sources */,
 				120A2BF01AB135DE006A28B1 /* BalanceModel.m in Sources */,
@@ -2466,17 +2464,17 @@
 				775842BC1AB95A300039B129 /* ContactDetailCell.m in Sources */,
 				775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */,
 				775842C71AB95A300039B129 /* it_lib_files.cpp in Sources */,
-				77DB93F51AAFE73D0021A816 /* ContactUitl.m in Sources */,
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
 				775843111AB95A300039B129 /* WXMutiScanViewCell.m in Sources */,
 				775842EE1AB95A300039B129 /* WXDetailTextCell.m in Sources */,
 				7758432A1AB95A300039B129 /* WXUIPageControl.m in Sources */,
 				77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */,
+				775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */,
 				775843041AB95A300039B129 /* DDMenuController.m in Sources */,
-				775843AB1AB96FF20039B129 /* HanyuPinyinOutputFormat.m in Sources */,
 				775842D91AB95A300039B129 /* UIColor+WX.m in Sources */,
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
+				775C58501ABA68AE005B6B40 /* WXContacterCell.m in Sources */,
 				775843141AB95A300039B129 /* WXButton.m in Sources */,
 				775843001AB95A300039B129 /* PictureBrowseView.m in Sources */,
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,
@@ -2485,48 +2483,50 @@
 				775843401AB95A300039B129 /* WXContactMonitor.m in Sources */,
 				775842D01AB95A300039B129 /* stdafx.cpp in Sources */,
 				77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */,
+				775C583F1ABA5F31005B6B40 /* PinyinHelper.m in Sources */,
 				7758431A1AB95A300039B129 /* WXWaitingHud.m in Sources */,
 				7758430D1AB95A300039B129 /* WXCheckMenu.m in Sources */,
 				775843361AB95A300039B129 /* WXUITextView.m in Sources */,
 				12D0C87C1AB6B2970039A197 /* VersionModel.m in Sources */,
 				120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */,
-				775843AC1AB96FF20039B129 /* NSString+PinYin4Cocoa.m in Sources */,
 				775842BB1AB95A300039B129 /* ContactDetailVC.m in Sources */,
 				775842CB1AB95A300039B129 /* reg_msg.cpp in Sources */,
 				775842C41AB95A300039B129 /* it_lib_call.cpp in Sources */,
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
 				126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */,
 				775842FF1AB95A300039B129 /* LoadingEntity.m in Sources */,
+				775C58411ABA5F31005B6B40 /* PinYinSearchOBJ.m in Sources */,
 				775843051AB95A300039B129 /* StrikeThroughLabel.m in Sources */,
 				775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */,
 				775843311AB95A300039B129 /* WXUITabBarVC.m in Sources */,
-				775843AA1AB96FF20039B129 /* ChineseToPinyinResource.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
-				775843B01AB96FF20039B129 /* PinyinHelper.m in Sources */,
 				775842CC1AB95A300039B129 /* sqlite3.c in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
 				12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
+				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,
 				775843371AB95A300039B129 /* WXUIView.m in Sources */,
 				775843581AB95FAC0039B129 /* ServiceMonitor.m in Sources */,
 				775843171AB95A300039B129 /* LoadLabel.m in Sources */,
 				2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */,
 				775843381AB95A300039B129 /* WXUIViewController.m in Sources */,
+				775C584D1ABA6435005B6B40 /* RecentCell.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
 				775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */,
 				775843351AB95A300039B129 /* WXUITextField.m in Sources */,
 				775842D51AB95A300039B129 /* NSString+Encrypt.m in Sources */,
 				775842BA1AB95A300039B129 /* WXUserDefault.m in Sources */,
 				775842D81AB95A300039B129 /* NSString+Size.m in Sources */,
-				775843AD1AB96FF20039B129 /* pinyin.c in Sources */,
 				7758433D1AB95A300039B129 /* ContacterEntity.m in Sources */,
 				7758433F1AB95A300039B129 /* WXContacterEntity.m in Sources */,
+				775C583B1ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m in Sources */,
 				775843731AB96A4B0039B129 /* ContactBaseEntity+Detail.m in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				120A2C081AB142D4006A28B1 /* LoginVC.m in Sources */,
 				775842E41AB95A300039B129 /* WXMiltiViewCell.m in Sources */,
 				775843C01AB971CF0039B129 /* UIFont+WXT.m in Sources */,
+				775C583A1ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m in Sources */,
 				775842E51AB95A300039B129 /* WXRemotionImgBtn.m in Sources */,
 				775842EC1AB95A300039B129 /* CrystalNavigationView.m in Sources */,
 				7758430F1AB95A300039B129 /* WXMultiGuideView.m in Sources */,
@@ -2584,6 +2584,14 @@
 				2563B3FA1AAAD74000C04227 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		775C58431ABA632B005B6B40 /* Resources.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				775C58441ABA632B005B6B40 /* Base */,
+			);
+			name = Resources.h;
 			sourceTree = "<group>";
 		};
 		777059AB1AAFDEC40097526C /* Localize.strings */ = {

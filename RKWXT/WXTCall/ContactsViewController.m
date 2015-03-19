@@ -47,7 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UtilTool colorWithHexString:@"#efeff4"];
     
     //    [NOTIFY_CENTER addObserver:self selector:@selector(areaNotification:) name:AreaDataLoadingFinishNotification object:nil];
     
@@ -65,7 +65,6 @@
     //
     UINavigationBar * navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 44)];
     [self initUI];
-    [_tableView registerNib:[UINib nibWithNibName:@"ContactsCell" bundle:nil] forCellReuseIdentifier:@"ContactsCell"];
     
     //add bottom line
     UIView *bottomLineImageView = nil;
@@ -101,9 +100,9 @@
 }
 
 -(void)initUI{
-    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
-    topView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:topView];
+//    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+//    topView.backgroundColor = [UIColor blackColor];
+//    [self.view addSubview:topView];
     
     
     searchDisplayController = [[UISearchDisplayController alloc]
@@ -115,6 +114,9 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth, ScreenHeight - 46)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];
+    
+//    [_tableView registerNib:[UINib nibWithNibName:@"ContactsCell" bundle:nil] forCellReuseIdentifier:kContactsIdentifier];
     [self.view addSubview:_tableView];
 }
 
@@ -398,9 +400,9 @@
         //        rowsplit = indexs.integerValue + indexPath.row;
         alpha = indexPath.row == 0 ? key : @"";//只是第一行显示ALPHA
     }
-    ContactsCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"ContactsCell"];
+    ContactsCell *cell = [_tableView dequeueReusableCellWithIdentifier:kContactsIdentifier];
     if (cell == nil) {
-        cell = [[ContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ContactsCell"];
+        cell = [[ContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kContactsIdentifier];
     }
     cell.searchMode = searchMode;
     cell.contact = contact;
