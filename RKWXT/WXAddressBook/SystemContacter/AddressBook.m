@@ -43,7 +43,7 @@
     if(self = [super init]){
         _contactList = [[NSMutableArray alloc] init];
         _loadRecordImageQueue = dispatch_queue_create("loadRecordImageQueue", 0);
-//        [self registerAddressBookChanged];
+        [self registerAddressBookChanged];
 		[self addOBS];
     }
     return self;
@@ -84,53 +84,53 @@
     return _addressBookRef;
 }
 
-//- (void)registerAddressBookChanged{
-//    ABAddressBookRegisterExternalChangeCallback([self addressBook], MyAddressBookExternalChangeCallback, self);
-//}
+- (void)registerAddressBookChanged{
+    ABAddressBookRegisterExternalChangeCallback([self addressBook], MyAddressBookExternalChangeCallback, self);
+}
 
-//void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictionaryRef info, void *context){
-//    KFLog_Normal(YES, @"addressBookChanged");
-//    ABAddressBookRevert(addressBook);
-//    AddressBook *sharedAddressBook = (AddressBook*)context;
-//    [sharedAddressBook loadContactInfo];
-//}
+void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictionaryRef info, void *context){
+    KFLog_Normal(YES, @"addressBookChanged");
+    ABAddressBookRevert(addressBook);
+    AddressBook *sharedAddressBook = (__bridge AddressBook*)context;
+    [sharedAddressBook loadContactInfo];
+}
 
-//- (void)unregisterAddressBookChanged{
-//    ABAddressBookUnregisterExternalChangeCallback([self addressBook], MyAddressBookExternalChangeCallback, self);
-//}
+- (void)unregisterAddressBookChanged{
+    ABAddressBookUnregisterExternalChangeCallback([self addressBook], MyAddressBookExternalChangeCallback, self);
+}
 
-//- (void)loadContact{
-//	//先删除所有的联系人~
-//	[_contactList removeAllObjects];
-//    __block NSMutableArray *contactList = _contactList;
-//    __block AddressBook *selfAddressBook = self;
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//		@synchronized(selfAddressBook){
-//			NSMutableArray *tempArray = [NSMutableArray array];
-//			NSArray *allPerson = [[NSArray alloc] initWithArray:[selfAddressBook getAllPeopleContact]];
-//			NSInteger count = [allPerson count];
-//			for(int i = 0; i < count; i++){
-//				ABRecordRef person = (ABRecordRef)[allPerson objectAtIndex:i];
-//				ContacterEntity *entity = [ContacterEntity contacterEntityWithABPerson:person];
-//				if(ABPersonHasImageData(person)){
-//					NSData *imgDate = (NSData*)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
-//					UIImage *icon = [UIImage imageWithData:imgDate scale:1/4];
-//					[entity setIcon:icon];
-//				}
-//				
-//				if(entity){
-//					[tempArray addObject:entity];
-//				}
-//			}
-//			[contactList removeAllObjects];
-//			[contactList addObjectsFromArray:tempArray];
-//			[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:D_Notification_Name_AddressBookHasChanged object:nil userInfo:nil];
-//			if([[ServiceMonitor sharedServiceMonitor] hasLogin]){
-//				[selfAddressBook uploadSysContacters:tempArray];
-//			}
-//		}
-//    });
-//}
+- (void)loadContact{
+	//先删除所有的联系人~
+	[_contactList removeAllObjects];
+    __block NSMutableArray *contactList = _contactList;
+    __block AddressBook *selfAddressBook = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		@synchronized(selfAddressBook){
+			NSMutableArray *tempArray = [NSMutableArray array];
+			NSArray *allPerson = [[NSArray alloc] initWithArray:[selfAddressBook getAllPeopleContact]];
+			NSInteger count = [allPerson count];
+			for(int i = 0; i < count; i++){
+				ABRecordRef person = (__bridge ABRecordRef)[allPerson objectAtIndex:i];
+				ContacterEntity *entity = [ContacterEntity contacterEntityWithABPerson:person];
+				if(ABPersonHasImageData(person)){
+					NSData *imgDate = (__bridge NSData*)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
+					UIImage *icon = [UIImage imageWithData:imgDate scale:1/4];
+					[entity setIcon:icon];
+				}
+				
+				if(entity){
+					[tempArray addObject:entity];
+				}
+			}
+			[contactList removeAllObjects];
+			[contactList addObjectsFromArray:tempArray];
+			[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:D_Notification_Name_AddressBookHasChanged object:nil userInfo:nil];
+			if([[ServiceMonitor sharedServiceMonitor] hasLogin]){
+				[selfAddressBook uploadSysContacters:tempArray];
+			}
+		}
+    });
+}
 
 - (void)uploadSysContacters:(NSArray*)contacters{
     for(ContacterEntity *entity in contacters){

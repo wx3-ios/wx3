@@ -253,7 +253,7 @@
 		775843381AB95A300039B129 /* WXUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758429D1AB95A300039B129 /* WXUIViewController.m */; };
 		775843391AB95A300039B129 /* WXUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758429F1AB95A300039B129 /* WXUIWebView.m */; };
 		7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A11AB95A300039B129 /* WXUIWindow.m */; };
-		7758433B1AB95A300039B129 /* AddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A51AB95A300039B129 /* AddressBook.m */; };
+		7758433B1AB95A300039B129 /* AddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A51AB95A300039B129 /* AddressBook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7758433C1AB95A300039B129 /* ContacterEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A61AB95A300039B129 /* ContacterEntity+Detail.m */; };
 		7758433D1AB95A300039B129 /* ContacterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A81AB95A300039B129 /* ContacterEntity.m */; };
 		7758433E1AB95A300039B129 /* WXContacterEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842AA1AB95A300039B129 /* WXContacterEntity+Detail.m */; };
