@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-//#import "MainViewController.h"
-//#import "LeftMenuViewController.h"
+#import "WXCallUITabBarVC.h"
+#import "WXUITabBarVC.h"
 #import "IQKeyboardManager.h"
 #import "DDFileLogger.h"
 #import "LoginVC.h"
@@ -55,7 +55,6 @@
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];// 允许颜色
 #endif
     NSLog(@"%@", DOC_PATH);
-    
     [[AddressBook sharedAddressBook] loadContact];
 	[self initUI];
     [self checkVersion];
@@ -65,18 +64,10 @@
 -(void)initUI{
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
-
-//	UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//	MainViewController * mainCtrl = [storyBoard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-//	LeftMenuViewController * leftMenuCtrl = [storyBoard instantiateViewControllerWithIdentifier:@"LeftMenu"];
-//	_sideViewController = [[YRSideViewController alloc] initWithNibName:nil bundle:nil];
-//	_sideViewController.rootViewController = mainCtrl;
-//	_sideViewController.leftViewController = leftMenuCtrl;
-//	self.window.rootViewController = _sideViewController;
-    
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){
         WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
+//        WXCallUITabBarVC *tabbar = [[WXCallUITabBarVC alloc] init];
         [tabbar createViewController];
         [tabbar.navigationController setNavigationBarHidden:NO];
         _navigation = [[UINavigationController alloc] initWithRootViewController:tabbar];
@@ -84,6 +75,7 @@
         LoginVC *vc = [[LoginVC alloc] init];
         _navigation = [[UINavigationController alloc] initWithRootViewController:vc];
         [vc.navigationController setNavigationBarHidden:YES];
+        [self.window setRootViewController:_navigation];
     }
     
     [self.window setRootViewController:_navigation];

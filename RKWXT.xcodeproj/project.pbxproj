@@ -225,7 +225,6 @@
 		775843181AB95A300039B129 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758425A1AB95A300039B129 /* ProgressView.m */; };
 		775843191AB95A300039B129 /* woxinHidIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7758425B1AB95A300039B129 /* woxinHidIcon@2x.png */; };
 		7758431A1AB95A300039B129 /* WXWaitingHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758425D1AB95A300039B129 /* WXWaitingHud.m */; };
-		7758431B1AB95A300039B129 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758425F1AB95A300039B129 /* YRSideViewController.m */; };
 		7758431C1AB95A300039B129 /* WXMFMessageComposeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842631AB95A300039B129 /* WXMFMessageComposeVC.m */; };
 		7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842651AB95A300039B129 /* WXUIActionSheet.m */; };
 		7758431E1AB95A300039B129 /* WXUIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842671AB95A300039B129 /* WXUIActivityIndicatorView.m */; };
@@ -337,6 +336,9 @@
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
 		777059B61AAFE48C0097526C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B41AAFE48C0097526C /* AddressBookUI.framework */; };
+		777F028D1ABBF362008C77F1 /* DialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F028B1ABBF362008C77F1 /* DialView.m */; };
+		777F028E1ABBF362008C77F1 /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 777F028C1ABBF362008C77F1 /* DialView.xib */; };
+		777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F02901ABC1C8C008C77F1 /* BaseViewController.m */; };
 		77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93E71AAFE6F50021A816 /* ContactData.m */; };
 		77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93EA1AAFE70D0021A816 /* PhoneData.m */; };
 		77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93EC1AAFE70D0021A816 /* RecentData.m */; };
@@ -738,8 +740,6 @@
 		7758425B1AB95A300039B129 /* woxinHidIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woxinHidIcon@2x.png"; sourceTree = "<group>"; };
 		7758425C1AB95A300039B129 /* WXWaitingHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXWaitingHud.h; sourceTree = "<group>"; };
 		7758425D1AB95A300039B129 /* WXWaitingHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWaitingHud.m; sourceTree = "<group>"; };
-		7758425E1AB95A300039B129 /* YRSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRSideViewController.h; sourceTree = "<group>"; };
-		7758425F1AB95A300039B129 /* YRSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRSideViewController.m; sourceTree = "<group>"; };
 		775842601AB95A300039B129 /* SysInterfaceBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysInterfaceBridge.h; sourceTree = "<group>"; };
 		775842621AB95A300039B129 /* WXMFMessageComposeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMFMessageComposeVC.h; sourceTree = "<group>"; };
 		775842631AB95A300039B129 /* WXMFMessageComposeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMFMessageComposeVC.m; sourceTree = "<group>"; };
@@ -954,6 +954,11 @@
 		777059AE1AAFDEEB0097526C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localize.strings"; sourceTree = "<group>"; };
 		777059B31AAFE48C0097526C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		777059B41AAFE48C0097526C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		777F028A1ABBF362008C77F1 /* DialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialView.h; sourceTree = "<group>"; };
+		777F028B1ABBF362008C77F1 /* DialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialView.m; sourceTree = "<group>"; };
+		777F028C1ABBF362008C77F1 /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
+		777F028F1ABC1C8C008C77F1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		777F02901ABC1C8C008C77F1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		77DB93E61AAFE6F50021A816 /* ContactData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactData.h; sourceTree = "<group>"; };
 		77DB93E71AAFE6F50021A816 /* ContactData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactData.m; sourceTree = "<group>"; };
 		77DB93E91AAFE70D0021A816 /* PhoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneData.h; sourceTree = "<group>"; };
@@ -1689,8 +1694,6 @@
 				7758424E1AB95A300039B129 /* WXSingleSelectVC.m */,
 				7758424F1AB95A300039B129 /* WXUIButton */,
 				775842561AB95A300039B129 /* WXWaitingHid */,
-				7758425E1AB95A300039B129 /* YRSideViewController.h */,
-				7758425F1AB95A300039B129 /* YRSideViewController.m */,
 			);
 			path = CustomWedget;
 			sourceTree = "<group>";
@@ -2120,6 +2123,9 @@
 		775C58551ABA7A52005B6B40 /* KeyPad */ = {
 			isa = PBXGroup;
 			children = (
+				777F028A1ABBF362008C77F1 /* DialView.h */,
+				777F028B1ABBF362008C77F1 /* DialView.m */,
+				777F028C1ABBF362008C77F1 /* DialView.xib */,
 				775C58561ABA7A52005B6B40 /* BaseCallHistoryCell.h */,
 				775C58571ABA7A52005B6B40 /* BaseCallHistoryCell.m */,
 				775C58581ABA7A52005B6B40 /* CallHistoryCell.h */,
@@ -2322,6 +2328,8 @@
 		77DB941D1AAFED330021A816 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				777F028F1ABC1C8C008C77F1 /* BaseViewController.h */,
+				777F02901ABC1C8C008C77F1 /* BaseViewController.m */,
 				775C58DA1ABAB87E005B6B40 /* CoordinateController.h */,
 				775C58DB1ABAB87E005B6B40 /* CoordinateController.m */,
 				77DB941E1AAFED400021A816 /* UIViewController+Helper.h */,
@@ -2460,6 +2468,7 @@
 				120A2C631AB17B87006A28B1 /* SignNow@2x.png in Resources */,
 				120A2C5D1AB17AFD006A28B1 /* sign7@2x.png in Resources */,
 				120A2C571AB17AFD006A28B1 /* sign33@2x.png in Resources */,
+				777F028E1ABBF362008C77F1 /* DialView.xib in Resources */,
 				120A2C481AB17AFD006A28B1 /* sign1@2x.png in Resources */,
 				120A2C3F1AB17AFD006A28B1 /* sign10@2x.png in Resources */,
 				120A2C621AB17B87006A28B1 /* signEveryDay@2x.png in Resources */,
@@ -2754,7 +2763,6 @@
 				775843141AB95A300039B129 /* WXButton.m in Sources */,
 				775843001AB95A300039B129 /* PictureBrowseView.m in Sources */,
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,
-				7758431B1AB95A300039B129 /* YRSideViewController.m in Sources */,
 				775C58DC1ABAB87E005B6B40 /* CoordinateController.m in Sources */,
 				775842F61AB95A300039B129 /* PullPsCollectionView.m in Sources */,
 				775842D01AB95A300039B129 /* stdafx.cpp in Sources */,
@@ -2771,6 +2779,7 @@
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
 				775C58CF1ABA7B75005B6B40 /* ContacterEntity.m in Sources */,
 				126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */,
+				777F028D1ABBF362008C77F1 /* DialView.m in Sources */,
 				775842FF1AB95A300039B129 /* LoadingEntity.m in Sources */,
 				775C58411ABA5F31005B6B40 /* PinYinSearchOBJ.m in Sources */,
 				775843051AB95A300039B129 /* StrikeThroughLabel.m in Sources */,
@@ -2793,6 +2802,7 @@
 				775843381AB95A300039B129 /* WXUIViewController.m in Sources */,
 				775C584D1ABA6435005B6B40 /* RecentCell.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
+				777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */,
 				775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */,
 				775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */,
 				775843351AB95A300039B129 /* WXUITextField.m in Sources */,

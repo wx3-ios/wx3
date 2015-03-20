@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXTUITabBarController : UITabBarController
+@interface WXTUITabBarController : UITabBarController<WXUITabBarDelegate>
 
+//@property (nonatomic,readonly)WXUITabBar *tabBar;
 -(void)createViewController;
 
+//- (void)setTabBarHidden:(BOOL)hidden aniamted:(BOOL)animated completion:(void (^)(void))completion;
 @end

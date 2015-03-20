@@ -190,4 +190,35 @@
     [super didReceiveMemoryWarning];
 }
 
+//- (void)setTabBarHidden:(BOOL)hidden aniamted:(BOOL)animated completion:(void (^)(void))completion{
+//    CGSize size = self.bounds.size;
+//    CGFloat tabBarHeight = _tabBar.bounds.size.height;
+//    
+//    CGRect viewRect = self.bounds;
+//    CGRect tabBarRect = _tabBar.bounds;
+//    if(hidden){
+//        tabBarRect.origin.y = size.height;
+//    }else{
+//        tabBarRect.origin.y = size.height - tabBarHeight;
+//        viewRect.size.height -= tabBarHeight;
+//    }
+//    if(animated){
+//        [UIView animateWithDuration:kWXUITabBarAnimatedDuration animations:^{
+//            for(UIViewController *vc in self.childViewControllers){
+//                [vc.view setFrame:viewRect];
+//            }
+//            [_tabBar setFrame:tabBarRect];
+//        } completion:^(BOOL finished) {
+//            completion();
+//        }];
+//    }else{
+//        for(UIViewController *vc in self.childViewControllers){
+//            [vc.view setFrame:viewRect];
+//        }
+//        [_tabBar setFrame:tabBarRect];
+//        completion();
+//    }
+//    
+//}
+
 @end

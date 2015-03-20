@@ -11,7 +11,7 @@
 #import "WXCallUITabBarVC.h"
 #import "LoginVC.h"
 //#import "WXAllFriendVC.h"
-//#import "ContactInfoViewController.h"
+#import "ContactDetailVC.h"
 //#import "PersonalInfoViewController.h"
 //#import "MoreFunctionVC.h"
 //#import "WXOrderMenuVC.h"
@@ -88,13 +88,13 @@
 //    [vc.wxNavigationController pushViewController:callTabBarVC];
 //}
 
-//- (void)toContactDetail:(id)sender contactInfo:(id)contactInfo contactType:(E_ContacterType)contactType animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    ContactInfoViewController *contactInfoVC = [[[ContactInfoViewController alloc] init] autorelease];
+- (void)toContactDetail:(id)sender contactInfo:(id)contactInfo contactType:(E_ContacterType)contactType animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    ContactDetailVC * contactInfoVC = [[ContactDetailVC alloc] init] ;
 //    [contactInfoVC setContacterInfo:contactInfo];
 //    [contactInfoVC setContacterType:contactType];
-//    [vc.wxNavigationController pushViewController:contactInfoVC];
-//}
+    [vc.wxNavigationController pushViewController:contactInfoVC];
+}
 
 //- (void)toAllWXContacters:(id)sender animated:(BOOL)animated{
 //    WXUIViewController *vc = sender;

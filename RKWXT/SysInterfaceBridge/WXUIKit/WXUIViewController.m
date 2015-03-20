@@ -8,7 +8,6 @@
 
 #import "WXUIViewController.h"
 #import "ServiceCommon.h"
-#import "YRSideViewController.h"
 #import "NetTipDelay.h"
 #import "WXWaitingHud.h"
 
@@ -138,12 +137,12 @@
 	[self showNetTipView:NO animated:YES];
 }
 
-- (BOOL)isContanerVC{
-    if([self isKindOfClass:[WXUITabBarVC class]] || [self isKindOfClass:[YRSideViewController class]]){
-        return YES;
-    }
-    return NO;
-}
+//- (BOOL)isContanerVC{
+//    if([self isKindOfClass:[WXUITabBarVC class]] || [self isKindOfClass:[YRSideViewController class]]){
+//        return YES;
+//    }
+//    return NO;
+//}
 
 - (void)netTipDelayFinished{
 //    [self detectAndShowServiceConnectTip];
@@ -155,9 +154,9 @@
 //}
 
 - (void)showNetTipView:(BOOL)show animated:(BOOL)animated{
-	if([self isContanerVC]){
-		return;
-	}
+//	if([self isContanerVC]){
+//		return;
+//	}
 	
 	CGSize size = self.view.bounds.size;
 	CGFloat yOffset = 0;
@@ -268,7 +267,7 @@
     UIViewController *parentVC = [self parentViewController];
     if([parentVC isKindOfClass:[WXUINavigationController class]]){
         return (WXUINavigationController*)self.parentViewController;
-    }else if([parentVC isKindOfClass:[WXUITabBarVC class]] || [parentVC isKindOfClass:[YRSideViewController class]]){
+    }else if([parentVC isKindOfClass:[WXUITabBarVC class]]){
         WXUIViewController *wxVC = (WXUIViewController*)parentVC;
         return wxVC.wxNavigationController;
     }

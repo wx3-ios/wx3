@@ -53,13 +53,13 @@ enum{
 //    T_PersonalInfoVC *personalInfoVC = [[T_PersonalInfoVC alloc] init] ;
     
     WXUITabBarItem *t_homepage = [self createTabBarItem];
-    [t_homepage setTabBarItemImage:[UIImage imageNamed:@"t_homePage.png"] forState:WXButtonControlState_Normal];
-    [t_homepage setTabBarItemImage:[UIImage imageNamed:@"t_homePageSel.png"] forState:WXButtonControlState_Selected];
+    [t_homepage setTabBarItemImage:[UIImage imageNamed:@"MallNormal.png"] forState:WXButtonControlState_Normal];
+    [t_homepage setTabBarItemImage:[UIImage imageNamed:@"MallSelected.png"] forState:WXButtonControlState_Selected];
     [t_homepage setTabBarItemTitle:@"首页" forState:WXButtonControlState_Normal];
     
     WXUITabBarItem *keyPadItem = [self createTabBarItem];
-    [keyPadItem setTabBarItemImage:[UIImage imageNamed:@"t_call.png"] forState:WXButtonControlState_Normal];
-    [keyPadItem setTabBarItemImage:[UIImage imageNamed:@"t_callSel.png"] forState:WXButtonControlState_Selected];
+    [keyPadItem setTabBarItemImage:[UIImage imageNamed:@"CallNormal.png"] forState:WXButtonControlState_Normal];
+    [keyPadItem setTabBarItemImage:[UIImage imageNamed:@"CallSelected.png"] forState:WXButtonControlState_Selected];
 //    [keyPadItem setRepeatSelectedImage:[UIImage imageNamed:@"keyPadSelDown.png"]];
     [keyPadItem setTabBarItemTitle:@"通话" forState:WXButtonControlState_Normal];
     
@@ -69,16 +69,17 @@ enum{
 //    [chatItem setTabBarItemTitle:@"聊天" forState:WXButtonControlState_Normal];
     
     WXUITabBarItem *contacterItem = [self createTabBarItem];
-    [contacterItem setTabBarItemImage:[UIImage imageNamed:@"t_find.png"] forState:WXButtonControlState_Normal];
-    [contacterItem setTabBarItemImage:[UIImage imageNamed:@"t_findSel.png"] forState:WXButtonControlState_Selected];
+    [contacterItem setTabBarItemImage:[UIImage imageNamed:@"FindNormal.png"] forState:WXButtonControlState_Normal];
+    [contacterItem setTabBarItemImage:[UIImage imageNamed:@"FindSelected.png"] forState:WXButtonControlState_Selected];
     [contacterItem setTabBarItemTitle:@"发现" forState:WXButtonControlState_Normal];
     
     WXUITabBarItem *rechargeItem = [self createTabBarItem];
-    [rechargeItem setTabBarItemImage:[UIImage imageNamed:@"t_personal.png"] forState:WXButtonControlState_Normal];
-    [rechargeItem setTabBarItemImage:[UIImage imageNamed:@"t_personalSel.png"] forState:WXButtonControlState_Selected];
+    [rechargeItem setTabBarItemImage:[UIImage imageNamed:@"UserNormal.png"] forState:WXButtonControlState_Normal];
+    [rechargeItem setTabBarItemImage:[UIImage imageNamed:@"UserSelected.png"] forState:WXButtonControlState_Selected];
     [rechargeItem setTabBarItemTitle:@"我" forState:WXButtonControlState_Normal];
     
     WXUITabBar *tabBar = [[WXUITabBar alloc] initWithTabBarHeight:kTabBarHeight] ;
+//    WXUITabBar *tabBar = [[WXUITabBar alloc] initWithFrame:CGRectMake(0, ScreenHeight - 50, ScreenWidth, 50)] ;
     [tabBar setTabBarItems:[NSArray arrayWithObjects:t_homepage,keyPadItem,contacterItem,rechargeItem, nil]];
     [tabBar setBackgroundColor:kOtherColor(E_App_Other_Color_TabBar)];
     
@@ -104,13 +105,13 @@ enum{
 }
 
 - (CGSize)tabBarItemSize{
-    return CGSizeMake(IPHONE_SCREEN_WIDTH/kTabBarItemNumber, kTabBarHeight);
+    return CGSizeMake(ScreenWidth/kTabBarItemNumber, kTabBarHeight);
 }
 
 - (WXUITabBarItem*)createTabBarItem{
     CGSize size = [self tabBarItemSize];
     WXUITabBarItem *itme = [WXUITabBarItem tabBarItem];
-    [itme setFrame:CGRectMake(0, 0, size.width, size.height)];
+    [itme setFrame:CGRectMake(0, ScreenHeight - kTabBarHeight, size.width, size.height)];
     [itme setTitleColor:kOtherColor(E_App_Other_Color_TabBarTitleNormal) forState:WXButtonControlState_Normal];
     [itme setTitleColor:kOtherColor(E_App_Other_Color_TabBarTitleHighlight) forState:WXButtonControlState_Selected];
     return itme;

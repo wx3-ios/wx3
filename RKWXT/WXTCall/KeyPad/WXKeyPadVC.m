@@ -18,6 +18,7 @@
 #import "WXContacterEntity.h"
 #import "ContacterEntity.h"
 #import "StrangerEntity.h"
+#import "WXTUITabBarController.h"
 
 enum{
 	E_ALERTVIEW_CLEAR_ALL_RECORDS_ID = 10001
@@ -388,8 +389,8 @@ typedef enum{
     }
 }
 
-- (WXUITabBarVC*)tabBarVC{
-    return (WXUITabBarVC*)self.parentViewController;
+- (WXTUITabBarController*)tabBarVC{
+    return (WXTUITabBarController*)self.parentViewController;
 }
 
 - (void)upKeyBoardButtonClicked{

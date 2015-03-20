@@ -12,6 +12,6 @@
     #import <Foundation/Foundation.h>
 #endif
 
-//#define imageNameWith()     [UIIm]
+#define imageNameWith(fileName)     [UIImage imageNamed:fileName]
 
 #endif

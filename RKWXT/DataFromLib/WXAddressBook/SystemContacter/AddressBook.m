@@ -22,11 +22,11 @@
 @synthesize contactList = _contactList;
 
 - (void)dealloc{
-    if(_addressBookRef){
-        CFRelease(_addressBookRef);
-    }
+//    if(_addressBookRef){
+//        CFRelease(_addressBookRef);
+//    }
 //    dispatch_release(_loadRecordImageQueue);
-	[self removeOBS];
+//	[self removeOBS];
 //    [super dealloc];
 }
 
