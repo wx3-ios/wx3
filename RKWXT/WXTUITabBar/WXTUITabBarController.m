@@ -10,21 +10,25 @@
 #import "WXTFindVC.h"
 #import "WXTMallVC.h"
 #import "UserInfoVC.h"
-//#import "CallVC.h"
 #import "ContactsViewController.h"
 #import "WXContacterVC.h"
 #import "WXKeyPadVC.h"
+
 #define kTabBarHeight (50.0)
 
 @interface WXTUITabBarController(){
     NSArray *views;
     UIView *tabBar;
-    CGFloat yOffset;
+    WXTMallVC *recentCall;
 }
+
 @property (nonatomic,strong) UIButton *but;
 @property (nonatomic,strong) UIButton *but0;
 @property (nonatomic,strong) UIButton *but1;
 @property (nonatomic,strong) UIButton *but2;
+
+@property (nonatomic,strong) UIButton *callBtn;
+@property (nonatomic,strong) UIButton *delBtn;
 
 @property (nonatomic,strong) UILabel *label;
 @property (nonatomic,strong) UILabel *label0;
@@ -33,26 +37,26 @@
 @end
 
 @implementation WXTUITabBarController
-@synthesize but,but1,but2,but0,label,label0,label1,label2;
+@synthesize but,but1,but2,but0,label,label0,label1,label2,callBtn,delBtn;
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    if(!isIOS7){
-        //        yOffset = IPHONE_STATUS_BAR_HEIGHT;
+-(id)init{
+    self = [super init];
+    if(self){
+        NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
+        [notification addObserver:self selector:@selector(inputNumber) name:InputNumber object:nil];
+        [notification addObserver:self selector:@selector(delBtnClicked) name:DelNumber object:nil];
     }
-    
-    [self createTabBar];
+    return self;
 }
 
--(void)createTabBar
-{
+- (void)viewDidLoad{
+    [super viewDidLoad];
+
     CGSize size = self.view.bounds.size;
-    tabBar = [[UIView alloc] initWithFrame:CGRectMake(0, size.height-kTabBarHeight -yOffset, IPHONE_SCREEN_WIDTH, kTabBarHeight)];
+    tabBar = [[UIView alloc] initWithFrame:CGRectMake(0, size.height-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight)];
     tabBar.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:tabBar];
-
+    
     
     NSArray *qian = @[@"MallNormal.png",@"CallNormal.png",@"FindNormal.png",@"UserNormal.png"];
     NSArray *hou = @[@"MallSelected.png",@"CallSelected.png",@"FindSelected.png",@"UserSelected.png"];
@@ -126,6 +130,54 @@
     but2.tag = 3;
     [but2 addTarget:self action:@selector(selectedTab:) forControlEvents:UIControlEventTouchUpInside];
     [tabBar addSubview:but2];
+    
+    
+    delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+    [delBtn setBackgroundColor:[UIColor whiteColor]];
+    [delBtn setImage:[UIImage imageNamed:@"CallSelected.png"] forState:UIControlStateNormal];
+    [delBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [delBtn addTarget:self action:@selector(keyboardBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:delBtn];
+    
+    callBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
+    [callBtn setBackgroundColor:[UIColor purpleColor]];
+    [callBtn setTitle:@"呼叫" forState:UIControlStateNormal];
+    [callBtn addTarget:self action:@selector(callBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:callBtn];
+}
+
+-(void)inputNumber{
+    if(recentCall.downview_type == DownView_show){
+        return;
+    }
+    recentCall.downview_type = DownView_show;
+    [UIView animateWithDuration:KeyboardDur animations:^{
+        callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
+        delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+    }];
+}
+
+-(void)delBtnClicked{
+    if(recentCall.downview_type == DownView_Del){
+        [UIView animateWithDuration:KeyboardDur animations:^{
+            callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
+            delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+        }];
+    }
+}
+
+-(void)keyboardBtnClicked{
+    [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
+    [UIView animateWithDuration:KeyboardDur animations:^{
+        callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
+        delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+    }];
+}
+
+-(void)callBtnClicked{
+    [[NSNotificationCenter defaultCenter] postNotificationName:CallPhone object:nil];
 }
 
 - (void)selectedTab:(UIButton *)button{
@@ -150,6 +202,20 @@
         [label0 setTextColor:WXColorWithInteger(0x0c8bdf)];
         [label1 setTextColor:WXColorWithInteger(0x808080)];
         [label2 setTextColor:WXColorWithInteger(0x808080)];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
+        if(recentCall.downview_type == DownView_Del){
+            [UIView animateWithDuration:KeyboardDur animations:^{
+                callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
+                delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+            }];
+        }
+        if(recentCall.downview_type == DownView_show){
+            [UIView animateWithDuration:KeyboardDur animations:^{
+                callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
+                delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+            }];
+        }
     }
     
     if(button.tag == 2){
@@ -177,11 +243,11 @@
 
 //初始化子控制器
 -(void)createViewController{
-    WXTMallVC *recentCall = [[WXTMallVC alloc] init];
-    WXContacterVC *callview = [[WXContacterVC alloc]init];
-    WXTFindVC *phoneView = [[WXTFindVC alloc]init];
+    recentCall = [[WXTMallVC alloc] init];
+    WXContacterVC *callview = [[WXContacterVC alloc] init];
+    WXTFindVC *phoneView = [[WXTFindVC alloc] init];
     UserInfoVC *infoVC = [[UserInfoVC alloc] init];
-    views = [NSArray arrayWithObjects:recentCall,callview,phoneView,infoVC, nil];
+    views = [NSArray arrayWithObjects:callview,recentCall,phoneView,infoVC, nil];
     [self setViewControllers:views];
 }
 
