@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXTUITabBarController : UITabBarController<WXUITabBarDelegate>
+#define ShowKeyBoard @"ShowKeyBoard"
 
-//@property (nonatomic,readonly)WXUITabBar *tabBar;
+#define InputNumber @"InputNumber"
+#define DelNumber @"DelNumber"
+
+#define CallPhone @"CallPhone"
+
+@interface WXTUITabBarController : UITabBarController
+
 -(void)createViewController;
 
-//- (void)setTabBarHidden:(BOOL)hidden aniamted:(BOOL)animated completion:(void (^)(void))completion;
 @end
