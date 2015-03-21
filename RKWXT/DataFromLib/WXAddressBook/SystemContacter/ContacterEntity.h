@@ -22,4 +22,5 @@
 
 + (id)contacterEntityWithABPerson:(ABRecordRef)person;
 - (BOOL)uploadSysContacter;
+- (BOOL)matchingString:(NSString *)string;
 @end

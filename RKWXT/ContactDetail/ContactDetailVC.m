@@ -38,7 +38,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
-    
+    NSLog(@"%smodel:%@",__FUNCTION__,_model);
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, -20, Size.width, Size.height);
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];

@@ -389,8 +389,8 @@ typedef enum{
     }
 }
 
-- (WXTUITabBarController*)tabBarVC{
-    return (WXTUITabBarController*)self.parentViewController;
+- (WXCallUITabBarVC*)tabBarVC{
+    return (WXCallUITabBarVC*)self.parentViewController;
 }
 
 - (void)upKeyBoardButtonClicked{

@@ -7,8 +7,8 @@
 //
 
 #import "WXUIViewController.h"
-
-@interface WXContacterVC : WXUIViewController<UITabBarDelegate>{
+#define kSearchBarHeight (44)
+@interface WXContacterVC : WXUIViewController{
     UISegmentedControl * _segmentControl;
 }
 

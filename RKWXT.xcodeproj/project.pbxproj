@@ -359,6 +359,7 @@
 		777F028D1ABBF362008C77F1 /* DialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F028B1ABBF362008C77F1 /* DialView.m */; };
 		777F028E1ABBF362008C77F1 /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 777F028C1ABBF362008C77F1 /* DialView.xib */; };
 		777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F02901ABC1C8C008C77F1 /* BaseViewController.m */; };
+		77D197621ABC246000FAA4CE /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D197611ABC246000FAA4CE /* RootViewController.m */; };
 		77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93E71AAFE6F50021A816 /* ContactData.m */; };
 		77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93EA1AAFE70D0021A816 /* PhoneData.m */; };
 		77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB93EC1AAFE70D0021A816 /* RecentData.m */; };
@@ -1000,6 +1001,8 @@
 		777F028C1ABBF362008C77F1 /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
 		777F028F1ABC1C8C008C77F1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		777F02901ABC1C8C008C77F1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		77D197601ABC246000FAA4CE /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		77D197611ABC246000FAA4CE /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		77DB93E61AAFE6F50021A816 /* ContactData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactData.h; sourceTree = "<group>"; };
 		77DB93E71AAFE6F50021A816 /* ContactData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactData.m; sourceTree = "<group>"; };
 		77DB93E91AAFE70D0021A816 /* PhoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneData.h; sourceTree = "<group>"; };
@@ -2404,6 +2407,8 @@
 				775C58DB1ABAB87E005B6B40 /* CoordinateController.m */,
 				77DB941E1AAFED400021A816 /* UIViewController+Helper.h */,
 				77DB941F1AAFED400021A816 /* UIViewController+Helper.m */,
+				77D197601ABC246000FAA4CE /* RootViewController.h */,
+				77D197611ABC246000FAA4CE /* RootViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2710,6 +2715,7 @@
 				775843121AB95A300039B129 /* WXPopAlertView.m in Sources */,
 				775842EA1AB95A300039B129 /* ZoneCodeEntity.m in Sources */,
 				775843131AB95A300039B129 /* WXSingleSelectVC.m in Sources */,
+				77D197621ABC246000FAA4CE /* RootViewController.m in Sources */,
 				775842B71AB95A300039B129 /* WXTipMaskOBJ.m in Sources */,
 				775842B31AB95A300039B129 /* UtilTool.m in Sources */,
 				775843301AB95A300039B129 /* WXUITabBarItem.m in Sources */,

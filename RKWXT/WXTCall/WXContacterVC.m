@@ -10,6 +10,7 @@
 #import "WXContacterModel.h"
 #import "WXContacterCell.h"
 #import "AddressBook.h"
+#import "ContactDetailVC.h"
 #define kSectionHeadViewHeight (20.0)
 
 @interface WXContacterVC ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate>{
@@ -30,15 +31,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UtilTool colorWithHexString:@"#efeff4"];
     [self setCSTTitle:@"通讯录"];
     
 //    [self loadSegmentControl];
     
-    [self setBackNavigationBarItem];
+//    [self setBackNavigationBarItem];
     [self addOBS];
     _model = [[WXContacterModel alloc] init];
-    CGSize size = self.bounds.size;
+    CGSize size = self.view.bounds.size;
     _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 50 + 20, ScreenWidth, ScreenHeight- 100)];
 //    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
     [_tableView setDataSource:self];
@@ -46,13 +46,12 @@
     [_tableView setDelegate:self];
     [self.view addSubview:_tableView];
     
-    CGFloat searchBarHeight = 44;
-    _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 0, size.width, searchBarHeight)];
+    _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 74, size.width, kSearchBarHeight)];
     [_searchBar setPlaceholder:@"搜索"];
     [_searchBar sizeToFit];
 //    [_tableView setTableHeaderView:_searchBar];
+    [self.view addSubview:_searchBar];
 
-    [self addSubview:_searchBar];
     _searchDisplayController = [[UISearchDisplayController alloc]
                                 initWithSearchBar:_searchBar contentsController:self];
     [_searchDisplayController setSearchResultsDelegate:self];
@@ -240,6 +239,9 @@
 //        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
 //        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
 //    }
+    ContactDetailVC * detailVC = [[ContactDetailVC alloc] init];
+    detailVC.model = _model;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -267,10 +269,14 @@
 
 #pragma mark UISearchDisplayDelegate
 - (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller{
+    self.navigationController.navigationBar.hidden = YES;
+//    _searchBar.frame = CGRectMake(0, 64, ScreenWidth, kSearchBarHeight);
     [_model removeMatchingContact];
 }
 
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller{
+    self.navigationController.navigationBar.hidden = NO;
+//    _searchBar.frame = CGRectMake(0, 64, ScreenWidth, kSearchBarHeight);
     [_model removeMatchingContact];
 }
 
@@ -281,10 +287,8 @@
     return YES;
 }
 
--(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    NSLog(@"%s",__FUNCTION__);
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
+    return YES;
 }
-- (void)tabBar:(UITabBar *)tabBar didBeginCustomizingItems:(NSArray *)items{
-        NSLog(@"%s",__FUNCTION__);
-}
+
 @end

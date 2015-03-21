@@ -14,7 +14,7 @@
 #import "LoginVC.h"
 #import "WXTUITabBarController.h"
 #import "WXTVersion.h"
-
+#import "RootViewController.h"
 @interface AppDelegate (){
     UINavigationController *_navigation;
 }
@@ -68,6 +68,7 @@
     if(userInfo){
         WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
 //        WXCallUITabBarVC *tabbar = [[WXCallUITabBarVC alloc] init];
+//        RootViewController * rootVC = [[RootViewController alloc] init];
         [tabbar createViewController];
         [tabbar.navigationController setNavigationBarHidden:NO];
         _navigation = [[UINavigationController alloc] initWithRootViewController:tabbar];

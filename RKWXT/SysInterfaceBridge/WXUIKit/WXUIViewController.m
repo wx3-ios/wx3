@@ -43,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UtilTool colorWithHexString:@"#efeff4"];
 //    _baseView = [[WXUIView alloc] initWithFrame:self.view.bounds];
 //    [_baseView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin];
 //    [self.view addSubview:_baseView];

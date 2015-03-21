@@ -10,6 +10,13 @@
 
 
 @interface BaseViewController : UIViewController<WXUITabBarDelegate>
+@property (nonatomic,readonly)NSArray *controllers;
+@property (nonatomic,readonly)WXUITabBar *tabBar;
+@property (nonatomic,assign)NSInteger selectedIndex;
+@property (nonatomic,assign,readonly)UIView *baseView;
+- (id)initWithControllers:(NSArray*)controllers tabBar:(WXUITabBar*)tabBar;
+- (void)setTabBarHidden:(BOOL)hidden aniamted:(BOOL)animated completion:(void (^)(void))completion;
 
+- (void)selectedAtIndex:(NSInteger)index;
 
 @end

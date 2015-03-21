@@ -9,7 +9,6 @@
 #import "WXContacterModel.h"
 #import "WXContactOptEntity.h"
 #import "pinyin.h"
-
 #define kFirstKey @"*"
 
 typedef struct {
@@ -138,14 +137,14 @@ static S_OptContactInfo pOptInfo[] = {
     return nil;
 }
 
-//- (void)matchSearchStringList:(NSString*)string{
-//    NSArray *sysContacterList = [AddressBook sharedAddressBook].contactList;
-//    for(ContacterEntity *entity in sysContacterList){
-//        if([entity matchingString:string]){
-//            [_filterArray addObject:entity];
-//        }
-//    }
-//}
+- (void)matchSearchStringList:(NSString*)string{
+    NSArray *sysContacterList = [AddressBook sharedAddressBook].contactList;
+    for(ContacterEntity *entity in sysContacterList){
+        if([entity matchingString:string]){
+            [_filterArray addObject:entity];
+        }
+    }
+}
 
 - (void)removeMatchingContact{
     [_filterArray removeAllObjects];
