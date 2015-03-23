@@ -32,12 +32,12 @@
 {
     [super viewDidLoad];
     [self setCSTTitle:@"通讯录"];
-    
-//    [self loadSegmentControl];
+    NSLog(@"%s",__FUNCTION__);
     
 //    [self setBackNavigationBarItem];
     [self addOBS];
     _model = [[WXContacterModel alloc] init];
+    [_model loadSystemContacters];
     CGSize size = self.view.bounds.size;
     _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 50 + 20, ScreenWidth, ScreenHeight- 100)];
 //    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
@@ -215,8 +215,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    NSInteger section = indexPath.section;
-//    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
 //
 //    if(tableView == _tableView){
 //        if(section == 0){
@@ -232,16 +232,15 @@
 //                break;
 //            }
 //        }else{
-//            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
-//            [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
+            ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
+            ContactDetailVC * detailVC = [[ContactDetailVC alloc] init];
+            detailVC.model = entity;
+            [self.navigationController pushViewController:detailVC animated:YES];
 //        }
 //    }else{
 //        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
 //        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
 //    }
-    ContactDetailVC * detailVC = [[ContactDetailVC alloc] init];
-    detailVC.model = _model;
-    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

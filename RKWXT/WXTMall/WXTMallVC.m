@@ -9,18 +9,20 @@
 #import "WXTMallVC.h"
 #import "WXTUITabBarController.h"
 #import "CallBackVC.h"
+#import "CallModel.h"
 
 #define Size self.view.bounds.size
-#define NumberBtnHeight (70)
+#define NumberBtnHeight (56)
 #define InputTextHeight (35)
 
-@interface WXTMallVC(){
+@interface WXTMallVC()<MakeCallDelegate>{
     UIView *_keybView;
     UILabel *_textLabel;
-
     NSString *textString;
+    NSArray *_numSelArr;
+    NSArray *_numNorArr;
     
-    NSArray *_numArr;
+    CallModel *_callModel;
 }
 @end
 
@@ -29,7 +31,8 @@
 -(id)init{
     self = [super init];
     if(self){
-        _numArr = @[@"1Sel.png",@"2Sel.png",@"3Sel.png",@"4Sel.png",@"5Sel.png",@"6Sel.png",@"7Sel.png",@"8Sel.png",@"9Sel.png",@"*Sel.png",@"0Sel.png",@"#Sel.png"];
+        _numSelArr = @[@"1S.png",@"2S.png",@"3S.png",@"4S.png",@"5S.png",@"6S.png",@"7S.png",@"8S.png",@"9S.png",@"*S.png",@"0S.png",@"#S.png"];
+        _numNorArr = @[@"1N.png",@"2N.png",@"3N.png",@"4N.png",@"5N.png",@"6N.png",@"7N.png",@"8N.png",@"9N.png",@"*N.png",@"0N.png",@"#N.png"];
     }
     return self;
 }
@@ -37,6 +40,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.keyPad_type = E_KeyPad_Noraml; //键盘
+    
+    _callModel = [[CallModel alloc] init];
+    [_callModel setCallDelegate:self];
 }
 
 -(void)viewDidLoad{
@@ -48,37 +54,33 @@
     
     [self createKeyboardView];
     [self addNotification];
+    [self createTextLabel];
 }
 
 -(void)addNotification{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
+    [defaultCenter addObserver:self selector:@selector(delBtnClicked) name:DelNumber object:nil];
 }
 
--(void)createKeyboardView{
-    _keybView = [[UIView alloc] init];
-    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight-InputTextHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight+InputTextHeight);
-    [_keybView setBackgroundColor:[UIColor grayColor]];
-    [self.view addSubview:_keybView];
-    
+-(void)createTextLabel{
     CGFloat btnWidth = 50;
     _textLabel = [[UILabel alloc] init];
-    _textLabel.frame = CGRectMake(0, 0, Size.width-btnWidth, InputTextHeight);
+    _textLabel.frame = CGRectMake(0, 100, Size.width-btnWidth, InputTextHeight);
     [_textLabel setBackgroundColor:[UIColor grayColor]];
     [_textLabel setBorderRadian:4.0 width:0.5 color:[UIColor whiteColor]];
     [_textLabel setTextAlignment:NSTextAlignmentCenter];
     [_textLabel setTextColor:[UIColor redColor]];
-    [_keybView addSubview:_textLabel];
-    
-    UIImage *delImg = [UIImage imageNamed:@"delSel.png"];
-    WXTUIButton *delBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    delBtn.frame = CGRectMake(Size.width-btnWidth+10, 9, delImg.size.width, delImg.size.height);
-    [delBtn setBackgroundColor:[UIColor clearColor]];
-    [delBtn setImage:delImg forState:UIControlStateNormal];
-    [delBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [delBtn addTarget:self action:@selector(delBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [_keybView addSubview:delBtn];
+    [self.view addSubview:_textLabel];
+}
+
+-(void)createKeyboardView{
+    _keybView = [[UIView alloc] init];
+    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+    [_keybView setBackgroundColor:WXColorWithInteger(0xe6e6e6)];
+    [self.view addSubview:_keybView];
+
     
     CGFloat numBtnWidth = IPHONE_SCREEN_WIDTH/3;
     NSInteger line = -1;
@@ -86,9 +88,11 @@
         for(int i = 0;i < 3; i++){
             line ++;
             WXUIButton *numBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-            numBtn.frame = CGRectMake(i*numBtnWidth, InputTextHeight+j*NumberBtnHeight, numBtnWidth, NumberBtnHeight);
-            [numBtn setBackgroundColor:[UIColor clearColor]];
-            [numBtn setImage:[UIImage imageNamed:_numArr[line]] forState:UIControlStateNormal];
+            numBtn.frame = CGRectMake(i*numBtnWidth, j*NumberBtnHeight, numBtnWidth-(i<2?0.5:-2), NumberBtnHeight-(j<3?0.5:0));
+            [numBtn setImage:[UIImage imageNamed:_numNorArr[line]] forState:UIControlStateNormal];
+            [numBtn setImage:[UIImage imageNamed:_numSelArr[line]] forState:UIControlStateSelected];
+            [numBtn setBackgroundImageOfColor:WXColorWithInteger(0xFAFAFA) controlState:UIControlStateNormal];
+            [numBtn setBackgroundImageOfColor:WXColorWithInteger(0x2b9be5) controlState:UIControlStateSelected];
             [numBtn setTag:line];
             [numBtn addTarget:self action:@selector(numberBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [_keybView addSubview:numBtn];
@@ -115,7 +119,7 @@
         self.keyPad_type = E_KeyPad_Down;
         _downview_type = DownView_Del;
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight+InputTextHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
         }];
         return;
     }
@@ -127,7 +131,7 @@
             _downview_type = DownView_Del;
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight-InputTextHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight+InputTextHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
         }];
         return;
     }
@@ -146,16 +150,35 @@
     }
     if(textString.length == 0){
         _downview_type = DownView_Del;
-        [[NSNotificationCenter defaultCenter] postNotificationName:DelNumber object:nil];
     }
 }
 
 -(void)callPhoneNumber{
+    if(textString.length < 7){
+        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
+        return;
+    }
+    [_callModel makeCallPhone:textString];
+}
+
+#pragma callDelegate
+-(void)makeCallPhoneFailed:(NSString *)failedMsg{
+    if(!failedMsg){
+        failedMsg = @"呼叫失败";
+    }
+    [UtilTool showAlertView:failedMsg];
+}
+
+-(void)makeCallPhoneSucceed{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     CallBackVC *callBackVC = [[CallBackVC alloc] init];
     [callBackVC setPhoneName:textString];
     [callBackVC setUserPhone:userObj.user];
     [self.navigationController pushViewController:callBackVC animated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [_callModel setCallDelegate:nil];
 }
 
 @end

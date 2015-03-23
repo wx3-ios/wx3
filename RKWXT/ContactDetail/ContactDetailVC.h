@@ -7,7 +7,7 @@
 //
 
 #import "BaseVC.h"
-@class WXContacterModel;
+@class ContacterEntity;
 @interface ContactDetailVC : BaseVC
-@property (nonatomic, strong) WXContacterModel * model;
+@property (nonatomic, strong) ContacterEntity * model;
 @end

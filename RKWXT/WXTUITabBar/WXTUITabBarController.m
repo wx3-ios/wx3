@@ -27,8 +27,9 @@
 @property (nonatomic,strong) UIButton *but1;
 @property (nonatomic,strong) UIButton *but2;
 
-@property (nonatomic,strong) UIButton *callBtn;
-@property (nonatomic,strong) UIButton *delBtn;
+//@property (nonatomic,strong) WXTUIButton *callBtn;
+//@property (nonatomic,strong) UIButton *delBtn;
+@property (nonatomic,strong) UIView *downView;
 
 @property (nonatomic,strong) UILabel *label;
 @property (nonatomic,strong) UILabel *label0;
@@ -37,14 +38,13 @@
 @end
 
 @implementation WXTUITabBarController
-@synthesize but,but1,but2,but0,label,label0,label1,label2,callBtn,delBtn;
+@synthesize but,but1,but2,but0,label,label0,label1,label2,downView;
 
 -(id)init{
     self = [super init];
     if(self){
         NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
         [notification addObserver:self selector:@selector(inputNumber) name:InputNumber object:nil];
-        [notification addObserver:self selector:@selector(delBtnClicked) name:DelNumber object:nil];
     }
     return self;
 }
@@ -131,50 +131,90 @@
     [but2 addTarget:self action:@selector(selectedTab:) forControlEvents:UIControlEventTouchUpInside];
     [tabBar addSubview:but2];
     
-    
-    delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
-    [delBtn setBackgroundColor:[UIColor whiteColor]];
-    [delBtn setImage:[UIImage imageNamed:@"CallSelected.png"] forState:UIControlStateNormal];
-    [delBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [delBtn addTarget:self action:@selector(keyboardBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:delBtn];
-    
-    callBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
-    [callBtn setBackgroundColor:[UIColor purpleColor]];
-    [callBtn setTitle:@"呼叫" forState:UIControlStateNormal];
-    [callBtn addTarget:self action:@selector(callBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:callBtn];
+    [self createDownView];
 }
 
+-(void)createDownView{
+    downView = [[UIView alloc] init];
+    downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH, kTabBarHeight);
+    [downView setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    [self.view addSubview:downView];
+    
+    WXTUIButton *keyboardBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    keyboardBtn.frame = CGRectMake(0, 5, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2);
+    [keyboardBtn setImage:[UIImage imageNamed:@"CallSelected.png"] forState:UIControlStateNormal];
+    [keyboardBtn addTarget:self action:@selector(downviewBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [downView addSubview:keyboardBtn];
+    
+    UILabel *textLabel = [[UILabel alloc] init];
+    textLabel.frame = CGRectMake(0, kTabBarHeight/2, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2);
+    [textLabel setText:@"通话"];
+    [textLabel setBackgroundColor:[UIColor clearColor]];
+    [textLabel setTextAlignment:NSTextAlignmentCenter];
+    [textLabel setFont:WXTFont(12.0)];
+    [textLabel setTextColor:WXColorWithInteger(0x0c8bdf)];
+    [downView addSubview:textLabel];
+    
+    WXTUIButton *callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, 0, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
+    [callBtn setImage:[UIImage imageNamed:@"CallBtnImg.png"] forState:UIControlStateNormal];
+    [callBtn setBackgroundImageOfColor:WXColorWithInteger(0x2fbf62) controlState:UIControlStateNormal];
+    [callBtn setBackgroundImageOfColor:WXColorWithInteger(0x0e8739) controlState:UIControlStateSelected];
+    [callBtn addTarget:self action:@selector(callBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [downView addSubview:callBtn];
+    
+    WXTUIButton *delBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    delBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH*3/4, 5, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2);
+    [delBtn setBackgroundColor:[UIColor clearColor]];
+    [delBtn setImage:[UIImage imageNamed:@"delSel.png"] forState:UIControlStateNormal];
+    [delBtn addTarget:self action:@selector(delBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [downView addSubview:delBtn];
+    
+    UILabel *textLabel1 = [[UILabel alloc] init];
+    textLabel1.frame = CGRectMake(IPHONE_SCREEN_WIDTH*3/4, kTabBarHeight/2, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2);
+    [textLabel1 setText:@"删除"];
+    [textLabel1 setBackgroundColor:[UIColor clearColor]];
+    [textLabel1 setTextAlignment:NSTextAlignmentCenter];
+    [textLabel1 setFont:WXTFont(12.0)];
+    [textLabel1 setTextColor:WXColorWithInteger(0x969696)];
+    [downView addSubview:textLabel1];
+}
+
+//收起键盘和底部
+-(void)downviewBtnClicked{
+    [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
+    if(recentCall.downview_type == DownView_Del){
+        [UIView animateWithDuration:KeyboardDur animations:^{
+            downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH, kTabBarHeight);
+        }];
+    }
+}
+//键盘输入
 -(void)inputNumber{
     if(recentCall.downview_type == DownView_show){
         return;
     }
     recentCall.downview_type = DownView_show;
     [UIView animateWithDuration:KeyboardDur animations:^{
-        callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
-        delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+        downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight);
     }];
 }
-
+//删除
 -(void)delBtnClicked{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DelNumber object:nil];
     if(recentCall.downview_type == DownView_Del){
         [UIView animateWithDuration:KeyboardDur animations:^{
-            callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
-            delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+            downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH, kTabBarHeight);
         }];
     }
 }
 
--(void)keyboardBtnClicked{
-    [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
-    [UIView animateWithDuration:KeyboardDur animations:^{
-        callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
-        delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
-    }];
-}
+//-(void)keyboardBtnClicked{
+//   [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
+//  [UIView animateWithDuration:KeyboardDur animations:^{
+//       downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight);
+//  }];
+//}
 
 -(void)callBtnClicked{
     [[NSNotificationCenter defaultCenter] postNotificationName:CallPhone object:nil];
@@ -206,14 +246,12 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
         if(recentCall.downview_type == DownView_Del){
             [UIView animateWithDuration:KeyboardDur animations:^{
-                callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
-                delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+                downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH, kTabBarHeight);
             }];
         }
         if(recentCall.downview_type == DownView_show){
             [UIView animateWithDuration:KeyboardDur animations:^{
-                callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/4, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/2, kTabBarHeight);
-                delBtn.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH/4, kTabBarHeight);
+                downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight);
             }];
         }
     }
@@ -255,36 +293,5 @@
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }
-
-//- (void)setTabBarHidden:(BOOL)hidden aniamted:(BOOL)animated completion:(void (^)(void))completion{
-//    CGSize size = self.bounds.size;
-//    CGFloat tabBarHeight = _tabBar.bounds.size.height;
-//    
-//    CGRect viewRect = self.bounds;
-//    CGRect tabBarRect = _tabBar.bounds;
-//    if(hidden){
-//        tabBarRect.origin.y = size.height;
-//    }else{
-//        tabBarRect.origin.y = size.height - tabBarHeight;
-//        viewRect.size.height -= tabBarHeight;
-//    }
-//    if(animated){
-//        [UIView animateWithDuration:kWXUITabBarAnimatedDuration animations:^{
-//            for(UIViewController *vc in self.childViewControllers){
-//                [vc.view setFrame:viewRect];
-//            }
-//            [_tabBar setFrame:tabBarRect];
-//        } completion:^(BOOL finished) {
-//            completion();
-//        }];
-//    }else{
-//        for(UIViewController *vc in self.childViewControllers){
-//            [vc.view setFrame:viewRect];
-//        }
-//        [_tabBar setFrame:tabBarRect];
-//        completion();
-//    }
-//    
-//}
 
 @end

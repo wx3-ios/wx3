@@ -38,7 +38,6 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
-    NSLog(@"%smodel:%@",__FUNCTION__,_model);
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, -20, Size.width, Size.height);
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
@@ -69,7 +68,13 @@
     [headView addSubview:backBtn];
     
     yOffset += 20;
-    UIImage *headImg = [UIImage imageNamed:@"ContactInfoHeadImg.png"];
+    // 图像参数不管
+    UIImage * headImg = nil;
+//    if (_model.icon == nil) {
+        headImg = [UIImage imageNamed:@"ContactInfoHeadImg.png"];
+//    }else{
+//        headImg = _model.icon;
+//    }
     UIImageView *headImgView = [[UIImageView alloc] init];
     headImgView.frame = CGRectMake((Size.width-headImg.size.width)/2, yOffset, headImg.size.width, headImg.size.height);
     [headImgView setImage:headImg];
@@ -81,7 +86,7 @@
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake((Size.width-nameLabelWidth)/2, yOffset, nameLabelWidth, nameheight);
     [nameLabel setBackgroundColor:[UIColor clearColor]];
-    [nameLabel setText:@"测试数据"];
+    [nameLabel setText:_model.name];
     [nameLabel setTextAlignment:NSTextAlignmentCenter];
     [nameLabel setFont:WXTFont(14.0)];
     [nameLabel setTextColor:[UIColor whiteColor]];
