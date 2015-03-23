@@ -5,200 +5,194 @@
 //  Created by jjyo.kwan on 13-11-26.
 //  Copyright (c) 2013年 jjyo.kwan. All rights reserved.
 //
-
 #import "CallViewController.h"
-#import "ContactUitl.h"
-#import "PhoneData.h"
-#import "RecentData.h"
-//#import "RecentHelper.h"
-//#import "AreaHelper.h"
+#import "WXTMallVC.h"
+#import "WXTUITabBarController.h"
+#import "CallBackVC.h"
+#import "CallModel.h"
 
-#define CALLBACK_TIMEOUT 15
+#define Size self.view.bounds.size
+#define NumberBtnHeight (56)
+#define InputTextHeight (35)
 
-@interface CallViewController ()
+@interface CallViewController ()<MakeCallDelegate>{
+    UIView *_keybView;
+    UILabel *_textLabel;
+    NSString *textString;
+    NSArray *_numSelArr;
+    NSArray *_numNorArr;
+    
+    CallModel *_callModel;
+}
 
-@property (nonatomic, strong) PhoneData *phoneData;
-@property (nonatomic, strong) NSDate *callDate;
-@property (assign) int countdown;
-@property (assign) BOOL callSuccess;//请求成功
 
 @end
 
 @implementation CallViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+-(id)init{
+    self = [super init];
+    if(self){
+        _numSelArr = @[@"1S.png",@"2S.png",@"3S.png",@"4S.png",@"5S.png",@"6S.png",@"7S.png",@"8S.png",@"9S.png",@"*S.png",@"0S.png",@"#S.png"];
+        _numNorArr = @[@"1N.png",@"2N.png",@"3N.png",@"4N.png",@"5N.png",@"6N.png",@"7N.png",@"8N.png",@"9N.png",@"*N.png",@"0N.png",@"#N.png"];
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.keyPad_type = E_KeyPad_Noraml; //键盘
+    
+    _callModel = [[CallModel alloc] init];
+    [_callModel setCallDelegate:self];
+}
+
+-(void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _loadingView.hidden = YES;
-    _tipsLabel.hidden = YES;
-    _phoneLabel.hidden = YES;
-    _phoneLabel.text = [USER_DEFAULT stringForKey:kUserAgentPhone];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    self.callDate = [NSDate date];
-    _countdown = CALLBACK_TIMEOUT;
+    _downview_type = DownView_Init;        //底部呼叫按钮
+    textString = [[NSString alloc] init];
     
-    ContactData *cd = [[ContactUitl shareInstance] queryContactFromPhone:_callPhone];
-    _phoneData = [PhoneData dataWithPhone:_callPhone];
+    [self createKeyboardView];
+    [self addNotification];
+    [self createTextLabel];
+}
+
+-(void)addNotification{
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
+//    [defaultCenter addObserver:self selector:@selector(inputChange) name:kInputChange object:nil];
+    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
+    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
+}
+
+-(void)createTextLabel{
+    CGFloat btnWidth = 150;
+    _textLabel = [[UILabel alloc] init];
+    _textLabel.frame = CGRectMake((ScreenWidth-btnWidth)/2, 100, Size.width-btnWidth, InputTextHeight);
+    [_textLabel setBackgroundColor:[UIColor grayColor]];
+    [_textLabel setBorderRadian:4.0 width:0.5 color:[UIColor whiteColor]];
+    [_textLabel setTextAlignment:NSTextAlignmentCenter];
+    [_textLabel setTextColor:[UIColor redColor]];
+    [self.view addSubview:_textLabel];
+}
+
+-(void)createKeyboardView{
+    _keybView = [[UIView alloc] init];
+    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+    [_keybView setBackgroundColor:WXColorWithInteger(0xe6e6e6)];
+    [self.view addSubview:_keybView];
     
-    _titleLabel.text = cd.name ? cd.name : [_phoneData displayNumber];
-    if (_phoneData.area)
-    {
-        _subtitleLable.text = _phoneData.area;
+    
+    CGFloat numBtnWidth = IPHONE_SCREEN_WIDTH/3;
+    NSInteger line = -1;
+    for(int j = 0;j < 4; j++){
+        for(int i = 0;i < 3; i++){
+            line ++;
+            WXUIButton *numBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+            numBtn.frame = CGRectMake(i*numBtnWidth, j*NumberBtnHeight, numBtnWidth-(i<2?0.5:-2), NumberBtnHeight-(j<3?0.5:0));
+            [numBtn setImage:[UIImage imageNamed:_numNorArr[line]] forState:UIControlStateNormal];
+            [numBtn setImage:[UIImage imageNamed:_numSelArr[line]] forState:UIControlStateSelected];
+            [numBtn setBackgroundImageOfColor:WXColorWithInteger(0xFAFAFA) controlState:UIControlStateNormal];
+            [numBtn setBackgroundImageOfColor:WXColorWithInteger(0x2b9be5) controlState:UIControlStateSelected];
+            [numBtn setTag:line];
+            [numBtn addTarget:self action:@selector(numberBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [_keybView addSubview:numBtn];
+        }
     }
-    else
-    {
-//        _subtitleLable.text = [[AreaHelper sharedAreaHelper] queryByPhone:_callPhone];
+}
+
+-(void)numberBtnClicked:(id)sender{
+    WXUIButton *btn = sender;
+    NSInteger number = (btn.tag+1==11?0:btn.tag+1);
+    if(number <= 9 && number >= 0){
+        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
+        textString = [textString stringByAppendingString:str];
+        [_textLabel setText:textString];
     }
-    [NOTIFY_CENTER addObserver:self selector:@selector(handleBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
-    [self calloutAction];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    [NOTIFY_CENTER removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
-}
-
-- (void)handleBecomeActive:(NSNotification *)notify
-{
-    [self handup:NO];
-    if (_callSuccess) {
-        [USER_AGENT updateBalance:nil];
+    if(textString.length > 0){
+        [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
     }
 }
 
-
-- (void)addCallLog
-{
-    RecentData *recent = [[RecentData alloc]init];
-    recent.phone = [NSString stringWithString:_callPhone];
-    recent.date = _callDate;
-    recent.area = _phoneData.area;
-//    [[RecentHelper sharedRecentHelper] insert:recent];
-    
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (void)callTimer
-{
-    --_countdown;
-    if (_countdown < 0) {
-        [self handup:YES];
+-(void)show{
+    if(self.keyPad_type == E_KeyPad_Show){
+        self.keyPad_type = E_KeyPad_Down;
+        _downview_type = DownView_Del;
+        [UIView animateWithDuration:KeyboardDur animations:^{
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+        }];
         return;
     }
-    
-    NSString *title = [NSString stringWithFormat:(_callSuccess ? @"请注意接听系统来电。[%d]" : @"正在呼叫...[%d]"), MAX(0, _countdown)];
-    //    [_handupButton setTitle:title forState:UIControlStateNormal];
-    _stateLabel.text = title;
-    [self performSelector:@selector(callTimer) withObject:nil afterDelay:1.];
-}
-
-
-- (void)backgroundNotifiication:(NSNotification *)notify
-{
-    [self handup:NO];
-}
-
-- (void)handup:(BOOL)animated
-{
-    if (_callSuccess){
-        [self addCallLog];
-        [NOTIFY_CENTER postNotificationName:NOTIFY_CALL_SUCCSSFUL object:nil];
+    if(self.keyPad_type == E_KeyPad_Down){
+        self.keyPad_type = E_KeyPad_Show;
+        if(textString.length > 0){
+            _downview_type = DownView_show;
+        }else{
+            _downview_type = DownView_Del;
+        }
+        [UIView animateWithDuration:KeyboardDur animations:^{
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+        }];
+        return;
     }
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(callTimer) object:nil];
-    
-    if (![self.presentedViewController isBeingDismissed])
-    {
-        [self dismissViewControllerAnimated:animated completion:^{
-            //[self callFinish];
+    if(self.keyPad_type == E_KeyPad_Noraml){
+        self.keyPad_type = E_KeyPad_Show;
+    }
+}
+
+-(void)down{
+    if (self.keyPad_type == E_KeyPad_Down) {
+        [UIView animateWithDuration:KeyboardDur animations:^{
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
         }];
     }
-    
 }
 
-
-- (IBAction)handupAction:(id)sender
-{
-    [self handup:YES];
+-(void)delBtnClick{
+    NSString *callStrString = _textLabel.text;
+    if(callStrString.length > 0){
+        NSRange rang = NSMakeRange(0, callStrString.length-1);
+        NSString *strRang = [callStrString substringWithRange:rang];
+        _textLabel.text = strRang;
+        textString = _textLabel.text;
+    }
+    if(textString.length == 0){
+        _downview_type = DownView_Del;
+    }
 }
 
-#pragma mark - http action
-- (void)calloutAction
-{
-    [UIView animateWithDuration:0.5 animations:^{
-        _loadingView.hidden = NO;
-    }];
-    
-    //倒计时
-    [self callTimer];
-    //请求
-    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        BOOL fast = [USER_DEFAULT boolForKey:kUserAgentFast];
-        BOOL display = [USER_DEFAULT boolForKey:kUserAgentDisplay];
-        NSString *phone = [[self class] pheoneChangeWith:_callPhone];
-        NSDictionary *attr = @{@"callee":phone, @"fast":@(fast), @"display":@(display)};
-        NSDictionary *json = [NET_REQUEST httpAction:@"app_cb.php" attribute:attr];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (RESULT_SUCCESS(json)) {
-                _stateLabel.text = @"呼叫成功, 请等待接听来电!";
-                _callSuccess = YES;
-                _tipsLabel.hidden = NO;
-                _phoneLabel.hidden = NO;
-            }
-            else
-            {
-                [self makeToast:RESULT_MESSAGE(json)];
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"呼叫失败" message:RESULT_MESSAGE(json) delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
-                [alert show];
-                [self handup:YES];
-            }
-        });
-        
-    });*/
+-(void)callPhoneNumber{
+    if(textString.length < 7){
+        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
+        return;
+    }
+    [_callModel makeCallPhone:textString];
 }
 
-+(NSString*)pheoneChangeWith:(NSString*)oldPhone{
-    NSString *newPhone = nil;
-    NSString *str = [NSString stringWithFormat:@"%c2B",'%'];
-    if([oldPhone hasPrefix:@"86"]){
-        newPhone = [NSString stringWithFormat:@"%c2B%@",'%',oldPhone];
-        return newPhone;
+#pragma callDelegate
+-(void)makeCallPhoneFailed:(NSString *)failedMsg{
+    if(!failedMsg){
+        failedMsg = @"呼叫失败";
     }
-    if([oldPhone hasPrefix:@"+86"]){
-        NSString *str = [oldPhone substringFromIndex:1];
-        oldPhone = [NSString stringWithFormat:@"%c2B%@",'%',str];
-        return oldPhone;
-    }
-    if([oldPhone hasPrefix:str]){
-        return oldPhone;
-    }
-    newPhone = [NSString stringWithFormat:@"%c2B86%@",'%',oldPhone];
-    return newPhone;
+    [UtilTool showAlertView:failedMsg];
+}
+
+-(void)makeCallPhoneSucceed{
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    CallBackVC *callBackVC = [[CallBackVC alloc] init];
+    [callBackVC setPhoneName:textString];
+    [callBackVC setUserPhone:userObj.user];
+    [self.navigationController pushViewController:callBackVC animated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [_callModel setCallDelegate:nil];
 }
 
 

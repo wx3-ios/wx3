@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define ShowKeyBoard @"ShowKeyBoard"
-
+#define DownKeyBoard @"DownKeyBoard"
 #define InputNumber @"InputNumber"
 #define DelNumber @"DelNumber"
 

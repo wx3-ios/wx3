@@ -15,7 +15,7 @@
 #define NumberBtnHeight (56)
 #define InputTextHeight (35)
 
-@interface WXTMallVC()<MakeCallDelegate>{
+@interface WXTMallVC()/*<MakeCallDelegate>*/{
     UIView *_keybView;
     UILabel *_textLabel;
     NSString *textString;

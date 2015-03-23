@@ -9,11 +9,12 @@
 
 
 #import "ContactsCallViewController.h"
-#import "WXTMallVC.h"
+#import "CallViewController.h"
 #import "WXContacterVC.h"
 
 @interface ContactsCallViewController (){
-    
+    CallViewController * _recentCall;
+    WXContacterVC * _contacterVC;
 }
 
 @end
@@ -32,25 +33,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _recentCall = [[CallViewController alloc]init];
+    _contacterVC = [[WXContacterVC alloc] init];
+    [self.view addSubview:_recentCall.view];
     [self loadSegmentControl];
-    [NOTIFY_CENTER postNotificationName:@"SegmentControlChange" object:_segmentControl];
-    [NOTIFY_CENTER addObserver:self selector:@selector(segmentControlChange:) name:@"SegmentControlChange" object:nil];
+    [self addNotification];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
 
+-(void)loadInputTextField{
+    inputText = [[UITextField alloc]initWithFrame:CGRectMake(20, 25, ScreenWidth - 40, 30)];
+    [self.navigationController.navigationBar addSubview:inputText];
+}
+
 -(void)loadSegmentControl{
     CGFloat segWidth = 180;
     CGFloat segHeight = 30;
     NSArray *nameArr = @[@"通话",@"通讯录"];
-    _segmentControl = [[UISegmentedControl alloc] initWithItems:nameArr];
+    _segmentControl
+    = [[UISegmentedControl alloc] initWithItems:nameArr];
     _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT - 12, segWidth, segHeight);
     if(isIOS6){
         _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
     }
-    [_segmentControl setSelectedSegmentIndex:0];
+    [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
 #if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
     _segmentControl.segmentedControlStyle = UISegmentedControlStyleBordered;
 #endif
@@ -60,19 +69,25 @@
 }
 
 -(void)segmentControlChange:(UISegmentedControl *)segmentControl{
-    WXTMallVC * mallVC = [[WXTMallVC alloc] init];
-    WXContacterVC * contacterVC = [[WXContacterVC alloc] init];
-    selectedSegmentIndex = segmentControl.selectedSegmentIndex;
-    switch (selectedSegmentIndex) {
+    switch (segmentControl.selectedSegmentIndex) {
         case kCallSegmentIndex:
-            [self.view addSubview:mallVC.view];
+            [self.view addSubview:_recentCall.view];
             break;
         case kContactsSegmentIndex:
-            [self.view addSubview:contacterVC.view];
+            [self.view addSubview:_contacterVC.view];
             break;
         default:
             break;
     }
+}
+
+-(void)addNotification{
+    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(inputChange) name:kInputChange object:nil];
+}
+
+-(void)inputChange{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,6 +96,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc{
+}
 
 @end
 

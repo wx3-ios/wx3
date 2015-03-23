@@ -10,16 +10,17 @@
 #import "WXTFindVC.h"
 #import "WXTMallVC.h"
 #import "UserInfoVC.h"
+#import "ContactsCallViewController.h"
+#import "CallViewController.h"
 #import "ContactsViewController.h"
-#import "WXContacterVC.h"
-#import "WXKeyPadVC.h"
 
 #define kTabBarHeight (50.0)
 
 @interface WXTUITabBarController(){
     NSArray *views;
     UIView *tabBar;
-    WXTMallVC *recentCall;
+    ContactsCallViewController * callview;
+    CallViewController *recentCall;
 }
 
 @property (nonatomic,strong) UIButton *but;
@@ -198,6 +199,7 @@
     [UIView animateWithDuration:KeyboardDur animations:^{
         downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight);
     }];
+    callview.segmentControl.hidden = YES;
 }
 //删除
 -(void)delBtnClicked{
@@ -209,12 +211,12 @@
     }
 }
 
-//-(void)keyboardBtnClicked{
-//   [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
-//  [UIView animateWithDuration:KeyboardDur animations:^{
-//       downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight);
-//  }];
-//}
+-(void)keyboardBtnClicked{
+   [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
+  [UIView animateWithDuration:KeyboardDur animations:^{
+       downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight);
+  }];
+}
 
 -(void)callBtnClicked{
     [[NSNotificationCenter defaultCenter] postNotificationName:CallPhone object:nil];
@@ -281,11 +283,11 @@
 
 //初始化子控制器
 -(void)createViewController{
-    recentCall = [[WXTMallVC alloc] init];
-    WXContacterVC *callview = [[WXContacterVC alloc] init];
+    WXTMallVC * mallVC = [[WXTMallVC alloc] init];
+    callview = [[ContactsCallViewController alloc] init];
     WXTFindVC *phoneView = [[WXTFindVC alloc] init];
     UserInfoVC *infoVC = [[UserInfoVC alloc] init];
-    views = [NSArray arrayWithObjects:callview,recentCall,phoneView,infoVC, nil];
+    views = [NSArray arrayWithObjects:mallVC,callview,phoneView,infoVC, nil];
     [self setViewControllers:views];
 }
 

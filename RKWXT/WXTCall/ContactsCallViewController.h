@@ -11,13 +11,13 @@ typedef enum{
     kCallSegmentIndex,
     kContactsSegmentIndex,
 }ContactsCallIndex;
-//#define kCallSegmentIndex  @"0"
 
 @interface ContactsCallViewController : BaseVC{
-    UISegmentedControl * _segmentControl;
+    UITextField * inputText;
+//    UISegmentedControl * segmentControl;
     NSInteger selectedSegmentIndex;
 }
-
+@property (nonatomic, strong) UISegmentedControl * segmentControl;
 
 @end
 
