@@ -11,12 +11,13 @@
 #import <MessageUI/MFMessageComposeViewController.h>
 #import <MessageUI/MessageUI.h>
 #import "UIView+Render.h"
+#import "CallModel.h"
 
 #define Size self.view.bounds.size
 
-@interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,ContactDetailDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>{
+@interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,ContactDetailDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate,MakeCallDelegate>{
     UITableView *_tableView;
-    NSArray *_phoneArr;
+    CallModel *_callModel;
 }
 @end
 
@@ -30,7 +31,8 @@
 -(id)init{
     self = [super init];
     if(self){
-        _phoneArr = @[@"13088885371",@"15338891547"];
+        _callModel = [[CallModel alloc] init];
+        [_callModel setCallDelegate:self];
     }
     return self;
 }
@@ -59,7 +61,7 @@
 
     
     CGFloat xOffset = 15;
-    CGFloat yOffset = 30;
+    CGFloat yOffset = 35;
     UIImage *img = [UIImage imageNamed:@"ContactInfoBack.png"];
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(xOffset, yOffset, img.size.width, img.size.height);
@@ -123,7 +125,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_phoneArr count];
+    return [_model.phoneNumbers count];
 }
 
 -(UITableViewCell*)tableForContactDetailCell:(NSInteger)row{
@@ -133,7 +135,7 @@
         cell = [[ContactDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setDelegate:self];
-    [cell setCellInfo:[_phoneArr objectAtIndex:row]];
+    [cell setCellInfo:[_model.phoneNumbers objectAtIndex:row]];
     [cell load];
     return cell;
 }
@@ -150,9 +152,9 @@
 }
 
 -(void)invateFriend{
-    NSString *phoneStr1 = [_phoneArr objectAtIndex:0];
-    if(_phoneArr.count > 1){
-        NSString *phoneStr2 = [_phoneArr objectAtIndex:1];
+    NSString *phoneStr1 = [_model.phoneNumbers objectAtIndex:0];
+    if(_model.phoneNumbers.count > 1){
+        NSString *phoneStr2 = [_model.phoneNumbers objectAtIndex:1];
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择好友手机号" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:phoneStr1,phoneStr2, nil];
         actionSheet.delegate = self;
         [actionSheet showInView:self.view];
@@ -165,10 +167,10 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
-        [self sendmessage:[_phoneArr objectAtIndex:0]];
+        [self sendmessage:[_model.phoneNumbers objectAtIndex:0]];
     }
     if(buttonIndex == 1){
-        [self sendmessage:[_phoneArr objectAtIndex:1]];
+        [self sendmessage:[_model.phoneNumbers objectAtIndex:1]];
     }
 }
 
@@ -232,7 +234,8 @@
     if(!phoneNumber){
         return;
     }
-    [UtilTool showAlertView:[NSString stringWithFormat:@"您选择拨打的号码为:%@",phoneNumber]];
+    NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneNumber];
+    [_callModel makeCallPhone:phoneStr];
 }
 
 -(void)back{

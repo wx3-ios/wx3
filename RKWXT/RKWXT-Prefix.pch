@@ -15,7 +15,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #define ShopID (2)
-//#define Test   //测试，目前只显示版本号
+#define Test   //测试，目前只显示版本号
 
 #define ShowKeyBoard @"ShowKeyBoard"
 #define DownKeyBoard @"DownKeyBoard"
@@ -33,7 +33,7 @@
     #import "Tools.h"
 	#import "Constants.h"
 	#import "UserAgent.h"
-#import "AddressBook.h"
+    #import "AddressBook.h"
     #import "UIFont+WXT.h"
     #import "WXTUIButton.h"
     #import "Common.h"

@@ -483,4 +483,18 @@
     
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
 }
+
++(NSString*)callPhoneNumberRemovePreWith:(NSString*)oldPhone{
+    if(!oldPhone){
+        return nil;
+    }
+    NSString *newPhone = nil;
+    if(oldPhone.length == 14){
+        newPhone = [oldPhone substringFromIndex:3]; //+86
+    }
+    if(oldPhone.length == 13){
+        newPhone = [oldPhone substringFromIndex:2];  //86
+    }
+    return newPhone;
+}
 @end
