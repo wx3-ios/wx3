@@ -17,9 +17,11 @@
 
 @implementation WXTWebViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 50)];
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
     _webView.scalesPageToFit =YES;
     _webView.delegate = self;
     _activityIndicatorView = [[UIActivityIndicatorView alloc]
@@ -36,8 +38,14 @@
     // Dispose of any resources that can be recreated.
 }
 
--(id)initWithRequestUrl:(NSString *)url{
+-(id)initWithURL:(NSString *)url{
     _requestUrl = url;
+    return self;
+}
+
+-(id)initWithURL:(NSString *)url title:(NSString*)title{
+    self.requestUrl = url;
+    self.title = title;
     return self;
 }
 

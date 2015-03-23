@@ -126,6 +126,8 @@
 		2563B4371AAADA9B00C04227 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B4361AAADA9B00C04227 /* RegisterViewController.m */; };
 		2563B4881AAAFA7F00C04227 /* 侧边栏背景.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2563B4871AAAFA7F00C04227 /* 侧边栏背景.jpg */; };
 		2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B48A1AAAFF6B00C04227 /* HttpNetUtils.m */; };
+		77041F1D1AC013D400896706 /* 商家联盟图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77041F1B1AC013D400896706 /* 商家联盟图标@2x.png */; };
+		77041F1E1AC013D400896706 /* 天气图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77041F1C1AC013D400896706 /* 天气图标@2x.png */; };
 		770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4371AAD97700098C214 /* 密码图标@2x.png */; };
 		770BB43B1AAD97700098C214 /* 账号图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4381AAD97700098C214 /* 账号图标@2x.png */; };
 		770BB43C1AAD97700098C214 /* W.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4391AAD97700098C214 /* W.png */; };
@@ -562,6 +564,8 @@
 		2563B48A1AAAFF6B00C04227 /* HttpNetUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpNetUtils.m; sourceTree = "<group>"; };
 		373B14107C952AC77813F98A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45775F4393C07B1E2AC5B28B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		77041F1B1AC013D400896706 /* 商家联盟图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "商家联盟图标@2x.png"; sourceTree = "<group>"; };
+		77041F1C1AC013D400896706 /* 天气图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "天气图标@2x.png"; sourceTree = "<group>"; };
 		770BB4371AAD97700098C214 /* 密码图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码图标@2x.png"; sourceTree = "<group>"; };
 		770BB4381AAD97700098C214 /* 账号图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "账号图标@2x.png"; sourceTree = "<group>"; };
 		770BB4391AAD97700098C214 /* W.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = W.png; sourceTree = "<group>"; };
@@ -1488,6 +1492,8 @@
 				12D0C8871AB6E2B90039A197 /* Icon-72@2x.png */,
 				12D0C8851AB6DF8E0039A197 /* TopBgImg@2x.png */,
 				12D0C8811AB6D2920039A197 /* AboutWXTVersion@2x.png */,
+				77041F1B1AC013D400896706 /* 商家联盟图标@2x.png */,
+				77041F1C1AC013D400896706 /* 天气图标@2x.png */,
 				12D0C8781AB6AE980039A197 /* AboutUsLogo@2x.png */,
 				12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */,
 				12D0C8661AB673910039A197 /* wxtRecharge@2x.png */,
@@ -2592,6 +2598,7 @@
 				120A2C501AB17AFD006A28B1 /* sign27@2x.png in Resources */,
 				775AB9D11ABFB558003A339D /* 8S@2x.png in Resources */,
 				775AB9C11ABFB558003A339D /* #S@2x.png in Resources */,
+				77041F1D1AC013D400896706 /* 商家联盟图标@2x.png in Resources */,
 				12622E7C1ABC23AC00B52E3F /* dialSel@2x.png in Resources */,
 				775AB9CE1ABFB558003A339D /* 7N@2x.png in Resources */,
 				775AB9D51ABFB563003A339D /* CallBtnImg@2x.png in Resources */,
@@ -2615,6 +2622,7 @@
 				120A2C6D1AB19473006A28B1 /* LoginLock@2x.png in Resources */,
 				775842AF1AB95A300039B129 /* CustomMade.plist in Resources */,
 				126CA4051AB2B9EF00E08A0B /* MallNormal@2x.png in Resources */,
+				77041F1E1AC013D400896706 /* 天气图标@2x.png in Resources */,
 				120A2C021AB13900006A28B1 /* Wallet@2x.png in Resources */,
 				120A2C401AB17AFD006A28B1 /* sign11@2x.png in Resources */,
 				120A2C6F1AB19473006A28B1 /* LoginLogo@2x.png in Resources */,
