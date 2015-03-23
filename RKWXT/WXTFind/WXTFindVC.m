@@ -11,15 +11,22 @@
 @interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate>{
     UITableView * _tableView;
     NSArray * array;
+    NSArray * urlArr;
 }
 @end
 @implementation WXTFindVC
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
+        self.navigationController.title = @"发现";
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     array = [NSArray arrayWithObjects:@"商家联盟",@"天气", nil];
-    
+    urlArr = [NSArray arrayWithObjects:@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017",@"http://weather.html5.qq.com", nil];
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 50 - 64) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -32,8 +39,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return array.count;
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return 1;
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -41,13 +62,31 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFindCellIdentifier];
     }
-    cell.textLabel.text = [array objectAtIndex:indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.text = @"商家联盟";
+            break;
+        case 1:
+            cell.textLabel.text = @"天气";
+            break;
+        default:
+            break;
+    }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self.navigationController pushViewController:[[WXTWebViewController alloc] initWithRequestUrl:kUrl] animated:YES];
+    switch (indexPath.section) {
+        case 0:
+            [self.navigationController pushViewController:[[WXTWebViewController alloc] initWithURL:@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017" title:@"商家联盟"] animated:YES];
+            break;
+        case 1:
+            [self.navigationController pushViewController:[[WXTWebViewController alloc] initWithURL:@"http://weather.html5.qq.com" title:@"天气"] animated:YES];
+            break;
+        default:
+            break;
+    }
     
 }
 
