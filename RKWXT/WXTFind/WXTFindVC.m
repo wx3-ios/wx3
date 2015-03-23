@@ -65,9 +65,11 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.section) {
         case 0:
+            cell.imageView.image = [UIImage imageNamed:@"商家联盟图标@2x.png"];
             cell.textLabel.text = @"商家联盟";
             break;
         case 1:
+            cell.imageView.image = [UIImage imageNamed:@"天气图标@2x.png"];
             cell.textLabel.text = @"天气";
             break;
         default:
