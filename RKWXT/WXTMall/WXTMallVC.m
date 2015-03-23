@@ -42,14 +42,14 @@
     self.keyPad_type = E_KeyPad_Noraml; //键盘
     
     _callModel = [[CallModel alloc] init];
-    [_callModel setCallDelegate:self];
+//    [_callModel setCallDelegate:self];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    _downview_type = DownView_Init;        //底部呼叫按钮
+//    _downview_type = DownView_Init;        //底部呼叫按钮
     textString = [[NSString alloc] init];
     
     [self createKeyboardView];

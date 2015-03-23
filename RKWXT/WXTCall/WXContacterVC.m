@@ -31,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setCSTTitle:@"通讯录"];
     NSLog(@"%s",__FUNCTION__);
     
 //    [self setBackNavigationBarItem];

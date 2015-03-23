@@ -55,7 +55,7 @@
 
 -(void)createUserNameView{
     CGFloat yOffset = 90;
-    CGFloat nameWidth = 100;
+    CGFloat nameWidth = 180;
     CGFloat nameHeight = 30;
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake((Size.width-nameWidth)/2, yOffset, nameWidth, nameHeight);

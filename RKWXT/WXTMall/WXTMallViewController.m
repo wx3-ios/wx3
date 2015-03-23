@@ -17,6 +17,11 @@
 
 @implementation WXTMallViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self createTopView:@"商城"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 50 - 64)];

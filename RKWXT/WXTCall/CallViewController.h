@@ -21,9 +21,16 @@ typedef enum{
 }E_KeyPad_Type;
 #define kInputChange        @"InputChange"
 
+@protocol CallViewVCInputDelegate;
+
 @interface CallViewController : BaseVC
 
 @property (nonatomic,assign) DownView_Type downview_type;
 @property (nonatomic,assign) E_KeyPad_Type keyPad_type;
+@property (nonatomic,assign) id<CallViewVCInputDelegate>inputDelegate;
+@end
+
+@protocol CallViewVCInputDelegate <NSObject>
+-(void)inputNumber:(id)sender;
 
 @end

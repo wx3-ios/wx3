@@ -47,6 +47,7 @@
     if(self){
         NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
         [notification addObserver:self selector:@selector(inputNumber) name:InputNumber object:nil];
+        [notification addObserver:self selector:@selector(delNumberToEnd) name:DelNumberToEnd object:nil];
     }
     return self;
 }
@@ -59,9 +60,8 @@
     tabBar.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:tabBar];
     
-    
-    NSArray *qian = @[@"MallNormal.png",@"CallNormal.png",@"FindNormal.png",@"UserNormal.png"];
-    NSArray *hou = @[@"MallSelected.png",@"CallSelected.png",@"FindSelected.png",@"UserSelected.png"];
+    NSArray *qian = @[@"MallSelected.png",@"CallSelected.png",@"FindNormal.png",@"UserNormal.png"];
+    NSArray *hou = @[@"MallNormal.png",@"CallNormal.png",@"FindSelected.png",@"UserSelected.png"];
     
     
     //第一个
@@ -79,7 +79,7 @@
     [label setText:@"商城"];
     [label setFont:WXTFont(12.0)];
     [label setTextAlignment:NSTextAlignmentCenter];
-    [label setTextColor:WXColorWithInteger(0x0c8bdf)];
+    [label setTextColor:WXColorWithInteger(0x808080)];
     [tabBar addSubview:label];
     
     //第二个
@@ -89,7 +89,7 @@
     [label0 setText:@"通话"];
     [label0 setFont:WXTFont(12.0)];
     [label0 setTextAlignment:NSTextAlignmentCenter];
-    [label0 setTextColor:WXColorWithInteger(0x808080)];
+    [label0 setTextColor:WXColorWithInteger(0x0c8bdf)];
     [tabBar addSubview:label0];
     
     but0 = [[UIButton alloc] initWithFrame:CGRectMake(xGap, 5, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2)];
@@ -200,7 +200,7 @@
     [UIView animateWithDuration:KeyboardDur animations:^{
         downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-kTabBarHeight, IPHONE_SCREEN_WIDTH, kTabBarHeight);
     }];
-    callview.segmentControl.hidden = YES;
+//    callview.segmentControl.hidden = YES;
 }
 //删除
 -(void)delBtnClicked{
@@ -210,6 +210,12 @@
             downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH, kTabBarHeight);
         }];
     }
+}
+
+-(void)delNumberToEnd{
+    [UIView animateWithDuration:KeyboardDur animations:^{
+        downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH, kTabBarHeight);
+    }];
 }
 
 -(void)keyboardBtnClicked{
@@ -290,6 +296,7 @@
     UserInfoVC *infoVC = [[UserInfoVC alloc] init];
     views = [NSArray arrayWithObjects:mallVC,callview,phoneView,infoVC, nil];
     [self setViewControllers:views];
+    [self setSelectedIndex:1];
 }
 
 

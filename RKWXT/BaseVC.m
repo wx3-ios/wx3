@@ -49,19 +49,35 @@
     [_hud setFrame:CGRectMake(0, IPHONE_STATUS_BAR_HEIGHT+44, IPHONE_SCREEN_WIDTH, self.view.bounds.size.height-(IPHONE_STATUS_BAR_HEIGHT+44))];
 }
 
--(void)showWaitViewMode:(E_WaiteView_Mode)mode tip:(NSString *)tip{
+-(void)createTopView:(NSString*)title{
+    [self.navigationController setNavigationBarHidden:YES];
+    WXUIImageView *imgView = [[WXUIImageView alloc] init];
+    imgView.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 66);
+    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
+    [self.view addSubview:imgView];
+    
+    CGFloat labelWidth = 150;
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake((IPHONE_SCREEN_WIDTH-labelWidth)/2, 35, labelWidth, 25);
+    if(title){
+        [label setText:title];
+    }
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setFont:WXTFont(20.0)];
+    [label setTextColor:[UIColor whiteColor]];
+    [self.view addSubview:label];
 }
 
 -(void)showWaitView:(UIView*)onView{
-    [_hud setHidden:NO];
-    [_hud startAnimate];
-    [self.view addSubview:_hud];
+//    [_hud setHidden:NO];
+//    [_hud startAnimate];
+//    [self.view addSubview:_hud];
 }
 
 -(void)unShowWaitView{
-    [_hud stopAniamte];
-    [_hud setHidden:YES];
-    [_hud removeFromSuperview];
+//    [_hud stopAniamte];
+//    [_hud setHidden:YES];
+//    [_hud removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning{

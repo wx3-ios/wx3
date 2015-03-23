@@ -17,6 +17,15 @@
 #define ShopID (2)
 //#define Test   //测试，目前只显示版本号
 
+#define ShowKeyBoard @"ShowKeyBoard"
+#define DownKeyBoard @"DownKeyBoard"
+#define InputNumber @"InputNumber"
+#define DelNumber @"DelNumber"
+
+#define CallPhone @"CallPhone"
+
+#define DelNumberToEnd @"DelNumberToEnd"
+
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>

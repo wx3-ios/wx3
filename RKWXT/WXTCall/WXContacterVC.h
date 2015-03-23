@@ -8,7 +8,8 @@
 
 #import "WXUIViewController.h"
 #define kSearchBarHeight (44)
-@interface WXContacterVC : WXUIViewController{
+
+@interface WXContacterVC : BaseVC{
     UISegmentedControl * _segmentControl;
 }
 

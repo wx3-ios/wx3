@@ -15,7 +15,7 @@
 #define NumberBtnHeight (56)
 #define InputTextHeight (35)
 
-@interface CallViewController ()<MakeCallDelegate>{
+@interface CallViewController (){
     UIView *_keybView;
     UILabel *_textLabel;
     NSString *textString;
@@ -43,8 +43,8 @@
     [super viewWillAppear:animated];
     self.keyPad_type = E_KeyPad_Noraml; //键盘
     
-    _callModel = [[CallModel alloc] init];
-    [_callModel setCallDelegate:self];
+//    _callModel = [[CallModel alloc] init];
+//    [_callModel setCallDelegate:self];
 }
 
 -(void)viewDidLoad{
@@ -56,15 +56,14 @@
     
     [self createKeyboardView];
     [self addNotification];
-    [self createTextLabel];
+//    [self createTextLabel];
 }
 
 -(void)addNotification{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
-//    [defaultCenter addObserver:self selector:@selector(inputChange) name:kInputChange object:nil];
-    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
-    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
+//    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
+//    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
 }
 
 -(void)createTextLabel{
@@ -105,18 +104,21 @@
 
 -(void)numberBtnClicked:(id)sender{
     WXUIButton *btn = sender;
-    NSInteger number = (btn.tag+1==11?0:btn.tag+1);
-    if(number <= 9 && number >= 0){
-        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
-        textString = [textString stringByAppendingString:str];
-        [_textLabel setText:textString];
-    }
-    
-    if(textString.length > 0){
-        [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
-    }else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
+//    NSInteger number = (btn.tag+1==11?0:btn.tag+1);
+//    if(number <= 9 && number >= 0){
+//        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
+//        textString = [textString stringByAppendingString:str];
+//        [_textLabel setText:textString];
+//    }
+//    
+//    if(textString.length > 0){
+//        [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
+//    }else{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
+//    }
+    if(_inputDelegate && [_inputDelegate respondsToSelector:@selector(inputNumber:)]){
+        [_inputDelegate inputNumber:btn];
     }
 }
 
@@ -155,45 +157,46 @@
 }
 
 -(void)delBtnClick{
-    NSString *callStrString = _textLabel.text;
-    if(callStrString.length > 0){
-        NSRange rang = NSMakeRange(0, callStrString.length-1);
-        NSString *strRang = [callStrString substringWithRange:rang];
-        _textLabel.text = strRang;
-        textString = _textLabel.text;
-    }
-    if(textString.length == 0){
-        _downview_type = DownView_Del;
-    }
+//    NSString *callStrString = _textLabel.text;
+//    if(callStrString.length > 0){
+//        NSRange rang = NSMakeRange(0, callStrString.length-1);
+//        NSString *strRang = [callStrString substringWithRange:rang];
+//        _textLabel.text = strRang;
+//        textString = _textLabel.text;
+//    }
+//    if(textString.length == 0){
+//        _downview_type = DownView_Del;
+//        [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+//    }
 }
 
--(void)callPhoneNumber{
-    if(textString.length < 7){
-        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
-        return;
-    }
-    [_callModel makeCallPhone:textString];
-}
-
-#pragma callDelegate
--(void)makeCallPhoneFailed:(NSString *)failedMsg{
-    if(!failedMsg){
-        failedMsg = @"呼叫失败";
-    }
-    [UtilTool showAlertView:failedMsg];
-}
-
--(void)makeCallPhoneSucceed{
-    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    CallBackVC *callBackVC = [[CallBackVC alloc] init];
-    [callBackVC setPhoneName:textString];
-    [callBackVC setUserPhone:userObj.user];
-    [self.navigationController pushViewController:callBackVC animated:YES];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [_callModel setCallDelegate:nil];
-}
+//-(void)callPhoneNumber{
+//    if(textString.length < 7){
+//        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
+//        return;
+//    }
+//    [_callModel makeCallPhone:textString];
+//}
+//
+//#pragma callDelegate
+//-(void)makeCallPhoneFailed:(NSString *)failedMsg{
+//    if(!failedMsg){
+//        failedMsg = @"呼叫失败";
+//    }
+//    [UtilTool showAlertView:failedMsg];
+//}
+//
+//-(void)makeCallPhoneSucceed{
+//    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+//    CallBackVC *callBackVC = [[CallBackVC alloc] init];
+//    [callBackVC setPhoneName:textString];
+//    [callBackVC setUserPhone:userObj.user];
+//    [self.navigationController pushViewController:callBackVC animated:YES];
+//}
+//
+//-(void)viewWillDisappear:(BOOL)animated{
+//    [_callModel setCallDelegate:nil];
+//}
 
 
 @end

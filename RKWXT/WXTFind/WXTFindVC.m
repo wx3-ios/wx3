@@ -15,6 +15,10 @@
 @end
 @implementation WXTFindVC
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self createTopView:@"发现"];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

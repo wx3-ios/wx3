@@ -25,4 +25,6 @@ typedef enum {
 - (void)showWaitView:(UIView*)onView;
 - (void)unShowWaitView;
 
+-(void)createTopView:(NSString*)title;
+
 @end

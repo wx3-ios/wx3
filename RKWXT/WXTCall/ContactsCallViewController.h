@@ -13,7 +13,7 @@ typedef enum{
 }ContactsCallIndex;
 
 @interface ContactsCallViewController : BaseVC{
-    UITextField * inputText;
+//    UITextField * inputText;
 //    UISegmentedControl * segmentControl;
     NSInteger selectedSegmentIndex;
 }
