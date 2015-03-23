@@ -305,6 +305,7 @@
 		775AB9D81ABFB637003A339D /* 2N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 775AB9D61ABFB637003A339D /* 2N@2x.png */; };
 		775AB9D91ABFB637003A339D /* 3N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 775AB9D71ABFB637003A339D /* 3N@2x.png */; };
 		775AB9DC1ABFB696003A339D /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9DA1ABFB696003A339D /* CallModel.m */; };
+		775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */; };
 		775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */; };
 		775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581E1ABA5F31005B6B40 /* ContactUitl.m */; };
 		775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58201ABA5F31005B6B40 /* KFLoger.m */; };
@@ -901,6 +902,8 @@
 		775AB9D71ABFB637003A339D /* 3N@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3N@2x.png"; sourceTree = "<group>"; };
 		775AB9DA1ABFB696003A339D /* CallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallModel.m; sourceTree = "<group>"; };
 		775AB9DB1ABFB696003A339D /* CallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallModel.h; sourceTree = "<group>"; };
+		775AB9DD1ABFEF74003A339D /* WXTMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallViewController.h; sourceTree = "<group>"; };
+		775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallViewController.m; sourceTree = "<group>"; };
 		775C581B1ABA5F31005B6B40 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyin.h; sourceTree = "<group>"; };
 		775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyin.m; sourceTree = "<group>"; };
 		775C581D1ABA5F31005B6B40 /* ContactUitl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUitl.h; sourceTree = "<group>"; };
@@ -1323,6 +1326,8 @@
 			children = (
 				126CA3DC1AB2790D00E08A0B /* WXTMallVC.h */,
 				126CA3DD1AB2790D00E08A0B /* WXTMallVC.m */,
+				775AB9DD1ABFEF74003A339D /* WXTMallViewController.h */,
+				775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */,
 			);
 			path = WXTMall;
 			sourceTree = "<group>";
@@ -2536,6 +2541,7 @@
 		2563B3DC1AAAD74000C04227 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WXT;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = roderick;
 				TargetAttributes = {
@@ -2819,6 +2825,7 @@
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
+				775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,

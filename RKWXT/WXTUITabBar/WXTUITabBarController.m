@@ -8,6 +8,7 @@
 
 #import "WXTUITabBarController.h"
 #import "WXTFindVC.h"
+#import "WXTMallViewController.h"
 #import "WXTMallVC.h"
 #import "UserInfoVC.h"
 #import "ContactsCallViewController.h"
@@ -283,7 +284,7 @@
 
 //初始化子控制器
 -(void)createViewController{
-    WXTMallVC * mallVC = [[WXTMallVC alloc] init];
+    WXTMallViewController * mallVC = [[WXTMallViewController alloc] init];
     callview = [[ContactsCallViewController alloc] init];
     WXTFindVC *phoneView = [[WXTFindVC alloc] init];
     UserInfoVC *infoVC = [[UserInfoVC alloc] init];
