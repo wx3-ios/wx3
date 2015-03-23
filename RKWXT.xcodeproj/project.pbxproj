@@ -306,6 +306,7 @@
 		775AB9D91ABFB637003A339D /* 3N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 775AB9D71ABFB637003A339D /* 3N@2x.png */; };
 		775AB9DC1ABFB696003A339D /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9DA1ABFB696003A339D /* CallModel.m */; };
 		775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */; };
+		775AB9E21ABFFD81003A339D /* WXTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9E11ABFFD81003A339D /* WXTWebViewController.m */; };
 		775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */; };
 		775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581E1ABA5F31005B6B40 /* ContactUitl.m */; };
 		775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58201ABA5F31005B6B40 /* KFLoger.m */; };
@@ -904,6 +905,8 @@
 		775AB9DB1ABFB696003A339D /* CallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallModel.h; sourceTree = "<group>"; };
 		775AB9DD1ABFEF74003A339D /* WXTMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallViewController.h; sourceTree = "<group>"; };
 		775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallViewController.m; sourceTree = "<group>"; };
+		775AB9E01ABFFD81003A339D /* WXTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTWebViewController.h; sourceTree = "<group>"; };
+		775AB9E11ABFFD81003A339D /* WXTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTWebViewController.m; sourceTree = "<group>"; };
 		775C581B1ABA5F31005B6B40 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyin.h; sourceTree = "<group>"; };
 		775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyin.m; sourceTree = "<group>"; };
 		775C581D1ABA5F31005B6B40 /* ContactUitl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUitl.h; sourceTree = "<group>"; };
@@ -2457,6 +2460,8 @@
 				77DB941F1AAFED400021A816 /* UIViewController+Helper.m */,
 				77D197601ABC246000FAA4CE /* RootViewController.h */,
 				77D197611ABC246000FAA4CE /* RootViewController.m */,
+				775AB9E01ABFFD81003A339D /* WXTWebViewController.h */,
+				775AB9E11ABFFD81003A339D /* WXTWebViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -3003,6 +3008,7 @@
 				775842E31AB95A300039B129 /* WXCpxBtnImgView.m in Sources */,
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
+				775AB9E21ABFFD81003A339D /* WXTWebViewController.m in Sources */,
 				775C58681ABA7A52005B6B40 /* BaseCallHistoryCell.m in Sources */,
 				7758431E1AB95A300039B129 /* WXUIActivityIndicatorView.m in Sources */,
 			);
@@ -3144,6 +3150,8 @@
 			baseConfigurationReference = 45775F4393C07B1E2AC5B28B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RKWXT/RKWXT-Prefix.pch";
@@ -3155,6 +3163,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -3163,6 +3172,8 @@
 			baseConfigurationReference = E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RKWXT/RKWXT-Prefix.pch";
@@ -3174,6 +3185,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
