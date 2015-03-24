@@ -56,7 +56,7 @@ enum{
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+    self.view.backgroundColor = WXColorWithInteger(0xefeff4);
     _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_scrollerView setDelegate:self];
