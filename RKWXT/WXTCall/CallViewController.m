@@ -9,17 +9,24 @@
 #import "WXTMallVC.h"
 #import "WXTUITabBarController.h"
 #import "CallBackVC.h"
+#import "WXKeyPadModel.h"
+#import "CallHistoryCell.h"
+#import "SimpleContacterCell.h"
 
 #define Size self.view.bounds.size
 
-@interface CallViewController (){
+@interface CallViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIView *_keybView;
     UILabel *_textLabel;
     NSString *textString;
     NSArray *_numSelArr;
     NSArray *_numNorArr;
+    
+    //
+    UITableView *_tableView;
+    BOOL _showContacters;
+    WXKeyPadModel *_model;
 }
-
 
 @end
 
@@ -44,7 +51,10 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    textString = [[NSString alloc] init];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, Size.width, Size.height - 64 - 50 - 4*NumberBtnHeight-InputTextHeight)];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
     
     [self createKeyboardView];
     [self addNotification];
@@ -174,7 +184,6 @@
     }
     if(textString.length == 0){
         _downview_type = DownView_Del;
-//        [_textLabel setText:@"输入号码搜索"];
         [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
     }
 }
@@ -184,30 +193,56 @@
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
-//    [_callModel makeCallPhone:textString];
     if(_callDelegate && [_callDelegate respondsToSelector:@selector(callPhoneWith:)]){
         [_callDelegate callPhoneWith:textString];
     }
 }
 
-//#pragma callDelegate
-//-(void)makeCallPhoneFailed:(NSString *)failedMsg{
-//    if(!failedMsg){
-//        failedMsg = @"呼叫失败";
-//    }
-//    [UtilTool showAlertView:failedMsg];
-//}
-//
-//-(void)makeCallPhoneSucceed{
-//    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-//    CallBackVC *callBackVC = [[CallBackVC alloc] init];
-//    [callBackVC setPhoneName:textString];
-//    [callBackVC setUserPhone:userObj.user];
-//    [self.navigationController pushViewController:callBackVC animated:YES];
-//}
+#pragma mark tableViewDelegate
+- (CallHistoryCell*)callHistoryCellAtRow:(NSInteger)row{
+    static NSString *callHistoryCellIdentifier = @"callHistoryCellIdentifier";
+    CallHistoryCell *cell = [_tableView dequeueReusableCellWithIdentifier:callHistoryCellIdentifier];
+    if(!cell){
+        cell = [[CallHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:callHistoryCellIdentifier] ;
+    }
+    //    [cell setBaseDelegate:self];
+    [cell setCellInfo:[_model.callHistoryList objectAtIndex:row]];
+    [cell load];
+    return cell;
+}
+
+- (SimpleContacterCell*)contactCellAtRow:(NSInteger)row{
+    static NSString *identifier = @"SimpleContacterCell";
+    SimpleContacterCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[SimpleContacterCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] ;
+    }
+    //    [cell setBaseDelegate:self];
+    [cell setCellInfo:[_model.contacterFilter objectAtIndex:row]];
+    [cell load];
+    return cell;
+}
+
+#pragma mark tableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSInteger row = _model.callHistoryList.count;
+    if(_showContacters){
+        row = _model.contacterFilter.count;
+    }
+    return row;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WXUITableViewCell *cell = nil;
+    if(!_showContacters){
+        cell = [self callHistoryCellAtRow:indexPath.row];
+    }else{
+        cell = [self contactCellAtRow:indexPath.row];
+    }
+    return cell;
+}
 
 -(void)viewWillDisappear:(BOOL)animated{
-//    [_callModel setCallDelegate:nil];
     self.keyPad_type = E_KeyPad_Down;
 }
 

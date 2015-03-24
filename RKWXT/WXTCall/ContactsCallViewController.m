@@ -92,6 +92,8 @@
 -(void)segmentControlChange:(UISegmentedControl *)segmentControl{
     switch (segmentControl.selectedSegmentIndex) {
         case kCallSegmentIndex:
+            _recentCall.keyPad_type = E_KeyPad_Down;
+            [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
             [self.view addSubview:_recentCall.view];
             break;
         case kContactsSegmentIndex:
