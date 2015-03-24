@@ -218,7 +218,7 @@
     NSInteger row = indexPath.row;
 //
     if(tableView == _tableView){
-//        if(section == 0){
+        if(section == 0){
 //            switch (row) {
 ////            case E_ContactOPTType_Merchant:
 ////                break;
@@ -230,14 +230,15 @@
 //                [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
 //                break;
 //            }
-//        }else{
+        }else{
             ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
             if(_detailDelegate && [_detailDelegate respondsToSelector:@selector(toContailDetailVC:)]){
                 [_detailDelegate toContailDetailVC:entity];
             }
-//        }
+        }
     }else{
-        ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
+        
+        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
         if(_detailDelegate && [_detailDelegate respondsToSelector:@selector(toContailDetailVC:)]){
             [_detailDelegate toContailDetailVC:entity];
         }
