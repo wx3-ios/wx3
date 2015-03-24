@@ -12,8 +12,6 @@
 #import "CallModel.h"
 
 #define Size self.view.bounds.size
-#define NumberBtnHeight (56)
-#define InputTextHeight (35)
 
 @interface CallViewController (){
     UIView *_keybView;

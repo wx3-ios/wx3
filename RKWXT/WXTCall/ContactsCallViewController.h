@@ -7,6 +7,8 @@
 //
 
 //#import "BaseViewController.h"
+#define kContactsCallIdentifier         @"ContactsCallIdentifier"
+
 typedef enum{
     kCallSegmentIndex,
     kContactsSegmentIndex,

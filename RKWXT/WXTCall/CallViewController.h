@@ -20,6 +20,8 @@ typedef enum{
     E_KeyPad_Down,
 }E_KeyPad_Type;
 #define kInputChange        @"InputChange"
+#define NumberBtnHeight (56)
+#define InputTextHeight (35)
 
 @protocol CallViewVCInputDelegate;
 

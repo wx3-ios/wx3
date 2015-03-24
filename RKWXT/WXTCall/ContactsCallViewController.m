@@ -13,22 +13,31 @@
 #import "CallBackVC.h"
 #import "ContactDetailVC.h"
 #import "ContacterEntity.h"
+#import "WXContacterModel.h"
 
-@interface ContactsCallViewController ()<CallViewVCInputDelegate,MakeCallDelegate,ToContactDetailVCDelegate>{
+@interface ContactsCallViewController ()<CallViewVCInputDelegate,MakeCallDelegate,ToContactDetailVCDelegate,UITableViewDataSource,UITableViewDelegate>{
     CallViewController * _recentCall;
     WXContacterVC * _contacterVC;
     UILabel *numberLabel;
     NSString *numberStr;
     
     CallModel *_callModel;
+    UITableView *_tableView;
+    WXContacterModel *contactModel;
 }
 
 @end
 
 @implementation ContactsCallViewController
 
-- (void)viewDidLoad
-{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+    _callModel = [[CallModel alloc] init];
+    [_callModel setCallDelegate:self];
+}
+
+- (void)viewDidLoad{
     [super viewDidLoad];
     _recentCall = [[CallViewController alloc]init];
     [_recentCall.view setFrame:CGRectMake(0, 72, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-72-50)];
@@ -44,13 +53,12 @@
     [self addNotification];
     
     numberStr = [[NSString alloc] init];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
-    _callModel = [[CallModel alloc] init];
-    [_callModel setCallDelegate:self];
+    contactModel = [[WXContacterModel alloc] init];
+    
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 50 - 4*NumberBtnHeight)];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
 }
 
 -(void)loadInputTextField{
@@ -60,7 +68,7 @@
     [numberLabel setTextColor:NSTextAlignmentLeft];
     [numberLabel setTextAlignment:NSTextAlignmentLeft];
     [numberLabel setTextColor:[UIColor whiteColor]];
-    [numberLabel setFont:WXTFont(20.0)];
+    [numberLabel setFont:WXTFont(18.0)];
     [numberLabel setHidden:YES];
     [self.view addSubview:numberLabel];
 }
@@ -116,6 +124,9 @@
 }
 
 -(void)inputNumber:(id)sender{
+    [contactModel matchSearchStringList:numberStr];
+    [_tableView reloadData];
+    
     [_segmentControl setHidden:YES];
     [numberLabel setHidden:NO];
     WXUIButton *btn = sender;
@@ -164,6 +175,26 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+#pragma tableView
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return contactModel.filterArray.count;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kContactsCallIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kContactsCallIdentifier];
+    }
+    for (int i = 0; i < contactModel.filterArray.count; i++) {
+        cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[i]).name;
+    }
+    return cell;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+}
+
 #pragma callDelegate
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
     if(!failedMsg){
@@ -182,15 +213,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [_callModel setCallDelegate:nil];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)dealloc{
 }
 
 @end
