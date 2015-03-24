@@ -59,7 +59,8 @@
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, Size.width, Size.height - 64 - 50 - 4*NumberBtnHeight-InputTextHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-//    [self.view addSubview:_tableView];
+    [self.view addSubview:_tableView];
+    [_tableView reloadData];
 }
 
 -(void)loadSegmentControl{
