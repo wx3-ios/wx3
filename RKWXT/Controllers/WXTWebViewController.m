@@ -32,7 +32,7 @@
     [_activityIndicatorView setCenter: self.view.center] ;
     [_activityIndicatorView setActivityIndicatorViewStyle: UIActivityIndicatorViewStyleWhite] ;
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_requestUrl]]];
-    [self.view addSubview:_activityIndicatorView];
+//    [self.view addSubview:_activityIndicatorView];
     [self.view addSubview:_webView];
 }
 
@@ -54,15 +54,18 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [_activityIndicatorView startAnimating] ;
+    [self showWaitView:self.view];
+//    [_activityIndicatorView startAnimating] ;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [_activityIndicatorView stopAnimating];
+    [self unShowWaitView];
+//    [_activityIndicatorView stopAnimating];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [self unShowWaitView];
     UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"" message:[error localizedDescription]  delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alterview show];
 }

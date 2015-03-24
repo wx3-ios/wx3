@@ -234,7 +234,8 @@
             ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
             ContactDetailVC * detailVC = [[ContactDetailVC alloc] init];
             detailVC.model = entity;
-            [self.navigationController pushViewController:detailVC animated:YES];
+//            [self.navigationController pushViewController:detailVC animated:YES];
+            [self presentViewController:detailVC animated:YES completion:nil];
 //        }
 //    }else{
 //        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
