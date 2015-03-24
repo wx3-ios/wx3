@@ -140,9 +140,10 @@
     
     if(numberStr.length > 0){
         [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
+        _tableView.hidden = NO;
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
+        _tableView.hidden = YES;
     }
 }
 
