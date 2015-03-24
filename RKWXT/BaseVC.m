@@ -68,16 +68,24 @@
     [self.view addSubview:label];
 }
 
+-(void)createTopStatusView:(UIColor*)color{
+    [self.navigationController setNavigationBarHidden:YES];
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_STATUS_BAR_HEIGHT);
+    [label setBackgroundColor:color];
+    [self.view addSubview:label];
+}
+
 -(void)showWaitView:(UIView*)onView{
-//    [_hud setHidden:NO];
-//    [_hud startAnimate];
-//    [self.view addSubview:_hud];
+    [_hud setHidden:NO];
+    [_hud startAnimate];
+    [self.view addSubview:_hud];
 }
 
 -(void)unShowWaitView{
-//    [_hud stopAniamte];
-//    [_hud setHidden:YES];
-//    [_hud removeFromSuperview];
+    [_hud stopAniamte];
+    [_hud setHidden:YES];
+    [_hud removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning{

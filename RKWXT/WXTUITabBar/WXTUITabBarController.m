@@ -185,7 +185,7 @@
 //收起键盘和底部
 -(void)downviewBtnClicked{
     [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
-    if(recentCall.downview_type == DownView_Del){
+    if(recentCall.downview_type == DownView_Del || recentCall.downview_type == DownView_Init){
         [UIView animateWithDuration:KeyboardDur animations:^{
             downView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH, kTabBarHeight);
         }];

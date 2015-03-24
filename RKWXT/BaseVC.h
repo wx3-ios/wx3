@@ -26,5 +26,6 @@ typedef enum {
 - (void)unShowWaitView;
 
 -(void)createTopView:(NSString*)title;
+-(void)createTopStatusView:(UIColor*)color;
 
 @end

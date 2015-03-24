@@ -19,12 +19,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self createTopView:@"商城"];
+//    [self createTopView:@"商城"];
+    [self createTopStatusView:[UIColor redColor]];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 50 - 64)];
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, IPHONE_STATUS_BAR_HEIGHT, ScreenWidth, ScreenHeight - 50)];
     _webView.scalesPageToFit =YES;
     _webView.delegate = self;
     _activityIndicatorView = [[UIActivityIndicatorView alloc]

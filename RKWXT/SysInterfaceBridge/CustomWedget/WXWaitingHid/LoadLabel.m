@@ -26,6 +26,7 @@
 - (id)initWithFrame:(CGRect)frame{
 	if (self = [super initWithFrame:frame]){
 		[self setTextAlignment:UITextAlignmentLeft];
+        self.loadingText = @"努力加载中";
 	}
 	return self;
 }

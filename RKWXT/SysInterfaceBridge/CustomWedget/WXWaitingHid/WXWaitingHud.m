@@ -36,7 +36,7 @@
 		CGFloat length = progressViewRadius;
 		CGFloat tipHeight = 15.0;
 		CGSize shellSize = CGSizeMake(length,length);
-		CGRect shellRect = CGRectMake((size.width - length)*0.5, (size.height - shellSize.height)*0.5, shellSize.width, shellSize.height);
+		CGRect shellRect = CGRectMake((size.width - length)*0.5, (size.height - shellSize.height)*0.5-150, shellSize.width, shellSize.height);
 		_shell = [[UIView alloc] initWithFrame:shellRect];
 		[_shell setBackgroundColor:[UIColor clearColor]];
 		[self addSubview:_shell];
@@ -57,7 +57,9 @@
 		[_progressView addSubview:wxImgView];
 		
 		
-		_tipLabel = [[LoadLabel alloc] initWithFrame:CGRectMake(10, shellRect.origin.y + shellRect.size.height + 2, 10, tipHeight)];
+        CGFloat tipLabelWidth = 150;
+		_tipLabel = [[LoadLabel alloc] initWithFrame:CGRectMake((IPHONE_SCREEN_WIDTH-tipLabelWidth)/2, shellRect.origin.y + shellRect.size.height + 2, tipLabelWidth, tipHeight)];
+        [_tipLabel setTextAlignment:NSTextAlignmentCenter];
 		[_tipLabel setFont:[UIFont systemFontOfSize:kTipFontSize]];
 		[_tipLabel setDotCount:4];
 		[self addSubview:_tipLabel];
