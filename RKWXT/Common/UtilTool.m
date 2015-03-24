@@ -488,6 +488,9 @@
     if(!oldPhone){
         return nil;
     }
+    if(oldPhone.length <= 11){
+        return oldPhone;
+    }
     NSString *newPhone = nil;
     if(oldPhone.length == 14){
         newPhone = [oldPhone substringFromIndex:3]; //+86

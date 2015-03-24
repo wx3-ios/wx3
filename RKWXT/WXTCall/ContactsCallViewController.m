@@ -52,15 +52,14 @@
     
     [self.view addSubview:_recentCall.view];
     [self loadSegmentControl];
-    [self addNotification];
     
     contactModel = [[WXContacterModel alloc] init];
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, Size.width, Size.height - 64 - 50 - 4*NumberBtnHeight-InputTextHeight)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Size.width, Size.height - 64 - 50 - 4*NumberBtnHeight-InputTextHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [self.view addSubview:_tableView];
-    [_tableView reloadData];
+//    [self.view addSubview:_tableView];
+//    [_tableView reloadData];
 }
 
 -(void)loadSegmentControl{
@@ -74,16 +73,16 @@
     NSArray *nameArr = @[@"通话",@"通讯录"];
     _segmentControl
     = [[UISegmentedControl alloc] initWithItems:nameArr];
-    [_segmentControl setBackgroundColor:[UIColor whiteColor]];
-    _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT + 12, segWidth, segHeight);
+    _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT + 10, segWidth, segHeight);
     if(isIOS6){
         _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
     }
     [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
 #if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
-    _segmentControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+    _segmentControl.segmentedControlStyle = UISegmentedControlStylePlain;
 #endif
-    [_segmentControl setBorderRadian:1.0 width:0.2 color:[UIColor grayColor]];
+    [_segmentControl setBorderRadian:5.0 width:1 color:[UIColor whiteColor]];
+    [_segmentControl setBackgroundColor:[UIColor whiteColor]];
     [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
 //    [self.navigationController.navigationBar addSubview:_segmentControl];
     [self.view addSubview:_segmentControl];
@@ -106,14 +105,9 @@
 }
 
 -(void)addNotification{
-    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter addObserver:self selector:@selector(inputChange) name:kInputChange object:nil];
+//    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
 //    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
 //    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
-}
-
--(void)inputChange{
-    
 }
 
 //-(void)inputNumber:(id)sender{
@@ -141,12 +135,12 @@
 //}
 
 -(void)callPhoneWith:(NSString *)phoneStr{
-    if(phoneStr.length < 7 || phoneStr.length != 11){
+    if(phoneStr.length < 7 || phoneStr.length > 14){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
-    numberStr = phoneStr;
-    [_callModel makeCallPhone:phoneStr];
+    numberStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
+    [_callModel makeCallPhone:numberStr];
 }
 
 -(void)toContailDetailVC:(id)sender{

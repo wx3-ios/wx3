@@ -12,6 +12,7 @@
 #import "WXKeyPadModel.h"
 #import "CallHistoryCell.h"
 #import "SimpleContacterCell.h"
+#import "SysContacterEntityEx.h"
 
 #define Size self.view.bounds.size
 
@@ -51,13 +52,17 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, Size.width, Size.height - 64 - 50 - 4*NumberBtnHeight-InputTextHeight)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Size.width, Size.height-50)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [self.view addSubview:_tableView];
+    textString = [[NSString alloc] init];
     
     [self createKeyboardView];
     [self addNotification];
+    
+    _model = [[WXKeyPadModel alloc] init];
 }
 
 -(void)addNotification{
@@ -74,7 +79,7 @@
     
     _textLabel = [[UILabel alloc] init];
     _textLabel.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, InputTextHeight);
-    [_textLabel setBackgroundColor:WXColorWithInteger(0xe6e6e6)];
+    [_textLabel setBackgroundColor:[UIColor whiteColor]];
     [_textLabel setText:@"请输入电话号码"];
     [_textLabel setTextAlignment:NSTextAlignmentCenter];
     [_textLabel setFont:WXTFont(16.0)];
@@ -127,8 +132,29 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
     }
+    [self showSearchResult];
+}
+
+-(void)delBtnClick{
+    NSString *callStrString = _textLabel.text;
+    if(callStrString.length > 0){
+        NSRange rang = NSMakeRange(0, callStrString.length-1);
+        NSString *strRang = [callStrString substringWithRange:rang];
+        _textLabel.text = strRang;
+        textString = _textLabel.text;
+        [self showSearchResult];
+    }
+    if(textString.length == 0){
+        _downview_type = DownView_Del;
+        [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+    }
+}
+
+-(void)showSearchResult{
+    [_model searchContacter:textString];
+    _showContacters = YES;
+    [_tableView reloadData];
 }
 
 -(void)show{
@@ -174,20 +200,6 @@
     }
 }
 
--(void)delBtnClick{
-    NSString *callStrString = _textLabel.text;
-    if(callStrString.length > 0){
-        NSRange rang = NSMakeRange(0, callStrString.length-1);
-        NSString *strRang = [callStrString substringWithRange:rang];
-        _textLabel.text = strRang;
-        textString = _textLabel.text;
-    }
-    if(textString.length == 0){
-        _downview_type = DownView_Del;
-        [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
-    }
-}
-
 -(void)callPhoneNumber{
     if(textString.length < 7){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
@@ -195,6 +207,14 @@
     }
     if(_callDelegate && [_callDelegate respondsToSelector:@selector(callPhoneWith:)]){
         [_callDelegate callPhoneWith:textString];
+    }
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    self.keyPad_type = E_KeyPad_Show;
+    [self show];
+    if(textString.length > 0){
+        [[NSNotificationCenter defaultCenter] postNotificationName:HideDownView object:nil];
     }
 }
 
@@ -240,6 +260,17 @@
         cell = [self contactCellAtRow:indexPath.row];
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    SysContacterEntityEx *entity = nil;
+    if([_model.contacterFilter count] > 0){
+        entity = [_model.contacterFilter objectAtIndex:row];
+    }
+    textString = entity.phoneMatched;
+    [self callPhoneNumber];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
