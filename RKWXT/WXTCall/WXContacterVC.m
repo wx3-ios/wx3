@@ -217,8 +217,8 @@
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
 //
-//    if(tableView == _tableView){
-//        if(section == 0){
+    if(tableView == _tableView){
+        if(section == 0){
 //            switch (row) {
 ////            case E_ContactOPTType_Merchant:
 ////                break;
@@ -230,18 +230,19 @@
 //                [[CoordinateController sharedCoordinateController] toAllWXContacters:self animated:YES];
 //                break;
 //            }
-//        }else{
+        }else{
             ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
-//            [self.navigationController pushViewController:detailVC animated:YES];
-//            [self presentViewController:detailVC animated:YES completion:nil];
-    if(_detailDelegate && [_detailDelegate respondsToSelector:@selector(toContailDetailVC:)]){
-        [_detailDelegate toContailDetailVC:entity];
+            if(_detailDelegate && [_detailDelegate respondsToSelector:@selector(toContailDetailVC:)]){
+                [_detailDelegate toContailDetailVC:entity];
+            }
+        }
+    }else{
+        
+        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
+        if(_detailDelegate && [_detailDelegate respondsToSelector:@selector(toContailDetailVC:)]){
+            [_detailDelegate toContailDetailVC:entity];
+        }
     }
-//        }
-//    }else{
-//        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];
-//        [[CoordinateController sharedCoordinateController] toContactDetail:self contactInfo:entity contactType:E_ContacterType_System animated:YES];
-//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -269,14 +270,10 @@
 
 #pragma mark UISearchDisplayDelegate
 - (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller{
-    self.navigationController.navigationBar.hidden = YES;
-//    _searchBar.frame = CGRectMake(0, 64, ScreenWidth, kSearchBarHeight);
     [_model removeMatchingContact];
 }
 
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller{
-    self.navigationController.navigationBar.hidden = NO;
-//    _searchBar.frame = CGRectMake(0, 64, ScreenWidth, kSearchBarHeight);
     [_model removeMatchingContact];
 }
 
@@ -287,8 +284,5 @@
     return YES;
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
-    return YES;
-}
 
 @end
