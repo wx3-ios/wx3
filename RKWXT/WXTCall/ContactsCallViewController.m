@@ -29,8 +29,10 @@
 {
     [super viewDidLoad];
     _recentCall = [[CallViewController alloc]init];
+    [_recentCall.view setFrame:CGRectMake(0, 72, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-72-50)];
     [_recentCall setInputDelegate:self];
     _contacterVC = [[WXContacterVC alloc] init];
+    [_contacterVC.view setFrame:CGRectMake(0, 72, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-72-50)];
     
     [self.view addSubview:_recentCall.view];
     [self loadSegmentControl];

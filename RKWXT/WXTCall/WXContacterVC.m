@@ -38,14 +38,14 @@
     _model = [[WXContacterModel alloc] init];
     [_model loadSystemContacters];
     CGSize size = self.view.bounds.size;
-    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 50 + 20, ScreenWidth, ScreenHeight- 100)];
+    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight- 100)];
 //    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
     [_tableView setDataSource:self];
     [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];
     [_tableView setDelegate:self];
     [self.view addSubview:_tableView];
     
-    _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 74, size.width, kSearchBarHeight)];
+    _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 0, size.width, kSearchBarHeight)];
     [_searchBar setPlaceholder:@"搜索"];
     [_searchBar sizeToFit];
 //    [_tableView setTableHeaderView:_searchBar];

@@ -79,7 +79,7 @@
 
 -(void)createKeyboardView{
     _keybView = [[UIView alloc] init];
-    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
     [_keybView setBackgroundColor:WXColorWithInteger(0xe6e6e6)];
     [self.view addSubview:_keybView];
     
@@ -127,7 +127,7 @@
         self.keyPad_type = E_KeyPad_Down;
         _downview_type = DownView_Del;
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-50, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
         }];
         return;
     }
@@ -139,7 +139,7 @@
             _downview_type = DownView_Del;
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
         }];
         return;
     }
@@ -151,7 +151,7 @@
 -(void)down{
     if (self.keyPad_type == E_KeyPad_Down) {
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight);
         }];
     }
 }
