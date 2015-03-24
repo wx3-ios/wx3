@@ -155,10 +155,10 @@
 }
 
 -(void)submit{
-    if(_numTextfield.text.length < 6 || _pwdTextfield.text.length < 6){
-        [UtilTool showAlertView:@"帐号或密码格式错误"];
-        return;
-    }
+//    if(_numTextfield.text.length < 6 || _pwdTextfield.text.length < 6){
+//        [UtilTool showAlertView:@"帐号或密码格式错误"];
+//        return;
+//    }
     NSString *numberStr = _numTextfield.text;
     NSString *pwdStr = _pwdTextfield.text;
     [_model rechargeWithCardNum:numberStr andPwd:pwdStr];

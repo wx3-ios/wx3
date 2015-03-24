@@ -55,11 +55,12 @@
 
 -(void)loadInputTextField{
     numberLabel = [[UILabel alloc] init];
-    numberLabel.frame = CGRectMake(15, 35, 150, 28);
+    numberLabel.frame = CGRectMake(20, 35, 180, 28);
     [numberLabel setBackgroundColor:[UIColor clearColor]];
     [numberLabel setTextColor:NSTextAlignmentLeft];
     [numberLabel setTextAlignment:NSTextAlignmentLeft];
     [numberLabel setTextColor:[UIColor whiteColor]];
+    [numberLabel setFont:WXTFont(20.0)];
     [numberLabel setHidden:YES];
     [self.view addSubview:numberLabel];
 }

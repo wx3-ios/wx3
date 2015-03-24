@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum{
+    CallStatus_Type_Normal = 0,
+    CallStatus_Type_starting,
+    CallStatus_Type_Ending,
+}CallStatus_Type;
+
 @protocol MakeCallDelegate;
 @interface CallModel : NSObject
 @property (nonatomic,assign) id<MakeCallDelegate>callDelegate;
+@property (nonatomic,assign) CallStatus_Type callstatus_type;
 -(void)makeCallPhone:(NSString*)phoneStr;
 @end
 
