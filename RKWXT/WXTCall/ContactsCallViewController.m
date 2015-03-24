@@ -11,8 +11,10 @@
 #import "WXContacterVC.h"
 #import "CallModel.h"
 #import "CallBackVC.h"
+#import "ContactDetailVC.h"
+#import "ContacterEntity.h"
 
-@interface ContactsCallViewController ()<CallViewVCInputDelegate,MakeCallDelegate>{
+@interface ContactsCallViewController ()<CallViewVCInputDelegate,MakeCallDelegate,ToContactDetailVCDelegate>{
     CallViewController * _recentCall;
     WXContacterVC * _contacterVC;
     UILabel *numberLabel;
@@ -31,8 +33,10 @@
     _recentCall = [[CallViewController alloc]init];
     [_recentCall.view setFrame:CGRectMake(0, 72, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-72-50)];
     [_recentCall setInputDelegate:self];
+    
     _contacterVC = [[WXContacterVC alloc] init];
     [_contacterVC.view setFrame:CGRectMake(0, 72, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-72-50)];
+    [_contacterVC setDetailDelegate:self];
     
     [self.view addSubview:_recentCall.view];
     [self loadSegmentControl];
@@ -145,11 +149,18 @@
 }
 
 -(void)callPhoneNumber{
-    if(numberStr.length < 7){
+    if(numberStr.length < 7 || numberStr.length != 11){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
     [_callModel makeCallPhone:numberStr];
+}
+
+-(void)toContailDetailVC:(id)sender{
+    ContactDetailVC * detailVC = [[ContactDetailVC alloc] init];
+    ContacterEntity *entity = sender;
+    detailVC.model = entity;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma callDelegate

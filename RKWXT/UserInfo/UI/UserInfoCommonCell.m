@@ -25,7 +25,7 @@
         CGFloat xOffset = 14;
         UIImage *image = [UIImage imageNamed:@"RechargeSign.png"];
         _imageView = [[UIImageView alloc] init];
-        _imageView.frame = CGRectMake(xOffset, (UserInfoCommonCellHeight-image.size.height)/2, image.size.width, image.size.height);
+        _imageView.frame = CGRectMake(xOffset, (UserInfoCommonCellHeight-image.size.height-5)/2, image.size.width, image.size.height+5);
         [_imageView setImage:image];
         [self.contentView addSubview:_imageView];
         

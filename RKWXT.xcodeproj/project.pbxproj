@@ -103,6 +103,8 @@
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
+		129EF9061AC1097200B3C8E2 /* *N.png in Resources */ = {isa = PBXBuildFile; fileRef = 129EF9041AC1097200B3C8E2 /* *N.png */; };
+		129EF9071AC1097200B3C8E2 /* *S.png in Resources */ = {isa = PBXBuildFile; fileRef = 129EF9051AC1097200B3C8E2 /* *S.png */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
 		12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D039F01AB3489200DD7E56 /* BaseVC.m */; };
 		12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8661AB673910039A197 /* wxtRecharge@2x.png */; };
@@ -526,6 +528,8 @@
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
 		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
+		129EF9041AC1097200B3C8E2 /* *N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "*N.png"; sourceTree = "<group>"; };
+		129EF9051AC1097200B3C8E2 /* *S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "*S.png"; sourceTree = "<group>"; };
 		12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultContactIcon@2x.png"; sourceTree = "<group>"; };
 		12D039EF1AB3489200DD7E56 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
 		12D039F01AB3489200DD7E56 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
@@ -1275,6 +1279,8 @@
 		12622E601ABC224E00B52E3F /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				129EF9041AC1097200B3C8E2 /* *N.png */,
+				129EF9051AC1097200B3C8E2 /* *S.png */,
 				775AB9D61ABFB637003A339D /* 2N@2x.png */,
 				775AB9D71ABFB637003A339D /* 3N@2x.png */,
 				775AB9D41ABFB563003A339D /* CallBtnImg@2x.png */,
@@ -2609,6 +2615,7 @@
 				775AB9CD1ABFB558003A339D /* 6S@2x.png in Resources */,
 				775AB9C51ABFB558003A339D /* 1S@2x.png in Resources */,
 				775AB9CF1ABFB558003A339D /* 7S@2x.png in Resources */,
+				129EF9061AC1097200B3C8E2 /* *N.png in Resources */,
 				120A2C5B1AB17AFD006A28B1 /* sign5@2x.png in Resources */,
 				775AB9D91ABFB637003A339D /* 3N@2x.png in Resources */,
 				120A2C5E1AB17AFD006A28B1 /* sign8@2x.png in Resources */,
@@ -2683,6 +2690,7 @@
 				775AB9D01ABFB558003A339D /* 8N@2x.png in Resources */,
 				770BB4401AAD9D530098C214 /* 启动页（iPhone5）.png in Resources */,
 				129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */,
+				129EF9071AC1097200B3C8E2 /* *S.png in Resources */,
 				770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */,
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */,

@@ -8,8 +8,15 @@
 
 #import "WXUIViewController.h"
 #define kSearchBarHeight (44)
+
+@protocol ToContactDetailVCDelegate;
 @interface WXContacterVC : BaseVC{
     UISegmentedControl * _segmentControl;
 }
+@property (nonatomic,assign) id<ToContactDetailVCDelegate>detailDelegate;
+@end
+
+@protocol ToContactDetailVCDelegate <NSObject>
+-(void)toContailDetailVC:(id)sender;
 
 @end

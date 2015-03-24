@@ -46,7 +46,6 @@
     self = [super init];
     if(self){
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyBoardDur:height:) name:UIKeyboardDidShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur:) name:UIKeyboardDidHideNotification object:nil];
         _model = [[LoginModel alloc] init];
         [_model setDelegate:self];
         
@@ -59,6 +58,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidLoad{
@@ -170,9 +170,11 @@
     _userTextField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
     [_userTextField setReturnKeyType:UIReturnKeyDone];
     [_userTextField setKeyboardType:UIKeyboardTypePhonePad];
-    [_userTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+//    [_userTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_userTextField addTarget:self action:@selector(showKeyBoardDur:)  forControlEvents:UIControlEventEditingDidBegin];
     [_userTextField setBorderRadian:5.0 width:1.0 color:WXColorWithInteger(0xFFFFFF)];
     [_userTextField setTextColor:[UIColor whiteColor]];
+    [_userTextField setTintColor:[UIColor whiteColor]];
     [_userTextField setPlaceHolder:@"请输入登陆账号" color:WXColorWithInteger(0xFFFFFF)];
     [_userTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_userTextField setFont:WXTFont(fontSize)];
@@ -185,8 +187,10 @@
     [_pwdTextField setReturnKeyType:UIReturnKeyDone];
     [_pwdTextField setSecureTextEntry:YES];
     [_pwdTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_pwdTextField addTarget:self action:@selector(showKeyBoardDur:)  forControlEvents:UIControlEventEditingDidBegin];
     [_pwdTextField setBorderRadian:5.0 width:1.0 color:WXColorWithInteger(0xFFFFFF)];
     [_pwdTextField setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [_pwdTextField setTintColor:[UIColor whiteColor]];
     [_pwdTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextField setKeyboardType:UIKeyboardTypeASCIICapable];
     [_pwdTextField setPlaceHolder:@"请输入登陆密码" color:WXColorWithInteger(0xFFFFFF)];
@@ -199,7 +203,7 @@
 }
 
 #pragma mark KeyBoard
-- (void)showKeyBoardDur:(CGFloat)dur height:(CGFloat)height{
+- (void)showKeyBoardDur:(CGFloat)dur{
     CGFloat yOffset = 0.0;
     if(isIOS7){
         yOffset = IPHONE_STATUS_BAR_HEIGHT;
@@ -208,7 +212,7 @@
     optShellRect.origin.y = yOffset;
     CGRect iconShellRect = _iconShell.bounds;
     iconShellRect.size.height = yOffset;
-    [UIView animateWithDuration:0.7 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [_optShell setFrame:optShellRect];
         [_iconShell setFrame:iconShellRect];
     }];
@@ -221,7 +225,7 @@
     CGRect iconShellRect = _iconShell.frame;
     iconShellRect.size.height = optShellRect.origin.y;
     
-    [UIView animateWithDuration:0.7 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [_optShell setFrame:optShellRect];
         [_iconShell setFrame:iconShellRect];
     }];

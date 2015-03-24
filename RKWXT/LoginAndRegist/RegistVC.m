@@ -49,8 +49,7 @@ enum{
 -(id)init{
     self = [super init];
     if(self){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyBoard) name:UIKeyboardDidShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur) name:UIKeyboardDidHideNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyBoard) name:UIKeyboardDidShowNotification object:nil];
         
         _model = [[RegistModel alloc] init];
         [_model setDelegate:self];
@@ -61,6 +60,11 @@ enum{
         [_gainModel setDelegate:self];
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur) name:UIKeyboardDidHideNotification object:nil];
 }
 
 -(void)viewDidLoad{
@@ -147,7 +151,9 @@ enum{
     [_userTextField setReturnKeyType:UIReturnKeyDone];
     [_userTextField setKeyboardType:UIKeyboardTypePhonePad];
     [_userTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_userTextField addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventEditingDidBegin];
     [_userTextField setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [_userTextField setTintColor:[UIColor whiteColor]];
     [_userTextField setPlaceHolder:@"请输入手机号码" color:WXColorWithInteger(0xa5baca)];
     [_userTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_userTextField setFont:WXTFont(14.0)];
@@ -160,7 +166,9 @@ enum{
     [_fetchPwd setReturnKeyType:UIReturnKeyDone];
     [_fetchPwd setKeyboardType:UIKeyboardTypePhonePad];
     [_fetchPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_fetchPwd addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventEditingDidBegin];
     [_fetchPwd setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [_fetchPwd setTintColor:[UIColor whiteColor]];
     [_fetchPwd setPlaceHolder:@"请输入验证码" color:WXColorWithInteger(0xa5baca)];
     [_fetchPwd setLeftViewMode:UITextFieldViewModeAlways];
     [_fetchPwd setFont:WXTFont(14.0)];
@@ -170,12 +178,12 @@ enum{
     xOffset += textWith;
     yOffset += 20;
     UILabel *line3 = [[UILabel alloc] init];
-    line3.frame = CGRectMake(xOffset, yOffset, 0.5, EveryCellHeight-3);
+    line3.frame = CGRectMake(xOffset, yOffset-35, 0.5, EveryCellHeight-3);
     [line3 setBackgroundColor:WXColorWithInteger(0xa1c6e5)];
     [_baseView addSubview:line3];
     
     _gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    _gainBtn.frame = CGRectMake(xOffset+30, yOffset+4, 80, 30);
+    _gainBtn.frame = CGRectMake(xOffset+30, yOffset-30, 80, 30);
     [_gainBtn setBackgroundColor:[UIColor clearColor]];
     [_gainBtn setTitle:@"获取" forState:UIControlStateNormal];
     [_gainBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
@@ -190,7 +198,9 @@ enum{
     [_pwdTextfield setBackgroundColor:[UIColor clearColor]];
     [_pwdTextfield setReturnKeyType:UIReturnKeyDone];
     [_pwdTextfield addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_pwdTextfield addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventEditingDidBegin];
     [_pwdTextfield setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [_pwdTextfield setTintColor:[UIColor whiteColor]];
     [_pwdTextfield setPlaceHolder:@"请设置一个密码" color:WXColorWithInteger(0xa5baca)];
     [_pwdTextfield setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextfield setFont:WXTFont(14.0)];
@@ -203,7 +213,9 @@ enum{
     [_otherPhone setReturnKeyType:UIReturnKeyDone];
     [_otherPhone setKeyboardType:UIKeyboardTypePhonePad];
     [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_otherPhone setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [_otherPhone setTintColor:[UIColor whiteColor]];
     [_otherPhone setPlaceHolder:@"请填写推荐人" color:WXColorWithInteger(0xa5baca)];
     [_otherPhone setLeftViewMode:UITextFieldViewModeAlways];
     [_otherPhone setFont:WXTFont(14.0)];
@@ -233,14 +245,14 @@ enum{
     if(isIOS7){
         yOffset = IPHONE_STATUS_BAR_HEIGHT;
     }
-    [UIView animateWithDuration:0.7 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [textLabel setHidden:YES];
         [_baseView setFrame:CGRectMake(0, 30, IPHONE_SCREEN_WIDTH, 200)];
     }];
 }
 
 - (void)hideKeyBoardDur{
-    [UIView animateWithDuration:0.7 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [textLabel setHidden:NO];
         [_baseView setFrame:CGRectMake(0, 100, IPHONE_SCREEN_WIDTH, 200)];
     }];

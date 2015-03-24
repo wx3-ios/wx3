@@ -232,10 +232,11 @@
 //            }
 //        }else{
             ContacterEntity *entity = [[self contactersAtSection:section] objectAtIndex:row];
-            ContactDetailVC * detailVC = [[ContactDetailVC alloc] init];
-            detailVC.model = entity;
 //            [self.navigationController pushViewController:detailVC animated:YES];
-            [self presentViewController:detailVC animated:YES completion:nil];
+//            [self presentViewController:detailVC animated:YES completion:nil];
+    if(_detailDelegate && [_detailDelegate respondsToSelector:@selector(toContailDetailVC:)]){
+        [_detailDelegate toContailDetailVC:entity];
+    }
 //        }
 //    }else{
 //        ContacterEntity *entity = [_model.filterArray objectAtIndex:row];

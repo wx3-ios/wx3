@@ -9,7 +9,7 @@
 #import "WXTMallViewController.h"
 
 @interface WXTMallViewController ()<UIWebViewDelegate>{
-    UIActivityIndicatorView * _activityIndicatorView;
+//    UIActivityIndicatorView * _activityIndicatorView;
     UIWebView * _webView;
 }
 
@@ -28,12 +28,12 @@
     _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, IPHONE_STATUS_BAR_HEIGHT, ScreenWidth, ScreenHeight - 50)];
     _webView.scalesPageToFit =YES;
     _webView.delegate = self;
-    _activityIndicatorView = [[UIActivityIndicatorView alloc]
-                             initWithFrame : CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)] ;
-    [_activityIndicatorView setCenter: self.view.center] ;
-    [_activityIndicatorView setActivityIndicatorViewStyle: UIActivityIndicatorViewStyleWhite] ;
+//    _activityIndicatorView = [[UIActivityIndicatorView alloc]
+//                             initWithFrame : CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)] ;
+//    [_activityIndicatorView setCenter: self.view.center] ;
+//    [_activityIndicatorView setActivityIndicatorViewStyle: UIActivityIndicatorViewStyleWhite] ;
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://wxt.haoxueyou.com/mobile/"]]];
-    [self.view addSubview:_activityIndicatorView];
+//    [self.view addSubview:_activityIndicatorView];
     [self.view addSubview:_webView];
 }
 
@@ -44,15 +44,18 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [_activityIndicatorView startAnimating] ;
+    [self showWaitView:self.view];
+//    [_activityIndicatorView startAnimating] ;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [_activityIndicatorView stopAnimating];
+    [self unShowWaitView];
+//    [_activityIndicatorView stopAnimating];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [self unShowWaitView];
     UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"" message:[error localizedDescription]  delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alterview show];
 }

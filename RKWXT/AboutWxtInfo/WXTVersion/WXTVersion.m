@@ -25,6 +25,7 @@
     if(self){
         _model = [[VersionModel alloc] init];
         [_model setDelegate:self];
+        self.checkStatus = CheckUpdata_Status_Normal;
     }
     return self;
 }
@@ -75,6 +76,7 @@
 
 #pragma mark versionDelegate
 -(void)checkVersionSucceed{
+    self.checkStatus = CheckUpdata_Status_Ending;
     if([_model.updateArr count] > 0){
         _versionEntity = [_model.updateArr objectAtIndex:0];
         NSString *message = _versionEntity.updateMsg;
@@ -104,6 +106,7 @@
 }
 
 -(void)checkVersionFailed:(NSString *)errorMsg{
+    self.checkStatus = CheckUpdata_Status_Ending;
     NSString *message = errorMsg;
     if(!message){
         message = @"检查最新版本失败";

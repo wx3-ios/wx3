@@ -175,6 +175,10 @@ enum{
 
 -(void)checkLastestVersion{
     WXTVersion *version = [WXTVersion sharedVersion];
+    if(version.checkStatus == CheckUpdata_Status_Starting){
+        return;
+    }
+    version.checkStatus = CheckUpdata_Status_Starting;
     [version setCheckType:Version_CheckType_User];
     [version checkVersion];
 }

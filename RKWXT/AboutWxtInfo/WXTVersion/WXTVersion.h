@@ -22,8 +22,15 @@ typedef enum{
     Version_CheckType_Invalid,
 }Version_CheckType;
 
+typedef enum{
+    CheckUpdata_Status_Normal = 0,
+    CheckUpdata_Status_Starting,
+    CheckUpdata_Status_Ending,
+}CheckUpdata_Status_Type;
+
 @interface WXTVersion : NSObject
 @property (nonatomic,assign) Version_CheckType checkType;
+@property (nonatomic,assign) CheckUpdata_Status_Type checkStatus;
 +(WXTVersion*)sharedVersion;
 
 -(void)checkVersion;
