@@ -10,6 +10,7 @@
 #import "WXWaitingHud.h"
 
 #define kTopLayerZPosition 10000.0
+#define Size self.view.bounds.size
 
 @interface BaseVC (){
     WXWaitingHud *_hud;
@@ -46,19 +47,19 @@
     [super viewDidLoad];
     _hud = [[WXWaitingHud alloc] initWithParentView:self.view];
     [_hud setHidden:YES];
-    [_hud setFrame:CGRectMake(0, IPHONE_STATUS_BAR_HEIGHT+44, IPHONE_SCREEN_WIDTH, self.view.bounds.size.height-(IPHONE_STATUS_BAR_HEIGHT+44))];
+    [_hud setFrame:CGRectMake(0, IPHONE_STATUS_BAR_HEIGHT+44, Size.width, self.view.bounds.size.height-(IPHONE_STATUS_BAR_HEIGHT+44))];
 }
 
 -(void)createTopView:(NSString*)title{
     [self.navigationController setNavigationBarHidden:YES];
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
-    imgView.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 66);
+    imgView.frame = CGRectMake(0, 0, Size.width, 66);
     [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
     [self.view addSubview:imgView];
     
     CGFloat labelWidth = 150;
     UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake((IPHONE_SCREEN_WIDTH-labelWidth)/2, 35, labelWidth, 25);
+    label.frame = CGRectMake((Size.width-labelWidth)/2, 35, labelWidth, 25);
     if(title){
         [label setText:title];
     }
@@ -71,7 +72,7 @@
 -(void)createTopStatusView:(UIColor*)color{
     [self.navigationController setNavigationBarHidden:YES];
     UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_STATUS_BAR_HEIGHT);
+    label.frame = CGRectMake(0, 0, Size.width, IPHONE_STATUS_BAR_HEIGHT);
     [label setBackgroundColor:color];
     [self.view addSubview:label];
 }

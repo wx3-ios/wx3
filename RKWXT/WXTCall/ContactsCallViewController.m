@@ -15,7 +15,9 @@
 #import "ContacterEntity.h"
 #import "WXContacterModel.h"
 
-@interface ContactsCallViewController ()<CallViewVCInputDelegate,MakeCallDelegate,ToContactDetailVCDelegate,UITableViewDataSource,UITableViewDelegate>{
+#define Size self.view.bounds.size
+
+@interface ContactsCallViewController ()<MakeCallDelegate,ToContactDetailVCDelegate,UITableViewDataSource,UITableViewDelegate,CallPhoneDelegate>{
     CallViewController * _recentCall;
     WXContacterVC * _contacterVC;
     UILabel *numberLabel;
@@ -40,42 +42,29 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     _recentCall = [[CallViewController alloc]init];
-    [_recentCall.view setFrame:CGRectMake(0, 72, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-72-50)];
-    [_recentCall setInputDelegate:self];
+    [_recentCall.view setFrame:CGRectMake(0, 72, Size.width, Size.height-72-50)];
+    [_recentCall setKeyPad_type:E_KeyPad_Show];
+    [_recentCall setCallDelegate:self];
     
     _contacterVC = [[WXContacterVC alloc] init];
-    [_contacterVC.view setFrame:CGRectMake(0, 72, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-72-50)];
+    [_contacterVC.view setFrame:CGRectMake(0, 72, Size.width, Size.height-72-50)];
     [_contacterVC setDetailDelegate:self];
     
     [self.view addSubview:_recentCall.view];
     [self loadSegmentControl];
-    [self loadInputTextField];
     [self addNotification];
     
-    numberStr = [[NSString alloc] init];
     contactModel = [[WXContacterModel alloc] init];
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 50 - 4*NumberBtnHeight)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, Size.width, Size.height - 64 - 50 - 4*NumberBtnHeight-InputTextHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [self.view addSubview:_tableView];
-}
-
--(void)loadInputTextField{
-    numberLabel = [[UILabel alloc] init];
-    numberLabel.frame = CGRectMake(20, 35, 180, 28);
-    [numberLabel setBackgroundColor:[UIColor clearColor]];
-    [numberLabel setTextColor:NSTextAlignmentLeft];
-    [numberLabel setTextAlignment:NSTextAlignmentLeft];
-    [numberLabel setTextColor:[UIColor whiteColor]];
-    [numberLabel setFont:WXTFont(18.0)];
-    [numberLabel setHidden:YES];
-    [self.view addSubview:numberLabel];
+//    [self.view addSubview:_tableView];
 }
 
 -(void)loadSegmentControl{
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
-    imgView.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 66);
+    imgView.frame = CGRectMake(0, 0, Size.width, 66);
     [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
     [self.view addSubview:imgView];
     
@@ -85,9 +74,9 @@
     _segmentControl
     = [[UISegmentedControl alloc] initWithItems:nameArr];
     [_segmentControl setBackgroundColor:[UIColor whiteColor]];
-    _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT + 12, segWidth, segHeight);
+    _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT + 12, segWidth, segHeight);
     if(isIOS6){
-        _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
+        _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
     }
     [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
 #if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
@@ -105,6 +94,7 @@
             [self.view addSubview:_recentCall.view];
             break;
         case kContactsSegmentIndex:
+            [[NSNotificationCenter defaultCenter] postNotificationName:HideDownView object:nil];
             [self.view addSubview:_contacterVC.view];
             break;
         default:
@@ -115,57 +105,45 @@
 -(void)addNotification{
     NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(inputChange) name:kInputChange object:nil];
-    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
-    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
+//    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
+//    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
 }
 
 -(void)inputChange{
     
 }
 
--(void)inputNumber:(id)sender{
-    [contactModel matchSearchStringList:numberStr];
-    [_tableView reloadData];
-    
-    [_segmentControl setHidden:YES];
-    [numberLabel setHidden:NO];
-    WXUIButton *btn = sender;
-    NSInteger number = (btn.tag+1==11?0:btn.tag+1);
-    if(number <= 9 && number >= 0){
-        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
-        numberStr = [numberStr stringByAppendingString:str];
-        [numberLabel setText:numberStr];
-    }
-    
-    if(numberStr.length > 0){
-        [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
-    }else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
-    }
-}
+//-(void)inputNumber:(id)sender{
+//    WXUIButton *btn = sender;
+//    NSInteger number = (btn.tag+1==11?0:btn.tag+1);
+//    if(number <= 9 && number >= 0){
+//        [_segmentControl setHidden:YES];
+//        [numberLabel setHidden:NO];
+//        
+//        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
+//        numberStr = [numberStr stringByAppendingString:str];
+//        [numberLabel setText:numberStr];
+//    }
+//    
+//    if(numberStr.length > 0){
+//        [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
+//    }else{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
+//    }
+//    
+//    [contactModel removeMatchingContact];
+//    [contactModel matchSearchStringList:numberStr];
+//    [_tableView reloadData];
+//}
 
--(void)delBtnClick{
-    NSString *callStrString = numberLabel.text;
-    if(callStrString.length > 0){
-        NSRange rang = NSMakeRange(0, callStrString.length-1);
-        NSString *strRang = [callStrString substringWithRange:rang];
-        numberLabel.text = strRang;
-        numberStr = numberLabel.text;
-    }
-    if(numberStr.length == 0){
-        [numberLabel setHidden:YES];
-        [_segmentControl setHidden:NO];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
-    }
-}
-
--(void)callPhoneNumber{
-    if(numberStr.length < 7 || numberStr.length != 11){
+-(void)callPhoneWith:(NSString *)phoneStr{
+    if(phoneStr.length < 7 || phoneStr.length != 11){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
-    [_callModel makeCallPhone:numberStr];
+    numberStr = phoneStr;
+    [_callModel makeCallPhone:phoneStr];
 }
 
 -(void)toContailDetailVC:(id)sender{

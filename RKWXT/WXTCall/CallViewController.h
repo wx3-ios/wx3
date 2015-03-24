@@ -23,16 +23,15 @@ typedef enum{
 #define NumberBtnHeight (56)
 #define InputTextHeight (35)
 
-@protocol CallViewVCInputDelegate;
-
+@protocol CallPhoneDelegate;
 @interface CallViewController : BaseVC
+@property (nonatomic,assign) id<CallPhoneDelegate>callDelegate;
 
 @property (nonatomic,assign) DownView_Type downview_type;
 @property (nonatomic,assign) E_KeyPad_Type keyPad_type;
-@property (nonatomic,assign) id<CallViewVCInputDelegate>inputDelegate;
 @end
 
-@protocol CallViewVCInputDelegate <NSObject>
--(void)inputNumber:(id)sender;
+@protocol CallPhoneDelegate <NSObject>
+-(void)callPhoneWith:(NSString*)phoneStr;
 
 @end

@@ -117,6 +117,8 @@
 		12D0C8821AB6D2920039A197 /* AboutWXTVersion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8811AB6D2920039A197 /* AboutWXTVersion@2x.png */; };
 		12D0C8861AB6DF8E0039A197 /* TopBgImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8851AB6DF8E0039A197 /* TopBgImg@2x.png */; };
 		12D0C8881AB6E2B90039A197 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8871AB6E2B90039A197 /* Icon-72@2x.png */; };
+		12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A21AC16F830044A7A2 /* delNumber@2x.png */; };
+		12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A41AC170940044A7A2 /* keyboardEye@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
@@ -547,6 +549,8 @@
 		12D0C8811AB6D2920039A197 /* AboutWXTVersion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutWXTVersion@2x.png"; sourceTree = "<group>"; };
 		12D0C8851AB6DF8E0039A197 /* TopBgImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TopBgImg@2x.png"; sourceTree = "<group>"; };
 		12D0C8871AB6E2B90039A197 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		12E161A21AC16F830044A7A2 /* delNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delNumber@2x.png"; sourceTree = "<group>"; };
+		12E161A41AC170940044A7A2 /* keyboardEye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboardEye@2x.png"; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B3E91AAAD74000C04227 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1279,6 +1283,8 @@
 		12622E601ABC224E00B52E3F /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				12E161A41AC170940044A7A2 /* keyboardEye@2x.png */,
+				12E161A21AC16F830044A7A2 /* delNumber@2x.png */,
 				129EF9041AC1097200B3C8E2 /* *N.png */,
 				129EF9051AC1097200B3C8E2 /* *S.png */,
 				775AB9D61ABFB637003A339D /* 2N@2x.png */,
@@ -2628,6 +2634,7 @@
 				777F028E1ABBF362008C77F1 /* DialView.xib in Resources */,
 				120A2C481AB17AFD006A28B1 /* sign1@2x.png in Resources */,
 				120A2C3F1AB17AFD006A28B1 /* sign10@2x.png in Resources */,
+				12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */,
 				120A2C621AB17B87006A28B1 /* signEveryDay@2x.png in Resources */,
 				120A2C4F1AB17AFD006A28B1 /* sign26@2x.png in Resources */,
 				120A2C6D1AB19473006A28B1 /* LoginLock@2x.png in Resources */,
@@ -2674,6 +2681,7 @@
 				775AB9CC1ABFB558003A339D /* 6N@2x.png in Resources */,
 				120A2C511AB17AFD006A28B1 /* sign28@2x.png in Resources */,
 				120A2C521AB17AFD006A28B1 /* sign29@2x.png in Resources */,
+				12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */,
 				126CA4071AB2B9EF00E08A0B /* CallNormal@2x.png in Resources */,
 				120A2C541AB17AFD006A28B1 /* sign30@2x.png in Resources */,
 				12D0C8861AB6DF8E0039A197 /* TopBgImg@2x.png in Resources */,

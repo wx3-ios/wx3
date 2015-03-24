@@ -22,6 +22,9 @@
 #define InputNumber @"InputNumber"
 #define DelNumber @"DelNumber"
 
+#define ShowDownView @"ShowDownView"
+#define HideDownView @"HideDownView"
+
 #define CallPhone @"CallPhone"
 
 #define DelNumberToEnd @"DelNumberToEnd"
