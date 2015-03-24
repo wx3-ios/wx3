@@ -59,6 +59,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
+    [_tableView reloadData];
 }
 
 -(void)loadInputTextField{
@@ -114,7 +115,7 @@
 
 -(void)addNotification{
     NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter addObserver:self selector:@selector(inputChange) name:kInputChange object:nil];
+    [defaultCenter addObserver:self selector:@selector(tableViewHidden) name:kTableViewHidden object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
     [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
 }
@@ -158,6 +159,7 @@
         [_segmentControl setHidden:NO];
         [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
     }
+    [_tableView reloadData];
 }
 
 -(void)callPhoneNumber{
@@ -176,6 +178,10 @@
 }
 
 #pragma tableView
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return contactModel.filterArray.count;
 }
@@ -185,13 +191,16 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kContactsCallIdentifier];
     }
-    for (int i = 0; i < contactModel.filterArray.count; i++) {
-        cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[i]).name;
-    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    cell.imageView.image = [UIImage imageNamed:@""];
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[indexPath.row]).name;
+    cell.detailTextLabel.text = @"1234";
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.navigationController pushViewController:[[ContactDetailVC alloc] init] animated:YES];
     
 }
 
@@ -217,6 +226,15 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [_callModel setCallDelegate:nil];
+    [NOTIFY_CENTER postNotificationName:kTableViewHidden object:nil];
+}
+
+-(void)tableViewHidden{
+    if(numberStr.length > 0){
+        _tableView.hidden = NO;
+    }else{
+        _tableView.hidden = YES;
+    }
 }
 
 @end

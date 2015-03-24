@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 jjyo.kwan. All rights reserved.
 //
 
-//#import "BaseViewController.h"
+#define kTableViewHidden                @"TableViewHidden"
 #define kContactsCallIdentifier         @"ContactsCallIdentifier"
 
 typedef enum{
