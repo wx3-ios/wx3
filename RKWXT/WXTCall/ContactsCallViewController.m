@@ -191,6 +191,10 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
 }
