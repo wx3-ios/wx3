@@ -97,12 +97,13 @@
     [self.view addSubview:textLabel];
     
     yOffset += textHeight;
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     UILabel *phoneLabel = [[UILabel alloc] init];
     phoneLabel.frame = CGRectMake((Size.width-textWidth)/2, yOffset, textWidth, textHeight);
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
     [phoneLabel setTextAlignment:NSTextAlignmentCenter];
     [phoneLabel setFont:WXTFont(16.0)];
-    [phoneLabel setText:_userPhone];
+    [phoneLabel setText:userObj.user];
     [phoneLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
     [self.view addSubview:phoneLabel];
     

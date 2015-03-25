@@ -54,7 +54,8 @@
     [self.navigationController setNavigationBarHidden:YES];
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
     imgView.frame = CGRectMake(0, 0, Size.width, 66);
-    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
+//    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
+    [imgView setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     [self.view addSubview:imgView];
     
     CGFloat labelWidth = 150;
@@ -71,10 +72,15 @@
 
 -(void)createTopStatusView:(UIColor*)color{
     [self.navigationController setNavigationBarHidden:YES];
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0, 0, Size.width, IPHONE_STATUS_BAR_HEIGHT);
-    [label setBackgroundColor:color];
-    [self.view addSubview:label];
+//    UILabel *label = [[UILabel alloc] init];
+//    label.frame = CGRectMake(0, 0, Size.width, IPHONE_STATUS_BAR_HEIGHT);
+//    [label setBackgroundColor:color];
+//    [self.view addSubview:label];
+    WXUIImageView *imgView = [[WXUIImageView alloc] init];
+    imgView.frame = CGRectMake(0, 0, Size.width, 22);
+//    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
+    [imgView setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
+    [self.view addSubview:imgView];
 }
 
 -(void)showWaitView:(UIView*)onView{

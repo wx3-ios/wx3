@@ -12,6 +12,7 @@
 #import <MessageUI/MessageUI.h>
 #import "UIView+Render.h"
 #import "CallModel.h"
+#import "CallBackVC.h"
 
 #define Size self.view.bounds.size
 
@@ -236,6 +237,24 @@
     }
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneNumber];
     [_callModel makeCallPhone:phoneStr];
+}
+
+-(void)makeCallPhoneSucceed{
+    CallBackVC *backVC = [[CallBackVC alloc] init];
+    backVC.phoneName = @"";
+    [self.navigationController pushViewController:backVC animated:YES];
+}
+
+-(void)makeCallPhoneFailed:(NSString *)failedMsg{
+    if(!failedMsg){
+        failedMsg = @"本机网络不畅，请设置网络连接";
+    }
+    [UtilTool showAlertView:failedMsg];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_callModel setCallDelegate:nil];
 }
 
 -(void)back{

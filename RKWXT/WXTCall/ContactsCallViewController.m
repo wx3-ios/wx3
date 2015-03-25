@@ -14,6 +14,7 @@
 #import "ContactDetailVC.h"
 #import "ContacterEntity.h"
 #import "WXContacterModel.h"
+#import "UIImage+Render.h"
 
 #define Size self.view.bounds.size
 
@@ -65,7 +66,8 @@
 -(void)loadSegmentControl{
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
     imgView.frame = CGRectMake(0, 0, Size.width, 66);
-    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
+//    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
+    [imgView setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     [self.view addSubview:imgView];
     
     CGFloat segWidth = 180;
@@ -135,10 +137,6 @@
 //}
 
 -(void)callPhoneWith:(NSString *)phoneStr{
-    if(phoneStr.length < 7 || phoneStr.length > 14){
-        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
-        return;
-    }
     numberStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
     [_callModel makeCallPhone:numberStr];
 }
@@ -174,7 +172,6 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.navigationController pushViewController:[[ContactDetailVC alloc] init] animated:YES];
-    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -184,17 +181,16 @@
 #pragma callDelegate
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
     if(!failedMsg){
-        failedMsg = @"呼叫失败";
+        failedMsg = @"本机网络不畅，请设置网络连接";
     }
     [UtilTool showAlertView:failedMsg];
 }
 
 -(void)makeCallPhoneSucceed{
-    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     CallBackVC *callBackVC = [[CallBackVC alloc] init];
     [callBackVC setPhoneName:numberStr];
-    [callBackVC setUserPhone:userObj.user];
     [self.navigationController pushViewController:callBackVC animated:YES];
+//    [NOTIFY_CENTER postNotificationName:CallPhoneSucceed object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

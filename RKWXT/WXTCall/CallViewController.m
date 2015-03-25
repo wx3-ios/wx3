@@ -24,7 +24,7 @@ typedef enum{
 
 @interface CallViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIView *_keybView;
-    UILabel *_textLabel;
+    UITextField *_textLabel;
     NSString *textString;
     NSArray *_numSelArr;
     NSArray *_numNorArr;
@@ -77,35 +77,37 @@ typedef enum{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
+    [defaultCenter addObserver:self selector:@selector(callPhoneSucceed) name:CallPhoneSucceed object:nil];
 }
 
 -(void)createKeyboardView{
     _keybView = [[UIView alloc] init];
-    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-InputTextHeight-yGap-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight+InputTextHeight);
+    _keybView.frame = CGRectMake(0, Size.height-InputTextHeight-yGap-50-4*NumberBtnHeight, Size.width, 4*NumberBtnHeight+InputTextHeight);
     [_keybView setBackgroundColor:WXColorWithInteger(0xe6e6e6)];
     [self.view addSubview:_keybView];
     
-    _textLabel = [[UILabel alloc] init];
-    _textLabel.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, InputTextHeight);
+    _textLabel = [[UITextField alloc] init];
+    _textLabel.frame = CGRectMake(0, 0, Size.width, InputTextHeight);
     [_textLabel setBackgroundColor:[UIColor whiteColor]];
-    [_textLabel setText:@"请输入电话号码"];
+    [_textLabel setPlaceholder:@"请输入电话号码"];
     [_textLabel setTextAlignment:NSTextAlignmentCenter];
-    [_textLabel setFont:WXTFont(16.0)];
+    [_textLabel setFont:WXTFont(18.0)];
+    [_textLabel setEnabled:NO];
     [_textLabel setTextColor:[UIColor grayColor]];
     [_keybView addSubview:_textLabel];
     
     UIImage *eyeImg = [UIImage imageNamed:@"keyboardEye.png"];
     WXTUIButton *eyeBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height-8)/2, eyeImg.size.width+8, eyeImg.size.height+8);
+    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height-12)/2, eyeImg.size.width+14, eyeImg.size.height+12);
     [eyeBtn setBackgroundColor:[UIColor clearColor]];
-    [eyeBtn setImage:eyeImg forState:UIControlStateNormal];
+    [eyeBtn setBackgroundImage:eyeImg forState:UIControlStateNormal];
     [_keybView addSubview:eyeBtn];
     
     UIImage *img = [UIImage imageNamed:@"delNumber.png"];
     WXTUIButton *delBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    delBtn.frame = CGRectMake(Size.width-img.size.width-15, (InputTextHeight-img.size.height-8)/2, img.size.width+8, img.size.height+8);
+    delBtn.frame = CGRectMake(Size.width-img.size.width-20, (InputTextHeight-img.size.height-8)/2, img.size.width+10, img.size.height+8);
     [delBtn setBackgroundColor:[UIColor clearColor]];
-    [delBtn setImage:img forState:UIControlStateNormal];
+    [delBtn setBackgroundImage:img forState:UIControlStateNormal];
     [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_keybView addSubview:delBtn];
     
@@ -164,6 +166,11 @@ typedef enum{
     _showContacters = YES;
     [_tableView reloadData];
 }
+//通知
+-(void)callPhoneSucceed{
+    textString = nil;
+    [_textLabel setText:nil];
+}
 
 -(void)show{
     if(self.keyPad_type == E_KeyPad_Show){
@@ -175,6 +182,12 @@ typedef enum{
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
             _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50, Size.width, 4*NumberBtnHeight);
+            if(Size.width==DIphoneSixWidth){ //简单判断一下是苹果6
+                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50+IphoneSixYGap, Size.width, 4*NumberBtnHeight);
+            }
+            if(Size.width==DIphoneSixPWidth){ //简单判断一下是苹果6lus
+                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50+IphoneSixPYgap, Size.width, 4*NumberBtnHeight);
+            }
         }];
         return;
     }
@@ -189,10 +202,13 @@ typedef enum{
             [[NSNotificationCenter defaultCenter] postNotificationName:HideDownView object:nil];
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50-4*NumberBtnHeight-InputTextHeight, Size.width, 4*NumberBtnHeight+InputTextHeight);
-//            if(Size.width>320){ //简单判断一下是苹果6及以上
-//                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, Size.width, 4*NumberBtnHeight);
-//            }
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50-4*NumberBtnHeight-InputTextHeight+(Size.width>IPHONE_SCREEN_WIDTH?(Size.width==DIphoneSixWidth?IphoneSixYGap:IphoneSixPYgap):0), Size.width, 4*NumberBtnHeight+InputTextHeight);
+            if(Size.width==DIphoneSixWidth){ //简单判断一下是苹果6
+                _keybView.frame = CGRectMake(0, Size.height-yGap-50-4*NumberBtnHeight-InputTextHeight+IphoneSixYGap, Size.width, 4*NumberBtnHeight+InputTextHeight);
+            }
+            if(Size.width==DIphoneSixPWidth){ //简单判断一下是苹果6plus
+                _keybView.frame = CGRectMake(0, Size.height-yGap-50-4*NumberBtnHeight-InputTextHeight+IphoneSixYGap, Size.width, 4*NumberBtnHeight+InputTextHeight);
+            }
         }];
         return;
     }
@@ -210,11 +226,10 @@ typedef enum{
 }
 
 -(void)callPhoneNumber{
-    if(textString.length < 7){
+    if(textString.length < 7 || textString.length > 14){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
-    
     if(_callDelegate && [_callDelegate respondsToSelector:@selector(callPhoneWith:)]){
         [_callDelegate callPhoneWith:textString];
     }

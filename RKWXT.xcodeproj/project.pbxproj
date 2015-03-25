@@ -119,6 +119,8 @@
 		12D0C8821AB6D2920039A197 /* AboutWXTVersion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8811AB6D2920039A197 /* AboutWXTVersion@2x.png */; };
 		12D0C8861AB6DF8E0039A197 /* TopBgImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8851AB6DF8E0039A197 /* TopBgImg@2x.png */; };
 		12D0C8881AB6E2B90039A197 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8871AB6E2B90039A197 /* Icon-72@2x.png */; };
+		12D55A411AC28D2400F51F97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */; };
+		12D55A421AC28D2400F51F97 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D55A401AC28D2400F51F97 /* Default@2x.png */; };
 		12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A21AC16F830044A7A2 /* delNumber@2x.png */; };
 		12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A41AC170940044A7A2 /* keyboardEye@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
@@ -138,8 +140,6 @@
 		770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4371AAD97700098C214 /* 密码图标@2x.png */; };
 		770BB43B1AAD97700098C214 /* 账号图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4381AAD97700098C214 /* 账号图标@2x.png */; };
 		770BB43C1AAD97700098C214 /* W.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4391AAD97700098C214 /* W.png */; };
-		770BB43F1AAD9D530098C214 /* 启动页（iPhone4）.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB43D1AAD9D530098C214 /* 启动页（iPhone4）.png */; };
-		770BB4401AAD9D530098C214 /* 启动页（iPhone5）.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB43E1AAD9D530098C214 /* 启动页（iPhone5）.png */; };
 		775842AF1AB95A300039B129 /* CustomMade.plist in Resources */ = {isa = PBXBuildFile; fileRef = 775841591AB95A2F0039B129 /* CustomMade.plist */; };
 		775842B01AB95A300039B129 /* CustomMadeOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758415B1AB95A2F0039B129 /* CustomMadeOBJ.m */; };
 		775842B11AB95A300039B129 /* WXColorConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758415D1AB95A2F0039B129 /* WXColorConfig.m */; };
@@ -553,6 +553,8 @@
 		12D0C8811AB6D2920039A197 /* AboutWXTVersion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutWXTVersion@2x.png"; sourceTree = "<group>"; };
 		12D0C8851AB6DF8E0039A197 /* TopBgImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TopBgImg@2x.png"; sourceTree = "<group>"; };
 		12D0C8871AB6E2B90039A197 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		12D55A401AC28D2400F51F97 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		12E161A21AC16F830044A7A2 /* delNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delNumber@2x.png"; sourceTree = "<group>"; };
 		12E161A41AC170940044A7A2 /* keyboardEye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboardEye@2x.png"; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -583,8 +585,6 @@
 		770BB4371AAD97700098C214 /* 密码图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码图标@2x.png"; sourceTree = "<group>"; };
 		770BB4381AAD97700098C214 /* 账号图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "账号图标@2x.png"; sourceTree = "<group>"; };
 		770BB4391AAD97700098C214 /* W.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = W.png; sourceTree = "<group>"; };
-		770BB43D1AAD9D530098C214 /* 启动页（iPhone4）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页（iPhone4）.png"; sourceTree = "<group>"; };
-		770BB43E1AAD9D530098C214 /* 启动页（iPhone5）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页（iPhone5）.png"; sourceTree = "<group>"; };
 		775841561AB95A2F0039B129 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		775841581AB95A2F0039B129 /* CustomMade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMade.h; sourceTree = "<group>"; };
 		775841591AB95A2F0039B129 /* CustomMade.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CustomMade.plist; sourceTree = "<group>"; };
@@ -1504,6 +1504,8 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */,
+				12D55A401AC28D2400F51F97 /* Default@2x.png */,
 				12622E601ABC224E00B52E3F /* Keyboard */,
 				1296742F1AB6EAE200597B17 /* ContactInfo */,
 				12477F081AB6E46700FEE546 /* Icon-57@2x.png */,
@@ -1524,8 +1526,6 @@
 				120A2C181AB17AFD006A28B1 /* signBg.jpg */,
 				120A2C191AB17AFD006A28B1 /* signBg@2x.jpg */,
 				120A2C1A1AB17AFD006A28B1 /* SignGifView */,
-				770BB43D1AAD9D530098C214 /* 启动页（iPhone4）.png */,
-				770BB43E1AAD9D530098C214 /* 启动页（iPhone5）.png */,
 				770BB4371AAD97700098C214 /* 密码图标@2x.png */,
 				770BB4381AAD97700098C214 /* 账号图标@2x.png */,
 				770BB4391AAD97700098C214 /* W.png */,
@@ -2700,12 +2700,13 @@
 				120A2C441AB17AFD006A28B1 /* sign15@2x.png in Resources */,
 				775AB9C21ABFB558003A339D /* 0N@2x.png in Resources */,
 				775AB9D01ABFB558003A339D /* 8N@2x.png in Resources */,
-				770BB4401AAD9D530098C214 /* 启动页（iPhone5）.png in Resources */,
 				129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */,
 				129EF9071AC1097200B3C8E2 /* *S.png in Resources */,
 				770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */,
+				12D55A421AC28D2400F51F97 /* Default@2x.png in Resources */,
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */,
+				12D55A411AC28D2400F51F97 /* Default-568h@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,
 				120A2C5F1AB17AFD006A28B1 /* sign9@2x.png in Resources */,
 				120A2C3E1AB17AFD006A28B1 /* signBg@2x.jpg in Resources */,
@@ -2716,7 +2717,6 @@
 				12622BD31ABD4425003F04A5 /* CallBackBtn@2x.png in Resources */,
 				120A2C591AB17AFD006A28B1 /* sign3@2x.png in Resources */,
 				12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */,
-				770BB43F1AAD9D530098C214 /* 启动页（iPhone4）.png in Resources */,
 				12622BD41ABD4425003F04A5 /* CallBackBgImg.jpg in Resources */,
 				775AB9C61ABFB558003A339D /* 2S@2x.png in Resources */,
 				777059AD1AAFDEC40097526C /* Localize.strings in Resources */,

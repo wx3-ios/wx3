@@ -149,6 +149,8 @@
 }
 
 -(void)cancel{
+    [_numTextfield setText:nil];
+    [_pwdTextfield setText:nil];
     if(_delegate && [_delegate respondsToSelector:@selector(rechargeCancel)]){
         [_delegate rechargeCancel];
     }
@@ -165,6 +167,8 @@
 }
 
 -(void)rechargeSucceed{
+    [_numTextfield setText:nil];
+    [_pwdTextfield setText:nil];
     [UtilTool showAlertView:@"充值成功"];
 }
 

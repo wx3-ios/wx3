@@ -67,9 +67,11 @@
     NSArray *hou = @[@"MallNormal.png",@"CallNormal.png",@"FindSelected.png",@"UserSelected.png"];
     
     
+    CGFloat ygap = 8;
+    CGFloat btnGapHeight = 10;
     //第一个
     CGFloat xGap = Size.width/4;
-    but = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, Size.width/4, kTabBarHeight/2)];
+    but = [[UIButton alloc] initWithFrame:CGRectMake(0, 3, Size.width/4, kTabBarHeight/2+btnGapHeight)];
     [but setImage:[UIImage imageNamed:hou[0]] forState:UIControlStateNormal];
     [but setImage:[UIImage imageNamed:hou[0]] forState:UIControlStateHighlighted];
     but.tag = 0;
@@ -77,7 +79,7 @@
     [tabBar addSubview:but];
     
     label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0, kTabBarHeight/2, Size.width/4, kTabBarHeight/2);
+    label.frame = CGRectMake(0, kTabBarHeight/2+ygap, Size.width/4, kTabBarHeight/2-btnGapHeight);
     [label setBackgroundColor:[UIColor clearColor]];
     [label setText:@"商城"];
     [label setFont:WXTFont(12.0)];
@@ -87,7 +89,7 @@
     
     //第二个
     label0 = [[UILabel alloc] init];
-    label0.frame = CGRectMake(xGap, kTabBarHeight/2, Size.width/4, kTabBarHeight/2);
+    label0.frame = CGRectMake(xGap, kTabBarHeight/2+ygap, Size.width/4, kTabBarHeight/2-btnGapHeight);
     [label0 setBackgroundColor:[UIColor clearColor]];
     [label0 setText:@"通话"];
     [label0 setFont:WXTFont(12.0)];
@@ -95,7 +97,7 @@
     [label0 setTextColor:WXColorWithInteger(0x0c8bdf)];
     [tabBar addSubview:label0];
     
-    but0 = [[UIButton alloc] initWithFrame:CGRectMake(xGap, 5, Size.width/4, kTabBarHeight/2)];
+    but0 = [[UIButton alloc] initWithFrame:CGRectMake(xGap, 3, Size.width/4, kTabBarHeight/2+btnGapHeight)];
     [but0 setImage:[UIImage imageNamed:qian[1]] forState:UIControlStateNormal];
     [but0 setImage:[UIImage imageNamed:hou[1]] forState:UIControlStateHighlighted];
     but0.tag = 1;
@@ -104,7 +106,7 @@
     
     //第三个
     label1 = [[UILabel alloc] init];
-    label1.frame = CGRectMake(2*xGap, kTabBarHeight/2, Size.width/4, kTabBarHeight/2);
+    label1.frame = CGRectMake(2*xGap, kTabBarHeight/2+ygap, Size.width/4, kTabBarHeight/2-btnGapHeight);
     [label1 setBackgroundColor:[UIColor clearColor]];
     [label1 setText:@"发现"];
     [label1 setFont:WXTFont(12.0)];
@@ -112,7 +114,7 @@
     [label1 setTextColor:WXColorWithInteger(0x808080)];
     [tabBar addSubview:label1];
     
-    but1 = [[UIButton alloc] initWithFrame:CGRectMake(2*xGap, 5, Size.width/4, kTabBarHeight/2)];
+    but1 = [[UIButton alloc] initWithFrame:CGRectMake(2*xGap, 3, Size.width/4, kTabBarHeight/2+btnGapHeight)];
     [but1 setImage:[UIImage imageNamed:qian[2]] forState:UIControlStateNormal];
     [but1 setImage:[UIImage imageNamed:hou[2]] forState:UIControlStateHighlighted];
     but1.tag = 2;
@@ -121,7 +123,7 @@
     
     //第四个
     label2 = [[UILabel alloc] init];
-    label2.frame = CGRectMake(3*xGap, kTabBarHeight/2, Size.width/4, kTabBarHeight/2);
+    label2.frame = CGRectMake(3*xGap, kTabBarHeight/2+ygap, Size.width/4, kTabBarHeight/2-btnGapHeight);
     [label2 setBackgroundColor:[UIColor clearColor]];
     [label2 setText:@"我"];
     [label2 setFont:WXTFont(12.0)];
@@ -129,7 +131,7 @@
     [label2 setTextColor:WXColorWithInteger(0x808080)];
     [tabBar addSubview:label2];
     
-    but2 = [[UIButton alloc] initWithFrame:CGRectMake(3*xGap, 5, Size.width/4, kTabBarHeight/2)];
+    but2 = [[UIButton alloc] initWithFrame:CGRectMake(3*xGap, 3, Size.width/4, kTabBarHeight/2+btnGapHeight)];
     [but2 setImage:[UIImage imageNamed:qian[3]] forState:UIControlStateNormal];
     [but2 setImage:[UIImage imageNamed:hou[3]] forState:UIControlStateHighlighted];
     but2.tag = 3;
@@ -146,7 +148,7 @@
     [self.view addSubview:downView];
     
     WXTUIButton *keyboardBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    keyboardBtn.frame = CGRectMake(0, 5, IPHONE_SCREEN_WIDTH/4, kTabBarHeight/2);
+    keyboardBtn.frame = CGRectMake(0, 5, Size.width/4, kTabBarHeight/2);
     [keyboardBtn setImage:[UIImage imageNamed:@"CallSelected.png"] forState:UIControlStateNormal];
     [keyboardBtn addTarget:self action:@selector(downviewBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:keyboardBtn];

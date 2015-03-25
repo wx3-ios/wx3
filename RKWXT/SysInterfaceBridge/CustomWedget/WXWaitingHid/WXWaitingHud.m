@@ -58,7 +58,7 @@
 		
 		
         CGFloat tipLabelWidth = 150;
-		_tipLabel = [[LoadLabel alloc] initWithFrame:CGRectMake((IPHONE_SCREEN_WIDTH-tipLabelWidth)/2, shellRect.origin.y + shellRect.size.height + 2, tipLabelWidth, tipHeight)];
+		_tipLabel = [[LoadLabel alloc] initWithFrame:CGRectMake((size.width-tipLabelWidth)/2, shellRect.origin.y + shellRect.size.height + 2, tipLabelWidth, tipHeight)];
         [_tipLabel setTextAlignment:NSTextAlignmentCenter];
 		[_tipLabel setFont:[UIFont systemFontOfSize:kTipFontSize]];
 		[_tipLabel setDotCount:4];

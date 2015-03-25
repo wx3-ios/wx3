@@ -20,10 +20,20 @@ typedef enum{
     E_KeyPad_Down,
 }E_KeyPad_Type;
 
+//iphone6  宽，高  (375,667)
+//iphone6p 宽，高  (414,736)
+#define DIphoneSixWidth   (375)
+#define DIphoneSixHeight  (667)
+#define DIphoneSixPWidth  (414)
+#define DIphoneSixPHeight (736)
+
 #define kInputChange        @"InputChange"
 #define NumberBtnHeight (56)
-#define InputTextHeight (35)
+#define InputTextHeight (40)
 #define yGap (66)
+
+#define IphoneSixYGap (118)
+#define IphoneSixPYgap (168)
 
 @protocol CallPhoneDelegate;
 @interface CallViewController : BaseVC

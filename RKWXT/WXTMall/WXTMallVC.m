@@ -170,10 +170,8 @@
 }
 
 -(void)makeCallPhoneSucceed{
-    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     CallBackVC *callBackVC = [[CallBackVC alloc] init];
     [callBackVC setPhoneName:textString];
-    [callBackVC setUserPhone:userObj.user];
     [self.navigationController pushViewController:callBackVC animated:YES];
 }
 

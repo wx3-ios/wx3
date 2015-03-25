@@ -26,6 +26,7 @@
 #define HideDownView @"HideDownView"
 
 #define CallPhone @"CallPhone"
+#define CallPhoneSucceed @"CallPhoneSucceed"
 
 #define DelNumberToEnd @"DelNumberToEnd"
 

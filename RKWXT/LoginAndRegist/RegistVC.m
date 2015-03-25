@@ -107,20 +107,20 @@ enum{
     
     yOffset += textHeight;
     _baseView = [[UIView alloc] init];
-    _baseView.frame = CGRectMake(0, yOffset, IPHONE_SCREEN_WIDTH, EveryCellHeight*WXT_Regist_Invalid);
+    _baseView.frame = CGRectMake(0, yOffset, Size.width, EveryCellHeight*WXT_Regist_Invalid);
     [_baseView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_baseView];
     
     
     yOffset = 20;
     UILabel *line1 = [[UILabel alloc] init];
-    line1.frame = CGRectMake(0, yOffset+20.5, IPHONE_SCREEN_WIDTH, 0.5);
+    line1.frame = CGRectMake(0, yOffset+20.5, Size.width, 0.5);
     [line1 setBackgroundColor:WXColorWithInteger(0xFFFFFF)];
     [_baseView addSubview:line1];
     
     xOffset = 20;
     CGFloat labelWidth = 50;
-    CGFloat labelHeight = 16;
+    CGFloat labelHeight = 18;
     
     
     for(int i = 0;i < WXT_Regist_Invalid; i++){
@@ -133,20 +133,21 @@ enum{
         [_baseView addSubview:phoneLabel];
         
         UILabel *line2 = [[UILabel alloc] init];
-        line2.frame = CGRectMake(xOffset, phoneLabel.frame.origin.y+26, IPHONE_SCREEN_WIDTH-xOffset, 0.5);
+        line2.frame = CGRectMake(xOffset, phoneLabel.frame.origin.y+26, Size.width-xOffset, 0.5);
         [line2 setBackgroundColor:WXColorWithInteger(0xFFFFFF)];
         [_baseView addSubview:line2];
         if(i == WXT_Regist_Invalid-1){
-            line2.frame = CGRectMake(0, phoneLabel.frame.origin.y+26, IPHONE_SCREEN_WIDTH, 0.5);
+            line2.frame = CGRectMake(0, phoneLabel.frame.origin.y+26, Size.width, 0.5);
             [line2 setBackgroundColor:WXColorWithInteger(0xFFFFFF)];
         }
     }
+    
     
     xOffset += labelWidth+10;
     yOffset = line1.frame.origin.y+13;
     CGFloat textWith = 114;
     _userTextField = [[WXTUITextField alloc] init];
-    _userTextField.frame = CGRectMake(xOffset, yOffset, textWith, labelHeight);
+    _userTextField.frame = CGRectMake(xOffset, yOffset+1, textWith, labelHeight+4);
     [_userTextField setBackgroundColor:[UIColor clearColor]];
     [_userTextField setReturnKeyType:UIReturnKeyDone];
     [_userTextField setKeyboardType:UIKeyboardTypePhonePad];
@@ -159,9 +160,9 @@ enum{
     [_userTextField setFont:WXTFont(14.0)];
     [_baseView addSubview:_userTextField];
     
-    yOffset += 40;
+    yOffset += 44;
     _fetchPwd = [[WXTUITextField alloc] init];
-    _fetchPwd.frame = CGRectMake(xOffset, yOffset-5, textWith, labelHeight);
+    _fetchPwd.frame = CGRectMake(xOffset, yOffset-4, textWith, labelHeight+4);
     [_fetchPwd setBackgroundColor:[UIColor clearColor]];
     [_fetchPwd setReturnKeyType:UIReturnKeyDone];
     [_fetchPwd setKeyboardType:UIKeyboardTypePhonePad];
@@ -176,14 +177,15 @@ enum{
     
     
     xOffset += textWith;
-    yOffset += 20;
+    yOffset += 22;
     UILabel *line3 = [[UILabel alloc] init];
     line3.frame = CGRectMake(xOffset, yOffset-35, 0.5, EveryCellHeight-3);
     [line3 setBackgroundColor:WXColorWithInteger(0xa1c6e5)];
     [_baseView addSubview:line3];
     
+    CGFloat gainBtnWidth = 80;
     _gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    _gainBtn.frame = CGRectMake(xOffset+30, yOffset-30, 80, 30);
+    _gainBtn.frame = CGRectMake(xOffset+(Size.width-xOffset-gainBtnWidth)/2, yOffset-33, gainBtnWidth, 30);
     [_gainBtn setBackgroundColor:[UIColor clearColor]];
     [_gainBtn setTitle:@"获取" forState:UIControlStateNormal];
     [_gainBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
@@ -194,7 +196,7 @@ enum{
     
     xOffset -= textWith;
     _pwdTextfield = [[WXTUITextField alloc] init];
-    _pwdTextfield.frame = CGRectMake(xOffset, yOffset+12, textWith, labelHeight);
+    _pwdTextfield.frame = CGRectMake(xOffset, yOffset+10, textWith, labelHeight+4);
     [_pwdTextfield setBackgroundColor:[UIColor clearColor]];
     [_pwdTextfield setReturnKeyType:UIReturnKeyDone];
     [_pwdTextfield addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -206,9 +208,9 @@ enum{
     [_pwdTextfield setFont:WXTFont(14.0)];
     [_baseView addSubview:_pwdTextfield];
     
-    yOffset += 40;
+    yOffset += 44;
     _otherPhone = [[WXTUITextField alloc] init];
-    _otherPhone.frame = CGRectMake(xOffset, yOffset+8, textWith, labelHeight);
+    _otherPhone.frame = CGRectMake(xOffset, yOffset+5, textWith, labelHeight+4);
     [_otherPhone setBackgroundColor:[UIColor clearColor]];
     [_otherPhone setReturnKeyType:UIReturnKeyDone];
     [_otherPhone setKeyboardType:UIKeyboardTypePhonePad];
@@ -247,14 +249,14 @@ enum{
     }
     [UIView animateWithDuration:0.3 animations:^{
         [textLabel setHidden:YES];
-        [_baseView setFrame:CGRectMake(0, 30, IPHONE_SCREEN_WIDTH, 200)];
+        [_baseView setFrame:CGRectMake(0, 30, Size.width, 200)];
     }];
 }
 
 - (void)hideKeyBoardDur{
     [UIView animateWithDuration:0.3 animations:^{
         [textLabel setHidden:NO];
-        [_baseView setFrame:CGRectMake(0, 100, IPHONE_SCREEN_WIDTH, 200)];
+        [_baseView setFrame:CGRectMake(0, 100, Size.width, 200)];
     }];
 }
 

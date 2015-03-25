@@ -37,7 +37,7 @@
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, -20, Size.width, Size.height);
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setShowsVerticalScrollIndicator:NO];
@@ -94,7 +94,13 @@
     [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:quitBtn];
     
-    CGRect rect = CGRectMake(0, 0, Size.width, 300);
+    CGRect rect = CGRectMake(0, 0, Size.width, 220);
+    if(Size.width == 375){
+        rect = CGRectMake(0, 0, Size.width, 320);
+    }
+    if(Size.width == 414){
+        rect = CGRectMake(0, 0, Size.width, 390);
+    }
     [footView setFrame:rect];
     return footView;
 }
