@@ -16,6 +16,7 @@
 @protocol RechargeViewDelegate;
 @interface RechargeView : UIView
 @property (nonatomic,assign) id<RechargeViewDelegate>delegate;
+@property (nonatomic,strong) NSString *rechargeUserphoneStr;
 -(void)removeNotification;
 @end
 

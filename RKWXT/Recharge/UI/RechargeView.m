@@ -157,13 +157,17 @@
 }
 
 -(void)submit{
-//    if(_numTextfield.text.length < 6 || _pwdTextfield.text.length < 6){
-//        [UtilTool showAlertView:@"帐号或密码格式错误"];
-//        return;
-//    }
+    if(_rechargeUserphoneStr.length != 11){
+        [UtilTool showAlertView:@"您要充值的手机号格式错误"];
+        return;
+    }
+    if(_numTextfield.text.length < 1 || _pwdTextfield.text.length < 1){
+        [UtilTool showAlertView:@"帐号或密码格式错误"];
+        return;
+    }
     NSString *numberStr = _numTextfield.text;
     NSString *pwdStr = _pwdTextfield.text;
-    [_model rechargeWithCardNum:numberStr andPwd:pwdStr];
+    [_model rechargeWithCardNum:numberStr andPwd:pwdStr withRechargePhone:_rechargeUserphoneStr];
 }
 
 -(void)rechargeSucceed{

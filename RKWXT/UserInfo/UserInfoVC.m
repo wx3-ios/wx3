@@ -37,7 +37,7 @@
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-20);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setShowsVerticalScrollIndicator:NO];

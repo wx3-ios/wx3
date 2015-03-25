@@ -11,7 +11,7 @@
 #import "RechargeView.h"
 
 #define Size self.view.bounds.size
-#define HeadViewHeight (50)
+#define HeadViewHeight (80)
 #define kAnimatedDur (0.7)
 
 enum{
@@ -24,6 +24,8 @@ enum{
     UITableView *_tableView;
     BOOL showRecharge;
     RechargeView *_rechargeView;
+    
+    WXUITextField *_textField;
 }
 @end
 
@@ -71,13 +73,26 @@ enum{
     CGFloat yOffset = 15;
     CGFloat labelHeight = 18;
     UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.frame = CGRectMake(0, yOffset, Size.width, labelHeight);
+    phoneLabel.frame = CGRectMake(0, yOffset, Size.width/2-10, labelHeight);
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
-    [phoneLabel setTextAlignment:NSTextAlignmentCenter];
-    [phoneLabel setText:[NSString stringWithFormat:@"充值账号: %@",userDefault.user]];
+    [phoneLabel setTextAlignment:NSTextAlignmentRight];
+    [phoneLabel setText:[NSString stringWithFormat:@"充值账号: "]];
     [phoneLabel setFont:WXTFont(15.0)];
     [phoneLabel setTextColor:WXColorWithInteger(0x323232)];
     [headView addSubview:phoneLabel];
+    
+    CGFloat xOffset = Size.width/2;
+    _textField = [[WXUITextField alloc] init];
+    _textField.frame = CGRectMake(xOffset-5, yOffset, Size.width*2/3, labelHeight);
+    [_textField setBackgroundColor:[UIColor clearColor]];
+    [_textField setText:userDefault.user];
+    [_textField setFont:WXTFont(15.0)];
+    [_textField setTextColor:WXColorWithInteger(0x323232)];
+    [_textField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_textField addTarget:self action:@selector(textFieldChange) forControlEvents:UIControlEventEditingChanged];
+    [_textField setKeyboardType:UIKeyboardTypeNumberPad];
+    [_textField setTextAlignment:NSTextAlignmentLeft];
+    [headView addSubview:_textField];
     
     yOffset += labelHeight+10;
     UILabel *line = [[UILabel alloc] init];
@@ -85,9 +100,27 @@ enum{
     [line setBackgroundColor:[UIColor grayColor]];
     [headView addSubview:line];
     
+    yOffset += 6;
+    UILabel *textLabel = [[UILabel alloc] init];
+    textLabel.frame = CGRectMake(0, yOffset, Size.width, labelHeight);
+    [textLabel setBackgroundColor:[UIColor clearColor]];
+    [textLabel setFont:WXTFont(10.0)];
+    [textLabel setText:@"用户可以替他人充值,在充值账号处修改被充值的账号即可"];
+    [textLabel setTextAlignment:NSTextAlignmentCenter];
+    [textLabel setTextColor:WXColorWithInteger(0x028fcd)];
+    [headView addSubview:textLabel];
+    
     [headView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     headView.frame = CGRectMake(0, 0, Size.width, HeadViewHeight);
     return headView;
+}
+
+-(void)textFieldDone:(id)sender{
+    [_textField resignFirstResponder];
+}
+
+-(void)textFieldChange{
+    _rechargeView.rechargeUserphoneStr = _textField.text;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -115,7 +148,7 @@ enum{
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 40;
+    return 10;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

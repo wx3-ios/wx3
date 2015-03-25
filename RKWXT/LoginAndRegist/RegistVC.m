@@ -215,7 +215,7 @@ enum{
     [_otherPhone setReturnKeyType:UIReturnKeyDone];
     [_otherPhone setKeyboardType:UIKeyboardTypePhonePad];
     [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
-    [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_otherPhone addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_otherPhone setTextColor:WXColorWithInteger(0xFFFFFF)];
     [_otherPhone setTintColor:[UIColor whiteColor]];
     [_otherPhone setPlaceHolder:@"请填写推荐人" color:WXColorWithInteger(0xa5baca)];
