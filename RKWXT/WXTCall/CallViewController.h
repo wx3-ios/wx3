@@ -19,9 +19,11 @@ typedef enum{
     E_KeyPad_Show,
     E_KeyPad_Down,
 }E_KeyPad_Type;
+
 #define kInputChange        @"InputChange"
 #define NumberBtnHeight (56)
 #define InputTextHeight (35)
+#define yGap (66)
 
 @protocol CallPhoneDelegate;
 @interface CallViewController : BaseVC

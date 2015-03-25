@@ -106,6 +106,8 @@
 		129EF9061AC1097200B3C8E2 /* *N.png in Resources */ = {isa = PBXBuildFile; fileRef = 129EF9041AC1097200B3C8E2 /* *N.png */; };
 		129EF9071AC1097200B3C8E2 /* *S.png in Resources */ = {isa = PBXBuildFile; fileRef = 129EF9051AC1097200B3C8E2 /* *S.png */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
+		12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */; };
+		12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CFE6501AC1A210009C710B /* CallHistoryEntity.m */; };
 		12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D039F01AB3489200DD7E56 /* BaseVC.m */; };
 		12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8661AB673910039A197 /* wxtRecharge@2x.png */; };
 		12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */; };
@@ -345,7 +347,6 @@
 		775C58B71ABA7B75005B6B40 /* RedPacketBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58761ABA7B75005B6B40 /* RedPacketBalance.m */; };
 		775C58B81ABA7B75005B6B40 /* RedPacketEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58781ABA7B75005B6B40 /* RedPacketEntity.m */; };
 		775C58B91ABA7B75005B6B40 /* RedPacketRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C587A1ABA7B75005B6B40 /* RedPacketRule.m */; };
-		775C58BA1ABA7B75005B6B40 /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C587D1ABA7B75005B6B40 /* CallHistoryEntity.m */; };
 		775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C587F1ABA7B75005B6B40 /* CallRecord.m */; };
 		775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58821ABA7B75005B6B40 /* SetMealEntity.m */; };
 		775C58BD1ABA7B75005B6B40 /* WXGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58841ABA7B75005B6B40 /* WXGood.m */; };
@@ -533,6 +534,9 @@
 		129EF9041AC1097200B3C8E2 /* *N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "*N.png"; sourceTree = "<group>"; };
 		129EF9051AC1097200B3C8E2 /* *S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "*S.png"; sourceTree = "<group>"; };
 		12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultContactIcon@2x.png"; sourceTree = "<group>"; };
+		12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		12CFE64F1AC1A210009C710B /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
+		12CFE6501AC1A210009C710B /* CallHistoryEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallHistoryEntity.m; sourceTree = "<group>"; };
 		12D039EF1AB3489200DD7E56 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
 		12D039F01AB3489200DD7E56 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 		12D0C8661AB673910039A197 /* wxtRecharge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxtRecharge@2x.png"; sourceTree = "<group>"; };
@@ -982,8 +986,6 @@
 		775C58781ABA7B75005B6B40 /* RedPacketEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacketEntity.m; sourceTree = "<group>"; };
 		775C58791ABA7B75005B6B40 /* RedPacketRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPacketRule.h; sourceTree = "<group>"; };
 		775C587A1ABA7B75005B6B40 /* RedPacketRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacketRule.m; sourceTree = "<group>"; };
-		775C587C1ABA7B75005B6B40 /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
-		775C587D1ABA7B75005B6B40 /* CallHistoryEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallHistoryEntity.m; sourceTree = "<group>"; };
 		775C587E1ABA7B75005B6B40 /* CallRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallRecord.h; sourceTree = "<group>"; };
 		775C587F1ABA7B75005B6B40 /* CallRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallRecord.m; sourceTree = "<group>"; };
 		775C58811ABA7B75005B6B40 /* SetMealEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMealEntity.h; sourceTree = "<group>"; };
@@ -1085,6 +1087,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */,
 				777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */,
 				777059B61AAFE48C0097526C /* AddressBookUI.framework in Frameworks */,
 				1F036786D135E645F286F56B /* libPods.a in Frameworks */,
@@ -2328,8 +2331,8 @@
 		775C587B1ABA7B75005B6B40 /* CallHistory */ = {
 			isa = PBXGroup;
 			children = (
-				775C587C1ABA7B75005B6B40 /* CallHistoryEntity.h */,
-				775C587D1ABA7B75005B6B40 /* CallHistoryEntity.m */,
+				12CFE64F1AC1A210009C710B /* CallHistoryEntity.h */,
+				12CFE6501AC1A210009C710B /* CallHistoryEntity.m */,
 				775C587E1ABA7B75005B6B40 /* CallRecord.h */,
 				775C587F1ABA7B75005B6B40 /* CallRecord.m */,
 			);
@@ -2512,6 +2515,7 @@
 		AD94EECE23B2F2543B7D284C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */,
 				77DB94281AAFEEE10021A816 /* libGossip.a */,
 				77DB94291AAFEEE10021A816 /* libGossip-i386.a */,
 				777059B31AAFE48C0097526C /* AddressBook.framework */,
@@ -2793,7 +2797,6 @@
 				775842F01AB95A300039B129 /* WXUITextViewCell.m in Sources */,
 				7758432E1AB95A300039B129 /* WXUISwitch.m in Sources */,
 				7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */,
-				775C58BA1ABA7B75005B6B40 /* CallHistoryEntity.m in Sources */,
 				775C586C1ABA7A52005B6B40 /* SimpleContacterCell.m in Sources */,
 				2563B4371AAADA9B00C04227 /* RegisterViewController.m in Sources */,
 				775842C61AB95A300039B129 /* it_lib_db.cpp in Sources */,
@@ -2941,6 +2944,7 @@
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
 				775C58CC1ABA7B75005B6B40 /* SubShopModel.m in Sources */,
 				775843111AB95A300039B129 /* WXMutiScanViewCell.m in Sources */,
+				12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */,
 				775842EE1AB95A300039B129 /* WXDetailTextCell.m in Sources */,
 				7758432A1AB95A300039B129 /* WXUIPageControl.m in Sources */,
 				77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */,
@@ -3178,8 +3182,8 @@
 			baseConfigurationReference = 45775F4393C07B1E2AC5B28B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ding Bin (S7PY53887M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ding Bin (S7PY53887M)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RKWXT/RKWXT-Prefix.pch";
@@ -3191,7 +3195,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "70807541-3c65-4e9f-b30a-fe8340ecebff";
 			};
 			name = Debug;
 		};
@@ -3200,8 +3204,8 @@
 			baseConfigurationReference = E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen WoXin Network Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen WoXin Network Technology Co., Ltd.";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RKWXT/RKWXT-Prefix.pch";
@@ -3213,7 +3217,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "663edbed-584c-4c2c-97d2-11229bcfd4bd";
 			};
 			name = Release;
 		};

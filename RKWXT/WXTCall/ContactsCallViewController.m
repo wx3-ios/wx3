@@ -42,12 +42,12 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     _recentCall = [[CallViewController alloc]init];
-    [_recentCall.view setFrame:CGRectMake(0, 72, Size.width, Size.height-72-50)];
+    [_recentCall.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap-50)];
     [_recentCall setKeyPad_type:E_KeyPad_Show];
     [_recentCall setCallDelegate:self];
     
     _contacterVC = [[WXContacterVC alloc] init];
-    [_contacterVC.view setFrame:CGRectMake(0, 72, Size.width, Size.height-72-50)];
+    [_contacterVC.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap-50)];
     [_contacterVC setDetailDelegate:self];
     
     [self.view addSubview:_recentCall.view];
@@ -55,7 +55,7 @@
     
     contactModel = [[WXContacterModel alloc] init];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Size.width, Size.height - 64 - 50 - 4*NumberBtnHeight-InputTextHeight)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yGap, Size.width, Size.height - yGap - 50 - 4*NumberBtnHeight-InputTextHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
 //    [self.view addSubview:_tableView];

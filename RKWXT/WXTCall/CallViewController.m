@@ -16,12 +16,19 @@
 
 #define Size self.view.bounds.size
 
+typedef enum{
+    ScrollView_Type_Normal = 0,
+    ScrollView_Type_DidScroll,
+    ScrollView_Type_StopScroll,
+}ScrollView_Type;
+
 @interface CallViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIView *_keybView;
     UILabel *_textLabel;
     NSString *textString;
     NSArray *_numSelArr;
     NSArray *_numNorArr;
+    ScrollView_Type scroll_type;
     
     //
     UITableView *_tableView;
@@ -46,6 +53,7 @@
     [super viewWillAppear:animated];
     self.keyPad_type = E_KeyPad_Show; //键盘
     self.downview_type = DownView_show;
+    scroll_type = ScrollView_Type_Normal;
 }
 
 -(void)viewDidLoad{
@@ -73,7 +81,7 @@
 
 -(void)createKeyboardView{
     _keybView = [[UIView alloc] init];
-    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-InputTextHeight-72-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight+InputTextHeight);
+    _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-InputTextHeight-yGap-50-4*NumberBtnHeight, IPHONE_SCREEN_WIDTH, 4*NumberBtnHeight+InputTextHeight);
     [_keybView setBackgroundColor:WXColorWithInteger(0xe6e6e6)];
     [self.view addSubview:_keybView];
     
@@ -88,14 +96,14 @@
     
     UIImage *eyeImg = [UIImage imageNamed:@"keyboardEye.png"];
     WXTUIButton *eyeBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height)/2, eyeImg.size.width, eyeImg.size.height);
+    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height-8)/2, eyeImg.size.width+8, eyeImg.size.height+8);
     [eyeBtn setBackgroundColor:[UIColor clearColor]];
     [eyeBtn setImage:eyeImg forState:UIControlStateNormal];
     [_keybView addSubview:eyeBtn];
     
     UIImage *img = [UIImage imageNamed:@"delNumber.png"];
     WXTUIButton *delBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    delBtn.frame = CGRectMake(Size.width-img.size.width-15, (InputTextHeight-img.size.height)/2, img.size.width, img.size.height);
+    delBtn.frame = CGRectMake(Size.width-img.size.width-15, (InputTextHeight-img.size.height-8)/2, img.size.width+8, img.size.height+8);
     [delBtn setBackgroundColor:[UIColor clearColor]];
     [delBtn setImage:img forState:UIControlStateNormal];
     [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -166,11 +174,12 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:ShowDownView object:nil];
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-50, Size.width, 4*NumberBtnHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50, Size.width, 4*NumberBtnHeight);
         }];
         return;
     }
     if(self.keyPad_type == E_KeyPad_Down){
+        scroll_type = ScrollView_Type_StopScroll;
         self.keyPad_type = E_KeyPad_Show;
         if(textString.length > 0){
             _downview_type = DownView_show;
@@ -180,7 +189,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:HideDownView object:nil];
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-50-4*NumberBtnHeight-InputTextHeight, Size.width, 4*NumberBtnHeight+InputTextHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50-4*NumberBtnHeight-InputTextHeight, Size.width, 4*NumberBtnHeight+InputTextHeight);
 //            if(Size.width>320){ //简单判断一下是苹果6及以上
 //                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-50-4*NumberBtnHeight, Size.width, 4*NumberBtnHeight);
 //            }
@@ -205,12 +214,17 @@
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
+    
     if(_callDelegate && [_callDelegate respondsToSelector:@selector(callPhoneWith:)]){
         [_callDelegate callPhoneWith:textString];
     }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(scroll_type == ScrollView_Type_DidScroll){
+        return;
+    }
+    scroll_type = ScrollView_Type_DidScroll;
     self.keyPad_type = E_KeyPad_Show;
     [self show];
     if(textString.length > 0){
