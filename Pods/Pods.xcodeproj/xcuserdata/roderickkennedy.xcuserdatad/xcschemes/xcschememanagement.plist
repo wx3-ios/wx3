@@ -8,111 +8,133 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Pods-CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-EGODatabase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-KVOController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-OpenUDID.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-Reachability.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Pods-RegexKitLite.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>Pods-Toast.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>121929AF01987185C0757191</key>
+		<key>134245C4026B576ABC93CE3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1308A01F1354827B954B2E56</key>
+		<key>3601CE40E5908810CB150990</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>247483B70D4E0B144E944791</key>
+		<key>68A2CF2A67E5A62D74192A80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>34F619F364A24757C074B7F3</key>
+		<key>6951010E95D26E5DF10C7EDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D2B4F583A81926EB7912229</key>
+		<key>77D0E0BE39F48D64960603E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4FDBFEF2AE956F331EE5F492</key>
+		<key>7E6812B359FBB542AC8805CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6CA260F0F84E0FD70CEF5550</key>
+		<key>A0ABF9FF038434CE5C78C72B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6577C83F191AB64A6E3E5FB</key>
+		<key>AE9889CE37A543003FA117BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D95285E3446AAFD0D4699954</key>
+		<key>CCA9732271905BD28CE8872A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DEE4C00DA85EF8E8C24F303E</key>
+		<key>DF1338A3C9054FEA66FBC21C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC906BCD537CE57DB72A0096</key>
+		<key>F96742A25387E04F14C50BD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
