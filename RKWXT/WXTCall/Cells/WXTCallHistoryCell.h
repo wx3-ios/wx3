@@ -7,10 +7,12 @@
 //
 
 #import "WXUITableViewCell.h"
-
+@class CallHistoryEntity;
 @protocol CallHistoryDelegate;
 @interface WXTCallHistoryCell : WXUITableViewCell
+@property (nonatomic, strong) CallHistoryEntity * callHistoryEntity;
 @property (nonatomic,assign) id<CallHistoryDelegate>delegate;
+-(void)load:(CallHistoryEntity*)callHistoryEntity;
 @end
 
 @protocol CallHistoryDelegate <NSObject>

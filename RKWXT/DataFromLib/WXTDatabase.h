@@ -12,7 +12,7 @@
 +(instancetype)shareDatabase;
 -(BOOL)createDatabase:(NSString *)dbName;
 -(BOOL)createWXTTable;
--(void)insertCallHistory:(NSString *)telephone date:(NSString*)date type:(int)type;
+-(void)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone date:(NSString*)aDate type:(int)aType;
 -(NSMutableArray *)queryCallHistory;
 /**
  @param telephone 电话号码

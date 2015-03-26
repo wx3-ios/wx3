@@ -7,7 +7,7 @@
 //
 
 #import "WXTCallHistoryCell.h"
-
+#import "CallHistoryEntity.h"
 @interface WXTCallHistoryCell(){
     UILabel *_nameLabel;
     UILabel *_userPhone;
@@ -68,10 +68,11 @@
     return self;
 }
 
--(void)load{
-    [_nameLabel setText:@"陈万阳"];
-    [_userPhone setText:@"18613213051"];
-    [_callTime setText:@"2015-03-26"];
+-(void)load:(CallHistoryEntity *)callHistoryEntity{
+    _callHistoryEntity = callHistoryEntity;
+    [_nameLabel setText:callHistoryEntity.name];
+    [_userPhone setText:_callHistoryEntity.phoneNumber];
+    [_callTime setText:_callHistoryEntity.date];
 }
 
 -(void)callHistory{

@@ -81,4 +81,11 @@ enum{
     return ret;
 }
 
+-(CallHistoryEntity*)initWithName:(NSString*)name telephone:(NSString*)telephone date:(NSString*)date type:(E_CallHistoryType)type{
+    CallHistoryEntity * entity = [[CallHistoryEntity alloc] init];
+    entity.name = name;
+    entity.phoneNumber = telephone;
+    entity.date = date;
+    return entity;
+}
 @end

@@ -10,11 +10,12 @@
 #define RKWXT_DBCommon_h
 
 
-#define kWXTCallTable                       @"CREATE TABLE IF NOT EXISTS Call (ID INTEGER PRIMARY KEY AUTOINCREMENT, telephone TEXT, date TEXT, type INTEGER)"
+#define kWXTCallTable                       @"CREATE TABLE IF NOT EXISTS Call (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,telephone TEXT, date TEXT, type INTEGER)"
+#define kWXTCall_Column_Name                @"name"
 #define kWXTCall_Column_Telephone           @"telephone"
 #define kWXTCall_Column_Date                @"date"
 #define kWXTCall_Column_Type                @"type"
-#define kWXTInsertCallHistory               @"INSERT INTO Call(telephone,date,type) values('%@','%@','%i')"
+#define kWXTInsertCallHistory               @"INSERT INTO Call(name,telephone,date,type) values('%@','%@','%@','%i')"
 #define kWXTQueryCallHistory                @"select * from Call"
 #define kWXTDelCallHistory                  @"delete from Call where telephone=%@"
 

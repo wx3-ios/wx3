@@ -15,7 +15,6 @@
 #import "SysContacterEntityEx.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "WXTCallHistoryCell.h"
-
 #define Size self.view.bounds.size
 
 typedef enum{
@@ -79,6 +78,7 @@ typedef enum{
     [self createKeyboardView];
     [self addNotification];
 }
+
 
 -(void)addNotification{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
@@ -295,8 +295,8 @@ typedef enum{
         cell = [[WXTCallHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:callHistoryCellIdentifier] ;
     }
     //    [cell setBaseDelegate:self];
-//    [cell setCellInfo:[_model.callHistoryList objectAtIndex:row]];
-    [cell load];
+//    [cell setCellInfo:[_model.callHistory objectAtIndex:row]];
+    [cell load:[_model.callHistory objectAtIndex:row]];
     return cell;
 }
 
@@ -314,7 +314,7 @@ typedef enum{
 
 #pragma mark tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger row = 1;
+    NSInteger row = _model.callHistory.count;
     if(_showContacters){
         row = _model.contacterFilter.count;
     }

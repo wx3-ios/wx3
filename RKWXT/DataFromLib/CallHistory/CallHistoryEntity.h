@@ -19,13 +19,16 @@ typedef enum {
 
 @interface CallHistoryEntity : NSObject
 @property (nonatomic,assign)NSInteger UID;
+@property (nonatomic, retain)NSString * name;
 @property (nonatomic,retain)NSString *phoneNumber; //电话号码
 @property (nonatomic,retain)NSString *wxID;//我信ID
 @property (nonatomic,assign)E_CallHistoryType historyType;//历史记录的类型
 @property (nonatomic,retain)NSDate *startTime;//开始时间
+@property (nonatomic, retain)NSString * date;
 @property (nonatomic,assign)NSInteger duration;//通话时长
 @property (nonatomic,assign)E_Call_Type callType;//通话类型
 
 + (CallHistoryEntity*)recordWithPramArray:(NSArray*)pramArray;
 - (BOOL)canMergeRecord:(CallHistoryEntity*)entity;
+-(CallHistoryEntity*)initWithName:(NSString*)name telephone:(NSString*)telephone date:(NSString*)date type:(E_CallHistoryType)type;
 @end

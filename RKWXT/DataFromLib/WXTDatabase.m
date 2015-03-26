@@ -9,6 +9,8 @@
 #import "WXTDatabase.h"
 #import "DBCommon.h"
 #import "EGODatabase.h"
+#import "CallHistoryEntity.h"
+#import "WXTUserOBJ.h"
 @interface WXTDatabase(){
     EGODatabase * _database;
 }
@@ -48,7 +50,7 @@
 }
 
 -(BOOL)createWXTTable{
-    if ([_database open]) {
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
         if ([_database executeUpdate:kWXTCallTable]) {
             NSLog(@"%s用户通话数据表创建成功",__FUNCTION__);
             return YES;
@@ -62,9 +64,9 @@
     }
 }
 
--(void)insertCallHistory:(NSString *)telephone date:(NSString*)date type:(int)type{
-    if ([_database open]) {
-        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,telephone,date,type]];
+-(void)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone date:(NSString*)aDate type:(int)aType{
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aDate,aType]];
         if ([result errorCode] == 0) {
             NSLog(@"%s用户通话记录插入success:%lu",__FUNCTION__,[result count]);
         }else{
@@ -76,16 +78,18 @@
 }
 
 -(NSMutableArray *)queryCallHistory{
-    if ([_database open]) {
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
         EGODatabaseResult * result = [_database executeQuery:kWXTQueryCallHistory];
         if ([result errorCode] == 0) {
             NSMutableArray *mutableArr = [NSMutableArray array];
             for (int i= 0 ; i < [result count]; i++) {
                 EGODatabaseRow * databaseRow = [result rowAtIndex:i];
+                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
                 NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
                 NSString * date = [databaseRow stringForColumn:kWXTCall_Column_Date];
                 int type = [databaseRow intForColumn:kWXTCall_Column_Date];
-                NSLog(@"telephone:%@\tdate:%@\ttype:%i",telephone,date,type);
+                CallHistoryEntity * entity = [[CallHistoryEntity alloc]initWithName:name telephone:telephone date:date type:type];
+                [mutableArr addObject:entity];
             }
             NSLog(@"%s用户通话记录查询success:%lu",__FUNCTION__,[result count]);
             return mutableArr;
@@ -99,7 +103,7 @@
 }
 
 -(void)delCallHistory:(NSString*)telephone{
-    if ([_database open]) {
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
         EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,telephone]];
         if ([result errorCode] == 0) {
             NSLog(@"%s用户通话记录删除success:%lu",__FUNCTION__,[result count]);

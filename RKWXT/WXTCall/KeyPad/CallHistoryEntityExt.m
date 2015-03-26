@@ -17,9 +17,6 @@
 @implementation CallHistoryEntityExt
 @synthesize recordArray = _recordArray;
 
-- (void)dealloc{
-//    [super dealloc];
-}
 
 - (id)init{
     if(self = [super init]){

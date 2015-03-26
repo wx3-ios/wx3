@@ -8,10 +8,12 @@
 
 #import "WXKeyPadModel.h"
 #import "SysContacterEntityEx.h"
-//#import "CallRecord.h"
+#import "CallRecord.h"
 #import "CallHistoryEntityExt.h"
 #import "StrangerEntity.h"
 #import "it_lib.h"
+
+#import "WXTDatabase.h"
 
 @interface WXKeyPadModel()
 {
@@ -21,16 +23,17 @@
 @end
 
 @implementation WXKeyPadModel
+
 - (void)dealloc{
     _delegate = nil;
     [self removeOBS];
-//    [super dealloc];
 }
 
 - (id)init{
     if(self = [super init]){
-        _callHistoryList = [[NSMutableArray alloc] init];
-        _contacterFilter = [[NSMutableArray alloc] init];
+//        _callHistoryList = [[NSMutableArray alloc] init];
+//        _contacterFilter = [[NSMutableArray alloc] init];
+        _callHistory = [NSMutableArray array];
         [self loadHistory];
         [self addOBS];
     }
@@ -38,11 +41,10 @@
 }
 
 - (void)loadHistory{
-    [_callHistoryList removeAllObjects];
+//    [_callHistoryList removeAllObjects];
     
 //    NSArray *list = [CallRecord sharedCallRecord].callHistoryList;
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    CallHistoryEntityExt *entityExt = nil;
+//    CallHistoryEntityExt *entityExt = nil;
 //    for(CallHistoryEntity *entity in list){
 //        NSString *phoneNumber = entity.phoneNumber;
 //        if(!phoneNumber || [phoneNumber length] < 6){
@@ -78,8 +80,8 @@
 //                }
 //            }
 //        }
-//    }
-//    [pool drain];
+    //    }
+    _callHistory =[[WXTDatabase shareDatabase] queryCallHistory];
 }
 
 - (void)searchContacter:(NSString*)searchString{
@@ -88,7 +90,6 @@
         return;
     }
     NSArray *list = [AddressBook sharedAddressBook].contactList;
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for(ContacterEntity *entity in list){
         NSArray *phoneNumbers = entity.phoneNumbers;
         for(NSString *phone in phoneNumbers){
@@ -100,7 +101,6 @@
             }
         }
     }
-//    [pool drain];
 }
 
 #pragma mark 删除通话记录

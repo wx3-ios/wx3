@@ -166,7 +166,6 @@
 //    cell.imageView.image = [UIImage imageNamed:@""];
     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
     cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[indexPath.row]).name;
-    cell.detailTextLabel.text = @"1234";
     return cell;
 }
 

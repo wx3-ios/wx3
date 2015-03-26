@@ -8,7 +8,7 @@
 
 #import "CallBackVC.h"
 #import "CallModel.h"
-
+#import "WXTDatabase.h"
 #define Size self.view.bounds.size
 #define NormalTimer (15.0)
 
@@ -162,6 +162,12 @@
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
     [_model makeCallPhone:phoneStr];
     _model.callstatus_type = CallStatus_Type_starting;
+    NSDate * date = [NSDate date];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    formatter.dateFormat = @"MM-dd HH:mm";
+    NSString * dateStr = [formatter stringFromDate:date];
+    [[WXTDatabase shareDatabase] insertCallHistory:@"我信" telephone:phone date:dateStr type:1];
 }
 
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{

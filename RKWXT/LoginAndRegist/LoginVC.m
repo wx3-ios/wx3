@@ -13,7 +13,7 @@
 #import "WXTUITabBarController.h"
 #import "FetchPwdModel.h"
 #import "RegistVC.h"
-
+#import "WXTDatabase.h"
 #define Size self.view.bounds.size
 #define kMinUserLength (8)
 #define kUserExactLength (11)
@@ -342,6 +342,9 @@
     [tabbar createViewController];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tabbar];
     [self presentViewController:nav animated:YES completion:^{
+        WXTDatabase * database = [WXTDatabase shareDatabase];
+        [database createDatabase:userDefault.wxtID];
+        [database createWXTTable];
     }];
 }
 
