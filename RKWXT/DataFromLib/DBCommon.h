@@ -16,7 +16,7 @@
 #define kWXTCall_Column_Date                @"date"
 #define kWXTCall_Column_Type                @"type"
 #define kWXTInsertCallHistory               @"INSERT INTO Call(name,telephone,date,type) values('%@','%@','%@','%i')"
-#define kWXTQueryCallHistory                @"select * from Call"
+#define kWXTQueryCallHistory                @"SELECT * FROM Call ORDER BY date DESC LIMIT 0,50"
 #define kWXTDelCallHistory                  @"delete from Call where telephone=%@"
 
 #endif

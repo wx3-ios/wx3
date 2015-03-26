@@ -86,6 +86,7 @@ typedef enum{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
+    [defaultCenter addObserver:self selector:@selector(callHistoryChanged) name:D_Notification_Name_CallRecordAdded object:nil];
 }
 
 -(void)createKeyboardView{
@@ -393,6 +394,15 @@ typedef enum{
     _showContacters = NO;
     [_tableView reloadData];
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+}
+
+#pragma mark WXKeyPadModelDelegate
+-(void)callHistoryChanged{
+    
+}
+
+-(void)callRecordHasCleared{
+    
 }
 
 @end
