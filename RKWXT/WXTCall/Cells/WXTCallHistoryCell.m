@@ -12,6 +12,8 @@
     UILabel *_nameLabel;
     UILabel *_userPhone;
     UILabel *_callTime;
+    UILabel *linLabel;
+    WXTUIButton *callBtn;
 }
 @end
 
@@ -53,19 +55,50 @@
         [self.contentView addSubview:_callTime];
         
         xOffset += callTimeLabelWidth;
-        UILabel *linLabel = [[UILabel alloc] init];
+        linLabel = [[UILabel alloc] init];
         linLabel.frame = CGRectMake(xOffset, 0, 0.5, 44);
         [linLabel setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:linLabel];
         
         UIImage *callImg = [UIImage imageNamed:@"CallNormal.png"];
-        WXTUIButton *callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+        callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
         callBtn.frame = CGRectMake(xOffset+14, (44-callImg.size.height)/2, callImg.size.width, callImg.size.height);
         [callBtn setBackgroundImage:callImg forState:UIControlStateNormal];
         [callBtn addTarget:self action:@selector(callHistory) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:callBtn];
     }
     return self;
+}
+
+-(void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    CGRect rect = frame;
+    if(rect.size.width == 375){
+        CGRect callRect = _callTime.frame;
+        callRect.origin.x = 220;
+        [_callTime setFrame:callRect];
+        
+        CGRect lineRect = linLabel.frame;
+        lineRect.origin.x = 310;
+        [linLabel setFrame:lineRect];
+        
+        CGRect btnRect = callBtn.frame;
+        btnRect.origin.x = 336;
+        [callBtn setFrame:btnRect];
+    }
+    if(rect.size.width == 414){
+        CGRect callRect = _callTime.frame;
+        callRect.origin.x = 250;
+        [_callTime setFrame:callRect];
+        
+        CGRect lineRect = linLabel.frame;
+        lineRect.origin.x = 340;
+        [linLabel setFrame:lineRect];
+        
+        CGRect btnRect = callBtn.frame;
+        btnRect.origin.x = 366;
+        [callBtn setFrame:btnRect];
+    }
 }
 
 -(void)load{

@@ -89,7 +89,7 @@
     redCircle.frame = CGRectMake(137, 36, 8, 8);
     [redCircle setBackgroundColor:[UIColor redColor]];
     [redCircle setBorderRadian:8.0 width:1.0 color:[UIColor redColor]];
-    [self.view addSubview:redCircle];
+//    [self.view addSubview:redCircle];
 }
 
 -(void)segmentControlChange:(UISegmentedControl *)segmentControl{
