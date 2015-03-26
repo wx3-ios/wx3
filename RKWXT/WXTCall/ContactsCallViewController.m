@@ -38,14 +38,15 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    _recentCall = [[CallViewController alloc]init];
-    [_recentCall.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap-50)];
-    [_recentCall setKeyPad_type:E_KeyPad_Show];
-    [_recentCall setCallDelegate:self];
     
     _contacterVC = [[WXContacterVC alloc] init];
     [_contacterVC.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap-50)];
     [_contacterVC setDetailDelegate:self];
+    
+    _recentCall = [[CallViewController alloc]init];
+    [_recentCall.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap-50)];
+    [_recentCall setKeyPad_type:E_KeyPad_Show];
+    [_recentCall setCallDelegate:self];
     
     [self.view addSubview:_recentCall.view];
     [self loadSegmentControl];

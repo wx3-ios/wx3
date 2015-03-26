@@ -32,7 +32,7 @@
 - (id)init{
     if(self = [super init]){
 //        _callHistoryList = [[NSMutableArray alloc] init];
-//        _contacterFilter = [[NSMutableArray alloc] init];
+        _contacterFilter = [[NSMutableArray alloc] init];
         _callHistory = [NSMutableArray array];
         [self loadHistory];
         [self addOBS];

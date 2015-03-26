@@ -18,7 +18,7 @@ typedef enum{
 @interface CallModel : NSObject
 @property (nonatomic,assign) id<MakeCallDelegate>callDelegate;
 @property (nonatomic,assign) CallStatus_Type callstatus_type;
--(void)makeCallPhone:(NSString*)phoneStr;
+-(void)makeCallPhone:(NSString *)phoneStr;
 @end
 
 @protocol MakeCallDelegate <NSObject>

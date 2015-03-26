@@ -10,9 +10,9 @@
 @class CallHistoryEntity;
 @protocol CallHistoryDelegate;
 @interface WXTCallHistoryCell : WXUITableViewCell
-@property (nonatomic, strong) CallHistoryEntity * callHistoryEntity;
+//@property (nonatomic, strong) CallHistoryEntity * callHistoryEntity;
 @property (nonatomic,assign) id<CallHistoryDelegate>delegate;
--(void)load:(CallHistoryEntity*)callHistoryEntity;
+@property (nonatomic,strong) NSString *userName;
 @end
 
 @protocol CallHistoryDelegate <NSObject>

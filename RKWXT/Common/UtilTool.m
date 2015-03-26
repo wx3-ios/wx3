@@ -488,9 +488,13 @@
     if(!oldPhone){
         return nil;
     }
-    if(oldPhone.length <= 10){
+    if(oldPhone.length < 10){
         return oldPhone;
     }
+    if([oldPhone hasPrefix:@"0"]){
+        return oldPhone;
+    }
+    
     if([oldPhone hasPrefix:@"1"]){  //已1开始的字符串认作是手机号直接返回
         return oldPhone;
     }

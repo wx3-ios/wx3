@@ -8,16 +8,29 @@
 
 #import "WXTCallHistoryCell.h"
 #import "CallHistoryEntity.h"
+#import "SysContacterEntityEx.h"
+#import "WXKeyPadModel.h"
+
 @interface WXTCallHistoryCell(){
     UILabel *_nameLabel;
     UILabel *_userPhone;
     UILabel *_callTime;
     UILabel *linLabel;
     WXTUIButton *callBtn;
+    
+    WXKeyPadModel *_model;
 }
 @end
 
 @implementation WXTCallHistoryCell
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[WXKeyPadModel alloc] init];
+    }
+    return self;
+}
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -70,16 +83,48 @@
     return self;
 }
 
--(void)load:(CallHistoryEntity *)callHistoryEntity{
-    _callHistoryEntity = callHistoryEntity;
-    [_nameLabel setText:callHistoryEntity.name];
+-(void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    CGRect rect = frame;
+    if(rect.size.width == 375){
+        CGRect callRect = _callTime.frame;
+        callRect.origin.x = 220;
+        [_callTime setFrame:callRect];
+        
+        CGRect lineRect = linLabel.frame;
+        lineRect.origin.x = 310;
+        [linLabel setFrame:lineRect];
+        
+        CGRect btnRect = callBtn.frame;
+        btnRect.origin.x = 336;
+        [callBtn setFrame:btnRect];
+    }
+    if(rect.size.width == 414){
+        CGRect callRect = _callTime.frame;
+        callRect.origin.x = 250;
+        [_callTime setFrame:callRect];
+        
+        CGRect lineRect = linLabel.frame;
+        lineRect.origin.x = 340;
+        [linLabel setFrame:lineRect];
+        
+        CGRect btnRect = callBtn.frame;
+        btnRect.origin.x = 366;
+        [callBtn setFrame:btnRect];
+    }
+}
+
+-(void)load{
+    CallHistoryEntity *_callHistoryEntity = self.cellInfo;
+    [_nameLabel setText:_userName];
     [_userPhone setText:_callHistoryEntity.phoneNumber];
     [_callTime setText:_callHistoryEntity.date];
 }
 
 -(void)callHistory{
+    CallHistoryEntity *_callHistoryEntity = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(callHistoryName:andPhone:)]){
-        [_delegate callHistoryName:@"" andPhone:@""];
+        [_delegate callHistoryName:_userName andPhone:_callHistoryEntity.phoneNumber];
     }
 }
 

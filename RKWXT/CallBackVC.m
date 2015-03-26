@@ -14,7 +14,10 @@
 
 @interface CallBackVC()<MakeCallDelegate>{
     NSTimer *_timer;
+    NSTimer *_chengeTimer;
+    
     UIImageView *_lightImg;
+    UILabel *callStatus;
     
     NSInteger count;
     NSInteger time;
@@ -29,9 +32,6 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
     [self addNotification];
-    
-    _model = [[CallModel alloc] init];
-    [_model setCallDelegate:self];
 }
 
 -(void)viewDidLoad{
@@ -106,6 +106,16 @@
     CGFloat yOffset = 330;
     CGFloat textWidth = 200;
     CGFloat textHeight = 20;
+    callStatus = [[UILabel alloc] init];
+    callStatus.frame = CGRectMake((Size.width-textWidth)/2, yOffset-50, textWidth, textHeight);
+    [callStatus setBackgroundColor:[UIColor clearColor]];
+    [callStatus setFont:WXTFont(16.0)];
+    [callStatus setTextAlignment:NSTextAlignmentCenter];
+    [callStatus setText:@"呼叫成功"];
+    [callStatus setHidden:YES];
+    [callStatus setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [self.view addSubview:callStatus];
+    
     UILabel *textLabel = [[UILabel alloc] init];
     textLabel.frame = CGRectMake((Size.width-textWidth)/2, yOffset, textWidth, textHeight);
     [textLabel setBackgroundColor:[UIColor clearColor]];
@@ -159,9 +169,13 @@
 
 #pragma mark callDelegate
 -(void)callPhone:(NSString *)phone{
+    _model = [[CallModel alloc] init];
+    [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
     [_model makeCallPhone:phoneStr];
     _model.callstatus_type = CallStatus_Type_starting;
+    
+    
     NSDate * date = [NSDate date];
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
@@ -179,7 +193,14 @@
 }
 
 -(void)makeCallPhoneSucceed{
+    [callStatus setHidden:NO];
+    _chengeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideChangeStatus) userInfo:nil repeats:NO];
     _model.callstatus_type = CallStatus_Type_Ending;
+}
+
+-(void)hideChangeStatus{
+    [_chengeTimer invalidate];
+    [callStatus setHidden:YES];
 }
 
 -(void)removeNotification{
@@ -189,6 +210,7 @@
 -(void)back{
     _model.callstatus_type = CallStatus_Type_Ending;
     [_timer invalidate];
+    [_model setCallDelegate:nil];
     [self removeNotification];
     [self.navigationController popViewControllerAnimated:YES];
 }

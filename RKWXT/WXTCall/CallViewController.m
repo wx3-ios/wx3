@@ -15,6 +15,8 @@
 #import "SysContacterEntityEx.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "WXTCallHistoryCell.h"
+#import "CallHistoryEntity.h"
+
 #define Size self.view.bounds.size
 
 typedef enum{
@@ -23,7 +25,7 @@ typedef enum{
     ScrollView_Type_StopScroll,
 }ScrollView_Type;
 
-@interface CallViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>{
+@interface CallViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,CallHistoryDelegate>{
     UIView *_keybView;
     //
     UITextField *_textLabel;
@@ -273,6 +275,7 @@ typedef enum{
     }
 }
 
+//根据手机号匹配用户名，如果未匹配到返回手机号
 -(NSString*)searchPhoneNameWithUserPhone:(NSString*)userPhone{
     if(!userPhone){
         return nil;
@@ -289,6 +292,25 @@ typedef enum{
     return userPhone;
 }
 
+//根据手机号匹配用户名，如果未匹配到返回未知
+-(NSString*)searchPhoneNameWithUserPhones:(NSString*)userPhone{
+    NSString *userName = @"未知";
+    if(!userPhone){
+        return nil;
+    }
+    [_model searchContacter:@"1"];
+    for(SysContacterEntityEx *entity in _model.contacterFilter){
+        for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
+            NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
+            if([userPhone isEqualToString:newPhoneStr]){
+                phoneName = entity.contactEntity.name?entity.contactEntity.name:phoneStr;
+                return phoneName;
+            }
+        }
+    }
+    return userName;
+}
+
 #pragma mark tableViewDelegate
 - (WXTCallHistoryCell*)callHistoryCellAtRow:(NSInteger)row{
     static NSString *callHistoryCellIdentifier = @"callHistoryCellIdentifier";
@@ -297,8 +319,12 @@ typedef enum{
         cell = [[WXTCallHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:callHistoryCellIdentifier] ;
     }
     //    [cell setBaseDelegate:self];
-//    [cell setCellInfo:[_model.callHistory objectAtIndex:row]];
-    [cell load:[_model.callHistory objectAtIndex:row]];
+    [cell setDelegate:self];
+    CallHistoryEntity *entity = [_model.callHistory objectAtIndex:row];
+    NSString *name = [self searchPhoneNameWithUserPhones:entity.phoneNumber];
+    [cell setUserName:name];
+    [cell setCellInfo:[_model.callHistory objectAtIndex:row]];
+    [cell load];
     return cell;
 }
 
@@ -344,6 +370,14 @@ typedef enum{
         textString = [UtilTool callPhoneNumberRemovePreWith:entity.phoneMatched];
         [self callPhoneNumber];
     }
+}
+
+-(void)callHistoryName:(NSString *)nameStr andPhone:(NSString *)phoneStr{
+    if(!phoneStr){
+        return;
+    }
+    textString = phoneStr;
+    [self callPhoneNumber];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
