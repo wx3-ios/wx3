@@ -60,6 +60,10 @@
     [self createSignBtn];
 //    [self createView];
     [self createBackBtn];
+    
+    UISwipeGestureRecognizer *swip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backToLastPage)];
+    [swip setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swip];
 }
 
 //-(void)createView{

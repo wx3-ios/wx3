@@ -13,6 +13,7 @@
 #import "CallHistoryCell.h"
 #import "SimpleContacterCell.h"
 #import "SysContacterEntityEx.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 #define Size self.view.bounds.size
 
@@ -22,7 +23,7 @@ typedef enum{
     ScrollView_Type_StopScroll,
 }ScrollView_Type;
 
-@interface CallViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface CallViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>{
     UIView *_keybView;
     UITextField *_textLabel;
     NSString *textString;
@@ -77,7 +78,6 @@ typedef enum{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
-    [defaultCenter addObserver:self selector:@selector(callPhoneSucceed) name:CallPhoneSucceed object:nil];
 }
 
 -(void)createKeyboardView{
@@ -98,7 +98,7 @@ typedef enum{
     
     UIImage *eyeImg = [UIImage imageNamed:@"keyboardEye.png"];
     WXTUIButton *eyeBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height-12)/2, eyeImg.size.width+14, eyeImg.size.height+12);
+    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height-8)/2, eyeImg.size.width+10, eyeImg.size.height+8);
     [eyeBtn setBackgroundColor:[UIColor clearColor]];
     [eyeBtn setBackgroundImage:eyeImg forState:UIControlStateNormal];
     [_keybView addSubview:eyeBtn];
@@ -110,6 +110,11 @@ typedef enum{
     [delBtn setBackgroundImage:img forState:UIControlStateNormal];
     [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_keybView addSubview:delBtn];
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressBtn:)];
+    [longPressGesture setDelegate:self];
+    longPressGesture.minimumPressDuration = 0.5;//默认0.5秒
+    [delBtn addGestureRecognizer:longPressGesture];
+    
     
     CGFloat numBtnWidth = Size.width/3;
     NSInteger line = -1;
@@ -135,7 +140,10 @@ typedef enum{
     if(number <= 9 && number >= 0){
         NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
         textString = [textString stringByAppendingString:str];
-        [_textLabel setText:textString];
+        if(textString.length<=11){
+            [_textLabel setText:textString];
+        }
+        [self sound:number];
     }
     
     if(textString.length > 0){
@@ -144,6 +152,15 @@ typedef enum{
         [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
     }
     [self showSearchResult];
+}
+
+-(void)sound:(NSInteger)strSound{
+    NSString *ch = [NSString stringWithFormat:@"%ld",(long)strSound];
+    NSString *string = [NSString stringWithFormat:@"dtmf-%@",ch];
+    NSString *path = [[NSBundle mainBundle] pathForResource:string ofType:@"aif"];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge  CFURLRef)[NSURL fileURLWithPath:path], &soundID);
+    AudioServicesPlaySystemSound (soundID);
 }
 
 -(void)delBtnClick{
@@ -161,15 +178,15 @@ typedef enum{
     }
 }
 
+-(void)longPressBtn:(id)sender{
+    [self setEmptyText];
+    _downview_type = DownView_Del;
+}
+
 -(void)showSearchResult{
     [_model searchContacter:textString];
     _showContacters = YES;
     [_tableView reloadData];
-}
-//通知
--(void)callPhoneSucceed{
-    textString = nil;
-    [_textLabel setText:nil];
 }
 
 -(void)show{
@@ -226,7 +243,7 @@ typedef enum{
 }
 
 -(void)callPhoneNumber{
-    if(textString.length < 7 || textString.length > 14){
+    if(textString.length < 7 || textString.length > 11){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
@@ -304,6 +321,13 @@ typedef enum{
 
 -(void)viewWillDisappear:(BOOL)animated{
     self.keyPad_type = E_KeyPad_Down;
+    [self setEmptyText];
+}
+
+-(void)setEmptyText{
+    [_textLabel setText:@""];
+    textString = @"";
+    [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
 }
 
 @end

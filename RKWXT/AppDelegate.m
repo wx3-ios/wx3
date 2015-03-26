@@ -15,8 +15,12 @@
 #import "WXTUITabBarController.h"
 #import "WXTVersion.h"
 #import "RootViewController.h"
+#import <CoreTelephony/CTCall.h>
+#import <CoreTelephony/CTCallCenter.h>
+
 @interface AppDelegate (){
     UINavigationController *_navigation;
+    CTCallCenter *_callCenter;
 }
 
 @end
@@ -58,6 +62,8 @@
     [[AddressBook sharedAddressBook] loadContact];
 	[self initUI];
     [self checkVersion];
+    //监听电话
+    [self listenSystemCall];
 	return YES;
 }
 
@@ -89,6 +95,18 @@
         return NO;
     }
     return YES;
+}
+
+-(void)listenSystemCall{
+    //监听手机通话状态,私有API
+    _callCenter = [[CTCallCenter alloc] init];
+    _callCenter.callEventHandler = ^(CTCall *call){
+        if ([call.callState isEqualToString:CTCallStateIncoming]){
+            [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:D_Notification_Name_SystemCallIncomming object:nil userInfo:nil];
+        }else if ([call.callState isEqualToString:CTCallStateDisconnected]){
+            [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:D_Notification_Name_SystemCallFinished object:nil userInfo:nil];
+        }
+    };
 }
 
 -(void)checkVersion{
