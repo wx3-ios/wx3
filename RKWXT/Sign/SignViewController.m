@@ -145,8 +145,10 @@
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
     NSString *timeString = [date YMDHMString:E_YMD];
     if([timeString isEqualToString:@"今天"]){
+        NSUserDefaults *userDefaults1 = [NSUserDefaults standardUserDefaults];
+        CGFloat money = [userDefaults1 floatForKey:GainMoneyForSign];
         [_signBtn setEnabled:NO];
-        [_textLabel setText:@"今日已签到"];
+        [_textLabel setText:[NSString stringWithFormat:@"今日签到领取了%.2f元",money]];
     }
 }
 
@@ -182,11 +184,11 @@
 //}
 
 -(void)signBtnClicked{
-    [self showWaitView:self.view];
     [_model signGainMoney];
+    [_signBtn setEnabled:NO];
+    
     T_SignGifView *gifView = [[T_SignGifView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
     [self.view addSubview:gifView];
-    [_signBtn setEnabled:NO];
     
 //    [self performSelector:@selector(showAlert) withObject:nil afterDelay:kAnimateDuration];
 }
@@ -196,8 +198,6 @@
 }
 
 -(void)signSucceed{
-    [self unShowWaitView];
-    
     [_signBtn setEnabled:NO];
     if([_model.signArr count] > 0){
         signEntity = [_model.signArr objectAtIndex:0];
@@ -212,7 +212,6 @@
 
 -(void)signFailed:(NSString *)errorMsg{
     [_signBtn setEnabled:YES];
-    [self unShowWaitView];
     [UtilTool showAlertView:errorMsg];
 }
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #define LastSignDate @"LastSignDate"
+#define GainMoneyForSign @"GainMoneyForSign"
 
 @protocol SignDelegate;
 @interface SignModel : NSObject

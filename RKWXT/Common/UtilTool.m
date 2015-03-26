@@ -488,15 +488,18 @@
     if(!oldPhone){
         return nil;
     }
-    if(oldPhone.length <= 11){
+    if(oldPhone.length <= 10){
+        return oldPhone;
+    }
+    if([oldPhone hasPrefix:@"1"]){  //已1开始的字符串认作是手机号直接返回
         return oldPhone;
     }
     NSString *newPhone = nil;
-    if(oldPhone.length == 14){
+    if([oldPhone hasPrefix:@"+86"]){
         newPhone = [oldPhone substringFromIndex:3]; //+86
     }
-    if(oldPhone.length == 13){
-        newPhone = [oldPhone substringFromIndex:2];  //86
+    if([oldPhone hasPrefix:@"86"]){
+        newPhone = [oldPhone substringFromIndex:2]; //86
     }
     return newPhone;
 }

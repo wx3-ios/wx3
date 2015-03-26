@@ -222,13 +222,16 @@
 }
 
 #pragma mark contactDetailDelegate
--(void)callContactWithPhone:(NSString *)phoneNumber withName:(NSString*)name{
+-(void)callContactWithPhone:(NSString *)phoneNumber{
     if(!phoneNumber){
         return;
     }
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneNumber];
     CallBackVC *backVC = [[CallBackVC alloc] init];
     backVC.phoneName = phoneStr;
+    if(_model.name){
+        backVC.phoneName = _model.name;
+    }
     [backVC callPhone:phoneStr];
     [self.navigationController pushViewController:backVC animated:YES];
 }
