@@ -371,7 +371,6 @@
 		775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58AF1ABA7B75005B6B40 /* WXContacterEntity+Detail.m */; };
 		775C58D11ABA7B75005B6B40 /* WXContacterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B11ABA7B75005B6B40 /* WXContacterEntity.m */; };
 		775C58D21ABA7B75005B6B40 /* WXContactMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B31ABA7B75005B6B40 /* WXContactMonitor.m */; };
-		775C58D31ABA7B75005B6B40 /* WXLibDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58B51ABA7B75005B6B40 /* WXLibDB.m */; };
 		775C58D61ABA7D27005B6B40 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58D51ABA7D27005B6B40 /* BaseModel.m */; };
 		775C58D91ABAAF83005B6B40 /* WXCallUITabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58D81ABAAF83005B6B40 /* WXCallUITabBarVC.m */; };
 		775C58DC1ABAB87E005B6B40 /* CoordinateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C58DB1ABAB87E005B6B40 /* CoordinateController.m */; };
@@ -379,6 +378,7 @@
 		777059AD1AAFDEC40097526C /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777059AB1AAFDEC40097526C /* Localize.strings */; };
 		777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B31AAFE48C0097526C /* AddressBook.framework */; };
 		777059B61AAFE48C0097526C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777059B41AAFE48C0097526C /* AddressBookUI.framework */; };
+		777A38561AC3933D001CF5FF /* WXTDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A38541AC3933D001CF5FF /* WXTDatabase.m */; };
 		777F028D1ABBF362008C77F1 /* DialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F028B1ABBF362008C77F1 /* DialView.m */; };
 		777F028E1ABBF362008C77F1 /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 777F028C1ABBF362008C77F1 /* DialView.xib */; };
 		777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F02901ABC1C8C008C77F1 /* BaseViewController.m */; };
@@ -1032,8 +1032,6 @@
 		775C58B11ABA7B75005B6B40 /* WXContacterEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterEntity.m; sourceTree = "<group>"; };
 		775C58B21ABA7B75005B6B40 /* WXContactMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContactMonitor.h; sourceTree = "<group>"; };
 		775C58B31ABA7B75005B6B40 /* WXContactMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContactMonitor.m; sourceTree = "<group>"; };
-		775C58B41ABA7B75005B6B40 /* WXLibDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXLibDB.h; sourceTree = "<group>"; };
-		775C58B51ABA7B75005B6B40 /* WXLibDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXLibDB.m; sourceTree = "<group>"; };
 		775C58D41ABA7D27005B6B40 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		775C58D51ABA7D27005B6B40 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		775C58D71ABAAF83005B6B40 /* WXCallUITabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXCallUITabBarVC.h; sourceTree = "<group>"; };
@@ -1046,6 +1044,9 @@
 		777059AE1AAFDEEB0097526C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localize.strings"; sourceTree = "<group>"; };
 		777059B31AAFE48C0097526C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		777059B41AAFE48C0097526C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		777A38531AC3933D001CF5FF /* WXTDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTDatabase.h; sourceTree = "<group>"; };
+		777A38541AC3933D001CF5FF /* WXTDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTDatabase.m; sourceTree = "<group>"; };
+		777A38551AC3933D001CF5FF /* DBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCommon.h; sourceTree = "<group>"; };
 		777F028A1ABBF362008C77F1 /* DialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialView.h; sourceTree = "<group>"; };
 		777F028B1ABBF362008C77F1 /* DialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialView.m; sourceTree = "<group>"; };
 		777F028C1ABBF362008C77F1 /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
@@ -2299,6 +2300,9 @@
 		775C58711ABA7B75005B6B40 /* DataFromLib */ = {
 			isa = PBXGroup;
 			children = (
+				777A38531AC3933D001CF5FF /* WXTDatabase.h */,
+				777A38541AC3933D001CF5FF /* WXTDatabase.m */,
+				777A38551AC3933D001CF5FF /* DBCommon.h */,
 				775C58721ABA7B75005B6B40 /* BalanceModel */,
 				775C587B1ABA7B75005B6B40 /* CallHistory */,
 				775C58801ABA7B75005B6B40 /* GoodList */,
@@ -2307,8 +2311,6 @@
 				775C58991ABA7B75005B6B40 /* ShopInfo */,
 				775C58A01ABA7B75005B6B40 /* SubShopModel */,
 				775C58A71ABA7B75005B6B40 /* WXAddressBook */,
-				775C58B41ABA7B75005B6B40 /* WXLibDB.h */,
-				775C58B51ABA7B75005B6B40 /* WXLibDB.m */,
 			);
 			path = DataFromLib;
 			sourceTree = "<group>";
@@ -3027,7 +3029,6 @@
 				775C58C81ABA7B75005B6B40 /* ShopInfo.m in Sources */,
 				775842C91AB95A300039B129 /* it_lib_log.cpp in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
-				775C58D31ABA7B75005B6B40 /* WXLibDB.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,
 				775842C81AB95A300039B129 /* it_lib_im.cpp in Sources */,
 				775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */,
@@ -3040,6 +3041,7 @@
 				775842E31AB95A300039B129 /* WXCpxBtnImgView.m in Sources */,
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
+				777A38561AC3933D001CF5FF /* WXTDatabase.m in Sources */,
 				775AB9E21ABFFD81003A339D /* WXTWebViewController.m in Sources */,
 				775C58681ABA7A52005B6B40 /* BaseCallHistoryCell.m in Sources */,
 				7758431E1AB95A300039B129 /* WXUIActivityIndicatorView.m in Sources */,
