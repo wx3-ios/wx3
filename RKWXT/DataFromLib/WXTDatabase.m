@@ -9,7 +9,6 @@
 #import "WXTDatabase.h"
 #import "DBCommon.h"
 #import "EGODatabase.h"
-
 @interface WXTDatabase(){
     EGODatabase * _database;
 }
@@ -58,25 +57,57 @@
             return NO;
         }
     }else{
-        NSLog(@"%s数据库打开失败",__FUNCTION__);
+        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
         return NO;
     }
 }
 
 -(void)insertCallHistory:(NSString *)telephone date:(NSString*)date type:(int)type{
     if ([_database open]) {
-        EGODatabaseResult * request = [_database executeQuery:[NSString stringWithFormat:@"INSERT INTO Call(telephone,date,type) values('%@','%@','%i')",telephone,date,type]];
-        if ([request count] > 0) {
-            NSLog(@"%s用户通话记录插入成功",__FUNCTION__);
+        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,telephone,date,type]];
+        if ([result errorCode] == 0) {
+            NSLog(@"%s用户通话记录插入success:%lu",__FUNCTION__,[result count]);
+        }else{
+            NSLog(@"%s用户通话记录插入error:%i",__FUNCTION__,[result errorCode]);
         }
-        NSLog(@"%s用户通话记录插入失败",__FUNCTION__);
     }else{
-        NSLog(@"%s数据库创建失败",__FUNCTION__);
+        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
     }
 }
 
--(void)queryCallHistory{
-    
+-(NSMutableArray *)queryCallHistory{
+    if ([_database open]) {
+        EGODatabaseResult * result = [_database executeQuery:kWXTQueryCallHistory];
+        if ([result errorCode] == 0) {
+            NSMutableArray *mutableArr = [NSMutableArray array];
+            for (int i= 0 ; i < [result count]; i++) {
+                EGODatabaseRow * databaseRow = [result rowAtIndex:i];
+                NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
+                NSString * date = [databaseRow stringForColumn:kWXTCall_Column_Date];
+                int type = [databaseRow intForColumn:kWXTCall_Column_Date];
+                NSLog(@"telephone:%@\tdate:%@\ttype:%i",telephone,date,type);
+            }
+            NSLog(@"%s用户通话记录查询success:%lu",__FUNCTION__,[result count]);
+            return mutableArr;
+        }else{
+            NSLog(@"%s用户通话记录查询error:%i",__FUNCTION__,[result errorCode]);
+        }
+    }else{
+        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
+    }
+    return nil;
 }
 
+-(void)delCallHistory:(NSString*)telephone{
+    if ([_database open]) {
+        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,telephone]];
+        if ([result errorCode] == 0) {
+            NSLog(@"%s用户通话记录删除success:%lu",__FUNCTION__,[result count]);
+        }else{
+            NSLog(@"%s用户通话记录删除error:%i",__FUNCTION__,[result errorCode]);
+        }
+    }else{
+        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
+    }
+}
 @end
