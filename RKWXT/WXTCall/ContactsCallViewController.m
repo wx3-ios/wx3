@@ -79,7 +79,7 @@
 #if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
     _segmentControl.segmentedControlStyle = UISegmentedControlStylePlain;
 #endif
-    [_segmentControl setBorderRadian:5.0 width:1 color:[UIColor whiteColor]];
+    [_segmentControl setBorderRadian:5.0 width:1 color:[UIColor whiteColor]];  //0x2c97df
     [_segmentControl setBackgroundColor:[UIColor whiteColor]];
     [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
 //    [self.navigationController.navigationBar addSubview:_segmentControl];
@@ -133,10 +133,10 @@
 //    [_tableView reloadData];
 //}
 
--(void)callPhoneWith:(NSString *)phoneStr{
+-(void)callPhoneWith:(NSString *)phoneStr andPhoneName:(NSString *)phoneName{
     numberStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
     CallBackVC *callBackVC = [[CallBackVC alloc] init];
-    [callBackVC setPhoneName:numberStr];
+    [callBackVC setPhoneName:phoneName];
     [callBackVC callPhone:numberStr];
     [self.navigationController pushViewController:callBackVC animated:YES];
 }

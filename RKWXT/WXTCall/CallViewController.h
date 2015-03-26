@@ -44,6 +44,6 @@ typedef enum{
 @end
 
 @protocol CallPhoneDelegate <NSObject>
--(void)callPhoneWith:(NSString*)phoneStr;
+-(void)callPhoneWith:(NSString*)phoneStr andPhoneName:(NSString*)phoneName;
 
 @end

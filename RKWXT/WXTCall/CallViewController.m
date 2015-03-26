@@ -25,10 +25,14 @@ typedef enum{
 
 @interface CallViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>{
     UIView *_keybView;
+    //
     UITextField *_textLabel;
     NSString *textString;
+    NSString *phoneName;
+    //键盘
     NSArray *_numSelArr;
     NSArray *_numNorArr;
+    
     ScrollView_Type scroll_type;
     
     //
@@ -52,6 +56,7 @@ typedef enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     self.keyPad_type = E_KeyPad_Show; //键盘
     self.downview_type = DownView_show;
     scroll_type = ScrollView_Type_Normal;
@@ -67,11 +72,11 @@ typedef enum{
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [self.view addSubview:_tableView];
     textString = [[NSString alloc] init];
+    phoneName = [[NSString alloc] init];
+    _model = [[WXKeyPadModel alloc] init];
     
     [self createKeyboardView];
     [self addNotification];
-    
-    _model = [[WXKeyPadModel alloc] init];
 }
 
 -(void)addNotification{
@@ -243,12 +248,13 @@ typedef enum{
 }
 
 -(void)callPhoneNumber{
-    if(textString.length < 7 || textString.length > 11){
+    if(textString.length < 7 || textString.length > 15){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
-    if(_callDelegate && [_callDelegate respondsToSelector:@selector(callPhoneWith:)]){
-        [_callDelegate callPhoneWith:textString];
+    
+    if(_callDelegate && [_callDelegate respondsToSelector:@selector(callPhoneWith:andPhoneName:)]){
+        [_callDelegate callPhoneWith:textString andPhoneName:[self searchPhoneNameWithUserPhone:textString]];
     }
 }
 
@@ -262,6 +268,22 @@ typedef enum{
     if(textString.length > 0){
         [[NSNotificationCenter defaultCenter] postNotificationName:HideDownView object:nil];
     }
+}
+
+-(NSString*)searchPhoneNameWithUserPhone:(NSString*)userPhone{
+    if(!userPhone){
+        return nil;
+    }
+    for(SysContacterEntityEx *entity in _model.contacterFilter){
+        for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
+            NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
+            if([userPhone isEqualToString:newPhoneStr]){
+                phoneName = entity.contactEntity.name?entity.contactEntity.name:phoneStr;
+                return phoneName;
+            }
+        }
+    }
+    return nil;
 }
 
 #pragma mark tableViewDelegate
@@ -315,11 +337,12 @@ typedef enum{
     if([_model.contacterFilter count] > 0){
         entity = [_model.contacterFilter objectAtIndex:row];
     }
-    textString = entity.phoneMatched;
+    textString = [UtilTool callPhoneNumberRemovePreWith:entity.phoneMatched];
     [self callPhoneNumber];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     self.keyPad_type = E_KeyPad_Down;
     [self setEmptyText];
 }
@@ -327,6 +350,7 @@ typedef enum{
 -(void)setEmptyText{
     [_textLabel setText:@""];
     textString = @"";
+    phoneName = @"";
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
 }
 

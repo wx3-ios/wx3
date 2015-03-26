@@ -161,6 +161,7 @@
 -(void)callPhone:(NSString *)phone{
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
     [_model makeCallPhone:phoneStr];
+    _model.callstatus_type = CallStatus_Type_starting;
 }
 
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
@@ -172,6 +173,7 @@
 }
 
 -(void)makeCallPhoneSucceed{
+    _model.callstatus_type = CallStatus_Type_Ending;
 }
 
 -(void)removeNotification{
@@ -179,6 +181,7 @@
 }
 
 -(void)back{
+    _model.callstatus_type = CallStatus_Type_Ending;
     [_timer invalidate];
     [self removeNotification];
     [self.navigationController popViewControllerAnimated:YES];

@@ -34,6 +34,9 @@
     [_signArr addObject:entity];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setInteger:entity.time forKey:LastSignDate];
+    
+    NSUserDefaults *userDefault1 = [NSUserDefaults standardUserDefaults];
+    [userDefault1 setFloat:entity.money forKey:GainMoneyForSign];
 }
 
 -(void)signGainMoney{
