@@ -87,7 +87,7 @@
     
     CGFloat btnHeight = 45;
     WXTUIButton *quitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    quitBtn.frame = CGRectMake(0, 60, Size.width, btnHeight);
+    quitBtn.frame = CGRectMake(0, 30, Size.width, btnHeight);
     [quitBtn setBackgroundImageOfColor:WXColorWithInteger(0xFFFFFF) controlState:UIControlStateNormal];
     [quitBtn setTitle:@"切换登录帐号" forState:UIControlStateNormal];
     [quitBtn setTitleColor:WXColorWithInteger(0x669696) forState:UIControlStateNormal];

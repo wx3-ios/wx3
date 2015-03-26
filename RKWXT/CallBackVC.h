@@ -11,5 +11,6 @@
 @interface CallBackVC : BaseVC
 
 @property (nonatomic,strong) NSString *phoneName;   //手机号或名字
+-(void)callPhone:(NSString *)phone;
 
 @end

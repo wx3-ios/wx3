@@ -7,15 +7,19 @@
 //
 
 #import "CallBackVC.h"
+#import "CallModel.h"
 
 #define Size self.view.bounds.size
 #define NormalTimer (15.0)
 
-@interface CallBackVC(){
+@interface CallBackVC()<MakeCallDelegate>{
     NSTimer *_timer;
     UIImageView *_lightImg;
     
     NSInteger count;
+    NSInteger time;
+    
+    CallModel *_model;
 }
 @end
 
@@ -24,6 +28,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    [self addNotification];
+    
+    _model = [[CallModel alloc] init];
+    [_model setCallDelegate:self];
 }
 
 -(void)viewDidLoad{
@@ -40,6 +48,11 @@
     [self createBaseView];
     
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startActivityImg) userInfo:nil repeats:YES];
+}
+
+-(void)addNotification{
+    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
+    [notification addObserver:self selector:@selector(back) name:D_Notification_Name_SystemCallFinished object:nil];
 }
 
 -(void)createBackBtn{
@@ -67,6 +80,12 @@
     [self.view addSubview:nameLabel];
     
     CGFloat xOffset = 40;
+    if(Size.width == 375){
+        xOffset = 76;
+    }
+    if(Size.width == 414){
+        xOffset = 92;
+    }
     CGFloat xGap = 9;
     yOffset += 60+nameHeight;
     UIImage *smallIconImg = [UIImage imageNamed:@"CallBackIconImgNor.png"];
@@ -121,14 +140,47 @@
 -(void)startActivityImg{
     UIImage *smallIconImg = [UIImage imageNamed:@"CallBackIconImgNor.png"];
     count ++;
+    time ++;
+    if(time > NormalTimer){
+        [self back];
+    }
     if(count>6){
         count = 0;
     }
-    _lightImg.frame = CGRectMake(40+count*(smallIconImg.size.width+9), 180, smallIconImg.size.width, smallIconImg.size.height);
+    CGFloat xOffset = 40;
+    if(Size.width == 375){
+        xOffset = 76;
+    }
+    if(Size.width == 414){
+        xOffset = 92;
+    }
+    _lightImg.frame = CGRectMake(xOffset+count*(smallIconImg.size.width+9), 180, smallIconImg.size.width, smallIconImg.size.height);
+}
+
+#pragma mark callDelegate
+-(void)callPhone:(NSString *)phone{
+    NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
+    [_model makeCallPhone:phoneStr];
+}
+
+-(void)makeCallPhoneFailed:(NSString *)failedMsg{
+    if(!failedMsg){
+        failedMsg = @"本机网络不畅，请设置网络连接";
+    }
+    [UtilTool showAlertView:failedMsg];
+    [self back];
+}
+
+-(void)makeCallPhoneSucceed{
+}
+
+-(void)removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)back{
     [_timer invalidate];
+    [self removeNotification];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

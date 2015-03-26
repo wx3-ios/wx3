@@ -11,14 +11,12 @@
 #import <MessageUI/MFMessageComposeViewController.h>
 #import <MessageUI/MessageUI.h>
 #import "UIView+Render.h"
-#import "CallModel.h"
 #import "CallBackVC.h"
 
 #define Size self.view.bounds.size
 
-@interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,ContactDetailDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate,MakeCallDelegate>{
+@interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,ContactDetailDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>{
     UITableView *_tableView;
-    CallModel *_callModel;
 }
 @end
 
@@ -27,15 +25,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-}
-
--(id)init{
-    self = [super init];
-    if(self){
-        _callModel = [[CallModel alloc] init];
-        [_callModel setCallDelegate:self];
-    }
-    return self;
 }
 
 -(void)viewDidLoad{
@@ -49,6 +38,10 @@
     [self.view addSubview:_tableView];
     [_tableView setTableHeaderView:[self tableForHeadView]];
     [_tableView setTableFooterView:[self tableForFootView]];
+    
+    UISwipeGestureRecognizer *swip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
+    [swip setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swip];
 }
 
 -(UIView*)tableForHeadView{
@@ -60,7 +53,6 @@
     [imgView setImage:bgImg];
     [headView addSubview:imgView];
 
-    
     CGFloat xOffset = 15;
     CGFloat yOffset = 35;
     UIImage *img = [UIImage imageNamed:@"ContactInfoBack.png"];
@@ -160,7 +152,6 @@
         actionSheet.delegate = self;
         [actionSheet showInView:self.view];
     }
-    
     else{
         [self sendmessage:phoneStr1];
     }
@@ -231,30 +222,15 @@
 }
 
 #pragma mark contactDetailDelegate
--(void)callContactWithPhone:(NSString *)phoneNumber{
+-(void)callContactWithPhone:(NSString *)phoneNumber withName:(NSString*)name{
     if(!phoneNumber){
         return;
     }
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneNumber];
-    [_callModel makeCallPhone:phoneStr];
-}
-
--(void)makeCallPhoneSucceed{
     CallBackVC *backVC = [[CallBackVC alloc] init];
-    backVC.phoneName = @"";
+    backVC.phoneName = phoneStr;
+    [backVC callPhone:phoneStr];
     [self.navigationController pushViewController:backVC animated:YES];
-}
-
--(void)makeCallPhoneFailed:(NSString *)failedMsg{
-    if(!failedMsg){
-        failedMsg = @"本机网络不畅，请设置网络连接";
-    }
-    [UtilTool showAlertView:failedMsg];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [_callModel setCallDelegate:nil];
 }
 
 -(void)back{

@@ -382,6 +382,7 @@ enum{
 -(void)registSucceed{
     [self unShowWaitView];
     [UtilTool showAlertView:@"注册成功"];
+    [self backLogin];
 }
 
 -(void)registFailed:(NSString *)errorMsg{

@@ -9,7 +9,6 @@
 #import "ContactsCallViewController.h"
 #import "CallViewController.h"
 #import "WXContacterVC.h"
-#import "CallModel.h"
 #import "CallBackVC.h"
 #import "ContactDetailVC.h"
 #import "ContacterEntity.h"
@@ -18,13 +17,12 @@
 
 #define Size self.view.bounds.size
 
-@interface ContactsCallViewController ()<MakeCallDelegate,ToContactDetailVCDelegate,UITableViewDataSource,UITableViewDelegate,CallPhoneDelegate>{
+@interface ContactsCallViewController ()<ToContactDetailVCDelegate,UITableViewDataSource,UITableViewDelegate,CallPhoneDelegate>{
     CallViewController * _recentCall;
     WXContacterVC * _contacterVC;
     UILabel *numberLabel;
     NSString *numberStr;
     
-    CallModel *_callModel;
     UITableView *_tableView;
     WXContacterModel *contactModel;
 }
@@ -36,8 +34,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    _callModel = [[CallModel alloc] init];
-    [_callModel setCallDelegate:self];
 }
 
 - (void)viewDidLoad{
@@ -93,6 +89,7 @@
 -(void)segmentControlChange:(UISegmentedControl *)segmentControl{
     switch (segmentControl.selectedSegmentIndex) {
         case kCallSegmentIndex:
+             [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
             _recentCall.keyPad_type = E_KeyPad_Down;
             [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
             [self.view addSubview:_recentCall.view];
@@ -138,7 +135,10 @@
 
 -(void)callPhoneWith:(NSString *)phoneStr{
     numberStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
-    [_callModel makeCallPhone:numberStr];
+    CallBackVC *callBackVC = [[CallBackVC alloc] init];
+    [callBackVC setPhoneName:numberStr];
+    [callBackVC callPhone:numberStr];
+    [self.navigationController pushViewController:callBackVC animated:YES];
 }
 
 -(void)toContailDetailVC:(id)sender{
@@ -174,27 +174,7 @@
     [self.navigationController pushViewController:[[ContactDetailVC alloc] init] animated:YES];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-}
-
-#pragma callDelegate
--(void)makeCallPhoneFailed:(NSString *)failedMsg{
-    if(!failedMsg){
-        failedMsg = @"本机网络不畅，请设置网络连接";
-    }
-    [UtilTool showAlertView:failedMsg];
-}
-
--(void)makeCallPhoneSucceed{
-    CallBackVC *callBackVC = [[CallBackVC alloc] init];
-    [callBackVC setPhoneName:numberStr];
-    [self.navigationController pushViewController:callBackVC animated:YES];
-//    [NOTIFY_CENTER postNotificationName:CallPhoneSucceed object:nil];
-}
-
 -(void)viewWillDisappear:(BOOL)animated{
-    [_callModel setCallDelegate:nil];
     [NOTIFY_CENTER postNotificationName:kTableViewHidden object:nil];
 }
 
