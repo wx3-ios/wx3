@@ -53,6 +53,9 @@ enum{
     showRecharge = NO;
     _rechargeView = [[RechargeView alloc] init];
     [_rechargeView setDelegate:self];
+    
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    _rechargeView.rechargeUserphoneStr = userDefault.user;
     [self.view addSubview:_rechargeView];
     [self showRechargeInfo];
 }

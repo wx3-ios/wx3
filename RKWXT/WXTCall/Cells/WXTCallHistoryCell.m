@@ -12,6 +12,8 @@
     UILabel *_nameLabel;
     UILabel *_userPhone;
     UILabel *_callTime;
+    UILabel *linLabel;
+    WXTUIButton *callBtn;
 }
 @end
 
@@ -53,13 +55,13 @@
         [self.contentView addSubview:_callTime];
         
         xOffset += callTimeLabelWidth;
-        UILabel *linLabel = [[UILabel alloc] init];
+        linLabel = [[UILabel alloc] init];
         linLabel.frame = CGRectMake(xOffset, 0, 0.5, 44);
         [linLabel setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:linLabel];
         
         UIImage *callImg = [UIImage imageNamed:@"CallNormal.png"];
-        WXTUIButton *callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+        callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
         callBtn.frame = CGRectMake(xOffset+14, (44-callImg.size.height)/2, callImg.size.width, callImg.size.height);
         [callBtn setBackgroundImage:callImg forState:UIControlStateNormal];
         [callBtn addTarget:self action:@selector(callHistory) forControlEvents:UIControlEventTouchUpInside];

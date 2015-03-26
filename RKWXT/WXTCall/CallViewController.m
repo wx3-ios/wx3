@@ -181,6 +181,8 @@ typedef enum{
     if(textString.length == 0){
         _downview_type = DownView_Del;
         [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+        _showContacters = NO;
+        [_tableView reloadData];
     }
 }
 
@@ -284,7 +286,7 @@ typedef enum{
             }
         }
     }
-    return nil;
+    return userPhone;
 }
 
 #pragma mark tableViewDelegate
@@ -333,13 +335,15 @@ typedef enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSInteger row = indexPath.row;
-    SysContacterEntityEx *entity = nil;
-    if([_model.contacterFilter count] > 0){
-        entity = [_model.contacterFilter objectAtIndex:row];
+    if(_showContacters){
+        NSInteger row = indexPath.row;
+        SysContacterEntityEx *entity = nil;
+        if([_model.contacterFilter count] > 0){
+            entity = [_model.contacterFilter objectAtIndex:row];
+        }
+        textString = [UtilTool callPhoneNumberRemovePreWith:entity.phoneMatched];
+        [self callPhoneNumber];
     }
-    textString = [UtilTool callPhoneNumberRemovePreWith:entity.phoneMatched];
-    [self callPhoneNumber];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -352,6 +356,8 @@ typedef enum{
     [_textLabel setText:@""];
     textString = @"";
     phoneName = @"";
+    _showContacters = NO;
+    [_tableView reloadData];
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
 }
 
