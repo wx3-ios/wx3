@@ -141,12 +141,10 @@
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
 		2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EE1AAAD74000C04227 /* RKWXT.xcdatamodeld */; };
-		2563B3F31AAAD74000C04227 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3F21AAAD74000C04227 /* LoginViewController.m */; };
 		2563B3F61AAAD74000C04227 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2563B3F41AAAD74000C04227 /* Main.storyboard */; };
 		2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2563B3F71AAAD74000C04227 /* Images.xcassets */; };
 		2563B3FB1AAAD74000C04227 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2563B3F91AAAD74000C04227 /* LaunchScreen.xib */; };
 		2563B4071AAAD74000C04227 /* RKWXTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B4061AAAD74000C04227 /* RKWXTTests.m */; };
-		2563B4371AAADA9B00C04227 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B4361AAADA9B00C04227 /* RegisterViewController.m */; };
 		2563B4881AAAFA7F00C04227 /* 侧边栏背景.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2563B4871AAAFA7F00C04227 /* 侧边栏背景.jpg */; };
 		2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B48A1AAAFF6B00C04227 /* HttpNetUtils.m */; };
 		77041F1D1AC013D400896706 /* 商家联盟图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77041F1B1AC013D400896706 /* 商家联盟图标@2x.png */; };
@@ -591,16 +589,12 @@
 		2563B3EB1AAAD74000C04227 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2563B3EC1AAAD74000C04227 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2563B3EF1AAAD74000C04227 /* RKWXT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RKWXT.xcdatamodel; sourceTree = "<group>"; };
-		2563B3F11AAAD74000C04227 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		2563B3F21AAAD74000C04227 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2563B3F51AAAD74000C04227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2563B3F71AAAD74000C04227 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2563B3FA1AAAD74000C04227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2563B4001AAAD74000C04227 /* RKWXTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RKWXTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B4051AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B4061AAAD74000C04227 /* RKWXTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKWXTTests.m; sourceTree = "<group>"; };
-		2563B4351AAADA9B00C04227 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		2563B4361AAADA9B00C04227 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2563B43E1AAADEE400C04227 /* RKWXT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKWXT-Prefix.pch"; sourceTree = "<group>"; };
 		2563B4781AAAE46D00C04227 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2563B4871AAAFA7F00C04227 /* 侧边栏背景.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "侧边栏背景.jpg"; sourceTree = "<group>"; };
@@ -1492,10 +1486,6 @@
 				2563B4861AAAFA7500C04227 /* Resources */,
 				2563B3EB1AAAD74000C04227 /* AppDelegate.h */,
 				2563B3EC1AAAD74000C04227 /* AppDelegate.m */,
-				2563B4351AAADA9B00C04227 /* RegisterViewController.h */,
-				2563B4361AAADA9B00C04227 /* RegisterViewController.m */,
-				2563B3F11AAAD74000C04227 /* LoginViewController.h */,
-				2563B3F21AAAD74000C04227 /* LoginViewController.m */,
 				12D039EF1AB3489200DD7E56 /* BaseVC.h */,
 				12D039F01AB3489200DD7E56 /* BaseVC.m */,
 				12622BCA1ABD4218003F04A5 /* CallBackVC.h */,
@@ -2864,7 +2854,6 @@
 				7758432E1AB95A300039B129 /* WXUISwitch.m in Sources */,
 				7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */,
 				775C586C1ABA7A52005B6B40 /* SimpleContacterCell.m in Sources */,
-				2563B4371AAADA9B00C04227 /* RegisterViewController.m in Sources */,
 				775842C61AB95A300039B129 /* it_lib_db.cpp in Sources */,
 				775842E81AB95A300039B129 /* TelNOOBJ.m in Sources */,
 				120A2BEC1AB135DD006A28B1 /* SignViewController.m in Sources */,
@@ -3000,7 +2989,6 @@
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
 				775C586D1ABA7A52005B6B40 /* StrangerEntity.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
-				2563B3F31AAAD74000C04227 /* LoginViewController.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */,
 				775842BC1AB95A300039B129 /* ContactDetailCell.m in Sources */,
