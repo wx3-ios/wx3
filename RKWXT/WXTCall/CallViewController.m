@@ -181,6 +181,8 @@ typedef enum{
     if(textString.length == 0){
         _downview_type = DownView_Del;
         [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+        _showContacters = NO;
+        [_tableView reloadData];
     }
 }
 
@@ -284,7 +286,7 @@ typedef enum{
             }
         }
     }
-    return nil;
+    return userPhone;
 }
 
 #pragma mark tableViewDelegate
@@ -352,6 +354,8 @@ typedef enum{
     [_textLabel setText:@""];
     textString = @"";
     phoneName = @"";
+    _showContacters = NO;
+    [_tableView reloadData];
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
 }
 

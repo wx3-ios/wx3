@@ -140,13 +140,14 @@
     [_signBtn addTarget:self action:@selector(signBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_signBtn];
     
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSInteger time = [userDefaults integerForKey:LastSignDate];
+    NSInteger time = [userDefaults integerForKey:userObj.wxtID];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
     NSString *timeString = [date YMDHMString:E_YMD];
     if([timeString isEqualToString:@"今天"]){
         NSUserDefaults *userDefaults1 = [NSUserDefaults standardUserDefaults];
-        CGFloat money = [userDefaults1 floatForKey:GainMoneyForSign];
+        CGFloat money = [userDefaults1 floatForKey:userObj.user];
         [_signBtn setEnabled:NO];
         [_textLabel setText:[NSString stringWithFormat:@"今日签到领取了%.2f元",money]];
     }

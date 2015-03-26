@@ -32,11 +32,13 @@
     }
     SignEntity *entity = [SignEntity signWithDictionary:dic];
     [_signArr addObject:entity];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setInteger:entity.time forKey:LastSignDate];
+    [userDefault setInteger:entity.time forKey:userObj.wxtID];
     
     NSUserDefaults *userDefault1 = [NSUserDefaults standardUserDefaults];
-    [userDefault1 setFloat:entity.money forKey:GainMoneyForSign];
+    [userDefault1 setFloat:entity.money forKey:userObj.user];
 }
 
 -(void)signGainMoney{

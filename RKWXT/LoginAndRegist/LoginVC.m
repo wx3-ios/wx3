@@ -118,7 +118,7 @@
     CGFloat titleSize = 14.0;
     _submitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     [_submitBtn setFrame:CGRectMake(xOffset, yOffset, btnWidth, btnHeight)];
-    [_submitBtn setTitle:@"登陆" forState:UIControlStateNormal];
+    [_submitBtn setTitle:@"登录" forState:UIControlStateNormal];
     [_submitBtn.titleLabel setFont:WXTFont(titleSize)];
     [_submitBtn setBackgroundImageOfColor:WXColorWithInteger(0xFFFFFF) controlState:UIControlStateNormal];
     [_submitBtn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
@@ -175,7 +175,7 @@
     [_userTextField setBorderRadian:5.0 width:1.0 color:WXColorWithInteger(0xFFFFFF)];
     [_userTextField setTextColor:[UIColor whiteColor]];
     [_userTextField setTintColor:[UIColor whiteColor]];
-    [_userTextField setPlaceHolder:@"请输入登陆账号" color:WXColorWithInteger(0xFFFFFF)];
+    [_userTextField setPlaceHolder:@"请输入登录账号" color:WXColorWithInteger(0xFFFFFF)];
     [_userTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_userTextField setFont:WXTFont(fontSize)];
     UIImage *leftImg = [UIImage imageNamed:@"LoginUser.png"];
@@ -193,7 +193,7 @@
     [_pwdTextField setTintColor:[UIColor whiteColor]];
     [_pwdTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextField setKeyboardType:UIKeyboardTypeASCIICapable];
-    [_pwdTextField setPlaceHolder:@"请输入登陆密码" color:WXColorWithInteger(0xFFFFFF)];
+    [_pwdTextField setPlaceHolder:@"请输入登录密码" color:WXColorWithInteger(0xFFFFFF)];
     UIImage *passwordIcon = [UIImage imageNamed:@"LoginLock.png"];
     UIImageView *leftView1 = [[UIImageView alloc] initWithImage:passwordIcon];
     [_pwdTextField setLeftView:leftView1 leftGap:leftViewGap rightGap:textGap];
@@ -270,7 +270,7 @@
     NSString *password = _pwdTextField.text;
     NSInteger len = password.length;
     if(len == 0){
-        [UtilTool showAlertView:@"请输入登陆密码"];
+        [UtilTool showAlertView:@"请输入登录密码"];
         return NO;
     }
     if(len < 6){
@@ -348,7 +348,7 @@
 -(void)loginFailed:(NSString *)errrorMsg{
     [self unShowWaitView];
     if(!errrorMsg){
-        errrorMsg = @"登陆失败";
+        errrorMsg = @"登录失败";
     }
     [UtilTool showAlertView:errrorMsg];
 }
@@ -368,7 +368,7 @@
     [UtilTool showAlertView:[NSString stringWithFormat:@"密码已经发送到你的号码为%@的手机上，请注意查收",_userTextField.text]];
 }
 
-#pragma mark 登陆
+#pragma mark 登录
 - (void)submit{
     if([self checkUserValide] && [self checkPasswordValide]){
         [self showWaitView:self.view];
