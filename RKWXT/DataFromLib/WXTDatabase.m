@@ -68,6 +68,7 @@
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
         EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aDate,aType]];
         if ([result errorCode] == 0) {
+            [NOTIFY_CENTER postNotificationName:D_Notification_Name_CallRecordAdded object:nil];
             NSLog(@"%s用户通话记录插入success:%lu",__FUNCTION__,[result count]);
         }else{
             NSLog(@"%s用户通话记录插入error:%i",__FUNCTION__,[result errorCode]);
