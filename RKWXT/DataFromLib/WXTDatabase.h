@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-//@class EGODatabase;
 @interface WXTDatabase : NSObject
-//@property (nonatomic, strong) EGODatabase * database;
 @property (nonatomic, strong) NSString * dbName; // 数据库文件名
 +(instancetype)shareDatabase;
 -(BOOL)createDatabase:(NSString *)dbName;
 -(BOOL)createWXTTable;
 -(void)insertCallHistory:(NSString *)telephone date:(NSString*)date type:(int)type;
+-(NSMutableArray *)queryCallHistory;
+/**
+ @param telephone 电话号码
+ */
+-(void)delCallHistory:(NSString*)telephone;
 @end
