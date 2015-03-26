@@ -149,7 +149,7 @@ typedef enum{
     if(number <= 9 && number >= 0){
         NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
         textString = [textString stringByAppendingString:str];
-        if(textString.length<=11){
+        if(textString.length<=12){
             [_textLabel setText:textString];
         }
         [self sound:number];

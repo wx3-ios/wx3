@@ -73,7 +73,7 @@
         [linLabel setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:linLabel];
         
-        UIImage *callImg = [UIImage imageNamed:@"CallNormal.png"];
+        UIImage *callImg = [UIImage imageNamed:@"callHistoryBtnImg.png"];
         callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
         callBtn.frame = CGRectMake(xOffset+14, (44-callImg.size.height)/2, callImg.size.width, callImg.size.height);
         [callBtn setBackgroundImage:callImg forState:UIControlStateNormal];

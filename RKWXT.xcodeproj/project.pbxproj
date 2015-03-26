@@ -138,6 +138,7 @@
 		12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A21AC16F830044A7A2 /* delNumber@2x.png */; };
 		12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A41AC170940044A7A2 /* keyboardEye@2x.png */; };
 		12EC3B5C1AC3AEDC002F6920 /* WXTCallHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EC3B5B1AC3AEDC002F6920 /* WXTCallHistoryCell.m */; };
+		12EC3B611AC415BE002F6920 /* callHistoryBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
@@ -586,6 +587,7 @@
 		12E161A41AC170940044A7A2 /* keyboardEye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboardEye@2x.png"; sourceTree = "<group>"; };
 		12EC3B5A1AC3AEDC002F6920 /* WXTCallHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTCallHistoryCell.h; sourceTree = "<group>"; };
 		12EC3B5B1AC3AEDC002F6920 /* WXTCallHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTCallHistoryCell.m; sourceTree = "<group>"; };
+		12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "callHistoryBtnImg@2x.png"; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B3E91AAAD74000C04227 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1546,6 +1548,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */,
 				12D52BA71AC2EF4400C5CE71 /* presssound */,
 				12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */,
 				12D55A401AC28D2400F51F97 /* Default@2x.png */,
@@ -2703,6 +2706,7 @@
 				120A2C491AB17AFD006A28B1 /* sign20@2x.png in Resources */,
 				126CA40A1AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages in Resources */,
 				2563B3FB1AAAD74000C04227 /* LaunchScreen.xib in Resources */,
+				12EC3B611AC415BE002F6920 /* callHistoryBtnImg@2x.png in Resources */,
 				120A2C471AB17AFD006A28B1 /* sign19@2x.png in Resources */,
 				120A2C561AB17AFD006A28B1 /* sign32@2x.png in Resources */,
 				775AB9CA1ABFB558003A339D /* 5N@2x.png in Resources */,
