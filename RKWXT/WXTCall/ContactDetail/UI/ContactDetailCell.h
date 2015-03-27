@@ -10,12 +10,12 @@
 
 #define ContactDetailCellHeight (45)
 
-@protocol ContactDetailDelegate;
+//@protocol ContactDetailDelegate;
 @interface ContactDetailCell : WXTUITableViewCell
-@property (nonatomic,assign) id<ContactDetailDelegate>delegate;
-@end
-
-@protocol ContactDetailDelegate <NSObject>
--(void)callContactWithPhone:(NSString*)phoneNumber;
+//@property (nonatomic,assign) id<ContactDetailDelegate>delegate;
+//@end
+//
+//@protocol ContactDetailDelegate <NSObject>
+//-(void)callContactWithPhone:(NSString*)phoneNumber;
 
 @end

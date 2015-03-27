@@ -30,6 +30,8 @@
 
 #define DelNumberToEnd @"DelNumberToEnd"
 
+#define ClickedKeyboardBtn @"ClickedKeyboardBtn"
+
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>

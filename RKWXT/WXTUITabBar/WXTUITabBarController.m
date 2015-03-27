@@ -271,6 +271,7 @@
         [label2 setTextColor:WXColorWithInteger(0x808080)];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ClickedKeyboardBtn object:nil];
 //        if(recentCall.downview_type == DownView_Del){
 //            [UIView animateWithDuration:KeyboardDur animations:^{
 //                downView.frame = CGRectMake(0, Size.height, Size.width*3/4, kTabBarHeight);

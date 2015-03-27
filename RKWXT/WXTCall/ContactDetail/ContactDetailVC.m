@@ -15,7 +15,7 @@
 
 #define Size self.view.bounds.size
 
-@interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,ContactDetailDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>{
+@interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>{
     UITableView *_tableView;
 }
 @end
@@ -127,7 +127,7 @@
     if(!cell){
         cell = [[ContactDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell setDelegate:self];
+//    [cell setDelegate:self];
     [cell setCellInfo:[_model.phoneNumbers objectAtIndex:row]];
     [cell load];
     return cell;
@@ -142,6 +142,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    [self callContactWithPhone:[_model.phoneNumbers objectAtIndex:row]];
 }
 
 -(void)invateFriend{

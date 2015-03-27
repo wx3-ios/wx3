@@ -14,7 +14,7 @@
 
 @interface CallBackVC()<MakeCallDelegate>{
     NSTimer *_timer;
-    NSTimer *_chengeTimer;
+//    NSTimer *_chengeTimer;
     
     UIImageView *_lightImg;
     UILabel *callStatus;
@@ -111,7 +111,7 @@
     [callStatus setBackgroundColor:[UIColor clearColor]];
     [callStatus setFont:WXTFont(16.0)];
     [callStatus setTextAlignment:NSTextAlignmentCenter];
-    [callStatus setText:@"呼叫成功"];
+    [callStatus setText:@"(呼叫成功)"];
     [callStatus setHidden:YES];
     [callStatus setTextColor:WXColorWithInteger(0xFFFFFF)];
     [self.view addSubview:callStatus];
@@ -194,12 +194,12 @@
 
 -(void)makeCallPhoneSucceed{
     [callStatus setHidden:NO];
-    _chengeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideChangeStatus) userInfo:nil repeats:NO];
+//    _chengeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideChangeStatus) userInfo:nil repeats:NO];
     _model.callstatus_type = CallStatus_Type_Ending;
 }
 
 -(void)hideChangeStatus{
-    [_chengeTimer invalidate];
+//    [_chengeTimer invalidate];
     [callStatus setHidden:YES];
 }
 

@@ -34,6 +34,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    [self addNotification];
 }
 
 - (void)viewDidLoad{
@@ -58,6 +59,11 @@
     _tableView.dataSource = self;
 //    [self.view addSubview:_tableView];
 //    [_tableView reloadData];
+}
+
+-(void)selectSegmentToIndexOne{
+    [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
+    [self segmentControlChange:_segmentControl];
 }
 
 -(void)loadSegmentControl{
@@ -114,6 +120,7 @@
 //    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
 //    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
 //    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
+    [NOTIFY_CENTER addObserver:self selector:@selector(selectSegmentToIndexOne) name:ClickedKeyboardBtn object:nil];
 }
 
 //-(void)inputNumber:(id)sender{
@@ -182,6 +189,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [NOTIFY_CENTER postNotificationName:kTableViewHidden object:nil];
+    [NOTIFY_CENTER removeObserver:self];
 }
 
 -(void)tableViewHidden{

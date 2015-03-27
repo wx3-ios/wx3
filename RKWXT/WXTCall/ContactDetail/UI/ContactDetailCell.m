@@ -38,7 +38,7 @@
         [callBtn setBackgroundColor:[UIColor clearColor]];
         [callBtn setImage:callImg forState:UIControlStateNormal];
         [callBtn addTarget:self action:@selector(callPhone:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:callBtn];
+//        [self.contentView addSubview:callBtn];
     }
     return self;
 }
@@ -48,11 +48,11 @@
     [_numberLabel setText:phoneNumber];
 }
 
--(void)callPhone:(id)sender{
-    NSString *phone = self.cellInfo;
-    if(_delegate && [_delegate respondsToSelector:@selector(callContactWithPhone:)]){
-        [_delegate callContactWithPhone:phone];
-    }
-}
+//-(void)callPhone:(id)sender{
+//    NSString *phone = self.cellInfo;
+//    if(_delegate && [_delegate respondsToSelector:@selector(callContactWithPhone:)]){
+//        [_delegate callContactWithPhone:phone];
+//    }
+//}
 
 @end
