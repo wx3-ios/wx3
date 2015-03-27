@@ -138,12 +138,17 @@ static S_OptContactInfo pOptInfo[] = {
 }
 
 - (void)matchSearchStringList:(NSString*)string{
-    NSArray *sysContacterList = [AddressBook sharedAddressBook].contactList;
-    for(ContacterEntity *entity in sysContacterList){
-        if([entity matchingString:string]){
-            [_filterArray addObject:entity];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+        NSArray *sysContacterList = [AddressBook sharedAddressBook].contactList;
+        for(ContacterEntity *entity in sysContacterList){
+            if([entity matchingString:string]){
+                [_filterArray addObject:entity];
+            }
         }
-    }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+    });
 }
 
 - (void)removeMatchingContact{

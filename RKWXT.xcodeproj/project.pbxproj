@@ -94,13 +94,10 @@
 		126CA4071AB2B9EF00E08A0B /* CallNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FE1AB2B9EF00E08A0B /* CallNormal@2x.png */; };
 		126CA4081AB2B9EF00E08A0B /* UserSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA3FF1AB2B9EF00E08A0B /* UserSelected@2x.png */; };
 		126CA4091AB2B9EF00E08A0B /* UserNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4001AB2B9EF00E08A0B /* UserNormal@2x.png */; };
-		126CA40A1AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4011AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages */; };
 		126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA40E1AB2DB1200E08A0B /* FetchPwdModel.m */; };
 		126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA4111AB2FC9400E08A0B /* GainModel.m */; };
 		126CA4151AB30F5E00E08A0B /* T_Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4131AB30F5E00E08A0B /* T_Back@2x.png */; };
 		126CA4161AB30F5E00E08A0B /* T_BackSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */; };
-		1277D0091AC507ED0008D9B6 /* Default-375w-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1277D0071AC507ED0008D9B6 /* Default-375w-667h@2x.png */; };
-		1277D00A1AC507ED0008D9B6 /* Default-414w-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1277D0081AC507ED0008D9B6 /* Default-414w-736h@3x.png */; };
 		1277D00E1AC50E4F0008D9B6 /* WXTResetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1277D00D1AC50E4F0008D9B6 /* WXTResetPwdVC.m */; };
 		1277D0101AC528500008D9B6 /* ResetPwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1277D00F1AC528500008D9B6 /* ResetPwd@2x.png */; };
 		1277D0131AC5327A0008D9B6 /* ResetPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1277D0121AC5327A0008D9B6 /* ResetPwdModel.m */; };
@@ -152,13 +149,11 @@
 		2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2563B3F71AAAD74000C04227 /* Images.xcassets */; };
 		2563B3FB1AAAD74000C04227 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2563B3F91AAAD74000C04227 /* LaunchScreen.xib */; };
 		2563B4071AAAD74000C04227 /* RKWXTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B4061AAAD74000C04227 /* RKWXTTests.m */; };
-		2563B4881AAAFA7F00C04227 /* 侧边栏背景.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2563B4871AAAFA7F00C04227 /* 侧边栏背景.jpg */; };
 		2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B48A1AAAFF6B00C04227 /* HttpNetUtils.m */; };
 		77041F1D1AC013D400896706 /* 商家联盟图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77041F1B1AC013D400896706 /* 商家联盟图标@2x.png */; };
 		77041F1E1AC013D400896706 /* 天气图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77041F1C1AC013D400896706 /* 天气图标@2x.png */; };
 		770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4371AAD97700098C214 /* 密码图标@2x.png */; };
 		770BB43B1AAD97700098C214 /* 账号图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4381AAD97700098C214 /* 账号图标@2x.png */; };
-		770BB43C1AAD97700098C214 /* W.png in Resources */ = {isa = PBXBuildFile; fileRef = 770BB4391AAD97700098C214 /* W.png */; };
 		775842AF1AB95A300039B129 /* CustomMade.plist in Resources */ = {isa = PBXBuildFile; fileRef = 775841591AB95A2F0039B129 /* CustomMade.plist */; };
 		775842B01AB95A300039B129 /* CustomMadeOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758415B1AB95A2F0039B129 /* CustomMadeOBJ.m */; };
 		775842B11AB95A300039B129 /* WXColorConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758415D1AB95A2F0039B129 /* WXColorConfig.m */; };
@@ -539,15 +534,12 @@
 		126CA3FE1AB2B9EF00E08A0B /* CallNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallNormal@2x.png"; sourceTree = "<group>"; };
 		126CA3FF1AB2B9EF00E08A0B /* UserSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserSelected@2x.png"; sourceTree = "<group>"; };
 		126CA4001AB2B9EF00E08A0B /* UserNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserNormal@2x.png"; sourceTree = "<group>"; };
-		126CA4011AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = "我信通IOS Android接口文档(1).pages"; sourceTree = "<group>"; };
 		126CA40D1AB2DB1200E08A0B /* FetchPwdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchPwdModel.h; sourceTree = "<group>"; };
 		126CA40E1AB2DB1200E08A0B /* FetchPwdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchPwdModel.m; sourceTree = "<group>"; };
 		126CA4101AB2FC9400E08A0B /* GainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GainModel.h; sourceTree = "<group>"; };
 		126CA4111AB2FC9400E08A0B /* GainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainModel.m; sourceTree = "<group>"; };
 		126CA4131AB30F5E00E08A0B /* T_Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Back@2x.png"; sourceTree = "<group>"; };
 		126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_BackSel@2x.png"; sourceTree = "<group>"; };
-		1277D0071AC507ED0008D9B6 /* Default-375w-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-375w-667h@2x.png"; sourceTree = "<group>"; };
-		1277D0081AC507ED0008D9B6 /* Default-414w-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-414w-736h@3x.png"; sourceTree = "<group>"; };
 		1277D00C1AC50E4F0008D9B6 /* WXTResetPwdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTResetPwdVC.h; sourceTree = "<group>"; };
 		1277D00D1AC50E4F0008D9B6 /* WXTResetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTResetPwdVC.m; sourceTree = "<group>"; };
 		1277D00F1AC528500008D9B6 /* ResetPwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwd@2x.png"; sourceTree = "<group>"; };
@@ -614,7 +606,6 @@
 		2563B4061AAAD74000C04227 /* RKWXTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKWXTTests.m; sourceTree = "<group>"; };
 		2563B43E1AAADEE400C04227 /* RKWXT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKWXT-Prefix.pch"; sourceTree = "<group>"; };
 		2563B4781AAAE46D00C04227 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		2563B4871AAAFA7F00C04227 /* 侧边栏背景.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "侧边栏背景.jpg"; sourceTree = "<group>"; };
 		2563B4891AAAFF6B00C04227 /* HttpNetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpNetUtils.h; sourceTree = "<group>"; };
 		2563B48A1AAAFF6B00C04227 /* HttpNetUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpNetUtils.m; sourceTree = "<group>"; };
 		373B14107C952AC77813F98A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -623,7 +614,6 @@
 		77041F1C1AC013D400896706 /* 天气图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "天气图标@2x.png"; sourceTree = "<group>"; };
 		770BB4371AAD97700098C214 /* 密码图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码图标@2x.png"; sourceTree = "<group>"; };
 		770BB4381AAD97700098C214 /* 账号图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "账号图标@2x.png"; sourceTree = "<group>"; };
-		770BB4391AAD97700098C214 /* W.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = W.png; sourceTree = "<group>"; };
 		775841561AB95A2F0039B129 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		775841581AB95A2F0039B129 /* CustomMade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMade.h; sourceTree = "<group>"; };
 		775841591AB95A2F0039B129 /* CustomMade.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CustomMade.plist; sourceTree = "<group>"; };
@@ -1410,8 +1400,6 @@
 		1277D0061AC507BB0008D9B6 /* AppStartImg */ = {
 			isa = PBXGroup;
 			children = (
-				1277D0071AC507ED0008D9B6 /* Default-375w-667h@2x.png */,
-				1277D0081AC507ED0008D9B6 /* Default-414w-736h@3x.png */,
 				12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */,
 				12D55A401AC28D2400F51F97 /* Default@2x.png */,
 			);
@@ -1609,8 +1597,6 @@
 				120A2C1A1AB17AFD006A28B1 /* SignGifView */,
 				770BB4371AAD97700098C214 /* 密码图标@2x.png */,
 				770BB4381AAD97700098C214 /* 账号图标@2x.png */,
-				770BB4391AAD97700098C214 /* W.png */,
-				2563B4871AAAFA7F00C04227 /* 侧边栏背景.jpg */,
 				120A2BF91AB13900006A28B1 /* Arrow@2x.png */,
 				120A2BFA1AB13900006A28B1 /* PersonalBgImg.jpg */,
 				120A2BFB1AB13900006A28B1 /* RechargeSign@2x.png */,
@@ -1627,7 +1613,6 @@
 				126CA3FE1AB2B9EF00E08A0B /* CallNormal@2x.png */,
 				126CA3FF1AB2B9EF00E08A0B /* UserSelected@2x.png */,
 				126CA4001AB2B9EF00E08A0B /* UserNormal@2x.png */,
-				126CA4011AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2719,8 +2704,6 @@
 				120A2C5E1AB17AFD006A28B1 /* sign8@2x.png in Resources */,
 				12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */,
 				2563B3F61AAAD74000C04227 /* Main.storyboard in Resources */,
-				770BB43C1AAD97700098C214 /* W.png in Resources */,
-				1277D00A1AC507ED0008D9B6 /* Default-414w-736h@3x.png in Resources */,
 				120A2C631AB17B87006A28B1 /* SignNow@2x.png in Resources */,
 				120A2C5D1AB17AFD006A28B1 /* sign7@2x.png in Resources */,
 				120A2C571AB17AFD006A28B1 /* sign33@2x.png in Resources */,
@@ -2740,7 +2723,6 @@
 				120A2C6F1AB19473006A28B1 /* LoginLogo@2x.png in Resources */,
 				12622E7B1ABC23AC00B52E3F /* delSel@2x.png in Resources */,
 				120A2C491AB17AFD006A28B1 /* sign20@2x.png in Resources */,
-				126CA40A1AB2B9EF00E08A0B /* 我信通IOS Android接口文档(1).pages in Resources */,
 				2563B3FB1AAAD74000C04227 /* LaunchScreen.xib in Resources */,
 				12EC3B611AC415BE002F6920 /* callHistoryBtnImg@2x.png in Resources */,
 				120A2C471AB17AFD006A28B1 /* sign19@2x.png in Resources */,
@@ -2770,7 +2752,6 @@
 				775AB9D81ABFB637003A339D /* 2N@2x.png in Resources */,
 				120A2C3C1AB17AFD006A28B1 /* activityRule@2x.png in Resources */,
 				120A2C531AB17AFD006A28B1 /* sign2@2x.png in Resources */,
-				2563B4881AAAFA7F00C04227 /* 侧边栏背景.jpg in Resources */,
 				120A2C011AB13900006A28B1 /* Sign@2x.png in Resources */,
 				12D0C8821AB6D2920039A197 /* AboutWXTVersion@2x.png in Resources */,
 				126CA4031AB2B9EF00E08A0B /* FindNormal@2x.png in Resources */,
@@ -2801,7 +2782,6 @@
 				129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */,
 				12D52BB51AC2EF4400C5CE71 /* dtmf-*.aif in Resources */,
 				12D52BBC1AC2EF4400C5CE71 /* dtmf-6.aif in Resources */,
-				1277D0091AC507ED0008D9B6 /* Default-375w-667h@2x.png in Resources */,
 				129EF9071AC1097200B3C8E2 /* *S.png in Resources */,
 				770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */,
 				12D55A421AC28D2400F51F97 /* Default@2x.png in Resources */,
