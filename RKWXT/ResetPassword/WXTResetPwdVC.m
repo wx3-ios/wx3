@@ -140,6 +140,7 @@
 -(void)resetPwdSucceed{
     [self unShowWaitView];
     [self clearTextField];
+    [UtilTool showAlertView:@"密码修改成功"];
 }
 
 -(void)resetPwdFailed:(NSString *)errorMsg{

@@ -213,6 +213,9 @@
 
 -(void)signFailed:(NSString *)errorMsg{
     [_signBtn setEnabled:YES];
+    if(!errorMsg){
+        errorMsg = @"签到失败";
+    }
     [UtilTool showAlertView:errorMsg];
 }
 

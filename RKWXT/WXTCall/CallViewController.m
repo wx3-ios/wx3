@@ -258,7 +258,11 @@ typedef enum{
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
-    
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    if([textString isEqualToString:userObj.user]){
+        [UtilTool showAlertView:@"不能拨打登录号码"];
+        return;
+    }
     if(_callDelegate && [_callDelegate respondsToSelector:@selector(callPhoneWith:andPhoneName:)]){
         [_callDelegate callPhoneWith:textString andPhoneName:[self searchPhoneNameWithUserPhone:textString]];
     }
