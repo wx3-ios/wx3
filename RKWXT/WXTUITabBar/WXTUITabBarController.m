@@ -125,7 +125,7 @@
     label2 = [[UILabel alloc] init];
     label2.frame = CGRectMake(3*xGap, kTabBarHeight/2+ygap, Size.width/4, kTabBarHeight/2-btnGapHeight);
     [label2 setBackgroundColor:[UIColor clearColor]];
-    [label2 setText:@"我"];
+    [label2 setText:@"个人中心"];
     [label2 setFont:WXTFont(12.0)];
     [label2 setTextAlignment:NSTextAlignmentCenter];
     [label2 setTextColor:WXColorWithInteger(0x808080)];
