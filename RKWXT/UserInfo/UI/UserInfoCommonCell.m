@@ -20,7 +20,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        nameArr = @[@"充值中心",@"话费余额查询",@"签到送话费",@"关于我信通"];
+        nameArr = @[@"充值中心",@"话费余额查询",@"签到送话费",@"修改密码",@"关于我信通"];
         
         CGFloat xOffset = 14;
         UIImage *image = [UIImage imageNamed:@"RechargeSign.png"];
@@ -51,8 +51,8 @@
     if(row < 0){
         return;
     }
-    [self setBaseImage:(row==0 ? WXT_UserInfo_Recharge : (row==1?WXT_UserInfo_Balance:(row==2?WXT_UserInfo_Sign:WXT_UserInfo_About)))];
-    [self setBaseLabelText:(row==0 ? WXT_UserInfo_Recharge : (row==1?WXT_UserInfo_Balance:(row==2?WXT_UserInfo_Sign:WXT_UserInfo_About)))];
+    [self setBaseImage:(row==0 ? WXT_UserInfo_Recharge : (row==1?WXT_UserInfo_Balance:(row==2?WXT_UserInfo_Sign:(row==3?WXT_UserInfo_ResetPwd:WXT_UserInfo_About))))];
+    [self setBaseLabelText:(row==0 ? WXT_UserInfo_Recharge : (row==1?WXT_UserInfo_Balance:(row==2?WXT_UserInfo_Sign:(row==3?WXT_UserInfo_ResetPwd:WXT_UserInfo_About))))];
 }
 
 -(void)setBaseImage:(WXT_UserInfo)type{
@@ -70,6 +70,11 @@
         case WXT_UserInfo_Sign:
         {
             [_imageView setImage:[UIImage imageNamed:@"Sign.png"]];
+        }
+            break;
+        case WXT_UserInfo_ResetPwd:
+        {
+            [_imageView setImage:[UIImage imageNamed:@"ResetPwd.png"]];
         }
             break;
         case WXT_UserInfo_About:{
@@ -96,6 +101,11 @@
         case WXT_UserInfo_Sign:
         {
             [_nameLabel setText:nameArr[WXT_UserInfo_Sign]];
+        }
+            break;
+        case WXT_UserInfo_ResetPwd:
+        {
+            [_nameLabel setText:nameArr[WXT_UserInfo_ResetPwd]];
         }
             break;
         case WXT_UserInfo_About:

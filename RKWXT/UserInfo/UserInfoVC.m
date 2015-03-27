@@ -14,7 +14,7 @@
 #import "SignViewController.h"
 #import "LoginVC.h"
 #import "AboutWxtInfoVC.h"
-
+#import "WXTResetPwdVC.h"
 
 #define UserBgImageViewHeight (125)
 #define Size self.view.bounds.size
@@ -151,6 +151,12 @@
         {
             SignViewController *signVC = [[SignViewController alloc] init];
             [self.navigationController pushViewController:signVC animated:YES];
+        }
+            break;
+        case WXT_UserInfo_ResetPwd:
+        {
+            WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
+            [self.navigationController pushViewController:resetPwdVC animated:YES];
         }
             break;
         case WXT_UserInfo_About:

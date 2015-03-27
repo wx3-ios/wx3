@@ -18,6 +18,8 @@ typedef enum {
     WXT_UrlFeed_Type_FetchPwd,
     WXT_UrlFeed_Type_GainNum,
     WXT_UrlFeed_Type_Version,
+    WXT_UrlFeed_Type_Call,
+    WXT_UrlFeed_Type_ResetPwd,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

@@ -47,6 +47,12 @@
         case WXT_UrlFeed_Type_Version:
             url = @"";
             break;
+        case WXT_UrlFeed_Type_Call:
+            url = @"";
+            break;
+        case WXT_UrlFeed_Type_ResetPwd:
+            url = @"";
+            break;
         default:
             break;
     }
