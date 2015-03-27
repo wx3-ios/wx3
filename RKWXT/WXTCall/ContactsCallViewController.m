@@ -62,8 +62,10 @@
 }
 
 -(void)selectSegmentToIndexOne{
-    [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
-    [self segmentControlChange:_segmentControl];
+    if(_segmentControl.selectedSegmentIndex == 1){
+        [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
+        [self segmentControlChange:_segmentControl];
+    }
 }
 
 -(void)loadSegmentControl{
