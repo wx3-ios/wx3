@@ -88,6 +88,7 @@
     [notificationCenter addObserver:self selector:@selector(wxContactersChanged) name:D_Notification_Name_WXAddressBookHasChanged object:nil];
     [notificationCenter addObserver:self selector:@selector(singleContacterChanged:) name:D_Notification_Name_WXContacterHasChanged object:nil];
     [notificationCenter addObserver:self selector:@selector(singleContacterAdded:) name:D_Notification_Name_WXContacterAdded object:nil];
+    [notificationCenter addObserver:self selector:@selector(searchContactResult) name:SearchContactResult object:nil];
 }
 
 - (void)sysContacterChanged{
@@ -280,8 +281,18 @@
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString{
     [_model removeMatchingContact];
     [_model matchSearchStringList:searchString];
-    [controller.searchResultsTableView reloadData];
+//    [controller.searchResultsTableView reloadData];
+    [self showWaitView:self.view];
     return YES;
+}
+
+-(void)searchContactResult{
+    [self unShowWaitView];
+    [_searchDisplayController.searchResultsTableView reloadData];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self unShowWaitView];
 }
 
 @end

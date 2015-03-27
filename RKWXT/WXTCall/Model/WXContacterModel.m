@@ -138,15 +138,20 @@ static S_OptContactInfo pOptInfo[] = {
 }
 
 - (void)matchSearchStringList:(NSString*)string{
+    __block NSInteger number = 0;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
         NSArray *sysContacterList = [AddressBook sharedAddressBook].contactList;
         for(ContacterEntity *entity in sysContacterList){
             if([entity matchingString:string]){
+                number++;
                 [_filterArray addObject:entity];
+                if(number >= 30){
+                    break;
+                }
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:SearchContactResult object:nil];
         });
     });
 }

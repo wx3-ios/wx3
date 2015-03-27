@@ -32,6 +32,8 @@
 
 #define ClickedKeyboardBtn @"ClickedKeyboardBtn"
 
+#define SearchContactResult @"SearchContactResult"
+
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
