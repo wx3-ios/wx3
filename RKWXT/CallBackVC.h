@@ -11,6 +11,8 @@
 @interface CallBackVC : BaseVC
 
 @property (nonatomic,strong) NSString *phoneName;   //手机号或名字
--(void)callPhone:(NSString *)phone;
+
+//多重判断，如果返回NO说明号码格式不正确,先做判断再跳转
+-(BOOL)callPhone:(NSString *)phone;
 
 @end

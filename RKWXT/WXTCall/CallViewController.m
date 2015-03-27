@@ -254,7 +254,7 @@ typedef enum{
 }
 
 -(void)callPhoneNumber{
-    if(textString.length < 7 || textString.length > 15){
+    if(textString.length < 10 || textString.length > 12){
         [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }

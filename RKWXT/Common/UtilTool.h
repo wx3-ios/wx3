@@ -105,4 +105,5 @@ typedef enum{
 + (UIColor *) colorWithHexString: (NSString *)color;
 
 +(NSString*)callPhoneNumberRemovePreWith:(NSString*)oldPhone;
++(BOOL)determineNumberTrue:(NSString*)phoneNumber;
 @end

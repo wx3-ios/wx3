@@ -52,12 +52,11 @@
         _userPhone.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, nameLabelHeight);
         [_userPhone setBackgroundColor:[UIColor clearColor]];
         [_userPhone setTextAlignment:NSTextAlignmentLeft];
-        [_userPhone setTextColor:[UIColor blackColor]];
+        [_userPhone setTextColor:[UIColor grayColor]];
         [_userPhone setFont:WXTFont(12.0)];
         [self.contentView addSubview:_userPhone];
         
         xOffset = self.bounds.size.width*2/3-20;
-        NSLog(@"self.bounds.size.width = %ld",(long)self.bounds.size.width);
         CGFloat callTimeLabelWidth = 80;
         _callTime = [[UILabel alloc] init];
         _callTime.frame = CGRectMake(xOffset-5, (44-nameLabelHeight)/2, callTimeLabelWidth, nameLabelHeight);

@@ -234,8 +234,9 @@
     if(_model.name){
         backVC.phoneName = _model.name;
     }
-    [backVC callPhone:phoneStr];
-    [self.navigationController pushViewController:backVC animated:YES];
+    if([backVC callPhone:phoneStr]){
+        [self.navigationController pushViewController:backVC animated:YES];
+    }
 }
 
 -(void)back{

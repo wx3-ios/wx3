@@ -99,6 +99,8 @@
 		126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA4111AB2FC9400E08A0B /* GainModel.m */; };
 		126CA4151AB30F5E00E08A0B /* T_Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4131AB30F5E00E08A0B /* T_Back@2x.png */; };
 		126CA4161AB30F5E00E08A0B /* T_BackSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */; };
+		1277D0091AC507ED0008D9B6 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1277D0071AC507ED0008D9B6 /* Default-667h@2x.png */; };
+		1277D00A1AC507ED0008D9B6 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1277D0081AC507ED0008D9B6 /* Default-736h@3x.png */; };
 		129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */; };
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
@@ -541,6 +543,8 @@
 		126CA4111AB2FC9400E08A0B /* GainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainModel.m; sourceTree = "<group>"; };
 		126CA4131AB30F5E00E08A0B /* T_Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Back@2x.png"; sourceTree = "<group>"; };
 		126CA4141AB30F5E00E08A0B /* T_BackSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_BackSel@2x.png"; sourceTree = "<group>"; };
+		1277D0071AC507ED0008D9B6 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
+		1277D0081AC507ED0008D9B6 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ContactInfoBgImg.jpg; sourceTree = "<group>"; };
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
@@ -1395,6 +1399,17 @@
 			path = WXTUITabBar;
 			sourceTree = "<group>";
 		};
+		1277D0061AC507BB0008D9B6 /* AppStartImg */ = {
+			isa = PBXGroup;
+			children = (
+				1277D0071AC507ED0008D9B6 /* Default-667h@2x.png */,
+				1277D0081AC507ED0008D9B6 /* Default-736h@3x.png */,
+				12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */,
+				12D55A401AC28D2400F51F97 /* Default@2x.png */,
+			);
+			name = AppStartImg;
+			sourceTree = "<group>";
+		};
 		1296742F1AB6EAE200597B17 /* ContactInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1548,10 +1563,9 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1277D0061AC507BB0008D9B6 /* AppStartImg */,
 				12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */,
 				12D52BA71AC2EF4400C5CE71 /* presssound */,
-				12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */,
-				12D55A401AC28D2400F51F97 /* Default@2x.png */,
 				12622E601ABC224E00B52E3F /* Keyboard */,
 				1296742F1AB6EAE200597B17 /* ContactInfo */,
 				12477F081AB6E46700FEE546 /* Icon-57@2x.png */,
@@ -2685,6 +2699,7 @@
 				12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */,
 				2563B3F61AAAD74000C04227 /* Main.storyboard in Resources */,
 				770BB43C1AAD97700098C214 /* W.png in Resources */,
+				1277D00A1AC507ED0008D9B6 /* Default-736h@3x.png in Resources */,
 				120A2C631AB17B87006A28B1 /* SignNow@2x.png in Resources */,
 				120A2C5D1AB17AFD006A28B1 /* sign7@2x.png in Resources */,
 				120A2C571AB17AFD006A28B1 /* sign33@2x.png in Resources */,
@@ -2765,6 +2780,7 @@
 				129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */,
 				12D52BB51AC2EF4400C5CE71 /* dtmf-*.aif in Resources */,
 				12D52BBC1AC2EF4400C5CE71 /* dtmf-6.aif in Resources */,
+				1277D0091AC507ED0008D9B6 /* Default-667h@2x.png in Resources */,
 				129EF9071AC1097200B3C8E2 /* *S.png in Resources */,
 				770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */,
 				12D55A421AC28D2400F51F97 /* Default@2x.png in Resources */,

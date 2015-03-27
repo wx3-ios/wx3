@@ -153,8 +153,9 @@
     numberStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
     CallBackVC *callBackVC = [[CallBackVC alloc] init];
     [callBackVC setPhoneName:phoneName];
-    [callBackVC callPhone:numberStr];
-    [self.navigationController pushViewController:callBackVC animated:YES];
+    if([callBackVC callPhone:numberStr]){
+        [self.navigationController pushViewController:callBackVC animated:YES];
+    }
 }
 
 -(void)toContailDetailVC:(id)sender{

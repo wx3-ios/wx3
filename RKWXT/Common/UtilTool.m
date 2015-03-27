@@ -10,6 +10,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+//匹配手机的正则
+#define REGEX_MOBILE @"^1[34578]\\d{9}$"
+//电话区号正则
+#define REGEX_TELEPHONE @"^0\\d{2,3}\\d{7,8}"
 
 @implementation UtilTool
 
@@ -485,26 +489,69 @@
 }
 
 +(NSString*)callPhoneNumberRemovePreWith:(NSString*)oldPhone{
-    if(!oldPhone){
+    if(!oldPhone){   //号码为空
         return nil;
     }
-    if(oldPhone.length < 10){
+    if(oldPhone.length < 10){    //暂时不清楚属于哪类号码
         return oldPhone;
     }
-    if([oldPhone hasPrefix:@"0"]){
+    if([oldPhone hasPrefix:@"0"]){   //区号开头，暂时认为是固话
         return oldPhone;
     }
     
-    if([oldPhone hasPrefix:@"1"]){  //已1开始的字符串认作是手机号直接返回
+    if([oldPhone hasPrefix:@"1"]){  //以1开始的字符串认作是手机号直接返回
         return oldPhone;
     }
     NSString *newPhone = nil;
     if([oldPhone hasPrefix:@"+86"]){
-        newPhone = [oldPhone substringFromIndex:3]; //+86
+        newPhone = [oldPhone substringFromIndex:3]; //+86的号码去掉前缀后返回
     }
     if([oldPhone hasPrefix:@"86"]){
-        newPhone = [oldPhone substringFromIndex:2]; //86
+        newPhone = [oldPhone substringFromIndex:2]; //86前缀的可能性很小
     }
     return newPhone;
 }
+
++(BOOL)determineNumberTrue:(NSString*)phoneNumber{
+    BOOL isOk = NO;
+    if(!phoneNumber){
+        return NO;
+    }
+    if([phoneNumber hasPrefix:@"1"]){
+        return [self isMobileNumber:phoneNumber];
+    }
+    if([phoneNumber hasPrefix:@"0"]){
+        return [self isTelephoneNumber:phoneNumber];
+    }
+    return isOk;
+}
+
+//是否是手机号码
++ (BOOL)isMobileNumber:(NSString*)phone{
+    if(!phone){
+        return NO;
+    }
+    if (phone.length == 11){
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REGEX_MOBILE];
+        if ([predicate evaluateWithObject:phone]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+//是否是固定电话号码
++ (BOOL)isTelephoneNumber:(NSString*)phone{
+    if(!phone){
+        return NO;
+    }
+    if (phone.length == 11 || phone.length == 12) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REGEX_TELEPHONE];
+        if ([predicate evaluateWithObject:phone]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

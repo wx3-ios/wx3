@@ -168,10 +168,14 @@
 }
 
 #pragma mark callDelegate
--(void)callPhone:(NSString *)phone{
+-(BOOL)callPhone:(NSString *)phone{
     _model = [[CallModel alloc] init];
     [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
+    if(![UtilTool determineNumberTrue:phoneStr]){
+        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
+        return NO;
+    }
     [_model makeCallPhone:phoneStr];
     _model.callstatus_type = CallStatus_Type_starting;
     
@@ -182,6 +186,8 @@
     formatter.dateFormat = @"MM-dd HH:mm";
     NSString * dateStr = [formatter stringFromDate:date];
     [[WXTDatabase shareDatabase] insertCallHistory:@"我信" telephone:phone date:dateStr type:1];
+    
+    return YES;
 }
 
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
