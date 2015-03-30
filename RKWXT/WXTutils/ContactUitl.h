@@ -20,6 +20,7 @@
 }
 @property (nonatomic,strong) EGODatabase *placeDatabase;
 @property (nonatomic, assign, getter = isLoaded) BOOL loaded; //配置完成
+@property (strong, nonatomic) NSDictionary *areaDict;//固话归属地
 + (ContactUitl *)shareInstance;
 //解压文本导入数据库
 - (void)unzipDBFile;

@@ -13,13 +13,29 @@
 
 @implementation ContactUitl
 
+- (id)init
+{
+    if (self  = [super init]) {
+        self.areaDict = [self readAreaCode];
+        _placeDatabase = [EGODatabase databaseWithPath:kWXTPlacePath];
+        //PRIMARY KEY
+        NSArray *array = @[@"phone text PRIMARY KEY", @"area text"];
+        NSString * sql = [NSString stringWithFormat:kWXTCreateTable, kWXTPlaceTable, [array componentsJoinedByString:@","]];
+        if (![_placeDatabase executeUpdate:sql]) {
+            NSLog(@"create table = %@ faild!!!, error:%@", kWXTPlaceTable, _placeDatabase.lastErrorMessage);
+        }
+        [self unzipDBFile];
+    }
+    return self;
+}
+
 + (ContactUitl *)shareInstance
 {
     static ContactUitl *instance = nil;
     if(!instance)
     {
         instance = [[ContactUitl alloc]init];
-        instance.placeDatabase = [[EGODatabase alloc] initWithPath:kWXTPlacePath];
+//        instance.placeDatabase = [[EGODatabase alloc] initWithPath:kWXTPlacePath];
     }
     return instance;
 }

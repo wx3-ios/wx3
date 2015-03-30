@@ -17,7 +17,7 @@
 #import "RootViewController.h"
 #import <CoreTelephony/CTCall.h>
 #import <CoreTelephony/CTCallCenter.h>
-
+#import "ContactUitl.h"
 @interface AppDelegate (){
     UINavigationController *_navigation;
     CTCallCenter *_callCenter;
@@ -60,6 +60,7 @@
 #endif
     NSLog(@"%@", DOC_PATH);
     [[AddressBook sharedAddressBook] loadContact];
+    [ContactUitl shareInstance];
 	[self initUI];
     [self checkVersion];
     //监听电话
