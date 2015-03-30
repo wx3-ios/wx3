@@ -64,7 +64,7 @@
     }
     else
     {
-        _alphaLabel.text = CONTACT_ALPHA_POUND;
+//        _alphaLabel.text = CONTACT_ALPHA_POUND;
         _nameLabel.text = [pd displayNumber];
         _phoneLabel.text = @"";
         _pinyinLabel.text = @"";

@@ -7,36 +7,11 @@
 //
 
 #import "ContactUitl.h"
-#import "Tools.h"
-#import "NSString+Helper.h" 
-#import "ChineseToPinyin.h"
-
+#import "SSZipArchive.h"
+#import "EGODatabase.h"
+#import "DBCommon.h"
 
 @implementation ContactUitl
-
-- (id)init
-{
-    if(self = [super init])
-    {
-        //_contactArray = [[NSMutableArray alloc]init];
-        
-    }
-    return self;
-}
-
-+ (NSString *)cleanTokenForNumber:(NSString *)number
-{
-    NSArray *tokens = @[@"+86", @"-", @"(", @")", @" ", @" "];
-    NSString *result = number;
-    for (NSString *token in tokens) {
-        result = [result stringByReplacingOccurrencesOfString:token withString:@""];
-    }
-    if (result.length > 11) {
-         result = [result stringByReplacingOccurrencesOfString:@"86" withString:@""];
-    }
-    return result;
-}
-
 
 + (ContactUitl *)shareInstance
 {
@@ -44,313 +19,135 @@
     if(!instance)
     {
         instance = [[ContactUitl alloc]init];
-        //[instance loadAddressBook];
+        instance.placeDatabase = [[EGODatabase alloc] initWithPath:kWXTPlacePath];
     }
     return instance;
 }
 
+- (NSInteger)count{
+    int count = 0;
+    EGODatabaseResult *result = [_placeDatabase executeQuery:[NSString stringWithFormat:kWXTSelectCount, kWXTPlaceTable]];
+    for (EGODatabaseRow *row in result) {
+        count = [row intForColumnAtIndex:0];
+    }
+    return count;
+}
 
-+ (BOOL)isAuthorized
-{
-    if (sysVersion > 6.0f) {
-        ABAuthorizationStatus ab = ABAddressBookGetAuthorizationStatus ();
-        if (ab == kABAuthorizationStatusDenied) {
-            return NO;
+- (void)unzipDBFile{
+    BOOL import = [USER_DEFAULT boolForKey:UD_IMPORT_TAG];
+    if (import) {
+        _loaded = YES;
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        NSURL *url = DOC_URL;
+        NSString *toPath = [url path] ;
+        NSString *fromPath = [[NSBundle mainBundle] pathForResource:@"place" ofType:@"dat"];
+        NSString *filePath = [toPath stringByAppendingPathComponent:@"place.txt"];
+        //如果place.txt不存在..解压place.zip资源文件
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+        }
+        [SSZipArchive unzipFileAtPath:fromPath toDestination:toPath];
+        CFAbsoluteTime a = CFAbsoluteTimeGetCurrent();
+        
+        FILE *file = fopen([filePath cStringUsingEncoding:NSUTF8StringEncoding], "r");
+        if (!file) {
+            return ;
+        }
+        
+        char line[200];
+        NSMutableArray *lines = [NSMutableArray array];
+        int index = 0;
+        while (fgets(line, 200, file) != NULL) {
+            //            printf("%s", line);
+            if (index >= 5000) {
+                [self addAreaString:lines];
+                index = 0;
+                lines = [NSMutableArray array];
+            }
+            index++;
+            NSString *lineString = [[NSString alloc]initWithUTF8String:line];
+            [lines addObject:lineString];
+            
+        }
+        [self addAreaString:lines];
+        CFAbsoluteTime b = CFAbsoluteTimeGetCurrent();
+        NSLog(@"---------------------------");
+        NSLog(@"TOTAL USE TIME = %f", b - a);
+        fclose(file);
+        
+        NSInteger count = [self count];
+        
+        NSLog(@"place data count = %ld", count);
+        if (count > 300000) {
+            _loaded = YES;
+            [USER_DEFAULT setBool:YES forKey:UD_IMPORT_TAG];
+            [USER_DEFAULT synchronize];
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+            [NOTIFY_CENTER postNotificationName:AreaDataLoadingFinishNotification object:nil];
+            
+            NSURL *url = [NSURL fileURLWithPath:kWXTPlacePath];
+            //保存路径. 防止加到iCloud备份
+            [Tools addSkipBackupAttributeToItemAtURL:url];
+        }
+        else{
+            [_placeDatabase close];
+            [[NSFileManager defaultManager] removeItemAtPath:kWXTPlacePath error:nil];
+        }
+    });
+}
+
+- (void)addAreaString:(NSArray *)lines{
+    if (lines.count == 0) {
+        return;
+    }
+    CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+    //[_placeDatabase executeUpdate:@"PRAGMA synchronous = OFF"];
+    [_placeDatabase executeUpdate:@"begin transaction"];//开始事务
+    for (NSString * line in lines) {
+        NSString *lll = [line substringToIndex:line.length - 2];
+        NSArray * array = [lll componentsSeparatedByString:@"|"];
+        if (array.count == 2) {
+            NSString * sql = [NSString stringWithFormat:kWXTInsertPlace];
+            [_placeDatabase executeUpdate:sql parameters:array];
         }
     }
-    return YES;
+    [_placeDatabase executeUpdate:@"commit"]; //提交事备
+    CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
+    NSLog(@"insert %lu rowdata use time = %f", lines.count, end - start);
 }
 
-
-- (ContactData *)queryContactFromPhone:(NSString *)phone
-{
-    return [_contactDictionary objectForKey:phone];
-}
-
-- (NSString *)getFullNameByRecord:(ABRecordRef)record
-{
-    //以下的属性都是唯一的，即一个人只有一个FirstName，一个Organization。。。
-    CFStringRef firstName = ABRecordCopyValue(record,kABPersonFirstNameProperty);
-    CFStringRef lastName =  ABRecordCopyValue(record,kABPersonLastNameProperty);
+- (NSDictionary *)readAreaCode{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    NSString *first = firstName == NULL ? @"" : (__bridge NSString *)firstName;
-    NSString *last = lastName == NULL ? @"" : (__bridge NSString *)lastName;
-
-    NSString *fullName = [NSString stringWithFormat:@"%@%@", last, first];
-//    fullName = [fullName stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"areacode" ofType:@""];
+    NSString *content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    NSArray *lines = [content componentsSeparatedByString:@"\n"];
     
-    (firstName == NULL) ? : CFRelease(firstName);
-    (lastName == NULL) ? : CFRelease(lastName);
-    return fullName;
-}
-
-- (NSData *)getPersonPhotoData:(ABRecordRef)record
-{
-    if (ABPersonHasImageData(record)) {        
-        float version = [[[UIDevice currentDevice] systemVersion] floatValue];
-        CFDataRef data = version >= 4.1 ? ABPersonCopyImageDataWithFormat(record,kABPersonImageFormatThumbnail) : ABPersonCopyImageData(record);
-        NSData *photoData = [[NSData alloc]initWithData:(__bridge NSData *)data];
-        CFRelease(data);
-        return photoData;
-    }
-    return nil;
-}
-
-- (UIImage *)getPersonPhoto:(ABRecordRef)record
-{
-    
-    return nil;
-}
-
-
-- (NSArray *)getPhoneArray:(ABRecordRef)record
-{
-    NSMutableArray *array = [[NSMutableArray alloc]init];
-    
-    //有些属性不是唯一的，比如一个人有多个电话：手机，主电话，传真。。。
-    //所有ABMutableMultiValueRef这样的引用的东西都是这样一个元组（id，label，value）
-    ABMutableMultiValueRef multiPhone = ABRecordCopyValue(record, kABPersonPhoneProperty);
-    for (CFIndex i = 0; i < ABMultiValueGetCount(multiPhone); i++) {
-        //CFStringRef labelRef = ABMultiValueCopyLabelAtIndex(multiPhone, i);
-        CFStringRef numberRef = ABMultiValueCopyValueAtIndex(multiPhone, i);
-        NSString *phone = (__bridge NSString *)numberRef;
+    NSString *province = @"";
+    for (NSString *lineString in lines) {
+        if (lineString.length < 1) {
+            continue;
+        }
         
-        phone = [ContactUitl cleanTokenForNumber:phone];
-        if ([phone isMobileNumber] || [phone isTelephoneNumber])
+        NSArray *values = [lineString componentsSeparatedByString:@" "];
+        if (values.count == 1) {
+            province = values[0];
+        }
+        else if(values.count == 2)
         {
-            [array addObject:phone];
-        }
-        
-        CFRelease(numberRef);
-    }
-    CFRelease(multiPhone);
-    
-    return array;
-}
-
-
-
-- (void)loadAddressBook
-{
-    
-    if (_isLoad) {
-        return;
-    }
-    
-    _isLoad = YES;
-    
-    NSLog(@"loadLocalAddressBook");
-    //Pinyin *pinyin = [[Pinyin alloc]init];
-    NSMutableArray *array = [[NSMutableArray alloc]init];
-    
-    //添加自定义联系人
-    //[self addCustomContact:array];
-    //get all people info from the address book
-    
-    ABAddressBookRef addressBook;
-    
-    if(sysVersion > 6.0f)
-    {
-        
-        CFErrorRef myError = NULL;
-        addressBook = ABAddressBookCreateWithOptions(NULL, &myError);
-        if (myError != NULL) {
-            //NSLog(@"ABAddressBook error = %@", myError);
-            return;
-        }
-        
-        //等待同意后向下执行
-        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error)
-                                                 {
-                                                     dispatch_semaphore_signal(sema);
-                                                 });
-        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-//        dispatch_release(sema);
-    }
-    else{
-        addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-    }
-    
-    if (addressBook == NULL) {
-        return;
-    }
-    
-    CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);//这是个数组的引用
-    for(int i = 0; i < CFArrayGetCount(people); i++){
-        
-        //parse each person of addressbook
-        ABRecordRef record = CFArrayGetValueAtIndex(people, i);//取出一条记录
-        
-        [self addContact:record toArray:array];
-    }
-    CFRelease(people);
-    CFRelease(addressBook);
-    
-    _contactArray = [array sortedArrayUsingSelector:@selector(compareName:)];
-
-
-    /*
-     设置联系人的字典。。方便查找
-     */
-    //[_contactDictionary removeAllObjects];
-    _contactDictionary = [[NSMutableDictionary alloc]init];
-    for (ContactData *contact in _contactArray) {
-        for (PhoneData *data in contact.phoneArray) {
-            [_contactDictionary setObject:contact forKey:data.phone];
-        }
-    }
-//    DDLogDebug(@"loadAddressBook finish! contact count = %d", _contactArray.count);
-    [NOTIFY_CENTER postNotificationName:NOTIFY_CONTACT_UPDATE object:nil];
-}
-
-- (BOOL)addContact:(ABRecordRef)record toArray:(NSMutableArray *)array
-{
-    //如果没有电话号码。。返回
-    NSArray *phones = [self getPhoneArray:record];
-    if (phones.count == 0) {
-        return NO;
-    }
-    
-    NSString *fullName = [self getFullNameByRecord:record];
-    UIImage *photo ;//= [self getPersonPhoto:record];
-    
-    ABRecordID ROWID = ABRecordGetRecordID(record);
-   
-    
-    NSMutableArray *phoneArray = [NSMutableArray array];
-    for( NSString *phone in phones)
-    {
-        [phoneArray addObject:[PhoneData dataWithPhone:phone]];
-    }
-    
-    ContactData *contact = [[ContactData alloc]init];
-    contact.ROWID = ROWID;
-    contact.name = fullName;
-    contact.photo = photo;
-    
-    contact.phoneArray = phoneArray;
-    contact.defaultPhoneData = phoneArray[0];
-    [self fitIndexsForContact:contact];
-    
-    [array addObject:contact];
-    
-    return YES;
-}
-
-//建立拼音,首字母索引
-- (void)fitIndexsForContact:(ContactData *)contact
-{
-    NSString *fullName = contact.name;
-    //汉语转PY
-    NSString *key = nil;
-    NSMutableString *namePinYin = nil;
-    NSMutableString *namePY = nil;
-    if (fullName != nil && fullName.length > 0) {
-        namePinYin = [[NSMutableString alloc]init];
-        namePY = [[NSMutableString alloc]init];
-        for (int i = 0 ; i < fullName.length; i++) {
-            NSString *oneText = [fullName substringWithRange:NSMakeRange(i, 1)];
-            NSString *py = [ChineseToPinyin pinyinFromChiniseString:oneText];
+            NSString *city = values[0];
+            NSString *area = values[1];
             
-            if (py.length > 0) {
-                py = [py capitalizedString];//返回每个单词首字母大写的字符串
-            }
-            else{
-                py = CONTACT_ALPHA_POUND;
-            }
+            NSString *name = [NSString stringWithFormat:@"%@%@", province, city];
+            name = [name stringByReplacingOccurrencesOfString:@"省" withString:@""];
+            name = [name stringByReplacingOccurrencesOfString:@"市" withString:@""];
             
-            [namePinYin appendString:py];
-            [namePY appendString:[py substringToIndex:1]];
-            
-            if (i == 0) {
-                char c = [namePY characterAtIndex:0];
-                
-                key = (c > 'Z' || c < 'A') ? CONTACT_ALPHA_POUND : [[NSString alloc]initWithString:namePY];
-            }
+            [dict setValue:name forKey:area];
         }
     }
-    else{
-        key = CONTACT_ALPHA_POUND;
-    }
-    
-    contact.alpha = key;
-    contact.namePY = namePY;
-    contact.namePinYin = namePinYin;
-    if (fullName) {
-        contact.english = [[fullName uppercaseString] isEqualToString:namePY];
-    }
+    return dict;
 }
-
-
-- (void)addContact:(ABRecordRef)record
-{
-//    DDLogDebug(@"addContact ----------->");
-    NSMutableArray *array = [[NSMutableArray alloc]initWithArray:_contactArray];
-    if ([self addContact:record toArray:array])
-    {
-        _contactArray = [array sortedArrayUsingSelector:@selector(compareName:)];
-        
-        /*
-         设置联系人的字典。。方便查找
-         */
-        //[_contactDictionary removeAllObjects];
-        _contactDictionary = [[NSMutableDictionary alloc]init];
-        for (ContactData *contact in _contactArray) {
-            for (PhoneData *data in contact.phoneArray) {
-                [_contactDictionary setObject:contact forKey:data.phone];
-            }
-        }
-        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_REFLASH_CONTACT object:nil];
-        
-    }
-    
-}
-
-
-- (void)addCustomContact:(NSMutableArray *)array
-{
-
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"CustomContact" withExtension:@"plist"];
-    NSArray *customs = [NSArray arrayWithContentsOfURL:url];
-    for (NSDictionary *dict in customs) {
-        ContactData *cd = [[ContactData alloc]init];
-        
-        cd.name = dict[@"name"];
-        cd.indexs = dict[@"indexs"];
-        cd.alpha = CONTACT_ALPHA_START;
-        cd.namePinYin = dict[@"pinyin"];
-        cd.namePY = dict[@"PY"];
-        
-        NSArray *phones = dict[@"phones"];
-        NSMutableArray *phoneArray = [NSMutableArray array];
-        for (NSString *phone in phones) {
-            PhoneData *data = [PhoneData dataWithPhone:phone];
-            [phoneArray addObject:data];
-        }
-        cd.phoneArray = phoneArray;
-        cd.defaultPhoneData = phoneArray[0];
-        
-        [array addObject:cd];
-        
-        
-        if (!_kefu && [cd.name rangeOfString:@"客服"].length > 0) {
-            _kefu = cd;
-        }
-    }
-
-}
-
-
-- (NSArray *)allContacts
-{
-    if (_contactArray == nil) {
-        [self loadAddressBook];
-    }
-    return _contactArray;
-}
-
-
-
-
 @end

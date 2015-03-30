@@ -41,17 +41,17 @@
     
     _groupLabel.text = recent.groupCount > 1 ? [NSString stringWithFormat:@"[%d]", recent.groupCount] : @"";
     
-    ContactData *cd = [[ContactUitl shareInstance] queryContactFromPhone:recent.phone];
-    if (cd.name.length > 0) {
-        _nameLabel.text = cd.name;
-        _phoneLabel.text = recent.phone;
-        _gapConstraint.constant = 5;
-    }
-    else{
-        _nameLabel.text = recent.phone;
-        _phoneLabel.text = @"";
-        _gapConstraint.constant = 0;
-    }
+//    ContactData *cd = [[ContactUitl shareInstance] queryContactFromPhone:recent.phone];
+//    if (cd.name.length > 0) {
+//        _nameLabel.text = cd.name;
+//        _phoneLabel.text = recent.phone;
+//        _gapConstraint.constant = 5;
+//    }
+//    else{
+//        _nameLabel.text = recent.phone;
+//        _phoneLabel.text = @"";
+//        _gapConstraint.constant = 0;
+//    }
 }
 
 

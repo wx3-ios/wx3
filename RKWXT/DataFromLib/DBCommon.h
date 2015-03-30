@@ -18,5 +18,8 @@
 #define kWXTInsertCallHistory               @"INSERT INTO Call(name,telephone,date,type) values('%@','%@','%@','%i')"
 #define kWXTQueryCallHistory                @"SELECT * FROM Call ORDER BY date DESC LIMIT 0,50"
 #define kWXTDelCallHistory                  @"delete from Call where telephone=%@"
-
+#define kWXTPlacePath                       [NSString stringWithFormat:@"%@/place.sqlite",DOC_PATH]                
+#define kWXTPlaceTable                      @"place"
+#define kWXTInsertPlace                     @"INSERT INTO place (phone,area) VALUES (?,?)"
+#define kWXTSelectCount                     @"SELECT count(*) FROM %@"
 #endif

@@ -73,7 +73,6 @@
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
 		12477F091AB6E46800FEE546 /* Icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12477F081AB6E46700FEE546 /* Icon-57@2x.png */; };
-		12622BCC1ABD4218003F04A5 /* CallBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12622BCB1ABD4218003F04A5 /* CallBackVC.m */; };
 		12622BD21ABD4425003F04A5 /* CallBackBgImg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12622BCD1ABD4425003F04A5 /* CallBackBgImg@2x.jpg */; };
 		12622BD31ABD4425003F04A5 /* CallBackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12622BCE1ABD4425003F04A5 /* CallBackBtn@2x.png */; };
 		12622BD41ABD4425003F04A5 /* CallBackBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12622BCF1ABD4425003F04A5 /* CallBackBgImg.jpg */; };
@@ -110,7 +109,6 @@
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
 		12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */; };
 		12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CFE6501AC1A210009C710B /* CallHistoryEntity.m */; };
-		12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D039F01AB3489200DD7E56 /* BaseVC.m */; };
 		12D0C8671AB673910039A197 /* wxtRecharge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8661AB673910039A197 /* wxtRecharge@2x.png */; };
 		12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */; };
 		12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D0C8711AB685250039A197 /* AboutWxtInfoVC.m */; };
@@ -411,6 +409,8 @@
 		77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB943A1AAFF3830021A816 /* UIView+Sizing.m */; };
 		786155E21AC8E0CE0048B604 /* areacode in Resources */ = {isa = PBXBuildFile; fileRef = 786155E01AC8E0CE0048B604 /* areacode */; };
 		786155E31AC8E0CE0048B604 /* place.dat in Resources */ = {isa = PBXBuildFile; fileRef = 786155E11AC8E0CE0048B604 /* place.dat */; };
+		786155E61AC8EB960048B604 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 786155E51AC8EB960048B604 /* BaseVC.m */; };
+		786155E91AC8EBA20048B604 /* CallBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 786155E81AC8EBA20048B604 /* CallBackVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -508,8 +508,6 @@
 		12228A741AB1C0F200CF0800 /* RegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistModel.h; sourceTree = "<group>"; };
 		12228A751AB1C0F200CF0800 /* RegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistModel.m; sourceTree = "<group>"; };
 		12477F081AB6E46700FEE546 /* Icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57@2x.png"; sourceTree = "<group>"; };
-		12622BCA1ABD4218003F04A5 /* CallBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackVC.h; sourceTree = "<group>"; };
-		12622BCB1ABD4218003F04A5 /* CallBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallBackVC.m; sourceTree = "<group>"; };
 		12622BCD1ABD4425003F04A5 /* CallBackBgImg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "CallBackBgImg@2x.jpg"; sourceTree = "<group>"; };
 		12622BCE1ABD4425003F04A5 /* CallBackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBackBtn@2x.png"; sourceTree = "<group>"; };
 		12622BCF1ABD4425003F04A5 /* CallBackBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CallBackBgImg.jpg; sourceTree = "<group>"; };
@@ -557,8 +555,6 @@
 		12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		12CFE64F1AC1A210009C710B /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
 		12CFE6501AC1A210009C710B /* CallHistoryEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallHistoryEntity.m; sourceTree = "<group>"; };
-		12D039EF1AB3489200DD7E56 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
-		12D039F01AB3489200DD7E56 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 		12D0C8661AB673910039A197 /* wxtRecharge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxtRecharge@2x.png"; sourceTree = "<group>"; };
 		12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadDataLogo@2x.png"; sourceTree = "<group>"; };
 		12D0C8701AB685250039A197 /* AboutWxtInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWxtInfoVC.h; sourceTree = "<group>"; };
@@ -1113,6 +1109,10 @@
 		77DB943A1AAFF3830021A816 /* UIView+Sizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sizing.m"; sourceTree = "<group>"; };
 		786155E01AC8E0CE0048B604 /* areacode */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = areacode; sourceTree = "<group>"; };
 		786155E11AC8E0CE0048B604 /* place.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = place.dat; sourceTree = "<group>"; };
+		786155E41AC8EB960048B604 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		786155E51AC8EB960048B604 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		786155E71AC8EBA20048B604 /* CallBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackVC.h; sourceTree = "<group>"; };
+		786155E81AC8EBA20048B604 /* CallBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallBackVC.m; sourceTree = "<group>"; };
 		E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1516,10 +1516,6 @@
 				2563B4861AAAFA7500C04227 /* Resources */,
 				2563B3EB1AAAD74000C04227 /* AppDelegate.h */,
 				2563B3EC1AAAD74000C04227 /* AppDelegate.m */,
-				12D039EF1AB3489200DD7E56 /* BaseVC.h */,
-				12D039F01AB3489200DD7E56 /* BaseVC.m */,
-				12622BCA1ABD4218003F04A5 /* CallBackVC.h */,
-				12622BCB1ABD4218003F04A5 /* CallBackVC.m */,
 				1277D00B1AC50E250008D9B6 /* ResetPassword */,
 				12D0C86F1AB684FE0039A197 /* AboutWxtInfo */,
 				126CA3F21AB2B71100E08A0B /* WXTUITabBar */,
@@ -2207,6 +2203,8 @@
 		7758435E1AB96A4B0039B129 /* WXTCall */ = {
 			isa = PBXGroup;
 			children = (
+				786155E71AC8EBA20048B604 /* CallBackVC.h */,
+				786155E81AC8EBA20048B604 /* CallBackVC.m */,
 				777A38691AC3BA49001CF5FF /* ContactDetail */,
 				775AB9DA1ABFB696003A339D /* CallModel.m */,
 				775AB9DB1ABFB696003A339D /* CallModel.h */,
@@ -2552,6 +2550,8 @@
 		77DB941D1AAFED330021A816 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				786155E41AC8EB960048B604 /* BaseVC.h */,
+				786155E51AC8EB960048B604 /* BaseVC.m */,
 				777F028F1ABC1C8C008C77F1 /* BaseViewController.h */,
 				777F02901ABC1C8C008C77F1 /* BaseViewController.m */,
 				775C58DA1ABAB87E005B6B40 /* CoordinateController.h */,
@@ -2877,6 +2877,7 @@
 				775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */,
 				7758430C1AB95A300039B129 /* WXActivityButton.m in Sources */,
 				775C58531ABA68B9005B6B40 /* WXContacterVC.m in Sources */,
+				786155E61AC8EB960048B604 /* BaseVC.m in Sources */,
 				775843011AB95A300039B129 /* PingponeButton.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
 				775C58C61ABA7B75005B6B40 /* PersonalInfo.m in Sources */,
@@ -2918,7 +2919,6 @@
 				775842DD1AB95A300039B129 /* UIImage+Render.m in Sources */,
 				775843161AB95A300039B129 /* WXUIBaseButton.m in Sources */,
 				775843741AB96A4B0039B129 /* ContactBaseEntity.m in Sources */,
-				12622BCC1ABD4218003F04A5 /* CallBackVC.m in Sources */,
 				775842CA1AB95A300039B129 /* it_lib_sms.cpp in Sources */,
 				12EC3B5C1AC3AEDC002F6920 /* WXTCallHistoryCell.m in Sources */,
 				77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */,
@@ -2992,7 +2992,6 @@
 				775843C21AB971CF0039B129 /* UIView+Render.m in Sources */,
 				775842F11AB95A300039B129 /* WXDropListItem.m in Sources */,
 				775C58D61ABA7D27005B6B40 /* BaseModel.m in Sources */,
-				12D039F11AB3489200DD7E56 /* BaseVC.m in Sources */,
 				7758432C1AB95A300039B129 /* WXUISearchBar.m in Sources */,
 				126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */,
 				2563B3EA1AAAD74000C04227 /* main.m in Sources */,
@@ -3075,6 +3074,7 @@
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
 				775C586A1ABA7A52005B6B40 /* CallHistoryEntityExt.m in Sources */,
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
+				786155E91AC8EBA20048B604 /* CallBackVC.m in Sources */,
 				775842CC1AB95A300039B129 /* sqlite3.c in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
 				12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */,

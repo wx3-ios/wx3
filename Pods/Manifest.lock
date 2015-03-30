@@ -32,6 +32,7 @@ PODS:
   - OpenUDID (1.0.0)
   - Reachability (3.2)
   - RegexKitLite (4.0)
+  - SSZipArchive (0.3.2)
   - Toast (2.4)
 
 DEPENDENCIES:
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - OpenUDID (~> 1.0.0)
   - Reachability (~> 3.2)
   - RegexKitLite (~> 4.0)
+  - SSZipArchive (~> 0.3.1)
   - Toast (~> 2.2)
 
 SPEC CHECKSUMS:
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
+  SSZipArchive: 11801759495fa4efb7512ef652eb0042d68305d7
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
 
 COCOAPODS: 0.36.0

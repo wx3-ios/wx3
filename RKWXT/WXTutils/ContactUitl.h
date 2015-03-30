@@ -7,46 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AddressBook/AddressBook.h>
-#import "ContactData.h"
-
-#define CONTACT_ALPHA_START   @"★"
-#define CONTACT_ALPHA_POUND   @"#"
-#define NOTIFY_CONTACT_UPDATE @"NotifyContactUpdate"
-
+//数据初始化完成
+#define AreaDataLoadingFinishNotification @"com.gjt.area.init"
+//导入完成标记
+#define UD_IMPORT_TAG @"unzip.import.place.tag"
+@class EGODatabase;
 @interface ContactUitl : NSObject
 {
     
     @private
     BOOL _isLoad;
 }
-
-
-//@property (nonatomic, strong) NSArray *contactArray;
-@property(nonatomic, strong, readonly) NSMutableDictionary *contactDictionary;
-@property(nonatomic, strong, readonly) NSArray *contactArray;
-@property(nonatomic, strong, readonly) NSDictionary *areaDictionar;
-@property(nonatomic, strong, readonly) ContactData *kefu;
-
-@property(nonatomic, getter = isQueryFinish, readonly) BOOL queryFinish;//归属查询完毕
-
-//是否有读取联系人的权限
-+ (BOOL)isAuthorized;
-
+@property (nonatomic,strong) EGODatabase *placeDatabase;
+@property (nonatomic, assign, getter = isLoaded) BOOL loaded; //配置完成
 + (ContactUitl *)shareInstance;
-
-+ (NSString *)cleanTokenForNumber:(NSString *)number;
-
-
-- (void)fitIndexsForContact:(ContactData *)contact;
-- (ContactData *)queryContactFromPhone:(NSString *)phone;
-
-- (NSArray *)allContacts;
-
-- (void)addContact:(ABRecordRef)record;
-
-
-- (void)loadAddressBook;
+//解压文本导入数据库
+- (void)unzipDBFile;
+- (NSInteger)count;
+//读取固话归属地
+- (NSDictionary *)readAreaCode;
 
 
 

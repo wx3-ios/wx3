@@ -89,9 +89,9 @@
      forState:UIControlStateNormal];
     
     //如果已经授权..不显示提示框
-    if ([ContactUitl isAuthorized]) {
-        self.tableView.tableFooterView = nil;
-    }
+//    if ([ContactUitl isAuthorized]) {
+//        self.tableView.tableFooterView = nil;
+//    }
     
     //    self.kvoController = [FBKVOController controllerWithObserver:self];
     //    [_kvoController observe:_tableView keyPath:@"visibleCells" options:NSKeyValueObservingOptionOld block:^(id observer, id object, NSDictionary *change) {
@@ -187,8 +187,8 @@
         PhoneData *pd = [PhoneData dataWithPhone:kefuPhone];
         contact.phoneArray = @[pd];
         contact.defaultPhoneData = pd;
-        [[ContactUitl shareInstance] fitIndexsForContact:contact];
-        contact.alpha = CONTACT_ALPHA_START;
+//        [[ContactUitl shareInstance] fitIndexsForContact:contact];
+//        contact.alpha = CONTACT_ALPHA_START;
         [array addObject:contact];
     }
 }
@@ -198,46 +198,46 @@
 - (void)initLocalContacts
 {
     
-    NSArray *allContacts = [[ContactUitl shareInstance] allContacts];
-    NSMutableArray *contacts = [NSMutableArray arrayWithArray:allContacts];
-    [self insertKefuInArray:contacts];
+//    NSArray *allContacts = [[ContactUitl shareInstance] allContacts];
+//    NSMutableArray *contacts = [NSMutableArray arrayWithArray:allContacts];
+//    [self insertKefuInArray:contacts];
     //按名字排序每个表中的数据
     //self.searchDisplayController.searchBar.placeholder = [NSString stringWithFormat:@"共有%d个联系人", _contactArray.count];
-    _contactArray = contacts;
-    NSLog(@"contactArray count = %lu", contacts.count);
+//    _contactArray = contacts;
+//    NSLog(@"contactArray count = %lu", contacts.count);
     
     /*
      将所有的联系人,按首字母分组
      */
-    _contactDictionary = [[NSMutableDictionary alloc]init];
-    for (ContactData *qc in contacts) {
-        NSString *key = qc.alpha;
-        NSMutableArray *sectionArray = [_contactDictionary objectForKey:key];
-        if (sectionArray == nil) {
-            sectionArray = [[NSMutableArray alloc]init ];
-            [_contactDictionary setValue:sectionArray forKey:key];
-        }
-        [sectionArray addObject:qc];
-    }
+//    _contactDictionary = [[NSMutableDictionary alloc]init];
+//    for (ContactData *qc in contacts) {
+//        NSString *key = qc.alpha;
+//        NSMutableArray *sectionArray = [_contactDictionary objectForKey:key];
+//        if (sectionArray == nil) {
+//            sectionArray = [[NSMutableArray alloc]init ];
+//            [_contactDictionary setValue:sectionArray forKey:key];
+//        }
+//        [sectionArray addObject:qc];
+//    }
     
-    _contactKeys = [[_contactDictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2){
-        
-        if ([obj1 isEqual: CONTACT_ALPHA_START]) {
-            return NSOrderedAscending;
-        }
-        else if([obj2 isEqual: CONTACT_ALPHA_START])
-        {
-            return NSOrderedDescending;
-        }
-        if([obj1 isEqual: CONTACT_ALPHA_POUND])
-        {
-            return NSOrderedDescending;
-        }
-        if ([obj2 isEqual: CONTACT_ALPHA_POUND]) {
-            return NSOrderedAscending;
-        }
-        return [obj1 compare:obj2];
-    }];
+//    _contactKeys = [[_contactDictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2){
+//        
+//        if ([obj1 isEqual: CONTACT_ALPHA_START]) {
+//            return NSOrderedAscending;
+//        }
+//        else if([obj2 isEqual: CONTACT_ALPHA_START])
+//        {
+//            return NSOrderedDescending;
+//        }
+//        if([obj1 isEqual: CONTACT_ALPHA_POUND])
+//        {
+//            return NSOrderedDescending;
+//        }
+//        if ([obj2 isEqual: CONTACT_ALPHA_POUND]) {
+//            return NSOrderedAscending;
+//        }
+//        return [obj1 compare:obj2];
+//    }];
     
     _sectionIndexDictionary = [[NSMutableDictionary alloc]init];
     int prevIndex = 0;
