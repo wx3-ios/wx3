@@ -21,6 +21,7 @@
 //按照搜索的范围排序
 - (NSComparisonResult)compareRange:(ContactData *)contact
 {
+    
     if (_rangeNamePY.length > 0 || contact.rangeNamePY.length > 0)
     {
         

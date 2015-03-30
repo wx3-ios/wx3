@@ -409,6 +409,8 @@
 		77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB942D1AAFF0BE0021A816 /* NSDictionary+Plist.m */; };
 		77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB94371AAFF35F0021A816 /* ColorLabel.m */; };
 		77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB943A1AAFF3830021A816 /* UIView+Sizing.m */; };
+		786155E21AC8E0CE0048B604 /* areacode in Resources */ = {isa = PBXBuildFile; fileRef = 786155E01AC8E0CE0048B604 /* areacode */; };
+		786155E31AC8E0CE0048B604 /* place.dat in Resources */ = {isa = PBXBuildFile; fileRef = 786155E11AC8E0CE0048B604 /* place.dat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1109,6 +1111,8 @@
 		77DB94371AAFF35F0021A816 /* ColorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorLabel.m; sourceTree = "<group>"; };
 		77DB94391AAFF3830021A816 /* UIView+Sizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sizing.h"; sourceTree = "<group>"; };
 		77DB943A1AAFF3830021A816 /* UIView+Sizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sizing.m"; sourceTree = "<group>"; };
+		786155E01AC8E0CE0048B604 /* areacode */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = areacode; sourceTree = "<group>"; };
+		786155E11AC8E0CE0048B604 /* place.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = place.dat; sourceTree = "<group>"; };
 		E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1571,6 +1575,8 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				786155E01AC8E0CE0048B604 /* areacode */,
+				786155E11AC8E0CE0048B604 /* place.dat */,
 				1277D0061AC507BB0008D9B6 /* AppStartImg */,
 				12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */,
 				12D52BA71AC2EF4400C5CE71 /* presssound */,
@@ -2709,6 +2715,7 @@
 				120A2C571AB17AFD006A28B1 /* sign33@2x.png in Resources */,
 				777F028E1ABBF362008C77F1 /* DialView.xib in Resources */,
 				120A2C481AB17AFD006A28B1 /* sign1@2x.png in Resources */,
+				786155E21AC8E0CE0048B604 /* areacode in Resources */,
 				120A2C3F1AB17AFD006A28B1 /* sign10@2x.png in Resources */,
 				12D52BB71AC2EF4400C5CE71 /* dtmf-1.aif in Resources */,
 				12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */,
@@ -2758,6 +2765,7 @@
 				12D52BBA1AC2EF4400C5CE71 /* dtmf-4.aif in Resources */,
 				126CA4041AB2B9EF00E08A0B /* MallSelected@2x.png in Resources */,
 				775C58401ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				786155E31AC8E0CE0048B604 /* place.dat in Resources */,
 				775AB9CC1ABFB558003A339D /* 6N@2x.png in Resources */,
 				120A2C511AB17AFD006A28B1 /* sign28@2x.png in Resources */,
 				120A2C521AB17AFD006A28B1 /* sign29@2x.png in Resources */,

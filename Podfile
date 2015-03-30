@@ -6,7 +6,7 @@ pod 'Toast', '~> 2.2'
 pod 'KVOController', '~> 1.0.1'
 pod 'RegexKitLite', '~> 4.0'		#已经下载
 pod 'EGODatabase', '~> 2.0'
-#pod 'SSZipArchive', '~> 0.3.1'
+pod 'SSZipArchive', '~> 0.3.1'
 #pod 'ICETutorial', '~> 1.0.2'		#引导已经下载
 pod 'MBProgressHUD', '~> 0.8'		#已经下载
 #pod 'SevenSwitch', '~> 1.3.0'
