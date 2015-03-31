@@ -171,8 +171,11 @@
     _model = [[CallModel alloc] init];
     [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
-    if(![UtilTool determineNumberTrue:phoneStr]){
-        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
+//    if(![UtilTool determineNumberTrue:phoneStr]){
+//        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
+//        return NO;
+//    }
+    if(!phoneStr){
         return NO;
     }
     [_model makeCallPhone:phoneStr];

@@ -30,8 +30,6 @@
 @property (nonatomic,strong) UIButton *but1;
 @property (nonatomic,strong) UIButton *but2;
 
-//@property (nonatomic,strong) WXTUIButton *callBtn;
-//@property (nonatomic,strong) UIButton *delBtn;
 @property (nonatomic,strong) UIView *downView;
 
 @property (nonatomic,strong) UILabel *label;
@@ -139,6 +137,21 @@
     [tabBar addSubview:but2];
     
     [self createDownView];
+    
+#ifdef OnlyPhoneVersion    // 如果已经定义，则隐藏商城模块
+    [but setHidden:YES];
+    [label setHidden:YES];
+    
+    
+    [but0 setFrame:CGRectMake(0, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
+    [label0 setFrame:CGRectMake(0, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
+    
+    [but1 setFrame:CGRectMake(Size.width/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
+    [label1 setFrame:CGRectMake(Size.width/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
+    
+    [but2 setFrame:CGRectMake(Size.width*2/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
+    [label2 setFrame:CGRectMake(Size.width*2/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
+#endif
 }
 
 -(void)createDownView{
@@ -169,22 +182,6 @@
     [callBtn setBackgroundImageOfColor:WXColorWithInteger(0x0e8739) controlState:UIControlStateSelected];
     [callBtn addTarget:self action:@selector(callBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:callBtn];
-    
-//    WXTUIButton *delBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-//    delBtn.frame = CGRectMake(Size.width*3/4, 5, Size.width/4, kTabBarHeight/2);
-//    [delBtn setBackgroundColor:[UIColor clearColor]];
-//    [delBtn setImage:[UIImage imageNamed:@"delSel.png"] forState:UIControlStateNormal];
-//    [delBtn addTarget:self action:@selector(delBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-//    [downView addSubview:delBtn];
-//    
-//    UILabel *textLabel1 = [[UILabel alloc] init];
-//    textLabel1.frame = CGRectMake(Size.width*3/4, kTabBarHeight/2, Size.width/4, kTabBarHeight/2);
-//    [textLabel1 setText:@"删除"];
-//    [textLabel1 setBackgroundColor:[UIColor clearColor]];
-//    [textLabel1 setTextAlignment:NSTextAlignmentCenter];
-//    [textLabel1 setFont:WXTFont(12.0)];
-//    [textLabel1 setTextColor:WXColorWithInteger(0x969696)];
-//    [downView addSubview:textLabel1];
 }
 
 //收起键盘和底部
@@ -220,15 +217,6 @@
     }];
 //    callview.segmentControl.hidden = YES;
 }
-//删除
-//-(void)delBtnClicked{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:DelNumber object:nil];
-//    if(recentCall.downview_type == DownView_Del){
-//        [UIView animateWithDuration:KeyboardDur animations:^{
-//            downView.frame = CGRectMake(0, Size.height, Size.width, kTabBarHeight);
-//        }];
-//    }
-//}
 
 -(void)delNumberToEnd{
     [UIView animateWithDuration:KeyboardDur animations:^{
@@ -319,8 +307,11 @@
     views = [NSArray arrayWithObjects:mallVC,callview,phoneView,infoVC, nil];
     [self setViewControllers:views];
     [self setSelectedIndex:1];
+    
+#ifdef OnlyPhoneVersion
+    
+#endif
 }
-
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];

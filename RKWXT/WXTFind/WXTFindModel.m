@@ -30,9 +30,17 @@
     if(!data){
         return;
     }
+//    NSInteger count = 0;
     if([data isKindOfClass:[NSDictionary class]]){
         id items = [data objectForKey:@"items"];
         if([items isKindOfClass:[NSArray class]]){
+//            for(NSDictionary *dic in items){
+//                FindEntity *entity = nil;
+//                count ++;
+//                if([dic count] > 1){
+//                    entity = [FindEntity initFindEntityWith:[items objectAtIndex:0]];
+//                }
+//            }
             if([items count] > 0){
                 FindEntity *entity = [FindEntity initFindEntityWith:[items objectAtIndex:0]];
                 [_findDataArr addObject:entity];

@@ -141,6 +141,7 @@
 		12D55A451AC2BD8800F51F97 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D55A441AC2BD8800F51F97 /* CoreTelephony.framework */; };
 		12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A21AC16F830044A7A2 /* delNumber@2x.png */; };
 		12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A41AC170940044A7A2 /* keyboardEye@2x.png */; };
+		12E36B821ACAABCA009D407D /* NoWifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E36B811ACAABCA009D407D /* NoWifi@2x.png */; };
 		12EC3B5C1AC3AEDC002F6920 /* WXTCallHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EC3B5B1AC3AEDC002F6920 /* WXTCallHistoryCell.m */; };
 		12EC3B611AC415BE002F6920 /* callHistoryBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
@@ -599,6 +600,7 @@
 		12D55A441AC2BD8800F51F97 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		12E161A21AC16F830044A7A2 /* delNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delNumber@2x.png"; sourceTree = "<group>"; };
 		12E161A41AC170940044A7A2 /* keyboardEye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboardEye@2x.png"; sourceTree = "<group>"; };
+		12E36B811ACAABCA009D407D /* NoWifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoWifi@2x.png"; sourceTree = "<group>"; };
 		12EC3B5A1AC3AEDC002F6920 /* WXTCallHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTCallHistoryCell.h; sourceTree = "<group>"; };
 		12EC3B5B1AC3AEDC002F6920 /* WXTCallHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTCallHistoryCell.m; sourceTree = "<group>"; };
 		12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "callHistoryBtnImg@2x.png"; sourceTree = "<group>"; };
@@ -1618,6 +1620,7 @@
 				12D0C8871AB6E2B90039A197 /* Icon-72@2x.png */,
 				12D0C8851AB6DF8E0039A197 /* TopBgImg@2x.png */,
 				12D0C8811AB6D2920039A197 /* AboutWXTVersion@2x.png */,
+				12E36B811ACAABCA009D407D /* NoWifi@2x.png */,
 				77041F1B1AC013D400896706 /* 商家联盟图标@2x.png */,
 				77041F1C1AC013D400896706 /* 天气图标@2x.png */,
 				12D0C8781AB6AE980039A197 /* AboutUsLogo@2x.png */,
@@ -2789,6 +2792,7 @@
 				775AB9C81ABFB558003A339D /* 4N@2x.png in Resources */,
 				120A2C581AB17AFD006A28B1 /* sign34@2x.png in Resources */,
 				775AB9CB1ABFB558003A339D /* 5S@2x.png in Resources */,
+				12E36B821ACAABCA009D407D /* NoWifi@2x.png in Resources */,
 				120A2C4E1AB17AFD006A28B1 /* sign25@2x.png in Resources */,
 				120A2C3D1AB17AFD006A28B1 /* signBg.jpg in Resources */,
 				12D0C8791AB6AE980039A197 /* AboutUsLogo@2x.png in Resources */,

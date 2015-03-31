@@ -21,7 +21,16 @@
     self = [super init];
     if(self){
         NSString *url = [dic objectForKey:@"url"];
-        [self setEmptyUrl:url];
+        [self setWebUrl:url];
+        
+        NSString *iconURL = [dic objectForKey:@"icon_url"];
+        [self setIcon_url:iconURL];
+        
+        NSString *name = [dic objectForKey:@"name"];
+        [self setName:name];
+        
+        NSString *type = [dic objectForKey:@"type"];
+        [self setType:type];
     }
     return self;
 }
