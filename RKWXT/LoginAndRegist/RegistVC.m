@@ -203,6 +203,7 @@ enum{
     [_pwdTextfield addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventEditingDidBegin];
     [_pwdTextfield setTextColor:WXColorWithInteger(0xFFFFFF)];
     [_pwdTextfield setTintColor:[UIColor whiteColor]];
+    [_pwdTextfield setKeyboardType:UIKeyboardTypeASCIICapable];
     [_pwdTextfield setPlaceHolder:@"请设置一个密码" color:WXColorWithInteger(0xa5baca)];
     [_pwdTextfield setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextfield setFont:WXTFont(14.0)];
@@ -287,7 +288,7 @@ enum{
 }
 
 -(void)gainNumSucceed{
-    [UtilTool showAlertView:[NSString stringWithFormat:@"密码已经发送到你的号码为%@的手机上，请注意查收",_userTextField.text]];
+    [UtilTool showAlertView:[NSString stringWithFormat:@"验证码已经发送到你的号码为%@的手机上，请注意查收",_userTextField.text]];
 }
 
 -(void)gainNumFailed:(NSString *)errorMsg{

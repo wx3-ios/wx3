@@ -14,7 +14,7 @@
 
 -(void)fetchPwdWithUserPhone:(NSString *)phone{
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"forget_password", @"cmd", phone, @"phone_number", [NSNumber numberWithInt:ShopID], @"agent_id", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Login httpMethod:WXT_HttpMethod_Get timeoutIntervcal:15 feed:dic completion:^(URLFeedData *retData){
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Login httpMethod:WXT_HttpMethod_Get timeoutIntervcal:40 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         if ([[dic objectForKey:@"success"] integerValue] != 1){
             if (_delegate && [_delegate respondsToSelector:@selector(fetchPwdFailed:)]){

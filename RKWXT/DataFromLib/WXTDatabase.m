@@ -38,6 +38,9 @@
 }
 
 -(BOOL)createDatabase:(NSString *)dbName{
+    if(!dbName){
+        return NO;
+    }
     NSString * dbPath = [NSString stringWithFormat:@"%@/%@.sqlite",DOC_PATH,dbName];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
