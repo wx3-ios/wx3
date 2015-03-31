@@ -15,6 +15,8 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #define ShopID (2)
+#define SubShopID (45)
+#define AreaID (0)
 #define Test   //测试，目前只显示版本号
 
 #define ShowKeyBoard @"ShowKeyBoard"

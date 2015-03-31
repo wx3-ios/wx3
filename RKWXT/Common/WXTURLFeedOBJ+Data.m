@@ -8,7 +8,7 @@
 
 #import "WXTURLFeedOBJ+Data.h"
 
-#define D_DataURLConnectionDefaultTimeoutInterval (3.0)
+#define D_DataURLConnectionDefaultTimeoutInterval (6.0)
 
 @implementation WXTURLFeedOBJ (Data)
 

@@ -14,7 +14,7 @@
 
 @interface CallBackVC()<MakeCallDelegate>{
     NSTimer *_timer;
-//    NSTimer *_chengeTimer;
+    //    NSTimer *_chengeTimer;
     
     UIImageView *_lightImg;
     UILabel *callStatus;
@@ -36,7 +36,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
- 
+    
     UIImage *img = [UIImage imageNamed:@"CallBackBgImg.jpg"];
     UIImageView *bgImgView = [[UIImageView alloc] init];
     bgImgView.frame = CGRectMake(0, 0, Size.width, Size.height);
@@ -52,7 +52,7 @@
 
 -(void)addNotification{
     NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
-    [notification addObserver:self selector:@selector(back) name:D_Notification_Name_SystemCallFinished object:nil];
+    [notification addObserver:self selector:@selector(back) name:D_Notification_Name_SystemCallIncomming object:nil];
 }
 
 -(void)createBackBtn{
@@ -111,8 +111,7 @@
     [callStatus setBackgroundColor:[UIColor clearColor]];
     [callStatus setFont:WXTFont(16.0)];
     [callStatus setTextAlignment:NSTextAlignmentCenter];
-    [callStatus setText:@"(呼叫成功)"];
-    [callStatus setHidden:YES];
+    [callStatus setText:@"(呼叫请求中...)"];
     [callStatus setTextColor:WXColorWithInteger(0xFFFFFF)];
     [self.view addSubview:callStatus];
     
@@ -182,7 +181,7 @@
     
     NSDate * date = [NSDate date];
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-//    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    //    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
     formatter.dateFormat = @"MM-dd HH:mm";
     NSString * dateStr = [formatter stringFromDate:date];
     [[WXTDatabase shareDatabase] insertCallHistory:@"我信" telephone:phone date:dateStr type:1];
@@ -199,13 +198,13 @@
 }
 
 -(void)makeCallPhoneSucceed{
-    [callStatus setHidden:NO];
-//    _chengeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideChangeStatus) userInfo:nil repeats:NO];
+    [callStatus setText:@"(呼叫成功)"];
+    //    _chengeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideChangeStatus) userInfo:nil repeats:NO];
     _model.callstatus_type = CallStatus_Type_Ending;
 }
 
 -(void)hideChangeStatus{
-//    [_chengeTimer invalidate];
+    //    [_chengeTimer invalidate];
     [callStatus setHidden:YES];
 }
 
@@ -218,7 +217,11 @@
     [_timer invalidate];
     [_model setCallDelegate:nil];
     [self removeNotification];
-    [self.navigationController popViewControllerAnimated:YES];
+    //    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
+
 
 @end

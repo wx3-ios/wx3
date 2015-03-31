@@ -21,7 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 20;
-        CGFloat numberLabelWidth = 125;
+        CGFloat numberLabelWidth = 150;
         CGFloat numberLabelHeight = 18;
         _numberLabel = [[UILabel alloc] init];
         _numberLabel.frame = CGRectMake(xOffset, (ContactDetailCellHeight-numberLabelHeight)/2, numberLabelWidth, numberLabelHeight);
@@ -33,12 +33,16 @@
         
         CGFloat xGap = 28;
         UIImage *callImg = [UIImage imageNamed:@"ContactInfoCall.png"];
-        UIButton *callBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        callBtn.frame = CGRectMake(Size.width-callImg.size.width-xGap, (ContactDetailCellHeight-callImg.size.height)/2, callImg.size.width, callImg.size.height);
-        [callBtn setBackgroundColor:[UIColor clearColor]];
-        [callBtn setImage:callImg forState:UIControlStateNormal];
-        [callBtn addTarget:self action:@selector(callPhone:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.contentView addSubview:callBtn];
+        //        UIButton *callBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        callBtn.frame = CGRectMake(Size.width-callImg.size.width-xGap, (ContactDetailCellHeight-callImg.size.height)/2, callImg.size.width, callImg.size.height);
+        //        [callBtn setBackgroundColor:[UIColor clearColor]];
+        //        [callBtn setImage:callImg forState:UIControlStateNormal];
+        ////        [callBtn addTarget:self action:@selector(callPhone:) forControlEvents:UIControlEventTouchUpInside];
+        //        [self.contentView addSubview:callBtn];
+        UIImageView *callImgView = [[UIImageView alloc] init];
+        callImgView.frame = CGRectMake(Size.width-callImg.size.width-xGap, (ContactDetailCellHeight-callImg.size.height)/2, callImg.size.width, callImg.size.height);
+        [callImgView setImage:callImg];
+        [self.contentView addSubview:callImgView];
     }
     return self;
 }

@@ -80,6 +80,10 @@
 		12622BD61ABD4425003F04A5 /* CallBackIconImgSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12622BD11ABD4425003F04A5 /* CallBackIconImgSel@2x.png */; };
 		12622E7B1ABC23AC00B52E3F /* delSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12622E6D1ABC23AC00B52E3F /* delSel@2x.png */; };
 		12622E7C1ABC23AC00B52E3F /* dialSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12622E6E1ABC23AC00B52E3F /* dialSel@2x.png */; };
+		1262E2BE1ACA507600667C54 /* MallEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1262E2BB1ACA507600667C54 /* MallEntity.m */; };
+		1262E2BF1ACA507600667C54 /* WXTMallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1262E2BD1ACA507600667C54 /* WXTMallModel.m */; };
+		1262E2C51ACA50B600667C54 /* FindEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1262E2C21ACA50B600667C54 /* FindEntity.m */; };
+		1262E2C61ACA50B600667C54 /* WXTFindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1262E2C41ACA50B600667C54 /* WXTFindModel.m */; };
 		126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */; };
 		126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3D11AB2744600E08A0B /* WXTUserDefault.m */; };
 		126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */; };
@@ -515,6 +519,14 @@
 		12622BD11ABD4425003F04A5 /* CallBackIconImgSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBackIconImgSel@2x.png"; sourceTree = "<group>"; };
 		12622E6D1ABC23AC00B52E3F /* delSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delSel@2x.png"; sourceTree = "<group>"; };
 		12622E6E1ABC23AC00B52E3F /* dialSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialSel@2x.png"; sourceTree = "<group>"; };
+		1262E2BA1ACA507600667C54 /* MallEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallEntity.h; sourceTree = "<group>"; };
+		1262E2BB1ACA507600667C54 /* MallEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallEntity.m; sourceTree = "<group>"; };
+		1262E2BC1ACA507600667C54 /* WXTMallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallModel.h; sourceTree = "<group>"; };
+		1262E2BD1ACA507600667C54 /* WXTMallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallModel.m; sourceTree = "<group>"; };
+		1262E2C11ACA50B600667C54 /* FindEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindEntity.h; sourceTree = "<group>"; };
+		1262E2C21ACA50B600667C54 /* FindEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindEntity.m; sourceTree = "<group>"; };
+		1262E2C31ACA50B600667C54 /* WXTFindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTFindModel.h; sourceTree = "<group>"; };
+		1262E2C41ACA50B600667C54 /* WXTFindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTFindModel.m; sourceTree = "<group>"; };
 		126CA3CC1AB2709D00E08A0B /* WXTUserOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUserOBJ.h; sourceTree = "<group>"; };
 		126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUserOBJ.m; sourceTree = "<group>"; };
 		126CA3CF1AB272EA00E08A0B /* WXTUserdefaultDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXTUserdefaultDefine.h; sourceTree = "<group>"; };
@@ -1360,6 +1372,28 @@
 			name = Keyboard;
 			sourceTree = "<group>";
 		};
+		1262E2B91ACA507600667C54 /* MallModel */ = {
+			isa = PBXGroup;
+			children = (
+				1262E2BA1ACA507600667C54 /* MallEntity.h */,
+				1262E2BB1ACA507600667C54 /* MallEntity.m */,
+				1262E2BC1ACA507600667C54 /* WXTMallModel.h */,
+				1262E2BD1ACA507600667C54 /* WXTMallModel.m */,
+			);
+			path = MallModel;
+			sourceTree = "<group>";
+		};
+		1262E2C01ACA509400667C54 /* WXTFindModel */ = {
+			isa = PBXGroup;
+			children = (
+				1262E2C11ACA50B600667C54 /* FindEntity.h */,
+				1262E2C21ACA50B600667C54 /* FindEntity.m */,
+				1262E2C31ACA50B600667C54 /* WXTFindModel.h */,
+				1262E2C41ACA50B600667C54 /* WXTFindModel.m */,
+			);
+			name = WXTFindModel;
+			sourceTree = "<group>";
+		};
 		126CA3CB1AB26FE600E08A0B /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -1377,6 +1411,7 @@
 			children = (
 				126CA3D91AB278FC00E08A0B /* WXTFindVC.h */,
 				126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */,
+				1262E2C01ACA509400667C54 /* WXTFindModel */,
 			);
 			path = WXTFind;
 			sourceTree = "<group>";
@@ -1388,6 +1423,7 @@
 				126CA3DD1AB2790D00E08A0B /* WXTMallVC.m */,
 				775AB9DD1ABFEF74003A339D /* WXTMallViewController.h */,
 				775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */,
+				1262E2B91ACA507600667C54 /* MallModel */,
 			);
 			path = WXTMall;
 			sourceTree = "<group>";
@@ -2988,6 +3024,7 @@
 				775842B01AB95A300039B129 /* CustomMadeOBJ.m in Sources */,
 				126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */,
 				775843181AB95A300039B129 /* ProgressView.m in Sources */,
+				1262E2BE1ACA507600667C54 /* MallEntity.m in Sources */,
 				775842EB1AB95A300039B129 /* ZoneCodeOBJ.m in Sources */,
 				775843C21AB971CF0039B129 /* UIView+Render.m in Sources */,
 				775842F11AB95A300039B129 /* WXDropListItem.m in Sources */,
@@ -3046,6 +3083,7 @@
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
 				775AB9DC1ABFB696003A339D /* CallModel.m in Sources */,
 				775C58501ABA68AE005B6B40 /* WXContacterCell.m in Sources */,
+				1262E2BF1ACA507600667C54 /* WXTMallModel.m in Sources */,
 				775C58D91ABAAF83005B6B40 /* WXCallUITabBarVC.m in Sources */,
 				775843141AB95A300039B129 /* WXButton.m in Sources */,
 				775843001AB95A300039B129 /* PictureBrowseView.m in Sources */,
@@ -3069,6 +3107,7 @@
 				775842FF1AB95A300039B129 /* LoadingEntity.m in Sources */,
 				775C58411ABA5F31005B6B40 /* PinYinSearchOBJ.m in Sources */,
 				775843051AB95A300039B129 /* StrikeThroughLabel.m in Sources */,
+				1262E2C51ACA50B600667C54 /* FindEntity.m in Sources */,
 				775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */,
 				775843311AB95A300039B129 /* WXUITabBarVC.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
@@ -3124,6 +3163,7 @@
 				775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */,
 				775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */,
 				775843261AB95A300039B129 /* WXUILabel.m in Sources */,
+				1262E2C61ACA50B600667C54 /* WXTFindModel.m in Sources */,
 				775843021AB95A300039B129 /* BaseSearchEntity.m in Sources */,
 				775C58C91ABA7B75005B6B40 /* SubShopTime.m in Sources */,
 				775842E01AB95A300039B129 /* UIView+Render.m in Sources */,

@@ -7,13 +7,16 @@
 
 
 #import "WXTFindVC.h"
+#import "WXTFindModel.h"
+#import "FindEntity.h"
 
 #define Url @"http://gz.67call.com/sq/index.php"
 
 #define Size self.view.bounds.size
 
-@interface WXTFindVC()<UIWebViewDelegate>{
+@interface WXTFindVC()<UIWebViewDelegate,wxtFindDelegate,UIAlertViewDelegate>{
     UIWebView *_webView;
+    WXTFindModel *_model;
 }
 @end
 
@@ -22,14 +25,26 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-
+    
     _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height-50)];
     [_webView setDelegate:self];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:Url]];
-    if (request){
-        [_webView loadRequest:request];
-    }
     [self.view addSubview:_webView];
+    
+    _model = [[WXTFindModel alloc] init];
+    [_model setFindDelegate:self];
+    [_model loadFindData];
+}
+
+#pragma mark delegate
+-(void)initFinddataFailed:(NSString *)errorMsg{
+    if(!errorMsg){
+        errorMsg = @"数据加载失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
+-(void)initFinddataSucceed{
+    [self loadFindData];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -42,8 +57,36 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     [self unShowWaitView];
-    [UtilTool showAlertView:@"加载失败"];
+    //    [UtilTool showAlertView:@"加载失败"];
+    [self showLoadFailedAlert];
 }
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [_model setFindDelegate:nil];
+}
+
+-(void)showLoadFailedAlert{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"数据加载失败!" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:@"重新加载", nil];
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1){
+        [self loadFindData];
+    }
+}
+
+-(void)loadFindData{
+    if([_model.findDataArr count] > 0){
+        FindEntity *entity = [_model.findDataArr objectAtIndex:0];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:entity.emptyUrl]];
+        if (request){
+            [_webView loadRequest:request];
+        }
+    }
+}
+
 @end
 
 

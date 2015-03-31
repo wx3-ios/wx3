@@ -14,7 +14,7 @@
 
 -(void)loginWithUser:(NSString *)userStr andPwd:(NSString *)pwdStr{
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"login", @"cmd", userStr, @"phone_number", [NSNumber numberWithInt:ShopID], @"agent_id", pwdStr, @"password", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Login httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Login httpMethod:WXT_HttpMethod_Get timeoutIntervcal:10 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         if ([[dic objectForKey:@"success"] integerValue] != 1){
             if (_delegate && [_delegate respondsToSelector:@selector(loginFailed:)]){
