@@ -18,6 +18,7 @@
 #import <CoreTelephony/CTCall.h>
 #import <CoreTelephony/CTCallCenter.h>
 #import "ContactUitl.h"
+#import "APService.h"
 @interface AppDelegate (){
     UINavigationController *_navigation;
     CTCallCenter *_callCenter;
@@ -65,6 +66,9 @@
     [self checkVersion];
     //监听电话
     [self listenSystemCall];
+    // 集成极光推送功能
+    [self initJPushApi];
+    [APService setupWithOption:launchOptions];
 	return YES;
 }
 
@@ -114,6 +118,56 @@
     WXTVersion *version = [WXTVersion sharedVersion];
     [version setCheckType:Version_CheckType_System];
     [version checkVersion];
+}
+
+#pragma mark 极光推送功能
+-(void)initJPushApi{
+    // Required
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+            //categories
+            [APService
+             registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                 UIUserNotificationTypeSound |
+                                                 UIUserNotificationTypeAlert)
+             categories:nil];
+        } else {
+            //categories nil
+            [APService
+             registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                 UIRemoteNotificationTypeSound |
+                                                 UIRemoteNotificationTypeAlert)
+#else
+             //categories nil
+             categories:nil];
+            [APService
+             registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                 UIRemoteNotificationTypeSound |
+                                                 UIRemoteNotificationTypeAlert)
+#endif
+             // Required
+             categories:nil];
+        }
+}
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Required
+    [APService registerDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // Required
+    [APService handleRemoteNotification:userInfo];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void
+                        (^)(UIBackgroundFetchResult))completionHandler {
+    // IOS 7 Support Required
+    [APService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
