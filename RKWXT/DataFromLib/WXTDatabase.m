@@ -95,7 +95,7 @@
                 CallHistoryEntity * entity = [[CallHistoryEntity alloc]initWithName:name telephone:telephone date:date type:type];
                 [mutableArr addObject:entity];
             }
-            [NOTIFY_CENTER postNotificationName:D_Notification_Name_CallRecordLoadFinished object:nil];
+//            [NOTIFY_CENTER postNotificationName:D_Notification_Name_CallRecordLoadFinished object:nil];
             NSLog(@"%s用户通话记录查询success:%lu",__FUNCTION__,[result count]);
             return mutableArr;
         }else{

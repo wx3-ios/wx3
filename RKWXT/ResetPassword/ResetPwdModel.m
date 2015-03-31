@@ -28,6 +28,7 @@
             }
         }else{
             [userObj setPwd:newPwd];
+            [userObj setToken:[dic objectForKey:@"new_token"]];
             if (_delegate && [_delegate respondsToSelector:@selector(resetPwdSucceed)]){
                 [_delegate resetPwdSucceed];
             }

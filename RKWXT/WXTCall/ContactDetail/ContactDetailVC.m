@@ -13,6 +13,8 @@
 #import "UIView+Render.h"
 #import "CallBackVC.h"
 
+#define DownLoadUrl @"http://wxa.67call.com/shop/index.php/index/app_down/id/8888"
+
 #define Size self.view.bounds.size
 
 @interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>{
@@ -190,7 +192,7 @@
     MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
     picker.messageComposeDelegate = self;
     
-    NSString *msg = [NSString stringWithFormat:@"我信通短信分享测试"];
+    NSString *msg = [NSString stringWithFormat:@"这年头没好事哪敢骚扰你，用我信通打国内电话低至3分。下载地址:%@",DownLoadUrl];
     picker.body = [[NSString alloc] initWithString:msg];
     
     NSArray *array = [NSArray arrayWithObjects:stringNum,nil];
