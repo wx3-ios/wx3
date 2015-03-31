@@ -27,7 +27,8 @@
 - (NSInteger)count;
 //读取固话归属地
 - (NSDictionary *)readAreaCode;
-
+// 添加号码归属地方法
+- (NSString *)queryByPhone:(NSString *)phone;
 
 
 @end
