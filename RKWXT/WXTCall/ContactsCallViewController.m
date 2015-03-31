@@ -57,8 +57,8 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yGap, Size.width, Size.height - yGap - 50 - 4*NumberBtnHeight-InputTextHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-//    [self.view addSubview:_tableView];
-//    [_tableView reloadData];
+    //    [self.view addSubview:_tableView];
+    //    [_tableView reloadData];
 }
 
 -(void)selectSegmentToIndexOne{
@@ -71,7 +71,7 @@
 -(void)loadSegmentControl{
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
     imgView.frame = CGRectMake(0, 0, Size.width, 66);
-//    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
+    //    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
     [imgView setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     [self.view addSubview:imgView];
     
@@ -91,20 +91,20 @@
     [_segmentControl setBorderRadian:5.0 width:1 color:[UIColor whiteColor]];  //0x2c97df
     [_segmentControl setBackgroundColor:[UIColor whiteColor]];
     [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
-//    [self.navigationController.navigationBar addSubview:_segmentControl];
+    //    [self.navigationController.navigationBar addSubview:_segmentControl];
     [self.view addSubview:_segmentControl];
     
     UILabel *redCircle = [[UILabel alloc] init];
     redCircle.frame = CGRectMake(137, 36, 8, 8);
     [redCircle setBackgroundColor:[UIColor redColor]];
     [redCircle setBorderRadian:8.0 width:1.0 color:[UIColor redColor]];
-//    [self.view addSubview:redCircle];
+    //    [self.view addSubview:redCircle];
 }
 
 -(void)segmentControlChange:(UISegmentedControl *)segmentControl{
     switch (segmentControl.selectedSegmentIndex) {
         case kCallSegmentIndex:
-             [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+            [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
             _recentCall.keyPad_type = E_KeyPad_Down;
             [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
             [self.view addSubview:_recentCall.view];
@@ -119,9 +119,9 @@
 }
 
 -(void)addNotification{
-//    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
-//    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
-//    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
+    //    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
+    //    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
+    //    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
     [NOTIFY_CENTER addObserver:self selector:@selector(selectSegmentToIndexOne) name:ClickedKeyboardBtn object:nil];
 }
 
@@ -131,19 +131,19 @@
 //    if(number <= 9 && number >= 0){
 //        [_segmentControl setHidden:YES];
 //        [numberLabel setHidden:NO];
-//        
+//
 //        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
 //        numberStr = [numberStr stringByAppendingString:str];
 //        [numberLabel setText:numberStr];
 //    }
-//    
+//
 //    if(numberStr.length > 0){
 //        [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
 //    }else{
 //        [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
 //    }
-//    
+//
 //    [contactModel removeMatchingContact];
 //    [contactModel matchSearchStringList:numberStr];
 //    [_tableView reloadData];
@@ -154,7 +154,8 @@
     CallBackVC *callBackVC = [[CallBackVC alloc] init];
     [callBackVC setPhoneName:phoneName];
     if([callBackVC callPhone:numberStr]){
-        [self.navigationController pushViewController:callBackVC animated:YES];
+        [self presentViewController:callBackVC animated:YES completion:^{
+        }];
     }
 }
 
@@ -180,7 +181,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kContactsCallIdentifier];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    cell.imageView.image = [UIImage imageNamed:@""];
+    //    cell.imageView.image = [UIImage imageNamed:@""];
     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
     cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[indexPath.row]).name;
     return cell;
