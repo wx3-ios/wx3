@@ -394,7 +394,7 @@ typedef enum{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         CallHistoryEntity * entity = _model.callHistory[indexPath.row];
         [[WXTDatabase shareDatabase] delCallHistory:entity.phoneNumber];
-        [NOTIFY_CENTER addObserver:self selector:@selector(reloadData) name:D_Notification_Name_CallRecordLoadFinished object:nil];
+//        [NOTIFY_CENTER addObserver:self selector:@selector(reloadData) name:D_Notification_Name_CallRecordLoadFinished object:nil];
     }
 }
 
