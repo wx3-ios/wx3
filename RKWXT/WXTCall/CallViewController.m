@@ -16,7 +16,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "WXTCallHistoryCell.h"
 #import "CallHistoryEntity.h"
-
+#import "WXTDatabase.h"
 #define Size self.view.bounds.size
 
 typedef enum{
@@ -66,12 +66,13 @@ typedef enum{
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Size.width, Size.height-50)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
+//    [_tableView setEditing:YES animated:YES];
     [self.view addSubview:_tableView];
     textString = [[NSString alloc] init];
     phoneName = [[NSString alloc] init];
@@ -375,6 +376,30 @@ typedef enum{
         textString = [UtilTool callPhoneNumberRemovePreWith:entity.phoneMatched];
         [self callPhoneNumber];
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+-(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return /*UITableViewCellEditingStyleInsert | */UITableViewCellEditingStyleDelete;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        CallHistoryEntity * entity = _model.callHistory[indexPath.row];
+        [[WXTDatabase shareDatabase] delCallHistory:entity.phoneNumber];
+        [NOTIFY_CENTER addObserver:self selector:@selector(reloadData) name:D_Notification_Name_CallRecordLoadFinished object:nil];
+    }
+}
+
+-(void)reloadData{
+    [_tableView reloadData];
 }
 
 -(void)callHistoryName:(NSString *)nameStr andPhone:(NSString *)phoneStr{
