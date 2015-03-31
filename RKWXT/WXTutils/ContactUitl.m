@@ -10,7 +10,7 @@
 #import "SSZipArchive.h"
 #import "EGODatabase.h"
 #import "DBCommon.h"
-
+#import "NSString+Helper.h"
 @implementation ContactUitl
 
 - (id)init
@@ -38,6 +38,36 @@
 //        instance.placeDatabase = [[EGODatabase alloc] initWithPath:kWXTPlacePath];
     }
     return instance;
+}
+
+- (NSString *)queryByPhone:(NSString *)phone
+{
+    NSString *area = nil;
+//    CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+    if (_loaded && [phone isMobileNumber]) {
+        NSString *mobileTag = [phone substringToIndex:7];
+        NSString *sql = [NSString stringWithFormat:kWXTSelectArea, kWXTPlaceTable, mobileTag];
+        EGODatabaseResult *result = [_placeDatabase executeQuery:sql];
+        for(EGODatabaseRow* row in result)
+        {
+            area = [row stringForColumn:@"area"];
+            //CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
+//            NSLog(@"query one row data use time = %f", end-start);
+        }
+    }
+    else if ([phone isTelephoneNumber])
+    {
+        NSString *key = [phone substringToIndex:4];
+        if ([key characterAtIndex:2] <= '2')
+        {
+            key = [key substringToIndex:3];
+        }
+        area = _areaDict[key];
+    }
+    if (!area) {
+        NSLog(@"QUERY phone(%@) not exist!", phone);
+    }
+    return area;
 }
 
 - (NSInteger)count{
