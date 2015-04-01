@@ -64,7 +64,7 @@
 
 #pragma mark showBaseView
 -(void)showReloadBaseView{
-    CGFloat yOffset = 150;
+    CGFloat yOffset = 100;
     UIImage *wifiImg = [UIImage imageNamed:@"NoWifi.png"];
     UIImageView *imgView = [[UIImageView alloc] init];
     imgView.frame = CGRectMake((Size.width-wifiImg.size.width)/2, yOffset, wifiImg.size.width, wifiImg.size.height);
