@@ -7,9 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#define kDBVersion          @"1.0"
+#define kDBDateTime         @"20150401"
+
 @interface WXTDatabase : NSObject
 @property (nonatomic, strong) NSString * dbName; // 数据库文件名
 +(instancetype)shareDatabase;
+-(BOOL)checkWXTDBVersion;
+-(BOOL)insertDBVersion;
+
+-(NSInteger)getDBVersion;
+
 -(BOOL)createDatabase:(NSString *)dbName;
 -(BOOL)createWXTTable;
 -(void)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone date:(NSString*)aDate type:(int)aType;

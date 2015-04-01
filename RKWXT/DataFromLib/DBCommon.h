@@ -9,7 +9,9 @@
 #ifndef RKWXT_DBCommon_h
 #define RKWXT_DBCommon_h
 
-
+#define kWXTDBVersionTable                  @"CREATE TABLE IF NOT EXISTS db_version(version INT UNSIGNED Not NULL,datetime INT UNSIGNED Not NULL,PRIMARY KEY (version))"
+#define kWXTInsertDBVersion                 @"INSERT INTO db_version(version,datetime) values('%@','%@')"
+#define kWXTSelectDBVersion                 @"select version from db_version"
 #define kWXTCallTable                       @"CREATE TABLE IF NOT EXISTS Call (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,telephone TEXT, date TEXT, type INTEGER)"
 #define kWXTCall_Column_Name                @"name"
 #define kWXTCall_Column_Telephone           @"telephone"

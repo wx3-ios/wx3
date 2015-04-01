@@ -1,23 +1,23 @@
 PODS:
-  - AFNetworking (2.5.1):
-    - AFNetworking/NSURLConnection (= 2.5.1)
-    - AFNetworking/NSURLSession (= 2.5.1)
-    - AFNetworking/Reachability (= 2.5.1)
-    - AFNetworking/Security (= 2.5.1)
-    - AFNetworking/Serialization (= 2.5.1)
-    - AFNetworking/UIKit (= 2.5.1)
-  - AFNetworking/NSURLConnection (2.5.1):
+  - AFNetworking (2.5.2):
+    - AFNetworking/NSURLConnection (= 2.5.2)
+    - AFNetworking/NSURLSession (= 2.5.2)
+    - AFNetworking/Reachability (= 2.5.2)
+    - AFNetworking/Security (= 2.5.2)
+    - AFNetworking/Serialization (= 2.5.2)
+    - AFNetworking/UIKit (= 2.5.2)
+  - AFNetworking/NSURLConnection (2.5.2):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.1):
+  - AFNetworking/NSURLSession (2.5.2):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.1)
-  - AFNetworking/Security (2.5.1)
-  - AFNetworking/Serialization (2.5.1)
-  - AFNetworking/UIKit (2.5.1):
+  - AFNetworking/Reachability (2.5.2)
+  - AFNetworking/Security (2.5.2)
+  - AFNetworking/Serialization (2.5.2)
+  - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CocoaLumberjack (1.9.2):
@@ -49,16 +49,16 @@ DEPENDENCIES:
   - Toast (~> 2.2)
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
-  EGODatabase: d3e302dede497e7d4984b5edd737a7daf44dddf1
-  IQKeyboardManager: 0bf193c2d8a4d9c2063b39d6bc9d4e45a381a02a
-  KVOController: b1139ef1fc373b6757e4b69493fedd7b56eb1272
-  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
-  OpenUDID: 5a23b7477755efc2d7871b57aa79ba3089c40b74
-  Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
+  AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
+  EGODatabase: 8192f4d2bb9f05e38fe8be07a87dcd8066325ee3
+  IQKeyboardManager: 99636798d52f410d6fbea9cdbf4deafc43ecc1f6
+  KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
-  SSZipArchive: 11299a4e89821bd4085b12f25edaa85853e0051c
-  Toast: 6a3c2b1d70e426b26d130971c369670eac7aa9ce
+  SSZipArchive: 11801759495fa4efb7512ef652eb0042d68305d7
+  Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.1
