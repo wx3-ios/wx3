@@ -59,7 +59,7 @@
         xOffset = self.bounds.size.width*2/3-20;
         CGFloat callTimeLabelWidth = 80;
         _callTime = [[UILabel alloc] init];
-        _callTime.frame = CGRectMake(xOffset-5, (44-nameLabelHeight)/2, callTimeLabelWidth, nameLabelHeight);
+        _callTime.frame = CGRectMake(xOffset-5-10, (44-nameLabelHeight)/2, callTimeLabelWidth, nameLabelHeight);
         [_callTime setBackgroundColor:[UIColor clearColor]];
         [_callTime setFont:WXTFont(13.0)];
         [_callTime setTextColor:[UIColor grayColor]];
@@ -70,7 +70,7 @@
         linLabel = [[UILabel alloc] init];
         linLabel.frame = CGRectMake(xOffset, 0, 0.5, 44);
         [linLabel setBackgroundColor:[UIColor grayColor]];
-        [self.contentView addSubview:linLabel];
+//        [self.contentView addSubview:linLabel];
         
         UIImage *callImg = [UIImage imageNamed:@"callHistoryBtnImg.png"];
         callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];

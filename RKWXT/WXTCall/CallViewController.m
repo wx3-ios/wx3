@@ -68,7 +68,7 @@ typedef enum{
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Size.width, Size.height-50)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Size.width, Size.height-66-50)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];

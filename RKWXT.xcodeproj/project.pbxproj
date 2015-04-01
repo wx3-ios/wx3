@@ -75,6 +75,7 @@
 		1218042F1ACB899B009DB7E7 /* DBImageViewCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1218042B1ACB899B009DB7E7 /* DBImageViewCache.m */; };
 		121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804311ACB90C7009DB7E7 /* FindCommonVC.m */; };
 		121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */; };
+		121804401ACBE825009DB7E7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1218043F1ACBE825009DB7E7 /* Default@2x.png */; };
 		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
@@ -142,8 +143,6 @@
 		12D52BBE1AC2EF4400C5CE71 /* dtmf-8.aif in Resources */ = {isa = PBXBuildFile; fileRef = 12D52BB21AC2EF4400C5CE71 /* dtmf-8.aif */; };
 		12D52BBF1AC2EF4400C5CE71 /* dtmf-9.aif in Resources */ = {isa = PBXBuildFile; fileRef = 12D52BB31AC2EF4400C5CE71 /* dtmf-9.aif */; };
 		12D52BC11AC2EFA000C5CE71 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D52BC01AC2EFA000C5CE71 /* AudioToolbox.framework */; };
-		12D55A411AC28D2400F51F97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */; };
-		12D55A421AC28D2400F51F97 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D55A401AC28D2400F51F97 /* Default@2x.png */; };
 		12D55A451AC2BD8800F51F97 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D55A441AC2BD8800F51F97 /* CoreTelephony.framework */; };
 		12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A21AC16F830044A7A2 /* delNumber@2x.png */; };
 		12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A41AC170940044A7A2 /* keyboardEye@2x.png */; };
@@ -534,6 +533,7 @@
 		121804311ACB90C7009DB7E7 /* FindCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindCommonVC.m; sourceTree = "<group>"; };
 		121804341ACB99AB009DB7E7 /* WXTFindCommmonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTFindCommmonCell.h; sourceTree = "<group>"; };
 		121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTFindCommmonCell.m; sourceTree = "<group>"; };
+		1218043F1ACBE825009DB7E7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		12228A6A1AB1B1D000CF0800 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		12228A6B1AB1B1D000CF0800 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		12228A711AB1BABA00CF0800 /* RegistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistVC.h; sourceTree = "<group>"; };
@@ -623,8 +623,6 @@
 		12D52BB21AC2EF4400C5CE71 /* dtmf-8.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dtmf-8.aif"; sourceTree = "<group>"; };
 		12D52BB31AC2EF4400C5CE71 /* dtmf-9.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dtmf-9.aif"; sourceTree = "<group>"; };
 		12D52BC01AC2EFA000C5CE71 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		12D55A401AC28D2400F51F97 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		12D55A441AC2BD8800F51F97 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		12E161A21AC16F830044A7A2 /* delNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delNumber@2x.png"; sourceTree = "<group>"; };
 		12E161A41AC170940044A7A2 /* keyboardEye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboardEye@2x.png"; sourceTree = "<group>"; };
@@ -1517,8 +1515,7 @@
 		1277D0061AC507BB0008D9B6 /* AppStartImg */ = {
 			isa = PBXGroup;
 			children = (
-				12D55A3F1AC28D2400F51F97 /* Default-568h@2x.png */,
-				12D55A401AC28D2400F51F97 /* Default@2x.png */,
+				1218043F1ACBE825009DB7E7 /* Default@2x.png */,
 			);
 			name = AppStartImg;
 			sourceTree = "<group>";
@@ -2903,6 +2900,7 @@
 				120A2C4B1AB17AFD006A28B1 /* sign22@2x.png in Resources */,
 				12D52BB61AC2EF4400C5CE71 /* dtmf-0.aif in Resources */,
 				120A2C041AB13CB9006A28B1 /* portrait@2x.png in Resources */,
+				121804401ACBE825009DB7E7 /* Default@2x.png in Resources */,
 				12D52BBB1AC2EF4400C5CE71 /* dtmf-5.aif in Resources */,
 				120A2C551AB17AFD006A28B1 /* sign31@2x.png in Resources */,
 				120A2C451AB17AFD006A28B1 /* sign17@2x.png in Resources */,
@@ -2919,10 +2917,8 @@
 				12D52BBC1AC2EF4400C5CE71 /* dtmf-6.aif in Resources */,
 				129EF9071AC1097200B3C8E2 /* *S.png in Resources */,
 				770BB43A1AAD97700098C214 /* 密码图标@2x.png in Resources */,
-				12D55A421AC28D2400F51F97 /* Default@2x.png in Resources */,
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				12D0C8691AB67B9A0039A197 /* LoadDataLogo@2x.png in Resources */,
-				12D55A411AC28D2400F51F97 /* Default-568h@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,
 				120A2C5F1AB17AFD006A28B1 /* sign9@2x.png in Resources */,
 				120A2C3E1AB17AFD006A28B1 /* signBg@2x.jpg in Resources */,

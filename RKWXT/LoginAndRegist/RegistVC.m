@@ -359,14 +359,14 @@ enum{
         [UtilTool showAlertView:@"验证码不能为空"];
         return NO;
     }
-    if(_otherPhone.text.length == 0){
-        [UtilTool showAlertView:@"请输入推荐人手机号"];
-        return NO;
-    }
-    if(_otherPhone.text.length != 11){
-        [UtilTool showAlertView:@"请输入正确的推荐人手机号码"];
-        return NO;
-    }
+//    if(_otherPhone.text.length == 0){
+//        [UtilTool showAlertView:@"请输入推荐人手机号"];
+//        return NO;
+//    }
+//    if(_otherPhone.text.length != 11){
+//        [UtilTool showAlertView:@"请输入正确的推荐人手机号码"];
+//        return NO;
+//    }
     return YES;
 }
 
@@ -377,7 +377,7 @@ enum{
     }
     [self showWaitView:self.view];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:_otherPhone.text];
+    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
 }
 
 -(void)registSucceed{

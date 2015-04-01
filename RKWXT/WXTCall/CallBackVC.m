@@ -9,6 +9,8 @@
 #import "CallBackVC.h"
 #import "CallModel.h"
 #import "WXTDatabase.h"
+#import "ContactUitl.h"
+
 #define Size self.view.bounds.size
 #define NormalTimer (15.0)
 
@@ -23,6 +25,9 @@
     NSInteger time;
     
     CallModel *_model;
+    
+    UILabel *phoneAreaLabel;
+    NSString *phoneArea;
 }
 @end
 
@@ -79,6 +84,16 @@
     [nameLabel setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:nameLabel];
     
+    yOffset += nameHeight;
+    phoneAreaLabel = [[UILabel alloc] init];
+    phoneAreaLabel.frame = CGRectMake((Size.width-nameWidth)/2, yOffset, nameWidth, nameHeight);
+    [phoneAreaLabel setBackgroundColor:[UIColor clearColor]];
+    [phoneAreaLabel setFont:WXTFont(16.0)];
+    [phoneAreaLabel setText:phoneArea];
+    [phoneAreaLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [phoneAreaLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:phoneAreaLabel];
+    
     CGFloat xOffset = 40;
     if(Size.width == 375){
         xOffset = 76;
@@ -87,7 +102,7 @@
         xOffset = 92;
     }
     CGFloat xGap = 9;
-    yOffset += 60+nameHeight;
+    yOffset += 60;
     UIImage *smallIconImg = [UIImage imageNamed:@"CallBackIconImgNor.png"];
     for(int i = 0;i < 7; i++){
         UIImageView *iconImgView = [[UIImageView alloc] init];
@@ -180,8 +195,8 @@
     }
     [_model makeCallPhone:phoneStr];
     _model.callstatus_type = CallStatus_Type_starting;
-    
-    
+    phoneArea = [self phoneAreaWithNumber:phone];
+
     NSDate * date = [NSDate date];
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     //    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
@@ -190,6 +205,16 @@
     [[WXTDatabase shareDatabase] insertCallHistory:@"我信" telephone:phone date:dateStr type:1];
     
     return YES;
+}
+
+//显示号码归属地
+-(NSString *)phoneAreaWithNumber:(NSString*)number{
+    NSString *areaStr = nil;
+    areaStr = [[ContactUitl shareInstance] queryByPhone:number];
+    if(!areaStr){
+        areaStr = @"未知地区";
+    }
+    return areaStr;
 }
 
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
@@ -220,7 +245,6 @@
     [_timer invalidate];
     [_model setCallDelegate:nil];
     [self removeNotification];
-    //    [self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];

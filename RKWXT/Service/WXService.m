@@ -9,7 +9,7 @@
 #import "WXService.h"
 #import "WXServiceParse.h"
 #import "ServiceMonitor.h"
-#import "OpenUDID.h"
+//#import "OpenUDID.h"
 
 #define D_ServiceLog_Open
 
@@ -161,14 +161,14 @@
         return 0;
     }
     
-    NSString *openUDID = [OpenUDID value];
-    KFLog_Normal(YES, @"openUDID = %@",openUDID);
-    SS_SHORT ret = IT_Login(kMerchantID, E_DeviceType_IOS, [user UTF8String], [password UTF8String], [openUDID cStringUsingEncoding:NSUTF8StringEncoding]);
-    if(ret == 0){
-        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_LoginBegin object:nil];
-    }
-	[self setHasCalledLogin:YES];
-    return ret;
+//    NSString *openUDID = [OpenUDID value];
+//    KFLog_Normal(YES, @"openUDID = %@",openUDID);
+//    SS_SHORT ret = IT_Login(kMerchantID, E_DeviceType_IOS, [user UTF8String], [password UTF8String], [openUDID cStringUsingEncoding:NSUTF8StringEncoding]);
+//    if(ret == 0){
+//        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_LoginBegin object:nil];
+//    }
+//	[self setHasCalledLogin:YES];
+    return 1;
 }
 
 //退出登陆
