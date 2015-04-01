@@ -52,8 +52,60 @@
     return NO;
 }
 
+-(BOOL)checkWXTDBVersion{
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        if ([_database executeUpdate:kWXTDBVersionTable]) {
+            if ([self insertDBVersion]) {
+                NSLog(@"db version init success");
+                return YES;
+            }else{
+                NSLog(@"db version init success");
+                return NO;
+            }
+        }
+        NSLog(@"db version table create success^^");
+        return NO;
+    }else{
+        NSLog(@"db version open error!!!");
+        return NO;
+    }
+}
+
+-(BOOL)insertDBVersion{
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        if ([_database executeUpdate:[NSString stringWithFormat:kWXTInsertDBVersion,kDBVersion,kDBDateTime]]) {
+            NSLog(@"data version insert success");
+            return YES;
+        }else{
+            NSLog(@"data version insert error:%@",[_database lastErrorMessage]);
+            return NO;
+        }
+    }else{
+        NSLog(@"db version open error!!!");
+        return NO;
+    }
+}
+
+-(NSInteger)getDBVersion{
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        EGODatabaseResult * result = [_database executeQuery:kWXTSelectDBVersion];
+        if ([result errorCode] == 0){
+            EGODatabaseRow *row = [result firstRow];
+            NSInteger version = [row intForColumn:@"version"];
+            return version;
+        }else{
+            NSLog(@"db version select error!!!%i no such table or version",[_database lastErrorCode]);
+            return YES;
+        }
+    }else{
+        NSLog(@"db version open error!!!");
+        return 0;
+    }
+}
+
 -(BOOL)createWXTTable{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        [self checkWXTDBVersion];
         if ([_database executeUpdate:kWXTCallTable]) {
             NSLog(@"%s用户通话数据表创建成功",__FUNCTION__);
             return YES;
