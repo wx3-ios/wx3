@@ -42,7 +42,7 @@
 
 -(void)load{
     [_imageView setImage:[UIImage imageNamed:@"wxtRecharge.png"]];
-    [_nameLabel setText:@"我信充值卡充值"];
+    [_nameLabel setText:@"充值卡"];
 }
 
 @end

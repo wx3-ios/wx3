@@ -69,6 +69,12 @@
 		120A2C6D1AB19473006A28B1 /* LoginLock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C6A1AB19473006A28B1 /* LoginLock@2x.png */; };
 		120A2C6E1AB19473006A28B1 /* LoginUser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C6B1AB19473006A28B1 /* LoginUser@2x.png */; };
 		120A2C6F1AB19473006A28B1 /* LoginLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120A2C6C1AB19473006A28B1 /* LoginLogo@2x.png */; };
+		1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804251ACB899B009DB7E7 /* DBImage.m */; };
+		1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804271ACB899B009DB7E7 /* DBImageRequest.m */; };
+		1218042E1ACB899B009DB7E7 /* DBImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804291ACB899B009DB7E7 /* DBImageView.m */; };
+		1218042F1ACB899B009DB7E7 /* DBImageViewCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1218042B1ACB899B009DB7E7 /* DBImageViewCache.m */; };
+		121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804311ACB90C7009DB7E7 /* FindCommonVC.m */; };
+		121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */; };
 		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
@@ -516,6 +522,18 @@
 		120A2C6A1AB19473006A28B1 /* LoginLock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginLock@2x.png"; sourceTree = "<group>"; };
 		120A2C6B1AB19473006A28B1 /* LoginUser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUser@2x.png"; sourceTree = "<group>"; };
 		120A2C6C1AB19473006A28B1 /* LoginLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginLogo@2x.png"; sourceTree = "<group>"; };
+		121804241ACB899B009DB7E7 /* DBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImage.h; sourceTree = "<group>"; };
+		121804251ACB899B009DB7E7 /* DBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBImage.m; sourceTree = "<group>"; };
+		121804261ACB899B009DB7E7 /* DBImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImageRequest.h; sourceTree = "<group>"; };
+		121804271ACB899B009DB7E7 /* DBImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBImageRequest.m; sourceTree = "<group>"; };
+		121804281ACB899B009DB7E7 /* DBImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImageView.h; sourceTree = "<group>"; };
+		121804291ACB899B009DB7E7 /* DBImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBImageView.m; sourceTree = "<group>"; };
+		1218042A1ACB899B009DB7E7 /* DBImageViewCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImageViewCache.h; sourceTree = "<group>"; };
+		1218042B1ACB899B009DB7E7 /* DBImageViewCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBImageViewCache.m; sourceTree = "<group>"; };
+		121804301ACB90C7009DB7E7 /* FindCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindCommonVC.h; sourceTree = "<group>"; };
+		121804311ACB90C7009DB7E7 /* FindCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindCommonVC.m; sourceTree = "<group>"; };
+		121804341ACB99AB009DB7E7 /* WXTFindCommmonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTFindCommmonCell.h; sourceTree = "<group>"; };
+		121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTFindCommmonCell.m; sourceTree = "<group>"; };
 		12228A6A1AB1B1D000CF0800 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		12228A6B1AB1B1D000CF0800 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		12228A711AB1BABA00CF0800 /* RegistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistVC.h; sourceTree = "<group>"; };
@@ -1348,6 +1366,30 @@
 			path = SignGifView;
 			sourceTree = "<group>";
 		};
+		121804231ACB899B009DB7E7 /* DBImageView */ = {
+			isa = PBXGroup;
+			children = (
+				121804241ACB899B009DB7E7 /* DBImage.h */,
+				121804251ACB899B009DB7E7 /* DBImage.m */,
+				121804261ACB899B009DB7E7 /* DBImageRequest.h */,
+				121804271ACB899B009DB7E7 /* DBImageRequest.m */,
+				121804281ACB899B009DB7E7 /* DBImageView.h */,
+				121804291ACB899B009DB7E7 /* DBImageView.m */,
+				1218042A1ACB899B009DB7E7 /* DBImageViewCache.h */,
+				1218042B1ACB899B009DB7E7 /* DBImageViewCache.m */,
+			);
+			path = DBImageView;
+			sourceTree = "<group>";
+		};
+		121804331ACB997C009DB7E7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				121804341ACB99AB009DB7E7 /* WXTFindCommmonCell.h */,
+				121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		12228A691AB1B1C300CF0800 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1443,6 +1485,9 @@
 			children = (
 				126CA3D91AB278FC00E08A0B /* WXTFindVC.h */,
 				126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */,
+				121804301ACB90C7009DB7E7 /* FindCommonVC.h */,
+				121804311ACB90C7009DB7E7 /* FindCommonVC.m */,
+				121804331ACB997C009DB7E7 /* UI */,
 				1262E2C01ACA509400667C54 /* WXTFindModel */,
 			);
 			path = WXTFind;
@@ -2312,6 +2357,7 @@
 		775843B31AB971CF0039B129 /* WXTUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				121804231ACB899B009DB7E7 /* DBImageView */,
 				775843B41AB971CF0039B129 /* UIFont+WXT.h */,
 				775843B51AB971CF0039B129 /* UIFont+WXT.m */,
 				775843B61AB971CF0039B129 /* UIImage+Render.h */,
@@ -2980,6 +3026,7 @@
 				775C58CB1ABA7B75005B6B40 /* SubShopArea.m in Sources */,
 				775C58B61ABA7B75005B6B40 /* RedPacket.m in Sources */,
 				7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */,
+				1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */,
 				775842D71AB95A300039B129 /* NSString+RC4.m in Sources */,
 				2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */,
 				775843121AB95A300039B129 /* WXPopAlertView.m in Sources */,
@@ -3055,6 +3102,7 @@
 				775842DC1AB95A300039B129 /* UIImage+Extend.m in Sources */,
 				777A386F1AC3BA49001CF5FF /* ContactDetailVC.m in Sources */,
 				775842C31AB95A300039B129 /* it_lib_audio.cpp in Sources */,
+				121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */,
 				775C58701ABA7A52005B6B40 /* WXKeyPadVC.m in Sources */,
 				775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */,
 				775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */,
@@ -3063,6 +3111,7 @@
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
 				775C58421ABA5F31005B6B40 /* Tools.m in Sources */,
 				775842B51AB95A300039B129 /* WXTURLFeedOBJ+Data.m in Sources */,
+				1218042E1ACB899B009DB7E7 /* DBImageView.m in Sources */,
 				775842B11AB95A300039B129 /* WXColorConfig.m in Sources */,
 				775C58B81ABA7B75005B6B40 /* RedPacketEntity.m in Sources */,
 				775C58C11ABA7B75005B6B40 /* WXSetMeal.m in Sources */,
@@ -3108,10 +3157,12 @@
 				775842B21AB95A300039B129 /* URLFeedData.m in Sources */,
 				120A2BF01AB135DE006A28B1 /* BalanceModel.m in Sources */,
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
+				121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */,
 				775C586D1ABA7A52005B6B40 /* StrangerEntity.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */,
+				1218042F1ACB899B009DB7E7 /* DBImageViewCache.m in Sources */,
 				775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */,
 				775842C71AB95A300039B129 /* it_lib_files.cpp in Sources */,
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
@@ -3159,6 +3210,7 @@
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
 				775C586A1ABA7A52005B6B40 /* CallHistoryEntityExt.m in Sources */,
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
+				1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */,
 				786155E91AC8EBA20048B604 /* CallBackVC.m in Sources */,
 				775842CC1AB95A300039B129 /* sqlite3.c in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
@@ -3345,7 +3397,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen WoXin Network Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen WoXin Network Technology Co., Ltd.";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3358,6 +3411,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "902a4a37-2330-47b6-b35d-00b11306607f";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3403,7 +3457,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "663edbed-584c-4c2c-97d2-11229bcfd4bd";
+				PROVISIONING_PROFILE = "902a4a37-2330-47b6-b35d-00b11306607f";
 			};
 			name = Release;
 		};

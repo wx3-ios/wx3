@@ -35,4 +35,32 @@
     return self;
 }
 
++(FindEntity*)initFindTGapWith:(NSDictionary *)dic{
+    if(!dic){
+        return nil;
+    }
+    return [[self alloc] initWithDic1:dic];
+}
+
+-(id)initWithDic1:(NSDictionary*)dic{
+    self = [super init];
+    if(self){
+        NSString *type = [dic objectForKey:@"type"];
+        [self setFind_ygap:[[self class] findTypeWithInteger:type]];
+    }
+    return self;
+}
+
++(Find_YgapType)findTypeWithInteger:(NSString*)type{
+    Find_YgapType ytype = Find_YgapType_None;
+    if([type isEqualToString:@"large_space"]){
+        ytype = Find_YgapType_BigSpace;
+    }
+    if([type isEqualToString:@"small_spaces"]){
+        ytype = Find_YgapType_SmallSpace;
+    }
+    
+    return ytype;
+}
+
 @end

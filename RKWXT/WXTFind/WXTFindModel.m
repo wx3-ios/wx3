@@ -30,20 +30,25 @@
     if(!data){
         return;
     }
-//    NSInteger count = 0;
+    NSInteger count = 0;
     if([data isKindOfClass:[NSDictionary class]]){
         id items = [data objectForKey:@"items"];
         if([items isKindOfClass:[NSArray class]]){
-//            for(NSDictionary *dic in items){
-//                FindEntity *entity = nil;
-//                count ++;
-//                if([dic count] > 1){
-//                    entity = [FindEntity initFindEntityWith:[items objectAtIndex:0]];
-//                }
-//            }
-            if([items count] > 0){
-                FindEntity *entity = [FindEntity initFindEntityWith:[items objectAtIndex:0]];
-                [_findDataArr addObject:entity];
+            for(NSDictionary *dic in items){
+                count ++;
+                if(count/2==0){
+                    if([dic count] == 1){
+                        break;
+                    }
+                }
+                if([dic count] > 1){
+                    FindEntity *entity = [FindEntity initFindEntityWith:dic];
+                    [_findDataArr addObject:entity];
+                }
+                if([dic count] == 1){
+                    FindEntity *entity = [FindEntity initFindTGapWith:dic];
+                    [_findDataArr addObject:entity];
+                }
             }
         }
     }

@@ -67,7 +67,7 @@
     //监听电话
     [self listenSystemCall];
     // 集成极光推送功能
-    [self initJPushApi];
+//    [self initJPushApi];
     [APService setupWithOption:launchOptions];
 	return YES;
 }

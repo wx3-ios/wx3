@@ -22,5 +22,6 @@ typedef enum{
 @property (nonatomic,strong) NSString *type;
 
 +(FindEntity*)initFindEntityWith:(NSDictionary*)dic;
++(FindEntity*)initFindTGapWith:(NSDictionary*)dic;
 
 @end
