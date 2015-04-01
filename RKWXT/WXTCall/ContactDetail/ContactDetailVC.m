@@ -237,12 +237,14 @@
         backVC.phoneName = _model.name;
     }
     if([backVC callPhone:phoneStr]){
-        [self.navigationController pushViewController:backVC animated:YES];
+//        [self.navigationController pushViewController:backVC animated:YES];
+        [self presentViewController:backVC animated:YES completion:^{
+        }];
     }
 }
 
 -(void)back{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
