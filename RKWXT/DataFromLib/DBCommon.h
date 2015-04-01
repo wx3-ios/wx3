@@ -21,6 +21,7 @@
 #define kWXTPlacePath                       [NSString stringWithFormat:@"%@/place.sqlite",DOC_PATH]
 #define kWXTPlaceTable                      @"place"
 #define kWXTCreateTable                     @"CREATE TABLE IF NOT EXISTS %@ (%@)"
+#define kWXTSelectArea                      @"SELECT * FROM %@ WHERE phone=%@ LIMIT 1"
 #define kWXTInsertPlace                     @"INSERT INTO place (phone,area) VALUES (?,?)"
 #define kWXTSelectCount                     @"SELECT count(*) FROM %@"
 #endif
