@@ -58,7 +58,7 @@
     else if ([phone isTelephoneNumber])
     {
         NSString *key = [phone substringToIndex:4];
-        if ([key characterAtIndex:2] <= '2')
+        if ([key characterAtIndex:1] <= '2')
         {
             key = [key substringToIndex:3];
         }
