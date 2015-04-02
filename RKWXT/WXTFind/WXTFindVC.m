@@ -14,10 +14,13 @@
 
 #define Size self.view.bounds.size
 
-@interface WXTFindVC()<wxtFindDelegate,UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>{
+@interface WXTFindVC()<wxtFindDelegate,UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>{
     WXTFindModel *_model;
     UIView *shellView;
     UITableView *_tableView;
+    
+    //webview单纯展示网页的
+    UIWebView *_webView;
 }
 @end
 
@@ -53,6 +56,11 @@
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [_tableView setTableFooterView:[self emptyView]];
     [self.view addSubview:_tableView];
+    
+    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 66, Size.width, Size.height-50-66)];
+    [_webView setDelegate:self];
+    [_webView setHidden:YES];
+    [self.view addSubview:_webView];
 }
 
 -(UIView *)emptyView{
@@ -176,15 +184,50 @@
 }
 
 -(void)initFinddataSucceed{
+    [self unShowWaitView];
+    if(_model.find_type == Find_Type_ShowWeb){
+        [self showWebView];
+        return;
+    }
+    if([_model.findDataArr count] == 0){
+        return;
+    }
     [_tableView setHidden:NO];
     [shellView setHidden:YES];
-    [self unShowWaitView];
     [_tableView reloadData];
 }
 
+//无网络情况下二次加载
 -(void)reloadFindData{
     [self showWaitView:self.view];
     [_model loadFindData];
+}
+
+#pragma mark showWeb
+-(void)showWebView{
+    if(!_model.webUrl){
+        [shellView setHidden:NO];
+        [_webView setHidden:YES];
+        [_tableView setHidden:YES];
+        return;
+    }
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_model.webUrl]];
+    if (request){
+        [_webView loadRequest:request];
+    }
+    [_webView setHidden:NO];
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showWaitView:self.view];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self unShowWaitView];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [self unShowWaitView];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{

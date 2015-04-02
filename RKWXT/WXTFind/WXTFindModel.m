@@ -22,6 +22,7 @@
 -(id)init{
     if(self = [super init]){
         _findDataArr = [[NSMutableArray alloc] init];
+        _find_type = Find_Type_Normal;
     }
     return self;
 }
@@ -32,6 +33,13 @@
     }
     NSInteger count = 0;
     if([data isKindOfClass:[NSDictionary class]]){
+        NSString *findType = [data objectForKey:@"tyep"];
+        if([findType isEqualToString:@"url"]){
+            _find_type = Find_Type_ShowWeb;
+            [self setWebUrl:[data objectForKey:@"url"]];
+            return;
+        }
+        
         id items = [data objectForKey:@"items"];
         if([items isKindOfClass:[NSArray class]]){
             for(NSDictionary *dic in items){
