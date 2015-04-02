@@ -66,22 +66,42 @@
         NSLog(@"db version table create success^^");
         return NO;
     }else{
-        NSLog(@"db version open error!!!");
+        NSLog(@"database open error!!!%@",[_database lastErrorMessage]);
+        return NO;
+    }
+}
+
+-(BOOL)validateWXTTable:(NSString*)tableName{
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        if ([_database executeUpdate:[NSString stringWithFormat:kWXTSelectTable,tableName]]) {
+            NSLog(@"%@ create success",tableName);
+            return YES;
+        }else{
+            NSLog(@"%@ create error:%@",tableName,[_database lastErrorMessage]);
+            return NO;
+        }
+    }else{
+        NSLog(@"database open error!!!%@",[_database lastErrorMessage]);
         return NO;
     }
 }
 
 -(BOOL)insertDBVersion{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        if ([_database executeUpdate:[NSString stringWithFormat:kWXTInsertDBVersion,kDBVersion,kDBDateTime]]) {
-            NSLog(@"data version insert success");
-            return YES;
+        if ([self validateWXTTable:kDBVersion]) {
+            if ([_database executeUpdate:[NSString stringWithFormat:kWXTInsertDBVersion,kDBVersion,kDBDateTime]]) {
+                NSLog(@"data version insert success");
+                return YES;
+            }else{
+                NSLog(@"data version insert error:%@",[_database lastErrorMessage]);
+                return NO;
+            }
         }else{
             NSLog(@"data version insert error:%@",[_database lastErrorMessage]);
             return NO;
         }
     }else{
-        NSLog(@"db version open error!!!");
+        NSLog(@"database open error!!!%@",[_database lastErrorMessage]);
         return NO;
     }
 }
@@ -121,12 +141,16 @@
 
 -(void)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone date:(NSString*)aDate type:(int)aType{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aDate,aType]];
-        if ([result errorCode] == 0) {
-            [NOTIFY_CENTER postNotificationName:D_Notification_Name_CallRecordAdded object:nil];
-            NSLog(@"%s用户通话记录插入success:%lu",__FUNCTION__,[result count]);
+        if ([self validateWXTTable:kWXTCall_Table]) {
+            EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aDate,aType]];
+            if ([result errorCode] == 0) {
+                [NOTIFY_CENTER postNotificationName:D_Notification_Name_CallRecordAdded object:nil];
+                NSLog(@"%s用户通话记录插入success:%lu",__FUNCTION__,[result count]);
+            }else{
+                NSLog(@"%s用户通话记录插入error:%i",__FUNCTION__,[result errorCode]);
+            }
         }else{
-            NSLog(@"%s用户通话记录插入error:%i",__FUNCTION__,[result errorCode]);
+            [self createWXTTable];
         }
     }else{
         NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
@@ -171,4 +195,18 @@
         NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
     }
 }
+
+#pragma mark database callback
+-(void)wxtCreateTableSuccess{
+    if (_delegate && [_delegate respondsToSelector:@selector(wxtCreateTableSuccess)]){
+        [_delegate wxtCreateTableSuccess];
+    }
+}
+
+-(void)wxtCreateTableFaild{
+    if (_delegate && [_delegate respondsToSelector:@selector(wxtCreateTableFaild)]){
+        [_delegate wxtCreateTableFaild];
+    }
+}
+
 @end
