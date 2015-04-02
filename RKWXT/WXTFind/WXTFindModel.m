@@ -31,7 +31,6 @@
     if(!data){
         return;
     }
-    NSInteger count = 0;
     if([data isKindOfClass:[NSDictionary class]]){
         NSString *findType = [data objectForKey:@"tyep"];
         if([findType isEqualToString:@"url"]){
@@ -43,18 +42,12 @@
         id items = [data objectForKey:@"items"];
         if([items isKindOfClass:[NSArray class]]){
             for(NSDictionary *dic in items){
-                count ++;
-                if(count/2==0){
-                    if([dic count] == 1){
-                        break;
-                    }
-                }
-                if([dic count] > 1){
-                    FindEntity *entity = [FindEntity initFindEntityWith:dic];
-                    [_findDataArr addObject:entity];
-                }
-                if([dic count] == 1){
+                NSString *typeStr = [dic objectForKey:@"type"];
+                if([typeStr isEqualToString:@"large_space"] || [typeStr isEqualToString:@"small_spaces"]){
                     FindEntity *entity = [FindEntity initFindTGapWith:dic];
+                    [_findDataArr addObject:entity];
+                }else{
+                    FindEntity *entity = [FindEntity initFindEntityWith:dic];
                     [_findDataArr addObject:entity];
                 }
             }

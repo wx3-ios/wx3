@@ -10,8 +10,9 @@
 
 typedef enum{
     Find_YgapType_None = 0,
-    Find_YgapType_BigSpace,
-    Find_YgapType_SmallSpace,
+    Find_YgapType_BigSpace,     //大空格
+    Find_YgapType_TwoBigSpace,  //两倍大空格
+    Find_YgapType_SmallSpace,   //小空格
 }Find_YgapType;
 
 @interface FindEntity : NSObject

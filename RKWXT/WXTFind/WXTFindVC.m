@@ -19,6 +19,9 @@
     UIView *shellView;
     UITableView *_tableView;
     
+    NSMutableArray *dataArr; //界面显示的数据
+    NSMutableArray *spaceArr; //界面空格数据
+    
     //webview单纯展示网页的
     UIWebView *_webView;
 }
@@ -39,6 +42,9 @@
     [_model setFindDelegate:self];
     [_model loadFindData];
     [self showWaitView:self.view];
+    
+    dataArr = [[NSMutableArray alloc] init];
+    spaceArr = [[NSMutableArray alloc] init];
     
     shellView = [[UIView alloc] init];
     shellView.frame = CGRectMake(0, 66, Size.width, Size.height-50-66);
@@ -117,28 +123,43 @@
 
 #pragma mark tableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    NSInteger section = 0;
-    if([_model.findDataArr count] > 0){
-        section = [_model.findDataArr count]/2+1;
-    }
-    return section;
+    return [dataArr count];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     CGFloat height = 0;
-    if(section*2+1 > [_model.findDataArr count]-1){
+    if(section>0){
         return height;
     }
-    FindEntity *entity = [_model.findDataArr objectAtIndex:section*2+1];
+    FindEntity *entity = [_model.findDataArr objectAtIndex:0];
     if(entity.find_ygap == Find_YgapType_BigSpace){
         height = 20;
     }
-    if(entity.find_ygap == Find_YgapType_SmallSpace || entity.find_ygap == Find_YgapType_None){
-        height = 0;
+    if(entity.find_ygap == Find_YgapType_TwoBigSpace){
+        height = 40;
+    }
+    return height;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    CGFloat height = 0;
+    if(section  == [dataArr count]-1){
+        return height;
+    }
+    FindEntity *enti = [_model.findDataArr objectAtIndex:0];
+    if(enti.find_ygap != Find_YgapType_None){
+        section = section+1;
+    }
+    FindEntity *entity = [spaceArr objectAtIndex:section];
+    if(entity.find_ygap == Find_YgapType_BigSpace){
+        height = 20;
+    }
+    if(entity.find_ygap == Find_YgapType_TwoBigSpace){
+        height = 40;
     }
     return height;
 }
@@ -149,7 +170,7 @@
     if(!cell){
         cell = [[WXTFindCommmonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell setCellInfo:[_model.findDataArr objectAtIndex:section*2]];
+    [cell setCellInfo:[dataArr objectAtIndex:section]];
     [cell load];
     return cell;
 }
@@ -164,7 +185,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
-    FindEntity *entity = [_model.findDataArr objectAtIndex:section*2];
+    FindEntity *entity = [dataArr objectAtIndex:section];
     FindCommonVC *commonVC = [[FindCommonVC alloc] init];
     commonVC.webURl = entity.webUrl;
     commonVC.titleName = entity.name;
@@ -192,6 +213,24 @@
     if([_model.findDataArr count] == 0){
         return;
     }
+    
+    NSInteger number = 0;
+    for(FindEntity *entity in _model.findDataArr){
+        number ++;
+        if(entity.find_ygap == Find_YgapType_BigSpace || entity.find_ygap == Find_YgapType_SmallSpace){
+            if(entity.find_ygap == Find_YgapType_BigSpace){
+                if(number == 2){
+                    entity.find_ygap = Find_YgapType_TwoBigSpace;
+                    [spaceArr removeLastObject];
+                }
+            }
+            [spaceArr addObject:entity];
+        }else{
+            number = 0;
+            [dataArr addObject:entity];
+        }
+    }
+    
     [_tableView setHidden:NO];
     [shellView setHidden:YES];
     [_tableView reloadData];
