@@ -8,6 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+#define kFirstKey @"*"
+
+typedef struct {
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *iconStr;
+}S_OptContactInfo;
+
+typedef enum {
+    E_ContactDataType_OPT = 0,
+    E_ContactDataType_Contacter,
+}E_ContactDataType;
+
+static S_OptContactInfo pOptInfo[] = {
+    //    {kMerchantName,@"merchantIcon.png"},
+    //    {@"我信团队",@"wxInsister.png"},
+    //    {@"新的好友",@"newFriend.png"},
+    //    {@"群聊",@"multiChat.png"},
+    //    {@"所有我信好友",@"wxInsister.png"},
+};
+
+
 typedef enum {
 //    E_ContactOPTType_Merchant = 0,//商家
 //    E_ContactOPTType_WXTeam,//我信团队

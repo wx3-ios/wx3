@@ -20,7 +20,7 @@
 #define kWXTBookGroupTable                  @"CREATE TABLE IF NOT EXISTS book_group(GroupID  INT UNSIGNED DEFAULT 0,ParentID INT UNSIGNED DEFAULT 0,GroupName Varchar(50) Not Null,PRIMARY KEY (GroupID))"
 
 #define kWXTBookGroupMember                 @"CREATE TABLE book_group_member(RID      INT UNSIGNED Not Null,GroupID INT UNSIGNED Not Null,PRIMARY KEY (RID,GroupID))"
-#define kWXTCallTable                       @"CREATE TABLE IF NOT EXISTS CallRecord (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,telephone TEXT, date TEXT, type INTEGER)"
+#define kWXTCallTable                       @"CREATE TABLE IF NOT EXISTS CallRecord (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,telephone TEXT, date TEXT, type INTEGER,area,varchar(16),count INTEGER)"
 #define kWXTCall_Column_Name                @"name"
 #define kWXTCall_Column_Telephone           @"telephone"
 #define kWXTCall_Column_Date                @"date"

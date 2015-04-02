@@ -29,7 +29,5 @@
 
 @implementation ContactPhone
 
-- (void)dealloc{
-//    [super dealloc];
-}
+
 @end

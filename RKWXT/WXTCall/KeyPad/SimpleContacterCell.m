@@ -30,7 +30,7 @@
     NSString *phoneNumber = entityEx.phoneMatched;
     NSString *name = nil;
     if(contacter){
-        name = contacter.name;
+        name = contacter.fullName;
     }
     if(name){
         [self.textLabel setText:name];

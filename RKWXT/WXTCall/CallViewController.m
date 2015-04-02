@@ -290,7 +290,7 @@ typedef enum{
         for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
             NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
             if([userPhone isEqualToString:newPhoneStr]){
-                phoneName = entity.contactEntity.name?entity.contactEntity.name:phoneStr;
+                phoneName = entity.contactEntity.fullName?entity.contactEntity.fullName:phoneStr;
                 return phoneName;
             }
         }
@@ -309,7 +309,7 @@ typedef enum{
         for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
             NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
             if([userPhone isEqualToString:newPhoneStr]){
-                phoneName = entity.contactEntity.name?entity.contactEntity.name:phoneStr;
+                phoneName = entity.contactEntity.fullName?entity.contactEntity.fullName:phoneStr;
                 return phoneName;
             }
         }

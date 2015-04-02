@@ -183,7 +183,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     //    cell.imageView.image = [UIImage imageNamed:@""];
     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
-    cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[indexPath.row]).name;
+    cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[indexPath.row]).fullName;
     return cell;
 }
 

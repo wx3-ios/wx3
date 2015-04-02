@@ -106,8 +106,8 @@
 -(BOOL)createWXTTable{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
         [self checkWXTDBVersion];
-        if ([_database executeUpdate:kWXTCallTable]) {
-            NSLog(@"%s用户通话数据表创建成功",__FUNCTION__);
+        if ([_database executeUpdate:kWXTCallTable] && [_database executeUpdate:kWXTBookTable] && [_database executeUpdate:kWXTUserSettingTable]&& [_database executeUpdate:kWXTBookGroupTable]) {
+            NSLog(@"%s用户数据库表创建成功",__FUNCTION__);
             return YES;
         }else{
             NSLog(@"%s数据库表创建失败",__FUNCTION__);

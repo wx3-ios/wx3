@@ -83,7 +83,7 @@
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake((Size.width-nameLabelWidth)/2, yOffset, nameLabelWidth, nameheight);
     [nameLabel setBackgroundColor:[UIColor clearColor]];
-    [nameLabel setText:_model.name];
+    [nameLabel setText:_model.fullName];
     [nameLabel setTextAlignment:NSTextAlignmentCenter];
     [nameLabel setFont:WXTFont(14.0)];
     [nameLabel setTextColor:[UIColor whiteColor]];
@@ -233,8 +233,8 @@
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneNumber];
     CallBackVC *backVC = [[CallBackVC alloc] init];
     backVC.phoneName = phoneStr;
-    if(_model.name){
-        backVC.phoneName = _model.name;
+    if(_model.fullName){
+        backVC.phoneName = _model.fullName;
     }
     if([backVC callPhone:phoneStr]){
 //        [self.navigationController pushViewController:backVC animated:YES];

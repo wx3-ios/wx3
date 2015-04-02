@@ -10,10 +10,28 @@
 #import <AddressBook/AddressBook.h>
 #import "ContactBaseEntity.h"
 
+#define kPhoneNumberCount (11)
+//ip电话前缀
+static const char *s_ipPre[] ={
+    "12593",
+    "17951",
+    "17900",
+    "17901",
+    "17908",
+    "17909",
+    "17911",
+    "17931",
+    "19389",
+    "10131",
+    "286",
+    "818",
+    "858",
+};
 @interface ContacterEntity : NSObject
-//定位联系人
+@property (nonatomic)ABRecordRef person;
+@property (nonatomic,retain)NSString * lastName;
+@property (nonatomic,retain)NSString *fullName;
 @property (nonatomic,assign)NSInteger recordID;
-@property (nonatomic,retain)NSString *name;
 @property (nonatomic,retain)NSArray *phoneNumbers;
 @property (nonatomic,retain)NSDate *createTime;
 @property (nonatomic,retain)NSDate *modifyTime;
