@@ -38,7 +38,7 @@
     _model = [[WXContacterModel alloc] init];
     [_model loadSystemContacters];
     CGSize size = self.view.bounds.size;
-    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-66-50)];
+    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, ScreenHeight-66-50)];
 //    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
     [_tableView setDataSource:self];
     [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];
@@ -56,29 +56,6 @@
     [_searchDisplayController setSearchResultsDelegate:self];
     [_searchDisplayController setSearchResultsDataSource:self];
     [_searchDisplayController setDelegate:self];
-}
-
--(void)loadSegmentControl{
-    CGFloat segWidth = 180;
-    CGFloat segHeight = 30;
-    NSArray *nameArr = @[@"通话",@"通讯录"];
-    _segmentControl = [[UISegmentedControl alloc] initWithItems:nameArr];
-    _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT+NAVIGATION_BAR_HEGITH-segHeight, segWidth, segHeight);
-    if(isIOS6){
-        _segmentControl.frame = CGRectMake((IPHONE_SCREEN_WIDTH-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
-    }
-    [_segmentControl setSelectedSegmentIndex:0];
-#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
-    _segmentControl.segmentedControlStyle = UISegmentedControlStyleBordered;
-#endif
-    [_segmentControl setBorderRadian:1.0 width:0.2 color:[UIColor grayColor]];
-    [_segmentControl setBackgroundColor:[UIColor whiteColor]];
-    [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
-    [self.navigationController.navigationBar addSubview:_segmentControl];
-}
-
--(void)segmentControlChange:(UISegmentedControl *)segmentControl{
-    
 }
 
 - (void)addOBS{
@@ -159,15 +136,15 @@
     }
     return section;
 }
-
+// 隐藏所有我信好友页面
 - (NSArray*)contactersAtSection:(NSInteger)section{
-    if(section == 0){
-        return _model.contactOptArray;
-    }else{
+//    if(section == 0){
+//        return _model.contactOptArray;
+//    }else{
         NSString *key = [[_model allKeys] objectAtIndex:section];
         NSMutableArray *contacters = [_model.sysContacterDic objectForKey:key];
         return contacters;
-    }
+//    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

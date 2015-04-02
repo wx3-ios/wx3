@@ -63,23 +63,19 @@ static S_OptContactInfo pOptInfo[] = {
 - (void)setContactOpts{
     [_contactOPTList removeAllObjects];
     NSInteger count = sizeof(pOptInfo)/sizeof(S_OptContactInfo);
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for(int i = 0; i  < count; i++){
         S_OptContactInfo optInfo = pOptInfo[i];
         WXContactOptEntity *entity = [WXContactOptEntity optEntityWithName:optInfo.name icon:[UIImage imageNamed:optInfo.iconStr] numberRight:0];
         [_contactOPTList addObject:entity];
     }
-//    [pool drain];
 }
 
 - (void)initSystemContacters{
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for(char ch = 'A'; ch <= 'Z'; ch++){
         NSMutableArray *array = [NSMutableArray array];
         [_sysContacterDic setObject:array forKey:[NSString stringWithFormat:@"%c",ch]];
     }
     [_sysContacterDic setObject:[NSMutableArray array] forKey:@"#"];
-//    [pool drain];
 }
 
 - (void)emptySystemContacters{
