@@ -13,7 +13,7 @@
 @implementation LoginModel
 
 -(void)loginWithUser:(NSString *)userStr andPwd:(NSString *)pwdStr{
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"login", @"cmd", userStr, @"phone_number", [NSNumber numberWithInt:ShopID], @"agent_id", pwdStr, @"password", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"login", @"cmd", userStr, @"phone_number", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", pwdStr, @"password", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Login httpMethod:WXT_HttpMethod_Get timeoutIntervcal:10 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         if ([[dic objectForKey:@"success"] integerValue] != 1){

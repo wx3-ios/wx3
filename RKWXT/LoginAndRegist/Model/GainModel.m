@@ -13,7 +13,7 @@
 @implementation GainModel
 
 -(void)gainNumber:(NSString *)userStr{
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_sms_auth_code", @"cmd", userStr, @"phone_number", [NSNumber numberWithInt:ShopID], @"agent_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_sms_auth_code", @"cmd", userStr, @"phone_number", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_GainNum httpMethod:WXT_HttpMethod_Get timeoutIntervcal:40 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         if ([[dic objectForKey:@"success"] integerValue] != 1){

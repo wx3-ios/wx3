@@ -57,7 +57,7 @@
 
 -(void)loadFindData{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_discovery_item", @"cmd", userObj.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", userObj.token, @"token", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_discovery_item", @"cmd", userObj.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", userObj.token, @"token", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         __block WXTFindModel *blockSelf = self;

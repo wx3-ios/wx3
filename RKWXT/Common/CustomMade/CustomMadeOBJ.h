@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-	E_App_Category_Eatable = 0,//餐饮类~
+	E_App_Category_Eatable = 0,//纯通话~
 	E_App_Category_Public,//大众版
 }E_App_Category;
 
+//不需要了
 typedef enum {
 	E_APP_Type_Personal = 1, //个人版本
 	E_APP_Type_Store,//商家版

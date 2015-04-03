@@ -37,7 +37,7 @@
 
 -(void)loadUserBalance{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_balance", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", userDefault.token, @"token", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_balance", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", userDefault.token, @"token", nil];
     __block BalanceModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;

@@ -18,7 +18,7 @@
     }
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
 
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"change_password", @"cmd", userObj.pwd, @"old_password",userObj.wxtID, @"user_id", newPwd,@"new_password",[NSNumber numberWithInt:ShopID], @"agent_id", userObj.token, @"token", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"change_password", @"cmd", userObj.pwd, @"old_password",userObj.wxtID, @"user_id", newPwd,@"new_password",[NSNumber numberWithInt:(int)kMerchantID], @"agent_id", userObj.token, @"token", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_ResetPwd httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         NSInteger secceed = [[dic objectForKey:@"success"] integerValue];

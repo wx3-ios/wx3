@@ -10,16 +10,17 @@
 #define Woxin2_0_CustomMade_h
 
 #import "CustomMadeOBJ.h"
-
-#define kMerchantName [CustomMadeOBJ sharedCustomMadeOBJS].merchantName //软件的名称
-#define kAPPType [CustomMadeOBJ sharedCustomMadeOBJS].appType //app的类型~
-#define kCertificationType [CustomMadeOBJ sharedCustomMadeOBJS].certificationType //证书类型
 #define kMerchantID [CustomMadeOBJ sharedCustomMadeOBJS].merchantID   //商家ID
 #define	kAppMode [CustomMadeOBJ sharedCustomMadeOBJS].appCategory //app分类~
 #define	kIsAppModePublic ([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Public) //是否为公众版
-#define	kIsDistributeServiceAddressOld [CustomMadeOBJ sharedCustomMadeOBJS].isDistributeServerAddressOld//是否为老服务器~
 #define	kSubShopID [CustomMadeOBJ sharedCustomMadeOBJS].subShopID //分店ID
 #define	kAreaID [CustomMadeOBJ sharedCustomMadeOBJS].areaID //区域ID
+
+//以下目前都没用了
+#define kMerchantName [CustomMadeOBJ sharedCustomMadeOBJS].merchantName //软件的名称
+#define kAPPType [CustomMadeOBJ sharedCustomMadeOBJS].appType //app的类型~
+#define kCertificationType [CustomMadeOBJ sharedCustomMadeOBJS].certificationType //证书类型
+#define	kIsDistributeServiceAddressOld [CustomMadeOBJ sharedCustomMadeOBJS].isDistributeServerAddressOld//是否为老服务器~
 #define	D_ServerAddress [CustomMadeOBJ sharedCustomMadeOBJS].serverAddress //服务器地址~
 
 #pragma mark 引导页~

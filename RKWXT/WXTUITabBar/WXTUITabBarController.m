@@ -138,20 +138,21 @@
     
     [self createDownView];
     
-#ifdef OnlyPhoneVersion    // 如果已经定义，则隐藏商城模块
-    [but setHidden:YES];
-    [label setHidden:YES];
     
-    
-    [but0 setFrame:CGRectMake(0, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
-    [label0 setFrame:CGRectMake(0, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
-    
-    [but1 setFrame:CGRectMake(Size.width/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
-    [label1 setFrame:CGRectMake(Size.width/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
-    
-    [but2 setFrame:CGRectMake(Size.width*2/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
-    [label2 setFrame:CGRectMake(Size.width*2/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
-#endif
+    if([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Eatable){
+        [but setHidden:YES];
+        [label setHidden:YES];
+        
+        
+        [but0 setFrame:CGRectMake(0, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
+        [label0 setFrame:CGRectMake(0, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
+        
+        [but1 setFrame:CGRectMake(Size.width/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
+        [label1 setFrame:CGRectMake(Size.width/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
+        
+        [but2 setFrame:CGRectMake(Size.width*2/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
+        [label2 setFrame:CGRectMake(Size.width*2/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
+    }
 }
 
 -(void)createDownView{

@@ -38,7 +38,7 @@
 
 -(void)loadMallData{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_mall_home_url", @"cmd", userObj.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", [NSNumber numberWithInt:AreaID], @"area_id", [NSNumber numberWithInt:SubShopID], @"shop_id", userObj.token, @"token", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_mall_home_url", @"cmd", userObj.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", [NSNumber numberWithInt:(int)kAreaID], @"area_id", [NSNumber numberWithInt:(int)kSubShopID], @"shop_id", userObj.token, @"token", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         __block WXTMallModel *blockSelf = self;

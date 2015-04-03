@@ -38,7 +38,7 @@
 -(void)checkVersion:(NSString*)currentVersion{
     [_updateArr removeAllObjects];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"check_ios_update", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", userDefault.token, @"token", currentVersion, @"ver", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"check_ios_update", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", userDefault.token, @"token", currentVersion, @"ver", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Version httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         __block VersionModel *blockSelf = self;

@@ -16,9 +16,6 @@
 
 #define OnlyPhoneVersion   //纯通话版，用来判断客户端是否显示商城
 
-#define ShopID (2)
-#define SubShopID (45)
-#define AreaID (0)
 #define Test   //测试，目前只显示版本号
 
 #define ShowKeyBoard @"ShowKeyBoard"

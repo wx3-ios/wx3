@@ -14,7 +14,7 @@
 
 -(void)rechargeWithCardNum:(NSString *)num andPwd:(NSString *)pwd withRechargePhone:(NSString *)rechargePhone{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"pay", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", num, @"card_sn", pwd, @"card_ps", rechargePhone, @"phone_number", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"pay", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", num, @"card_sn", pwd, @"card_ps", rechargePhone, @"phone_number", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Recharge httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         if ([[dic objectForKey:@"success"] integerValue] != 1){

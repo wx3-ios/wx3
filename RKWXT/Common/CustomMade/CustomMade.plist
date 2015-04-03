@@ -3,36 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>D_KEY_APP_AREAID</key>
-	<integer>36</integer>
+	<integer>50</integer>
 	<key>D_KEY_APP_CATEGORY</key>
 	<integer>1</integer>
-	<key>D_KEY_APP_GUIDE</key>
-	<dict>
-		<key>D_KEY_APP_GUIDE_ENABLE</key>
-		<true/>
-		<key>D_KEY_APP_GUIDE_PAGE</key>
-		<integer>4</integer>
-	</dict>
-	<key>D_KEY_APP_IS_SERVER_OLD</key>
-	<false/>
 	<key>D_KEY_APP_MERCHANTNAME</key>
-	<string>我信科技</string>
+	<string>我信通</string>
 	<key>D_KEY_APP_SUBSHOPID</key>
-	<integer>45</integer>
-	<key>D_KEY_APP_TYPE</key>
-	<integer>2</integer>
-	<key>D_KEY_CERTIFICATIONTYPE</key>
-	<integer>2</integer>
-	<key>D_KEY_LOG_REG</key>
-	<dict>
-		<key>D_KEY_LOG_REG_BAG_ENABLE</key>
-		<false/>
-		<key>D_KEY_LOG_REG_E_COLOR</key>
-		<integer>1</integer>
-	</dict>
+	<integer>40</integer>
 	<key>D_KEY_MERCHANTID</key>
-	<real>10020</real>
-	<key>D_KEY_OTHER_COLOR</key>
-	<integer>1</integer>
+	<integer>2</integer>
 </dict>
 </plist>

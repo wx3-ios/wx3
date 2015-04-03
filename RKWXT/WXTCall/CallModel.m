@@ -30,7 +30,7 @@
     }
     _callstatus_type = CallStatus_Type_starting;
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"call", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:ShopID], @"agent_id", phoneStr, @"called", userDefault.token, @"token", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"call", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", phoneStr, @"called", userDefault.token, @"token", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_FetchPwd httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         if ([[dic objectForKey:@"success"] integerValue] != 1){
