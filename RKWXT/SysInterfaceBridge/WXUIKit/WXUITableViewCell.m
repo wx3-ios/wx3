@@ -13,9 +13,7 @@
 @synthesize baseDelegate = _baseDelegate;
 
 - (void)dealloc{
-//    RELEASE_SAFELY(_cellInfo);
     _baseDelegate = nil;
-//    [super dealloc];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

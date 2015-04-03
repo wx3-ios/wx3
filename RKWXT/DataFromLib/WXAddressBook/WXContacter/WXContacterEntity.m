@@ -60,7 +60,7 @@ typedef enum {
     }
     
     ContacterEntity *entity = [[AddressBook sharedAddressBook] contacterEntityForNumber:_bindID];
-    NSString *name = entity.name;
+    NSString *name = entity.fullName;
     if(!name){
         name = _bindID;
     }
@@ -122,7 +122,7 @@ typedef enum {
     }
     
     ContacterEntity *entity = [[AddressBook sharedAddressBook] contacterEntityForNumber:_bindID];
-    NSString *contacterName = entity.name;
+    NSString *contacterName = entity.fullName;
     if(contacterName){
         if([PinYinSearchOBJ isIncludeString:string inString:contacterName]){
             return YES;

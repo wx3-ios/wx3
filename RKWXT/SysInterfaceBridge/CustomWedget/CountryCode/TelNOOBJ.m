@@ -10,22 +10,7 @@
 #import "ZoneCodeOBJ.h"
 
 #define kPhoneNumberCount (11)
-//ip电话前缀
-static const char *s_ipPre[] ={
-    "12593",
-    "17951",
-    "17900",
-    "17901",
-    "17908",
-    "17909",
-    "17911",
-    "17931",
-    "19389",
-    "10131",
-    "286",
-    "818",
-    "858",
-};
+
 
 @interface TelNOOBJ ()
 

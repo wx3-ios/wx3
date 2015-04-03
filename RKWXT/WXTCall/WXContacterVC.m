@@ -136,15 +136,15 @@
     }
     return section;
 }
-// 隐藏所有我信好友页面
+
 - (NSArray*)contactersAtSection:(NSInteger)section{
-//    if(section == 0){
-//        return _model.contactOptArray;
-//    }else{
+    if(section == 0){
+        return _model.contactOptArray;
+    }else{
         NSString *key = [[_model allKeys] objectAtIndex:section];
         NSMutableArray *contacters = [_model.sysContacterDic objectForKey:key];
         return contacters;
-//    }
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

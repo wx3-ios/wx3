@@ -12,28 +12,7 @@
 #import "PinYinSearchOBJ.h"
 
 @implementation ContacterEntity
-
-#define kPhoneNumberCount (11)
-//ip电话前缀
-static const char *s_ipPre[] ={
-    "12593",
-    "17951",
-    "17900",
-    "17901",
-    "17908",
-    "17909",
-    "17911",
-    "17931",
-    "19389",
-    "10131",
-    "286",
-    "818",
-    "858",
-};
-
-- (void)dealloc{
-//    [super dealloc];
-}
+@synthesize lastName = _lastName;
 
 + (id)contacterEntityWithABPerson:(ABRecordRef)person{
     return [[self alloc] initWithPerson:person] ;
@@ -51,7 +30,8 @@ static const char *s_ipPre[] ={
             if(!name){
                 name = [_phoneNumbers objectAtIndex:0];
             }
-            [self setName:name];
+            [self setFullName:name];
+            _lastName = (__bridge NSString*)ABRecordCopyValue(person, kABPersonLastNameProperty);
             //record ID
             ABRecordID recordID = ABRecordGetRecordID(person);
             [self setRecordID:recordID];
@@ -137,7 +117,7 @@ static const char *s_ipPre[] ={
 
 - (NSString*)description{
     return [NSString stringWithFormat:@"CLASS=%@,recordID=%d,name=%@,phone=%@,createTime=%@,modifyTime=%@,phone=%@",[self class],
-            (int)_recordID,_name,_phoneNumbers,_createTime,_modifyTime,_phoneNumbers];
+            (int)_recordID,_fullName,_phoneNumbers,_createTime,_modifyTime,_phoneNumbers];
 }
 
 
@@ -155,7 +135,7 @@ static const char *s_ipPre[] ={
 }
 
 - (NSString*)nameShow{
-    NSString *name = self.name;
+    NSString *name = self.fullName;
     if(!name){
         name = [_phoneNumbers objectAtIndex:0];
     }
@@ -201,7 +181,7 @@ static const char *s_ipPre[] ={
         return NO;
     }
     
-    if(_name && [PinYinSearchOBJ isIncludeString:string inString:_name]){
+    if(_fullName && [PinYinSearchOBJ isIncludeString:string inString:_fullName]){
         return YES;
     }
     
@@ -213,10 +193,14 @@ static const char *s_ipPre[] ={
     return NO;
 }
 
+-(NSString*)getLastName{
+    return _lastName;
+}
+
 - (BOOL)uploadSysContacter{
     for(NSString *phone in _phoneNumbers){
         
-        NSInteger ret = [[WXService sharedService] updateContacter:_recordID name:_name phone:phone createTime:[_createTime timeIntervalSince1970] modifyTime:[_modifyTime timeIntervalSince1970]];
+        NSInteger ret = [[WXService sharedService] updateContacter:_recordID name:_fullName phone:phone createTime:[_createTime timeIntervalSince1970] modifyTime:[_modifyTime timeIntervalSince1970]];
         if(ret != 0){
             KFLog_Normal(YES, @"上传通讯录失败~ret=%d",(int)ret);
             return NO;
