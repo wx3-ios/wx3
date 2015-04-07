@@ -62,20 +62,29 @@
 -(void)load{
     NSString *phoneNumber = self.cellInfo;
     [_numberLabel setText:phoneNumber];
-    [_phoneArea setText:[self phoneAreaWithNumber:phoneNumber]];
+    NSString *phoneAreaStr = [self phoneAreaWithNumber:phoneNumber];
+    if([phoneAreaStr isEqualToString:@""]){
+        [self resetNumberLabelFrame];
+        [_phoneArea setHidden:YES];
+    }else{
+        [_phoneArea setText:phoneAreaStr];
+    }
 }
 
 -(NSString *)phoneAreaWithNumber:(NSString*)number{
     NSString *areaStr = nil;
     NSString *prePhone = [UtilTool callPhoneNumberRemovePreWith:number];
-    if(!prePhone){
-        areaStr = @"未知地区";
-    }
     areaStr = [[ContactUitl shareInstance] queryByPhone:prePhone];
     if(!areaStr){
-        areaStr = @"未知地区";
+        areaStr = @"";
     }
     return areaStr;
+}
+
+-(void)resetNumberLabelFrame{
+    CGRect rect = _numberLabel.frame;
+    rect.origin.y = 13;
+    [_numberLabel setFrame:rect];
 }
 
 //-(void)callPhone:(id)sender{

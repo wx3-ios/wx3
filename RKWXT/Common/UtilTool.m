@@ -13,7 +13,7 @@
 //匹配手机的正则
 #define REGEX_MOBILE @"^1[34578]\\d{9}$"
 //电话区号正则
-#define REGEX_TELEPHONE @"^0\\d{2,3}\\d{7,8}"
+#define REGEX_TELEPHONE @"^0[123456789]\\d{8,10}"
 
 @implementation UtilTool
 
