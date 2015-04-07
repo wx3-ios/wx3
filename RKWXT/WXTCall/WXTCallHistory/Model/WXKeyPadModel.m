@@ -7,12 +7,11 @@
 //
 
 #import "WXKeyPadModel.h"
-#import "SysContacterEntityEx.h"
 #import "CallRecord.h"
 #import "CallHistoryEntityExt.h"
 #import "StrangerEntity.h"
 #import "it_lib.h"
-
+#import "SysContacterEntityEx.h"
 #import "WXTDatabase.h"
 
 @interface WXKeyPadModel()

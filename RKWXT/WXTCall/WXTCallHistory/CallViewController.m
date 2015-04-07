@@ -148,9 +148,9 @@ typedef enum{
     WXUIButton *btn = sender;
     NSInteger number = (btn.tag+1==11?0:btn.tag+1);
     if(number <= 9 && number >= 0){
-        if(textString.length < 12){
-            NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
-            textString = [textString stringByAppendingString:str];
+        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
+        textString = [textString stringByAppendingString:str];
+        if(textString.length<=12){
             [_textLabel setText:textString];
         }
         [self sound:number];
@@ -256,7 +256,7 @@ typedef enum{
 
 -(void)callPhoneNumber{
     if(textString.length < 10 || textString.length > 12){
-        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
+//        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
         return;
     }
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
@@ -390,13 +390,13 @@ typedef enum{
     return YES;
 }
 
-//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        CallHistoryEntity * entity = _model.callHistory[indexPath.row];
-//        [[WXTDatabase shareDatabase] delCallHistory:entity.phoneNumber];
-////        [NOTIFY_CENTER addObserver:self selector:@selector(reloadData) name:D_Notification_Name_CallRecordLoadFinished object:nil];
-//    }
-//}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        CallHistoryEntity * entity = _model.callHistory[indexPath.row];
+        [[WXTDatabase shareDatabase] delCallHistory:entity.phoneNumber];
+//        [NOTIFY_CENTER addObserver:self selector:@selector(reloadData) name:D_Notification_Name_CallRecordLoadFinished object:nil];
+    }
+}
 
 -(void)reloadData{
     [_tableView reloadData];

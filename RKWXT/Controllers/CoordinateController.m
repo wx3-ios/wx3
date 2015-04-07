@@ -8,7 +8,6 @@
 
 #import "CoordinateController.h"
 //#import "RegisterVC.h"
-#import "WXCallUITabBarVC.h"
 #import "LoginVC.h"
 //#import "WXAllFriendVC.h"
 #import "ContactDetailVC.h"

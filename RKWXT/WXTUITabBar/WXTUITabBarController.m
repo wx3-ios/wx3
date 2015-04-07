@@ -13,7 +13,6 @@
 #import "UserInfoVC.h"
 #import "ContactsCallViewController.h"
 #import "CallViewController.h"
-#import "ContactsViewController.h"
 
 #define kTabBarHeight (50.0)
 #define Size self.view.bounds.size

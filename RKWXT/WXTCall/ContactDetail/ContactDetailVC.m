@@ -192,7 +192,7 @@
     MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
     picker.messageComposeDelegate = self;
     
-    NSString *msg = [NSString stringWithFormat:@"这年头没好事哪敢骚扰你，用我信通打国内电话低至3分。下载地址:%@%d",DownLoadUrl,(int)kMerchantID];
+    NSString *msg = [NSString stringWithFormat:@"这年头没好事哪敢骚扰你，用我信通打国内电话低至3分。下载地址:%@",DownLoadUrl];
     picker.body = [[NSString alloc] initWithString:msg];
     
     NSArray *array = [NSArray arrayWithObjects:stringNum,nil];

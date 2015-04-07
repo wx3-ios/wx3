@@ -8,7 +8,6 @@
 
 #import "WXTCallHistoryCell.h"
 #import "CallHistoryEntity.h"
-#import "SysContacterEntityEx.h"
 #import "WXKeyPadModel.h"
 
 @interface WXTCallHistoryCell(){
