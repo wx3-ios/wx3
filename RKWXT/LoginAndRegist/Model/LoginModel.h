@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define KNotification_LoginSucceed @"KNotification_LoginSucceed"
+#define KNotification_LoginFailed @"KNotification_LoginFailed"
+
 @protocol LoginDelegate;
 @interface LoginModel : NSObject
 @property (nonatomic,assign) id<LoginDelegate>delegate;

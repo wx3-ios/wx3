@@ -17,6 +17,7 @@
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Login httpMethod:WXT_HttpMethod_Get timeoutIntervcal:10 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         if ([[dic objectForKey:@"success"] integerValue] != 1){
+            [NOTIFY_CENTER postNotificationName:KNotification_LoginFailed object:retData.errorDesc];
             if (_delegate && [_delegate respondsToSelector:@selector(loginFailed:)]){
                 [_delegate loginFailed:retData.errorDesc];
             }
@@ -24,6 +25,7 @@
             WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
             [userDefault setToken:[dic objectForKey:@"token"]];
             [userDefault setWxtID:[dic objectForKey:@"user_id"]];
+            [NOTIFY_CENTER postNotificationName:KNotification_LoginSucceed object:nil];
             if (_delegate && [_delegate respondsToSelector:@selector(loginSucceed)]){
                 [_delegate loginSucceed];
             }

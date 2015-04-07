@@ -19,6 +19,8 @@
 #import <CoreTelephony/CTCallCenter.h>
 #import "ContactUitl.h"
 #import "APService.h"
+#import "LoginModel.h"
+
 @interface AppDelegate (){
     UINavigationController *_navigation;
     CTCallCenter *_callCenter;
@@ -69,7 +71,19 @@
     // 集成极光推送功能
 //    [self initJPushApi];
     [APService setupWithOption:launchOptions];
+    
+    //自动登录通知
+    [self addNotification];
 	return YES;
+}
+
+-(void)addNotification{
+    [NOTIFY_CENTER addObserver:self selector:@selector(loginSucceed:) name:KNotification_LoginSucceed object:nil];
+    [NOTIFY_CENTER addObserver:self selector:@selector(loginFailed:) name:KNotification_LoginFailed object:nil];
+}
+
+-(void)removeNotification{
+    [NOTIFY_CENTER removeObserver:self];
 }
 
 -(void)initUI{
@@ -78,20 +92,35 @@
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){
         WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
-//        WXCallUITabBarVC *tabbar = [[WXCallUITabBarVC alloc] init];
-//        RootViewController * rootVC = [[RootViewController alloc] init];
         [tabbar createViewController];
         [tabbar.navigationController setNavigationBarHidden:NO];
         _navigation = [[UINavigationController alloc] initWithRootViewController:tabbar];
+        [self.window setRootViewController:_navigation];
+        [self.window makeKeyAndVisible];
+        
+        //自动登录
+        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+        LoginModel *_loginModel = [[LoginModel alloc] init];
+        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
     }else{
         LoginVC *vc = [[LoginVC alloc] init];
         _navigation = [[UINavigationController alloc] initWithRootViewController:vc];
         [vc.navigationController setNavigationBarHidden:YES];
         [self.window setRootViewController:_navigation];
+        [self.window setRootViewController:_navigation];
+        [self.window makeKeyAndVisible];
     }
-    
-    [self.window setRootViewController:_navigation];
-    [self.window makeKeyAndVisible];
+}
+
+-(void)loginSucceed:(NSNotification*)notification{
+    [self removeNotification];
+}
+
+-(void)loginFailed:(NSNotification*)notification{
+    [self removeNotification];
+    LoginVC *loginVC = [[LoginVC alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    [_navigation presentViewController:navigationController animated:YES completion:nil];
 }
 
 -(BOOL)checkUserInfo{
