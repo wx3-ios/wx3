@@ -89,14 +89,10 @@
     phoneAreaLabel.frame = CGRectMake((Size.width-nameWidth)/2, yOffset, nameWidth, nameHeight);
     [phoneAreaLabel setBackgroundColor:[UIColor clearColor]];
     [phoneAreaLabel setFont:WXTFont(16.0)];
+    [phoneAreaLabel setText:phoneArea];
     [phoneAreaLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
     [phoneAreaLabel setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:phoneAreaLabel];
-    if([phoneArea isEqualToString:@""]){
-        [phoneAreaLabel setHidden:YES];
-    }else{
-        [phoneAreaLabel setText:phoneArea];
-    }
     
     CGFloat xOffset = 40;
     if(Size.width == 375){
@@ -190,10 +186,10 @@
     _model = [[CallModel alloc] init];
     [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
-    if(![UtilTool determineNumberTrue:phoneStr]){
-        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
-        return NO;
-    }
+//    if(![UtilTool determineNumberTrue:phoneStr]){
+//        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
+//        return NO;
+//    }
     if(!phoneStr){
         return NO;
     }
@@ -216,7 +212,7 @@
     NSString *areaStr = nil;
     areaStr = [[ContactUitl shareInstance] queryByPhone:number];
     if(!areaStr){
-        areaStr = @"";
+        areaStr = @"未知地区";
     }
     return areaStr;
 }

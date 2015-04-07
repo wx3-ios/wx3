@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "WXCallUITabBarVC.h"
 #import "WXUITabBarVC.h"
 #import "IQKeyboardManager.h"
 #import "DDFileLogger.h"
