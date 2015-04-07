@@ -68,14 +68,17 @@
 -(NSString *)phoneAreaWithNumber:(NSString*)number{
     NSString *areaStr = nil;
     NSString *prePhone = [UtilTool callPhoneNumberRemovePreWith:number];
-    if(!prePhone){
-        areaStr = @"未知地区";
-    }
     areaStr = [[ContactUitl shareInstance] queryByPhone:prePhone];
     if(!areaStr){
-        areaStr = @"未知地区";
+        [self resetNumberlabelFrame];
     }
     return areaStr;
+}
+
+-(void)resetNumberlabelFrame{
+    CGRect rect = _numberLabel.frame;
+    rect.origin.y = 13;
+    [_numberLabel setFrame:rect];
 }
 
 //-(void)callPhone:(id)sender{
