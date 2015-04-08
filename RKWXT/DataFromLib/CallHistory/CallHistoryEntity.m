@@ -9,43 +9,31 @@
 #import "CallHistoryEntity.h"
 #import "TelNOOBJ.h"
 
-enum{
-    E_CallRecordPramIndex_UID = 0,
-    E_CallRecordPramIndex_Phone,
-    E_CallRecordPramIndex_Type,
-    E_CallRecordPramIndex_Start,
-    E_CallRecordPramIndex_Duration,
-    
-    E_CallRecordPramIndex_Invalid,
-};
-
 @implementation CallHistoryEntity
 
-- (void)dealloc{
-//    [super dealloc];
+
++ (CallHistoryEntity*)recordWithParamArray:(NSArray*)paramArray{
+    return [[CallHistoryEntity alloc] initWithParamArray:paramArray] ;
 }
 
-+ (CallHistoryEntity*)recordWithPramArray:(NSArray*)pramArray{
-    return [[CallHistoryEntity alloc] initWithParamArray:pramArray] ;
-}
-
-- (id)initWithParamArray:(NSArray*)pramArray{
-    if([pramArray count] != E_CallRecordPramIndex_Invalid){
+- (id)initWithParamArray:(NSArray*)paramArray{
+    if([paramArray count] != E_CallRecordParamIndex_Invalid){
         return nil;
     }
     if(self = [super init]){
-        NSInteger UID = [[pramArray objectAtIndex:E_CallRecordPramIndex_UID] integerValue];
+        NSInteger UID = [[paramArray objectAtIndex:E_CallRecordParamIndex_UID] integerValue];
         [self setUID:UID];
         
-        NSString *phoneNumber = pramArray[E_CallRecordPramIndex_Phone];
+        NSString *phoneNumber = paramArray[E_CallRecordParamIndex_Phone];
         phoneNumber = [[TelNOOBJ sharedTelNOOBJ] telNumberFromOrigin:phoneNumber];
         [self setPhoneNumber:phoneNumber];
-        E_CallHistoryType type = [self callRecordTypeOf:[pramArray objectAtIndex:E_CallRecordPramIndex_Type]];
+        E_CallHistoryType type = [self callRecordTypeOf:[paramArray objectAtIndex:E_CallRecordParamIndex_Type]];
         [self setHistoryType:type];
-        NSInteger startTime = [[pramArray objectAtIndex:E_CallRecordPramIndex_Start] integerValue];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:startTime];
-        [self setStartTime:date];
-        NSInteger duration = [[pramArray objectAtIndex:E_CallRecordPramIndex_Duration] integerValue];
+        //        NSInteger startTime = [[paramArray objectAtIndex:E_CallRecordParamIndex_Start] integerValue];
+        NSString * startTime = [paramArray objectAtIndex:E_CallRecordParamIndex_Start];
+        //        NSDate *date = [NSDate dateWithTimeIntervalSince1970:startTime];
+        [self setCallStartTime:startTime];
+        NSInteger duration = [[paramArray objectAtIndex:E_CallRecordParamIndex_Duration] integerValue];
         [self setDuration:duration];
     }
     return self;
@@ -86,6 +74,16 @@ enum{
     entity.name = name;
     entity.phoneNumber = telephone;
     entity.date = date;
+    return entity;
+}
+
+-(CallHistoryEntity*)initWithName:(NSString*)name telephone:(NSString*)telephone startTime:(NSString*)aStartTime duration:(NSInteger)aDuration type:(E_CallHistoryType)type{
+    CallHistoryEntity * entity = [[CallHistoryEntity alloc] init];
+    entity.name = name;
+    entity.phoneNumber = telephone;
+    entity.callStartTime = aStartTime;
+    entity.duration = aDuration;
+    entity.callType = type;
     return entity;
 }
 @end
