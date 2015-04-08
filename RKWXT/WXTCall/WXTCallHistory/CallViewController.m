@@ -74,6 +74,8 @@ typedef enum{
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
 //    [_tableView setEditing:YES animated:YES];
     [self.view addSubview:_tableView];
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     textString = [[NSString alloc] init];
     phoneName = [[NSString alloc] init];
     _model = [[WXKeyPadModel alloc] init];
