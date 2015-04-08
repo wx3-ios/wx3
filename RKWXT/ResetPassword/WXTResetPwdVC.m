@@ -42,7 +42,7 @@
     [_scrollerView setScrollEnabled:YES];
     [_scrollerView setShowsVerticalScrollIndicator:NO];
     [_scrollerView setContentSize:CGSizeMake(Size.width, Size.height-66+10)];
-    [self.view addSubview:_scrollerView];
+//    [self.view addSubview:_scrollerView];
    
     [self createBaseView];
     [self createCompleteBtn];
@@ -64,7 +64,7 @@
     [_oldPwdField setBackgroundColor:[UIColor whiteColor]];
     [_oldPwdField setPlaceHolder:@"请输入旧密码" color:[UIColor grayColor]];
     [_oldPwdField setTextAlignment:NSTextAlignmentCenter];
-    [_scrollerView addSubview:_oldPwdField];
+    [self.view addSubview:_oldPwdField];
     
     
     yOffset += textFieldHeight+10;
@@ -77,7 +77,7 @@
     [_newPwdField setBackgroundColor:[UIColor whiteColor]];
     [_newPwdField setTextAlignment:NSTextAlignmentCenter];
     [_newPwdField setPlaceHolder:@"请输入新密码" color:[UIColor grayColor]];
-    [_scrollerView addSubview:_newPwdField];
+    [self.view addSubview:_newPwdField];
     
     yOffset += textFieldHeight+10;
     _confirmPwd = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset, textFieldHeight)];
@@ -89,7 +89,7 @@
     [_confirmPwd setTintColor:[UIColor blackColor]];
     [_confirmPwd setTextAlignment:NSTextAlignmentCenter];
     [_confirmPwd setPlaceHolder:@"再次输入新密码" color:[UIColor grayColor]];
-    [_scrollerView addSubview:_confirmPwd];
+    [self.view addSubview:_confirmPwd];
 }
 
 -(void)createCompleteBtn{
@@ -101,7 +101,7 @@
     [completeBtn setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     [completeBtn setTitle:@"完 成" forState:UIControlStateNormal];
     [completeBtn addTarget:self action:@selector(complieteResetPwd) forControlEvents:UIControlEventTouchUpInside];
-    [_scrollerView addSubview:completeBtn];
+    [self.view addSubview:completeBtn];
 }
 
 -(void)complieteResetPwd{
