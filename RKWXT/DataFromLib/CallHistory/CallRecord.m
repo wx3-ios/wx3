@@ -7,7 +7,7 @@
 //
 
 #import "CallRecord.h"
-#import "it_lib.h"
+#import "WXTDatabase.h"
 #import "ServiceCommon.h"
 
 @interface CallRecord(){
@@ -19,8 +19,7 @@
 @synthesize callHistoryList = _callHistoryList;
 
 - (void)dealloc{
-    [self removeOBS];
-//    [super dealloc];
+    [self removeNotification];
 }
 
 + (CallRecord*)sharedCallRecord{
@@ -34,111 +33,86 @@
 
 - (id)init{
     if(self = [super init]){
-        _callHistoryList = [[NSMutableArray alloc] init];
-        [self addOBS];
+        [self loadCallRecord];
     }
     return self;
 }
 
-- (BOOL)loadRecord{
-    SS_UINT32 ret = IT_LoadCallRecord();
-    if(0 != ret){
-        KFLog_Normal(YES, @"load call record failed = %d",ret);
-        return NO;
-    }
-    return YES;
+- (void)loadCallRecord{
+    _callHistoryList = [[WXTDatabase shareDatabase] queryCallHistory];
 }
 
 - (void)removeCallRecorder{
     [_callHistoryList removeAllObjects];
 }
 
-- (void)addOBS{
+- (void)addNotification{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(callRecordBegin) name:D_Notification_Name_CallRecord_LoadBegin object:nil];
-    [notificationCenter addObserver:self selector:@selector(callRecordLoadSingle:) name:D_Notification_Name_CallRecord_SingleLoad object:nil];
-    [notificationCenter addObserver:self selector:@selector(callRecordComplete) name:D_Notification_Name_CallRecord_LoadFinish object:nil];
-    [notificationCenter addObserver:self selector:@selector(addACallRecord:) name:D_Notification_Name_CallRecord_F_Added object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadSimpleCallRecord:) name:D_Notification_Name_CallRecord_SingleLoad object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadCallRecord) name:D_Notification_Name_CallRecordLoadFinished object:nil];
+    [notificationCenter addObserver:self selector:@selector(addCallRecord:) name:D_Notification_Name_CallRecordAdded object:nil];
 }
 
-- (void)addRecord:(CallHistoryEntity*)record{
+- (void)addSingleCallRecord:(CallHistoryEntity*)record{
+    if (!record){NSAssert(record == nil, @"通话记录为空，不能添加到数据库中"); return;};
     [_callHistoryList insertObject:record atIndex:0];
+    BOOL result = [self addRecord:record.phoneNumber recordType:record.callType startTime:record.callStartTime duration:record.duration];
+    if (result) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordAdded object:record];
+    }
 }
 
 - (void)callRecordBegin{
     [_callHistoryList removeAllObjects];
 }
 
-- (void)callRecordLoadSingle:(NSNotification*)notification{
-    NSArray *pramArray = notification.object;
-    CallHistoryEntity *record = [CallHistoryEntity recordWithPramArray:pramArray];
-    if(record){
-        [self addRecord:record];
-    }
+- (void)loadSimpleCallRecord:(NSNotification*)notification{
+    //    NSArray * paramArray = notification.object;
+    //    CallHistoryEntity * record = [CallHistoryEntity recordWithParamArray:paramArray];
+    //    if(record){
+    //        [self addCallRecord:record];
+    //    }
 }
 
 - (void)callRecordComplete{
-    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordLoadFinished object:nil];
 }
 
-- (void)addACallRecord:(NSNotification*)notification{
-    NSArray *pramArray = notification.object;
-    CallHistoryEntity *record = [CallHistoryEntity recordWithPramArray:pramArray];
+- (void)addCallRecord:(NSNotification*)notification{
+    NSArray * pramArray = notification.object;
+    CallHistoryEntity * record = [CallHistoryEntity recordWithParamArray:pramArray];
     if(record){
-        [self addRecord:record];
-        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordAdded object:record];
+        NSLog(@"record uid%li",record.UID);
     }
 }
 
-- (void)removeOBS{
+- (void)removeNotification{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark 通话记录操作~
-- (BOOL)loadCallRecord{
-    NSInteger ret = IT_LoadCallRecord();
-    if(ret != 0){
-        KFLog_Normal(YES, @"加载通话记录失败~ ret=%d",(int)ret);
+- (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
+        startTime:(NSString*)startTime duration:(NSInteger)duration{
+    NSInteger result = [[WXTDatabase shareDatabase] insertCallHistory:@"我信" telephone:phoneNumber startTime:startTime duration:duration type:E_CallHistoryType_MakingReaded];
+    if (result != 0) {
+        NSLog(@"通话记录添加失败");
         return NO;
     }
+    NSLog(@"%@通话记录添加成功",phoneNumber);
     return YES;
 }
 
-- (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
-                startTime:(NSInteger)startTime duration:(NSInteger)duration{
-    if(duration == 0){
-        duration = 1;
-    }
-    NSInteger UID = IT_AddCallRecord([phoneNumber cStringUsingEncoding:NSUTF8StringEncoding], recordType, (SS_INT32)startTime, (SS_UINT32)duration);
-    if(UID >= 0){
-        CallHistoryEntity *entity = [[CallHistoryEntity alloc] init] ;
-        [entity setUID:UID];
-        [entity setPhoneNumber:phoneNumber];
-        [entity setHistoryType:recordType];
-        [entity setStartTime:[NSDate dateWithTimeIntervalSince1970:startTime]];
-        [entity setDuration:duration];
-        [_callHistoryList insertObject:entity atIndex:0];
-        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordAdded object:nil userInfo:nil];
-        KFLog_Normal(YES, @"增加通话记录成功 uid = %d",(int)UID);
-        return YES;
-    }else{
-        KFLog_Normal(YES, @"增加通话记录失败~ ret = %d",(int)UID);
-    }
-    return NO;
-}
-
 - (BOOL)deleteCallRecord:(NSInteger)recordUID{
-    NSInteger ret = IT_DelCallRecord((SS_UINT32)recordUID);
-    if(ret != 0){
+    NSInteger result = [[WXTDatabase shareDatabase] delCallHistory:recordUID];
+    if(result != 0){
         KFLog_Normal(YES, @"删除通话记录失败~ ret=%d",(int)ret);
         return NO;
     }
-	for (CallHistoryEntity *entity in _callHistoryList) {
-		if (entity.UID == recordUID){
-			[_callHistoryList removeObject:entity];
-			break;
-		}
-	}
+    for (CallHistoryEntity *entity in _callHistoryList) {
+        if (entity.UID == recordUID){
+            [_callHistoryList removeObject:entity];
+            break;
+        }
+    }
     return YES;
 }
 

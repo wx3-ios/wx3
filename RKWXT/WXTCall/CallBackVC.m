@@ -10,7 +10,7 @@
 #import "CallModel.h"
 #import "WXTDatabase.h"
 #import "ContactUitl.h"
-
+#import "CallRecord.h"
 #define Size self.view.bounds.size
 #define NormalTimer (15.0)
 
@@ -206,8 +206,8 @@
     //    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
     formatter.dateFormat = @"MM-dd HH:mm";
     NSString * dateStr = [formatter stringFromDate:date];
-    [[WXTDatabase shareDatabase] insertCallHistory:@"我信" telephone:phone date:dateStr type:1];
-    
+    CallHistoryEntity *entity = [[CallHistoryEntity alloc] initWithName:@"我信" telephone:phoneStr startTime:dateStr duration:5 type:E_CallHistoryType_MakingReaded];
+    [[CallRecord sharedCallRecord] addSingleCallRecord:entity];
     return YES;
 }
 

@@ -11,15 +11,17 @@
 
 @interface CallRecord : NSObject
 @property (nonatomic,readonly)NSArray *callHistoryList;
-
+@property (nonatomic, assign) NSInteger recordId;
 + (CallRecord*)sharedCallRecord;
-- (BOOL)loadRecord;
+- (void)loadCallRecord;
 - (void)removeCallRecorder;
 
-
+//添加通话记录
 - (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
-        startTime:(NSInteger)startTime duration:(NSInteger)duration;//添加通话记录~
-- (BOOL)deleteCallRecord:(NSInteger)recordUID;//删除通话记录~
+        startTime:(NSString*)startTime duration:(NSInteger)duration;
+- (void)addSingleCallRecord:(CallHistoryEntity*)record;
+//删除通话记录
+- (BOOL)deleteCallRecord:(NSInteger)recordUID;
 
 - (NSArray*)recordForPhoneNumber:(NSString*)phoneNumber;
 - (NSArray*)recordForPhoneNumbers:(NSArray*)phoneNumbers;

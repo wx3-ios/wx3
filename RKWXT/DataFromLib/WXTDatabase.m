@@ -74,10 +74,10 @@
 -(BOOL)validateWXTTable:(NSString*)tableName{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
         if ([_database executeUpdate:[NSString stringWithFormat:kWXTSelectTable,tableName]]) {
-            NSLog(@"%@ create success",tableName);
+            NSLog(@"%@ validate success",tableName);
             return YES;
         }else{
-            NSLog(@"%@ create error:%@",tableName,[_database lastErrorMessage]);
+            NSLog(@"%@ validate error:%@",tableName,[_database lastErrorMessage]);
             return NO;
         }
     }else{
@@ -108,6 +108,10 @@
 
 -(NSInteger)getDBVersion{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        if (![self validateWXTTable:kWXTDBVersion_Table]) {
+            NSLog(@"DBVersion table is not exit!!!");
+            return 0;
+        }
         EGODatabaseResult * result = [_database executeQuery:kWXTSelectDBVersion];
         if ([result errorCode] == 0){
             EGODatabaseRow *row = [result firstRow];
@@ -125,13 +129,19 @@
 
 -(BOOL)createWXTTable{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        [self checkWXTDBVersion];
-        if ([_database executeUpdate:kWXTCallTable] && [_database executeUpdate:kWXTBookTable] && [_database executeUpdate:kWXTUserSettingTable]&& [_database executeUpdate:kWXTBookGroupTable]) {
-            NSLog(@"%s用户数据库表创建成功",__FUNCTION__);
+        if([self getDBVersion] > 1){
             return YES;
         }else{
-            NSLog(@"%s数据库表创建失败",__FUNCTION__);
-            return NO;
+            //            if ([self validateWXTTable:kWXTCall_Table] && [self validateWXTTable:kWXTBook_Table] && [self validateWXTTable:kWXTUserSetting_Table] && [self validateWXTTable:kWXTBookGroup_Table]) {
+            //                return YES;
+            //            }
+            if ([_database executeUpdate:kWXTCallTable] && [_database executeUpdate:kWXTBookTable] && [_database executeUpdate:kWXTUserSettingTable]&& [_database executeUpdate:kWXTBookGroupTable]) {
+                NSLog(@"%s用户数据库表创建成功",__FUNCTION__);
+                return YES;
+            }else{
+                NSLog(@"%s数据库表创建失败",__FUNCTION__);
+                return NO;
+            }
         }
     }else{
         NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
@@ -139,21 +149,17 @@
     }
 }
 
--(void)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone date:(NSString*)aDate type:(int)aType{
+-(NSInteger)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone startTime:(NSString*)aStartTime duration:(NSInteger)aDuration type:(int)aType{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        if ([self validateWXTTable:kWXTCall_Table]) {
-            EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aDate,aType]];
-            if ([result errorCode] == 0) {
-                [NOTIFY_CENTER postNotificationName:D_Notification_Name_CallRecordAdded object:nil];
-                NSLog(@"%s用户通话记录插入success:%lu",__FUNCTION__,[result count]);
-            }else{
-                NSLog(@"%s用户通话记录插入error:%i",__FUNCTION__,[result errorCode]);
-            }
-        }else{
-            [self createWXTTable];
-        }
+        //        if ([self validateWXTTable:kWXTCall_Table]) {
+        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aStartTime,aDuration,aType]];
+        return [result errorCode];
+        //        }else{
+        //            [self createWXTTable];
+        //        }
     }else{
         NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
+        return 0;
     }
 }
 
@@ -164,14 +170,17 @@
             NSMutableArray *mutableArr = [NSMutableArray array];
             for (int i= 0 ; i < [result count]; i++) {
                 EGODatabaseRow * databaseRow = [result rowAtIndex:i];
-                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
+                NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
+                //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
                 NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
-                NSString * date = [databaseRow stringForColumn:kWXTCall_Column_Date];
+                NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
+                NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
                 int type = [databaseRow intForColumn:kWXTCall_Column_Date];
-                CallHistoryEntity * entity = [[CallHistoryEntity alloc]initWithName:name telephone:telephone date:date type:type];
+                NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
+                CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
+                //                CallHistoryEntity * entity = [[CallHistoryEntity alloc] initWithName:name telephone:telephone startTime:startTime duration:duration type:type];
                 [mutableArr addObject:entity];
             }
-//            [NOTIFY_CENTER postNotificationName:D_Notification_Name_CallRecordLoadFinished object:nil];
             NSLog(@"%s用户通话记录查询success:%lu",__FUNCTION__,[result count]);
             return mutableArr;
         }else{
@@ -183,17 +192,14 @@
     return nil;
 }
 
--(void)delCallHistory:(NSString*)telephone{
+-(NSInteger)delCallHistory:(NSInteger)recordID{
+    EGODatabaseResult * result;
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,telephone]];
-        if ([result errorCode] == 0) {
-            NSLog(@"%s用户通话记录删除success:%lu",__FUNCTION__,[result count]);
-        }else{
-            NSLog(@"%s用户通话记录删除error:%i",__FUNCTION__,[result errorCode]);
-        }
+        result = [_database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,recordID]];
     }else{
         NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
     }
+    return [result errorCode];
 }
 
 #pragma mark database callback

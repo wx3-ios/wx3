@@ -328,9 +328,9 @@ typedef enum{
     }
     //    [cell setBaseDelegate:self];
     [cell setDelegate:self];
-    CallHistoryEntity *entity = [_model.callHistory objectAtIndex:row];
-    NSString *name = [self searchPhoneNameWithUserPhones:entity.phoneNumber];
-    [cell setUserName:name];
+//    CallHistoryEntity *entity = [_model.callHistory objectAtIndex:row];
+//    NSString *name = [self searchPhoneNameWithUserPhones:entity.phoneNumber];
+//    [cell setUserName:name];
     [cell setCellInfo:[_model.callHistory objectAtIndex:row]];
     [cell load];
     return cell;
@@ -393,11 +393,9 @@ typedef enum{
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        CallHistoryEntity * entity = _model.callHistory[indexPath.row];
-        [[WXTDatabase shareDatabase] delCallHistory:entity.phoneNumber];
-//        [NOTIFY_CENTER addObserver:self selector:@selector(reloadData) name:D_Notification_Name_CallRecordLoadFinished object:nil];
-    } 
+    NSInteger row = indexPath.row;
+    [_model deleteCallRecordsAtRow:row];
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)reloadData{
