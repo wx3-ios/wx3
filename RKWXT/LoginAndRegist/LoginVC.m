@@ -175,7 +175,7 @@
     [_userTextField setBorderRadian:5.0 width:1.0 color:WXColorWithInteger(0xFFFFFF)];
     [_userTextField setTextColor:[UIColor whiteColor]];
     [_userTextField setTintColor:[UIColor whiteColor]];
-    [_userTextField setPlaceHolder:@"请输入登录账号" color:WXColorWithInteger(0xFFFFFF)];
+    [_userTextField setPlaceHolder:@"请输入手机号" color:WXColorWithInteger(0xFFFFFF)];
     [_userTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_userTextField setFont:WXTFont(fontSize)];
     UIImage *leftImg = [UIImage imageNamed:@"LoginUser.png"];
@@ -193,7 +193,7 @@
     [_pwdTextField setTintColor:[UIColor whiteColor]];
     [_pwdTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextField setKeyboardType:UIKeyboardTypeASCIICapable];
-    [_pwdTextField setPlaceHolder:@"请输入登录密码" color:WXColorWithInteger(0xFFFFFF)];
+    [_pwdTextField setPlaceHolder:@"请输入密码" color:WXColorWithInteger(0xFFFFFF)];
     UIImage *passwordIcon = [UIImage imageNamed:@"LoginLock.png"];
     UIImageView *leftView1 = [[UIImageView alloc] initWithImage:passwordIcon];
     [_pwdTextField setLeftView:leftView1 leftGap:leftViewGap rightGap:textGap];
@@ -270,7 +270,7 @@
     NSString *password = _pwdTextField.text;
     NSInteger len = password.length;
     if(len == 0){
-        [UtilTool showAlertView:@"请输入登录密码"];
+        [UtilTool showAlertView:@"请输入密码"];
         return NO;
     }
     if(len < 6){
