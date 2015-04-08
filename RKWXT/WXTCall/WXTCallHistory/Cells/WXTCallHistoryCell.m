@@ -7,9 +7,10 @@
 //
 
 #import "WXTCallHistoryCell.h"
+#import "CallHistoryEntityExt.h"
 #import "CallHistoryEntity.h"
+#import "ContactBaseEntity.h"
 #import "WXKeyPadModel.h"
-
 @interface WXTCallHistoryCell(){
     UILabel *_nameLabel;
     UILabel *_userPhone;
@@ -69,7 +70,7 @@
         linLabel = [[UILabel alloc] init];
         linLabel.frame = CGRectMake(xOffset, 0, 0.5, 44);
         [linLabel setBackgroundColor:[UIColor grayColor]];
-//        [self.contentView addSubview:linLabel];
+        //        [self.contentView addSubview:linLabel];
         
         UIImage *callImg = [UIImage imageNamed:@"callHistoryBtnImg.png"];
         callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
@@ -113,10 +114,27 @@
 }
 
 -(void)load{
-    CallHistoryEntity *_callHistoryEntity = self.cellInfo;
-    [_nameLabel setText:_userName];
-    [_userPhone setText:_callHistoryEntity.phoneNumber];
-    [_callTime setText:_callHistoryEntity.date];
+    [super load];
+    CallHistoryEntityExt *entityExt = self.cellInfo;
+    CallHistoryEntity * entity = entityExt.callHistoryEntity;
+    ContactBaseEntity * contactEntity = entityExt.contacterEntity;
+    
+    NSString *name = [contactEntity nameShow];
+    if(!name){
+        name = entity.phoneNumber;
+    }
+    
+    NSArray *array = [contactEntity contactPhoneArray];
+    ContactPhone *phone = nil;
+    if([array count] > 0){
+        phone = [self phoneNumberIsWoxinUser:entity.phoneNumber withContactPhoneArray:array];
+    }
+    
+    [_nameLabel setText:name];
+    //    [_userPhone setText:_callHistoryEntity.phoneNumber];
+    NSString *startTime = entity.callStartTime;
+    //    NSString *timeStr = [startTime YMRSFMString];
+    [_callTime setText:startTime];
 }
 
 -(void)callHistory{
@@ -125,5 +143,19 @@
         [_delegate callHistoryName:_userName andPhone:_callHistoryEntity.phoneNumber];
     }
 }
+
+//判断是否是我信用户
+-(ContactPhone*)phoneNumberIsWoxinUser:(NSString*)callNumber withContactPhoneArray:(NSArray*)numArr{
+    ContactPhone *contactPhone = nil;
+    for(int i = 0;i < [numArr count]; i++){
+        ContactPhone *contact = [numArr objectAtIndex:i];
+        if([callNumber isEqualToString:contact.phone]){
+            contactPhone = [numArr objectAtIndex:i];
+        }
+    }
+    
+    return contactPhone;
+}
+
 
 @end

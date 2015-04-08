@@ -331,7 +331,7 @@ typedef enum{
 //    CallHistoryEntity *entity = [_model.callHistory objectAtIndex:row];
 //    NSString *name = [self searchPhoneNameWithUserPhones:entity.phoneNumber];
 //    [cell setUserName:name];
-    [cell setCellInfo:[_model.callHistory objectAtIndex:row]];
+    [cell setCellInfo:[_model.callHistoryList objectAtIndex:row]];
     [cell load];
     return cell;
 }
@@ -350,7 +350,7 @@ typedef enum{
 
 #pragma mark tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger row = _model.callHistory.count;
+    NSInteger row = _model.callHistoryList.count;
     if(_showContacters){
         row = _model.contacterFilter.count;
     }

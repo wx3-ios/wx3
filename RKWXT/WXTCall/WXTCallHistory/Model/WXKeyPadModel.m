@@ -30,7 +30,7 @@
 
 - (id)init{
     if(self = [super init]){
-//        _callHistoryList = [[NSMutableArray alloc] init];
+        _callHistoryList = [[NSMutableArray alloc] init];
         _contacterFilter = [[NSMutableArray alloc] init];
         _callHistory = [NSMutableArray array];
         [self loadHistory];
@@ -40,47 +40,46 @@
 }
 
 - (void)loadHistory{
-//    [_callHistoryList removeAllObjects];
+    [_callHistoryList removeAllObjects];
     
-//    NSArray *list = [CallRecord sharedCallRecord].callHistoryList;
-//    CallHistoryEntityExt *entityExt = nil;
-//    for(CallHistoryEntity *entity in list){
-//        NSString *phoneNumber = entity.phoneNumber;
-//        if(!phoneNumber || [phoneNumber length] < 6){
-//            continue;
-//        }
-//        
-//        if(entity.historyType == E_CallHistoryType_MakingReaded_Invalid){
-//            continue;
-//        }
-//        if(entityExt){
-//            if([entityExt canMergeRecord:entity]){
-//                [entityExt addRecord:entity];
-//            }else{
-//                entityExt = nil;
-//            }
-//        }
-//        
-//        if(!entityExt){
-//            entityExt = [[CallHistoryEntityExt alloc] init] ;
-//            [entityExt addRecord:entity];
-//            [_callHistoryList addObject:entityExt];
-//            WXContacterEntity *entity = [[WXContactMonitor sharedWXContactMonitor] entityForPhonNumber:phoneNumber];
-//            if(entity){
-//                [entityExt setContacterEntity:entity];
-//            }else{
-//                ContacterEntity *entity = [[AddressBook sharedAddressBook] contacterEntityForNumber:phoneNumber];
-//                if(entity){
-//                    [entityExt setContacterEntity:entity];
-//                }else{
-//                    StrangerEntity *stranger =  [[StrangerEntity alloc] init];
-//                    [stranger setPhoneNumber:phoneNumber];
-//                    [entityExt setContacterEntity:stranger];
-//                }
-//            }
-//        }
-    //    }
-    _callHistory =[[WXTDatabase shareDatabase] queryCallHistory];
+    NSArray *list = [CallRecord sharedCallRecord].callHistoryList;
+    CallHistoryEntityExt *entityExt = nil;
+    for(CallHistoryEntity *entity in list){
+        NSString *phoneNumber = entity.phoneNumber;
+        if(!phoneNumber || [phoneNumber length] < 6){
+            continue;
+        }
+        
+        if(entity.historyType == E_CallHistoryType_MakingReaded_Invalid){
+            continue;
+        }
+        if(entityExt){
+            if([entityExt canMergeRecord:entity]){
+                [entityExt addRecord:entity];
+            }else{
+                entityExt = nil;
+            }
+        }
+        
+        if(!entityExt){
+            entityExt = [[CallHistoryEntityExt alloc] init] ;
+            [entityExt addRecord:entity];
+            [_callHistoryList addObject:entityExt];
+            WXContacterEntity *entity = [[WXContactMonitor sharedWXContactMonitor] entityForPhonNumber:phoneNumber];
+            if(entity){
+                [entityExt setContacterEntity:entity];
+            }else{
+                ContacterEntity *entity = [[AddressBook sharedAddressBook] contacterEntityForNumber:phoneNumber];
+                if(entity){
+                    [entityExt setContacterEntity:entity];
+                }else{
+                    StrangerEntity *stranger =  [[StrangerEntity alloc] init];
+                    [stranger setPhoneNumber:phoneNumber];
+                    [entityExt setContacterEntity:stranger];
+                }
+            }
+        }
+        }
 }
 
 - (void)searchContacter:(NSString*)searchString{
@@ -105,20 +104,21 @@
 #pragma mark 删除通话记录
 
 - (void)deleteCallRecords:(CallHistoryEntityExt*)ext{
-	for(CallHistoryEntity *record in ext.recordArray){
-//		[[CallRecord sharedCallRecord] deleteCallRecord:record.UID];
-	}
+    for(CallHistoryEntity *record in ext.recordArray){
+        NSLog(@"record.UID %li",record.UID);
+        [[CallRecord sharedCallRecord] deleteCallRecord:record.UID];
+    }
 }
 
 - (void)deleteCallRecordsAtRow:(NSInteger)row{
-	CallHistoryEntityExt *entity = [self.callHistoryList objectAtIndex:row];
-	[self deleteCallRecords:entity];
-	[_callHistoryList removeObjectAtIndex:row];
-	if ([_callHistoryList count] == 0){
-		if (_delegate && [_delegate respondsToSelector:@selector(callRecordHasCleared)]){
-			[_delegate callRecordHasCleared];
-		}
-	}
+    CallHistoryEntityExt *entity = [self.callHistoryList objectAtIndex:row];
+    [self deleteCallRecords:entity];
+    [_callHistoryList removeObjectAtIndex:row];
+    if ([_callHistoryList count] == 0){
+        if (_delegate && [_delegate respondsToSelector:@selector(callRecordHasCleared)]){
+            [_delegate callRecordHasCleared];
+        }
+    }
 }
 
 - (void)clearAllRecords{

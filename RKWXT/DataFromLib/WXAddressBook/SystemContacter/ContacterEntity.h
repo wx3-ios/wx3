@@ -27,7 +27,7 @@ static const char *s_ipPre[] ={
     "818",
     "858",
 };
-@interface ContacterEntity : NSObject
+@interface ContacterEntity : ContactBaseEntity
 @property (nonatomic)ABRecordRef person;
 @property (nonatomic,retain)NSString * lastName;
 @property (nonatomic,retain)NSString *fullName;
