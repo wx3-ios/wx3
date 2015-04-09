@@ -152,20 +152,20 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
 
 - (NSArray*)getAllPeopleContact{
     ABAddressBookRef addressBook = [self addressBook];
-    __block BOOL accessGranted = NO;
+//    __block BOOL accessGranted = NO;
     if (ABAddressBookRequestAccessWithCompletion != NULL) { // we're on iOS 6
         dispatch_semaphore_t sema = dispatch_semaphore_create(0);
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-            accessGranted = granted;
+            _accessGranted = granted;
             dispatch_semaphore_signal(sema);
         });
         dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     }
     else { // we're on iOS 5 or older
-        accessGranted = YES;
+        _accessGranted = YES;
     }
     
-    if(accessGranted){
+    if(_accessGranted){
         CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
         CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault,CFArrayGetCount(people),people);
         
@@ -202,6 +202,9 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
         }
     }
     return nil;
+}
+-(BOOL)getAccessGranted{
+    return _accessGranted;
 }
 
 @end

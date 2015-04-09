@@ -11,8 +11,10 @@
 
 @interface AddressBook : NSObject
 @property (nonatomic,readonly)NSArray *contactList;
+@property (nonatomic, getter = isAccessGranted, readonly)BOOL accessGranted;
 
 + (AddressBook*)sharedAddressBook;
+-(BOOL)getAccessGranted;
 //加载通讯录~
 - (void)loadContact;
 //上传通讯录~
