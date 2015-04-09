@@ -17,6 +17,8 @@
 #import "WXTCallHistoryCell.h"
 #import "CallHistoryEntity.h"
 #import "WXTDatabase.h"
+#import "CallHistoryEntityExt.h"
+
 #define Size self.view.bounds.size
 
 typedef enum{
@@ -257,10 +259,10 @@ typedef enum{
 }
 
 -(void)callPhoneNumber{
-    if(textString.length < 10 || textString.length > 12){
-        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
-        return;
-    }
+//    if(textString.length < 10 || textString.length > 12){
+//        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
+//        return;
+//    }
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     if([textString isEqualToString:userObj.user]){
         [UtilTool showAlertView:@"不能拨打登录号码"];
@@ -300,7 +302,7 @@ typedef enum{
     return userPhone;
 }
 
-//根据手机号匹配用户名，如果未匹配到返回未知
+//根据手机号匹配用户名，如果未匹配到返回未知,使用在通话记录
 -(NSString*)searchPhoneNameWithUserPhones:(NSString*)userPhone{
     NSString *userName = @"未知";
     if(!userPhone){
@@ -310,7 +312,8 @@ typedef enum{
     for(SysContacterEntityEx *entity in _model.contacterFilter){
         for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
             NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
-            if([userPhone isEqualToString:newPhoneStr]){
+            NSString *newUserPhoneStr = [UtilTool callPhoneNumberRemovePreWith:userPhone];
+            if([newUserPhoneStr isEqualToString:newPhoneStr]){
                 phoneName = entity.contactEntity.fullName?entity.contactEntity.fullName:phoneStr;
                 return phoneName;
             }
@@ -326,11 +329,14 @@ typedef enum{
     if(!cell){
         cell = [[WXTCallHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:callHistoryCellIdentifier] ;
     }
-    //    [cell setBaseDelegate:self];
+//        [cell setBaseDelegate:self];
     [cell setDelegate:self];
 //    CallHistoryEntity *entity = [_model.callHistory objectAtIndex:row];
 //    NSString *name = [self searchPhoneNameWithUserPhones:entity.phoneNumber];
 //    [cell setUserName:name];
+    CallHistoryEntityExt *callHistoryEntity = [_model.callHistoryList objectAtIndex:row];
+    NSString *name = [self searchPhoneNameWithUserPhones:callHistoryEntity.callHistoryEntity.phoneNumber];
+    [cell setUserName:name];
     [cell setCellInfo:[_model.callHistoryList objectAtIndex:row]];
     [cell load];
     return cell;
@@ -406,7 +412,7 @@ typedef enum{
     if(!phoneStr){
         return;
     }
-    textString = phoneStr;
+    textString = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
     [self callPhoneNumber];
 }
 
@@ -427,7 +433,7 @@ typedef enum{
 
 #pragma mark WXKeyPadModelDelegate
 -(void)callHistoryChanged{
-    
+    [_tableView reloadData];
 }
 
 -(void)callRecordHasCleared{

@@ -114,33 +114,34 @@
 }
 
 -(void)load{
-    [super load];
     CallHistoryEntityExt *entityExt = self.cellInfo;
     CallHistoryEntity * entity = entityExt.callHistoryEntity;
     ContactBaseEntity * contactEntity = entityExt.contacterEntity;
     
-    NSString *name = [contactEntity nameShow];
-    if(!name){
-        name = entity.phoneNumber;
+//    NSString *name = [contactEntity nameShow];
+    if(!_userName){
+        _userName = @"未知";
     }
-    
+//
     NSArray *array = [contactEntity contactPhoneArray];
     ContactPhone *phone = nil;
     if([array count] > 0){
         phone = [self phoneNumberIsWoxinUser:entity.phoneNumber withContactPhoneArray:array];
     }
     
-    [_nameLabel setText:name];
-    //    [_userPhone setText:_callHistoryEntity.phoneNumber];
+    [_nameLabel setText:_userName];
+    
+    NSString *prePhone = [UtilTool callPhoneNumberRemovePreWith:entity.phoneNumber];
+    [_userPhone setText:prePhone];
     NSString *startTime = entity.callStartTime;
     //    NSString *timeStr = [startTime YMRSFMString];
     [_callTime setText:startTime];
 }
 
 -(void)callHistory{
-    CallHistoryEntity *_callHistoryEntity = self.cellInfo;
+    CallHistoryEntityExt *entityExt = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(callHistoryName:andPhone:)]){
-        [_delegate callHistoryName:_userName andPhone:_callHistoryEntity.phoneNumber];
+        [_delegate callHistoryName:_userName andPhone:entityExt.callHistoryEntity.phoneNumber];
     }
 }
 

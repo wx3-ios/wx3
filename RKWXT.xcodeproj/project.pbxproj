@@ -4304,7 +4304,6 @@
 				<string>775AB9D91ABFB637003A339D</string>
 				<string>120A2C5E1AB17AFD006A28B1</string>
 				<string>12CCD7ED1AC0184400A5BDF0</string>
-				<string>2563B3F61AAAD74000C04227</string>
 				<string>120A2C631AB17B87006A28B1</string>
 				<string>120A2C5D1AB17AFD006A28B1</string>
 				<string>120A2C571AB17AFD006A28B1</string>
@@ -4323,7 +4322,6 @@
 				<string>120A2C6F1AB19473006A28B1</string>
 				<string>12622E7B1ABC23AC00B52E3F</string>
 				<string>120A2C491AB17AFD006A28B1</string>
-				<string>2563B3FB1AAAD74000C04227</string>
 				<string>12EC3B611AC415BE002F6920</string>
 				<string>120A2C471AB17AFD006A28B1</string>
 				<string>120A2C561AB17AFD006A28B1</string>
@@ -4412,7 +4410,6 @@
 				<string>12622BD51ABD4425003F04A5</string>
 				<string>120A2C6E1AB19473006A28B1</string>
 				<string>1277D0101AC528500008D9B6</string>
-				<string>DDDAE9901ACAA97F00CC3FE9</string>
 				<string>126CA4151AB30F5E00E08A0B</string>
 				<string>1263EFE91ACD35820014C347</string>
 				<string>126CA4021AB2B9EF00E08A0B</string>
@@ -4663,13 +4660,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>2563B3F61AAAD74000C04227</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2563B3F41AAAD74000C04227</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
 		<key>2563B3F71AAAD74000C04227</key>
 		<dict>
 			<key>isa</key>
@@ -4713,13 +4703,6 @@
 			<string>Base.lproj/LaunchScreen.xib</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2563B3FB1AAAD74000C04227</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2563B3F91AAAD74000C04227</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>2563B3FC1AAAD74000C04227</key>
 		<dict>
@@ -14903,13 +14886,6 @@ fi
 			<string>Base.lproj/PushConfig.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DDDAE9901ACAA97F00CC3FE9</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DDDAE98E1ACAA97F00CC3FE9</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>DDDAE9911ACAAA2100CC3FE9</key>
 		<dict>
