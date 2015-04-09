@@ -11,7 +11,6 @@
 @class ContactBaseEntity;
 @interface WXKeyPadModel : NSObject
 @property (nonatomic,readonly)NSMutableArray *callHistoryList;
-@property (nonatomic,readonly)NSMutableArray * callHistory;
 @property (nonatomic,readonly)NSArray *contacterFilter;
 @property (nonatomic,assign)id<WXKeyPadModelDelegate>delegate;
 

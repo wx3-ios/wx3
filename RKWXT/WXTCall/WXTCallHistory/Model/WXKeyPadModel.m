@@ -18,6 +18,7 @@
 {
     NSMutableArray *_callHistoryList;
     NSMutableArray *_contacterFilter;
+    NSArray * _list; //通话记录
 }
 @end
 
@@ -32,7 +33,6 @@
     if(self = [super init]){
         _callHistoryList = [[NSMutableArray alloc] init];
         _contacterFilter = [[NSMutableArray alloc] init];
-        _callHistory = [NSMutableArray array];
         [self loadHistory];
         [self addOBS];
     }
@@ -42,9 +42,9 @@
 - (void)loadHistory{
     [_callHistoryList removeAllObjects];
     
-    NSArray *list = [CallRecord sharedCallRecord].callHistoryList;
+    _list = [CallRecord sharedCallRecord].callHistoryList;
     CallHistoryEntityExt *entityExt = nil;
-    for(CallHistoryEntity *entity in list){
+    for(CallHistoryEntity *entity in _list){
         NSString *phoneNumber = entity.phoneNumber;
         if(!phoneNumber || [phoneNumber length] < 6){
             continue;
@@ -79,7 +79,7 @@
                 }
             }
         }
-        }
+    }
 }
 
 - (void)searchContacter:(NSString*)searchString{
@@ -97,6 +97,16 @@
                 [sysContacterEntityEx setPhoneMatched:phone];
                 [_contacterFilter addObject:sysContacterEntityEx];
             }
+        }
+    }
+    
+    for(CallHistoryEntity *entity in _list){
+        NSString *phoneNumber = entity.phoneNumber;
+        if([phoneNumber rangeOfString:searchString].location != NSNotFound){
+            SysContacterEntityEx *sysContacterEntityEx = [[SysContacterEntityEx alloc] init] ;
+            [sysContacterEntityEx setCallHistoryEntity:entity];
+            [sysContacterEntityEx setPhoneMatched:phoneNumber];
+            [_contacterFilter addObject:sysContacterEntityEx];
         }
     }
 }
