@@ -105,7 +105,7 @@
     label1 = [[UILabel alloc] init];
     label1.frame = CGRectMake(2*xGap, kTabBarHeight/2+ygap, Size.width/4, kTabBarHeight/2-btnGapHeight);
     [label1 setBackgroundColor:[UIColor clearColor]];
-    [label1 setText:@"发现"];
+    [label1 setText:@"文交所"];
     [label1 setFont:WXTFont(12.0)];
     [label1 setTextAlignment:NSTextAlignmentCenter];
     [label1 setTextColor:WXColorWithInteger(0x808080)];

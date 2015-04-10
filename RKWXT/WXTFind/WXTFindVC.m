@@ -31,7 +31,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self createTopView:@"发现"];
+//    [self.navigationController setNavigationBarHidden:YES];
+//    [self createTopView:@"文交所"];
 }
 
 - (void)viewDidLoad{
@@ -47,7 +48,7 @@
     spaceArr = [[NSMutableArray alloc] init];
     
     shellView = [[UIView alloc] init];
-    shellView.frame = CGRectMake(0, 66, Size.width, Size.height-50-66);
+    shellView.frame = CGRectMake(0, 0, Size.width, Size.height-50);
     [shellView setBackgroundColor:[UIColor clearColor]];
     [shellView setHidden:YES];
     [self.view addSubview:shellView];
@@ -55,7 +56,7 @@
     
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 66, Size.width, Size.height-50-66);
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-50);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [_tableView setHidden:YES];
@@ -63,7 +64,7 @@
     [_tableView setTableFooterView:[self emptyView]];
     [self.view addSubview:_tableView];
     
-    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 66, Size.width, Size.height-50-66)];
+    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height-50)];
     [_webView setDelegate:self];
     [_webView setHidden:YES];
     [self.view addSubview:_webView];
