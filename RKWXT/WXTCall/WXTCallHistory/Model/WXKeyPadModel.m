@@ -100,15 +100,15 @@
         }
     }
     
-    for(CallHistoryEntity *entity in _list){
-        NSString *phoneNumber = entity.phoneNumber;
-        if([phoneNumber rangeOfString:searchString].location != NSNotFound){
-            SysContacterEntityEx *sysContacterEntityEx = [[SysContacterEntityEx alloc] init] ;
-            [sysContacterEntityEx setCallHistoryEntity:entity];
-            [sysContacterEntityEx setPhoneMatched:phoneNumber];
-            [_contacterFilter addObject:sysContacterEntityEx];
-        }
-    }
+//    for(CallHistoryEntity *entity in _list){
+//        NSString *phoneNumber = entity.phoneNumber;
+//        if([phoneNumber rangeOfString:searchString].location != NSNotFound){
+//            SysContacterEntityEx *sysContacterEntityEx = [[SysContacterEntityEx alloc] init] ;
+//            [sysContacterEntityEx setCallHistoryEntity:entity];
+//            [sysContacterEntityEx setPhoneMatched:phoneNumber];
+//            [_contacterFilter addObject:sysContacterEntityEx];
+//        }
+//    }
 }
 
 #pragma mark 删除通话记录

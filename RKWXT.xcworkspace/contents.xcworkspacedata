@@ -7,7 +7,4 @@
    <FileRef
       location = "container:RKWXT.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:RKWXT.xcodeproj">
-   </FileRef>
 </Workspace>

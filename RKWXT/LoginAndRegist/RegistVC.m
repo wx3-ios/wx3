@@ -211,7 +211,7 @@ enum{
     
     yOffset += 44;
     _otherPhone = [[WXTUITextField alloc] init];
-    _otherPhone.frame = CGRectMake(xOffset, yOffset+5, textWith, labelHeight+4);
+    _otherPhone.frame = CGRectMake(xOffset, yOffset+5, textWith+10, labelHeight+4);
     [_otherPhone setBackgroundColor:[UIColor clearColor]];
     [_otherPhone setReturnKeyType:UIReturnKeyDone];
     [_otherPhone setKeyboardType:UIKeyboardTypePhonePad];
@@ -219,7 +219,7 @@ enum{
     [_otherPhone addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_otherPhone setTextColor:WXColorWithInteger(0xFFFFFF)];
     [_otherPhone setTintColor:[UIColor whiteColor]];
-    [_otherPhone setPlaceHolder:@"请填写推荐人" color:WXColorWithInteger(0xa5baca)];
+    [_otherPhone setPlaceHolder:@"请填写推荐人(选填)" color:WXColorWithInteger(0xa5baca)];
     [_otherPhone setLeftViewMode:UITextFieldViewModeAlways];
     [_otherPhone setFont:WXTFont(14.0)];
     [_baseView addSubview:_otherPhone];

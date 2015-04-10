@@ -11,6 +11,7 @@
 #import "WXTDatabase.h"
 #import "ContactUitl.h"
 #import "CallRecord.h"
+
 #define Size self.view.bounds.size
 #define NormalTimer (15.0)
 
@@ -187,6 +188,11 @@
 
 #pragma mark callDelegate
 -(BOOL)callPhone:(NSString *)phone{
+//    if([Tools currentNetWorkStatus] == NetworkStatusNone){
+//        [UtilTool showAlertView:@"本机网络不畅，请检查网络再试"];
+//        return NO;
+//    }
+    
     _model = [[CallModel alloc] init];
     [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
@@ -222,10 +228,10 @@
 }
 
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
-    if(!failedMsg){
-        failedMsg = @"本机网络不畅，请设置网络连接";
-    }
-    [UtilTool showAlertView:failedMsg];
+//    if(!failedMsg){
+//        failedMsg = @"本机网络不畅，请设置网络连接";
+//    }
+//    [UtilTool showAlertView:failedMsg];
     [self back];
 }
 
