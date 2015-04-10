@@ -188,18 +188,18 @@
 
 #pragma mark callDelegate
 -(BOOL)callPhone:(NSString *)phone{
-//    if([Tools currentNetWorkStatus] == NetworkStatusNone){
-//        [UtilTool showAlertView:@"本机网络不畅，请检查网络再试"];
-//        return NO;
-//    }
+    if([Tools currentNetWorkStatus] == NetworkStatusNone){
+        [UtilTool showAlertView:@"本机网络不畅，请检查网络再试"];
+        return NO;
+    }
     
     _model = [[CallModel alloc] init];
     [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
-    if(![UtilTool determineNumberTrue:phoneStr]){
-        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
-        return NO;
-    }
+//    if(![UtilTool determineNumberTrue:phoneStr]){
+//        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
+//        return NO;
+//    }
     if(!phoneStr){
         return NO;
     }

@@ -83,7 +83,6 @@ typedef enum{
     _model = [[WXKeyPadModel alloc] init];
     
     [self createKeyboardView];
-    [self addNotification];
 }
 
 
@@ -259,7 +258,7 @@ typedef enum{
 }
 
 -(void)callPhoneNumber{
-//    if(textString.length < 10 || textString.length > 12){
+//    if(_textLabel.text.length < 10 || _textLabel.text.length > 12){
 //        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
 //        return;
 //    }
@@ -418,6 +417,7 @@ typedef enum{
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [NOTIFY_CENTER removeObserver:self];
     self.keyPad_type = E_KeyPad_Down;
     [self setEmptyText];
 }

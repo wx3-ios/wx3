@@ -154,10 +154,6 @@
 }
 
 -(void)callPhoneNumber{
-//    if(textString.length < 7){
-//        [UtilTool showAlertView:@"您所拨打的电话格式不正确"];
-//        return;
-//    }
     [_callModel makeCallPhone:textString];
 }
 

@@ -35,6 +35,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
     [self addNotification];
+    [_recentCall addNotification];   //在此为通话界面添加通知可确保不重复
 }
 
 - (void)viewDidLoad{
@@ -192,6 +193,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [NOTIFY_CENTER postNotificationName:kTableViewHidden object:nil];
     [NOTIFY_CENTER removeObserver:self];
 }

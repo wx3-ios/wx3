@@ -41,6 +41,7 @@ typedef enum{
 
 @property (nonatomic,assign) DownView_Type downview_type;
 @property (nonatomic,assign) E_KeyPad_Type keyPad_type;
+-(void)addNotification;
 @end
 
 @protocol CallPhoneDelegate <NSObject>
