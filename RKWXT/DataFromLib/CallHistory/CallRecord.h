@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "CallHistoryEntity.h"
+#import "WXTDatabase.h"
 
-@interface CallRecord : NSObject
+typedef enum{
+    AddCallRecord = 1,
+    DelSimpleCallRecord = 2,
+}CallRecordHandle;
+
+@interface CallRecord : NSObject<WXTDataBaseDelegate>
+@property (nonatomic, strong) WXTDatabase * database;
+@property (nonatomic, assign) CallRecordHandle callHandle;
 @property (nonatomic,readonly)NSArray *callHistoryList;
 @property (nonatomic, assign) NSInteger recordId;
 + (CallRecord*)sharedCallRecord;

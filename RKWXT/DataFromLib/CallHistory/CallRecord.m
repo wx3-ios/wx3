@@ -7,9 +7,10 @@
 //
 
 #import "CallRecord.h"
+#import "EGODatabase.h"
 #import "WXTDatabase.h"
 #import "ServiceCommon.h"
-
+#import "DBCommon.h"
 @interface CallRecord(){
     NSMutableArray *_callHistoryList;
 }
@@ -33,6 +34,8 @@
 
 - (id)init{
     if(self = [super init]){
+        _database = [WXTDatabase shareDatabase];
+        _database.delegate = self;
         [self loadCallRecord];
     }
     return self;
@@ -92,7 +95,8 @@
 
 - (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
         startTime:(NSString*)startTime duration:(NSInteger)duration{
-    NSInteger result = [[WXTDatabase shareDatabase] insertCallHistory:@"我信" telephone:phoneNumber startTime:startTime duration:duration type:E_CallHistoryType_MakingReaded];
+    [_database createWXTTable:kWXTCallTable];
+    NSInteger result = [_database insertCallHistory:@"我信" telephone:phoneNumber startTime:startTime duration:duration type:E_CallHistoryType_MakingReaded];
     if (result != 0) {
         NSLog(@"通话记录添加失败");
         return NO;
@@ -136,4 +140,31 @@
     }
     return nil;
 }
+
+-(void)wxtDatabaseOpenSuccess{
+    DDLogError(@"%sdabase open success!",__FUNCTION__);
+}
+
+-(void)wxtDatabaseOpenFaild:(WXTDBMessage)faildMsg{
+    [_database createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID];
+    DDLogError(@"%sdatabase faild error:%i",__FUNCTION__,faildMsg);
+}
+
+-(void)wxtCreateTableFaild:(WXTDBMessage)faildMsg{
+    [_database createWXTTable:kWXTCallTable];
+    DDLogError(@"%stable faild error:%i",__FUNCTION__,faildMsg);
+}
+
+-(void)wxtCreateTableSuccess{
+    switch (_callHandle) {
+        case AddCallRecord:
+            break;
+        case DelSimpleCallRecord:
+            break;
+        default:
+            break;
+    }
+    DDLogError(@"%stable create success!!!",__FUNCTION__);
+}
+
 @end

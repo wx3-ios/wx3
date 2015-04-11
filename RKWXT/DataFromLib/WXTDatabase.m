@@ -12,7 +12,6 @@
 #import "CallHistoryEntity.h"
 #import "WXTUserOBJ.h"
 @interface WXTDatabase(){
-    EGODatabase * _database;
 }
 
 @end
@@ -39,17 +38,30 @@
 
 -(BOOL)createDatabase:(NSString *)dbName{
     if(!dbName){
+        [self wxtDatabaseOpenFaild:WXTDatabaseFaild];
         return NO;
     }
-    NSString * dbPath = [NSString stringWithFormat:@"%@/%@.sqlite",DOC_PATH,dbName];
+    NSString * rootPath = [DOC_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/db",[WXTUserOBJ sharedUserOBJ].wxtID]];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    BOOL ret = [fileManager createDirectoryAtPath:rootPath withIntermediateDirectories:YES attributes:nil error:nil];
+    if (ret) {
+        DDLogDebug(@"%@ create root success",rootPath);
+    }else{
+        DDLogDebug(@"%@ create root faild",rootPath);
+        return NO;
+    }
+    NSString * dbPath = [NSString stringWithFormat:@"%@/%@.sqlite",rootPath,dbName];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
         _database = [EGODatabase databaseWithPath:dbPath];
     });
     if ([_database open]) {
-        return YES;
+        [self wxtDatabaseOpenSuccess];
+        return _isDBOpen;
+    }else{
+        [self wxtDatabaseOpenFaild:WXTDatabaseFaild];
+        return NO;
     }
-    return NO;
 }
 
 -(BOOL)checkWXTDBVersion{
@@ -66,7 +78,7 @@
         NSLog(@"db version table create success^^");
         return NO;
     }else{
-        NSLog(@"database open error!!!%@",[_database lastErrorMessage]);
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
         return NO;
     }
 }
@@ -81,7 +93,7 @@
             return NO;
         }
     }else{
-        NSLog(@"database open error!!!%@",[_database lastErrorMessage]);
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
         return NO;
     }
 }
@@ -101,7 +113,7 @@
             return NO;
         }
     }else{
-        NSLog(@"database open error!!!%@",[_database lastErrorMessage]);
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
         return NO;
     }
 }
@@ -122,31 +134,27 @@
             return YES;
         }
     }else{
-        NSLog(@"db version open error!!!");
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
         return 0;
     }
 }
 
--(BOOL)createWXTTable{
-    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        if([self getDBVersion] > 1){
-            return YES;
-        }else{
-            //            if ([self validateWXTTable:kWXTCall_Table] && [self validateWXTTable:kWXTBook_Table] && [self validateWXTTable:kWXTUserSetting_Table] && [self validateWXTTable:kWXTBookGroup_Table]) {
-            //                return YES;
-            //            }
-            if ([_database executeUpdate:kWXTCallTable] && [_database executeUpdate:kWXTBookTable] && [_database executeUpdate:kWXTUserSettingTable]&& [_database executeUpdate:kWXTBookGroupTable]) {
-                NSLog(@"%s用户数据库表创建成功",__FUNCTION__);
-                return YES;
-            }else{
-                NSLog(@"%s数据库表创建失败",__FUNCTION__);
-                return NO;
-            }
-        }
+-(BOOL)createWXTTable:(NSString*)tableSql{
+    if ([_database executeUpdate:tableSql]) {
+        [self wxtCreateTableSuccess];
+        return YES;
     }else{
-        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
+        [self wxtDatabaseOpenFaild:WXTTableFaild];
         return NO;
     }
+}
+
+-(BOOL)createWXTTable:(NSString*)tableSql finishedBlock:(Callback)callBack{
+    [self createWXTTable:tableSql];
+    if (!callBack) {
+        return YES;
+    }
+    return NO;
 }
 
 -(NSInteger)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone startTime:(NSString*)aStartTime duration:(NSInteger)aDuration type:(int)aType{
@@ -158,8 +166,8 @@
         //            [self createWXTTable];
         //        }
     }else{
-        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
-        return 0;
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
+        return 1;
     }
 }
 
@@ -187,7 +195,7 @@
             NSLog(@"%s用户通话记录查询error:%i",__FUNCTION__,[result errorCode]);
         }
     }else{
-        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
     }
     return nil;
 }
@@ -197,21 +205,36 @@
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
         result = [_database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,recordID]];
     }else{
-        NSLog(@"%s数据库打开error:%@",__FUNCTION__,[_database lastErrorMessage]);
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
     }
     return [result errorCode];
 }
 
 #pragma mark database callback
+-(void)wxtDatabaseOpenSuccess{
+    if (_delegate && [_delegate respondsToSelector:@selector(wxtDatabaseOpenSuccess)]){
+        [_delegate wxtDatabaseOpenSuccess];
+        _isDBOpen = YES;
+        return;
+    }
+    _isDBOpen = NO;
+}
+
+-(void)wxtDatabaseOpenFaild:(WXTDBMessage)faildMsg{
+    if (_delegate && [_delegate respondsToSelector:@selector(wxtDatabaseOpenFaild:)]){
+        [_delegate wxtDatabaseOpenFaild:faildMsg];
+    }
+}
+
 -(void)wxtCreateTableSuccess{
     if (_delegate && [_delegate respondsToSelector:@selector(wxtCreateTableSuccess)]){
         [_delegate wxtCreateTableSuccess];
     }
 }
 
--(void)wxtCreateTableFaild{
-    if (_delegate && [_delegate respondsToSelector:@selector(wxtCreateTableFaild)]){
-        [_delegate wxtCreateTableFaild];
+-(void)wxtCreateTableFaild:(WXTDBMessage)faildMsg{
+    if (_delegate && [_delegate respondsToSelector:@selector(wxtCreateTableFaild:)]){
+        [_delegate wxtCreateTableFaild:faildMsg];
     }
 }
 
