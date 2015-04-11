@@ -38,7 +38,11 @@
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
-    #import "DDTTYLogger.h"    
+#import "DDLog.h"
+#import "DDLogMacros.h"
+#import "DDTTYLogger.h"
+#import "DDASLLogger.h"
+#import "DDFileLogger.h"
     #import "Tools.h"
 	#import "Constants.h"
 	#import "UserAgent.h"
@@ -66,11 +70,15 @@
 #import "WXContactMonitor.h"
 #import "Appdelegate.h"
 #import "NSString+Size.h"
-#endif
-/*
-#define __DEBUG__
-#ifdef __DEBUG__
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+
+#ifdef DEBUG
+#define debugLog(...)       NSLog(__VA_ARGS__)
+#define debugMethod()       NSLog(@"%s",__Function__);
+static const int ddLogLevel = LOG_LEVEL_DEBUG;
 #else
+#define debugLog(...)
+#define debugMethod()
 static const int ddLogLevel = LOG_LEVEL_OFF;
-#endif*/
+#endif
+#endif
+

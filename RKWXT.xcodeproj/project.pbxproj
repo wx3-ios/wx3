@@ -391,6 +391,7 @@
 		786155E21AC8E0CE0048B604 /* areacode in Resources */ = {isa = PBXBuildFile; fileRef = 786155E01AC8E0CE0048B604 /* areacode */; };
 		786155E31AC8E0CE0048B604 /* place.dat in Resources */ = {isa = PBXBuildFile; fileRef = 786155E11AC8E0CE0048B604 /* place.dat */; };
 		786155E61AC8EB960048B604 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 786155E51AC8EB960048B604 /* BaseVC.m */; };
+		DD351C581AD8B85000DF0C7E /* libPods-CocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */; };
 		DDB58F431AD3C6A2006248E9 /* CallBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F151AD3C6A2006248E9 /* CallBackVC.m */; };
 		DDB58F441AD3C6A2006248E9 /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F171AD3C6A2006248E9 /* CallModel.m */; };
 		DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1A1AD3C6A2006248E9 /* ContactDetailVC.m */; };
@@ -1087,6 +1088,7 @@
 		786155E11AC8E0CE0048B604 /* place.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = place.dat; sourceTree = "<group>"; };
 		786155E41AC8EB960048B604 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
 		786155E51AC8EB960048B604 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DDB58F141AD3C6A2006248E9 /* CallBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackVC.h; sourceTree = "<group>"; };
 		DDB58F151AD3C6A2006248E9 /* CallBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallBackVC.m; sourceTree = "<group>"; };
 		DDB58F161AD3C6A2006248E9 /* CallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallModel.h; sourceTree = "<group>"; };
@@ -1145,6 +1147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD351C581AD8B85000DF0C7E /* libPods-CocoaLumberjack.a in Frameworks */,
 				DDDAE98D1ACAA8DE00CC3FE9 /* Security.framework in Frameworks */,
 				DDDAE98B1ACAA8D400CC3FE9 /* UIKit.framework in Frameworks */,
 				DDDAE9891ACAA8CE00CC3FE9 /* libz.dylib in Frameworks */,
@@ -2584,6 +2587,7 @@
 		AD94EECE23B2F2543B7D284C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */,
 				DDDAE9931ACAAA3E00CC3FE9 /* APService.h */,
 				DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */,
 				DDDAE98C1ACAA8DE00CC3FE9 /* Security.framework */,
@@ -3392,6 +3396,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3416,6 +3421,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

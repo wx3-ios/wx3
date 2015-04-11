@@ -44,23 +44,22 @@
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
 #if DEBUG
     setenv("XcodeColors", "YES", 1);//加载颜色插件
-    //    NSString *logsDirectory = [DOC_PATH stringByAppendingPathComponent:@"logs"];
-    //    DDLogFileManagerDefault *fileManager = [[DDLogFileManagerDefault alloc]initWithLogsDirectory:logsDirectory];
-    //formatter
-    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //    [formatter setDateFormat:@"yyyyMMdd"];
-    //    DDLogFileFormatterDefault *logFormatter = [[DDLogFileFormatterDefault alloc]initWithDateFormatter:formatter];
+    NSString *logsDirectory = [DOC_PATH stringByAppendingPathComponent:@"logs"];
+    DDLogFileManagerDefault *fileManager = [[DDLogFileManagerDefault alloc]initWithLogsDirectory:logsDirectory];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyyMMdd HH:MM:ss"];
+    DDLogFileFormatterDefault *logFormatter = [[DDLogFileFormatterDefault alloc]initWithDateFormatter:formatter];
     
-    DDFileLogger *fileLogger = [[DDFileLogger alloc]init];
-    fileLogger.maximumFileSize = DEFAULT_LOG_MAX_FILE_SIZE * 4;
-    fileLogger.rollingFrequency = DEFAULT_LOG_ROLLING_FREQUENCY; // 1 day rolling
-    //[fileLogger setLogFormatter:logFormatter];
+    DDFileLogger *fileLogger = [[DDFileLogger alloc]initWithLogFileManager:fileManager];
+    fileLogger.maximumFileSize = kDDDefaultLogMaxFileSize * 4;
+    fileLogger.rollingFrequency = kDDDefaultLogRollingFrequency; // 1 day rolling
+    [fileLogger setLogFormatter:logFormatter];
     [DDLog addLogger:fileLogger];
-    
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];// 允许颜色
 #endif
-    NSLog(@"%@", DOC_PATH);
+    DDLogError(@"%@", DOC_PATH);
     [[AddressBook sharedAddressBook] loadContact];
     [ContactUitl shareInstance];
 	[self initUI];
