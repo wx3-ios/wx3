@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>D_KEY_APP_AREAID</key>
-	<integer>1037</integer>
+	<integer>45</integer>
 	<key>D_KEY_APP_CATEGORY</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>D_KEY_APP_MERCHANTNAME</key>
 	<string>我信通</string>
 	<key>D_KEY_APP_SUBSHOPID</key>
-	<integer>1031</integer>
+	<integer>45</integer>
 	<key>D_KEY_MERCHANTID</key>
-	<real>10057</real>
+	<integer>2</integer>
 </dict>
 </plist>
