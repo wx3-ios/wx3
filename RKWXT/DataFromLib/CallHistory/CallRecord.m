@@ -9,10 +9,12 @@
 #import "CallRecord.h"
 #import "EGODatabase.h"
 #import "WXTDatabase.h"
+#import "EGODatabaseResult.h"
 #import "ServiceCommon.h"
 #import "DBCommon.h"
 @interface CallRecord(){
     NSMutableArray *_callHistoryList;
+    BOOL _isAddCallHistory;
 }
 @end
 
@@ -95,8 +97,10 @@
 
 - (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
         startTime:(NSString*)startTime duration:(NSInteger)duration{
-    [_database createWXTTable:kWXTCallTable];
-    NSInteger result = [_database insertCallHistory:@"我信" telephone:phoneNumber startTime:startTime duration:duration type:E_CallHistoryType_MakingReaded];
+    __block NSInteger result;
+    [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
+        result = [_database insertCallHistory:@"我信" telephone:phoneNumber startTime:startTime duration:duration type:E_CallHistoryType_MakingReaded];
+    }];
     if (result != 0) {
         NSLog(@"通话记录添加失败");
         return NO;
@@ -158,6 +162,8 @@
 -(void)wxtCreateTableSuccess{
     switch (_callHandle) {
         case AddCallRecord:
+//            EGODatabaseResult * result = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aStartTime,aDuration,aType]];
+//            _isAddCallHistory = [result errorCode];
             break;
         case DelSimpleCallRecord:
             break;
