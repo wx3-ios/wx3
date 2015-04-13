@@ -25,6 +25,7 @@ typedef void(^Callback)(void);
 @property (nonatomic,assign)id<WXTDataBaseDelegate> delegate;
 @property (nonatomic, strong) EGODatabase * database;
 @property (nonatomic, getter=isDBOpen, assign) BOOL isDBOpen;
+@property (nonatomic, getter=isTableOpen, assign) BOOL isTableOpen;
 @property (nonatomic, strong) NSString * dbName; // 数据库文件名
 +(instancetype)shareDatabase;
 -(BOOL)checkWXTDBVersion;
@@ -39,9 +40,7 @@ typedef void(^Callback)(void);
 -(BOOL)createWXTTable:(NSString*)tableSql;
 -(BOOL)createWXTTable:(NSString*)tableSql finishedBlock:(Callback)callBack;
 #pragma mark - 通话历史记录
--(NSInteger)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone startTime:(NSString*)aStartTime duration:(NSInteger)aDuration type:(int)aType;
 -(NSMutableArray *)queryCallHistory;
--(NSInteger)delCallHistory:(NSInteger)recordID;
 
 
 @end

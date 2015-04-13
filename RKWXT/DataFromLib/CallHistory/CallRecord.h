@@ -13,6 +13,7 @@
 typedef enum{
     AddCallRecord = 1,
     DelSimpleCallRecord = 2,
+    QueryCallRecord = 3,
 }CallRecordHandle;
 
 @interface CallRecord : NSObject<WXTDataBaseDelegate>
@@ -24,10 +25,11 @@ typedef enum{
 - (void)loadCallRecord;
 - (void)removeCallRecorder;
 
-//添加通话记录
+#pragma mark - 通话历史记录
 - (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
         startTime:(NSString*)startTime duration:(NSInteger)duration;
 - (void)addSingleCallRecord:(CallHistoryEntity*)record;
+-(void)addCallRecordCount:(CallHistoryEntity*)callHistory;
 //删除通话记录
 - (BOOL)deleteCallRecord:(NSInteger)recordUID;
 
