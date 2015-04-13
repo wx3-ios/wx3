@@ -16,7 +16,7 @@ typedef enum{
     WXTTableSuccess = 2,
     WXTTableFaild = 3
 }WXTDBMessage;
-typedef void (^Callback) (void);
+typedef void(^Callback)(void);
 @class EGODatabase;
 @protocol WXTDataBaseDelegate;
 
@@ -38,12 +38,12 @@ typedef void (^Callback) (void);
 
 -(BOOL)createWXTTable:(NSString*)tableSql;
 -(BOOL)createWXTTable:(NSString*)tableSql finishedBlock:(Callback)callBack;
+#pragma mark - 通话历史记录
 -(NSInteger)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone startTime:(NSString*)aStartTime duration:(NSInteger)aDuration type:(int)aType;
 -(NSMutableArray *)queryCallHistory;
-/**
- @param telephone 电话号码
- */
 -(NSInteger)delCallHistory:(NSInteger)recordID;
+
+
 @end
 
 

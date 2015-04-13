@@ -21,15 +21,6 @@
 @implementation AddressBook
 @synthesize contactList = _contactList;
 
-- (void)dealloc{
-//    if(_addressBookRef){
-//        CFRelease(_addressBookRef);
-//    }
-//    dispatch_release(_loadRecordImageQueue);
-//	[self removeOBS];
-//    [super dealloc];
-}
-
 + (AddressBook*)sharedAddressBook{
     static dispatch_once_t onceToken;
     static AddressBook *sharedAddressBook = nil;

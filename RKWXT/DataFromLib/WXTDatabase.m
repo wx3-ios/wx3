@@ -150,8 +150,8 @@
 }
 
 -(BOOL)createWXTTable:(NSString*)tableSql finishedBlock:(Callback)callBack{
-    [self createWXTTable:tableSql];
-    if (!callBack) {
+    if ([self createWXTTable:tableSql]) {
+        callBack();
         return YES;
     }
     return NO;
@@ -159,12 +159,8 @@
 
 -(NSInteger)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone startTime:(NSString*)aStartTime duration:(NSInteger)aDuration type:(int)aType{
     if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        //        if ([self validateWXTTable:kWXTCall_Table]) {
         EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aStartTime,aDuration,aType]];
         return [result errorCode];
-        //        }else{
-        //            [self createWXTTable];
-        //        }
     }else{
         DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
         return 1;
