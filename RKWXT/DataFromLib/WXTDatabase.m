@@ -21,7 +21,7 @@
 -(id)init{
     @synchronized(self){
         if (self == [super init]) {
-            _dbName = [WXUserOBJ sharedUserOBJ].woxinID;
+            _dbName = [WXTUserOBJ sharedUserOBJ].wxtID;
             if (_dbName != NULL) {
                 [self createDatabase:_dbName];
             }

@@ -22,8 +22,8 @@ typedef enum{
 @property (nonatomic,readonly)NSArray *callHistoryList;
 @property (nonatomic, assign) NSInteger recordId;
 + (CallRecord*)sharedCallRecord;
-- (void)loadCallRecord;
-- (void)removeCallRecorder;
+- (void)loadAllCallRecord;
+//- (void)removeCallRecorder;
 
 #pragma mark - 通话历史记录
 - (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
