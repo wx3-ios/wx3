@@ -13,6 +13,8 @@
 #import "FindCommonVC.h"
 
 #define Size self.view.bounds.size
+#define TopViewHeight (66)
+#define DownTabbarHeight (50)
 
 @interface WXTFindVC()<wxtFindDelegate,UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>{
     WXTFindModel *_model;
@@ -31,8 +33,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES];
-//    [self createTopView:@"文交所"];
+    [self createTopView:@"发现"];
 }
 
 - (void)viewDidLoad{
@@ -48,7 +49,7 @@
     spaceArr = [[NSMutableArray alloc] init];
     
     shellView = [[UIView alloc] init];
-    shellView.frame = CGRectMake(0, 0, Size.width, Size.height-50);
+    shellView.frame = CGRectMake(0, TopViewHeight, Size.width, Size.height-DownTabbarHeight-TopViewHeight);
     [shellView setBackgroundColor:[UIColor clearColor]];
     [shellView setHidden:YES];
     [self.view addSubview:shellView];
@@ -56,7 +57,7 @@
     
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-50);
+    _tableView.frame = CGRectMake(0, TopViewHeight, Size.width, Size.height-DownTabbarHeight-TopViewHeight);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [_tableView setHidden:YES];
@@ -64,7 +65,7 @@
     [_tableView setTableFooterView:[self emptyView]];
     [self.view addSubview:_tableView];
     
-    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height-50)];
+    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, TopViewHeight, Size.width, Size.height-DownTabbarHeight-TopViewHeight)];
     [_webView setDelegate:self];
     [_webView setHidden:YES];
     [self.view addSubview:_webView];
