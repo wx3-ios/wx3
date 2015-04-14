@@ -11,6 +11,8 @@
 #define kDBDateTime         @"20150401"
 
 typedef enum{
+    WXTDBPathNotExit = -2,
+    WXTDBFileNotExit = -1,
     WXTDatabaseFaild = 0,
     WXTDatabaseSuccess = 1,
     WXTTableSuccess = 2,
@@ -26,22 +28,19 @@ typedef void(^Callback)(void);
 @property (nonatomic, strong) EGODatabase * database;
 @property (nonatomic, getter=isDBOpen, assign) BOOL isDBOpen;
 @property (nonatomic, getter=isTableOpen, assign) BOOL isTableOpen;
-@property (nonatomic, strong) NSString * dbName; // 数据库文件名
+@property (nonatomic, strong) NSString * dbPath; // 数据库文件名
 +(instancetype)shareDatabase;
 -(BOOL)checkWXTDBVersion;
 -(BOOL)insertDBVersion;
 
 -(NSInteger)getDBVersion;
 
--(BOOL)createDatabase:(NSString *)dbName;
+-(BOOL)createDatabase:(NSString *)aDBPath;
 // 查询数据库中表
 -(BOOL)validateWXTTable:(NSString*)tableName;
 
 -(BOOL)createWXTTable:(NSString*)tableSql;
 -(BOOL)createWXTTable:(NSString*)tableSql finishedBlock:(Callback)callBack;
-#pragma mark - 通话历史记录
--(NSMutableArray *)queryCallHistory;
-
 
 @end
 
@@ -49,6 +48,7 @@ typedef void(^Callback)(void);
 @protocol WXTDataBaseDelegate <NSObject>
 
 @required
+//-(void)wxtDatabase:(NSString*)dbPath;
 -(void)wxtDatabaseOpenSuccess;
 -(void)wxtDatabaseOpenFaild:(WXTDBMessage)faildMsg;
 -(void)wxtCreateTableSuccess;

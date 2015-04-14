@@ -10,7 +10,6 @@
 #import "DBCommon.h"
 #import "EGODatabase.h"
 #import "CallHistoryEntity.h"
-#import "WXTUserOBJ.h"
 @interface WXTDatabase(){
 }
 
@@ -18,13 +17,11 @@
 
 @implementation WXTDatabase
 @synthesize database = _database;
+@synthesize dbPath = _dbPath;
+
 -(id)init{
     @synchronized(self){
         if (self == [super init]) {
-            _dbName = [WXTUserOBJ sharedUserOBJ].wxtID;
-            if (_dbName != NULL) {
-                [self createDatabase:_dbName];
-            }
         }
     }
     return  self;
@@ -35,33 +32,43 @@
     static WXTDatabase *database = nil;
     dispatch_once(&onceToken,^{
         database = [[WXTDatabase alloc] init];
+        [[self alloc] createDatabase:database.dbPath];
     });
     return database;
 }
 
--(BOOL)createDatabase:(NSString *)dbName{
-    if(!dbName){
-        [self wxtDatabaseOpenFaild:WXTDatabaseFaild];
+-(BOOL)createDatabase:(NSString *)aDBPath{
+    if(!aDBPath){
+        [self wxtDatabaseOpenFaild:WXTDBPathNotExit];
         return NO;
     }
-    NSString * rootPath = [DOC_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/db",[WXTUserOBJ sharedUserOBJ].wxtID]];
     NSFileManager * fileManager = [NSFileManager defaultManager];
-    BOOL ret = [fileManager createDirectoryAtPath:rootPath withIntermediateDirectories:YES attributes:nil error:nil];
-    if (ret) {
+    NSString * rootPath = [aDBPath stringByDeletingLastPathComponent];
+    BOOL rootRet = [fileManager createDirectoryAtPath:rootPath withIntermediateDirectories:YES attributes:nil error:nil];
+    if (rootRet) {
         DDLogDebug(@"%@ create root success",rootPath);
     }else{
-        DDLogDebug(@"%@ create root faild",rootPath);
+        [self wxtDatabaseOpenFaild:WXTDBPathNotExit];
+        DDLogDebug(@"%@ create root faild",aDBPath);
         return NO;
     }
-    NSString * dbPath = [NSString stringWithFormat:@"%@/%@.sqlite",rootPath,dbName];
+//    BOOL fileRet =[fileManager createFileAtPath:aDBPath contents:nil attributes:nil];
+//    if (!fileRet) {
+//        [self wxtDatabaseOpenFaild:WXTDBFileNotExit];
+//        return NO;
+//    }
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
-        _database = [EGODatabase databaseWithPath:dbPath];
+        _database = [EGODatabase databaseWithPath:aDBPath];
     });
     if ([_database open]) {
+        DDLogDebug(@"%@db path open success",aDBPath);
         [self wxtDatabaseOpenSuccess];
         return _isDBOpen;
-    }else{
+    }/*else if([_database lastErrorCode] == 14){
+        [self wxtDatabaseOpenFaild:WXTDBPathNotExit];
+        return NO;
+    }*/else{
         [self wxtDatabaseOpenFaild:WXTDatabaseFaild];
         return NO;
     }
@@ -143,6 +150,9 @@
 }
 
 -(BOOL)createWXTTable:(NSString*)tableSql{
+    if (![self createDatabase:_dbPath]) {
+        [self wxtDatabaseOpenFaild:WXTDBFileNotExit];
+    }
     if ([_database executeUpdate:tableSql]) {
         [self wxtCreateTableSuccess];
         return YES;
@@ -161,6 +171,12 @@
 }
 
 #pragma mark database callback
+//-(void)wxtDatabase:(NSString*)dbPath{
+//    if (_delegate && [_delegate respondsToSelector:@selector(wxtDatabase:)]){
+//        [_delegate wxtDatabase:dbPath];
+//    }
+//}
+
 -(void)wxtDatabaseOpenSuccess{
     if (_delegate && [_delegate respondsToSelector:@selector(wxtDatabaseOpenSuccess)]){
         [_delegate wxtDatabaseOpenSuccess];
@@ -190,36 +206,5 @@
         [_delegate wxtCreateTableFaild:faildMsg];
     }
 }
-
-#pragma mark - 通话历史记录
--(NSMutableArray *)queryCallHistory{
-    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        EGODatabaseResult * result = [_database executeQuery:kWXTQueryCallHistory];
-        if ([result errorCode] == 0) {
-            NSMutableArray *mutableArr = [NSMutableArray array];
-            for (int i= 0 ; i < [result count]; i++) {
-                EGODatabaseRow * databaseRow = [result rowAtIndex:i];
-                NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
-                //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
-                NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
-                NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
-                NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
-                int type = [databaseRow intForColumn:kWXTCall_Column_Date];
-                NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
-                CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
-                [mutableArr addObject:entity];
-            }
-            NSLog(@"%s用户通话记录查询success:%lu",__FUNCTION__,[result count]);
-            return mutableArr;
-        }else{
-            NSLog(@"%s用户通话记录查询error:%i",__FUNCTION__,[result errorCode]);
-        }
-    }else{
-        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
-    }
-    return nil;
-}
-
-
 
 @end

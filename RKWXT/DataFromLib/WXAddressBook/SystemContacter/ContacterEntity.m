@@ -19,8 +19,8 @@
 
 -(id)init{
     if (self = [super init]) {
-        _database = [WXTDatabase shareDatabase];
-        _database.delegate = self;
+//        _database = [WXTDatabase shareDatabase];
+//        _database.delegate = self;
     }
     return self;
 }
@@ -209,8 +209,8 @@
 }
 
 - (BOOL)uploadSysContacter{
-    _database = [WXTDatabase shareDatabase];
-    _database.delegate = self;
+//    _database = [WXTDatabase shareDatabase];
+//    _database.delegate = self;
     for(NSString *phone in _phoneNumbers){
         __block NSInteger result = 1;
         [_database createWXTTable:kWXTBookTable finishedBlock:^(void){
@@ -230,21 +230,6 @@
     return NO;
 }
 
-#pragma mark - WXTDataBaseDelegate【联系人数据库】
--(void)wxtCreateTableSuccess{
-    DDLogDebug(@"table open success");
-}
 
--(void)wxtCreateTableFaild:(WXTDBMessage)faildMsg{
-    [_database createWXTTable:kWXTBookTable];
-}
-
--(void)wxtDatabaseOpenSuccess{
-    DDLogDebug(@"database open success!");
-}
-
--(void)wxtDatabaseOpenFaild:(WXTDBMessage)faildMsg{
-    [_database createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID];
-}
 
 @end

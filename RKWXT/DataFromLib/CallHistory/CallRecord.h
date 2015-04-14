@@ -17,10 +17,11 @@ typedef enum{
 }CallRecordHandle;
 
 @interface CallRecord : NSObject<WXTDataBaseDelegate>
-@property (nonatomic, strong) WXTDatabase * database;
+@property (nonatomic, copy) WXTDatabase * database;
 @property (nonatomic, assign) CallRecordHandle callHandle;
 @property (nonatomic,readonly)NSArray *callHistoryList;
 @property (nonatomic, assign) NSInteger recordId;
+@property (nonatomic, strong) NSString * wxtPath;
 + (CallRecord*)sharedCallRecord;
 - (void)loadAllCallRecord;
 //- (void)removeCallRecorder;

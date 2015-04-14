@@ -20,6 +20,7 @@
 
 @implementation CallRecord
 @synthesize callHistoryList = _callHistoryList;
+@synthesize wxtPath = _wxtPath;
 
 - (void)dealloc{
     [self removeNotification];
@@ -39,7 +40,9 @@
         _callHistoryList = [NSMutableArray array];
         _database = [WXTDatabase shareDatabase];
         _database.delegate = self;
-        _database.dbName = [WXTUserOBJ sharedUserOBJ].wxtID;
+        NSString * wxtId = [WXTUserOBJ sharedUserOBJ].wxtID;
+        _wxtPath = [NSString stringWithFormat:@"%@/%@/db/%@.sqlite",DOC_PATH,wxtId,wxtId];
+        _database.dbPath = _wxtPath;
         [self loadAllCallRecord];
         [self addNotification];
     }
@@ -56,33 +59,31 @@
 -(void)loadSimpleCallRecord:(NSNotification*)notification{
     CallHistoryEntity * record = notification.object;
     if(record != NULL){
-        [_callHistoryList insertObject:record atIndex:0];
+//        [_callHistoryList insertObject:record atIndex:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordLoadFinished object:record];
         DDLogDebug(@"%@号码查询成功",record.phoneNumber);
     }
     
 }
 - (void)loadAllCallRecord{
-//    if (_database.isDBOpen) {
-//        [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
-//            EGODatabaseResult * result = [_database.database executeQuery:kWXTQueryCallHistory];
-//            if ([result errorCode] == 0) {
-//                for (int i= 0 ; i < [result count]; i++) {
-//                    EGODatabaseRow * databaseRow = [result rowAtIndex:i];
-//                    NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
-//                    //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
-//                    NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
-//                    NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
-//                    NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
-//                    int type = [databaseRow intForColumn:kWXTCall_Column_Date];
-//                    NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
-//                    CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
-//                    [_callHistoryList addObject:entity];
-//                }
-//            }
-//        }];
-//    }
-    _callHistoryList = [_database queryCallHistory];
+    [_callHistoryList removeAllObjects];
+    [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
+        EGODatabaseResult * result = [_database.database executeQuery:kWXTQueryCallHistory];
+        if ([result errorCode] == 0) {
+            for (int i= 0 ; i < [result count]; i++) {
+                EGODatabaseRow * databaseRow = [result rowAtIndex:i];
+                NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
+                //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
+                NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
+                NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
+                NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
+                int type = [databaseRow intForColumn:kWXTCall_Column_Date];
+                NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
+                CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
+                [_callHistoryList addObject:entity];
+            }
+        }
+    }];
 }
 
 - (void)removeNotification{
@@ -161,12 +162,12 @@
 
 #pragma mark - WXTDatabaseDelegate
 -(void)wxtDatabaseOpenSuccess{
-    DDLogError(@"%sdabase open success!",__FUNCTION__);
+    DDLogError(@"%@ db path open success!",_wxtPath);
 }
 
 -(void)wxtDatabaseOpenFaild:(WXTDBMessage)faildMsg{
-    [_database createDatabase:_database.dbName];
-    DDLogError(@"%sdatabase faild error:%i",__FUNCTION__,faildMsg);
+    [_database createDatabase:_wxtPath];
+    DDLogError(@"%@database faild error:%i",_wxtPath,faildMsg);
 }
 
 -(void)wxtCreateTableFaild:(WXTDBMessage)faildMsg{
