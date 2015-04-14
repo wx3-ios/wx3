@@ -412,6 +412,7 @@
 		DDB58F541AD3C6A2006248E9 /* WXKeyPadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F3C1AD3C6A2006248E9 /* WXKeyPadModel.m */; };
 		DDB58F551AD3C6A2006248E9 /* WXContacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F401AD3C6A2006248E9 /* WXContacterCell.m */; };
 		DDB58F561AD3C6A2006248E9 /* WXContacterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */; };
+		DDBF43011ADD0E4C0063B763 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; };
 		DDDAE97F1ACAA88700CC3FE9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */; };
 		DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9801ACAA88F00CC3FE9 /* CoreFoundation.framework */; };
 		DDDAE9831ACAA8A800CC3FE9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9821ACAA8A800CC3FE9 /* SystemConfiguration.framework */; };
@@ -1128,6 +1129,8 @@
 		DDB58F401AD3C6A2006248E9 /* WXContacterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterCell.m; sourceTree = "<group>"; };
 		DDB58F411AD3C6A2006248E9 /* WXContacterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterVC.h; sourceTree = "<group>"; };
 		DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterVC.m; sourceTree = "<group>"; };
+		DDBF42FF1ADD0E4C0063B763 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DDDAE9801ACAA88F00CC3FE9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		DDDAE9821ACAA8A800CC3FE9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -2320,6 +2323,8 @@
 		775C581A1ABA5F31005B6B40 /* WXTUtils */ = {
 			isa = PBXGroup;
 			children = (
+				DDBF42FF1ADD0E4C0063B763 /* KeychainItemWrapper.h */,
+				DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */,
 				775C581B1ABA5F31005B6B40 /* ChineseToPinyin.h */,
 				775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */,
 				775C581D1ABA5F31005B6B40 /* ContactUitl.h */,
@@ -3131,6 +3136,7 @@
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
 				121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
+				DDBF43011ADD0E4C0063B763 /* KeychainItemWrapper.m in Sources */,
 				DDB58F501AD3C6A2006248E9 /* WXTCallHistoryCell.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				DDB58F4E1AD3C6A2006248E9 /* CallHistoryCell.m in Sources */,

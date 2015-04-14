@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AddressBook/AddressBook.h>
 #import "ContactBaseEntity.h"
-#import "WXTDatabase.h"
+@class EGODatabase;
 #define kPhoneNumberCount (11)
 //ip电话前缀
 static const char *s_ipPre[] ={
@@ -28,7 +28,7 @@ static const char *s_ipPre[] ={
     "858",
 };
 
-@interface ContacterEntity : ContactBaseEntity<WXTDataBaseDelegate>
+@interface ContacterEntity : ContactBaseEntity
 @property (nonatomic)ABRecordRef person;
 @property (nonatomic,retain)NSString * lastName;
 @property (nonatomic,retain)NSString *fullName;
@@ -38,9 +38,10 @@ static const char *s_ipPre[] ={
 @property (nonatomic,retain)NSDate *modifyTime;
 @property (nonatomic,retain)UIImage *icon;
 @property (nonatomic,assign)BOOL bUpdated;
-@property (nonatomic, strong) WXTDatabase * database;
+@property (nonatomic, strong) EGODatabase * database;
 
 + (id)contacterEntityWithABPerson:(ABRecordRef)person;
+-(BOOL)createBookDatabase;
 - (BOOL)uploadSysContacter;
 - (BOOL)matchingString:(NSString *)string;
 @end

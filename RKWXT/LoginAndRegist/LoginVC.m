@@ -344,7 +344,6 @@
     [self presentViewController:nav animated:YES completion:^{
         WXTDatabase * database = [WXTDatabase shareDatabase];
         [database createDatabase:userDefault.wxtID];
-//        [database createWXTTable];
     }];
 }
 

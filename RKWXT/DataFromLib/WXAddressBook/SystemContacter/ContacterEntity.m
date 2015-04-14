@@ -16,11 +16,10 @@
 
 @implementation ContacterEntity
 @synthesize lastName = _lastName;
-
+@synthesize database = _database;
 -(id)init{
     if (self = [super init]) {
-//        _database = [WXTDatabase shareDatabase];
-//        _database.delegate = self;
+        [self createBookDatabase];
     }
     return self;
 }
@@ -208,16 +207,43 @@
     return _lastName;
 }
 
+-(BOOL)createBookDatabase{
+    NSString * path = [NSString stringWithFormat:@"%@/db",DOC_PATH];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    NSError * error;
+    BOOL result = [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+    if (!result) {
+        DDLogError(@"[path dir] create error:%li",[error code]);
+        return NO;
+    }
+    _database = [[EGODatabase alloc]initWithPath:[path stringByAppendingPathComponent:@"contacts-back.sqlite"]];
+    if ([_database open]) {
+        if ([self createBookTable:_database]) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        return NO;
+    }
+}
+
+-(BOOL)createBookTable:(EGODatabase*)aDatabase{
+    if ([aDatabase executeUpdate:kWXTBookTable1]) {
+        DDLogDebug(@"book table create success^");
+        return YES;
+    }else{
+        DDLogDebug(@"book table create errror:%i",[aDatabase lastErrorCode]);
+        return NO;
+    }
+}
+
 - (BOOL)uploadSysContacter{
-//    _database = [WXTDatabase shareDatabase];
-//    _database.delegate = self;
     for(NSString *phone in _phoneNumbers){
-        __block NSInteger result = 1;
-        [_database createWXTTable:kWXTBookTable finishedBlock:^(void){
-            EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertBook,_fullName,phone]];
-            result = [dbResult errorCode];
-            DDLogDebug(@"result:%li",result);
-        }];
+        NSInteger result = 1;
+        EGODatabaseResult * dbResult = [_database executeQuery:[NSString stringWithFormat:kWXTInsertBook,_fullName,phone]];
+        result = [dbResult errorCode];
+        DDLogDebug(@"result:%li",result);
 //        NSInteger ret = [[WXService sharedService] updateContacter:_recordID name:_fullName phone:phone createTime:[_createTime timeIntervalSince1970] modifyTime:[_modifyTime timeIntervalSince1970]];
         if(result != 0){
             DDLogDebug(@"%@ update error:%li",phone,result);
