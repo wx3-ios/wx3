@@ -11,8 +11,19 @@
 #import "WXService.h"
 #import "PinYinSearchOBJ.h"
 
+#import "DBCommon.h"
+#import "EGODatabase.h"
+
 @implementation ContacterEntity
 @synthesize lastName = _lastName;
+
+-(id)init{
+    if (self = [super init]) {
+        _database = [WXTDatabase shareDatabase];
+        _database.delegate = self;
+    }
+    return self;
+}
 
 + (id)contacterEntityWithABPerson:(ABRecordRef)person{
     return [[self alloc] initWithPerson:person] ;
@@ -198,15 +209,42 @@
 }
 
 - (BOOL)uploadSysContacter{
+    _database = [WXTDatabase shareDatabase];
+    _database.delegate = self;
     for(NSString *phone in _phoneNumbers){
-        
-        NSInteger ret = [[WXService sharedService] updateContacter:_recordID name:_fullName phone:phone createTime:[_createTime timeIntervalSince1970] modifyTime:[_modifyTime timeIntervalSince1970]];
-        if(ret != 0){
-            KFLog_Normal(YES, @"上传通讯录失败~ret=%d",(int)ret);
+        __block NSInteger result = 1;
+        [_database createWXTTable:kWXTBookTable finishedBlock:^(void){
+            EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertBook,_fullName,phone]];
+            result = [dbResult errorCode];
+            DDLogDebug(@"result:%li",result);
+        }];
+//        NSInteger ret = [[WXService sharedService] updateContacter:_recordID name:_fullName phone:phone createTime:[_createTime timeIntervalSince1970] modifyTime:[_modifyTime timeIntervalSince1970]];
+        if(result != 0){
+            DDLogDebug(@"%@ update error:%li",phone,result);
             return NO;
+        }else{
+            DDLogDebug(@"%@ update success!",phone);
+            return YES;
         }
     }
-    return YES;
+    return NO;
+}
+
+#pragma mark - WXTDataBaseDelegate【联系人数据库】
+-(void)wxtCreateTableSuccess{
+    DDLogDebug(@"table open success");
+}
+
+-(void)wxtCreateTableFaild:(WXTDBMessage)faildMsg{
+    [_database createWXTTable:kWXTBookTable];
+}
+
+-(void)wxtDatabaseOpenSuccess{
+    DDLogDebug(@"database open success!");
+}
+
+-(void)wxtDatabaseOpenFaild:(WXTDBMessage)faildMsg{
+    [_database createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID];
 }
 
 @end

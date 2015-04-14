@@ -19,7 +19,9 @@
 @end
 
 @implementation AddressBook
+@synthesize accessGranted = _accessGranted;
 @synthesize contactList = _contactList;
+@synthesize count = _count;
 
 + (AddressBook*)sharedAddressBook{
     static dispatch_once_t onceToken;
@@ -116,9 +118,9 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
 			[contactList removeAllObjects];
 			[contactList addObjectsFromArray:tempArray];
 			[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:D_Notification_Name_AddressBookHasChanged object:nil userInfo:nil];
-			if([[ServiceMonitor sharedServiceMonitor] hasLogin]){
+//			if([[ServiceMonitor sharedServiceMonitor] hasLogin]){
 				[selfAddressBook uploadSysContacters:tempArray];
-			}
+//			}
 		}
     });
 }
@@ -159,7 +161,7 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
     if(_accessGranted){
         CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
         CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault,CFArrayGetCount(people),people);
-        
+        _count = CFArrayGetCount(people);
         CFArraySortValues(peopleMutable,CFRangeMake(0, CFArrayGetCount(peopleMutable)),
                           (CFComparatorFunction) ABPersonComparePeopleByName,
                           (void*)ABPersonGetSortOrdering);
@@ -194,8 +196,6 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
     }
     return nil;
 }
--(BOOL)getAccessGranted{
-    return _accessGranted;
-}
+
 
 @end

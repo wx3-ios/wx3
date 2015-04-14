@@ -14,7 +14,7 @@
 #import "DBCommon.h"
 @interface CallRecord(){
     NSMutableArray *_callHistoryList;
-    BOOL _isAddCallHistory;
+    BOOL _isAddCallHistory;// 标记添加成功、失败
 }
 @end
 
@@ -36,83 +36,97 @@
 
 - (id)init{
     if(self = [super init]){
+        _callHistoryList = [NSMutableArray array];
         _database = [WXTDatabase shareDatabase];
         _database.delegate = self;
-        [self loadCallRecord];
+        _database.dbName = [WXTUserOBJ sharedUserOBJ].wxtID;
+        [self loadAllCallRecord];
+        [self addNotification];
     }
     return self;
 }
 
-- (void)loadCallRecord{
-    _callHistoryList = [[WXTDatabase shareDatabase] queryCallHistory];
-}
-
-- (void)removeCallRecorder{
-    [_callHistoryList removeAllObjects];
-}
-
+#pragma mark - 通话记录【通知事件处理】
 - (void)addNotification{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(callRecordBegin) name:D_Notification_Name_CallRecord_LoadBegin object:nil];
-    [notificationCenter addObserver:self selector:@selector(loadSimpleCallRecord:) name:D_Notification_Name_CallRecord_SingleLoad object:nil];
-    [notificationCenter addObserver:self selector:@selector(loadCallRecord) name:D_Notification_Name_CallRecordLoadFinished object:nil];
-    [notificationCenter addObserver:self selector:@selector(addCallRecord:) name:D_Notification_Name_CallRecordAdded object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadAllCallRecord) name:D_Notification_Name_CallRecordLoadFinished object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadSimpleCallRecord:) name:D_Notification_Name_CallRecordAdded object:nil];
 }
 
-- (void)addSingleCallRecord:(CallHistoryEntity*)record{
-    if (!record){NSAssert(record == nil, @"通话记录为空，不能添加到数据库中"); return;};
-    [_callHistoryList insertObject:record atIndex:0];
-    BOOL result = [self addRecord:record.phoneNumber recordType:record.callType startTime:record.callStartTime duration:record.duration];
-    if (result) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordAdded object:record];
+-(void)loadSimpleCallRecord:(NSNotification*)notification{
+    CallHistoryEntity * record = notification.object;
+    if(record != NULL){
+        [_callHistoryList insertObject:record atIndex:0];
+        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordLoadFinished object:record];
+        DDLogDebug(@"%@号码查询成功",record.phoneNumber);
     }
+    
 }
-
-- (void)callRecordBegin{
-    [_callHistoryList removeAllObjects];
-}
-
-- (void)loadSimpleCallRecord:(NSNotification*)notification{
-    //    NSArray * paramArray = notification.object;
-    //    CallHistoryEntity * record = [CallHistoryEntity recordWithParamArray:paramArray];
-    //    if(record){
-    //        [self addCallRecord:record];
-    //    }
-}
-
-- (void)callRecordComplete{
-}
-
-- (void)addCallRecord:(NSNotification*)notification{
-    NSArray * pramArray = notification.object;
-    CallHistoryEntity * record = [CallHistoryEntity recordWithParamArray:pramArray];
-    if(record){
-        NSLog(@"record uid%li",record.UID);
-    }
+- (void)loadAllCallRecord{
+//    if (_database.isDBOpen) {
+//        [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
+//            EGODatabaseResult * result = [_database.database executeQuery:kWXTQueryCallHistory];
+//            if ([result errorCode] == 0) {
+//                for (int i= 0 ; i < [result count]; i++) {
+//                    EGODatabaseRow * databaseRow = [result rowAtIndex:i];
+//                    NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
+//                    //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
+//                    NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
+//                    NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
+//                    NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
+//                    int type = [databaseRow intForColumn:kWXTCall_Column_Date];
+//                    NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
+//                    CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
+//                    [_callHistoryList addObject:entity];
+//                }
+//            }
+//        }];
+//    }
+    _callHistoryList = [_database queryCallHistory];
 }
 
 - (void)removeNotification{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - 通话记录【增删改查】
+- (void)addSingleCallRecord:(CallHistoryEntity*)record{
+    if (!record){NSAssert(record == nil, @"通话记录为空，不能添加到数据库中"); return;};
+//    NSArray * callArray = [self recordForPhoneNumber:record.phoneNumber];
+//    if (callArray.count != 0){return;}
+    BOOL result = [self addRecord:record.phoneNumber recordType:record.callType startTime:record.callStartTime duration:record.duration];
+    if (result) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordAdded object:record];
+    }
+}
+
 - (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
         startTime:(NSString*)startTime duration:(NSInteger)duration{
     __block NSInteger result;
     [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
-        result = [_database insertCallHistory:@"我信" telephone:phoneNumber startTime:startTime duration:duration type:E_CallHistoryType_MakingReaded];
+        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,@"我信",phoneNumber,startTime,duration,recordType]];
+        result = [dbResult errorCode];
     }];
     if (result != 0) {
-        NSLog(@"通话记录添加失败");
+        DDLogError(@"通话记录添加失败");
         return NO;
     }
-    NSLog(@"%@通话记录添加成功",phoneNumber);
+    DDLogError(@"%@通话记录添加成功",phoneNumber);
     return YES;
 }
 
+-(void)addCallRecordCount:(CallHistoryEntity*)callHistory{
+    
+}
+
 - (BOOL)deleteCallRecord:(NSInteger)recordUID{
-    NSInteger result = [[WXTDatabase shareDatabase] delCallHistory:recordUID];
+    __block NSInteger result;
+    [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
+        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,recordUID]];
+        result = [dbResult errorCode];
+    }];
     if(result != 0){
-        KFLog_Normal(YES, @"删除通话记录失败~ ret=%d",(int)ret);
+        DDLogError(@"删除通话记录失败~ ret=%d",(int)result);
         return NO;
     }
     for (CallHistoryEntity *entity in _callHistoryList) {
@@ -124,7 +138,7 @@
     return YES;
 }
 
-#pragma mark 通话记录查询~
+#pragma mark 通话记录条件查询
 - (NSArray*)recordForPhoneNumber:(NSString*)phoneNumber{
     if(phoneNumber){
         return [self recordForPhoneNumbers:[NSArray arrayWithObject:phoneNumber]];
@@ -145,12 +159,13 @@
     return nil;
 }
 
+#pragma mark - WXTDatabaseDelegate
 -(void)wxtDatabaseOpenSuccess{
     DDLogError(@"%sdabase open success!",__FUNCTION__);
 }
 
 -(void)wxtDatabaseOpenFaild:(WXTDBMessage)faildMsg{
-    [_database createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID];
+    [_database createDatabase:_database.dbName];
     DDLogError(@"%sdatabase faild error:%i",__FUNCTION__,faildMsg);
 }
 
@@ -160,16 +175,6 @@
 }
 
 -(void)wxtCreateTableSuccess{
-    switch (_callHandle) {
-        case AddCallRecord:
-//            EGODatabaseResult * result = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aStartTime,aDuration,aType]];
-//            _isAddCallHistory = [result errorCode];
-            break;
-        case DelSimpleCallRecord:
-            break;
-        default:
-            break;
-    }
     DDLogError(@"%stable create success!!!",__FUNCTION__);
 }
 

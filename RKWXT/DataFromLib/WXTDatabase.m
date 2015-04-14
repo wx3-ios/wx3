@@ -17,11 +17,14 @@
 @end
 
 @implementation WXTDatabase
-
+@synthesize database = _database;
 -(id)init{
     @synchronized(self){
-        if (self == nil) {
-            self = [super init];
+        if (self == [super init]) {
+            _dbName = [WXTUserOBJ sharedUserOBJ].wxtID;
+            if (_dbName != NULL) {
+                [self createDatabase:_dbName];
+            }
         }
     }
     return  self;
@@ -144,7 +147,7 @@
         [self wxtCreateTableSuccess];
         return YES;
     }else{
-        [self wxtDatabaseOpenFaild:WXTTableFaild];
+        [self wxtCreateTableFaild:WXTTableFaild];
         return NO;
     }
 }
@@ -155,55 +158,6 @@
         return YES;
     }
     return NO;
-}
-
--(NSInteger)insertCallHistory:(NSString*)aName telephone:(NSString *)aTelephone startTime:(NSString*)aStartTime duration:(NSInteger)aDuration type:(int)aType{
-    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        EGODatabaseResult * result = [_database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,aName,aTelephone,aStartTime,aDuration,aType]];
-        return [result errorCode];
-    }else{
-        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
-        return 1;
-    }
-}
-
--(NSMutableArray *)queryCallHistory{
-    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        EGODatabaseResult * result = [_database executeQuery:kWXTQueryCallHistory];
-        if ([result errorCode] == 0) {
-            NSMutableArray *mutableArr = [NSMutableArray array];
-            for (int i= 0 ; i < [result count]; i++) {
-                EGODatabaseRow * databaseRow = [result rowAtIndex:i];
-                NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
-                //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
-                NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
-                NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
-                NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
-                int type = [databaseRow intForColumn:kWXTCall_Column_Date];
-                NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
-                CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
-                //                CallHistoryEntity * entity = [[CallHistoryEntity alloc] initWithName:name telephone:telephone startTime:startTime duration:duration type:type];
-                [mutableArr addObject:entity];
-            }
-            NSLog(@"%s用户通话记录查询success:%lu",__FUNCTION__,[result count]);
-            return mutableArr;
-        }else{
-            NSLog(@"%s用户通话记录查询error:%i",__FUNCTION__,[result errorCode]);
-        }
-    }else{
-        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
-    }
-    return nil;
-}
-
--(NSInteger)delCallHistory:(NSInteger)recordID{
-    EGODatabaseResult * result;
-    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
-        result = [_database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,recordID]];
-    }else{
-        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
-    }
-    return [result errorCode];
 }
 
 #pragma mark database callback
@@ -225,7 +179,10 @@
 -(void)wxtCreateTableSuccess{
     if (_delegate && [_delegate respondsToSelector:@selector(wxtCreateTableSuccess)]){
         [_delegate wxtCreateTableSuccess];
+        _isTableOpen = YES;
+        return;
     }
+    _isTableOpen = NO;
 }
 
 -(void)wxtCreateTableFaild:(WXTDBMessage)faildMsg{
@@ -233,5 +190,36 @@
         [_delegate wxtCreateTableFaild:faildMsg];
     }
 }
+
+#pragma mark - 通话历史记录
+-(NSMutableArray *)queryCallHistory{
+    if ([self createDatabase:[WXTUserOBJ sharedUserOBJ].wxtID]) {
+        EGODatabaseResult * result = [_database executeQuery:kWXTQueryCallHistory];
+        if ([result errorCode] == 0) {
+            NSMutableArray *mutableArr = [NSMutableArray array];
+            for (int i= 0 ; i < [result count]; i++) {
+                EGODatabaseRow * databaseRow = [result rowAtIndex:i];
+                NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
+                //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
+                NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
+                NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
+                NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
+                int type = [databaseRow intForColumn:kWXTCall_Column_Date];
+                NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
+                CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
+                [mutableArr addObject:entity];
+            }
+            NSLog(@"%s用户通话记录查询success:%lu",__FUNCTION__,[result count]);
+            return mutableArr;
+        }else{
+            NSLog(@"%s用户通话记录查询error:%i",__FUNCTION__,[result errorCode]);
+        }
+    }else{
+        DDLogError(@"%sdatabase open error:%@",__FUNCTION__,[_database lastErrorMessage]);
+    }
+    return nil;
+}
+
+
 
 @end
