@@ -61,6 +61,7 @@
     [_oldPwdField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
     [_oldPwdField setTextColor:[UIColor grayColor]];
     [_oldPwdField setTintColor:[UIColor blackColor]];
+    [_oldPwdField setKeyboardType:UIKeyboardTypeASCIICapable];
     [_oldPwdField setBackgroundColor:[UIColor whiteColor]];
     [_oldPwdField setPlaceHolder:@"请输入旧密码" color:[UIColor grayColor]];
     [_oldPwdField setTextAlignment:NSTextAlignmentCenter];
@@ -74,6 +75,7 @@
     [_newPwdField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
     [_newPwdField setTextColor:[UIColor grayColor]];
     [_newPwdField setTintColor:[UIColor blackColor]];
+    [_newPwdField setKeyboardType:UIKeyboardTypeASCIICapable];
     [_newPwdField setBackgroundColor:[UIColor whiteColor]];
     [_newPwdField setTextAlignment:NSTextAlignmentCenter];
     [_newPwdField setPlaceHolder:@"请输入新密码" color:[UIColor grayColor]];
@@ -85,6 +87,7 @@
     [_confirmPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_confirmPwd setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
     [_confirmPwd setTextColor:[UIColor grayColor]];
+    [_confirmPwd setKeyboardType:UIKeyboardTypeASCIICapable];
     [_confirmPwd setBackgroundColor:[UIColor whiteColor]];
     [_confirmPwd setTintColor:[UIColor blackColor]];
     [_confirmPwd setTextAlignment:NSTextAlignmentCenter];
