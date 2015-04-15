@@ -392,6 +392,7 @@
 		786155E31AC8E0CE0048B604 /* place.dat in Resources */ = {isa = PBXBuildFile; fileRef = 786155E11AC8E0CE0048B604 /* place.dat */; };
 		786155E61AC8EB960048B604 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 786155E51AC8EB960048B604 /* BaseVC.m */; };
 		DD351C581AD8B85000DF0C7E /* libPods-CocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */; };
+		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DDB58F431AD3C6A2006248E9 /* CallBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F151AD3C6A2006248E9 /* CallBackVC.m */; };
 		DDB58F441AD3C6A2006248E9 /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F171AD3C6A2006248E9 /* CallModel.m */; };
 		DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1A1AD3C6A2006248E9 /* ContactDetailVC.m */; };
@@ -412,7 +413,6 @@
 		DDB58F541AD3C6A2006248E9 /* WXKeyPadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F3C1AD3C6A2006248E9 /* WXKeyPadModel.m */; };
 		DDB58F551AD3C6A2006248E9 /* WXContacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F401AD3C6A2006248E9 /* WXContacterCell.m */; };
 		DDB58F561AD3C6A2006248E9 /* WXContacterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */; };
-		DDBF43011ADD0E4C0063B763 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; };
 		DDDAE97F1ACAA88700CC3FE9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */; };
 		DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9801ACAA88F00CC3FE9 /* CoreFoundation.framework */; };
 		DDDAE9831ACAA8A800CC3FE9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9821ACAA8A800CC3FE9 /* SystemConfiguration.framework */; };
@@ -2978,6 +2978,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */,
 				775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */,
 				7758430C1AB95A300039B129 /* WXActivityButton.m in Sources */,
 				786155E61AC8EB960048B604 /* BaseVC.m in Sources */,
@@ -3136,7 +3137,6 @@
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
 				121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
-				DDBF43011ADD0E4C0063B763 /* KeychainItemWrapper.m in Sources */,
 				DDB58F501AD3C6A2006248E9 /* WXTCallHistoryCell.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				DDB58F4E1AD3C6A2006248E9 /* CallHistoryCell.m in Sources */,

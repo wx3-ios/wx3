@@ -13,7 +13,7 @@
 #import "ContactDetailVC.h"
 #define kSectionHeadViewHeight (20.0)
 
-@interface WXContacterVC ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate>{
+@interface WXContacterVC ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate>{
     WXUITableView *_tableView;
     WXUISearchBar *_searchBar;
     UISearchDisplayController *_searchDisplayController;
@@ -58,7 +58,7 @@
         [_searchBar setPlaceholder:[NSString stringWithFormat:@"搜索%li个联系人",[AddressBook sharedAddressBook].count]];
     }
     [_searchBar sizeToFit];
-//    [_tableView setTableHeaderView:_searchBar];
+    _searchBar.delegate = self;
     [self.view addSubview:_searchBar];
 
     _searchDisplayController = [[UISearchDisplayController alloc]
@@ -257,8 +257,24 @@
 }
 
 #pragma mark UISearchDisplayDelegate
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    searchBar.showsCancelButton = YES;
+//    for(UIView *subView in searchBar.subviews){
+//        if([subView isKindOfClass:[UIButton class]]){
+//            [(UIButton*)subView setTitle:@"取消" forState:UIControlStateNormal];
+//        }
+//    }
+    return YES;
+}
 - (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller{
     [_model removeMatchingContact];
+    UIView *topView = controller.searchBar.subviews[0];
+    for (UIView *subView in topView.subviews) {
+        if ([subView isKindOfClass:NSClassFromString(@"UINavigationButton")]) {
+            UIButton *cancelButton = (UIButton*)subView;
+            [cancelButton setTitle:@"取消" forState:UIControlStateNormal];  //@"取消"
+        }
+    }
 }
 
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller{

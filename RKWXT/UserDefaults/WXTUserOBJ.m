@@ -8,8 +8,18 @@
 
 #import "WXTUserOBJ.h"
 #import "WXTUserDefault.h"
-
+#import "KeychainItemWrapper.h"
 @implementation WXTUserOBJ
+
+-(id)init{
+    if (self = [super init]) {
+        _userKeyChainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"wxt_user" accessGroup:@"woxin"];
+        _passwdKeyChainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"wxt_passwd" accessGroup:@"woxin"];
+//        [_userKeyChainItem resetKeychainItem];
+//        [_passwdKeyChainItem resetKeychainItem];
+    }
+    return self;
+}
 
 +(WXTUserOBJ*)sharedUserOBJ{
     static dispatch_once_t onceToken;
@@ -23,6 +33,7 @@
 -(void)setWxtID:(NSString *)wxtID{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     [userDefault setObject:wxtID forKey:WXT_Userdefault_WxtID];
+//    [_userKeyChainItem setObject:wxtID forKey:WXT_Userdefault_WxtID];
 }
 
 -(void)setUser:(NSString *)user{
@@ -33,6 +44,7 @@
 -(void)setPwd:(NSString *)pwd{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     [userDefault setObject:pwd forKey:WXT_Userdefault_Pwd];
+//    [_passwdKeyChainItem setObject:pwd forKey:WXT_Userdefault_Pwd];
 }
 
 -(void)setToken:(NSString *)token{
@@ -48,6 +60,7 @@
 -(NSString*)wxtID{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     return [userDefault textValueForKey:WXT_Userdefault_WxtID];
+//    return [_userKeyChainItem objectForKey:WXT_Userdefault_WxtID];
 }
 
 -(NSString*)user{
@@ -58,6 +71,7 @@
 -(NSString*)pwd{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     return [userDefault textValueForKey:WXT_Userdefault_Pwd];
+//    return [_passwdKeyChainItem objectForKey:WXT_Userdefault_Pwd];
 }
 
 -(NSString*)token{

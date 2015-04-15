@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class KeychainItemWrapper;
 @interface WXTUserOBJ : NSObject
+@property (nonatomic, strong) KeychainItemWrapper * passwdKeyChainItem;
+@property (nonatomic, strong) KeychainItemWrapper * userKeyChainItem;
 +(WXTUserOBJ*)sharedUserOBJ;
 
 -(void)setWxtID:(NSString*)wxtID;  //设置我信通ID
