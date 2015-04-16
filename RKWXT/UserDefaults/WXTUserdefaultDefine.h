@@ -17,6 +17,6 @@
 #define WXT_Userdefault_SmsID @"WXT_Userdefault_SmsID"
 
 #define WXT_Userdefault_SignDate @"WXT_Userdefault_SignDate"
-
+#define kV_Data                 @"v_Data"
 
 #endif
