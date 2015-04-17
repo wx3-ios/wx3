@@ -2761,6 +2761,11 @@
 					2563B3E31AAAD74000C04227 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 93P8KM28NT;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2563B3FF1AAAD74000C04227 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -3406,7 +3411,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "25ec45a0-5e74-4b83-a0b9-7b4f0b552817";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;

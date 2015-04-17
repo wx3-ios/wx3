@@ -67,7 +67,7 @@
     //监听电话
     [self listenSystemCall];
     // 集成极光推送功能
-//    [self initJPushApi];
+    [self initJPushApi];
     [APService setupWithOption:launchOptions];
     
     //自动登录通知
@@ -186,6 +186,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // Required
     [APService handleRemoteNotification:userInfo];
+    DDLogDebug(@"apns received success:%@",userInfo);
+}
+
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification {
+    [APService showLocalNotificationAtFront:notification identifierKey:nil];
+}
+
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 }
 
 - (void)application:(UIApplication *)application
@@ -200,6 +210,35 @@ fetchCompletionHandler:(void
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     NSLog(@"Error in Jpush registration. Error: %@", err);
 }
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+- (void)application:(UIApplication *)application
+didRegisterUserNotificationSettings:
+(UIUserNotificationSettings *)notificationSettings {
+}
+
+// Called when your app has been activated by the user selecting an action from
+// a local notification.
+// A nil action identifier indicates the default action.
+// You should call the completion handler as soon as you've finished handling
+// the action.
+- (void)application:(UIApplication *)application
+handleActionWithIdentifier:(NSString *)identifier
+forLocalNotification:(UILocalNotification *)notification
+  completionHandler:(void (^)())completionHandler {
+}
+
+// Called when your app has been activated by the user selecting an action from
+// a remote notification.
+// A nil action identifier indicates the default action.
+// You should call the completion handler as soon as you've finished handling
+// the action.
+- (void)application:(UIApplication *)application
+handleActionWithIdentifier:(NSString *)identifier
+forRemoteNotification:(NSDictionary *)userInfo
+  completionHandler:(void (^)())completionHandler {
+}
+#endif
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

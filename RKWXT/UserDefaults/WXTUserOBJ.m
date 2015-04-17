@@ -29,9 +29,11 @@
 }
 
 -(void)setWxtID:(NSString *)wxtID{
-//    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
-//    [userDefault setObject:wxtID forKey:WXT_Userdefault_WxtID];
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    [userDefault setObject:wxtID forKey:WXT_Userdefault_WxtID];
+#if TARGET_IPHONE_SIMULATOR
     [_userKeyChainItem setObject:wxtID forKey:kV_Data];
+#endif
 }
 
 -(void)setUser:(NSString *)user{
@@ -40,9 +42,11 @@
 }
 
 -(void)setPwd:(NSString *)pwd{
-//    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
-//    [userDefault setObject:pwd forKey:WXT_Userdefault_Pwd];
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    [userDefault setObject:pwd forKey:WXT_Userdefault_Pwd];
+#if TARGET_IPHONE_SIMULATOR
     [_passwdKeyChainItem setObject:pwd forKey:kV_Data];
+#endif
 }
 
 -(void)setToken:(NSString *)token{
@@ -56,9 +60,11 @@
 }
 
 -(NSString*)wxtID{
-//    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
-//    return [userDefault textValueForKey:WXT_Userdefault_WxtID];
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    return [userDefault textValueForKey:WXT_Userdefault_WxtID];
+#if TARGET_IPHONE_SIMULATOR
     return [_userKeyChainItem objectForKey:kV_Data];
+#endif
 }
 
 -(NSString*)user{
@@ -67,9 +73,11 @@
 }
 
 -(NSString*)pwd{
-//    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
-//    return [userDefault textValueForKey:WXT_Userdefault_Pwd];
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    return [userDefault textValueForKey:WXT_Userdefault_Pwd];
+#if TARGET_IPHONE_SIMULATOR
     return [_passwdKeyChainItem objectForKey:kV_Data];
+#endif
 }
 
 -(NSString*)token{
