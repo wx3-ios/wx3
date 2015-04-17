@@ -105,7 +105,6 @@
         _navigation = [[UINavigationController alloc] initWithRootViewController:vc];
         [vc.navigationController setNavigationBarHidden:YES];
         [self.window setRootViewController:_navigation];
-        [self.window setRootViewController:_navigation];
         [self.window makeKeyAndVisible];
     }
 }
@@ -116,9 +115,12 @@
 
 -(void)loginFailed:(NSNotification*)notification{
     [self removeNotification];
-    LoginVC *loginVC = [[LoginVC alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    [_navigation presentViewController:navigationController animated:YES completion:nil];
+    BOOL userInfo = [self checkUserInfo];
+    if(userInfo){
+        LoginVC *loginVC = [[LoginVC alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
+        [_navigation presentViewController:navigationController animated:YES completion:nil];
+    }
 }
 
 -(BOOL)checkUserInfo{

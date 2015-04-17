@@ -425,16 +425,6 @@
 		DDDAE9921ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2563B4011AAAD74000C04227 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2563B3DC1AAAD74000C04227 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2563B3E31AAAD74000C04227;
-			remoteInfo = RKWXT;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		120A2BBB1AB135DD006A28B1 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
 		120A2BBC1AB135DD006A28B1 /* RechargeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeVC.m; sourceTree = "<group>"; };
@@ -635,7 +625,6 @@
 		2563B3F51AAAD74000C04227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2563B3F71AAAD74000C04227 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2563B3FA1AAAD74000C04227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		2563B4001AAAD74000C04227 /* RKWXTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RKWXTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B43E1AAADEE400C04227 /* RKWXT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKWXT-Prefix.pch"; sourceTree = "<group>"; };
 		2563B4781AAAE46D00C04227 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2563B4891AAAFF6B00C04227 /* HttpNetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpNetUtils.h; sourceTree = "<group>"; };
@@ -1172,13 +1161,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2563B3FD1AAAD74000C04227 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1598,7 +1580,6 @@
 			isa = PBXGroup;
 			children = (
 				2563B3E41AAAD74000C04227 /* RKWXT.app */,
-				2563B4001AAAD74000C04227 /* RKWXTTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2735,24 +2716,6 @@
 			productReference = 2563B3E41AAAD74000C04227 /* RKWXT.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2563B3FF1AAAD74000C04227 /* RKWXTTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2563B40D1AAAD74000C04227 /* Build configuration list for PBXNativeTarget "RKWXTTests" */;
-			buildPhases = (
-				2563B3FC1AAAD74000C04227 /* Sources */,
-				2563B3FD1AAAD74000C04227 /* Frameworks */,
-				2563B3FE1AAAD74000C04227 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2563B4021AAAD74000C04227 /* PBXTargetDependency */,
-			);
-			name = RKWXTTests;
-			productName = RKWXTTests;
-			productReference = 2563B4001AAAD74000C04227 /* RKWXTTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2772,11 +2735,6 @@
 							};
 						};
 					};
-					2563B3FF1AAAD74000C04227 = {
-						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 93P8KM28NT;
-						TestTargetID = 2563B3E31AAAD74000C04227;
-					};
 				};
 			};
 			buildConfigurationList = 2563B3DF1AAAD74000C04227 /* Build configuration list for PBXProject "RKWXT" */;
@@ -2794,7 +2752,6 @@
 			projectRoot = "";
 			targets = (
 				2563B3E31AAAD74000C04227 /* RKWXT */,
-				2563B3FF1AAAD74000C04227 /* RKWXTTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2938,13 +2895,6 @@
 				1263EFE91ACD35820014C347 /* iTunesArtWork.png in Resources */,
 				126CA4021AB2B9EF00E08A0B /* FindSelected@2x.png in Resources */,
 				775AB9C71ABFB558003A339D /* 3S@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2563B3FE1AAAD74000C04227 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3257,22 +3207,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2563B3FC1AAAD74000C04227 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2563B4021AAAD74000C04227 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2563B3E31AAAD74000C04227 /* RKWXT */;
-			targetProxy = 2563B4011AAAD74000C04227 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2563B3F41AAAD74000C04227 /* Main.storyboard */ = {
@@ -3447,46 +3382,6 @@
 			};
 			name = Release;
 		};
-		2563B40E1AAAD74000C04227 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RKWXT.app/RKWXT";
-			};
-			name = Debug;
-		};
-		2563B40F1AAAD74000C04227 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "663edbed-584c-4c2c-97d2-11229bcfd4bd";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RKWXT.app/RKWXT";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3504,15 +3399,6 @@
 			buildConfigurations = (
 				2563B40B1AAAD74000C04227 /* Debug */,
 				2563B40C1AAAD74000C04227 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2563B40D1AAAD74000C04227 /* Build configuration list for PBXNativeTarget "RKWXTTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2563B40E1AAAD74000C04227 /* Debug */,
-				2563B40F1AAAD74000C04227 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

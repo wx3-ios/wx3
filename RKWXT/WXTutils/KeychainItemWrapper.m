@@ -354,7 +354,7 @@
         // No previous item found; add the new one.
         result = SecItemAdd((CFDictionaryRef)[self dictionaryToSecItemFormat:keychainItemData], NULL);
         DDLogDebug(@"OSStatus:%li",result);
-        NSAssert( result == noErr, @"Couldn't add the Keychain Item." );
+//        NSAssert( result == noErr, @"Couldn't add the Keychain Item." );
     }
 }
 
