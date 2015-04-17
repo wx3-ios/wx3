@@ -393,6 +393,7 @@
 		786155E61AC8EB960048B604 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 786155E51AC8EB960048B604 /* BaseVC.m */; };
 		DD351C581AD8B85000DF0C7E /* libPods-CocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD54B2981AE0F9E100FF318B /* WXTMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */; };
 		DDB58F431AD3C6A2006248E9 /* CallBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F151AD3C6A2006248E9 /* CallBackVC.m */; };
 		DDB58F441AD3C6A2006248E9 /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F171AD3C6A2006248E9 /* CallModel.m */; };
 		DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1A1AD3C6A2006248E9 /* ContactDetailVC.m */; };
@@ -1090,6 +1091,8 @@
 		786155E41AC8EB960048B604 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
 		786155E51AC8EB960048B604 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
+		DD54B2961AE0F9E100FF318B /* WXTMessageCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMessageCenterVC.h; sourceTree = "<group>"; };
+		DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMessageCenterVC.m; sourceTree = "<group>"; };
 		DD817A211ADE062500586634 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		DDB58F141AD3C6A2006248E9 /* CallBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackVC.h; sourceTree = "<group>"; };
 		DDB58F151AD3C6A2006248E9 /* CallBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallBackVC.m; sourceTree = "<group>"; };
@@ -1267,6 +1270,8 @@
 			children = (
 				120A2BD51AB135DD006A28B1 /* UserInfoCommonCell.h */,
 				120A2BD61AB135DD006A28B1 /* UserInfoCommonCell.m */,
+				DD54B2961AE0F9E100FF318B /* WXTMessageCenterVC.h */,
+				DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2986,6 +2991,7 @@
 				DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */,
 				775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */,
 				7758430C1AB95A300039B129 /* WXActivityButton.m in Sources */,
+				DD54B2981AE0F9E100FF318B /* WXTMessageCenterVC.m in Sources */,
 				786155E61AC8EB960048B604 /* BaseVC.m in Sources */,
 				775843011AB95A300039B129 /* PingponeButton.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,

@@ -175,6 +175,96 @@
              // Required
              categories:nil];
         }
+    [self addObserver];
+}
+
+-(void)addObserver{
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self
+                      selector:@selector(networkDidSetup:)
+                          name:kJPFNetworkDidSetupNotification
+                        object:nil];
+    [defaultCenter addObserver:self
+                      selector:@selector(networkDidClose:)
+                          name:kJPFNetworkDidCloseNotification
+                        object:nil];
+    [defaultCenter addObserver:self
+                      selector:@selector(networkDidRegister:)
+                          name:kJPFNetworkDidRegisterNotification
+                        object:nil];
+    [defaultCenter addObserver:self
+                      selector:@selector(networkDidLogin:)
+                          name:kJPFNetworkDidLoginNotification
+                        object:nil];
+    [defaultCenter addObserver:self
+                      selector:@selector(networkDidReceiveMessage:)
+                          name:kJPFNetworkDidReceiveMessageNotification
+                        object:nil];
+    [defaultCenter addObserver:self
+                      selector:@selector(serviceError:)
+                          name:kJPFServiceErrorNotification
+                        object:nil];
+}
+
+- (void)unObserveAllNotifications {
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self
+                             name:kJPFNetworkDidSetupNotification
+                           object:nil];
+    [defaultCenter removeObserver:self
+                             name:kJPFNetworkDidCloseNotification
+                           object:nil];
+    [defaultCenter removeObserver:self
+                             name:kJPFNetworkDidRegisterNotification
+                           object:nil];
+    [defaultCenter removeObserver:self
+                             name:kJPFNetworkDidLoginNotification
+                           object:nil];
+    [defaultCenter removeObserver:self
+                             name:kJPFNetworkDidReceiveMessageNotification
+                           object:nil];
+    [defaultCenter removeObserver:self
+                             name:kJPFServiceErrorNotification
+                           object:nil];
+}
+
+- (void)networkDidSetup:(NSNotification *)notification {
+    DDLogDebug(@"已连接");
+}
+
+- (void)networkDidClose:(NSNotification *)notification {
+    DDLogDebug(@"未连接");
+}
+
+- (void)networkDidRegister:(NSNotification *)notification {
+    DDLogDebug(@"已注册RegistrationID:%@",[[notification userInfo] valueForKey:@"RegistrationID"]);
+}
+
+- (void)networkDidLogin:(NSNotification *)notification {
+    DDLogDebug(@"已登录");
+}
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    NSString *title = [userInfo valueForKey:@"title"];
+    NSString *content = [userInfo valueForKey:@"content"];
+    NSDictionary *extra = [userInfo valueForKey:@"extras"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    
+    NSString *currentContent = [NSString
+                                stringWithFormat:
+                                @"收到自定义消息:%@\ntitle:%@\ncontent:%@\nextra:%@\n",
+                                [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                               dateStyle:NSDateFormatterNoStyle
+                                                               timeStyle:NSDateFormatterMediumStyle],
+                                title, content, extra];
+    DDLogDebug(@"%@", currentContent);
+}
+
+- (void)serviceError:(NSNotification *)notification {
+    DDLogDebug(@"error:%@", [[notification userInfo] valueForKey:@"error"]);
 }
 
 - (void)application:(UIApplication *)application
@@ -187,6 +277,14 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // Required
     [APService handleRemoteNotification:userInfo];
     DDLogDebug(@"apns received success:%@",userInfo);
+}
+
++ (BOOL)setBadge:(NSInteger)value{
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:value];
+    if (value == 0) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)application:(UIApplication *)application
@@ -246,12 +344,12 @@ forRemoteNotification:(NSDictionary *)userInfo
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 	// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -344,4 +442,7 @@ forRemoteNotification:(NSDictionary *)userInfo
     }
 }
 
+- (void)dealloc {
+    [self unObserveAllNotifications];
+}
 @end

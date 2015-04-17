@@ -72,7 +72,7 @@
  See the header file Security/SecItem.h for more details.
  
  */
-static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
+//static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
 @interface KeychainItemWrapper (PrivateMethods)
 /*
  The decision behind the following two methods (secItemFormatToDictionary and dictionaryToSecItemFormat) was
@@ -90,7 +90,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
 @implementation KeychainItemWrapper
 
 @synthesize keychainItemData, genericPasswordQuery;
-
+/*
 -(id)init{
     if (self = [super init]) {
         
@@ -133,7 +133,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
         }
     }
     return  self;
-}
+}*/
 
 
 - (id)initWithIdentifier: (NSString *)identifier accessGroup:(NSString *) accessGroup;
@@ -194,7 +194,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
                 // If a SecItem contains an access group attribute, SecItemAdd and SecItemUpdate on the
                 // simulator will return -25243 (errSecNoAccessForItem).
 #else
-                [keychainItemData setObject:accessGroup forKey:(id)kSecAttrAccessGroup];
+//                [keychainItemData setObject:accessGroup forKey:(id)kSecAttrAccessGroup];
 #endif
             }
         }
@@ -346,12 +346,14 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
         // An implicit assumption is that you can only update a single item at a time.
         
         result = SecItemUpdate((CFDictionaryRef)updateItem, (CFDictionaryRef)tempCheck);
+        DDLogDebug(@"OSStatus:%li",result);
         NSAssert( result == noErr, @"Couldn't update the Keychain Item." );
     }
     else
     {
         // No previous item found; add the new one.
         result = SecItemAdd((CFDictionaryRef)[self dictionaryToSecItemFormat:keychainItemData], NULL);
+        DDLogDebug(@"OSStatus:%li",result);
         NSAssert( result == noErr, @"Couldn't add the Keychain Item." );
     }
 }

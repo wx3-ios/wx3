@@ -15,7 +15,7 @@
 #import "LoginVC.h"
 #import "AboutWxtInfoVC.h"
 #import "WXTResetPwdVC.h"
-
+#import "WXTMessageCenterVC.h"
 #define UserBgImageViewHeight (125)
 #define Size self.view.bounds.size
 #define bgImg [UIImage imageNamed:@"PersonalBgImg.jpg"]
@@ -152,7 +152,12 @@
             SignViewController *signVC = [[SignViewController alloc] init];
             [self.navigationController pushViewController:signVC animated:YES];
         }
-            break;
+            break;/*
+        case WXT_UserInfo_Message:{
+            WXTMessageCenterVC * messageVC = [[WXTMessageCenterVC alloc] init];
+            [self.navigationController pushViewController:messageVC animated:YES];
+        }
+            break;*/
         case WXT_UserInfo_ResetPwd:
         {
             WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
