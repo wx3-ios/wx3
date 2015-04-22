@@ -43,6 +43,7 @@
             if (_callDelegate && [_callDelegate respondsToSelector:@selector(makeCallPhoneSucceed)]){
                 [_callDelegate makeCallPhoneSucceed];
             }
+            _callID = [dic objectForKey:@"call_id"];
         }
     }];
 }

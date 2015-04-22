@@ -19,7 +19,7 @@
 
 enum{
     WXT_Regist_UserPhone = 0,
-    WXT_Regist_FetchPwd,
+    //    WXT_Regist_FetchPwd,
     WXT_Regist_Pwd,
     WXT_Regist_OtherPhone,
     
@@ -49,12 +49,13 @@ enum{
 -(id)init{
     self = [super init];
     if(self){
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyBoard) name:UIKeyboardDidShowNotification object:nil];
+        //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyBoard) name:UIKeyboardDidShowNotification object:nil];
         
         _model = [[RegistModel alloc] init];
         [_model setDelegate:self];
         
-        _baseNameArr = @[@"手机号:",@"验证码:",@"密   码:",@"推荐人:"];
+        //        _baseNameArr = @[@"手机号:",@"验证码:",@"密   码:",@"推荐人:"];
+        _baseNameArr = @[@"手机号:",@"密   码:",@"推荐人:"];
         
         _gainModel = [[GainModel alloc] init];
         [_gainModel setDelegate:self];
@@ -160,38 +161,39 @@ enum{
     [_userTextField setFont:WXTFont(14.0)];
     [_baseView addSubview:_userTextField];
     
+    //暂时屏蔽验证码
     yOffset += 44;
-    _fetchPwd = [[WXTUITextField alloc] init];
-    _fetchPwd.frame = CGRectMake(xOffset, yOffset-4, textWith, labelHeight+4);
-    [_fetchPwd setBackgroundColor:[UIColor clearColor]];
-    [_fetchPwd setReturnKeyType:UIReturnKeyDone];
-    [_fetchPwd setKeyboardType:UIKeyboardTypePhonePad];
-    [_fetchPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
-    [_fetchPwd addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventEditingDidBegin];
-    [_fetchPwd setTextColor:WXColorWithInteger(0xFFFFFF)];
-    [_fetchPwd setTintColor:[UIColor whiteColor]];
-    [_fetchPwd setPlaceHolder:@"请输入验证码" color:WXColorWithInteger(0xa5baca)];
-    [_fetchPwd setLeftViewMode:UITextFieldViewModeAlways];
-    [_fetchPwd setFont:WXTFont(14.0)];
-    [_baseView addSubview:_fetchPwd];
-    
-    
+    //    _fetchPwd = [[WXTUITextField alloc] init];
+    //    _fetchPwd.frame = CGRectMake(xOffset, yOffset-4, textWith, labelHeight+4);
+    //    [_fetchPwd setBackgroundColor:[UIColor clearColor]];
+    //    [_fetchPwd setReturnKeyType:UIReturnKeyDone];
+    //    [_fetchPwd setKeyboardType:UIKeyboardTypePhonePad];
+    //    [_fetchPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    //    [_fetchPwd addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventEditingDidBegin];
+    //    [_fetchPwd setTextColor:WXColorWithInteger(0xFFFFFF)];
+    //    [_fetchPwd setTintColor:[UIColor whiteColor]];
+    //    [_fetchPwd setPlaceHolder:@"请输入验证码" color:WXColorWithInteger(0xa5baca)];
+    //    [_fetchPwd setLeftViewMode:UITextFieldViewModeAlways];
+    //    [_fetchPwd setFont:WXTFont(14.0)];
+    //    [_baseView addSubview:_fetchPwd];
+    //
+    //
     xOffset += textWith;
-    yOffset += 22;
-    UILabel *line3 = [[UILabel alloc] init];
-    line3.frame = CGRectMake(xOffset, yOffset-35, 0.5, EveryCellHeight-3);
-    [line3 setBackgroundColor:WXColorWithInteger(0xa1c6e5)];
-    [_baseView addSubview:line3];
-    
-    CGFloat gainBtnWidth = 80;
-    _gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    _gainBtn.frame = CGRectMake(xOffset+(Size.width-xOffset-gainBtnWidth)/2, yOffset-33, gainBtnWidth, 30);
-    [_gainBtn setBackgroundColor:[UIColor clearColor]];
-    [_gainBtn setTitle:@"获取" forState:UIControlStateNormal];
-    [_gainBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
-    [_gainBtn setTitleColor:WXColorWithInteger(0xa5baca) forState:UIControlStateSelected];
-    [_gainBtn addTarget:self action:@selector(gainAFecthPwd) forControlEvents:UIControlEventTouchUpInside];
-    [_baseView addSubview:_gainBtn];
+    yOffset += 22-37;   //恢复验证码要+37，有点乱
+    //    UILabel *line3 = [[UILabel alloc] init];
+    //    line3.frame = CGRectMake(xOffset, yOffset-35, 0.5, EveryCellHeight-3);
+    //    [line3 setBackgroundColor:WXColorWithInteger(0xa1c6e5)];
+    //    [_baseView addSubview:line3];
+    //
+    //    CGFloat gainBtnWidth = 80;
+    //    _gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    //    _gainBtn.frame = CGRectMake(xOffset+(Size.width-xOffset-gainBtnWidth)/2, yOffset-33, gainBtnWidth, 30);
+    //    [_gainBtn setBackgroundColor:[UIColor clearColor]];
+    //    [_gainBtn setTitle:@"获取" forState:UIControlStateNormal];
+    //    [_gainBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
+    //    [_gainBtn setTitleColor:WXColorWithInteger(0xa5baca) forState:UIControlStateSelected];
+    //    [_gainBtn addTarget:self action:@selector(gainAFecthPwd) forControlEvents:UIControlEventTouchUpInside];
+    //    [_baseView addSubview:_gainBtn];
     
     
     xOffset -= textWith;
@@ -355,18 +357,18 @@ enum{
         [UtilTool showAlertView:@"密码不能小于6位"];
         return NO;
     }
-    if(_fetchPwd.text.length < 1){
-        [UtilTool showAlertView:@"验证码不能为空"];
-        return NO;
-    }
-//    if(_otherPhone.text.length == 0){
-//        [UtilTool showAlertView:@"请输入推荐人手机号"];
-//        return NO;
-//    }
-//    if(_otherPhone.text.length != 11){
-//        [UtilTool showAlertView:@"请输入正确的推荐人手机号码"];
-//        return NO;
-//    }
+    //    if(_fetchPwd.text.length < 1){
+    //        [UtilTool showAlertView:@"验证码不能为空"];
+    //        return NO;
+    //    }
+    //    if(_otherPhone.text.length == 0){
+    //        [UtilTool showAlertView:@"请输入推荐人手机号"];
+    //        return NO;
+    //    }
+    //    if(_otherPhone.text.length != 11){
+    //        [UtilTool showAlertView:@"请输入正确的推荐人手机号码"];
+    //        return NO;
+    //    }
     return YES;
 }
 
@@ -377,7 +379,8 @@ enum{
     }
     [self showWaitView:self.view];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
+    //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
+    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:123 andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
 }
 
 -(void)registSucceed{

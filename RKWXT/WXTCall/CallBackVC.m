@@ -11,11 +11,12 @@
 #import "WXTDatabase.h"
 #import "ContactUitl.h"
 #import "CallRecord.h"
+#import "HangupModel.h"
 
 #define Size self.view.bounds.size
 #define NormalTimer (15.0)
 
-@interface CallBackVC()<MakeCallDelegate>{
+@interface CallBackVC()<MakeCallDelegate,HangupDelegate>{
     NSTimer *_timer;
     //    NSTimer *_chengeTimer;
     
@@ -29,6 +30,9 @@
     
     UILabel *phoneAreaLabel;
     NSString *phoneArea;
+    
+    HangupModel *_hangupModel;
+    WXTUIButton *_hangupBtn;
 }
 @end
 
@@ -164,6 +168,17 @@
     [textLabel1 setText:@"请注意接听稍后来电"];
     [textLabel1 setTextColor:WXColorWithInteger(0xFFFFFF)];
     [self.view addSubview:textLabel1];
+    
+    yOffset += textHeight+30;
+    textWidth += 10;
+    _hangupBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    _hangupBtn.frame = CGRectMake((Size.width-textWidth)/2, yOffset, textWidth, 2*textHeight);
+    [_hangupBtn setBorderRadian:10.0 width:0.5 color:[UIColor redColor]];
+    [_hangupBtn setBackgroundColor:[UIColor redColor]];
+    [_hangupBtn setEnabled:NO];
+    [_hangupBtn setImage:[UIImage imageNamed:@"HangupCall.png"] forState:UIControlStateNormal];
+    [_hangupBtn addTarget:self action:@selector(hangup) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_hangupBtn];
 }
 
 -(void)startActivityImg{
@@ -236,6 +251,7 @@
 }
 
 -(void)makeCallPhoneSucceed{
+    [_hangupBtn setEnabled:YES];
     [callStatus setText:@"(呼叫成功)"];
     //    _chengeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideChangeStatus) userInfo:nil repeats:NO];
     _model.callstatus_type = CallStatus_Type_Ending;
@@ -246,6 +262,24 @@
     [callStatus setHidden:YES];
 }
 
+#pragma mark hangupDelegate
+-(void)hangup{
+    if(!_model.callID){
+        return;
+    }
+    _hangupModel = [[HangupModel alloc] init];
+    [_hangupModel setHangupDelegate:self];
+    [_hangupModel hangupWithCallID:_model.callID];
+}
+
+-(void)hangupFailed:(NSString *)failedMsg{
+    
+}
+
+-(void)hangupSucceed{
+    [self back];
+}
+
 -(void)removeNotification{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -254,6 +288,7 @@
     _model.callstatus_type = CallStatus_Type_Ending;
     [_timer invalidate];
     [_model setCallDelegate:nil];
+    [_hangupModel setHangupDelegate:nil];
     [self removeNotification];
     [self dismissViewControllerAnimated:YES completion:^{
         

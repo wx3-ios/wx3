@@ -78,6 +78,8 @@
 		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
+		1261F0141AE6596A00693710 /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1261F0131AE6596A00693710 /* CallModel.m */; };
+		1261F0181AE659AC00693710 /* HangupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1261F0171AE659AC00693710 /* HangupModel.m */; };
 		12622BD21ABD4425003F04A5 /* CallBackBgImg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12622BCD1ABD4425003F04A5 /* CallBackBgImg@2x.jpg */; };
 		12622BD31ABD4425003F04A5 /* CallBackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12622BCE1ABD4425003F04A5 /* CallBackBtn@2x.png */; };
 		12622BD41ABD4425003F04A5 /* CallBackBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12622BCF1ABD4425003F04A5 /* CallBackBgImg.jpg */; };
@@ -154,6 +156,7 @@
 		12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A21AC16F830044A7A2 /* delNumber@2x.png */; };
 		12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A41AC170940044A7A2 /* keyboardEye@2x.png */; };
 		12EC3B611AC415BE002F6920 /* callHistoryBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */; };
+		12FC93681AE73FEC0003B927 /* HangupCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12FC93671AE73FEC0003B927 /* HangupCall@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
 		2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3EC1AAAD74000C04227 /* AppDelegate.m */; };
@@ -395,7 +398,6 @@
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD54B2981AE0F9E100FF318B /* WXTMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */; };
 		DDB58F431AD3C6A2006248E9 /* CallBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F151AD3C6A2006248E9 /* CallBackVC.m */; };
-		DDB58F441AD3C6A2006248E9 /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F171AD3C6A2006248E9 /* CallModel.m */; };
 		DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1A1AD3C6A2006248E9 /* ContactDetailVC.m */; };
 		DDB58F461AD3C6A2006248E9 /* ContactDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1D1AD3C6A2006248E9 /* ContactDetailCell.m */; };
 		DDB58F471AD3C6A2006248E9 /* ContactsCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1F1AD3C6A2006248E9 /* ContactsCallViewController.m */; };
@@ -521,6 +523,10 @@
 		12228A721AB1BABA00CF0800 /* RegistVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistVC.m; sourceTree = "<group>"; };
 		12228A741AB1C0F200CF0800 /* RegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistModel.h; sourceTree = "<group>"; };
 		12228A751AB1C0F200CF0800 /* RegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistModel.m; sourceTree = "<group>"; };
+		1261F0121AE6596A00693710 /* CallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallModel.h; sourceTree = "<group>"; };
+		1261F0131AE6596A00693710 /* CallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallModel.m; sourceTree = "<group>"; };
+		1261F0161AE659AC00693710 /* HangupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangupModel.h; sourceTree = "<group>"; };
+		1261F0171AE659AC00693710 /* HangupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangupModel.m; sourceTree = "<group>"; };
 		12622BCD1ABD4425003F04A5 /* CallBackBgImg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "CallBackBgImg@2x.jpg"; sourceTree = "<group>"; };
 		12622BCE1ABD4425003F04A5 /* CallBackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBackBtn@2x.png"; sourceTree = "<group>"; };
 		12622BCF1ABD4425003F04A5 /* CallBackBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CallBackBgImg.jpg; sourceTree = "<group>"; };
@@ -616,6 +622,7 @@
 		12E161A21AC16F830044A7A2 /* delNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delNumber@2x.png"; sourceTree = "<group>"; };
 		12E161A41AC170940044A7A2 /* keyboardEye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboardEye@2x.png"; sourceTree = "<group>"; };
 		12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "callHistoryBtnImg@2x.png"; sourceTree = "<group>"; };
+		12FC93671AE73FEC0003B927 /* HangupCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HangupCall@2x.png"; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2563B3E91AAAD74000C04227 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1085,8 +1092,6 @@
 		DD817A211ADE062500586634 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		DDB58F141AD3C6A2006248E9 /* CallBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackVC.h; sourceTree = "<group>"; };
 		DDB58F151AD3C6A2006248E9 /* CallBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallBackVC.m; sourceTree = "<group>"; };
-		DDB58F161AD3C6A2006248E9 /* CallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallModel.h; sourceTree = "<group>"; };
-		DDB58F171AD3C6A2006248E9 /* CallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallModel.m; sourceTree = "<group>"; };
 		DDB58F191AD3C6A2006248E9 /* ContactDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailVC.h; sourceTree = "<group>"; };
 		DDB58F1A1AD3C6A2006248E9 /* ContactDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailVC.m; sourceTree = "<group>"; };
 		DDB58F1C1AD3C6A2006248E9 /* ContactDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailCell.h; sourceTree = "<group>"; };
@@ -1367,6 +1372,33 @@
 				126CA4111AB2FC9400E08A0B /* GainModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1261F0101AE6591400693710 /* CallModel */ = {
+			isa = PBXGroup;
+			children = (
+				1261F0151AE6598C00693710 /* Hangup */,
+				1261F0111AE6596A00693710 /* Call */,
+			);
+			path = CallModel;
+			sourceTree = "<group>";
+		};
+		1261F0111AE6596A00693710 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				1261F0121AE6596A00693710 /* CallModel.h */,
+				1261F0131AE6596A00693710 /* CallModel.m */,
+			);
+			path = Call;
+			sourceTree = "<group>";
+		};
+		1261F0151AE6598C00693710 /* Hangup */ = {
+			isa = PBXGroup;
+			children = (
+				1261F0161AE659AC00693710 /* HangupModel.h */,
+				1261F0171AE659AC00693710 /* HangupModel.m */,
+			);
+			path = Hangup;
 			sourceTree = "<group>";
 		};
 		12622E601ABC224E00B52E3F /* Keyboard */ = {
@@ -1656,6 +1688,7 @@
 				12D0C8811AB6D2920039A197 /* AboutWXTVersion@2x.png */,
 				12D0C8781AB6AE980039A197 /* AboutUsLogo@2x.png */,
 				12D0C8681AB67B9A0039A197 /* LoadDataLogo@2x.png */,
+				12FC93671AE73FEC0003B927 /* HangupCall@2x.png */,
 				128C0A071AD6765700AFD5DF /* NoWifi@2x.png */,
 				12D0C8661AB673910039A197 /* wxtRecharge@2x.png */,
 				126CA4131AB30F5E00E08A0B /* T_Back@2x.png */,
@@ -2274,8 +2307,7 @@
 			children = (
 				DDB58F141AD3C6A2006248E9 /* CallBackVC.h */,
 				DDB58F151AD3C6A2006248E9 /* CallBackVC.m */,
-				DDB58F161AD3C6A2006248E9 /* CallModel.h */,
-				DDB58F171AD3C6A2006248E9 /* CallModel.m */,
+				1261F0101AE6591400693710 /* CallModel */,
 				DDB58F181AD3C6A2006248E9 /* ContactDetail */,
 				DDB58F1E1AD3C6A2006248E9 /* ContactsCallViewController.h */,
 				DDB58F1F1AD3C6A2006248E9 /* ContactsCallViewController.m */,
@@ -2890,6 +2922,7 @@
 				120A2C421AB17AFD006A28B1 /* sign13@2x.png in Resources */,
 				12622BD51ABD4425003F04A5 /* CallBackIconImgNor@2x.png in Resources */,
 				120A2C6E1AB19473006A28B1 /* LoginUser@2x.png in Resources */,
+				12FC93681AE73FEC0003B927 /* HangupCall@2x.png in Resources */,
 				1277D0101AC528500008D9B6 /* ResetPwd@2x.png in Resources */,
 				126CA4151AB30F5E00E08A0B /* T_Back@2x.png in Resources */,
 				1263EFE91ACD35820014C347 /* iTunesArtWork.png in Resources */,
@@ -3107,6 +3140,7 @@
 				775842C71AB95A300039B129 /* it_lib_files.cpp in Sources */,
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
+				1261F0141AE6596A00693710 /* CallModel.m in Sources */,
 				775C58CC1ABA7B75005B6B40 /* SubShopModel.m in Sources */,
 				775843111AB95A300039B129 /* WXMutiScanViewCell.m in Sources */,
 				12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */,
@@ -3142,7 +3176,6 @@
 				775843051AB95A300039B129 /* StrikeThroughLabel.m in Sources */,
 				1262E2C51ACA50B600667C54 /* FindEntity.m in Sources */,
 				775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */,
-				DDB58F441AD3C6A2006248E9 /* CallModel.m in Sources */,
 				775843311AB95A300039B129 /* WXUITabBarVC.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
@@ -3192,6 +3225,7 @@
 				775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */,
 				775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */,
 				775843261AB95A300039B129 /* WXUILabel.m in Sources */,
+				1261F0181AE659AC00693710 /* HangupModel.m in Sources */,
 				DDB58F511AD3C6A2006248E9 /* CallHistoryEntityExt.m in Sources */,
 				1262E2C61ACA50B600667C54 /* WXTFindModel.m in Sources */,
 				775843021AB95A300039B129 /* BaseSearchEntity.m in Sources */,
