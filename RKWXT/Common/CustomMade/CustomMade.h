@@ -15,6 +15,8 @@
 #define	kIsAppModePublic ([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Public) //是否为公众版
 #define	kSubShopID [CustomMadeOBJ sharedCustomMadeOBJS].subShopID //分店ID
 #define	kAreaID [CustomMadeOBJ sharedCustomMadeOBJS].areaID //区域ID
+#define kFindName [CustomMadeOBJ sharedCustomMadeOBJS].findSignName   //发现标签名字
+#define kShowFind  [CustomMadeOBJ sharedCustomMadeOBJS].showFindNav //展示发现nav
 
 //以下目前都没用了
 #define kMerchantName [CustomMadeOBJ sharedCustomMadeOBJS].merchantName //软件的名称

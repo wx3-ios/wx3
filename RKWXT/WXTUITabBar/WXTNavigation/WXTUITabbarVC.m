@@ -60,6 +60,9 @@
     [findItem setTabBarItemImage:[UIImage imageNamed:@"FindNormal.png"] forState:WXButtonControlState_Normal];
     [findItem setTabBarItemImage:[UIImage imageNamed:@"FindSelected.png"] forState:WXButtonControlState_Selected];
     [findItem setTabBarItemTitle:@"发现" forState:WXButtonControlState_Normal];
+    if(kFindName){
+        [findItem setTabBarItemTitle:kFindName forState:WXButtonControlState_Normal];
+    }
     
     WXUITabBarItem *moreItem = [self createTabbarItem];
     [moreItem setTabBarItemImage:[UIImage imageNamed:@"UserNormal.png"] forState:WXButtonControlState_Normal];

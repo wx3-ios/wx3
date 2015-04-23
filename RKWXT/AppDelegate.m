@@ -67,7 +67,7 @@
     //监听电话
     [self listenSystemCall];
     // 集成极光推送功能
-    [self initJPushApi];
+//    [self initJPushApi];
     [APService setupWithOption:launchOptions];
     
     //自动登录通知
@@ -95,9 +95,9 @@
         [self.window makeKeyAndVisible];
         
         //自动登录
-//        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-//        LoginModel *_loginModel = [[LoginModel alloc] init];
-//        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+        LoginModel *_loginModel = [[LoginModel alloc] init];
+        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
     }else{
         LoginVC *vc = [[LoginVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];

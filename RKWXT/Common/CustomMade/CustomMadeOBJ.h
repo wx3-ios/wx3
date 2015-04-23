@@ -33,6 +33,8 @@ typedef enum {
 //当app分类为大众版的时候~ 分店ID和区域ID才有用~
 - (NSInteger)subShopID;
 - (NSInteger)areaID;
+- (NSString*)findSignName;
+- (NSInteger)showFindNav;
 
 #pragma mark 引导页~
 - (BOOL)isGuideEnabled;

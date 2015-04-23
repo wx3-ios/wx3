@@ -27,6 +27,8 @@ typedef enum {
 #define D_KEY_APP_CATEGORY @"D_KEY_APP_CATEGORY"
 #define D_KEY_APP_SUBSHOPID @"D_KEY_APP_SUBSHOPID"
 #define D_KEY_APP_AREAID	@"D_KEY_APP_AREAID"
+#define D_KEY_FIND_NAME    @"D_KEY_FIND_NAME"
+#define D_KEY_FIND_SHOWNAV @"D_KEY_FIND_SHOWNAV"
 
 #pragma mark 引导页
 #define D_KEY_APP_GUIDE @"D_KEY_APP_GUIDE"
@@ -108,6 +110,18 @@ typedef enum {
 - (NSInteger)areaID{
 	NSInteger areaID = [[_customMadeDic objectForKey:D_KEY_APP_AREAID] integerValue];
 	return areaID;
+}
+
+//发现栏名字
+-(NSString*)findSignName{
+    NSString *findName = [_customMadeDic objectForKey:D_KEY_FIND_NAME];
+    KFLog_Normal(YES, @"findName = %@",findName);
+    return findName;
+}
+
+-(NSInteger)showFindNav{
+    NSInteger show = [[_customMadeDic objectForKey:D_KEY_FIND_SHOWNAV] integerValue];
+    return show;
 }
 
 - (BOOL)isDistributeServerAddressOld{
