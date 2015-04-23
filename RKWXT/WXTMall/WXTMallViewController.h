@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXTMallViewController : BaseVC
+@interface WXTMallViewController : WXUIViewController
 
 @end

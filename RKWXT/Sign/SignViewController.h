@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignViewController : BaseVC
+@interface SignViewController : WXUIViewController
 
 @end

@@ -50,7 +50,6 @@
     #import "Common.h"
     #import "WXTUserOBJ.h"
     #import "UIDevice+screenType.h"
-    #import "BaseVC.h"
 
 #import "SysInterfaceBridge.h"
 #import "UtilTool.h"

@@ -7,6 +7,6 @@
 //
 
 
-@interface RegistVC : BaseVC
+@interface RegistVC : WXUIViewController
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserInfoVC : BaseVC
+@interface UserInfoVC : WXUIViewController
 
 @end

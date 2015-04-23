@@ -17,13 +17,12 @@
 
 #define Size self.view.bounds.size
 
-@interface ContactsCallViewController ()<ToContactDetailVCDelegate,UITableViewDataSource,UITableViewDelegate,CallPhoneDelegate>{
+@interface ContactsCallViewController ()<ToContactDetailVCDelegate,CallPhoneDelegate>{
     CallViewController * _recentCall;
     WXContacterVC * _contacterVC;
     UILabel *numberLabel;
     NSString *numberStr;
     
-    UITableView *_tableView;
     WXContacterModel *contactModel;
 }
 
@@ -33,7 +32,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+    [self setCSTNavigationViewHidden:YES animated:NO];
     [self addNotification];
     [_recentCall addNotification];   //在此为通话界面添加通知可确保不重复
 }
@@ -42,11 +41,11 @@
     [super viewDidLoad];
     
     _contacterVC = [[WXContacterVC alloc] init];
-    [_contacterVC.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap-50)];
+    [_contacterVC.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap)];
     [_contacterVC setDetailDelegate:self];
     
     _recentCall = [[CallViewController alloc]init];
-    [_recentCall.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap-50)];
+    [_recentCall.view setFrame:CGRectMake(0, yGap, Size.width, Size.height-yGap)];
     [_recentCall setKeyPad_type:E_KeyPad_Show];
     [_recentCall setCallDelegate:self];
     
@@ -54,12 +53,6 @@
     [self loadSegmentControl];
     
     contactModel = [[WXContacterModel alloc] init];
-    
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yGap, Size.width, Size.height - yGap - 50 - 4*NumberBtnHeight-InputTextHeight)];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    //    [self.view addSubview:_tableView];
-    //    [_tableView reloadData];
 }
 
 -(void)selectSegmentToIndexOne{
@@ -72,9 +65,8 @@
 -(void)loadSegmentControl{
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
     imgView.frame = CGRectMake(0, 0, Size.width, 66);
-    //    [imgView setImage:[UIImage imageNamed:@"TopBgImg.png"]];
     [imgView setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
-    [self.view addSubview:imgView];
+    [self addSubview:imgView];
     
     CGFloat segWidth = 180;
     CGFloat segHeight = 30;
@@ -92,14 +84,7 @@
     [_segmentControl setBorderRadian:5.0 width:1 color:[UIColor whiteColor]];  //0x2c97df
     [_segmentControl setBackgroundColor:[UIColor whiteColor]];
     [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
-    //    [self.navigationController.navigationBar addSubview:_segmentControl];
-    [self.view addSubview:_segmentControl];
-    
-    UILabel *redCircle = [[UILabel alloc] init];
-    redCircle.frame = CGRectMake(137, 36, 8, 8);
-    [redCircle setBackgroundColor:[UIColor redColor]];
-    [redCircle setBorderRadian:8.0 width:1.0 color:[UIColor redColor]];
-    //    [self.view addSubview:redCircle];
+    [self addSubview:_segmentControl];
 }
 
 -(void)segmentControlChange:(UISegmentedControl *)segmentControl{
@@ -120,35 +105,9 @@
 }
 
 -(void)addNotification{
-    //    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
-    //    [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
-    //    [defaultCenter addObserver:self selector:@selector(delBtnClick) name:DelNumber object:nil];
+    [NOTIFY_CENTER removeObserver:self];
     [NOTIFY_CENTER addObserver:self selector:@selector(selectSegmentToIndexOne) name:ClickedKeyboardBtn object:nil];
 }
-
-//-(void)inputNumber:(id)sender{
-//    WXUIButton *btn = sender;
-//    NSInteger number = (btn.tag+1==11?0:btn.tag+1);
-//    if(number <= 9 && number >= 0){
-//        [_segmentControl setHidden:YES];
-//        [numberLabel setHidden:NO];
-//
-//        NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
-//        numberStr = [numberStr stringByAppendingString:str];
-//        [numberLabel setText:numberStr];
-//    }
-//
-//    if(numberStr.length > 0){
-//        [[NSNotificationCenter defaultCenter] postNotificationName:InputNumber object:nil];
-//    }else{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:DownKeyBoard object:nil];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kInputChange object:nil];
-//    }
-//
-//    [contactModel removeMatchingContact];
-//    [contactModel matchSearchStringList:numberStr];
-//    [_tableView reloadData];
-//}
 
 -(void)callPhoneWith:(NSString *)phoneStr andPhoneName:(NSString *)phoneName{
     numberStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
@@ -164,46 +123,14 @@
     ContactDetailVC * detailVC = [[ContactDetailVC alloc] init];
     ContacterEntity *entity = sender;
     detailVC.model = entity;
-    [self.navigationController pushViewController:detailVC animated:YES];
-}
-
-#pragma tableView
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return contactModel.filterArray.count;
-}
-
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kContactsCallIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kContactsCallIdentifier];
-    }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    //    cell.imageView.image = [UIImage imageNamed:@""];
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
-    cell.textLabel.text = ((ContacterEntity*)contactModel.filterArray[indexPath.row]).fullName;
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.navigationController pushViewController:[[ContactDetailVC alloc] init] animated:YES];
+    [self.wxNavigationController pushViewController:detailVC];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [NOTIFY_CENTER postNotificationName:kTableViewHidden object:nil];
     [NOTIFY_CENTER removeObserver:self];
-}
-
--(void)tableViewHidden{
-    if(numberStr.length > 0){
-        _tableView.hidden = NO;
-    }else{
-        _tableView.hidden = YES;
-    }
+    [_recentCall setEmptyText];
 }
 
 @end

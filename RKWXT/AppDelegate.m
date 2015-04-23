@@ -19,9 +19,10 @@
 #import "ContactUitl.h"
 #import "APService.h"
 #import "LoginModel.h"
+#import "WXTUITabbarVC.h"
 
 @interface AppDelegate (){
-    UINavigationController *_navigation;
+//    UINavigationController *_navigation;
     CTCallCenter *_callCenter;
 }
 
@@ -89,22 +90,23 @@
 	self.window.backgroundColor = [UIColor whiteColor];
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){
-        WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
-        [tabbar createViewController];
-        [tabbar.navigationController setNavigationBarHidden:NO];
-        _navigation = [[UINavigationController alloc] initWithRootViewController:tabbar];
-        [self.window setRootViewController:_navigation];
+//        WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
+        WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
+//        [tabbar createViewController];
+//        [tabbar.navigationController setNavigationBarHidden:NO];
+        self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
+        [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];
         
         //自动登录
-        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-        LoginModel *_loginModel = [[LoginModel alloc] init];
-        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+//        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+//        LoginModel *_loginModel = [[LoginModel alloc] init];
+//        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
     }else{
         LoginVC *vc = [[LoginVC alloc] init];
-        _navigation = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
         [vc.navigationController setNavigationBarHidden:YES];
-        [self.window setRootViewController:_navigation];
+        [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];
     }
 }
@@ -117,9 +119,9 @@
     [self removeNotification];
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){
-        LoginVC *loginVC = [[LoginVC alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
-        [_navigation presentViewController:navigationController animated:YES completion:nil];
+//        LoginVC *loginVC = [[LoginVC alloc] init];
+//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
+//        [_navigation presentViewController:navigationController animated:YES completion:nil];
     }
 }
 

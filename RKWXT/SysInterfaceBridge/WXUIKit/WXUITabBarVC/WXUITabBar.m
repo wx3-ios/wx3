@@ -44,7 +44,7 @@
 }
 
 - (id)initWithTabBarHeight:(CGFloat)height{
-    if(self = [self initWithFrame:CGRectMake(0, ScreenHeight-height, ScreenWidth, height)]){
+    if(self = [self initWithFrame:CGRectMake(0, IPHONE_SCREEN_HEIGHT-height, IPHONE_SCREEN_WIDTH, height)]){
     }
     return self;
 }

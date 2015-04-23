@@ -6,8 +6,7 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "BaseVC.h"
 @class ContacterEntity;
-@interface ContactDetailVC : BaseVC
+@interface ContactDetailVC : WXUIViewController
 @property (nonatomic, strong) ContacterEntity * model;
 @end

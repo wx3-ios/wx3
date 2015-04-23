@@ -9,7 +9,6 @@
 #import "WXTUITabBarController.h"
 #import "WXTFindVC.h"
 #import "WXTMallViewController.h"
-#import "WXTMallVC.h"
 #import "UserInfoVC.h"
 #import "ContactsCallViewController.h"
 #import "CallViewController.h"

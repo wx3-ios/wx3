@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "BaseVC.h"
-
-@interface WXTResetPwdVC : BaseVC
+@interface WXTResetPwdVC : WXUIViewController
 
 @end

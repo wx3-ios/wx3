@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RechargeVC : BaseVC
+@interface RechargeVC : WXUIViewController
 
 @end

@@ -8,8 +8,6 @@
 
 #import "RootViewController.h"
 #import "WXUITabBar.h"
-
-#import "WXTMallVC.h"
 #import "WXContacterVC.h"
 #import "WXTFindVC.h"
 #import "UserInfoVC.h"
@@ -44,11 +42,10 @@
     
     wxTabBar = [[WXUITabBar alloc] init];
     [wxTabBar setTabBarItems:[NSArray arrayWithObjects:t_homepage,keyPadItem,contacterItem,rechargeItem, nil]];
-    WXTMallVC *mallVC = [[WXTMallVC alloc] init];
-    WXContacterVC *callview = [[WXContacterVC alloc]init];
+    WXContacterVC *callview = [[WXContacterVC alloc] init];
     WXTFindVC *phoneView = [[WXTFindVC alloc]init];
     UserInfoVC *infoVC = [[UserInfoVC alloc] init];
-    if (self = [super initWithControllers:[NSArray arrayWithObjects:mallVC,callview,phoneView, infoVC,nil] tabBar:wxTabBar]) {
+    if (self = [super initWithControllers:[NSArray arrayWithObjects:callview,phoneView, infoVC,nil] tabBar:wxTabBar]) {
         
     }
     return self;

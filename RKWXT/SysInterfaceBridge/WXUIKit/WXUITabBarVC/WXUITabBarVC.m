@@ -54,7 +54,12 @@
     [_tabBar setDelegate:self];
     
     if(kInvalidSelectedIndex == _selectedIndex){
-        _selectedIndex = 0;
+//        _selectedIndex = 1;
+        if([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Eatable){
+            _selectedIndex = 0;
+        }else{
+            _selectedIndex = 1;
+        }
     }
     [self showCurrentIndex:_selectedIndex preIndex:_preSelectedIndex];
     [self.tabBar setSelectedIndex:_selectedIndex];

@@ -19,7 +19,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 - (void)viewDidLoad {
@@ -54,7 +54,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 //    [_activityIndicatorView startAnimating] ;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView

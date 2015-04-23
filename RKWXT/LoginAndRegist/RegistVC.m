@@ -15,7 +15,7 @@
 #define UserPhoneLength (11)
 #define EveryCellHeight (40)
 #define kFetchPasswordDur (60)
-#define Size self.view.bounds.size
+#define Size self.bounds.size
 
 enum{
     WXT_Regist_UserPhone = 0,
@@ -65,12 +65,13 @@ enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self setCSTNavigationViewHidden:YES animated:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur) name:UIKeyboardDidHideNotification object:nil];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.view setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
+    [self setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     
     [self createLeftBackBtn];
     [self createUI];
@@ -89,7 +90,7 @@ enum{
     [backBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
     [backBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backLogin) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backBtn];
+    [self addSubview:backBtn];
 }
 
 -(void)createUI{
@@ -103,14 +104,14 @@ enum{
     [textLabel setFont:WXTFont(12.0)];
     [textLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
     [textLabel setNumberOfLines:0];
-    [self.view addSubview:textLabel];
+    [self addSubview:textLabel];
     
     
     yOffset += textHeight;
     _baseView = [[UIView alloc] init];
     _baseView.frame = CGRectMake(0, yOffset, Size.width, EveryCellHeight*WXT_Regist_Invalid);
     [_baseView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:_baseView];
+    [self addSubview:_baseView];
     
     
     yOffset = 20;
@@ -241,7 +242,7 @@ enum{
     [gainBtn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
     [gainBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateSelected];
     [gainBtn addTarget:self action:@selector(regist) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:gainBtn];
+    [self addSubview:gainBtn];
 }
 
 #pragma mark keyboard
@@ -377,7 +378,7 @@ enum{
     if(![self checkRegistInfo]){
         return;
     }
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
     [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:123 andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
@@ -396,7 +397,8 @@ enum{
 
 #pragma mark back
 -(void)backLogin{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+    }];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

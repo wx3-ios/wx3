@@ -14,7 +14,9 @@
 #import "FetchPwdModel.h"
 #import "RegistVC.h"
 #import "WXTDatabase.h"
-#define Size self.view.bounds.size
+#import "WXTUITabbarVC.h"
+
+#define Size self.bounds.size
 #define kMinUserLength (8)
 #define kUserExactLength (11)
 #define kFetchPasswordDur (60)
@@ -57,20 +59,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+    [self setCSTNavigationViewHidden:YES animated:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self.view setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
+    [self setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     
     CGFloat yOffset = 45.0;
     UIImage *icon = [UIImage imageNamed:@"LoginLogo.png"];
     CGSize iconSize = icon.size;
     _iconShell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Size.width, iconSize.height+yOffset)];
     [_iconShell setClipsToBounds:YES];
-    [self.view addSubview:_iconShell];
+    [self addSubview:_iconShell];
     
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake((Size.width-iconSize.width)*0.5, yOffset, iconSize.width, iconSize.height)];
     [iconImageView setImage:icon];
@@ -78,7 +80,7 @@
     yOffset +=iconSize.height + 15.0;
     
     _optShell = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, Size.width, Size.height - yOffset)];
-    [self.view addSubview:_optShell];
+    [self addSubview:_optShell];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [_optShell addGestureRecognizer:tap];
     
@@ -338,9 +340,9 @@
     [userDefault setUser:_userTextField.text];
     [userDefault setPwd:_pwdTextField.text];
     
-    WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
-    [tabbar createViewController];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tabbar];
+    WXTUITabbarVC *tabbar = [[WXTUITabbarVC alloc] init];
+//    [tabbar createViewController];
+    WXUINavigationController *nav = [[WXUINavigationController alloc] initWithRootViewController:tabbar];
     [self presentViewController:nav animated:YES completion:^{
         WXTDatabase * database = [WXTDatabase shareDatabase];
         [database createDatabase:userDefault.wxtID];
@@ -373,7 +375,7 @@
 #pragma mark 登录
 - (void)submit{
     if([self checkUserValide] && [self checkPasswordValide]){
-        [self showWaitView:self.view];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
         [_model loginWithUser:_userTextField.text andPwd:_pwdTextField.text];
     }
     [self textFieldResighFirstResponder];
@@ -381,7 +383,7 @@
 
 - (void)toRegister{
     RegistVC *registVC = [[RegistVC alloc] init];
-    [self.navigationController pushViewController:registVC animated:YES];
+    [self.wxNavigationController pushViewController:registVC];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

@@ -74,7 +74,7 @@
 	[_tipLabel setLoadText:text];
 	UIFont *font = [UIFont systemFontOfSize:kTipFontSize];
 	CGSize size = [text stringSize:font];
-	CGFloat xOffset = (self.bounds.size.width - size.width)*0.5;
+	CGFloat xOffset = (self.bounds.size.width - size.width)*0.5-5;
 	CGRect rect = _tipLabel.frame;
 	rect.origin.x = xOffset;
 	CGFloat dotWidth = 15.0;

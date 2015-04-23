@@ -15,7 +15,7 @@
 
 #define DownLoadUrl @"http://wxa.67call.com/shop/index.php/index/app_down/id/"
 
-#define Size self.view.bounds.size
+#define Size self.bounds.size
 
 @interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>{
     UITableView *_tableView;
@@ -24,20 +24,21 @@
 
 @implementation ContactDetailVC
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, -20, Size.width, Size.height);
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
-    [self.view addSubview:_tableView];
+    [self addSubview:_tableView];
     [_tableView setTableHeaderView:[self tableForHeadView]];
     [_tableView setTableFooterView:[self tableForFootView]];
     
@@ -251,15 +252,14 @@
         backVC.phoneName = _model.fullName;
     }
     if([backVC callPhone:phoneStr]){
-//        [self.navigationController pushViewController:backVC animated:YES];
         [self presentViewController:backVC animated:YES completion:^{
         }];
     }
 }
 
 -(void)back{
-    [self.navigationController popViewControllerAnimated:YES];
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+    }];
 }
 
 @end

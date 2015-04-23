@@ -285,7 +285,8 @@
     [_model removeMatchingContact];
     [_model matchSearchStringList:searchString];
 //    [controller.searchResultsTableView reloadData];
-    [self showWaitView:self.view];
+//    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     return YES;
 }
 

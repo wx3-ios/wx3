@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXTMessageCenterVC : BaseVC<UITableViewDataSource,UITableViewDelegate>{
+@interface WXTMessageCenterVC : WXUIViewController<UITableViewDataSource,UITableViewDelegate>{
     UITableView * msgTableView;
 }
 

@@ -10,7 +10,7 @@
 #import "RechargeCell.h"
 #import "RechargeView.h"
 
-#define Size self.view.bounds.size
+#define Size self.bounds.size
 #define HeadViewHeight (80)
 #define kAnimatedDur (0.7)
 
@@ -33,20 +33,22 @@ enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    self.title = @"充值中心";
+//    [self.navigationController setNavigationBarHidden:NO];
+//    self.title = @"充值中心";
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    [self setCSTTitle:@"充值中心"];
+    
+    [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-HeadViewHeight);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setScrollEnabled:NO];
-    [self.view addSubview:_tableView];
+    [self addSubview:_tableView];
     [_tableView setTableHeaderView:[self tableForHeadView]];
     [_tableView setTableFooterView:[self viewFortableFootView]];
     
@@ -56,7 +58,7 @@ enum{
     
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     _rechargeView.rechargeUserphoneStr = userDefault.user;
-    [self.view addSubview:_rechargeView];
+    [self addSubview:_rechargeView];
     [self showRechargeInfo];
 }
 

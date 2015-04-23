@@ -11,7 +11,7 @@
 #import "MallEntity.h"
 
 //#define ShopURL @"http://wxt.haoxueyou.com/mobile/"
-#define Size self.view.bounds.size
+#define Size self.bounds.size
 
 @interface WXTMallViewController ()<UIWebViewDelegate,wxtMallDelegate>{
     UIWebView * _webView;
@@ -25,27 +25,29 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 50)];
     _webView.scalesPageToFit = YES;
     _webView.delegate = self;
-    [self.view addSubview:_webView];
+    [self addSubview:_webView];
     
     shellView = [[UIView alloc] init];
     shellView.frame = CGRectMake(0, 66, Size.width, Size.height-50-66);
     [shellView setBackgroundColor:[UIColor clearColor]];
     [shellView setHidden:YES];
-    [self.view addSubview:shellView];
+    [self addSubview:shellView];
     [self showReloadBaseView];
     
     _model = [[WXTMallModel alloc] init];
     [_model setMallDelegate:self];
     [_model loadMallData];
     
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 #pragma mark showBaseView
@@ -95,7 +97,7 @@
 
 //无网络情况下二次加载
 -(void)reloadFindData{
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     [_model loadMallData];
 }
 
@@ -124,7 +126,7 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [self unShowWaitView];

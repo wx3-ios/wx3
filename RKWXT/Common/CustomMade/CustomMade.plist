@@ -5,7 +5,7 @@
 	<key>D_KEY_APP_AREAID</key>
 	<integer>45</integer>
 	<key>D_KEY_APP_CATEGORY</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>D_KEY_APP_MERCHANTNAME</key>
 	<string>我信通</string>
 	<key>D_KEY_APP_SUBSHOPID</key>

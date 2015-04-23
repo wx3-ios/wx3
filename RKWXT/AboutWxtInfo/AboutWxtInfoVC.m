@@ -10,7 +10,7 @@
 #import "UIView+Render.h"
 #import "WXTVersion.h"
 
-#define Size self.view.bounds.size
+#define Size self.bounds.size
 #define EveryCellHeight (36)
 
 enum{
@@ -42,21 +42,21 @@ enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    self.title = @"关于我们";
 }
 
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = WXColorWithInteger(0xefeff4);
+    [self setCSTTitle:@"关于我们"];
+    self.backgroundColor = WXColorWithInteger(0xefeff4);
+    
     _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_scrollerView setDelegate:self];
     [_scrollerView setScrollEnabled:YES];
     [_scrollerView setShowsVerticalScrollIndicator:NO];
     [_scrollerView setContentSize:CGSizeMake(Size.width, Size.height+10)];
-    [self.view addSubview:_scrollerView];
+    [self addSubview:_scrollerView];
     
     [self createBaseView];
     [self showBaseInfo];

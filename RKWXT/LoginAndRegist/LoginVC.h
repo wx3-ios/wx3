@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginVC : BaseVC
+@interface LoginVC : WXUIViewController
 
 @end

@@ -28,13 +28,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    self.title = @"修改密码";
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = WXColorWithInteger(0xefeff4);
+    [self setCSTTitle:@"重置密码"];
+    self.backgroundColor = WXColorWithInteger(0xefeff4);
     
     _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height-66);
@@ -65,7 +64,7 @@
     [_oldPwdField setBackgroundColor:[UIColor whiteColor]];
     [_oldPwdField setPlaceHolder:@"请输入旧密码" color:[UIColor grayColor]];
     [_oldPwdField setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:_oldPwdField];
+    [self addSubview:_oldPwdField];
     
     
     yOffset += textFieldHeight+10;
@@ -79,7 +78,7 @@
     [_newPwdField setBackgroundColor:[UIColor whiteColor]];
     [_newPwdField setTextAlignment:NSTextAlignmentCenter];
     [_newPwdField setPlaceHolder:@"请输入新密码" color:[UIColor grayColor]];
-    [self.view addSubview:_newPwdField];
+    [self addSubview:_newPwdField];
     
     yOffset += textFieldHeight+10;
     _confirmPwd = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset, textFieldHeight)];
@@ -92,7 +91,7 @@
     [_confirmPwd setTintColor:[UIColor blackColor]];
     [_confirmPwd setTextAlignment:NSTextAlignmentCenter];
     [_confirmPwd setPlaceHolder:@"再次输入新密码" color:[UIColor grayColor]];
-    [self.view addSubview:_confirmPwd];
+    [self addSubview:_confirmPwd];
 }
 
 -(void)createCompleteBtn{
@@ -104,7 +103,7 @@
     [completeBtn setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
     [completeBtn setTitle:@"完 成" forState:UIControlStateNormal];
     [completeBtn addTarget:self action:@selector(complieteResetPwd) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:completeBtn];
+    [self addSubview:completeBtn];
 }
 
 -(void)complieteResetPwd{
@@ -135,7 +134,7 @@
         return;
     }
     
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     [self resignAllFirstResponder];
     [_model resetPwdWithNewPwd:_newPwdField.text];
 }

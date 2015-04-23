@@ -10,7 +10,7 @@
 #define kSearchBarHeight (44)
 
 @protocol ToContactDetailVCDelegate;
-@interface WXContacterVC : BaseVC{
+@interface WXContacterVC : WXUIViewController{
     UILabel * _accessGrantedTip;
 }
 @property (nonatomic,assign) id<ToContactDetailVCDelegate>detailDelegate;

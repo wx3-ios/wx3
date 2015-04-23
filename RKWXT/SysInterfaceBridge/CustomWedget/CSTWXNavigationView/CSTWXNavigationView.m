@@ -13,7 +13,7 @@
 
 @interface CSTWXNavigationView()
 {
-    __unsafe_unretained WXUILabel *_titleLable;
+    WXUILabel *_titleLable;
 }
 @property (nonatomic,retain)UIView*_leftNavigationItem;
 @property (nonatomic,retain)UIView *_rightNavigationItem;
@@ -23,17 +23,18 @@
 @synthesize _leftNavigationItem,_rightNavigationItem,titleLable = _titleLable;
 
 - (void)dealloc{
-//    RELEASE_SAFELY(_leftNavigationItem);
-//    RELEASE_SAFELY(_rightNavigationItem);
-//    RELEASE_SAFELY(_titleLable);
-//    [super dealloc];
+    RELEASE_SAFELY(_leftNavigationItem);
+    RELEASE_SAFELY(_rightNavigationItem);
+    RELEASE_SAFELY(_titleLable);
+    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-		[self setBackgroundColor:kOtherColor(E_App_Other_Color_NavBar)];
+//		[self setBackgroundColor:kOtherColor(E_App_Other_Color_NavBar)];
+        [self setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
         CGFloat width = 200;
         CGRect titleRect = CGRectMake((frame.size.width-width)*0.5, 0, width, frame.size.height);
         if(isIOS7){

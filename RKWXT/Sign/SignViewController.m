@@ -42,7 +42,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 -(void)viewDidLoad{
@@ -220,7 +220,8 @@
 }
 
 -(void)backToLastPage{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+    }];
 }
 
 -(void)tappedOnDate:(NSDate *)selectedDate{

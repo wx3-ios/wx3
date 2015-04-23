@@ -14,7 +14,7 @@ typedef enum{
     kContactsSegmentIndex,
 }ContactsCallIndex;
 
-@interface ContactsCallViewController : BaseVC{
+@interface ContactsCallViewController : WXUIViewController{
 //    UITextField * inputText;
 //    UISegmentedControl * segmentControl;
     NSInteger selectedSegmentIndex;

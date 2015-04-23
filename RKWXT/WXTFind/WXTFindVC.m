@@ -12,7 +12,7 @@
 #import "WXTFindCommmonCell.h"
 #import "FindCommonVC.h"
 
-#define Size self.view.bounds.size
+#define Size self.bounds.size
 #define TopViewHeight (66)
 #define DownTabbarHeight (50)
 
@@ -33,42 +33,42 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self createTopView:@"发现"];
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = WXColorWithInteger(0xefeff4);
+    [self setCSTTitle:@"发现"];
+    self.backgroundColor = WXColorWithInteger(0xefeff4);
     
     _model = [[WXTFindModel alloc] init];
     [_model setFindDelegate:self];
     [_model loadFindData];
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     
     dataArr = [[NSMutableArray alloc] init];
     spaceArr = [[NSMutableArray alloc] init];
     
     shellView = [[UIView alloc] init];
-    shellView.frame = CGRectMake(0, TopViewHeight, Size.width, Size.height-DownTabbarHeight-TopViewHeight);
+    shellView.frame = CGRectMake(0, 0, Size.width, Size.height-DownTabbarHeight);
     [shellView setBackgroundColor:[UIColor clearColor]];
     [shellView setHidden:YES];
-    [self.view addSubview:shellView];
+    [self addSubview:shellView];
     [self showReloadBaseView];
     
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, TopViewHeight, Size.width, Size.height-DownTabbarHeight-TopViewHeight);
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-DownTabbarHeight);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [_tableView setHidden:YES];
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [_tableView setTableFooterView:[self emptyView]];
-    [self.view addSubview:_tableView];
+    [self addSubview:_tableView];
     
-    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, TopViewHeight, Size.width, Size.height-DownTabbarHeight-TopViewHeight)];
+    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height-DownTabbarHeight)];
     [_webView setDelegate:self];
     [_webView setHidden:YES];
-    [self.view addSubview:_webView];
+    [self addSubview:_webView];
 }
 
 -(UIView *)emptyView{
@@ -191,7 +191,7 @@
     FindCommonVC *commonVC = [[FindCommonVC alloc] init];
     commonVC.webURl = entity.webUrl;
     commonVC.titleName = entity.name;
-    [self.navigationController pushViewController:commonVC animated:YES];
+    [self.wxNavigationController pushViewController:commonVC];
 }
 
 
@@ -240,7 +240,7 @@
 
 //无网络情况下二次加载
 -(void)reloadFindData{
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     [_model loadFindData];
 }
 
@@ -260,7 +260,7 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{

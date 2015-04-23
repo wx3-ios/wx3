@@ -6,9 +6,7 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "BaseVC.h"
-
-@interface CallBackVC : BaseVC
+@interface CallBackVC : WXUIViewController
 
 @property (nonatomic,strong) NSString *phoneName;   //手机号或名字
 

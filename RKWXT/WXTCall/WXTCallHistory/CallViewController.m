@@ -6,7 +6,6 @@
 //  Copyright (c) 2013年 jjyo.kwan. All rights reserved.
 //
 #import "CallViewController.h"
-#import "WXTMallVC.h"
 #import "WXTUITabBarController.h"
 #import "CallBackVC.h"
 #import "WXKeyPadModel.h"
@@ -70,12 +69,12 @@ typedef enum{
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Size.width, Size.height-66-50)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, self.bounds.size.height)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
 //    [_tableView setEditing:YES animated:YES];
-    [self.view addSubview:_tableView];
+    [self addSubview:_tableView];
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     textString = [[NSString alloc] init];
@@ -86,7 +85,11 @@ typedef enum{
 }
 
 
--(void)addNotification{
+-(void)addNotification{   //有点问题
+    self.keyPad_type = E_KeyPad_Down;
+    [self show];
+    
+    [NOTIFY_CENTER removeObserver:self];
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
@@ -415,19 +418,14 @@ typedef enum{
     [self callPhoneNumber];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [NOTIFY_CENTER removeObserver:self];
-    self.keyPad_type = E_KeyPad_Down;
-    [self setEmptyText];
-}
-
 -(void)setEmptyText{
     [_textLabel setText:@""];
     textString = @"";
     phoneName = @"";
     _showContacters = NO;
+    self.keyPad_type = E_KeyPad_Down;
     [_tableView reloadData];
+    [NOTIFY_CENTER removeObserver:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
 }
 

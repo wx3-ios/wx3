@@ -29,11 +29,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self setCSTTitle:@"个人中心"];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];
@@ -138,19 +139,20 @@
         case WXT_UserInfo_Recharge:
         {
             RechargeVC *rechargeVC = [[RechargeVC alloc] init];
-            [self.navigationController pushViewController:rechargeVC animated:YES];
+//            [self.navigationController pushViewController:rechargeVC animated:YES];
+            [self.wxNavigationController pushViewController:rechargeVC];
         }
             break;
         case WXT_UserInfo_Balance:
         {
             UserBalanceVC *userBalanceVC = [[UserBalanceVC alloc] init];
-            [self.navigationController pushViewController:userBalanceVC animated:YES];
+            [self.wxNavigationController pushViewController:userBalanceVC];
         }
             break;
         case WXT_UserInfo_Sign:
         {
             SignViewController *signVC = [[SignViewController alloc] init];
-            [self.navigationController pushViewController:signVC animated:YES];
+            [self.wxNavigationController pushViewController:signVC];
         }
             break;/*
         case WXT_UserInfo_Message:{
@@ -161,14 +163,15 @@
         case WXT_UserInfo_ResetPwd:
         {
             WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
-            [self.navigationController pushViewController:resetPwdVC animated:YES];
+            [self.wxNavigationController pushViewController:resetPwdVC];
         }
             break;
         case WXT_UserInfo_About:
         {
-            AboutWxtInfoVC *signVC = [[AboutWxtInfoVC alloc] init];
-            [self.navigationController pushViewController:signVC animated:YES];
+            AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
+            [self.wxNavigationController pushViewController:aboutVC];
         }
+            break;
         default:
             break;
     }
@@ -187,9 +190,10 @@
         [userDefault removeAllUserInfo];
         
         LoginVC *loginVC = [[LoginVC alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
-        [self.navigationController presentViewController:navigationController animated:YES completion:^{
-            [self.navigationController popToRootViewControllerAnimated:NO];
+        WXUINavigationController *navigationController = [[WXUINavigationController alloc] initWithRootViewController:loginVC];
+        [self.wxNavigationController presentViewController:navigationController animated:YES completion:^{
+            [self.wxNavigationController popToRootViewControllerAnimated:YES Completion:^{
+            }];
         }];
     }
 }

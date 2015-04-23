@@ -8,6 +8,6 @@
 
 #define kFindCellIdentifier   @"FindCellIdentifier"
 
-@interface WXTFindVC : BaseVC
+@interface WXTFindVC : WXUIViewController
 
 @end

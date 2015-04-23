@@ -36,12 +36,13 @@ typedef enum{
 #define IphoneSixPYgap (168)
 
 @protocol CallPhoneDelegate,WXKeyPadModelDelegate;
-@interface CallViewController : BaseVC<WXKeyPadModelDelegate>
+@interface CallViewController : WXUIViewController<WXKeyPadModelDelegate>
 @property (nonatomic,assign) id<CallPhoneDelegate>callDelegate;
 
 @property (nonatomic,assign) DownView_Type downview_type;
 @property (nonatomic,assign) E_KeyPad_Type keyPad_type;
 -(void)addNotification;
+-(void)setEmptyText;
 @end
 
 @protocol CallPhoneDelegate <NSObject>

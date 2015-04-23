@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserBalanceVC : BaseVC
+@interface UserBalanceVC : WXUIViewController
 
 @end

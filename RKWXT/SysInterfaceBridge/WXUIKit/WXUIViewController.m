@@ -8,6 +8,7 @@
 
 #import "WXUIViewController.h"
 #import "ServiceCommon.h"
+#import "YRSideViewController.h"
 #import "NetTipDelay.h"
 #import "WXWaitingHud.h"
 
@@ -23,6 +24,8 @@
     //全频阻塞
     WXWaitingHud *_fullScreenHud;
     
+    CSTWXNavigationView *_cstNavigationView;
+    WXUIView *_baseView;
     WXUIImageView *_bgImageView;
     WXUIView *_netTipView;
 }
@@ -34,32 +37,39 @@
 @synthesize openKeyboardNotification = _openKeyboardNotification;
 
 - (void)dealloc{
+    RELEASE_SAFELY(_waitingView);
+    RELEASE_SAFELY(_hud);
     [self showFullScreenHud:NO withTip:nil];
+    RELEASE_SAFELY(_fullScreenHud);
+    RELEASE_SAFELY(_baseView);
+    RELEASE_SAFELY(_cstNavigationView);
+    RELEASE_SAFELY(_bgImageView);
+    RELEASE_SAFELY(_netTipView);
     [self removeServiceOBS];
     [self removeKeyboardNotification];
-//    [super dealloc];
+    [super dealloc];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UtilTool colorWithHexString:@"#efeff4"];
-//    _baseView = [[WXUIView alloc] initWithFrame:self.view.bounds];
-//    [_baseView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin];
-//    [self.view addSubview:_baseView];
+    _baseView = [[WXUIView alloc] initWithFrame:self.view.bounds];
+    [_baseView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin];
+    [self.view addSubview:_baseView];
     //如果是tabBarVC的话则不显示导航栏~
-//    if(self.wxNavigationController && ![self isKindOfClass:[WXUITabBarVC class]]){
-//        [self addNavigationController];
-//    }
-//    [self setBackgroundColor:[UIColor whiteColor]];
-//    _bgImageView = [[WXUIImageView alloc] initWithFrame:_baseView.bounds];
-//    [_bgImageView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin
-//     | UIViewAutoresizingFlexibleHeight
-//     |UIViewAutoresizingFlexibleTopMargin
-//     |UIViewAutoresizingFlexibleLeftMargin
-//     |UIViewAutoresizingFlexibleWidth
-//     |UIViewAutoresizingFlexibleRightMargin];
-//    [_baseView addSubview:_bgImageView];
+    if(self.wxNavigationController && ![self isKindOfClass:[WXUITabBarVC class]]){
+        [self addNavigationController];
+    }
+    [self setBackgroundColor:[UIColor whiteColor]];
+    _bgImageView = [[WXUIImageView alloc] initWithFrame:_baseView.bounds];
+    [_bgImageView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin
+     | UIViewAutoresizingFlexibleHeight
+     |UIViewAutoresizingFlexibleTopMargin
+     |UIViewAutoresizingFlexibleLeftMargin
+     |UIViewAutoresizingFlexibleWidth
+     |UIViewAutoresizingFlexibleRightMargin];
+    [_baseView addSubview:_bgImageView];
+    
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
     if ( isIOS7 ){
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -75,11 +85,11 @@
     [self addSubview:_waitingView];
     
     _hud = [[WXWaitingHud alloc] initWithParentView:_baseView];
-	[_hud setHidden:YES];
+    [_hud setHidden:YES];
     [_hud setFrame:CGRectMake(0, IPHONE_STATUS_BAR_HEIGHT+NAVIGATION_BAR_HEGITH, IPHONE_SCREEN_WIDTH, self.view.bounds.size.height-(IPHONE_STATUS_BAR_HEIGHT+NAVIGATION_BAR_HEGITH))];
     [self.view addSubview:_hud];
     [self addServiceOBS];
-//    [self createNetTipView];
+    //    [self createNetTipView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -91,15 +101,15 @@
     if(show){
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
         _fullScreenHud = [[WXWaitingHud alloc] initWithParentView:keyWindow];
-		[_fullScreenHud setText:tip];
+        [_fullScreenHud setText:tip];
         [keyWindow addSubview:_fullScreenHud];
-		[_fullScreenHud startAnimate];
+        [_fullScreenHud startAnimate];
     }else{
         if(_fullScreenHud){
-			[_fullScreenHud stopAniamte];
-			[_fullScreenHud setHidden:YES];
+            [_fullScreenHud stopAniamte];
+            [_fullScreenHud setHidden:YES];
             [_fullScreenHud removeFromSuperview];
-
+            RELEASE_SAFELY(_fullScreenHud);
         }
     }
 }
@@ -109,7 +119,7 @@
     _netTipView = [[WXUIView alloc] initWithFrame:CGRectMake(0, yOffset, self.bounds.size.width, kNetWorkTipHeight)];
     [_netTipView setBackgroundColor:[UIColor whiteColor]];
     [_netTipView setBackgroundImage:[UIImage imageNamed:@"disconnectBg.png"]];
-    WXUILabel *label = [[WXUILabel alloc] initWithFrame:_netTipView.bounds] ;
+    WXUILabel *label = [[[WXUILabel alloc] initWithFrame:_netTipView.bounds] autorelease];
     [label setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
     [label setTextColor:WXColorWithInteger(0xffffff)];
     [label setTextAlignment:UITextAlignmentCenter];
@@ -125,69 +135,60 @@
     [notificationCenter addObserver:self selector:@selector(serviceDisconnected:) name:D_Notification_Name_ServiceDisconnect object:nil];
     [notificationCenter addObserver:self selector:@selector(serviceConnected:) name:D_Notification_Name_ServiceConnectedOK object:nil];
     [notificationCenter addObserver:self selector:@selector(netTipDelayFinished) name:D_Notification_Name_NetTipDelayFinished object:nil];
-//	[notificationCenter addObserver:self selector:@selector(netWorkDisconected) name:D_Notification_Name_NetWorkDisconnected object:nil];
-//	[notificationCenter addObserver:self selector:@selector(netWorkConnected) name:D_Notification_Name_NetWorkWifi object:nil];
-//	[notificationCenter addObserver:self selector:@selector(netWorkConnected) name:D_Notification_Name_NetWorkWWAN object:nil];
+    //	[notificationCenter addObserver:self selector:@selector(netWorkDisconected) name:D_Notification_Name_NetWorkDisconnected object:nil];
+    //	[notificationCenter addObserver:self selector:@selector(netWorkConnected) name:D_Notification_Name_NetWorkWifi object:nil];
+    //	[notificationCenter addObserver:self selector:@selector(netWorkConnected) name:D_Notification_Name_NetWorkWWAN object:nil];
 }
 
 - (void)netWorkDisconected{
-	[self showNetTipView:YES animated:YES];
+    [self showNetTipView:YES animated:YES];
 }
 
 - (void)netWorkConnected{
-	[self showNetTipView:NO animated:YES];
+    [self showNetTipView:NO animated:YES];
 }
 
-//- (BOOL)isContanerVC{
-//    if([self isKindOfClass:[WXUITabBarVC class]] || [self isKindOfClass:[YRSideViewController class]]){
-//        return YES;
-//    }
-//    return NO;
-//}
-
-- (void)netTipDelayFinished{
-//    [self detectAndShowServiceConnectTip];
+- (BOOL)isContanerVC{
+    if([self isKindOfClass:[WXUITabBarVC class]] || [self isKindOfClass:[YRSideViewController class]]){
+        return YES;
+    }
+    return NO;
 }
-
-//- (void)detectAndShowServiceConnectTip{
-//    BOOL isServiceConnected = [[ServiceMonitor sharedServiceMonitor] isConnected];
-//    [self showNetTipView:!isServiceConnected animated:NO];
-//}
 
 - (void)showNetTipView:(BOOL)show animated:(BOOL)animated{
-//	if([self isContanerVC]){
-//		return;
-//	}
-	
-	CGSize size = self.view.bounds.size;
-	CGFloat yOffset = 0;
-	CGSize tipSize = _netTipView.bounds.size;
-	if(self.wxNavigationController && !self.cstNavigationView.isHidden){
-		yOffset = self.cstNavigationView.bounds.size.height;
-	}else{
-		if(isIOS7){
-			tipSize.height = kNetWorkTipHeight+IPHONE_STATUS_BAR_HEIGHT;
-		}
-	}
-	CGFloat dur = kAnimatedDur;
-	if(!animated){
-		dur = 0.0;
-	}
-	//避免重复
-	CGAffineTransform transform = _baseView.transform;
-	[_baseView setTransform:CGAffineTransformIdentity];
-	CGRect baseRect = _baseView.frame;
-	if(show && [_netTipView isHidden]){
-		[_netTipView setHidden:NO];
-		[_netTipView setFrame:CGRectMake(0, yOffset, tipSize.width, tipSize.height)];
-		yOffset += tipSize.height;
-		baseRect = CGRectMake(0, yOffset, size.width, size.height - yOffset);
-	}else if(!show && ![_netTipView isHidden]){
-		[_netTipView setHidden:YES];
-		baseRect = CGRectMake(0, yOffset, size.width, size.height - yOffset);
-	}
-	[_baseView setFrame:baseRect];
-	[_baseView setTransform:transform];
+    if([self isContanerVC]){
+        return;
+    }
+    
+    CGSize size = self.view.bounds.size;
+    CGFloat yOffset = 0;
+    CGSize tipSize = _netTipView.bounds.size;
+    if(self.wxNavigationController && !self.cstNavigationView.isHidden){
+        yOffset = self.cstNavigationView.bounds.size.height;
+    }else{
+        if(isIOS7){
+            tipSize.height = kNetWorkTipHeight+IPHONE_STATUS_BAR_HEIGHT;
+        }
+    }
+    CGFloat dur = kAnimatedDur;
+    if(!animated){
+        dur = 0.0;
+    }
+    //避免重复
+    CGAffineTransform transform = _baseView.transform;
+    [_baseView setTransform:CGAffineTransformIdentity];
+    CGRect baseRect = _baseView.frame;
+    if(show && [_netTipView isHidden]){
+        [_netTipView setHidden:NO];
+        [_netTipView setFrame:CGRectMake(0, yOffset, tipSize.width, tipSize.height)];
+        yOffset += tipSize.height;
+        baseRect = CGRectMake(0, yOffset, size.width, size.height - yOffset);
+    }else if(!show && ![_netTipView isHidden]){
+        [_netTipView setHidden:YES];
+        baseRect = CGRectMake(0, yOffset, size.width, size.height - yOffset);
+    }
+    [_baseView setFrame:baseRect];
+    [_baseView setTransform:transform];
 }
 
 - (void)serviceDisconnected:(NSNotification*)notification{
@@ -216,7 +217,7 @@
     if(_cstNavigationView){
         return;
     }
-    _cstNavigationView = [CSTWXNavigationView cstWXNavigationView] ;
+    _cstNavigationView = [[CSTWXNavigationView cstWXNavigationView] retain];
     [self.view addSubview:_cstNavigationView];
     
     CGRect navRect = _cstNavigationView.frame;
@@ -230,10 +231,10 @@
 - (void)setBackNavigationBarItem{
     WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [leftBtn setImage:[UIImage imagePathed:@"T_AllBack.png"] forState:UIControlStateNormal];
-    [leftBtn setImage:[UIImage imagePathed:@"T_AllBackSel.png"] forState:UIControlStateSelected];
-    [leftBtn setTitle:@"返回" forState:UIControlStateNormal];
-    [leftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [leftBtn setImage:[UIImage imagePathed:@"T_AllBack.png"] forState:UIControlStateNormal];
+//    [leftBtn setImage:[UIImage imagePathed:@"T_AllBackSel.png"] forState:UIControlStateSelected];
+    [leftBtn setTitle:@"<返回" forState:UIControlStateNormal];
+    [leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     CGFloat yOffset = 0.0;
     if(isIOS7){
         yOffset = 20.0;
@@ -268,7 +269,7 @@
     UIViewController *parentVC = [self parentViewController];
     if([parentVC isKindOfClass:[WXUINavigationController class]]){
         return (WXUINavigationController*)self.parentViewController;
-    }else if([parentVC isKindOfClass:[WXUITabBarVC class]]){
+    }else if([parentVC isKindOfClass:[WXUITabBarVC class]] || [parentVC isKindOfClass:[YRSideViewController class]]){
         WXUIViewController *wxVC = (WXUIViewController*)parentVC;
         return wxVC.wxNavigationController;
     }
@@ -305,22 +306,22 @@
 }
 
 - (void)showWaitViewMode:(E_WaiteView_Mode)mode tip:(NSString*)tip{
-	switch (mode) {
-		case E_WaiteView_Mode_Unblock:
-			[_waitingView startAnimating];
-			[_waitingView setHidden:NO];
-			break;
-		case E_WaiteView_Mode_BaseViewBlock:
-			[_hud setHidden:NO];
-			[_hud setText:tip];
-			[_hud startAnimate];
-			break;
-		case E_WaiteView_Mode_FullScreenBlock:
-			[self showFullScreenHud:YES withTip:tip];
-			break;
-		default:
-			break;
-	}
+    switch (mode) {
+        case E_WaiteView_Mode_Unblock:
+            [_waitingView startAnimating];
+            [_waitingView setHidden:NO];
+            break;
+        case E_WaiteView_Mode_BaseViewBlock:
+            [_hud setHidden:NO];
+            [_hud setText:tip];
+            [_hud startAnimate];
+            break;
+        case E_WaiteView_Mode_FullScreenBlock:
+            [self showFullScreenHud:YES withTip:tip];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)showWaitViewMode:(E_WaiteView_Mode)mode title:(NSString*)title{
@@ -331,8 +332,8 @@
             break;
         case E_WaiteView_Mode_BaseViewBlock:
             [_hud setHidden:NO];
-			[_hud setText:nil];
-			[_hud startAnimate];
+            [_hud setText:nil];
+            [_hud startAnimate];
             break;
         case E_WaiteView_Mode_FullScreenBlock:
             [self showFullScreenHud:YES withTip:nil];
@@ -345,7 +346,7 @@
 - (void)unShowWaitView{
     [_waitingView stopAnimating];
     [_waitingView setHidden:YES];
-	[_hud stopAniamte];
+    [_hud stopAniamte];
     [_hud setHidden:YES];
     [self showFullScreenHud:NO withTip:nil];
 }
@@ -389,7 +390,7 @@
 
 - (void)detectAndShowServiceConnectTipIfNotInDelay{
     if(![NetTipDelay sharedNetTipDelay].isInDelay){
-//        [self detectAndShowServiceConnectTip];
+        [self detectAndShowServiceConnectTip];
     }
 }
 
@@ -398,8 +399,7 @@
     if(_openKeyboardNotification){
         [self addKeyboardNotification];
     }
-//    [self detectAndShowServiceConnectTipIfNotInDelay];
-//	[self showNetTipView:![NetWorkMonitor sharedNetWorkMonitor].isConnected animated:YES];
+    //    [self detectAndShowServiceConnectTipIfNotInDelay];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

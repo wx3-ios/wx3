@@ -13,7 +13,7 @@
 #import "CallRecord.h"
 #import "HangupModel.h"
 
-#define Size self.view.bounds.size
+#define Size self.bounds.size
 #define NormalTimer (15.0)
 
 @interface CallBackVC()<MakeCallDelegate,HangupDelegate>{
@@ -40,7 +40,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+    [self setCSTNavigationViewHidden:YES animated:NO];
     [self addNotification];
 }
 
@@ -51,7 +51,7 @@
     UIImageView *bgImgView = [[UIImageView alloc] init];
     bgImgView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [bgImgView setImage:img];
-    [self.view addSubview:bgImgView];
+    [self addSubview:bgImgView];
     
     [self createBackBtn];
     [self createUserNameView];
@@ -73,7 +73,7 @@
     backBtn.frame = CGRectMake(xOffset, yOffset, backImg.size.width, backImg.size.height);
     [backBtn setImage:backImg forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backBtn];
+    [self addSubview:backBtn];
 }
 
 -(void)createUserNameView{
@@ -87,7 +87,7 @@
     [nameLabel setFont:WXTFont(23.0)];
     [nameLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
     [nameLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:nameLabel];
+    [self addSubview:nameLabel];
     
     yOffset += nameHeight;
     phoneAreaLabel = [[UILabel alloc] init];
@@ -96,7 +96,7 @@
     [phoneAreaLabel setFont:WXTFont(16.0)];
     [phoneAreaLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
     [phoneAreaLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:phoneAreaLabel];
+    [self addSubview:phoneAreaLabel];
     if([phoneArea isEqualToString:@""]){
         [phoneAreaLabel setHidden:YES];
     }else{
@@ -117,13 +117,13 @@
         UIImageView *iconImgView = [[UIImageView alloc] init];
         iconImgView.frame = CGRectMake(xOffset+i*(smallIconImg.size.width+xGap), yOffset, smallIconImg.size.width, smallIconImg.size.height);
         [iconImgView setImage:smallIconImg];
-        [self.view addSubview:iconImgView];
+        [self addSubview:iconImgView];
     }
     
     _lightImg = [[UIImageView alloc] init];
     _lightImg.frame = CGRectMake(xOffset, yOffset, smallIconImg.size.width, smallIconImg.size.height);
     [_lightImg setImage:[UIImage imageNamed:@"CallBackIconImgSel.png"]];
-    [self.view addSubview:_lightImg];
+    [self addSubview:_lightImg];
 }
 
 -(void)createBaseView{
@@ -137,7 +137,7 @@
     [callStatus setTextAlignment:NSTextAlignmentCenter];
     [callStatus setText:@"(呼叫请求中...)"];
     [callStatus setTextColor:WXColorWithInteger(0xFFFFFF)];
-    [self.view addSubview:callStatus];
+    [self addSubview:callStatus];
     
     UILabel *textLabel = [[UILabel alloc] init];
     textLabel.frame = CGRectMake((Size.width-textWidth)/2, yOffset, textWidth, textHeight);
@@ -146,7 +146,7 @@
     [textLabel setText:@"我信正在回拨到你的手机"];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
     [textLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
-    [self.view addSubview:textLabel];
+    [self addSubview:textLabel];
     
     yOffset += textHeight;
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
@@ -157,7 +157,7 @@
     [phoneLabel setFont:WXTFont(16.0)];
     [phoneLabel setText:userObj.user];
     [phoneLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
-    [self.view addSubview:phoneLabel];
+    [self addSubview:phoneLabel];
     
     yOffset += textHeight;
     UILabel *textLabel1 = [[UILabel alloc] init];
@@ -167,7 +167,7 @@
     [textLabel1 setTextAlignment:NSTextAlignmentCenter];
     [textLabel1 setText:@"请注意接听稍后来电"];
     [textLabel1 setTextColor:WXColorWithInteger(0xFFFFFF)];
-    [self.view addSubview:textLabel1];
+    [self addSubview:textLabel1];
     
     yOffset += textHeight+30;
     textWidth += 10;
@@ -178,7 +178,7 @@
     [_hangupBtn setEnabled:NO];
     [_hangupBtn setImage:[UIImage imageNamed:@"HangupCall.png"] forState:UIControlStateNormal];
     [_hangupBtn addTarget:self action:@selector(hangup) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_hangupBtn];
+    [self addSubview:_hangupBtn];
 }
 
 -(void)startActivityImg{

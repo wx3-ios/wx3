@@ -50,12 +50,12 @@ enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    self.title = @"余额";
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self setCSTTitle:@"余额"];
+    
     self.view.backgroundColor = WXColorWithInteger(0xefeff4);
     _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height);
@@ -63,11 +63,11 @@ enum{
     [_scrollerView setScrollEnabled:YES];
     [_scrollerView setShowsVerticalScrollIndicator:NO];
     [_scrollerView setContentSize:CGSizeMake(Size.width, Size.height+10)];
-    [self.view addSubview:_scrollerView];
+    [self addSubview:_scrollerView];
     [_scrollerView addSubview:[self showRechargeBtn]];
     
     [_model loadUserBalance];
-    [self showWaitView:self.view];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     [self showBaseView];
 }
 
@@ -168,7 +168,7 @@ enum{
 
 -(void)gotoRecharge{
     RechargeVC *rechargeVC = [[RechargeVC alloc] init];
-    [self.navigationController pushViewController:rechargeVC animated:YES];
+    [self.wxNavigationController pushViewController:rechargeVC];
 }
 
 -(void)loadUserBalanceSucceed{

@@ -6,9 +6,7 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "BaseVC.h"
-
-@interface FindCommonVC : BaseVC
+@interface FindCommonVC : WXUIViewController
 @property (nonatomic,strong) NSString *webURl;
 @property (nonatomic,strong) NSString *titleName;
 

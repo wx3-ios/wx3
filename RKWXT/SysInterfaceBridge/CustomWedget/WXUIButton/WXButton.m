@@ -39,9 +39,9 @@
 //    [super dealloc];
 }
 
-//+ (id)buttonWithType:(WXButtonType)type{
-//    return [[self alloc] initWithType:type] ;
-//}
++ (id)buttonWithType:(WXButtonType)type{
+    return [[self alloc] initWithType:type] ;
+}
 
 - (id)initWithType:(WXButtonType)type{
     if(self = [super init]){
