@@ -159,6 +159,11 @@
 		12E161A31AC16F830044A7A2 /* delNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A21AC16F830044A7A2 /* delNumber@2x.png */; };
 		12E161A51AC170940044A7A2 /* keyboardEye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E161A41AC170940044A7A2 /* keyboardEye@2x.png */; };
 		12EC3B611AC415BE002F6920 /* callHistoryBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */; };
+		12F4BE031AE8CA3B00B9FEDA /* GlowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BDFC1AE8CA3B00B9FEDA /* GlowImageView.m */; };
+		12F4BE041AE8CA3B00B9FEDA /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BDFE1AE8CA3B00B9FEDA /* MenuButton.m */; };
+		12F4BE051AE8CA3B00B9FEDA /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BE001AE8CA3B00B9FEDA /* MenuItem.m */; };
+		12F4BE061AE8CA3B00B9FEDA /* PopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */; };
+		12F4BE751AE8D06100B9FEDA /* WXTPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BE741AE8D06100B9FEDA /* WXTPopVC.m */; };
 		12FC93681AE73FEC0003B927 /* HangupCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12FC93671AE73FEC0003B927 /* HangupCall@2x.png */; };
 		1F036786D135E645F286F56B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373B14107C952AC77813F98A /* libPods.a */; };
 		2563B3EA1AAAD74000C04227 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563B3E91AAAD74000C04227 /* main.m */; };
@@ -628,6 +633,16 @@
 		12E161A21AC16F830044A7A2 /* delNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delNumber@2x.png"; sourceTree = "<group>"; };
 		12E161A41AC170940044A7A2 /* keyboardEye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboardEye@2x.png"; sourceTree = "<group>"; };
 		12EC3B601AC415BE002F6920 /* callHistoryBtnImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "callHistoryBtnImg@2x.png"; sourceTree = "<group>"; };
+		12F4BDFB1AE8CA3B00B9FEDA /* GlowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowImageView.h; path = ../GlowImageView.h; sourceTree = "<group>"; };
+		12F4BDFC1AE8CA3B00B9FEDA /* GlowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowImageView.m; path = ../GlowImageView.m; sourceTree = "<group>"; };
+		12F4BDFD1AE8CA3B00B9FEDA /* MenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuButton.h; path = ../MenuButton.h; sourceTree = "<group>"; };
+		12F4BDFE1AE8CA3B00B9FEDA /* MenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuButton.m; path = ../MenuButton.m; sourceTree = "<group>"; };
+		12F4BDFF1AE8CA3B00B9FEDA /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuItem.h; path = ../MenuItem.h; sourceTree = "<group>"; };
+		12F4BE001AE8CA3B00B9FEDA /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItem.m; path = ../MenuItem.m; sourceTree = "<group>"; };
+		12F4BE011AE8CA3B00B9FEDA /* PopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopMenu.h; path = RKWXT/PopView/PopMenu.h; sourceTree = SOURCE_ROOT; };
+		12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopMenu.m; path = RKWXT/PopView/PopMenu.m; sourceTree = SOURCE_ROOT; };
+		12F4BE731AE8D06100B9FEDA /* WXTPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTPopVC.h; sourceTree = "<group>"; };
+		12F4BE741AE8D06100B9FEDA /* WXTPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTPopVC.m; sourceTree = "<group>"; };
 		12FC93671AE73FEC0003B927 /* HangupCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HangupCall@2x.png"; sourceTree = "<group>"; };
 		2563B3E41AAAD74000C04227 /* RKWXT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKWXT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2563B3E81AAAD74000C04227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1612,6 +1627,31 @@
 			path = presssound;
 			sourceTree = "<group>";
 		};
+		12F4BDFA1AE8C9FA00B9FEDA /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				12F4BE721AE8D04600B9FEDA /* Pop */,
+				12F4BE731AE8D06100B9FEDA /* WXTPopVC.h */,
+				12F4BE741AE8D06100B9FEDA /* WXTPopVC.m */,
+			);
+			path = PopView;
+			sourceTree = "<group>";
+		};
+		12F4BE721AE8D04600B9FEDA /* Pop */ = {
+			isa = PBXGroup;
+			children = (
+				12F4BDFB1AE8CA3B00B9FEDA /* GlowImageView.h */,
+				12F4BDFC1AE8CA3B00B9FEDA /* GlowImageView.m */,
+				12F4BDFD1AE8CA3B00B9FEDA /* MenuButton.h */,
+				12F4BDFE1AE8CA3B00B9FEDA /* MenuButton.m */,
+				12F4BDFF1AE8CA3B00B9FEDA /* MenuItem.h */,
+				12F4BE001AE8CA3B00B9FEDA /* MenuItem.m */,
+				12F4BE011AE8CA3B00B9FEDA /* PopMenu.h */,
+				12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */,
+			);
+			path = Pop;
+			sourceTree = "<group>";
+		};
 		2563B3DB1AAAD74000C04227 = {
 			isa = PBXGroup;
 			children = (
@@ -1633,6 +1673,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				12F4BDFA1AE8C9FA00B9FEDA /* PopView */,
 				775C58711ABA7B75005B6B40 /* DataFromLib */,
 				775C581A1ABA5F31005B6B40 /* WXTUtils */,
 				775843B31AB971CF0039B129 /* WXTUIKit */,
@@ -3088,6 +3129,7 @@
 				1243CCBC1AE7D89A003E0943 /* YRSideViewController.m in Sources */,
 				DDB58F481AD3C6A2006248E9 /* ContactBaseEntity+Detail.m in Sources */,
 				121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */,
+				12F4BE031AE8CA3B00B9FEDA /* GlowImageView.m in Sources */,
 				775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */,
 				775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */,
 				775843251AB95A300039B129 /* WXUIImageView.m in Sources */,
@@ -3114,6 +3156,7 @@
 				775C58D61ABA7D27005B6B40 /* BaseModel.m in Sources */,
 				7758432C1AB95A300039B129 /* WXUISearchBar.m in Sources */,
 				126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */,
+				12F4BE751AE8D06100B9FEDA /* WXTPopVC.m in Sources */,
 				2563B3EA1AAAD74000C04227 /* main.m in Sources */,
 				120A2BE91AB135DD006A28B1 /* RechargeVC.m in Sources */,
 				775842D41AB95A300039B129 /* NSNotificationAdditions.m in Sources */,
@@ -3175,6 +3218,7 @@
 				775842F61AB95A300039B129 /* PullPsCollectionView.m in Sources */,
 				775842D01AB95A300039B129 /* stdafx.cpp in Sources */,
 				77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */,
+				12F4BE051AE8CA3B00B9FEDA /* MenuItem.m in Sources */,
 				775C583F1ABA5F31005B6B40 /* PinyinHelper.m in Sources */,
 				7758431A1AB95A300039B129 /* WXWaitingHud.m in Sources */,
 				7758430D1AB95A300039B129 /* WXCheckMenu.m in Sources */,
@@ -3208,6 +3252,7 @@
 				2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */,
 				775843381AB95A300039B129 /* WXUIViewController.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
+				12F4BE061AE8CA3B00B9FEDA /* PopMenu.m in Sources */,
 				777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */,
 				775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */,
 				775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */,
@@ -3216,6 +3261,7 @@
 				775842BA1AB95A300039B129 /* WXUserDefault.m in Sources */,
 				775842D81AB95A300039B129 /* NSString+Size.m in Sources */,
 				775C583B1ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m in Sources */,
+				12F4BE041AE8CA3B00B9FEDA /* MenuButton.m in Sources */,
 				775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				120A2C081AB142D4006A28B1 /* LoginVC.m in Sources */,

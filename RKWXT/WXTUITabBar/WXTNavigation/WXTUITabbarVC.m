@@ -50,6 +50,12 @@
     [callItem setTabBarItemImage:[UIImage imageNamed:@"CallSelected.png"] forState:WXButtonControlState_Selected];
     [callItem setTabBarItemTitle:@"通话" forState:WXButtonControlState_Normal];
     
+//    //实现app+
+//    WXUITabBarItem *addItem = [self createTabbarItem];
+//    [addItem setTabBarItemImage:[UIImage imageNamed:@"ContactInfoHeadImg.png"] forState:WXButtonControlState_Normal];
+//    [addItem setTabBarItemImage:[UIImage imageNamed:@"ContactInfoHeadImg.png"] forState:WXButtonControlState_Selected];
+//    [addItem setTabBarItemTitle:@"app+" forState:WXButtonControlState_Normal];
+    
     WXUITabBarItem *findItem = [self createTabbarItem];
     [findItem setTabBarItemImage:[UIImage imageNamed:@"FindNormal.png"] forState:WXButtonControlState_Normal];
     [findItem setTabBarItemImage:[UIImage imageNamed:@"FindSelected.png"] forState:WXButtonControlState_Selected];

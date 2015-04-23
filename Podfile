@@ -20,3 +20,6 @@ pod 'CocoaLumberjack', '~> 2.0.0'  #日志
 pod 'Reachability', '~>  3.2'
 pod 'OpenUDID', '~> 1.0.0'
 #pod 'ASIHTTPRequest', '~> 1.8.2'
+
+pod 'XHRealTimeBlur'
+pod 'pop'

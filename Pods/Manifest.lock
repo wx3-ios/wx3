@@ -33,10 +33,12 @@ PODS:
   - KVOController (1.0.3)
   - MBProgressHUD (0.9.1)
   - OpenUDID (1.0.0)
+  - pop (1.0.7)
   - Reachability (3.2)
   - RegexKitLite (4.0)
   - SSZipArchive (0.3.2)
   - Toast (2.4)
+  - XHRealTimeBlur (1.7)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.1)
@@ -46,10 +48,12 @@ DEPENDENCIES:
   - KVOController (~> 1.0.1)
   - MBProgressHUD (~> 0.8)
   - OpenUDID (~> 1.0.0)
+  - pop
   - Reachability (~> 3.2)
   - RegexKitLite (~> 4.0)
   - SSZipArchive (~> 0.3.1)
   - Toast (~> 2.2)
+  - XHRealTimeBlur
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
@@ -59,9 +63,11 @@ SPEC CHECKSUMS:
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SSZipArchive: 11801759495fa4efb7512ef652eb0042d68305d7
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
+  XHRealTimeBlur: 661fadd5691ba2d349758e8fd5fbdb499ac55f8c
 
 COCOAPODS: 0.35.0

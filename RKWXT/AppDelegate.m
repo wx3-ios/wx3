@@ -22,7 +22,6 @@
 #import "WXTUITabbarVC.h"
 
 @interface AppDelegate (){
-//    UINavigationController *_navigation;
     CTCallCenter *_callCenter;
 }
 
@@ -90,10 +89,7 @@
 	self.window.backgroundColor = [UIColor whiteColor];
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){
-//        WXTUITabBarController *tabbar = [[WXTUITabBarController alloc] init];
         WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
-//        [tabbar createViewController];
-//        [tabbar.navigationController setNavigationBarHidden:NO];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
         [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];
@@ -119,9 +115,10 @@
     [self removeNotification];
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){
-//        LoginVC *loginVC = [[LoginVC alloc] init];
-//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
-//        [_navigation presentViewController:navigationController animated:YES completion:nil];
+        LoginVC *loginVC = [[LoginVC alloc] init];
+        WXUINavigationController *navigationController = [[WXUINavigationController alloc] initWithRootViewController:loginVC];
+        [self.navigationController presentViewController:navigationController animated:YES completion:^{
+        }];
     }
 }
 
