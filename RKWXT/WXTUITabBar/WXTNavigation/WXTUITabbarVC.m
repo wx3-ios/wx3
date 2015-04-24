@@ -12,16 +12,17 @@
 #import "UserInfoVC.h"
 #import "ContactsCallViewController.h"
 #import "CallViewController.h"
+#import "PopMenu.h"
 
-#define kTabBarHeight (52.0)
+#define kTabBarHeight (50.0)
 #define Size self.bounds.size
 
 @interface WXTUITabbarVC(){
     NSArray *views;
-    ContactsCallViewController * callview;
     CallViewController *recentCall;
 }
 
+@property (nonatomic, strong) PopMenu *popMenu;
 @property (nonatomic,strong) UIView *downView;
 @end
 
@@ -36,7 +37,7 @@
     [notification addObserver:self selector:@selector(hideDownView) name:HideDownView object:nil];
     
     WXTMallViewController * mallVC = [[[WXTMallViewController alloc] init] autorelease];
-    callview = [[[ContactsCallViewController alloc] init] autorelease];
+    ContactsCallViewController *callview = [[[ContactsCallViewController alloc] init] autorelease];
     WXTFindVC *phoneView = [[[WXTFindVC alloc] init] autorelease];
     UserInfoVC *infoVC = [[[UserInfoVC alloc] init] autorelease];
     
@@ -50,11 +51,6 @@
     [callItem setTabBarItemImage:[UIImage imageNamed:@"CallSelected.png"] forState:WXButtonControlState_Selected];
     [callItem setTabBarItemTitle:@"通话" forState:WXButtonControlState_Normal];
     
-//    //实现app+
-//    WXUITabBarItem *addItem = [self createTabbarItem];
-//    [addItem setTabBarItemImage:[UIImage imageNamed:@"ContactInfoHeadImg.png"] forState:WXButtonControlState_Normal];
-//    [addItem setTabBarItemImage:[UIImage imageNamed:@"ContactInfoHeadImg.png"] forState:WXButtonControlState_Selected];
-//    [addItem setTabBarItemTitle:@"app+" forState:WXButtonControlState_Normal];
     
     WXUITabBarItem *findItem = [self createTabbarItem];
     [findItem setTabBarItemImage:[UIImage imageNamed:@"FindNormal.png"] forState:WXButtonControlState_Normal];
@@ -81,6 +77,16 @@
     }
     [tabBar setBackgroundColor:[UIColor whiteColor]];
     
+#ifdef ShowAppHome
+    CGFloat xOffset = 2*[self tabBarItemSize].width;
+    WXUIButton *appHomeBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    appHomeBtn.frame = CGRectMake(xOffset, Size.height, [self tabBarItemSize].width, kTabBarHeight);
+    [appHomeBtn setBackgroundColor:[UIColor clearColor]];
+    [appHomeBtn setImage:[UIImage imageNamed:@"ContactInfoHeadImg.png"] forState:UIControlStateNormal];
+    [appHomeBtn addTarget:self action:@selector(clickedAppHomeBtn) forControlEvents:UIControlEventTouchUpInside];
+    [tabBar addSubview:appHomeBtn];
+#endif
+    
     return self;
 }
 
@@ -99,6 +105,9 @@
 
 -(NSInteger)showTabbarNumber{
     NSInteger number = 4;
+#ifdef ShowAppHome
+    number = 5;
+#endif
     if([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Eatable){
         return 3;
     }
@@ -122,6 +131,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:ClickedKeyboardBtn object:nil];
 }
 
+-(void)clickedAppHomeBtn{
+    [self showMenu];
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     if([self showTabbarNumber] == 3){
@@ -132,22 +145,6 @@
     [self setDexterity:E_Slide_Dexterity_Low];
     
     [self createDownView];
-    
-    
-//    if([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Eatable){
-//        [but setHidden:YES];
-//        [label setHidden:YES];
-//        
-//        
-//        [but0 setFrame:CGRectMake(0, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
-//        [label0 setFrame:CGRectMake(0, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
-//        
-//        [but1 setFrame:CGRectMake(Size.width/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
-//        [label1 setFrame:CGRectMake(Size.width/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
-//        
-//        [but2 setFrame:CGRectMake(Size.width*2/3, 3, Size.width/3, kTabBarHeight/2+btnGapHeight)];
-//        [label2 setFrame:CGRectMake(Size.width*2/3, kTabBarHeight/2+ygap, Size.width/3, kTabBarHeight/2-btnGapHeight)];
-//    }
 }
 
 -(void)createDownView{
@@ -211,7 +208,6 @@
     [UIView animateWithDuration:KeyboardDur animations:^{
         downView.frame = CGRectMake(0, Size.height-kTabBarHeight, Size.width*3/4, kTabBarHeight);
     }];
-    //    callview.segmentControl.hidden = YES;
 }
 
 -(void)delNumberToEnd{
@@ -223,6 +219,42 @@
 
 -(void)callBtnClicked{
     [[NSNotificationCenter defaultCenter] postNotificationName:CallPhone object:nil];
+}
+
+#pragma app+的
+- (void)showMenu {
+    NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    MenuItem *menuItem = [MenuItem itemWithTitle:@"Flickr" iconName:@"post_type_bubble_flickr" glowColor:[UIColor colorWithRed:1.000 green:0.966 blue:0.880 alpha:0.800]];
+    [items addObject:menuItem];
+    
+    menuItem = [MenuItem itemWithTitle:@"Googleplus" iconName:@"post_type_bubble_googleplus" glowColor:[UIColor colorWithRed:0.840 green:0.264 blue:0.208 alpha:0.800]];
+    [items addObject:menuItem];
+    
+    menuItem = [MenuItem itemWithTitle:@"Instagram" iconName:@"post_type_bubble_instagram" glowColor:[UIColor colorWithRed:0.232 green:0.442 blue:0.687 alpha:0.800]];
+    [items addObject:menuItem];
+    
+    menuItem = [MenuItem itemWithTitle:@"Twitter" iconName:@"post_type_bubble_twitter" glowColor:[UIColor colorWithRed:0.000 green:0.509 blue:0.687 alpha:0.800]];
+    [items addObject:menuItem];
+    
+    menuItem = [MenuItem itemWithTitle:@"Youtube" iconName:@"post_type_bubble_youtube" glowColor:[UIColor colorWithRed:0.687 green:0.164 blue:0.246 alpha:0.800]];
+    [items addObject:menuItem];
+    
+    menuItem = [MenuItem itemWithTitle:@"Facebook" iconName:@"post_type_bubble_facebook" glowColor:[UIColor colorWithRed:0.258 green:0.245 blue:0.687 alpha:0.800]];
+    [items addObject:menuItem];
+    
+    if (!_popMenu) {
+        _popMenu = [[PopMenu alloc] initWithFrame:self.bounds items:items];
+        _popMenu.menuAnimationType = kPopMenuAnimationTypeNetEase;
+    }
+    if (_popMenu.isShowed) {
+        return;
+    }
+    _popMenu.didSelectedItemCompletion = ^(MenuItem *selectedItem) {
+        NSLog(@"%@",selectedItem.title);//做相应操作
+    };
+    
+    [_popMenu showMenuAtView:self.view];
 }
 
 - (void)didReceiveMemoryWarning{
