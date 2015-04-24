@@ -198,6 +198,7 @@ typedef enum{
 
 -(void)longPressBtn:(id)sender{
     [self setEmptyText];
+    self.keyPad_type = E_KeyPad_Show;
     _downview_type = DownView_Del;
 }
 
@@ -423,10 +424,13 @@ typedef enum{
     textString = @"";
     phoneName = @"";
     _showContacters = NO;
-    self.keyPad_type = E_KeyPad_Down;
     [_tableView reloadData];
-    [NOTIFY_CENTER removeObserver:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [NOTIFY_CENTER removeObserver:self];
 }
 
 #pragma mark WXKeyPadModelDelegate

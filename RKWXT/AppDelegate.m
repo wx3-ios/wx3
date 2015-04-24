@@ -95,9 +95,9 @@
         [self.window makeKeyAndVisible];
         
         //自动登录
-//        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-//        LoginModel *_loginModel = [[LoginModel alloc] init];
-//        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+        LoginModel *_loginModel = [[LoginModel alloc] init];
+        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
     }else{
         LoginVC *vc = [[LoginVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
