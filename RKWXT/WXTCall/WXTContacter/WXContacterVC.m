@@ -55,7 +55,7 @@
     if ([AddressBook sharedAddressBook].count == 0) {
         [_searchBar setPlaceholder:@"搜索"];
     }else{
-        [_searchBar setPlaceholder:[NSString stringWithFormat:@"搜索%li个联系人",[AddressBook sharedAddressBook].count]];
+        [_searchBar setPlaceholder:[NSString stringWithFormat:@"搜索%li个联系人",(long)[AddressBook sharedAddressBook].count]];
     }
     [_searchBar sizeToFit];
     _searchBar.delegate = self;

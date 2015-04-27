@@ -67,9 +67,12 @@
 }
 
 - (void)loadSystemContacters{
-    [_keys removeAllObjects];
+    if([_keys respondsToSelector:@selector(removeAllObjects)]){ //未知的原因导致——_keys对象出现问题
+        [_keys removeAllObjects];
+    }else{
+        _keys = [[NSMutableArray alloc] init];
+    }
     [self emptySystemContacters];
-    
     [_keys addObject:kFirstKey];
     NSArray *sysContacters = [AddressBook sharedAddressBook].contactList;
     for(ContacterEntity *sysContacter in sysContacters){
