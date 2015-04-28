@@ -43,6 +43,7 @@
     [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];
     [_tableView setDelegate:self];
     [self.view addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     if (![AddressBook sharedAddressBook].accessGranted) {
         _accessGrantedTip = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, ScreenWidth - 2*20, 50)];
@@ -66,6 +67,7 @@
     [_searchDisplayController setSearchResultsDelegate:self];
     [_searchDisplayController setSearchResultsDataSource:self];
     [_searchDisplayController setDelegate:self];
+    [_searchDisplayController.searchResultsTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
 - (void)addOBS{
