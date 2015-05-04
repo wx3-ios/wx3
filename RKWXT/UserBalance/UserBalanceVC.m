@@ -175,9 +175,11 @@ enum{
     [self unShowWaitView];
     if([_model.dataList count] > 0){
         _entity = [_model.dataList objectAtIndex:0];
-        [_money setText:[NSString stringWithFormat:@"%.2f",_entity.money]];
+        NSString * balance = [NSString stringWithFormat:@"%.2f",_entity.money];
+        [_money setText:balance];
         [_status setText:[NSString stringWithFormat:@"%@",_entity.status]];
         [_date setText:[NSString stringWithFormat:@"%@",_entity.date]];
+        [[NSUserDefaults standardUserDefaults] setObject:balance forKey:@"WXTBLANCE"];
     }
 }
 
