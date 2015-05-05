@@ -56,7 +56,6 @@
     [fileLogger setLogFormatter:logFormatter];
     [DDLog addLogger:fileLogger];
     [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];// 允许颜色
 #endif
     DDLogError(@"%@", DOC_PATH);

@@ -311,7 +311,7 @@ typedef enum{
     if(!userPhone){
         return nil;
     }
-    [_model searchContacter:@"1"];
+//    [_model searchContacter:@"1"];
     for(SysContacterEntityEx *entity in _model.contacterFilter){
         for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
             NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];

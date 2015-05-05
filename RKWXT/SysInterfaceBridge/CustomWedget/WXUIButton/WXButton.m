@@ -40,10 +40,10 @@
 }
 
 + (id)buttonWithType:(WXButtonType)type{
-    return [[self alloc] initWithType:type] ;
+    return [[self alloc] initWithType1:type];
 }
 
-- (id)initWithType:(WXButtonType)type{
+- (id)initWithType1:(WXButtonType)type{
     if(self = [super init]){
 		_buttonType = type;
 		_backgroundImageView = [[WXUIImageView alloc] init];
