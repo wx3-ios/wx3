@@ -294,6 +294,7 @@
 
 -(void)searchContactResult{
     [self unShowWaitView];
+    [_searchDisplayController.searchResultsTableView setContentOffset:CGPointMake(0, 0) animated:YES];
     [_searchDisplayController.searchResultsTableView reloadData];
 }
 
