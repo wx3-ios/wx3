@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>D_KEY_APP_AREAID</key>
-	<integer>45</integer>
+	<integer>1</integer>
 	<key>D_KEY_APP_CATEGORY</key>
 	<integer>0</integer>
 	<key>D_KEY_APP_MERCHANTNAME</key>
 	<string>我信通</string>
 	<key>D_KEY_APP_SUBSHOPID</key>
-	<integer>45</integer>
+	<integer>1</integer>
 	<key>D_KEY_FIND_NAME</key>
 	<string>发现</string>
 	<key>D_KEY_FIND_SHOWNAV</key>

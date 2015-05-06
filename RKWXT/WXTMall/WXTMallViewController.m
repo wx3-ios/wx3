@@ -31,13 +31,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 50)];
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
     _webView.scalesPageToFit = YES;
     _webView.delegate = self;
     [self addSubview:_webView];
     
     shellView = [[UIView alloc] init];
-    shellView.frame = CGRectMake(0, 66, Size.width, Size.height-50-66);
+    shellView.frame = CGRectMake(0, 66, Size.width, Size.height-66);
     [shellView setBackgroundColor:[UIColor clearColor]];
     [shellView setHidden:YES];
     [self addSubview:shellView];

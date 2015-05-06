@@ -82,6 +82,7 @@ typedef enum{
     _model = [[WXKeyPadModel alloc] init];
     
     [self createKeyboardView];
+    [_model searchContacter:@"1"];
 }
 
 
@@ -186,13 +187,15 @@ typedef enum{
         NSString *strRang = [callStrString substringWithRange:rang];
         _textLabel.text = strRang;
         textString = _textLabel.text;
-        [self showSearchResult];
     }
     if(textString.length == 0){
         _downview_type = DownView_Del;
         [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+        [_model searchContacter:@"1"];
         _showContacters = NO;
         [_tableView reloadData];
+    }else{
+        [self showSearchResult];
     }
 }
 
@@ -311,7 +314,6 @@ typedef enum{
     if(!userPhone){
         return nil;
     }
-//    [_model searchContacter:@"1"];
     for(SysContacterEntityEx *entity in _model.contacterFilter){
         for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
             NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
@@ -332,11 +334,7 @@ typedef enum{
     if(!cell){
         cell = [[WXTCallHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:callHistoryCellIdentifier] ;
     }
-//        [cell setBaseDelegate:self];
     [cell setDelegate:self];
-//    CallHistoryEntity *entity = [_model.callHistory objectAtIndex:row];
-//    NSString *name = [self searchPhoneNameWithUserPhones:entity.phoneNumber];
-//    [cell setUserName:name];
     CallHistoryEntityExt *callHistoryEntity = [_model.callHistoryList objectAtIndex:row];
     NSString *name = [self searchPhoneNameWithUserPhones:callHistoryEntity.callHistoryEntity.phoneNumber];
     [cell setUserName:name];
@@ -424,6 +422,7 @@ typedef enum{
     textString = @"";
     phoneName = @"";
     _showContacters = NO;
+    [_model searchContacter:@"1"];
     [_tableView reloadData];
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
 }

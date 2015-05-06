@@ -9,6 +9,7 @@
 #import "AboutWxtInfoVC.h"
 #import "UIView+Render.h"
 #import "WXTVersion.h"
+#import "CallBackVC.h"
 
 #define Size self.bounds.size
 #define EveryCellHeight (36)
@@ -22,11 +23,14 @@ enum{
     WXT_About_Invalid,
 };
 
-@interface AboutWxtInfoVC()<UIScrollViewDelegate>{
+@interface AboutWxtInfoVC()<UIScrollViewDelegate,UIGestureRecognizerDelegate>{
     UIScrollView *_scrollerView;
     
     NSArray *baseNameArr;
+    NSArray *baseDataArr;
     NSArray *infoArr;
+    
+    BOOL copy;
 }
 @end
 
@@ -35,7 +39,9 @@ enum{
 -(id)init{
     self = [super init];
     if(self){
-        baseNameArr = @[@"我信通客服QQ: 2898621164",@"客服电话: 0755-61665888",@"官方网站: www.67call.com",@"手机网站: www.67call.com"];
+//        baseNameArr = @[@"我信通客服QQ: 2898621164",@"客服电话: 0755-61665888",@"官方网站: www.67call.com",@"手机网站: www.67call.com"];
+        baseNameArr = @[@"我信通客服QQ:",@"客服电话:",@"官方网站:",@"手机网站:"];
+        baseDataArr = @[@"2898621164",@"0755-61665888",@"www.67call.com",@"www.67call.com"];
     }
     return self;
 }
@@ -61,6 +67,8 @@ enum{
     [self createBaseView];
     [self showBaseInfo];
     [self createDownView];
+    
+    copy = NO;
 }
 
 
@@ -125,19 +133,36 @@ enum{
     xOffset = 8;
     yOffset = 8;
     CGFloat lineyGap = 0;
-    CGFloat nameLabelWidth = 250;
+    CGFloat nameLabelWidth = 50;
     CGFloat namelabelHeight = 20;
     
     for(int i = 0; i < WXT_About_Invalid; i++){
         yOffset += (i>0?(16+namelabelHeight):0);
         UILabel *nameLabel = [[UILabel alloc] init];
-        nameLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, namelabelHeight);
+        nameLabel.frame = CGRectMake(xOffset, yOffset, (i==0?nameLabelWidth+30:nameLabelWidth), namelabelHeight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
         [nameLabel setTextAlignment:NSTextAlignmentLeft];
         [nameLabel setTextColor:WXColorWithInteger(0x828282)];
         [nameLabel setFont:WXTFont(11.0)];
         [nameLabel setText:baseNameArr[i]];
         [baseView addSubview:nameLabel];
+        
+        WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(xOffset+nameLabelWidth+(i==0?30:0), yOffset, Size.width-xOffset-nameLabelWidth-100, namelabelHeight);
+        btn.tag = i;
+        [btn.titleLabel setFont:WXFont(14.0)];
+        [btn.titleLabel setTextAlignment:NSTextAlignmentLeft];
+        [btn setBackgroundColor:[UIColor clearColor]];
+        [btn setTitle:baseDataArr[i] forState:UIControlStateNormal];
+        [btn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [baseView addSubview:btn];
+        if(i == WXT_About_Qq){
+            UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(copy:)];
+            [longPressGesture setDelegate:self];
+            longPressGesture.minimumPressDuration = 0.5;//默认0.5秒
+            [btn addGestureRecognizer:longPressGesture];
+        }
         
         if(i != WXT_About_Invalid-1){
             lineyGap += EveryCellHeight;
@@ -152,12 +177,12 @@ enum{
 
 -(void)createDownView{
     CGFloat yOffset = 100;
-    CGFloat textlabelWidth = 180;
+    CGFloat textlabelWidth = 200;
     CGFloat textLabelHeight = 18;
     UILabel *textLabel = [[UILabel alloc] init];
     textLabel.frame = CGRectMake((Size.width-textlabelWidth)/2, IPHONE_SCREEN_HEIGHT-yOffset-10, textlabelWidth, textLabelHeight);
     [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setText:@"Copyright © 2014 woxintong.net"];
+    [textLabel setText:@"Copyright © 2014 www.woxinyun.com"];
     [textLabel setFont:WXTFont(11.0)];
     [textLabel setTextColor:WXColorWithInteger(0x000000)];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
@@ -181,6 +206,66 @@ enum{
     version.checkStatus = CheckUpdata_Status_Starting;
     [version setCheckType:Version_CheckType_User];
     [version checkVersion];
+}
+
+-(void)btnClicked:(id)sender{
+    WXUIButton *btn = (WXUIButton*)sender;
+    switch (btn.tag) {
+        case WXT_About_Qq:
+            [UtilTool showAlertView:@"长按复制qq号码"];
+            break;
+        case WXT_About_Phone:
+        {
+            NSString *phoneStr = [self phoneWithoutNumber:[baseDataArr objectAtIndex:WXT_About_Phone]];
+            CallBackVC *backVC = [[CallBackVC alloc] init];
+            backVC.phoneName = phoneStr;
+            if([backVC callPhone:phoneStr]){
+                [self presentViewController:backVC animated:YES completion:^{
+                }];
+            }
+        }
+            break;
+        case WXT_About_Web:
+        {
+            NSString *wbUrl = [baseDataArr objectAtIndex:WXT_About_Web];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",wbUrl]]];
+        }
+            break;
+        case WXT_About_PWeb:
+        {
+            NSString *wbUrl = [baseDataArr objectAtIndex:WXT_About_PWeb];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",wbUrl]]];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)copy:(id)sender{
+    if(copy){
+        return;
+    }
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    [pasteboard setString:[baseDataArr objectAtIndex:WXT_About_Qq]];
+    [UtilTool showTipView:@"复制完成"];
+    copy = YES;
+}
+
+-(NSString*)phoneWithoutNumber:(NSString*)phone{
+    NSString *new = [[NSString alloc] init];
+    for(NSInteger i = 0; i < phone.length; i++){
+        char c = [phone characterAtIndex:i];
+        if(c >= '0' && c <= '9'){
+            new = [new stringByAppendingString:[NSString stringWithFormat:@"%c",c]];
+        }
+    }
+    return new;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    copy = NO;
 }
 
 @end

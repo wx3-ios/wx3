@@ -270,14 +270,14 @@
     _hangupModel = [[HangupModel alloc] init];
     [_hangupModel setHangupDelegate:self];
     [_hangupModel hangupWithCallID:_model.callID];
+    
+    [self back];
 }
 
 -(void)hangupFailed:(NSString *)failedMsg{
-    
 }
 
 -(void)hangupSucceed{
-    [self back];
 }
 
 -(void)removeNotification{
