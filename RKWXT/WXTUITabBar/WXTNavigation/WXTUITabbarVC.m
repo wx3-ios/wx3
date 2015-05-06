@@ -15,6 +15,7 @@
 #import "PopMenu.h"
 
 #define kTabBarHeight (50.0)
+#define TabBaryGap (100)
 #define Size self.bounds.size
 
 @interface WXTUITabbarVC(){
@@ -149,7 +150,7 @@
 
 -(void)createDownView{
     downView = [[UIView alloc] init];
-    downView.frame = CGRectMake(0, Size.height, Size.width*3/4, kTabBarHeight);
+    downView.frame = CGRectMake(0, Size.height+TabBaryGap, Size.width*3/4, kTabBarHeight);
     [downView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [self.view addSubview:downView];
     
@@ -182,7 +183,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
     if(recentCall.downview_type == DownView_Del || recentCall.downview_type == DownView_Init){
         [UIView animateWithDuration:KeyboardDur animations:^{
-            downView.frame = CGRectMake(0, Size.height, Size.width*3/4, kTabBarHeight);
+            downView.frame = CGRectMake(0, Size.height+TabBaryGap, Size.width*3/4, kTabBarHeight);
         }];
     }
 }
@@ -195,7 +196,7 @@
 
 -(void)hideDownView{
     [UIView animateWithDuration:KeyboardDur animations:^{
-        downView.frame = CGRectMake(0, Size.height, Size.width*3/4, kTabBarHeight);
+        downView.frame = CGRectMake(0, Size.height+TabBaryGap, Size.width*3/4, kTabBarHeight);
     }];
 }
 
@@ -212,7 +213,7 @@
 
 -(void)delNumberToEnd{
     [UIView animateWithDuration:KeyboardDur animations:^{
-        downView.frame = CGRectMake(0, Size.height, Size.width*3/4, kTabBarHeight);
+        downView.frame = CGRectMake(0, Size.height+TabBaryGap, Size.width*3/4, kTabBarHeight);
     }];
 }
 

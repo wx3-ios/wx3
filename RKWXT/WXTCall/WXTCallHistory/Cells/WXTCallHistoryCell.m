@@ -76,8 +76,13 @@
         callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
         callBtn.frame = CGRectMake(xOffset+14, (44-callImg.size.height)/2, callImg.size.width, callImg.size.height);
         [callBtn setBackgroundImage:callImg forState:UIControlStateNormal];
-        [callBtn addTarget:self action:@selector(callHistory) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:callBtn];
+        
+        WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(xOffset - 30, 0, self.bounds.size.width-xOffset+30, 44);
+        [btn setBackgroundColor:[UIColor clearColor]];
+        [btn addTarget:self action:@selector(callHistory) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:btn];
     }
     return self;
 }

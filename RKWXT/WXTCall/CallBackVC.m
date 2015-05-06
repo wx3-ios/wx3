@@ -207,12 +207,6 @@
         [UtilTool showAlertView:@"本机网络不畅，请检查网络再试"];
         return NO;
     }
-    NSString * balance = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXTBLANCE"];
-    BOOL result = [balance integerValue] < 5.0;
-    if (result) {
-        [UtilTool showAlertView:@"花费余额不足，请及时充值"];
-        return NO;
-    }
     _model = [[CallModel alloc] init];
     [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
@@ -248,10 +242,10 @@
 }
 
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
-//    if(!failedMsg){
-//        failedMsg = @"本机网络不畅，请设置网络连接";
-//    }
-//    [UtilTool showAlertView:failedMsg];
+    if(!failedMsg){
+        failedMsg = @"本机网络不畅，请设置网络连接";
+    }
+    [UtilTool showAlertView:failedMsg];
     [self back];
 }
 
