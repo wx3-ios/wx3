@@ -95,6 +95,7 @@ typedef enum{
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
     [defaultCenter addObserver:self selector:@selector(callHistoryChanged) name:D_Notification_Name_CallRecordAdded object:nil];
+    [defaultCenter addObserver:self selector:@selector(setEmptyText) name:D_Notification_Name_SystemCallFinished object:nil];
 }
 
 -(void)createKeyboardView{
