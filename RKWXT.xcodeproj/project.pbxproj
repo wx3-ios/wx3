@@ -6035,7 +6035,7 @@
 				<key>MTL_ENABLE_DEBUG_INFO</key>
 				<string>NO</string>
 				<key>PROVISIONING_PROFILE</key>
-				<string>663edbed-584c-4c2c-97d2-11229bcfd4bd</string>
+				<string>fabaeda7-619d-4aff-a99c-7d48779b9438</string>
 				<key>SDKROOT</key>
 				<string>iphoneos</string>
 				<key>VALIDATE_PRODUCT</key>
@@ -6139,7 +6139,7 @@
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>PROVISIONING_PROFILE</key>
-				<string>663edbed-584c-4c2c-97d2-11229bcfd4bd</string>
+				<string>fabaeda7-619d-4aff-a99c-7d48779b9438</string>
 				<key>VALID_ARCHS</key>
 				<string>arm64 armv7 armv7s</string>
 			</dict>

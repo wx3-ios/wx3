@@ -33,6 +33,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    Enabling keyboard manager
+    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+    
     [[IQKeyboardManager sharedManager] setEnable:YES];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:15];
     // Enabling autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard.
@@ -72,6 +74,7 @@
     
     //自动登录通知
     [self addNotification];
+
 	return YES;
 }
 
@@ -362,6 +365,39 @@ forRemoteNotification:(NSDictionary *)userInfo
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	// Saves changes in the application's managed object context before the application terminates.
 	[self saveContext];
+}
+
+#pragma mark 崩溃日志
+void UncaughtExceptionHandler(NSException *exception) {
+    /**
+     *  获取异常崩溃信息
+     */
+    NSArray *callStack = [exception callStackSymbols];
+    NSString *reason = [exception reason];
+    NSString *name = [exception name];
+    NSString *content = [NSString stringWithFormat:@"========程序异常崩溃，请配合发送异常报告，谢谢合作========\nname:%@\nreason:\n%@\ncallStackSymbols:\n%@",name,reason,[callStack componentsJoinedByString:@"\n"]];
+    
+    /**
+     *  把异常崩溃信息发送至开发者邮件
+     */
+    
+    NSMutableString *mailUrl = [NSMutableString string];
+    //添加收件人
+    NSArray *toRecipients = [NSArray arrayWithObject: @"1256752005@qq.com"];
+    [mailUrl appendFormat:@"mailto:%@", [toRecipients componentsJoinedByString:@","]];
+    //添加抄送
+    NSArray *ccRecipients = [NSArray arrayWithObjects:@"1667906749@qq.com", nil];
+    [mailUrl appendFormat:@"?cc=%@", [ccRecipients componentsJoinedByString:@","]];
+    //添加密送
+    NSArray *bccRecipients = [NSArray arrayWithObjects:nil];
+    [mailUrl appendFormat:@"&bcc=%@", [bccRecipients componentsJoinedByString:@","]];
+    //添加主题
+    [mailUrl appendString:[NSString stringWithFormat:@"&subject=%@",kMerchantName]];
+    //添加邮件内容
+    [mailUrl appendString:[NSString stringWithFormat:@"&body=<b></b>%@",content]];
+    
+    NSString* email = [mailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 #pragma mark - Core Data stack

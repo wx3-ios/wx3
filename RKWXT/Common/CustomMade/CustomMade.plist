@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>D_KEY_APP_AREAID</key>
-	<integer>1</integer>
+	<integer>1057</integer>
 	<key>D_KEY_APP_CATEGORY</key>
-	<integer>0</integer>
-	<key>D_KEY_APP_MERCHANTNAME</key>
-	<string>我信通</string>
-	<key>D_KEY_APP_SUBSHOPID</key>
 	<integer>1</integer>
+	<key>D_KEY_APP_MERCHANTNAME</key>
+	<string>邮信通</string>
+	<key>D_KEY_APP_SUBSHOPID</key>
+	<integer>1050</integer>
 	<key>D_KEY_FIND_NAME</key>
 	<string>发现</string>
 	<key>D_KEY_FIND_SHOWNAV</key>
 	<integer>1</integer>
 	<key>D_KEY_MERCHANTID</key>
-	<integer>2</integer>
+	<integer>10077</integer>
 </dict>
 </plist>

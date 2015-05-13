@@ -68,6 +68,7 @@ typedef enum{
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    [_model searchContacter:@"1"];
 
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, self.bounds.size.height)];
     _tableView.delegate = self;
@@ -82,7 +83,6 @@ typedef enum{
     _model = [[WXKeyPadModel alloc] init];
     
     [self createKeyboardView];
-    [_model searchContacter:@"1"];
 }
 
 
