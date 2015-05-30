@@ -14,7 +14,7 @@ typedef enum{
     NetworkStatus2G,
     NetworkStatus3G,
     NetworkStatus4G,
-}NetworkStatus;
+}NetworkStatus1;
 
 @interface Tools : NSObject
 
@@ -29,7 +29,7 @@ typedef enum{
 
 + (NSDate *)dateFormString:(NSString *)string dateFormat:(NSString *)format;
 
-+ (NetworkStatus)currentNetWorkStatus;
++ (NetworkStatus1)currentNetWorkStatus;
 
 + (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
 

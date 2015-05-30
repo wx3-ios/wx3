@@ -13,10 +13,4 @@
 @synthesize key;
 @synthesize urlString;
 
-- (void)dealloc{
-    RELEASE_SAFELY(object);
-    RELEASE_SAFELY(key);
-    RELEASE_SAFELY(urlString);
-    [super dealloc];
-}
 @end

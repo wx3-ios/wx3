@@ -142,7 +142,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     return [dateFormatter dateFromString:string];
 }
 
-+ (NetworkStatus)currentNetWorkStatus
++ (NetworkStatus1)currentNetWorkStatus
 {
     UIApplication *app = [UIApplication sharedApplication];
     NSArray *subviews = [[[app valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];

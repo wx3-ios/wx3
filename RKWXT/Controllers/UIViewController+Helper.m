@@ -62,7 +62,7 @@
 
 - (void)callSIPhone:(NSString *)phone
 {
-    NetworkStatus status = [Tools currentNetWorkStatus];
+    NetworkStatus1 status = [Tools currentNetWorkStatus];
     if (status == NetworkStatusWifi || status == NetworkStatus3G || status == NetworkStatus4G) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"IncomingCallViewController"];

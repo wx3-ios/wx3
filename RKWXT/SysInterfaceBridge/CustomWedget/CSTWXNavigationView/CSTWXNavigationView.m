@@ -34,7 +34,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 //		[self setBackgroundColor:kOtherColor(E_App_Other_Color_NavBar)];
-        [self setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
+        [self setBackgroundColor:WXColorWithInteger(0xdd2726)];
         CGFloat width = 200;
         CGRect titleRect = CGRectMake((frame.size.width-width)*0.5, 0, width, frame.size.height);
         if(isIOS7){

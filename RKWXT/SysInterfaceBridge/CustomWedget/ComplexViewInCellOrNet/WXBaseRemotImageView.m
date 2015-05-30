@@ -7,7 +7,7 @@
 //
 
 #import "WXBaseRemotImageView.h"
-//#import "URLDownloadOBJ.h"
+#import "URLDownloadOBJ.h"
 
 #define kImageInitFileName @"initImage.png"
 #define kImageFailedFileName @"failedImage.png"
@@ -50,29 +50,29 @@
 }
 
 - (void)addOBS{
-//    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-//    [notificationCenter addObserver:self selector:@selector(downloadFailed:) name:kURLDownloadOBJError object:nil];
-//    [notificationCenter addObserver:self selector:@selector(downloadSucceed:) name:kURLDownloadOBJFinished object:nil];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(downloadFailed:) name:kURLDownloadOBJError object:nil];
+    [notificationCenter addObserver:self selector:@selector(downloadSucceed:) name:kURLDownloadOBJFinished object:nil];
 }
 
-//- (void)downloadSucceed:(NSNotification*)notification{
-//    URLNetNotificationOBJ *obj = notification.object;
-//    NSString *urlString = obj.urlString;
-//    if([urlString isEqualToString:[self remoteImageURLString]]){
-//        NSData *data = obj.object;
-//        UIImage *image = [UIImage imageWithData:data];
-//        [self fetchImageSucceed:data];
-//        [self setImage:image];
-//    }
-//}
+- (void)downloadSucceed:(NSNotification*)notification{
+    URLNetNotificationOBJ *obj = notification.object;
+    NSString *urlString = obj.urlString;
+    if([urlString isEqualToString:[self remoteImageURLString]]){
+        NSData *data = obj.object;
+        UIImage *image = [UIImage imageWithData:data];
+        [self fetchImageSucceed:data];
+        [self setImage:image];
+    }
+}
 
-//- (void)downloadFailed:(NSNotification*)notification{
-//    URLNetNotificationOBJ *obj = notification.object;
-//    NSString *urlString = obj.urlString;
-//    if([urlString isEqualToString:[self remoteImageURLString]]){
-//        [self fetchImageFailed];
-//    }
-//}
+- (void)downloadFailed:(NSNotification*)notification{
+    URLNetNotificationOBJ *obj = notification.object;
+    NSString *urlString = obj.urlString;
+    if([urlString isEqualToString:[self remoteImageURLString]]){
+        [self fetchImageFailed];
+    }
+}
 
 - (void)removeOBS{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -134,8 +134,8 @@
         }
         [self setImage:nil];
         [self setIcon:img];
-//        [self startFetchImage];
-//        [[URLDownloadOBJ sharedURLDownloadOBJ] downloadRemotionFile:[self remoteImageURLString] key:self.cpxViewInfo];
+        [self startFetchImage];
+        [[URLDownloadOBJ sharedURLDownloadOBJ] downloadRemotionFile:[self remoteImageURLString] key:self.cpxViewInfo];
     }
 }
 @end

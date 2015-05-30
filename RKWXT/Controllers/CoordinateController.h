@@ -62,4 +62,8 @@ typedef enum {
 - (void)toRefund:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated;//退款~
 - (void)toOrderDetail:(id)sender orderInfo:(id)orderInfo delegate:(id)delegate animated:(BOOL)animated;//订单详情
 - (void)toRefundDetail:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated;//退款详情
+//new
+-(void)toSignVC:(id)sender animated:(BOOL)animated;//签到
+-(void)toRechargeVC:(id)sender animated:(BOOL)animated;//充值
+
 @end

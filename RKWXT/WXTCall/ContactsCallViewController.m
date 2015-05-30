@@ -65,7 +65,7 @@
 -(void)loadSegmentControl{
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
     imgView.frame = CGRectMake(0, 0, Size.width, 66);
-    [imgView setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
+    [imgView setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [self addSubview:imgView];
     
     CGFloat segWidth = 180;

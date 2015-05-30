@@ -17,7 +17,6 @@
 @implementation URLDownloadOBJ
 
 - (void)dealloc{
-    [super dealloc];
 }
 
 + (NSOperationQueue*)sharedURLDownloadQueue{

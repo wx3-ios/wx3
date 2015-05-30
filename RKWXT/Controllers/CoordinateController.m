@@ -7,34 +7,10 @@
 //
 
 #import "CoordinateController.h"
-//#import "RegisterVC.h"
 #import "LoginVC.h"
-//#import "WXAllFriendVC.h"
 #import "ContactDetailVC.h"
-//#import "PersonalInfoViewController.h"
-//#import "MoreFunctionVC.h"
-//#import "WXOrderMenuVC.h"
-//#import "OrderConfirmVC.h"
-//#import "BranchOfficeVC.h"
-//#import "WXMenuVC.h"
-//#import "WXMenuVC.h"
-//#import "GoodsInfoVC.h"
-//#import "SysMsgVC.h"
-//#import "SysMsgDetailVC.h"
-//#import "MyOrderListVC.h"
-//#import "WXMenuDetailVC.h"
-//#import "WXMenuDetailVC.h"
-//#import "WXGuideVC.h"
-//#import "ShopDetailVC.h"
-//#import	"SubShopVC.h"
-//#import "AboutShopInfoVC.h"
-//#import "TopWebAdvVC.h"
-
-//#import "RefundVC.h"
-//#import "OrderListVC.h"
-//#import "OrderPayVC.h"
-//#import "OrderDtailVC.h"
-//#import "RefundStatusVC.h"
+#import "SignViewController.h"
+#import "RechargeVC.h"
 
 @implementation CoordinateController
 
@@ -47,71 +23,23 @@
     return sharedInstance;
 }
 
-//+ (WXUINavigationController*)sharedNavigationController{
-//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//    WXUINavigationController *navigationController = appDelegate.navigationController;
-//    return navigationController;
-//}
-
-//- (void)toLogin:(id)sender animated:(BOOL)animated completion:(void (^)())completion{
-//    WXUIViewController *vc = sender;
-//    LoginVC *logVC = [[[LoginVC alloc] init] autorelease];
-//	[logVC setBWithOutGuide:YES];
-//    WXUINavigationController *nav = [[[WXUINavigationController alloc] initWithRootViewController:logVC] autorelease];
-//    [vc presentViewController:nav animated:YES completion:^{
-//        completion();
-//    }];
-//}
-
-//- (void)toRegisterVC:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    RegisterVC *regVC = [[[RegisterVC alloc] init] autorelease];
-//    [vc.wxNavigationController pushViewController:regVC];
-//}
-
-//- (void)toChooseSubShopVC:(id)sender animated:(BOOL)animated{
-//	WXUIViewController *vc = sender;
-//	SubShopVC *subShopVC = [[[SubShopVC alloc] init] autorelease];
-//	[vc.wxNavigationController pushViewController:subShopVC];
-//}
-
-//- (void)toBranceOfficeVC:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    BranchOfficeVC *brance = [[[BranchOfficeVC alloc] init] autorelease];
-//    [vc.wxNavigationController pushViewController:brance];
-//}
-
-//- (void)toCallTabBarVC:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    WXCallUITabBarVC *callTabBarVC = [[[WXCallUITabBarVC alloc] init] autorelease];
-//    [vc.wxNavigationController pushViewController:callTabBarVC];
-//}
-
 - (void)toContactDetail:(id)sender contactInfo:(id)contactInfo contactType:(E_ContacterType)contactType animated:(BOOL)animated{
     WXUIViewController *vc = sender;
-    ContactDetailVC * contactInfoVC = [[ContactDetailVC alloc] init] ;
-//    [contactInfoVC setContacterInfo:contactInfo];
-//    [contactInfoVC setContacterType:contactType];
+    ContactDetailVC * contactInfoVC = [[ContactDetailVC alloc] init];
     [vc.wxNavigationController pushViewController:contactInfoVC];
 }
 
-//- (void)toAllWXContacters:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    WXAllFriendVC *allFriendVC = [[WXAllFriendVC alloc] init] ;
-//    [vc.wxNavigationController pushViewController:allFriendVC];
-//}
+-(void)toSignVC:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    SignViewController *signVC = [[SignViewController alloc] init];
+    [vc.wxNavigationController pushViewController:signVC];
+}
 
-//- (void)toPersonalInfo:(id)sender animated:(BOOL)animate{
-//    WXUIViewController *vc = sender;
-//    PersonalInfoViewController *personalVC = [[PersonalInfoViewController alloc] init] ;
-//    [vc.wxNavigationController pushViewController:personalVC];
-//}
-
-//- (void)toMoreFunction:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    MoreFunctionVC *personalVC = [[MoreFunctionVC alloc] init] ;
-//    [vc.wxNavigationController pushViewController:personalVC];
-//}
+-(void)toRechargeVC:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    RechargeVC *rechargeVC = [[RechargeVC alloc] init];
+    [vc.wxNavigationController pushViewController:rechargeVC];
+}
 
 //- (void)toGoodsInfoVC:(id)sender goodInfo:(WXGoodEntity*)goodInfo animated:(BOOL)animated{
 //    WXUIViewController *vc = sender;
@@ -139,44 +67,6 @@
 //    [orderConfirmVC setMenuGoodsExtra:extra];
 //    [orderConfirmVC setMenuSource:source];
 //    [vc.wxNavigationController pushViewController:orderConfirmVC];
-//}
-
-//- (void)toMenu:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    WXMenuVC *menuVC = [[[WXMenuVC alloc] init] autorelease];
-//    [vc.wxNavigationController pushViewController:menuVC];
-//}
-
-//- (void)toMenuDetail:(id)sender menuItem:(id)menuItem animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    WXMenuDetailVC *menuDetailVC = [[[WXMenuDetailVC alloc] init] autorelease];
-//    [menuDetailVC setMenuItem:menuItem];
-//    [vc.wxNavigationController pushViewController:menuDetailVC];
-//}
-
-//- (void)toSystemMessage:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    SysMsgVC *sysMsgVC = [[[SysMsgVC alloc] init] autorelease];
-//    [vc.wxNavigationController pushViewController:sysMsgVC];
-//}
-
-//- (void)toSystemMessageDetail:(id)sender messageInfo:(id)info animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    SysMsgDetailVC *sysMsgDetailVC = [[[SysMsgDetailVC alloc] init] autorelease];
-//    [sysMsgDetailVC setSysMsgDetailInfo:info];
-//    [vc.wxNavigationController pushViewController:sysMsgDetailVC];
-//}
-
-//- (void)toOrderList:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    OrderListVC *orderListVC = [[[OrderListVC alloc] init] autorelease];
-//    [vc.wxNavigationController pushViewController:orderListVC];
-//}
-
-//- (void)toBranchOfficeInfo:(id)sender animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    ShopDetailVC *shopDetailVC = [[[ShopDetailVC alloc] init] autorelease];
-//    [vc.wxNavigationController pushViewController:shopDetailVC];
 //}
 
 //- (void)toGuideView:(id)sender mode:(E_GuideView_Mode)mode animated:(BOOL)animated{
