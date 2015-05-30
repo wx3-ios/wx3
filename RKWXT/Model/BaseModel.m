@@ -26,8 +26,8 @@
 }
 
 - (void)detecteServiceConnectedOK{
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceConnectedDetected:) name:D_Notification_Name_ServiceConnectedOK object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceConnectedDetected:) name:D_Notification_Name_AutoLoginHasCalled object:nil];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceConnectedDetected:) name:D_Notification_Name_ServiceConnectedOK object:nil];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceConnectedDetected:) name:D_Notification_Name_AutoLoginHasCalled object:nil];
 }
 
 - (void)removeServiceConnectedDetector{

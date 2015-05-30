@@ -22,7 +22,7 @@
 -(void)loadData; //加载数据
 -(BOOL)loadCache; //加载缓存，返回是否成功加载～或者是否有数据
 -(NSString*)currentCachePath; //当前缓存地址
--(void)removeCache; //清楚缓存
+-(void)removeCache; //清除缓存
 -(void)saveCacheAtPath:(NSString*)path data:(id)jsonData; //保存数据
 
 @end

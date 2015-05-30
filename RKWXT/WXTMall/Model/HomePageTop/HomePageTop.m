@@ -42,8 +42,8 @@
     NSInteger merchantID = kMerchantID;
     NSInteger areaID = kAreaID;
     [self setStatus:E_ModelDataStatus_Loading];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:shopID],@"shop_id", [NSNumber numberWithInteger:merchantID],@"seller_id",[NSNumber numberWithInteger:areaID],@"area_id",nil];
-    __block HomePageTop *blockSelf = self;
+//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:shopID],@"shop_id", [NSNumber numberWithInteger:merchantID],@"seller_id",[NSNumber numberWithInteger:areaID],@"area_id",nil];
+//    __block HomePageTop *blockSelf = self;
 //    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Sign httpMethod:E_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
 //        if (retData.code != E_URLFeedData_Succeed){
 //            [blockSelf setStatus:E_ModelDataStatus_LoadFailed];

@@ -96,7 +96,8 @@
     WXUITabBarItem *item = [WXUITabBarItem tabBarItem];
     [item setFrame:CGRectMake(0, 0, size.width, size.height)];
     [item setTitleColor:WXColorWithInteger(0x808080) forState:WXButtonControlState_Normal];
-    [item setTitleColor:WXColorWithInteger(0x0c8bdf) forState:WXButtonControlState_Selected];
+//    [item setTitleColor:WXColorWithInteger(0x0c8bdf) forState:WXButtonControlState_Selected];
+    [item setTitleColor:[UIColor redColor] forState:WXButtonControlState_Selected];
     return item;
 }
 
