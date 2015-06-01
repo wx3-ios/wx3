@@ -524,6 +524,8 @@
 		DDEA9F061B1C0A6700530C1C /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDEA9EFE1B1C0A6700530C1C /* down@2x.png */; };
 		DDEA9F071B1C0A6700530C1C /* cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDEA9EFF1B1C0A6700530C1C /* cart@2x.png */; };
 		DDEA9F091B1C0A8700530C1C /* Circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDEA9F081B1C0A8700530C1C /* Circle@2x.png */; };
+		DDEA9F0D1B1C2F2E00530C1C /* GoodsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9F0C1B1C2F2E00530C1C /* GoodsDetailCell.m */; };
+		DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9F101B1C3A1800530C1C /* StrechyParallaxScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1405,6 +1407,10 @@
 		DDEA9EFE1B1C0A6700530C1C /* down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down@2x.png"; sourceTree = "<group>"; };
 		DDEA9EFF1B1C0A6700530C1C /* cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart@2x.png"; sourceTree = "<group>"; };
 		DDEA9F081B1C0A8700530C1C /* Circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Circle@2x.png"; sourceTree = "<group>"; };
+		DDEA9F0B1B1C2F2E00530C1C /* GoodsDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailCell.h; sourceTree = "<group>"; };
+		DDEA9F0C1B1C2F2E00530C1C /* GoodsDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailCell.m; sourceTree = "<group>"; };
+		DDEA9F0F1B1C3A1800530C1C /* StrechyParallaxScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrechyParallaxScrollView.h; sourceTree = "<group>"; };
+		DDEA9F101B1C3A1800530C1C /* StrechyParallaxScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrechyParallaxScrollView.m; sourceTree = "<group>"; };
 		E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2824,6 +2830,7 @@
 		775843B31AB971CF0039B129 /* WXTUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				DDEA9F0E1B1C3A1800530C1C /* StrechyParallaxScrollView */,
 				DDEA9EDE1B1BFD5D00530C1C /* WXSysMsgUnreadV.h */,
 				DDEA9EDF1B1BFD5D00530C1C /* WXSysMsgUnreadV.m */,
 				121804231ACB899B009DB7E7 /* DBImageView */,
@@ -3401,6 +3408,7 @@
 		DDEA9EDA1B1BF9DA00530C1C /* WXTGoods */ = {
 			isa = PBXGroup;
 			children = (
+				DDEA9F0A1B1C2F0900530C1C /* Cells */,
 				DDEA9EDB1B1BF9EF00530C1C /* WXTGoodsDetailViewController.h */,
 				DDEA9EDC1B1BF9EF00530C1C /* WXTGoodsDetailViewController.m */,
 			);
@@ -3421,6 +3429,24 @@
 				DDEA9EFF1B1C0A6700530C1C /* cart@2x.png */,
 			);
 			path = Goods;
+			sourceTree = "<group>";
+		};
+		DDEA9F0A1B1C2F0900530C1C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DDEA9F0B1B1C2F2E00530C1C /* GoodsDetailCell.h */,
+				DDEA9F0C1B1C2F2E00530C1C /* GoodsDetailCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DDEA9F0E1B1C3A1800530C1C /* StrechyParallaxScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DDEA9F0F1B1C3A1800530C1C /* StrechyParallaxScrollView.h */,
+				DDEA9F101B1C3A1800530C1C /* StrechyParallaxScrollView.m */,
+			);
+			path = StrechyParallaxScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3798,12 +3824,14 @@
 				775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */,
 				775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */,
 				77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */,
+				DDEA9F0D1B1C2F2E00530C1C /* GoodsDetailCell.m in Sources */,
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
 				DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
+				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
 				775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,

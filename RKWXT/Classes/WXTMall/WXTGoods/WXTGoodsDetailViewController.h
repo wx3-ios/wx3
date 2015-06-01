@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXTGoodsDetailViewController : WXUIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface WXTGoodsDetailViewController : WXUIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @end

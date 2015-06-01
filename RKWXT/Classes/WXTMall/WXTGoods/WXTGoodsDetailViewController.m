@@ -7,6 +7,8 @@
 //
 
 #import "WXTGoodsDetailViewController.h"
+#import "GoodsDetailCell.h"
+#import "StrechyParallaxScrollView.h"
 
 @interface WXTGoodsDetailViewController (){
     UITableView * _tableView;
@@ -20,6 +22,9 @@
     int _currentPageIndex;
     NSTimer *_timer;
     NSUInteger _count;
+    
+    NSMutableArray * _dataMArray;
+    NSMutableArray * _picMArray;
 }
 
 @end
@@ -29,21 +34,18 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTTitle:@"商品详情"];
+    [self setBackgroundColor:WXColorWithInteger(0xbfbfc3)];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = WXColorWithInteger(0x000000);
     [self initUI];
     [self loadData];
 }
 
 -(void)initUI{
-    //右分享
-    UIButton * btnShare = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kDefaultNavigationBarButtonSize.width, kDefaultNavigationBarButtonSize.height)];
-    
-    [self.view addSubview:btnShare];
-    
-    [self initScrollView];
+//    [self initTopView];
     [self initTableView];
     // 购物车
     CGFloat cartW = 75;
@@ -56,10 +58,6 @@
     [btnCart setTitle:@"购物车" forState:UIControlStateNormal];
     [btnCart addTarget:self action:@selector(cartDetail) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnCart];
-    
-    UIImageView * cartImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 100,100)];
-    cartImageView.image = [UIImage imageNamed:@"cart@2x.png"];
-    [self.view addSubview:cartImageView];
     
     //立即购买
     CGFloat payW = (IPHONE_SCREEN_WIDTH - cartH)/2;
@@ -93,45 +91,74 @@
     _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
     
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(IPHONE_SCREEN_WIDTH-10-30, 266-10-30, 30, 30)];
-    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Circle"]];
-    [_scrollView addSubview:view];
+//    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(IPHONE_SCREEN_WIDTH-10-30, 266-10-30, 30, 30)];
+//    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Circle"]];
+//    [_scrollView addSubview:view];
     
 }
 
+-(void)initTopView{
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, IPHONE_SCREEN_WIDTH, 266)];
+    _scrollView.showsHorizontalScrollIndicator =NO;
+    _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.pagingEnabled = YES;
+    _scrollView.scrollEnabled = YES;
+    if (_count <= 1.0 ) {
+        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,64,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
+        imageView.image = [UIImage imageNamed:@"Default"];
+        [_scrollView addSubview:imageView];
+    }else{
+        [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width * _count, self.view.frame.size.height)];
+        
+        for (int i = 0; i < _count; i ++) {
+            UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i *_scrollView.bounds.size.width,64,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
+            imageView.contentMode =UIViewContentModeScaleAspectFit;
+            imageView.clipsToBounds = YES;
+            [_scrollView addSubview:imageView];
+            [_imageViewsMArray addObject:imageView];
+        }
+    }
+    _scrollView.delegate = self;
+    
+//    StrechyParallaxScrollView *strechy = [[StrechyParallaxScrollView alloc] initWithFrame:self.view.frame andTopView:_scrollView];
+//    [self.view addSubview:strechy];
+//    [strechy setContentSize:CGSizeMake(IPHONE_SCREEN_WIDTH, _tableView.frame.size.height)];
+}
+
 -(void)initTableView{
-    CGFloat tableViewY = IPHONE_SCREEN_HEIGHT-64-226;
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, tableViewY, IPHONE_SCREEN_WIDTH, tableViewY-49)];
+    CGFloat tableViewY = 64;
+    CGFloat tableViewH = IPHONE_SCREEN_HEIGHT-64-49;
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, tableViewY, IPHONE_SCREEN_WIDTH, tableViewH)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
 }
 
 -(void)loadData{
-    _count = 5;
-    _proPicMArray = [NSMutableArray array];
-    _imageViewsMArray = [NSMutableArray array];
-    for (int i = 0; i < _count; i ++) {
-//        NSString * imageName = [NSString stringWithFormat:@"ab0%d.jpg", i +1];
-        NSString * imageName = @"Default@2x.png";
-        [_proPicMArray addObject:imageName];
-    }
+//    _count = 5;
+//    _proPicMArray = [NSMutableArray array];
+//    _imageViewsMArray = [NSMutableArray array];
+//    for (int i = 0; i < _count; i ++) {
+//        UIImage * imageName = [UIImage imageNamed:@"Default@2x.png"];
+//        [_proPicMArray addObject:imageName];
+//    }
     
-    for (int i = 0; i < _count; i ++) {
-        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i *_scrollView.bounds.size.width,64,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
-        imageView.contentMode =UIViewContentModeScaleAspectFit;
-        imageView.clipsToBounds = YES;
-        [_scrollView addSubview:imageView];
-        [_imageViewsMArray addObject:imageView];
-    }
+//    for (int i = 0; i < _count; i ++) {
+//        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i *_scrollView.bounds.size.width,64,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
+//        imageView.contentMode =UIViewContentModeScaleAspectFit;
+//        imageView.clipsToBounds = YES;
+//        [_scrollView addSubview:imageView];
+//        [_imageViewsMArray addObject:imageView];
+//    }
+    _dataMArray = [[NSMutableArray alloc] initWithObjects:@"图文详情",@"产品参数", nil];
+    _picMArray = [[NSMutableArray alloc]initWithObjects:[UIImage imageNamed:@"pic_detail"],[UIImage imageNamed:@"goods_args"],nil];
 }
 
 - (void)dynamicLoadingImageView
 {
     for (int i = 0; i < _count; i ++) {
         UIImageView *imageView = [_imageViewsMArray objectAtIndex:i];
-        UIImage * image = [UIImage imageNamed:_proPicMArray[i]];
-        imageView.image = image;
+        imageView.image = [UIImage imageNamed:_proPicMArray[i]];
     }
 }
 
@@ -159,6 +186,7 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     //拖动前的起始坐标
     startContentOffsetX = scrollView.contentOffset.x;
+//    [[_imageViewsMArray objectAtIndex:0] setBackground:[_proPicMArray objectAtIndex:0]];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -173,43 +201,200 @@
     endContentOffsetX = scrollView.contentOffset.x;
     if (endContentOffsetX < willEndContentOffsetX && willEndContentOffsetX < startContentOffsetX) {
         //画面从右往左移动，前一页
-//        [self pageLeft];
         [self dynamicLoadingImageView];
-        //        ((UIImageView*)_imageViewsMArray[_currentPageIndex]).image = [UIImage imageNamed:_advertiseMArray[_currentPageIndex]];
     } else if (endContentOffsetX > willEndContentOffsetX && willEndContentOffsetX > startContentOffsetX) {
         //画面从左往右移动，后一页
-//        [self pageRight];
         [self dynamicLoadingImageView];
-        //        ((UIImageView*)_imageViewsMArray[_currentPageIndex]).image = [UIImage imageNamed:_advertiseMArray[_currentPageIndex]];
     }
 }
 
 #pragma mark - 头部产品图片
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 266;
+    switch (section) {
+        case 0:{
+            return 83;
+        }
+            break;
+            
+        default:{
+            return 0;
+        }
+            break;
+    }
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 126;
+    switch (section) {
+        case 0:{
+            return 10;
+        }
+            break;
+            
+        default:{
+            return 0;
+        }
+            break;
+    }
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    switch (section) {
+        case 0:{
+            return 2;
+        }
+        case 1:{
+            return 0;
+        }
+            break;
+        default:{
+            return 0;
+        }
+            break;
+    }
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 126)];
-    view.backgroundColor = [UIColor redColor];
+    switch (section) {
+        case 0:{
+            UIView * view = [self headerForProduct];
+            tableView.tableFooterView = view;
+            return view;
+        }
+            break;
+        case 1:{
+            UIView * view = [self headerForProduct];
+            return view;
+        }
+            break;
+        default:{
+            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 0)];
+            return view;
+        }
+            break;
+    }
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 10)];
     return view;
 }
 
+-(UIView*)headerForTopView{
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 266)];
+    _count = 2;
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 266)];
+    _scrollView.showsHorizontalScrollIndicator =NO;
+    _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.pagingEnabled = YES;
+    _scrollView.scrollEnabled = YES;
+    if (_count <= 1.0 ) {
+        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
+        imageView.image = [UIImage imageNamed:@"Default"];
+        [_scrollView addSubview:imageView];
+    }else{
+        [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width * _count, self.view.frame.size.height)];
+        
+        for (int i = 0; i < _count; i ++) {
+            UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i *_scrollView.bounds.size.width,0,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
+            imageView.contentMode =UIViewContentModeScaleAspectFit;
+            imageView.clipsToBounds = YES;
+            [_scrollView addSubview:imageView];
+            [_imageViewsMArray addObject:imageView];
+        }
+        
+        for (int i = 0; i < _count; i ++) {
+            //            UIImage * imageName = [UIImage imageNamed:@"Default@2x.png"];
+            //            [_proPicMArray addObject:imageName];
+            [_imageViewsMArray[i] setImage:[UIImage imageNamed:@"Default@2x.png"]];
+        }
+    }
+    _scrollView.delegate = self;
+    [view addSubview:_scrollView];
+    return view;
+}
+
+-(UIView*)headerForProduct{
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 83)];
+    UILabel * lbPrice = [[UILabel alloc] initWithFrame:CGRectMake(12, 15, 150, 18)];
+    lbPrice.font = [UIFont systemFontOfSize:12];
+    lbPrice.text = @"原价:337.00";
+    [view addSubview:lbPrice];
+    UILabel * lbTitle = [[UILabel alloc]initWithFrame:CGRectMake(12, 32, IPHONE_SCREEN_WIDTH, 36)];
+    lbTitle.text = @"百达翡丽PATEKPHILIPPE复杂功能计时\n5180/1G-010自动机械表";
+    lbTitle.numberOfLines = 2;
+    lbTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+    lbTitle.font = [UIFont systemFontOfSize:12];
+    [view addSubview:lbTitle];
+    
+    CGFloat collectX = IPHONE_SCREEN_WIDTH-62+20;
+    CGFloat collectY = (83-16)/2;
+    UIButton * btnCollect = [[UIButton alloc]initWithFrame:CGRectMake(collectX, collectY, 17, 15)];
+    [btnCollect setImage:[UIImage imageNamed:@"collect_normal"] forState:UIControlStateNormal];
+    [btnCollect setImage:[UIImage imageNamed:@"collect_press"] forState:UIControlStateHighlighted];
+    [btnCollect addTarget:self action:@selector(collectGoods) forControlEvents:UIControlEventTouchDragInside];
+    [view addSubview:btnCollect];
+    
+    UILabel * lbCollect = [[UILabel alloc]initWithFrame:CGRectMake(collectX, collectY + 25, 36, 10)];
+    lbCollect.text = @"收藏";
+    lbCollect.font = [UIFont systemFontOfSize:11];
+    [view addSubview:lbCollect];
+    
+    UIView * divideView = [[UIView alloc]initWithFrame:CGRectMake(0, 83, IPHONE_SCREEN_WIDTH, 0.5)];
+    divideView.backgroundColor = WXColorWithInteger(0xdbdbdb);
+    [view addSubview:divideView];
+    return view;
+}
+
+-(void)collectGoods{
+    NSLog(@"%s",__FUNCTION__);
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 125;
+    return 40;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString * proListIdentifier = @"ProductList";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:proListIdentifier];
-    if (cell == NULL) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:proListIdentifier];
+    switch (indexPath.section) {
+        /*case 0:{
+            static NSString * proListIdentifier = @"ProductList";
+            UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:proListIdentifier];
+            if (cell == NULL) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:proListIdentifier];
+            }
+//            cell.imageView.image = [_picMArray objectAtIndex:indexPath.row];
+//            cell.textLabel.text = [_dataMArray objectAtIndex:indexPath.row];
+//            cell.textLabel.font = [UIFont systemFontOfSize:12];
+            cell.textLabel.text = @"123";
+            return cell;
+        }
+            break;*/
+        case 0:{
+            GoodsDetailCell * cell = [self createOptionsCell:tableView cellForRowAtIndexPath:indexPath];
+            return cell;
+        }
+            break;
+        default:{
+            static NSString * defaultIdentifier = @"DefaultIdentifier";
+            UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier];
+            return cell;
+        }
+            break;
     }
-//    cell.textLabel.text = @"测试";
+}
+
+-(GoodsDetailCell*)createOptionsCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath{
+    static NSString * optionsIdentifier = @"OptionsIdentifier";
+    GoodsDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:optionsIdentifier];
+    if (cell == NULL) {
+        cell = [[GoodsDetailCell alloc]init];;
+    }
+    cell.ivTitle.image = [_picMArray objectAtIndex:indexPath.row];
+    cell.lbTitle.text = [_dataMArray objectAtIndex:indexPath.row];
     return cell;
 }
 
