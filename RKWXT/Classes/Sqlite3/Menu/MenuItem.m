@@ -16,12 +16,11 @@
 
 @implementation MenuSubItem
 - (void)dealloc{
-    RELEASE_SAFELY(_name);
-    [super dealloc];
+//    [super dealloc];
 }
 
 + (MenuSubItem*)menuSubItemWithDictionary:(NSDictionary*)dic{
-    return [[[self alloc] initWithDictionary:dic] autorelease];
+    return [[self alloc] initWithDictionary:dic];
 }
 
 - (id)initWithDictionary:(NSDictionary*)dic{

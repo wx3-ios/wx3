@@ -8,7 +8,7 @@
 
 #import "WXTMallViewController.h"
 #import "NewHomePageCommonDef.h"
-
+#import "WXSysMsgUnreadV.h"
 #define Size self.bounds.size
 
 typedef enum{
@@ -19,9 +19,10 @@ typedef enum{
     E_CellRefreshing_Invalid,
 }E_CellRefreshing;
 
-@interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate>{
+@interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate,WXSysMsgUnreadVDelegate>{
     PullingRefreshTableView *_tableView;
     WXHomeTopGoodCell *_topCell;
+    WXSysMsgUnreadV * _unreadView;
     
 }
 @property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
@@ -69,6 +70,11 @@ typedef enum{
     [leftBtn setImage:[UIImage imageNamed:@"HomePageLeftBtn.png"] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(homePageToCategaryView) forControlEvents:UIControlEventTouchUpInside];
     [self setLeftNavigationItem:leftBtn];
+    
+    _unreadView = [[WXSysMsgUnreadV alloc] initWithFrame:CGRectMake(0, 0, kDefaultNavigationBarButtonSize.width, kDefaultNavigationBarButtonSize.height)];
+    [_unreadView setDelegate:self];
+    [_unreadView showSysPushMsgUnread];
+    [self setRightNavigationItem:_unreadView];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -333,6 +339,13 @@ typedef enum{
 #pragma mark LeftBtn
 -(void)homePageToCategaryView{
     NSLog(@"左边按钮");
+}
+
+#pragma mark 消息推送
+- (void)toSysPushMsgView{
+//    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"功能开发中" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+//    [alertView show];
+    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodInfo:nil animated:YES];
 }
 
 #pragma mark BaseFunction

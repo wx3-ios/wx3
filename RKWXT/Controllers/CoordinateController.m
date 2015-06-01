@@ -11,7 +11,8 @@
 #import "ContactDetailVC.h"
 #import "SignViewController.h"
 #import "RechargeVC.h"
-
+#import "WXTCartDetailViewController.h"
+#import "WXTGoodsDetailViewController.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -41,12 +42,12 @@
     [vc.wxNavigationController pushViewController:rechargeVC];
 }
 
-//- (void)toGoodsInfoVC:(id)sender goodInfo:(WXGoodEntity*)goodInfo animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    GoodsInfoVC *goodsInfoVC = [[GoodsInfoVC alloc] init] ;
+- (void)toGoodsInfoVC:(id)sender goodInfo:(WXGoodEntity*)goodInfo animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    WXTGoodsDetailViewController *goodsInfoVC = [[WXTGoodsDetailViewController alloc] init] ;
 //    [goodsInfoVC setGoodEntity:goodInfo];
-//    [vc.wxNavigationController pushViewController:goodsInfoVC];
-//}
+    [vc.wxNavigationController pushViewController:goodsInfoVC];
+}
 
 //- (void)toOrderMenu:(id)sender source:(E_OrderMenuSource)source goodList:(NSArray*)goodList extra:(MenuExtra*)extra animated:(BOOL)animated{
 //    WXUIViewController *vc = sender;
@@ -126,5 +127,11 @@
 //    [vc.wxNavigationController pushViewController:refundStatusVC completion:^{
 //    }];
 //}
+
+- (void)toCartDetail:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    WXTCartDetailViewController * cartDetailVC = [[WXTCartDetailViewController alloc]init];
+    [vc.wxNavigationController pushViewController:cartDetailVC];
+}
 
 @end

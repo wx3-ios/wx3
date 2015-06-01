@@ -65,5 +65,5 @@ typedef enum {
 //new
 -(void)toSignVC:(id)sender animated:(BOOL)animated;//签到
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated;//充值
-
+- (void)toCartDetail:(id)sender animated:(BOOL)animated;// 购物车
 @end
