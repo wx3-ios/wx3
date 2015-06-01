@@ -449,6 +449,27 @@
 		77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DB943A1AAFF3830021A816 /* UIView+Sizing.m */; };
 		786155E21AC8E0CE0048B604 /* areacode in Resources */ = {isa = PBXBuildFile; fileRef = 786155E01AC8E0CE0048B604 /* areacode */; };
 		786155E31AC8E0CE0048B604 /* place.dat in Resources */ = {isa = PBXBuildFile; fileRef = 786155E11AC8E0CE0048B604 /* place.dat */; };
+		DD0E38AB1B1BE5AC00AB4DB9 /* MenuExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38791B1BE5AC00AB4DB9 /* MenuExtra.m */; };
+		DD0E38AC1B1BE5AC00AB4DB9 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E387B1B1BE5AC00AB4DB9 /* MenuItem.m */; };
+		DD0E38AD1B1BE5AC00AB4DB9 /* WXMenuSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E387E1B1BE5AC00AB4DB9 /* WXMenuSqlite.m */; };
+		DD0E38AE1B1BE5AC00AB4DB9 /* SysMsgItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38821B1BE5AC00AB4DB9 /* SysMsgItem.m */; };
+		DD0E38AF1B1BE5AC00AB4DB9 /* SysMsgSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38841B1BE5AC00AB4DB9 /* SysMsgSqlite.m */; };
+		DD0E38B01B1BE5AC00AB4DB9 /* WXShopCartEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38881B1BE5AC00AB4DB9 /* WXShopCartEntity.m */; };
+		DD0E38B11B1BE5AC00AB4DB9 /* WXShopCartSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E388A1B1BE5AC00AB4DB9 /* WXShopCartSqlite.m */; };
+		DD0E38B21B1BE5AC00AB4DB9 /* WXSqlite+shopCart.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E388B1B1BE5AC00AB4DB9 /* WXSqlite+shopCart.m */; };
+		DD0E38B31B1BE5AC00AB4DB9 /* SystemMessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38901B1BE5AC00AB4DB9 /* SystemMessageEntity.m */; };
+		DD0E38B41B1BE5AC00AB4DB9 /* WXSqlite+WXSysMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38911B1BE5AC00AB4DB9 /* WXSqlite+WXSysMsg.m */; };
+		DD0E38B51B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38931B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m */; };
+		DD0E38B61B1BE5AC00AB4DB9 /* WXBaseSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38951B1BE5AC00AB4DB9 /* WXBaseSqlite.m */; };
+		DD0E38B71B1BE5AC00AB4DB9 /* WXSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38971B1BE5AC00AB4DB9 /* WXSqlite.m */; };
+		DD0E38B81B1BE5AC00AB4DB9 /* WXSqliteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38991B1BE5AC00AB4DB9 /* WXSqliteItem.m */; };
+		DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E389C1B1BE5AC00AB4DB9 /* SysMsgCell.m */; };
+		DD0E38BA1B1BE5AC00AB4DB9 /* SysMsgDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E389F1B1BE5AC00AB4DB9 /* SysMsgDetailVC.m */; };
+		DD0E38BB1B1BE5AC00AB4DB9 /* SysMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A11B1BE5AC00AB4DB9 /* SysMsgModel.m */; };
+		DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A31B1BE5AC00AB4DB9 /* SysMsgOBS.m */; };
+		DD0E38BD1B1BE5AC00AB4DB9 /* SysMsgTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A51B1BE5AC00AB4DB9 /* SysMsgTimeCell.m */; };
+		DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A71B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m */; };
+		DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */; };
 		DD351C581AD8B85000DF0C7E /* libPods-CocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD54B2981AE0F9E100FF318B /* WXTMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */; };
@@ -478,6 +499,8 @@
 		DDDAE98B1ACAA8D400CC3FE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE98A1ACAA8D400CC3FE9 /* UIKit.framework */; };
 		DDDAE98D1ACAA8DE00CC3FE9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE98C1ACAA8DE00CC3FE9 /* Security.framework */; };
 		DDDAE9921ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */; };
+		DDEA9EBD1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9EBA1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m */; };
+		DDEA9EBE1B1BF2AD00530C1C /* WXTPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9EBC1B1BF2AD00530C1C /* WXTPayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1229,6 +1252,53 @@
 		77DB943A1AAFF3830021A816 /* UIView+Sizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sizing.m"; sourceTree = "<group>"; };
 		786155E01AC8E0CE0048B604 /* areacode */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = areacode; sourceTree = "<group>"; };
 		786155E11AC8E0CE0048B604 /* place.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = place.dat; sourceTree = "<group>"; };
+		DD0E38781B1BE5AC00AB4DB9 /* MenuExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuExtra.h; sourceTree = "<group>"; };
+		DD0E38791B1BE5AC00AB4DB9 /* MenuExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuExtra.m; sourceTree = "<group>"; };
+		DD0E387A1B1BE5AC00AB4DB9 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		DD0E387B1B1BE5AC00AB4DB9 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
+		DD0E387C1B1BE5AC00AB4DB9 /* MenuItemDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemDef.h; sourceTree = "<group>"; };
+		DD0E387D1B1BE5AC00AB4DB9 /* WXMenuSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMenuSqlite.h; sourceTree = "<group>"; };
+		DD0E387E1B1BE5AC00AB4DB9 /* WXMenuSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMenuSqlite.m; sourceTree = "<group>"; };
+		DD0E38801B1BE5AC00AB4DB9 /* SysMessageDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMessageDef.h; sourceTree = "<group>"; };
+		DD0E38811B1BE5AC00AB4DB9 /* SysMsgItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgItem.h; sourceTree = "<group>"; };
+		DD0E38821B1BE5AC00AB4DB9 /* SysMsgItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgItem.m; sourceTree = "<group>"; };
+		DD0E38831B1BE5AC00AB4DB9 /* SysMsgSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgSqlite.h; sourceTree = "<group>"; };
+		DD0E38841B1BE5AC00AB4DB9 /* SysMsgSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgSqlite.m; sourceTree = "<group>"; };
+		DD0E38861B1BE5AC00AB4DB9 /* ShopCartDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCartDefine.h; sourceTree = "<group>"; };
+		DD0E38871B1BE5AC00AB4DB9 /* WXShopCartEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXShopCartEntity.h; sourceTree = "<group>"; };
+		DD0E38881B1BE5AC00AB4DB9 /* WXShopCartEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXShopCartEntity.m; sourceTree = "<group>"; };
+		DD0E38891B1BE5AC00AB4DB9 /* WXShopCartSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXShopCartSqlite.h; sourceTree = "<group>"; };
+		DD0E388A1B1BE5AC00AB4DB9 /* WXShopCartSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXShopCartSqlite.m; sourceTree = "<group>"; };
+		DD0E388B1B1BE5AC00AB4DB9 /* WXSqlite+shopCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSqlite+shopCart.m"; sourceTree = "<group>"; };
+		DD0E388C1B1BE5AC00AB4DB9 /* SqliteDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteDef.h; sourceTree = "<group>"; };
+		DD0E388E1B1BE5AC00AB4DB9 /* SystemMessageDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMessageDefine.h; sourceTree = "<group>"; };
+		DD0E388F1B1BE5AC00AB4DB9 /* SystemMessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMessageEntity.h; sourceTree = "<group>"; };
+		DD0E38901B1BE5AC00AB4DB9 /* SystemMessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMessageEntity.m; sourceTree = "<group>"; };
+		DD0E38911B1BE5AC00AB4DB9 /* WXSqlite+WXSysMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSqlite+WXSysMsg.m"; sourceTree = "<group>"; };
+		DD0E38921B1BE5AC00AB4DB9 /* WXSysMsgSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSysMsgSqlite.h; sourceTree = "<group>"; };
+		DD0E38931B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSysMsgSqlite.m; sourceTree = "<group>"; };
+		DD0E38941B1BE5AC00AB4DB9 /* WXBaseSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXBaseSqlite.h; sourceTree = "<group>"; };
+		DD0E38951B1BE5AC00AB4DB9 /* WXBaseSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXBaseSqlite.m; sourceTree = "<group>"; };
+		DD0E38961B1BE5AC00AB4DB9 /* WXSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSqlite.h; sourceTree = "<group>"; };
+		DD0E38971B1BE5AC00AB4DB9 /* WXSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSqlite.m; sourceTree = "<group>"; };
+		DD0E38981B1BE5AC00AB4DB9 /* WXSqliteItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSqliteItem.h; sourceTree = "<group>"; };
+		DD0E38991B1BE5AC00AB4DB9 /* WXSqliteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSqliteItem.m; sourceTree = "<group>"; };
+		DD0E389B1B1BE5AC00AB4DB9 /* SysMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgCell.h; sourceTree = "<group>"; };
+		DD0E389C1B1BE5AC00AB4DB9 /* SysMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgCell.m; sourceTree = "<group>"; };
+		DD0E389D1B1BE5AC00AB4DB9 /* SysMsgDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgDef.h; sourceTree = "<group>"; };
+		DD0E389E1B1BE5AC00AB4DB9 /* SysMsgDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgDetailVC.h; sourceTree = "<group>"; };
+		DD0E389F1B1BE5AC00AB4DB9 /* SysMsgDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgDetailVC.m; sourceTree = "<group>"; };
+		DD0E38A01B1BE5AC00AB4DB9 /* SysMsgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgModel.h; sourceTree = "<group>"; };
+		DD0E38A11B1BE5AC00AB4DB9 /* SysMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgModel.m; sourceTree = "<group>"; };
+		DD0E38A21B1BE5AC00AB4DB9 /* SysMsgOBS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgOBS.h; sourceTree = "<group>"; };
+		DD0E38A31B1BE5AC00AB4DB9 /* SysMsgOBS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgOBS.m; sourceTree = "<group>"; };
+		DD0E38A41B1BE5AC00AB4DB9 /* SysMsgTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgTimeCell.h; sourceTree = "<group>"; };
+		DD0E38A51B1BE5AC00AB4DB9 /* SysMsgTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgTimeCell.m; sourceTree = "<group>"; };
+		DD0E38A61B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgToDetailTipView.h; sourceTree = "<group>"; };
+		DD0E38A71B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgToDetailTipView.m; sourceTree = "<group>"; };
+		DD0E38A81B1BE5AC00AB4DB9 /* SysMsgUIDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgUIDef.h; sourceTree = "<group>"; };
+		DD0E38A91B1BE5AC00AB4DB9 /* SysMsgVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgVC.h; sourceTree = "<group>"; };
+		DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgVC.m; sourceTree = "<group>"; };
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD54B2961AE0F9E100FF318B /* WXTMessageCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMessageCenterVC.h; sourceTree = "<group>"; };
 		DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMessageCenterVC.m; sourceTree = "<group>"; };
@@ -1282,6 +1352,10 @@
 		DDDAE98F1ACAA97F00CC3FE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/PushConfig.plist; sourceTree = "<group>"; };
 		DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.3.a"; sourceTree = "<group>"; };
 		DDDAE9931ACAAA3E00CC3FE9 /* APService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		DDEA9EB91B1BF2AD00530C1C /* WXTOrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTOrderConfirmViewController.h; sourceTree = "<group>"; };
+		DDEA9EBA1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTOrderConfirmViewController.m; sourceTree = "<group>"; };
+		DDEA9EBB1B1BF2AD00530C1C /* WXTPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTPayViewController.h; sourceTree = "<group>"; };
+		DDEA9EBC1B1BF2AD00530C1C /* WXTPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTPayViewController.m; sourceTree = "<group>"; };
 		E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2010,6 +2084,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				DD0E38751B1BE5AC00AB4DB9 /* Classes */,
 				12F4BDFA1AE8C9FA00B9FEDA /* PopView */,
 				775C58711ABA7B75005B6B40 /* DataFromLib */,
 				775C581A1ABA5F31005B6B40 /* WXTUtils */,
@@ -3026,6 +3101,109 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DD0E38751B1BE5AC00AB4DB9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DDEA9EB81B1BF2AD00530C1C /* WXTOrderAndPay */,
+				DD0E38761B1BE5AC00AB4DB9 /* Sqlite3 */,
+				DD0E389A1B1BE5AC00AB4DB9 /* SystemMessage */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DD0E38761B1BE5AC00AB4DB9 /* Sqlite3 */ = {
+			isa = PBXGroup;
+			children = (
+				DD0E38771B1BE5AC00AB4DB9 /* Menu */,
+				DD0E387F1B1BE5AC00AB4DB9 /* PushMessage */,
+				DD0E38851B1BE5AC00AB4DB9 /* ShopCart */,
+				DD0E388C1B1BE5AC00AB4DB9 /* SqliteDef.h */,
+				DD0E388D1B1BE5AC00AB4DB9 /* SystemMessage */,
+				DD0E38941B1BE5AC00AB4DB9 /* WXBaseSqlite.h */,
+				DD0E38951B1BE5AC00AB4DB9 /* WXBaseSqlite.m */,
+				DD0E38961B1BE5AC00AB4DB9 /* WXSqlite.h */,
+				DD0E38971B1BE5AC00AB4DB9 /* WXSqlite.m */,
+				DD0E38981B1BE5AC00AB4DB9 /* WXSqliteItem.h */,
+				DD0E38991B1BE5AC00AB4DB9 /* WXSqliteItem.m */,
+			);
+			path = Sqlite3;
+			sourceTree = "<group>";
+		};
+		DD0E38771B1BE5AC00AB4DB9 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				DD0E38781B1BE5AC00AB4DB9 /* MenuExtra.h */,
+				DD0E38791B1BE5AC00AB4DB9 /* MenuExtra.m */,
+				DD0E387A1B1BE5AC00AB4DB9 /* MenuItem.h */,
+				DD0E387B1B1BE5AC00AB4DB9 /* MenuItem.m */,
+				DD0E387C1B1BE5AC00AB4DB9 /* MenuItemDef.h */,
+				DD0E387D1B1BE5AC00AB4DB9 /* WXMenuSqlite.h */,
+				DD0E387E1B1BE5AC00AB4DB9 /* WXMenuSqlite.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		DD0E387F1B1BE5AC00AB4DB9 /* PushMessage */ = {
+			isa = PBXGroup;
+			children = (
+				DD0E38801B1BE5AC00AB4DB9 /* SysMessageDef.h */,
+				DD0E38811B1BE5AC00AB4DB9 /* SysMsgItem.h */,
+				DD0E38821B1BE5AC00AB4DB9 /* SysMsgItem.m */,
+				DD0E38831B1BE5AC00AB4DB9 /* SysMsgSqlite.h */,
+				DD0E38841B1BE5AC00AB4DB9 /* SysMsgSqlite.m */,
+			);
+			path = PushMessage;
+			sourceTree = "<group>";
+		};
+		DD0E38851B1BE5AC00AB4DB9 /* ShopCart */ = {
+			isa = PBXGroup;
+			children = (
+				DD0E38861B1BE5AC00AB4DB9 /* ShopCartDefine.h */,
+				DD0E38871B1BE5AC00AB4DB9 /* WXShopCartEntity.h */,
+				DD0E38881B1BE5AC00AB4DB9 /* WXShopCartEntity.m */,
+				DD0E38891B1BE5AC00AB4DB9 /* WXShopCartSqlite.h */,
+				DD0E388A1B1BE5AC00AB4DB9 /* WXShopCartSqlite.m */,
+				DD0E388B1B1BE5AC00AB4DB9 /* WXSqlite+shopCart.m */,
+			);
+			path = ShopCart;
+			sourceTree = "<group>";
+		};
+		DD0E388D1B1BE5AC00AB4DB9 /* SystemMessage */ = {
+			isa = PBXGroup;
+			children = (
+				DD0E388E1B1BE5AC00AB4DB9 /* SystemMessageDefine.h */,
+				DD0E388F1B1BE5AC00AB4DB9 /* SystemMessageEntity.h */,
+				DD0E38901B1BE5AC00AB4DB9 /* SystemMessageEntity.m */,
+				DD0E38911B1BE5AC00AB4DB9 /* WXSqlite+WXSysMsg.m */,
+				DD0E38921B1BE5AC00AB4DB9 /* WXSysMsgSqlite.h */,
+				DD0E38931B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m */,
+			);
+			path = SystemMessage;
+			sourceTree = "<group>";
+		};
+		DD0E389A1B1BE5AC00AB4DB9 /* SystemMessage */ = {
+			isa = PBXGroup;
+			children = (
+				DD0E389B1B1BE5AC00AB4DB9 /* SysMsgCell.h */,
+				DD0E389C1B1BE5AC00AB4DB9 /* SysMsgCell.m */,
+				DD0E389D1B1BE5AC00AB4DB9 /* SysMsgDef.h */,
+				DD0E389E1B1BE5AC00AB4DB9 /* SysMsgDetailVC.h */,
+				DD0E389F1B1BE5AC00AB4DB9 /* SysMsgDetailVC.m */,
+				DD0E38A01B1BE5AC00AB4DB9 /* SysMsgModel.h */,
+				DD0E38A11B1BE5AC00AB4DB9 /* SysMsgModel.m */,
+				DD0E38A21B1BE5AC00AB4DB9 /* SysMsgOBS.h */,
+				DD0E38A31B1BE5AC00AB4DB9 /* SysMsgOBS.m */,
+				DD0E38A41B1BE5AC00AB4DB9 /* SysMsgTimeCell.h */,
+				DD0E38A51B1BE5AC00AB4DB9 /* SysMsgTimeCell.m */,
+				DD0E38A61B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.h */,
+				DD0E38A71B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m */,
+				DD0E38A81B1BE5AC00AB4DB9 /* SysMsgUIDef.h */,
+				DD0E38A91B1BE5AC00AB4DB9 /* SysMsgVC.h */,
+				DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */,
+			);
+			path = SystemMessage;
+			sourceTree = "<group>";
+		};
 		DDB58F181AD3C6A2006248E9 /* ContactDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -3117,6 +3295,17 @@
 				DDB58F401AD3C6A2006248E9 /* WXContacterCell.m */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		DDEA9EB81B1BF2AD00530C1C /* WXTOrderAndPay */ = {
+			isa = PBXGroup;
+			children = (
+				DDEA9EB91B1BF2AD00530C1C /* WXTOrderConfirmViewController.h */,
+				DDEA9EBA1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m */,
+				DDEA9EBB1B1BF2AD00530C1C /* WXTPayViewController.h */,
+				DDEA9EBC1B1BF2AD00530C1C /* WXTPayViewController.m */,
+			);
+			path = WXTOrderAndPay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3389,8 +3578,10 @@
 				775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */,
 				7758430C1AB95A300039B129 /* WXActivityButton.m in Sources */,
 				DD54B2981AE0F9E100FF318B /* WXTMessageCenterVC.m in Sources */,
+				DD0E38B61B1BE5AC00AB4DB9 /* WXBaseSqlite.m in Sources */,
 				775843011AB95A300039B129 /* PingponeButton.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
+				DDEA9EBE1B1BF2AD00530C1C /* WXTPayViewController.m in Sources */,
 				775C58C61ABA7B75005B6B40 /* PersonalInfo.m in Sources */,
 				775842B81AB95A300039B129 /* WXUnreadSysMsgOBJ.m in Sources */,
 				775843331AB95A300039B129 /* WXUITableViewCell.m in Sources */,
@@ -3418,6 +3609,7 @@
 				128221C81B184C3B004613BB /* ASIInputStream.m in Sources */,
 				775842EA1AB95A300039B129 /* ZoneCodeEntity.m in Sources */,
 				775843131AB95A300039B129 /* WXSingleSelectVC.m in Sources */,
+				DD0E38BA1B1BE5AC00AB4DB9 /* SysMsgDetailVC.m in Sources */,
 				77D197621ABC246000FAA4CE /* RootViewController.m in Sources */,
 				775842B71AB95A300039B129 /* WXTipMaskOBJ.m in Sources */,
 				775842B31AB95A300039B129 /* UtilTool.m in Sources */,
@@ -3425,9 +3617,11 @@
 				12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */,
 				775842FB1AB95A300039B129 /* UIImage+KIAdditions.m in Sources */,
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
+				DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */,
 				775843591AB95FAC0039B129 /* WXService+Call.m in Sources */,
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
 				775C58B71ABA7B75005B6B40 /* RedPacketBalance.m in Sources */,
+				DD0E38B81B1BE5AC00AB4DB9 /* WXSqliteItem.m in Sources */,
 				128221CC1B184CF4004613BB /* URLNetOperation.m in Sources */,
 				775C58B91ABA7B75005B6B40 /* RedPacketRule.m in Sources */,
 				775843391AB95A300039B129 /* WXUIWebView.m in Sources */,
@@ -3438,6 +3632,7 @@
 				77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */,
 				775842BD1AB95A300039B129 /* WXGuidMaskView.m in Sources */,
 				7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */,
+				DD0E38B71B1BE5AC00AB4DB9 /* WXSqlite.m in Sources */,
 				775842CD1AB95A300039B129 /* ss.cpp in Sources */,
 				775842C51AB95A300039B129 /* it_lib_context.cpp in Sources */,
 				775C58C31ABA7B75005B6B40 /* GuessYouLikeData.m in Sources */,
@@ -3451,6 +3646,7 @@
 				128221801B18467A004613BB /* CSTScrollBrowser.m in Sources */,
 				7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */,
 				7758435B1AB95FAC0039B129 /* WXService+UserInfo.m in Sources */,
+				DD0E38B21B1BE5AC00AB4DB9 /* WXSqlite+shopCart.m in Sources */,
 				775C58CE1ABA7B75005B6B40 /* ContacterEntity+Detail.m in Sources */,
 				775C58D21ABA7B75005B6B40 /* WXContactMonitor.m in Sources */,
 				12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */,
@@ -3469,14 +3665,17 @@
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
+				DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
 				775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
+				DD0E38AE1B1BE5AC00AB4DB9 /* SysMsgItem.m in Sources */,
 				DDB58F491AD3C6A2006248E9 /* ContactBaseEntity.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
 				120A2BEE1AB135DD006A28B1 /* T_SignGifView.m in Sources */,
+				DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */,
 				1282218E1B1847E7004613BB /* RemotionFileEntity.m in Sources */,
 				775843151AB95A300039B129 /* WXTouchEventView.m in Sources */,
 				7758431C1AB95A300039B129 /* WXMFMessageComposeVC.m in Sources */,
@@ -3503,6 +3702,7 @@
 				775C58C21ABA7B75005B6B40 /* ActData.m in Sources */,
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
 				DDB58F551AD3C6A2006248E9 /* WXContacterCell.m in Sources */,
+				DD0E38B41B1BE5AC00AB4DB9 /* WXSqlite+WXSysMsg.m in Sources */,
 				775C58421ABA5F31005B6B40 /* Tools.m in Sources */,
 				775842B51AB95A300039B129 /* WXTURLFeedOBJ+Data.m in Sources */,
 				1218042E1ACB899B009DB7E7 /* DBImageView.m in Sources */,
@@ -3528,10 +3728,12 @@
 				775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */,
 				77DB93F11AAFE70D0021A816 /* MessageData.m in Sources */,
 				775C58C51ABA7B75005B6B40 /* TopADVEntity.m in Sources */,
+				DD0E38BD1B1BE5AC00AB4DB9 /* SysMsgTimeCell.m in Sources */,
 				128221791B18467A004613BB /* PullingRefreshTableView.m in Sources */,
 				775842E61AB95A300039B129 /* CountryCode.m in Sources */,
 				775842B61AB95A300039B129 /* WXTURLFeedOBJ.m in Sources */,
 				128221ED1B18716E004613BB /* URLBaseModel.m in Sources */,
+				DD0E38B11B1BE5AC00AB4DB9 /* WXShopCartSqlite.m in Sources */,
 				775C58BD1ABA7B75005B6B40 /* WXGood.m in Sources */,
 				775842F31AB95A300039B129 /* EGORefreshTableHeaderView.m in Sources */,
 				775842DB1AB95A300039B129 /* UIFont+WX.m in Sources */,
@@ -3545,12 +3747,14 @@
 				775842C01AB95A300039B129 /* WXGuideMaskControl.m in Sources */,
 				1282217E1B18467A004613BB /* T_ForMeCell.m in Sources */,
 				1277D00E1AC50E4F0008D9B6 /* WXTResetPwdVC.m in Sources */,
+				DDEA9EBD1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m in Sources */,
 				7758432F1AB95A300039B129 /* WXUITabBar.m in Sources */,
 				775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */,
 				128221821B18467A004613BB /* T_TopicalCell.m in Sources */,
 				775842C21AB95A300039B129 /* it_lib_addr_book.cpp in Sources */,
 				775842D31AB95A300039B129 /* NSDate+Compare.m in Sources */,
 				DDB58F471AD3C6A2006248E9 /* ContactsCallViewController.m in Sources */,
+				DD0E38B01B1BE5AC00AB4DB9 /* WXShopCartEntity.m in Sources */,
 				128221F01B188209004613BB /* HomePageTop.m in Sources */,
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
 				775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */,
@@ -3594,10 +3798,12 @@
 				7758431A1AB95A300039B129 /* WXWaitingHud.m in Sources */,
 				7758430D1AB95A300039B129 /* WXCheckMenu.m in Sources */,
 				775843361AB95A300039B129 /* WXUITextView.m in Sources */,
+				DD0E38AD1B1BE5AC00AB4DB9 /* WXMenuSqlite.m in Sources */,
 				128221C91B184C3B004613BB /* ASINetworkQueue.m in Sources */,
 				12D0C87C1AB6B2970039A197 /* VersionModel.m in Sources */,
 				120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */,
 				775842CB1AB95A300039B129 /* reg_msg.cpp in Sources */,
+				DD0E38AC1B1BE5AC00AB4DB9 /* MenuItem.m in Sources */,
 				775842C41AB95A300039B129 /* it_lib_call.cpp in Sources */,
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
 				775C58CF1ABA7B75005B6B40 /* ContacterEntity.m in Sources */,
@@ -3620,6 +3826,7 @@
 				775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
 				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,
+				DD0E38AB1B1BE5AC00AB4DB9 /* MenuExtra.m in Sources */,
 				775843371AB95A300039B129 /* WXUIView.m in Sources */,
 				775843581AB95FAC0039B129 /* ServiceMonitor.m in Sources */,
 				775843171AB95A300039B129 /* LoadLabel.m in Sources */,
@@ -3638,6 +3845,7 @@
 				775842D81AB95A300039B129 /* NSString+Size.m in Sources */,
 				128221811B18467A004613BB /* WXHomeTopGoodCell.m in Sources */,
 				775C583B1ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m in Sources */,
+				DD0E38AF1B1BE5AC00AB4DB9 /* SysMsgSqlite.m in Sources */,
 				12F4BE041AE8CA3B00B9FEDA /* MenuButton.m in Sources */,
 				775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
@@ -3652,10 +3860,13 @@
 				7758430F1AB95A300039B129 /* WXMultiGuideView.m in Sources */,
 				775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */,
 				1282217D1B18467A004613BB /* T_ChangeView.m in Sources */,
+				DD0E38B31B1BE5AC00AB4DB9 /* SystemMessageEntity.m in Sources */,
 				775C58C71ABA7B75005B6B40 /* ShopDesc.m in Sources */,
 				775C58CD1ABA7B75005B6B40 /* AddressBook.m in Sources */,
 				12D0C8801AB6C0E60039A197 /* VersionEntity.m in Sources */,
+				DD0E38B51B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m in Sources */,
 				775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */,
+				DD0E38BB1B1BE5AC00AB4DB9 /* SysMsgModel.m in Sources */,
 				1243CCB91AE7C31B003E0943 /* WXTUITabbarVC.m in Sources */,
 				775842C11AB95A300039B129 /* it_lib.cpp in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,
@@ -3679,6 +3890,7 @@
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
 				DDB58F4C1AD3C6A2006248E9 /* CallViewController.m in Sources */,
+				DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */,
 				777A38561AC3933D001CF5FF /* WXTDatabase.m in Sources */,
 				128221B21B184ABB004613BB /* ASIHTTPRequest.m in Sources */,
 				775AB9E21ABFFD81003A339D /* WXTWebViewController.m in Sources */,
