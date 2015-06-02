@@ -16,7 +16,8 @@
 #import "AboutWxtInfoVC.h"
 #import "WXTResetPwdVC.h"
 #import "WXTMessageCenterVC.h"
-#define UserBgImageViewHeight (125)
+#import "BaseInfoVC.h"
+#define UserBgImageViewHeight (95)
 #define Size self.view.bounds.size
 #define bgImg [UIImage imageNamed:@"PersonalBgImg.jpg"]
 
@@ -29,20 +30,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:@"个人中心"];
+    [self setCSTTitle:@"我"];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
+    CGSize size = self.bounds.size;
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-20);
+    _tableView.frame = CGRectMake(0, 0, size.width, size.height);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setShowsVerticalScrollIndicator:NO];
-    [self.view addSubview:_tableView];
+    [self addSubview:_tableView];
     
     [_tableView setTableHeaderView:[self viewForTableHeadView]];
     [_tableView setTableFooterView:[self viewForTableFootView]];
@@ -53,29 +54,51 @@
     
     UIImageView *bgImageView = [[UIImageView alloc] init];
     bgImageView.frame = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
-    [bgImageView setImage:bgImg];
+//    [bgImageView setImage:bgImg];
+    [bgImageView setBackgroundColor:[UIColor redColor]];
     [headView addSubview:bgImageView];
     
     CGFloat xOffset = 18;
     CGFloat yOffset = 18;
-    UIImage *iconImg = [UIImage imageNamed:@"portrait.png"];
+    UIImage *iconImg = [UIImage imageNamed:@"PersonalInfo.png"];
     UIImageView *iconImageView = [[UIImageView alloc] init];
     iconImageView.frame = CGRectMake(xOffset, UserBgImageViewHeight-yOffset-iconImg.size.height, iconImg.size.width, iconImg.size.height);
     [iconImageView setImage:iconImg];
     [headView addSubview:iconImageView];
     
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    xOffset += iconImg.size.width+15;
-    CGFloat phoneLabelWidth = 140;
+    xOffset += iconImg.size.width+5;
+    CGFloat phoneLabelWidth = 120;
     CGFloat phoneLabelHeight = 20;
     UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.frame = CGRectMake(xOffset, (UserBgImageViewHeight-yOffset-iconImg.size.height/2-phoneLabelHeight/2), phoneLabelWidth, phoneLabelHeight);
+    phoneLabel.frame = CGRectMake(xOffset, UserBgImageViewHeight/2-20, phoneLabelWidth, phoneLabelHeight);
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
     [phoneLabel setTextAlignment:NSTextAlignmentLeft];
-    [phoneLabel setFont:WXTFont(18.0)];
+    [phoneLabel setFont:WXTFont(15.0)];
     [phoneLabel setText:userDefault.user];
-    [phoneLabel setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [phoneLabel setTextColor:WXColorWithInteger(0xffffff)];
     [headView addSubview:phoneLabel];
+    
+    yOffset += 30;
+    WXUILabel *namelabel = [[WXUILabel alloc] init];
+    namelabel.frame = CGRectMake(xOffset, yOffset, phoneLabelWidth, phoneLabelHeight);
+    [namelabel setBackgroundColor:[UIColor clearColor]];
+    [namelabel setFont:WXFont(12.0)];
+    [namelabel setTextColor:WXColorWithInteger(0xffffff)];
+    [namelabel setText:@"我是风儿"];
+    [namelabel setTextAlignment:NSTextAlignmentLeft];
+    [headView addSubview:namelabel];
+    
+    yOffset += phoneLabelHeight;
+    xOffset += phoneLabelWidth;
+    WXUIButton *nextBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    nextBtn.frame = CGRectMake(xOffset, yOffset, Size.width-xOffset, 20);
+    [nextBtn setBackgroundColor:[UIColor clearColor]];
+    [nextBtn setTitle:@"账户管理/收货地址 >" forState:UIControlStateNormal];
+    [nextBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
+    [nextBtn.titleLabel setFont:WXFont(12.0)];
+    [nextBtn addTarget:self action:@selector(nextPageSetInfo) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:nextBtn];
     
     CGRect rect = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
     [headView setFrame:rect];
@@ -175,6 +198,11 @@
         default:
             break;
     }
+}
+
+-(void)nextPageSetInfo{
+    BaseInfoVC *baseInfoVC = [[BaseInfoVC alloc] init];
+    [self.wxNavigationController pushViewController:baseInfoVC];
 }
 
 -(void)quit{
