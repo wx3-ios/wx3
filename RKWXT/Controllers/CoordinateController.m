@@ -13,6 +13,7 @@
 #import "RechargeVC.h"
 #import "WXTCartDetailViewController.h"
 #import "WXTGoodsDetailViewController.h"
+#import "WXTOrderConfirmViewController.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -59,16 +60,16 @@
 //    [vc.wxNavigationController pushViewController:orderVC];
 //}
 
-//- (void)toOrderConfirm:(id)sender delegate:(id<OrderConfirmVCDelegate>)delegate source:(E_OrderMenuSource)source
-//              goodList:(NSArray*)goodList goodExtra:(MenuExtra*)extra{
-//    WXUIViewController *vc = sender;
-//    OrderConfirmVC *orderConfirmVC = [[[OrderConfirmVC alloc] init] autorelease];
+- (void)toOrderConfirm:(id)sender /*delegate:(id<OrderConfirmVCDelegate>)delegate source:(E_OrderMenuSource)source
+              goodList:(NSArray*)goodList goodExtra:(MenuExtra*)extra*/animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    WXTOrderConfirmViewController *orderConfirmVC = [[WXTOrderConfirmViewController alloc] init];
 //    [orderConfirmVC setDelegate:delegate];
 //    [orderConfirmVC setAllGoodChose:goodList];
 //    [orderConfirmVC setMenuGoodsExtra:extra];
 //    [orderConfirmVC setMenuSource:source];
-//    [vc.wxNavigationController pushViewController:orderConfirmVC];
-//}
+    [vc.wxNavigationController pushViewController:orderConfirmVC];
+}
 
 //- (void)toGuideView:(id)sender mode:(E_GuideView_Mode)mode animated:(BOOL)animated{
 //    WXUIViewController *vc = sender;

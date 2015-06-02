@@ -46,8 +46,8 @@ typedef enum {
 - (void)toPersonalInfo:(id)sender animated:(BOOL)animated;//个人信息
 - (void)toMoreFunction:(id)sender animated:(BOOL)animated;//更多
 - (void)toOrderMenu:(id)sender source:(E_OrderMenuSource)source goodList:(NSArray*)goodList extra:(MenuExtra*)extra animated:(BOOL)animated;//订餐
-- (void)toOrderConfirm:(id)sender delegate:(id<OrderConfirmVCDelegate>)delegate source:(E_OrderMenuSource)source
-              goodList:(NSArray*)goodList goodExtra:(MenuExtra*)extra;//订单确认页面
+- (void)toOrderConfirm:(id)sender /*delegate:(id<OrderConfirmVCDelegate>)delegate source:(E_OrderMenuSource)source
+              goodList:(NSArray*)goodList goodExtra:(MenuExtra*)extra*/animated:(BOOL)animated;//订单确认页面
 - (void)toMenu:(id)sender animated:(BOOL)animated;//菜单
 - (void)toMenuDetail:(id)sender menuItem:(id)menuItem animated:(BOOL)animated;//订单详情
 - (void)toGoodsInfoVC:(id)sender goodInfo:(WXGoodEntity*)goodInfo animated:(BOOL)animated;//商品详情

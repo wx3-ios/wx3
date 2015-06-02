@@ -9,11 +9,13 @@
 #import "WXTGoodsDetailViewController.h"
 #import "GoodsDetailCell.h"
 #import "StrechyParallaxScrollView.h"
+#import "EScrollerView.h"
 
-@interface WXTGoodsDetailViewController (){
+@interface WXTGoodsDetailViewController ()<EScrollerViewDelegate>{
     UITableView * _tableView;
     NSMutableArray * _proPicMArray;
     NSMutableArray * _imageViewsMArray; // 视图
+    UIScrollView * _baseScrollView;
     UIScrollView * _scrollView;
     
     int startContentOffsetX;
@@ -40,20 +42,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = WXColorWithInteger(0x000000);
-    [self initUI];
     [self loadData];
+    [self initUI];
 }
 
 -(void)initUI{
+//    [self initScrollView];
 //    [self initTopView];
     [self initTableView];
+    [self initBottomView];
+}
+
+// 头部产品图片
+-(void)initScrollView{
+    CGFloat scrollViewH = IPHONE_SCREEN_HEIGHT - TAB_NAVIGATION_BAR_HEGITH - NAVIGATION_BAR_HEGITH - 20;
+    _baseScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NAVIGATION_BAR_HEGITH+20, IPHONE_SCREEN_WIDTH, scrollViewH)];
+    [self.view addSubview:_baseScrollView];
+}
+
+-(UIView*)topProAdView{
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 266)];
+    EScrollerView *scroller=[[EScrollerView alloc] initWithFrameRect:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 266)
+                                                          ImageArray:[NSArray arrayWithObjects:@"1.jpg",@"2.jpg",@"3.jpg", nil]
+                                                          TitleArray:[NSArray arrayWithObjects:@"11",@"22",@"33", nil]];
+    scroller.delegate=self;
+    [view addSubview:scroller];
+    return view;
+}
+
+-(void)EScrollerViewDidClicked:(NSUInteger)index
+{
+    NSLog(@"index--%ld",index);
+}
+
+-(void)initBottomView{
     // 购物车
     CGFloat cartW = 75;
     CGFloat cartH = 47;
     CGFloat cartY = IPHONE_SCREEN_HEIGHT - cartH;
     UIFont * common = [UIFont systemFontOfSize:14];
     UIButton * btnCart = [[UIButton alloc]initWithFrame:CGRectMake(0, cartY, cartW, cartH)];
-    btnCart.backgroundColor = [UIColor purpleColor];
+    btnCart.backgroundColor = WXColorWithInteger(0x7f7f7f);
     btnCart.titleLabel.font = common;
     [btnCart setTitle:@"购物车" forState:UIControlStateNormal];
     [btnCart addTarget:self action:@selector(cartDetail) forControlEvents:UIControlEventTouchUpInside];
@@ -77,52 +106,6 @@
     [addCart setTitle:@"加入购物车" forState:UIControlStateNormal];
     [addCart addTarget:self action:@selector(addToCart) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addCart];
-    
-}
-
-// 头部产品图片
--(void)initScrollView{
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 266)];
-    _scrollView.showsHorizontalScrollIndicator =NO;
-    _scrollView.showsVerticalScrollIndicator = NO;
-    _scrollView.pagingEnabled = YES;
-    _scrollView.scrollEnabled = YES;
-    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width * 5, self.view.frame.size.height)];
-    _scrollView.delegate = self;
-    [self.view addSubview:_scrollView];
-    
-//    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(IPHONE_SCREEN_WIDTH-10-30, 266-10-30, 30, 30)];
-//    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Circle"]];
-//    [_scrollView addSubview:view];
-    
-}
-
--(void)initTopView{
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, IPHONE_SCREEN_WIDTH, 266)];
-    _scrollView.showsHorizontalScrollIndicator =NO;
-    _scrollView.showsVerticalScrollIndicator = NO;
-    _scrollView.pagingEnabled = YES;
-    _scrollView.scrollEnabled = YES;
-    if (_count <= 1.0 ) {
-        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,64,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
-        imageView.image = [UIImage imageNamed:@"Default"];
-        [_scrollView addSubview:imageView];
-    }else{
-        [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width * _count, self.view.frame.size.height)];
-        
-        for (int i = 0; i < _count; i ++) {
-            UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i *_scrollView.bounds.size.width,64,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
-            imageView.contentMode =UIViewContentModeScaleAspectFit;
-            imageView.clipsToBounds = YES;
-            [_scrollView addSubview:imageView];
-            [_imageViewsMArray addObject:imageView];
-        }
-    }
-    _scrollView.delegate = self;
-    
-//    StrechyParallaxScrollView *strechy = [[StrechyParallaxScrollView alloc] initWithFrame:self.view.frame andTopView:_scrollView];
-//    [self.view addSubview:strechy];
-//    [strechy setContentSize:CGSizeMake(IPHONE_SCREEN_WIDTH, _tableView.frame.size.height)];
 }
 
 -(void)initTableView{
@@ -135,13 +118,13 @@
 }
 
 -(void)loadData{
-//    _count = 5;
-//    _proPicMArray = [NSMutableArray array];
-//    _imageViewsMArray = [NSMutableArray array];
-//    for (int i = 0; i < _count; i ++) {
-//        UIImage * imageName = [UIImage imageNamed:@"Default@2x.png"];
-//        [_proPicMArray addObject:imageName];
-//    }
+    _count = 5;
+    _proPicMArray = [NSMutableArray array];
+    _imageViewsMArray = [NSMutableArray array];
+    for (int i = 0; i < _count; i ++) {
+        UIImage * imageName = [UIImage imageNamed:@"Default@2x.png"];
+        [_proPicMArray addObject:imageName];
+    }
     
 //    for (int i = 0; i < _count; i ++) {
 //        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i *_scrollView.bounds.size.width,64,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
@@ -168,7 +151,7 @@
 
 // 立即购买
 -(void)purchaseAtOnce{
-//    [[CoordinateController sharedCoordinateController]toOrderConfirm:self /*delegate:self source:nil goodList:nil goodExtra:nil*/animated:YES];
+    [[CoordinateController sharedCoordinateController]toOrderConfirm:self /*delegate:self source:nil goodList:nil goodExtra:nil*/animated:YES];
 }
 
 // 加入购物车
@@ -261,7 +244,7 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     switch (section) {
         case 0:{
-            UIView * view = [self headerForProduct];
+            UIView * view = [self topProAdView];
             tableView.tableFooterView = view;
             return view;
         }
