@@ -11,7 +11,9 @@
 #import "ContactDetailVC.h"
 #import "SignViewController.h"
 #import "RechargeVC.h"
-
+#import "WXTCartDetailViewController.h"
+#import "WXTGoodsDetailViewController.h"
+#import "WXTOrderConfirmViewController.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -41,12 +43,12 @@
     [vc.wxNavigationController pushViewController:rechargeVC];
 }
 
-//- (void)toGoodsInfoVC:(id)sender goodInfo:(WXGoodEntity*)goodInfo animated:(BOOL)animated{
-//    WXUIViewController *vc = sender;
-//    GoodsInfoVC *goodsInfoVC = [[GoodsInfoVC alloc] init] ;
+- (void)toGoodsInfoVC:(id)sender goodInfo:(WXGoodEntity*)goodInfo animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    WXTGoodsDetailViewController *goodsInfoVC = [[WXTGoodsDetailViewController alloc] init] ;
 //    [goodsInfoVC setGoodEntity:goodInfo];
-//    [vc.wxNavigationController pushViewController:goodsInfoVC];
-//}
+    [vc.wxNavigationController pushViewController:goodsInfoVC];
+}
 
 //- (void)toOrderMenu:(id)sender source:(E_OrderMenuSource)source goodList:(NSArray*)goodList extra:(MenuExtra*)extra animated:(BOOL)animated{
 //    WXUIViewController *vc = sender;
@@ -58,16 +60,16 @@
 //    [vc.wxNavigationController pushViewController:orderVC];
 //}
 
-//- (void)toOrderConfirm:(id)sender delegate:(id<OrderConfirmVCDelegate>)delegate source:(E_OrderMenuSource)source
-//              goodList:(NSArray*)goodList goodExtra:(MenuExtra*)extra{
-//    WXUIViewController *vc = sender;
-//    OrderConfirmVC *orderConfirmVC = [[[OrderConfirmVC alloc] init] autorelease];
+- (void)toOrderConfirm:(id)sender /*delegate:(id<OrderConfirmVCDelegate>)delegate source:(E_OrderMenuSource)source
+              goodList:(NSArray*)goodList goodExtra:(MenuExtra*)extra*/animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    WXTOrderConfirmViewController *orderConfirmVC = [[WXTOrderConfirmViewController alloc] init];
 //    [orderConfirmVC setDelegate:delegate];
 //    [orderConfirmVC setAllGoodChose:goodList];
 //    [orderConfirmVC setMenuGoodsExtra:extra];
 //    [orderConfirmVC setMenuSource:source];
-//    [vc.wxNavigationController pushViewController:orderConfirmVC];
-//}
+    [vc.wxNavigationController pushViewController:orderConfirmVC];
+}
 
 //- (void)toGuideView:(id)sender mode:(E_GuideView_Mode)mode animated:(BOOL)animated{
 //    WXUIViewController *vc = sender;
@@ -126,5 +128,11 @@
 //    [vc.wxNavigationController pushViewController:refundStatusVC completion:^{
 //    }];
 //}
+
+- (void)toCartDetail:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    WXTCartDetailViewController * cartDetailVC = [[WXTCartDetailViewController alloc]init];
+    [vc.wxNavigationController pushViewController:cartDetailVC];
+}
 
 @end

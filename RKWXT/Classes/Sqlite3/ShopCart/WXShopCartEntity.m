@@ -21,9 +21,6 @@
 @synthesize isReady = _isReady;
 
 - (void)dealloc{
-    RELEASE_SAFELY(_name);
-    RELEASE_SAFELY(_attribute);
-    RELEASE_SAFELY(_priceTxt);
-    [super dealloc];
+//    [super dealloc];
 }
 @end
