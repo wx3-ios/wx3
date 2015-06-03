@@ -35,8 +35,7 @@
         CGFloat xOffset = 7;
         CGFloat yOffset = xOffset;
         CGFloat imgHeight = bgWidth;
-        _imgView = [[WXRemotionImgBtn alloc] init];
-        _imgView.frame = CGRectMake(xOffset, yOffset, bgWidth-2*xOffset, imgHeight-2*yOffset);
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, yOffset, bgWidth-2*xOffset, imgHeight-2*yOffset)];
         [_imgView setUserInteractionEnabled:NO];
         [self addSubview:_imgView];
         

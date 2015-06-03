@@ -54,8 +54,7 @@
         xOffset += textWidth+20;
         CGFloat imgWidth = 50;
         CGFloat imgHeight = 50;
-        _imgView = [[WXRemotionImgBtn alloc] init];
-        _imgView.frame = CGRectMake(xOffset, (T_HomePageTopicalHeight-yGap-imgHeight)/2, imgWidth, imgHeight);
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (T_HomePageTopicalHeight-yGap-imgHeight)/2, imgWidth, imgHeight)];
         [_imgView setUserInteractionEnabled:NO];
         [bgBtn addSubview:_imgView];
     }

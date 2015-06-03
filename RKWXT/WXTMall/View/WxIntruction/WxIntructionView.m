@@ -56,8 +56,7 @@
         xOffset += textWidth;
         CGFloat imgWidth = 62;
         CGFloat imgHeight = imgWidth;
-        _imgView = [[WXRemotionImgBtn alloc] init];
-        _imgView.frame = CGRectMake(xOffset+(width-xOffset-imgWidth)/2, (height-imgHeight)/2, imgWidth, imgHeight);
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset+(width-xOffset-imgWidth)/2, (height-imgHeight)/2, imgWidth, imgHeight)];
         [_imgView setUserInteractionEnabled:NO];
         [self addSubview:_imgView];
     }
