@@ -8,7 +8,6 @@
 
 #import "T_MenuVC.h"
 //#import "T_MeunDef.h"
-//#import "T_Sqlite.h"
 //#import "T_GoodsInfoModel.h"
 //#import "T_MenuEntity.h"
 //#import "T_MenuCommonInfoCell.h"
@@ -43,7 +42,6 @@
 
 //-(void)dealloc{
 //    RELEASE_SAFELY(_tableView);
-//    RELEASE_SAFELY(_fmdb);
 //    RELEASE_SAFELY(_arr);
 //    RELEASE_SAFELY(_menuArr);
 //    RELEASE_SAFELY(_model);
@@ -82,11 +80,6 @@
 //        [_tableView setSeparatorColor:WXColorWithInteger(T_MenuCellLineColor)];
 //    }
 //    [self addSubview:_tableView];
-//    
-//    _fmdb = [[T_Sqlite alloc] init];
-//    [_fmdb createOrOpendb];
-//    [_fmdb createTable];
-//    _oldArr = [_fmdb selectAll];
 //    
 //    if([_oldArr count] > 0){
 //        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock tip:@""];
