@@ -363,6 +363,12 @@ typedef enum{
         {
             [[CoordinateController sharedCoordinateController] toRechargeVC:self animated:YES];
         }
+            break;
+        case T_BaseFunction_Order:
+        {
+            [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:0 animated:YES];
+        }
+            break;
         default:
             break;
     }

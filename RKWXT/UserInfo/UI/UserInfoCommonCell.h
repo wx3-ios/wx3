@@ -12,7 +12,6 @@ typedef enum{
     WXT_UserInfo_Recharge = 0,
     WXT_UserInfo_Balance,
     WXT_UserInfo_Sign,
-    /*WXT_UserInfo_Message,*/
     WXT_UserInfo_ResetPwd,
     WXT_UserInfo_About,
     

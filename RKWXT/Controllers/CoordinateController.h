@@ -53,7 +53,6 @@ typedef enum {
 - (void)toGoodsInfoVC:(id)sender goodInfo:(WXGoodEntity*)goodInfo animated:(BOOL)animated;//商品详情
 - (void)toSystemMessage:(id)sender animated:(BOOL)animated;//系统推送信息
 - (void)toSystemMessageDetail:(id)sender messageInfo:(id)info animated:(BOOL)animated;//系统信息详情
-- (void)toOrderList:(id)sender animated:(BOOL)animated;//订单页面
 - (void)toBranchOfficeInfo:(id)sender animated:(BOOL)animated;//店铺详情
 - (void)toGuideView:(id)sender mode:(E_GuideView_Mode)mode animated:(BOOL)animated;//引导页面
 - (void)toShopDetail:(id)sender animated:(BOOL)animated;//去商店详情
@@ -65,5 +64,6 @@ typedef enum {
 //new
 -(void)toSignVC:(id)sender animated:(BOOL)animated;//签到
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated;//充值
-- (void)toCartDetail:(id)sender animated:(BOOL)animated;// 购物车
+-(void)toCartDetail:(id)sender animated:(BOOL)animated;// 购物车
+-(void)toOrderList:(id)sender selectedShow:(NSInteger)number animated:(BOOL)animated;//订单页面
 @end
