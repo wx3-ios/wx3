@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXTGoodsDetailViewController : WXUIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+enum WXGoodsDetailCellOption{
+    WXGoodsDetail_TopDisplay = 0,
+    WXGoodsDetail_Default ,//
+    WXGoodsDetail_Invalid
+};
+@class WXHomeTopGoodCell;
+@interface WXTGoodsDetailViewController : WXUIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>{
+    WXHomeTopGoodCell * _topProDisplay;
+}
 
 @end
