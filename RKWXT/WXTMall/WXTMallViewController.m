@@ -8,16 +8,6 @@
 
 #import "WXTMallViewController.h"
 #import "NewHomePageCommonDef.h"
-#import "WXSysMsgUnreadV.h"
-#define Size self.bounds.size
-
-typedef enum{
-    E_CellRefreshing_Nothing = 0,
-    E_CellRefreshing_UnderWay,
-    E_CellRefreshing_Finish,
-    
-    E_CellRefreshing_Invalid,
-}E_CellRefreshing;
 
 @interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate,WXSysMsgUnreadVDelegate>{
     PullingRefreshTableView *_tableView;
@@ -375,6 +365,10 @@ typedef enum{
     }
 }
 
+-(void)intructionClicked:(id)entity{
+    NSLog(@"我信介绍");
+}
+
 -(void)changeCellClicked:(id)entity{
     NSLog(@"更多惊喜");
 }
@@ -403,12 +397,25 @@ typedef enum{
 -(void)loadData{
     if(self.e_cellRefreshing == E_CellRefreshing_UnderWay){
         self.e_cellRefreshing = E_CellRefreshing_Finish;
-//        if([self isNeed]){
-//            []
-//        }
+        if([self isNeed]){
+//            [_mo]
+        }
         [_tableView tableViewDidFinishedLoadingWithMessage:@"刷新完成"];
     }else{
     }
+}
+
+-(BOOL)isNeed{
+    return NO;
+}
+
+#pragma mark --scroll
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_tableView tableViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_tableView tableViewDidEndDragging:scrollView];
 }
 
 @end

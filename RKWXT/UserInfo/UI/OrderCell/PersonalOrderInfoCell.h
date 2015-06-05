@@ -8,6 +8,17 @@
 
 #import "WXTUITableViewCell.h"
 
+#define PersonalOrderInfoCellHeight (53)
+
+@protocol PersonalOrderInfoDelegate;
+
 @interface PersonalOrderInfoCell : WXTUITableViewCell
+@property (nonatomic,assign) id<PersonalOrderInfoDelegate>delegate;
+@end
+
+@protocol PersonalOrderInfoDelegate <NSObject>
+-(void)personalInfoToShoppingCart;
+-(void)personalInfoToWaitPayOrderList;
+-(void)personalInfoToWaitReceiveOrderList;
 
 @end

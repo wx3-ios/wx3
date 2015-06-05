@@ -8,19 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#define RechargeViewHeight (133)
-#define ViewNormalDistance (200)
+#define RechargeViewHeight (160)
+#define ViewNormalDistance (150)
 #define ViewBigDistance    (1000)
 #define ViewUpDistance     (100)
 
-@protocol RechargeViewDelegate;
 @interface RechargeView : UIView
-@property (nonatomic,assign) id<RechargeViewDelegate>delegate;
 @property (nonatomic,strong) NSString *rechargeUserphoneStr;
 -(void)removeNotification;
-@end
-
-@protocol RechargeViewDelegate <NSObject>
--(void)rechargeCancel;
 
 @end

@@ -45,9 +45,9 @@
     CGFloat numWidth = 36;
     CGFloat numHeight = 17;
     UILabel *upLine1 = [[UILabel alloc] init];
-    upLine1.frame = CGRectMake(0, 0, Size.width, 0.5);
+    upLine1.frame = CGRectMake(10, 0, Size.width, 0.5);
     [upLine1 setBackgroundColor:WXColorWithInteger(0x969696)];
-    [self addSubview:upLine1];
+//    [self addSubview:upLine1];
     
     UILabel *cartLabel = [[UILabel alloc] init];
     cartLabel.frame = CGRectMake(xOffset, (EveryCellHeight-numHeight)/2+0.6, numWidth, numHeight);
@@ -55,7 +55,7 @@
     [cartLabel setTextAlignment:NSTextAlignmentCenter];
     [cartLabel setFont:WXTFont(14.0)];
     [cartLabel setText:@"卡号:"];
-    [cartLabel setTextColor:WXColorWithInteger(0x323232)];
+    [cartLabel setTextColor:WXColorWithInteger(0x000000)];
     [self addSubview:cartLabel];
     
     xOffset += numWidth+10;
@@ -64,7 +64,7 @@
     _numTextfield = [[UITextField alloc] init];
     _numTextfield.frame = CGRectMake(xOffset, (EveryCellHeight-numHeight)/2, textfieldWidth, textfieldHeight);
     [_numTextfield setKeyboardType:UIKeyboardTypePhonePad];
-    [_numTextfield setPlaceholder:@"请输入卡号"];
+    [_numTextfield setPlaceholder:@"             请输入卡号"];
     [_numTextfield setTextColor:WXColorWithInteger(0x323232)];
     [_numTextfield setFont:WXTFont(14.0)];
     [_numTextfield addTarget:self action:@selector(startInput) forControlEvents:UIControlEventEditingDidBegin];
@@ -74,7 +74,7 @@
     xOffset -= numWidth;
     CGFloat yOffset = EveryCellHeight;
     UILabel *upLine = [[UILabel alloc] init];
-    upLine.frame = CGRectMake(xOffset, yOffset, Size.width-xOffset, 0.5);
+    upLine.frame = CGRectMake(10, yOffset, Size.width-20, 0.5);
     [upLine setBackgroundColor:WXColorWithInteger(0x969696)];
     [self addSubview:upLine];
     
@@ -85,14 +85,14 @@
     [pwdLabel setTextAlignment:NSTextAlignmentCenter];
     [pwdLabel setFont:WXTFont(14.0)];
     [pwdLabel setText:@"密码:"];
-    [cartLabel setTextColor:WXColorWithInteger(0x323232)];
+    [cartLabel setTextColor:WXColorWithInteger(0x000000)];
     [self addSubview:pwdLabel];
     
     xOffset += numWidth;
     _pwdTextfield = [[UITextField alloc] init];
     _pwdTextfield.frame = CGRectMake(xOffset, yOffset, textfieldWidth, textfieldHeight);
     [_pwdTextfield setKeyboardType:UIKeyboardTypePhonePad];
-    [_pwdTextfield setPlaceholder:@"请输入密码"];
+    [_pwdTextfield setPlaceholder:@"             请输入密码"];
     [_pwdTextfield setTextColor:WXColorWithInteger(0x323232)];
     [_pwdTextfield setFont:WXTFont(14.0)];
     [_pwdTextfield addTarget:self action:@selector(startInput) forControlEvents:UIControlEventEditingDidBegin];
@@ -101,38 +101,19 @@
     
     yOffset = 2*EveryCellHeight;
     UILabel *downLine = [[UILabel alloc] init];
-    downLine.frame = CGRectMake(0, yOffset, Size.width, 0.5);
+    downLine.frame = CGRectMake(10, yOffset, Size.width-20, 0.5);
     [downLine setBackgroundColor:WXColorWithInteger(0x969696)];
     [self addSubview:downLine];
     
-    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancelBtn.frame = CGRectMake(0, yOffset, Size.width/2-0.5, EveryCellHeight);
-    [cancelBtn setBackgroundColor:[UIColor clearColor]];
-    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [cancelBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateNormal];
-    [cancelBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateSelected];
-    [cancelBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:cancelBtn];
-    
-    UILabel *line = [[UILabel alloc] init];
-    line.frame = CGRectMake(Size.width/2-0.5, yOffset, 0.5, EveryCellHeight);
-    [line setBackgroundColor:WXColorWithInteger(0x969696)];
-    [self addSubview:line];
-    
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    okBtn.frame = CGRectMake(Size.width/2, yOffset, Size.width/2, EveryCellHeight-1);
-    [okBtn setBackgroundColor:[UIColor clearColor]];
+    okBtn.frame = CGRectMake(13, yOffset+21, Size.width-2*13, EveryCellHeight);
+    [okBtn setBorderRadian:10.0 width:1.0 color:[UIColor clearColor]];
+    [okBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [okBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [okBtn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
-    [okBtn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateSelected];
+    [okBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
+    [okBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateSelected];
     [okBtn addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:okBtn];
-    
-    yOffset += EveryCellHeight;
-    UILabel *downLine1 = [[UILabel alloc] init];
-    downLine1.frame = CGRectMake(0, yOffset, Size.width, 0.5);
-    [downLine1 setBackgroundColor:WXColorWithInteger(0x969696)];
-    [self addSubview:downLine1];
 }
 
 -(void)textfieldReturn:(id)sender{
@@ -146,14 +127,6 @@
 
 -(void)startInput{
     [self setFrame:CGRectMake(0, ViewUpDistance-50, Size.width, RechargeViewHeight)];
-}
-
--(void)cancel{
-    [_numTextfield setText:nil];
-    [_pwdTextfield setText:nil];
-    if(_delegate && [_delegate respondsToSelector:@selector(rechargeCancel)]){
-        [_delegate rechargeCancel];
-    }
 }
 
 -(void)submit{

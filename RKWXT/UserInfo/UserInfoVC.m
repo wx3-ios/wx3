@@ -12,7 +12,7 @@
 #define UserBgImageViewHeight (95)
 #define Size self.view.bounds.size
 
-@interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
+@interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,PersonalOrderInfoDelegate>{
     UITableView *_tableView;
 }
 @end
@@ -250,7 +250,9 @@
     if(!cell){
         cell = [[PersonalOrderInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    
+    [cell setDelegate:self];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell load];
     return cell;
 }
 
@@ -279,7 +281,7 @@
     if(!cell){
         cell = [[PersonalMoneyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
@@ -456,6 +458,20 @@
 -(void)nextPageSetInfo{
     BaseInfoVC *baseInfoVC = [[BaseInfoVC alloc] init];
     [self.wxNavigationController pushViewController:baseInfoVC];
+}
+
+//订单delegate
+-(void)personalInfoToShoppingCart{
+    T_MenuVC *menuVC = [[T_MenuVC alloc] init];
+    [self.wxNavigationController pushViewController:menuVC];
+}
+
+-(void)personalInfoToWaitPayOrderList{
+    [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:1 animated:YES];
+}
+
+-(void)personalInfoToWaitReceiveOrderList{
+    [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:3 animated:YES];
 }
 
 -(void)quit{

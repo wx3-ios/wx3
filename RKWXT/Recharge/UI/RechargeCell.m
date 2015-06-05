@@ -34,7 +34,7 @@
         [_nameLabel setBackgroundColor:[UIColor clearColor]];
         [_nameLabel setTextAlignment:NSTextAlignmentLeft];
         [_nameLabel setFont:WXTFont(14.0)];
-        [_nameLabel setTextColor:WXColorWithInteger(0x646464)];
+        [_nameLabel setTextColor:WXColorWithInteger(0x000000)];
         [self.contentView addSubview:_nameLabel];
     }
     return self;

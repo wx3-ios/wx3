@@ -20,7 +20,7 @@ enum{
     WXT_Rechagre_Invalid,
 }WXT_Rechagre;
 
-@interface RechargeVC()<UITableViewDataSource,UITableViewDelegate,RechargeViewDelegate>{
+@interface RechargeVC()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
     BOOL showRecharge;
     RechargeView *_rechargeView;
@@ -31,17 +31,11 @@ enum{
 
 @implementation RechargeVC
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:NO];
-//    self.title = @"充值中心";
-}
-
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"充值中心"];
     
-    [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
+//    [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-HeadViewHeight);
@@ -50,25 +44,17 @@ enum{
     [_tableView setScrollEnabled:NO];
     [self addSubview:_tableView];
     [_tableView setTableHeaderView:[self tableForHeadView]];
-    [_tableView setTableFooterView:[self viewFortableFootView]];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-    showRecharge = NO;
+    showRecharge = YES;
     _rechargeView = [[RechargeView alloc] init];
-    [_rechargeView setDelegate:self];
     
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     _rechargeView.rechargeUserphoneStr = userDefault.user;
     [self addSubview:_rechargeView];
-    [self showRechargeInfo];
-}
-
--(UIView*)viewFortableFootView{
-    UIView *footView = [[UIView alloc] init];
     
-    CGFloat yOffset = 160;
-    footView.frame = CGRectMake(0, yOffset, Size.width, Size.height-yOffset);
-    [footView setBackgroundColor:WXColorWithInteger(0xefeff4)];
-    return footView;
+    [_rechargeView setFrame:CGRectMake(0, ViewNormalDistance, Size.width, RechargeViewHeight)];
+//    [self showRechargeInfo];
 }
 
 -(UIView*)tableForHeadView{
@@ -82,8 +68,8 @@ enum{
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
     [phoneLabel setTextAlignment:NSTextAlignmentRight];
     [phoneLabel setText:[NSString stringWithFormat:@"充值账号: "]];
-    [phoneLabel setFont:WXTFont(15.0)];
-    [phoneLabel setTextColor:WXColorWithInteger(0x323232)];
+    [phoneLabel setFont:WXTFont(16.0)];
+    [phoneLabel setTextColor:WXColorWithInteger(0x000000)];
     [headView addSubview:phoneLabel];
     
     CGFloat xOffset = Size.width/2;
@@ -91,8 +77,8 @@ enum{
     _textField.frame = CGRectMake(xOffset-5, yOffset, Size.width*2/3, labelHeight);
     [_textField setBackgroundColor:[UIColor clearColor]];
     [_textField setText:userDefault.user];
-    [_textField setFont:WXTFont(15.0)];
-    [_textField setTextColor:WXColorWithInteger(0x323232)];
+    [_textField setFont:WXTFont(16.0)];
+    [_textField setTextColor:WXColorWithInteger(0xc8c8c8)];
     [_textField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_textField addTarget:self action:@selector(textFieldChange) forControlEvents:UIControlEventEditingChanged];
     [_textField setKeyboardType:UIKeyboardTypeNumberPad];
@@ -101,21 +87,22 @@ enum{
     
     yOffset += labelHeight+10;
     UILabel *line = [[UILabel alloc] init];
-    line.frame = CGRectMake(0, yOffset, Size.width, 0.5);
+    line.frame = CGRectMake(10, yOffset, Size.width-20, 0.5);
     [line setBackgroundColor:[UIColor grayColor]];
     [headView addSubview:line];
     
     yOffset += 6;
     UILabel *textLabel = [[UILabel alloc] init];
-    textLabel.frame = CGRectMake(0, yOffset, Size.width, labelHeight);
-    [textLabel setBackgroundColor:[UIColor clearColor]];
+    textLabel.frame = CGRectMake(10, yOffset, Size.width-20, 25);
+    [textLabel setBackgroundColor:WXColorWithInteger(0xe8e8e8)];
     [textLabel setFont:WXTFont(10.0)];
     [textLabel setText:@"用户可以替他人充值,在充值账号处修改被充值的账号即可"];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [textLabel setTextColor:WXColorWithInteger(0x028fcd)];
+    [textLabel setTextColor:WXColorWithInteger(0xaf8638)];
     [headView addSubview:textLabel];
     
-    [headView setBackgroundColor:WXColorWithInteger(0xefeff4)];
+//    [headView setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    [headView setBackgroundColor:[UIColor whiteColor]];
     headView.frame = CGRectMake(0, 0, Size.width, HeadViewHeight);
     return headView;
 }
@@ -146,9 +133,7 @@ enum{
     if(!cell){
         cell = [[RechargeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
     [cell load];
-    
     return cell;
 }
 
@@ -159,20 +144,20 @@ enum{
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headView = [[UIView alloc] init];
     headView.frame = CGRectMake(0, 0, Size.width, 40);
-    [headView setBackgroundColor:WXColorWithInteger(0xefeff4)];
+//    [headView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     return headView;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 30;
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return 30;
+//}
 
--(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *footview = [[UIView alloc] init];
-    footview.frame = CGRectMake(0, 0, Size.width, 200);
-    [footview setBackgroundColor:WXColorWithInteger(0xefeff4)];
-    return footview;
-}
+//-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//    UIView *footview = [[UIView alloc] init];
+//    footview.frame = CGRectMake(0, 0, Size.width, 50);
+////    [footview setBackgroundColor:WXColorWithInteger(0xefeff4)];
+//    return footview;
+//}
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = nil;
@@ -182,12 +167,12 @@ enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self showRechargeInfo];
+//    [self showRechargeInfo];
 }
 
 -(void)showRechargeInfo{
     if(!showRecharge){
-        showRecharge = YES;
+//        showRecharge = YES;
         [UIView animateWithDuration:kAnimatedDur animations:^{
             //            _rechargeView = [[RechargeView alloc] initWithFrame:CGRectMake(0, yOffset, Size.width, 120)];
             //            [_rechargeView setDelegate:self];
@@ -196,15 +181,6 @@ enum{
         }completion:^(BOOL finished){
         }];
     }
-}
-
--(void)rechargeCancel{
-    showRecharge = NO;
-    [UIView animateWithDuration:kAnimatedDur animations:^{
-//        [_rechargeView removeFromSuperview];
-        [_rechargeView setFrame:CGRectMake(0, ViewBigDistance, Size.width, RechargeViewHeight)];
-    }completion:^(BOOL finished) {
-    }];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

@@ -59,4 +59,15 @@ enum{
 
 #import "SignViewController.h"
 
+#import "WXSysMsgUnreadV.h"
+#define Size self.bounds.size
+
+typedef enum{
+    E_CellRefreshing_Nothing = 0,
+    E_CellRefreshing_UnderWay,
+    E_CellRefreshing_Finish,
+    
+    E_CellRefreshing_Invalid,
+}E_CellRefreshing;
+
 #endif
