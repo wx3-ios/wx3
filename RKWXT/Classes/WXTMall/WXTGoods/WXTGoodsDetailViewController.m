@@ -11,6 +11,7 @@
 #import "StrechyParallaxScrollView.h"
 #import "EScrollerView.h"
 #import "WXHomeTopGoodCell.h"
+#import "UIButton+UIButtonImageWithLable.h"
 @interface WXTGoodsDetailViewController ()<EScrollerViewDelegate>{
     UITableView * _tableView;
     NSMutableArray * _proPicMArray;
@@ -84,6 +85,7 @@
     btnCart.titleLabel.font = common;
     [btnCart setTitle:@"购物车" forState:UIControlStateNormal];
     [btnCart addTarget:self action:@selector(cartDetail) forControlEvents:UIControlEventTouchUpInside];
+    [btnCart setImage:[UIImage imageNamed:@"cart"] withTitle:@"购物车" forState:UIControlStateNormal];
     [self.view addSubview:btnCart];
     
     //立即购买
@@ -205,7 +207,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     CGFloat height = 0;
     switch (section) {
-        case WXGoodsDetail_Default:
+        case WXGoodsDetail_Default:{
+            height = 5;
+        }
             break;
         default:
             break;
@@ -257,39 +261,6 @@
     return view;
 }
 
--(UIView*)headerForTopView{
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 266)];
-    _count = 2;
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 266)];
-    _scrollView.showsHorizontalScrollIndicator =NO;
-    _scrollView.showsVerticalScrollIndicator = NO;
-    _scrollView.pagingEnabled = YES;
-    _scrollView.scrollEnabled = YES;
-    if (_count <= 1.0 ) {
-        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
-        imageView.image = [UIImage imageNamed:@"Default"];
-        [_scrollView addSubview:imageView];
-    }else{
-        [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width * _count, self.view.frame.size.height)];
-        
-        for (int i = 0; i < _count; i ++) {
-            UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i *_scrollView.bounds.size.width,0,_scrollView.bounds.size.width,_scrollView.bounds.size.height)];
-            imageView.contentMode =UIViewContentModeScaleAspectFit;
-            imageView.clipsToBounds = YES;
-            [_scrollView addSubview:imageView];
-            [_imageViewsMArray addObject:imageView];
-        }
-        
-        for (int i = 0; i < _count; i ++) {
-            //            UIImage * imageName = [UIImage imageNamed:@"Default@2x.png"];
-            //            [_proPicMArray addObject:imageName];
-            [_imageViewsMArray[i] setImage:[UIImage imageNamed:@"Default@2x.png"]];
-        }
-    }
-    _scrollView.delegate = self;
-    [view addSubview:_scrollView];
-    return view;
-}
 
 -(UIView*)headerForProduct{
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 83)];
@@ -330,9 +301,13 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case WXGoodsDetail_TopDisplay:{
-            return 266;
+            return 115;
         }
-            break;
+            break;/*
+        case WXGoodsDetail_ProductTitle:{
+            return 68;
+        }
+            break;*/
         case WXGoodsDetail_Default:{
             return 40;
         }
@@ -351,7 +326,10 @@
             cell = [self createTopCell:tableView cellForRowAtIndexPath:indexPath];
             tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         }
-            break;
+            break;/*
+        case WXGoodsDetail_ProductTitle:{
+        }
+            break;*/
         case WXGoodsDetail_Default:{
             cell = [self createOptionsCell:tableView cellForRowAtIndexPath:indexPath];
             tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -371,6 +349,7 @@
     }
     [_topProDisplay setBackgroundColor:[UIColor clearColor]];
 //    [_topProDisplay setDelegate:self];
+    [_topProDisplay load];
     return _topProDisplay;
 }
 

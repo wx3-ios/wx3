@@ -10,6 +10,7 @@
 
 enum WXGoodsDetailCellOption{
     WXGoodsDetail_TopDisplay = 0,
+//    WXGoodsDetail_ProductTitle,
     WXGoodsDetail_Default ,//
     WXGoodsDetail_Invalid
 };
