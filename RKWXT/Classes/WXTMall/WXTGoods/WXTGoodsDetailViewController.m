@@ -10,7 +10,7 @@
 #import "GoodsDetailCell.h"
 #import "StrechyParallaxScrollView.h"
 #import "EScrollerView.h"
-
+#import "WXHomeTopGoodCell.h"
 @interface WXTGoodsDetailViewController ()<EScrollerViewDelegate>{
     UITableView * _tableView;
     NSMutableArray * _proPicMArray;
@@ -47,8 +47,6 @@
 }
 
 -(void)initUI{
-//    [self initScrollView];
-//    [self initTopView];
     [self initTableView];
     [self initBottomView];
 }
@@ -193,77 +191,69 @@
 
 #pragma mark - 头部产品图片
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    return 266;
+    CGFloat height = 0;
     switch (section) {
-        case 0:{
-            return 83;
-        }
+        case WXGoodsDetail_Default:
+            height = 68;
             break;
-            
-        default:{
-            return 0;
-        }
+        default:
             break;
     }
+    return height;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    CGFloat height = 0;
     switch (section) {
-        case 0:{
-            return 10;
-        }
+        case WXGoodsDetail_Default:
             break;
-            
-        default:{
-            return 0;
-        }
+        default:
             break;
     }
+    return height;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return WXGoodsDetail_Invalid;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSInteger row = 1;
     switch (section) {
-        case 0:{
+        case WXGoodsDetail_TopDisplay:
+            break;
+        case WXGoodsDetail_Default:{
             return 2;
         }
-        case 1:{
-            return 0;
-        }
             break;
-        default:{
-            return 0;
-        }
+        default:
             break;
     }
+    return row;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * view = NULL;
     switch (section) {
-        case 0:{
-            UIView * view = [self topProAdView];
-            tableView.tableFooterView = view;
-            return view;
+        case WXGoodsDetail_Default:{
+            view = [self headerForProduct];
         }
             break;
-        case 1:{
-            UIView * view = [self headerForProduct];
-            return view;
-        }
-            break;
-        default:{
-            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 0)];
-            return view;
-        }
+        default:
             break;
     }
+    return view;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 10)];
+    UIView * view = [[UIView alloc]initWithFrame:CGRectZero];
+    switch (section) {
+        case WXGoodsDetail_Default:
+            break;
+            
+        default:
+            break;
+    }
     return view;
 }
 
@@ -338,41 +328,55 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
-}
-
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
-        /*case 0:{
-            static NSString * proListIdentifier = @"ProductList";
-            UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:proListIdentifier];
-            if (cell == NULL) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:proListIdentifier];
-            }
-//            cell.imageView.image = [_picMArray objectAtIndex:indexPath.row];
-//            cell.textLabel.text = [_dataMArray objectAtIndex:indexPath.row];
-//            cell.textLabel.font = [UIFont systemFontOfSize:12];
-            cell.textLabel.text = @"123";
-            return cell;
+        case WXGoodsDetail_TopDisplay:{
+            return 266;
         }
-            break;*/
-        case 0:{
-            GoodsDetailCell * cell = [self createOptionsCell:tableView cellForRowAtIndexPath:indexPath];
-            return cell;
+            break;
+        case WXGoodsDetail_Default:{
+            return 40;
         }
             break;
         default:{
-            static NSString * defaultIdentifier = @"DefaultIdentifier";
-            UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier];
-            return cell;
+            return 40;
         }
             break;
     }
 }
 
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = nil;
+    switch (indexPath.section) {
+        case WXGoodsDetail_TopDisplay:{
+            cell = [self createTopCell:tableView cellForRowAtIndexPath:indexPath];
+            tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        }
+            break;
+        case WXGoodsDetail_Default:{
+            cell = [self createOptionsCell:tableView cellForRowAtIndexPath:indexPath];
+            tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        }
+            break;
+        default:
+            break;
+    }
+    return cell;
+}
+
+-(WXHomeTopGoodCell*)createTopCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath{
+    static NSString *identifier = @"TopIdentifier";
+    WXHomeTopGoodCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == NULL) {
+        _topProDisplay = [[WXHomeTopGoodCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [_topProDisplay setBackgroundColor:[UIColor clearColor]];
+//    [_topProDisplay setDelegate:self];
+    return _topProDisplay;
+}
+
 -(GoodsDetailCell*)createOptionsCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath{
-    static NSString * optionsIdentifier = @"OptionsIdentifier";
-    GoodsDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:optionsIdentifier];
+    static NSString * identifier = @"OptionsIdentifier";
+    GoodsDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == NULL) {
         cell = [[GoodsDetailCell alloc]init];;
     }

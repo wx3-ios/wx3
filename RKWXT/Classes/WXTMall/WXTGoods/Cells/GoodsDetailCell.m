@@ -18,9 +18,9 @@
 
 -(id)init{
     if (self == [super init]) {
-        UIView * upView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 0.25)];
-        upView.backgroundColor = WXColorWithInteger(0xdbdbdb);
-        [self.contentView addSubview:upView];
+//        UIView * upView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 0.25)];
+//        upView.backgroundColor = WXColorWithInteger(0xdbdbdb);
+//        [self.contentView addSubview:upView];
         
         _ivTitle = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 16, 15)];
         [self.contentView addSubview:_ivTitle];
@@ -35,9 +35,9 @@
         [detailBtn addTarget:self action:@selector(showDetailInfo) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:detailBtn];
         
-        UIView * downView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, IPHONE_SCREEN_WIDTH, 0.25)];
-        downView.backgroundColor = WXColorWithInteger(0xdbdbdb);
-        [self.contentView addSubview:downView];
+//        UIView * downView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, IPHONE_SCREEN_WIDTH, 0.25)];
+//        downView.backgroundColor = WXColorWithInteger(0xdbdbdb);
+//        [self.contentView addSubview:downView];
     }
     return self;
 }
