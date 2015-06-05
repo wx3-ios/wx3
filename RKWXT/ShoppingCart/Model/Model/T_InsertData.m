@@ -14,8 +14,8 @@
     T_Sqlite *fmdb;
 }
 
--(BOOL)insertData:(NSString *)number withGoodsID:(NSString *)goodsID withColorType:(NSString *)colorText{
-    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@')",@"NEWMENUSTORE",GoodsNumber,GoodsID,ColorText,number,goodsID,colorText];
+-(BOOL)insertData:(NSString *)imgUrl withGoodsID:(NSString *)goodsID withColorType:(NSString *)colorText{
+    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@')",@"NEWMENUSTORE",GoodsNumber,GoodsID,ColorText,imgUrl,goodsID,colorText];
     
     fmdb = [[T_Sqlite alloc] init];
     [fmdb createOrOpendb];

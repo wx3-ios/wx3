@@ -100,8 +100,10 @@
     CGFloat btnHeight = 44;
     WXTUIButton *completeBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     completeBtn.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, btnHeight);
-    [completeBtn setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
-    [completeBtn setTitle:@"完 成" forState:UIControlStateNormal];
+    [completeBtn setBorderRadian:10.0 width:1.0 color:[UIColor clearColor]];
+    [completeBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
+    [completeBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [completeBtn setTitle:@"确定提交" forState:UIControlStateNormal];
     [completeBtn addTarget:self action:@selector(complieteResetPwd) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:completeBtn];
 }

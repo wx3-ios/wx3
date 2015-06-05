@@ -9,7 +9,7 @@
 #import "T_MenuCommonInfoCell.h"
 #import "WXRemotionImgBtn.h"
 #import "T_MeunDef.h"
-//#import "T_GoodInfoEntity.h"
+#import "GoodsInfoEntity.h"
 #import "T_MenuEntity.h"
 
 @interface T_MenuCommonInfoCell(){
@@ -42,7 +42,7 @@
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
-        UIImage *circleImg = [UIImage imageNamed:@"t_noneSelected.png"];
+        UIImage *circleImg = [UIImage imageNamed:@"ShoppingCartCircle.png"];
         _circleBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         _circleBtn.frame = CGRectMake(xGap, (T_MenuCommonCellHeight-circleImg.size.height)/2, circleImg.size.width, circleImg.size.height);
         [_circleBtn setBackgroundColor:[UIColor clearColor]];
@@ -58,7 +58,7 @@
         [_imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:_imgView];
         
-        xOffset += imgWidth+5;
+        xOffset += imgWidth+10;
         CGFloat yOffset = 10;
         CGFloat nameWidth = 150;
         CGFloat nameHeight = 16;
@@ -137,7 +137,7 @@
         [self.contentView addSubview:minusBtn];
         
         xOffset = 18;
-        UIImage *img = [UIImage imageNamed:@"t_delete.png"];
+        UIImage *img = [UIImage imageNamed:@"ShoppingCartDel.png"];
         WXUIButton *deleteBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         deleteBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-img.size.width, yOffset, img.size.width, img.size.height);
         [deleteBtn setBackgroundColor:[UIColor clearColor]];
@@ -149,18 +149,18 @@
 }
 
 -(void)load{
-//    T_GoodInfoEntity *entity = self.cellInfo;
-//    [_imgView setCpxViewInfo:entity.img];
-//    [_imgView load];
-//    [_namelabel setText:entity.name];
-//    
+    GoodsInfoEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140925/20140925170535_4240443.jpeg"];
+    [_imgView load];
+    [_namelabel setText:@"金表男款"];
+    
 //    NSString *newPrice = [NSString stringWithFormat:@"￥%.2f",entity.shop_price];
-//    [_newPrice setText:newPrice];
-//    
+    [_newPrice setText:@"1888"];
+    
 //    NSString *oldPrice = [NSString stringWithFormat:@"￥%.2f",entity.market_price];
-//    [_oldPrice setText:oldPrice];
-//    
-//    [self setCircleBtnImgWith:entity.selested];
+    [_oldPrice setText:@"3000"];
+    
+    [self setCircleBtnImgWith:entity.selested]; 
 }
 
 -(void)setGoodsInfo:(id)entity{
@@ -172,75 +172,75 @@
 }
 
 -(void)selectAllGoods:(BOOL)selectAll{
-//    T_GoodInfoEntity *entity = self.cellInfo;
-//    if(selectAll){
-//        selected = YES;
-//        entity.selested = YES;
-//    }else{
-//        selected = NO;
-//        entity.selested = NO;
-//    }
+    GoodsInfoEntity *entity = self.cellInfo;
+    if(selectAll){
+        selected = YES;
+        entity.selested = YES;
+    }else{
+        selected = NO;
+        entity.selested = NO;
+    }
     [self setCircleBtnImgWith:selected];
 }
 
 //选择按钮点击
 -(void)circleBtnClick{
-//    T_GoodInfoEntity *entity = self.cellInfo;
-//    if(!selected){
-//        selected = YES;
-//        entity.selested = YES;
-//        if(_delegate && [_delegate respondsToSelector:@selector(selectGoods)]){
-//            [_delegate selectGoods];
-//        }
-//    }else{
-//        selected = NO;
-//        entity.selested = NO;
-//        if(_delegate && [_delegate respondsToSelector:@selector(cancelGoods)]){
-//            [_delegate cancelGoods];
-//        }
-//    }
+    GoodsInfoEntity *entity = self.cellInfo;
+    if(!selected){
+        selected = YES;
+        entity.selested = YES;
+        if(_delegate && [_delegate respondsToSelector:@selector(selectGoods)]){
+            [_delegate selectGoods];
+        }
+    }else{
+        selected = NO;
+        entity.selested = NO;
+        if(_delegate && [_delegate respondsToSelector:@selector(cancelGoods)]){
+            [_delegate cancelGoods];
+        }
+    }
     [self setCircleBtnImgWith:selected];
 }
 
 -(void)plusBtnClick{
-//    number++;
-//    NSString *str = [NSString stringWithFormat:@"%d",number];
-//    [_numberLabel setText:str];
-//    T_GoodInfoEntity *entity = self.cellInfo;
-//    entity.buyNumber = number;
-//    if(_delegate && [_delegate respondsToSelector:@selector(plusBtnClicked)]){
-//        [_delegate plusBtnClicked];
-//    }
+    number++;
+    NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
+    [_numberLabel setText:str];
+    GoodsInfoEntity *entity = self.cellInfo;
+    entity.buyNumber = number;
+    if(_delegate && [_delegate respondsToSelector:@selector(plusBtnClicked)]){
+        [_delegate plusBtnClicked];
+    }
 }
 
 -(void)minusBtnClick{
-//    number--;
-//    NSString *str = nil;
-//    str = [NSString stringWithFormat:@"%d",number];
-//    if(number<=1){
-//        number = 1;
-//        str = [NSString stringWithFormat:@"%d",1];
-//    }
-//    [_numberLabel setText:str];
-//    T_GoodInfoEntity *entity = self.cellInfo;
-//    entity.buyNumber = number;
-//    if(_delegate && [_delegate respondsToSelector:@selector(minusBtnClicked)]){
-//        [_delegate minusBtnClicked];
-//    }
+    number--;
+    NSString *str = nil;
+    str = [NSString stringWithFormat:@"%ld",(long)number];
+    if(number<=1){
+        number = 1;
+        str = [NSString stringWithFormat:@"%d",1];
+    }
+    [_numberLabel setText:str];
+    GoodsInfoEntity *entity = self.cellInfo;
+    entity.buyNumber = number;
+    if(_delegate && [_delegate respondsToSelector:@selector(minusBtnClicked)]){
+        [_delegate minusBtnClicked];
+    }
 }
 
 -(void)deleteBtnClicked{
-//    T_GoodInfoEntity *entity = self.cellInfo;
-//    if(_delegate && [_delegate respondsToSelector:@selector(deleteGoods:)]){
-//        [_delegate deleteGoods:entity.goods_id];
-//    }
+    GoodsInfoEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(deleteGoods:)]){
+        [_delegate deleteGoods:entity.goods_id];
+    }
 }
 
 -(void)setCircleBtnImgWith:(BOOL)select{
     if(select){
-        [_circleBtn setImage:[UIImage imageNamed:@"t_Selected.png"] forState:UIControlStateNormal];
+        [_circleBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
     }else{
-        [_circleBtn setImage:[UIImage imageNamed:@"t_noneSelected.png"] forState:UIControlStateNormal];
+        [_circleBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
     }
 }
 

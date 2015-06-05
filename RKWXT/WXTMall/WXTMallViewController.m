@@ -333,7 +333,8 @@ typedef enum{
 
 #pragma mark TopImg
 -(void)clickTopGoodAtIndex:(NSInteger)index{
-    NSLog(@"顶部导航==%ld",(long)index);
+//    NSLog(@"顶部导航==%ld",(long)index);
+    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:index animated:YES];
 }
 
 #pragma mark LeftBtn

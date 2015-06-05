@@ -7,16 +7,6 @@
 //
 
 #import "UserInfoVC.h"
-#import "UserInfoCommonCell.h"
-#import "RechargeVC.h"
-#import "UserBalanceVC.h"
-#import "WXTUITabBarController.h"
-#import "SignViewController.h"
-#import "LoginVC.h"
-#import "AboutWxtInfoVC.h"
-#import "WXTResetPwdVC.h"
-#import "WXTMessageCenterVC.h"
-#import "BaseInfoVC.h"
 #import "UserInfoDef.h"
 
 #define UserBgImageViewHeight (95)
@@ -247,6 +237,7 @@
         [cell.textLabel setText:@"我的订单"];
         [cell.textLabel setFont:WXFont(15.0)];
         [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+        [cell load];
     }else{
         cell = (PersonalInfoOrderListCell*)[self tableViewForOrderInfoCell:row];
     }
@@ -265,7 +256,7 @@
 
 //钱包
 -(WXTUITableViewCell*)tableViewForMoneyCell:(NSInteger)row{
-    static NSString *identifier = @"orderCell";
+    static NSString *identifier = @"moneyCell";
     WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -283,7 +274,7 @@
 }
 
 -(WXTUITableViewCell*)tableViewForMoneyInfoCell:(NSInteger)row{
-    static NSString *identifier = @"orderInfoCell";
+    static NSString *identifier = @"moneyInfoCell";
     PersonalMoneyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[PersonalMoneyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -411,42 +402,50 @@
         default:
             break;
     }
-//    cell = [self tabelForUserInfoCommonCell:row];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger row = indexPath.row;
-    switch (row) {
-        case WXT_UserInfo_Recharge:
+    NSInteger section = indexPath.section;
+    switch (section) {
+        case PersonalInfo_Order:
         {
-            RechargeVC *rechargeVC = [[RechargeVC alloc] init];
-            [self.wxNavigationController pushViewController:rechargeVC];
+            if(row == Order_listAll){
+                HomeOrderVC *orderListVC = [[HomeOrderVC alloc] init];
+                [self.wxNavigationController pushViewController:orderListVC];
+            }
         }
             break;
-        case WXT_UserInfo_Balance:
+        case PersonalInfo_Money:
         {
-            UserBalanceVC *userBalanceVC = [[UserBalanceVC alloc] init];
-            [self.wxNavigationController pushViewController:userBalanceVC];
         }
             break;
-        case WXT_UserInfo_Sign:
+        case PersonalInfo_Call:
         {
-            SignViewController *signVC = [[SignViewController alloc] init];
-            [self.wxNavigationController pushViewController:signVC];
+            if(row == Call_Recharge){
+                UserBalanceVC *userBalanceVC = [[UserBalanceVC alloc] init];
+                [self.wxNavigationController pushViewController:userBalanceVC];
+            }else{
+                SignViewController *signVC = [[SignViewController alloc] init];
+                [self.wxNavigationController pushViewController:signVC];
+            }
         }
             break;
-        case WXT_UserInfo_ResetPwd:
+        case PersonalInfo_Extend:
         {
-            WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
-            [self.wxNavigationController pushViewController:resetPwdVC];
         }
             break;
-        case WXT_UserInfo_About:
+        case PersonalInfo_System:
         {
-            AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
-            [self.wxNavigationController pushViewController:aboutVC];
+            if(row == System_Setting){
+                WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
+                [self.wxNavigationController pushViewController:resetPwdVC];
+            }else{
+                AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
+                [self.wxNavigationController pushViewController:aboutVC];
+            }
         }
             break;
         default:

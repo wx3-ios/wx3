@@ -61,6 +61,7 @@
     if(!cell){
         cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.textLabel setText:@"等待付款"];
     [cell.textLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [cell.textLabel setFont:WXFont(12.0)];
@@ -85,6 +86,7 @@
     if(!cell){
         cell = [[OrderWaitPayConsultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell load];
     return cell;
 }
