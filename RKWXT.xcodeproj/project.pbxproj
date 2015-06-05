@@ -210,6 +210,8 @@
 		128221DD1B184E84004613BB /* HomePageWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128221D51B184E83004613BB /* HomePageWallet@2x.png */; };
 		128221EC1B18716E004613BB /* T_HPSubBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128221E91B18716E004613BB /* T_HPSubBaseModel.m */; };
 		128221ED1B18716E004613BB /* URLBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128221EB1B18716E004613BB /* URLBaseModel.m */; };
+		12868A451B21545300DE3A95 /* ShoppingCartCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12868A431B21545300DE3A95 /* ShoppingCartCircle@2x.png */; };
+		12868A461B21545300DE3A95 /* ShoppingCartDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12868A441B21545300DE3A95 /* ShoppingCartDel@2x.png */; };
 		129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */; };
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
@@ -905,6 +907,8 @@
 		128221E91B18716E004613BB /* T_HPSubBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T_HPSubBaseModel.m; sourceTree = "<group>"; };
 		128221EA1B18716E004613BB /* URLBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLBaseModel.h; sourceTree = "<group>"; };
 		128221EB1B18716E004613BB /* URLBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLBaseModel.m; sourceTree = "<group>"; };
+		12868A431B21545300DE3A95 /* ShoppingCartCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShoppingCartCircle@2x.png"; sourceTree = "<group>"; };
+		12868A441B21545300DE3A95 /* ShoppingCartDel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShoppingCartDel@2x.png"; sourceTree = "<group>"; };
 		129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ContactInfoBgImg.jpg; sourceTree = "<group>"; };
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
@@ -2317,6 +2321,15 @@
 			path = NewHomePage;
 			sourceTree = "<group>";
 		};
+		12868A421B21545300DE3A95 /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				12868A431B21545300DE3A95 /* ShoppingCartCircle@2x.png */,
+				12868A441B21545300DE3A95 /* ShoppingCartDel@2x.png */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
 		1296742F1AB6EAE200597B17 /* ContactInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -3061,6 +3074,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				12868A421B21545300DE3A95 /* ShoppingCart */,
 				12F46A2C1B20012000B8EC98 /* T_GoodsInfo */,
 				12F916251B19A79600C94717 /* PersonalInfo */,
 				DD988A5E1B1D412100B3790B /* TestData */,
@@ -4481,10 +4495,12 @@
 				124535481AE9D146004198C9 /* sign20@2x.png in Resources */,
 				1245355D1AE9D146004198C9 /* sign8@2x.png in Resources */,
 				1263EFE81ACD35820014C347 /* Icon@2x.png in Resources */,
+				12868A451B21545300DE3A95 /* ShoppingCartCircle@2x.png in Resources */,
 				1241E5741AE9D98600811D3F /* Default@2x.png in Resources */,
 				DD988A641B1D412600B3790B /* 3.jpg in Resources */,
 				DDEA9F051B1C0A6700530C1C /* goods_args@2x.png in Resources */,
 				1241E5491AE9D89B00811D3F /* 6N@2x.png in Resources */,
+				12868A461B21545300DE3A95 /* ShoppingCartDel@2x.png in Resources */,
 				1241E5531AE9D89B00811D3F /* keyboardEye@2x.png in Resources */,
 				1241E56D1AE9D94E00811D3F /* LoginLock@2x.png in Resources */,
 				12F3CC791B1DE82C00E64DE4 /* MyWalletImg@2x.png in Resources */,

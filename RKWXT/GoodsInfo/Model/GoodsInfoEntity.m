@@ -10,4 +10,12 @@
 
 @implementation GoodsInfoEntity
 
+-(id)init{
+    self = [super init];
+    if(self){
+        _selested = NO;
+    }
+    return self;
+}
+
 @end

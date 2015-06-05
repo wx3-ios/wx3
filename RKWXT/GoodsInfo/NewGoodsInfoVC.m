@@ -8,9 +8,10 @@
 
 #import "NewGoodsInfoVC.h"
 #import "GoodsInfoDef.h"
-#import "MerchantImageCell.h"
 #import "NewGoodsInfoModel.h"
 #import "NewGoodsInfoRightView.h"
+#import "T_InsertData.h"
+#import "T_MenuVC.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
@@ -353,7 +354,8 @@
 
 #pragma mark downBtnClicked
 -(void)cartBtnClicked:(id)sender{
-    
+    T_MenuVC *meunVC = [[T_MenuVC alloc] init];
+    [self.wxNavigationController pushViewController:meunVC];
 }
 
 -(void)buyNowBtnClicked:(id)sender{
@@ -366,7 +368,15 @@
 }
 
 -(void)insertMyShoppingCart:(id)sender{
-    
+    T_InsertData *insert = [[T_InsertData alloc] init];
+    NSString *goodsNum = [NSString stringWithFormat:@"%ld",(long)2];
+    NSString *goodsID = [NSString stringWithFormat:@"%ld",(long)10020];
+    BOOL succeed = [insert insertData:goodsNum withGoodsID:goodsID withColorType:@"颜色分类:银色男款"];
+    if(succeed){
+        [UtilTool showAlertView:@"添加购物车成功"];
+    }else{
+        [UtilTool showAlertView:@"添加购物车失败"];
+    }
 }
 
 -(void)backToLastPage{

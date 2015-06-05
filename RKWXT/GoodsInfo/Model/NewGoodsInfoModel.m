@@ -30,7 +30,7 @@
 //    if(!dic){
 //        return;
 //    }
-    _entity = nil;
+    _entity = [[GoodsInfoEntity alloc] init];
     _baseDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                 @"1",@"goods_alloy",
                 @"2",@"goods_guarantee",

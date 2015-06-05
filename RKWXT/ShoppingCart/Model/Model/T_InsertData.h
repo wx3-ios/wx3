@@ -10,6 +10,6 @@
 
 @interface T_InsertData : NSObject
 
--(BOOL)insertData:(NSString*)number withGoodsID:(NSString*)goodsID withColorType:(NSString*)colorText;
+-(BOOL)insertData:(NSString*)imgUrl withGoodsID:(NSString*)goodsID withColorType:(NSString*)colorText;
 
 @end

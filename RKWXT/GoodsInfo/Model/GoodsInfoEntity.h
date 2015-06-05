@@ -22,6 +22,9 @@
 @property (nonatomic,strong) NSString *customKey;     //通用参数key
 @property (nonatomic,strong) NSString *customValue;   //通用参数value
 
+@property (nonatomic,assign) BOOL selested;
+@property (nonatomic,assign) NSInteger buyNumber;
+
 //@property (nonatomic,strong) NSString *
 
 @end

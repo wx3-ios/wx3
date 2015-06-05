@@ -36,7 +36,7 @@
     if(sqlite3_prepare_v2(db, [sqlQuery UTF8String], -1, &statement, nil) == SQLITE_OK){
         while (sqlite3_step(statement) == SQLITE_ROW) {
             char *num = (char *)sqlite3_column_text(statement, 1);
-            NSString *_number = [[NSString alloc] initWithUTF8String:num];
+            NSString *_num = [[NSString alloc] initWithUTF8String:num];
             
             char *gid = (char *)sqlite3_column_text(statement, 2);
             NSString *_goodsID = [[NSString alloc] initWithUTF8String:gid];
@@ -46,7 +46,7 @@
             
             KFLog_Normal(YES,@"number:%@ goodsID:%@",_number,_goodsID);
             T_MenuEntity *entity = [[T_MenuEntity alloc] init];
-            entity.number = _number;
+            entity.number = _num;
             entity.goodsID = _goodsID;
             entity.colorType = _colorText;
             [all addObject:entity];

@@ -34,6 +34,7 @@ enum{
 };
 
 #import "WXRemotionImgBtn.h"
+#import "MerchantImageCell.h"
 #import "NewGoodsInfoDesCell.h"
 #import "NewGoodsInfoDownCell.h"
 #import "NewGoodsInfoBDCell.h"

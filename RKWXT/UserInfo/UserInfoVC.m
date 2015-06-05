@@ -440,7 +440,8 @@
         case PersonalInfo_System:
         {
             if(row == System_Setting){
-                
+                WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
+                [self.wxNavigationController pushViewController:resetPwdVC];
             }else{
                 AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
                 [self.wxNavigationController pushViewController:aboutVC];
