@@ -13,6 +13,17 @@
 #import "PersonalOrderInfoCell.h"
 #import "PersonalMoneyCell.h"
 #import "PersonalCallCell.h"
+#import "UserInfoCommonCell.h"
+
+
+#import "RechargeVC.h"
+#import "UserBalanceVC.h"
+#import "SignViewController.h"
+#import "LoginVC.h"
+#import "AboutWxtInfoVC.h"
+#import "WXTResetPwdVC.h"
+#import "BaseInfoVC.h"
+#import "HomeOrderVC.h"
 
 enum{
     PersonalInfo_Order = 0,

@@ -338,6 +338,10 @@
     }
 }
 
+#pragma mark delegate
+-(void)payAttentionToSomeGoods:(id)entity{
+}
+
 -(void)goodsInfoModelLoadedSucceed{
     [_tableView reloadData];
     [_model setDelegate:nil];
