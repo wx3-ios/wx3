@@ -573,6 +573,7 @@
 		DD988A641B1D412600B3790B /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD988A611B1D412600B3790B /* 3.jpg */; };
 		DD988A661B1D9EA600B3790B /* PayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD988A651B1D9EA600B3790B /* PayBtn@2x.png */; };
 		DD988A691B1DA47300B3790B /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A681B1DA47300B3790B /* OrderDetailCell.m */; };
+		DD999F931B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m in Sources */ = {isa = PBXBuildFile; fileRef = DD999F921B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m */; };
 		DDB58F431AD3C6A2006248E9 /* CallBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F151AD3C6A2006248E9 /* CallBackVC.m */; };
 		DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1A1AD3C6A2006248E9 /* ContactDetailVC.m */; };
 		DDB58F461AD3C6A2006248E9 /* ContactDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F1D1AD3C6A2006248E9 /* ContactDetailCell.m */; };
@@ -1603,6 +1604,8 @@
 		DD988A651B1D9EA600B3790B /* PayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PayBtn@2x.png"; sourceTree = "<group>"; };
 		DD988A671B1DA47300B3790B /* OrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailCell.h; sourceTree = "<group>"; };
 		DD988A681B1DA47300B3790B /* OrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailCell.m; sourceTree = "<group>"; };
+		DD999F911B204C7B00086D1C /* UIButton+UIButtonImageWithLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+UIButtonImageWithLable.h"; sourceTree = "<group>"; };
+		DD999F921B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UIButtonImageWithLable.m"; sourceTree = "<group>"; };
 		DDB58F141AD3C6A2006248E9 /* CallBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackVC.h; sourceTree = "<group>"; };
 		DDB58F151AD3C6A2006248E9 /* CallBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallBackVC.m; sourceTree = "<group>"; };
 		DDB58F191AD3C6A2006248E9 /* ContactDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailVC.h; sourceTree = "<group>"; };
@@ -3965,6 +3968,8 @@
 		77DB93F61AAFE7890021A816 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				DD999F911B204C7B00086D1C /* UIButton+UIButtonImageWithLable.h */,
+				DD999F921B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m */,
 				77DB94391AAFF3830021A816 /* UIView+Sizing.h */,
 				77DB943A1AAFF3830021A816 /* UIView+Sizing.m */,
 				77DB942C1AAFF0BE0021A816 /* NSDictionary+Plist.h */,
@@ -4989,6 +4994,7 @@
 				775843381AB95A300039B129 /* WXUIViewController.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
 				12F916101B198AA600C94717 /* HomePageTopEntity.m in Sources */,
+				DD999F931B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m in Sources */,
 				1282217A1B18467A004613BB /* BaseFunctionCell.m in Sources */,
 				12F4BE061AE8CA3B00B9FEDA /* PopMenu.m in Sources */,
 				777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */,
