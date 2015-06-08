@@ -17,10 +17,10 @@
 #import "WXTUITabbarVC.h"
 
 #define Size self.bounds.size
-#define kMinUserLength (8)
+#define kLoginBigImgViewheight (220)
+#define kLoginDownViewHeight (40)
 #define kUserExactLength (11)
 #define kFetchPasswordDur (60)
-#define kTableViewXGap (25.0)
 
 @interface LoginVC ()<LoginDelegate,FetchPwdDelegate>{
     WXTUITextField *_userTextField;
@@ -36,7 +36,6 @@
     NSInteger _fetchPasswordTime;
     NSTimer *_fetchPWDTimer;
     
-//    LoginMaskView *_loginMaskView;
     LoginModel *_model;
     FetchPwdModel *_pwdModel;
 }
@@ -65,21 +64,38 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self setBackgroundColor:WXColorWithInteger(0x0c8bdf)];
+    [self setBackgroundColor:[UIColor whiteColor]];
     
-    CGFloat yOffset = 45.0;
-    UIImage *icon = [UIImage imageNamed:@"LoginLogo.png"];
-    CGSize iconSize = icon.size;
-    _iconShell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Size.width, iconSize.height+yOffset)];
+    _iconShell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Size.width, kLoginBigImgViewheight)];
     [_iconShell setClipsToBounds:YES];
     [self addSubview:_iconShell];
     
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake((Size.width-iconSize.width)*0.5, yOffset, iconSize.width, iconSize.height)];
+    UIImage *bigImg = [UIImage imageNamed:@"LoginUpBgImg.png"];
+    UIImageView *loginBigImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, Size.width, kLoginBigImgViewheight)];
+    [loginBigImgView setImage:bigImg];
+    [_iconShell addSubview:loginBigImgView];
+    
+    CGFloat yOffset = 36.0;
+    CGFloat xOffset = 12.0;
+    UIImage *icon = [UIImage imageNamed:@"LoginUpSmallImg.png"];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOffset, yOffset, icon.size.width, icon.size.height)];
     [iconImageView setImage:icon];
     [_iconShell addSubview:iconImageView];
-    yOffset +=iconSize.height + 15.0;
     
-    _optShell = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, Size.width, Size.height - yOffset)];
+    CGFloat btnWidth = 51;
+    CGFloat btnHeight = 23;
+    WXUIButton *registBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    registBtn.frame = CGRectMake(Size.width-xOffset-btnWidth, yOffset, btnWidth, btnHeight);
+    [registBtn setBackgroundColor:[UIColor clearColor]];
+    [registBtn setBorderRadian:1.0 width:1.0 color:[UIColor whiteColor]];
+    [registBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [registBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
+    [registBtn.titleLabel setFont:WXFont(12.0)];
+    [registBtn addTarget:self action:@selector(toRegister) forControlEvents:UIControlEventTouchUpInside];
+    [_iconShell addSubview:registBtn];
+    
+    _optShell = [[UIView alloc] initWithFrame:CGRectMake(0, kLoginBigImgViewheight, Size.width, Size.height - kLoginBigImgViewheight-kLoginDownViewHeight)];
+    [_optShell setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:_optShell];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [_optShell addGestureRecognizer:tap];
@@ -88,59 +104,42 @@
     [swip setDirection:UISwipeGestureRecognizerDirectionRight|UISwipeGestureRecognizerDirectionLeft|UISwipeGestureRecognizerDirectionUp|UISwipeGestureRecognizerDirectionDown];
     [_optShell addGestureRecognizer:swip];
     
-    CGFloat gap = kTableViewXGap;
-    CGRect tableRect = CGRectMake(gap, 0, Size.width-gap*2, 120.0);
+    
+    CGFloat yGap = 112;
+    CGRect tableRect = CGRectMake(0, 0, Size.width, yGap);
     [self createUserAndPwdTable:tableRect];
     
-    yOffset = tableRect.size.height;
+
+    yOffset = tableRect.size.height+22;
+    CGFloat btnHeight1 = 41.0;
+    CGFloat xgap = 20;
+    CGFloat btnWidth1 = Size.width-2*xgap;
+    CGFloat radian = 5.0;
+    CGFloat titleSize = 18.0;
+    _submitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    [_submitBtn setFrame:CGRectMake(xgap, yOffset, btnWidth1, btnHeight1)];
+    [_submitBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [_submitBtn.titleLabel setFont:WXTFont(titleSize)];
+    [_submitBtn setBackgroundImageOfColor:[UIColor clearColor] controlState:UIControlStateNormal];
+    [_submitBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];
+    [_submitBtn setBorderRadian:radian width:0.5 color:WXColorWithInteger(0xdd2726)];
+    [_submitBtn addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
+    [_optShell addSubview:_submitBtn];
+    
+    yOffset += btnHeight1;
     CGFloat fetchPwdBtnWidth = 100;
-    CGFloat xOffset = Size.width - fetchPwdBtnWidth - gap;
+    CGFloat xGap1 = Size.width - fetchPwdBtnWidth - xgap;
     _fetchPwdBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    _fetchPwdBtn.frame = CGRectMake(xOffset, yOffset, fetchPwdBtnWidth, 30);
+    _fetchPwdBtn.frame = CGRectMake(xGap1, yOffset, fetchPwdBtnWidth, 30);
     [_fetchPwdBtn.titleLabel setFont:WXTFont(14.0)];
-    [_fetchPwdBtn setTitle:@"忘记密码?" forState:UIControlStateNormal];
-    [_fetchPwdBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
-    [_fetchPwdBtn setTitleColor:WXColorWithInteger(0xb7dcf5) forState:UIControlStateSelected];
+    [_fetchPwdBtn setTitle:@"登录遇到问题?" forState:UIControlStateNormal];
+    [_fetchPwdBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];
+    [_fetchPwdBtn setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
     [_fetchPwdBtn addTarget:self action:@selector(fetchPassWord) forControlEvents:UIControlEventTouchUpInside];
     [_optShell addSubview:_fetchPwdBtn];
     
-    UILabel *linLabel = [[UILabel alloc] init];
-    linLabel.frame = CGRectMake(xOffset+16, yOffset+22, fetchPwdBtnWidth-34, 0.5);
-    [linLabel setBackgroundColor:WXColorWithInteger(0xFFFFFF)];
-    [_optShell addSubview:linLabel];
-    yOffset += _fetchPwdBtn.bounds.size.height;
-    
-    yOffset += 10.0;
-    CGFloat btnHeight = 33.0;
-    CGFloat btnWidth = 100;
-    gap = kTableViewXGap+ 10;
-    CGFloat btnGap = Size.width - gap*2 - btnWidth*2;
-    xOffset = gap;
-    CGFloat radian = 5.0;
-    CGFloat titleSize = 14.0;
-    _submitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    [_submitBtn setFrame:CGRectMake(xOffset, yOffset, btnWidth, btnHeight)];
-    [_submitBtn setTitle:@"登录" forState:UIControlStateNormal];
-    [_submitBtn.titleLabel setFont:WXTFont(titleSize)];
-    [_submitBtn setBackgroundImageOfColor:WXColorWithInteger(0xFFFFFF) controlState:UIControlStateNormal];
-    [_submitBtn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
-    [_submitBtn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateHighlighted];
-    [_submitBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateHighlighted];
-    [_submitBtn setBorderRadian:radian width:0 color:[UIColor clearColor]];
-    [_submitBtn addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
-    [_optShell addSubview:_submitBtn];
-    xOffset += btnWidth+btnGap;
-    _toRegisterBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    [_toRegisterBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [_toRegisterBtn.titleLabel setFont:WXTFont(titleSize)];
-    [_toRegisterBtn setFrame:CGRectMake(xOffset, yOffset, btnWidth, btnHeight)];
-    [_toRegisterBtn setBorderRadian:radian width:1 color:WXColorWithInteger(0xFFFFFF)];
-    [_toRegisterBtn setBackgroundImageOfColor:[UIColor clearColor] controlState:UIControlStateNormal];
-    [_toRegisterBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
-    [_toRegisterBtn setBackgroundImageOfColor:WXColorWithInteger(0xFFFFFF) controlState:UIControlStateHighlighted];
-    [_toRegisterBtn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateHighlighted];
-    [_toRegisterBtn addTarget:self action:@selector(toRegister) forControlEvents:UIControlEventTouchUpInside];
-    [_optShell addSubview:_toRegisterBtn];
+    CGRect downViewRect = CGRectMake(0, 0, Size.width, kLoginDownViewHeight);
+    [self createDownView:downViewRect];
     
 //    if (!_bWithOutGuide && kIsGuideEnabled){
 //        [self.baseView setAlpha:0.3];
@@ -153,55 +152,116 @@
 
 - (void)createUserAndPwdTable:(CGRect)rect{
     CGSize size = rect.size;
-    UIView *tbView = [[UIView alloc] initWithFrame:rect];
-    [tbView setBackgroundColor:[UIColor clearColor]];
-    
-    UIView *bgView = [[UIView alloc] initWithFrame:tbView.bounds];
-    [bgView setBackgroundColor:[UIColor clearColor]];
-    [tbView addSubview:bgView];
-
-    CGFloat xGap = 8.0;
-    CGFloat yGap = 10.0;
-    CGFloat height = 45.0;
+    CGFloat xGap = 30.0;
+    CGFloat yGap = 12.0;
+    CGFloat height = 35.0;
     CGFloat width = size.width - xGap*2.0;
     CGFloat yOffset = yGap;
     
-    CGFloat fontSize = 16.0;
+    CGFloat fontSize = 15.0;
     CGFloat leftViewGap = 10.0;
-    CGFloat textGap = 20.0;
+    CGFloat textGap = 30.0;
     _userTextField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
     [_userTextField setReturnKeyType:UIReturnKeyDone];
     [_userTextField setKeyboardType:UIKeyboardTypePhonePad];
 //    [_userTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_userTextField addTarget:self action:@selector(showKeyBoardDur:)  forControlEvents:UIControlEventEditingDidBegin];
-    [_userTextField setBorderRadian:5.0 width:1.0 color:WXColorWithInteger(0xFFFFFF)];
-    [_userTextField setTextColor:[UIColor whiteColor]];
+    [_userTextField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
+    [_userTextField setTextColor:WXColorWithInteger(0xda7c7b)];
     [_userTextField setTintColor:[UIColor whiteColor]];
-    [_userTextField setPlaceHolder:@"请输入手机号" color:WXColorWithInteger(0xFFFFFF)];
+    [_userTextField setPlaceHolder:@"请输入手机号" color:WXColorWithInteger(0xda7c7b)];
     [_userTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_userTextField setFont:WXTFont(fontSize)];
-    UIImage *leftImg = [UIImage imageNamed:@"LoginUser.png"];
+    UIImage *leftImg = [UIImage imageNamed:@"LoginUserImg.png"];
     UIImageView *leftView = [[UIImageView alloc] initWithImage:leftImg];
     [_userTextField setLeftView:leftView leftGap:leftViewGap rightGap:textGap];
-    [tbView addSubview:_userTextField];
+    [_optShell addSubview:_userTextField];
     
-    _pwdTextField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, size.height-height-yGap, width, height)];
+    yOffset += height+5;
+    CGFloat xGap1 = xGap-10;
+    CGFloat lineHeight = 10;
+    UILabel *leftLine = [[UILabel alloc] init];
+    leftLine.frame = CGRectMake(xGap1, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine];
+    
+    UILabel *downLine = [[UILabel alloc] init];
+    downLine.frame = CGRectMake(xGap1, yOffset, Size.width-2*xGap1, 0.5);
+    [downLine setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:downLine];
+    
+    UILabel *leftLine1 = [[UILabel alloc] init];
+    leftLine1.frame = CGRectMake(xGap1+60, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine1];
+    
+    UILabel *rightLine = [[UILabel alloc] init];
+    rightLine.frame = CGRectMake(Size.width-xGap1, yOffset-lineHeight, 0.5, lineHeight);
+    [rightLine setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:rightLine];
+    
+    
+    yOffset += 10;
+    _pwdTextField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
     [_pwdTextField setReturnKeyType:UIReturnKeyDone];
     [_pwdTextField setSecureTextEntry:YES];
     [_pwdTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_pwdTextField addTarget:self action:@selector(showKeyBoardDur:)  forControlEvents:UIControlEventEditingDidBegin];
-    [_pwdTextField setBorderRadian:5.0 width:1.0 color:WXColorWithInteger(0xFFFFFF)];
-    [_pwdTextField setTextColor:WXColorWithInteger(0xFFFFFF)];
+    [_pwdTextField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
+    [_pwdTextField setTextColor:WXColorWithInteger(0xda7c7b)];
     [_pwdTextField setTintColor:[UIColor whiteColor]];
     [_pwdTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextField setKeyboardType:UIKeyboardTypeASCIICapable];
-    [_pwdTextField setPlaceHolder:@"请输入密码" color:WXColorWithInteger(0xFFFFFF)];
-    UIImage *passwordIcon = [UIImage imageNamed:@"LoginLock.png"];
+    [_pwdTextField setPlaceHolder:@" 请输入密码" color:WXColorWithInteger(0xda7c7b)];
+    UIImage *passwordIcon = [UIImage imageNamed:@"LoginUserPwd.png"];
     UIImageView *leftView1 = [[UIImageView alloc] initWithImage:passwordIcon];
     [_pwdTextField setLeftView:leftView1 leftGap:leftViewGap rightGap:textGap];
     [_pwdTextField setFont:WXTFont(fontSize)];
-    [tbView addSubview:_pwdTextField];
-    [_optShell addSubview:tbView];
+    [_optShell addSubview:_pwdTextField];
+    
+    yOffset += height+5;
+    UILabel *leftLine2 = [[UILabel alloc] init];
+    leftLine2.frame = CGRectMake(xGap1, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine2 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine2];
+    
+    UILabel *downLine1 = [[UILabel alloc] init];
+    downLine1.frame = CGRectMake(xGap1, yOffset, Size.width-2*xGap1, 0.5);
+    [downLine1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:downLine1];
+    
+    UILabel *leftLine3 = [[UILabel alloc] init];
+    leftLine3.frame = CGRectMake(xGap1+60, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine3 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine3];
+    
+    UILabel *rightLine1 = [[UILabel alloc] init];
+    rightLine1.frame = CGRectMake(Size.width-xGap1, yOffset-lineHeight, 0.5, lineHeight);
+    [rightLine1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:rightLine1];
+}
+
+-(void)createDownView:(CGRect)rect{
+    CGFloat xOffset = 22;
+    CGFloat label1Width = Size.width/2-xOffset;
+    CGFloat label1Height = 14;
+    UILabel *label1 = [[UILabel alloc] init];
+    label1.frame = CGRectMake(xOffset, Size.height-20, label1Width, label1Height);
+    [label1 setBackgroundColor:[UIColor clearColor]];
+    [label1 setTextAlignment:NSTextAlignmentLeft];
+    [label1 setText:@"微信公众号: woxin1000"];
+    [label1 setFont:WXFont(10.0)];
+    [label1 setTextColor:WXColorWithInteger(0xda7c7b)];
+    [self addSubview:label1];
+    
+    UILabel *label2 = [[UILabel alloc] init];
+    label2.frame = CGRectMake(Size.width/2, Size.height-20, Size.width/2-xOffset, label1Height);
+    [label2 setBackgroundColor:[UIColor clearColor]];
+    [label2 setTextAlignment:NSTextAlignmentRight];
+    [label2 setText:@"客服电话:61335655"];
+    [label2 setFont:WXFont(10.0)];
+    [label2 setTextColor:WXColorWithInteger(0xda7c7b)];
+    [self addSubview:label2];
 }
 
 #pragma mark KeyBoard
@@ -211,25 +271,18 @@
         yOffset = IPHONE_STATUS_BAR_HEIGHT;
     }
     CGRect optShellRect = [_optShell bounds];
-    optShellRect.origin.y = yOffset;
-    CGRect iconShellRect = _iconShell.bounds;
-    iconShellRect.size.height = yOffset;
+    optShellRect.origin.y = yOffset+45;
     [UIView animateWithDuration:0.3 animations:^{
         [_optShell setFrame:optShellRect];
-        [_iconShell setFrame:iconShellRect];
     }];
 }
 
 - (void)hideKeyBoardDur:(CGFloat)dur{
     CGRect optShellRect = [_optShell bounds];
-    optShellRect.origin.y = Size.height - optShellRect.size.height;
-    
-    CGRect iconShellRect = _iconShell.frame;
-    iconShellRect.size.height = optShellRect.origin.y;
+    optShellRect.origin.y = kLoginBigImgViewheight;
     
     [UIView animateWithDuration:0.3 animations:^{
         [_optShell setFrame:optShellRect];
-        [_iconShell setFrame:iconShellRect];
     }];
 }
 
@@ -291,7 +344,7 @@
 #pragma mark 获取密码
 - (void)setFetchPasswordButtonTitle{
     [_fetchPwdBtn setEnabled:_fetchPasswordTime == 0];
-    NSString *title = @"忘记密码?";
+    NSString *title = @"登录遇到问题?";
     if(_fetchPasswordTime > 0){
         title = [NSString stringWithFormat:@"(%d)%@",kFetchPasswordDur - (int)_fetchPasswordTime,title];
     }
