@@ -168,7 +168,7 @@
     [_userTextField addTarget:self action:@selector(showKeyBoardDur:)  forControlEvents:UIControlEventEditingDidBegin];
     [_userTextField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
     [_userTextField setTextColor:WXColorWithInteger(0xda7c7b)];
-    [_userTextField setTintColor:[UIColor whiteColor]];
+    [_userTextField setTintColor:WXColorWithInteger(0xdd2726)];
     [_userTextField setPlaceHolder:@"请输入手机号" color:WXColorWithInteger(0xda7c7b)];
     [_userTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_userTextField setFont:WXTFont(fontSize)];
@@ -209,7 +209,7 @@
     [_pwdTextField addTarget:self action:@selector(showKeyBoardDur:)  forControlEvents:UIControlEventEditingDidBegin];
     [_pwdTextField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
     [_pwdTextField setTextColor:WXColorWithInteger(0xda7c7b)];
-    [_pwdTextField setTintColor:[UIColor whiteColor]];
+    [_pwdTextField setTintColor:WXColorWithInteger(0xdd2726)];
     [_pwdTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextField setKeyboardType:UIKeyboardTypeASCIICapable];
     [_pwdTextField setPlaceHolder:@" 请输入密码" color:WXColorWithInteger(0xda7c7b)];

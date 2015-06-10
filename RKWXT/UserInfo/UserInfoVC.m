@@ -45,8 +45,8 @@
     
     UIImageView *bgImageView = [[UIImageView alloc] init];
     bgImageView.frame = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
-//    [bgImageView setImage:bgImg];
-    [bgImageView setBackgroundColor:[UIColor redColor]];
+    [bgImageView setImage:[UIImage imageNamed:@"PersonalInfoBgViewImg.png"]];
+//    [bgImageView setBackgroundColor:[UIColor redColor]];
     [headView addSubview:bgImageView];
     
     CGFloat xOffset = 18;
@@ -91,11 +91,11 @@
     [nextBtn addTarget:self action:@selector(nextPageSetInfo) forControlEvents:UIControlEventTouchUpInside];
     [headView addSubview:nextBtn];
     
-    yOffset = UserBgImageViewHeight+0.5;
+    yOffset = UserBgImageViewHeight+0.1;
     CGFloat smallImgHeight = 42;
     UIImageView *smallImgView = [[UIImageView alloc] init];
     smallImgView.frame = CGRectMake(0, yOffset, Size.width, smallImgHeight);
-    [smallImgView setBackgroundColor:[UIColor redColor]];
+    [smallImgView setImage:[UIImage imageNamed:@"PersonalInfoBgViewImg.png"]];
     [headView addSubview:smallImgView];
     
     CGFloat yGap = 5;

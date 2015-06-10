@@ -8,6 +8,7 @@
 
 #define kTableViewHidden                @"TableViewHidden"
 #define kContactsCallIdentifier         @"ContactsCallIdentifier"
+@class RFSegmentView;
 
 typedef enum{
     kCallSegmentIndex,
@@ -19,7 +20,7 @@ typedef enum{
 //    UISegmentedControl * segmentControl;
     NSInteger selectedSegmentIndex;
 }
-@property (nonatomic, strong) UISegmentedControl * segmentControl;
+@property (nonatomic, strong) RFSegmentView * segmentControl;
 
 @end
 

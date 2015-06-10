@@ -14,10 +14,11 @@
 #import "ContacterEntity.h"
 #import "WXContacterModel.h"
 #import "UIImage+Render.h"
+#import "RFSegmentView.h"
 
 #define Size self.view.bounds.size
 
-@interface ContactsCallViewController ()<ToContactDetailVCDelegate,CallPhoneDelegate>{
+@interface ContactsCallViewController ()<ToContactDetailVCDelegate,CallPhoneDelegate,RFSegmentViewDelegate>{
     CallViewController * _recentCall;
     WXContacterVC * _contacterVC;
     UILabel *numberLabel;
@@ -56,10 +57,10 @@
 }
 
 -(void)selectSegmentToIndexOne{
-    if(_segmentControl.selectedSegmentIndex == 1){
-        [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
-        [self segmentControlChange:_segmentControl];
-    }
+//    if(_segmentControl.selectedSegmentIndex == 1){
+//        [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
+//        [self segmentControlChange:_segmentControl];
+//    }
 }
 
 -(void)loadSegmentControl{
@@ -70,25 +71,33 @@
     
     CGFloat segWidth = 180;
     CGFloat segHeight = 30;
-    NSArray *nameArr = @[@"通话",@"通讯录"];
-    _segmentControl
-    = [[UISegmentedControl alloc] initWithItems:nameArr];
-    _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT + 10, segWidth, segHeight);
-    if(isIOS6){
-        _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
+    
+    for (int i=0; i<1; i++) {
+        self.segmentControl = [[RFSegmentView alloc] initWithFrame:CGRectMake((Size.width-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT+10, segWidth, segHeight) items:@[@"通话",@"通讯录"]];
+        self.segmentControl.tintColor = [UIColor redColor];
+        self.segmentControl.delegate = self;
+        [self.view addSubview:self.segmentControl];
     }
-    [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
-#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
-    _segmentControl.segmentedControlStyle = UISegmentedControlStylePlain;
-#endif
-    [_segmentControl setBorderRadian:5.0 width:1 color:[UIColor whiteColor]];  //0x2c97df
-    [_segmentControl setBackgroundColor:[UIColor whiteColor]];
-    [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
-    [self addSubview:_segmentControl];
+    
+//    NSArray *nameArr = @[@"通话",@"通讯录"];
+//    _segmentControl
+//    = [[UISegmentedControl alloc] initWithItems:nameArr];
+//    _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, IPHONE_STATUS_BAR_HEIGHT + 10, segWidth, segHeight);
+//    if(isIOS6){
+//        _segmentControl.frame = CGRectMake((Size.width-segWidth)/2, NAVIGATION_BAR_HEGITH-segHeight-5, segWidth, segHeight);
+//    }
+//    [_segmentControl setSelectedSegmentIndex:kCallSegmentIndex];
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_7_0
+//    _segmentControl.segmentedControlStyle = UISegmentedControlStylePlain;
+//#endif
+//    [_segmentControl setBorderRadian:5.0 width:1 color:[UIColor whiteColor]];  //0x2c97df
+//    [_segmentControl setBackgroundColor:[UIColor whiteColor]];
+//    [_segmentControl addTarget:self action:@selector(segmentControlChange:) forControlEvents:UIControlEventValueChanged];
+//    [self addSubview:_segmentControl];
 }
 
--(void)segmentControlChange:(UISegmentedControl *)segmentControl{
-    switch (segmentControl.selectedSegmentIndex) {
+-(void)segmentViewSelectIndex:(NSInteger)index{
+    switch (index) {
         case kCallSegmentIndex:
             [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
             _recentCall.keyPad_type = E_KeyPad_Down;
@@ -103,6 +112,23 @@
             break;
     }
 }
+
+//-(void)segmentControlChange:(UISegmentedControl *)segmentControl{
+//    switch (segmentControl.selectedSegmentIndex) {
+//        case kCallSegmentIndex:
+//            [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+//            _recentCall.keyPad_type = E_KeyPad_Down;
+//            [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
+//            [self.view addSubview:_recentCall.view];
+//            break;
+//        case kContactsSegmentIndex:
+//            [[NSNotificationCenter defaultCenter] postNotificationName:HideDownView object:nil];
+//            [self.view addSubview:_contacterVC.view];
+//            break;
+//        default:
+//            break;
+//    }
+//}
 
 -(void)addNotification{
     [NOTIFY_CENTER removeObserver:self];
