@@ -12,6 +12,7 @@
 #import "EScrollerView.h"
 #import "WXHomeTopGoodCell.h"
 #import "UIButton+UIButtonImageWithLable.h"
+#import "WXTAPNViewController.h"
 @interface WXTGoodsDetailViewController ()<EScrollerViewDelegate>{
     UITableView * _tableView;
     NSMutableArray * _proPicMArray;
@@ -157,7 +158,8 @@
 // 加入购物车
 -(void)addToCart{
     NSLog(@"%s",__func__);
-    
+    WXTAPNViewController * viewController = [[WXTAPNViewController alloc]init];
+    [self.wxNavigationController pushViewController:viewController];
 }
 
 - (void)didReceiveMemoryWarning {

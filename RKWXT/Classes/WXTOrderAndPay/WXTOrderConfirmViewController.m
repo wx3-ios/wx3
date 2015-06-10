@@ -38,8 +38,10 @@
 
 -(void)initUI{
     [self initTableView];
-
-    CGFloat divideY = IPHONE_SCREEN_HEIGHT-59;
+    
+//    UIView * view = [UIView alloc]initWithFrame:CGRectMake(0, IPHONE_SCREEN_HEIGHT-, IPHONE_SCREEN_WIDTH, <#CGFloat height#>)
+    
+    CGFloat divideY = IPHONE_SCREEN_HEIGHT-49;
     UIView * divideView = [[UIView alloc]initWithFrame:CGRectMake(0,divideY , IPHONE_SCREEN_WIDTH, 0.3)];
     divideView.backgroundColor = WXColorWithInteger(0x7f7f7f);
     [self.view addSubview:divideView];
@@ -68,7 +70,7 @@
 }
 
 -(void)initTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATION_BAR_HEGITH+20, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-49-64)style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATION_BAR_HEGITH+20, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT-64)style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -82,20 +84,18 @@
 
 #pragma mark - UITableView
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    CGFloat height = 0.0;
     switch (section) {
-        case 1:{
-            return 100;
-        }
+        case 1:
+            height = 100;
             break;
-        case 2:{
-            return 100;
-        }
+        case 2:
+            height = 100;
             break;
-        default:{
-            return 13;
-        }
+        default:
             break;
     }
+    return height;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -106,21 +106,17 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * view = nil;
     switch (section) {
-        case 1:{
-            UIView * personView = [self personInfo];
-            return personView;
-        }
-            break;
-        case 2:{
-            UIView * productView = [self productDetail];
-            return productView;
-        }
+        case 1:
+            view = [self personInfo];break;
+        case 2:
+            view = [self productDetail];
             break;
         default:
-            return nil;
             break;
     }
+    return view;
 }
 
 // 个人信息
@@ -187,17 +183,15 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView * view = nil;
     switch (section) {
-        case 3:{
-            UIView * view = [self productPriceDetail];
-            return view;
-        }
+        case 3:
+            view = [self productPriceDetail];
             break;
-        default:{
-            return nil;
-        }
+        default:
             break;
     }
+    return view;
 }
 
 // 商品支付详情

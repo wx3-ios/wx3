@@ -24,8 +24,8 @@
     _tableView.frame = CGRectMake(0, 0, size.width, size.height);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
-    [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self addSubview:_tableView];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
