@@ -105,6 +105,11 @@
     cartBtn.frame = CGRectMake(xOffset, 0, btnWidth, btnHeight);
     [cartBtn setBackgroundColor:[UIColor grayColor]];
     [cartBtn setImage:[UIImage imageNamed:@"T_ShoppingCart.png"] forState:UIControlStateNormal];
+    [cartBtn setImageEdgeInsets:(UIEdgeInsetsMake(5, 20, DownViewHeight/2, 0))];
+    [cartBtn setTitle:@"购物车" forState:UIControlStateNormal];
+    [cartBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
+    [cartBtn.titleLabel setFont:WXFont(9.0)];
+    [cartBtn setTitleEdgeInsets:(UIEdgeInsetsMake(DownViewHeight/2, 0, 0, 21))];
     [cartBtn addTarget:self action:@selector(cartBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:cartBtn];
     
