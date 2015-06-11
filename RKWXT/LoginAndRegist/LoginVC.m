@@ -346,7 +346,7 @@
     [_fetchPwdBtn setEnabled:_fetchPasswordTime == 0];
     NSString *title = @"登录遇到问题?";
     if(_fetchPasswordTime > 0){
-        title = [NSString stringWithFormat:@"(%d)%@",kFetchPasswordDur - (int)_fetchPasswordTime,title];
+        title = [NSString stringWithFormat:@"(%d)密码获取中",kFetchPasswordDur - (int)_fetchPasswordTime];
     }
     [_fetchPwdBtn setTitle:title forState:UIControlStateNormal];
     [_fetchPwdBtn setTitle:title forState:UIControlStateHighlighted];

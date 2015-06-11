@@ -126,7 +126,7 @@ enum{
     [_money setBackgroundColor:[UIColor clearColor]];
     [_money setTextAlignment:NSTextAlignmentCenter];
     [_money setFont:WXTFont(13.0)];
-    [_money setTextColor:WXColorWithInteger(0x0c8bdf)];
+    [_money setTextColor:WXColorWithInteger(0xdd2726)];
     [baseView addSubview:_money];
     
     yOffset += 37;
@@ -157,8 +157,8 @@ enum{
     WXTUIButton *btn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(xOffset, 1.4*yOffset, Size.width-2*xOffset, btnHeight);
     [btn setBorderRadian:10.0 width:0.5 color:[UIColor clearColor]];
-    [btn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateNormal];
-    [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
+    [btn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];
+//    [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
     [btn setTitle:@"立即充值" forState:UIControlStateNormal];
     [btn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(gotoRecharge) forControlEvents:UIControlEventTouchUpInside];

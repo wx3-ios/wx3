@@ -217,6 +217,8 @@
 		12846A8D1B252D720021F9FE /* LoginUserPwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A891B252D720021F9FE /* LoginUserPwd@2x.png */; };
 		12868A451B21545300DE3A95 /* ShoppingCartCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12868A431B21545300DE3A95 /* ShoppingCartCircle@2x.png */; };
 		12868A461B21545300DE3A95 /* ShoppingCartDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12868A441B21545300DE3A95 /* ShoppingCartDel@2x.png */; };
+		1295C5E01B291D4F004C861D /* ResetPwdNorlImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */; };
+		1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */; };
 		129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */; };
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
@@ -921,6 +923,8 @@
 		12846A891B252D720021F9FE /* LoginUserPwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUserPwd@2x.png"; sourceTree = "<group>"; };
 		12868A431B21545300DE3A95 /* ShoppingCartCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShoppingCartCircle@2x.png"; sourceTree = "<group>"; };
 		12868A441B21545300DE3A95 /* ShoppingCartDel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShoppingCartDel@2x.png"; sourceTree = "<group>"; };
+		1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdNorlImg@2x.png"; sourceTree = "<group>"; };
+		1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdSelImg@2x.png"; sourceTree = "<group>"; };
 		129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ContactInfoBgImg.jpg; sourceTree = "<group>"; };
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
@@ -2357,6 +2361,15 @@
 			path = ShoppingCart;
 			sourceTree = "<group>";
 		};
+		1295C5DD1B2919D6004C861D /* ResetPwd */ = {
+			isa = PBXGroup;
+			children = (
+				1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */,
+				1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */,
+			);
+			path = ResetPwd;
+			sourceTree = "<group>";
+		};
 		1296742F1AB6EAE200597B17 /* ContactInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -3111,6 +3124,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1295C5DD1B2919D6004C861D /* ResetPwd */,
 				127249091B2574C9001BDC15 /* Regist */,
 				12846A851B252D720021F9FE /* LoginImg */,
 				12868A421B21545300DE3A95 /* ShoppingCart */,
@@ -4522,6 +4536,7 @@
 				1241E5481AE9D89B00811D3F /* 5S@2x.png in Resources */,
 				124535551AE9D146004198C9 /* sign32@2x.png in Resources */,
 				12F46A3D1B20012000B8EC98 /* T_GoodsIInfoDetail@2x.png in Resources */,
+				1295C5E01B291D4F004C861D /* ResetPwdNorlImg@2x.png in Resources */,
 				128221D61B184E84004613BB /* HomePageChange@2x.png in Resources */,
 				DDEA9ECB1B1BF3A400530C1C /* DetailRight@2x.png in Resources */,
 				1240D6DC1AE916DA0056AD6A /* post_type_bubble_facebook.png in Resources */,
@@ -4634,6 +4649,7 @@
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				1241E5401AE9D89B00811D3F /* 1S@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,
+				1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */,
 				1241E54B1AE9D89B00811D3F /* 7N@2x.png in Resources */,
 				1241E5631AE9D91400811D3F /* T_AllBack@2x.png in Resources */,
 				1241E53F1AE9D89B00811D3F /* 1N@2x.png in Resources */,
@@ -5249,6 +5265,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RKWXT/RKWXT-Prefix.pch";
@@ -5274,6 +5294,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RKWXT/RKWXT-Prefix.pch";

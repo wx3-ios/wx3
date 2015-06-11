@@ -33,7 +33,8 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"重置密码"];
-    self.backgroundColor = WXColorWithInteger(0xefeff4);
+//    self.backgroundColor = WXColorWithInteger(0xefeff4);
+    [self setBackgroundColor:[UIColor whiteColor]];
     
     _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height-66);
@@ -51,51 +52,134 @@
 }
 
 -(void)createBaseView{
-    CGFloat xOffset = 15;
-    CGFloat yOffset = 15;
-    CGFloat textFieldHeight = 41;
-    _oldPwdField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset, textFieldHeight)];
+    CGFloat lineHeight = 10;
+    CGFloat xGap = 16;
+    CGFloat yGap = 20;
+    CGFloat xOffset = 31;
+    CGFloat yOffset = 20;
+    CGFloat textFieldHeight = 20;
+    _oldPwdField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset-66, textFieldHeight)];
     [_oldPwdField setReturnKeyType:UIReturnKeyDone];
     [_oldPwdField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
-    [_oldPwdField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
+    [_oldPwdField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
     [_oldPwdField setTextColor:[UIColor grayColor]];
     [_oldPwdField setTintColor:[UIColor blackColor]];
     [_oldPwdField setKeyboardType:UIKeyboardTypeASCIICapable];
-    [_oldPwdField setBackgroundColor:[UIColor whiteColor]];
-    [_oldPwdField setPlaceHolder:@"请输入旧密码" color:[UIColor grayColor]];
-    [_oldPwdField setTextAlignment:NSTextAlignmentCenter];
+    [_oldPwdField setBackgroundColor:[UIColor clearColor]];
+    [_oldPwdField setPlaceHolder:@"请输入旧密码" color:WXColorWithInteger(0xb0b0b0)];
+    [_oldPwdField setTextAlignment:NSTextAlignmentLeft];
     [self addSubview:_oldPwdField];
     
+    yGap += textFieldHeight+15;
+    UILabel *oldPwdLine1 = [[UILabel alloc] init];
+    oldPwdLine1.frame = CGRectMake(xGap, yGap-lineHeight, 0.5, lineHeight);
+    [oldPwdLine1 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:oldPwdLine1];
     
-    yOffset += textFieldHeight+10;
-    _newPwdField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset, textFieldHeight)];
+    UILabel *oldPwdLine2 = [[UILabel alloc] init];
+    oldPwdLine2.frame = CGRectMake(xGap, yGap, Size.width-2*xGap, 0.5);
+    [oldPwdLine2 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:oldPwdLine2];
+    
+    UILabel *oldPwdLine3 = [[UILabel alloc] init];
+    oldPwdLine3.frame = CGRectMake(Size.width-xGap, yGap-lineHeight, 0.5, lineHeight);
+    [oldPwdLine3 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:oldPwdLine3];
+    
+    UILabel *oldPwdLine4 = [[UILabel alloc] init];
+    oldPwdLine4.frame = CGRectMake(Size.width-xGap-66, yGap-lineHeight, 0.5, lineHeight);
+    [oldPwdLine4 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:oldPwdLine4];
+    
+    UIImage *img = [UIImage imageNamed:@"ResetPwdNorlImg.png"];
+    UIImageView *imgView1 = [[UIImageView alloc] init];
+    imgView1.frame = CGRectMake(Size.width-xGap-66+(66-img.size.width)/2, yGap-20-img.size.height, img.size.width, img.size.height);
+    [imgView1 setImage:img];
+    [self addSubview:imgView1];
+    
+    
+    yOffset = yGap+20;
+    _newPwdField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset-66, textFieldHeight)];
     [_newPwdField setReturnKeyType:UIReturnKeyDone];
     [_newPwdField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
-    [_newPwdField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
+    [_newPwdField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
     [_newPwdField setTextColor:[UIColor grayColor]];
     [_newPwdField setTintColor:[UIColor blackColor]];
     [_newPwdField setKeyboardType:UIKeyboardTypeASCIICapable];
-    [_newPwdField setBackgroundColor:[UIColor whiteColor]];
-    [_newPwdField setTextAlignment:NSTextAlignmentCenter];
-    [_newPwdField setPlaceHolder:@"请输入新密码" color:[UIColor grayColor]];
+    [_newPwdField setBackgroundColor:[UIColor clearColor]];
+    [_newPwdField setTextAlignment:NSTextAlignmentLeft];
+    [_newPwdField setPlaceHolder:@"请输入新密码" color:WXColorWithInteger(0xb0b0b0)];
     [self addSubview:_newPwdField];
     
-    yOffset += textFieldHeight+10;
-    _confirmPwd = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset, textFieldHeight)];
+    yGap += yGap;
+    UILabel *newPwdLine1 = [[UILabel alloc] init];
+    newPwdLine1.frame = CGRectMake(xGap, yGap-lineHeight, 0.5, lineHeight);
+    [newPwdLine1 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newPwdLine1];
+    
+    UILabel *newPwdLine2 = [[UILabel alloc] init];
+    newPwdLine2.frame = CGRectMake(xGap, yGap, Size.width-2*xGap, 0.5);
+    [newPwdLine2 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newPwdLine2];
+    
+    UILabel *newPwdLine3 = [[UILabel alloc] init];
+    newPwdLine3.frame = CGRectMake(Size.width-xGap, yGap-lineHeight, 0.5, lineHeight);
+    [newPwdLine3 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newPwdLine3];
+    
+    UILabel *newPwdLine4 = [[UILabel alloc] init];
+    newPwdLine4.frame = CGRectMake(Size.width-xGap-66, yGap-lineHeight, 0.5, lineHeight);
+    [newPwdLine4 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newPwdLine4];
+    
+    UIImageView *imgView2 = [[UIImageView alloc] init];
+    imgView2.frame = CGRectMake(Size.width-xGap-66+(66-img.size.width)/2, yGap-20-img.size.height, img.size.width, img.size.height);
+    [imgView2 setImage:img];
+    [self addSubview:imgView2];
+    
+    
+    yOffset = yGap+20;
+    _confirmPwd = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset, Size.width-2*xOffset-66, textFieldHeight)];
     [_confirmPwd setReturnKeyType:UIReturnKeyDone];
     [_confirmPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
-    [_confirmPwd setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
+    [_confirmPwd setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
     [_confirmPwd setTextColor:[UIColor grayColor]];
     [_confirmPwd setKeyboardType:UIKeyboardTypeASCIICapable];
-    [_confirmPwd setBackgroundColor:[UIColor whiteColor]];
+    [_confirmPwd setBackgroundColor:[UIColor clearColor]];
     [_confirmPwd setTintColor:[UIColor blackColor]];
-    [_confirmPwd setTextAlignment:NSTextAlignmentCenter];
-    [_confirmPwd setPlaceHolder:@"再次输入新密码" color:[UIColor grayColor]];
+    [_confirmPwd setTextAlignment:NSTextAlignmentLeft];
+    [_confirmPwd setPlaceHolder:@"再次输入新密码" color:WXColorWithInteger(0xb0b0b0)];
     [self addSubview:_confirmPwd];
+    
+    yGap += 55;
+    UILabel *newLine1 = [[UILabel alloc] init];
+    newLine1.frame = CGRectMake(xGap, yGap-lineHeight, 0.5, lineHeight);
+    [newLine1 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newLine1];
+    
+    UILabel *newLine2 = [[UILabel alloc] init];
+    newLine2.frame = CGRectMake(xGap, yGap, Size.width-2*xGap, 0.5);
+    [newLine2 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newLine2];
+    
+    UILabel *newLine3 = [[UILabel alloc] init];
+    newLine3.frame = CGRectMake(Size.width-xGap, yGap-lineHeight, 0.5, lineHeight);
+    [newLine3 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newLine3];
+    
+    UILabel *newLine4 = [[UILabel alloc] init];
+    newLine4.frame = CGRectMake(Size.width-xGap-66, yGap-lineHeight, 0.5, lineHeight);
+    [newLine4 setBackgroundColor:WXColorWithInteger(0xb0b0b0)];
+    [self addSubview:newLine4];
+    
+    UIImageView *imgView3 = [[UIImageView alloc] init];
+    imgView3.frame = CGRectMake(Size.width-xGap-66+(66-img.size.width)/2, yGap-20-img.size.height, img.size.width, img.size.height);
+    [imgView3 setImage:[UIImage imageNamed:@"ResetPwdSelImg.png"]];
+    [self addSubview:imgView3];
 }
 
 -(void)createCompleteBtn{
-    CGFloat yOffset = 170;
+    CGFloat yOffset = 200;
     CGFloat xOffset = 10;
     CGFloat btnHeight = 44;
     WXTUIButton *completeBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
@@ -103,6 +187,7 @@
     [completeBtn setBorderRadian:10.0 width:1.0 color:[UIColor clearColor]];
     [completeBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
     [completeBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [completeBtn.titleLabel setFont:WXFont(18.0)];
     [completeBtn setTitle:@"确定提交" forState:UIControlStateNormal];
     [completeBtn addTarget:self action:@selector(complieteResetPwd) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:completeBtn];
