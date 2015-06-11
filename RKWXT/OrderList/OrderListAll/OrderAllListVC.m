@@ -11,6 +11,7 @@
 
 @interface OrderAllListVC()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
+    NSInteger number;
 }
 @end
 
@@ -26,6 +27,33 @@
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    number = 1;
+    [self loadEmptyOrderListView];
+}
+
+-(void)loadEmptyOrderListView{
+    if(number != 0){
+        return;
+    }
+    [_tableView setHidden:YES];
+    
+    CGFloat yOffset = 120;
+    UIImage *img = [UIImage imageNamed:@"NoOrderImg.png"];
+    UIImageView *imgView = [[UIImageView alloc] init];
+    imgView.frame = CGRectMake((self.bounds.size.width-img.size.width)/2, yOffset, img.size.width, img.size.height);
+    [imgView setImage:img];
+    [self addSubview:imgView];
+    
+    yOffset += img.size.height+18;
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, yOffset, self.bounds.size.width, 20);
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setText:@"您还没有相关订单"];
+    [label setTextColor:WXColorWithInteger(0x000000)];
+    [label setFont:WXFont(18.0)];
+    [self addSubview:label];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -219,6 +219,7 @@
 		12868A461B21545300DE3A95 /* ShoppingCartDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12868A441B21545300DE3A95 /* ShoppingCartDel@2x.png */; };
 		1295C5E01B291D4F004C861D /* ResetPwdNorlImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */; };
 		1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */; };
+		1295C5E51B293BBB004C861D /* NoOrderImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */; };
 		129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */; };
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
@@ -926,6 +927,7 @@
 		12868A441B21545300DE3A95 /* ShoppingCartDel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShoppingCartDel@2x.png"; sourceTree = "<group>"; };
 		1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdNorlImg@2x.png"; sourceTree = "<group>"; };
 		1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdSelImg@2x.png"; sourceTree = "<group>"; };
+		1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoOrderImg@2x.png"; sourceTree = "<group>"; };
 		129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ContactInfoBgImg.jpg; sourceTree = "<group>"; };
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
@@ -2373,6 +2375,14 @@
 			path = ResetPwd;
 			sourceTree = "<group>";
 		};
+		1295C5E21B293B24004C861D /* OrderImg */ = {
+			isa = PBXGroup;
+			children = (
+				1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */,
+			);
+			path = OrderImg;
+			sourceTree = "<group>";
+		};
 		1296742F1AB6EAE200597B17 /* ContactInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -3127,6 +3137,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1295C5E21B293B24004C861D /* OrderImg */,
 				1295C5DD1B2919D6004C861D /* ResetPwd */,
 				127249091B2574C9001BDC15 /* Regist */,
 				12846A851B252D720021F9FE /* LoginImg */,
@@ -4496,6 +4507,7 @@
 				1245355B1AE9D146004198C9 /* sign6@2x.png in Resources */,
 				1245353F1AE9D146004198C9 /* sign11@2x.png in Resources */,
 				DDEA9F021B1C0A6700530C1C /* collect_press@2x.png in Resources */,
+				1295C5E51B293BBB004C861D /* NoOrderImg@2x.png in Resources */,
 				1245356C1AE9D20D004198C9 /* ResetPwd@2x.png in Resources */,
 				DDEA9ECF1B1BF3A400530C1C /* prodcut@2x.png in Resources */,
 				1241E5451AE9D89B00811D3F /* 4N@2x.png in Resources */,

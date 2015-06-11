@@ -15,10 +15,9 @@
 #define EveryCellHeight (36)
 
 enum{
-    WXT_About_Qq = 0,
-    WXT_About_Phone,
+    WXT_About_Phone = 0,
+    WXT_About_Qq,
     WXT_About_Web,
-    WXT_About_PWeb,
     
     WXT_About_Invalid,
 };
@@ -27,8 +26,6 @@ enum{
     UIScrollView *_scrollerView;
     
     NSArray *baseNameArr;
-    NSArray *baseDataArr;
-    NSArray *infoArr;
     
     BOOL copy;
 }
@@ -39,9 +36,7 @@ enum{
 -(id)init{
     self = [super init];
     if(self){
-//        baseNameArr = @[@"我信通客服QQ: 2898621164",@"客服电话: 0755-61665888",@"官方网站: www.67call.com",@"手机网站: www.67call.com"];
-        baseNameArr = @[@"我信通客服QQ:",@"客服电话:",@"官方网站:",@"手机网站:"];
-        baseDataArr = @[@"2898621164",@"0755-61665888",@"www.67call.com",@"www.67call.com"];
+        baseNameArr = @[@"客服电话: 0755-61665888",@"客服QQ: 2898621164",@"官方网站: www.67call.com"];
     }
     return self;
 }
@@ -54,7 +49,7 @@ enum{
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"关于我们"];
-    self.backgroundColor = WXColorWithInteger(0xefeff4);
+    [self setBackgroundColor:[UIColor whiteColor]];
     
     _scrollerView = [[UIScrollView alloc] init];
     _scrollerView.frame = CGRectMake(0, 0, Size.width, Size.height);
@@ -73,22 +68,22 @@ enum{
 
 
 -(void)createBaseView{
-    CGFloat yOffset = 22;
+    CGFloat yOffset = 29;
     UIImage *img = [UIImage imageNamed:@"AboutUsLogo.png"];
     UIImageView *imgView = [[UIImageView alloc] init];
     imgView.frame = CGRectMake((Size.width-img.size.width)/2, yOffset, img.size.width, img.size.height);
     [imgView setImage:img];
     [_scrollerView addSubview:imgView];
     
-    yOffset += img.size.height;
-    CGFloat labelWidth = 100;
+    yOffset += img.size.height+12;
+    CGFloat labelWidth = 240;
     CGFloat labelHeight = 25;
     UILabel *textlabel = [[UILabel alloc] init];
     textlabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight);
     [textlabel setBackgroundColor:[UIColor clearColor]];
-    [textlabel setText:@"我信通"];
+    [textlabel setText:@"我信云科技有限公司"];
     [textlabel setFont:WXTFont(20.0)];
-    [textlabel setTextColor:WXColorWithInteger(0x0c8bdf)];
+    [textlabel setTextColor:WXColorWithInteger(0x7c7c7c)];
     [textlabel setTextAlignment:NSTextAlignmentCenter];
     [_scrollerView addSubview:textlabel];
     
@@ -97,64 +92,53 @@ enum{
 #ifdef Test
     currentVersion = [version currentVersion];
 #endif
-    yOffset += labelHeight;
+    yOffset += labelHeight+5;
     UILabel *versionLabel = [[UILabel alloc] init];
     versionLabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight-10);
     [versionLabel setBackgroundColor:[UIColor clearColor]];
-    [versionLabel setText:[NSString stringWithFormat:@"版本号:V%@",currentVersion]];
+    [versionLabel setText:[NSString stringWithFormat:@"v%@",currentVersion]];
 //    [versionLabel setTextColor:WXColorWithInteger(0x000000)];
     [versionLabel setTextAlignment:NSTextAlignmentCenter];
     [versionLabel setFont:WXTFont(14.0)];
     [_scrollerView addSubview:versionLabel];
     
     yOffset += labelHeight;
-    CGFloat btnWidth = 190;
+    CGFloat btnWidth = Size.width-2*30;
     CGFloat btnHeight = 30;
     WXTUIButton *checkBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    checkBtn.frame = CGRectMake((Size.width-btnWidth)/2, yOffset, btnWidth, btnHeight);
-    [checkBtn setBackgroundImageOfColor:[UIColor clearColor] controlState:UIControlStateNormal];
-    [checkBtn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateSelected];
+    checkBtn.frame = CGRectMake(30, yOffset, btnWidth, btnHeight+10);
+//    [checkBtn setBackgroundImageOfColor:[UIColor clearColor] controlState:UIControlStateNormal];
+//    [checkBtn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateSelected];
+    [checkBtn setBackgroundColor:WXColorWithInteger(0xdc2826)];
     [checkBtn setBorderRadian:10.0 width:0.5 color:WXColorWithInteger(0x969696)];
-    [checkBtn setTitle:@"检测新版本" forState:UIControlStateNormal];
-    [checkBtn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
-    [checkBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateSelected];
+    [checkBtn setTitle:@"检测版本" forState:UIControlStateNormal];
+    [checkBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
+    [checkBtn.titleLabel setFont:WXFont(15.0)];
     [checkBtn addTarget:self action:@selector(checkLastestVersion) forControlEvents:UIControlEventTouchUpInside];
     [_scrollerView addSubview:checkBtn];
 }
 
 -(void)showBaseInfo{
-    CGFloat xOffset = 20;
-    CGFloat yOffset = 210;
+    CGFloat xOffset = 0;
+    CGFloat yOffset = 220;
     UIView *baseView = [[UIView alloc] init];
     baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_About_Invalid);
-    [baseView setBorderRadian:5.0 width:0.5 color:WXColorWithInteger(0xCCCCCC)];
-    [baseView setBackgroundColor:WXColorWithInteger(0xFFFFFF)];
+    [baseView setBackgroundColor:[UIColor clearColor]];
     
     xOffset = 8;
     yOffset = 8;
-    CGFloat lineyGap = 0;
-    CGFloat nameLabelWidth = 50;
+    CGFloat nameLabelWidth = 240;
     CGFloat namelabelHeight = 20;
     
     for(int i = 0; i < WXT_About_Invalid; i++){
-        yOffset += (i>0?(16+namelabelHeight):0);
-        UILabel *nameLabel = [[UILabel alloc] init];
-        nameLabel.frame = CGRectMake(xOffset, yOffset, (i==0?nameLabelWidth+30:nameLabelWidth), namelabelHeight);
-        [nameLabel setBackgroundColor:[UIColor clearColor]];
-        [nameLabel setTextAlignment:NSTextAlignmentLeft];
-        [nameLabel setTextColor:WXColorWithInteger(0x828282)];
-        [nameLabel setFont:WXTFont(11.0)];
-        [nameLabel setText:baseNameArr[i]];
-        [baseView addSubview:nameLabel];
-        
         WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(xOffset+nameLabelWidth+(i==0?30:0), yOffset, Size.width-xOffset-nameLabelWidth-100, namelabelHeight);
+        btn.frame = CGRectMake((Size.width-nameLabelWidth)/2, yOffset, nameLabelWidth, namelabelHeight);
         btn.tag = i;
         [btn.titleLabel setFont:WXFont(14.0)];
-        [btn.titleLabel setTextAlignment:NSTextAlignmentLeft];
+        [btn.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [btn setBackgroundColor:[UIColor clearColor]];
-        [btn setTitle:baseDataArr[i] forState:UIControlStateNormal];
-        [btn setTitleColor:WXColorWithInteger(0x0c8bdf) forState:UIControlStateNormal];
+        [btn setTitle:baseNameArr[i] forState:UIControlStateNormal];
+        [btn setTitleColor:WXColorWithInteger(0x8a8a8a) forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [baseView addSubview:btn];
         if(i == WXT_About_Qq){
@@ -163,37 +147,35 @@ enum{
             longPressGesture.minimumPressDuration = 0.5;//默认0.5秒
             [btn addGestureRecognizer:longPressGesture];
         }
+        yOffset += namelabelHeight+10;
         
-        if(i != WXT_About_Invalid-1){
-            lineyGap += EveryCellHeight;
-            UILabel *line = [[UILabel alloc] init];
-            line.frame = CGRectMake(0, lineyGap, Size.width-2*xOffset, 0.5);
-            [line setBackgroundColor:WXColorWithInteger(0xEEEEEE)];
-            [baseView addSubview:line];
-        }
+        UILabel *line = [[UILabel alloc] init];
+        line.frame = CGRectMake(0, yOffset-7, Size.width-2*xOffset, 0.5);
+        [line setBackgroundColor:WXColorWithInteger(0xEEEEEE)];
+        [baseView addSubview:line];
     }
     [_scrollerView addSubview:baseView];
 }
 
 -(void)createDownView{
     CGFloat yOffset = 100;
-    CGFloat textlabelWidth = 200;
+//    CGFloat textlabelWidth = 200;
     CGFloat textLabelHeight = 18;
-    UILabel *textLabel = [[UILabel alloc] init];
-    textLabel.frame = CGRectMake((Size.width-textlabelWidth)/2, IPHONE_SCREEN_HEIGHT-yOffset-10, textlabelWidth, textLabelHeight);
-    [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setText:@"Copyright © 2014 www.woxinyun.com"];
-    [textLabel setFont:WXTFont(11.0)];
-    [textLabel setTextColor:WXColorWithInteger(0x000000)];
-    [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [_scrollerView addSubview:textLabel];
+//    UILabel *textLabel = [[UILabel alloc] init];
+//    textLabel.frame = CGRectMake((Size.width-textlabelWidth)/2, IPHONE_SCREEN_HEIGHT-yOffset-10, textlabelWidth, textLabelHeight);
+//    [textLabel setBackgroundColor:[UIColor clearColor]];
+//    [textLabel setText:@"Copyright © 2014 www.woxinyun.com"];
+//    [textLabel setFont:WXTFont(11.0)];
+//    [textLabel setTextColor:WXColorWithInteger(0x000000)];
+//    [textLabel setTextAlignment:NSTextAlignmentCenter];
+//    [_scrollerView addSubview:textLabel];
     
     UILabel *textLabel1 = [[UILabel alloc] init];
-    textLabel1.frame = CGRectMake((Size.width-textlabelWidth)/2, IPHONE_SCREEN_HEIGHT-yOffset-10+textLabelHeight, textlabelWidth, textLabelHeight);
+    textLabel1.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yOffset, Size.width, textLabelHeight);
     [textLabel1 setBackgroundColor:[UIColor clearColor]];
-    [textLabel1 setText:@"版权所有"];
-    [textLabel1 setFont:WXTFont(11.0)];
-    [textLabel1 setTextColor:WXColorWithInteger(0x000000)];
+    [textLabel1 setText:@"我信云科技有限公司 版权所有"];
+    [textLabel1 setFont:WXTFont(12.0)];
+    [textLabel1 setTextColor:WXColorWithInteger(0x8a8a8a)];
     [textLabel1 setTextAlignment:NSTextAlignmentCenter];
     [_scrollerView addSubview:textLabel1];
 }
@@ -216,7 +198,7 @@ enum{
             break;
         case WXT_About_Phone:
         {
-            NSString *phoneStr = [self phoneWithoutNumber:[baseDataArr objectAtIndex:WXT_About_Phone]];
+            NSString *phoneStr = [self phoneWithoutNumber:@"075561665888"];
             CallBackVC *backVC = [[CallBackVC alloc] init];
             backVC.phoneName = phoneStr;
             if([backVC callPhone:phoneStr]){
@@ -227,13 +209,7 @@ enum{
             break;
         case WXT_About_Web:
         {
-            NSString *wbUrl = [baseDataArr objectAtIndex:WXT_About_Web];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",wbUrl]]];
-        }
-            break;
-        case WXT_About_PWeb:
-        {
-            NSString *wbUrl = [baseDataArr objectAtIndex:WXT_About_PWeb];
+            NSString *wbUrl = @"www.67call.com";
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",wbUrl]]];
         }
             break;
@@ -247,7 +223,7 @@ enum{
         return;
     }
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    [pasteboard setString:[baseDataArr objectAtIndex:WXT_About_Qq]];
+    [pasteboard setString:@"2898621164"];
     [UtilTool showTipView:@"复制完成"];
     copy = YES;
 }
