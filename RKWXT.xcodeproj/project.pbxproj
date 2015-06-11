@@ -575,6 +575,7 @@
 		DD351C581AD8B85000DF0C7E /* libPods-CocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD54B2981AE0F9E100FF318B /* WXTMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */; };
+		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
 		DD988A5D1B1D408500B3790B /* EScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A5C1B1D408500B3790B /* EScrollerView.m */; };
 		DD988A621B1D412600B3790B /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD988A5F1B1D412600B3790B /* 1.jpg */; };
 		DD988A631B1D412600B3790B /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD988A601B1D412600B3790B /* 2.jpg */; };
@@ -1612,6 +1613,8 @@
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD54B2961AE0F9E100FF318B /* WXTMessageCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMessageCenterVC.h; sourceTree = "<group>"; };
 		DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMessageCenterVC.m; sourceTree = "<group>"; };
+		DD7EB57E1B27D5F90005A97C /* WXTAPNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTAPNViewController.h; sourceTree = "<group>"; };
+		DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTAPNViewController.m; sourceTree = "<group>"; };
 		DD817A211ADE062500586634 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		DD988A5B1B1D408500B3790B /* EScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EScrollerView.h; sourceTree = "<group>"; };
 		DD988A5C1B1D408500B3790B /* EScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EScrollerView.m; sourceTree = "<group>"; };
@@ -4365,6 +4368,8 @@
 				DDEA9F0A1B1C2F0900530C1C /* Cells */,
 				DDEA9EDB1B1BF9EF00530C1C /* WXTGoodsDetailViewController.h */,
 				DDEA9EDC1B1BF9EF00530C1C /* WXTGoodsDetailViewController.m */,
+				DD7EB57E1B27D5F90005A97C /* WXTAPNViewController.h */,
+				DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */,
 			);
 			path = WXTGoods;
 			sourceTree = "<group>";
@@ -4884,6 +4889,7 @@
 				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
 				775842DC1AB95A300039B129 /* UIImage+Extend.m in Sources */,
 				775842C31AB95A300039B129 /* it_lib_audio.cpp in Sources */,
+				DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */,
 				12F916071B1950E600C94717 /* T_MenuEntity.m in Sources */,
 				12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */,
 				1243CCBC1AE7D89A003E0943 /* YRSideViewController.m in Sources */,
