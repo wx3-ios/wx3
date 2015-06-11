@@ -422,6 +422,8 @@
             break;
         case PersonalInfo_Money:
         {
+            UserBonusVC *bonusVC = [[UserBonusVC alloc] init];
+            [self.wxNavigationController pushViewController:bonusVC];
         }
             break;
         case PersonalInfo_Call:

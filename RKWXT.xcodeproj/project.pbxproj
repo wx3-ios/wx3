@@ -220,6 +220,11 @@
 		1295C5E01B291D4F004C861D /* ResetPwdNorlImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */; };
 		1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */; };
 		1295C5E51B293BBB004C861D /* NoOrderImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */; };
+		1295C5E91B299774004C861D /* UserBonusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5E81B299774004C861D /* UserBonusVC.m */; };
+		1295C5F11B29999B004C861D /* BonusWaitReceiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5F01B29999B004C861D /* BonusWaitReceiveVC.m */; };
+		1295C5F51B299A66004C861D /* BonusOverdueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5F41B299A66004C861D /* BonusOverdueVC.m */; };
+		1295C5FA1B29A3BE004C861D /* WaitReceiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5F91B29A3BE004C861D /* WaitReceiveCell.m */; };
+		1295C5FE1B29B2DB004C861D /* OverdueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5FD1B29B2DB004C861D /* OverdueCell.m */; };
 		129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */; };
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
@@ -928,6 +933,16 @@
 		1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdNorlImg@2x.png"; sourceTree = "<group>"; };
 		1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdSelImg@2x.png"; sourceTree = "<group>"; };
 		1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoOrderImg@2x.png"; sourceTree = "<group>"; };
+		1295C5E71B299774004C861D /* UserBonusVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBonusVC.h; sourceTree = "<group>"; };
+		1295C5E81B299774004C861D /* UserBonusVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBonusVC.m; sourceTree = "<group>"; };
+		1295C5EF1B29999B004C861D /* BonusWaitReceiveVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusWaitReceiveVC.h; sourceTree = "<group>"; };
+		1295C5F01B29999B004C861D /* BonusWaitReceiveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusWaitReceiveVC.m; sourceTree = "<group>"; };
+		1295C5F31B299A66004C861D /* BonusOverdueVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusOverdueVC.h; sourceTree = "<group>"; };
+		1295C5F41B299A66004C861D /* BonusOverdueVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusOverdueVC.m; sourceTree = "<group>"; };
+		1295C5F81B29A3BE004C861D /* WaitReceiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitReceiveCell.h; sourceTree = "<group>"; };
+		1295C5F91B29A3BE004C861D /* WaitReceiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitReceiveCell.m; sourceTree = "<group>"; };
+		1295C5FC1B29B2DB004C861D /* OverdueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverdueCell.h; sourceTree = "<group>"; };
+		1295C5FD1B29B2DB004C861D /* OverdueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverdueCell.m; sourceTree = "<group>"; };
 		129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ContactInfoBgImg.jpg; sourceTree = "<group>"; };
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
@@ -2383,6 +2398,63 @@
 			path = OrderImg;
 			sourceTree = "<group>";
 		};
+		1295C5E61B299238004C861D /* Bonus */ = {
+			isa = PBXGroup;
+			children = (
+				1295C5E71B299774004C861D /* UserBonusVC.h */,
+				1295C5E81B299774004C861D /* UserBonusVC.m */,
+				1295C5F61B29A381004C861D /* Model */,
+				1295C5F21B2999F8004C861D /* Overdue */,
+				1295C5EE1B29999B004C861D /* Wait */,
+			);
+			path = Bonus;
+			sourceTree = "<group>";
+		};
+		1295C5EE1B29999B004C861D /* Wait */ = {
+			isa = PBXGroup;
+			children = (
+				1295C5EF1B29999B004C861D /* BonusWaitReceiveVC.h */,
+				1295C5F01B29999B004C861D /* BonusWaitReceiveVC.m */,
+				1295C5F71B29A398004C861D /* View */,
+			);
+			path = Wait;
+			sourceTree = "<group>";
+		};
+		1295C5F21B2999F8004C861D /* Overdue */ = {
+			isa = PBXGroup;
+			children = (
+				1295C5F31B299A66004C861D /* BonusOverdueVC.h */,
+				1295C5F41B299A66004C861D /* BonusOverdueVC.m */,
+				1295C5FB1B29B2B2004C861D /* View */,
+			);
+			path = Overdue;
+			sourceTree = "<group>";
+		};
+		1295C5F61B29A381004C861D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1295C5F71B29A398004C861D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1295C5F81B29A3BE004C861D /* WaitReceiveCell.h */,
+				1295C5F91B29A3BE004C861D /* WaitReceiveCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1295C5FB1B29B2B2004C861D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1295C5FC1B29B2DB004C861D /* OverdueCell.h */,
+				1295C5FD1B29B2DB004C861D /* OverdueCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1296742F1AB6EAE200597B17 /* ContactInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -3075,6 +3147,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				1295C5E61B299238004C861D /* Bonus */,
 				12F46A231B1FF90C00B8EC98 /* GoodsInfo */,
 				12F2D7BE1B1EA44F00C8017F /* OrderList */,
 				12F915F31B194FD100C94717 /* ShoppingCart */,
@@ -4814,6 +4887,7 @@
 				12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */,
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
 				775C58B71ABA7B75005B6B40 /* RedPacketBalance.m in Sources */,
+				1295C5FE1B29B2DB004C861D /* OverdueCell.m in Sources */,
 				DD0E38B81B1BE5AC00AB4DB9 /* WXSqliteItem.m in Sources */,
 				128221CC1B184CF4004613BB /* URLNetOperation.m in Sources */,
 				775C58B91ABA7B75005B6B40 /* RedPacketRule.m in Sources */,
@@ -4906,6 +4980,7 @@
 				12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */,
 				1243CCBC1AE7D89A003E0943 /* YRSideViewController.m in Sources */,
 				DDB58F481AD3C6A2006248E9 /* ContactBaseEntity+Detail.m in Sources */,
+				1295C5F51B299A66004C861D /* BonusOverdueVC.m in Sources */,
 				121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */,
 				12F4BE031AE8CA3B00B9FEDA /* GlowImageView.m in Sources */,
 				775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */,
@@ -4915,6 +4990,7 @@
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
 				DDB58F551AD3C6A2006248E9 /* WXContacterCell.m in Sources */,
 				DD0E38B41B1BE5AC00AB4DB9 /* WXSqlite+WXSysMsg.m in Sources */,
+				1295C5F11B29999B004C861D /* BonusWaitReceiveVC.m in Sources */,
 				775C58421ABA5F31005B6B40 /* Tools.m in Sources */,
 				775842B51AB95A300039B129 /* WXTURLFeedOBJ+Data.m in Sources */,
 				1218042E1ACB899B009DB7E7 /* DBImageView.m in Sources */,
@@ -4923,6 +4999,7 @@
 				DDB58F4D1AD3C6A2006248E9 /* BaseCallHistoryCell.m in Sources */,
 				775C58B81ABA7B75005B6B40 /* RedPacketEntity.m in Sources */,
 				775C58C11ABA7B75005B6B40 /* WXSetMeal.m in Sources */,
+				1295C5E91B299774004C861D /* UserBonusVC.m in Sources */,
 				775842D61AB95A300039B129 /* NSString+HTML.m in Sources */,
 				DDB58F4A1AD3C6A2006248E9 /* WXContacterModel.m in Sources */,
 				775842B01AB95A300039B129 /* CustomMadeOBJ.m in Sources */,
@@ -4957,6 +5034,7 @@
 				775842DB1AB95A300039B129 /* UIFont+WX.m in Sources */,
 				120A2C661AB1804E006A28B1 /* SignEntity.m in Sources */,
 				128221C41B184C3B004613BB /* ASIDataCompressor.m in Sources */,
+				1295C5FA1B29A3BE004C861D /* WaitReceiveCell.m in Sources */,
 				775842F51AB95A300039B129 /* MessageInterceptor.m in Sources */,
 				775843341AB95A300039B129 /* WXUITableViewController.m in Sources */,
 				12F3CC881B1DF77500E64DE4 /* PersonalInfoOrderListCell.m in Sources */,

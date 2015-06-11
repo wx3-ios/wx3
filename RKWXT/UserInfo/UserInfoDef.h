@@ -27,6 +27,7 @@
 
 #import "T_MenuVC.h"
 #import "HomeOrderVC.h"
+#import "UserBonusVC.h"
 
 enum{
     PersonalInfo_Order = 0,
