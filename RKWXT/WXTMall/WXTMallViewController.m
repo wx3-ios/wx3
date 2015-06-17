@@ -9,11 +9,10 @@
 #import "WXTMallViewController.h"
 #import "NewHomePageCommonDef.h"
 
-@interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate,WXSysMsgUnreadVDelegate>{
+@interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate,WXSysMsgUnreadVDelegate,HomePageTopDelegate,HomePageThemeDelegate,HomePageRecDelegate,HomeNavModelDelegate,HomePageSurpDelegate>{
     PullingRefreshTableView *_tableView;
-    WXHomeTopGoodCell *_topCell;
     WXSysMsgUnreadV * _unreadView;
-    
+    NewHomePageModel *_model;
 }
 @property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
@@ -22,15 +21,16 @@
 
 -(void)dealloc{
     RELEASE_SAFELY(_tableView);
-    RELEASE_SAFELY(_topCell);
-    [_topCell setDelegate:nil];
+    RELEASE_SAFELY(_model);
+    [_model setDelegate:nil];
     [super dealloc];
 }
 
 -(id)init{
     self = [super init];
     if(self){
-        
+        _model = [[NewHomePageModel alloc] init];
+        [_model setDelegate:self];
     }
     return self;
 }
@@ -48,10 +48,8 @@
     [_tableView setAllowsSelection:NO];
     [self addSubview:_tableView];
     
-    _topCell = [[self createTopCell] retain];
-    [self reloadHomeTopGoodCell];
-    
     [self createTopBtn];
+    [_model loadData];
 }
 
 -(void)createTopBtn{
@@ -78,15 +76,16 @@
             row = 1;
             break;
         case T_HomePage_WXIntroduce:
+            row = [_model.navModel.data count]/WxIntructionShow+[_model.navModel.data count]%WxIntructionShow;
             break;
         case T_HomePage_ForMeInfo:
-            //            row =
+            row = [_model.recommend.data count]/ForMeShow;
             break;
         case T_HomePage_TopicalInfo:
-            row = 4;
+            row = [_model.theme.data count]/TopicalShow+[_model.theme.data count]%TopicalShow;
             break;
         case T_HomePage_ChangeInfo:
-            row = 3;
+            row = [_model.surprise.data count]/ChangeInfoShow+[_model.surprise.data count]%ChangeInfoShow;
             break;
         default:
             break;
@@ -131,22 +130,17 @@
     return T_HomePage_Invalid;
 }
 
--(WXHomeTopGoodCell*)createTopCell{
-    static NSString *identifier = @"headImg";
-    _topCell = [[WXHomeTopGoodCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    [_topCell setBackgroundColor:[UIColor clearColor]];
-    [_topCell setDelegate:self];
-    return [_topCell autorelease];
-}
-
--(void)reloadHomeTopGoodCell{
-    //    [_topCell setCellInfo:_mo]
-    [_topCell load];
-}
-
-//
+///顶部导航
 -(WXUITableViewCell*)headImgCellAtRow:(NSInteger)row{
-    return _topCell;
+    static NSString *identifier = @"headImg";
+    WXHomeTopGoodCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXHomeTopGoodCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setDelegate:self];
+    [cell setCellInfo:_model.top.data];
+    [cell load];
+    return cell;
 }
 
 //基本功能入口
@@ -172,12 +166,12 @@
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     NSMutableArray *rowArray = [NSMutableArray array];
     NSInteger max = (row+1)*WxIntructionShow;
-    NSInteger count = 2;
+    NSInteger count = [_model.navModel.data count];
     if(max > count){
         max = count;
     }
-    for(NSInteger i = row*WxIntructionShow;i < max;i++){
-        [rowArray addObject:@""];
+    for(NSInteger i = row*ForMeShow; i < max; i++){
+        [rowArray addObject:[_model.navModel.data objectAtIndex:i]];
     }
     [cell setDelegate:self];
     [cell loadCpxViewInfos:rowArray];
@@ -205,12 +199,12 @@
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     NSMutableArray *rowArray = [NSMutableArray array];
     NSInteger max = (row+1)*ForMeShow;
-    NSInteger count = 3;
+    NSInteger count = [_model.recommend.data count];
     if(max > count){
         max = count;
     }
-    for(NSInteger i = row*ForMeShow;i < max; i++){
-        [rowArray addObject:@""];
+    for(NSInteger i = row*ForMeShow; i < max; i++){
+        [rowArray addObject:[_model.recommend.data objectAtIndex:i]];
     }
     [cell setDelegate:self];
     [cell loadCpxViewInfos:rowArray];
@@ -238,12 +232,12 @@
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     NSMutableArray *rowArray = [NSMutableArray array];
     NSInteger max = (row+1)*TopicalShow;
-    NSInteger count = 8;
+    NSInteger count = [_model.theme.data count];
     if(max > count){
         max = count;
     }
     for(NSInteger i = row*TopicalShow; i < max; i++){
-        [rowArray addObject:@""];
+        [rowArray addObject:[_model.theme.data objectAtIndex:i]];
     }
     [cell setDelegate:self];
     [cell loadCpxViewInfos:rowArray];
@@ -271,12 +265,12 @@
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     NSMutableArray *rowArray = [NSMutableArray array];
     NSInteger max = (row+1)*ChangeInfoShow;
-    NSInteger count = 6;
+    NSInteger count = [_model.surprise.data count];
     if(max > count){
         max = count;
     }
     for(NSInteger i = row*ChangeInfoShow; i < max; i++){
-        [rowArray addObject:@""];
+        [rowArray addObject:[_model.surprise.data objectAtIndex:i]];
     }
     [cell setDelegate:self];
     [cell loadCpxViewInfos:rowArray];
@@ -321,10 +315,86 @@
     return cell;
 }
 
-#pragma mark TopImg
+#pragma mark HomePageTopDelegate
+-(void)homePageTopLoadedSucceed{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_TopImg] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)homePageTopLoadedFailed:(NSString *)error{
+    [UtilTool showAlertView:error];
+}
+
 -(void)clickTopGoodAtIndex:(NSInteger)index{
-//    NSLog(@"顶部导航==%ld",(long)index);
-    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:index animated:YES];
+    if(index > HomePageJump_Type_Invalid){
+        return;
+    }
+    HomePageTopEntity *entity = [_model.top.data objectAtIndex:index];
+    switch (index) {
+        case HomePageJump_Type_GoodsInfo:
+        {
+            [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:[entity.linkAddress integerValue] animated:YES];
+        }
+            break;
+        case HomePageJump_Type_UserBonus:
+        {
+            [[CoordinateController sharedCoordinateController] toUserBonusVC:self animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark HomePageTheme
+-(void)homePageThemeLoadedSucceed{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_TopicalInfo] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)homePageThemeLoadedFailed:(NSString *)errorMsg{
+    [UtilTool showAlertView:errorMsg];
+}
+
+-(void)topicalCellClicked:(id)entity{
+    NSLog(@"主题馆");
+}
+
+#pragma mark HomePageRecommond
+-(void)homePageRecLoadedSucceed{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_ForMeInfo] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)homePageRecLoadedFailed:(NSString *)errorMsg{
+    [UtilTool showAlertView:errorMsg];
+}
+
+-(void)forMeCellClicked:(id)entity{
+    NSLog(@"为我推荐");
+}
+
+#pragma mark HomePageNav
+-(void)homeNavigationLoadSucceed{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_WXIntroduce] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)homeNavigationLoadFailed:(NSString *)errorMsg{
+    [UtilTool showAlertView:errorMsg];
+}
+
+-(void)intructionClicked:(id)entity{
+    NSLog(@"我信介绍");
+}
+
+#pragma mark HomePageSurprise
+-(void)homePageSurpLoadedSucceed{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_ChangeInfo] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)homePageSurpLoadedFailed:(NSString *)errorMsg{
+    [UtilTool showAlertView:errorMsg];
+}
+
+-(void)changeCellClicked:(id)entity{
+    NSLog(@"更多惊喜");
 }
 
 #pragma mark LeftBtn
@@ -355,6 +425,11 @@
             [[CoordinateController sharedCoordinateController] toRechargeVC:self animated:YES];
         }
             break;
+        case T_BaseFunction_Wallet:
+        {
+            [[CoordinateController sharedCoordinateController] toUserBonusVC:self animated:YES];
+        }
+            break;
         case T_BaseFunction_Order:
         {
             [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:0 animated:YES];
@@ -365,24 +440,9 @@
     }
 }
 
--(void)intructionClicked:(id)entity{
-    NSLog(@"我信介绍");
-}
-
--(void)changeCellClicked:(id)entity{
-    NSLog(@"更多惊喜");
-}
-
 -(void)changeOtherBtnClicked{
-    NSLog(@"换一批");
-}
-
--(void)forMeCellClicked:(id)entity{
-    NSLog(@"为我推荐");
-}
-
--(void)topicalCellClicked:(id)entity{
-    NSLog(@"主题馆");
+    [_model.surprise toInit];
+    [_model.surprise loadData];
 }
 
 #pragma mark tableViewPull
@@ -398,7 +458,7 @@
     if(self.e_cellRefreshing == E_CellRefreshing_UnderWay){
         self.e_cellRefreshing = E_CellRefreshing_Finish;
         if([self isNeed]){
-//            [_mo]
+            [_model loadData];
         }
         [_tableView tableViewDidFinishedLoadingWithMessage:@"刷新完成"];
     }else{
@@ -406,7 +466,7 @@
 }
 
 -(BOOL)isNeed{
-    return NO;
+    return [_model isSomeDataNeedReload];
 }
 
 #pragma mark --scroll

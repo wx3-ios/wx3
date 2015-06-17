@@ -10,7 +10,7 @@
 #import "NewHomePageCommonDef.h"
 #import "WXRemotionImgBtn.h"
 #import "T_TopicalCell.h"
-//#import "T_HomePageThmEntity.h"
+#import "HomePageThmEntity.h"
 
 @interface T_TopicalView(){
     WXUILabel *_nameLabel;
@@ -78,12 +78,10 @@
 }
 
 -(void)load{
-//    T_HomePageThmEntity *entity = self.cpxViewInfo;
-//    [_nameLabel setText:entity.cat_name];
-//    [_descLabel setText:entity.cat_intro];
-    [_descLabel setText:@"暂无内容"];
-//    [_imgView setCpxViewInfo:entity.category_img];
-    [_imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140929/20140929111809_9365271.jpeg"];
+    HomePageThmEntity *entity = self.cpxViewInfo;
+    [_nameLabel setText:entity.cat_name];
+    [_descLabel setText:entity.cat_intro];
+    [_imgView setCpxViewInfo:entity.category_img];
     [_imgView load];
 }
 

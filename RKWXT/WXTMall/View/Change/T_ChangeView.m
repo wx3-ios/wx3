@@ -10,7 +10,7 @@
 #import "NewHomePageCommonDef.h"
 #import "T_ChangeCell.h"
 #import "WXRemotionImgBtn.h"
-//#import "T_HomePageSurpEntity.h"
+#import "HomePageSurpEntity.h"
 
 @interface T_ChangeView(){
     WXRemotionImgBtn *_imgView;
@@ -81,18 +81,12 @@
 }
 
 -(void)load{
-//    T_HomePageSurpEntity *entity = self.cpxViewInfo;
-//    [_imgView setCpxViewInfo:entity.home_img];
-//    [_imgView load];
-//    NSString *shopPrice = [NSString stringWithFormat:@"￥%f",entity.shop_price];
-//    [_moneylabel setText:shopPrice];
-//    [_descLabel setText:entity.goods_intro];
-    [_imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140929/20140929111809_9365271.jpeg"];
+    HomePageSurpEntity *entity = self.cpxViewInfo;
+    [_imgView setCpxViewInfo:entity.home_img];
     [_imgView load];
-    
-    NSString *shopPrice = [NSString stringWithFormat:@"￥100.00"];
+    NSString *shopPrice = [NSString stringWithFormat:@"￥%f",entity.shop_price];
     [_moneylabel setText:shopPrice];
-    [_descLabel setText:@"联想一体机电脑"];
+    [_descLabel setText:entity.goods_name];
 }
 
 @end

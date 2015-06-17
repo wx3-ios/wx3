@@ -20,7 +20,20 @@
 -(id)initWithDic:(NSDictionary*)dic{
     self = [super init];
     if(self){
-    
+        NSInteger nav_id = [[dic objectForKey:@"top_nav_type_id"] integerValue];
+        [self setType:nav_id];
+        
+        NSString *title = [dic objectForKey:@"nav_title"];
+        [self setName:title];
+        
+        NSString *content = [dic objectForKey:@"nav_content"];
+        [self setDesc:content];
+        
+        NSString *imgUrl = [dic objectForKey:@"nav_img"];
+        [self setImgUrl:imgUrl];
+        
+        NSString *address = [dic objectForKey:@"nav_address_id"];
+        [self setAddress:address];
     }
     return self;
 }

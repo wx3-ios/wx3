@@ -16,6 +16,8 @@
 
 //#define Test   //测试，目前只显示版本号
 
+#define AllImgPrefixUrlString @"http://oldyun.67call.com/wx/Public/Uploads/"  //所有网络获取图片皆拼接此字符串前缀
+
 #define ShowKeyBoard @"ShowKeyBoard"
 #define DownKeyBoard @"DownKeyBoard"
 #define InputNumber @"InputNumber"

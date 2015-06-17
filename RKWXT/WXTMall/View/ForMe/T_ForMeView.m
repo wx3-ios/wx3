@@ -10,7 +10,7 @@
 #import "NewHomePageCommonDef.h"
 #import "WXRemotionImgBtn.h"
 #import "T_ForMeCell.h"
-//#import "T_HomePageRecEntity.h"
+#import "HomePageRecEntity.h"
 
 @interface T_ForMeView(){
     WXUILabel *_nameLabel;
@@ -83,13 +83,10 @@
 }
 
 -(void)load{
-//    T_HomePageRecEntity *entity = self.cpxViewInfo;
-//    [_nameLabel setText:entity.goods_name];
-//    [_desclabel setText:entity.goods_intro];
-//    [_imgView setCpxViewInfo:entity.home_img];
-    [_nameLabel setText:@"我的衣橱"];
-    [_desclabel setText:@"私人时尚衣橱"];
-    [_imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140929/20140929111809_9365271.jpeg"];
+    HomePageRecEntity *entity = self.cpxViewInfo;
+    [_nameLabel setText:entity.goods_name];
+    [_desclabel setText:entity.goods_intro];
+    [_imgView setCpxViewInfo:entity.home_img];
     [_imgView load];
 }
 

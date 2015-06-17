@@ -10,7 +10,7 @@
 #import "NewHomePageCommonDef.h"
 #import "WxIntructionCell.h"
 #import "WXRemotionImgBtn.h"
-//#import "T_HomePageTopNavEntity.h"
+#import "HomeNavENtity.h"
 
 @interface WxIntructionView(){
     WXUILabel *_nameLabel;
@@ -80,13 +80,10 @@
 }
 
 -(void)load{
-//    T_HomePageTopNavEntity *entity = self.cpxViewInfo;
-//    [_nameLabel setText:entity.title];
-//    [_descLabel setText:entity.content];
-//    [_imgView setCpxViewInfo:entity.nav_img];
-    [_nameLabel setText:@"我信介绍"];
-    [_descLabel setText:@"企业简介"];
-    [_imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140929/20140929111809_9365271.jpeg"];
+    HomeNavENtity *entity = self.cpxViewInfo;
+    [_nameLabel setText:entity.name];
+    [_descLabel setText:entity.desc];
+    [_imgView setCpxViewInfo:entity.imgUrl];
     [_imgView load];
 }
 

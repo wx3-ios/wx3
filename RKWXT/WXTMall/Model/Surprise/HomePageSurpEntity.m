@@ -20,7 +20,14 @@
 -(id)initWithDic:(NSDictionary*)dic{
     self = [super init];
     if(self){
-    
+        NSInteger goodsID = [[dic objectForKey:@"goods_id"] integerValue];
+        [self setGoods_id:goodsID];
+        
+        NSString *name = [dic objectForKey:@"goods_name"];
+        [self setGoods_name:name];
+        
+        NSString *imgUrl = [dic objectForKey:@"goods_home_img"];
+        [self setHome_img:imgUrl];
     }
     return self;
 }

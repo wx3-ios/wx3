@@ -21,7 +21,11 @@ typedef enum {
     WXT_UrlFeed_Type_Call,
     WXT_UrlFeed_Type_ResetPwd,
     
-    WXT_UrlFeed_Type_NewMall,
+    WXT_UrlFeed_Type_NewMall_TopImg,
+    WXT_UrlFeed_Type_NewMall_Recommond,
+    WXT_UrlFeed_Type_NewMall_Nav,
+    WXT_UrlFeed_Type_NewMall_Theme,
+    WXT_UrlFeed_Type_NewMall_Surprise,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

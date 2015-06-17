@@ -37,16 +37,20 @@
         return;
     }
     [_dataList removeAllObjects];
+    NSArray *datalist = [jsonDicData objectForKey:@"data"];
+    for(NSDictionary *dic in datalist){
+        HomePageTopEntity *entity = [HomePageTopEntity homePageTopEntityWithDictionary:dic];
+        entity.topImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.topImg];
+        [_dataList addObject:entity];
+    }
 }
 
 -(void)loadDataFromWeb{
-    NSInteger shopID = [WXUserOBJ sharedUserOBJ].subShopID;
-    NSInteger merchantID = kMerchantID;
-    NSInteger areaID = kAreaID;
+    NSInteger shopID = kSubShopID;
     [self setStatus:E_ModelDataStatus_Loading];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:shopID],@"shop_id", [NSNumber numberWithInteger:merchantID],@"seller_id",[NSNumber numberWithInteger:areaID],@"area_id",nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", @"18613213051", @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"],@"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)kMerchantID], @"sid", [NSNumber numberWithInt:(int)shopID], @"shop_id", nil];
     __block HomePageTop *blockSelf = self;
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_TopImg httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
             [blockSelf setStatus:E_ModelDataStatus_LoadFailed];
             if (_delegate && [_delegate respondsToSelector:@selector(homePageTopLoadedFailed:)]){
@@ -61,6 +65,12 @@
             }
         }
     }];
+}
+
+-(void)loadCacheDataSucceed{
+    if (_delegate && [_delegate respondsToSelector:@selector(homePageTopLoadedSucceed)]){
+        [_delegate homePageTopLoadedSucceed];
+    }
 }
 
 @end

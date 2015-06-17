@@ -10,7 +10,7 @@
 #import "WXRemotionImgBtn.h"
 #import "CSTScrollBrowser.h"
 #import "WXRemotionImgBtn.h"
-//#import "T_HomePageTopEntity.h"
+#import "HomePageTopEntity.h"
 #import "NewHomePageCommonDef.h"
 
 #define kTimerInterval (5.0)
@@ -38,20 +38,20 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 	if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
-		CGRect rect = [self bounds];
-		rect.size.height = T_HomePageTopImgHeight-yGap;
-		_browser = [[CSTScrollBrowser alloc] initWithFrame:rect];
-		[_browser setScrollDelegate:self];
-		[_browser setGap:0.0];
-		[self.contentView addSubview:_browser];
-		
-		CGFloat height = 20;
-		CGFloat xOffset = 220;
-		_pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(xOffset, rect.size.height - height, rect.size.width-xOffset, height)];
-		[self.contentView addSubview:_pageControl];
-		
-		_merchantImgViewArray = [[NSMutableArray alloc] init];
-		[NSTimer scheduledTimerWithTimeInterval:kTimerInterval target:self selector:@selector(autoScroll) userInfo:nil repeats:YES];
+        CGRect rect = [self bounds];
+        rect.size.height = T_HomePageTopImgHeight-yGap;
+        _browser = [[CSTScrollBrowser alloc] initWithFrame:rect];
+        [_browser setScrollDelegate:self];
+        [_browser setGap:0.0];
+        [self.contentView addSubview:_browser];
+        
+        CGFloat height = 20;
+        CGFloat xOffset = 220;
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(xOffset, rect.size.height - height, rect.size.width-xOffset, height)];
+        [self.contentView addSubview:_pageControl];
+        
+        _merchantImgViewArray = [[NSMutableArray alloc] init];
+        [NSTimer scheduledTimerWithTimeInterval:kTimerInterval target:self selector:@selector(autoScroll) userInfo:nil repeats:YES];
 	}
 	return self;
 }
@@ -64,49 +64,35 @@
 }
 
 -(void)load{
-//	NSArray *goodEntityArray = self.cellInfo;
-	[self toInit];
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-//	for(T_HomePageTopEntity *topADVEntity in goodEntityArray){
-    for(int i = 0;i < 4; i++){
+    NSArray *goodEntityArray = self.cellInfo;
+    [self toInit];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    for(HomePageTopEntity *topADVEntity in goodEntityArray){
         WXRemotionImgBtn *imgView = [[[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, T_HomePageTopImgHeight-yGap)] autorelease];
-        if(i % 2 == 1){
-            [imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140925/20140925170535_4240443.jpeg"];
-        }else{
-            [imgView setCpxViewInfo:@"http://web1.67call.com/wx/Public/Uploads/20141128/20141128095628_968922.jpeg"];
-        }
+        [imgView setCpxViewInfo:topADVEntity.topImg];
         [imgView load];
         [imgView setDelegate:self];
         [_merchantImgViewArray addObject:imgView];
     }
     [pool drain];
+    
     [_browser setSubScrollViews:_merchantImgViewArray];
     [self setSubPageViews:_merchantImgViewArray];
-//		WXRemotionImgBtn *imgView = [[[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, T_HomePageTopImgHeight-yGap)] autorelease];
-//		[imgView setCpxViewInfo:topADVEntity.topImg];
-//		[imgView load];
-//		[imgView setDelegate:self];
-//		[_merchantImgViewArray addObject:imgView];
-//	}
-//	[pool drain];
-	
-//	[_browser setSubScrollViews:_merchantImgViewArray];
-//	[self setSubPageViews:_merchantImgViewArray];
-	
-	
-	NSInteger pageCount = [_subPageViews count];
-	if(pageCount){
-		[_browser setPagingEnabled:YES];
-		[_pageControl setNumberOfPages:pageCount];
-		[_pageControl setHidden:NO];
-	}else{
-		[_pageControl setHidden:NO];
-	}
-	
-	[_browser setPagingEnabled:pageCount > 1];
-	[_pageControl setHidden:pageCount <= 1];
-	[_pageControl setNumberOfPages:pageCount];
-	[_browser reload];
+    
+    
+    NSInteger pageCount = [_subPageViews count];
+    if(pageCount){
+        [_browser setPagingEnabled:YES];
+        [_pageControl setNumberOfPages:pageCount];
+        [_pageControl setHidden:NO];
+    }else{
+        [_pageControl setHidden:NO];
+    }
+    
+    [_browser setPagingEnabled:pageCount > 1];
+    [_pageControl setHidden:pageCount <= 1];
+    [_pageControl setNumberOfPages:pageCount];
+    [_browser reload];
 }
 
 - (void)autoScroll{

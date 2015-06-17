@@ -16,23 +16,23 @@
 {
     WXUIActivityIndicatorView *_activityIndicatorView;
     
-    UIImage *_initImage;
+    UIImage *_initiImage;
     UIImage *_failedImage;
 }
 @property (nonatomic,assign)BOOL loadFailed;
 @end
 
 @implementation WXBaseRemotImageView
-@synthesize initiImage = _initImage;
+@synthesize initiImage = _initiImage;
 @synthesize failedImage = _failedImage;
 
-//- (void)dealloc{
-//    [self removeOBS];
-//    RELEASE_SAFELY(_activityIndicatorView);
-//    RELEASE_SAFELY(_initImage);
-//    RELEASE_SAFELY(_failedImage);
-//    [super dealloc];
-//}
+- (void)dealloc{
+    [self removeOBS];
+    RELEASE_SAFELY(_activityIndicatorView);
+    RELEASE_SAFELY(_initiImage);
+    RELEASE_SAFELY(_failedImage);
+    [super dealloc];
+}
 
 - (id)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
@@ -43,8 +43,8 @@
         [_activityIndicatorView setCenter:pt];
         [self addSubview:_activityIndicatorView];
         
-        _initImage = [UIImage imageNamed:kImageInitFileName] ;
-        _failedImage = [UIImage imageNamed:kImageFailedFileName] ;
+        _initiImage = [[UIImage imageNamed:kImageInitFileName] retain];
+        _failedImage = [[UIImage imageNamed:kImageFailedFileName] retain];
     }
     return self;
 }
@@ -100,7 +100,7 @@
 //获取图片成功
 - (void)fetchImageSucceed:(NSData*)imageData{
     //如果图片获取成功了~ 就不需要检测了~
-//    [self removeOBS];
+    //    [self removeOBS];
     [self showAnimate:NO];
     _loadFailed = NO;
 }
@@ -118,8 +118,8 @@
     if(img){
         [self setIcon:nil];
         [self setImage:img];
-//        //如果图片获取成功了~ 就不需要检测了~
-//        [self removeOBS];
+        //        //如果图片获取成功了~ 就不需要检测了~
+        //        [self removeOBS];
     }else{
         if(_loadFailed){
             img = self.failedImage;

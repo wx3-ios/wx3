@@ -54,8 +54,20 @@
         case WXT_UrlFeed_Type_ResetPwd:
             url = @"";
             break;
-        case WXT_UrlFeed_Type_NewMall:
-            url = @"";
+        case WXT_UrlFeed_Type_NewMall_TopImg:
+            url = @"/get_top_image.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_Recommond:
+            url = @"/get_commend_goods.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_Nav:
+            url = @"/get_navigation.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_Theme:
+            url = @"/get_theme_list.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_Surprise:
+            url = @"/get_surprise_goods.php";
             break;
         default:
             break;

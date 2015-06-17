@@ -13,6 +13,7 @@
     HomePageRecModel *_recommend;
     HomePageThemeModel *_theme;
     HomePageSurpModel *_surprise;
+    HomeNavModel *_navModel;
 }
 @end
 
@@ -24,6 +25,7 @@
         _recommend = [[HomePageRecModel alloc] init];
         _theme = [[HomePageThemeModel alloc] init];
         _surprise = [[HomePageSurpModel alloc] init];
+        _navModel = [[HomeNavModel alloc] init];
     }
     return self;
 }
@@ -33,17 +35,19 @@
     [_recommend toInit];
     [_theme toInit];
     [_surprise toInit];
+    [_navModel toInit];
 }
 
--(void)setDelegate:(id<HomePageTopDelegate,HomePageRecDelegate,HomePageThemeDelegate,HomePageSurpDelegate>)delegate{
+-(void)setDelegate:(id<HomePageTopDelegate,HomePageRecDelegate,HomePageThemeDelegate,HomePageSurpDelegate,HomeNavModelDelegate>)delegate{
     [_top setDelegate:delegate];
     [_recommend setDelegate:delegate];
     [_theme setDelegate:delegate];
     [_surprise setDelegate:delegate];
+    [_navModel setDelegate:delegate];
 }
 
 -(BOOL)isSomeDataNeedReload{
-    return [_top dataNeedReload] || [_recommend dataNeedReload] || [_theme dataNeedReload] || [_surprise dataNeedReload];
+    return [_top dataNeedReload] || [_recommend dataNeedReload] || [_theme dataNeedReload] || [_surprise dataNeedReload] || [_navModel dataNeedReload];
 }
 
 -(void)loadData{
@@ -58,6 +62,9 @@
     }
     if([_surprise dataNeedReload]){
         [_surprise loadData];
+    }
+    if([_navModel dataNeedReload]){
+        [_navModel loadData];
     }
 }
 

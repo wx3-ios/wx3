@@ -16,6 +16,7 @@
 #import "WXTOrderConfirmViewController.h"
 #import "HomeOrderVC.h"
 #import "NewGoodsInfoVC.h"
+#import "UserBonusVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -64,6 +65,12 @@
     NewGoodsInfoVC *orderListVC = [[NewGoodsInfoVC alloc] init];
     orderListVC.goodsId = goodsID;
     [vc.wxNavigationController pushViewController:orderListVC];
+}
+
+-(void)toUserBonusVC:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    UserBonusVC *bonusVC = [[UserBonusVC alloc] init];
+    [vc.wxNavigationController pushViewController:bonusVC];
 }
 
 //- (void)toOrderMenu:(id)sender source:(E_OrderMenuSource)source goodList:(NSArray*)goodList extra:(MenuExtra*)extra animated:(BOOL)animated{

@@ -57,6 +57,8 @@ enum{
 #import "T_ChangeTitleCell.h"
 #import "T_ChangeCell.h"
 
+#import "NewHomePageModel.h"
+
 #import "SignViewController.h"
 
 #import "WXSysMsgUnreadV.h"
@@ -69,5 +71,17 @@ typedef enum{
     
     E_CellRefreshing_Invalid,
 }E_CellRefreshing;
+
+#pragma mark 导航跳转
+enum{
+    HomePageJump_Type_GoodsInfo = 0,
+    HomePageJump_Type_Catagary,
+    HomePageJump_Type_MessageCenter,
+    HomePageJump_Type_MessageInfo,
+    HomePageJump_Type_UserBonus,
+    HomePageJump_Type_BusinessAlliance,
+    
+    HomePageJump_Type_Invalid
+};
 
 #endif

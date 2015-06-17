@@ -17,6 +17,7 @@
 @implementation URLDownloadOBJ
 
 - (void)dealloc{
+    [super dealloc];
 }
 
 + (NSOperationQueue*)sharedURLDownloadQueue{
@@ -60,11 +61,11 @@
 }
 
 - (void)downloadRemotionFile:(NSString*)urlString key:(id)key{
-//    NSAssert(urlString, @"download url string cannot be empty");
-	if(urlString == nil){
-		KFLog_Normal(YES, @"download url string cannot be empty");
-		return;
-	}
+    //    NSAssert(urlString, @"download url string cannot be empty");
+    if(urlString == nil){
+        KFLog_Normal(YES, @"download url string cannot be empty");
+        return;
+    }
     //避免重复下载
     if([self existInDownloadQueue:urlString]){
         KFLog_Normal(YES, @"队列里面已经有了该文件的下载");

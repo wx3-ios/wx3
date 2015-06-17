@@ -8,19 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum{
-    HomePage_TopType_URL,
-}HomePage_TopType;
-
-//typedef enum{
-//    HomePage_TopType_URL,
-//}HomePage_TopIDType;
-
 @interface HomePageTopEntity : NSObject
-@property (nonatomic,assign) NSInteger sort; //置顶排序
-@property (nonatomic,assign) HomePage_TopType topType;//top_id
-//@property (nonatomic,assign) HomePage_TopIDType topIdType;//top_type_id
-@property (nonatomic,assign) NSInteger linkAddress; //链接地址
+@property (nonatomic,assign) NSInteger topType;//top_id
+@property (nonatomic,strong) NSString *linkAddress; //链接地址
 @property (nonatomic,strong) NSString *topImg; //图片URL
 
 +(HomePageTopEntity*)homePageTopEntityWithDictionary:(NSDictionary*)dic;

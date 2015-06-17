@@ -494,7 +494,7 @@
 		775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BB1AB971CF0039B129 /* WXTUIButton.m */; };
 		775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */; };
 		775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BF1AB971CF0039B129 /* WXTUITextField.m */; };
-		775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */; };
+		775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		775AB9E21ABFFD81003A339D /* WXTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9E11ABFFD81003A339D /* WXTWebViewController.m */; };
 		775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */; };

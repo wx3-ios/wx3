@@ -11,6 +11,7 @@
 #import "HomePageRecModel.h"
 #import "HomePageThemeModel.h"
 #import "HomePageSurpModel.h"
+#import "HomeNavModel.h"
 
 @interface NewHomePageModel : NSObject
 @property (nonatomic,assign) id<HomePageTopDelegate,HomePageRecDelegate,HomePageThemeDelegate,HomePageSurpDelegate>delegate;
@@ -19,6 +20,7 @@
 @property (nonatomic,readonly) HomePageRecModel *recommend;
 @property (nonatomic,readonly) HomePageThemeModel *theme;
 @property (nonatomic,readonly) HomePageSurpModel *surprise;
+@property (nonatomic,readonly) HomeNavModel *navModel;
 
 -(BOOL)isSomeDataNeedReload;
 -(void)loadData;

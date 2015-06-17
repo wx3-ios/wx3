@@ -19,11 +19,14 @@
 
 -(id)initWithJsonDictionary:(NSDictionary*)dic{
     if(self = [super init]){
-        NSInteger sort = [[dic objectForKey:@"sort"] integerValue];
-        [self setSort:sort];
-        
-        NSString *topImg = [dic objectForKey:@"top_img"];
+        NSString *topImg = [dic objectForKey:@"top_image"];
         [self setTopImg:topImg];
+        
+        NSString *address = [dic objectForKey:@"top_address_id"];
+        [self setLinkAddress:address];
+        
+        NSInteger type = [[dic objectForKey:@"top_nav_type_id"] integerValue];
+        [self setTopType:type];
     }
     return self;
 }

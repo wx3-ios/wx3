@@ -12,6 +12,8 @@
 @property (nonatomic,strong) NSString *imgUrl;
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *desc;
+@property (nonatomic,assign) NSInteger type;
+@property (nonatomic,strong) NSString *address;
 
 +(HomeNavENtity*)homeNavigationEntityWithDic:(NSDictionary*)dic;
 
