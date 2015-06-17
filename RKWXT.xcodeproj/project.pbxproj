@@ -24,6 +24,7 @@
 		120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C111AB17038006A28B1 /* RechargeModel.m */; };
 		120A2C161AB17A92006A28B1 /* SignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C151AB17A92006A28B1 /* SignModel.m */; };
 		120A2C661AB1804E006A28B1 /* SignEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C651AB1804E006A28B1 /* SignEntity.m */; };
+		120A56CA1B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A56C91B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m */; };
 		120B75491B1C0F2100B8746C /* BaseInfoHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B75481B1C0F2100B8746C /* BaseInfoHeadCell.m */; };
 		120B754B1B1C106700B8746C /* PersonalInfoHeadImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 120B754A1B1C106700B8746C /* PersonalInfoHeadImg.jpg */; };
 		120B754E1B1C19EA00B8746C /* PersonSexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B754D1B1C19EA00B8746C /* PersonSexVC.m */; };
@@ -229,6 +230,8 @@
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
+		12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */; };
+		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
 		12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */; };
 		12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CFE6501AC1A210009C710B /* CallHistoryEntity.m */; };
@@ -676,6 +679,8 @@
 		120A2C151AB17A92006A28B1 /* SignModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignModel.m; sourceTree = "<group>"; };
 		120A2C641AB1804E006A28B1 /* SignEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEntity.h; sourceTree = "<group>"; };
 		120A2C651AB1804E006A28B1 /* SignEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEntity.m; sourceTree = "<group>"; };
+		120A56C81B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXTURLFeedOBJ+NewData.h"; sourceTree = "<group>"; };
+		120A56C91B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXTURLFeedOBJ+NewData.m"; sourceTree = "<group>"; };
 		120B75471B1C0F2100B8746C /* BaseInfoHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInfoHeadCell.h; sourceTree = "<group>"; };
 		120B75481B1C0F2100B8746C /* BaseInfoHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInfoHeadCell.m; sourceTree = "<group>"; };
 		120B754A1B1C106700B8746C /* PersonalInfoHeadImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PersonalInfoHeadImg.jpg; sourceTree = "<group>"; };
@@ -947,6 +952,10 @@
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
 		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
+		12A050BA1B30FFB3008CC38F /* HomeNavENtity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavENtity.h; sourceTree = "<group>"; };
+		12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavENtity.m; sourceTree = "<group>"; };
+		12A050BD1B310050008CC38F /* HomeNavModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavModel.h; sourceTree = "<group>"; };
+		12A050BE1B310050008CC38F /* HomeNavModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavModel.m; sourceTree = "<group>"; };
 		12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultContactIcon@2x.png"; sourceTree = "<group>"; };
 		12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		12CFE64F1AC1A210009C710B /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
@@ -2255,6 +2264,7 @@
 				128221E91B18716E004613BB /* T_HPSubBaseModel.m */,
 				128221EA1B18716E004613BB /* URLBaseModel.h */,
 				128221EB1B18716E004613BB /* URLBaseModel.m */,
+				12A050B91B30FD47008CC38F /* HomeNavigation */,
 				12F9161E1B19A16700C94717 /* Surprise */,
 				12F916171B199EE700C94717 /* Theme */,
 				12F916091B198AA600C94717 /* HomePageTop */,
@@ -2465,6 +2475,17 @@
 				129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */,
 			);
 			path = ContactInfo;
+			sourceTree = "<group>";
+		};
+		12A050B91B30FD47008CC38F /* HomeNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				12A050BA1B30FFB3008CC38F /* HomeNavENtity.h */,
+				12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */,
+				12A050BD1B310050008CC38F /* HomeNavModel.h */,
+				12A050BE1B310050008CC38F /* HomeNavModel.m */,
+			);
+			path = HomeNavigation;
 			sourceTree = "<group>";
 		};
 		12D0C86F1AB684FE0039A197 /* AboutWxtInfo */ = {
@@ -3250,6 +3271,8 @@
 				775841631AB95A2F0039B129 /* WXFileManager.m */,
 				775841641AB95A2F0039B129 /* WXTURLFeedOBJ+Data.h */,
 				775841651AB95A2F0039B129 /* WXTURLFeedOBJ+Data.m */,
+				120A56C81B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.h */,
+				120A56C91B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m */,
 				775841661AB95A2F0039B129 /* WXTURLFeedOBJ.h */,
 				775841671AB95A2F0039B129 /* WXTURLFeedOBJ.m */,
 				775841681AB95A2F0039B129 /* WXUserdefault */,
@@ -4943,6 +4966,7 @@
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
 				DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
+				120A56CA1B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m in Sources */,
 				12F2D7EC1B1EAB0400C8017F /* WaitReceiveOrderListVC.m in Sources */,
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
 				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
@@ -5114,6 +5138,7 @@
 				12F422891B1D5D8100643DD7 /* ManagerAddressVC.m in Sources */,
 				775842C41AB95A300039B129 /* it_lib_call.cpp in Sources */,
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
+				12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */,
 				775C58CF1ABA7B75005B6B40 /* ContacterEntity.m in Sources */,
 				126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */,
 				775842FF1AB95A300039B129 /* LoadingEntity.m in Sources */,
@@ -5216,6 +5241,7 @@
 				128221C71B184C3B004613BB /* ASIFormDataRequest.m in Sources */,
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
+				12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */,
 				DDB58F4C1AD3C6A2006248E9 /* CallViewController.m in Sources */,
 				DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */,
 				777A38561AC3933D001CF5FF /* WXTDatabase.m in Sources */,

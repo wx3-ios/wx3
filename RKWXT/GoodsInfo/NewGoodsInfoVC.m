@@ -389,9 +389,4 @@
     }];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self setCSTNavigationViewHidden:NO animated:NO];
-}
-
 @end

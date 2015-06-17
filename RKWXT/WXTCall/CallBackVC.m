@@ -207,23 +207,24 @@
         [UtilTool showAlertView:@"本机网络不畅，请检查网络再试"];
         return NO;
     }
-    _model = [[CallModel alloc] init];
-    [_model setCallDelegate:self];
     NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
-//    if(![UtilTool determineNumberTrue:phoneStr]){
-//        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
-//        return NO;
-//    }
+    if(![UtilTool determineNumberTrue:phoneStr]){
+        [UtilTool showAlertView:@"您要拨打的号码格式不正确"];
+        return NO;
+    }
     if(!phoneStr){
         return NO;
     }
+    
+    _model = [[CallModel alloc] init];
+    [_model setCallDelegate:self];
     [_model makeCallPhone:phoneStr];
+    
     _model.callstatus_type = CallStatus_Type_starting;
     phoneArea = [self phoneAreaWithNumber:phone];
 
     NSDate * date = [NSDate date];
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    //    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
     formatter.dateFormat = @"MM-dd HH:mm";
     NSString * dateStr = [formatter stringFromDate:date];
     CallHistoryEntity *entity = [[CallHistoryEntity alloc] initWithName:@"我信" telephone:phoneStr startTime:dateStr duration:5 type:E_CallHistoryType_MakingReaded];

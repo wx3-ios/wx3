@@ -1,28 +1,28 @@
 //
-//  WXTURLFeedOBJ+Data.m
+//  WXTURLFeedOBJ+NewData.m
 //  RKWXT
 //
-//  Created by SHB on 15/3/11.
+//  Created by SHB on 15/6/15.
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
 
 #define D_DataURLConnectionDefaultTimeoutInterval (15.0)
-#define newUrlString @"http://oldyun.67call.com/wx3api/app_register.php"
+//#define newUrlString @"http://oldyun.67call.com/wx3api/app_register.php"
 
-@implementation WXTURLFeedOBJ (Data)
+@implementation WXTURLFeedOBJ (NewData)
 
-- (void)fetchDataFromFeedType:(WXT_UrlFeed_Type)type httpMethod:(WXT_HttpMethod)httpMethod timeoutIntervcal:(CGFloat)timeoutInterval feed:(NSDictionary*)feed completion:(void(^)(URLFeedData *))completion{
+- (void)fetchNewDataFromFeedType:(WXT_UrlFeed_Type)type httpMethod:(WXT_HttpMethod)httpMethod timeoutIntervcal:(CGFloat)timeoutInterval feed:(NSDictionary *)feed completion:(void (^)(URLFeedData *))completion{
     NSString *urlString = [self rootURL:type];
     NSString *paramString = [self urlRequestParamFrom:feed];
-    if (paramString){
-        urlString = [NSString stringWithFormat:@"%@?%@",urlString,paramString];
-    }
+//    if (paramString){
+//        urlString = [NSString stringWithFormat:@"%@?%@",urlString,paramString];
+//    }
     
-    if(httpMethod == WXT_HttpMethod_Post){
-        urlString = newUrlString;
-    }
+//    if(httpMethod == WXT_HttpMethod_Post){
+//        urlString = newUrlString;
+//    }
     
     NSURL *url = [NSURL URLWithString:urlString];
     CGFloat timeout = D_DataURLConnectionDefaultTimeoutInterval;
@@ -43,6 +43,7 @@
         NSError *error = nil;
         
         NSData *jsonData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        NSString *str1 = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         if (error){
             NSInteger code = error.code;
             retFeedData.code = code;
@@ -63,17 +64,15 @@
             if (jsonData){
                 NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
                 if (jsonDic){
-                    NSInteger result = [[jsonDic objectForKey:@"success"] integerValue];
-                    if (result != 1){
+                    NSInteger result = [[jsonDic objectForKey:@"error"] integerValue];
+                    if (result != 0){
                         retFeedData.code = result;
                         retFeedData.errorDesc = [jsonDic objectForKey:K_URLFeedOBJ_Data_ErrorDesc];
                     }else{
-//                        retFeedData.data = [jsonDic objectForKey:@"data"];
                         retFeedData.data = jsonDic;
                     }
                 }else{
                     retFeedData.code = WXT_URLFeedData_ParseError;
-                    //					retFeedData.errorDesc = @"数据解析失败";
                 }
             }else{
                 retFeedData.code = WXT_URLFeedData_EmptyDataReturned;

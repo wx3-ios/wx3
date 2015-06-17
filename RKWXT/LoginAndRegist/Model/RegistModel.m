@@ -8,15 +8,15 @@
 
 #import "RegistModel.h"
 #import "WXTURLFeedOBJ.h"
-#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
 
 @implementation RegistModel
 
 -(void)registWithUserPhone:(NSString *)userStr andPwd:(NSString *)pwdStr andSmsID:(NSInteger)smsID andCode:(NSInteger)code andRecommondUser:(NSString *)recommondUserStr{
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"register", @"cmd", userStr, @"phone_number", pwdStr,@"password", [NSNumber numberWithInteger:smsID], @"sms_id", [NSNumber numberWithInteger:code], @"sms_code", recommondUserStr, @"recommend_user", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Regist httpMethod:WXT_HttpMethod_Get timeoutIntervcal:10 feed:dic completion:^(URLFeedData *retData){
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userStr, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:pwdStr],@"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", recommondUserStr, @"referrer", [NSNumber numberWithInt:(int)kMerchantID], @"sid", nil];
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_Regist httpMethod:WXT_HttpMethod_Post timeoutIntervcal:10 feed:dic completion:^(URLFeedData *retData) {
         NSDictionary *dic = retData.data;
-        if ([[dic objectForKey:@"success"] integerValue] != 1){
+        if ([[dic objectForKey:@"error"] integerValue] != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(registFailed:)]){
                 [_delegate registFailed:retData.errorDesc];
             }

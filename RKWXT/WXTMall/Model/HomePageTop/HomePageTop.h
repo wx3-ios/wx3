@@ -17,6 +17,6 @@
 
 @protocol HomePageTopDelegate <NSObject>
 -(void)homePageTopLoadedSucceed;
--(void)homePageTopLoadedFailed:(NSArray*)error;
+-(void)homePageTopLoadedFailed:(NSString*)error;
 
 @end

@@ -106,4 +106,14 @@ typedef enum{
 
 +(NSString*)callPhoneNumberRemovePreWith:(NSString*)oldPhone;
 +(BOOL)determineNumberTrue:(NSString*)phoneNumber;
+
+//md5加密
++(NSString *)md5:(NSString *)inPutText;
+//加入随机字符串后
++(NSString*)newStringWithAddSomeStr:(NSInteger)number withOldStr:(NSString*)oldStr;
+//获取时间戳
++(NSInteger)timeChange;
+//当前版本号
++(NSString*)currentVersion;
+
 @end

@@ -383,7 +383,6 @@
     [self startFetchPwdTiming];
     [_fetchPwdBtn setEnabled:NO];
     [self textFieldResighFirstResponder];
-    
 }
 
 #pragma mark delegate

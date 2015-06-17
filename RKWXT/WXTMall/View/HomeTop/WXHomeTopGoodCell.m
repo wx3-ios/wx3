@@ -70,7 +70,11 @@
 //	for(T_HomePageTopEntity *topADVEntity in goodEntityArray){
     for(int i = 0;i < 4; i++){
         WXRemotionImgBtn *imgView = [[[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, T_HomePageTopImgHeight-yGap)] autorelease];
-        [imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140925/20140925170535_4240443.jpeg"];
+        if(i % 2 == 1){
+            [imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140925/20140925170535_4240443.jpeg"];
+        }else{
+            [imgView setCpxViewInfo:@"http://web1.67call.com/wx/Public/Uploads/20141128/20141128095628_968922.jpeg"];
+        }
         [imgView load];
         [imgView setDelegate:self];
         [_merchantImgViewArray addObject:imgView];

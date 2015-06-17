@@ -91,7 +91,7 @@
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
     BOOL userInfo = [self checkUserInfo];
-    if(userInfo){
+    if(!userInfo){
         WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
         [self.window setRootViewController:self.navigationController];
@@ -127,7 +127,7 @@
 
 -(BOOL)checkUserInfo{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    if(!userDefault.user || !userDefault.pwd || !userDefault.token || !userDefault.wxtID){
+    if(!userDefault.user || !userDefault.pwd || !userDefault.wxtID){
         return NO;
     }
     return YES;

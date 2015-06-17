@@ -22,6 +22,7 @@
 - (NSString*)rootURL:(WXT_UrlFeed_Type)type{
     NSString *url = nil;
     NSString *rootURL = [NSString stringWithFormat:@"http://api.67call.com/agent/api.php"];
+    NSString *newRootUrl = [NSString stringWithFormat:@"https://oldyun.67call.com/wx3api"];
     switch (type) {
         case WXT_UrlFeed_Type_LoadBalance:
             url = @"";
@@ -33,10 +34,10 @@
             url = @"";
             break;
         case WXT_UrlFeed_Type_Login:
-            url = @"";
+            url = @"/app_login.php";
             break;
         case WXT_UrlFeed_Type_Regist:
-            url = @"";
+            url = @"/app_register.php";
             break;
         case WXT_UrlFeed_Type_FetchPwd:
             url = @"";
@@ -53,10 +54,16 @@
         case WXT_UrlFeed_Type_ResetPwd:
             url = @"";
             break;
+        case WXT_UrlFeed_Type_NewMall:
+            url = @"";
+            break;
         default:
             break;
     }
     NSString *compURL = [NSString stringWithFormat:@"%@%@",rootURL,url];
+    if(url){
+        return [NSString stringWithFormat:@"%@%@",newRootUrl,url];
+    }
     return compURL;
 }
 
