@@ -7,14 +7,14 @@
 //
 
 #import "BaseModel.h"
+#import "T_HPSubBaseModel.h"
 @class GoodsInfoEntity;
 
 @protocol NewGoodsInfoModelDelegate;
-@interface NewGoodsInfoModel : BaseModel
+@interface NewGoodsInfoModel : T_HPSubBaseModel
 @property (nonatomic,assign) id<NewGoodsInfoModelDelegate>delegate;
 @property (nonatomic,assign) NSInteger goodID;
 @property (nonatomic,strong) GoodsInfoEntity *entity;
-@property (nonatomic,strong) NSDictionary *baseDic;
 
 -(void)loadGoodsInfo;
 -(BOOL)shouldDataReload;

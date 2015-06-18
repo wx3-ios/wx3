@@ -56,11 +56,9 @@ enum{
 #import "T_TopicalCell.h"
 #import "T_ChangeTitleCell.h"
 #import "T_ChangeCell.h"
-
 #import "NewHomePageModel.h"
-
 #import "SignViewController.h"
-
+#import "WXTMallListWebVC.h"
 #import "WXSysMsgUnreadV.h"
 #define Size self.bounds.size
 

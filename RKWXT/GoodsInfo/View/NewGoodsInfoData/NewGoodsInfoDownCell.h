@@ -9,6 +9,5 @@
 #import "WXUITableViewCell.h"
 
 @interface NewGoodsInfoDownCell : WXUITableViewCell
--(void)setTextLabelWithKey:(NSString*)key;
 
 @end

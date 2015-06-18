@@ -69,6 +69,15 @@
         case WXT_UrlFeed_Type_NewMall_Surprise:
             url = @"/get_surprise_goods.php";
             break;
+        case WXT_UrlFeed_Type_NewMall_CatagaryList:
+            url = @"";
+            break;
+        case WXT_UrlFeed_Type_NewMall_GoodsInfo:
+            url = @"/get_single_goods_info.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_ImgAndText:
+            url = @"";
+            break;
         default:
             break;
     }

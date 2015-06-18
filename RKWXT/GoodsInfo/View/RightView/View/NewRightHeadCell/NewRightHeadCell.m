@@ -8,6 +8,7 @@
 
 #import "NewRightHeadCell.h"
 #import "WXRemotionImgBtn.h"
+#import "GoodsInfoEntity.h"
 
 @interface NewRightHeadCell(){
     WXRemotionImgBtn *_imgView;
@@ -20,7 +21,6 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        CGSize size = self.bounds.size;
         CGFloat xOffset = 15;
         CGFloat yOffset = 15;
         CGFloat imgWidth = 70;
@@ -55,9 +55,10 @@
 }
 
 -(void)load{
-    [_imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140925/20140925170535_4240443.jpeg"];
+    GoodsInfoEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:entity.smallImg];
     [_imgView load];
-    [_moneylabel setText:@"￥398.00"];
+    [_moneylabel setText:[NSString stringWithFormat:@"￥%.2f",entity.shop_price]];
 }
 
 @end

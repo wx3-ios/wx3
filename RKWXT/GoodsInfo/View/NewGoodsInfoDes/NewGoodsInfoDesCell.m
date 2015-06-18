@@ -51,7 +51,7 @@
         
         xOffset += textWidth;
         _newPrice = [[WXUILabel alloc] init];
-        _newPrice.frame = CGRectMake(xOffset, yOffset, textWidth, newLabelHeight);
+        _newPrice.frame = CGRectMake(xOffset, yOffset, textWidth+10, newLabelHeight);
         [_newPrice setBackgroundColor:[UIColor clearColor]];
         [_newPrice setTextAlignment:NSTextAlignmentLeft];
         [_newPrice setTextColor:WXColorWithInteger(midTextColor)];
@@ -105,8 +105,7 @@
     GoodsInfoEntity *entity = self.cellInfo;
     [_oldPrice setText:[NSString stringWithFormat:@"原价 ￥%.2f",entity.market_price]];
     [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shop_price]];
-//    [_descLabel setText:entity.intro];
-    [_descLabel setText:@"百打翡丽PATEKPHILIPPE-复杂功能计时518/1G-010自动机械男表"];
+    [_descLabel setText:entity.intro];
     if(entity.concernID != 0){
         [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
     }

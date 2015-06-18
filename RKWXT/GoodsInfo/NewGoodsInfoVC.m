@@ -12,6 +12,8 @@
 #import "NewGoodsInfoRightView.h"
 #import "T_InsertData.h"
 #import "T_MenuVC.h"
+#import "GoodsInfoEntity.h"
+#import "WXTMallListWebVC.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
@@ -48,7 +50,8 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    _model.goodID = _goodsId;
+//    _model.goodID = _goodsId;
+    _model.goodID = 1;
     [_model loadGoodsInfo];
     
     CGSize size = self.bounds.size;
@@ -153,12 +156,18 @@
         {
             if(_isOpen){
                 if(_selectedIndexPath.section == section){
-                    return 10;
+                    if([_model.data count] > 0){
+                        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                        return [entity.customArr count];
+                    }else{
+                        return 1;
+                    }
                 }
             }else{
                 return 1;
             }
         }
+            break;
         default:
             break;
     }
@@ -209,10 +218,14 @@
         cell = [[MerchantImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     NSMutableArray *merchantImgViewArray = [[NSMutableArray alloc] init];
-    for(int i = 0; i< 2; i++){
+    GoodsInfoEntity *entity = nil;
+    if([_model.data count] > 0){
+        entity = [_model.data objectAtIndex:0];
+    }
+    for(int i = 0; i< [entity.imgArr count]; i++){
         WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, T_GoodsInfoTopImgHeight)];
         [imgView setExclusiveTouch:NO];
-        [imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140925/20140925170535_4240443.jpeg"];
+        [imgView setCpxViewInfo:[entity.imgArr objectAtIndex:i]];
         [merchantImgViewArray addObject:imgView];
     }
     cell = [[MerchantImageCell alloc] initWithReuseIdentifier:identifier imageArray:merchantImgViewArray];
@@ -229,7 +242,9 @@
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setDelegate:self];
-    [cell setCellInfo:nil];
+    if([_model.data count] > 0){
+        [cell setCellInfo:[_model.data objectAtIndex:0]];
+    }
     [cell load];
     return cell;
 }
@@ -267,9 +282,10 @@
         cell = [[NewGoodsInfoDownCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setCellInfo:_model.baseDic];
-    NSString *key = [[_model.baseDic allKeys] objectAtIndex:row-1];
-    [cell setTextLabelWithKey:key];
+    if([_model.data count] > 0){
+        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+        [cell setCellInfo:[entity.customArr objectAtIndex:row]];
+    }
     [cell load];
     return cell;
 }
@@ -316,6 +332,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
+    if(section == T_GoodsInfo_WebShow){
+        [self gotoWebView];
+    }
     if(section == T_GoodsInfo_BaseData){
         if(indexPath.row == 0){
             if([indexPath isEqual:_selectedIndexPath]){
@@ -350,11 +369,20 @@
 
 -(void)goodsInfoModelLoadedSucceed{
     [_tableView reloadData];
+    rightView.dataArr = _model.data;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_LoadSucceed object:nil];
     [_model setDelegate:nil];
 }
 
 -(void)goodsInfoModelLoadedFailed:(NSString *)errorMsg{
-    
+    [UtilTool showAlertView:errorMsg];
+}
+
+-(void)gotoWebView{
+    WXTMallListWebVC *webViewVC = [[WXTMallListWebVC alloc] init];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", @"18613213051", @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"], @"pwd", nil];
+    [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
+    [self.wxNavigationController pushViewController:webViewVC];
 }
 
 #pragma mark downBtnClicked
@@ -370,6 +398,12 @@
     }else{
         _showUpview = YES;
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_model setDelegate:nil];
+    [rightView removeNotification];
 }
 
 -(void)insertMyShoppingCart:(id)sender{

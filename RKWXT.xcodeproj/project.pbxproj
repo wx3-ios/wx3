@@ -232,6 +232,7 @@
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
 		12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */; };
 		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
+		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
 		12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */; };
 		12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CFE6501AC1A210009C710B /* CallHistoryEntity.m */; };
@@ -332,6 +333,10 @@
 		12F4BE041AE8CA3B00B9FEDA /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BDFE1AE8CA3B00B9FEDA /* MenuButton.m */; };
 		12F4BE051AE8CA3B00B9FEDA /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BE001AE8CA3B00B9FEDA /* MenuItem.m */; };
 		12F4BE061AE8CA3B00B9FEDA /* PopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */; };
+		12F67BAE1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F67BAD1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m */; };
+		12F67BB01B32BDA000F5BDE1 /* citySelectedImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F67BAF1B32BDA000F5BDE1 /* citySelectedImg@2x.png */; };
+		12F67BB41B32BFB400F5BDE1 /* RightGoodsStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F67BB31B32BFB400F5BDE1 /* RightGoodsStoreCell.m */; };
+		12F67BB81B32C87800F5BDE1 /* RightGoodsSelNumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F67BB71B32C87800F5BDE1 /* RightGoodsSelNumCell.m */; };
 		12F915F91B19506000C94717 /* T_MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F915F71B19506000C94717 /* T_MenuVC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		12F915FC1B19507600C94717 /* T_MenuCommonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F915FB1B19507600C94717 /* T_MenuCommonInfoCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		12F916051B1950E600C94717 /* T_Sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F916001B1950E600C94717 /* T_Sqlite.m */; };
@@ -956,6 +961,8 @@
 		12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavENtity.m; sourceTree = "<group>"; };
 		12A050BD1B310050008CC38F /* HomeNavModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavModel.h; sourceTree = "<group>"; };
 		12A050BE1B310050008CC38F /* HomeNavModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavModel.m; sourceTree = "<group>"; };
+		12A050C41B316B7E008CC38F /* WXTMallListWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallListWebVC.h; sourceTree = "<group>"; };
+		12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallListWebVC.m; sourceTree = "<group>"; };
 		12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultContactIcon@2x.png"; sourceTree = "<group>"; };
 		12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		12CFE64F1AC1A210009C710B /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
@@ -1120,6 +1127,13 @@
 		12F4BE001AE8CA3B00B9FEDA /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItem.m; path = ../MenuItem.m; sourceTree = "<group>"; };
 		12F4BE011AE8CA3B00B9FEDA /* PopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopMenu.h; path = RKWXT/PopView/PopMenu.h; sourceTree = SOURCE_ROOT; };
 		12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopMenu.m; path = RKWXT/PopView/PopMenu.m; sourceTree = SOURCE_ROOT; };
+		12F67BAC1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightVieGoodsInfoTypeCell.h; sourceTree = "<group>"; };
+		12F67BAD1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightVieGoodsInfoTypeCell.m; sourceTree = "<group>"; };
+		12F67BAF1B32BDA000F5BDE1 /* citySelectedImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citySelectedImg@2x.png"; sourceTree = "<group>"; };
+		12F67BB21B32BFB400F5BDE1 /* RightGoodsStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightGoodsStoreCell.h; sourceTree = "<group>"; };
+		12F67BB31B32BFB400F5BDE1 /* RightGoodsStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightGoodsStoreCell.m; sourceTree = "<group>"; };
+		12F67BB61B32C87800F5BDE1 /* RightGoodsSelNumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightGoodsSelNumCell.h; sourceTree = "<group>"; };
+		12F67BB71B32C87800F5BDE1 /* RightGoodsSelNumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightGoodsSelNumCell.m; sourceTree = "<group>"; };
 		12F915F61B19506000C94717 /* T_MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T_MenuVC.h; sourceTree = "<group>"; };
 		12F915F71B19506000C94717 /* T_MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T_MenuVC.m; sourceTree = "<group>"; };
 		12F915F81B19506000C94717 /* T_MeunDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T_MeunDef.h; sourceTree = "<group>"; };
@@ -2488,6 +2502,15 @@
 			path = HomeNavigation;
 			sourceTree = "<group>";
 		};
+		12A050C01B316407008CC38F /* WebMallList */ = {
+			isa = PBXGroup;
+			children = (
+				12A050C41B316B7E008CC38F /* WXTMallListWebVC.h */,
+				12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */,
+			);
+			path = WebMallList;
+			sourceTree = "<group>";
+		};
 		12D0C86F1AB684FE0039A197 /* AboutWxtInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -2912,6 +2935,9 @@
 			children = (
 				12F46A571B20513200B8EC98 /* NewGoodsInfoRightView.h */,
 				12F46A581B20513200B8EC98 /* NewGoodsInfoRightView.m */,
+				12F67BB51B32C84900F5BDE1 /* RightGoodsSelNum */,
+				12F67BB11B32BF9E00F5BDE1 /* RightGoodsStore */,
+				12F67BAB1B32B41F00F5BDE1 /* RightGoodsTypeCell */,
 				12F46A5A1B205CE800B8EC98 /* NewRightHeadCell */,
 			);
 			path = View;
@@ -2947,6 +2973,34 @@
 				12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */,
 			);
 			path = Pop;
+			sourceTree = "<group>";
+		};
+		12F67BAB1B32B41F00F5BDE1 /* RightGoodsTypeCell */ = {
+			isa = PBXGroup;
+			children = (
+				12F67BAF1B32BDA000F5BDE1 /* citySelectedImg@2x.png */,
+				12F67BAC1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.h */,
+				12F67BAD1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m */,
+			);
+			path = RightGoodsTypeCell;
+			sourceTree = "<group>";
+		};
+		12F67BB11B32BF9E00F5BDE1 /* RightGoodsStore */ = {
+			isa = PBXGroup;
+			children = (
+				12F67BB21B32BFB400F5BDE1 /* RightGoodsStoreCell.h */,
+				12F67BB31B32BFB400F5BDE1 /* RightGoodsStoreCell.m */,
+			);
+			path = RightGoodsStore;
+			sourceTree = "<group>";
+		};
+		12F67BB51B32C84900F5BDE1 /* RightGoodsSelNum */ = {
+			isa = PBXGroup;
+			children = (
+				12F67BB61B32C87800F5BDE1 /* RightGoodsSelNumCell.h */,
+				12F67BB71B32C87800F5BDE1 /* RightGoodsSelNumCell.m */,
+			);
+			path = RightGoodsSelNum;
 			sourceTree = "<group>";
 		};
 		12F915F31B194FD100C94717 /* ShoppingCart */ = {
@@ -3168,6 +3222,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				12A050C01B316407008CC38F /* WebMallList */,
 				1295C5E61B299238004C861D /* Bonus */,
 				12F46A231B1FF90C00B8EC98 /* GoodsInfo */,
 				12F2D7BE1B1EA44F00C8017F /* OrderList */,
@@ -4762,6 +4817,7 @@
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				1241E5401AE9D89B00811D3F /* 1S@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,
+				12F67BB01B32BDA000F5BDE1 /* citySelectedImg@2x.png in Resources */,
 				1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */,
 				1241E54B1AE9D89B00811D3F /* 7N@2x.png in Resources */,
 				1241E5631AE9D91400811D3F /* T_AllBack@2x.png in Resources */,
@@ -4855,6 +4911,7 @@
 				12F46A531B2034F500B8EC98 /* NewGoodsInfoModel.m in Sources */,
 				DD0E38B61B1BE5AC00AB4DB9 /* WXBaseSqlite.m in Sources */,
 				775843011AB95A300039B129 /* PingponeButton.m in Sources */,
+				12F67BB81B32C87800F5BDE1 /* RightGoodsSelNumCell.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
 				12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */,
 				DDEA9EBE1B1BF2AD00530C1C /* WXTPayViewController.m in Sources */,
@@ -5168,6 +5225,7 @@
 				775843371AB95A300039B129 /* WXUIView.m in Sources */,
 				12F9161A1B199F0300C94717 /* HomePageThmEntity.m in Sources */,
 				775843581AB95FAC0039B129 /* ServiceMonitor.m in Sources */,
+				12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */,
 				775843171AB95A300039B129 /* LoadLabel.m in Sources */,
 				2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */,
 				775843381AB95A300039B129 /* WXUIViewController.m in Sources */,
@@ -5221,6 +5279,7 @@
 				775842C91AB95A300039B129 /* it_lib_log.cpp in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,
+				12F67BAE1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m in Sources */,
 				128221EC1B18716E004613BB /* T_HPSubBaseModel.m in Sources */,
 				12F916061B1950E600C94717 /* T_InsertData.m in Sources */,
 				775842C81AB95A300039B129 /* it_lib_im.cpp in Sources */,
@@ -5237,6 +5296,7 @@
 				775842E01AB95A300039B129 /* UIView+Render.m in Sources */,
 				12F46A5D1B205D0400B8EC98 /* NewRightHeadCell.m in Sources */,
 				775842E31AB95A300039B129 /* WXCpxBtnImgView.m in Sources */,
+				12F67BB41B32BFB400F5BDE1 /* RightGoodsStoreCell.m in Sources */,
 				12F422981B1D8A4000643DD7 /* InsertAddress.m in Sources */,
 				128221C71B184C3B004613BB /* ASIFormDataRequest.m in Sources */,
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,

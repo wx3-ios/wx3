@@ -26,6 +26,9 @@ typedef enum {
     WXT_UrlFeed_Type_NewMall_Nav,
     WXT_UrlFeed_Type_NewMall_Theme,
     WXT_UrlFeed_Type_NewMall_Surprise,
+    WXT_UrlFeed_Type_NewMall_CatagaryList,
+    WXT_UrlFeed_Type_NewMall_GoodsInfo,
+    WXT_UrlFeed_Type_NewMall_ImgAndText,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;
