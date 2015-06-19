@@ -67,7 +67,10 @@
 }
 
 -(void)load{
-    
+    number = [_numberLabel.text integerValue];
+    if(number < 1){
+        number = 1;
+    }
 }
 
 -(void)plusBtnClick{

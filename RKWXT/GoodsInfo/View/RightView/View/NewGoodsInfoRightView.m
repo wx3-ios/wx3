@@ -304,6 +304,7 @@ enum{
         return;
     }
     selNumber = number;
+    _goodsNum = number;
     [_tableView reloadData];
 }
 

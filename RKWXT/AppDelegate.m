@@ -21,6 +21,7 @@
 #import "LoginModel.h"
 #import "WXTUITabbarVC.h"
 #import "CallViewController.h"
+#import "SCartListModel.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -74,6 +75,8 @@
     
     //自动登录通知
     [self addNotification];
+    
+    [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
 
 	return YES;
 }
@@ -90,8 +93,11 @@
 -(void)initUI{
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
-    BOOL userInfo = [self checkUserInfo];
-    if(!userInfo){
+    
+    
+//    BOOL userInfo = [self checkUserInfo];
+//    if(!userInfo){
+    if(1){
         WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
         [self.window setRootViewController:self.navigationController];

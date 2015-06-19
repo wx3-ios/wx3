@@ -176,6 +176,9 @@
 		127249111B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127249101B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png */; };
 		1277D00E1AC50E4F0008D9B6 /* WXTResetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1277D00D1AC50E4F0008D9B6 /* WXTResetPwdVC.m */; };
 		1277D0131AC5327A0008D9B6 /* ResetPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1277D0121AC5327A0008D9B6 /* ResetPwdModel.m */; };
+		128136A41B33B394005F9929 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A31B33B394005F9929 /* ShoppingCartModel.m */; };
+		128136A71B33C0AF005F9929 /* SCartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A61B33C0AF005F9929 /* SCartListModel.m */; };
+		128136AA1B33C2A7005F9929 /* ShoppingCartEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A91B33C2A7005F9929 /* ShoppingCartEntity.m */; };
 		128221791B18467A004613BB /* PullingRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128221591B18467A004613BB /* PullingRefreshTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1282217A1B18467A004613BB /* BaseFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1282215D1B18467A004613BB /* BaseFunctionCell.m */; };
 		1282217B1B18467A004613BB /* T_ChangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128221601B18467A004613BB /* T_ChangeCell.m */; };
@@ -865,6 +868,12 @@
 		1277D00D1AC50E4F0008D9B6 /* WXTResetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTResetPwdVC.m; sourceTree = "<group>"; };
 		1277D0111AC5327A0008D9B6 /* ResetPwdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdModel.h; sourceTree = "<group>"; };
 		1277D0121AC5327A0008D9B6 /* ResetPwdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdModel.m; sourceTree = "<group>"; };
+		128136A21B33B394005F9929 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
+		128136A31B33B394005F9929 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
+		128136A51B33C0AF005F9929 /* SCartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCartListModel.h; sourceTree = "<group>"; };
+		128136A61B33C0AF005F9929 /* SCartListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCartListModel.m; sourceTree = "<group>"; };
+		128136A81B33C2A7005F9929 /* ShoppingCartEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingCartEntity.h; path = Model/ShoppingCartEntity.h; sourceTree = "<group>"; };
+		128136A91B33C2A7005F9929 /* ShoppingCartEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingCartEntity.m; path = Model/ShoppingCartEntity.m; sourceTree = "<group>"; };
 		128221571B18467A004613BB /* NewHomePageCommonDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHomePageCommonDef.h; sourceTree = "<group>"; };
 		128221581B18467A004613BB /* PullingRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullingRefreshTableView.h; sourceTree = "<group>"; };
 		128221591B18467A004613BB /* PullingRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullingRefreshTableView.m; sourceTree = "<group>"; };
@@ -2853,6 +2862,8 @@
 				12F46A271B1FFA6200B8EC98 /* GoodsInfoEntity.m */,
 				12F46A511B2034F500B8EC98 /* NewGoodsInfoModel.h */,
 				12F46A521B2034F500B8EC98 /* NewGoodsInfoModel.m */,
+				128136A21B33B394005F9929 /* ShoppingCartModel.h */,
+				128136A31B33B394005F9929 /* ShoppingCartModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3019,6 +3030,10 @@
 			isa = PBXGroup;
 			children = (
 				12F915FD1B1950E600C94717 /* Model */,
+				128136A51B33C0AF005F9929 /* SCartListModel.h */,
+				128136A61B33C0AF005F9929 /* SCartListModel.m */,
+				128136A81B33C2A7005F9929 /* ShoppingCartEntity.h */,
+				128136A91B33C2A7005F9929 /* ShoppingCartEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4972,6 +4987,7 @@
 				128221CC1B184CF4004613BB /* URLNetOperation.m in Sources */,
 				775C58B91ABA7B75005B6B40 /* RedPacketRule.m in Sources */,
 				DD988A691B1DA47300B3790B /* OrderDetailCell.m in Sources */,
+				128136A41B33B394005F9929 /* ShoppingCartModel.m in Sources */,
 				775843391AB95A300039B129 /* WXUIWebView.m in Sources */,
 				12F2D8001B1EF6DB00C8017F /* OrderConsultCell.m in Sources */,
 				775842DD1AB95A300039B129 /* UIImage+Render.m in Sources */,
@@ -5236,6 +5252,7 @@
 				12F4BE061AE8CA3B00B9FEDA /* PopMenu.m in Sources */,
 				777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */,
 				775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */,
+				128136A71B33C0AF005F9929 /* SCartListModel.m in Sources */,
 				1282217B1B18467A004613BB /* T_ChangeCell.m in Sources */,
 				775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */,
 				775843351AB95A300039B129 /* WXUITextField.m in Sources */,
@@ -5262,6 +5279,7 @@
 				775842E51AB95A300039B129 /* WXRemotionImgBtn.m in Sources */,
 				775842EC1AB95A300039B129 /* CrystalNavigationView.m in Sources */,
 				7758430F1AB95A300039B129 /* WXMultiGuideView.m in Sources */,
+				128136AA1B33C2A7005F9929 /* ShoppingCartEntity.m in Sources */,
 				775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */,
 				1282217D1B18467A004613BB /* T_ChangeView.m in Sources */,
 				DD0E38B31B1BE5AC00AB4DB9 /* SystemMessageEntity.m in Sources */,

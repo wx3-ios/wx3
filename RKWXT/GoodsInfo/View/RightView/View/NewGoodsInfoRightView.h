@@ -12,7 +12,7 @@
 #define K_Notification_GoodsInfo_LoadSucceed @"K_Notification_GoodsInfo_LoadSucceed"
 
 @interface NewGoodsInfoRightView : WXUIView
-//@property (nonatomic,assign) NSInteger goodsNum;
+@property (nonatomic,assign) NSInteger goodsNum;
 @property (nonatomic,strong) NSArray *dataArr;
 
 //frame外部调用只能设置一次frame

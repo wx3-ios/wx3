@@ -8,26 +8,17 @@
 
 #import "T_MenuVC.h"
 #import "T_MeunDef.h"
-#import "NewGoodsInfoModel.h"
-#import "T_MenuEntity.h"
 #import "T_MenuCommonInfoCell.h"
-#import "T_Sqlite.h"
-#import "GoodsInfoEntity.h"
-//#import "GoodMenuModel.h"
-//#import "OrderConfirmVC.h"
-//#import "GoodMenuEntity.h"
-//#import "WXGoodEntity.h"
-//#import "WXUIGoodEntity.h"
-//#import "T_GoodsInfoVC.h"
+#import "SCartListModel.h"
+#import "ShoppingCartEntity.h"
 
 #define FootViewheight (40)
 
-@interface T_MenuVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,deleteStoreGoods>{
+@interface T_MenuVC()<UITableViewDataSource,UITableViewDelegate,deleteStoreGoods>{
     WXUITableView *_tableView;
-    T_Sqlite *_fmdb;
-    NewGoodsInfoModel *_model;
-    NSArray *_oldArr;
-    NSInteger _goodsID;
+    NSInteger _cartID;
+    
+    SCartListModel *_model;
     
     WXUIButton *_circleBtn;
     WXUILabel *_sumPrice;
@@ -37,18 +28,15 @@
     NSInteger _allNumber;    //所有结算商品数量
     BOOL _selectAll;         //是否全选所有商品结算
 }
-@property (nonatomic,retain) NSMutableArray *arr;
 @end
 
 @implementation T_MenuVC
 
 -(void)dealloc{
     RELEASE_SAFELY(_tableView);
-    RELEASE_SAFELY(_arr);
-    RELEASE_SAFELY(_model);
-    [_model setDelegate:nil];
     RELEASE_SAFELY(_sumPrice);
-    _goodsID = 0;
+    [self removeObs];
+    _cartID = 0;
     _allPrice = 0;
     _allNumber = 0;
     _selectAll = NO;
@@ -57,9 +45,6 @@
 
 -(id)init{
     if(self = [super init]){
-        _model = [[NewGoodsInfoModel alloc] init];
-        [_model setDelegate:self];
-        _arr = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -86,24 +71,27 @@
     [self addSubview:_tableView];
     [self addSubview:[self tableViewForFootView]];
     
-    _fmdb = [[T_Sqlite alloc] init];
-    [_fmdb createOrOpendb];
-    [_fmdb createTable];
-    _oldArr = [_fmdb selectAll];
-
-//    if([_oldArr count] > 0){
-//        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock tip:@""];
-//    }
-    
-    for(int i = 0;i < [_oldArr count]; i++){
-        T_MenuEntity *entity = [_oldArr objectAtIndex:i];
-        [_model setGoodID:[entity.goodsID integerValue]];
-        [_model loadGoodsInfo];
+    [self addObs];
+    if([[SCartListModel shareShoppingCartModel] shouldDataReload]){
+        [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@"努力加载中..."];
+    }else{
     }
 }
 
+-(void)addObs{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadCartDataSucceed) name:D_Notification_LoadShoppingCartList_Succeed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadCartDataFailed:) name:D_Notification_LoadShoppingCartList_Failed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteOneGoodsSucceed) name:D_Notification_DeleteOneGoodsInShoppingCartList_Succeed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteOneGoodsFailed:) name:D_Notification_DeleteOneGoodsInShoppingCartList_Failed object:nil];
+}
+
+-(void)removeObs{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(WXUIView*)tableViewForFootView{
-//    if([_arr count] == 0){
+//    if([[SCartListModel shareShoppingCartModel].shoppingCartListArr count] == 0){
 //        return nil;
 //    }
     CGSize size = self.bounds.size;
@@ -192,7 +180,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_arr count];
+    return [[SCartListModel shareShoppingCartModel].shoppingCartListArr count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -206,8 +194,7 @@
         cell = [[[T_MenuCommonInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
     [cell setDelegate:self];
-    [cell setGoodsInfo:[_oldArr objectAtIndex:row]];
-    [cell setCellInfo:[_arr objectAtIndex:row]];
+    [cell setCellInfo:[[SCartListModel shareShoppingCartModel].shoppingCartListArr objectAtIndex:row]];
     [cell load];
     return cell;
 }
@@ -227,28 +214,21 @@
 //    goodsInfoVC.goodsID = entity.goods_id;
 //    [self.wxNavigationController pushViewController:goodsInfoVC];
 }
+
 //
--(void)goodsInfoModelLoadedSucceed{
+-(void)loadCartDataSucceed{
     [self unShowWaitView];
-    _model.entity.buyNumber = 1;
-    _model.entity.selested = NO;
-    _model.entity.shop_price = 1888;
-    _model.entity.market_price = 3000;
-    [_arr addObject:_model.entity];
-    if([_arr count] == [_oldArr count]){
-        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-        [_model setDelegate:nil];
-    }
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
--(void)goodsInfoModelLoadedFailed:(NSString *)errorMsg{
+-(void)loadCartDataFailed:(NSNotification*)notification{
+    NSString *errorStr = notification.object;
     [self unShowWaitView];
-    [UtilTool showAlertView:errorMsg];
-    [_model setDelegate:nil];
+    [UtilTool showAlertView:errorStr];
 }
 
--(void)deleteGoods:(NSInteger)goodsID{
-    _goodsID = goodsID;
+-(void)deleteGoods:(NSInteger)cart_id{
+    _cartID = cart_id;
     WXUIAlertView *alertView = [[WXUIAlertView alloc] initWithTitle:@"" message:@"确定要删除这个宝贝吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alertView show];
     RELEASE_SAFELY(alertView);
@@ -258,24 +238,34 @@
     if(buttonIndex == 0){
         return;
     }
-    BOOL isDel = NO;
-    for(T_MenuEntity *entity in _oldArr){
-        if([entity.goodsID integerValue] == _goodsID){
-            isDel = [_fmdb deleteTestList:entity];
+    for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
+        if(entity.cart_id == _cartID){
+            [[SCartListModel shareShoppingCartModel] deleteOneGoodsInShoppingCartList:_cartID];
             break;
         }
     }
-    if(isDel){
-        for(int i = 0;i < [_arr count]; i++){
-            GoodsInfoEntity *ent = [_arr objectAtIndex:i];
-            if(ent.goods_id == _goodsID){
-                [_arr removeObject:ent];
-                [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-                break;
-            }
+}
+
+-(void)deleteOneGoodsSucceed{
+    for(int i = 0;i < [[SCartListModel shareShoppingCartModel].shoppingCartListArr count]; i++){
+        ShoppingCartEntity *ent = [[SCartListModel shareShoppingCartModel].shoppingCartListArr objectAtIndex:i];
+        if(ent.cart_id == _cartID){
+            [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            break;
         }
     }
+    if([[SCartListModel shareShoppingCartModel].shoppingCartListArr count] == 0){
+        [_tableView reloadData];
+    }
     [self setSumPricelabel];
+}
+
+-(void)deleteOneGoodsFailed:(NSNotification*)notification{
+    NSString *errorMsg = notification.object;
+    if(!errorMsg){
+        errorMsg = @"删除操作失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 //选
@@ -302,10 +292,10 @@
 -(void)setSumPricelabel{
     _allPrice = 0.0;
     _allNumber = 0;
-    for(GoodsInfoEntity *entity in _arr){
-        if(entity.selested){
-            _allPrice += entity.buyNumber*entity.shop_price;
-            _allNumber += entity.buyNumber;
+    for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
+        if(entity.selected){
+            _allPrice += entity.goods_Number*entity.goods_price;
+            _allNumber += entity.goods_Number;
         }
     }
     [_sumPrice setText:[NSString stringWithFormat:@"￥%.2f",_allPrice]];
@@ -322,8 +312,8 @@
         _selectAll = YES;
         [_circleBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
     }
-    for(GoodsInfoEntity *entity in _arr){
-        entity.selested = _selectAll;
+    for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
+        entity.selected = _selectAll;
     }
     T_MenuCommonInfoCell *cell = [[[T_MenuCommonInfoCell alloc] init] autorelease];
     [cell selectAllGoods:!_selectAll];

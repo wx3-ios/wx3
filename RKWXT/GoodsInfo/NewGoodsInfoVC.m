@@ -14,17 +14,21 @@
 #import "T_MenuVC.h"
 #import "GoodsInfoEntity.h"
 #import "WXTMallListWebVC.h"
+#import "ShoppingCartModel.h"
+#import "SCartListModel.h"
+#import "ShoppingCartEntity.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,PayAttentionToGoodsDelegate,NewGoodsInfoModelDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,PayAttentionToGoodsDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     BOOL _isOpen;
     BOOL _showUpview;
     
     NewGoodsInfoModel *_model;
+    ShoppingCartModel *_shopModel;
     
     WXUIButton *buyNowBtn;
 }
@@ -44,6 +48,8 @@
         _model = [[NewGoodsInfoModel alloc] init];
         [_model setDelegate:self];
         _isOpen = NO;
+        _shopModel = [[ShoppingCartModel alloc] init];
+        [_shopModel setDelegate:self];
     }
     return self;
 }
@@ -403,19 +409,48 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [_model setDelegate:nil];
+//    [_shopModel setDelegate:nil];
     [rightView removeNotification];
 }
 
+#pragma mark 购物车
 -(void)insertMyShoppingCart:(id)sender{
-    T_InsertData *insert = [[T_InsertData alloc] init];
-    NSString *goodsNum = [NSString stringWithFormat:@"%ld",(long)2];
-    NSString *goodsID = [NSString stringWithFormat:@"%ld",(long)10020];
-    BOOL succeed = [insert insertData:goodsNum withGoodsID:goodsID withColorType:@"颜色分类:银色男款"];
-    if(succeed){
-        [UtilTool showAlertView:@"添加购物车成功"];
+    if([_model.data count] > 0){
+        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+        NSInteger length = AllImgPrefixUrlString.length;
+        NSString *smallImgStr = [entity.smallImg substringFromIndex:length];
+        [_shopModel loadGoodsInfoWithGoodsID:entity.goods_id withGoodsImg:smallImgStr withGoodsNum:(rightView.goodsNum>0?rightView.goodsNum:1) withGoodsName:entity.intro withGoodsPrice:entity.shop_price];
     }else{
-        [UtilTool showAlertView:@"添加购物车失败"];
+        [UtilTool showAlertView:@"获取数据为空"];
     }
+}
+
+-(BOOL)localHasStoreThisGoods:(NSInteger)cartID{
+    for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
+        if(entity.goods_id == _goodsId){
+            [UtilTool showAlertView:@"购物车已经存在该商品了"];
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(void)addGoodsToShoppingCartSucceed:(NSInteger)cartID{
+    [UtilTool showAlertView:@"添加购物车成功"];
+    GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+    NSString *cartIDStr = [NSString stringWithFormat:@"%ld",(long)cartID];
+    NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)entity.goods_id];
+    NSString *goodsPriceStr = [NSString stringWithFormat:@"%f",entity.shop_price];
+    NSInteger length = AllImgPrefixUrlString.length;
+    NSString *smallImgStr = [entity.smallImg substringFromIndex:length-1];
+    NSString *goodsNumStr = [NSString stringWithFormat:@"%ld",(long)(rightView.goodsNum>0?rightView.goodsNum:1)];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:cartIDStr, @"cart_id", goodsIDStr, @"goods_id", entity
+                         .intro, @"goods_name", smallImgStr, @"goods_img", goodsPriceStr, @"goods_price", goodsNumStr, @"goods_number", nil];
+    [[SCartListModel shareShoppingCartModel] insertOneGoodsInShoppingCartList:dic];
+}
+
+-(void)addGoodsToShoppingCartFailed:(NSString *)errorMsg{
+    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)backToLastPage{

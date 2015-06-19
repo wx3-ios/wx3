@@ -29,6 +29,7 @@ typedef enum {
     WXT_UrlFeed_Type_NewMall_CatagaryList,
     WXT_UrlFeed_Type_NewMall_GoodsInfo,
     WXT_UrlFeed_Type_NewMall_ImgAndText,
+    WXT_UrlFeed_Type_NewMall_ShoppingCart,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;
@@ -37,7 +38,6 @@ typedef enum {
 + (WXTURLFeedOBJ*)sharedURLFeedOBJ;
 - (NSString*)rootURL:(WXT_UrlFeed_Type)type;
 - (NSString*)urlRequestParamFrom:(NSDictionary*)dic;
-//- (NSMutableDictionary *)commonURLRequestParamDictionary;
 @end
 
 typedef enum{

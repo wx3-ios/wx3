@@ -9,8 +9,7 @@
 #import "T_MenuCommonInfoCell.h"
 #import "WXRemotionImgBtn.h"
 #import "T_MeunDef.h"
-#import "GoodsInfoEntity.h"
-#import "T_MenuEntity.h"
+#import "ShoppingCartEntity.h"
 
 @interface T_MenuCommonInfoCell(){
     WXUIButton *_circleBtn;
@@ -63,16 +62,17 @@
         CGFloat nameWidth = 150;
         CGFloat nameHeight = 16;
         _namelabel = [[WXUILabel alloc] init];
-        _namelabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight);
+        _namelabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight*2.4);
         [_namelabel setBackgroundColor:[UIColor clearColor]];
         [_namelabel setTextAlignment:NSTextAlignmentLeft];
         [_namelabel setTextColor:WXColorWithInteger(NameColor)];
         [_namelabel setFont:[UIFont systemFontOfSize:NameFont]];
+        [_namelabel setNumberOfLines:0];
         [self.contentView addSubview:_namelabel];
         
         CGFloat priceXgap = xOffset+nameWidth+4;
         _newPrice = [[WXUILabel alloc] init];
-        _newPrice.frame = CGRectMake(priceXgap, yOffset, IPHONE_SCREEN_WIDTH-priceXgap, nameHeight);
+        _newPrice.frame = CGRectMake(priceXgap, yOffset+10, IPHONE_SCREEN_WIDTH-priceXgap, nameHeight);
         [_newPrice setBackgroundColor:[UIColor clearColor]];
         [_newPrice setTextAlignment:NSTextAlignmentCenter];
         [_newPrice setTextColor:WXColorWithInteger(newPriceColor)];
@@ -86,7 +86,7 @@
         [_infoLabel setTextAlignment:NSTextAlignmentLeft];
         [_infoLabel setTextColor:WXColorWithInteger(InfoColor)];
         [_infoLabel setFont:[UIFont systemFontOfSize:InfoFont]];
-        [self.contentView addSubview:_infoLabel];
+//        [self.contentView addSubview:_infoLabel];
         
         priceXgap += 5;
         _oldPrice = [[WXUILabel alloc] init];
@@ -100,7 +100,7 @@
         WXUILabel *lineLabel = [[WXUILabel alloc] init];
         lineLabel.frame = CGRectMake((IPHONE_SCREEN_WIDTH-priceXgap)/4, nameHeight/2, (IPHONE_SCREEN_WIDTH-priceXgap)/2, 1);
         [lineLabel setBackgroundColor:[UIColor grayColor]];
-        [_oldPrice addSubview:lineLabel];
+//        [_oldPrice addSubview:lineLabel];
         RELEASE_SAFELY(lineLabel);
         
         yOffset += nameHeight+4;
@@ -149,52 +149,52 @@
 }
 
 -(void)load{
-    GoodsInfoEntity *entity = self.cellInfo;
-    [_imgView setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140925/20140925170535_4240443.jpeg"];
+    ShoppingCartEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:entity.smallImg];
     [_imgView load];
-    [_namelabel setText:@"金表男款"];
+    [_namelabel setText:entity.goods_name];
     
-//    NSString *newPrice = [NSString stringWithFormat:@"￥%.2f",entity.shop_price];
-    [_newPrice setText:@"1888"];
+    NSString *newPrice = [NSString stringWithFormat:@"￥%.2f",entity.goods_price];
+    [_newPrice setText:newPrice];
     
 //    NSString *oldPrice = [NSString stringWithFormat:@"￥%.2f",entity.market_price];
-    [_oldPrice setText:@"3000"];
+//    [_oldPrice setText:@"3000"];
     
-    [self setCircleBtnImgWith:entity.selested]; 
+    [self setCircleBtnImgWith:NO];
 }
 
 -(void)setGoodsInfo:(id)entity{
-    T_MenuEntity *enti = entity;
+    ShoppingCartEntity *enti = entity;
     if(number == 0){
-        number = [enti.number integerValue];
+        number = enti.goods_Number;
     }
-    [_infoLabel setText:enti.colorType];
+//    [_infoLabel setText:enti.colorType];
 }
 
 -(void)selectAllGoods:(BOOL)selectAll{
-    GoodsInfoEntity *entity = self.cellInfo;
+    ShoppingCartEntity *entity = self.cellInfo;
     if(selectAll){
         selected = YES;
-        entity.selested = YES;
+        entity.selected = YES;
     }else{
         selected = NO;
-        entity.selested = NO;
+        entity.selected = NO;
     }
     [self setCircleBtnImgWith:selected];
 }
 
 //选择按钮点击
 -(void)circleBtnClick{
-    GoodsInfoEntity *entity = self.cellInfo;
+    ShoppingCartEntity *entity = self.cellInfo;
     if(!selected){
         selected = YES;
-        entity.selested = YES;
+        entity.selected = YES;
         if(_delegate && [_delegate respondsToSelector:@selector(selectGoods)]){
             [_delegate selectGoods];
         }
     }else{
         selected = NO;
-        entity.selested = NO;
+        entity.selected = NO;
         if(_delegate && [_delegate respondsToSelector:@selector(cancelGoods)]){
             [_delegate cancelGoods];
         }
@@ -206,8 +206,8 @@
     number++;
     NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
     [_numberLabel setText:str];
-    GoodsInfoEntity *entity = self.cellInfo;
-    entity.buyNumber = number;
+    ShoppingCartEntity *entity = self.cellInfo;
+    entity.goods_Number = number;
     if(_delegate && [_delegate respondsToSelector:@selector(plusBtnClicked)]){
         [_delegate plusBtnClicked];
     }
@@ -222,17 +222,17 @@
         str = [NSString stringWithFormat:@"%d",1];
     }
     [_numberLabel setText:str];
-    GoodsInfoEntity *entity = self.cellInfo;
-    entity.buyNumber = number;
+    ShoppingCartEntity *entity = self.cellInfo;
+    entity.goods_Number = number;
     if(_delegate && [_delegate respondsToSelector:@selector(minusBtnClicked)]){
         [_delegate minusBtnClicked];
     }
 }
 
 -(void)deleteBtnClicked{
-    GoodsInfoEntity *entity = self.cellInfo;
+    ShoppingCartEntity *entity = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(deleteGoods:)]){
-        [_delegate deleteGoods:entity.goods_id];
+        [_delegate deleteGoods:entity.cart_id];
     }
 }
 

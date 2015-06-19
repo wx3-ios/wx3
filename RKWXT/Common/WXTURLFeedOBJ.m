@@ -78,6 +78,9 @@
         case WXT_UrlFeed_Type_NewMall_ImgAndText:
             url = @"";
             break;
+        case WXT_UrlFeed_Type_NewMall_ShoppingCart:
+            url = @"/get_shopping_cart.php";
+            break;
         default:
             break;
     }
