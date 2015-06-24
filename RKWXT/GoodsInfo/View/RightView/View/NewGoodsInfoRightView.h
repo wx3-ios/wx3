@@ -13,6 +13,8 @@
 
 @interface NewGoodsInfoRightView : WXUIView
 @property (nonatomic,assign) NSInteger goodsNum;
+@property (nonatomic,assign) NSInteger stockID;
+@property (nonatomic,strong) NSString *stockName;
 @property (nonatomic,strong) NSArray *dataArr;
 
 //frame外部调用只能设置一次frame

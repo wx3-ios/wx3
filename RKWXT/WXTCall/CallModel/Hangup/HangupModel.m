@@ -24,9 +24,9 @@
         return;
     }
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"hangup", @"cmd", callID, @"call_id", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_FetchPwd httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_HungUp httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
-        if ([[dic objectForKey:@"success"] integerValue] != 1){
+        if ([[dic objectForKey:@"error"] integerValue] != 1){
             if (_hangupDelegate && [_hangupDelegate respondsToSelector:@selector(hangupFailed:)]){
                 [_hangupDelegate hangupFailed:retData.errorDesc];
             }

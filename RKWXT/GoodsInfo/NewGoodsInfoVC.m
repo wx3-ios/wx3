@@ -59,6 +59,7 @@
 //    _model.goodID = _goodsId;
     _model.goodID = 1;
     [_model loadGoodsInfo];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     
     CGSize size = self.bounds.size;
     _tableView = [[UITableView alloc] init];
@@ -374,6 +375,7 @@
 }
 
 -(void)goodsInfoModelLoadedSucceed{
+    [self unShowWaitView];
     [_tableView reloadData];
     rightView.dataArr = _model.data;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_LoadSucceed object:nil];
@@ -381,6 +383,7 @@
 }
 
 -(void)goodsInfoModelLoadedFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
     [UtilTool showAlertView:errorMsg];
 }
 
@@ -416,6 +419,11 @@
 #pragma mark 购物车
 -(void)insertMyShoppingCart:(id)sender{
     if([_model.data count] > 0){
+        if(!rightView.stockID || !rightView.stockName){
+            [UtilTool showAlertView:@"请选择商品属性后再加入购物车"];
+            return;
+        }
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
         GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
         NSInteger length = AllImgPrefixUrlString.length;
         NSString *smallImgStr = [entity.smallImg substringFromIndex:length];
@@ -436,6 +444,7 @@
 }
 
 -(void)addGoodsToShoppingCartSucceed:(NSInteger)cartID{
+    [self unShowWaitView];
     [UtilTool showAlertView:@"添加购物车成功"];
     GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
     NSString *cartIDStr = [NSString stringWithFormat:@"%ld",(long)cartID];
@@ -450,6 +459,7 @@
 }
 
 -(void)addGoodsToShoppingCartFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
     [UtilTool showAlertView:errorMsg];
 }
 

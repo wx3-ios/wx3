@@ -9,7 +9,6 @@
 #import "WXTURLFeedOBJ+NewData.h"
 
 #define D_DataURLConnectionDefaultTimeoutInterval (15.0)
-//#define newUrlString @"http://oldyun.67call.com/wx3api/app_register.php"
 
 @implementation WXTURLFeedOBJ (NewData)
 

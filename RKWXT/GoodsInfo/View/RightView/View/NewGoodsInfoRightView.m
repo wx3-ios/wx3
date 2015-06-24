@@ -12,6 +12,7 @@
 #import "RightVieGoodsInfoTypeCell.h"
 #import "RightGoodsStoreCell.h"
 #import "RightGoodsSelNumCell.h"
+#import "GoodsInfoEntity.h"
 
 #define kAnimatedDur 0.3
 #define kMaskMaxAlpha 0.6
@@ -51,6 +52,7 @@ enum{
 -(id)initWithFrame:(CGRect)frame menuButton:(UIButton *)menuButton dropListFrame:(CGRect)dropListFrame{
     self = [super initWithFrame:frame];
     if(self){
+        [self setFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT)];
         _bigView = [[WXMaskView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT)];
         [_bigView setDelegate:self];
         [_bigView setBackgroundColor:[UIColor whiteColor]];
@@ -93,12 +95,12 @@ enum{
 
 -(UIView *)tableViewForFootView{
     UIView *footView = [[UIView alloc] init];
-    [footView setBackgroundColor:[UIColor redColor]];
+    [footView setBackgroundColor:[UIColor whiteColor]];
     
     WXUIButton *buyBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     buyBtn.frame = CGRectMake(0, 0, _originListRect.size.width, 46);
     [buyBtn setBackgroundColor:WXColorWithInteger(0xbb2726)];
-    [buyBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [buyBtn setTitle:@"确  定" forState:UIControlStateNormal];
     [buyBtn addTarget:self action:@selector(buyNow) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:buyBtn];
     
@@ -295,6 +297,8 @@ enum{
 #pragma mark goodsTypeDelegate
 -(void)selectGoodsType:(id)sender{
     ent = sender;
+    _stockID = ent.stockID;
+    _stockName = ent.stockName;
     [_tableView reloadData];
 }
 
