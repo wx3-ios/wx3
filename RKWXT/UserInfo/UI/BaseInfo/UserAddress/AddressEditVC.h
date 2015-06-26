@@ -9,9 +9,15 @@
 #import "WXUIViewController.h"
 #import "AddressEntity.h"
 
-#define AddressSqliteHasChanged @"AddressSqliteHasChanged"
+typedef enum{
+    Address_Type_Insert = 0,
+    Address_Type_Modify,
+    
+    Address_Type_Invalid
+}Address_Type;
 
 @interface AddressEditVC : WXUIViewController
+@property (nonatomic,assign) Address_Type address_type;
 @property (nonatomic,strong) AddressEntity *entity;
 
 @end

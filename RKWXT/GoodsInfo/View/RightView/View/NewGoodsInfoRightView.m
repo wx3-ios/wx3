@@ -317,7 +317,8 @@ enum{
 }
 
 -(void)buyNow{
-    
+    [self unshow:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_CommitGoods object:nil];
 }
 
 @end

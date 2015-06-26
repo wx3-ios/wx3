@@ -241,12 +241,14 @@
     for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
         if(entity.cart_id == _cartID){
             [[SCartListModel shareShoppingCartModel] deleteOneGoodsInShoppingCartList:_cartID];
+            [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
             break;
         }
     }
 }
 
 -(void)deleteOneGoodsSucceed{
+    [self unShowWaitView];
     for(int i = 0;i < [[SCartListModel shareShoppingCartModel].shoppingCartListArr count]; i++){
         ShoppingCartEntity *ent = [[SCartListModel shareShoppingCartModel].shoppingCartListArr objectAtIndex:i];
         if(ent.cart_id == _cartID){
@@ -261,6 +263,7 @@
 }
 
 -(void)deleteOneGoodsFailed:(NSNotification*)notification{
+    [self unShowWaitView];
     NSString *errorMsg = notification.object;
     if(!errorMsg){
         errorMsg = @"删除操作失败";

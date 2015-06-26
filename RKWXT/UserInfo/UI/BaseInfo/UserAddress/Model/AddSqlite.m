@@ -52,7 +52,6 @@
             entity.userName = _userName;
             entity.userPhone = _userPhone;
             entity.address = _address;
-            entity.bSel = @"1";
             [all addObject:entity];
         }
     }
@@ -131,7 +130,6 @@
     sqlite3_bind_text(statement, 1, [deletList.userName UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 2, [deletList.userPhone UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 3, [deletList.address UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 4, [deletList.bSel UTF8String], -1, SQLITE_TRANSIENT);
     success = sqlite3_step(statement);
     sqlite3_finalize(statement);
     

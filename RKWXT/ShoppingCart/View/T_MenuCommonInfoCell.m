@@ -62,12 +62,12 @@
         CGFloat nameWidth = 150;
         CGFloat nameHeight = 16;
         _namelabel = [[WXUILabel alloc] init];
-        _namelabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight*2.4);
+        _namelabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight);
         [_namelabel setBackgroundColor:[UIColor clearColor]];
         [_namelabel setTextAlignment:NSTextAlignmentLeft];
         [_namelabel setTextColor:WXColorWithInteger(NameColor)];
         [_namelabel setFont:[UIFont systemFontOfSize:NameFont]];
-        [_namelabel setNumberOfLines:0];
+//        [_namelabel setNumberOfLines:0];
         [self.contentView addSubview:_namelabel];
         
         CGFloat priceXgap = xOffset+nameWidth+4;
@@ -86,7 +86,7 @@
         [_infoLabel setTextAlignment:NSTextAlignmentLeft];
         [_infoLabel setTextColor:WXColorWithInteger(InfoColor)];
         [_infoLabel setFont:[UIFont systemFontOfSize:InfoFont]];
-//        [self.contentView addSubview:_infoLabel];
+        [self.contentView addSubview:_infoLabel];
         
         priceXgap += 5;
         _oldPrice = [[WXUILabel alloc] init];
@@ -153,6 +153,7 @@
     [_imgView setCpxViewInfo:entity.smallImg];
     [_imgView load];
     [_namelabel setText:entity.goods_name];
+    [_infoLabel setText:entity.stockName];
     
     NSString *newPrice = [NSString stringWithFormat:@"￥%.2f",entity.goods_price];
     [_newPrice setText:newPrice];

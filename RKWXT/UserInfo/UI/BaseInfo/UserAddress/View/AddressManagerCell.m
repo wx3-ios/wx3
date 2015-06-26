@@ -11,11 +11,15 @@
 
 @interface AddressManagerCell(){
     WXUIButton *_selBtn;
-    BOOL bSelected;
 }
 @end
 
 @implementation AddressManagerCell
+
+-(void)dealloc{
+    _delegate = nil;
+    [super dealloc];
+}
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -26,13 +30,13 @@
         _selBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-img.size.height)/2, img.size.width, img.size.height);
         [_selBtn setBackgroundColor:[UIColor clearColor]];
         [_selBtn setImage:img forState:UIControlStateNormal];
-        [_selBtn addTarget:self action:@selector(setAddressNormal:) forControlEvents:UIControlEventTouchUpInside];
+        [_selBtn addTarget:self action:@selector(setAddressCircleNormal) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_selBtn];
         
         xOffset += img.size.width+10;
         CGFloat norAddWidth = 80;
         CGFloat norAddheight = 15;
-        UILabel *norAddLabel = [[UILabel alloc] init];
+        UILabel *norAddLabel = [[[UILabel alloc] init] autorelease];
         norAddLabel.frame = CGRectMake(xOffset, (AddressManagerCellHeight-norAddheight)/2, norAddWidth, norAddheight);
         [norAddLabel setBackgroundColor:[UIColor clearColor]];
         [norAddLabel setTextAlignment:NSTextAlignmentLeft];
@@ -52,7 +56,7 @@
         
         CGFloat xGap = xOffset+editImg.size.width+6;
         CGFloat labelWidth = norAddWidth/2;
-        UILabel *editLabel = [[UILabel alloc] init];
+        UILabel *editLabel = [[[UILabel alloc] init] autorelease];
         editLabel.frame = CGRectMake(xGap, (AddressManagerCellHeight-norAddheight)/2, labelWidth, norAddheight);
         [editLabel setBackgroundColor:[UIColor clearColor]];
         [editLabel setTextAlignment:NSTextAlignmentLeft];
@@ -72,7 +76,7 @@
         [self.contentView addSubview:delBtn];
         
         xGap += delImg.size.width+11;
-        UILabel *delLabel = [[UILabel alloc] init];
+        UILabel *delLabel = [[[UILabel alloc] init] autorelease];
         delLabel.frame = CGRectMake(xGap, (AddressManagerCellHeight-norAddheight)/2, labelWidth, norAddheight);
         [delLabel setBackgroundColor:[UIColor clearColor]];
         [delLabel setTextAlignment:NSTextAlignmentLeft];
@@ -86,25 +90,27 @@
 
 -(void)load{
     AddressEntity *ent = self.cellInfo;
-    bSelected = ![ent.bSel integerValue];
-    [self setAddressNormal:YES];
+    [self setAddressNormal:(ent.normalID==1?YES:NO)];
 }
 
 -(void)setAddressNormal:(BOOL)load{
-    AddressEntity *ent = self.cellInfo;
-    if(!bSelected){
-        bSelected = YES;
-        ent.bSel = @"1";  //1代表勾选
+//    AddressEntity *ent = self.cellInfo;
+    if(load){
         [_selBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
     }else{
-        bSelected = NO;
-        ent.bSel = @"0";
         [_selBtn setImage:[UIImage imageNamed:@"AddressCircle.png"] forState:UIControlStateNormal];
     }
-    if(!load){
-        if(_delegate && [_delegate respondsToSelector:@selector(setAddressNormal:)]){
-            [_delegate setAddressNormal:ent];
-        }
+//    if(!load){
+//        if(_delegate && [_delegate respondsToSelector:@selector(setAddressNormal:)]){
+//            [_delegate setAddressNormal:ent];
+//        }
+//    }
+}
+
+-(void)setAddressCircleNormal{
+    AddressEntity *ent = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(setAddressNormal:)]){
+        [_delegate setAddressNormal:ent];
     }
 }
 

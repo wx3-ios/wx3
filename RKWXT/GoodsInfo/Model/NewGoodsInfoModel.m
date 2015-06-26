@@ -36,8 +36,6 @@
     return self.status == E_ModelDataStatus_Init || self.status == E_ModelDataStatus_LoadFailed;
 }
 
-//{"error":0,"data":{"stock":[{"goods_stock_id":"1","goods_id":"1","goods_stock_name":"ddqw","goods_number":"11","goods_price":"11.00"},{"goods_stock_id":"2","goods_id":"1","goods_stock_name":"gre","goods_number":"22","goods_price":"22.00"}],"attr":[{"goods_id":"1","attr_name":"\u5c4f\u5e55\u5c3a\u5bf8","attr_value":"4.5\u5bf8"},{"goods_id":"1","attr_name":"\u7f51\u7edc\u5236\u5f0f","attr_value":"\u7535\u4fe1"},{"goods_id":"1","attr_name":"CPU","attr_value":"8\u6838"},{"goods_id":"1","attr_name":"\u5916\u89c2\u6837\u5f0f","attr_value":"\u7ffb\u76d6\u624b\u673a|\u6ed1\u76d6\u624b\u673a"},{"goods_id":"1","attr_name":"\u673a\u8eab\u5b58\u50a8","attr_value":"fewfew"},{"goods_id":"1","attr_name":"\u5c4f\u5e55\u5206\u8fa8\u7387","attr_value":"200*200"}],"goods":{"goods_id":"1","goods_name":"few","goods_home_img":"20150618\/20150618112743_350229.jpeg","goods_icarousel_img":"20150618\/20150618112723_704894.jpeg,20150618\/20150618112754_774523.jpeg,20150618\/20150618112803_703050.jpeg,","meterage_name":"\u4e2a","shop_price":"11.00","market_price":"11.00"}}}
-
 -(void)parseGoodInfoDetail:(NSDictionary*)dic{
     if(!dic){
         return;

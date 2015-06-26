@@ -10,6 +10,7 @@
 
 #define MaskViewClicked @"MaskViewClicked"
 #define K_Notification_GoodsInfo_LoadSucceed @"K_Notification_GoodsInfo_LoadSucceed"
+#define K_Notification_GoodsInfo_CommitGoods @"K_Notification_GoodsInfo_CommitGoods" 
 
 @interface NewGoodsInfoRightView : WXUIView
 @property (nonatomic,assign) NSInteger goodsNum;

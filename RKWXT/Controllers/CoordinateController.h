@@ -68,4 +68,5 @@ typedef enum {
 -(void)toOrderList:(id)sender selectedShow:(NSInteger)number animated:(BOOL)animated;//订单页面
 -(void)toGoodsInfoVC:(id)sender goodsID:(NSInteger)goodsID animated:(BOOL)animated;//商品详情
 -(void)toUserBonusVC:(id)sender animated:(BOOL)animated; //红包
+-(void)toMakeOrderVC:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated; //下单
 @end

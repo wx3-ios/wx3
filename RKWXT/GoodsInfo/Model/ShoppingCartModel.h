@@ -11,7 +11,7 @@
 @protocol AddGoodsToShoppingCartDelegate;
 @interface ShoppingCartModel : T_HPSubBaseModel
 @property (nonatomic,assign) id<AddGoodsToShoppingCartDelegate>delegate;
--(void)loadGoodsInfoWithGoodsID:(NSInteger)goodsID withGoodsImg:(NSString*)goodsImg withGoodsNum:(NSInteger)number withGoodsName:(NSString*)name withGoodsPrice:(CGFloat)price;
+-(void)loadGoodsInfoWithGoodsID:(NSInteger)goodsID withGoodsImg:(NSString*)goodsImg withGoodsNum:(NSInteger)number withGoodsName:(NSString*)name withGoodsPrice:(CGFloat)price withStockName:(NSString*)stockName withStockID:(NSInteger)stockID;
 @end
 
 @protocol AddGoodsToShoppingCartDelegate <NSObject>

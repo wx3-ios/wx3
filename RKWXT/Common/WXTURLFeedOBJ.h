@@ -31,6 +31,8 @@ typedef enum {
     WXT_UrlFeed_Type_NewMall_GoodsInfo,
     WXT_UrlFeed_Type_NewMall_ImgAndText,
     WXT_UrlFeed_Type_NewMall_ShoppingCart,
+    WXT_UrlFeed_Type_NewMall_UserAddress,
+    WXT_UrlFeed_Type_NewMall_MakeOrder,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

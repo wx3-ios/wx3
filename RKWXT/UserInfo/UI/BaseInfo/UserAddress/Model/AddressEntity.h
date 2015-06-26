@@ -12,6 +12,9 @@
 @property (nonatomic,strong) NSString *userName;
 @property (nonatomic,strong) NSString *userPhone;
 @property (nonatomic,strong) NSString *address;
-@property (nonatomic,strong) NSString *bSel;
+@property (nonatomic,assign) NSInteger address_id;
+@property (nonatomic,assign) NSInteger normalID;
+
++(AddressEntity*)initAddressEntityWithDic:(NSDictionary*)dic;
 
 @end

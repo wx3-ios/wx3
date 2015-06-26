@@ -22,6 +22,7 @@
 #import "WXTUITabbarVC.h"
 #import "CallViewController.h"
 #import "SCartListModel.h"
+#import "UserAddressModel.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -77,6 +78,7 @@
     [self addNotification];
     
     [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
+    [[UserAddressModel shareUserAddress] loadUserAddress];
 
 	return YES;
 }

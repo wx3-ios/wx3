@@ -40,6 +40,12 @@
         
         NSInteger goodsNum = [[dic objectForKey:@"goods_number"] integerValue];
         [self setGoods_Number:goodsNum];
+        
+        NSInteger stockID = [[dic objectForKey:@"goods_stock_id"] integerValue];
+        [self setStockID:stockID];
+        
+        NSString *stockName = [dic objectForKey:@"goods_stock_name"];
+        [self setStockName:stockName];
     }
     return self;
 }

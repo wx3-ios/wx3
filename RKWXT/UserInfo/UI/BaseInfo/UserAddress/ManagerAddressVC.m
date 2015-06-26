@@ -9,9 +9,9 @@
 #import "ManagerAddressVC.h"
 #import "AddressEntity.h"
 #import "AddressEditVC.h"
-#import "AddSqlite.h"
 #import "AddressBaseInfoCell.h"
 #import "AddressManagerCell.h"
+#import "UserAddressModel.h"
 
 enum{
     Address_BaseInfo = 0,
@@ -20,9 +20,8 @@ enum{
     Address_Invalid,
 };
 
-@interface ManagerAddressVC()<UITableViewDataSource,UITableViewDelegate,AddressManagerDelegate>{
+@interface ManagerAddressVC()<UITableViewDataSource,UITableViewDelegate,AddressManagerDelegate,UIAlertViewDelegate>{
     UITableView *_tableView;
-    AddSqlite *_fmdb;
     NSArray *_addListArr;
 }
 @end
@@ -31,11 +30,13 @@ enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self addObs];
-}
-
--(void)addObs{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addressSqliteChange) name:AddressSqliteHasChanged object:nil];
+    BOOL reload = [[UserAddressModel shareUserAddress] shouldDataReload];
+    if(reload){
+        [[UserAddressModel shareUserAddress] loadUserAddress];
+    }else{
+        _addListArr = [UserAddressModel shareUserAddress].userAddressArr;
+        [_tableView reloadData];
+    }
 }
 
 -(void)viewDidLoad{
@@ -49,11 +50,21 @@ enum{
     [_tableView setDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[self tableViewForFootView]];
-    
-    _fmdb = [[AddSqlite alloc] init];
-    [_fmdb createOrOpendb];
-    [_fmdb createTable];
-    _addListArr = [_fmdb selectAll];
+    [self addnotification];
+}
+
+-(void)addnotification{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(loadAddressDataSucceed) name:K_Notification_UserAddress_LoadDateSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadAddressDataFailed:) name:K_Notification_UserAddress_LoadDateFailed object:nil];
+    [notificationCenter addObserver:self selector:@selector(delAddressDataSucceed) name:K_Notification_UserAddress_DelDateSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(delAddressDataFailed:) name:K_Notification_UserAddress_DelDateFailed object:nil];
+    [notificationCenter addObserver:self selector:@selector(setAddNormalSucceed) name:K_Notification_UserAddress_SetNorAddSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(setAddNormalFailed:) name:K_Notification_UserAddress_SetNorAddFailed object:nil];
+}
+
+-(void)remoNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(UIView*)tableViewForFootView{
@@ -119,7 +130,7 @@ enum{
 }
 
 -(WXUITableViewCell *)tableViewForManagerAddress:(NSInteger)section{
-    static NSString *identifier = @"baseInfoCell";
+    static NSString *identifier = @"baseCell";
     AddressManagerCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[AddressManagerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -142,42 +153,93 @@ enum{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
--(void)addressSqliteChange{
-    _addListArr = [_fmdb selectAll];
-    [_tableView reloadData];
-}
-
 -(void)createNewAddress{
     AddressEditVC *addeditVC = [[AddressEditVC alloc] init];
+    addeditVC.address_type = Address_Type_Insert;
     [self.wxNavigationController pushViewController:addeditVC completion:^{
     }];
 }
 
--(void)removeObs{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark addressManagerDelegate
--(void)setAddressNormal:(AddressEntity *)entity{
-//    for(AddressEntity *en in _addListArr){
-//        if(en.userName == entity.userName && en.userPhone == entity.userPhone && en.address == entity.address){
-//            [_fmdb changeTestListWith:en.userName phone:en.userPhone address:en.address sel:@"0"];
-//        }else{
-//            [_fmdb changeTestListWith:en.userName phone:en.userPhone address:en.address sel:@"0"];
-//        }
-//    }
-}
-
 -(void)editAddressInfo:(AddressEntity *)entity{
     AddressEditVC *addeditVC = [[AddressEditVC alloc] init];
+    addeditVC.address_type = Address_Type_Modify;
     addeditVC.entity = entity;
     [self.wxNavigationController pushViewController:addeditVC completion:^{
     }];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self removeObs];
+#pragma mark addressManagerDelegate
+-(void)setAddressNormal:(AddressEntity *)entity{
+    if(!entity){
+        return;
+    }
+    if(entity.normalID == 1){
+        return;
+    }
+    NSInteger oldID = 0;
+    for(AddressEntity *entity in _addListArr){
+        if(entity.normalID == 1){
+            oldID = entity.address_id;
+        }
+    }
+    [[UserAddressModel shareUserAddress] setNormalAddressWithOldAddID:oldID withNewAddID:entity.address_id];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)setAddNormalSucceed{
+    [self unShowWaitView];
+    _addListArr = [UserAddressModel shareUserAddress].userAddressArr;
+    [_tableView reloadData];
+}
+
+-(void)setAddNormalFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *errorMsg = notification.object;
+    if(!errorMsg){
+        errorMsg = @"设置默认收货信息失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
+#pragma mark load
+-(void)loadAddressDataSucceed{
+    [self unShowWaitView];
+    _addListArr = [UserAddressModel shareUserAddress].userAddressArr;
+    [_tableView reloadData];
+}
+
+-(void)loadAddressDataFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *errorMsg = notification.object;
+    if(!errorMsg){
+        errorMsg = @"查询数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
+#pragma mark del
+-(void)delAddress:(AddressEntity *)entity{
+    if(entity.normalID == entity.address_id){
+        [UtilTool showAlertView:@"请先更改默认地址后再删除!"];
+        return;
+    }
+    [[UserAddressModel shareUserAddress] deleteUserAddressWithAddressID:entity.address_id];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)delAddressDataSucceed{
+    [self unShowWaitView];
+    _addListArr = [UserAddressModel shareUserAddress].userAddressArr;
+    [_tableView reloadData];
+}
+
+-(void)delAddressDataFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *errorMsg = notification.object;
+    if(!errorMsg){
+        errorMsg = @"删除数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 @end

@@ -82,6 +82,16 @@
     rightView = [self createRightViewWith:buyNowBtn];
     [rightView unshow:NO];
     [self.view addSubview:rightView];
+    
+    [self addNotification];
+}
+
+-(void)addNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toMakeOrder) name:K_Notification_GoodsInfo_CommitGoods object:nil];
+}
+
+-(void)removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(NewGoodsInfoRightView*)createRightViewWith:(WXUIButton*)btn{
@@ -427,7 +437,8 @@
         GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
         NSInteger length = AllImgPrefixUrlString.length;
         NSString *smallImgStr = [entity.smallImg substringFromIndex:length];
-        [_shopModel loadGoodsInfoWithGoodsID:entity.goods_id withGoodsImg:smallImgStr withGoodsNum:(rightView.goodsNum>0?rightView.goodsNum:1) withGoodsName:entity.intro withGoodsPrice:entity.shop_price];
+        
+        [_shopModel loadGoodsInfoWithGoodsID:entity.goods_id withGoodsImg:smallImgStr withGoodsNum:(rightView.goodsNum>0?rightView.goodsNum:1) withGoodsName:entity.intro withGoodsPrice:entity.shop_price withStockName:rightView.stockName withStockID:rightView.stockID];
     }else{
         [UtilTool showAlertView:@"获取数据为空"];
     }
@@ -452,15 +463,43 @@
     NSString *goodsPriceStr = [NSString stringWithFormat:@"%f",entity.shop_price];
     NSInteger length = AllImgPrefixUrlString.length;
     NSString *smallImgStr = [entity.smallImg substringFromIndex:length-1];
+    NSString *stockIDStr = [NSString stringWithFormat:@"%ld",(long)rightView.stockID];
     NSString *goodsNumStr = [NSString stringWithFormat:@"%ld",(long)(rightView.goodsNum>0?rightView.goodsNum:1)];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:cartIDStr, @"cart_id", goodsIDStr, @"goods_id", entity
-                         .intro, @"goods_name", smallImgStr, @"goods_img", goodsPriceStr, @"goods_price", goodsNumStr, @"goods_number", nil];
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         cartIDStr, @"cart_id",
+                         goodsIDStr, @"goods_id",
+                         entity.intro, @"goods_name",
+                         smallImgStr, @"goods_img",
+                         goodsPriceStr, @"goods_price",
+                         goodsNumStr, @"goods_number",
+                         stockIDStr, @"goods_stock_id",
+                         rightView.stockName, @"goods_stock_name",
+                         nil];
     [[SCartListModel shareShoppingCartModel] insertOneGoodsInShoppingCartList:dic];
 }
 
 -(void)addGoodsToShoppingCartFailed:(NSString *)errorMsg{
     [self unShowWaitView];
     [UtilTool showAlertView:errorMsg];
+}
+
+-(void)toMakeOrder{
+    NSMutableArray *goodsArr = [[NSMutableArray alloc] init];
+    GoodsInfoEntity *entity = [self priceForStock:rightView.stockID];
+    entity.buyNumber = (rightView.goodsNum<=0?1:rightView.goodsNum);
+    [goodsArr addObject:entity];
+    [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];
+}
+
+-(GoodsInfoEntity*)priceForStock:(NSInteger)stockID{
+    GoodsInfoEntity *ent = nil;
+    for(GoodsInfoEntity *entity in _model.data){
+        if(entity.stockID == stockID){
+            ent = entity;
+        }
+    }
+    return ent;
 }
 
 -(void)backToLastPage{

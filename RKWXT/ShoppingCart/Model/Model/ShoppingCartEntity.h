@@ -16,6 +16,8 @@
 @property (nonatomic,strong) NSString *smallImg;  //商品小图
 @property (nonatomic,assign) CGFloat goods_price; //商品价格
 @property (nonatomic,assign) NSInteger goods_Number;  //商品数量
+@property (nonatomic,assign) NSInteger stockID;     //属性组合主键ID
+@property (nonatomic,strong) NSString *stockName;   //属性组合名字
 
 @property (nonatomic,assign) BOOL selected;
 

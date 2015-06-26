@@ -84,6 +84,12 @@
         case WXT_UrlFeed_Type_NewMall_ShoppingCart:
             url = @"/get_shopping_cart.php";
             break;
+        case WXT_UrlFeed_Type_NewMall_UserAddress:
+            url = @"/get_user_address.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_MakeOrder:
+            url = @"/insert_order.php";
+            break;
         default:
             break;
     }
