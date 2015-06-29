@@ -7,6 +7,7 @@
 //
 
 #import "OverdueCell.h"
+#import "UserBonusEntity.h"
 
 #define cellHeight (59)
 
@@ -55,12 +56,12 @@
         [self.contentView addSubview:_datelaebl];
         
         CGFloat xGap = 17;
-        CGFloat btnWidth = 50;
+        CGFloat btnWidth = 60;
         CGFloat btnHeight = 28;
         WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(self.bounds.size.width-xGap-btnWidth, (cellHeight-btnHeight)/2, btnWidth, btnHeight);
         [btn setBackgroundColor:[UIColor clearColor]];
-        [btn setTitle:@"已过期" forState:UIControlStateNormal];
+        [btn setTitle:@"不可领取" forState:UIControlStateNormal];
         [btn.titleLabel setFont:WXFont(15.0)];
         [btn setTitleColor:WXColorWithInteger(0x686868) forState:UIControlStateNormal];
         [self.contentView addSubview:btn];
@@ -69,8 +70,23 @@
 }
 
 -(void)load{
-    [_moneyLabel setText:@"6"];
-    [_datelaebl setText:@"2015年10月20日之前有效"];
+    UserBonusEntity *entity = self.cellInfo;
+    NSString *moneyStr = [NSString stringWithFormat:@"%ld",(long)entity.bonusValue];
+    [_moneyLabel setText:moneyStr];
+    [_datelaebl setText:[self bonusDescriptionWithEnt:entity]];
+}
+
+-(NSString *)bonusDescriptionWithEnt:(UserBonusEntity*)entity{
+    NSString *desc = nil;
+    if(entity.begin_time > [UtilTool timeChange]){  //开始领取时间大于当前时间
+        desc = [NSString stringWithFormat:@"%@日开始领取",[UtilTool getDateTimeFor:entity.begin_time type:2]];
+        return desc;
+    }
+    if(entity.end_time < [UtilTool timeChange]){
+        desc = @"红包已过期";
+        return desc;
+    }
+    return @"红包已领取";
 }
 
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{

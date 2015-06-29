@@ -21,8 +21,7 @@
 #import "LoginModel.h"
 #import "WXTUITabbarVC.h"
 #import "CallViewController.h"
-#import "SCartListModel.h"
-#import "UserAddressModel.h"
+#import "NewWXTLiDB.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -77,9 +76,6 @@
     //自动登录通知
     [self addNotification];
     
-    [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
-    [[UserAddressModel shareUserAddress] loadUserAddress];
-
 	return YES;
 }
 
@@ -105,6 +101,7 @@
         [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];
         
+        [[NewWXTLiDB sharedWXLibDB] loadData];  //暂时用
         //自动登录
 //        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
 //        LoginModel *_loginModel = [[LoginModel alloc] init];
@@ -119,6 +116,7 @@
 }
 
 -(void)loginSucceed:(NSNotification*)notification{
+    [[NewWXTLiDB sharedWXLibDB] loadData];
     [self removeNotification];
 }
 

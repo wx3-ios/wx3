@@ -1958,6 +1958,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D002A4E5C49833F1CBDFD1F /* Pods-EGODatabase-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-EGODatabase/Pods-EGODatabase-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1974,6 +1978,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F2F4A9C2E5587D4A03F5FC2 /* Pods-MBProgressHUD-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1990,6 +1998,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 823FD9775A719CDC9066CD35 /* Pods-CocoaLumberjack-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-CocoaLumberjack/Pods-CocoaLumberjack-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2006,6 +2018,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DABAFA9383570C0F451B9225 /* Pods-Toast-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Toast/Pods-Toast-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2022,6 +2038,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADB9494A73A527E4CDD23D34 /* Pods-Reachability-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Reachability/Pods-Reachability-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2038,6 +2058,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FFD2E8ACB6FC8D1635A5BCF2 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -2054,6 +2078,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0EDB322C677891E806E379AC /* Pods-RegexKitLite-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-RegexKitLite/Pods-RegexKitLite-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2070,6 +2098,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 82412A36E0B3EBA0CCB944B8 /* Pods-AFNetworking-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-AFNetworking/Pods-AFNetworking-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2120,6 +2152,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D002A4E5C49833F1CBDFD1F /* Pods-EGODatabase-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-EGODatabase/Pods-EGODatabase-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2136,6 +2172,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 871C6914460865296679EFBD /* Pods-IQKeyboardManager-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-IQKeyboardManager/Pods-IQKeyboardManager-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2191,6 +2231,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A9FD0BDF691FFE711EB8B72A /* Pods-KVOController-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-KVOController/Pods-KVOController-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2207,6 +2251,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 401C1F44867ECCCB1E0426A1 /* Pods-XHRealTimeBlur-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-XHRealTimeBlur/Pods-XHRealTimeBlur-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2223,6 +2271,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A205ED33B7E6016A5EFB051 /* Pods-SSZipArchive-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-SSZipArchive/Pods-SSZipArchive-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2239,6 +2291,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8603261D72D87647689498F6 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -2255,6 +2311,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84ADC54BEEAC8D48AA11E6CE /* Pods-pop-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-pop/Pods-pop-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2271,6 +2331,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADB9494A73A527E4CDD23D34 /* Pods-Reachability-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Reachability/Pods-Reachability-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2287,6 +2351,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 823FD9775A719CDC9066CD35 /* Pods-CocoaLumberjack-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-CocoaLumberjack/Pods-CocoaLumberjack-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2303,6 +2371,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 82412A36E0B3EBA0CCB944B8 /* Pods-AFNetworking-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-AFNetworking/Pods-AFNetworking-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2319,6 +2391,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A205ED33B7E6016A5EFB051 /* Pods-SSZipArchive-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-SSZipArchive/Pods-SSZipArchive-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2335,6 +2411,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 401C1F44867ECCCB1E0426A1 /* Pods-XHRealTimeBlur-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-XHRealTimeBlur/Pods-XHRealTimeBlur-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2351,6 +2431,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DABAFA9383570C0F451B9225 /* Pods-Toast-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Toast/Pods-Toast-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2367,6 +2451,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F2F4A9C2E5587D4A03F5FC2 /* Pods-MBProgressHUD-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2383,6 +2471,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0EDB322C677891E806E379AC /* Pods-RegexKitLite-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-RegexKitLite/Pods-RegexKitLite-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2399,6 +2491,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84ADC54BEEAC8D48AA11E6CE /* Pods-pop-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-pop/Pods-pop-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2415,6 +2511,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 871C6914460865296679EFBD /* Pods-IQKeyboardManager-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-IQKeyboardManager/Pods-IQKeyboardManager-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2431,6 +2531,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A9FD0BDF691FFE711EB8B72A /* Pods-KVOController-Private.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-KVOController/Pods-KVOController-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

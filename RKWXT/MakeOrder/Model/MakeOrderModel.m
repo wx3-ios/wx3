@@ -12,6 +12,7 @@
 #import "GoodsInfoEntity.h"
 #import "UserAddressModel.h"
 #import "AddressEntity.h"
+#import "NSObject+SBJson.h"
 
 @interface MakeOrderModel(){
     NSMutableArray *_dataList;
@@ -74,6 +75,16 @@
             }
         }
     }];
+}
+
+//暂时不用
+-(NSArray*)changeTypeWithOldArr:(NSArray*)oldArr{
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for(NSDictionary *dic in oldArr){
+        NSString *str = [dic JSONRepresentation];
+        [arr addObject:str];
+    }
+    return arr;
 }
 
 -(AddressEntity *)addressEntity{

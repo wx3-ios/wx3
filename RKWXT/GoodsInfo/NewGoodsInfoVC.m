@@ -485,6 +485,10 @@
 }
 
 -(void)toMakeOrder{
+    if(rightView.stockID<=0){
+        [UtilTool showAlertView:@"请先选择套餐"];
+        return;
+    }
     NSMutableArray *goodsArr = [[NSMutableArray alloc] init];
     GoodsInfoEntity *entity = [self priceForStock:rightView.stockID];
     entity.buyNumber = (rightView.goodsNum<=0?1:rightView.goodsNum);

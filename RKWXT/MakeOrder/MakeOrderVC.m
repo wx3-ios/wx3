@@ -10,6 +10,7 @@
 #import "MakeOrderDef.h"
 #import "MakeOrderModel.h"
 #import "GoodsInfoEntity.h"
+#import "OrderPayVC.h"
 
 #define Size self.bounds.size
 #define DownViewHeight (59)
@@ -18,6 +19,8 @@
     UITableView *_tableView;
     MakeOrderModel *_model;
     BOOL userBonus;
+    
+    CGFloat allGoodsMoney;
 }
 @property (nonatomic,strong) NSString *userMessage;
 @end
@@ -379,8 +382,9 @@
     for(GoodsInfoEntity *entity in _goodsList){
         NSDictionary *dic = [self goodsDicWithEntity:entity];
         [arr addObject:dic];
+//        [arr addObject:dic];
     }
-    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsOldMoney] withRedPacket:1 withRemark:self.userMessage withGoodsList:arr];
+    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsOldMoney] withRedPacket:1 withRemark:(self.userMessage.length==0?@"无":self.userMessage) withGoodsList:arr];
 }
 
 -(NSDictionary*)goodsDicWithEntity:(GoodsInfoEntity*)entity{
@@ -399,11 +403,19 @@
     for(GoodsInfoEntity *entity in _goodsList){
         price += entity.buyNumber*entity.stockPrice;
     }
+    allGoodsMoney = price;
     return price;
 }
 
 -(void)makeOrderSucceed{
+    [UtilTool showAlertView:@"下单成功"];
     [self unShowWaitView];
+    if(allGoodsMoney == 0){
+        return;
+    }
+    OrderPayVC *payVC = [[OrderPayVC alloc] init];
+    payVC.payMoney = allGoodsMoney;
+    [self.wxNavigationController pushViewController:payVC];
 }
 
 -(void)makeOrderFailed:(NSString *)errorMsg{
@@ -411,6 +423,7 @@
     if(!errorMsg){
         errorMsg = @"下单失败,请重试";
     }
+    [UtilTool showAlertView:errorMsg];
     return;
 }
 

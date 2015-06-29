@@ -14,6 +14,6 @@
 @end
 
 @protocol ReceiveBonusDelegate <NSObject>
--(void)receiveBonus;
+-(void)receiveBonus:(id)sender;
 
 @end

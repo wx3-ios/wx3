@@ -15,6 +15,7 @@
 #import "RegistVC.h"
 #import "WXTDatabase.h"
 #import "WXTUITabbarVC.h"
+#import "NewWXTLiDB.h"
 
 #define Size self.bounds.size
 #define kLoginBigImgViewheight (220)
@@ -393,11 +394,11 @@
     [userDefault setPwd:_pwdTextField.text];
     
     WXTUITabbarVC *tabbar = [[WXTUITabbarVC alloc] init];
-//    [tabbar createViewController];
     WXUINavigationController *nav = [[WXUINavigationController alloc] initWithRootViewController:tabbar];
     [self presentViewController:nav animated:YES completion:^{
         WXTDatabase * database = [WXTDatabase shareDatabase];
         [database createDatabase:userDefault.wxtID];
+        [[NewWXTLiDB sharedWXLibDB] loadData];
     }];
 }
 

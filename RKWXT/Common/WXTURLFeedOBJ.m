@@ -90,6 +90,12 @@
         case WXT_UrlFeed_Type_NewMall_MakeOrder:
             url = @"/insert_order.php";
             break;
+        case WXT_UrlFeed_Type_New_UserBonus:
+            url = @"/get_red_packet.php";
+            break;
+        case WXT_UrlFeed_Type_New_GainBonus:
+            url = @"/get_receive_red_packet.php";
+            break;
         default:
             break;
     }

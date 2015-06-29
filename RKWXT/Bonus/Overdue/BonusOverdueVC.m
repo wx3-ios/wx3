@@ -8,13 +8,20 @@
 
 #import "BonusOverdueVC.h"
 #import "OverdueCell.h"
+#import "UserBonusModel.h"
 
 @interface BonusOverdueVC()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
+    NSArray *denyBonusArr;
 }
 @end
 
 @implementation BonusOverdueVC
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self addOBS];
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -27,14 +34,33 @@
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    BOOL shouldLoad = [[UserBonusModel shareUserBonusModel] shouldDataReload];
+    if(shouldLoad){
+        [[UserBonusModel shareUserBonusModel] loadUserBonus];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    }else{
+        denyBonusArr = [UserBonusModel shareUserBonusModel].denyBonusArr;
+    }
+}
+
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(loadBonusSucceed) name:K_Notification_UserBonus_LoadDateSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadBonusFailed:) name:K_Notification_UserBonus_LoadDateFailed object:nil];
+    [notificationCenter addObserver:self selector:@selector(gainBonusSucceed) name:K_Notification_UserBonus_GainBonusSucceed object:nil];
+}
+
+-(void)removeObs{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return [denyBonusArr count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [OverdueCell cellHeightOfInfo:nil];
+    return 60.0;
 }
 
 -(WXUITableViewCell *)tableViewForReceiveCell:(NSInteger)row{
@@ -44,6 +70,7 @@
         cell = [[OverdueCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setCellInfo:[denyBonusArr objectAtIndex:row]];
     [cell load];
     return cell;
 }
@@ -57,6 +84,34 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark userbonus
+-(void)loadBonusSucceed{
+    [self unShowWaitView];
+    denyBonusArr = [UserBonusModel shareUserBonusModel].denyBonusArr;
+    [_tableView reloadData];
+}
+
+-(void)loadBonusFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *message = notification.object;
+    if(!message){
+        message = @"获取红包数据失败";
+    }
+    [UtilTool showAlertView:message];
+}
+
+#pragma mark 领取红包
+-(void)gainBonusSucceed{
+    [self unShowWaitView];
+    denyBonusArr = [UserBonusModel shareUserBonusModel].denyBonusArr;
+    [_tableView reloadData];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self removeObs];
 }
 
 @end

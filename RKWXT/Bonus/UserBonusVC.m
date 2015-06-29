@@ -43,7 +43,7 @@ enum{
     [tabedSlideView setTabbarBottomSpacing:3.0];
     
     DLTabedbarItem *item1 = [DLTabedbarItem itemWithTitle:@"可领取" image:nil selectedImage:nil];
-    DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"已过期" image:nil selectedImage:nil];
+    DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"不可领取" image:nil selectedImage:nil];
     
     [tabedSlideView setTabbarItems:@[item1,item2]];
     [tabedSlideView buildTabbar];

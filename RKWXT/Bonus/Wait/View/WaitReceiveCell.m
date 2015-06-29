@@ -7,6 +7,7 @@
 //
 
 #import "WaitReceiveCell.h"
+#import "UserBonusEntity.h"
 
 #define cellHeight (59)
 
@@ -70,13 +71,26 @@
 }
 
 -(void)load{
-    [_moneyLabel setText:@"60"];
-    [_datelaebl setText:@"2015年10月20日之前有效"];
+    UserBonusEntity *entity = self.cellInfo;
+    NSString *money = [NSString stringWithFormat:@"%ld",(long)entity.bonusValue];
+    [_moneyLabel setText:money];
+    NSString *dateStr = [NSString stringWithFormat:@"%@之前有效",[self canLoadUserBonusDate:entity.end_time]];
+    [_datelaebl setText:dateStr];
+}
+
+-(NSString*)canLoadUserBonusDate:(NSInteger)date{
+    if(date < [UtilTool timeChange]){
+        return nil;
+    }
+    NSString *dateStr = nil;
+    dateStr = [UtilTool getDateTimeFor:date type:2];
+    return dateStr;
 }
 
 -(void)receive{
-    if(_delegate && [_delegate respondsToSelector:@selector(receiveBonus)]){
-        [_delegate receiveBonus];
+    UserBonusEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(receiveBonus:)]){
+        [_delegate receiveBonus:entity];
     }
 }
 
