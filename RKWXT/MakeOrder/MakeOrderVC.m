@@ -19,6 +19,7 @@
     UITableView *_tableView;
     MakeOrderModel *_model;
     BOOL userBonus;
+    NSInteger _bonus;
     
     CGFloat allGoodsMoney;
 }
@@ -55,6 +56,13 @@
     [self addSubview:[self createDownView]];
     
     [self addNotification];
+    [self censusBonusValue];
+}
+
+-(void)censusBonusValue{
+    for(GoodsInfoEntity *entity in _goodsList){
+        _bonus += entity.stockBonus*entity.buyNumber;
+    }
 }
 
 -(void)addNotification{
@@ -254,16 +262,22 @@
         cell = [[MakeOrderUseBonusCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setCellInfo:[NSString stringWithFormat:@"%ld",(long)_bonus]];
     [cell load];
     return cell;
 }
 
 //商品价格
 -(WXUITableViewCell*)tableViewForGoodsMoneyInfoAtRow:(NSInteger)row{
-    static NSString *identifier = @"moneyCell1";
+    static NSString *identifier = @"allMoneyCell";
     MakeOrderGoodsMoneyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[MakeOrderGoodsMoneyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    if(userBonus){
+        [cell setBonusMoney:_bonus];
+    }else{
+        [cell setBonusMoney:0];
     }
     [cell setCellInfo:_goodsList];
     [cell load];
@@ -271,10 +285,15 @@
 }
 
 -(WXUITableViewCell*)tableViewForAllGoodsMoneyAtRow:(NSInteger)row{
-    static NSString *identifier = @"moneyCell1";
+    static NSString *identifier = @"totalMoneyCell";
     MakeOrderAllGoodsMoneyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[MakeOrderAllGoodsMoneyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    if(userBonus){
+        [cell setBonusMoney:_bonus];
+    }else{
+        [cell setBonusMoney:0];
     }
     [cell setCellInfo:_goodsList];
     [cell load];
@@ -373,6 +392,7 @@
 -(void)switchValueChanged{
     userBonus = !userBonus;
     [self didSelectCellRowFirstDo:userBonus];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark submit
@@ -384,7 +404,7 @@
         [arr addObject:dic];
 //        [arr addObject:dic];
     }
-    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsOldMoney] withRedPacket:1 withRemark:(self.userMessage.length==0?@"无":self.userMessage) withGoodsList:arr];
+    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:_bonus withRemark:(self.userMessage.length==0?@"无":self.userMessage) withGoodsList:arr];
 }
 
 -(NSDictionary*)goodsDicWithEntity:(GoodsInfoEntity*)entity{
@@ -398,13 +418,23 @@
     return dic;
 }
 
+//订单总金额
 -(CGFloat)allGoodsOldMoney{
     CGFloat price = 0.0;
     for(GoodsInfoEntity *entity in _goodsList){
         price += entity.buyNumber*entity.stockPrice;
     }
     allGoodsMoney = price;
+    
     return price;
+}
+//订单应付金额
+-(CGFloat)allGoodsTotalMoney{
+    CGFloat totalMoney = [self allGoodsOldMoney];
+    if(userBonus){
+        totalMoney -= _bonus;
+    }
+    return totalMoney;
 }
 
 -(void)makeOrderSucceed{
@@ -414,7 +444,7 @@
         return;
     }
     OrderPayVC *payVC = [[OrderPayVC alloc] init];
-    payVC.payMoney = allGoodsMoney;
+    payVC.payMoney = [self allGoodsTotalMoney];
     [self.wxNavigationController pushViewController:payVC];
 }
 

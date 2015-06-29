@@ -161,7 +161,7 @@
 //    NSString *oldPrice = [NSString stringWithFormat:@"￥%.2f",entity.market_price];
 //    [_oldPrice setText:@"3000"];
     
-    [self setCircleBtnImgWith:NO];
+    [self setCircleBtnImgWith:entity.selected];
 }
 
 -(void)setGoodsInfo:(id)entity{
@@ -205,13 +205,18 @@
 
 -(void)plusBtnClick{
     number++;
-    NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
-    [_numberLabel setText:str];
     ShoppingCartEntity *entity = self.cellInfo;
+    if(number>entity.stock_number){
+        number--;
+        [UtilTool showAlertView:@"对不起，库存不足"];
+        return;
+    }
     entity.goods_Number = number;
     if(_delegate && [_delegate respondsToSelector:@selector(plusBtnClicked)]){
         [_delegate plusBtnClicked];
     }
+    NSString *str = [NSString stringWithFormat:@"%ld",(long)number];
+    [_numberLabel setText:str];
 }
 
 -(void)minusBtnClick{

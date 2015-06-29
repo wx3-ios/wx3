@@ -18,6 +18,8 @@
 @property (nonatomic,assign) NSInteger goods_Number;  //商品数量
 @property (nonatomic,assign) NSInteger stockID;     //属性组合主键ID
 @property (nonatomic,strong) NSString *stockName;   //属性组合名字
+@property (nonatomic,assign) CGFloat bonusValue; //当前商品可以使用红包金额
+@property (nonatomic,assign) NSInteger stock_number; //库存
 
 @property (nonatomic,assign) BOOL selected;
 

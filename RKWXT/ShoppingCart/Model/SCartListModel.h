@@ -14,7 +14,7 @@
 #define D_Notification_DeleteOneGoodsInShoppingCartList_Failed  @"D_Notification_DeleteOneGoodsInShoppingCartList_Failed"
 
 @interface SCartListModel : T_HPSubBaseModel
-@property (nonatomic,readonly) NSArray *shoppingCartListArr;
+@property (nonatomic,strong) NSArray *shoppingCartListArr;
 
 +(SCartListModel*)shareShoppingCartModel;
 -(void)loadShoppingCartList;

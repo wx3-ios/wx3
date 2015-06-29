@@ -72,7 +72,9 @@
     }
     NSString *str = [NSString stringWithFormat:@"￥%.2f",price];
     [_money setText:str];
-    [_bonus setText:@"-0"];
+    
+    NSString *bonusStr = [NSString stringWithFormat:@"-%ld",(long)_bonusMoney];
+    [_bonus setText:bonusStr];
 }
 
 @end

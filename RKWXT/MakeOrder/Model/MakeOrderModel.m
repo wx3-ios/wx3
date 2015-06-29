@@ -39,7 +39,7 @@
     return self.status == E_ModelDataStatus_Init || self.status == E_ModelDataStatus_LoadFailed;
 }
 
--(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(CGFloat)packet withRemark:(NSString *)remark withGoodsList:(NSArray *)goodsList{
+-(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString *)remark withGoodsList:(NSArray *)goodsList{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     AddressEntity *entity = [self addressEntity];
@@ -56,7 +56,7 @@
                          entity.address, @"address",
                          [NSNumber numberWithFloat:allMoney], @"order_total_money",
                          [NSNumber numberWithFloat:totalMoney], @"total_fee",
-                         [NSNumber numberWithFloat:packet], @"red_packet",
+                         [NSNumber numberWithInt:(int)packet], @"red_packet",
                          goodsList, @"goods",
                          remark, @"remark",
                          nil];

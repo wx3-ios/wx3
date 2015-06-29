@@ -31,6 +31,7 @@
 @property (nonatomic,strong) NSString *stockName;  //库存属性组合
 @property (nonatomic,assign) CGFloat stockPrice;   //组合价格
 @property (nonatomic,assign) NSInteger stockNumber; //组合库存数量
+@property (nonatomic,assign) NSInteger stockBonus; //商品可用红包
 
 @property (nonatomic,assign) BOOL selested;
 @property (nonatomic,assign) NSInteger buyNumber;

@@ -13,7 +13,7 @@
 @interface MakeOrderModel : T_HPSubBaseModel
 @property (nonatomic,assign) id<MakeOrderDelegate>delegate;
 
--(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(CGFloat)packet withRemark:(NSString*)remark withGoodsList:(NSArray*)goodsList;
+-(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString*)remark withGoodsList:(NSArray*)goodsList;
 @end
 
 @protocol MakeOrderDelegate <NSObject>

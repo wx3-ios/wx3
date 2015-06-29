@@ -8,6 +8,7 @@
 
 #import "MakeOrderUseBonusCell.h"
 #import "MakeOrderDef.h"
+#import "GoodsInfoEntity.h"
 
 @interface MakeOrderUseBonusCell(){
     UILabel *_useBonus;
@@ -68,8 +69,10 @@
 }
 
 -(void)load{
-    [_useBonus setText:@"50"];
-    [_money setText:@"抵用金额50元"];
+    NSInteger bonus = [self.cellInfo integerValue];
+    NSString *bonusStr = [NSString stringWithFormat:@"%ld",(long)bonus];
+    [_useBonus setText:bonusStr];
+    [_money setText:[NSString stringWithFormat:@"抵用金额%@元",bonusStr]];
 }
 
 - (CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{

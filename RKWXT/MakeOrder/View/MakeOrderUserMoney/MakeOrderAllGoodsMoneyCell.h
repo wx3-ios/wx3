@@ -9,5 +9,6 @@
 #import "WXUITableViewCell.h"
 
 @interface MakeOrderAllGoodsMoneyCell : WXUITableViewCell
+@property (nonatomic,assign) NSInteger bonusMoney;
 
 @end

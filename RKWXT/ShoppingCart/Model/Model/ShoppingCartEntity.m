@@ -46,6 +46,12 @@
         
         NSString *stockName = [dic objectForKey:@"goods_stock_name"];
         [self setStockName:stockName];
+        
+        CGFloat redPacket = [[dic objectForKey:@"is_use_red"] floatValue];
+        [self setBonusValue:redPacket];
+        
+        NSInteger stockNumber = [[dic objectForKey:@"stock_number"] integerValue];
+        [self setStock_number:stockNumber];
     }
     return self;
 }

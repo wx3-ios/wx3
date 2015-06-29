@@ -56,9 +56,11 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-//    _model.goodID = _goodsId;
-    _model.goodID = 1;
-    [_model loadGoodsInfo];
+    if(_goodsId>2){
+        _goodsId = 1;
+    }
+    _model.goodID = _goodsId;
+    [_model loadGoodsInfo:_model.goodID];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     
     CGSize size = self.bounds.size;
@@ -477,6 +479,7 @@
                          rightView.stockName, @"goods_stock_name",
                          nil];
     [[SCartListModel shareShoppingCartModel] insertOneGoodsInShoppingCartList:dic];
+    [[SCartListModel shareShoppingCartModel] toInit];
 }
 
 -(void)addGoodsToShoppingCartFailed:(NSString *)errorMsg{

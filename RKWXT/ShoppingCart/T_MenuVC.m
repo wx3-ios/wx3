@@ -11,6 +11,7 @@
 #import "T_MenuCommonInfoCell.h"
 #import "SCartListModel.h"
 #import "ShoppingCartEntity.h"
+#import "GoodsInfoEntity.h"
 
 #define FootViewheight (40)
 
@@ -19,6 +20,7 @@
     NSInteger _cartID;
     
     SCartListModel *_model;
+    NSArray *_cartList;
     
     WXUIButton *_circleBtn;
     WXUILabel *_sumPrice;
@@ -45,6 +47,7 @@
 
 -(id)init{
     if(self = [super init]){
+        _cartList = [[[NSArray alloc] init] autorelease];
     }
     return self;
 }
@@ -72,11 +75,9 @@
     [self addSubview:[self tableViewForFootView]];
     
     [self addObs];
-    if([[SCartListModel shareShoppingCartModel] shouldDataReload]){
-        [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
-        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@"努力加载中..."];
-    }else{
-    }
+    [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@"努力加载中..."];
+//    _cartList = [SCartListModel shareShoppingCartModel].shoppingCartListArr;
 }
 
 -(void)addObs{
@@ -91,7 +92,7 @@
 }
 
 -(WXUIView*)tableViewForFootView{
-//    if([[SCartListModel shareShoppingCartModel].shoppingCartListArr count] == 0){
+//    if([_cartList count] == 0){
 //        return nil;
 //    }
     CGSize size = self.bounds.size;
@@ -180,7 +181,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[SCartListModel shareShoppingCartModel].shoppingCartListArr count];
+    return [_cartList count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -194,7 +195,7 @@
         cell = [[[T_MenuCommonInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
     [cell setDelegate:self];
-    [cell setCellInfo:[[SCartListModel shareShoppingCartModel].shoppingCartListArr objectAtIndex:row]];
+    [cell setCellInfo:[_cartList objectAtIndex:row]];
     [cell load];
     return cell;
 }
@@ -218,12 +219,16 @@
 //
 -(void)loadCartDataSucceed{
     [self unShowWaitView];
+    _cartList = [SCartListModel shareShoppingCartModel].shoppingCartListArr;
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)loadCartDataFailed:(NSNotification*)notification{
-    NSString *errorStr = notification.object;
     [self unShowWaitView];
+    NSString *errorStr = notification.object;
+    if(!errorStr){
+        errorStr = @"加载失败";
+    }
     [UtilTool showAlertView:errorStr];
 }
 
@@ -238,7 +243,7 @@
     if(buttonIndex == 0){
         return;
     }
-    for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
+    for(ShoppingCartEntity *entity in _cartList){
         if(entity.cart_id == _cartID){
             [[SCartListModel shareShoppingCartModel] deleteOneGoodsInShoppingCartList:_cartID];
             [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
@@ -249,16 +254,14 @@
 
 -(void)deleteOneGoodsSucceed{
     [self unShowWaitView];
-    for(int i = 0;i < [[SCartListModel shareShoppingCartModel].shoppingCartListArr count]; i++){
-        ShoppingCartEntity *ent = [[SCartListModel shareShoppingCartModel].shoppingCartListArr objectAtIndex:i];
-        if(ent.cart_id == _cartID){
-            [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        }
-    }
-    if([[SCartListModel shareShoppingCartModel].shoppingCartListArr count] == 0){
-        [_tableView reloadData];
-    }
+//    for(int i = 0;i < [_cartList count]; i++){
+//        ShoppingCartEntity *ent = [_cartList objectAtIndex:i];
+//        if(ent.cart_id == _cartID){
+//            [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//        }
+//    }
+    [_tableView reloadData];
     [self setSumPricelabel];
 }
 
@@ -295,7 +298,7 @@
 -(void)setSumPricelabel{
     _allPrice = 0.0;
     _allNumber = 0;
-    for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
+    for(ShoppingCartEntity *entity in _cartList){
         if(entity.selected){
             _allPrice += entity.goods_Number*entity.goods_price;
             _allNumber += entity.goods_Number;
@@ -315,7 +318,7 @@
         _selectAll = YES;
         [_circleBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
     }
-    for(ShoppingCartEntity *entity in [SCartListModel shareShoppingCartModel].shoppingCartListArr){
+    for(ShoppingCartEntity *entity in _cartList){
         entity.selected = _selectAll;
     }
     T_MenuCommonInfoCell *cell = [[[T_MenuCommonInfoCell alloc] init] autorelease];
@@ -326,26 +329,38 @@
 
 //结算
 -(void)settleAccountAllGoods{
-//    [_menuArr removeAllObjects];
-//    for(T_GoodInfoEntity *entity in _arr){
-//        if(entity.selested){
-//            WXUIGoodEntity *ent = [WXUIGoodEntity menuEntityWithT_GoodInfoEntity:entity];
-//            [_menuArr addObject:ent];
-//        }
-//    }
-//    [[CoordinateController sharedCoordinateController] toOrderConfirm:self delegate:self source:E_OrderMenuSource_None goodList:_menuArr goodExtra:[[self class] menuExtra]];
+    NSMutableArray *goodsArr = [[[NSMutableArray alloc] init] autorelease];
+    for(ShoppingCartEntity *entity1 in _cartList){
+        if(entity1.selected){
+            GoodsInfoEntity *entity = [self goodsEntityWithCartData:entity1];
+            [goodsArr addObject:entity];
+        }
+    }
+    if([goodsArr count] == 0){
+        [UtilTool showAlertView:@"商品不能为空"];
+        return;
+    }
+    [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];
 }
-//
-//+(MenuExtra*)menuExtra{
-//    MenuExtra *extra = [[[MenuExtra alloc] init] autorelease];
-//    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-//    extra.UID = -1;
-//    extra.subShopID = userObj.subShopID;
-//    extra.subShopName = userObj.subShopName;
-//    extra.time = [[NSDate date] timeIntervalSince1970];
-//    extra.menuType = E_MenuType_FaceToFace;
-//    return extra;
-//}
+
+-(GoodsInfoEntity*)goodsEntityWithCartData:(ShoppingCartEntity*)ent{
+    if(!ent){
+        return nil;
+    }
+    GoodsInfoEntity *entity = [[[GoodsInfoEntity alloc] init] autorelease];
+    entity.goods_id = ent.goods_id;
+    entity.intro = ent.goods_name;
+    entity.smallImg = ent.smallImg;
+    entity.stockPrice = ent.goods_price;
+    entity.buyNumber = ent.goods_Number;
+    entity.stockID = ent.stockID;
+    entity.stockName = ent.stockName;
+    entity.stockBonus = ent.bonusValue;
+    entity.stockNumber = ent.stock_number;
+    if(entity.stockNumber < ent.goods_Number){
+        [UtilTool showAlertView:[NSString stringWithFormat:@"%@库存已不足",entity.intro]];
+    }
+    return entity;
+}
 
 @end
-
