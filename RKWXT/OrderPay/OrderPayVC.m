@@ -10,6 +10,7 @@
 #import "OrderAlipayCell.h"
 #import "OrderWechatCell.h"
 #import "OrderPayMoneyCell.h"
+#import "AliPayControl.h"
 
 #define size self.bounds.size
 
@@ -39,6 +40,11 @@ enum{
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+}
+
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(alipaySucceed) name:D_Notification_Name_AliPaySucceed object:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -126,6 +132,22 @@ enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.section) {
+        case OrderPay_Section_Alipay:
+            [self alipay];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark alipay
+-(void)alipay{
+    [[AliPayControl sharedAliPayOBJ] alipayOrderID:@"123456100" title:@"我信云科技" amount:0.01 phpURL:@"" payTag:nil];
+}
+
+-(void)alipaySucceed{
 }
 
 @end

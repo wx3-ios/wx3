@@ -128,7 +128,7 @@
     WXTUIButton *btn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake((Size.width-btnWidth)/2, yOffset, btnWidth, btnHeight);
     [btn setBorderRadian:10.0 width:0.5 color:[UIColor clearColor]];
-    [btn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateNormal];
+    [btn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];
     [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
     [btn setTitle:@"刷新重试" forState:UIControlStateNormal];
     [btn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];

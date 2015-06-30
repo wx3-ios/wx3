@@ -33,6 +33,7 @@ enum{
     BOOL reload = [[UserAddressModel shareUserAddress] shouldDataReload];
     if(reload){
         [[UserAddressModel shareUserAddress] loadUserAddress];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     }else{
         _addListArr = [UserAddressModel shareUserAddress].userAddressArr;
         [_tableView reloadData];
@@ -112,6 +113,7 @@ enum{
     if(!cell){
         cell = [[AddressBaseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if(row == Address_Manager){
         cell = (AddressBaseInfoCell*)[self tableViewForManagerAddress:section];
     }else{
@@ -135,6 +137,7 @@ enum{
     if(!cell){
         cell = [[AddressManagerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setDelegate:self];
     [cell setCellInfo:_addListArr[section]];
     [cell load];

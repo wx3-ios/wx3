@@ -494,6 +494,10 @@
     }
     NSMutableArray *goodsArr = [[NSMutableArray alloc] init];
     GoodsInfoEntity *entity = [self priceForStock:rightView.stockID];
+    if(entity.stockNumber==0){
+        [UtilTool showAlertView:@"该套餐已售完"];
+        return;
+    }
     entity.buyNumber = (rightView.goodsNum<=0?1:rightView.goodsNum);
     [goodsArr addObject:entity];
     [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];

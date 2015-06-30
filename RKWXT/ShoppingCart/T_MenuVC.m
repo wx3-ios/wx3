@@ -194,6 +194,7 @@
     if(!cell){
         cell = [[[T_MenuCommonInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setDelegate:self];
     [cell setCellInfo:[_cartList objectAtIndex:row]];
     [cell load];

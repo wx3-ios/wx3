@@ -96,6 +96,9 @@
         case WXT_UrlFeed_Type_New_GainBonus:
             url = @"/get_receive_red_packet.php";
             break;
+        case WXT_UrlFeed_Type_New_LoadUserBonus:
+            url = @"/get_user_red_packet.php";
+            break;
         default:
             break;
     }

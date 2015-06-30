@@ -33,7 +33,7 @@
 }
 
 + (NSString*)aliURLSchemes{
-	return [NSString stringWithFormat:@"%@%d",kAliPayScheme,(int)kMerchantID];
+	return [NSString stringWithFormat:@"%@",kAliPayScheme];
 }
 
 -(void)handleAliPayResult:(AlixPayResult*)result{
@@ -72,13 +72,13 @@
 	aliPayOrder.seller = SellerID;
 	
 	aliPayOrder.productName = title; //商品标题
-	aliPayOrder.productDescription = [WXUserOBJ sharedUserOBJ].user; //商品描述
+	aliPayOrder.productDescription = @"1861313051"; //商品描述
 	aliPayOrder.amount = [NSString stringWithFormat:@"%.2f",amount]; //商品价格
-	aliPayOrder.notifyURL =  phpURL; //回调URL
+	aliPayOrder.notifyURL =  D_AliPayCallBackURLForUser; //回调URL
 	aliPayOrder.tradeNO = orderID;
 	
-	NSString* orderInfo = [aliPayOrder description];
-	NSString* signedStr = [self doRsa:orderInfo];
+	NSString *orderInfo = [aliPayOrder description];
+	NSString *signedStr = [self doRsa:orderInfo];
 	NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
 							 orderInfo, signedStr, @"RSA"];
 	NSString *appScheme = [AliPayControl aliURLSchemes];

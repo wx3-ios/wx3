@@ -50,6 +50,25 @@
     return self.status == E_ModelDataStatus_Init || self.status == E_ModelDataStatus_LoadFailed;
 }
 
+//获取红包余额
+-(void)loadUserBonusMoney{
+    [self setStatus:E_ModelDataStatus_Loading];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)kSubShopID], @"shop_id", userObj.wxtID, @"woxin_id", nil];
+    __block UserBonusModel *blockSelf = self;
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LoadUserBonus httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+        if (retData.code != 0){
+            [blockSelf setStatus:E_ModelDataStatus_LoadFailed];
+            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserBonus_UserBonusFailed object:retData.errorDesc];
+        }else{
+            [blockSelf setStatus:E_ModelDataStatus_LoadSucceed];
+            NSDictionary *dataDic = [retData.data objectForKey:@"data"];
+            _bonusMoney = [[dataDic objectForKey:@"red_packet"] integerValue];
+            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserBonus_UserBonusSucceed object:nil];
+        }
+    }];
+}
+
 //加载所有红包
 -(void)loadUserBonus{
     [self setStatus:E_ModelDataStatus_Loading];

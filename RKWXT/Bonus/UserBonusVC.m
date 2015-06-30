@@ -13,6 +13,8 @@
 #import "BonusWaitReceiveVC.h"
 #import "BonusOverdueVC.h"
 
+#import "UserBonusModel.h"
+
 enum{
     Bonus_Status_WaitReceive = 0,
     Bonus_Status_Overdue,
@@ -23,10 +25,15 @@ enum{
 @interface UserBonusVC()<DLTabedSlideViewDelegate>{
     DLTabedSlideView *tabedSlideView;
     NSInteger showNumber;
+    WXUIButton *rightBtn;
 }
 @end
 
 @implementation UserBonusVC
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -54,19 +61,36 @@ enum{
     [self addSubview:tabedSlideView];
     
     [self.view addSubview:[self rightBtn]];
+    
+    [self addOBS];
+}
+
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(loadUserBonusSucceed) name:K_Notification_UserBonus_UserBonusSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadUserBonusFailed:) name:K_Notification_UserBonus_UserBonusFailed object:nil];
+}
+
+-(void)removeOBS{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(WXUIButton*)rightBtn{
     CGFloat xgap = 8;
     CGFloat btnWidth = 70;
     CGFloat btnHeight = 16;
-    WXUIButton *rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake(self.bounds.size.width-xgap-btnWidth, 35, btnWidth, btnHeight);
     [rightBtn setBackgroundColor:[UIColor clearColor]];
-    [rightBtn setTitle:@"使用规则" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"获取余额" forState:UIControlStateNormal];
     [rightBtn setTitleColor:WXColorWithInteger(0xff9d9b) forState:UIControlStateNormal];
     [rightBtn.titleLabel setFont:WXFont(13.0)];
     [rightBtn addTarget:self action:@selector(toUseBonusRule) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
+    if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
+        [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
+    }
     return rightBtn;
 }
 
@@ -94,8 +118,31 @@ enum{
     return nil;
 }
 
+-(void)loadUserBonusSucceed{
+    [self unShowWaitView];
+    NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
+    if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
+        [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
+    }
+}
+
+-(void)loadUserBonusFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *msg = notification.object;
+    if(!msg){
+        msg = @"获取红包余额失败";
+    }
+    [UtilTool showAlertView:msg];
+}
+
 -(void)toUseBonusRule{
-    
+    [[UserBonusModel shareUserBonusModel] loadUserBonusMoney];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self removeOBS];
 }
 
 @end

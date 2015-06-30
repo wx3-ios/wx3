@@ -11,6 +11,8 @@
 #import "MakeOrderModel.h"
 #import "GoodsInfoEntity.h"
 #import "OrderPayVC.h"
+#import "ManagerAddressVC.h"
+#import "UserBonusModel.h"
 
 #define Size self.bounds.size
 #define DownViewHeight (59)
@@ -31,6 +33,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:NO animated:NO];
+    if(_tableView){
+        [_tableView reloadData];
+    }
 }
 
 -(id)init{
@@ -62,6 +67,9 @@
 -(void)censusBonusValue{
     for(GoodsInfoEntity *entity in _goodsList){
         _bonus += entity.stockBonus*entity.buyNumber;
+        if(_bonus > [UserBonusModel shareUserBonusModel].bonusMoney){
+            _bonus = [UserBonusModel shareUserBonusModel].bonusMoney;
+        }
     }
 }
 
@@ -185,6 +193,7 @@
     if(!cell){
         cell = [[MakeOrderUserInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell load];
     return cell;
 }
@@ -350,6 +359,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    switch (section) {
+        case Order_Section_UserInfo:
+        {
+            ManagerAddressVC *addressVC = [[ManagerAddressVC alloc] init];
+            [self.wxNavigationController pushViewController:addressVC];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark userMessageDelegate
@@ -404,7 +425,7 @@
         [arr addObject:dic];
 //        [arr addObject:dic];
     }
-    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:_bonus withRemark:(self.userMessage.length==0?@"无":self.userMessage) withGoodsList:arr];
+    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withGoodsList:arr];
 }
 
 -(NSDictionary*)goodsDicWithEntity:(GoodsInfoEntity*)entity{
@@ -413,7 +434,7 @@
     NSString *price = [NSString stringWithFormat:@"%f",entity.stockPrice];
     NSString *number = [NSString stringWithFormat:@"%ld",(long)entity.buyNumber];
     NSInteger length = AllImgPrefixUrlString.length;
-    NSString *smallImgStr = [entity.smallImg substringFromIndex:length-1];
+    NSString *smallImgStr = [entity.smallImg substringFromIndex:length];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:goodsID ,@"goods_id", entity.intro, @"goods_name", smallImgStr, @"goods_img", stockID, @"goods_stock_id", price, @"sales_price", number, @"sales_number", nil];
     return dic;
 }
@@ -443,6 +464,10 @@
     if(allGoodsMoney == 0){
         return;
     }
+    if(userBonus){
+        [UserBonusModel shareUserBonusModel].bonusMoney -= _bonus;
+    }
+    
     OrderPayVC *payVC = [[OrderPayVC alloc] init];
     payVC.payMoney = [self allGoodsTotalMoney];
     [self.wxNavigationController pushViewController:payVC];

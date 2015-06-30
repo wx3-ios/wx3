@@ -14,6 +14,6 @@
 //加载数据
 -(void)loadData;
 //清除数据
--(void)removeData;
+//-(void)removeData;
 
 @end

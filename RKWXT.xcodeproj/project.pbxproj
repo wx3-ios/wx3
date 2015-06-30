@@ -362,6 +362,15 @@
 		12F4BE041AE8CA3B00B9FEDA /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BDFE1AE8CA3B00B9FEDA /* MenuButton.m */; };
 		12F4BE051AE8CA3B00B9FEDA /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BE001AE8CA3B00B9FEDA /* MenuItem.m */; };
 		12F4BE061AE8CA3B00B9FEDA /* PopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */; };
+		12F571691B42253800128294 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12F571661B42253800128294 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		12F5716A1B42253800128294 /* TenpayUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12F571681B42253800128294 /* TenpayUtil.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		12F572211B42255D00128294 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F5721E1B42255D00128294 /* libWeChatSDK.a */; };
+		12F572231B42263A00128294 /* libc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F572221B42263A00128294 /* libc.dylib */; };
+		12F572251B42265600128294 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F572241B42265600128294 /* libc++.dylib */; };
+		12F572271B42267300128294 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F572261B42267300128294 /* MobileCoreServices.framework */; };
+		12F5722A1B422A2A00128294 /* WechatPayObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F572291B422A2A00128294 /* WechatPayObj.m */; };
+		12F5722F1B4274DB00128294 /* NewSystemSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F5722E1B4274DB00128294 /* NewSystemSettingVC.m */; };
+		12F572321B42766D00128294 /* T_SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F572311B42766D00128294 /* T_SettingSwitchCell.m */; };
 		12F67BAE1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F67BAD1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m */; };
 		12F67BB01B32BDA000F5BDE1 /* citySelectedImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F67BAF1B32BDA000F5BDE1 /* citySelectedImg@2x.png */; };
 		12F67BB41B32BFB400F5BDE1 /* RightGoodsStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F67BB31B32BFB400F5BDE1 /* RightGoodsStoreCell.m */; };
@@ -1229,6 +1238,22 @@
 		12F4BE001AE8CA3B00B9FEDA /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItem.m; path = ../MenuItem.m; sourceTree = "<group>"; };
 		12F4BE011AE8CA3B00B9FEDA /* PopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopMenu.h; path = RKWXT/PopView/PopMenu.h; sourceTree = SOURCE_ROOT; };
 		12F4BE021AE8CA3B00B9FEDA /* PopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopMenu.m; path = RKWXT/PopView/PopMenu.m; sourceTree = SOURCE_ROOT; };
+		12F571651B42253800128294 /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
+		12F571661B42253800128294 /* payRequsestHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = payRequsestHandler.mm; sourceTree = "<group>"; };
+		12F571671B42253800128294 /* TenpayUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenpayUtil.h; sourceTree = "<group>"; };
+		12F571681B42253800128294 /* TenpayUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TenpayUtil.mm; sourceTree = "<group>"; };
+		12F5721E1B42255D00128294 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		12F5721F1B42255D00128294 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		12F572201B42255D00128294 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		12F572221B42263A00128294 /* libc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libc.dylib; path = usr/lib/libc.dylib; sourceTree = SDKROOT; };
+		12F572241B42265600128294 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		12F572261B42267300128294 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		12F572281B422A2A00128294 /* WechatPayObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatPayObj.h; sourceTree = "<group>"; };
+		12F572291B422A2A00128294 /* WechatPayObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatPayObj.m; sourceTree = "<group>"; };
+		12F5722D1B4274DB00128294 /* NewSystemSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSystemSettingVC.h; sourceTree = "<group>"; };
+		12F5722E1B4274DB00128294 /* NewSystemSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSystemSettingVC.m; sourceTree = "<group>"; };
+		12F572301B42766D00128294 /* T_SettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T_SettingSwitchCell.h; sourceTree = "<group>"; };
+		12F572311B42766D00128294 /* T_SettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T_SettingSwitchCell.m; sourceTree = "<group>"; };
 		12F67BAC1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightVieGoodsInfoTypeCell.h; sourceTree = "<group>"; };
 		12F67BAD1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightVieGoodsInfoTypeCell.m; sourceTree = "<group>"; };
 		12F67BAF1B32BDA000F5BDE1 /* citySelectedImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citySelectedImg@2x.png"; sourceTree = "<group>"; };
@@ -1905,6 +1930,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12F572271B42267300128294 /* MobileCoreServices.framework in Frameworks */,
+				12F572251B42265600128294 /* libc++.dylib in Frameworks */,
+				12F572231B42263A00128294 /* libc.dylib in Frameworks */,
 				12F963101B3D4B3800FF6A3E /* libssl.a in Frameworks */,
 				12F9630E1B3D4B3800FF6A3E /* AlixPaylib.a in Frameworks */,
 				12062E781AEDFBCA00073BCB /* CFNetwork.framework in Frameworks */,
@@ -1919,6 +1947,7 @@
 				DDDAE9831ACAA8A800CC3FE9 /* SystemConfiguration.framework in Frameworks */,
 				12F9630F1B3D4B3800FF6A3E /* libcrypto.a in Frameworks */,
 				12D55A451AC2BD8800F51F97 /* CoreTelephony.framework in Frameworks */,
+				12F572211B42255D00128294 /* libWeChatSDK.a in Frameworks */,
 				DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */,
 				12D52BC11AC2EFA000C5CE71 /* AudioToolbox.framework in Frameworks */,
 				12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */,
@@ -2054,6 +2083,7 @@
 		120A2BD41AB135DD006A28B1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				12F5722B1B42745700128294 /* NewSystemSetting */,
 				12F3CC831B1DF74600E64DE4 /* CallCell */,
 				12F3CC841B1DF74600E64DE4 /* MoneyCell */,
 				12F3CC851B1DF74600E64DE4 /* OrderCell */,
@@ -3305,6 +3335,49 @@
 			path = Pop;
 			sourceTree = "<group>";
 		};
+		12F571631B42250600128294 /* wechat */ = {
+			isa = PBXGroup;
+			children = (
+				12F572281B422A2A00128294 /* WechatPayObj.h */,
+				12F572291B422A2A00128294 /* WechatPayObj.m */,
+				12F571641B42252400128294 /* lib */,
+			);
+			path = wechat;
+			sourceTree = "<group>";
+		};
+		12F571641B42252400128294 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				12F571651B42253800128294 /* payRequsestHandler.h */,
+				12F571661B42253800128294 /* payRequsestHandler.mm */,
+				12F571671B42253800128294 /* TenpayUtil.h */,
+				12F571681B42253800128294 /* TenpayUtil.mm */,
+				12F5721E1B42255D00128294 /* libWeChatSDK.a */,
+				12F5721F1B42255D00128294 /* WXApi.h */,
+				12F572201B42255D00128294 /* WXApiObject.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		12F5722B1B42745700128294 /* NewSystemSetting */ = {
+			isa = PBXGroup;
+			children = (
+				12F5722D1B4274DB00128294 /* NewSystemSettingVC.h */,
+				12F5722E1B4274DB00128294 /* NewSystemSettingVC.m */,
+				12F5722C1B42746600128294 /* View */,
+			);
+			path = NewSystemSetting;
+			sourceTree = "<group>";
+		};
+		12F5722C1B42746600128294 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12F572301B42766D00128294 /* T_SettingSwitchCell.h */,
+				12F572311B42766D00128294 /* T_SettingSwitchCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		12F67BAB1B32B41F00F5BDE1 /* RightGoodsTypeCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3538,6 +3611,7 @@
 		12F962F81B3D4A6E00FF6A3E /* PayInterface */ = {
 			isa = PBXGroup;
 			children = (
+				12F571631B42250600128294 /* wechat */,
 				12F962F91B3D4B3800FF6A3E /* Alipay */,
 			);
 			path = PayInterface;
@@ -4652,6 +4726,9 @@
 		AD94EECE23B2F2543B7D284C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12F572261B42267300128294 /* MobileCoreServices.framework */,
+				12F572241B42265600128294 /* libc++.dylib */,
+				12F572221B42263A00128294 /* libc.dylib */,
 				DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */,
 				DDDAE9931ACAAA3E00CC3FE9 /* APService.h */,
 				DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */,
@@ -5520,6 +5597,7 @@
 				DDB58F4A1AD3C6A2006248E9 /* WXContacterModel.m in Sources */,
 				775842B01AB95A300039B129 /* CustomMadeOBJ.m in Sources */,
 				126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */,
+				12F5716A1B42253800128294 /* TenpayUtil.mm in Sources */,
 				12F963121B3D4B3800FF6A3E /* AlipayOBJ.m in Sources */,
 				775843181AB95A300039B129 /* ProgressView.m in Sources */,
 				775842EB1AB95A300039B129 /* ZoneCodeOBJ.m in Sources */,
@@ -5591,6 +5669,7 @@
 				120B75511B1C36BE00B8746C /* PersonDatePickerVC.m in Sources */,
 				121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
+				12F572321B42766D00128294 /* T_SettingSwitchCell.m in Sources */,
 				DDB58F501AD3C6A2006248E9 /* WXTCallHistoryCell.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				DDB58F4E1AD3C6A2006248E9 /* CallHistoryCell.m in Sources */,
@@ -5602,6 +5681,7 @@
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
 				1261F0141AE6596A00693710 /* CallModel.m in Sources */,
 				775C58CC1ABA7B75005B6B40 /* SubShopModel.m in Sources */,
+				12F5722F1B4274DB00128294 /* NewSystemSettingVC.m in Sources */,
 				775843111AB95A300039B129 /* WXMutiScanViewCell.m in Sources */,
 				12F380281B3B9BAD00E9690C /* MakeOrderUseBonusCell.m in Sources */,
 				12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */,
@@ -5630,6 +5710,7 @@
 				775C583F1ABA5F31005B6B40 /* PinyinHelper.m in Sources */,
 				7758431A1AB95A300039B129 /* WXWaitingHud.m in Sources */,
 				12BD30F51B3E78CA00170316 /* OrderWechatCell.m in Sources */,
+				12F571691B42253800128294 /* payRequsestHandler.mm in Sources */,
 				12F916131B198ADE00C94717 /* HomePageRecEntity.m in Sources */,
 				12F9162D1B19B0AA00C94717 /* BaseInfoVC.m in Sources */,
 				12F380351B3BEF6F00E9690C /* UserAddressModel.m in Sources */,
@@ -5688,6 +5769,7 @@
 				12F4BE061AE8CA3B00B9FEDA /* PopMenu.m in Sources */,
 				128585021B3A9261005E240E /* MakeOrderVC.m in Sources */,
 				128585181B3AAF5F005E240E /* MakeOrderUserInfoCell.m in Sources */,
+				12F5722A1B422A2A00128294 /* WechatPayObj.m in Sources */,
 				1203C1F91B3E2A9E00C402E3 /* OrderPayVC.m in Sources */,
 				777F02911ABC1C8C008C77F1 /* BaseViewController.m in Sources */,
 				775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */,
@@ -5904,10 +5986,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45775F4393C07B1E2AC5B28B /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -5926,6 +6005,9 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/Alipay/Alilib",
+					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/wepay_client/SDKExport",
+					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/客户端demo/wepay_client/SDKExport",
+					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5938,10 +6020,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -5960,6 +6039,9 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/Alipay/Alilib",
+					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/wepay_client/SDKExport",
+					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/客户端demo/wepay_client/SDKExport",
+					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -25,6 +25,7 @@
 -(void)loadData{
 //    [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
     [[UserBonusModel shareUserBonusModel] loadUserBonus];
+    [[UserBonusModel shareUserBonusModel] loadUserBonusMoney];
     [[UserAddressModel shareUserAddress] loadUserAddress];
 }
 

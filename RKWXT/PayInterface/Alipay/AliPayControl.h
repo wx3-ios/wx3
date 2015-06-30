@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define D_Notification_Name_AliPaySucceed @"D_Notification_Name_AliPaySucceed"
+#define D_Notification_Name_AliPayFailed @"D_Notification_Name_AliPayFailed"
 
 typedef enum {
     //账号充值

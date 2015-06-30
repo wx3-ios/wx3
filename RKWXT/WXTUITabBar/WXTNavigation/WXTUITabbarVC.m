@@ -167,13 +167,13 @@
     [textLabel setBackgroundColor:[UIColor clearColor]];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
     [textLabel setFont:WXTFont(12.0)];
-    [textLabel setTextColor:WXColorWithInteger(0x0c8bdf)];
+    [textLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [downView addSubview:textLabel];
     
     WXTUIButton *callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     callBtn.frame = CGRectMake(Size.width/4, 0, Size.width/2, kTabBarHeight);
     [callBtn setImage:[UIImage imageNamed:@"CallBtnImg.png"] forState:UIControlStateNormal];
-    [callBtn setBackgroundImageOfColor:WXColorWithInteger(0x2fbf62) controlState:UIControlStateNormal];
+    [callBtn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];
     [callBtn setBackgroundImageOfColor:WXColorWithInteger(0x0e8739) controlState:UIControlStateSelected];
     [callBtn addTarget:self action:@selector(callBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:callBtn];

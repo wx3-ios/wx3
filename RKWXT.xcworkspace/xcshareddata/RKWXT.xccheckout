@@ -14,6 +14,8 @@
 		<string>gitlab.67call.com:leting/gjtjb.git</string>
 		<key>8256D7E5705457084742BC944791A60E3FDCDC98</key>
 		<string>gitlab.67call.com:leting/gjtjb.git</string>
+		<key>F72339642854CC075E0748BC992572E080761CC3</key>
+		<string>https://github.com/shaojiankui/wepay_demo</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>RKWXT.xcworkspace</string>
@@ -23,6 +25,8 @@
 		<string>..</string>
 		<key>8256D7E5705457084742BC944791A60E3FDCDC98</key>
 		<string>../../gjtjb</string>
+		<key>F72339642854CC075E0748BC992572E080761CC3</key>
+		<string>../../gjtjb/RKWXT/PayInterface/wechat/lib/wepay_demo</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>gitlab.67call.com:leting/gjtjb.git</string>
@@ -47,6 +51,14 @@
 			<string>1BF173E4162522006F48E9B58BCA749805F8BE67</string>
 			<key>IDESourceControlWCCName</key>
 			<string>gjtjb2</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F72339642854CC075E0748BC992572E080761CC3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>wepay_demo</string>
 		</dict>
 	</array>
 </dict>

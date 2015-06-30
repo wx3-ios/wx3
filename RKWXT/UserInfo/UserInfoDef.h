@@ -22,6 +22,7 @@
 #import "LoginVC.h"
 #import "AboutWxtInfoVC.h"
 #import "WXTResetPwdVC.h"
+#import "NewSystemSettingVC.h"
 #import "BaseInfoVC.h"
 #import "HomeOrderVC.h"
 
@@ -33,7 +34,7 @@ enum{
     PersonalInfo_Order = 0,
     PersonalInfo_Money,
     PersonalInfo_Call,
-    PersonalInfo_Extend,
+//    PersonalInfo_Extend,
     PersonalInfo_System,
     
     PersonalInfo_Invalid

@@ -22,6 +22,7 @@
 #import "WXTUITabbarVC.h"
 #import "CallViewController.h"
 #import "NewWXTLiDB.h"
+#import "AliPayControl.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -472,7 +473,6 @@ void UncaughtExceptionHandler(NSException *exception) {
 }
 
 #pragma mark - Core Data Saving support
-
 - (void)saveContext {
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
@@ -484,6 +484,14 @@ void UncaughtExceptionHandler(NSException *exception) {
             abort();
         }
     }
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    //支付宝
+    [[AliPayControl sharedAliPayOBJ] handleAliPayURL:url];
+    //微支付
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
 }
 
 - (void)dealloc {

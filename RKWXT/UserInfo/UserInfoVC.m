@@ -190,9 +190,9 @@
         case PersonalInfo_Call:
             number = Call_Invalid;
             break;
-        case PersonalInfo_Extend:
-            number = Extend_Invalid;
-            break;
+//        case PersonalInfo_Extend:
+//            number = Extend_Invalid;
+//            break;
         case PersonalInfo_System:
             number = System_Invalid;
             break;
@@ -395,9 +395,9 @@
         case PersonalInfo_Call:
             cell = [self tableViewForCallMoney:row];
             break;
-        case PersonalInfo_Extend:
-            cell = [self tableViewForExtendCellAtRow:row];
-            break;
+//        case PersonalInfo_Extend:
+//            cell = [self tableViewForExtendCellAtRow:row];
+//            break;
         case PersonalInfo_System:
             cell = [self tableViewForSystemCellAtRow:row];
             break;
@@ -437,15 +437,15 @@
             }
         }
             break;
-        case PersonalInfo_Extend:
-        {
-        }
-            break;
+//        case PersonalInfo_Extend:
+//        {
+//        }
+//            break;
         case PersonalInfo_System:
         {
             if(row == System_Setting){
-                WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
-                [self.wxNavigationController pushViewController:resetPwdVC];
+                NewSystemSettingVC *systemSetting = [[NewSystemSettingVC alloc] init];
+                [self.wxNavigationController pushViewController:systemSetting];
             }else{
                 AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
                 [self.wxNavigationController pushViewController:aboutVC];

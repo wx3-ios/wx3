@@ -173,6 +173,11 @@ typedef enum{
 }
 
 -(void)sound:(NSInteger)strSound{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    NSInteger value = [userDefault integerValueForKey:@"KeyPadTone"];
+    if(value == 2){
+        return;
+    }
     NSString *ch = [NSString stringWithFormat:@"%ld",(long)strSound];
     NSString *string = [NSString stringWithFormat:@"dtmf-%@",ch];
     NSString *path = [[NSBundle mainBundle] pathForResource:string ofType:@"aif"];

@@ -104,8 +104,8 @@
         RELEASE_SAFELY(lineLabel);
         
         yOffset += nameHeight+4;
-        CGFloat markWidth = 15;
-        CGFloat markHeight = 16;
+        CGFloat markWidth = 16;
+        CGFloat markHeight = 18;
         WXUIButton *plusBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         plusBtn.frame = CGRectMake(xOffset, yOffset, markWidth, markHeight);
         [plusBtn setBackgroundColor:WXColorWithInteger(T_MenuCommonCellColor)];
@@ -118,7 +118,7 @@
         xOffset += markWidth+5;
         CGFloat numBtnWidth = 27;
         _numberLabel = [[WXUILabel alloc] init];
-        _numberLabel.frame = CGRectMake(xOffset, yOffset, numBtnWidth, markWidth);
+        _numberLabel.frame = CGRectMake(xOffset, yOffset, numBtnWidth, markWidth+2);
         [_numberLabel setBackgroundColor:WXColorWithInteger(T_MenuCommonCellColor)];
         [_numberLabel setBorderRadian:1.0 width:0.4 color:WXColorWithInteger(markColor)];
         [_numberLabel setTextColor:WXColorWithInteger(markColor)];

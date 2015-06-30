@@ -43,6 +43,12 @@
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     AddressEntity *entity = [self addressEntity];
+    if(!entity){
+        if (_delegate && [_delegate respondsToSelector:@selector(makeOrderFailed:)]){
+            [_delegate makeOrderFailed:@"请设置收货信息"];
+        }
+        return;
+    }
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:    //dictionaryWithObjectsAndKeys此方法遇nil认为结束，慎用
                          @"iOS", @"pid",
                          @"18613213051", @"phone",
@@ -88,6 +94,9 @@
 }
 
 -(AddressEntity *)addressEntity{
+    if([[UserAddressModel shareUserAddress].userAddressArr count] == 0){
+        return nil;
+    }
     AddressEntity *entity = nil;
     for(AddressEntity *ent in [UserAddressModel shareUserAddress].userAddressArr){
         if(ent.normalID == 1){
