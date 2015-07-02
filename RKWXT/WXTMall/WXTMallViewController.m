@@ -410,7 +410,8 @@
 - (void)toSysPushMsgView{
 //    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"功能开发中" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
 //    [alertView show];
-    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodInfo:nil animated:YES];
+    JPushMessageCenterVC *jpushVC = [[[JPushMessageCenterVC alloc] init] autorelease];
+    [self.wxNavigationController pushViewController:jpushVC];
 }
 
 #pragma mark BaseFunction

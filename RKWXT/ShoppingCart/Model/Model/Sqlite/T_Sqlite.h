@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-#import "T_MenuEntity.h"
+#import "JPushMsgEntity.h"
 
-#define DBNAME        @"tmenu.sqlite"
-#define GoodsNumber   @"STOREGOODSNUM"
-#define GoodsID       @"STOREGOODSID"
-#define ColorText     @"STOREGOODSCOLOR"
+#define DBNAME        @"JPush.sqlite"
+#define JPushContent  @"JPushContent"
+#define JPushAbs      @"JPushAbs"
+#define JPushImg      @"JPushImg"
+#define JPushTime     @"JPushTime"
 
 @interface T_Sqlite : NSObject{
     sqlite3 *db;
@@ -24,7 +25,7 @@
 -(void)createOrOpendb;
 -(void)createTable;
 -(BOOL)execSql:(NSString *)sql;
--(BOOL)deleteTestList:(T_MenuEntity *)deletList;
+-(BOOL)deleteTestList:(JPushMsgEntity *)deletList;
 -(NSMutableArray *)selectAll;
 
 @end

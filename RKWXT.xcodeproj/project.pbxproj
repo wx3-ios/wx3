@@ -279,6 +279,12 @@
 		12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471CA1B1F19B700559995 /* WaitReceiveTitleCell.m */; };
 		12E471D41B1F268100559995 /* WaitSendGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471D31B1F268100559995 /* WaitSendGoodsInfoCell.m */; };
 		12E471D71B1F270C00559995 /* WaitSendConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471D61B1F270C00559995 /* WaitSendConsultCell.m */; };
+		12F180AB1B44D54900B9A80D /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12F180AA1B44D54900B9A80D /* PushConfig.plist */; };
+		12F180B91B45190800B9A80D /* Sql_JpushData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180B81B45190800B9A80D /* Sql_JpushData.m */; };
+		12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180BC1B45219300B9A80D /* JPushMessageModel.m */; };
+		12F180C01B45219300B9A80D /* JPushMsgEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180BE1B45219300B9A80D /* JPushMsgEntity.m */; };
+		12F180C31B4521B400B9A80D /* JPushMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180C21B4521B400B9A80D /* JPushMessageCenterVC.m */; };
+		12F180C71B4524A800B9A80D /* JPushMessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180C61B4524A800B9A80D /* JPushMessageCenterCell.m */; };
 		12F1D64F1B2692DA003924DF /* RFSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F1D64E1B2692DA003924DF /* RFSegmentView.m */; };
 		12F2D7D81B1EA96B00C8017F /* DLLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7C91B1EA96B00C8017F /* DLLRUCache.m */; };
 		12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7CB1B1EA96B00C8017F /* DLCustomSlideView.m */; };
@@ -1093,6 +1099,17 @@
 		12E471D31B1F268100559995 /* WaitSendGoodsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitSendGoodsInfoCell.m; sourceTree = "<group>"; };
 		12E471D51B1F270C00559995 /* WaitSendConsultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitSendConsultCell.h; sourceTree = "<group>"; };
 		12E471D61B1F270C00559995 /* WaitSendConsultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitSendConsultCell.m; sourceTree = "<group>"; };
+		12F180AA1B44D54900B9A80D /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
+		12F180B71B45190800B9A80D /* Sql_JpushData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sql_JpushData.h; sourceTree = "<group>"; };
+		12F180B81B45190800B9A80D /* Sql_JpushData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sql_JpushData.m; sourceTree = "<group>"; };
+		12F180BB1B45219300B9A80D /* JPushMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushMessageModel.h; sourceTree = "<group>"; };
+		12F180BC1B45219300B9A80D /* JPushMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPushMessageModel.m; sourceTree = "<group>"; };
+		12F180BD1B45219300B9A80D /* JPushMsgEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushMsgEntity.h; sourceTree = "<group>"; };
+		12F180BE1B45219300B9A80D /* JPushMsgEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPushMsgEntity.m; sourceTree = "<group>"; };
+		12F180C11B4521B400B9A80D /* JPushMessageCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushMessageCenterVC.h; sourceTree = "<group>"; };
+		12F180C21B4521B400B9A80D /* JPushMessageCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPushMessageCenterVC.m; sourceTree = "<group>"; };
+		12F180C51B4524A800B9A80D /* JPushMessageCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushMessageCenterCell.h; sourceTree = "<group>"; };
+		12F180C61B4524A800B9A80D /* JPushMessageCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPushMessageCenterCell.m; sourceTree = "<group>"; };
 		12F1D64D1B2692DA003924DF /* RFSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSegmentView.h; sourceTree = "<group>"; };
 		12F1D64E1B2692DA003924DF /* RFSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSegmentView.m; sourceTree = "<group>"; };
 		12F2D7C71B1EA96B00C8017F /* DLCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCacheProtocol.h; sourceTree = "<group>"; };
@@ -1883,7 +1900,6 @@
 		DDDAE9881ACAA8CE00CC3FE9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DDDAE98A1ACAA8D400CC3FE9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DDDAE98C1ACAA8DE00CC3FE9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		DDDAE98F1ACAA97F00CC3FE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/PushConfig.plist; sourceTree = "<group>"; };
 		DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.3.a"; sourceTree = "<group>"; };
 		DDDAE9931ACAAA3E00CC3FE9 /* APService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		DDEA9EB91B1BF2AD00530C1C /* WXTOrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTOrderConfirmViewController.h; sourceTree = "<group>"; };
@@ -2913,6 +2929,47 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		12F180AC1B45121E00B9A80D /* JPushMessage */ = {
+			isa = PBXGroup;
+			children = (
+				12F180C11B4521B400B9A80D /* JPushMessageCenterVC.h */,
+				12F180C21B4521B400B9A80D /* JPushMessageCenterVC.m */,
+				12F180C41B45248700B9A80D /* View */,
+				12F180BA1B45219300B9A80D /* Model */,
+				12F180B31B45189500B9A80D /* JPushSqlite */,
+			);
+			path = JPushMessage;
+			sourceTree = "<group>";
+		};
+		12F180B31B45189500B9A80D /* JPushSqlite */ = {
+			isa = PBXGroup;
+			children = (
+				12F180B71B45190800B9A80D /* Sql_JpushData.h */,
+				12F180B81B45190800B9A80D /* Sql_JpushData.m */,
+			);
+			path = JPushSqlite;
+			sourceTree = "<group>";
+		};
+		12F180BA1B45219300B9A80D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12F180BB1B45219300B9A80D /* JPushMessageModel.h */,
+				12F180BC1B45219300B9A80D /* JPushMessageModel.m */,
+				12F180BD1B45219300B9A80D /* JPushMsgEntity.h */,
+				12F180BE1B45219300B9A80D /* JPushMsgEntity.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12F180C41B45248700B9A80D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12F180C51B4524A800B9A80D /* JPushMessageCenterCell.h */,
+				12F180C61B4524A800B9A80D /* JPushMessageCenterCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		12F1D64C1B2692DA003924DF /* RFSegmentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3702,6 +3759,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				12F180AC1B45121E00B9A80D /* JPushMessage */,
 				1203C1F61B3E2A7700C402E3 /* OrderPay */,
 				12F962F81B3D4A6E00FF6A3E /* PayInterface */,
 				128584FD1B3A921C005E240E /* MakeOrder */,
@@ -3761,7 +3819,7 @@
 				2563B43E1AAADEE400C04227 /* RKWXT-Prefix.pch */,
 				2563B4781AAAE46D00C04227 /* Constants.h */,
 				775C58431ABA632B005B6B40 /* Resources.h */,
-				DDDAE98E1ACAA97F00CC3FE9 /* PushConfig.plist */,
+				12F180AA1B44D54900B9A80D /* PushConfig.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -5273,6 +5331,7 @@
 				1240D6E41AE9170B0056AD6A /* post_type_bubble_googleplus.png in Resources */,
 				124535431AE9D146004198C9 /* sign15@2x.png in Resources */,
 				DDEA9ECD1B1BF3A400530C1C /* order_divide@2x.png in Resources */,
+				12F180AB1B44D54900B9A80D /* PushConfig.plist in Resources */,
 				DD988A621B1D412600B3790B /* 1.jpg in Resources */,
 				1241E53D1AE9D89B00811D3F /* 0N@2x.png in Resources */,
 				12D52BB61AC2EF4400C5CE71 /* dtmf-0.aif in Resources */,
@@ -5439,6 +5498,7 @@
 				1282218F1B1847E7004613BB /* URLDownloadOBJ.m in Sources */,
 				775C58CB1ABA7B75005B6B40 /* SubShopArea.m in Sources */,
 				775C58B61ABA7B75005B6B40 /* RedPacket.m in Sources */,
+				12F180B91B45190800B9A80D /* Sql_JpushData.m in Sources */,
 				7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */,
 				DDEA9EE01B1BFD5D00530C1C /* WXSysMsgUnreadV.m in Sources */,
 				1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */,
@@ -5464,6 +5524,7 @@
 				775842FB1AB95A300039B129 /* UIImage+KIAdditions.m in Sources */,
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
 				DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */,
+				12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */,
 				775843591AB95FAC0039B129 /* WXService+Call.m in Sources */,
 				12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */,
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
@@ -5577,6 +5638,7 @@
 				12F4BE031AE8CA3B00B9FEDA /* GlowImageView.m in Sources */,
 				775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */,
 				775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */,
+				12F180C31B4521B400B9A80D /* JPushMessageCenterVC.m in Sources */,
 				775843251AB95A300039B129 /* WXUIImageView.m in Sources */,
 				775C58C21ABA7B75005B6B40 /* ActData.m in Sources */,
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
@@ -5597,6 +5659,7 @@
 				DDB58F4A1AD3C6A2006248E9 /* WXContacterModel.m in Sources */,
 				775842B01AB95A300039B129 /* CustomMadeOBJ.m in Sources */,
 				126CA3F51AB2B74800E08A0B /* WXTUITabBarController.m in Sources */,
+				12F180C71B4524A800B9A80D /* JPushMessageCenterCell.m in Sources */,
 				12F5716A1B42253800128294 /* TenpayUtil.mm in Sources */,
 				12F963121B3D4B3800FF6A3E /* AlipayOBJ.m in Sources */,
 				775843181AB95A300039B129 /* ProgressView.m in Sources */,
@@ -5726,6 +5789,7 @@
 				775842C41AB95A300039B129 /* it_lib_call.cpp in Sources */,
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
 				12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */,
+				12F180C01B45219300B9A80D /* JPushMsgEntity.m in Sources */,
 				775C58CF1ABA7B75005B6B40 /* ContacterEntity.m in Sources */,
 				126CA4121AB2FC9400E08A0B /* GainModel.m in Sources */,
 				775842FF1AB95A300039B129 /* LoadingEntity.m in Sources */,
@@ -5891,14 +5955,6 @@
 			name = Localize.strings;
 			sourceTree = "<group>";
 		};
-		DDDAE98E1ACAA97F00CC3FE9 /* PushConfig.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDDAE98F1ACAA97F00CC3FE9 /* Base */,
-			);
-			name = PushConfig.plist;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -5988,8 +6044,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ding Bin (S7PY53887M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ding Bin (S7PY53887M)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -6008,10 +6064,11 @@
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/wepay_client/SDKExport",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/客户端demo/wepay_client/SDKExport",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib",
+					"$(SRCROOT)/RKWXT/Frameworks",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -6022,7 +6079,7 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen WoXin Network Technology Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6042,10 +6099,11 @@
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/wepay_client/SDKExport",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/客户端demo/wepay_client/SDKExport",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib",
+					"$(SRCROOT)/RKWXT/Frameworks",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fabaeda7-619d-4aff-a99c-7d48779b9438";
+				PROVISIONING_PROFILE = "64e3886b-2510-4f90-a11e-58ee4cd5ca17";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

@@ -25,12 +25,12 @@
 }
 
 -(void)createTable{
-    NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS NEWMENUSTORE (ID INTEGER PRIMARY KEY AUTOINCREMENT, STOREGOODSNUM TEXT, STOREGOODSID TEXT ,STOREGOODSCOLOR TEXT)";
+    NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS JPUSHMESSAGE (ID INTEGER PRIMARY KEY AUTOINCREMENT, JPushContent TEXT, JPushAbs TEXT ,JPushImg TEXT ,JPushTime TEXT)";
     [self execSql:sqlCreateTable];
 }
 
 -(NSMutableArray *)selectAll{
-    NSString *sqlQuery = @"SELECT * FROM NEWMENUSTORE";
+    NSString *sqlQuery = @"SELECT * FROM JPUSHMESSAGE";
     sqlite3_stmt *statement;
     
     if(sqlite3_prepare_v2(db, [sqlQuery UTF8String], -1, &statement, nil) == SQLITE_OK){
@@ -44,11 +44,15 @@
             char *color = (char *)sqlite3_column_text(statement, 3);
             NSString *_colorText = [[NSString alloc] initWithUTF8String:color];
             
+            char *time = (char*)sqlite3_column_text(statement, 4);
+            NSString *pushTime = [[NSString alloc] initWithUTF8String:time];
+            
             KFLog_Normal(YES,@"number:%@ goodsID:%@",_number,_goodsID);
-            T_MenuEntity *entity = [[T_MenuEntity alloc] init];
-            entity.number = _num;
-            entity.goodsID = _goodsID;
-            entity.colorType = _colorText;
+            JPushMsgEntity *entity = [[JPushMsgEntity alloc] init];
+            entity.content = _num;
+            entity.abstract = _goodsID;
+            entity.msgURL = _colorText;
+            entity.pushTime = pushTime;
             [all addObject:entity];
         }
     }
@@ -76,9 +80,10 @@
         sqlite3_close(db);
         return;
     }
-    sqlite3_bind_text(statement, 1, [GoodsNumber UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 2, [GoodsID UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 3, [ColorText UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 1, [JPushContent UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 2, [JPushAbs UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 3, [JPushImg UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 4, [JPushTime UTF8String], -1, SQLITE_TRANSIENT);
     success2 = sqlite3_step(statement);
     sqlite3_finalize(statement);
     if(success2 == SQLITE_ERROR){
@@ -92,21 +97,22 @@
     return;
 }
 
-- (BOOL)deleteTestList:(T_MenuEntity *)deletList{
+- (BOOL)deleteTestList:(JPushMsgEntity *)deletList{
     sqlite3_stmt *statement;
     //组织SQL语句
-    static char *sql = "delete from NEWMENUSTORE  where STOREGOODSNUM = ? and STOREGOODSID = ? and STOREGOODSCOLOR = ?";
+    static char *sql = "delete from JPUSHMESSAGE  where JPushContent = ? and JPushAbs = ? and JPushImg = ? and JPushTime = ?";
     //将SQL语句放入sqlite3_stmt中
     int success = sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
     if (success != SQLITE_OK) {
-        NSLog(@"Error: failed to delete:NEWMENUSTORE");
+        NSLog(@"Error: failed to delete:JPUSHMESSAGE");
         sqlite3_close(db);
         return NO;
     }
     
-    sqlite3_bind_text(statement, 1, [deletList.number UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 2, [deletList.goodsID UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 3, [deletList.colorType UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 1, [deletList.content UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 2, [deletList.abstract UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 3, [deletList.msgURL UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 4, [deletList.pushTime UTF8String], -1, SQLITE_TRANSIENT);
     success = sqlite3_step(statement);
     sqlite3_finalize(statement);
     

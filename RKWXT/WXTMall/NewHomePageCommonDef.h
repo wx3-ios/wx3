@@ -60,6 +60,7 @@ enum{
 #import "SignViewController.h"
 #import "WXTMallListWebVC.h"
 #import "WXSysMsgUnreadV.h"
+#import "JPushMessageCenterVC.h"
 #define Size self.bounds.size
 
 typedef enum{

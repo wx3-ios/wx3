@@ -15,13 +15,14 @@
 }
 
 -(BOOL)insertData:(NSString *)imgUrl withGoodsID:(NSString *)goodsID withColorType:(NSString *)colorText{
-    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@')",@"NEWMENUSTORE",GoodsNumber,GoodsID,ColorText,imgUrl,goodsID,colorText];
-    
-    fmdb = [[T_Sqlite alloc] init];
-    [fmdb createOrOpendb];
-    [fmdb createTable];
-    BOOL succeed = [fmdb execSql:sql1];
-    return succeed;
+//    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@')",@"NEWMENUSTORE",GoodsNumber,GoodsID,ColorText,imgUrl,goodsID,colorText];
+//    
+//    fmdb = [[T_Sqlite alloc] init];
+//    [fmdb createOrOpendb];
+//    [fmdb createTable];
+//    BOOL succeed = [fmdb execSql:sql1];
+//    return succeed;
+    return YES;
 }
 
 @end

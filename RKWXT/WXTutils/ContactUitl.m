@@ -162,7 +162,7 @@
     }
     [_placeDatabase executeUpdate:@"commit"]; //提交事备
     CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
-    NSLog(@"insert %lu rowdata use time = %f", lines.count, end - start);
+//    NSLog(@"insert %lu rowdata use time = %f", lines.count, end - start);
 }
 
 - (NSDictionary *)readAreaCode{

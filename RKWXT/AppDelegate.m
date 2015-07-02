@@ -23,6 +23,7 @@
 #import "CallViewController.h"
 #import "NewWXTLiDB.h"
 #import "AliPayControl.h"
+#import "JPushMessageModel.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -71,7 +72,8 @@
     //监听电话
     [self listenSystemCall];
     // 集成极光推送功能
-//    [self initJPushApi];
+    [self initJPushApi];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];  //设置图标0
     [APService setupWithOption:launchOptions];
     
     //自动登录通知
@@ -103,6 +105,8 @@
         [self.window makeKeyAndVisible];
         
         [[NewWXTLiDB sharedWXLibDB] loadData];  //暂时用
+        
+        [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"13538236522"]] alias:nil callbackSelector:nil object:nil];
         //自动登录
 //        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
 //        LoginModel *_loginModel = [[LoginModel alloc] init];
@@ -255,23 +259,9 @@
     DDLogDebug(@"已登录");
 }
 
-- (void)networkDidReceiveMessage:(NSNotification *)notification {
+- (void)networkDidReceiveMessage:(NSNotification *)notification {   //锁屏状态APNS
     NSDictionary *userInfo = [notification userInfo];
-    NSString *title = [userInfo valueForKey:@"title"];
-    NSString *content = [userInfo valueForKey:@"content"];
-    NSDictionary *extra = [userInfo valueForKey:@"extras"];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    
-    NSString *currentContent = [NSString
-                                stringWithFormat:
-                                @"收到自定义消息:%@\ntitle:%@\ncontent:%@\nextra:%@\n",
-                                [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                               dateStyle:NSDateFormatterNoStyle
-                                                               timeStyle:NSDateFormatterMediumStyle],
-                                title, content, extra];
-    DDLogDebug(@"%@", currentContent);
+    [APService handleRemoteNotification:userInfo];
 }
 
 - (void)serviceError:(NSNotification *)notification {
@@ -283,19 +273,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Required
     [APService registerDeviceToken:deviceToken];
 }
+
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // Required
     [APService handleRemoteNotification:userInfo];
-    DDLogDebug(@"apns received success:%@",userInfo);
-}
-
-+ (BOOL)setBadge:(NSInteger)value{
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:value];
-    if (value == 0) {
-        return NO;
-    }
-    return YES;
+    [[JPushMessageModel shareJPushModel] initJPushWithDic:userInfo];
 }
 
 - (void)application:(UIApplication *)application
@@ -303,11 +286,7 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     [APService showLocalNotificationAtFront:notification identifierKey:nil];
 }
 
-- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
-    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
-}
-
-- (void)application:(UIApplication *)application
+- (void)application:(UIApplication *)application    //应用内消息
 didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void
                         (^)(UIBackgroundFetchResult))completionHandler {
