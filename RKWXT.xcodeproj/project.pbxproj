@@ -289,6 +289,9 @@
 		12F180C71B4524A800B9A80D /* JPushMessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180C61B4524A800B9A80D /* JPushMessageCenterCell.m */; };
 		12F180CA1B454D9A00B9A80D /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180C91B454D9A00B9A80D /* OrderListModel.m */; };
 		12F1D64F1B2692DA003924DF /* RFSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F1D64E1B2692DA003924DF /* RFSegmentView.m */; };
+		12F2CCE01B4CB9570085F78F /* ForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCDF1B4CB9570085F78F /* ForgetPwdVC.m */; };
+		12F2CCE31B4CCA850085F78F /* ForgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCE21B4CCA850085F78F /* ForgetModel.m */; };
+		12F2CCE61B4CCDF50085F78F /* ResetNewPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCE51B4CCDF50085F78F /* ResetNewPwdModel.m */; };
 		12F2D7D81B1EA96B00C8017F /* DLLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7C91B1EA96B00C8017F /* DLLRUCache.m */; };
 		12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7CB1B1EA96B00C8017F /* DLCustomSlideView.m */; };
 		12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7CD1B1EA96B00C8017F /* DLSlideView.m */; };
@@ -1121,6 +1124,12 @@
 		12F180C91B454D9A00B9A80D /* OrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
 		12F1D64D1B2692DA003924DF /* RFSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSegmentView.h; sourceTree = "<group>"; };
 		12F1D64E1B2692DA003924DF /* RFSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSegmentView.m; sourceTree = "<group>"; };
+		12F2CCDE1B4CB9570085F78F /* ForgetPwdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdVC.h; sourceTree = "<group>"; };
+		12F2CCDF1B4CB9570085F78F /* ForgetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdVC.m; sourceTree = "<group>"; };
+		12F2CCE11B4CCA850085F78F /* ForgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetModel.h; sourceTree = "<group>"; };
+		12F2CCE21B4CCA850085F78F /* ForgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetModel.m; sourceTree = "<group>"; };
+		12F2CCE41B4CCDF50085F78F /* ResetNewPwdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetNewPwdModel.h; sourceTree = "<group>"; };
+		12F2CCE51B4CCDF50085F78F /* ResetNewPwdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetNewPwdModel.m; sourceTree = "<group>"; };
 		12F2D7C71B1EA96B00C8017F /* DLCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCacheProtocol.h; sourceTree = "<group>"; };
 		12F2D7C81B1EA96B00C8017F /* DLLRUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLRUCache.h; sourceTree = "<group>"; };
 		12F2D7C91B1EA96B00C8017F /* DLLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLRUCache.m; sourceTree = "<group>"; };
@@ -2502,6 +2511,7 @@
 		1277D00B1AC50E250008D9B6 /* ResetPassword */ = {
 			isa = PBXGroup;
 			children = (
+				12F2CCDB1B4CB8EF0085F78F /* ForgetPwdVC */,
 				1277D00C1AC50E4F0008D9B6 /* WXTResetPwdVC.h */,
 				1277D00D1AC50E4F0008D9B6 /* WXTResetPwdVC.m */,
 				1277D0111AC5327A0008D9B6 /* ResetPwdModel.h */,
@@ -2995,6 +3005,35 @@
 				12F1D64E1B2692DA003924DF /* RFSegmentView.m */,
 			);
 			path = RFSegmentView;
+			sourceTree = "<group>";
+		};
+		12F2CCDB1B4CB8EF0085F78F /* ForgetPwdVC */ = {
+			isa = PBXGroup;
+			children = (
+				12F2CCDE1B4CB9570085F78F /* ForgetPwdVC.h */,
+				12F2CCDF1B4CB9570085F78F /* ForgetPwdVC.m */,
+				12F2CCDC1B4CB91D0085F78F /* Model */,
+				12F2CCDD1B4CB91D0085F78F /* View */,
+			);
+			path = ForgetPwdVC;
+			sourceTree = "<group>";
+		};
+		12F2CCDC1B4CB91D0085F78F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12F2CCE11B4CCA850085F78F /* ForgetModel.h */,
+				12F2CCE21B4CCA850085F78F /* ForgetModel.m */,
+				12F2CCE41B4CCDF50085F78F /* ResetNewPwdModel.h */,
+				12F2CCE51B4CCDF50085F78F /* ResetNewPwdModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12F2CCDD1B4CB91D0085F78F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		12F2D7BE1B1EA44F00C8017F /* OrderList */ = {
@@ -5750,7 +5789,9 @@
 				775842B21AB95A300039B129 /* URLFeedData.m in Sources */,
 				12F9633A1B3D4BDF00FF6A3E /* SBJsonWriter.m in Sources */,
 				120A2BF01AB135DE006A28B1 /* BalanceModel.m in Sources */,
+				12F2CCE01B4CB9570085F78F /* ForgetPwdVC.m in Sources */,
 				12F380321B3BE73E00E9690C /* MakeOrderAllGoodsMoneyCell.m in Sources */,
+				12F2CCE31B4CCA850085F78F /* ForgetModel.m in Sources */,
 				120A2BF31AB135DE006A28B1 /* UserInfoVC.m in Sources */,
 				12F963331B3D4BDF00FF6A3E /* SBJsonStreamParserAdapter.m in Sources */,
 				12F963111B3D4B3800FF6A3E /* AliPayControl.m in Sources */,
@@ -5841,6 +5882,7 @@
 				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,
 				12F1D64F1B2692DA003924DF /* RFSegmentView.m in Sources */,
 				12F2D7EF1B1ECEF700C8017F /* WaitSendGoodsListVC.m in Sources */,
+				12F2CCE61B4CCDF50085F78F /* ResetNewPwdModel.m in Sources */,
 				DD0E38AB1B1BE5AC00AB4DB9 /* MenuExtra.m in Sources */,
 				775843371AB95A300039B129 /* WXUIView.m in Sources */,
 				12F9161A1B199F0300C94717 /* HomePageThmEntity.m in Sources */,

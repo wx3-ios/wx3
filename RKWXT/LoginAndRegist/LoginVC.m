@@ -16,6 +16,7 @@
 #import "WXTDatabase.h"
 #import "WXTUITabbarVC.h"
 #import "NewWXTLiDB.h"
+#import "ForgetPwdVC.h"
 
 #define Size self.bounds.size
 #define kLoginBigImgViewheight (220)
@@ -340,7 +341,15 @@
 //    return [[TelNOOBJ sharedTelNOOBJ] addCountryCode:@"+86" toTelNumber:_userTextField.text];
 //}
 
-#pragma mark 逻辑
+#pragma mark
+-(void)fetchPassWord{
+    if(![self checkUserValide]){
+        return;
+    }
+    ForgetPwdVC *forgetPwd = [[ForgetPwdVC alloc] init];
+    forgetPwd.userPhone = _userTextField.text;
+    [self.wxNavigationController pushViewController:forgetPwd];
+}
 
 #pragma mark 获取密码
 - (void)setFetchPasswordButtonTitle{
@@ -376,15 +385,15 @@
     [self setFetchPasswordButtonTitle];
 }
 
-- (void)fetchPassWord{
-    if(![self checkUserValide]){
-        return;
-    }
-    [_pwdModel fetchPwdWithUserPhone:_userTextField.text];
-    [self startFetchPwdTiming];
-    [_fetchPwdBtn setEnabled:NO];
-    [self textFieldResighFirstResponder];
-}
+//- (void)fetchPassWord{
+//    if(![self checkUserValide]){
+//        return;
+//    }
+//    [_pwdModel fetchPwdWithUserPhone:_userTextField.text];
+//    [self startFetchPwdTiming];
+//    [_fetchPwdBtn setEnabled:NO];
+//    [self textFieldResighFirstResponder];
+//}
 
 #pragma mark delegate
 - (void)loginSucceed{

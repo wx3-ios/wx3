@@ -105,6 +105,9 @@
         case WXT_UrlFeed_Type_New_DealOrderList:
             url = @"/update_order_status.php";
             break;
+        case WXT_UrlFeed_Type_New_Code:
+            url = @"/get_rcode.php";
+            break;
         default:
             break;
     }
