@@ -292,6 +292,7 @@
 		12F2CCE01B4CB9570085F78F /* ForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCDF1B4CB9570085F78F /* ForgetPwdVC.m */; };
 		12F2CCE31B4CCA850085F78F /* ForgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCE21B4CCA850085F78F /* ForgetModel.m */; };
 		12F2CCE61B4CCDF50085F78F /* ResetNewPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCE51B4CCDF50085F78F /* ResetNewPwdModel.m */; };
+		12F2CCE81B4CF4D30085F78F /* RegistUserCodeImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F2CCE71B4CF4D30085F78F /* RegistUserCodeImg@2x.png */; };
 		12F2D7D81B1EA96B00C8017F /* DLLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7C91B1EA96B00C8017F /* DLLRUCache.m */; };
 		12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7CB1B1EA96B00C8017F /* DLCustomSlideView.m */; };
 		12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7CD1B1EA96B00C8017F /* DLSlideView.m */; };
@@ -1130,6 +1131,7 @@
 		12F2CCE21B4CCA850085F78F /* ForgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetModel.m; sourceTree = "<group>"; };
 		12F2CCE41B4CCDF50085F78F /* ResetNewPwdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetNewPwdModel.h; sourceTree = "<group>"; };
 		12F2CCE51B4CCDF50085F78F /* ResetNewPwdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetNewPwdModel.m; sourceTree = "<group>"; };
+		12F2CCE71B4CF4D30085F78F /* RegistUserCodeImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RegistUserCodeImg@2x.png"; sourceTree = "<group>"; };
 		12F2D7C71B1EA96B00C8017F /* DLCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCacheProtocol.h; sourceTree = "<group>"; };
 		12F2D7C81B1EA96B00C8017F /* DLLRUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLRUCache.h; sourceTree = "<group>"; };
 		12F2D7C91B1EA96B00C8017F /* DLLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLRUCache.m; sourceTree = "<group>"; };
@@ -2501,6 +2503,7 @@
 		127249091B2574C9001BDC15 /* Regist */ = {
 			isa = PBXGroup;
 			children = (
+				12F2CCE71B4CF4D30085F78F /* RegistUserCodeImg@2x.png */,
 				1272490A1B2574C9001BDC15 /* RegistOtherUser@2x.png */,
 				1272490B1B2574C9001BDC15 /* RegistUserImg@2x.png */,
 				1272490C1B2574C9001BDC15 /* RegistUserPwdImg@2x.png */,
@@ -5453,6 +5456,7 @@
 				1240D6E51AE9170B0056AD6A /* post_type_bubble_googleplus@2x.png in Resources */,
 				1245353E1AE9D146004198C9 /* sign10@2x.png in Resources */,
 				129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */,
+				12F2CCE81B4CF4D30085F78F /* RegistUserCodeImg@2x.png in Resources */,
 				1240D6E11AE916F40056AD6A /* post_type_bubble_flickr@2x.png in Resources */,
 				12F3CC7E1B1DE82C00E64DE4 /* SignGainCallMoney@2x.png in Resources */,
 				1245355E1AE9D146004198C9 /* sign9@2x.png in Resources */,

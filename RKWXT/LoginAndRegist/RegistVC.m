@@ -20,7 +20,7 @@
 
 enum{
     WXT_Regist_UserPhone = 0,
-//    WXT_Regist_FetchPwd,
+    WXT_Regist_FetchPwd,
     WXT_Regist_Pwd,
     WXT_Regist_OtherPhone,
     
@@ -41,8 +41,6 @@ enum{
     UIView *_iconShell;
     UIView *_optShell;
     GainModel *_gainModel;
-    
-    NSArray *_baseNameArr;
 }
 @end
 
@@ -55,9 +53,6 @@ enum{
         
         _model = [[RegistModel alloc] init];
         [_model setDelegate:self];
-        
-        //        _baseNameArr = @[@"手机号:",@"验证码:",@"密   码:",@"推荐人:"];
-        _baseNameArr = @[@"手机号:",@"密   码:",@"推荐人:"];
         
         _gainModel = [[GainModel alloc] init];
         [_gainModel setDelegate:self];
@@ -115,7 +110,7 @@ enum{
     [_optShell addGestureRecognizer:swip];
     
     
-    CGFloat yGap = 112;
+    CGFloat yGap = 112+38;
     CGRect tableRect = CGRectMake(0, 0, Size.width, yGap);
     [self createUserAndPwdTable:tableRect];
     
@@ -185,6 +180,55 @@ enum{
     [rightLine setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [_optShell addSubview:rightLine];
     
+    yOffset += 10;
+    _fetchPwd = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width-75, height)];
+    [_fetchPwd setReturnKeyType:UIReturnKeyDone];
+    [_fetchPwd setSecureTextEntry:YES];
+    [_fetchPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_fetchPwd addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
+    [_fetchPwd setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
+    [_fetchPwd setTextColor:WXColorWithInteger(0xda7c7b)];
+    [_fetchPwd setTintColor:WXColorWithInteger(0xdd2726)];
+    [_fetchPwd setLeftViewMode:UITextFieldViewModeAlways];
+    [_fetchPwd setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_fetchPwd setPlaceHolder:@"请输入验证码" color:WXColorWithInteger(0xda7c7b)];
+    [_fetchPwd setFont:WXTFont(fontSize)];
+    UIImage *leftImg0 = [UIImage imageNamed:@"RegistUserCodeImg.png"];
+    UIImageView *leftView0 = [[UIImageView alloc] initWithImage:leftImg0];
+    [_fetchPwd setLeftView:leftView0 leftGap:leftViewGap rightGap:textGap];
+    [_optShell addSubview:_fetchPwd];
+    
+    _gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    _gainBtn.frame = CGRectMake(Size.width-xGap1-90+8, yOffset+4, 82, 30);
+    [_gainBtn setBorderRadian:1.0 width:0.4 color:WXColorWithInteger(0xdd2726)];
+    [_gainBtn.titleLabel setFont:WXTFont(14.0)];
+    [_gainBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [_gainBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_gainBtn setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
+    [_gainBtn addTarget:self action:@selector(fecthCode) forControlEvents:UIControlEventTouchUpInside];
+    [_optShell addSubview:_gainBtn];
+    
+    
+    yOffset += height+5;
+    UILabel *leftLine2 = [[UILabel alloc] init];
+    leftLine2.frame = CGRectMake(xGap1, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine2 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine2];
+    
+    UILabel *downLine1 = [[UILabel alloc] init];
+    downLine1.frame = CGRectMake(xGap1, yOffset, Size.width-2*xGap1-90, 0.5);
+    [downLine1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:downLine1];
+    
+    UILabel *leftLine3 = [[UILabel alloc] init];
+    leftLine3.frame = CGRectMake(xGap1+50, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine3 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine3];
+    
+    UILabel *rightLine1 = [[UILabel alloc] init];
+    rightLine1.frame = CGRectMake(Size.width-xGap1-90, yOffset-lineHeight, 0.5, lineHeight);
+    [rightLine1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:rightLine1];
     
     yOffset += 10;
     _pwdTextfield = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
@@ -205,25 +249,25 @@ enum{
     [_optShell addSubview:_pwdTextfield];
     
     yOffset += height+5;
-    UILabel *leftLine2 = [[UILabel alloc] init];
-    leftLine2.frame = CGRectMake(xGap1, yOffset-lineHeight, 0.5, lineHeight);
-    [leftLine2 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:leftLine2];
+    UILabel *leftLine0 = [[UILabel alloc] init];
+    leftLine0.frame = CGRectMake(xGap1, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine0 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine0];
     
-    UILabel *downLine1 = [[UILabel alloc] init];
-    downLine1.frame = CGRectMake(xGap1, yOffset, Size.width-2*xGap1, 0.5);
-    [downLine1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:downLine1];
+    UILabel *downLine0 = [[UILabel alloc] init];
+    downLine0.frame = CGRectMake(xGap1, yOffset, Size.width-2*xGap1, 0.5);
+    [downLine0 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:downLine0];
     
-    UILabel *leftLine3 = [[UILabel alloc] init];
-    leftLine3.frame = CGRectMake(xGap1+50, yOffset-lineHeight, 0.5, lineHeight);
-    [leftLine3 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:leftLine3];
+    UILabel *leftLine9 = [[UILabel alloc] init];
+    leftLine9.frame = CGRectMake(xGap1+50, yOffset-lineHeight, 0.5, lineHeight);
+    [leftLine9 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:leftLine9];
     
-    UILabel *rightLine1 = [[UILabel alloc] init];
-    rightLine1.frame = CGRectMake(Size.width-xGap1, yOffset-lineHeight, 0.5, lineHeight);
-    [rightLine1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:rightLine1];
+    UILabel *rightLine0 = [[UILabel alloc] init];
+    rightLine0.frame = CGRectMake(Size.width-xGap1, yOffset-lineHeight, 0.5, lineHeight);
+    [rightLine0 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [_optShell addSubview:rightLine0];
     
     yOffset += 10;
     _otherPhone = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
@@ -308,7 +352,7 @@ enum{
 }
 
 #pragma mark delegate
--(void)gainAFecthPwd{
+-(void)fecthCode{
     if(![self checkUserValide]){
         return;
     }
@@ -348,7 +392,7 @@ enum{
 #pragma mark 验证码
 - (void)setFetchPasswordButtonTitle{
     [_gainBtn setEnabled:_fetchPasswordTime == 0];
-    NSString *title = @"获取";
+    NSString *title = @"获取验证码";
     if(_fetchPasswordTime > 0){
         title = [NSString stringWithFormat:@"(%d)",kFetchPasswordDur - (int)_fetchPasswordTime];
     }
@@ -387,10 +431,10 @@ enum{
         [UtilTool showAlertView:@"密码不能小于6位"];
         return NO;
     }
-    //    if(_fetchPwd.text.length < 1){
-    //        [UtilTool showAlertView:@"验证码不能为空"];
-    //        return NO;
-    //    }
+    if(_fetchPwd.text.length < 1){
+        [UtilTool showAlertView:@"验证码不能为空"];
+        return NO;
+    }
     //    if(_otherPhone.text.length == 0){
     //        [UtilTool showAlertView:@"请输入推荐人手机号"];
     //        return NO;
@@ -411,7 +455,7 @@ enum{
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
-    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:123 andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
+    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
 }
 
 -(void)registSucceed{
