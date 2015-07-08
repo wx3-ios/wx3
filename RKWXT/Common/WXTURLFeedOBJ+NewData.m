@@ -104,6 +104,7 @@
                     if (result != 0){
                         retFeedData.code = result;
                         retFeedData.errorDesc = [jsonDic objectForKey:K_URLFeedOBJ_Data_ErrorDesc];
+                        NSLog(@"%@",retFeedData.errorDesc);
                     }else{
                         retFeedData.data = jsonDic;
                     }

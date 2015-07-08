@@ -8,13 +8,38 @@
 
 #import "WaitSendGoodsListVC.h"
 #import "WaitSendGoodsDef.h"
+#import "OrderListModel.h"
+#import "OrderListEntity.h"
+#import "OrderGoodsCell.h"
 
-@interface WaitSendGoodsListVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface WaitSendGoodsListVC()<UITableViewDataSource,UITableViewDelegate,WaitSendOrderDelegate>{
     UITableView *_tableView;
+    NSMutableArray *listArr;
 }
 @end
 
 @implementation WaitSendGoodsListVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        listArr = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [listArr removeAllObjects];
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
+            [listArr addObject:entity];
+        }
+    }
+    if(_tableView){
+        [_tableView reloadData];
+    }
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -29,38 +54,50 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return OrderList_WaitSend_Invalid;
+    return [self numberOfRowInSection:section];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return [listArr count];
+}
+
+-(NSInteger)numberOfRowInSection:(NSInteger)section{
+    OrderListEntity *entity = [listArr objectAtIndex:section];
+    return OrderList_WaitSend_Invalid+[entity.goodsArr count]-1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    CGFloat height = 0;
+    if(section > 0){
+        height = 15;
+    }
+    return height;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = 0.0;
-    switch (indexPath.row) {
-        case OrderList_WaitSend_Title:
-            height = WaitSendTitleCellHeight;
-            break;
-        case OrderList_WaitSend_GoodsInfo:
-            height = WaitSendGoodsInfoCellHeight;
-            break;
-        case OrderList_WaitSend_Consult:
-            height = WaitSendConsultCellHeight;
-            break;
-        default:
-            break;
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    if(row == OrderList_WaitSend_Title){
+        height = WaitSendTitleCellHeight;
+    }
+    if(row == [self numberOfRowInSection:section]-1){
+        height = WaitSendConsultCellHeight;
+    }
+    if(row > OrderList_WaitSend_Title && row < [self numberOfRowInSection:section]-1){
+        height = WaitSendGoodsInfoCellHeight;
     }
     return height;
 }
 
 //title
--(WXUITableViewCell*)tableViewForTitleCell{
+-(WXTUITableViewCell*)tableViewForTitleCell{
     static NSString *identifier = @"titleCell";
-    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell.textLabel setText:@"等待商家处理"];
     [cell.textLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [cell.textLabel setFont:WXFont(12.0)];
@@ -68,49 +105,62 @@
 }
 
 //商品
--(WXUITableViewCell*)tabelViewForGoodsInfoCell:(NSInteger)row{
-    static NSString *identifier = @"goodInfoCell";
-    WaitSendGoodsInfoCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+-(WXTUITableViewCell*)tabelViewForGoodsInfoCell:(NSInteger)row atSection:(NSInteger)section{
+    static NSString *identifier = @"sendCell";
+    OrderGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WaitSendGoodsInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[OrderGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    OrderListEntity *entity = [listArr objectAtIndex:section];
+    OrderListEntity *ent = [entity.goodsArr objectAtIndex:row-1];
+    [cell setCellInfo:ent];
     [cell load];
     return cell;
 }
 
 //统计
--(WXUITableViewCell*)tabelViewForConsultCell{
+-(WXTUITableViewCell*)tabelViewForConsultCell:(NSInteger)section{
     static NSString *identifier = @"goodInfoCell";
     WaitSendConsultCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WaitSendConsultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setDelegate:self];
+    OrderListEntity *entity = [listArr objectAtIndex:section];
+    [cell setCellInfo:entity];
     [cell load];
     return cell;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WXUITableViewCell *cell = nil;
+    WXTUITableViewCell *cell = nil;
     NSInteger row = indexPath.row;
-    switch (row) {
-        case OrderList_WaitSend_Title:
-            cell = [self tableViewForTitleCell];
-            break;
-        case OrderList_WaitSend_GoodsInfo:
-            cell = [self tabelViewForGoodsInfoCell:row];
-            break;
-        case OrderList_WaitSend_Consult:
-            cell = [self tabelViewForConsultCell];
-            break;
-        default:
-            break;
+    NSInteger section = indexPath.section;
+    if(row == OrderList_WaitSend_Title){
+        cell = [self tableViewForTitleCell];
+    }
+    if(row == [self numberOfRowInSection:section]-1){
+        cell = [self tabelViewForConsultCell:section];
+    }
+    if(row > OrderList_WaitSend_Title && row < [self numberOfRowInSection:section]-1){
+        cell = [self tabelViewForGoodsInfoCell:row atSection:section];
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark userDeal
+-(void)userClickHurryBtn:(id)sender{
+
+}
+
+-(void)userClickRefundBtn:(id)sender{
+    
 }
 
 @end

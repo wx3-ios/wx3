@@ -18,6 +18,8 @@
 #import "NewGoodsInfoVC.h"
 #import "UserBonusVC.h"
 #import "MakeOrderVC.h"
+#import "OrderPayVC.h"
+#import "OrderListEntity.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -27,6 +29,12 @@
         sharedInstance = [[CoordinateController alloc] init];
     });
     return sharedInstance;
+}
+
++ (WXUINavigationController*)sharedNavigationController{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    WXUINavigationController *navigationController = appDelegate.navigationController;
+    return navigationController;
 }
 
 - (void)toContactDetail:(id)sender contactInfo:(id)contactInfo contactType:(E_ContacterType)contactType animated:(BOOL)animated{
@@ -79,6 +87,21 @@
     MakeOrderVC *orderVC = [[MakeOrderVC alloc] init];
     orderVC.goodsList = orderInfo;
     [vc.wxNavigationController pushViewController:orderVC];
+}
+
+-(void)toOrderPayVC:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated{
+    OrderListEntity *entity = orderInfo;
+    WXUIViewController *vc = sender;
+    NSInteger number = 0;
+    CGFloat price = 0;
+    for(OrderListEntity *ent in entity.goodsArr){
+        number += ent.sales_num;
+        price += ent.sales_num*ent.sales_price;
+    }
+    OrderPayVC *payVC = [[OrderPayVC alloc] init];
+    payVC.orderID = [NSString stringWithFormat:@"%ld",(long)entity.order_id];
+    payVC.payMoney = price;
+    [vc.wxNavigationController pushViewController:payVC];
 }
 
 //- (void)toOrderMenu:(id)sender source:(E_OrderMenuSource)source goodList:(NSArray*)goodList extra:(MenuExtra*)extra animated:(BOOL)animated{

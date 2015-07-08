@@ -52,8 +52,7 @@
         CGFloat xOffset = 5+xGap+circleImg.size.width;
         CGFloat imgWidth = 55;
         CGFloat imgHeight = 55;
-        _imgView = [[WXRemotionImgBtn alloc] init];
-        _imgView.frame = CGRectMake(xOffset, (T_MenuCommonCellHeight-imgHeight)/2, imgWidth, imgHeight);
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (T_MenuCommonCellHeight-imgHeight)/2, imgWidth, imgHeight)];
         [_imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:_imgView];
         

@@ -7,10 +7,15 @@
 //
 
 #import "WaitSendConsultCell.h"
+#import "OrderListEntity.h"
 
 @interface WaitSendConsultCell(){
     UILabel *_consult;
     WXUIButton *_payBtn;
+    WXUIButton *_button2;
+    
+    NSInteger number;
+    CGFloat price;
 }
 @end
 
@@ -51,19 +56,58 @@
         _payBtn.frame = CGRectMake(size.width-xGap-btnWidth, (WaitSendConsultCellHeight-btnHeight)/2, btnWidth, btnHeight);
         [_payBtn setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
         [_payBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
+        [_payBtn.titleLabel setFont:WXFont(12.0)];
         [_payBtn addTarget:self action:@selector(sendGoods) forControlEvents:UIControlEventTouchUpInside];
-        [_payBtn setTitle:@"催单" forState:UIControlStateNormal];
         [self.contentView addSubview:_payBtn];
+        
+        _button2 = [WXUIButton buttonWithType:UIButtonTypeCustom];
+        _button2.frame = CGRectMake(size.width-xGap-2*btnWidth-10, (WaitSendConsultCellHeight-btnHeight)/2, btnWidth, btnHeight);
+        [_button2 setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
+        [_button2 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+        [_button2 setHidden:YES];
+        [_button2.titleLabel setFont:WXFont(12.0)];
+        [_button2 addTarget:self action:@selector(button2Clicked) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_button2];
     }
     return self;
 }
 
 -(void)load{
-    [_consult setText:@"￥148.00"];
+    OrderListEntity *entity = self.cellInfo;
+    for(OrderListEntity *ent in entity.goodsArr){
+        number += ent.sales_num;
+        price += ent.sales_num*ent.sales_price;
+    }
+    [_consult setText:[NSString stringWithFormat:@"￥%.2f",price]];
+    number = 0;
+    price = 0;
+    
+    [self showNameInBtnWith:entity];
+}
+
+-(void)showNameInBtnWith:(OrderListEntity*)entity{
+    if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
+        [_payBtn setTitle:@"催单" forState:UIControlStateNormal];
+        [_button2 setTitle:@"退款" forState:UIControlStateNormal];
+    }
 }
 
 -(void)sendGoods{
-    
+    OrderListEntity *entity = self.cellInfo;
+    if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
+        if(_delegate && [_delegate respondsToSelector:@selector(userClickHurryBtn:)]){
+            [_delegate userClickHurryBtn:entity];
+        }
+    }
+}
+
+-(void)button2Clicked{
+    OrderListEntity *entity = self.cellInfo;
+    if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
+        if(_delegate && [_delegate respondsToSelector:@selector(userClickRefundBtn:)]){
+            [_delegate userClickRefundBtn:entity];
+        }
+    }
 }
 
 @end

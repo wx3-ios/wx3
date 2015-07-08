@@ -6,10 +6,18 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "WXUITableViewCell.h"
+#import "WXTUITableViewCell.h"
 
 #define WaitReceiveConsultCellHeight (56)
 
-@interface WaitReceiveConsultCell : WXUITableViewCell
+@protocol ReceiveOrderDelegate;
+
+@interface WaitReceiveConsultCell : WXTUITableViewCell
+@property (nonatomic,assign) id<ReceiveOrderDelegate>delegate;
+@end
+
+@protocol ReceiveOrderDelegate <NSObject>
+-(void)receiveOrderBtnClicked:(id)sender;
+-(void)refundOrderBtnClicked:(id)sender;
 
 @end

@@ -6,10 +6,18 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "WXUITableViewCell.h"
+#import "WXTUITableViewCell.h"
 
 #define WaitSendConsultCellHeight (56)
 
-@interface WaitSendConsultCell : WXUITableViewCell
+@protocol WaitSendOrderDelegate;
+
+@interface WaitSendConsultCell : WXTUITableViewCell
+@property (nonatomic,assign) id<WaitSendOrderDelegate>delegate;
+@end
+
+@protocol WaitSendOrderDelegate <NSObject>
+-(void)userClickHurryBtn:(id)sender;
+-(void)userClickRefundBtn:(id)sender;
 
 @end

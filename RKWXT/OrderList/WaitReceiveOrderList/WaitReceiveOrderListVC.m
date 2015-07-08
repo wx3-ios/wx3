@@ -8,13 +8,38 @@
 
 #import "WaitReceiveOrderListVC.h"
 #import "OrderListWaitReceiveDef.h"
+#import "OrderListModel.h"
+#import "OrderListEntity.h"
+#import "OrderGoodsCell.h"
 
-@interface WaitReceiveOrderListVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface WaitReceiveOrderListVC()<UITableViewDataSource,UITableViewDelegate,ReceiveOrderDelegate>{
     UITableView *_tableView;
+    NSMutableArray *listArr;
 }
 @end
 
 @implementation WaitReceiveOrderListVC
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [listArr removeAllObjects];
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_HasSend){
+            [listArr addObject:entity];
+        }
+    }
+    if(_tableView){
+        [_tableView reloadData];
+    }
+}
+
+-(id)init{
+    self = [super init];
+    if(self){
+        listArr = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -28,35 +53,50 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
+-(void)addOBS{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(completeOrderSucceed:) name:K_Notification_UserOderList_CompleteSucceed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(completeOrderFailed:) name:K_Notification_UserOderList_CompleteFailed object:nil];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return [listArr count];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return OrderList_WaitPay_Invalid;
+    return [self numberOfRowInSection:section];
+}
+
+-(NSInteger)numberOfRowInSection:(NSInteger)section{
+    OrderListEntity *entity = [listArr objectAtIndex:section];
+    return OrderList_WaitPay_Invalid+[entity.goodsArr count]-1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    CGFloat height = 0;
+    if(section > 0){
+        height = 15;
+    }
+    return height;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = 0.0;
     NSInteger row = indexPath.row;
-    switch (row) {
-        case OrderList_WaitReceive_Title:
-            height = WaitReceiveTitleCellHeight;
-            break;
-        case OrderList_WaitReceive_GoodsInfo:
-            height = WaitReceiveGoodsInfoCellHeight;
-            break;
-        case OrderList_WaitReceive_Consult:
-            height = WaitReceiveConsultCellHeight;
-            break;
-        default:
-            break;
+    NSInteger section = indexPath.section;
+    if(row == OrderList_WaitReceive_Title){
+        height = WaitReceiveTitleCellHeight;
+    }
+    if(row == [self numberOfRowInSection:section]-1){
+        height = WaitReceiveGoodsInfoCellHeight;
+    }
+    if(row > OrderList_WaitReceive_Title && row < [self numberOfRowInSection:section]-1){
+        height = WaitReceiveConsultCellHeight;
     }
     return height;
 }
 
 //title
--(WXUITableViewCell*)tableViewForTitleCell{
+-(WXTUITableViewCell*)tableViewForTitleCell{
     static NSString *identifier = @"titleCell";
     WaitReceiveTitleCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
@@ -66,48 +106,102 @@
 }
 
 //商品
--(WXUITableViewCell*)tabelViewForGoodsInfoCell:(NSInteger)row{
+-(WXTUITableViewCell*)tabelViewForGoodsInfoCell:(NSInteger)row atSection:(NSInteger)section{
     static NSString *identifier = @"goodInfoCell";
-    WaitReceiveGoodsInfoCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    OrderGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WaitReceiveGoodsInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[OrderGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    OrderListEntity *entity = [listArr objectAtIndex:section];
+    OrderListEntity *ent = [entity.goodsArr objectAtIndex:row-1];
+    [cell setCellInfo:ent];
     [cell load];
     return cell;
 }
 
 //统计
--(WXUITableViewCell*)tabelViewForConsultCell{
-    static NSString *identifier = @"goodInfoCell";
+-(WXTUITableViewCell*)tabelViewForConsultCell:(NSInteger)section{
+    static NSString *identifier = @"consultCell";
     WaitReceiveConsultCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WaitReceiveConsultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    OrderListEntity *entity = [listArr objectAtIndex:section];
+    [cell setCellInfo:entity];
     [cell load];
     return cell;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WXUITableViewCell *cell = nil;
+    WXTUITableViewCell *cell = nil;
     NSInteger row = indexPath.row;
-    switch (row) {
-        case OrderList_WaitReceive_Title:
-            cell = [self tableViewForTitleCell];
-            break;
-        case OrderList_WaitReceive_GoodsInfo:
-            cell = [self tabelViewForGoodsInfoCell:row];
-            break;
-        case OrderList_WaitReceive_Consult:
-            cell = [self tabelViewForConsultCell];
-            break;
-        default:
-            break;
+    NSInteger section = indexPath.section;
+    if(row == OrderList_WaitReceive_Title){
+        cell = [self tableViewForTitleCell];
+    }
+    if(row == [self numberOfRowInSection:section]-1){
+        cell = [self tabelViewForConsultCell:section];
+    }
+    if(row > OrderList_WaitReceive_Title && row < [self numberOfRowInSection:section]-1){
+        cell = [self tabelViewForGoodsInfoCell:row atSection:section];
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(NSInteger)indexPathOfOptCellWithOrder:(OrderListEntity*)orderEntity{
+    [listArr removeAllObjects];
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_HasSend){
+            [listArr addObject:entity];
+        }
+    }
+    NSInteger index = 100000;
+    if (orderEntity && [listArr count] > 0){
+        index = [listArr indexOfObject:orderEntity];
+    }
+    return index;
+}
+
+#pragma mark receive
+-(void)receiveOrderBtnClicked:(id)sender{
+    OrderListEntity *entity = sender;
+    [[OrderListModel shareOrderListModel] dealUserOrderListWithType:DealOrderList_Type_Complete with:[NSString stringWithFormat:@"%ld",(long)entity.order_id]];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)refundOrderBtnClicked:(id)sender{
+    
+}
+
+-(void)completeOrderSucceed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *orderID = notification.object;
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.order_id == [orderID integerValue]){
+            entity.order_status = Order_Status_Complete;
+            NSInteger index = [self indexPathOfOptCellWithOrder:entity];
+            if (index<10000){
+                [_tableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+            }else{
+                [_tableView reloadData];
+            }
+        }
+    }
+}
+
+-(void)completeOrderFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *message = notification.object;
+    if(!message){
+        message = @"确认订单失败";
+    }
+    [UtilTool showAlertView:message];
 }
 
 @end

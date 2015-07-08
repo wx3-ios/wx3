@@ -40,11 +40,17 @@ enum{
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    [self addOBS];
 }
 
 -(void)addOBS{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(alipaySucceed) name:D_Notification_Name_AliPaySucceed object:nil];
+}
+
+-(void)removeOBS{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -144,10 +150,28 @@ enum{
 
 #pragma mark alipay
 -(void)alipay{
-    [[AliPayControl sharedAliPayOBJ] alipayOrderID:@"123456100" title:@"我信云科技" amount:0.01 phpURL:@"" payTag:nil];
+    if(!_orderID){
+        return;
+    }
+    [[AliPayControl sharedAliPayOBJ] alipayOrderID:_orderID title:@"我信云科技" amount:_payMoney phpURL:@"" payTag:nil];
 }
 
 -(void)alipaySucceed{
+    WXUINavigationController *navigationController = [CoordinateController sharedNavigationController];
+    UIViewController *orderVC = [navigationController lastViewControllerOfClass:NSClassFromString(@"HomeOrderVC")];
+    if(orderVC){
+        [navigationController popToViewController:orderVC animated:YES Completion:^{
+        }];
+    }else{
+        [navigationController popToRootViewControllerAnimated:NO Completion:^{
+            [[CoordinateController sharedCoordinateController] toOrderList:navigationController.rootViewController selectedShow:0 animated:YES];
+        }];
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self removeOBS];
 }
 
 @end

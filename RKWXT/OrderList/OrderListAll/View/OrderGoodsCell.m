@@ -8,6 +8,7 @@
 
 #import "OrderGoodsCell.h"
 #import "WXRemotionImgBtn.h"
+#import "OrderListEntity.h"
 
 @interface OrderGoodsCell(){
     WXRemotionImgBtn *_goodsImg;
@@ -32,7 +33,7 @@
         
         xOffset += imgWidth+12;
         CGFloat yOffset = 16;
-        CGFloat infoWidth = 170;
+        CGFloat infoWidth = 160;
         CGFloat infoHeight = 40;
         _goodsInfo = [[UILabel alloc] init];
         _goodsInfo.frame = CGRectMake(xOffset, yOffset, infoWidth, infoHeight);
@@ -67,11 +68,12 @@
 }
 
 -(void)load{
-    [_goodsImg setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140929/20140929111809_9365271.jpeg"];
+    OrderListEntity *entity = self.cellInfo;
+    [_goodsImg setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goods_img]];
     [_goodsImg load];
-    [_goodsInfo setText:@"夏威夷果218g 1袋 奶油味干果炒货"];
-    [_goodsPrice setText:@"￥29.00"];
-    [_goodsNum setText:@"*1"];
+    [_goodsInfo setText:entity.goods_name];
+    [_goodsPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.sales_price]];
+    [_goodsNum setText:[NSString stringWithFormat:@"×%ld",(long)entity.sales_num]];
 }
 
 @end

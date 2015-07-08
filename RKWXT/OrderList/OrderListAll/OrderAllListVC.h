@@ -8,6 +8,7 @@
 
 #import "WXUIViewController.h"
 
+#define K_Notification_HomeOrder_ToPay @"K_Notification_HomeOrder_ToPay"
 @interface OrderAllListVC : WXUIViewController
 
 @end

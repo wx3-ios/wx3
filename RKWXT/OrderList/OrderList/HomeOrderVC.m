@@ -9,6 +9,7 @@
 #import "HomeOrderVC.h"
 #import "DLTabedSlideView.h"
 #import "DLFixedTabbarView.h"
+#import "OrderListEntity.h"
 
 #import "OrderListDef.h"
 
@@ -22,6 +23,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self addOBS];
 }
 
 -(void)viewDidLoad{
@@ -51,6 +53,20 @@
     
     tabedSlideView.selectedIndex = _selectedNum;
     [self addSubview:tabedSlideView];
+}
+
+-(void)addOBS{
+    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
+    [notification addObserver:self selector:@selector(toPay:) name:K_Notification_HomeOrder_ToPay object:nil];
+}
+
+-(void)removeOBS{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)toPay:(NSNotification*)notification{
+    OrderListEntity *entity = notification.object;
+    [[CoordinateController sharedCoordinateController] toOrderPayVC:self orderInfo:entity animated:YES];
 }
 
 -(NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender{
@@ -87,6 +103,11 @@
             break;
     }
     return nil;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self removeOBS];
 }
 
 @end

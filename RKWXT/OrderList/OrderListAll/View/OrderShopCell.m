@@ -8,6 +8,7 @@
 
 #import "OrderShopCell.h"
 #import "WXRemotionImgBtn.h"
+#import "OrderListEntity.h"
 
 @interface OrderShopCell(){
     WXRemotionImgBtn *_shopLogoImg;
@@ -28,6 +29,7 @@
         CGFloat imgHeight = imgWidth;
         _shopLogoImg = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (OrderShopCellHeight-imgHeight)/2, imgWidth, imgHeight)];
         [_shopLogoImg setUserInteractionEnabled:NO];
+        [_shopLogoImg setImage:[UIImage imageNamed:@"Icon.png"]];
         [self.contentView addSubview:_shopLogoImg];
         
         xOffset += imgWidth+6;
@@ -68,10 +70,12 @@
 }
 
 -(void)load{
-    [_shopNameLabel setText:@"我信科技有限公司"];
-    [_orderPayStatus setText:@"待付款"];
-    [_shopLogoImg setCpxViewInfo:nil];
-    [_shopLogoImg load];
+    OrderListEntity *entity = self.cellInfo;
+    [_shopNameLabel setText:[NSString stringWithFormat:@"%@",kMerchantName]];
+    NSString *str = (entity.pay_status == Pay_Status_WaitPay?@"待付款":@"已付款");
+    [_orderPayStatus setText:str];
+//    [_shopLogoImg setCpxViewInfo:nil];
+//    [_shopLogoImg load];
 }
 
 @end

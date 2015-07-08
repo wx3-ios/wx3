@@ -36,6 +36,8 @@ typedef enum {
     WXT_UrlFeed_Type_New_UserBonus,
     WXT_UrlFeed_Type_New_GainBonus,
     WXT_UrlFeed_Type_New_LoadUserBonus,
+    WXT_UrlFeed_Type_New_OrderList,
+    WXT_UrlFeed_Type_New_DealOrderList,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

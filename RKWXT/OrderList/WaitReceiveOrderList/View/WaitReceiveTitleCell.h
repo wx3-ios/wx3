@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "WXUITableViewCell.h"
+#import "WXTUITableViewCell.h"
 
 #define WaitReceiveTitleCellHeight (56)
 
-@interface WaitReceiveTitleCell : WXUITableViewCell
+@interface WaitReceiveTitleCell : WXTUITableViewCell
 
 @end

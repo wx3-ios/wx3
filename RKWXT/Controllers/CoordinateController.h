@@ -61,6 +61,7 @@ typedef enum {
 - (void)toRefund:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated;//退款~
 - (void)toOrderDetail:(id)sender orderInfo:(id)orderInfo delegate:(id)delegate animated:(BOOL)animated;//订单详情
 - (void)toRefundDetail:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated;//退款详情
+
 //new
 -(void)toSignVC:(id)sender animated:(BOOL)animated;//签到
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated;//充值
@@ -69,4 +70,5 @@ typedef enum {
 -(void)toGoodsInfoVC:(id)sender goodsID:(NSInteger)goodsID animated:(BOOL)animated;//商品详情
 -(void)toUserBonusVC:(id)sender animated:(BOOL)animated; //红包
 -(void)toMakeOrderVC:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated; //下单
+-(void)toOrderPayVC:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated; //支付
 @end

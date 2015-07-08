@@ -10,5 +10,6 @@
 
 @interface OrderPayVC : WXUIViewController
 @property (nonatomic,assign) CGFloat payMoney;
+@property (nonatomic,strong) NSString *orderID;
 
 @end

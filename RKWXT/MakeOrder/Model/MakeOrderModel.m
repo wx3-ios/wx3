@@ -75,7 +75,7 @@
             }
         }else{
             [blockSelf setStatus:E_ModelDataStatus_LoadSucceed];
-//            [blockSelf parseGoodInfoDetail:retData.data];
+            _orderID = [[retData.data objectForKey:@"data"] objectForKey:@"order_id"];
             if (_delegate && [_delegate respondsToSelector:@selector(makeOrderSucceed)]){
                 [_delegate makeOrderSucceed];
             }

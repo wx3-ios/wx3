@@ -99,6 +99,12 @@
         case WXT_UrlFeed_Type_New_LoadUserBonus:
             url = @"/get_user_red_packet.php";
             break;
+        case WXT_UrlFeed_Type_New_OrderList:
+            url = @"/get_order_info.php";
+            break;
+        case WXT_UrlFeed_Type_New_DealOrderList:
+            url = @"/update_order_status.php";
+            break;
         default:
             break;
     }
