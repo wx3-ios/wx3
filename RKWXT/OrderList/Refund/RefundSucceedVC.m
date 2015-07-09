@@ -7,6 +7,8 @@
 //
 
 #import "RefundSucceedVC.h"
+#import "OrderGoodsCell.h"
+#import "OrderListEntity.h"
 
 enum{
     RefundSucceed_Section_Title = 0,
@@ -21,6 +23,7 @@ enum{
 @interface RefundSucceedVC ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
     NSArray *infoArr;
+    OrderListEntity *orderEntity;
 }
 
 @end
@@ -46,6 +49,8 @@ enum{
     [_tableView setDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    orderEntity = _entity;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -59,10 +64,8 @@ enum{
         case RefundSucceed_Section_Name:
         case RefundSucceed_Section_Phone:
         case RefundSucceed_Section_Title:
-            number = 1;
-            break;
         case RefundSucceed_Section_GoodsList:
-            number = 2;
+            number = 1;
             break;
         default:
             break;
@@ -90,11 +93,11 @@ enum{
     return height;
 }
 
--(WXUITableViewCell *)tableViewForTitleCell{
+-(WXTUITableViewCell *)tableViewForTitleCell{
     static NSString *identifier = @"titleCell";
-    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell.textLabel setText:@"我们已经收到您的退款申请，请将商品寄到以下地址"];
@@ -103,11 +106,11 @@ enum{
     return cell;
 }
 
--(WXUITableViewCell *)tableViewForInfoCell:(NSInteger)section{
+-(WXTUITableViewCell *)tableViewForInfoCell:(NSInteger)section{
     static NSString *identifier = @"infoCell";
-    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell.textLabel setText:[infoArr objectAtIndex:section-2]];
@@ -117,10 +120,21 @@ enum{
     return cell;
 }
 
+-(WXTUITableViewCell*)tableViewForGoodsListCell{
+    static NSString *identifier = @"goodsListCell";
+    OrderGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[OrderGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setCellInfo:orderEntity];
+    [cell load];
+    return cell;
+}
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    WXUITableViewCell *cell = nil;
+    WXTUITableViewCell *cell = nil;
     switch (section) {
         case RefundSucceed_Section_Title:
             cell = [self tableViewForTitleCell];
@@ -131,6 +145,7 @@ enum{
             cell = [self tableViewForInfoCell:section];
             break;
         case RefundSucceed_Section_GoodsList:
+            cell = [self tableViewForGoodsListCell];
             break;
         default:
             break;
@@ -140,10 +155,6 @@ enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 @end

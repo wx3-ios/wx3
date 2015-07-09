@@ -8,8 +8,6 @@
 
 #import "WXUIViewController.h"
 
-#define K_Notification_HomeOrder_ToRefund @"K_Notification_HomeOrder_ToRefund"
-
 @interface WaitReceiveOrderListVC : WXUIViewController
 
 @end

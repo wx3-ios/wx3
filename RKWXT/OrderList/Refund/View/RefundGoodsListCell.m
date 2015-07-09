@@ -14,9 +14,8 @@
     WXUIButton *_circleBtn;
     WXRemotionImgBtn *_imgView;
     WXUILabel *_namelabel;
-    WXUILabel *_infoLabel;
+    WXUIButton *_infoLabel;
     WXUILabel *_numberLabel;
-    WXUILabel *_oldPrice;
     WXUILabel *_newPrice;
     
     BOOL selected;
@@ -76,12 +75,12 @@
         
         
         yOffset += nameHeight;
-        _infoLabel = [[WXUILabel alloc] init];
-        _infoLabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight);
-        [_infoLabel setBackgroundColor:[UIColor clearColor]];
-        [_infoLabel setTextAlignment:NSTextAlignmentLeft];
-        [_infoLabel setTextColor:WXColorWithInteger(0xdd2726)];
-        [_infoLabel setFont:WXFont(15.0)];
+        _infoLabel = [WXUIButton buttonWithType:UIButtonTypeCustom];
+        _infoLabel.frame = CGRectMake(xOffset, yOffset, 75, 25);
+        [_infoLabel setBackgroundColor:[UIColor grayColor]];
+        [_infoLabel setHidden:YES];
+        [_infoLabel.titleLabel setFont:WXFont(10.0)];
+        [_infoLabel addTarget:self action:@selector(searchRefundstate) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_infoLabel];
     }
     return self;
@@ -102,16 +101,20 @@
     [self setCircleBtnImgWith:entity.selected];
     
     if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Normal){
-        [_infoLabel setText:@"已申请退款"];
+        [_infoLabel setTitle:@"已申请退款" forState:UIControlStateNormal];
+        [_infoLabel setHidden:NO];
     }
     if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
-        [_infoLabel setText:@"退款中"];
+        [_infoLabel setTitle:@"退款中" forState:UIControlStateNormal];
+        [_infoLabel setHidden:NO];
     }
     if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Refuse){
-        [_infoLabel setText:@"商家拒绝退款"];
+        [_infoLabel setTitle:@"商家拒绝退款" forState:UIControlStateNormal];
+        [_infoLabel setHidden:NO];
     }
     if(entity.refund_status == Refund_Status_HasDone){
-        [_infoLabel setText:@"已退款"];
+        [_infoLabel setTitle:@"已退款" forState:UIControlStateNormal];
+        [_infoLabel setHidden:NO];
     }
 }
 
@@ -146,6 +149,15 @@
         [_circleBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
     }else{
         [_circleBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
+    }
+}
+
+-(void)searchRefundstate{
+    OrderListEntity *entity = self.cellInfo;
+    if(entity.refund_status == Refund_Status_Being/* && entity.shopDeal_status == ShopDeal_Refund_Agree*/){
+        if(_delegate && [_delegate respondsToSelector:@selector(searchRefundStatus:)]){
+            [_delegate searchRefundStatus:entity];
+        }
     }
 }
 

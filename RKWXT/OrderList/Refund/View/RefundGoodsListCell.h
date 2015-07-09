@@ -18,5 +18,6 @@
 
 @protocol SelectGoodsDelegate <NSObject>
 -(void)selectGoods;
+-(void)searchRefundStatus:(id)sender;
 
 @end

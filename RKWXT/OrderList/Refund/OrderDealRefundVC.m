@@ -12,6 +12,7 @@
 #import "RefundGoodsListCell.h"
 #import "RefundConsultCell.h"
 #import "OrderListModel.h"
+#import "RefundSucceedVC.h"
 
 #define TextViewHeight (65)
 
@@ -242,6 +243,11 @@ enum{
         message = @"申请退款失败";
     }
     [UtilTool showAlertView:message];
+}
+
+-(void)searchRefundStatus:(id)sender{
+    OrderListEntity *ent = sender;
+    [[CoordinateController sharedCoordinateController] toRefundInfoVC:self orderEntity:ent animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

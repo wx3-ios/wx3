@@ -58,6 +58,7 @@ typedef enum{
 @property (nonatomic,assign) CGFloat total_fee;     //订单实付金额
 @property (nonatomic,assign) CGFloat all_money;     //订单应付金额
 @property (nonatomic,assign) NSInteger red_packet;  //使用红包金额
+@property (nonatomic,strong) NSString *shopPhone;   //商家电话
 
 //订单商品信息
 @property (nonatomic,assign) NSInteger goods_id;    //商品ID

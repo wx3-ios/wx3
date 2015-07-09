@@ -255,6 +255,8 @@
 		12BD30FC1B3E905A00170316 /* UserBonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30FB1B3E905A00170316 /* UserBonusModel.m */; };
 		12BD30FF1B3E9ADF00170316 /* NewWXTLiDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30FE1B3E9ADF00170316 /* NewWXTLiDB.m */; };
 		12BD31021B3E9E1600170316 /* UserBonusEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD31011B3E9E1600170316 /* UserBonusEntity.m */; };
+		12C2000D1B4E792600BE8EE8 /* RefundStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2000C1B4E792600BE8EE8 /* RefundStateModel.m */; };
+		12C200101B4E7B0900BE8EE8 /* RefundStateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2000F1B4E7B0900BE8EE8 /* RefundStateEntity.m */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
 		12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */; };
 		12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CFE6501AC1A210009C710B /* CallHistoryEntity.m */; };
@@ -1077,6 +1079,11 @@
 		12BD30FE1B3E9ADF00170316 /* NewWXTLiDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWXTLiDB.m; sourceTree = "<group>"; };
 		12BD31001B3E9E1600170316 /* UserBonusEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBonusEntity.h; sourceTree = "<group>"; };
 		12BD31011B3E9E1600170316 /* UserBonusEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBonusEntity.m; sourceTree = "<group>"; };
+		12C2000B1B4E792600BE8EE8 /* RefundStateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundStateModel.h; sourceTree = "<group>"; };
+		12C2000C1B4E792600BE8EE8 /* RefundStateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundStateModel.m; sourceTree = "<group>"; };
+		12C2000E1B4E7B0900BE8EE8 /* RefundStateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundStateEntity.h; sourceTree = "<group>"; };
+		12C2000F1B4E7B0900BE8EE8 /* RefundStateEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundStateEntity.m; sourceTree = "<group>"; };
+		12C200141B4E7ED000BE8EE8 /* OrderCommonDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderCommonDef.h; sourceTree = "<group>"; };
 		12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultContactIcon@2x.png"; sourceTree = "<group>"; };
 		12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		12CFE64F1AC1A210009C710B /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
@@ -2658,7 +2665,7 @@
 				128255001B4BA5EF00C60146 /* OrderDealRefundVC.m */,
 				12F2CCF91B4D32B00085F78F /* RefundSucceedVC.h */,
 				12F2CCFA1B4D32B00085F78F /* RefundSucceedVC.m */,
-				12F2CCEE1B4D11710085F78F /* Model */,
+				12C2000A1B4E791000BE8EE8 /* Model */,
 				12F2CCEF1B4D11710085F78F /* View */,
 			);
 			path = Refund;
@@ -2903,6 +2910,17 @@
 			path = OrderPayType;
 			sourceTree = "<group>";
 		};
+		12C2000A1B4E791000BE8EE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12C2000B1B4E792600BE8EE8 /* RefundStateModel.h */,
+				12C2000C1B4E792600BE8EE8 /* RefundStateModel.m */,
+				12C2000E1B4E7B0900BE8EE8 /* RefundStateEntity.h */,
+				12C2000F1B4E7B0900BE8EE8 /* RefundStateEntity.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		12D0C86F1AB684FE0039A197 /* AboutWxtInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -3055,13 +3073,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		12F2CCEE1B4D11710085F78F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		12F2CCEF1B4D11710085F78F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3143,6 +3154,7 @@
 			children = (
 				12F2D7C41B1EA91400C8017F /* CustomMethod */,
 				12F2D7F01B1ED1B700C8017F /* OrderListDef.h */,
+				12C200141B4E7ED000BE8EE8 /* OrderCommonDef.h */,
 				12F2D7DF1B1EAA3500C8017F /* HomeOrderVC.h */,
 				12F2D7E01B1EAA3500C8017F /* HomeOrderVC.m */,
 			);
@@ -5670,6 +5682,7 @@
 				775842F81AB95A300039B129 /* PSCollectionView.m in Sources */,
 				128221801B18467A004613BB /* CSTScrollBrowser.m in Sources */,
 				12F3802F1B3BE41C00E9690C /* MakeOrderGoodsMoneyCell.m in Sources */,
+				12C200101B4E7B0900BE8EE8 /* RefundStateEntity.m in Sources */,
 				7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */,
 				7758435B1AB95FAC0039B129 /* WXService+UserInfo.m in Sources */,
 				DD0E38B21B1BE5AC00AB4DB9 /* WXSqlite+shopCart.m in Sources */,
@@ -6007,6 +6020,7 @@
 				DDB58F511AD3C6A2006248E9 /* CallHistoryEntityExt.m in Sources */,
 				1262E2C61ACA50B600667C54 /* WXTFindModel.m in Sources */,
 				775843021AB95A300039B129 /* BaseSearchEntity.m in Sources */,
+				12C2000D1B4E792600BE8EE8 /* RefundStateModel.m in Sources */,
 				775C58C91ABA7B75005B6B40 /* SubShopTime.m in Sources */,
 				775842E01AB95A300039B129 /* UIView+Render.m in Sources */,
 				12F46A5D1B205D0400B8EC98 /* NewRightHeadCell.m in Sources */,

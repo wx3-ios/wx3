@@ -12,6 +12,7 @@
 #import "OrderListEntity.h"
 #import "OrderGoodsCell.h"
 #import "AliPayControl.h"
+#import "OrderCommonDef.h"
 
 @interface WaitPayOrderListVC()<UITableViewDataSource,UITableViewDelegate,WaitPayOrderListDelegate>{
     UITableView *_tableView;

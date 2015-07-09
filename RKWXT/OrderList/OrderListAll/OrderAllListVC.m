@@ -13,6 +13,7 @@
 #import "OrderListTableView.h"
 #import "OrderPayVC.h"
 #import "AliPayControl.h"
+#import "OrderCommonDef.h"
 
 #define GetOrderArrayEveryTime (5)
 
@@ -337,12 +338,13 @@ typedef enum{
 }
 //催单
 -(void)userHurryBtnClicked:(id)sender{
-    
+    OrderListEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
 }
 //退款
 -(void)userRefundBtnClicked:(id)sender{
     OrderListEntity *entity = sender;
-    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_CallShopPhone object:entity.shopPhone];
 }
 
 #pragma mark pullingDelegate

@@ -21,6 +21,7 @@
 #import "OrderPayVC.h"
 #import "OrderListEntity.h"
 #import "OrderDealRefundVC.h"
+#import "RefundSucceedVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -110,6 +111,13 @@
     OrderDealRefundVC *refundVC = [[OrderDealRefundVC alloc] init];
     refundVC.entity = goodsInfo;
     [vc.wxNavigationController pushViewController:refundVC];
+}
+
+-(void)toRefundInfoVC:(id)sender orderEntity:(id)orderEntity animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    RefundSucceedVC *refundInfoVC = [[RefundSucceedVC alloc] init];
+    refundInfoVC.entity = orderEntity;
+    [vc.wxNavigationController pushViewController:refundInfoVC];
 }
 
 //- (void)toOrderMenu:(id)sender source:(E_OrderMenuSource)source goodList:(NSArray*)goodList extra:(MenuExtra*)extra animated:(BOOL)animated{

@@ -12,6 +12,7 @@
 #import "OrderListEntity.h"
 
 #import "OrderListDef.h"
+#import "CallBackVC.h"
 
 @interface HomeOrderVC()<DLTabedSlideViewDelegate>{
     DLTabedSlideView *tabedSlideView;
@@ -59,6 +60,7 @@
     NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
     [notification addObserver:self selector:@selector(toPay:) name:K_Notification_HomeOrder_ToPay object:nil];
     [notification addObserver:self selector:@selector(toRefund:) name:K_Notification_HomeOrder_ToRefund object:nil];
+    [notification addObserver:self selector:@selector(callShopPhoneWithTelePhoneNumber:) name:K_Notification_HomeOrder_CallShopPhone object:nil];
 }
 
 -(void)removeOBS{
@@ -73,6 +75,16 @@
 -(void)toRefund:(NSNotification*)notification{
     OrderListEntity *entity = notification.object;
     [[CoordinateController sharedCoordinateController] toRefundVC:self goodsInfo:entity animated:YES];
+}
+
+-(void)callShopPhoneWithTelePhoneNumber:(NSString*)phone{
+    NSString *phoneStr = [self phoneWithoutNumber:phone];
+    CallBackVC *backVC = [[CallBackVC alloc] init];
+    backVC.phoneName = phoneStr;
+    if([backVC callPhone:phoneStr]){
+        [self presentViewController:backVC animated:YES completion:^{
+        }];
+    }
 }
 
 -(NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender{
@@ -109,6 +121,17 @@
             break;
     }
     return nil;
+}
+
+-(NSString*)phoneWithoutNumber:(NSString*)phone{
+    NSString *new = [[NSString alloc] init];
+    for(NSInteger i = 0; i < phone.length; i++){
+        char c = [phone characterAtIndex:i];
+        if(c >= '0' && c <= '9'){
+            new = [new stringByAppendingString:[NSString stringWithFormat:@"%c",c]];
+        }
+    }
+    return new;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

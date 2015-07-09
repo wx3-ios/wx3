@@ -11,6 +11,7 @@
 #import "OrderListModel.h"
 #import "OrderListEntity.h"
 #import "OrderGoodsCell.h"
+#import "OrderCommonDef.h"
 
 @interface WaitSendGoodsListVC()<UITableViewDataSource,UITableViewDelegate,WaitSendOrderDelegate>{
     UITableView *_tableView;
@@ -156,7 +157,8 @@
 
 #pragma mark userDeal
 -(void)userClickHurryBtn:(id)sender{
-    
+    OrderListEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_CallShopPhone object:entity.shopPhone];
 }
 
 -(void)userClickRefundBtn:(id)sender{

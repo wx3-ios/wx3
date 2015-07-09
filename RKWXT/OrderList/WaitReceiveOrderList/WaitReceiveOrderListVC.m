@@ -11,6 +11,7 @@
 #import "OrderListModel.h"
 #import "OrderListEntity.h"
 #import "OrderGoodsCell.h"
+#import "OrderCommonDef.h"
 
 @interface WaitReceiveOrderListVC()<UITableViewDataSource,UITableViewDelegate,ReceiveOrderDelegate>{
     UITableView *_tableView;

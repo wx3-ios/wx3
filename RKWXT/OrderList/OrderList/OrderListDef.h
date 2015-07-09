@@ -18,6 +18,7 @@ enum{
     OrderList_Invalid
 };
 
+#import "OrderCommonDef.h"
 #import "OrderAllListVC.h"
 #import "WaitPayOrderListVC.h"
 #import "WaitReceiveOrderListVC.h"

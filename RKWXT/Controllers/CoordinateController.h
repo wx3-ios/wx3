@@ -72,4 +72,5 @@ typedef enum {
 -(void)toMakeOrderVC:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated; //下单
 -(void)toOrderPayVC:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated; //支付
 -(void)toRefundVC:(id)sender goodsInfo:(id)goodsInfo animated:(BOOL)animated;  //退款
+-(void)toRefundInfoVC:(id)sender orderEntity:(id)orderEntity animated:(BOOL)animated;//查看退款详情
 @end
