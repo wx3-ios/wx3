@@ -51,8 +51,8 @@
     }
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:    //dictionaryWithObjectsAndKeys此方法遇nil认为结束，慎用
                          @"iOS", @"pid",
-                         @"18613213051", @"phone",
-                         [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"], @"pwd",
+                         userObj.user, @"phone",
+                         [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd",
                          [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts",
                          [UtilTool currentVersion], @"ver",
                          [NSNumber numberWithInt:(int)kSubShopID], @"shop_id",

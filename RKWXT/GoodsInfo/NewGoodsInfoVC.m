@@ -400,8 +400,9 @@
 }
 
 -(void)gotoWebView{
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     WXTMallListWebVC *webViewVC = [[WXTMallListWebVC alloc] init];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", @"18613213051", @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"], @"pwd", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
     [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
     [self.wxNavigationController pushViewController:webViewVC];
 }

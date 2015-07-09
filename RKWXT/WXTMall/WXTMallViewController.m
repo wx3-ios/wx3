@@ -401,7 +401,8 @@
 -(void)homePageToCategaryView{
     WXTMallListWebVC *webViewVC = [[[WXTMallListWebVC alloc] init] autorelease];
     [webViewVC setCstTitle:@"分类列表"];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id",[NSNumber numberWithInteger:kMerchantID],@"sid", @"18613213051", @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"],@"pwd", nil];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id",[NSNumber numberWithInteger:kMerchantID],@"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd],@"pwd", nil];
     [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_CatagaryList paramDictionary:dic];
     [self.wxNavigationController pushViewController:webViewVC];
 }
