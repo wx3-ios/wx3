@@ -108,6 +108,9 @@
         case WXT_UrlFeed_Type_New_Code:
             url = @"/get_rcode.php";
             break;
+        case WXT_UrlFeed_Type_New_Refund:
+            url = @"/update_order_refund.php";
+            break;
         default:
             break;
     }

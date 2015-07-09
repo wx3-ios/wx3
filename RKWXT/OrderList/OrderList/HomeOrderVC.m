@@ -58,6 +58,7 @@
 -(void)addOBS{
     NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
     [notification addObserver:self selector:@selector(toPay:) name:K_Notification_HomeOrder_ToPay object:nil];
+    [notification addObserver:self selector:@selector(toRefund:) name:K_Notification_HomeOrder_ToRefund object:nil];
 }
 
 -(void)removeOBS{
@@ -67,6 +68,11 @@
 -(void)toPay:(NSNotification*)notification{
     OrderListEntity *entity = notification.object;
     [[CoordinateController sharedCoordinateController] toOrderPayVC:self orderInfo:entity animated:YES];
+}
+
+-(void)toRefund:(NSNotification*)notification{
+    OrderListEntity *entity = notification.object;
+    [[CoordinateController sharedCoordinateController] toRefundVC:self goodsInfo:entity animated:YES];
 }
 
 -(NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender{

@@ -8,6 +8,7 @@
 
 #import "WaitReceiveGoodsInfoCell.h"
 #import "WXRemotionImgBtn.h"
+#import "OrderListEntity.h"
 
 @interface WaitReceiveGoodsInfoCell(){
     WXRemotionImgBtn *_goodsImg;
@@ -44,9 +45,10 @@
 }
 
 -(void)load{
-    [_goodsImg setCpxViewInfo:@"http://gz.67call.com/wx/Public/Uploads/20140929/20140929111809_9365271.jpeg"];
+    OrderListEntity *entity = self.cellInfo;
+    [_goodsImg setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goods_img]];
     [_goodsImg load];
-    [_goodsInfo setText:@"卡西欧(CASIO)手表EF系列男表三眼时尚运动钢带石英男士手表EF-539D-1A"];
+    [_goodsInfo setText:entity.goods_name];
 }
 
 @end

@@ -20,6 +20,7 @@
 #import "MakeOrderVC.h"
 #import "OrderPayVC.h"
 #import "OrderListEntity.h"
+#import "OrderDealRefundVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -96,12 +97,19 @@
     CGFloat price = 0;
     for(OrderListEntity *ent in entity.goodsArr){
         number += ent.sales_num;
-        price += ent.sales_num*ent.sales_price;
+        price += ent.factPayMoney;
     }
     OrderPayVC *payVC = [[OrderPayVC alloc] init];
     payVC.orderID = [NSString stringWithFormat:@"%ld",(long)entity.order_id];
     payVC.payMoney = price;
     [vc.wxNavigationController pushViewController:payVC];
+}
+
+-(void)toRefundVC:(id)sender goodsInfo:(id)goodsInfo animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    OrderDealRefundVC *refundVC = [[OrderDealRefundVC alloc] init];
+    refundVC.entity = goodsInfo;
+    [vc.wxNavigationController pushViewController:refundVC];
 }
 
 //- (void)toOrderMenu:(id)sender source:(E_OrderMenuSource)source goodList:(NSArray*)goodList extra:(MenuExtra*)extra animated:(BOOL)animated{

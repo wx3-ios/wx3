@@ -130,4 +130,50 @@
     }];
 }
 
+#pragma mark refund
+-(void)refundOrderWithRefundType:(Refund_Type)refundType withOrderGoodsID:(NSInteger)orderGoodsID orderID:(NSInteger)orderID withMessage:(NSString *)message{
+    [self setStatus:E_ModelDataStatus_Loading];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)orderID], @"order_id", [NSNumber numberWithInt:(int)refundType], @"type", message, @"apply_refund_cause", [NSNumber numberWithInt:(int)orderGoodsID], @"order_goods_id", nil];
+    __block OrderListModel *blockSelf = self;
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Refund httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+        if (retData.code != 0){
+            [blockSelf setStatus:E_ModelDataStatus_LoadFailed];
+            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserOderList_RefundFailed object:retData.errorDesc];
+        }else{
+            [blockSelf setStatus:E_ModelDataStatus_LoadSucceed];
+            [blockSelf parseRefundOrderSucceedWithOrderID:orderID withRefundType:refundType withOrderGoodsID:orderGoodsID];
+        }
+    }];
+}
+
+-(void)parseRefundOrderSucceedWithOrderID:(NSInteger)orderID withRefundType:(Refund_Type)refund_type withOrderGoodsID:(NSInteger)orderGoodsID{
+    //退整个订单
+    if(refund_type == Refund_Type_Order){
+        for(OrderListEntity *entity in _orderListAll){
+            if(entity.order_id == orderID){
+                for(OrderListEntity *ent in entity.goodsArr){
+                    ent.refund_status = Refund_Status_Being;
+                }
+            }
+            break;
+        }
+    }
+    //退单品
+    if(refund_type == Refund_Type_Goods){
+        for(OrderListEntity *entity in _orderListAll){
+            if(entity.order_id == orderID){
+                for(OrderListEntity *ent in entity.goodsArr){
+                    if(ent.orderGoodsID == orderGoodsID){
+                        ent.refund_status = Refund_Status_Being;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserOderList_RefundSucceed object:nil];
+    
+}
+
 @end

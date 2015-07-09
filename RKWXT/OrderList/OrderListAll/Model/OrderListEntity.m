@@ -41,6 +41,27 @@
         
         NSInteger orderID = [[dic objectForKey:@"order_id"] integerValue];
         [self setOrder_id:orderID];
+        
+        NSInteger agree = [[dic objectForKey:@"agree_refund"] integerValue];
+        [self setShopDeal_status:agree];
+        
+        NSInteger refund = [[dic objectForKey:@"refund_state"] integerValue];
+        [self setRefund_status:refund];
+        
+        CGFloat factPay = [[dic objectForKey:@"fact_pay_money"] floatValue];
+        [self setFactPayMoney:factPay];
+        
+        CGFloat factRed = [[dic objectForKey:@"fact_red_packet"] floatValue];
+        [self setFactRedPacket:factRed];
+        
+        NSString *stockName= [dic objectForKey:@"goods_stock_name"];
+        [self setStockName:stockName];
+        
+        NSInteger orderGoodsID = [[dic objectForKey:@"order_goods_id"] integerValue];
+        [self setOrderGoodsID:orderGoodsID];
+        
+        CGFloat refundTotalMoney = [[dic objectForKey:@"refund_total_money"] floatValue];
+        [self setRefundTotalMoney:refundTotalMoney];
     }
     return self;
 }

@@ -293,6 +293,10 @@
 		12F2CCE31B4CCA850085F78F /* ForgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCE21B4CCA850085F78F /* ForgetModel.m */; };
 		12F2CCE61B4CCDF50085F78F /* ResetNewPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCE51B4CCDF50085F78F /* ResetNewPwdModel.m */; };
 		12F2CCE81B4CF4D30085F78F /* RegistUserCodeImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F2CCE71B4CF4D30085F78F /* RegistUserCodeImg@2x.png */; };
+		12F2CCF21B4D11710085F78F /* RefundCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCF11B4D11710085F78F /* RefundCompanyCell.m */; };
+		12F2CCF51B4D11930085F78F /* RefundGoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCF41B4D11930085F78F /* RefundGoodsListCell.m */; };
+		12F2CCF81B4D238A0085F78F /* RefundConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCF71B4D238A0085F78F /* RefundConsultCell.m */; };
+		12F2CCFB1B4D32B00085F78F /* RefundSucceedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2CCFA1B4D32B00085F78F /* RefundSucceedVC.m */; };
 		12F2D7D81B1EA96B00C8017F /* DLLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7C91B1EA96B00C8017F /* DLLRUCache.m */; };
 		12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7CB1B1EA96B00C8017F /* DLCustomSlideView.m */; };
 		12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F2D7CD1B1EA96B00C8017F /* DLSlideView.m */; };
@@ -1132,6 +1136,14 @@
 		12F2CCE41B4CCDF50085F78F /* ResetNewPwdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetNewPwdModel.h; sourceTree = "<group>"; };
 		12F2CCE51B4CCDF50085F78F /* ResetNewPwdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetNewPwdModel.m; sourceTree = "<group>"; };
 		12F2CCE71B4CF4D30085F78F /* RegistUserCodeImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RegistUserCodeImg@2x.png"; sourceTree = "<group>"; };
+		12F2CCF01B4D11710085F78F /* RefundCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundCompanyCell.h; sourceTree = "<group>"; };
+		12F2CCF11B4D11710085F78F /* RefundCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundCompanyCell.m; sourceTree = "<group>"; };
+		12F2CCF31B4D11930085F78F /* RefundGoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundGoodsListCell.h; sourceTree = "<group>"; };
+		12F2CCF41B4D11930085F78F /* RefundGoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundGoodsListCell.m; sourceTree = "<group>"; };
+		12F2CCF61B4D238A0085F78F /* RefundConsultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundConsultCell.h; sourceTree = "<group>"; };
+		12F2CCF71B4D238A0085F78F /* RefundConsultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundConsultCell.m; sourceTree = "<group>"; };
+		12F2CCF91B4D32B00085F78F /* RefundSucceedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundSucceedVC.h; sourceTree = "<group>"; };
+		12F2CCFA1B4D32B00085F78F /* RefundSucceedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundSucceedVC.m; sourceTree = "<group>"; };
 		12F2D7C71B1EA96B00C8017F /* DLCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCacheProtocol.h; sourceTree = "<group>"; };
 		12F2D7C81B1EA96B00C8017F /* DLLRUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLRUCache.h; sourceTree = "<group>"; };
 		12F2D7C91B1EA96B00C8017F /* DLLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLRUCache.m; sourceTree = "<group>"; };
@@ -2644,6 +2656,10 @@
 			children = (
 				128254FF1B4BA5EF00C60146 /* OrderDealRefundVC.h */,
 				128255001B4BA5EF00C60146 /* OrderDealRefundVC.m */,
+				12F2CCF91B4D32B00085F78F /* RefundSucceedVC.h */,
+				12F2CCFA1B4D32B00085F78F /* RefundSucceedVC.m */,
+				12F2CCEE1B4D11710085F78F /* Model */,
+				12F2CCEF1B4D11710085F78F /* View */,
 			);
 			path = Refund;
 			sourceTree = "<group>";
@@ -3035,6 +3051,26 @@
 		12F2CCDD1B4CB91D0085F78F /* View */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12F2CCEE1B4D11710085F78F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12F2CCEF1B4D11710085F78F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12F2CCF01B4D11710085F78F /* RefundCompanyCell.h */,
+				12F2CCF11B4D11710085F78F /* RefundCompanyCell.m */,
+				12F2CCF31B4D11930085F78F /* RefundGoodsListCell.h */,
+				12F2CCF41B4D11930085F78F /* RefundGoodsListCell.m */,
+				12F2CCF61B4D238A0085F78F /* RefundConsultCell.h */,
+				12F2CCF71B4D238A0085F78F /* RefundConsultCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5686,6 +5722,7 @@
 				12F916161B199A4500C94717 /* HomePageRecModel.m in Sources */,
 				12F963301B3D4BDF00FF6A3E /* SBJsonParser.m in Sources */,
 				7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */,
+				12F2CCF21B4D11710085F78F /* RefundCompanyCell.m in Sources */,
 				775C58D11ABA7B75005B6B40 /* WXContacterEntity.m in Sources */,
 				775842F21AB95A300039B129 /* WXDropListView.m in Sources */,
 				775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */,
@@ -5785,6 +5822,7 @@
 				DDB58F471AD3C6A2006248E9 /* ContactsCallViewController.m in Sources */,
 				DD0E38B01B1BE5AC00AB4DB9 /* WXShopCartEntity.m in Sources */,
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
+				12F2CCF81B4D238A0085F78F /* RefundConsultCell.m in Sources */,
 				775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */,
 				12F2D8131B1F0E9D00C8017F /* OrderWaitPayConsultCell.m in Sources */,
 				775C583D1ABA5F31005B6B40 /* PinyinFormatter.m in Sources */,
@@ -5875,6 +5913,7 @@
 				775843311AB95A300039B129 /* WXUITabBarVC.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
+				12F2CCF51B4D11930085F78F /* RefundGoodsListCell.m in Sources */,
 				DDB58F521AD3C6A2006248E9 /* StrangerEntity.m in Sources */,
 				DDEA9ED51B1BF44A00530C1C /* WXTCartDetailViewController.m in Sources */,
 				1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */,
@@ -5914,6 +5953,7 @@
 				775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */,
 				775843351AB95A300039B129 /* WXUITextField.m in Sources */,
 				775842D51AB95A300039B129 /* NSString+Encrypt.m in Sources */,
+				12F2CCFB1B4D32B00085F78F /* RefundSucceedVC.m in Sources */,
 				775842BA1AB95A300039B129 /* WXUserDefault.m in Sources */,
 				775842D81AB95A300039B129 /* NSString+Size.m in Sources */,
 				128221811B18467A004613BB /* WXHomeTopGoodCell.m in Sources */,

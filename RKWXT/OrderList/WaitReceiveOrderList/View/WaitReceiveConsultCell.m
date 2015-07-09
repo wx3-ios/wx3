@@ -51,7 +51,7 @@
         
         CGFloat xGap = 10;
         CGFloat btnHeight = 28;
-        CGFloat btnWidth = 100;
+        CGFloat btnWidth = 80;
         _payBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         _payBtn.frame = CGRectMake(size.width-xGap-btnWidth, (WaitReceiveConsultCellHeight-btnHeight)/2, btnWidth, btnHeight);
         [_payBtn setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
@@ -76,7 +76,7 @@
     OrderListEntity *entity = self.cellInfo;
     for(OrderListEntity *ent in entity.goodsArr){
         number += ent.sales_num;
-        price += ent.sales_num*ent.sales_price;
+        price += ent.factPayMoney;
     }
     [_consult setText:[NSString stringWithFormat:@"￥%.2f",price]];
     number = 0;
@@ -90,7 +90,6 @@
         [_payBtn setTitle:@"确认收货" forState:UIControlStateNormal];
         [_button2 setHidden:NO];
         [_button2 setTitle:@"退款" forState:UIControlStateNormal];
-        
     }
 }
 

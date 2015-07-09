@@ -87,10 +87,10 @@
         height = WaitReceiveTitleCellHeight;
     }
     if(row == [self numberOfRowInSection:section]-1){
-        height = WaitReceiveGoodsInfoCellHeight;
+        height = WaitReceiveConsultCellHeight;
     }
     if(row > OrderList_WaitReceive_Title && row < [self numberOfRowInSection:section]-1){
-        height = WaitReceiveConsultCellHeight;
+        height = WaitReceiveGoodsInfoCellHeight;
     }
     return height;
 }
@@ -102,6 +102,7 @@
     if(!cell){
         cell = [[WaitReceiveTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];;
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
@@ -130,6 +131,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     OrderListEntity *entity = [listArr objectAtIndex:section];
     [cell setCellInfo:entity];
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -176,7 +178,8 @@
 }
 
 -(void)refundOrderBtnClicked:(id)sender{
-    
+    OrderListEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
 }
 
 -(void)completeOrderSucceed:(NSNotification*)notification{

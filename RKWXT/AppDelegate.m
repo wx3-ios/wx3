@@ -98,7 +98,7 @@
     
 //    BOOL userInfo = [self checkUserInfo];
 //    if(!userInfo){
-    if(0){
+    if(1){
         WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
         [self.window setRootViewController:self.navigationController];

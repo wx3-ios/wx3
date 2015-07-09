@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+@class OrderListEntity;
 @interface OrderDealRefundVC : WXUIViewController
+@property (nonatomic,strong) OrderListEntity *entity;
 
 @end

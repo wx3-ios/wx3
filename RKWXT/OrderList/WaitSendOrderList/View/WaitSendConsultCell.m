@@ -88,6 +88,7 @@
 -(void)showNameInBtnWith:(OrderListEntity*)entity{
     if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
         [_payBtn setTitle:@"催单" forState:UIControlStateNormal];
+        [_button2 setHidden:NO];
         [_button2 setTitle:@"退款" forState:UIControlStateNormal];
     }
 }

@@ -62,7 +62,7 @@
     OrderListEntity *entity = self.cellInfo;
     for(OrderListEntity *ent in entity.goodsArr){
         number += ent.sales_num;
-        price += ent.sales_num*ent.sales_price;
+        price += ent.factPayMoney;
     }
     [_goodsNum setText:[NSString stringWithFormat:@"共%ld件商品",(long)number]];
     [_consult setText:[NSString stringWithFormat:@"￥%.2f",price]];

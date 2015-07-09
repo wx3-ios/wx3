@@ -17,6 +17,9 @@
 #define K_Notification_UserOderList_CompleteSucceed @"K_Notification_UserOderList_CompleteSucceed"
 #define K_Notification_UserOderList_CompleteFailed  @"K_Notification_UserOderList_CompleteFailed"
 
+#define K_Notification_UserOderList_RefundSucceed @"K_Notification_UserOderList_RefundSucceed"
+#define K_Notification_UserOderList_RefundFailed  @"K_Notification_UserOderList_RefundFailed"
+
 typedef enum{
     OrderList_Type_Normal = 0,
     OrderList_Type_Loading,
@@ -29,6 +32,12 @@ typedef enum{
     DealOrderList_Type_Complete,
 }DealOrderList_Type;
 
+typedef enum{
+    Refund_Type_Normal = 0,
+    Refund_Type_Order,  //退整个订单
+    Refund_Type_Goods,   //退某个单品
+}Refund_Type;
+
 @interface OrderListModel : T_HPSubBaseModel
 @property (nonatomic,assign) OrderList_Type orderlist_type;
 @property (nonatomic,strong) NSString *orderID;  //临时记录，以备支付用
@@ -38,8 +47,9 @@ typedef enum{
 @property (nonatomic,readonly) NSArray *waitReceiveListArr; //待收货列表
 
 +(OrderListModel*)shareOrderListModel;
--(void)loadUserOrderList:(NSInteger)fromIndex to:(NSInteger)toIndex;   //加载订单
+-(void)loadUserOrderList:(NSInteger)fromIndex to:(NSInteger)toIndex;
 -(void)dealUserOrderListWithType:(DealOrderList_Type)type with:(NSString*)orderID;
+-(void)refundOrderWithRefundType:(Refund_Type)refundType withOrderGoodsID:(NSInteger)orderGoodsID orderID:(NSInteger)orderID withMessage:(NSString*)message;
 -(BOOL)shouldDataReload;
 
 @end
