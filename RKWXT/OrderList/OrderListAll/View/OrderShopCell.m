@@ -48,8 +48,8 @@
         CGFloat arrowHeight = 6;
         _nextImg = [[UIImageView alloc] init];
         _nextImg.frame = CGRectMake(xOffset, (OrderShopCellHeight-arrowHeight)/2, arrowWidth, arrowHeight);
-        [_nextImg setImage:[UIImage imageNamed:@""]];
-        [self.contentView addSubview:_nextImg];
+        [_nextImg setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];
+//        [self.contentView addSubview:_nextImg];
         
         CGFloat xgap = 15;
         CGFloat statusWidth = 100;
@@ -71,7 +71,7 @@
 
 -(void)load{
     OrderListEntity *entity = self.cellInfo;
-    [_shopNameLabel setText:[NSString stringWithFormat:@"%@",kMerchantName]];
+    [_shopNameLabel setText:[NSString stringWithFormat:@"查看订单详情"]];
     NSString *str = (entity.pay_status == Pay_Status_WaitPay?@"待付款":@"已付款");
     [_orderPayStatus setText:str];
 //    [_shopLogoImg setCpxViewInfo:nil];

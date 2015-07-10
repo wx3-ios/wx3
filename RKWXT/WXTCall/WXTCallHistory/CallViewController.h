@@ -28,8 +28,8 @@ typedef enum{
 #define DIphoneSixPHeight (736)
 
 #define kInputChange        @"InputChange"
-#define NumberBtnHeight (56)
-#define InputTextHeight (40)
+#define NumberBtnHeight (48)
+#define InputTextHeight (35)
 #define yGap (66)
 
 #define IphoneSixYGap (118)

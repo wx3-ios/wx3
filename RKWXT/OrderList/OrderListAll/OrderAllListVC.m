@@ -226,6 +226,12 @@ typedef enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    OrderListEntity *infoEntity = [orderListArr objectAtIndex:section];
+    if(row == Order_Show_Shop){
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_OrderInfo object:infoEntity];
+    }
 }
 
 -(NSInteger)indexPathOfOptCellWithOrder:(OrderListEntity*)orderEntity{

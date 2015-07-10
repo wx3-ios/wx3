@@ -11,6 +11,7 @@
 
 #define K_Notification_HomeOrder_ToPay @"K_Notification_HomeOrder_ToPay"
 #define K_Notification_HomeOrder_ToRefund @"K_Notification_HomeOrder_ToRefund"
+#define K_Notification_HomeOrder_OrderInfo @"K_Notification_HomeOrder_OrderInfo"
 #define K_Notification_HomeOrder_CallShopPhone @"K_Notification_HomeOrder_CallShopPhone"
 
 #endif

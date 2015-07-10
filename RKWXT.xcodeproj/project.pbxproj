@@ -245,6 +245,14 @@
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
+		129D23391B4F738900008DA0 /* GoodsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D23381B4F738900008DA0 /* GoodsInfoVC.m */; };
+		129D233E1B4F79A200008DA0 /* OrderInfoCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D233D1B4F79A200008DA0 /* OrderInfoCompanyCell.m */; };
+		129D23411B4F96F600008DA0 /* OrderInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D23401B4F96F600008DA0 /* OrderInfoStateCell.m */; };
+		129D23441B4F984400008DA0 /* OrderInfoState@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129D23421B4F984400008DA0 /* OrderInfoState@2x.png */; };
+		129D23451B4F984400008DA0 /* OrderInfoUserAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129D23431B4F984400008DA0 /* OrderInfoUserAdd@2x.png */; };
+		129D23481B4F9CB600008DA0 /* OrderInfoUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D23471B4F9CB600008DA0 /* OrderInfoUserInfoCell.m */; };
+		129D234B1B4FA84A00008DA0 /* OrderInfoConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D234A1B4FA84A00008DA0 /* OrderInfoConsultCell.m */; };
+		129D234E1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D234D1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m */; };
 		12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */; };
 		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
 		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
@@ -1061,6 +1069,21 @@
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
 		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
+		129D23371B4F738900008DA0 /* GoodsInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfoVC.h; sourceTree = "<group>"; };
+		129D23381B4F738900008DA0 /* GoodsInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsInfoVC.m; sourceTree = "<group>"; };
+		129D233A1B4F76AE00008DA0 /* OrderGoodsInfoDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderGoodsInfoDef.h; sourceTree = "<group>"; };
+		129D233C1B4F79A200008DA0 /* OrderInfoCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoCompanyCell.h; sourceTree = "<group>"; };
+		129D233D1B4F79A200008DA0 /* OrderInfoCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoCompanyCell.m; sourceTree = "<group>"; };
+		129D233F1B4F96F600008DA0 /* OrderInfoStateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoStateCell.h; sourceTree = "<group>"; };
+		129D23401B4F96F600008DA0 /* OrderInfoStateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoStateCell.m; sourceTree = "<group>"; };
+		129D23421B4F984400008DA0 /* OrderInfoState@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OrderInfoState@2x.png"; sourceTree = "<group>"; };
+		129D23431B4F984400008DA0 /* OrderInfoUserAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OrderInfoUserAdd@2x.png"; sourceTree = "<group>"; };
+		129D23461B4F9CB600008DA0 /* OrderInfoUserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoUserInfoCell.h; sourceTree = "<group>"; };
+		129D23471B4F9CB600008DA0 /* OrderInfoUserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoUserInfoCell.m; sourceTree = "<group>"; };
+		129D23491B4FA84A00008DA0 /* OrderInfoConsultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoConsultCell.h; sourceTree = "<group>"; };
+		129D234A1B4FA84A00008DA0 /* OrderInfoConsultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoConsultCell.m; sourceTree = "<group>"; };
+		129D234C1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoFactMOneyCell.h; sourceTree = "<group>"; };
+		129D234D1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoFactMOneyCell.m; sourceTree = "<group>"; };
 		12A050BA1B30FFB3008CC38F /* HomeNavENtity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavENtity.h; sourceTree = "<group>"; };
 		12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavENtity.m; sourceTree = "<group>"; };
 		12A050BD1B310050008CC38F /* HomeNavModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavModel.h; sourceTree = "<group>"; };
@@ -2801,6 +2824,8 @@
 		1295C5E21B293B24004C861D /* OrderImg */ = {
 			isa = PBXGroup;
 			children = (
+				129D23421B4F984400008DA0 /* OrderInfoState@2x.png */,
+				129D23431B4F984400008DA0 /* OrderInfoUserAdd@2x.png */,
 				1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */,
 			);
 			path = OrderImg;
@@ -2877,6 +2902,34 @@
 				129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */,
 			);
 			path = ContactInfo;
+			sourceTree = "<group>";
+		};
+		129D23361B4F732E00008DA0 /* GoodsInfo */ = {
+			isa = PBXGroup;
+			children = (
+				129D233A1B4F76AE00008DA0 /* OrderGoodsInfoDef.h */,
+				129D23371B4F738900008DA0 /* GoodsInfoVC.h */,
+				129D23381B4F738900008DA0 /* GoodsInfoVC.m */,
+				129D233B1B4F797900008DA0 /* View */,
+			);
+			path = GoodsInfo;
+			sourceTree = "<group>";
+		};
+		129D233B1B4F797900008DA0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				129D233C1B4F79A200008DA0 /* OrderInfoCompanyCell.h */,
+				129D233D1B4F79A200008DA0 /* OrderInfoCompanyCell.m */,
+				129D233F1B4F96F600008DA0 /* OrderInfoStateCell.h */,
+				129D23401B4F96F600008DA0 /* OrderInfoStateCell.m */,
+				129D23461B4F9CB600008DA0 /* OrderInfoUserInfoCell.h */,
+				129D23471B4F9CB600008DA0 /* OrderInfoUserInfoCell.m */,
+				129D23491B4FA84A00008DA0 /* OrderInfoConsultCell.h */,
+				129D234A1B4FA84A00008DA0 /* OrderInfoConsultCell.m */,
+				129D234C1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.h */,
+				129D234D1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		12A050B91B30FD47008CC38F /* HomeNavigation */ = {
@@ -3089,6 +3142,7 @@
 		12F2D7BE1B1EA44F00C8017F /* OrderList */ = {
 			isa = PBXGroup;
 			children = (
+				129D23361B4F732E00008DA0 /* GoodsInfo */,
 				128254FE1B4BA55A00C60146 /* Refund */,
 				12F2D7C31B1EA78C00C8017F /* OrderList */,
 				12F2D7BF1B1EA6D100C8017F /* OrderListAll */,
@@ -5417,6 +5471,7 @@
 				1272490E1B2574C9001BDC15 /* RegistUserImg@2x.png in Resources */,
 				128221DC1B184E84004613BB /* HomePageSign@2x.png in Resources */,
 				DDEA9F091B1C0A8700530C1C /* Circle@2x.png in Resources */,
+				129D23441B4F984400008DA0 /* OrderInfoState@2x.png in Resources */,
 				1240D6ED1AE917310056AD6A /* post_type_bubble_twitter@2x.png in Resources */,
 				12F46A3B1B20012000B8EC98 /* T_Back@2x.png in Resources */,
 				1263EFE51ACD35820014C347 /* Icon-Small.png in Resources */,
@@ -5490,6 +5545,7 @@
 				1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */,
 				1241E54B1AE9D89B00811D3F /* 7N@2x.png in Resources */,
 				1241E5631AE9D91400811D3F /* T_AllBack@2x.png in Resources */,
+				129D23451B4F984400008DA0 /* OrderInfoUserAdd@2x.png in Resources */,
 				1241E53F1AE9D89B00811D3F /* 1N@2x.png in Resources */,
 				1245356E1AE9D20D004198C9 /* Wallet@2x.png in Resources */,
 				12F46A401B20012000B8EC98 /* T_ShoppingCart@2x.png in Resources */,
@@ -5693,6 +5749,7 @@
 				77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */,
 				DDB58F531AD3C6A2006248E9 /* SysContacterEntityEx.m in Sources */,
 				12F963341B3D4BDF00FF6A3E /* SBJsonStreamParserState.m in Sources */,
+				129D23411B4F96F600008DA0 /* OrderInfoStateCell.m in Sources */,
 				DDB58F461AD3C6A2006248E9 /* ContactDetailCell.m in Sources */,
 				775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */,
 				12F963131B3D4B3800FF6A3E /* AlixPayOrder.m in Sources */,
@@ -5754,6 +5811,7 @@
 				1295C5F51B299A66004C861D /* BonusOverdueVC.m in Sources */,
 				121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */,
 				12F4BE031AE8CA3B00B9FEDA /* GlowImageView.m in Sources */,
+				129D23391B4F738900008DA0 /* GoodsInfoVC.m in Sources */,
 				775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */,
 				775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */,
 				12F180C31B4521B400B9A80D /* JPushMessageCenterVC.m in Sources */,
@@ -5855,6 +5913,7 @@
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
 				12F572321B42766D00128294 /* T_SettingSwitchCell.m in Sources */,
 				DDB58F501AD3C6A2006248E9 /* WXTCallHistoryCell.m in Sources */,
+				129D233E1B4F79A200008DA0 /* OrderInfoCompanyCell.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				DDB58F4E1AD3C6A2006248E9 /* CallHistoryCell.m in Sources */,
 				775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */,
@@ -5922,12 +5981,14 @@
 				12F916241B19A24E00C94717 /* HomePageSurpModel.m in Sources */,
 				12F915F91B19506000C94717 /* T_MenuVC.m in Sources */,
 				1262E2C51ACA50B600667C54 /* FindEntity.m in Sources */,
+				129D234B1B4FA84A00008DA0 /* OrderInfoConsultCell.m in Sources */,
 				775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */,
 				775843311AB95A300039B129 /* WXUITabBarVC.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
 				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
 				12F2CCF51B4D11930085F78F /* RefundGoodsListCell.m in Sources */,
 				DDB58F521AD3C6A2006248E9 /* StrangerEntity.m in Sources */,
+				129D23481B4F9CB600008DA0 /* OrderInfoUserInfoCell.m in Sources */,
 				DDEA9ED51B1BF44A00530C1C /* WXTCartDetailViewController.m in Sources */,
 				1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */,
 				775842CC1AB95A300039B129 /* sqlite3.c in Sources */,
@@ -6004,6 +6065,7 @@
 				775842C11AB95A300039B129 /* it_lib.cpp in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,
 				775C58C81ABA7B75005B6B40 /* ShopInfo.m in Sources */,
+				129D234E1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m in Sources */,
 				775842C91AB95A300039B129 /* it_lib_log.cpp in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,

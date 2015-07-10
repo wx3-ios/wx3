@@ -27,9 +27,9 @@
     WXUIButton *selectBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     selectBtn.frame = CGRectMake((size.width-btnWidth)/2, size.height-btnHeight-100, btnWidth, btnHeight);
     [selectBtn setBorderRadian:10.0 width:0.5 color:[UIColor greenColor]];
-    [selectBtn setBackgroundColor:[UIColor greenColor]];
+    [selectBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [selectBtn setTitle:@"确 定" forState:UIControlStateNormal];
-    [selectBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
+    [selectBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
     [selectBtn addTarget:self action:@selector(saveDateInfo) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:selectBtn];
     
