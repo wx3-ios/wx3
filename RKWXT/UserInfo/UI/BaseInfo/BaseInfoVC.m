@@ -200,12 +200,12 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
                 [self.wxNavigationController pushViewController:addressVC];
             }
                 break;
-            case ManagerPassword:
-            {
-                WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
-                [self.wxNavigationController pushViewController:resetPwdVC];
-            }
-                break;
+//            case ManagerPassword:
+//            {
+//                WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
+//                [self.wxNavigationController pushViewController:resetPwdVC];
+//            }
+//                break;
             default:
                 break;
         }

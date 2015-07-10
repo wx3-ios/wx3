@@ -96,21 +96,18 @@
 	self.window.backgroundColor = [UIColor whiteColor];
     
     
-//    BOOL userInfo = [self checkUserInfo];
-//    if(!userInfo){
-    if(1){
+    BOOL userInfo = [self checkUserInfo];
+    if(userInfo){
         WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
         [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];
         
-        [[NewWXTLiDB sharedWXLibDB] loadData];  //暂时用
-        
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"13538236522"]] alias:nil callbackSelector:nil object:nil];
         //自动登录
-//        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-//        LoginModel *_loginModel = [[LoginModel alloc] init];
-//        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+        LoginModel *_loginModel = [[LoginModel alloc] init];
+        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
     }else{
         LoginVC *vc = [[LoginVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];

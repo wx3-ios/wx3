@@ -32,7 +32,7 @@
 
 enum{
     PersonalInfo_Order = 0,
-    PersonalInfo_Money,
+//    PersonalInfo_Money,
     PersonalInfo_Call,
 //    PersonalInfo_Extend,
     PersonalInfo_System,

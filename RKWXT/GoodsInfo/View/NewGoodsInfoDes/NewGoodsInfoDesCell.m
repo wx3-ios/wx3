@@ -10,7 +10,7 @@
 #import "GoodsInfoDef.h"
 #import "GoodsInfoEntity.h"
 
-#define LabelWidth (85)
+#define LabelWidth (100)
 
 @interface NewGoodsInfoDesCell(){
     WXUILabel *_oldPrice;
@@ -47,7 +47,7 @@
         [textLabel setText:@"分销价:"];
         [textLabel setTextColor:WXColorWithInteger(midTextColor)];
         [textLabel setFont:[UIFont systemFontOfSize:midTextFont]];
-        [self.contentView addSubview:textLabel];
+//        [self.contentView addSubview:textLabel];
         
         xOffset += textWidth;
         _newPrice = [[WXUILabel alloc] init];
@@ -104,7 +104,7 @@
 -(void)load{
     GoodsInfoEntity *entity = self.cellInfo;
     [_oldPrice setText:[NSString stringWithFormat:@"原价 ￥%.2f",entity.market_price]];
-    [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shop_price]];
+//    [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shop_price]];
     [_descLabel setText:entity.intro];
     if(entity.concernID != 0){
         [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];

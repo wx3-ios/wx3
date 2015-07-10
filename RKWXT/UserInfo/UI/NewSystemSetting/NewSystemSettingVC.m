@@ -53,8 +53,9 @@ enum{
     CGFloat yOffset = 40;
     CGFloat btnHeight = 44;
     quitBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    quitBtn.frame = CGRectMake(0, yOffset, IPHONE_SCREEN_WIDTH, btnHeight);
+    quitBtn.frame = CGRectMake(10, yOffset, IPHONE_SCREEN_WIDTH-2*10, btnHeight);
     [quitBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [quitBtn setBorderRadian:4.0 width:0.1 color:WXColorWithInteger(0xdd2726)];
     [quitBtn setTitle:@"退出登陆" forState:UIControlStateNormal];
     [quitBtn setTitle:@"退出登陆" forState:UIControlStateSelected];
     [quitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

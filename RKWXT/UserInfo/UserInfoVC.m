@@ -34,10 +34,11 @@
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setShowsVerticalScrollIndicator:NO];
+    [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [self addSubview:_tableView];
     
     [_tableView setTableHeaderView:[self viewForTableHeadView]];
-    [_tableView setTableFooterView:[self viewForTableFootView]];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
 -(UIView *)viewForTableHeadView{
@@ -46,7 +47,6 @@
     UIImageView *bgImageView = [[UIImageView alloc] init];
     bgImageView.frame = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
     [bgImageView setImage:[UIImage imageNamed:@"PersonalInfoBgViewImg.png"]];
-//    [bgImageView setBackgroundColor:[UIColor redColor]];
     [headView addSubview:bgImageView];
     
     CGFloat xOffset = 18;
@@ -96,78 +96,56 @@
     UIImageView *smallImgView = [[UIImageView alloc] init];
     smallImgView.frame = CGRectMake(0, yOffset, Size.width, smallImgHeight);
     [smallImgView setImage:[UIImage imageNamed:@"PersonalInfoBgViewImg.png"]];
-    [headView addSubview:smallImgView];
+//    [headView addSubview:smallImgView];
     
-    CGFloat yGap = 5;
-    UILabel *attentionNum = [[UILabel alloc] init];
-    attentionNum.frame = CGRectMake(0, yGap, Size.width/2, 15);
-    [attentionNum setBackgroundColor:[UIColor clearColor]];
-    [attentionNum setTextAlignment:NSTextAlignmentCenter];
-    [attentionNum setFont:WXFont(13.0)];
-    [attentionNum setTextColor:WXColorWithInteger(0xffffff)];
-    [attentionNum setText:@"50"];
-    [smallImgView addSubview:attentionNum];
+//    CGFloat yGap = 5;
+//    UILabel *attentionNum = [[UILabel alloc] init];
+//    attentionNum.frame = CGRectMake(0, yGap, Size.width/2, 15);
+//    [attentionNum setBackgroundColor:[UIColor clearColor]];
+//    [attentionNum setTextAlignment:NSTextAlignmentCenter];
+//    [attentionNum setFont:WXFont(13.0)];
+//    [attentionNum setTextColor:WXColorWithInteger(0xffffff)];
+//    [attentionNum setText:@"50"];
+//    [smallImgView addSubview:attentionNum];
+//    
+//    yGap += 15;
+//    UILabel *attentionLabel = [[UILabel alloc] init];
+//    attentionLabel.frame = CGRectMake(0, yGap, Size.width/2, 15);
+//    [attentionLabel setBackgroundColor:[UIColor clearColor]];
+//    [attentionLabel setTextAlignment:NSTextAlignmentCenter];
+//    [attentionLabel setFont:WXFont(11.0)];
+//    [attentionLabel setTextColor:WXColorWithInteger(0xffffff)];
+//    [attentionLabel setText:@"我的收藏"];
+//    [smallImgView addSubview:attentionLabel];
+//    
+//    UILabel *lineLabel = [[UILabel alloc] init];
+//    lineLabel.frame = CGRectMake(Size.width/2, 0, 0.5, smallImgHeight);
+//    [lineLabel setBackgroundColor:[UIColor grayColor]];
+//    [smallImgView addSubview:lineLabel];
+//    
+//    UILabel *wishNum = [[UILabel alloc] init];
+//    wishNum.frame = CGRectMake(Size.width/2+0.5, yGap-15, Size.width/2-0.5, 15);
+//    [wishNum setBackgroundColor:[UIColor clearColor]];
+//    [wishNum setTextAlignment:NSTextAlignmentCenter];
+//    [wishNum setFont:WXFont(13.0)];
+//    [wishNum setTextColor:WXColorWithInteger(0xffffff)];
+//    [wishNum setText:@"10"];
+//    [smallImgView addSubview:wishNum];
+//    
+//    UILabel *wishLabel = [[UILabel alloc] init];
+//    wishLabel.frame = CGRectMake(Size.width/2+0.5, yGap, Size.width/2, 15);
+//    [wishLabel setBackgroundColor:[UIColor clearColor]];
+//    [wishLabel setTextAlignment:NSTextAlignmentCenter];
+//    [wishLabel setFont:WXFont(11.0)];
+//    [wishLabel setTextColor:WXColorWithInteger(0xffffff)];
+//    [wishLabel setText:@"愿望清单"];
+//    [smallImgView addSubview:wishLabel];
     
-    yGap += 15;
-    UILabel *attentionLabel = [[UILabel alloc] init];
-    attentionLabel.frame = CGRectMake(0, yGap, Size.width/2, 15);
-    [attentionLabel setBackgroundColor:[UIColor clearColor]];
-    [attentionLabel setTextAlignment:NSTextAlignmentCenter];
-    [attentionLabel setFont:WXFont(11.0)];
-    [attentionLabel setTextColor:WXColorWithInteger(0xffffff)];
-    [attentionLabel setText:@"我的收藏"];
-    [smallImgView addSubview:attentionLabel];
+//    CGRect rect = CGRectMake(0, 0, Size.width, UserBgImageViewHeight+smallImgHeight);
     
-    UILabel *lineLabel = [[UILabel alloc] init];
-    lineLabel.frame = CGRectMake(Size.width/2, 0, 0.5, smallImgHeight);
-    [lineLabel setBackgroundColor:[UIColor grayColor]];
-    [smallImgView addSubview:lineLabel];
-    
-    UILabel *wishNum = [[UILabel alloc] init];
-    wishNum.frame = CGRectMake(Size.width/2+0.5, yGap-15, Size.width/2-0.5, 15);
-    [wishNum setBackgroundColor:[UIColor clearColor]];
-    [wishNum setTextAlignment:NSTextAlignmentCenter];
-    [wishNum setFont:WXFont(13.0)];
-    [wishNum setTextColor:WXColorWithInteger(0xffffff)];
-    [wishNum setText:@"10"];
-    [smallImgView addSubview:wishNum];
-    
-    UILabel *wishLabel = [[UILabel alloc] init];
-    wishLabel.frame = CGRectMake(Size.width/2+0.5, yGap, Size.width/2, 15);
-    [wishLabel setBackgroundColor:[UIColor clearColor]];
-    [wishLabel setTextAlignment:NSTextAlignmentCenter];
-    [wishLabel setFont:WXFont(11.0)];
-    [wishLabel setTextColor:WXColorWithInteger(0xffffff)];
-    [wishLabel setText:@"愿望清单"];
-    [smallImgView addSubview:wishLabel];
-    
-    CGRect rect = CGRectMake(0, 0, Size.width, UserBgImageViewHeight+smallImgHeight);
+    CGRect rect = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
     [headView setFrame:rect];
     return headView;
-}
-
--(UIView*)viewForTableFootView{
-    UIView *footView = [[UIView alloc] init];
-    [footView setBackgroundColor:WXColorWithInteger(0xefeff4)];
-    
-    CGFloat btnHeight = 45;
-    WXTUIButton *quitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    quitBtn.frame = CGRectMake(0, 30, Size.width, btnHeight);
-    [quitBtn setBackgroundImageOfColor:WXColorWithInteger(0xFFFFFF) controlState:UIControlStateNormal];
-    [quitBtn setTitle:@"切换登录帐号" forState:UIControlStateNormal];
-    [quitBtn setTitleColor:WXColorWithInteger(0x669696) forState:UIControlStateNormal];
-    [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
-    [footView addSubview:quitBtn];
-    
-    CGRect rect = CGRectMake(0, 0, Size.width, 220);
-    if(Size.width == 375){
-        rect = CGRectMake(0, 0, Size.width, 320);
-    }
-    if(Size.width == 414){
-        rect = CGRectMake(0, 0, Size.width, 390);
-    }
-    [footView setFrame:rect];
-    return footView;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -184,9 +162,9 @@
         case PersonalInfo_Order:
             number = Order_Invalid;
             break;
-        case PersonalInfo_Money:
-            number = Money_Invalid;
-            break;
+//        case PersonalInfo_Money:
+//            number = Money_Invalid;
+//            break;
         case PersonalInfo_Call:
             number = Call_Invalid;
             break;
@@ -207,9 +185,9 @@
     if(indexPath.section == PersonalInfo_Order && indexPath.row == Order_Category){
         height = 53;
     }
-    if(indexPath.section == PersonalInfo_Money && indexPath.row == Money_Category){
-        height = 53;
-    }
+//    if(indexPath.section == PersonalInfo_Money && indexPath.row == Money_Category){
+//        height = 53;
+//    }
     return height;
 }
 
@@ -389,9 +367,9 @@
         case PersonalInfo_Order:
             cell = [self tableViewForOrderCell:row];
             break;
-        case PersonalInfo_Money:
-            cell = [self tableViewForMoneyCell:row];
-            break;
+//        case PersonalInfo_Money:
+//            cell = [self tableViewForMoneyCell:row];
+//            break;
         case PersonalInfo_Call:
             cell = [self tableViewForCallMoney:row];
             break;
@@ -420,12 +398,12 @@
             }
         }
             break;
-        case PersonalInfo_Money:
-        {
-            UserBonusVC *bonusVC = [[UserBonusVC alloc] init];
-            [self.wxNavigationController pushViewController:bonusVC];
-        }
-            break;
+//        case PersonalInfo_Money:
+//        {
+//            UserBonusVC *bonusVC = [[UserBonusVC alloc] init];
+//            [self.wxNavigationController pushViewController:bonusVC];
+//        }
+//            break;
         case PersonalInfo_Call:
         {
             if(row == Call_Recharge){
@@ -474,27 +452,6 @@
 
 -(void)personalInfoToWaitReceiveOrderList{
     [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:3 animated:YES];
-}
-
--(void)quit{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"友情提示" message:@"确定要退出我信通吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    [alertView show];
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSInteger index = buttonIndex;
-    if(index == 1){
-        //清除用户信息
-        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-        [userDefault removeAllUserInfo];
-        
-        LoginVC *loginVC = [[LoginVC alloc] init];
-        WXUINavigationController *navigationController = [[WXUINavigationController alloc] initWithRootViewController:loginVC];
-        [self.wxNavigationController presentViewController:navigationController animated:YES completion:^{
-            [self.wxNavigationController popToRootViewControllerAnimated:YES Completion:^{
-            }];
-        }];
-    }
 }
 
 @end

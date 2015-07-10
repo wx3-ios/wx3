@@ -23,7 +23,8 @@
             }
         }else{
             WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-            //            [userDefault setToken:[dic objectForKey:@"token"]];
+            [userDefault setUser:userStr];
+            [userDefault setPwd:pwdStr];
             [userDefault setWxtID:[dic objectForKey:@"woxin_id"]];
             [NOTIFY_CENTER postNotificationName:KNotification_LoginSucceed object:nil];
             if (_delegate && [_delegate respondsToSelector:@selector(loginSucceed)]){

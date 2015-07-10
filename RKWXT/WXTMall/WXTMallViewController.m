@@ -351,7 +351,7 @@
 }
 
 -(void)homePageThemeLoadedFailed:(NSString *)errorMsg{
-    [UtilTool showAlertView:errorMsg];
+//    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)topicalCellClicked:(id)entity{
@@ -364,7 +364,7 @@
 }
 
 -(void)homePageRecLoadedFailed:(NSString *)errorMsg{
-    [UtilTool showAlertView:errorMsg];
+//    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)forMeCellClicked:(id)entity{
@@ -377,7 +377,7 @@
 }
 
 -(void)homeNavigationLoadFailed:(NSString *)errorMsg{
-    [UtilTool showAlertView:errorMsg];
+//    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)intructionClicked:(id)entity{
@@ -390,7 +390,7 @@
 }
 
 -(void)homePageSurpLoadedFailed:(NSString *)errorMsg{
-    [UtilTool showAlertView:errorMsg];
+//    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)changeCellClicked:(id)entity{
@@ -409,8 +409,6 @@
 
 #pragma mark 消息推送
 - (void)toSysPushMsgView{
-//    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"功能开发中" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
-//    [alertView show];
     JPushMessageCenterVC *jpushVC = [[[JPushMessageCenterVC alloc] init] autorelease];
     [self.wxNavigationController pushViewController:jpushVC];
 }

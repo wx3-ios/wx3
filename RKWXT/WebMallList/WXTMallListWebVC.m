@@ -135,6 +135,11 @@ typedef enum{
 -(BOOL)jumpToParam:(NSDictionary*)paramDic{
     NSInteger gotoID = [[paramDic objectForKey:@"goods_id"] integerValue];
     if(gotoID != 0){
+        if(gotoID == -1){
+            [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+                }];
+            return NO;
+        }
         [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:[[paramDic objectForKey:@"goods_id"] integerValue] animated:YES];
         return NO;
     }else{

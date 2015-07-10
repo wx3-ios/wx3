@@ -23,8 +23,9 @@
     CGFloat yOffset = 10;
     CGFloat height = 30;
     nickName = [[WXUITextField alloc] init];
-    nickName.frame = CGRectMake(0, yOffset, self.bounds.size.width, height);
+    nickName.frame = CGRectMake(2, yOffset, self.bounds.size.width-4, height);
     [nickName setBackgroundColor:[UIColor whiteColor]];
+    [nickName setBorderRadian:2.0 width:0.1 color:[UIColor grayColor]];
     [nickName setPlaceholder:@"请设置昵称"];
     [nickName setTextAlignment:NSTextAlignmentCenter];
     [nickName setFont:WXFont(14.0)];

@@ -398,10 +398,8 @@
 #pragma mark delegate
 - (void)loginSucceed{
     [self unShowWaitView];
-    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    [userDefault setUser:_userTextField.text];
-    [userDefault setPwd:_pwdTextField.text];
     
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     WXTUITabbarVC *tabbar = [[WXTUITabbarVC alloc] init];
     WXUINavigationController *nav = [[WXUINavigationController alloc] initWithRootViewController:tabbar];
     [self presentViewController:nav animated:YES completion:^{
