@@ -122,7 +122,7 @@
     WXUILabel *label = [[[WXUILabel alloc] initWithFrame:_netTipView.bounds] autorelease];
     [label setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
     [label setTextColor:WXColorWithInteger(0xffffff)];
-    [label setTextAlignment:UITextAlignmentCenter];
+    [label setTextAlignment:NSTextAlignmentCenter];
     [label setText:@"当前网络不可用，请检查你的网络设置"];
     [label setFont:WXFont(12.0)];
     [_netTipView addSubview:label];
@@ -134,7 +134,7 @@
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(serviceDisconnected:) name:D_Notification_Name_ServiceDisconnect object:nil];
     [notificationCenter addObserver:self selector:@selector(serviceConnected:) name:D_Notification_Name_ServiceConnectedOK object:nil];
-    [notificationCenter addObserver:self selector:@selector(netTipDelayFinished) name:D_Notification_Name_NetTipDelayFinished object:nil];
+//    [notificationCenter addObserver:self selector:@selector(netTipDelayFinished) name:D_Notification_Name_NetTipDelayFinished object:nil];
     //	[notificationCenter addObserver:self selector:@selector(netWorkDisconected) name:D_Notification_Name_NetWorkDisconnected object:nil];
     //	[notificationCenter addObserver:self selector:@selector(netWorkConnected) name:D_Notification_Name_NetWorkWifi object:nil];
     //	[notificationCenter addObserver:self selector:@selector(netWorkConnected) name:D_Notification_Name_NetWorkWWAN object:nil];

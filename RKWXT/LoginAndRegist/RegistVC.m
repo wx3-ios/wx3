@@ -199,7 +199,7 @@ enum{
     [_optShell addSubview:_fetchPwd];
     
     _gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    _gainBtn.frame = CGRectMake(Size.width-xGap1-90+8, yOffset+4, 82, 30);
+    _gainBtn.frame = CGRectMake(Size.width-xGap1-90+8, yOffset+4, 82, 28);
     [_gainBtn setBorderRadian:1.0 width:0.4 color:WXColorWithInteger(0xdd2726)];
     [_gainBtn.titleLabel setFont:WXTFont(14.0)];
     [_gainBtn setTitle:@"获取验证码" forState:UIControlStateNormal];

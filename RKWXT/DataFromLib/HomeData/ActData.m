@@ -7,7 +7,6 @@
 //
 
 #import "ActData.h"
-#import "it_lib.h"
 #import "ServiceCommon.h"
 //#import "NSObject+SBJson.h"
 //#import "HomeNavEntity.h"
@@ -41,31 +40,7 @@
 }
 
 - (E_LoadDataReturnValue)loadActiveData{
-	E_LoadDataReturnValue ret = [self checkReturnValueInAdvance];
-	if (ret == E_LoadDataReturnValue_UnDetermined){
-		WXUserOBJ *userOBJ = [WXUserOBJ sharedUserOBJ];
-        NSInteger areaID = (SS_UINT32)userOBJ.areaID;
-        NSInteger subShopID = (SS_UINT32)userOBJ.subShopID;
-        if (areaID <= 0 || subShopID <= 0){
-            KFLog_Normal(YES, @"无效的分店ID或者商店ID");
-            [self setStatus:E_ModelDataStatus_LoadFailed];
-            ret = E_LoadDataReturnValue_Failed;
-        }else{
-            SS_UINT32 aRet = IT_MallGetHomeNavigationIND(areaID, subShopID);
-            if(aRet != 0){
-                KFLog_Normal(YES, @"加载活动商品失败 ret = %d",aRet);
-                [self setStatus:E_ModelDataStatus_LoadFailed];
-                ret = E_LoadDataReturnValue_Failed;
-            }else{
-                KFLog_Normal(YES, @"加载活动商品成功");
-				KFLog_Normal(YES, @"区域ID=%d,分店ID=%d",(int)areaID,(int)subShopID);
-                [self setStatus:E_ModelDataStatus_Loading];
-                ret = E_LoadDataReturnValue_Succeed;
-            }
-        }
-		
-	}
-	return ret;
+	return 0;
 }
 
 - (void)addOBS{

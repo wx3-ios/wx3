@@ -37,7 +37,7 @@
 		[_timeLabel setEnabled:NO];
 		[_timeLabel setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
         [_timeLabel setFont:WXFont(kSysMsgTimeLabelFontSize)];
-        [_timeLabel setTextAlignment:UITextAlignmentCenter];
+        [_timeLabel setTextAlignment:NSTextAlignmentCenter];
 		[_timeLabel setBorderRadian:6.0 width:0 color:[UIColor clearColor]];
 		[_timeLabel setBackgroundColor:WXColorWithInteger(0xd2d2d2)];
         [self addSubview:_timeLabel];

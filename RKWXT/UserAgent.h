@@ -46,9 +46,9 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(UserAgent);
 @property (nonatomic, strong) NSDictionary *balance;
 @property (nonatomic, strong) EGODatabase *database;
 
-- (BOOL)hasLogin;
+//- (BOOL)hasLogin;
 
-- (void)initData;
+//- (void)initData;
 
 - (void)updateBalance:(void(^)(NSDictionary *balance))complete;
 

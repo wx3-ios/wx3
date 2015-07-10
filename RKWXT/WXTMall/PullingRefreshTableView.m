@@ -42,7 +42,7 @@
         _stateLabel = [[UILabel alloc] init ];
         _stateLabel.font = ft;
         _stateLabel.textColor = kTextColor;
-        _stateLabel.textAlignment = UITextAlignmentCenter;
+        _stateLabel.textAlignment = NSTextAlignmentCenter;
         _stateLabel.backgroundColor = kPRBGColor;
         _stateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _stateLabel.text = NSLocalizedString(@"下拉刷新", @"");
@@ -51,7 +51,7 @@
         _dateLabel = [[UILabel alloc] init ];
         _dateLabel.font = ft;
         _dateLabel.textColor = kTextColor;
-        _dateLabel.textAlignment = UITextAlignmentCenter;
+        _dateLabel.textAlignment = NSTextAlignmentCenter;
         _dateLabel.backgroundColor = kPRBGColor;
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 //        _dateLabel.text = NSLocalizedString(@"最后更新", @"");
@@ -433,7 +433,7 @@
         _msgLabel.font = [UIFont systemFontOfSize:14.f];
         _msgLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _msgLabel.backgroundColor = [UIColor orangeColor];
-        _msgLabel.textAlignment = UITextAlignmentCenter;
+        _msgLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_msgLabel];    
     }
     _msgLabel.text = msg;

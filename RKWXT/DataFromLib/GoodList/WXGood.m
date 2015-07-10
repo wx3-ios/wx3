@@ -7,7 +7,6 @@
 //
 
 #import "WXGood.h"
-#import "it_lib.h"
 #import "ServiceCommon.h"
 //#import "NSObject+SBJson.h"
 #import "WXGoodEntity.h"
@@ -41,30 +40,7 @@
 }
 
 - (E_LoadDataReturnValue)loadGoodList{
-	E_LoadDataReturnValue ret = [self checkReturnValueInAdvance];
-	if (E_LoadDataReturnValue_UnDetermined == ret){
-		WXUserOBJ *userOBJ = [WXUserOBJ sharedUserOBJ];
-		NSInteger areaID = (SS_UINT32)userOBJ.areaID;
-		NSInteger subShopID = (SS_UINT32)userOBJ.subShopID;
-		if (areaID <= 0 || subShopID <= 0){
-			KFLog_Normal(YES, @"无效的分店ID或者商店ID");
-			[self setStatus:E_ModelDataStatus_LoadFailed];
-			ret = E_LoadDataReturnValue_Failed;
-		}else{
-			NSInteger aRet = IT_MallGetGoodsAllIND((SS_UINT32)userOBJ.areaID, (SS_UINT32)userOBJ.subShopID);
-			if(aRet != 0){
-				KFLog_Normal(YES, @"调用获取所有商品的借口失败 = %d",(int)aRet);
-				[self setStatus:E_ModelDataStatus_LoadFailed];
-				ret = E_LoadDataReturnValue_Failed;
-			}else{
-				KFLog_Normal(YES, @"调用获取所有商品的借口成功");
-				KFLog_Normal(YES, @"区域ID=%d,分店ID=%d",(int)areaID,(int)subShopID);
-				[self setStatus:E_ModelDataStatus_Loading];
-				ret = E_LoadDataReturnValue_ISLoading;
-			}
-		}
-	}
-	return ret;
+	return 0;
 }
 
 - (void)addOBS{

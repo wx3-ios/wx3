@@ -29,8 +29,6 @@
         [self setPrimaryID:primeryID];
         [self setMsgID:[[dic objectForKey:kSysMessageUID] integerValue]];
         [self setMsgType:[[dic objectForKey:kSysMessageType] integerValue]];
-        [self setSubShopID:[[dic objectForKey:kSubShopID] integerValue]];
-        [self setSubShopName:[dic objectForKey:kSubShopName]];
         [self setSendTime:[[dic objectForKey:kSysMessageSendTime] integerValue]];
         [self setRecTime:[[dic objectForKey:kSysMessageRecTime] integerValue]];
         [self setPushTitle:[dic objectForKey:kSysMessagePushTitle]];

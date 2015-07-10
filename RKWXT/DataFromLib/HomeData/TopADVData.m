@@ -7,7 +7,6 @@
 //
 
 #import "TopADVData.h"
-#import "it_lib.h"
 #import "ServiceCommon.h"
 //#import "NSObject+SBJson.h"
 #import "TopADVEntity.h"
@@ -39,38 +38,13 @@
 }
 
 - (E_LoadDataReturnValue)loadTopADVData{
-	E_LoadDataReturnValue ret = [self checkReturnValueInAdvance];
-	if (ret == E_LoadDataReturnValue_UnDetermined){
-		WXUserOBJ *userOBJ = [WXUserOBJ sharedUserOBJ];
-        NSInteger areaID = (SS_UINT32)userOBJ.areaID;
-        NSInteger subShopID = (SS_UINT32)userOBJ.subShopID;
-        if (areaID <= 0 || subShopID <= 0){
-            KFLog_Normal(YES, @"无效的分店ID或无效的店铺ID");
-            [self setStatus:E_ModelDataStatus_LoadFailed];
-            ret = E_LoadDataReturnValue_Failed;
-        }else{
-            SS_UINT32 aRet = IT_MallGetHomeTopBigPictureExIND(areaID, subShopID);
-            if(aRet != 0){
-                KFLog_Normal(YES, @"加载顶部商品接口调用失败 ret = %d",aRet);
-                [self setStatus:E_ModelDataStatus_LoadFailed];
-                ret = E_LoadDataReturnValue_Failed;
-            }else{
-                KFLog_Normal(YES, @"加载顶部商品接口调用成功");
-                [self setStatus:E_ModelDataStatus_Loading];
-                ret = E_LoadDataReturnValue_Succeed;
-            }
-        }
-		
-	}
-	return ret;
+	return 0;
 }
 
 - (void)addOBS{
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(topADVDataLoadFailed)
 							   name:D_Notification_Name_Lib_LoadHomeTopGoodsFailed object:nil];
-	[notificationCenter addObserver:self selector:@selector(topADVDataLoadSucceed:)
-							   name:D_Notification_Name_Lib_LoadHomeTopGoodsSucceed object:nil];
 }
 
 //- (void)topADVDataLoadSucceed:(NSNotification*)notification{

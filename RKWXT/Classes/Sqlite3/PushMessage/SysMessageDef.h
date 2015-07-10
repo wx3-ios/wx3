@@ -11,8 +11,6 @@
 
 #define kSysMessageUID @"kSysMessageID" //消息ID(可能不唯一)
 #define kSysMessageType @"kSysMessageType" //消息的type
-#define kSubShopID  @"kSubShopID" //分店ID
-#define kSubShopName @"kSubShopName" //分店的名称
 #define kSysMessageSendTime @"kSysMessageSendTime"//消息发送时间
 #define kSysMessageRecTime @"kSysMessageRecTime"//消息接收时间
 #define kSysMessagePushTitle @"kSysMessagePushTitle" //推送的title

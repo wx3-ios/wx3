@@ -27,7 +27,7 @@
 #define kMargin 8.0
 
 static inline NSString * PSCollectionKeyForIndex(NSInteger index) {
-    return [NSString stringWithFormat:@"%ld", index];
+    return [NSString stringWithFormat:@"%ld", (long)index];
 }
 
 static inline NSInteger PSCollectionIndexForKey(NSString *key) {

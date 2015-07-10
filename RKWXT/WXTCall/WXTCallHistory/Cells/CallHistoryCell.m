@@ -47,7 +47,7 @@
 		CGFloat yOffset = yGap;
         _nameLabel = [[WXUILabel alloc] initWithFrame:CGRectMake(xOffset, yOffset, 150.0, nameHeight)];
         [_nameLabel setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin];
-        [_nameLabel setTextAlignment:UITextAlignmentLeft];
+        [_nameLabel setTextAlignment:NSTextAlignmentCenter];
         [_nameLabel setFont:nameFont];
         [_bgView addSubview:_nameLabel];
         

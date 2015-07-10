@@ -135,7 +135,6 @@ enum{
 }
 
 - (void)loadWXContacter{
-    [[WXService sharedService] loadWXContacterFromDB];
 }
 
 - (void)removeWXContacter{

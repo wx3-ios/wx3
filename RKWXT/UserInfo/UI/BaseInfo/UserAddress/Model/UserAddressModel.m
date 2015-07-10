@@ -64,6 +64,7 @@
     if(!dicArr){
         return;
     }
+    [_userAddressArr removeAllObjects];
     for(NSDictionary *dic1 in dicArr){
         AddressEntity *entity = [AddressEntity initAddressEntityWithDic:dic1];
         [_userAddressArr addObject:entity];

@@ -120,7 +120,7 @@
     CGFloat titleSize = 18.0;
     _submitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     [_submitBtn setFrame:CGRectMake(xgap, yOffset, btnWidth1, btnHeight1)];
-    [_submitBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [_submitBtn setTitle:@"登 录" forState:UIControlStateNormal];
     [_submitBtn.titleLabel setFont:WXTFont(titleSize)];
     [_submitBtn setBackgroundImageOfColor:[UIColor clearColor] controlState:UIControlStateNormal];
     [_submitBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];

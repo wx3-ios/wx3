@@ -17,7 +17,7 @@
 	if (self = [super initWithFrame:frame]){
 		WXUITextField *textFiled = [[WXUITextField alloc] initWithFrame:CGRectMake(8, kSysMsgToDetailTipViewLineHeight, 200, frame.size.height-kSysMsgToDetailTipViewLineHeight)];
 		[textFiled setEnabled:NO];
-		[textFiled setTextAlignment:UITextAlignmentLeft];
+		[textFiled setTextAlignment:NSTextAlignmentLeft];
 		[textFiled setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
 		[textFiled setFont:WXFont(11.0)];
 		[textFiled setTextColor:WXColorWithInteger(0x252525)];

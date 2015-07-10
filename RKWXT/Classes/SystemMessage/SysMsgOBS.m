@@ -92,7 +92,7 @@ enum{
 }
 
 - (void)incommingPush:(NSNotification*)notification{
-    NSString *json = notification.object;
+//    NSString *json = notification.object;
 //    NSArray *dicArray = [json JSONValue];
 //    if(dicArray){
 //        [self parseIncomePush:dicArray];

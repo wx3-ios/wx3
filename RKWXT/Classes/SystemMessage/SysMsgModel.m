@@ -9,7 +9,6 @@
 #import "SysMsgModel.h"
 #import "SysMsgSqlite.h"
 #import "SysMsgDef.h"
-#import "it_lib.h"
 
 @interface SysMsgModel(){
     NSMutableArray *_sysMsgList;

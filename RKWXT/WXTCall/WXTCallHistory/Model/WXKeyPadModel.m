@@ -10,7 +10,6 @@
 #import "CallRecord.h"
 #import "CallHistoryEntityExt.h"
 #import "StrangerEntity.h"
-#import "it_lib.h"
 #import "SysContacterEntityEx.h"
 #import "WXTDatabase.h"
 
@@ -115,7 +114,6 @@
 
 - (void)deleteCallRecords:(CallHistoryEntityExt*)ext{
     for(CallHistoryEntity *record in ext.recordArray){
-        NSLog(@"record.UID %li",record.UID);
         [[CallRecord sharedCallRecord] deleteCallRecord:record.UID];
     }
 }

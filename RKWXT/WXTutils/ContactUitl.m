@@ -126,7 +126,7 @@
         
         NSInteger count = [self count];
         
-        NSLog(@"place data count = %ld", count);
+        NSLog(@"place data count = %ld", (long)count);
         if (count > 300000) {
             _loaded = YES;
             [USER_DEFAULT setBool:YES forKey:UD_IMPORT_TAG];
@@ -149,7 +149,7 @@
     if (lines.count == 0) {
         return;
     }
-    CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+//    CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
     //[_placeDatabase executeUpdate:@"PRAGMA synchronous = OFF"];
     [_placeDatabase executeUpdate:@"begin transaction"];//开始事务
     for (NSString * line in lines) {
@@ -161,7 +161,7 @@
         }
     }
     [_placeDatabase executeUpdate:@"commit"]; //提交事备
-    CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
+//    CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
 //    NSLog(@"insert %lu rowdata use time = %f", lines.count, end - start);
 }
 

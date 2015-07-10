@@ -25,7 +25,6 @@
 
 - (void)makeToast:(NSString *)msg postion:(NSInteger)postion
 {
-    NSArray *postions = @[@"top", @"center", @"bottom"];
 //    [self.view makeToast:msg duration:2 position:postions[postion]];
 }
 

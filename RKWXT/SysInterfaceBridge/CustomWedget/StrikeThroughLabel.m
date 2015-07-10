@@ -19,9 +19,9 @@
     CGFloat strikeWidth = textSize.width;
     CGRect lineRect;
     
-    if ([self textAlignment] == UITextAlignmentRight) {
+    if ([self textAlignment] == NSTextAlignmentRight) {
         lineRect = CGRectMake(rect.size.width - strikeWidth, rect.size.height/2, strikeWidth, 1);
-    } else if ([self textAlignment] == UITextAlignmentCenter) {
+    } else if ([self textAlignment] == NSTextAlignmentCenter) {
         lineRect = CGRectMake(rect.size.width/2 - strikeWidth/2, rect.size.height/2, strikeWidth, 1);
     } else {
         lineRect = CGRectMake(0, rect.size.height/2, strikeWidth, 1);

@@ -462,22 +462,6 @@
 		775842BE1AB95A300039B129 /* WXMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841801AB95A2F0039B129 /* WXMaskView.m */; };
 		775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841821AB95A2F0039B129 /* WXTapGuideView.m */; };
 		775842C01AB95A300039B129 /* WXGuideMaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841851AB95A2F0039B129 /* WXGuideMaskControl.m */; };
-		775842C11AB95A300039B129 /* it_lib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841911AB95A2F0039B129 /* it_lib.cpp */; };
-		775842C21AB95A300039B129 /* it_lib_addr_book.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841921AB95A2F0039B129 /* it_lib_addr_book.cpp */; };
-		775842C31AB95A300039B129 /* it_lib_audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841941AB95A2F0039B129 /* it_lib_audio.cpp */; };
-		775842C41AB95A300039B129 /* it_lib_call.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841961AB95A2F0039B129 /* it_lib_call.cpp */; };
-		775842C51AB95A300039B129 /* it_lib_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841981AB95A2F0039B129 /* it_lib_context.cpp */; };
-		775842C61AB95A300039B129 /* it_lib_db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7758419A1AB95A2F0039B129 /* it_lib_db.cpp */; };
-		775842C71AB95A300039B129 /* it_lib_files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7758419C1AB95A2F0039B129 /* it_lib_files.cpp */; };
-		775842C81AB95A300039B129 /* it_lib_im.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7758419E1AB95A2F0039B129 /* it_lib_im.cpp */; };
-		775842C91AB95A300039B129 /* it_lib_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841A01AB95A2F0039B129 /* it_lib_log.cpp */; };
-		775842CA1AB95A300039B129 /* it_lib_sms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841A31AB95A2F0039B129 /* it_lib_sms.cpp */; };
-		775842CB1AB95A300039B129 /* reg_msg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841A51AB95A2F0039B129 /* reg_msg.cpp */; };
-		775842CC1AB95A300039B129 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 775841AC1AB95A2F0039B129 /* sqlite3.c */; };
-		775842CD1AB95A300039B129 /* ss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841AE1AB95A2F0039B129 /* ss.cpp */; };
-		775842CE1AB95A300039B129 /* ss_g711.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841B01AB95A2F0039B129 /* ss_g711.cpp */; };
-		775842CF1AB95A300039B129 /* ss_md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841B21AB95A2F0039B129 /* ss_md5.cpp */; };
-		775842D01AB95A300039B129 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775841B41AB95A2F0039B129 /* stdafx.cpp */; };
 		775842D11AB95A300039B129 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841BA1AB95A2F0039B129 /* GTMBase64.m */; };
 		775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841BD1AB95A2F0039B129 /* GTMNSString+HTML.m */; };
 		775842D31AB95A300039B129 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 775841BF1AB95A2F0039B129 /* NSDate+Compare.m */; };
@@ -575,8 +559,6 @@
 		7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842A11AB95A300039B129 /* WXUIWindow.m */; };
 		775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843461AB95FAC0039B129 /* NetTipDelay.m */; };
 		775843581AB95FAC0039B129 /* ServiceMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758434D1AB95FAC0039B129 /* ServiceMonitor.m */; };
-		775843591AB95FAC0039B129 /* WXService+Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758434E1AB95FAC0039B129 /* WXService+Call.m */; };
-		7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758434F1AB95FAC0039B129 /* WXService+Contacter.m */; };
 		7758435B1AB95FAC0039B129 /* WXService+UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843501AB95FAC0039B129 /* WXService+UserInfo.m */; };
 		7758435C1AB95FAC0039B129 /* WXService.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843521AB95FAC0039B129 /* WXService.m */; };
 		7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843541AB95FAC0039B129 /* WXServiceParse.m */; };
@@ -1467,51 +1449,6 @@
 		775841831AB95A2F0039B129 /* WXGuideCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXGuideCommon.h; sourceTree = "<group>"; };
 		775841841AB95A2F0039B129 /* WXGuideMaskControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXGuideMaskControl.h; sourceTree = "<group>"; };
 		775841851AB95A2F0039B129 /* WXGuideMaskControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXGuideMaskControl.m; sourceTree = "<group>"; };
-		775841881AB95A2F0039B129 /* it_lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib.h; sourceTree = "<group>"; };
-		7758418A1AB95A2F0039B129 /* cc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc.h; sourceTree = "<group>"; };
-		7758418B1AB95A2F0039B129 /* cc_armcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_armcc.h; sourceTree = "<group>"; };
-		7758418C1AB95A2F0039B129 /* cc_codew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_codew.h; sourceTree = "<group>"; };
-		7758418D1AB95A2F0039B129 /* cc_gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_gcc.h; sourceTree = "<group>"; };
-		7758418E1AB95A2F0039B129 /* cc_gcce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_gcce.h; sourceTree = "<group>"; };
-		7758418F1AB95A2F0039B129 /* cc_msvc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_msvc.h; sourceTree = "<group>"; };
-		775841901AB95A2F0039B129 /* cc_mwcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_mwcc.h; sourceTree = "<group>"; };
-		775841911AB95A2F0039B129 /* it_lib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib.cpp; sourceTree = "<group>"; };
-		775841921AB95A2F0039B129 /* it_lib_addr_book.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_addr_book.cpp; sourceTree = "<group>"; };
-		775841931AB95A2F0039B129 /* it_lib_addr_book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_addr_book.h; sourceTree = "<group>"; };
-		775841941AB95A2F0039B129 /* it_lib_audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_audio.cpp; sourceTree = "<group>"; };
-		775841951AB95A2F0039B129 /* it_lib_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_audio.h; sourceTree = "<group>"; };
-		775841961AB95A2F0039B129 /* it_lib_call.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_call.cpp; sourceTree = "<group>"; };
-		775841971AB95A2F0039B129 /* it_lib_call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_call.h; sourceTree = "<group>"; };
-		775841981AB95A2F0039B129 /* it_lib_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_context.cpp; sourceTree = "<group>"; };
-		775841991AB95A2F0039B129 /* it_lib_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_context.h; sourceTree = "<group>"; };
-		7758419A1AB95A2F0039B129 /* it_lib_db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_db.cpp; sourceTree = "<group>"; };
-		7758419B1AB95A2F0039B129 /* it_lib_db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_db.h; sourceTree = "<group>"; };
-		7758419C1AB95A2F0039B129 /* it_lib_files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_files.cpp; sourceTree = "<group>"; };
-		7758419D1AB95A2F0039B129 /* it_lib_files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_files.h; sourceTree = "<group>"; };
-		7758419E1AB95A2F0039B129 /* it_lib_im.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_im.cpp; sourceTree = "<group>"; };
-		7758419F1AB95A2F0039B129 /* it_lib_im.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_im.h; sourceTree = "<group>"; };
-		775841A01AB95A2F0039B129 /* it_lib_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_log.cpp; sourceTree = "<group>"; };
-		775841A11AB95A2F0039B129 /* it_lib_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_log.h; sourceTree = "<group>"; };
-		775841A21AB95A2F0039B129 /* it_lib_macro_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_macro_def.h; sourceTree = "<group>"; };
-		775841A31AB95A2F0039B129 /* it_lib_sms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = it_lib_sms.cpp; sourceTree = "<group>"; };
-		775841A41AB95A2F0039B129 /* it_lib_sms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = it_lib_sms.h; sourceTree = "<group>"; };
-		775841A51AB95A2F0039B129 /* reg_msg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = reg_msg.cpp; sourceTree = "<group>"; };
-		775841A61AB95A2F0039B129 /* reg_msg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reg_msg.h; sourceTree = "<group>"; };
-		775841A71AB95A2F0039B129 /* resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resource.h; sourceTree = "<group>"; };
-		775841A81AB95A2F0039B129 /* SKP_Silk_control.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKP_Silk_control.h; sourceTree = "<group>"; };
-		775841A91AB95A2F0039B129 /* SKP_Silk_errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKP_Silk_errors.h; sourceTree = "<group>"; };
-		775841AA1AB95A2F0039B129 /* SKP_Silk_SDK_API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKP_Silk_SDK_API.h; sourceTree = "<group>"; };
-		775841AB1AB95A2F0039B129 /* SKP_Silk_typedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKP_Silk_typedef.h; sourceTree = "<group>"; };
-		775841AC1AB95A2F0039B129 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
-		775841AD1AB95A2F0039B129 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
-		775841AE1AB95A2F0039B129 /* ss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ss.cpp; sourceTree = "<group>"; };
-		775841AF1AB95A2F0039B129 /* ss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ss.h; sourceTree = "<group>"; };
-		775841B01AB95A2F0039B129 /* ss_g711.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ss_g711.cpp; sourceTree = "<group>"; };
-		775841B11AB95A2F0039B129 /* ss_g711.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ss_g711.h; sourceTree = "<group>"; };
-		775841B21AB95A2F0039B129 /* ss_md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ss_md5.cpp; sourceTree = "<group>"; };
-		775841B31AB95A2F0039B129 /* ss_md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ss_md5.h; sourceTree = "<group>"; };
-		775841B41AB95A2F0039B129 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
-		775841B51AB95A2F0039B129 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 		775841B91AB95A2F0039B129 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		775841BA1AB95A2F0039B129 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		775841BB1AB95A2F0039B129 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -1705,8 +1642,6 @@
 		7758434B1AB95FAC0039B129 /* ServiceCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCommon.h; sourceTree = "<group>"; };
 		7758434C1AB95FAC0039B129 /* ServiceMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceMonitor.h; sourceTree = "<group>"; };
 		7758434D1AB95FAC0039B129 /* ServiceMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceMonitor.m; sourceTree = "<group>"; };
-		7758434E1AB95FAC0039B129 /* WXService+Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXService+Call.m"; sourceTree = "<group>"; };
-		7758434F1AB95FAC0039B129 /* WXService+Contacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXService+Contacter.m"; sourceTree = "<group>"; };
 		775843501AB95FAC0039B129 /* WXService+UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXService+UserInfo.m"; sourceTree = "<group>"; };
 		775843511AB95FAC0039B129 /* WXService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXService.h; sourceTree = "<group>"; };
 		775843521AB95FAC0039B129 /* WXService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXService.m; sourceTree = "<group>"; };
@@ -4124,69 +4059,8 @@
 		775841861AB95A2F0039B129 /* ServerLib */ = {
 			isa = PBXGroup;
 			children = (
-				775841871AB95A2F0039B129 /* include */,
-				775841891AB95A2F0039B129 /* lib */,
 			);
 			path = ServerLib;
-			sourceTree = "<group>";
-		};
-		775841871AB95A2F0039B129 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				775841881AB95A2F0039B129 /* it_lib.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		775841891AB95A2F0039B129 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				7758418A1AB95A2F0039B129 /* cc.h */,
-				7758418B1AB95A2F0039B129 /* cc_armcc.h */,
-				7758418C1AB95A2F0039B129 /* cc_codew.h */,
-				7758418D1AB95A2F0039B129 /* cc_gcc.h */,
-				7758418E1AB95A2F0039B129 /* cc_gcce.h */,
-				7758418F1AB95A2F0039B129 /* cc_msvc.h */,
-				775841901AB95A2F0039B129 /* cc_mwcc.h */,
-				775841911AB95A2F0039B129 /* it_lib.cpp */,
-				775841921AB95A2F0039B129 /* it_lib_addr_book.cpp */,
-				775841931AB95A2F0039B129 /* it_lib_addr_book.h */,
-				775841941AB95A2F0039B129 /* it_lib_audio.cpp */,
-				775841951AB95A2F0039B129 /* it_lib_audio.h */,
-				775841961AB95A2F0039B129 /* it_lib_call.cpp */,
-				775841971AB95A2F0039B129 /* it_lib_call.h */,
-				775841981AB95A2F0039B129 /* it_lib_context.cpp */,
-				775841991AB95A2F0039B129 /* it_lib_context.h */,
-				7758419A1AB95A2F0039B129 /* it_lib_db.cpp */,
-				7758419B1AB95A2F0039B129 /* it_lib_db.h */,
-				7758419C1AB95A2F0039B129 /* it_lib_files.cpp */,
-				7758419D1AB95A2F0039B129 /* it_lib_files.h */,
-				7758419E1AB95A2F0039B129 /* it_lib_im.cpp */,
-				7758419F1AB95A2F0039B129 /* it_lib_im.h */,
-				775841A01AB95A2F0039B129 /* it_lib_log.cpp */,
-				775841A11AB95A2F0039B129 /* it_lib_log.h */,
-				775841A21AB95A2F0039B129 /* it_lib_macro_def.h */,
-				775841A31AB95A2F0039B129 /* it_lib_sms.cpp */,
-				775841A41AB95A2F0039B129 /* it_lib_sms.h */,
-				775841A51AB95A2F0039B129 /* reg_msg.cpp */,
-				775841A61AB95A2F0039B129 /* reg_msg.h */,
-				775841A71AB95A2F0039B129 /* resource.h */,
-				775841A81AB95A2F0039B129 /* SKP_Silk_control.h */,
-				775841A91AB95A2F0039B129 /* SKP_Silk_errors.h */,
-				775841AA1AB95A2F0039B129 /* SKP_Silk_SDK_API.h */,
-				775841AB1AB95A2F0039B129 /* SKP_Silk_typedef.h */,
-				775841AC1AB95A2F0039B129 /* sqlite3.c */,
-				775841AD1AB95A2F0039B129 /* sqlite3.h */,
-				775841AE1AB95A2F0039B129 /* ss.cpp */,
-				775841AF1AB95A2F0039B129 /* ss.h */,
-				775841B01AB95A2F0039B129 /* ss_g711.cpp */,
-				775841B11AB95A2F0039B129 /* ss_g711.h */,
-				775841B21AB95A2F0039B129 /* ss_md5.cpp */,
-				775841B31AB95A2F0039B129 /* ss_md5.h */,
-				775841B41AB95A2F0039B129 /* stdafx.cpp */,
-				775841B51AB95A2F0039B129 /* stdafx.h */,
-			);
-			path = lib;
 			sourceTree = "<group>";
 		};
 		775841B61AB95A2F0039B129 /* SysInterfaceBridge */ = {
@@ -4604,8 +4478,6 @@
 				7758434B1AB95FAC0039B129 /* ServiceCommon.h */,
 				7758434C1AB95FAC0039B129 /* ServiceMonitor.h */,
 				7758434D1AB95FAC0039B129 /* ServiceMonitor.m */,
-				7758434E1AB95FAC0039B129 /* WXService+Call.m */,
-				7758434F1AB95FAC0039B129 /* WXService+Contacter.m */,
 				775843501AB95FAC0039B129 /* WXService+UserInfo.m */,
 				775843511AB95FAC0039B129 /* WXService.h */,
 				775843521AB95FAC0039B129 /* WXService.m */,
@@ -5652,12 +5524,10 @@
 				775843271AB95A300039B129 /* WXUINavigationController+SubVCPosition.m in Sources */,
 				775842ED1AB95A300039B129 /* CSTWXNavigationView.m in Sources */,
 				1277D0131AC5327A0008D9B6 /* ResetPwdModel.m in Sources */,
-				775842CF1AB95A300039B129 /* ss_md5.cpp in Sources */,
 				DD988A5D1B1D408500B3790B /* EScrollerView.m in Sources */,
 				775842F01AB95A300039B129 /* WXUITextViewCell.m in Sources */,
 				7758432E1AB95A300039B129 /* WXUISwitch.m in Sources */,
 				7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */,
-				775842C61AB95A300039B129 /* it_lib_db.cpp in Sources */,
 				775842E81AB95A300039B129 /* TelNOOBJ.m in Sources */,
 				120A2BEC1AB135DD006A28B1 /* SignViewController.m in Sources */,
 				12F2D7FD1B1EF11900C8017F /* OrderGoodsCell.m in Sources */,
@@ -5697,7 +5567,6 @@
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
 				DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */,
 				12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */,
-				775843591AB95FAC0039B129 /* WXService+Call.m in Sources */,
 				12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */,
 				77DB941B1AAFEB9B0021A816 /* NSString+Size.m in Sources */,
 				12F963371B3D4BDF00FF6A3E /* SBJsonStreamWriterState.m in Sources */,
@@ -5718,14 +5587,11 @@
 				12BD31021B3E9E1600170316 /* UserBonusEntity.m in Sources */,
 				12F962F71B3D314100FF6A3E /* MakeOrderModel.m in Sources */,
 				128221911B1847E7004613BB /* URLNetNotificationOBJ.m in Sources */,
-				775842CA1AB95A300039B129 /* it_lib_sms.cpp in Sources */,
 				77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */,
 				12F3CC911B1E026C00E64DE4 /* PersonalCallCell.m in Sources */,
 				775842BD1AB95A300039B129 /* WXGuidMaskView.m in Sources */,
 				7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */,
 				DD0E38B71B1BE5AC00AB4DB9 /* WXSqlite.m in Sources */,
-				775842CD1AB95A300039B129 /* ss.cpp in Sources */,
-				775842C51AB95A300039B129 /* it_lib_context.cpp in Sources */,
 				775C58C31ABA7B75005B6B40 /* GuessYouLikeData.m in Sources */,
 				12F4228C1B1D61E100643DD7 /* AddressBaseInfoCell.m in Sources */,
 				120A2BEB1AB135DD006A28B1 /* RechargeView.m in Sources */,
@@ -5785,7 +5651,6 @@
 				1282218E1B1847E7004613BB /* RemotionFileEntity.m in Sources */,
 				775843151AB95A300039B129 /* WXTouchEventView.m in Sources */,
 				7758431C1AB95A300039B129 /* WXMFMessageComposeVC.m in Sources */,
-				775842CE1AB95A300039B129 /* ss_g711.cpp in Sources */,
 				DDB58F431AD3C6A2006248E9 /* CallBackVC.m in Sources */,
 				12E471C81B1F187000559995 /* WaitReceiveConsultCell.m in Sources */,
 				DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */,
@@ -5802,7 +5667,6 @@
 				1282217F1B18467A004613BB /* T_ForMeView.m in Sources */,
 				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
 				775842DC1AB95A300039B129 /* UIImage+Extend.m in Sources */,
-				775842C31AB95A300039B129 /* it_lib_audio.cpp in Sources */,
 				DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */,
 				12F916071B1950E600C94717 /* T_MenuEntity.m in Sources */,
 				12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */,
@@ -5887,7 +5751,6 @@
 				7758432F1AB95A300039B129 /* WXUITabBar.m in Sources */,
 				775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */,
 				128221821B18467A004613BB /* T_TopicalCell.m in Sources */,
-				775842C21AB95A300039B129 /* it_lib_addr_book.cpp in Sources */,
 				775842D31AB95A300039B129 /* NSDate+Compare.m in Sources */,
 				12F3801E1B3B932200E9690C /* MakeOrderPayStatusCell.m in Sources */,
 				DDB58F471AD3C6A2006248E9 /* ContactsCallViewController.m in Sources */,
@@ -5919,7 +5782,6 @@
 				775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */,
 				1218042F1ACB899B009DB7E7 /* DBImageViewCache.m in Sources */,
 				775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */,
-				775842C71AB95A300039B129 /* it_lib_files.cpp in Sources */,
 				12F180CA1B454D9A00B9A80D /* OrderListModel.m in Sources */,
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
@@ -5948,7 +5810,6 @@
 				12E471D41B1F268100559995 /* WaitSendGoodsInfoCell.m in Sources */,
 				775C58DC1ABAB87E005B6B40 /* CoordinateController.m in Sources */,
 				775842F61AB95A300039B129 /* PullPsCollectionView.m in Sources */,
-				775842D01AB95A300039B129 /* stdafx.cpp in Sources */,
 				77DB93F91AAFE79D0021A816 /* NSString+Helper.m in Sources */,
 				12F4BE051AE8CA3B00B9FEDA /* MenuItem.m in Sources */,
 				775C583F1ABA5F31005B6B40 /* PinyinHelper.m in Sources */,
@@ -5965,9 +5826,7 @@
 				128221C91B184C3B004613BB /* ASINetworkQueue.m in Sources */,
 				12D0C87C1AB6B2970039A197 /* VersionModel.m in Sources */,
 				120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */,
-				775842CB1AB95A300039B129 /* reg_msg.cpp in Sources */,
 				12F422891B1D5D8100643DD7 /* ManagerAddressVC.m in Sources */,
-				775842C41AB95A300039B129 /* it_lib_call.cpp in Sources */,
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
 				12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */,
 				12F180C01B45219300B9A80D /* JPushMsgEntity.m in Sources */,
@@ -5985,13 +5844,11 @@
 				775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */,
 				775843311AB95A300039B129 /* WXUITabBarVC.m in Sources */,
 				120A2BED1AB135DD006A28B1 /* CalendarView.m in Sources */,
-				7758435A1AB95FAC0039B129 /* WXService+Contacter.m in Sources */,
 				12F2CCF51B4D11930085F78F /* RefundGoodsListCell.m in Sources */,
 				DDB58F521AD3C6A2006248E9 /* StrangerEntity.m in Sources */,
 				129D23481B4F9CB600008DA0 /* OrderInfoUserInfoCell.m in Sources */,
 				DDEA9ED51B1BF44A00530C1C /* WXTCartDetailViewController.m in Sources */,
 				1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */,
-				775842CC1AB95A300039B129 /* sqlite3.c in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
 				12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */,
 				775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */,
@@ -6062,17 +5919,14 @@
 				DD0E38BB1B1BE5AC00AB4DB9 /* SysMsgModel.m in Sources */,
 				12F2D7FA1B1EE96500C8017F /* OrderShopCell.m in Sources */,
 				1243CCB91AE7C31B003E0943 /* WXTUITabbarVC.m in Sources */,
-				775842C11AB95A300039B129 /* it_lib.cpp in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,
 				775C58C81ABA7B75005B6B40 /* ShopInfo.m in Sources */,
 				129D234E1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m in Sources */,
-				775842C91AB95A300039B129 /* it_lib_log.cpp in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,
 				12F67BAE1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m in Sources */,
 				128221EC1B18716E004613BB /* T_HPSubBaseModel.m in Sources */,
 				12F916061B1950E600C94717 /* T_InsertData.m in Sources */,
-				775842C81AB95A300039B129 /* it_lib_im.cpp in Sources */,
 				775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */,
 				12F916211B19A18600C94717 /* HomePageSurpEntity.m in Sources */,
 				775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */,

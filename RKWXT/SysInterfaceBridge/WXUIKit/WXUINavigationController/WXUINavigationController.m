@@ -322,7 +322,7 @@ typedef enum {
     
     if (panGesture.state == UIGestureRecognizerStateEnded || panGesture.state == UIGestureRecognizerStateCancelled) {
         // If velocity is greater than 100 the Execute the Completion base on pan direction
-        if(abs(vel.x) > limiteVel) {
+        if(fabsf(vel.x) > limiteVel) {
             [self completeSlidingAnimationWithDirection:panDirection];
         }else {
             [self completeSlidingAnimationWithOffset:offset];

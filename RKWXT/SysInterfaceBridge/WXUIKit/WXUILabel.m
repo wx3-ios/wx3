@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
-		[self setTextAlignment:UITextAlignmentLeft];
+		[self setTextAlignment:NSTextAlignmentLeft];
     }
     return self;
 }

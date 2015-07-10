@@ -34,8 +34,6 @@ const static S_WXSqliteItem sysMsgItemArray [E_SystemMessage_Invalid] = {
     {kPrimaryKey,E_SQLITE_DATA_INT,1},
     {kSysMessageUID,E_SQLITE_DATA_INT,0},
     {kSysMessageType,E_SQLITE_DATA_INT,0},
-    {kSubShopID,E_SQLITE_DATA_INT,0},
-    {kSubShopName,E_SQLITE_DATA_TXT,0},
     {kSysMessageSendTime,E_SQLITE_DATA_INT,0},
     {kSysMessageRecTime,E_SQLITE_DATA_INT,0},
     {kSysMessagePushTitle,E_SQLITE_DATA_TXT,0},

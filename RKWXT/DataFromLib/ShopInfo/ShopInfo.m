@@ -7,7 +7,6 @@
 //
 
 #import "ShopInfo.h"
-#import "it_lib.h"
 #import "ServiceCommon.h"
 //#import "NSObject+SBJson.h"
 #import "TxtparseOBJ.h"
@@ -60,21 +59,7 @@ enum{
 }
 
 - (E_LoadDataReturnValue)loadShopInfo{
-	E_LoadDataReturnValue ret = [self checkReturnValueInAdvance];
-	if (E_LoadDataReturnValue_UnDetermined == ret){
-		WXUserOBJ *userOBJ = [WXUserOBJ sharedUserOBJ];
-		NSInteger aRet = IT_MallGetShopAboutInfoIND((SS_UINT32)userOBJ.subShopID);
-		if(aRet != 0){
-			KFLog_Normal(YES, @"调用获取店铺信息接口失败 = %d",(int)aRet);
-			[self setStatus:E_ModelDataStatus_LoadFailed];
-			ret = E_LoadDataReturnValue_Failed;
-		}else{
-			KFLog_Normal(YES, @"调用获取店铺信息接口成功");
-			[self setStatus:E_ModelDataStatus_Loading];
-			ret = E_LoadDataReturnValue_ISLoading;
-		}
-	}
-	return ret;
+	return 0;
 }
 
 - (BOOL)isValid{
@@ -83,7 +68,6 @@ enum{
 
 - (void)addOBS{
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-	[notificationCenter addObserver:self selector:@selector(loadShopInfoSucceed:) name:D_Notification_Name_Lib_LoadOfficeInfoSucceed object:nil];
 	[notificationCenter addObserver:self selector:@selector(loadShopInfoFailed:) name:D_Notification_Name_Lib_LoadOfficeInfoFailed object:nil];
 }
 

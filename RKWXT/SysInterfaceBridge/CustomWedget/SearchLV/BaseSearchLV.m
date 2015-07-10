@@ -24,7 +24,6 @@
 @synthesize delegate = _delegate;
 
 - (void)dealloc{
-#warning 泄露留以后解决~
     _delegate = nil;
 //    [super dealloc];
 }

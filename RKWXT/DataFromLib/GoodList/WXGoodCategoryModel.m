@@ -10,7 +10,6 @@
 //#import "GoodMenuEntity.h"
 #import "ServiceCommon.h"
 //#import "GoodMenuEntity.h"
-#import "it_lib.h"
 
 @interface WXGoodCategoryModel (){
     NSMutableArray *_goodCategoryList;
@@ -54,7 +53,6 @@
 
 - (void)addOBS{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(categoryListLoadedSucceed:) name:D_Notification_Name_Lib_LoadMenuList object:nil];
     [notificationCenter addObserver:self selector:@selector(categoryListLoadedFailed) name:D_Notification_Name_Lib_AllGoodsLoadedFailed object:nil];
 }
 
@@ -105,29 +103,7 @@
 }
 
 - (E_LoadDataReturnValue)loadGoodCategaryList{
-	E_LoadDataReturnValue ret = [self checkReturnValueInAdvance];
-	if (ret == E_LoadDataReturnValue_UnDetermined){
-		WXUserOBJ *userOBJ = [WXUserOBJ sharedUserOBJ];
-		NSInteger areaID = (SS_UINT32)userOBJ.areaID;
-		NSInteger subShopID = (SS_UINT32)userOBJ.subShopID;
-		if (areaID <= 0 || subShopID <= 0){
-			KFLog_Normal(YES, @"无效的分店ID或者商店ID");
-			[self setStatus:E_ModelDataStatus_LoadFailed];
-			ret = E_LoadDataReturnValue_Failed;
-		}else{
-			SS_SHORT aRet = IT_MallGetCategoryListIND((SS_UINT32)areaID, (SS_UINT32)subShopID);
-			if(aRet != 0){
-				KFLog_Normal(YES, @"加载商品类别失败 ret = %d",(int)aRet);
-				[self setStatus:E_ModelDataStatus_LoadFailed];
-				ret = E_LoadDataReturnValue_Failed;
-			}else{
-				KFLog_Normal(YES, @"加载商品类别成功");
-				[self setStatus:E_ModelDataStatus_Loading];
-				ret = E_LoadDataReturnValue_Succeed;
-			}
-		}
-	}
-	return ret;
+	return 0;
 }
 
 - (void)serviceConnectedOK{

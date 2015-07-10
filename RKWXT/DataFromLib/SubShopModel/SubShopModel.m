@@ -7,7 +7,6 @@
 //
 
 #import "SubShopModel.h"
-#import "it_lib.h"
 #import "ServiceCommon.h"
 //#import "NSObject+SBJson.h"
 
@@ -81,13 +80,7 @@ enum{
 }
 
 - (BOOL)loadSubShopList{
-	if (_inLoading){
-		KFLog_Normal(YES, @"分店列表正在加载，不需要重复记载");
-		return YES;
-	}
-	_inLoading = YES;
-	SS_SHORT ret = IT_MallGetAreaShopInfoIND();
-	return ret == 0;
+    return NO;
 }
 
 - (BOOL)isSubShopListReady{
@@ -96,7 +89,6 @@ enum{
 
 - (void)addOBS{
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-	[notificationCenter addObserver:self selector:@selector(loadSubShopListSucceed:) name:D_Notification_Name_Lib_LoadSubShopListSucceed object:nil];
 	[notificationCenter addObserver:self selector:@selector(loadSubShopListFailed:) name:D_Notification_Name_Lib_LoadSubShopListFailed object:nil];
 }
 

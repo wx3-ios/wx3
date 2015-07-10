@@ -15,10 +15,6 @@
 @implementation WXService (UserInfo)
 
 - (UIImage*)getFriendIcon:(NSInteger)rID{
-    const char *iconPath = IT_GetFriendIconEx((SS_UINT32)rID);
-    if(iconPath){
-        return [UIImage imageNamed:[NSString stringWithFormat:@"%s",iconPath]];
-    }
     return nil;
 }
 - (NSString*)userIconName{
@@ -49,11 +45,6 @@
         [fileManager removeItemAtPath:iconTempPath error:nil];
     }
     [imageData writeToFile:iconTempPath atomically:YES];
-    SS_UINT32 ret = IT_UploadMyIcon([iconTempPath cStringUsingEncoding:NSUTF8StringEncoding]);
-    if(ret != 0){
-        KFLog_Normal(YES, @"上传个人图像失败= %d",ret);
-        return NO;
-    }
     return YES;
 }
 
@@ -102,12 +93,6 @@
     const char *cArea = "";
     if(area){
         cArea = [area cStringUsingEncoding:NSUTF8StringEncoding];
-    }
-    
-    SS_UINT32 ret = IT_UpdateUserinfo(cNickName, cRealName, cBindNumber, sex, cBirth, cQQ, cSignature, cAddress, cArea);
-    if(ret != 0){
-        KFLog_Normal(YES, @"更新用户信息失败 = %d",(int)ret);
-        return NO;
     }
     return YES;
 }

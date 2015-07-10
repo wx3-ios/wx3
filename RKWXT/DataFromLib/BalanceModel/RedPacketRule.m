@@ -7,7 +7,6 @@
 //
 
 #import "RedPacketRule.h"
-#import "it_lib.h"
 #import "ServiceCommon.h"
 //#import "NSObject+SBJson.h"
 
@@ -77,35 +76,10 @@
 //}
 
 - (E_LoadDataReturnValue)loadRedPacketRule{
-	E_LoadDataReturnValue ret = [self checkReturnValueInAdvance];
-	if (ret == E_LoadDataReturnValue_UnDetermined){
-		WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-		NSInteger subShopID = userObj.subShopID;
-		if (subShopID <= 0){
-			KFLog_Normal(YES, @"无效的分店ID");
-			[self setStatus:E_ModelDataStatus_LoadFailed];
-			ret =  E_LoadDataReturnValue_Failed;
-		}else{
-			SS_UINT32 aRet = IT_MallLoadRedPackageUseRulesIND((SS_UINT32)userObj.subShopID);
-			if(aRet != 0){
-				KFLog_Normal(YES, @"加载红包规则接口调用失败 ret = %d",aRet);
-				[self setStatus:E_ModelDataStatus_LoadFailed];
-				ret =  E_LoadDataReturnValue_Failed;
-			}else{
-				KFLog_Normal(YES, @"加载红包规则接口调用成功");
-				[self setStatus:E_ModelDataStatus_Loading];
-				ret =  E_LoadDataReturnValue_Succeed;
-			}
-
-		}
-	}
-	return ret;
+	return 0;
 }
 
 - (void)addOBS{
-	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-	[notificationCenter addObserver:self selector:@selector(loadedSucceed:) name:D_Notification_Name_Lib_LoadUseRPRuleSucceed object:nil];
-	[notificationCenter addObserver:self selector:@selector(loadFailed:) name:D_Notification_Name_Lib_LoadUseRPRuleFailed object:nil];
 }
 
 - (void)removeOBS{

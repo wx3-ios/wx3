@@ -29,7 +29,7 @@
         [self.contentView addSubview:imgView];
         
         xOffset += imgWidth+8;
-        CGFloat labelWidth = 42;
+        CGFloat labelWidth = 45;
         CGFloat labelHeight = 10;
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(xOffset, (OrderInfoStateCellHeight-labelHeight)/2, labelWidth, labelHeight);

@@ -403,7 +403,8 @@
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     WXTMallListWebVC *webViewVC = [[WXTMallListWebVC alloc] init];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
-    [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
+    id ret = [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
+    NSLog(@"ret = %@",ret);
     [self.wxNavigationController pushViewController:webViewVC];
 }
 

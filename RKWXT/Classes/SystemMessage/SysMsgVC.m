@@ -126,8 +126,6 @@ enum{
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    SysMsgItem *item = [_model.sysMsgList objectAtIndex:indexPath.section];
-    [[CoordinateController sharedCoordinateController] toSystemMessageDetail:self messageInfo:item animated:YES];
 }
 
 #pragma mark SysMsgModelDelegate

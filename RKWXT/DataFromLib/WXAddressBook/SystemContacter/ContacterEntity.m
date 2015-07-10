@@ -213,7 +213,7 @@
     NSError * error;
     BOOL result = [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
     if (!result) {
-        DDLogError(@"[path dir] create error:%li",[error code]);
+        DDLogError(@"[path dir] create error:%li",(long)[error code]);
         return NO;
     }
     _database = [[EGODatabase alloc]initWithPath:[path stringByAppendingPathComponent:@"contacts-back.sqlite"]];
@@ -243,10 +243,10 @@
         NSInteger result = 1;
         EGODatabaseResult * dbResult = [_database executeQuery:[NSString stringWithFormat:kWXTInsertBook,_fullName,phone]];
         result = [dbResult errorCode];
-        DDLogDebug(@"result:%li",result);
+        DDLogDebug(@"result:%li",(long)result);
 //        NSInteger ret = [[WXService sharedService] updateContacter:_recordID name:_fullName phone:phone createTime:[_createTime timeIntervalSince1970] modifyTime:[_modifyTime timeIntervalSince1970]];
         if(result != 0){
-            DDLogDebug(@"%@ update error:%li",phone,result);
+            DDLogDebug(@"%@ update error:%li",phone,(long)result);
             return NO;
         }else{
             DDLogDebug(@"%@ update success!",phone);

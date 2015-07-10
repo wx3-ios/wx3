@@ -105,7 +105,7 @@
         startTime:(NSString*)startTime duration:(NSInteger)duration{
     __block NSInteger result;
     [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
-        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,@"我信",phoneNumber,startTime,duration,recordType]];
+        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,@"我信",phoneNumber,startTime,(long)duration,recordType]];
         result = [dbResult errorCode];
     }];
     if (result != 0) {
@@ -123,7 +123,7 @@
 - (BOOL)deleteCallRecord:(NSInteger)recordUID{
     __block NSInteger result;
     [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
-        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,recordUID]];
+        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTDelCallHistory,(long)recordUID]];
         result = [dbResult errorCode];
     }];
     if(result != 0){

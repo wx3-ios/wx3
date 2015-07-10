@@ -8,7 +8,6 @@
 
 #import "RedPacketBalance.h"
 #import "ServiceCommon.h"
-#import "it_lib.h"
 
 @implementation RedPacketBalance
 
@@ -44,32 +43,11 @@
 }
 
 - (E_LoadDataReturnValue)loadRedPacketBalance{
-	E_LoadDataReturnValue ret = [self checkReturnValueInAdvance];
-	if (ret == E_LoadDataReturnValue_UnDetermined){
-		SS_UINT32 aRet = IT_MallGetRedPackageBalanceIND();
-		if(aRet == 0){
-			[self setStatus:E_ModelDataStatus_Loading];
-			KFLog_Normal(YES, @"获取红包余额接口调用成功");
-			ret = E_LoadDataReturnValue_Succeed;
-		}else{
-			[self setStatus:E_ModelDataStatus_LoadFailed];
-			KFLog_Normal(YES, @"获取红包余额接口调用失败 ret = %d",aRet);
-			ret = E_LoadDataReturnValue_Failed;
-		}
-	}
-	return ret;
+	return 0;
 }
 
 - (NSInteger)useRedPacket:(CGFloat)money  orderID:(NSString*)orderID{
-    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-    NSInteger intMoney = money;
-    SS_UINT32 aRet = IT_MallUseRedPackageIND((SS_UINT32)userObj.subShopID, [[NSString stringWithFormat:@"%d",(int)intMoney] UTF8String], [orderID UTF8String]);
-    if(aRet != 0){
-        KFLog_Normal(YES, @"使用红包接口调用失败 ret = %d",aRet);
-    }else{
-        KFLog_Normal(YES, @"使用红包接口调用成功")
-    }
-    return aRet;
+    return 0;
 }
 
 - (void)setBalance:(CGFloat)balance{

@@ -72,7 +72,6 @@
 
 -(void)EScrollerViewDidClicked:(NSUInteger)index
 {
-    NSLog(@"index--%ld",index);
 }
 
 -(void)initBottomView{
@@ -152,7 +151,6 @@
 
 // 立即购买
 -(void)purchaseAtOnce{
-    [[CoordinateController sharedCoordinateController]toOrderConfirm:self /*delegate:self source:nil goodList:nil goodExtra:nil*/animated:YES];
 }
 
 // 加入购物车

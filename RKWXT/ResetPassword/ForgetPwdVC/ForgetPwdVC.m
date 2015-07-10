@@ -170,7 +170,7 @@ enum{
     
     _fetchPwd = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap+labelWidth, yOffset, width-75, height)];
     [_fetchPwd setReturnKeyType:UIReturnKeyDone];
-    [_fetchPwd setSecureTextEntry:YES];
+//    [_fetchPwd setSecureTextEntry:YES];
     [_fetchPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_fetchPwd addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
     [_fetchPwd setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
@@ -183,7 +183,7 @@ enum{
     [self addSubview:_fetchPwd];
     
     _gainBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    _gainBtn.frame = CGRectMake(Size.width-xGap1-75+8, yOffset+4, 80, 30);
+    _gainBtn.frame = CGRectMake(Size.width-xGap1-75+8, yOffset+4, 80, 28);
     [_gainBtn setBorderRadian:10.0 width:0.1 color:WXColorWithInteger(0x000000)];
     [_gainBtn.titleLabel setFont:WXTFont(14.0)];
     [_gainBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
@@ -226,7 +226,7 @@ enum{
     
     _pwdTextfield = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap+labelWidth, yOffset, width, height)];
     [_pwdTextfield setReturnKeyType:UIReturnKeyDone];
-    [_pwdTextfield setSecureTextEntry:YES];
+//    [_pwdTextfield setSecureTextEntry:YES];
     [_pwdTextfield addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_pwdTextfield addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
     [_pwdTextfield setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
@@ -271,7 +271,7 @@ enum{
     
     _otherPhone = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap+labelWidth, yOffset, width, height)];
     [_otherPhone setReturnKeyType:UIReturnKeyDone];
-    [_otherPhone setSecureTextEntry:YES];
+//    [_otherPhone setSecureTextEntry:YES];
     [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_otherPhone addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
     [_otherPhone setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
@@ -279,7 +279,7 @@ enum{
     [_otherPhone setTintColor:WXColorWithInteger(0xdd2726)];
     [_otherPhone setLeftViewMode:UITextFieldViewModeAlways];
     [_otherPhone setKeyboardType:UIKeyboardTypeASCIICapable];
-    [_otherPhone setPlaceHolder:@"输入介绍人(选填)" color:WXColorWithInteger(0xd0d0d0)];
+    [_otherPhone setPlaceHolder:@"再次输入密码" color:WXColorWithInteger(0xd0d0d0)];
     [_otherPhone setFont:WXTFont(fontSize)];
     [self addSubview:_otherPhone];
     

@@ -126,9 +126,6 @@
     
     //如果已经登陆了~ 则需要再次上线~
     if([self hasLogin]){
-        WXError *error = nil;
-#warning 上线失败怎么办？
-        [[WXService sharedService] login:[WXUserOBJ sharedUserOBJ].user password:[WXUserOBJ sharedUserOBJ].pwd erorr:&error];
     }
 }
 
