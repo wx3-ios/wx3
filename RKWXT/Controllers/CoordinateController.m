@@ -19,6 +19,7 @@
 #import "OrderDealRefundVC.h"
 #import "RefundSucceedVC.h"
 #import "GoodsInfoVC.h"
+#import "AboutShopVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -103,6 +104,12 @@
     GoodsInfoVC *goodsInfoVC = [[GoodsInfoVC alloc] init];
     goodsInfoVC.goodsEntity = orderEntity;
     [vc.wxNavigationController pushViewController:goodsInfoVC];
+}
+
+-(void)toAboutShopVC:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    AboutShopVC *shopVC = [[AboutShopVC alloc] init];
+    [vc.wxNavigationController pushViewController:shopVC];
 }
 
 @end

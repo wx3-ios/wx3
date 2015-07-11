@@ -174,6 +174,9 @@ enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == Refund_Section_Company) {
+        [[CoordinateController sharedCoordinateController] toAboutShopVC:self animated:YES];
+    }
 }
 
 #pragma mark select

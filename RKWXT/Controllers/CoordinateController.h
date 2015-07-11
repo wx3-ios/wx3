@@ -52,4 +52,5 @@ typedef enum {
 -(void)toRefundVC:(id)sender goodsInfo:(id)goodsInfo animated:(BOOL)animated;  //退款
 -(void)toRefundInfoVC:(id)sender orderEntity:(id)orderEntity animated:(BOOL)animated;//查看退款详情
 -(void)toOrderInfoVC:(id)sender orderEntity:(id)orderEntity animated:(BOOL)animated;//查看订单详情
+-(void)toAboutShopVC:(id)sender animated:(BOOL)animated; //商家信息
 @end

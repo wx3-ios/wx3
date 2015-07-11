@@ -210,7 +210,7 @@
         {
             if(indexPath.row == 0){
                 height = T_GoodsInfoOldBDCellHeight;
-            }else{
+                }else{
                 height = [NewGoodsInfoDownCell cellHeightOfInfo:nil];
             }
         }
