@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+#define K_Notification_UserBonus_ChangeBonusValue @"K_Notification_UserBonus_ChangeBonusValue"
+
 @interface BonusWaitReceiveVC : WXUIViewController
 
 @end

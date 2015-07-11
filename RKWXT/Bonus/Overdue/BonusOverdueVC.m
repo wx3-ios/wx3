@@ -21,6 +21,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self addOBS];
+    denyBonusArr = [UserBonusModel shareUserBonusModel].denyBonusArr;
+    if(_tableView){
+        [_tableView reloadData];
+    }
 }
 
 -(void)viewDidLoad{
@@ -34,14 +38,6 @@
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    
-    BOOL shouldLoad = [[UserBonusModel shareUserBonusModel] shouldDataReload];
-    if(shouldLoad){
-        [[UserBonusModel shareUserBonusModel] loadUserBonus];
-        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-    }else{
-        denyBonusArr = [UserBonusModel shareUserBonusModel].denyBonusArr;
-    }
 }
 
 -(void)addOBS{

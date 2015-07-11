@@ -110,7 +110,7 @@
 #pragma mark 领取红包
 -(void)receiveBonus:(id)sender{
     UserBonusEntity *entity = sender;
-    [[UserBonusModel shareUserBonusModel] gainUserBonus:entity.bonusID];
+    [[UserBonusModel shareUserBonusModel] gainUserBonus:entity.bonusID withBonusMoney:entity.bonusValue];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
@@ -119,6 +119,7 @@
     [UtilTool showAlertView:@"红包领取成功"];
     userBonusArr = [UserBonusModel shareUserBonusModel].userBonusArr;
     [_tableView reloadData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserBonus_ChangeBonusValue object:nil];
 }
 
 -(void)gainBonusFailed:(NSNotification*)notification{

@@ -128,7 +128,7 @@
 }
 
 //领取红包
--(void)gainUserBonus:(NSInteger)bonusID{
+-(void)gainUserBonus:(NSInteger)bonusID withBonusMoney:(NSInteger)money{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)kSubShopID], @"shop_id", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)bonusID], @"red_packet_id", nil];
@@ -139,16 +139,17 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserBonus_GainBonusFailed object:retData.errorDesc];
         }else{
             [blockSelf setStatus:E_ModelDataStatus_LoadSucceed];
-            [blockSelf gainUserBonusSucceed:[[retData.data objectForKey:@"data"] integerValue]];
+            [blockSelf gainUserBonusSucceed:[[retData.data objectForKey:@"data"] integerValue] withMoney:money];
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserBonus_GainBonusSucceed object:nil];
         }
     }];
 }
 
--(void)gainUserBonusSucceed:(NSInteger)bonusID{
+-(void)gainUserBonusSucceed:(NSInteger)bonusID withMoney:(NSInteger)money{
     if(bonusID<=0){
         return;
     }
+    _bonusMoney += money;
     for(UserBonusEntity *entity in _userBonusArr){
         if(entity.bonusID == bonusID){
             [_userBonusArr removeObject:entity];

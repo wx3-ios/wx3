@@ -345,12 +345,12 @@ typedef enum{
 //催单
 -(void)userHurryBtnClicked:(id)sender{
     OrderListEntity *entity = sender;
-    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_CallShopPhone object:entity.shopPhone];
 }
 //退款
 -(void)userRefundBtnClicked:(id)sender{
     OrderListEntity *entity = sender;
-    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_CallShopPhone object:entity.shopPhone];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
 }
 
 #pragma mark pullingDelegate

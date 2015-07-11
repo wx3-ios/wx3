@@ -3879,7 +3879,6 @@
 				775843441AB95FAC0039B129 /* Service */,
 				775841551AB95A2F0039B129 /* Common */,
 				7758417B1AB95A2F0039B129 /* GuideMask */,
-				775841861AB95A2F0039B129 /* ServerLib */,
 				775841B61AB95A2F0039B129 /* SysInterfaceBridge */,
 				77DB94251AAFEEBC0021A816 /* UserAgent.h */,
 				77DB94261AAFEEBC0021A816 /* UserAgent.m */,
@@ -4054,13 +4053,6 @@
 				775841821AB95A2F0039B129 /* WXTapGuideView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		775841861AB95A2F0039B129 /* ServerLib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ServerLib;
 			sourceTree = "<group>";
 		};
 		775841B61AB95A2F0039B129 /* SysInterfaceBridge */ = {

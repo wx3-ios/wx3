@@ -25,6 +25,6 @@
 -(BOOL)shouldDataReload;
 -(void)loadUserBonusMoney; //红包余额
 -(void)loadUserBonus;  //领取所有红包
--(void)gainUserBonus:(NSInteger)bonusID;  //获取红包
+-(void)gainUserBonus:(NSInteger)bonusID withBonusMoney:(NSInteger)money;  //获取红包
 
 @end

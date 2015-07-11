@@ -69,6 +69,7 @@ enum{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(loadUserBonusSucceed) name:K_Notification_UserBonus_UserBonusSucceed object:nil];
     [notificationCenter addObserver:self selector:@selector(loadUserBonusFailed:) name:K_Notification_UserBonus_UserBonusFailed object:nil];
+    [notificationCenter addObserver:self selector:@selector(changeUserBonusMoney) name:K_Notification_UserBonus_ChangeBonusValue object:nil];
 }
 
 -(void)removeOBS{
@@ -116,6 +117,13 @@ enum{
             break;
     }
     return nil;
+}
+
+-(void)changeUserBonusMoney{
+    NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
+    if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
+        [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
+    }
 }
 
 -(void)loadUserBonusSucceed{

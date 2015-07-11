@@ -103,11 +103,12 @@
         [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];
         
-        [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"13538236522"]] alias:nil callbackSelector:nil object:nil];
         //自动登录
         WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
         LoginModel *_loginModel = [[LoginModel alloc] init];
         [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+        
+        [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"13538236522"]] alias:nil callbackSelector:nil object:nil];
     }else{
         LoginVC *vc = [[LoginVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
