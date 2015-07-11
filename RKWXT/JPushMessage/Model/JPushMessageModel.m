@@ -46,7 +46,7 @@
     [_jpushMsgArr addObject:entity];
     
     Sql_JpushData *jpush = [[Sql_JpushData alloc] init];
-    [jpush insertData:entity.content withAbs:entity.abstract withImg:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.msgURL]];
+    [jpush insertData:entity.content withAbs:entity.abstract withImg:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.msgURL] withPushID:[NSString stringWithFormat:@"%ld",(long)entity.push_id]];
 }
 
 -(void)loadJPushData{

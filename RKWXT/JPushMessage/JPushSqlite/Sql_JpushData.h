@@ -10,6 +10,6 @@
 
 @interface Sql_JpushData : NSObject
 
--(BOOL)insertData:(NSString*)content withAbs:(NSString*)abstract withImg:(NSString*)mesImg;
+-(BOOL)insertData:(NSString*)content withAbs:(NSString*)abstract withImg:(NSString*)mesImg withPushID:(NSString *)pushID;
 
 @end

@@ -15,6 +15,7 @@
 #define JPushAbs      @"JPushAbs"
 #define JPushImg      @"JPushImg"
 #define JPushTime     @"JPushTime"
+#define JPushID       @"JPushID"
 
 @interface T_Sqlite : NSObject{
     sqlite3 *db;

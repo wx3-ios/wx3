@@ -25,7 +25,7 @@
 }
 
 -(void)createTable{
-    NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS JPUSHMESSAGE (ID INTEGER PRIMARY KEY AUTOINCREMENT, JPushContent TEXT, JPushAbs TEXT ,JPushImg TEXT ,JPushTime TEXT)";
+    NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS JPUSHMESSAGE (ID INTEGER PRIMARY KEY AUTOINCREMENT, JPushContent TEXT, JPushAbs TEXT ,JPushImg TEXT ,JPushTime TEXT , JPushID TEXT)";
     [self execSql:sqlCreateTable];
 }
 
@@ -47,12 +47,16 @@
             char *time = (char*)sqlite3_column_text(statement, 4);
             NSString *pushTime = [[NSString alloc] initWithUTF8String:time];
             
+            char *push_id = (char*)sqlite3_column_text(statement, 5);
+            NSString *pushID = [[NSString alloc] initWithUTF8String:push_id];
+            
             KFLog_Normal(YES,@"number:%@ goodsID:%@",_number,_goodsID);
             JPushMsgEntity *entity = [[JPushMsgEntity alloc] init];
             entity.content = _num;
             entity.abstract = _goodsID;
             entity.msgURL = _colorText;
             entity.pushTime = pushTime;
+            entity.push_id = [pushID integerValue];
             [all addObject:entity];
         }
     }
@@ -84,6 +88,7 @@
     sqlite3_bind_text(statement, 2, [JPushAbs UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 3, [JPushImg UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 4, [JPushTime UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 5, [JPushTime UTF8String], -1, SQLITE_TRANSIENT);
     success2 = sqlite3_step(statement);
     sqlite3_finalize(statement);
     if(success2 == SQLITE_ERROR){
@@ -113,6 +118,7 @@
     sqlite3_bind_text(statement, 2, [deletList.abstract UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 3, [deletList.msgURL UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 4, [deletList.pushTime UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 5, [deletList.pushTime UTF8String], -1, SQLITE_TRANSIENT);
     success = sqlite3_step(statement);
     sqlite3_finalize(statement);
     

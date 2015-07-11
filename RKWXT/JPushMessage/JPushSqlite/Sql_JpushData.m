@@ -13,8 +13,8 @@
     T_Sqlite *fmdb;
 }
 
--(BOOL)insertData:(NSString *)content withAbs:(NSString *)abstract withImg:(NSString *)mesImg{
-    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@' , '%@')",@"JPUSHMESSAGE",JPushContent,JPushAbs,JPushImg,JPushTime,content,abstract,mesImg,[self jpushTime]];
+-(BOOL)insertData:(NSString *)content withAbs:(NSString *)abstract withImg:(NSString *)mesImg withPushID:(NSString *)pushID{
+    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@' , '%@' , '%@')",@"JPUSHMESSAGE",JPushContent,JPushAbs,JPushImg,JPushTime,JPushID,content,abstract,mesImg,[self jpushTime],pushID];
     fmdb = [[T_Sqlite alloc] init];
     [fmdb createOrOpendb];
     [fmdb createTable];

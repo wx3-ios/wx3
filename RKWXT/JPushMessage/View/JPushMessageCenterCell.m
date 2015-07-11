@@ -8,8 +8,10 @@
 
 #import "JPushMessageCenterCell.h"
 #import "JPushMsgEntity.h"
+#import "WXRemotionImgBtn.h"
 
 @interface JPushMessageCenterCell(){
+    WXRemotionImgBtn *_imgView;
     UILabel *title;
     UILabel *info;
     UILabel *time;
@@ -24,11 +26,8 @@
         CGFloat xOffset = 10;
         CGFloat imgWidth = 42;
         CGFloat imgHeight = imgWidth;
-        UIImage *img = [UIImage imageNamed:@"Icon.png"];
-        UIImageView *imgView = [[UIImageView alloc] init];
-        imgView.frame = CGRectMake(xOffset, (JPushMessageCenterCellHeight-imgHeight)/2, imgWidth, imgHeight);
-        [imgView setImage:img];
-        [self.contentView addSubview:imgView];
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (JPushMessageCenterCellHeight-imgHeight)/2, imgWidth, imgHeight)];
+        [self.contentView addSubview:_imgView];
         
         xOffset += imgWidth+10;
         CGFloat yOffset = 15;
@@ -69,6 +68,9 @@
     JPushMsgEntity *entity = self.cellInfo;
     [title setText:entity.content];
     [info setText:entity.abstract];
+    
+    [_imgView setCpxViewInfo:entity.msgURL];
+    [_imgView load];
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[entity.pushTime integerValue]];
     NSString *timeString = [NSString stringWithFormat:@"%@",[date YMDHMString:E_YMDHM]];
