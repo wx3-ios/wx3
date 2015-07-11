@@ -14,6 +14,7 @@
 #import "MakeOrderVC.h"
 #import "OrderPayVC.h"
 #import "RechargeVC.h"
+#import "SignViewController.h"
 #import "HomeOrderVC.h"
 #import "OrderListEntity.h"
 #import "OrderDealRefundVC.h"
@@ -35,6 +36,12 @@
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     WXUINavigationController *navigationController = appDelegate.navigationController;
     return navigationController;
+}
+
+-(void)toSignVC:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    SignViewController *signVC = [[SignViewController alloc] init];
+    [vc.wxNavigationController pushViewController:signVC];
 }
 
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated{
