@@ -43,7 +43,6 @@ typedef enum {
 //new
 -(void)toSignVC:(id)sender animated:(BOOL)animated;//签到
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated;//充值
--(void)toCartDetail:(id)sender animated:(BOOL)animated;// 购物车
 -(void)toOrderList:(id)sender selectedShow:(NSInteger)number animated:(BOOL)animated;//订单页面
 -(void)toGoodsInfoVC:(id)sender goodsID:(NSInteger)goodsID animated:(BOOL)animated;//商品详情
 -(void)toUserBonusVC:(id)sender animated:(BOOL)animated; //红包

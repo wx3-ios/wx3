@@ -7,14 +7,12 @@
 //
 
 #import "CoordinateController.h"
-#import "ContactDetailVC.h"
 #import "SignViewController.h"
 #import "NewGoodsInfoVC.h"
 #import "UserBonusVC.h"
 #import "MakeOrderVC.h"
 #import "OrderPayVC.h"
 #import "RechargeVC.h"
-#import "SignViewController.h"
 #import "HomeOrderVC.h"
 #import "OrderListEntity.h"
 #import "OrderDealRefundVC.h"

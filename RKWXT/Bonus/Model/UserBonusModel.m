@@ -95,10 +95,13 @@
     [_denyBonusArr removeAllObjects];
     [_receiveIDArr removeAllObjects];
     
-    NSArray *receiveArr = [dic objectForKey:@"receive"];  //已经领取的红包
-    for(NSDictionary *receiveDic in receiveArr){
-        NSString *receiveID = [NSString stringWithFormat:@"%ld",(long)[[receiveDic objectForKey:@"red_packet_id"] integerValue]];
-        [_receiveIDArr addObject:receiveID];
+    
+    id receiveArr = [dic objectForKey:@"receive"];  //已经领取的红包
+    if([receiveArr isKindOfClass:[NSArray class]]){
+        for(NSDictionary *receiveDic in receiveArr){
+            NSString *receiveID = [NSString stringWithFormat:@"%ld",(long)[[receiveDic objectForKey:@"red_packet_id"] integerValue]];
+            [_receiveIDArr addObject:receiveID];
+        }
     }
     
     NSArray *bonusArr = [dic objectForKey:@"red_packet"];  //所有红包

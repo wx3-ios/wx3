@@ -108,7 +108,7 @@
         LoginModel *_loginModel = [[LoginModel alloc] init];
         [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
         
-        [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"13538236522"]] alias:nil callbackSelector:nil object:nil];
+        [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
     }else{
         LoginVC *vc = [[LoginVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
@@ -260,6 +260,7 @@
 - (void)networkDidReceiveMessage:(NSNotification *)notification {   //锁屏状态APNS
     NSDictionary *userInfo = [notification userInfo];
     [APService handleRemoteNotification:userInfo];
+    [[JPushMessageModel shareJPushModel] initJPushWithDic:userInfo];
 }
 
 - (void)serviceError:(NSNotification *)notification {

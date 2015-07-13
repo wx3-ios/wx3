@@ -146,7 +146,6 @@
 }
 
 -(void)cartDetail{
-    [[CoordinateController sharedCoordinateController] toCartDetail:self animated:YES];
 }
 
 // 立即购买

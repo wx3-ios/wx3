@@ -455,7 +455,10 @@ enum{
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
-    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
+    if(_otherPhone.text.length == 0){
+        _otherPhone.text = @"1";
+    }
+    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:_otherPhone.text];  //暂时无需填写推荐人手机号
 }
 
 -(void)registSucceed{

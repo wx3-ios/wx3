@@ -414,7 +414,7 @@ enum{
         [UtilTool showAlertView:@"验证码不能为空"];
         return NO;
     }
-    if([_pwdTextfield.text isEqualToString:_otherPhone.text]){
+    if(![_pwdTextfield.text isEqualToString:_otherPhone.text]){
         [UtilTool showAlertView:@"两次密码不相同"];
         return NO;
     }
@@ -441,17 +441,19 @@ enum{
 
 -(void)resetNewPwdSucceed{
     [self unShowWaitView];
-    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    [userDefault setUser:_userTextField.text];
-    [userDefault setPwd:_pwdTextfield.text];
-    
-    WXTUITabbarVC *tabbar = [[WXTUITabbarVC alloc] init];
-    WXUINavigationController *nav = [[WXUINavigationController alloc] initWithRootViewController:tabbar];
-    [self presentViewController:nav animated:YES completion:^{
-        WXTDatabase * database = [WXTDatabase shareDatabase];
-        [database createDatabase:userDefault.wxtID];
-        [[NewWXTLiDB sharedWXLibDB] loadData];
+    [self.wxNavigationController popViewControllerAnimated:YES completion:^{
     }];
+//    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+//    [userDefault setUser:_userTextField.text];
+//    [userDefault setPwd:_pwdTextfield.text];
+//    
+//    WXTUITabbarVC *tabbar = [[WXTUITabbarVC alloc] init];
+//    WXUINavigationController *nav = [[WXUINavigationController alloc] initWithRootViewController:tabbar];
+//    [self presentViewController:nav animated:YES completion:^{
+//        WXTDatabase * database = [WXTDatabase shareDatabase];
+//        [database createDatabase:userDefault.wxtID];
+//        [[NewWXTLiDB sharedWXLibDB] loadData];
+//    }];
 }
 
 -(void)resetNewPwdFailed:(NSString *)errorMsg{

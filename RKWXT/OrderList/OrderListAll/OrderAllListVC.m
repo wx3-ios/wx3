@@ -257,6 +257,11 @@ typedef enum{
 
 -(void)loadOrderListFailed:(NSNotification*)notification{
     [self unShowWaitView];
+    NSString *message = notification.object;
+    if(!message){
+        message = @"获取订单失败";
+    }
+    [UtilTool showAlertView:message];
     if([orderListArr count] == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
         _tableView.reachedTheEnd = YES;
     }

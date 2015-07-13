@@ -55,7 +55,7 @@
             url = @"";
             break;
         case WXT_UrlFeed_Type_ResetPwd:
-            url = @"";
+            url = @"/app_modify_pwd.php";
             break;
         case WXT_UrlFeed_Type_NewMall_TopImg:
             url = @"/get_top_image.php";
@@ -107,6 +107,9 @@
             break;
         case WXT_UrlFeed_Type_New_Code:
             url = @"/get_rcode.php";
+            break;
+        case WXT_UrlFeed_Type_New_ResetNewPwd:
+            url = @"/app_reset_pwd.php";
             break;
         case WXT_UrlFeed_Type_New_Refund:
             url = @"/update_order_refund.php";
