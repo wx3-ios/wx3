@@ -37,7 +37,7 @@
     _model = [[WXContacterModel alloc] init];
     [_model loadSystemContacters];
     CGSize size = self.view.bounds.size;
-    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, ScreenHeight-66-50-44)];
+    _tableView = [[WXUITableView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, ScreenHeight-66-KTabBarHeight-44)];
 //    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
     [_tableView setDataSource:self];
     [_tableView setSeparatorColor:WXColorWithInteger(0xd4d4d4)];

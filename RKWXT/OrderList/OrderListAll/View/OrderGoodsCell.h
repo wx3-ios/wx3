@@ -10,6 +10,14 @@
 
 #define OrderGoodsCellHeight    (95)
 
+@protocol OrderGoodsDelegate;
+
 @interface OrderGoodsCell : WXTUITableViewCell
+@property (nonatomic,assign) id<OrderGoodsDelegate>delegate;
+@end
+
+@protocol OrderGoodsDelegate <NSObject>
+-(void)toGoodsInfoWithGoodsID:(NSInteger)goodsID;
+-(void)toOrderRefundSucceed:(id)sender;
 
 @end

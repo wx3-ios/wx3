@@ -100,7 +100,7 @@ typedef enum{
 
 -(void)createKeyboardView{
     _keybView = [[UIView alloc] init];
-    _keybView.frame = CGRectMake(0, Size.height-InputTextHeight-yGap-50-4*NumberBtnHeight, Size.width, 4*NumberBtnHeight+InputTextHeight);
+    _keybView.frame = CGRectMake(0, Size.height-InputTextHeight-yGap-KTabBarHeight-4*NumberBtnHeight, Size.width, 4*NumberBtnHeight+InputTextHeight);
     [_keybView setBackgroundColor:WXColorWithInteger(0xe6e6e6)];
     [self.view addSubview:_keybView];
     
@@ -226,12 +226,12 @@ typedef enum{
             [[NSNotificationCenter defaultCenter] postNotificationName:ShowDownView object:nil];
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50, Size.width, 4*NumberBtnHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-KTabBarHeight, Size.width, 4*NumberBtnHeight);
             if(Size.width==DIphoneSixWidth){ //简单判断一下是苹果6
-                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50+IphoneSixYGap, Size.width, 4*NumberBtnHeight);
+                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-KTabBarHeight+IphoneSixYGap, Size.width, 4*NumberBtnHeight);
             }
             if(Size.width==DIphoneSixPWidth){ //简单判断一下是苹果6lus
-                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50+IphoneSixPYgap, Size.width, 4*NumberBtnHeight);
+                _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-KTabBarHeight+IphoneSixPYgap, Size.width, 4*NumberBtnHeight);
             }
         }];
         return;
@@ -247,12 +247,12 @@ typedef enum{
             [[NSNotificationCenter defaultCenter] postNotificationName:HideDownView object:nil];
         }
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-50-4*NumberBtnHeight-InputTextHeight+(Size.width>IPHONE_SCREEN_WIDTH?(Size.width==DIphoneSixWidth?IphoneSixYGap:IphoneSixPYgap):0), Size.width, 4*NumberBtnHeight+InputTextHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yGap-KTabBarHeight-4*NumberBtnHeight-InputTextHeight+(Size.width>IPHONE_SCREEN_WIDTH?(Size.width==DIphoneSixWidth?IphoneSixYGap:IphoneSixPYgap):0), Size.width, 4*NumberBtnHeight+InputTextHeight);
             if(Size.width==DIphoneSixWidth){ //简单判断一下是苹果6
-                _keybView.frame = CGRectMake(0, Size.height-yGap-50-4*NumberBtnHeight-InputTextHeight+IphoneSixYGap, Size.width, 4*NumberBtnHeight+InputTextHeight);
+                _keybView.frame = CGRectMake(0, Size.height-yGap-KTabBarHeight-4*NumberBtnHeight-InputTextHeight+IphoneSixYGap, Size.width, 4*NumberBtnHeight+InputTextHeight);
             }
             if(Size.width==DIphoneSixPWidth){ //简单判断一下是苹果6plus
-                _keybView.frame = CGRectMake(0, Size.height-yGap-50-4*NumberBtnHeight-InputTextHeight+IphoneSixYGap, Size.width, 4*NumberBtnHeight+InputTextHeight);
+                _keybView.frame = CGRectMake(0, Size.height-yGap-KTabBarHeight-4*NumberBtnHeight-InputTextHeight+IphoneSixYGap, Size.width, 4*NumberBtnHeight+InputTextHeight);
             }
         }];
         return;
@@ -265,7 +265,7 @@ typedef enum{
 -(void)down{
     if (self.keyPad_type == E_KeyPad_Down) {
         [UIView animateWithDuration:KeyboardDur animations:^{
-            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-50-4*NumberBtnHeight, Size.width, 4*NumberBtnHeight);
+            _keybView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-72-KTabBarHeight-4*NumberBtnHeight, Size.width, 4*NumberBtnHeight);
         }];
     }
 }

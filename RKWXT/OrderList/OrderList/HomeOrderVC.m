@@ -62,6 +62,8 @@
     [notification addObserver:self selector:@selector(toRefund:) name:K_Notification_HomeOrder_ToRefund object:nil];
     [notification addObserver:self selector:@selector(callShopPhoneWithTelePhoneNumber:) name:K_Notification_HomeOrder_CallShopPhone object:nil];
     [notification addObserver:self selector:@selector(toOrderInfoVC:) name:K_Notification_HomeOrder_OrderInfo object:nil];
+    [notification addObserver:self selector:@selector(toRefundSucceedVC:) name:K_Notification_HomeOrder_ToRefundSucceed object:nil];
+    [notification addObserver:self selector:@selector(toGoodsInfoVC:) name:K_Notification_HomeOrder_ToGoodsInfo object:nil];
 }
 
 -(void)removeOBS{
@@ -81,6 +83,16 @@
 -(void)toOrderInfoVC:(NSNotification*)notification{
     OrderListEntity *entity = notification.object;
     [[CoordinateController sharedCoordinateController] toOrderInfoVC:self orderEntity:entity animated:YES];
+}
+
+-(void)toRefundSucceedVC:(NSNotification*)notification{
+    OrderListEntity *entity = notification.object;
+    [[CoordinateController sharedCoordinateController] toRefundInfoVC:self orderEntity:entity animated:YES];
+}
+
+-(void)toGoodsInfoVC:(NSNotification*)notification{
+    NSInteger goodsID = [notification.object integerValue];
+    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:goodsID animated:YES];
 }
 
 -(void)callShopPhoneWithTelePhoneNumber:(NSString*)phone{

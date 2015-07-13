@@ -13,7 +13,7 @@
 #import "ContactsCallViewController.h"
 #import "CallViewController.h"
 
-#define kTabBarHeight (50.0)
+#define kTabBarHeight KTabBarHeight
 #define Size self.view.bounds.size
 
 @interface WXTUITabBarController(){

@@ -10,11 +10,13 @@
 #import "WXRemotionImgBtn.h"
 #import "OrderListEntity.h"
 
-@interface OrderGoodsCell(){
+@interface OrderGoodsCell()<WXRemotionImgBtnDelegate>{
     WXRemotionImgBtn *_goodsImg;
     UILabel *_goodsInfo;
     UILabel *_goodsPrice;
     UILabel *_goodsNum;
+    
+    WXUIButton *_infoLabel;
 }
 @end
 
@@ -28,7 +30,7 @@
         CGFloat imgWidth = 65;
         CGFloat imgHeight = imgWidth;
         _goodsImg = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (OrderGoodsCellHeight-imgHeight)/2, imgWidth, imgHeight)];
-        [_goodsImg setUserInteractionEnabled:NO];
+        [_goodsImg setDelegate:self];
         [self.contentView addSubview:_goodsImg];
         
         xOffset += imgWidth+12;
@@ -43,6 +45,14 @@
         [_goodsInfo setFont:WXTFont(15.0)];
         [_goodsInfo setNumberOfLines:0];
         [self.contentView addSubview:_goodsInfo];
+        
+        _infoLabel = [WXUIButton buttonWithType:UIButtonTypeCustom];
+        _infoLabel.frame = CGRectMake(xOffset, yOffset+infoHeight, 75, 25);
+        [_infoLabel setBackgroundColor:[UIColor grayColor]];
+        [_infoLabel setHidden:YES];
+        [_infoLabel.titleLabel setFont:WXFont(10.0)];
+        [_infoLabel addTarget:self action:@selector(searchRefundstate) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_infoLabel];
         
         CGFloat xGap = 15;
         CGFloat priceWidth = 60;
@@ -74,6 +84,46 @@
     [_goodsInfo setText:entity.goods_name];
     [_goodsPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.sales_price]];
     [_goodsNum setText:[NSString stringWithFormat:@"×%ld",(long)entity.sales_num]];
+    [self setInfoBtnWith:entity];
+}
+
+-(void)setInfoBtnWith:(OrderListEntity*)entity{
+    if(!entity){
+        return;
+    }
+    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
+        [_infoLabel setHidden:NO];
+        [_infoLabel setBackgroundColor:[UIColor grayColor]];
+        [_infoLabel setTitle:@"退款中" forState:UIControlStateNormal];
+    }
+    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Normal){
+        [_infoLabel setHidden:NO];
+        [_infoLabel setEnabled:NO];
+        [_infoLabel setBackgroundColor:[UIColor grayColor]];
+        [_infoLabel setTitle:@"已申请退款" forState:UIControlStateNormal];
+    }
+    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Normal){
+        [_infoLabel setHidden:NO];
+        [_infoLabel setEnabled:NO];
+        [_infoLabel setBackgroundColor:[UIColor grayColor]];
+        [_infoLabel setTitle:@"已退款" forState:UIControlStateNormal];
+    }
+}
+
+-(void)searchRefundstate{
+    OrderListEntity *entity = self.cellInfo;
+    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
+        if(_delegate && [_delegate respondsToSelector:@selector(toOrderRefundSucceed:)]){
+            [_delegate toOrderRefundSucceed:entity];
+        }
+    }
+}
+
+-(void)buttonImageClicked:(id)sender{
+    OrderListEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(toGoodsInfoWithGoodsID:)]){
+        [_delegate toGoodsInfoWithGoodsID:entity.goods_id];
+    }
 }
 
 @end

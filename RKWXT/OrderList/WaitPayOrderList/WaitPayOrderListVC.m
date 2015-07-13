@@ -14,7 +14,7 @@
 #import "AliPayControl.h"
 #import "OrderCommonDef.h"
 
-@interface WaitPayOrderListVC()<UITableViewDataSource,UITableViewDelegate,WaitPayOrderListDelegate>{
+@interface WaitPayOrderListVC()<UITableViewDataSource,UITableViewDelegate,WaitPayOrderListDelegate,OrderGoodsDelegate>{
     UITableView *_tableView;
     NSMutableArray *listArr;
 }
@@ -128,6 +128,7 @@
     OrderListEntity *entity = [listArr objectAtIndex:section];
     OrderListEntity *ent = [entity.goodsArr objectAtIndex:row-1];
     [cell setCellInfo:ent];
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -194,6 +195,19 @@
             }
         }
     }
+}
+
+#pragma mark goods
+-(void)toGoodsInfoWithGoodsID:(NSInteger)goodsID{
+    if(goodsID<=0){
+        return;
+    }
+    NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)goodsID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToGoodsInfo object:goodsIDStr];
+}
+
+-(void)toOrderRefundSucceed:(id)sender{
+    
 }
 
 #pragma mark delegate

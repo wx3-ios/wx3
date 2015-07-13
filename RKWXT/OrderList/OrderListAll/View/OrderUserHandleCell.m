@@ -82,6 +82,7 @@
         str1 = @"催单";
         str2 = @"退款";
     }
+    
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend && entity.order_status == Order_Status_Normal){
         [_button1 setHidden:NO];
         [_button2 setHidden:NO];

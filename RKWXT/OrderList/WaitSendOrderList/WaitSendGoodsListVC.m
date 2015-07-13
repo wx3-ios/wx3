@@ -13,7 +13,7 @@
 #import "OrderGoodsCell.h"
 #import "OrderCommonDef.h"
 
-@interface WaitSendGoodsListVC()<UITableViewDataSource,UITableViewDelegate,WaitSendOrderDelegate>{
+@interface WaitSendGoodsListVC()<UITableViewDataSource,UITableViewDelegate,WaitSendOrderDelegate,OrderGoodsDelegate>{
     UITableView *_tableView;
     NSMutableArray *listArr;
 }
@@ -116,6 +116,7 @@
     OrderListEntity *entity = [listArr objectAtIndex:section];
     OrderListEntity *ent = [entity.goodsArr objectAtIndex:row-1];
     [cell setCellInfo:ent];
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -164,6 +165,20 @@
 -(void)userClickRefundBtn:(id)sender{
     OrderListEntity *entity = sender;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
+}
+
+//单品状态
+-(void)toOrderRefundSucceed:(id)sender{
+    OrderListEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefundSucceed object:entity];
+}
+
+-(void)toGoodsInfoWithGoodsID:(NSInteger)goodsID{
+    if(goodsID<=0){
+        return;
+    }
+    NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)goodsID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToGoodsInfo object:goodsIDStr];
 }
 
 @end

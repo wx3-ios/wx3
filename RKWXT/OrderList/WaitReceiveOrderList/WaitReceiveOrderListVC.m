@@ -13,7 +13,7 @@
 #import "OrderGoodsCell.h"
 #import "OrderCommonDef.h"
 
-@interface WaitReceiveOrderListVC()<UITableViewDataSource,UITableViewDelegate,ReceiveOrderDelegate>{
+@interface WaitReceiveOrderListVC()<UITableViewDataSource,UITableViewDelegate,ReceiveOrderDelegate,OrderGoodsDelegate>{
     UITableView *_tableView;
     NSMutableArray *listArr;
 }
@@ -118,6 +118,7 @@
     OrderListEntity *entity = [listArr objectAtIndex:section];
     OrderListEntity *ent = [entity.goodsArr objectAtIndex:row-1];
     [cell setCellInfo:ent];
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -206,6 +207,21 @@
         message = @"确认订单失败";
     }
     [UtilTool showAlertView:message];
+}
+
+//单品状态
+-(void)toOrderRefundSucceed:(id)sender{
+    OrderListEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefundSucceed object:entity];
+}
+
+#pragma mark goods
+-(void)toGoodsInfoWithGoodsID:(NSInteger)goodsID{
+    if(goodsID<=0){
+        return;
+    }
+    NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)goodsID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToGoodsInfo object:goodsIDStr];
 }
 
 @end

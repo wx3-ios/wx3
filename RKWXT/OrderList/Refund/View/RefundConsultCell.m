@@ -78,7 +78,7 @@
         if(ent.selected){
             price += ent.factPayMoney;
         }else{
-            price = 0.0;
+//            price = 0.0;
         }
     }
     [_pricelabel setText:[NSString stringWithFormat:@"合计: ￥%.2f",price]];

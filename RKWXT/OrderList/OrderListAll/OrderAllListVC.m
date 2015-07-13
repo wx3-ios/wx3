@@ -25,7 +25,7 @@ typedef enum{
     E_CellRefreshing_Invalid,
 }E_CellRefreshing;
 
-@interface OrderAllListVC()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,OrderUserHandleDelegate>{
+@interface OrderAllListVC()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,OrderUserHandleDelegate,OrderGoodsDelegate>{
     OrderListTableView *_tableView;
     NSArray *orderListArr;  // 商品
 }
@@ -172,6 +172,7 @@ typedef enum{
     OrderListEntity *entity = [orderListArr objectAtIndex:section];
     OrderListEntity *ent = [entity.goodsArr objectAtIndex:row-1];
     [cell setCellInfo:ent];
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -356,6 +357,19 @@ typedef enum{
 -(void)userRefundBtnClicked:(id)sender{
     OrderListEntity *entity = sender;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
+}
+//单品状态
+-(void)toOrderRefundSucceed:(id)sender{
+    OrderListEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefundSucceed object:entity];
+}
+//商品详情
+-(void)toGoodsInfoWithGoodsID:(NSInteger)goodsID{
+    if(goodsID<=0){
+        return;
+    }
+    NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)goodsID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToGoodsInfo object:goodsIDStr];
 }
 
 #pragma mark pullingDelegate

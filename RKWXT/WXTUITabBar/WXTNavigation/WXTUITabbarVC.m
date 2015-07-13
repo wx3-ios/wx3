@@ -14,7 +14,7 @@
 #import "CallViewController.h"
 #import "PopMenu.h"
 
-#define kTabBarHeight (50.0)
+#define kTabBarHeight KTabBarHeight
 #define TabBaryGap (100)
 #define Size self.bounds.size
 

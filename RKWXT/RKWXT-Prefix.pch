@@ -18,6 +18,8 @@
 
 #define AllImgPrefixUrlString @"http://oldyun.67call.com/wx/Public/Uploads/"  //所有网络获取图片皆拼接此字符串前缀
 
+#define KTabBarHeight (45.0)
+
 #define ShowKeyBoard @"ShowKeyBoard"
 #define DownKeyBoard @"DownKeyBoard"
 #define InputNumber @"InputNumber"
@@ -64,7 +66,6 @@
 #import "WXError.h"
 #import "CoordinateController.h"
 #import "CustomMade.h"
-//#import "ServiceMonitor.h"
 #import "AddressBook.h"
 #import "WXContactMonitor.h"
 #import "Appdelegate.h"

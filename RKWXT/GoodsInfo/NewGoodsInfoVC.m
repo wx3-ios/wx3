@@ -417,7 +417,6 @@
 -(void)buyNowBtnClicked:(id)sender{
     if(_showUpview){
         _showUpview = NO;
-        [rightView showDropListUpView];
     }else{
         _showUpview = YES;
     }
@@ -434,6 +433,7 @@
 -(void)insertMyShoppingCart:(id)sender{
     if([_model.data count] > 0){
         if(!rightView.stockID || !rightView.stockName){
+            [rightView showDropListUpView];
             [UtilTool showAlertView:@"请选择商品属性后再加入购物车"];
             return;
         }

@@ -109,7 +109,7 @@ enum{
 }
 
 -(void)showDropListUpView{
-    
+    [self showAnimated:YES];
 }
 
 -(void)menuButtonClick{
@@ -317,7 +317,9 @@ enum{
 }
 
 -(void)buyNow{
-    [self unshow:YES];
+    if(selNumber != 0){
+        [self unshow:YES];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_CommitGoods object:nil];
 }
 
