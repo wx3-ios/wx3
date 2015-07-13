@@ -240,6 +240,7 @@
 		128766FF1B51012700A79320 /* AboutShopInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128766FA1B51012700A79320 /* AboutShopInfoCell.m */; };
 		128767001B51012700A79320 /* AboutShopTopImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128766FC1B51012700A79320 /* AboutShopTopImgCell.m */; };
 		128767011B51012700A79320 /* ShopTwoDimensionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128766FE1B51012700A79320 /* ShopTwoDimensionCell.m */; };
+		128B59911B53D6C5006D790B /* WXTMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 128B59901B53D6C4006D790B /* WXTMallViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1295C5E01B291D4F004C861D /* ResetPwdNorlImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */; };
 		1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */; };
 		1295C5E51B293BBB004C861D /* NoOrderImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */; };
@@ -576,7 +577,6 @@
 		775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BD1AB971CF0039B129 /* WXTUITableViewCell.m */; };
 		775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843BF1AB971CF0039B129 /* WXTUITextField.m */; };
 		775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		775AB9E21ABFFD81003A339D /* WXTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775AB9E11ABFFD81003A339D /* WXTWebViewController.m */; };
 		775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581C1ABA5F31005B6B40 /* ChineseToPinyin.m */; };
 		775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */ = {isa = PBXBuildFile; fileRef = 775C581E1ABA5F31005B6B40 /* ContactUitl.m */; };
@@ -1055,6 +1055,8 @@
 		128766FC1B51012700A79320 /* AboutShopTopImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutShopTopImgCell.m; sourceTree = "<group>"; };
 		128766FD1B51012700A79320 /* ShopTwoDimensionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTwoDimensionCell.h; sourceTree = "<group>"; };
 		128766FE1B51012700A79320 /* ShopTwoDimensionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTwoDimensionCell.m; sourceTree = "<group>"; };
+		128B598B1B53D109006D790B /* JPushDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPushDef.h; sourceTree = "<group>"; };
+		128B59901B53D6C4006D790B /* WXTMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallViewController.m; sourceTree = "<group>"; };
 		1295C5DE1B291D4F004C861D /* ResetPwdNorlImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdNorlImg@2x.png"; sourceTree = "<group>"; };
 		1295C5DF1B291D4F004C861D /* ResetPwdSelImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwdSelImg@2x.png"; sourceTree = "<group>"; };
 		1295C5E41B293BBB004C861D /* NoOrderImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoOrderImg@2x.png"; sourceTree = "<group>"; };
@@ -1683,7 +1685,6 @@
 		775843C61AB9830F0039B129 /* WXBaseRemotImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXBaseRemotImageView.h; sourceTree = "<group>"; };
 		775843C71AB9830F0039B129 /* WXBaseRemotImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXBaseRemotImageView.m; sourceTree = "<group>"; };
 		775AB9DD1ABFEF74003A339D /* WXTMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallViewController.h; sourceTree = "<group>"; };
-		775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallViewController.m; sourceTree = "<group>"; };
 		775AB9E01ABFFD81003A339D /* WXTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTWebViewController.h; sourceTree = "<group>"; };
 		775AB9E11ABFFD81003A339D /* WXTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTWebViewController.m; sourceTree = "<group>"; };
 		775C581B1ABA5F31005B6B40 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyin.h; sourceTree = "<group>"; };
@@ -2479,7 +2480,7 @@
 			isa = PBXGroup;
 			children = (
 				775AB9DD1ABFEF74003A339D /* WXTMallViewController.h */,
-				775AB9DE1ABFEF74003A339D /* WXTMallViewController.m */,
+				128B59901B53D6C4006D790B /* WXTMallViewController.m */,
 				128221571B18467A004613BB /* NewHomePageCommonDef.h */,
 				128221581B18467A004613BB /* PullingRefreshTableView.h */,
 				128221591B18467A004613BB /* PullingRefreshTableView.m */,
@@ -3073,6 +3074,7 @@
 		12F180BA1B45219300B9A80D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				128B598B1B53D109006D790B /* JPushDef.h */,
 				12F180BB1B45219300B9A80D /* JPushMessageModel.h */,
 				12F180BC1B45219300B9A80D /* JPushMessageModel.m */,
 				12F180BD1B45219300B9A80D /* JPushMsgEntity.h */,
@@ -5674,6 +5676,7 @@
 				775C58D21ABA7B75005B6B40 /* WXContactMonitor.m in Sources */,
 				12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */,
 				120A2C161AB17A92006A28B1 /* SignModel.m in Sources */,
+				128B59911B53D6C5006D790B /* WXTMallViewController.m in Sources */,
 				77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */,
 				DDB58F531AD3C6A2006248E9 /* SysContacterEntityEx.m in Sources */,
 				12F963341B3D4BDF00FF6A3E /* SBJsonStreamParserState.m in Sources */,
@@ -5700,7 +5703,6 @@
 				12F2D7EC1B1EAB0400C8017F /* WaitReceiveOrderListVC.m in Sources */,
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
 				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
-				775AB9DF1ABFEF74003A339D /* WXTMallViewController.m in Sources */,
 				12F46A2B1B1FFCD000B8EC98 /* NewGoodsInfoVC.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,

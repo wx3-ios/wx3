@@ -8,8 +8,8 @@
 
 #import "WXSysMsgUnreadV.h"
 #import "WXUnreadSysMsgOBJ.h"
+#import "JPushDef.h"
 
-#define D_Notification_Name_SystemMessageDetected @"D_Notification_Name_SystemMessageDetected"//检测到一个系统消息~
 #define D_Notification_Name_RewardPacketDetected @"D_Notification_Name_RewardPacketDetected" //检测到一个红包推送
 
 
@@ -83,7 +83,7 @@
 
 - (void)addOBS{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(incomeMsgPush:) name:D_Notification_Name_SystemMessageDetected object:nil];
+    [notificationCenter addObserver:self selector:@selector(incomeMsgPush) name:D_Notification_Name_SystemMessageDetected object:nil];
     [notificationCenter addObserver:self selector:@selector(unreadSystemMessageNumberChanged) name:D_NotificationName_UnreadSysMessageNumberChanged object:nil];
 }
 
@@ -91,14 +91,9 @@
     [self showSysPushMsgUnread];
 }
 
-- (void)incomeMsgPush:(NSNotification*)notification{
-    NSArray *array = notification.object;
-    NSInteger count = [array count];
-    WXUINavigationController *navigationController = [CoordinateController sharedNavigationController];
-    if([navigationController positionOfClass:NSClassFromString(@"SysMsgVC")] == E_VC_Position_None){
-        [[WXUnreadSysMsgOBJ sharedUnreadSysMsgOBJ] increaseUnreadSysMsg:count];
-        [self showSysPushMsgUnread];
-    }
+- (void)incomeMsgPush{
+    [[WXUnreadSysMsgOBJ sharedUnreadSysMsgOBJ] increaseUnreadSysMsg:1];
+    [self showSysPushMsgUnread];
 }
 
 - (void)removeOBS{

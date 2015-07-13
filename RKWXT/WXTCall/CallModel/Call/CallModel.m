@@ -8,7 +8,7 @@
 
 #import "CallModel.h"
 #import "WXTURLFeedOBJ.h"
-#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
 
 @implementation CallModel
 
@@ -31,9 +31,9 @@
     _callstatus_type = CallStatus_Type_starting;
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"call", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", phoneStr, @"called", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Call httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_Call httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         NSDictionary *dic = retData.data;
-        if ([[dic objectForKey:@"error"] integerValue] != 1){
+        if (retData.code != 0){
             _callstatus_type = CallStatus_Type_Ending;
             if (_callDelegate && [_callDelegate respondsToSelector:@selector(makeCallPhoneFailed:)]){
                 [_callDelegate makeCallPhoneFailed:retData.errorDesc];

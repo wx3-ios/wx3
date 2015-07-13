@@ -9,6 +9,7 @@
 #import "JPushMessageModel.h"
 #import "JPushMsgEntity.h"
 #import "Sql_JpushData.h"
+#import "JPushDef.h"
 #import "T_Sqlite.h"
 
 @interface JPushMessageModel(){
@@ -41,12 +42,13 @@
         return;
     }
     [_jpushMsgArr removeAllObjects];
-    JPushMsgEntity *entity = [JPushMsgEntity initWithJPushMessageWithDic:[dic objectForKey:@"extras"]];
-    entity.content = [dic objectForKey:@"content"];
+    JPushMsgEntity *entity = [JPushMsgEntity initWithJPushMessageWithDic:dic];
+    entity.content = [[dic objectForKey:@"aps"] objectForKey:@"alert"];
     [_jpushMsgArr addObject:entity];
     
     Sql_JpushData *jpush = [[Sql_JpushData alloc] init];
     [jpush insertData:entity.content withAbs:entity.abstract withImg:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.msgURL] withPushID:[NSString stringWithFormat:@"%ld",(long)entity.push_id]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_SystemMessageDetected object:nil];
 }
 
 -(void)loadJPushData{

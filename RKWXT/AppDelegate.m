@@ -73,7 +73,6 @@
     [self listenSystemCall];
     // 集成极光推送功能
     [self initJPushApi];
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];  //设置图标0
     [APService setupWithOption:launchOptions];
     
     //自动登录通知
@@ -292,6 +291,7 @@ fetchCompletionHandler:(void
     // IOS 7 Support Required
     [APService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
+    [[JPushMessageModel shareJPushModel] initJPushWithDic:userInfo];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
@@ -335,7 +335,7 @@ forRemoteNotification:(NSDictionary *)userInfo
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];  //设置图标0
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

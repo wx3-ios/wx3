@@ -20,8 +20,8 @@
 -(id)initWithDic:(NSDictionary*)dic{
     self = [super init];
     if(self){
-        NSString *content = [dic objectForKey:@"content"];
-        [self setContent:content];
+//        NSString *content = [dic objectForKey:@"content"];
+//        [self setContent:content];
         
         NSString *ads = [dic objectForKey:@"abstract"];
         [self setAbstract:ads];

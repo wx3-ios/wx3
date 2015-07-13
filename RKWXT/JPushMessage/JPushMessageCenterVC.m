@@ -9,6 +9,8 @@
 #import "JPushMessageCenterVC.h"
 #import "JPushMessageModel.h"
 #import "JPushMessageCenterCell.h"
+#import "JPushDef.h"
+#import "WXUnreadSysMsgOBJ.h"
 
 @interface JPushMessageCenterVC ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -37,6 +39,9 @@
     
     [self addOBS];
     [[JPushMessageModel shareJPushModel] loadJPushData];
+    
+    [[WXUnreadSysMsgOBJ sharedUnreadSysMsgOBJ] clearUnreadNumber];
+    [[NSNotificationCenter defaultCenter] postNotificationName:D_NotificationName_UnreadSysMessageNumberChanged object:nil];
 }
 
 -(void)addOBS{
