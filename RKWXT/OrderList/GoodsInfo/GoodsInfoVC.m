@@ -121,7 +121,7 @@
             height = OrderInfoCompanyCellHeight;
             break;
         case OrderGoodsInfo_Section_GoodsList:
-            height = OrderGoodsCellHeight;
+            height = OrderInfoGoodsListCellHeight;
             break;
         case OrderGoodsInfo_Section_Consult:
             height = OrderInfoConsultCellHeight;
@@ -172,9 +172,9 @@
 //商品列表
 -(WXTUITableViewCell*)tableViewForGoodsInfoCell:(NSInteger)row{
     static NSString *identifier = @"GoodsListCell";
-    OrderGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    OrderInfoGoodsListCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[OrderGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[OrderInfoGoodsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     OrderListEntity *ent = [entity.goodsArr objectAtIndex:row];

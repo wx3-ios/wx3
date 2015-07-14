@@ -29,7 +29,7 @@ enum{
 #import "OrderInfoCompanyCell.h"
 #import "OrderInfoStateCell.h"
 #import "OrderInfoUserInfoCell.h"
-#import "OrderGoodsCell.h"
+#import "OrderInfoGoodsListCell.h"
 #import "OrderInfoConsultCell.h"
 #import "OrderInfoFactMOneyCell.h"
 

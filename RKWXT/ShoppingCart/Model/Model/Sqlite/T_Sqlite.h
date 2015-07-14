@@ -26,7 +26,7 @@
 -(void)createOrOpendb;
 -(void)createTable;
 -(BOOL)execSql:(NSString *)sql;
--(BOOL)deleteTestList:(JPushMsgEntity *)deletList;
+-(BOOL)deleteTestList:(NSInteger)pushID;
 -(NSMutableArray *)selectAll;
 
 @end

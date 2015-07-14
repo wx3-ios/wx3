@@ -225,6 +225,7 @@
 		12846A8D1B252D720021F9FE /* LoginUserPwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A891B252D720021F9FE /* LoginUserPwd@2x.png */; };
 		1284CC821B54943C00D98F79 /* ContactInfoBgImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1284CC811B54943C00D98F79 /* ContactInfoBgImg@2x.png */; };
 		1284CC851B54ADB900D98F79 /* PaySucceedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1284CC841B54ADB900D98F79 /* PaySucceedModel.m */; };
+		1284CC8C1B54DEB500D98F79 /* OrderInfoGoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1284CC8B1B54DEB500D98F79 /* OrderInfoGoodsListCell.m */; };
 		128585021B3A9261005E240E /* MakeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 128585011B3A9261005E240E /* MakeOrderVC.m */; };
 		1285850B1B3AA7E5005E240E /* MakeOrderBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128585051B3AA7E5005E240E /* MakeOrderBtnImg@2x.png */; };
 		1285850C1B3AA7E5005E240E /* MakeOrderLinImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128585061B3AA7E5005E240E /* MakeOrderLinImg@2x.png */; };
@@ -1029,6 +1030,8 @@
 		1284CC811B54943C00D98F79 /* ContactInfoBgImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBgImg@2x.png"; sourceTree = "<group>"; };
 		1284CC831B54ADB900D98F79 /* PaySucceedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaySucceedModel.h; sourceTree = "<group>"; };
 		1284CC841B54ADB900D98F79 /* PaySucceedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaySucceedModel.m; sourceTree = "<group>"; };
+		1284CC8A1B54DEB500D98F79 /* OrderInfoGoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoGoodsListCell.h; sourceTree = "<group>"; };
+		1284CC8B1B54DEB500D98F79 /* OrderInfoGoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoGoodsListCell.m; sourceTree = "<group>"; };
 		128585001B3A9261005E240E /* MakeOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderVC.h; sourceTree = "<group>"; };
 		128585011B3A9261005E240E /* MakeOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderVC.m; sourceTree = "<group>"; };
 		128585031B3A93CD005E240E /* MakeOrderDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakeOrderDef.h; sourceTree = "<group>"; };
@@ -2923,6 +2926,8 @@
 				129D233D1B4F79A200008DA0 /* OrderInfoCompanyCell.m */,
 				129D233F1B4F96F600008DA0 /* OrderInfoStateCell.h */,
 				129D23401B4F96F600008DA0 /* OrderInfoStateCell.m */,
+				1284CC8A1B54DEB500D98F79 /* OrderInfoGoodsListCell.h */,
+				1284CC8B1B54DEB500D98F79 /* OrderInfoGoodsListCell.m */,
 				129D23461B4F9CB600008DA0 /* OrderInfoUserInfoCell.h */,
 				129D23471B4F9CB600008DA0 /* OrderInfoUserInfoCell.m */,
 				129D23491B4FA84A00008DA0 /* OrderInfoConsultCell.h */,
@@ -5562,6 +5567,7 @@
 				12F67BB81B32C87800F5BDE1 /* RightGoodsSelNumCell.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
 				12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */,
+				1284CC8C1B54DEB500D98F79 /* OrderInfoGoodsListCell.m in Sources */,
 				DDEA9EBE1B1BF2AD00530C1C /* WXTPayViewController.m in Sources */,
 				128255011B4BA5EF00C60146 /* OrderDealRefundVC.m in Sources */,
 				775C58C61ABA7B75005B6B40 /* PersonalInfo.m in Sources */,

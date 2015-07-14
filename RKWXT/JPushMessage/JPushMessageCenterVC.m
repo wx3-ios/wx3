@@ -11,6 +11,7 @@
 #import "JPushMessageCenterCell.h"
 #import "JPushDef.h"
 #import "WXUnreadSysMsgOBJ.h"
+#import "JPushMsgEntity.h"
 
 @interface JPushMessageCenterVC ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -46,6 +47,7 @@
 
 -(void)addOBS{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadJpushMessageSucceed) name:K_Notification_JPushMessage_LoadSucceed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteMessageSucceed) name:K_Notification_JPushMessage_DeleteSucceed object:nil];
 }
 
 -(void)removeOBS{
@@ -86,9 +88,28 @@
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark delete
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+-(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger row = indexPath.row;
+    JPushMsgEntity *entity = [messageArr objectAtIndex:row];
+    [[JPushMessageModel shareJPushModel] deleteJPushWithPushID:entity.push_id];
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 -(void)loadJpushMessageSucceed{
     messageArr = [JPushMessageModel shareJPushModel].jpushMsgArr;
-    [_tableView reloadData];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)deleteMessageSucceed{
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

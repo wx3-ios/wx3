@@ -180,7 +180,7 @@
             if (!self.isAtTop) {    //footer
                 _arrow.hidden = YES;
                 _stateLabel.text = NSLocalizedString(@"没有了哦", @"");
-//                [UtilTool showTipView:@"没有更多订单，赶快去下单吧!"];
+                [UtilTool showTipView:@"没有更多订单，赶快去下单吧!"];
             }
         }
     }

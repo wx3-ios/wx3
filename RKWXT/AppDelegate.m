@@ -24,6 +24,8 @@
 #import "NewWXTLiDB.h"
 #import "AliPayControl.h"
 #import "JPushMessageModel.h"
+#import <AudioToolbox/AudioToolbox.h>
+
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;

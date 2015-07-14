@@ -11,6 +11,7 @@
 #import "Sql_JpushData.h"
 #import "JPushDef.h"
 #import "T_Sqlite.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface JPushMessageModel(){
     NSMutableArray *_jpushMsgArr;
@@ -49,6 +50,7 @@
     Sql_JpushData *jpush = [[Sql_JpushData alloc] init];
     [jpush insertData:entity.content withAbs:entity.abstract withImg:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.msgURL] withPushID:[NSString stringWithFormat:@"%ld",(long)entity.push_id]];
     [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_SystemMessageDetected object:nil];
+//    [self sound];
 }
 
 -(void)loadJPushData{
@@ -64,6 +66,31 @@
         }
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_JPushMessage_LoadSucceed object:nil];
+}
+
+-(void)deleteJPushWithPushID:(NSInteger)pushID{
+    fmdb = [[T_Sqlite alloc] init];
+    [fmdb createOrOpendb];
+    [fmdb createTable];
+    
+    BOOL succeed = [fmdb deleteTestList:pushID];
+    if(succeed){
+        for(JPushMsgEntity *entity in _jpushMsgArr){
+            if(entity.push_id == pushID){
+                [_jpushMsgArr removeObject:entity];
+                break;
+            }
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_JPushMessage_DeleteSucceed object:nil];
+    }
+}
+
+-(void)sound{
+    NSString *string = [NSString stringWithFormat:@"message"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:string ofType:@"mp3"];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge  CFURLRef)[NSURL fileURLWithPath:path], &soundID);
+    AudioServicesPlaySystemSound (soundID);
 }
 
 @end

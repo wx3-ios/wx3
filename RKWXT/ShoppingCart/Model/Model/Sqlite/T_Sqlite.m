@@ -102,10 +102,10 @@
     return;
 }
 
-- (BOOL)deleteTestList:(JPushMsgEntity *)deletList{
+- (BOOL)deleteTestList:(NSInteger)pushID{
     sqlite3_stmt *statement;
     //组织SQL语句
-    static char *sql = "delete from JPUSHMESSAGE  where JPushContent = ? and JPushAbs = ? and JPushImg = ? and JPushTime = ?";
+    static char *sql = "delete from JPUSHMESSAGE  where JPushID = ?";
     //将SQL语句放入sqlite3_stmt中
     int success = sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
     if (success != SQLITE_OK) {
@@ -114,11 +114,8 @@
         return NO;
     }
     
-    sqlite3_bind_text(statement, 1, [deletList.content UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 2, [deletList.abstract UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 3, [deletList.msgURL UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 4, [deletList.pushTime UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(statement, 5, [deletList.pushTime UTF8String], -1, SQLITE_TRANSIENT);
+    NSString *pushIDStr = [NSString stringWithFormat:@"%ld",(long)pushID];
+    sqlite3_bind_text(statement, 1, [pushIDStr UTF8String], -1, SQLITE_TRANSIENT);
     success = sqlite3_step(statement);
     sqlite3_finalize(statement);
     
