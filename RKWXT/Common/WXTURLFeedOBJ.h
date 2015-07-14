@@ -41,6 +41,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_Code,
     WXT_UrlFeed_Type_New_ResetNewPwd,
     WXT_UrlFeed_Type_New_Refund,
+    WXT_UrlFeed_Type_New_UpdapaOrderID,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

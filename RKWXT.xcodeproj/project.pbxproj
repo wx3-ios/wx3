@@ -223,6 +223,8 @@
 		12846A8B1B252D720021F9FE /* LoginUpSmallImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A871B252D720021F9FE /* LoginUpSmallImg@2x.png */; };
 		12846A8C1B252D720021F9FE /* LoginUserImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A881B252D720021F9FE /* LoginUserImg@2x.png */; };
 		12846A8D1B252D720021F9FE /* LoginUserPwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A891B252D720021F9FE /* LoginUserPwd@2x.png */; };
+		1284CC821B54943C00D98F79 /* ContactInfoBgImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1284CC811B54943C00D98F79 /* ContactInfoBgImg@2x.png */; };
+		1284CC851B54ADB900D98F79 /* PaySucceedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1284CC841B54ADB900D98F79 /* PaySucceedModel.m */; };
 		128585021B3A9261005E240E /* MakeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 128585011B3A9261005E240E /* MakeOrderVC.m */; };
 		1285850B1B3AA7E5005E240E /* MakeOrderBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128585051B3AA7E5005E240E /* MakeOrderBtnImg@2x.png */; };
 		1285850C1B3AA7E5005E240E /* MakeOrderLinImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128585061B3AA7E5005E240E /* MakeOrderLinImg@2x.png */; };
@@ -249,7 +251,6 @@
 		1295C5F51B299A66004C861D /* BonusOverdueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5F41B299A66004C861D /* BonusOverdueVC.m */; };
 		1295C5FA1B29A3BE004C861D /* WaitReceiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5F91B29A3BE004C861D /* WaitReceiveCell.m */; };
 		1295C5FE1B29B2DB004C861D /* OverdueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5FD1B29B2DB004C861D /* OverdueCell.m */; };
-		129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */; };
 		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
@@ -667,9 +668,6 @@
 		DD54B2981AE0F9E100FF318B /* WXTMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54B2971AE0F9E100FF318B /* WXTMessageCenterVC.m */; };
 		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
 		DD988A5D1B1D408500B3790B /* EScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A5C1B1D408500B3790B /* EScrollerView.m */; };
-		DD988A621B1D412600B3790B /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD988A5F1B1D412600B3790B /* 1.jpg */; };
-		DD988A631B1D412600B3790B /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD988A601B1D412600B3790B /* 2.jpg */; };
-		DD988A641B1D412600B3790B /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD988A611B1D412600B3790B /* 3.jpg */; };
 		DD988A661B1D9EA600B3790B /* PayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD988A651B1D9EA600B3790B /* PayBtn@2x.png */; };
 		DD988A691B1DA47300B3790B /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A681B1DA47300B3790B /* OrderDetailCell.m */; };
 		DD999F931B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m in Sources */ = {isa = PBXBuildFile; fileRef = DD999F921B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m */; };
@@ -1028,6 +1026,9 @@
 		12846A871B252D720021F9FE /* LoginUpSmallImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUpSmallImg@2x.png"; sourceTree = "<group>"; };
 		12846A881B252D720021F9FE /* LoginUserImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUserImg@2x.png"; sourceTree = "<group>"; };
 		12846A891B252D720021F9FE /* LoginUserPwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUserPwd@2x.png"; sourceTree = "<group>"; };
+		1284CC811B54943C00D98F79 /* ContactInfoBgImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBgImg@2x.png"; sourceTree = "<group>"; };
+		1284CC831B54ADB900D98F79 /* PaySucceedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaySucceedModel.h; sourceTree = "<group>"; };
+		1284CC841B54ADB900D98F79 /* PaySucceedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaySucceedModel.m; sourceTree = "<group>"; };
 		128585001B3A9261005E240E /* MakeOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderVC.h; sourceTree = "<group>"; };
 		128585011B3A9261005E240E /* MakeOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderVC.m; sourceTree = "<group>"; };
 		128585031B3A93CD005E240E /* MakeOrderDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakeOrderDef.h; sourceTree = "<group>"; };
@@ -1070,7 +1071,6 @@
 		1295C5F91B29A3BE004C861D /* WaitReceiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitReceiveCell.m; sourceTree = "<group>"; };
 		1295C5FC1B29B2DB004C861D /* OverdueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverdueCell.h; sourceTree = "<group>"; };
 		1295C5FD1B29B2DB004C861D /* OverdueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverdueCell.m; sourceTree = "<group>"; };
-		129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ContactInfoBgImg.jpg; sourceTree = "<group>"; };
 		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
 		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
@@ -1865,9 +1865,6 @@
 		DD817A211ADE062500586634 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		DD988A5B1B1D408500B3790B /* EScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EScrollerView.h; sourceTree = "<group>"; };
 		DD988A5C1B1D408500B3790B /* EScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EScrollerView.m; sourceTree = "<group>"; };
-		DD988A5F1B1D412600B3790B /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		DD988A601B1D412600B3790B /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		DD988A611B1D412600B3790B /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		DD988A651B1D9EA600B3790B /* PayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PayBtn@2x.png"; sourceTree = "<group>"; };
 		DD988A671B1DA47300B3790B /* OrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailCell.h; sourceTree = "<group>"; };
 		DD988A681B1DA47300B3790B /* OrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailCell.m; sourceTree = "<group>"; };
@@ -2009,6 +2006,8 @@
 		1203C1FA1B3E362700C402E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1284CC831B54ADB900D98F79 /* PaySucceedModel.h */,
+				1284CC841B54ADB900D98F79 /* PaySucceedModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2898,7 +2897,7 @@
 			isa = PBXGroup;
 			children = (
 				12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */,
-				129674301AB6EAED00597B17 /* ContactInfoBgImg.jpg */,
+				1284CC811B54943C00D98F79 /* ContactInfoBgImg@2x.png */,
 				129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */,
 				129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */,
 				129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */,
@@ -4005,7 +4004,6 @@
 				12868A421B21545300DE3A95 /* ShoppingCart */,
 				12F46A2C1B20012000B8EC98 /* T_GoodsInfo */,
 				12F916251B19A79600C94717 /* PersonalInfo */,
-				DD988A5E1B1D412100B3790B /* TestData */,
 				DDEA9EE51B1C0A1A00530C1C /* Goods */,
 				DDEA9EBF1B1BF3A300530C1C /* CartOrderPay */,
 				128221CD1B184E83004613BB /* NewHomePage */,
@@ -5021,16 +5019,6 @@
 			path = EScrollerView;
 			sourceTree = "<group>";
 		};
-		DD988A5E1B1D412100B3790B /* TestData */ = {
-			isa = PBXGroup;
-			children = (
-				DD988A5F1B1D412600B3790B /* 1.jpg */,
-				DD988A601B1D412600B3790B /* 2.jpg */,
-				DD988A611B1D412600B3790B /* 3.jpg */,
-			);
-			path = TestData;
-			sourceTree = "<group>";
-		};
 		DDB58F181AD3C6A2006248E9 /* ContactDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -5327,7 +5315,6 @@
 				1241E5471AE9D89B00811D3F /* 5N@2x.png in Resources */,
 				12F46A3E1B20012000B8EC98 /* T_GoodsInfo@2x.png in Resources */,
 				DDEA9EE41B1BFE5D00530C1C /* unreadBg@2x.png in Resources */,
-				DD988A631B1D412600B3790B /* 2.jpg in Resources */,
 				12F46A381B20012000B8EC98 /* T_ArrowRight@2x.png in Resources */,
 				1241E5731AE9D98600811D3F /* Default-568h@2x.png in Resources */,
 				1241E5661AE9D91400811D3F /* T_BackSel@2x.png in Resources */,
@@ -5337,6 +5324,7 @@
 				124535591AE9D146004198C9 /* sign4@2x.png in Resources */,
 				124535531AE9D146004198C9 /* sign30@2x.png in Resources */,
 				12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */,
+				1284CC821B54943C00D98F79 /* ContactInfoBgImg@2x.png in Resources */,
 				124535111AE9D0BC004198C9 /* MallSelected@2x.png in Resources */,
 				786155E21AC8E0CE0048B604 /* areacode in Resources */,
 				12D52BB71AC2EF4400C5CE71 /* dtmf-1.aif in Resources */,
@@ -5373,7 +5361,6 @@
 				1263EFE81ACD35820014C347 /* Icon@2x.png in Resources */,
 				12868A451B21545300DE3A95 /* ShoppingCartCircle@2x.png in Resources */,
 				1241E5741AE9D98600811D3F /* Default@2x.png in Resources */,
-				DD988A641B1D412600B3790B /* 3.jpg in Resources */,
 				DDEA9F051B1C0A6700530C1C /* goods_args@2x.png in Resources */,
 				12F9630D1B3D4B3800FF6A3E /* Alixpay.bundle in Resources */,
 				1241E5491AE9D89B00811D3F /* 6N@2x.png in Resources */,
@@ -5433,7 +5420,6 @@
 				124535431AE9D146004198C9 /* sign15@2x.png in Resources */,
 				DDEA9ECD1B1BF3A400530C1C /* order_divide@2x.png in Resources */,
 				12F180AB1B44D54900B9A80D /* PushConfig.plist in Resources */,
-				DD988A621B1D412600B3790B /* 1.jpg in Resources */,
 				1241E53D1AE9D89B00811D3F /* 0N@2x.png in Resources */,
 				12D52BB61AC2EF4400C5CE71 /* dtmf-0.aif in Resources */,
 				1245356D1AE9D20D004198C9 /* Sign@2x.png in Resources */,
@@ -5493,7 +5479,6 @@
 				124535401AE9D146004198C9 /* sign12@2x.png in Resources */,
 				1240D6E51AE9170B0056AD6A /* post_type_bubble_googleplus@2x.png in Resources */,
 				1245353E1AE9D146004198C9 /* sign10@2x.png in Resources */,
-				129674341AB6EAED00597B17 /* ContactInfoBgImg.jpg in Resources */,
 				12F2CCE81B4CF4D30085F78F /* RegistUserCodeImg@2x.png in Resources */,
 				1240D6E11AE916F40056AD6A /* post_type_bubble_flickr@2x.png in Resources */,
 				12F3CC7E1B1DE82C00E64DE4 /* SignGainCallMoney@2x.png in Resources */,
@@ -5844,6 +5829,7 @@
 				129D233E1B4F79A200008DA0 /* OrderInfoCompanyCell.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				DDB58F4E1AD3C6A2006248E9 /* CallHistoryCell.m in Sources */,
+				1284CC851B54ADB900D98F79 /* PaySucceedModel.m in Sources */,
 				775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */,
 				1218042F1ACB899B009DB7E7 /* DBImageViewCache.m in Sources */,
 				775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */,

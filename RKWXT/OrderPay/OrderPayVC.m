@@ -11,6 +11,7 @@
 #import "OrderWechatCell.h"
 #import "OrderPayMoneyCell.h"
 #import "AliPayControl.h"
+#import "PaySucceedModel.h"
 
 #define size self.bounds.size
 
@@ -157,6 +158,8 @@ enum{
 }
 
 -(void)alipaySucceed{
+    [[PaySucceedModel sharePaySucceed] updataPayOrder:Pay_Type_AliPay withOrderID:[_orderID integerValue]];
+    
     WXUINavigationController *navigationController = [CoordinateController sharedNavigationController];
     UIViewController *orderVC = [navigationController lastViewControllerOfClass:NSClassFromString(@"HomeOrderVC")];
     if(orderVC){

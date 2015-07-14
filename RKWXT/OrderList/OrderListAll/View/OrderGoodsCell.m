@@ -91,6 +91,7 @@
     if(!entity){
         return;
     }
+    [_infoLabel setHidden:YES];
     if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
         [_infoLabel setHidden:NO];
         [_infoLabel setBackgroundColor:[UIColor grayColor]];

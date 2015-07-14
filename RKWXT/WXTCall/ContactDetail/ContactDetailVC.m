@@ -50,7 +50,7 @@
 -(UIView*)tableForHeadView{
     UIView *headView = [[UIView alloc] init];
     
-    UIImage *bgImg = [UIImage imageNamed:@"ContactInfoBgImg.jpg"];
+    UIImage *bgImg = [UIImage imageNamed:@"ContactInfoBgImg.png"];
     UIImageView *imgView = [[UIImageView alloc] init];
     imgView.frame = CGRectMake(0, 0, Size.width, 180);
     [imgView setImage:bgImg];
@@ -103,8 +103,8 @@
     CGFloat btnHeight = 30;
     WXTUIButton *invateBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     invateBtn.frame = CGRectMake((Size.width-btnWidth)/2, yOffset, btnWidth, btnHeight);
-    [invateBtn setBorderRadian:10.0 width:0.5 color:WXColorWithInteger(0x0c8bdf)];
-    [invateBtn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateNormal];
+    [invateBtn setBorderRadian:10.0 width:0.5 color:WXColorWithInteger(0xdd2726)];
+    [invateBtn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];
     [invateBtn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
     [invateBtn setTitle:@"邀请Ta加入我信通" forState:UIControlStateNormal];
     [invateBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
