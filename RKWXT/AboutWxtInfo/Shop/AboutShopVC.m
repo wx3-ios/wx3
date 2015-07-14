@@ -11,12 +11,14 @@
 #import "PictureBrowseView.h"
 #import "AbouShopDef.h"
 #import "AboutShopEntity.h"
+#import "AboutShopModel.h"
+#import "NSString+HTML.h"
 
 #define ShopInfoHeadImgHeight (214)
 
 @interface AboutShopVC ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
-    AboutShopEntity *entity;
+    NSArray *shopInfoArr;
 }
 @end
 
@@ -26,6 +28,10 @@
     [super viewDidLoad];
     [self setCSTTitle:kMerchantName];
     [self loadtableView];
+    
+    [self addOBS];
+    [[AboutShopModel shareShopModel] loadShopInfo];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)loadtableView{
@@ -35,6 +41,16 @@
     [_tableView setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+}
+
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(loadShopInfoSucceed) name:K_Notification_Name_LoadShopInfoSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadShopInfoFailed:) name:K_Notification_Name_LoadShopInfoFailed object:nil];
+}
+
+-(void)removeOBS{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -65,9 +81,12 @@
             if(indexPath.row == ShopHead_Row_Img){
                 height = ShopInfoHeadImgHeight;
             }else{
-                NSString *str = @"你深邃的眼眸 想要透漏什么密码 犹豫的嘴角 躲在严肃的背影下 压抑的空气 回绕闭塞的城堡里 谜一般的天鹅";
-                CGFloat height1 = [str stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16];
-                height = height1+15;
+                AboutShopEntity *entity = nil;
+                if([shopInfoArr count] > 0){
+                    entity = [shopInfoArr objectAtIndex:0];
+                    NSString *newStr = [entity.seller_desc stringByConvertingHTMLToPlainText];
+                    height = [newStr stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16]+15;
+                }
             }
         }
             break;
@@ -76,10 +95,12 @@
             break;
         case AboutShop_Section_ShopInfo:
         {
-            NSString *str1 = @"清湖市场清湖市场清湖市场清湖市场清湖市场清湖市场";
-            NSString *address = [NSString stringWithFormat:@"分店地址:   %@",str1];
-            CGFloat height1 = [address stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16];
-            height = height1+55;
+            AboutShopEntity *entity = nil;
+            if([shopInfoArr count] > 0){
+                NSString *address = [NSString stringWithFormat:@"分店地址:   %@",entity.address];
+                CGFloat height1 = [address stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16];
+                height = height1+55;
+            }
         }
             break;
         default:
@@ -129,16 +150,17 @@
     static NSString *identifier = @"headImg";
     AboutShopTopImgCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        NSMutableArray *merchantImgViewArray = [[NSMutableArray alloc] init];
-//        AboutShopEntity *entity = [[[AboutShopObj shareShopModel] aboutShopArr] objectAtIndex:0];
-//        for(NSDictionary *dic in entity.imgArr){
-            WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, ShopInfoHeadImgHeight)];
-            [imgView setCpxViewInfo:@"http://oldyun.67call.com/wx/Public/Uploads/20150618/20150618152834_607509.jpeg"];
-            [merchantImgViewArray addObject:imgView];
-//        }
-        cell = [[AboutShopTopImgCell alloc] initWithReuseIdentifier:identifier imageArray:merchantImgViewArray];
-        [cell load];
+        cell = [[AboutShopTopImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    NSMutableArray *merchantImgViewArray = [[NSMutableArray alloc] init];
+    AboutShopEntity *entity = [shopInfoArr objectAtIndex:0];
+    for(NSString *url in entity.imgArr){
+        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, ShopInfoHeadImgHeight)];
+        [imgView setCpxViewInfo:url];
+        [merchantImgViewArray addObject:imgView];
+    }
+    cell = [[AboutShopTopImgCell alloc] initWithReuseIdentifier:identifier imageArray:merchantImgViewArray];
+    [cell load];
     return cell;
 }
 
@@ -151,8 +173,10 @@
     }
     
     [cell setUserInteractionEnabled:NO];
-//    AboutShopEntity *entity = [[[AboutShopObj shareShopModel] aboutShopArr] objectAtIndex:0];
-    [cell loadAboutShopInfoDescription:@"你深邃的眼眸 想要透漏什么密码 犹豫的嘴角 躲在严肃的背影下 压抑的空气 回绕闭塞的城堡里 谜一般的天鹅"];
+    if([shopInfoArr count] > 0){
+        AboutShopEntity *entity = [shopInfoArr objectAtIndex:0];
+        [cell loadAboutShopInfoDescription:entity.seller_desc];
+    }
     return cell;
 }
 
@@ -164,8 +188,9 @@
         cell = [[AboutShopInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setUserInteractionEnabled:NO];
-//    AboutShopEntity *entity = [[[AboutShopObj shareShopModel] aboutShopArr] objectAtIndex:section-A_AboutShop_Invalid];
-    [cell setCellInfo:@""];
+    if([shopInfoArr count] > 0){
+        [cell setCellInfo:[shopInfoArr objectAtIndex:0]];
+    }
     [cell load];
     return cell;
 }
@@ -189,11 +214,31 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
     if(section == AboutShop_Section_TwoDimension){
         ShopTwoDimensionCell *cell = (ShopTwoDimensionCell*)[tableView cellForRowAtIndexPath:indexPath];
         [self showDBarcodeFromThumbView:cell.thumbView];
     }
+}
+
+//notification
+-(void)loadShopInfoSucceed{
+    [self unShowWaitView];
+    shopInfoArr = [AboutShopModel shareShopModel].shopInfoArr;
+    [_tableView reloadData];
+}
+
+-(void)loadShopInfoFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *message = notification.object;
+    if(!message){
+        message = @"获取商家信息失败";
+    }
+    [UtilTool showAlertView:message];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self removeOBS];
 }
 
 @end

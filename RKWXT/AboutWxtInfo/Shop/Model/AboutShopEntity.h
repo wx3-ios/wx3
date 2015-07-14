@@ -9,12 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface AboutShopEntity : NSObject
-@property (nonatomic,strong) NSString *seller_name;
-@property (nonatomic,strong) NSString *seller_desc;
-@property (nonatomic,strong) NSString *smallImg;
 @property (nonatomic,retain) NSArray *imgArr;
-
-@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *seller_desc;
 @property (nonatomic,strong) NSString *tel;
 @property (nonatomic,strong) NSString *address;
 

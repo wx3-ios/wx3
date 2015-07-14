@@ -8,17 +8,12 @@
 
 #import "T_HPSubBaseModel.h"
 
-@protocol AboutShopInfoDelegate;;
+#define K_Notification_Name_LoadShopInfoSucceed @"K_Notification_Name_LoadShopInfoSucceed"
+#define K_Notification_Name_LoadShopInfoFailed  @"K_Notification_Name_LoadShopInfoFailed"
 
 @interface AboutShopModel : T_HPSubBaseModel
 @property (nonatomic,readonly) NSArray *shopInfoArr;
-@property (nonatomic,assign) id<AboutShopInfoDelegate>delegate;
-
++(AboutShopModel*)shareShopModel;
 -(void)loadShopInfo;
-@end
-
-@protocol AboutShopInfoDelegate <NSObject>
--(void)loadShopInfoSucceed;
--(void)loadShopInfoFailed:(NSString*)errorMsg;
 
 @end

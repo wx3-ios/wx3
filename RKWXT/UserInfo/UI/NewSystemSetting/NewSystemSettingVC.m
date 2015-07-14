@@ -15,8 +15,8 @@
 
 enum{
     //    T_Setting_Call = 0,
-    T_Setting_Contact = 0,
-    T_Setting_Password,
+//    T_Setting_Contact = 0,
+    T_Setting_Password = 0,
     T_Setting_KeyPadTone,
     T_Setting_RemoveData,
     
@@ -127,9 +127,9 @@ enum{
             //        case T_Setting_Call:
             //            string = @"拨打设置";
             //            break;
-        case T_Setting_Contact:
-            string = @"通讯录备份";
-            break;
+//        case T_Setting_Contact:
+//            string = @"通讯录备份";
+//            break;
         case T_Setting_Password:
             string = @"修改密码";
             break;

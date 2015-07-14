@@ -8,6 +8,7 @@
 
 #import "AboutShopInfoCell.h"
 #import "AboutShopEntity.h"
+#import "NSString+HTML.h"
 
 @interface AboutShopInfoCell (){
     WXUILabel *_description;
@@ -78,12 +79,12 @@
 }
 
 -(void)load{
-//    AboutShopEntity *entity = self.cellInfo;
-    NSString *address = [NSString stringWithFormat:@"分店地址:  %@",@"清湖市场清湖市场清湖市场清湖市场清湖市场清湖市场"];
+    AboutShopEntity *entity = self.cellInfo;
+    NSString *address = [NSString stringWithFormat:@"分店地址:  %@",entity.address];
     CGFloat height = [address stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16];
-    [_shopName setText:@"清湖市场"];
+    [_shopName setText:kMerchantName];
     [_telLabel setText:@"联系电话:"];
-    [_Phone setText:[NSString stringWithFormat:@"%@",@"18613213051"]];
+    [_Phone setText:[NSString stringWithFormat:@"%@",entity.tel]];
     [_address setText:address];
     
     CGRect rect = _address.frame;
@@ -92,8 +93,9 @@
 }
 
 -(void)loadAboutShopInfoDescription:(NSString *)desc{
-    CGFloat height = [desc stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16];
-    [_description setText:desc];
+    NSString *newStr = [desc stringByConvertingHTMLToPlainText];
+    CGFloat height = [newStr stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16];
+    [_description setText:newStr];
     [self.contentView addSubview:_description];
     
     CGRect rect = _description.frame;

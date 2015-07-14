@@ -19,12 +19,14 @@
 
 - (id)initWithShopDic:(NSDictionary *)shopDic{
     if(self = [super init]){
-        NSString *name = [shopDic objectForKey:@"name"];
-        [self setName:name];
-        NSString *tel = [shopDic objectForKey:@"tel"];
+        NSString *tel = [shopDic objectForKey:@"telephone"];
         [self setTel:tel];
+        
         NSString *address = [shopDic objectForKey:@"address"];
         [self setAddress:address];
+        
+        NSString *desc = [shopDic objectForKey:@"seller_desc"];
+        [self setSeller_desc:desc];
     }
     return self;
 }

@@ -117,6 +117,9 @@
         case WXT_UrlFeed_Type_New_UpdapaOrderID:
             url = @"/get_pay_status.php";
             break;
+        case WXT_UrlFeed_Type_New_AboutShop:
+            url = @"/get_seller_detail.php";
+            break;
         default:
             break;
     }

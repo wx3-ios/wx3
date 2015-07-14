@@ -244,6 +244,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    switch (section) {
+        case OrderGoodsInfo_Section_Company:
+        {
+            [[CoordinateController sharedCoordinateController] toAboutShopVC:self animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 -(void)callPhone{
