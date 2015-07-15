@@ -9,7 +9,7 @@
 #import "T_HPSubBaseModel.h"
 
 typedef enum{
-    Pay_Type_AliPay = 0,
+    Pay_Type_AliPay = 1,
     Pay_Type_Weixin,
     Pay_Type_Union,
     

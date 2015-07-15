@@ -14,7 +14,7 @@
 @property (nonatomic,readonly) NSArray *refundStateArr;
 @property (nonatomic,assign) id<SearchRefundStateDelegate>delegate;
 
--(void)loadRefundState;
+-(void)loadRefundInfoWith:(NSInteger)orderGoodsID;
 @end
 
 @protocol SearchRefundStateDelegate <NSObject>

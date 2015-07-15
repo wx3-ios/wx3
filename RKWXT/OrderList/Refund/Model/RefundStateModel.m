@@ -26,11 +26,12 @@
     return self;
 }
 
--(void)loadRefundState{
+-(void)loadRefundInfoWith:(NSInteger)orderGoodsID{
     [self setStatus:E_ModelDataStatus_Loading];
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:@"", @"", nil];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)orderGoodsID], @"order_goods_id", nil];
     __block RefundStateModel *blockSelf = self;
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Refund httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_RefundInfo httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if(retData.code != 0){
             [blockSelf setStatus:E_ModelDataStatus_LoadFailed];
             if(_delegate && [_delegate respondsToSelector:@selector(loadRefundStateFailed:)]){
@@ -38,7 +39,7 @@
             }
         }else{
             [blockSelf setStatus:E_ModelDataStatus_LoadSucceed];
-            [blockSelf parseRefundStateWithDic:retData.data];
+            [blockSelf parseRefundStateWithDic:[retData.data objectForKey:@"data"]];
             if(_delegate && [_delegate respondsToSelector:@selector(loadRefundStateSucceed)]){
                 [_delegate loadRefundStateSucceed];
             }

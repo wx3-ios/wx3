@@ -114,6 +114,9 @@
         case WXT_UrlFeed_Type_New_Refund:
             url = @"/update_order_refund.php";
             break;
+        case WXT_UrlFeed_Type_New_RefundInfo:
+            url = @"/get_refund_info.php";
+            break;
         case WXT_UrlFeed_Type_New_UpdapaOrderID:
             url = @"/get_pay_status.php";
             break;
