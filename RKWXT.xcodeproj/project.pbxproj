@@ -181,6 +181,10 @@
 		127249111B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127249101B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png */; };
 		1277D00E1AC50E4F0008D9B6 /* WXTResetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1277D00D1AC50E4F0008D9B6 /* WXTResetPwdVC.m */; };
 		1277D0131AC5327A0008D9B6 /* ResetPwdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1277D0121AC5327A0008D9B6 /* ResetPwdModel.m */; };
+		127FDD771B57A76E0059BDB6 /* CallBtnDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD741B57A76E0059BDB6 /* CallBtnDownImg@2x.png */; };
+		127FDD781B57A76E0059BDB6 /* CallBtnUpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD751B57A76E0059BDB6 /* CallBtnUpImg@2x.png */; };
+		127FDD791B57A76E0059BDB6 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD761B57A76E0059BDB6 /* ContactInfoCall@2x.png */; };
+		127FDD7B1B57B2570059BDB6 /* woxinHidIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD7A1B57B2570059BDB6 /* woxinHidIcon@2x.png */; };
 		128136A41B33B394005F9929 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A31B33B394005F9929 /* ShoppingCartModel.m */; };
 		128136A71B33C0AF005F9929 /* SCartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A61B33C0AF005F9929 /* SCartListModel.m */; };
 		128136AA1B33C2A7005F9929 /* ShoppingCartEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A91B33C2A7005F9929 /* ShoppingCartEntity.m */; };
@@ -257,7 +261,6 @@
 		1295C5F51B299A66004C861D /* BonusOverdueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5F41B299A66004C861D /* BonusOverdueVC.m */; };
 		1295C5FA1B29A3BE004C861D /* WaitReceiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5F91B29A3BE004C861D /* WaitReceiveCell.m */; };
 		1295C5FE1B29B2DB004C861D /* OverdueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1295C5FD1B29B2DB004C861D /* OverdueCell.m */; };
-		129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
 		129D23391B4F738900008DA0 /* GoodsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D23381B4F738900008DA0 /* GoodsInfoVC.m */; };
@@ -543,7 +546,6 @@
 		775843161AB95A300039B129 /* WXUIBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842551AB95A300039B129 /* WXUIBaseButton.m */; };
 		775843171AB95A300039B129 /* LoadLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842581AB95A300039B129 /* LoadLabel.m */; };
 		775843181AB95A300039B129 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758425A1AB95A300039B129 /* ProgressView.m */; };
-		775843191AB95A300039B129 /* woxinHidIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7758425B1AB95A300039B129 /* woxinHidIcon@2x.png */; };
 		7758431A1AB95A300039B129 /* WXWaitingHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758425D1AB95A300039B129 /* WXWaitingHud.m */; };
 		7758431C1AB95A300039B129 /* WXMFMessageComposeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842631AB95A300039B129 /* WXMFMessageComposeVC.m */; };
 		7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842651AB95A300039B129 /* WXUIActionSheet.m */; };
@@ -955,6 +957,10 @@
 		1277D00D1AC50E4F0008D9B6 /* WXTResetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTResetPwdVC.m; sourceTree = "<group>"; };
 		1277D0111AC5327A0008D9B6 /* ResetPwdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdModel.h; sourceTree = "<group>"; };
 		1277D0121AC5327A0008D9B6 /* ResetPwdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdModel.m; sourceTree = "<group>"; };
+		127FDD741B57A76E0059BDB6 /* CallBtnDownImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBtnDownImg@2x.png"; sourceTree = "<group>"; };
+		127FDD751B57A76E0059BDB6 /* CallBtnUpImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBtnUpImg@2x.png"; sourceTree = "<group>"; };
+		127FDD761B57A76E0059BDB6 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
+		127FDD7A1B57B2570059BDB6 /* woxinHidIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woxinHidIcon@2x.png"; sourceTree = "<group>"; };
 		128136A21B33B394005F9929 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
 		128136A31B33B394005F9929 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		128136A51B33C0AF005F9929 /* SCartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCartListModel.h; sourceTree = "<group>"; };
@@ -1089,7 +1095,6 @@
 		1295C5F91B29A3BE004C861D /* WaitReceiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitReceiveCell.m; sourceTree = "<group>"; };
 		1295C5FC1B29B2DB004C861D /* OverdueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverdueCell.h; sourceTree = "<group>"; };
 		1295C5FD1B29B2DB004C861D /* OverdueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverdueCell.m; sourceTree = "<group>"; };
-		129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
 		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
 		129D23371B4F738900008DA0 /* GoodsInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfoVC.h; sourceTree = "<group>"; };
@@ -1621,7 +1626,6 @@
 		775842581AB95A300039B129 /* LoadLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadLabel.m; sourceTree = "<group>"; };
 		775842591AB95A300039B129 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
 		7758425A1AB95A300039B129 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
-		7758425B1AB95A300039B129 /* woxinHidIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woxinHidIcon@2x.png"; sourceTree = "<group>"; };
 		7758425C1AB95A300039B129 /* WXWaitingHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXWaitingHud.h; sourceTree = "<group>"; };
 		7758425D1AB95A300039B129 /* WXWaitingHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWaitingHud.m; sourceTree = "<group>"; };
 		775842601AB95A300039B129 /* SysInterfaceBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysInterfaceBridge.h; sourceTree = "<group>"; };
@@ -2405,6 +2409,9 @@
 				1241E50A1AE9D89B00811D3F /* CallBack */,
 				1241E50D1AE9D89B00811D3F /* CallBackBgImg.jpg */,
 				1241E50E1AE9D89B00811D3F /* CallBackBgImg@2x.jpg */,
+				127FDD741B57A76E0059BDB6 /* CallBtnDownImg@2x.png */,
+				127FDD751B57A76E0059BDB6 /* CallBtnUpImg@2x.png */,
+				127FDD761B57A76E0059BDB6 /* ContactInfoCall@2x.png */,
 				1241E50F1AE9D89B00811D3F /* CallBackIconImgNor@2x.png */,
 				1241E5101AE9D89B00811D3F /* CallBackIconImgSel@2x.png */,
 				1241E5111AE9D89B00811D3F /* callHistoryBtnImg@2x.png */,
@@ -2916,7 +2923,6 @@
 			children = (
 				12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */,
 				1284CC811B54943C00D98F79 /* ContactInfoBgImg@2x.png */,
-				129674311AB6EAED00597B17 /* ContactInfoCall@2x.png */,
 				129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */,
 				129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */,
 			);
@@ -4468,7 +4474,7 @@
 				775842581AB95A300039B129 /* LoadLabel.m */,
 				775842591AB95A300039B129 /* ProgressView.h */,
 				7758425A1AB95A300039B129 /* ProgressView.m */,
-				7758425B1AB95A300039B129 /* woxinHidIcon@2x.png */,
+				127FDD7A1B57B2570059BDB6 /* woxinHidIcon@2x.png */,
 				7758425C1AB95A300039B129 /* WXWaitingHud.h */,
 				7758425D1AB95A300039B129 /* WXWaitingHud.m */,
 			);
@@ -5307,7 +5313,6 @@
 			files = (
 				1263EFE41ACD35820014C347 /* Icon-Small-50.png in Resources */,
 				1241E53B1AE9D89B00811D3F /* *N.png in Resources */,
-				129674351AB6EAED00597B17 /* ContactInfoCall@2x.png in Resources */,
 				1241E5381AE9D89B00811D3F /* HangupCall@2x.png in Resources */,
 				124535571AE9D146004198C9 /* sign34@2x.png in Resources */,
 				12F4227E1B1D5A2900643DD7 /* AddressCircle@2x.png in Resources */,
@@ -5364,6 +5369,7 @@
 				775842AF1AB95A300039B129 /* CustomMade.plist in Resources */,
 				124535421AE9D146004198C9 /* sign14@2x.png in Resources */,
 				DDEA9EC91B1BF3A400530C1C /* CircleAll@2x.png in Resources */,
+				127FDD781B57A76E0059BDB6 /* CallBtnUpImg@2x.png in Resources */,
 				1241E5671AE9D91400811D3F /* TopBgImg@2x.png in Resources */,
 				DDEA9F041B1C0A6700530C1C /* right@2x.png in Resources */,
 				1245354F1AE9D146004198C9 /* sign27@2x.png in Resources */,
@@ -5402,11 +5408,11 @@
 				12F46A3A1B20012000B8EC98 /* T_AttentionSel@2x.png in Resources */,
 				1241E5681AE9D91400811D3F /* wxtRecharge@2x.png in Resources */,
 				1240D6EC1AE917310056AD6A /* post_type_bubble_twitter.png in Resources */,
+				127FDD7B1B57B2570059BDB6 /* woxinHidIcon@2x.png in Resources */,
 				1241E5351AE9D89B00811D3F /* CallBackIconImgSel@2x.png in Resources */,
 				1245354E1AE9D146004198C9 /* sign26@2x.png in Resources */,
 				1241E5411AE9D89B00811D3F /* 2N@2x.png in Resources */,
 				1272490F1B2574C9001BDC15 /* RegistUserPwdImg@2x.png in Resources */,
-				775843191AB95A300039B129 /* woxinHidIcon@2x.png in Resources */,
 				DDEA9EE31B1BFE5D00530C1C /* sysPushMessageIcon@2x.png in Resources */,
 				128221DD1B184E84004613BB /* HomePageWallet@2x.png in Resources */,
 				124535491AE9D146004198C9 /* sign21@2x.png in Resources */,
@@ -5418,6 +5424,7 @@
 				12D52BBE1AC2EF4400C5CE71 /* dtmf-8.aif in Resources */,
 				12F3CC771B1DE82C00E64DE4 /* MyDistributionImg@2x.png in Resources */,
 				1240D6E91AE9171F0056AD6A /* post_type_bubble_instagram@2x.png in Resources */,
+				127FDD791B57A76E0059BDB6 /* ContactInfoCall@2x.png in Resources */,
 				1272490E1B2574C9001BDC15 /* RegistUserImg@2x.png in Resources */,
 				128221DC1B184E84004613BB /* HomePageSign@2x.png in Resources */,
 				DDEA9F091B1C0A8700530C1C /* Circle@2x.png in Resources */,
@@ -5519,6 +5526,7 @@
 				1241E54E1AE9D89B00811D3F /* 8S@2x.png in Resources */,
 				12846A8C1B252D720021F9FE /* LoginUserImg@2x.png in Resources */,
 				1285850B1B3AA7E5005E240E /* MakeOrderBtnImg@2x.png in Resources */,
+				127FDD771B57A76E0059BDB6 /* CallBtnDownImg@2x.png in Resources */,
 				12D52BB81AC2EF4400C5CE71 /* dtmf-2.aif in Resources */,
 				12F46A371B20012000B8EC98 /* T_ArrowDown@2x.png in Resources */,
 				1245353C1AE9D146004198C9 /* signBg@2x.jpg in Resources */,

@@ -24,7 +24,7 @@
 		[textFiled setText:@"查看全文"];
 		[self addSubview:textFiled];
 		
-		UIImage *img = [UIImage imageNamed:@"arrow.png"];
+		UIImage *img = [UIImage imageNamed:@"T_ArrowRight.png"];
 		WXUIImageView *imgView = [[WXUIImageView alloc] initWithImage:img];
 		CGSize imgSize = img.size;
 		CGRect imgRect = CGRectMake(frame.size.width - imgSize.width - 5, 0.5*(frame.size.height-imgSize.height), imgSize.width, imgSize.height);

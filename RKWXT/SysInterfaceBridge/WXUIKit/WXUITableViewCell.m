@@ -47,7 +47,7 @@
     switch (type) {
         case E_CellDefaultAccessoryViewType_HasNext:
         {
-            UIImage *image = [UIImage imageNamed:@"arrow.png"];
+            UIImage *image = [UIImage imageNamed:@"T_ArrowRight.png"];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image] ;
             accessoryView = imageView;
         }

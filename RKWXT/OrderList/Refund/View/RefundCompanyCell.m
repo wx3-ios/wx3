@@ -38,7 +38,7 @@
         CGFloat nextImgHeight = 12;
         UIImageView *nextImgView = [[UIImageView alloc] init];
         nextImgView.frame = CGRectMake(xOffset, (RefundCompanyCellHeight-nextImgHeight)/2, nextImgWidth, nextImgHeight);
-        [nextImgView setImage:[UIImage imageNamed:@"Arrow.png"]];
+        [nextImgView setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];
         [self.contentView addSubview:nextImgView];
     }
     return self;

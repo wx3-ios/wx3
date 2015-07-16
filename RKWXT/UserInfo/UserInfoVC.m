@@ -9,7 +9,7 @@
 #import "UserInfoVC.h"
 #import "UserInfoDef.h"
 
-#define UserBgImageViewHeight (95)
+#define UserBgImageViewHeight (95+66)
 #define Size self.view.bounds.size
 
 @interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,PersonalOrderInfoDelegate>{
@@ -21,11 +21,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:@"我"];
+//    [self setCSTTitle:@"我"];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     CGSize size = self.bounds.size;
@@ -50,40 +51,41 @@
     [headView addSubview:bgImageView];
     
     CGFloat xOffset = 18;
-    CGFloat yOffset = 18;
+    CGFloat yOffset = 22;
     UIImage *iconImg = [UIImage imageNamed:@"PersonalInfo.png"];
     UIImageView *iconImageView = [[UIImageView alloc] init];
-    iconImageView.frame = CGRectMake(xOffset, UserBgImageViewHeight-yOffset-iconImg.size.height, iconImg.size.width, iconImg.size.height);
+    iconImageView.frame = CGRectMake((IPHONE_SCREEN_WIDTH-iconImg.size.width)/2, yOffset, iconImg.size.width, iconImg.size.height);
     [iconImageView setImage:iconImg];
     [headView addSubview:iconImageView];
     
+    yOffset += iconImg.size.height+3;
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     xOffset += iconImg.size.width+5;
     CGFloat phoneLabelWidth = 120;
     CGFloat phoneLabelHeight = 20;
     UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.frame = CGRectMake(xOffset, UserBgImageViewHeight/2-20, phoneLabelWidth, phoneLabelHeight);
+    phoneLabel.frame = CGRectMake((IPHONE_SCREEN_WIDTH-phoneLabelWidth)/2, yOffset, phoneLabelWidth, phoneLabelHeight);
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
-    [phoneLabel setTextAlignment:NSTextAlignmentLeft];
+    [phoneLabel setTextAlignment:NSTextAlignmentCenter];
     [phoneLabel setFont:WXTFont(15.0)];
     [phoneLabel setText:userDefault.user];
     [phoneLabel setTextColor:WXColorWithInteger(0xffffff)];
     [headView addSubview:phoneLabel];
     
-    yOffset += 30;
+    yOffset += phoneLabelHeight+2;
     WXUILabel *namelabel = [[WXUILabel alloc] init];
-    namelabel.frame = CGRectMake(xOffset, yOffset, phoneLabelWidth, phoneLabelHeight);
+    namelabel.frame = CGRectMake((IPHONE_SCREEN_WIDTH-phoneLabelWidth)/2, yOffset, phoneLabelWidth, phoneLabelHeight);
     [namelabel setBackgroundColor:[UIColor clearColor]];
     [namelabel setFont:WXFont(12.0)];
     [namelabel setTextColor:WXColorWithInteger(0xffffff)];
     [namelabel setText:@"我是风儿"];
-    [namelabel setTextAlignment:NSTextAlignmentLeft];
+    [namelabel setTextAlignment:NSTextAlignmentCenter];
     [headView addSubview:namelabel];
     
     yOffset += phoneLabelHeight;
     xOffset += phoneLabelWidth;
     WXUIButton *nextBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    nextBtn.frame = CGRectMake(xOffset, yOffset, Size.width-xOffset, 20);
+    nextBtn.frame = CGRectMake((IPHONE_SCREEN_WIDTH-phoneLabelWidth)/2, yOffset, Size.width-xOffset, 20);
     [nextBtn setBackgroundColor:[UIColor clearColor]];
     [nextBtn setTitle:@"账户管理/收货地址 >" forState:UIControlStateNormal];
     [nextBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];

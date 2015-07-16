@@ -46,7 +46,7 @@
     switch (type) {
         case WXT_CellDefaultAccessoryType_HasNext:
         {
-            UIImage *image = [UIImage imageNamed:@"Arrow.png"];
+            UIImage *image = [UIImage imageNamed:@"T_ArrowRight.png"];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
             accessoryView = imageView;
         }

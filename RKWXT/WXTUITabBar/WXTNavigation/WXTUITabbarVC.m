@@ -19,9 +19,18 @@
 #define TabBaryGap (100)
 #define Size self.bounds.size
 
+typedef enum{
+    Call_Type_Normal = 0,
+    Call_Type_Up,
+    Call_Type_Dwon,
+}Call_Type;
+
 @interface WXTUITabbarVC(){
     NSArray *views;
     CallViewController *recentCall;
+    
+    WXUITabBarItem *callItem;
+    Call_Type call_type;
 }
 
 @property (nonatomic, strong) PopMenu *popMenu;
@@ -49,11 +58,10 @@
     [mallItem setTabBarItemImage:[UIImage imageNamed:@"MallSelected.png"] forState:WXButtonControlState_Selected];
     [mallItem setTabBarItemTitle:@"商城" forState:WXButtonControlState_Normal];
     
-    WXUITabBarItem *callItem = [self createTabbarItem];
+    callItem = [self createTabbarItem];
     [callItem setTabBarItemImage:[UIImage imageNamed:@"CallNormal.png"] forState:WXButtonControlState_Normal];
-    [callItem setTabBarItemImage:[UIImage imageNamed:@"CallSelected.png"] forState:WXButtonControlState_Selected];
+    [callItem setTabBarItemImage:[UIImage imageNamed:@"CallBtnDownImg.png"] forState:WXButtonControlState_Selected];
     [callItem setTabBarItemTitle:@"通话" forState:WXButtonControlState_Normal];
-    
     
     WXUITabBarItem *findItem = [self createTabbarItem];
     [findItem setTabBarItemImage:[UIImage imageNamed:@"FindNormal.png"] forState:WXButtonControlState_Normal];
@@ -131,6 +139,13 @@
 }
 
 -(void)callBtn{
+    if(call_type == Call_Type_Normal || call_type == Call_Type_Up){
+        call_type = Call_Type_Dwon;
+        [callItem setTabBarItemImage:[UIImage imageNamed:@"CallBtnUpImg.png"] forState:WXButtonControlState_Selected];
+    }else{
+        call_type = Call_Type_Up;
+        [callItem setTabBarItemImage:[UIImage imageNamed:@"CallBtnDownImg.png"] forState:WXButtonControlState_Selected];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:ShowKeyBoard object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:ClickedKeyboardBtn object:nil];
 }
@@ -159,7 +174,7 @@
     
     WXTUIButton *keyboardBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     keyboardBtn.frame = CGRectMake(0, 5, Size.width/4, kTabBarHeight/2);
-    [keyboardBtn setImage:[UIImage imageNamed:@"CallSelected.png"] forState:UIControlStateNormal];
+    [keyboardBtn setImage:[UIImage imageNamed:@"CallBtnDownImg.png"] forState:UIControlStateNormal];
     [keyboardBtn addTarget:self action:@selector(downviewBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:keyboardBtn];
     
@@ -189,6 +204,8 @@
             downView.frame = CGRectMake(0, Size.height+TabBaryGap, Size.width*3/4, kTabBarHeight);
         }];
     }
+    call_type = Call_Type_Dwon;
+    [callItem setTabBarItemImage:[UIImage imageNamed:@"CallBtnUpImg.png"] forState:WXButtonControlState_Selected];
 }
 
 -(void)showDownView{

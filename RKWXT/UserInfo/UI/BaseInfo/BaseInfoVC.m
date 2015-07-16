@@ -21,7 +21,7 @@
 
 @implementation BaseInfoVC
 static NSString *_nameListArray[BaseInfo_Invalid]={
-    @"头像",
+//    @"头像",
     @"昵称",
     @"性别",
     @"出生日期"
@@ -68,11 +68,11 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = BaseInfoForCommonCellHeight;
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    if(section == T_Base_UserInfo && row == BaseInfo_Userhead){
-        height = BaseInfoForUserHeadHeight;
-    }
+//    NSInteger section = indexPath.section;
+//    NSInteger row = indexPath.row;
+//    if(section == T_Base_UserInfo && row == BaseInfo_Userhead){
+//        height = BaseInfoForUserHeadHeight;
+//    }
     return height;
 }
 
@@ -138,11 +138,12 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     NSInteger row = indexPath.row;
     switch (section) {
         case T_Base_UserInfo:
-            if(row == BaseInfo_Userhead){
-                cell = [self tableViewForBaseInfoHeadImgCell:row];
-            }else{
-                cell = [self tableViewForCommonCellAtRow:row];
-            }
+//            if(row == BaseInfo_Userhead){
+//                cell = [self tableViewForBaseInfoHeadImgCell:row];
+//            }else{
+//                cell = [self tableViewForCommonCellAtRow:row];
+//            }
+            cell = [self tableViewForCommonCellAtRow:row];
             break;
         case T_Base_ManagerInfo:
             cell = [self tableViewForManagerCellAtRow:row];
@@ -159,8 +160,8 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     NSInteger row = indexPath.row;
     if(section == T_Base_UserInfo){
         switch (row) {
-            case BaseInfo_Userhead:
-                break;
+//            case BaseInfo_Userhead:
+//                break;
             case BaseInfo_Nickname:
             {
                 PersonNicknameVC *nickNameVC = [[PersonNicknameVC alloc] init];

@@ -44,7 +44,6 @@
 		CGPoint center = CGPointMake(progressViewRadius/2.0 + (length-progressViewRadius)*0.5, progressViewRadius/2.0);
 		_progressView = [[ProgressView alloc] initWithCenter:center radius:progressViewRadius*0.5];
 		[_progressView setArcLineWidth:5.0];
-//		[_progressView setOnColor:WXColorWithInteger(0x3faf98)];
         [_progressView setOnColor:WXColorWithInteger(0xdd2726)];
 		[_progressView setUnOnColor:WXColorWithInteger(0xd1c7be)];
 		[_progressView setNodeNumber:20 spaceNodePersent:0.2];
