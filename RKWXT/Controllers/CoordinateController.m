@@ -19,6 +19,8 @@
 #import "RefundSucceedVC.h"
 #import "GoodsInfoVC.h"
 #import "AboutShopVC.h"
+#import "JPushMessageCenterVC.h"
+#import "JPushMessageInfoVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -115,6 +117,19 @@
     WXUIViewController *vc = sender;
     AboutShopVC *shopVC = [[AboutShopVC alloc] init];
     [vc.wxNavigationController pushViewController:shopVC];
+}
+
+-(void)toJPushCenterVC:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    JPushMessageCenterVC *centerVC = [[JPushMessageCenterVC alloc] init];
+    [vc.wxNavigationController pushViewController:centerVC];
+}
+
+-(void)toJPushMessageInfoVC:(id)sender messageID:(NSInteger)messageID animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    JPushMessageInfoVC *infoVC = [[JPushMessageInfoVC alloc] init];
+    infoVC.messageID = messageID;
+    [vc.wxNavigationController pushViewController:infoVC];
 }
 
 @end

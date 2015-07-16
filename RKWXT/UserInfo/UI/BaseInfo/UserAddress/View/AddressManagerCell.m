@@ -26,14 +26,17 @@
     if(self){
         CGFloat xOffset = 10;
         UIImage *img = [UIImage imageNamed:@"AddressCircle.png"];
+        CGSize size = img.size;
+        size.width += 3.0;
+        size.height += 3.0;
         _selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _selBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-img.size.height)/2, img.size.width, img.size.height);
+        _selBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-size.height)/2, size.width, size.height);
         [_selBtn setBackgroundColor:[UIColor clearColor]];
         [_selBtn setImage:img forState:UIControlStateNormal];
         [_selBtn addTarget:self action:@selector(setAddressCircleNormal) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_selBtn];
         
-        xOffset += img.size.width+10;
+        xOffset += size.width+10;
         CGFloat norAddWidth = 80;
         CGFloat norAddheight = 15;
         UILabel *norAddLabel = [[[UILabel alloc] init] autorelease];

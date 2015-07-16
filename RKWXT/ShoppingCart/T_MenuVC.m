@@ -103,14 +103,17 @@
     CGFloat xOffset = 15;
     CGFloat footHeight = FootViewheight;
     UIImage *circleImg = [UIImage imageNamed:@"ShoppingCartCircle.png"];
+    CGSize imgSize = circleImg.size;
+    imgSize.width += 3.0;
+    imgSize.height += 3.0;
     _circleBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    _circleBtn.frame = CGRectMake(xOffset, (footHeight-circleImg.size.height)/2, circleImg.size.width, circleImg.size.height);
+    _circleBtn.frame = CGRectMake(xOffset, (footHeight-imgSize.height)/2, imgSize.width, imgSize.height);
     [_circleBtn setBackgroundColor:[UIColor clearColor]];
     [_circleBtn setImage:circleImg forState:UIControlStateNormal];
     [_circleBtn addTarget:self action:@selector(selectAllBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:_circleBtn];
     
-    xOffset += circleImg.size.width+2;
+    xOffset += imgSize.width+2;
     CGFloat labelHeight = 17;
     WXUILabel *selLabel = [[WXUILabel alloc] init];
     selLabel.frame = CGRectMake(xOffset, (footHeight-labelHeight)/2, 50, labelHeight);

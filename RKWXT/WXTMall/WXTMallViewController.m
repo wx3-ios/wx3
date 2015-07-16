@@ -335,6 +335,21 @@
             [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:[entity.linkAddress integerValue] animated:YES];
         }
             break;
+        case HomePageJump_Type_Catagary:
+        {
+            [self toCatagaryListVC];
+        }
+            break;
+        case HomePageJump_Type_MessageCenter:
+        {
+            [self toSysPushMsgView];
+        }
+            break;
+        case HomePageJump_Type_MessageInfo:
+        {
+            //消息id不知道
+        }
+            break;
         case HomePageJump_Type_UserBonus:
         {
             [[CoordinateController sharedCoordinateController] toUserBonusVC:self animated:YES];
@@ -355,7 +370,7 @@
 }
 
 -(void)topicalCellClicked:(id)entity{
-    NSLog(@"主题馆");
+    [self toCatagaryListVC];
 }
 
 #pragma mark HomePageRecommond
@@ -368,7 +383,8 @@
 }
 
 -(void)forMeCellClicked:(id)entity{
-    NSLog(@"为我推荐");
+    HomePageRecEntity *ent = entity;
+    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:ent.goods_id animated:YES];
 }
 
 #pragma mark HomePageNav
@@ -394,23 +410,26 @@
 }
 
 -(void)changeCellClicked:(id)entity{
-    NSLog(@"更多惊喜");
+    HomePageSurpEntity *ent = entity;
+    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:ent.goods_id animated:YES];
 }
 
 #pragma mark LeftBtn
 -(void)homePageToCategaryView{
+    [self toCatagaryListVC];
+}
+
+-(void)toCatagaryListVC{
     WXTMallListWebVC *webViewVC = [[[WXTMallListWebVC alloc] init] autorelease];
-    [webViewVC setCstTitle:@"分类列表"];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id",[NSNumber numberWithInteger:kMerchantID],@"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd],@"pwd", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id", [NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
     [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_CatagaryList paramDictionary:dic];
     [self.wxNavigationController pushViewController:webViewVC];
 }
 
 #pragma mark 消息推送
 - (void)toSysPushMsgView{
-    JPushMessageCenterVC *jpushVC = [[[JPushMessageCenterVC alloc] init] autorelease];
-    [self.wxNavigationController pushViewController:jpushVC];
+    [[CoordinateController sharedCoordinateController] toJPushCenterVC:self animated:YES];
 }
 
 #pragma mark BaseFunction

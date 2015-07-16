@@ -43,13 +43,17 @@
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         UIImage *circleImg = [UIImage imageNamed:@"ShoppingCartCircle.png"];
         _circleBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        _circleBtn.frame = CGRectMake(xGap, (T_MenuCommonCellHeight-circleImg.size.height)/2, circleImg.size.width, circleImg.size.height);
+        CGSize rect = circleImg.size;
+        rect.width += 3.0;
+        rect.height += 3.0;
+        
+        _circleBtn.frame = CGRectMake(xGap, (T_MenuCommonCellHeight-rect.width)/2, rect.width, rect.height);
         [_circleBtn setBackgroundColor:[UIColor clearColor]];
         [_circleBtn setImage:circleImg forState:UIControlStateNormal];
         [_circleBtn addTarget:self action:@selector(circleBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_circleBtn];
         
-        CGFloat xOffset = 5+xGap+circleImg.size.width;
+        CGFloat xOffset = 5+xGap+rect.width;
         CGFloat imgWidth = 55;
         CGFloat imgHeight = 55;
         _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (T_MenuCommonCellHeight-imgHeight)/2, imgWidth, imgHeight)];

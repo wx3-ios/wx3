@@ -36,8 +36,8 @@ typedef enum {
 + (CoordinateController*)sharedCoordinateController;
 + (WXUINavigationController*)sharedNavigationController;
 
-- (void)toCallTabBarVC:(id)sender animated:(BOOL)animated;
-- (void)toContactDetail:(id)sender contactInfo:(id)contactInfo contactType:(E_ContacterType)contactType animated:(BOOL)animated;//联系人详情
+//- (void)toCallTabBarVC:(id)sender animated:(BOOL)animated;
+//- (void)toContactDetail:(id)sender contactInfo:(id)contactInfo contactType:(E_ContacterType)contactType animated:(BOOL)animated;//联系人详情
 //- (void)toGuideView:(id)sender mode:(E_GuideView_Mode)mode animated:(BOOL)animated;//引导页面
 
 //new
@@ -52,4 +52,6 @@ typedef enum {
 -(void)toRefundInfoVC:(id)sender orderEntity:(id)orderEntity animated:(BOOL)animated;//查看退款详情
 -(void)toOrderInfoVC:(id)sender orderEntity:(id)orderEntity animated:(BOOL)animated;//查看订单详情
 -(void)toAboutShopVC:(id)sender animated:(BOOL)animated; //商家信息
+-(void)toJPushCenterVC:(id)sender animated:(BOOL)animated; //消息中心
+-(void)toJPushMessageInfoVC:(id)sender messageID:(NSInteger)messageID animated:(BOOL)animated; //消息详情
 @end

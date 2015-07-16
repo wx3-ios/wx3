@@ -10,7 +10,7 @@
 #define RKWXT_NewHomePageCommonDef_h
 
 #define yGap                            (0.5)    //以下所有高度均是加了yGap后的高度
-#define xGap                            (0.5)
+#define xGap                            (0.4)
 #define T_HomePageTopImgHeight          (115)
 #define T_HomePageBaseFunctionHeight    (40)
 #define T_HomePageWXIntructionHeight    (92)
@@ -61,6 +61,11 @@ enum{
 #import "WXTMallListWebVC.h"
 #import "WXSysMsgUnreadV.h"
 #import "JPushMessageCenterVC.h"
+
+#import "HomePageSurpEntity.h"
+#import "HomePageRecEntity.h"
+#import "HomePageThmEntity.h"
+#import "HomeNavENtity.h"
 #define Size self.bounds.size
 
 typedef enum{
@@ -73,12 +78,12 @@ typedef enum{
 
 #pragma mark 导航跳转
 enum{
-    HomePageJump_Type_GoodsInfo = 0,
-    HomePageJump_Type_Catagary,
-    HomePageJump_Type_MessageCenter,
-    HomePageJump_Type_MessageInfo,
-    HomePageJump_Type_UserBonus,
-    HomePageJump_Type_BusinessAlliance,
+    HomePageJump_Type_GoodsInfo = 0,    //商品详情
+    HomePageJump_Type_Catagary,         //分类列表
+    HomePageJump_Type_MessageCenter,    //消息中心
+    HomePageJump_Type_MessageInfo,      //消息详情
+    HomePageJump_Type_UserBonus,        //红包
+    HomePageJump_Type_BusinessAlliance, //商家联盟
     
     HomePageJump_Type_Invalid
 };

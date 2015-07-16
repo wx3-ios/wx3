@@ -100,6 +100,7 @@
 //    self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:activityVC];
 //    [self.window setRootViewController:self.navigationController];
 //    [self.window makeKeyAndVisible];
+//    return;
     
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){

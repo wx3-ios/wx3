@@ -28,14 +28,17 @@
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         CGFloat xGap = 10;
         UIImage *circleImg = [UIImage imageNamed:@"ShoppingCartCircle.png"];
+        CGSize size = circleImg.size;
+        size.width += 3.0;
+        size.height += 3.0;
         _circleBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        _circleBtn.frame = CGRectMake(xGap, (RefundGoodsListCellHeight-circleImg.size.height)/2, circleImg.size.width, circleImg.size.height);
+        _circleBtn.frame = CGRectMake(xGap, (RefundGoodsListCellHeight-size.height)/2, size.width, size.height);
         [_circleBtn setBackgroundColor:[UIColor clearColor]];
         [_circleBtn setImage:circleImg forState:UIControlStateNormal];
         [_circleBtn addTarget:self action:@selector(circleBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_circleBtn];
         
-        CGFloat xOffset = 7+xGap+circleImg.size.width;
+        CGFloat xOffset = 7+xGap+size.width;
         CGFloat imgWidth = 58;
         CGFloat imgHeight = 58;
         _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (RefundGoodsListCellHeight-imgHeight)/2, imgWidth, imgHeight)];
