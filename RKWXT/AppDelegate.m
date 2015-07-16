@@ -96,32 +96,32 @@
 -(void)initUI{
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
-    activityVC = [[ScreenActivityVC alloc] init];
-    self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:activityVC];
-    [self.window setRootViewController:self.navigationController];
-    [self.window makeKeyAndVisible];
-    return;
+//    activityVC = [[ScreenActivityVC alloc] init];
+//    self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:activityVC];
+//    [self.window setRootViewController:self.navigationController];
+//    [self.window makeKeyAndVisible];
+//    return;
     
-//    BOOL userInfo = [self checkUserInfo];
-//    if(userInfo){
-//        WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
-//        self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
-//        [self.window setRootViewController:self.navigationController];
-//        [self.window makeKeyAndVisible];
-//        
-//        //自动登录
-//        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-//        LoginModel *_loginModel = [[LoginModel alloc] init];
-//        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
-//        
-//        [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
-//    }else{
-//        LoginVC *vc = [[LoginVC alloc] init];
-//        self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
-//        [vc.navigationController setNavigationBarHidden:YES];
-//        [self.window setRootViewController:self.navigationController];
-//        [self.window makeKeyAndVisible];
-//    }
+    BOOL userInfo = [self checkUserInfo];
+    if(userInfo){
+        WXTUITabbarVC *tabbarVC = [[WXTUITabbarVC alloc] init];
+        self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:tabbarVC];
+        [self.window setRootViewController:self.navigationController];
+        [self.window makeKeyAndVisible];
+        
+        //自动登录
+        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+        LoginModel *_loginModel = [[LoginModel alloc] init];
+        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+        
+        [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
+    }else{
+        LoginVC *vc = [[LoginVC alloc] init];
+        self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
+        [vc.navigationController setNavigationBarHidden:YES];
+        [self.window setRootViewController:self.navigationController];
+        [self.window makeKeyAndVisible];
+    }
 }
 
 -(void)loginSucceed:(NSNotification*)notification{

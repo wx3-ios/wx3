@@ -159,7 +159,14 @@ enum{
 
 -(void)alipaySucceed{
     [[PaySucceedModel sharePaySucceed] updataPayOrder:Pay_Type_AliPay withOrderID:[_orderID integerValue]];
-    
+    [self toOrderList];
+}
+
+-(void)back{
+    [self toOrderList];
+}
+
+-(void)toOrderList{
     WXUINavigationController *navigationController = [CoordinateController sharedNavigationController];
     UIViewController *orderVC = [navigationController lastViewControllerOfClass:NSClassFromString(@"HomeOrderVC")];
     if(orderVC){
