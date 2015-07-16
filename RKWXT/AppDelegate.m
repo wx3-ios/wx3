@@ -25,10 +25,11 @@
 #import "AliPayControl.h"
 #import "JPushMessageModel.h"
 #import <AudioToolbox/AudioToolbox.h>
-
+#import "ScreenActivityVC.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
+    ScreenActivityVC *activityVC;
 }
 
 @end
@@ -95,7 +96,10 @@
 -(void)initUI{
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
-    
+//    activityVC = [[ScreenActivityVC alloc] init];
+//    self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:activityVC];
+//    [self.window setRootViewController:self.navigationController];
+//    [self.window makeKeyAndVisible];
     
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){

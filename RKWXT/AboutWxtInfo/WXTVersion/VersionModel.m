@@ -8,7 +8,7 @@
 
 #import "VersionModel.h"
 #import "WXTURLFeedOBJ.h"
-#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
 #import "VersionEntity.h"
 
 @interface VersionModel(){
@@ -38,16 +38,16 @@
 -(void)checkVersion:(NSString*)currentVersion{
     [_updateArr removeAllObjects];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"check_ios_update", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", userDefault.token, @"token", currentVersion, @"ver", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_Version httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [NSNumber numberWithInt:(int)kMerchantID], @"sid", userDefault.user, @"phone", nil];
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Version httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         NSDictionary *dic = retData.data;
         __block VersionModel *blockSelf = self;
-        if ([[dic objectForKey:@"success"] integerValue] != 1){
+        if (retData.code != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(checkVersionFailed:)]){
                 [_delegate checkVersionFailed:retData.errorDesc];
             }
         }else{
-            [blockSelf parseVersionData:dic];
+            [blockSelf parseVersionData:[dic objectForKey:@"data"]];
             if (_delegate && [_delegate respondsToSelector:@selector(checkVersionSucceed)]){
                 [_delegate checkVersionSucceed];
             }

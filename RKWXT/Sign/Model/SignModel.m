@@ -7,7 +7,7 @@
 //
 
 #import "SignModel.h"
-#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
 #import "WXTURLFeedOBJ.h"
 #import "SignEntity.h"
 
@@ -44,11 +44,10 @@
 -(void)signGainMoney{
     [_signArr removeAllObjects];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"daily_attendance", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", userDefault.token, @"token", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Get timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
-        NSDictionary *dic = retData.data;
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userDefault.user, @"phone", userDefault.wxtID, @"woxin_id", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [NSNumber numberWithInt:(int)kMerchantID], @"sid", nil];
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Balance httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         __block SignModel *blockSelf = self;
-        if ([[dic objectForKey:@"success"] integerValue] != 1){
+        if (retData.code != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(signFailed:)]){
                 [_delegate signFailed:retData.errorDesc];
             }

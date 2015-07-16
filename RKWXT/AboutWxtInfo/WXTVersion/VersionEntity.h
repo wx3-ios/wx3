@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface VersionEntity : NSObject
-@property (nonatomic,strong) NSString *serviceVersion;
 @property (nonatomic,strong) NSString *updateMsg;
 @property (nonatomic,strong) NSString *appUrl;
 @property (nonatomic,assign) NSInteger updateType;

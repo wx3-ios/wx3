@@ -8,8 +8,10 @@
 
 #import "AboutWxtInfoVC.h"
 #import "UIView+Render.h"
-#import "WXTVersion.h"
 #import "CallBackVC.h"
+#import "WXTVersion.h"
+#import "VersionModel.h"
+#import "VersionEntity.h"
 
 #define Size self.bounds.size
 #define EveryCellHeight (36)
@@ -22,11 +24,12 @@ enum{
     WXT_About_Invalid,
 };
 
-@interface AboutWxtInfoVC()<UIScrollViewDelegate,UIGestureRecognizerDelegate>{
+@interface AboutWxtInfoVC()<UIScrollViewDelegate,UIGestureRecognizerDelegate,CheckVersionDelegate>{
     UIScrollView *_scrollerView;
     
     NSArray *baseNameArr;
-    
+    VersionModel *_model;
+    VersionEntity *entity;
     BOOL copy;
 }
 @end
@@ -36,6 +39,8 @@ enum{
 -(id)init{
     self = [super init];
     if(self){
+        _model = [[VersionModel alloc] init];
+        [_model setDelegate:self];
         baseNameArr = @[@"客服电话: 0755-61665888",@"客服QQ: 2898621164",@"官方网站: www.67call.com"];
     }
     return self;
@@ -159,16 +164,7 @@ enum{
 
 -(void)createDownView{
     CGFloat yOffset = 100;
-//    CGFloat textlabelWidth = 200;
     CGFloat textLabelHeight = 18;
-//    UILabel *textLabel = [[UILabel alloc] init];
-//    textLabel.frame = CGRectMake((Size.width-textlabelWidth)/2, IPHONE_SCREEN_HEIGHT-yOffset-10, textlabelWidth, textLabelHeight);
-//    [textLabel setBackgroundColor:[UIColor clearColor]];
-//    [textLabel setText:@"Copyright © 2014 www.woxinyun.com"];
-//    [textLabel setFont:WXTFont(11.0)];
-//    [textLabel setTextColor:WXColorWithInteger(0x000000)];
-//    [textLabel setTextAlignment:NSTextAlignmentCenter];
-//    [_scrollerView addSubview:textLabel];
     
     UILabel *textLabel1 = [[UILabel alloc] init];
     textLabel1.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-yOffset, Size.width, textLabelHeight);
@@ -181,15 +177,51 @@ enum{
 }
 
 -(void)checkLastestVersion{
-    WXTVersion *version = [WXTVersion sharedVersion];
-    if(version.checkStatus == CheckUpdata_Status_Starting){
-        return;
-    }
-    version.checkStatus = CheckUpdata_Status_Starting;
-    [version setCheckType:Version_CheckType_User];
-    [version checkVersion];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    [_model checkVersion:[UtilTool currentVersion]];
 }
 
+-(void)checkVersionSucceed{
+    [self unShowWaitView];
+    if([_model.updateArr count] > 0){
+        entity = [_model.updateArr objectAtIndex:0];
+        NSString *message = entity.updateMsg;
+        if(entity.updateType == 0){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"升级提示" message:message delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:@"马上升级", nil];
+            [alert show];
+        }
+        if(entity.updateType == 1){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"升级提示" message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"马上升级", nil];
+            [alert show];
+        }
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(entity.updateType == 1){
+        if(buttonIndex == 1){
+            //itms-services://?action=download-manifest&url=https://gz.67call.com/Ios/2.plist
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:entity.appUrl]];
+        }
+    }
+    if(entity.updateType == 1){
+        if(buttonIndex == 0){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:entity.appUrl]];
+        }
+    }
+}
+
+-(void)checkVersionFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"查询失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
+
+
+#pragma mark other
 -(void)btnClicked:(id)sender{
     WXUIButton *btn = (WXUIButton*)sender;
     switch (btn.tag) {

@@ -19,16 +19,13 @@
 
 -(id)initWithDic:(NSDictionary*)dic{
     if(self = [super init]){
-        NSString *appUrl = [dic objectForKey:@"apkUrl"];
+        NSString *appUrl = [dic objectForKey:@"url"];
         [self setAppUrl:appUrl];
         
-        NSInteger type = [[dic objectForKey:@"must_install"] integerValue];
+        NSInteger type = [[dic objectForKey:@"force"] integerValue];
         [self setUpdateType:type];
         
-        NSString *version = [dic objectForKey:@"server_version"];
-        [self setServiceVersion:version];
-        
-        NSString *message = [dic objectForKey:@"updateMsg"];
+        NSString *message = [dic objectForKey:@"info"];
         [self setUpdateMsg:message];
     }
     return self;

@@ -155,6 +155,9 @@
 		1245356C1AE9D20D004198C9 /* ResetPwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124535651AE9D20D004198C9 /* ResetPwd@2x.png */; };
 		1245356D1AE9D20D004198C9 /* Sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124535661AE9D20D004198C9 /* Sign@2x.png */; };
 		1245356E1AE9D20D004198C9 /* Wallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124535671AE9D20D004198C9 /* Wallet@2x.png */; };
+		125A76AA1B56628C00959AD8 /* ScreenActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76A91B56628C00959AD8 /* ScreenActivityVC.m */; };
+		125A76AD1B5673E100959AD8 /* JPushMessageInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76AC1B5673E100959AD8 /* JPushMessageInfoVC.m */; };
+		125A76B01B56747F00959AD8 /* JPushInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76AF1B56747F00959AD8 /* JPushInfoModel.m */; };
 		1261F0141AE6596A00693710 /* CallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1261F0131AE6596A00693710 /* CallModel.m */; };
 		1261F0181AE659AC00693710 /* HangupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1261F0171AE659AC00693710 /* HangupModel.m */; };
 		1262E2C51ACA50B600667C54 /* FindEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1262E2C21ACA50B600667C54 /* FindEntity.m */; };
@@ -910,6 +913,12 @@
 		124535651AE9D20D004198C9 /* ResetPwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResetPwd@2x.png"; sourceTree = "<group>"; };
 		124535661AE9D20D004198C9 /* Sign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign@2x.png"; sourceTree = "<group>"; };
 		124535671AE9D20D004198C9 /* Wallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wallet@2x.png"; sourceTree = "<group>"; };
+		125A76A81B56628C00959AD8 /* ScreenActivityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenActivityVC.h; sourceTree = "<group>"; };
+		125A76A91B56628C00959AD8 /* ScreenActivityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenActivityVC.m; sourceTree = "<group>"; };
+		125A76AB1B5673E100959AD8 /* JPushMessageInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushMessageInfoVC.h; sourceTree = "<group>"; };
+		125A76AC1B5673E100959AD8 /* JPushMessageInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPushMessageInfoVC.m; sourceTree = "<group>"; };
+		125A76AE1B56747F00959AD8 /* JPushInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushInfoModel.h; sourceTree = "<group>"; };
+		125A76AF1B56747F00959AD8 /* JPushInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPushInfoModel.m; sourceTree = "<group>"; };
 		1261F0121AE6596A00693710 /* CallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallModel.h; sourceTree = "<group>"; };
 		1261F0131AE6596A00693710 /* CallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallModel.m; sourceTree = "<group>"; };
 		1261F0161AE659AC00693710 /* HangupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangupModel.h; sourceTree = "<group>"; };
@@ -3065,6 +3074,8 @@
 			children = (
 				12F180C11B4521B400B9A80D /* JPushMessageCenterVC.h */,
 				12F180C21B4521B400B9A80D /* JPushMessageCenterVC.m */,
+				125A76AB1B5673E100959AD8 /* JPushMessageInfoVC.h */,
+				125A76AC1B5673E100959AD8 /* JPushMessageInfoVC.m */,
 				12F180C41B45248700B9A80D /* View */,
 				12F180BA1B45219300B9A80D /* Model */,
 				12F180B31B45189500B9A80D /* JPushSqlite */,
@@ -3085,6 +3096,8 @@
 			isa = PBXGroup;
 			children = (
 				128B598B1B53D109006D790B /* JPushDef.h */,
+				125A76AE1B56747F00959AD8 /* JPushInfoModel.h */,
+				125A76AF1B56747F00959AD8 /* JPushInfoModel.m */,
 				12F180BB1B45219300B9A80D /* JPushMessageModel.h */,
 				12F180BC1B45219300B9A80D /* JPushMessageModel.m */,
 				12F180BD1B45219300B9A80D /* JPushMsgEntity.h */,
@@ -3972,6 +3985,8 @@
 				2563B4861AAAFA7500C04227 /* Resources */,
 				2563B3EB1AAAD74000C04227 /* AppDelegate.h */,
 				2563B3EC1AAAD74000C04227 /* AppDelegate.m */,
+				125A76A81B56628C00959AD8 /* ScreenActivityVC.h */,
+				125A76A91B56628C00959AD8 /* ScreenActivityVC.m */,
 				1277D00B1AC50E250008D9B6 /* ResetPassword */,
 				12D0C86F1AB684FE0039A197 /* AboutWxtInfo */,
 				126CA3F21AB2B71100E08A0B /* WXTUITabBar */,
@@ -5625,6 +5640,7 @@
 				775842B71AB95A300039B129 /* WXTipMaskOBJ.m in Sources */,
 				12F2D7E11B1EAA3500C8017F /* HomeOrderVC.m in Sources */,
 				775842B31AB95A300039B129 /* UtilTool.m in Sources */,
+				125A76AD1B5673E100959AD8 /* JPushMessageInfoVC.m in Sources */,
 				775843301AB95A300039B129 /* WXUITabBarItem.m in Sources */,
 				12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */,
 				1284CC8F1B551B0800D98F79 /* RefundSucceedGoodsListCell.m in Sources */,
@@ -5889,6 +5905,7 @@
 				12F9162D1B19B0AA00C94717 /* BaseInfoVC.m in Sources */,
 				12F380351B3BEF6F00E9690C /* UserAddressModel.m in Sources */,
 				120B754E1B1C19EA00B8746C /* PersonSexVC.m in Sources */,
+				125A76AA1B56628C00959AD8 /* ScreenActivityVC.m in Sources */,
 				7758430D1AB95A300039B129 /* WXCheckMenu.m in Sources */,
 				775843361AB95A300039B129 /* WXUITextView.m in Sources */,
 				DD0E38AD1B1BE5AC00AB4DB9 /* WXMenuSqlite.m in Sources */,
@@ -6019,6 +6036,7 @@
 				128221C71B184C3B004613BB /* ASIFormDataRequest.m in Sources */,
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
+				125A76B01B56747F00959AD8 /* JPushInfoModel.m in Sources */,
 				12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */,
 				DDB58F4C1AD3C6A2006248E9 /* CallViewController.m in Sources */,
 				DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */,

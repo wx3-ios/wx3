@@ -76,6 +76,7 @@
 
 #pragma mark versionDelegate
 -(void)checkVersionSucceed{
+    [_model setDelegate:nil];
     self.checkStatus = CheckUpdata_Status_Ending;
     if([_model.updateArr count] > 0){
         _versionEntity = [_model.updateArr objectAtIndex:0];
@@ -106,6 +107,7 @@
 }
 
 -(void)checkVersionFailed:(NSString *)errorMsg{
+    [_model setDelegate:nil];
     self.checkStatus = CheckUpdata_Status_Ending;
     NSString *message = errorMsg;
     if(!message){

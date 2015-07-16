@@ -123,6 +123,15 @@
         case WXT_UrlFeed_Type_New_AboutShop:
             url = @"/get_seller_detail.php";
             break;
+        case WXT_UrlFeed_Type_New_Version:
+            url = @"/app_version.php";
+            break;
+        case WXT_UrlFeed_Type_New_Balance:
+            url = @"/app_sign_in.php";
+            break;
+        case WXT_UrlFeed_Type_New_JPushMessageInfo:
+            url = @"/get_message_detail.php";
+            break;
         default:
             break;
     }

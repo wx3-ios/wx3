@@ -12,6 +12,7 @@
 #import "JPushDef.h"
 #import "WXUnreadSysMsgOBJ.h"
 #import "JPushMsgEntity.h"
+#import "JPushMessageInfoVC.h"
 
 @interface JPushMessageCenterVC ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -86,6 +87,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    JPushMsgEntity *entity = [messageArr objectAtIndex:row];
+    JPushMessageInfoVC *infoVC = [[JPushMessageInfoVC alloc] init];
+    infoVC.messageID = entity.push_id;
+    [self.wxNavigationController pushViewController:infoVC];
 }
 
 #pragma mark delete
