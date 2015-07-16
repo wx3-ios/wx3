@@ -8,6 +8,7 @@
 
 #import "WXTUITabbarVC.h"
 #import "WXTFindVC.h"
+#import "FindCommonVC.h"
 #import "WXTMallViewController.h"
 #import "UserInfoVC.h"
 #import "ContactsCallViewController.h"
@@ -39,7 +40,8 @@
     
     WXTMallViewController * mallVC = [[[WXTMallViewController alloc] init] autorelease];
     ContactsCallViewController *callview = [[[ContactsCallViewController alloc] init] autorelease];
-    WXTFindVC *phoneView = [[[WXTFindVC alloc] init] autorelease];
+//    WXTFindVC *phoneView = [[[WXTFindVC alloc] init] autorelease];
+    FindCommonVC *phoneView = [[[FindCommonVC alloc] init] autorelease];
     UserInfoVC *infoVC = [[[UserInfoVC alloc] init] autorelease];
     
     WXUITabBarItem *mallItem = [self createTabbarItem];

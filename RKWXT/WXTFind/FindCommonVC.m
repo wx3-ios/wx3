@@ -19,11 +19,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self setCSTNavigationViewHidden:YES animated:YES];
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:_titleName];
+//    [self setCSTTitle:_titleName];
+//    [self setCSTTitle:@"发现"];
     
     self.backgroundColor = WXColorWithInteger(0xefeff4);
     
@@ -31,7 +33,7 @@
     [_webView setDelegate:self];
     [self addSubview:_webView];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_webURl]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://oldyun.67call.com/wx_html/index.php/Index/index_comp?sid=7"]];
     if (request){
         [_webView loadRequest:request];
     }
