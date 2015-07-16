@@ -368,6 +368,10 @@
         }
             break;
             
+        case Order_Section_ShopName:
+        {
+            [[CoordinateController sharedCoordinateController] toAboutShopVC:self animated:YES];
+        }
         default:
             break;
     }
