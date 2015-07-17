@@ -138,8 +138,8 @@ typedef enum {
 //	}
 //}
 
-//- (NSString *)serverAddress{
-//	NSString *serverAddress = nil;
+- (NSString *)serverAddress{
+	NSString *serverAddress = nil;
 //	switch (kAppServiceAddressType) {
 //		case E_Distribute:
 //			serverAddress = [self distributeAddress];
@@ -151,8 +151,10 @@ typedef enum {
 //			serverAddress = D_DevelopServiceAddress;
 //			break;
 //	}
-//	return serverAddress;
-//}
+	return serverAddress;
+}
+
+
 
 #pragma mark 引导页~
 - (NSDictionary*)guideConfig{

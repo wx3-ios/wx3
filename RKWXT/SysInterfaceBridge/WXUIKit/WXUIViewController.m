@@ -390,7 +390,7 @@
 
 - (void)detectAndShowServiceConnectTipIfNotInDelay{
     if(![NetTipDelay sharedNetTipDelay].isInDelay){
-        [self detectAndShowServiceConnectTip];
+//        [self detectAndShowServiceConnectTip];
     }
 }
 

@@ -46,7 +46,7 @@
 
 - (void)addOBS{
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-	[notificationCenter addObserver:self selector:@selector(allSetMealLoadedSucceed:) name:D_Notification_Name_Lib_LoadSetMealsSucceed object:nil];
+//	[notificationCenter addObserver:self selector:@selector(allSetMealLoadedSucceed:) name:D_Notification_Name_Lib_LoadSetMealsSucceed object:nil];
 	[notificationCenter addObserver:self selector:@selector(allSetMealLoadedFailed:) name:D_Notification_Name_Lib_LoadSetMealsFailed object:nil];
 }
 

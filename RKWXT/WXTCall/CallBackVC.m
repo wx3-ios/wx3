@@ -264,12 +264,12 @@
 
 #pragma mark hangupDelegate
 -(void)hangup{
-    if(!_model.callID){
-        return;
-    }
-    _hangupModel = [[HangupModel alloc] init];
-    [_hangupModel setHangupDelegate:self];
-    [_hangupModel hangupWithCallID:_model.callID];
+//    if(!_model.callID){
+//        return;
+//    }
+//    _hangupModel = [[HangupModel alloc] init];
+//    [_hangupModel setHangupDelegate:self];
+//    [_hangupModel hangupWithCallID:_model.callID];
     
     [self back];
 }
@@ -294,6 +294,5 @@
         
     }];
 }
-
 
 @end

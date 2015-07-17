@@ -101,6 +101,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(UserAgent);
     });
 }*/
 
+-(void)updateBalance:(void (^)(NSDictionary *))complete{
+}
 
 #pragma mark - sip
 /*

@@ -47,8 +47,8 @@
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(activityGoodsLoadFailed)
 							   name:D_Notification_Name_Lib_LoadActivityGoodsFailed object:nil];
-	[notificationCenter addObserver:self selector:@selector(activityGoodsLoadSucceed:)
-							   name:D_Notification_Name_Lib_LoadActivityGoodsSucceed object:nil];
+//	[notificationCenter addObserver:self selector:@selector(activityGoodsLoadSucceed:)
+//							   name:D_Notification_Name_Lib_LoadActivityGoodsSucceed object:nil];
 }
 
 - (void)activityGoodsLoadFailed{

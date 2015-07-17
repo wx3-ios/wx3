@@ -45,7 +45,7 @@
 
 - (void)addOBS{
 	NSNotificationCenter *defaultNotificationCenter = [NSNotificationCenter defaultCenter];
-	[defaultNotificationCenter addObserver:self selector:@selector(allGoodsLoadedSucceed:) name:D_Notification_Name_Lib_AllGoodsHaveLoaded object:nil];
+//	[defaultNotificationCenter addObserver:self selector:@selector(allGoodsLoadedSucceed:) name:D_Notification_Name_Lib_AllGoodsHaveLoaded object:nil];
 	[defaultNotificationCenter addObserver:self selector:@selector(allGoodsLoadedFailed) name:D_Notification_Name_Lib_AllGoodsLoadedFailed object:nil];
 }
 

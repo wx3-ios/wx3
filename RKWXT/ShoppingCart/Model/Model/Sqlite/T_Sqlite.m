@@ -77,7 +77,7 @@
 
 -(void)insert:(NSString *)sql{
     sqlite3_stmt *statement = NULL;
-    char *err = NULL;
+//    char *err = NULL;
     int success2 = sqlite3_prepare_v2(db, [sql UTF8String], -1, &statement, NULL);
     if(success2 != SQLITE_OK){
         KFLog_Normal(YES,@"Error:failed to insert:testTable %s",err);

@@ -132,6 +132,9 @@
         case WXT_UrlFeed_Type_New_JPushMessageInfo:
             url = @"/get_message_detail.php";
             break;
+        case WXT_UrlFeed_Type_New_Call:
+            url = @"/app_cb.php";
+            break;
         default:
             break;
     }

@@ -30,8 +30,8 @@
     }
     _callstatus_type = CallStatus_Type_starting;
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"call", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", phoneStr, @"called", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_Call httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [NSNumber numberWithInt:(int)kMerchantID], @"sid", userDefault.wxtID, @"woxin_id", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool newStringWithAddSomeStr:5 withOldStr:userDefault.pwd], @"pwd", phoneStr, @"called", nil];
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Call httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         NSDictionary *dic = retData.data;
         if (retData.code != 0){
             _callstatus_type = CallStatus_Type_Ending;
@@ -43,7 +43,7 @@
             if (_callDelegate && [_callDelegate respondsToSelector:@selector(makeCallPhoneSucceed)]){
                 [_callDelegate makeCallPhoneSucceed];
             }
-            _callID = [dic objectForKey:@"call_id"];
+            _callID = [dic objectForKey:@"data"];
         }
     }];
 }

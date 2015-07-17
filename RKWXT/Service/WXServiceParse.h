@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 @interface WXServiceParse : NSObject
 
-+ (id)sharedWXServiceParse;
+//+ (id)sharedWXServiceParse;
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WXTWebViewController : WXUIViewController
-@property (nonatomic, strong) NSString * title;
+//@property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * requestUrl;
 -(id)initWithURL:(NSString *)url;
 -(id)initWithURL:(NSString *)url title:(NSString*)title;

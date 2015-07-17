@@ -49,7 +49,7 @@
 - (void)addOBS{
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(guessYourLikeGoodsLoadFailed) name:D_Notification_Name_Lib_LoadGuessYouLikeGoodsFailed object:nil];
-	[notificationCenter addObserver:self selector:@selector(guessYouLikeGoodsLoadSucceed:) name:D_Notification_Name_Lib_LoadGuessYouLikeGoodsSucceed object:nil];
+//	[notificationCenter addObserver:self selector:@selector(guessYouLikeGoodsLoadSucceed:) name:D_Notification_Name_Lib_LoadGuessYouLikeGoodsSucceed object:nil];
 	[notificationCenter addObserver:self selector:@selector(allGoodsLoadedSucceed:) name:D_Notification_Name_AllGoodsLoadedFinished object:nil];
 }
 
