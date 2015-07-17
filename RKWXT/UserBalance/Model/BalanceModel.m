@@ -8,7 +8,7 @@
 
 #import "BalanceModel.h"
 #import "WXTURLFeedOBJ.h"
-#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
 #import "BalanceEntity.h"
 
 @interface BalanceModel(){
@@ -37,17 +37,15 @@
 
 -(void)loadUserBalance{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"get_balance", @"cmd", userDefault.wxtID, @"user_id", [NSNumber numberWithInt:(int)kMerchantID], @"agent_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userDefault.user, @"phone", [NSNumber numberWithInt:(int)kMerchantID], @"sid", nil];
     __block BalanceModel *blockSelf = self;
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_LoadBalance httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
-        NSDictionary *dic = retData.data;
-        NSInteger secceed = [[dic objectForKey:@"error"] integerValue];
-        if (secceed != 1){
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Balance httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
+        if (retData.code != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(loadUserBalanceFailed:)]){
                 [_delegate loadUserBalanceFailed:retData.errorDesc];
             }
         }else{
-            [blockSelf parseClassifyData:retData.data];
+            [blockSelf parseClassifyData:[retData.data objectForKey:@"data"]];
             if (_delegate && [_delegate respondsToSelector:@selector(loadUserBalanceSucceed)]){
                 [_delegate loadUserBalanceSucceed];
             }

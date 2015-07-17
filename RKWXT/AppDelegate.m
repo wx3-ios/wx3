@@ -111,8 +111,8 @@
         
         //自动登录
         WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-        LoginModel *_loginModel = [[LoginModel alloc] init];
-        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+//        LoginModel *_loginModel = [[LoginModel alloc] init];
+//        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
         
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
     }else{

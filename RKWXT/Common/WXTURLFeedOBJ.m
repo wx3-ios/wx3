@@ -127,7 +127,7 @@
             url = @"/app_version.php";
             break;
         case WXT_UrlFeed_Type_New_Balance:
-            url = @"/app_sign_in.php";
+            url = @"/app_balance.php";
             break;
         case WXT_UrlFeed_Type_New_JPushMessageInfo:
             url = @"/get_message_detail.php";

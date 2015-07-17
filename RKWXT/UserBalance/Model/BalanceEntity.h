@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum{
+    UserBalance_Type_Normal,
+    UserBalance_Type_Month,
+}UserBalance_Type;
+
 @interface BalanceEntity : NSObject
 @property (nonatomic,assign) CGFloat money;
-@property (nonatomic,strong) NSString *status;
+@property (nonatomic,assign) UserBalance_Type type;
 @property (nonatomic,strong) NSString *date;
 
 +(BalanceEntity*)initUserBalanceWithDic:(NSDictionary*)dic;

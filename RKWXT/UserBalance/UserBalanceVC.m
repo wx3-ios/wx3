@@ -26,7 +26,6 @@ enum{
 
 @interface UserBalanceVC()<UIScrollViewDelegate,LoadUserBalanceDelegate>{
     BalanceModel *_model;
-    BalanceEntity *_entity;
     NSArray *_nameArr;
     UIScrollView *_scrollerView;
     
@@ -43,13 +42,9 @@ enum{
     if(self){
         _model = [[BalanceModel alloc] init];
         [_model setDelegate:self];
-        _nameArr = @[@"帐号:",@"金额:",@"状态:",@"有限日期:"];
+        _nameArr = @[@"帐号:",@"余额:",@"状态:",@"有限日期:"];
     }
     return self;
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
 }
 
 -(void)viewDidLoad{
@@ -158,7 +153,6 @@ enum{
     btn.frame = CGRectMake(xOffset, 1.4*yOffset, Size.width-2*xOffset, btnHeight);
     [btn setBorderRadian:10.0 width:0.5 color:[UIColor clearColor]];
     [btn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];
-//    [btn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
     [btn setTitle:@"立即充值" forState:UIControlStateNormal];
     [btn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(gotoRecharge) forControlEvents:UIControlEventTouchUpInside];
@@ -174,19 +168,27 @@ enum{
 -(void)loadUserBalanceSucceed{
     [self unShowWaitView];
     if([_model.dataList count] > 0){
-        _entity = [_model.dataList objectAtIndex:0];
-        NSString * balance = [NSString stringWithFormat:@"%.2f",_entity.money];
+        BalanceEntity *entity = [_model.dataList objectAtIndex:0];
+        NSString * balance = [NSString stringWithFormat:@"%.2f元",entity.money];
         [_money setText:balance];
-        [_status setText:[NSString stringWithFormat:@"%@",_entity.status]];
-        [_date setText:[NSString stringWithFormat:@"%@",_entity.date]];
-        [[NSUserDefaults standardUserDefaults] setObject:balance forKey:@"WXTBLANCE"];
+    
+        if(entity.type == UserBalance_Type_Normal){
+            [_status setText:@"普通用户"];
+            [_date setText:@"永久有效"];
+        }else{
+            [_status setText:@"VIP用户"];
+            NSString *dateStr = [UtilTool getDateTimeFor:[entity.date integerValue] type:2];
+            [_date setText:dateStr];
+        }
     }
 }
 
 -(void)loadUserBalanceFailed:(NSString *)errorMsg{
     [self unShowWaitView];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:errorMsg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alert show];
+    if(!errorMsg){
+        errorMsg = @"获取余额失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

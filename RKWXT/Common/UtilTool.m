@@ -577,7 +577,7 @@
 +(NSInteger)timeChange{
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     long long int date = (long long int)time;
-    return date;
+    return (long)date;
 }
 
 +(NSString*)currentVersion{

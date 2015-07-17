@@ -19,14 +19,14 @@
 
 -(id)initWithDic:(NSDictionary*)dic{
     if(self = [super init]){
-        NSString *date = [dic objectForKey:@"expireddate"];
+        NSString *date = [dic objectForKey:@"combo"];
         [self setDate:date];
         
         CGFloat balance = [[dic objectForKey:@"balance"] floatValue];
         [self setMoney:balance];
         
-        NSString *state = [dic objectForKey:@"state"];
-        [self setStatus:state];
+        NSInteger state = [[dic objectForKey:@"is_combo"] integerValue];
+        [self setType:state];
     }
     return self;
 }
