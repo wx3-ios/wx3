@@ -35,7 +35,7 @@
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setInteger:entity.time forKey:userObj.wxtID];
+    [userDefault setInteger:[UtilTool timeChange] forKey:userObj.wxtID];
     
     NSUserDefaults *userDefault1 = [NSUserDefaults standardUserDefaults];
     [userDefault1 setFloat:entity.money forKey:userObj.user];
@@ -45,7 +45,7 @@
     [_signArr removeAllObjects];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userDefault.user, @"phone", userDefault.wxtID, @"woxin_id", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [NSNumber numberWithInt:(int)kMerchantID], @"sid", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Balance httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Sign httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         __block SignModel *blockSelf = self;
         if (retData.code != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(signFailed:)]){

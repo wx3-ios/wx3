@@ -19,14 +19,8 @@
 
 -(id)initWithDic:(NSDictionary*)dic{
     if(self = [super init]){
-        CGFloat money = [[dic objectForKey:@"money"] floatValue];
+        CGFloat money = [[dic objectForKey:@"data"] floatValue];
         [self setMoney:money];
-        
-        NSString *msg = [dic objectForKey:@"msg"];
-        [self setMessage:msg];
-        
-        NSInteger time = [[dic objectForKey:@"time"] integerValue];
-        [self setTime:time];
     }
     return self;
 }

@@ -24,7 +24,6 @@
 //    MaskView *_maskView;
     UIButton *_signBtn;
     SignModel *_model;
-    SignEntity *signEntity;
     UILabel *_textLabel;
 }
 @end
@@ -201,11 +200,8 @@
 -(void)signSucceed{
     [_signBtn setEnabled:NO];
     if([_model.signArr count] > 0){
-        signEntity = [_model.signArr objectAtIndex:0];
-        NSString *message = @"签到成功";
-        if(signEntity.message){
-            message = signEntity.message;
-        }
+        SignEntity *signEntity = [_model.signArr objectAtIndex:0];
+        NSString *message = [NSString stringWithFormat:@"签到奖励:%.2f",signEntity.money];
         [UtilTool showAlertView:message];
         [_textLabel setText:[NSString stringWithFormat:@"我的奖励:%.2f元",signEntity.money]];
     }

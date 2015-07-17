@@ -48,6 +48,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_Balance,
     WXT_UrlFeed_Type_New_JPushMessageInfo,
     WXT_UrlFeed_Type_New_Call,
+    WXT_UrlFeed_Type_New_Sign,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

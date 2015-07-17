@@ -24,9 +24,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-//    [self setCSTTitle:_titleName];
-//    [self setCSTTitle:@"发现"];
-    
     self.backgroundColor = WXColorWithInteger(0xefeff4);
     
     _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
@@ -39,6 +36,7 @@
     }
 }
 
+#pragma mark webViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
