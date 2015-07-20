@@ -95,8 +95,17 @@
     [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:goodsID animated:YES];
 }
 
--(void)callShopPhoneWithTelePhoneNumber:(NSString*)phone{
+-(void)callShopPhoneWithTelePhoneNumber:(NSNotification*)notification{
+    NSString *phone = notification.object;
+    if(phone.length == 0){
+        [UtilTool showAlertView:@"号码不正确"];
+        return;
+    }
     NSString *phoneStr = [self phoneWithoutNumber:phone];
+    if(phoneStr.length == 0){
+        [UtilTool showAlertView:@"号码不正确"];
+        return;
+    }
     CallBackVC *backVC = [[CallBackVC alloc] init];
     backVC.phoneName = phoneStr;
     if([backVC callPhone:phoneStr]){

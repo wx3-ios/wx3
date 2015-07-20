@@ -190,7 +190,7 @@ enum{
     [_fetchPwd setTextColor:WXColorWithInteger(0xda7c7b)];
     [_fetchPwd setTintColor:WXColorWithInteger(0xdd2726)];
     [_fetchPwd setLeftViewMode:UITextFieldViewModeAlways];
-    [_fetchPwd setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_fetchPwd setKeyboardType:UIKeyboardTypePhonePad];
     [_fetchPwd setPlaceHolder:@"请输入验证码" color:WXColorWithInteger(0xda7c7b)];
     [_fetchPwd setFont:WXTFont(fontSize)];
     UIImage *leftImg0 = [UIImage imageNamed:@"RegistUserCodeImg.png"];
@@ -279,7 +279,7 @@ enum{
     [_otherPhone setTextColor:WXColorWithInteger(0xda7c7b)];
     [_otherPhone setTintColor:WXColorWithInteger(0xdd2726)];
     [_otherPhone setLeftViewMode:UITextFieldViewModeAlways];
-    [_otherPhone setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_otherPhone setKeyboardType:UIKeyboardTypePhonePad];
     [_otherPhone setPlaceHolder:@"输入介绍人(选填)" color:WXColorWithInteger(0xda7c7b)];
     UIImage *otherIcon = [UIImage imageNamed:@"RegistOtherUser.png"];
     UIImageView *leftView2 = [[UIImageView alloc] initWithImage:otherIcon];
@@ -431,6 +431,9 @@ enum{
         [UtilTool showAlertView:@"密码不能小于6位"];
         return NO;
     }
+    if(![self checkPwdStyleWith:_pwdTextfield.text]){
+        return NO;
+    }
     if(_fetchPwd.text.length < 1){
         [UtilTool showAlertView:@"验证码不能为空"];
         return NO;
@@ -444,6 +447,19 @@ enum{
     //        return NO;
     //    }
     return YES;
+}
+
+-(BOOL)checkPwdStyleWith:(NSString*)pwdString{
+    BOOL isOk = YES;
+    for(NSInteger i = 0;i < [pwdString length]-1; i++){
+        char c = (char)[pwdString substringWithRange:NSMakeRange(i, i+1)];
+        if(!(c <= 'z' && c >= 'a') || !(c <= 'Z' && c >= 'A') || !(c >= '0' && c <= '9')){
+            [UtilTool showAlertView:@"对不起，密码由数字和字母组成，请重新输入"];
+            isOk = NO;
+            break;
+        }
+    }
+    return isOk;
 }
 
 #pragma mark registerDelegate

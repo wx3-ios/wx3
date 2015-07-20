@@ -221,9 +221,26 @@
         return;
     }
     
+    if(![self checkPwdStyleWith:_newPwdField.text]){
+        return;
+    }
+    
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     [self resignAllFirstResponder];
     [_model resetPwdWithNewPwd:_newPwdField.text];
+}
+
+-(BOOL)checkPwdStyleWith:(NSString*)pwdString{
+    BOOL isOk = YES;
+    for(NSInteger i = 0;i < [pwdString length]-1; i++){
+        char c = (char)[pwdString substringWithRange:NSMakeRange(i, i+1)];
+        if(!(c <= 'z' && c >= 'a') || !(c <= 'Z' && c >= 'A') || !(c >= '0' && c <= '9')){
+            [UtilTool showAlertView:@"对不起，密码由数字和字母组成，请重新输入"];
+            isOk = NO;
+            break;
+        }
+    }
+    return isOk;
 }
 
 -(void)resetPwdSucceed{

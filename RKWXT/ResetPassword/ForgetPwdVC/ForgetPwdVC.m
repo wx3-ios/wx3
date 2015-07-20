@@ -177,7 +177,7 @@ enum{
     [_fetchPwd setTextColor:WXColorWithInteger(0xda7c7b)];
     [_fetchPwd setTintColor:WXColorWithInteger(0xdd2726)];
     [_fetchPwd setLeftViewMode:UITextFieldViewModeAlways];
-    [_fetchPwd setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_fetchPwd setKeyboardType:UIKeyboardTypePhonePad];
     [_fetchPwd setPlaceHolder:@"请输入验证码" color:WXColorWithInteger(0xd0d0d0)];
     [_fetchPwd setFont:WXTFont(fontSize)];
     [self addSubview:_fetchPwd];
@@ -418,6 +418,10 @@ enum{
         [UtilTool showAlertView:@"两次密码不相同"];
         return NO;
     }
+    if(![self checkPwdStyleWith:_pwdTextfield.text]){
+        return NO;
+    }
+    
 //    if(_otherPhone.text.length == 0){
 //        [UtilTool showAlertView:@"请输入推荐人手机号"];
 //        return NO;
@@ -427,6 +431,19 @@ enum{
 //        return NO;
 //    }
     return YES;
+}
+
+-(BOOL)checkPwdStyleWith:(NSString*)pwdString{
+    BOOL isOk = YES;
+    for(NSInteger i = 0;i < [pwdString length]-1; i++){
+        char c = (char)[pwdString substringWithRange:NSMakeRange(i, i+1)];
+        if(!(c <= 'z' && c >= 'a') || !(c <= 'Z' && c >= 'A') || !(c >= '0' && c <= '9')){
+            [UtilTool showAlertView:@"对不起，密码由数字和字母组成，请重新输入"];
+            isOk = NO;
+            break;
+        }
+    }
+    return isOk;
 }
 
 #pragma mark registerDelegate
