@@ -8,7 +8,6 @@
 
 #import "WXTFindCommmonCell.h"
 #import "DBImageView.h"
-#import "FindEntity.h"
 
 @interface WXTFindCommmonCell(){
     DBImageView *_imgView;
@@ -43,9 +42,8 @@
 }
 
 -(void)load{
-    FindEntity *entity = self.cellInfo;
-    [_imgView setImageWithPath:entity.icon_url];
-    [_nameLabel setText:entity.name];
+    [_imgView setImage:[UIImage imageNamed:_img]];
+    [_nameLabel setText:_name];
 }
 
 @end

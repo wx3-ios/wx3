@@ -1,32 +1,36 @@
 //
-//  FindCommonVC.m
+//  CompanyVC.m
 //  RKWXT
 //
-//  Created by SHB on 15/4/1.
+//  Created by SHB on 15/7/20.
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "FindCommonVC.h"
+#import "CompanyVC.h"
 
 #define Size self.bounds.size
 
-@interface FindCommonVC()<UIWebViewDelegate>{
+@interface CompanyVC()<UIWebViewDelegate>{
     UIWebView *_webView;
 }
 @end
 
-@implementation FindCommonVC
+@implementation CompanyVC
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setCSTNavigationViewHidden:YES animated:NO];
+}
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:_titleName];
     self.backgroundColor = WXColorWithInteger(0xefeff4);
     
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
+    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
     [_webView setDelegate:self];
     [self addSubview:_webView];
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"www.baidu.com"]];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://oldyun.67call.com/wx_html/index.php/Index/index_comp?sid=7"]];
     if (request){
         [_webView loadRequest:request];
     }

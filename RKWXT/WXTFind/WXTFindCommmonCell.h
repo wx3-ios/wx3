@@ -11,5 +11,7 @@
 #define FindCommonCellHeight (44)
 
 @interface WXTFindCommmonCell : WXUITableViewCell
+@property (nonatomic,strong) NSString *img;
+@property (nonatomic,strong) NSString *name;
 
 @end

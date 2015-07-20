@@ -35,6 +35,7 @@ typedef enum {
 - (NSInteger)areaID;
 - (NSString*)findSignName;
 - (NSInteger)showFindNav;
+- (NSInteger)showCompany;
 
 #pragma mark 引导页~
 - (BOOL)isGuideEnabled;

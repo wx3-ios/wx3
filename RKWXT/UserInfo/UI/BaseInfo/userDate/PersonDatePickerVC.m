@@ -46,7 +46,7 @@
     _datePicker.datePickerMode = UIDatePickerModeDate;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"YYYY-MM-DD"];
     if(_dateString.length != 0){
         NSDate *endDate = [dateFormatter dateFromString:_dateString];
         [_datePicker setDate:endDate];
@@ -61,7 +61,7 @@
 -(void)saveDateInfo{
     NSDate *date = _datePicker.date;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"YYYY-MM-DD"];
     NSString *strDate = [dateFormatter stringFromDate:date];
     
     if(_delegate && [_delegate respondsToSelector:@selector(didSelectDate:)]){

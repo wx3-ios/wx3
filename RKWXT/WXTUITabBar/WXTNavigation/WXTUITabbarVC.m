@@ -8,12 +8,13 @@
 
 #import "WXTUITabbarVC.h"
 #import "WXTFindVC.h"
-#import "FindCommonVC.h"
+#import "CompanyVC.h"
 #import "WXTMallViewController.h"
 #import "UserInfoVC.h"
 #import "ContactsCallViewController.h"
 #import "CallViewController.h"
 #import "PopMenu.h"
+#import "CustomMadeOBJ.h"
 
 #define kTabBarHeight KTabBarHeight
 #define TabBaryGap (100)
@@ -49,9 +50,9 @@ typedef enum{
     
     WXTMallViewController * mallVC = [[[WXTMallViewController alloc] init] autorelease];
     ContactsCallViewController *callview = [[[ContactsCallViewController alloc] init] autorelease];
-//    WXTFindVC *phoneView = [[[WXTFindVC alloc] init] autorelease];
-    FindCommonVC *phoneView = [[[FindCommonVC alloc] init] autorelease];
+    WXTFindVC *phoneView = [[[WXTFindVC alloc] init] autorelease];
     UserInfoVC *infoVC = [[[UserInfoVC alloc] init] autorelease];
+    CompanyVC *companyVC = [[[CompanyVC alloc] init] autorelease];
     
     WXUITabBarItem *mallItem = [self createTabbarItem];
     [mallItem setTabBarItemImage:[UIImage imageNamed:@"MallNormal.png"] forState:WXButtonControlState_Normal];
@@ -79,11 +80,21 @@ typedef enum{
     WXUITabBar *tabBar = [[[WXUITabBar alloc] initWithTabBarHeight:kTabBarHeight] autorelease];
     if([self showTabbarNumber] == 3){
         [tabBar setTabBarItems:[NSArray arrayWithObjects:callItem,findItem,moreItem, nil]];
-        if(self = [super initWithControllers:[NSArray arrayWithObjects:callview,phoneView,infoVC, nil] tabBar:tabBar]){
+        if([CustomMadeOBJ sharedCustomMadeOBJS].showCompany == 1){//展示公司
+            if(self = [super initWithControllers:[NSArray arrayWithObjects:callview,companyVC,infoVC, nil] tabBar:tabBar]){
+            }else{}
+        }else{
+            if(self = [super initWithControllers:[NSArray arrayWithObjects:callview,phoneView,infoVC, nil] tabBar:tabBar]){
+            }else{}
         }
     }else{
         [tabBar setTabBarItems:[NSArray arrayWithObjects:mallItem,callItem,findItem,moreItem, nil]];
-        if(self = [super initWithControllers:[NSArray arrayWithObjects:mallVC,callview,phoneView,infoVC, nil] tabBar:tabBar]){
+        if([CustomMadeOBJ sharedCustomMadeOBJS].showCompany == 1){
+            if(self = [super initWithControllers:[NSArray arrayWithObjects:mallVC,callview,companyVC,infoVC, nil] tabBar:tabBar]){
+            }else{}
+        }else{
+            if(self = [super initWithControllers:[NSArray arrayWithObjects:mallVC,callview,phoneView,infoVC, nil] tabBar:tabBar]){
+            }else{}
         }
     }
     [tabBar setBackgroundColor:[UIColor whiteColor]];

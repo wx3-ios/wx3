@@ -8,13 +8,16 @@
 
 #import "BaseInfoVC.h"
 #import "BaseInfoDef.h"
+#import "PersonalInfoModel.h"
+#import "PersonalInfoEntity.h"
 
 #define Size self.bounds.size
 
-@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate>{
+@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate,PersonalInfoModelDelegate>{
     UITableView *_tableView;
+    PersonalInfoModel *_model;
 }
-@property (nonatomic,assign) BOOL bSex;
+@property (nonatomic,assign) NSInteger bSex; //1男 2女
 @property (nonatomic,strong) NSString *nickNameStr;
 @property (nonatomic,strong) NSString *dateStr;
 @end
@@ -36,7 +39,33 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
-    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [_tableView setTableFooterView:[self tableForFootView]];
+    
+    _model = [[PersonalInfoModel alloc] init];
+    [_model setDelegate:self];
+    [self loadPersonalInfo];
+}
+
+-(WXUIView*)tableForFootView{
+    WXUIView *footView = [[WXUIView alloc] init];
+    
+    CGFloat yOffset = 40;
+    CGFloat btnHeight = 44;
+    WXUIButton *submitBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    submitBtn.frame = CGRectMake(30, yOffset, IPHONE_SCREEN_WIDTH-2*30, btnHeight);
+    [submitBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [submitBtn setBorderRadian:10.0 width:0.1 color:WXColorWithInteger(0xdd2726)];
+    [submitBtn setTitle:@"提交信息" forState:UIControlStateNormal];
+    [submitBtn setTitle:@"提交信息" forState:UIControlStateSelected];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [submitBtn addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
+    [footView addSubview:submitBtn];
+    
+    yOffset += btnHeight;
+    CGRect rect = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, yOffset);
+    [footView setFrame:rect];
+    return footView;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -104,7 +133,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
             str = _nickNameStr;
             break;
         case BaseInfo_Usersex:
-            str = (_bSex==0?@"男":@"女");
+            str = (_bSex==1?@"男":@"女");
             break;
         case BaseInfo_Userdate:
             str = _dateStr;
@@ -201,21 +230,52 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
                 [self.wxNavigationController pushViewController:addressVC];
             }
                 break;
-//            case ManagerPassword:
-//            {
-//                WXTResetPwdVC *resetPwdVC = [[WXTResetPwdVC alloc] init];
-//                [self.wxNavigationController pushViewController:resetPwdVC];
-//            }
-//                break;
             default:
                 break;
         }
     }
 }
 
+#pragma mark update
+-(void)submit{
+    if(!self.dateStr || !self.nickNameStr || (self.bSex == 0)){
+        [UtilTool showAlertView:@"请填写个人信息"];
+        return;
+    }
+    [_model setType:PersonalInfo_Type_Updata];
+    [_model updataUserInfoWith:self.bSex withNickName:self.nickNameStr withBirthday:self.dateStr];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+#pragma mark load
+-(void)loadPersonalInfo{
+    [_model setType:PersonalInfo_Type_Load];
+    [_model loadUserInfo];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)loadPersonalInfoSucceed{
+    [self unShowWaitView];
+    if([_model.personalInfoArr count] > 0){
+        PersonalInfoEntity *entity = [_model.personalInfoArr objectAtIndex:0];
+        self.bSex = entity.bsex;
+        self.dateStr = [UtilTool getDateTimeFor:entity.birthday type:2];
+        self.nickNameStr = entity.userNickName;
+    }
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_Base_UserInfo] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)loadPersonalInfoFainled:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取信息失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
 #pragma mark 选择性别
 -(void)didSelectAtIndex:(NSInteger)index{
-    self.bSex = index;
+    self.bSex = index+1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:BaseInfo_Usersex inSection:T_Base_UserInfo];
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
 }

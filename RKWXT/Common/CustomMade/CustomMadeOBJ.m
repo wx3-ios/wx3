@@ -29,6 +29,7 @@ typedef enum {
 #define D_KEY_APP_AREAID	@"D_KEY_APP_AREAID"
 #define D_KEY_FIND_NAME    @"D_KEY_FIND_NAME"
 #define D_KEY_FIND_SHOWNAV @"D_KEY_FIND_SHOWNAV"
+#define D_KEY_SHOWCOMPANY @"D_KEY_SHOWCOMPANY"
 
 #pragma mark 引导页
 #define D_KEY_APP_GUIDE @"D_KEY_APP_GUIDE"
@@ -117,6 +118,11 @@ typedef enum {
     NSString *findName = [_customMadeDic objectForKey:D_KEY_FIND_NAME];
     KFLog_Normal(YES, @"findName = %@",findName);
     return findName;
+}
+//展示公司
+-(NSInteger)showCompany{
+    NSInteger show = [[_customMadeDic objectForKey:D_KEY_SHOWCOMPANY] integerValue];
+    return show;
 }
 
 -(NSInteger)showFindNav{

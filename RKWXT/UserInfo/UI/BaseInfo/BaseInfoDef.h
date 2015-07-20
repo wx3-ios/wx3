@@ -30,7 +30,6 @@ enum{
 
 enum{
     ManagerAddress = 0,
-//    ManagerPassword,
     
     Manager_Invalid,
 };
