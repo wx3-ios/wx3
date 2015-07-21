@@ -183,7 +183,6 @@ enum{
     yOffset += 10;
     _fetchPwd = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width-75, height)];
     [_fetchPwd setReturnKeyType:UIReturnKeyDone];
-    [_fetchPwd setSecureTextEntry:YES];
     [_fetchPwd addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_fetchPwd addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
     [_fetchPwd setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
@@ -233,7 +232,6 @@ enum{
     yOffset += 10;
     _pwdTextfield = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
     [_pwdTextfield setReturnKeyType:UIReturnKeyDone];
-    [_pwdTextfield setSecureTextEntry:YES];
     [_pwdTextfield addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_pwdTextfield addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
     [_pwdTextfield setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
@@ -451,12 +449,11 @@ enum{
 
 -(BOOL)checkPwdStyleWith:(NSString*)pwdString{
     BOOL isOk = YES;
-    for(NSInteger i = 0;i < [pwdString length]-1; i++){
-        char c = (char)[pwdString substringWithRange:NSMakeRange(i, i+1)];
-        if(!(c <= 'z' && c >= 'a') || !(c <= 'Z' && c >= 'A') || !(c >= '0' && c <= '9')){
-            [UtilTool showAlertView:@"对不起，密码由数字和字母组成，请重新输入"];
-            isOk = NO;
-            break;
+    for(NSInteger i = 0;i < [pwdString length]; i++){
+        char ch = [pwdString characterAtIndex:i];
+        if(!((ch <= 'z' && ch >= 'a') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9'))){
+            [UtilTool showAlertView:@"密码不能含有数字和字母以外的字符"];
+            return NO;
         }
     }
     return isOk;
@@ -471,8 +468,8 @@ enum{
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
-    if(_otherPhone.text.length == 0){
-        _otherPhone.text = @"1";
+    if(!_otherPhone.text){
+        _otherPhone.text = @"";
     }
     [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:_otherPhone.text];  //暂时无需填写推荐人手机号
 }

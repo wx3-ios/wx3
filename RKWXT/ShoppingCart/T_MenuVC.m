@@ -367,4 +367,11 @@
     return entity;
 }
 
+-(void)goodsImgBtnClicked:(NSInteger)goodsID{
+    if(goodsID == 0){
+        return;
+    }
+    [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:goodsID animated:YES];
+}
+
 @end

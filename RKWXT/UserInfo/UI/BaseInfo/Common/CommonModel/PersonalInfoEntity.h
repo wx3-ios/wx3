@@ -10,7 +10,7 @@
 
 @interface PersonalInfoEntity : NSObject
 @property (nonatomic,assign) NSInteger bsex;
-@property (nonatomic,assign) NSInteger birthday;
+@property (nonatomic,strong) NSString *birthday;
 @property (nonatomic,strong) NSString *userNickName;
 
 +(PersonalInfoEntity*)initWithPersonalInfoWith:(NSDictionary*)dic;

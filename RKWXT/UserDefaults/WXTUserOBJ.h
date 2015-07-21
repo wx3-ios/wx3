@@ -18,12 +18,14 @@
 -(void)setPwd:(NSString*)pwd;      //设置密码
 -(void)setToken:(NSString*)token;  //设置令牌
 -(void)setSmsID:(int)smsID;        //验证码ID
+-(void)setNickname:(NSString*)nickname; //昵称
 
 -(NSString*)wxtID;
 -(NSString*)user;
 -(NSString*)pwd;
 -(NSString*)token;
 -(int)smsID;
+-(NSString*)nickname;
 
 -(void)removeAllUserInfo;
 

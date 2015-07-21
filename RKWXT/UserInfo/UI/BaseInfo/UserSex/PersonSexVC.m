@@ -9,8 +9,10 @@
 #import "PersonSexVC.h"
 
 enum{
-    Personal_Sex_Boy = 0,
+    Personal_Sex_None = 0,
+    Personal_Sex_Boy,
     Personal_Sex_Girl,
+    Personal_Sex_Secret,
     
     Personal_Sex_Invalid,
 };
@@ -45,11 +47,17 @@ enum{
     }
     NSInteger row = indexPath.row;
     switch (row) {
+        case Personal_Sex_None:
+            cell.textLabel.text = @"未知";
+            break;
         case Personal_Sex_Boy:
             cell.textLabel.text = @"男";
             break;
         case Personal_Sex_Girl:
             cell.textLabel.text = @"女";
+            break;
+        case Personal_Sex_Secret:
+            cell.textLabel.text = @"保密";
             break;
         default:
             break;
@@ -65,9 +73,9 @@ enum{
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger row = indexPath.row;
-    if(row == _sexSelectedIndex){
-        return;
-    }
+//    if(row == _sexSelectedIndex){
+//        return;
+//    }
     _sexSelectedIndex = row;
     [_tableView reloadData];
     if(_delegate && [_delegate respondsToSelector:@selector(didSelectAtIndex:)]){

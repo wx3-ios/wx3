@@ -435,12 +435,11 @@ enum{
 
 -(BOOL)checkPwdStyleWith:(NSString*)pwdString{
     BOOL isOk = YES;
-    for(NSInteger i = 0;i < [pwdString length]-1; i++){
-        char c = (char)[pwdString substringWithRange:NSMakeRange(i, i+1)];
-        if(!(c <= 'z' && c >= 'a') || !(c <= 'Z' && c >= 'A') || !(c >= '0' && c <= '9')){
-            [UtilTool showAlertView:@"对不起，密码由数字和字母组成，请重新输入"];
-            isOk = NO;
-            break;
+    for(NSInteger i = 0;i < [pwdString length]; i++){
+        char ch = [pwdString characterAtIndex:i];
+        if(!((ch <= 'z' && ch >= 'a') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9'))){
+            [UtilTool showAlertView:@"密码不能含有数字和字母以外的字符"];
+            return NO;
         }
     }
     return isOk;

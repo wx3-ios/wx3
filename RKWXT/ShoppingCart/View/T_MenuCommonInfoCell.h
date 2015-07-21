@@ -17,6 +17,7 @@
 @end
 
 @protocol deleteStoreGoods <NSObject>
+-(void)goodsImgBtnClicked:(NSInteger)goodsID;
 -(void)deleteGoods:(NSInteger)cart_id;
 -(void)selectGoods;
 -(void)cancelGoods;

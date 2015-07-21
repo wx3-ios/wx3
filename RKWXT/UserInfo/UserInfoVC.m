@@ -14,6 +14,7 @@
 
 @interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,PersonalOrderInfoDelegate>{
     UITableView *_tableView;
+    WXUILabel *namelabel;
 }
 @end
 
@@ -22,6 +23,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
+    if(namelabel){
+        WXTUserOBJ *user = [WXTUserOBJ sharedUserOBJ];
+        if(user.nickname){
+            [namelabel setText:user.nickname];
+        }
+    }
 }
 
 -(void)viewDidLoad{
@@ -73,14 +80,19 @@
     [headView addSubview:phoneLabel];
     
     yOffset += phoneLabelHeight+2;
-    WXUILabel *namelabel = [[WXUILabel alloc] init];
+    namelabel = [[WXUILabel alloc] init];
     namelabel.frame = CGRectMake((IPHONE_SCREEN_WIDTH-phoneLabelWidth)/2, yOffset, phoneLabelWidth, phoneLabelHeight);
     [namelabel setBackgroundColor:[UIColor clearColor]];
     [namelabel setFont:WXFont(12.0)];
     [namelabel setTextColor:WXColorWithInteger(0xffffff)];
-    [namelabel setText:@"我是风儿"];
     [namelabel setTextAlignment:NSTextAlignmentCenter];
     [headView addSubview:namelabel];
+    
+    if(userDefault.nickname){
+        [namelabel setText:userDefault.nickname];
+    }else{
+        [namelabel setText:@"空"];
+    }
     
     yOffset += phoneLabelHeight;
     xOffset += phoneLabelWidth;

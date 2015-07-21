@@ -25,6 +25,8 @@ typedef enum{
 @end
 
 @protocol PersonalInfoModelDelegate <NSObject>
+-(void)updataPersonalInfoSucceed;
+-(void)updataPersonalInfoFailed:(NSString*)errorMsg;
 -(void)loadPersonalInfoSucceed;
 -(void)loadPersonalInfoFainled:(NSString*)errorMsg;
 

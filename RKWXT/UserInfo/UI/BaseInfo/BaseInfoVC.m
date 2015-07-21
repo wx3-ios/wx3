@@ -133,7 +133,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
             str = _nickNameStr;
             break;
         case BaseInfo_Usersex:
-            str = (_bSex==1?@"男":@"女");
+            str = (_bSex==1?@"男":(_bSex==2?@"女":(_bSex==3?@"保密":@"未知")));
             break;
         case BaseInfo_Userdate:
             str = _dateStr;
@@ -201,11 +201,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
             case BaseInfo_Usersex:
             {
                 PersonSexVC *sexVC= [[PersonSexVC alloc] init];
-                if(_bSex){
-                    sexVC.sexSelectedIndex = 1;
-                }else{
-                    sexVC.sexSelectedIndex = 0;
-                }
+                sexVC.sexSelectedIndex = _bSex;
                 [sexVC setDelegate:self];
                 [self.wxNavigationController pushViewController:sexVC];
             }
@@ -238,13 +234,33 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 
 #pragma mark update
 -(void)submit{
-    if(!self.dateStr || !self.nickNameStr || (self.bSex == 0)){
-        [UtilTool showAlertView:@"请填写个人信息"];
-        return;
+    if(!self.dateStr){
+        self.dateStr = @"";
+    }
+    if(!self.nickNameStr){
+        self.nickNameStr = @"";
     }
     [_model setType:PersonalInfo_Type_Updata];
     [_model updataUserInfoWith:self.bSex withNickName:self.nickNameStr withBirthday:self.dateStr];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)updataPersonalInfoSucceed{
+    [self unShowWaitView];
+    [UtilTool showAlertView:@"上传成功"];
+    
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    if(self.nickNameStr){
+        [userDefault setNickname:self.nickNameStr];
+    }
+}
+
+-(void)updataPersonalInfoFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"上传信息失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 #pragma mark load
@@ -259,8 +275,13 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     if([_model.personalInfoArr count] > 0){
         PersonalInfoEntity *entity = [_model.personalInfoArr objectAtIndex:0];
         self.bSex = entity.bsex;
-        self.dateStr = [UtilTool getDateTimeFor:entity.birthday type:2];
+        self.dateStr = entity.birthday;
         self.nickNameStr = entity.userNickName;
+        
+        WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+        if(self.nickNameStr){
+            [userDefault setNickname:self.nickNameStr];
+        }
     }
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_Base_UserInfo] withRowAnimation:UITableViewRowAnimationFade];
 }
@@ -275,7 +296,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 
 #pragma mark 选择性别
 -(void)didSelectAtIndex:(NSInteger)index{
-    self.bSex = index+1;
+    self.bSex = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:BaseInfo_Usersex inSection:T_Base_UserInfo];
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
 }
@@ -288,7 +309,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 }
 
 -(void)didSetPersonNickname:(NSString *)nickName{
-    _nickNameStr = nickName;
+    self.nickNameStr = nickName;
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:BaseInfo_Nickname inSection:T_Base_UserInfo];
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }

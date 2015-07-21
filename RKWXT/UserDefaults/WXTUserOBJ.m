@@ -41,6 +41,11 @@
     [userDefault setObject:user forKey:WXT_Userdefault_User];
 }
 
+-(void)setNickname:(NSString *)nickname{
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    [userDefault setObject:nickname forKey:WXT_Userdefault_Nickname];
+}
+
 -(void)setPwd:(NSString *)pwd{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     [userDefault setObject:pwd forKey:WXT_Userdefault_Pwd];
@@ -70,6 +75,11 @@
 -(NSString*)user{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     return [userDefault textValueForKey:WXT_Userdefault_User];
+}
+
+-(NSString*)nickname{
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    return [userDefault textValueForKey:WXT_Userdefault_Nickname];
 }
 
 -(NSString*)pwd{

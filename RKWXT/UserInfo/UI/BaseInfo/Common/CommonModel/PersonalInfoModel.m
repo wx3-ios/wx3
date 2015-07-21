@@ -32,6 +32,7 @@
                          @"iOS", @"pid",
                          userObj.wxtID, @"woxin_id",
                          userObj.user, @"phone",
+                         [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd",
                          [NSNumber numberWithInt:_type], @"type",
                          [UtilTool currentVersion], @"ver",
                          [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts",
@@ -41,12 +42,13 @@
                          nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_PersonalInfo httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
-            if(!retData.errorDesc){
-                [UtilTool showAlertView:@"上传个人信息失败"];
-            }else{
-                [UtilTool showAlertView:retData.errorDesc];
+            if(_delegate && [_delegate respondsToSelector:@selector(updataPersonalInfoFailed:)]){
+                [_delegate updataPersonalInfoFailed:retData.errorDesc];
             }
         }else{
+            if(_delegate && [_delegate respondsToSelector:@selector(updataPersonalInfoSucceed)]){
+                [_delegate updataPersonalInfoSucceed];
+            }
         }
     }];
 }
@@ -68,6 +70,7 @@
                          @"iOS", @"pid",
                          userObj.wxtID, @"woxin_id",
                          userObj.user, @"phone",
+                         [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd",
                          [NSNumber numberWithInt:_type], @"type",
                          [UtilTool currentVersion], @"ver",
                          [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts",

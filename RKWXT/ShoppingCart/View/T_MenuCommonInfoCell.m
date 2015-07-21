@@ -11,7 +11,7 @@
 #import "T_MeunDef.h"
 #import "ShoppingCartEntity.h"
 
-@interface T_MenuCommonInfoCell(){
+@interface T_MenuCommonInfoCell()<WXRemotionImgBtnDelegate>{
     WXUIButton *_circleBtn;
     WXRemotionImgBtn *_imgView;
     WXUILabel *_namelabel;
@@ -57,7 +57,7 @@
         CGFloat imgWidth = 55;
         CGFloat imgHeight = 55;
         _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (T_MenuCommonCellHeight-imgHeight)/2, imgWidth, imgHeight)];
-        [_imgView setUserInteractionEnabled:NO];
+        [_imgView setDelegate:self];
         [self.contentView addSubview:_imgView];
         
         xOffset += imgWidth+10;
@@ -250,6 +250,13 @@
         [_circleBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
     }else{
         [_circleBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
+    }
+}
+
+-(void)buttonImageClicked:(id)sender{
+    ShoppingCartEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(goodsImgBtnClicked:)]){
+        [_delegate goodsImgBtnClicked:entity.goods_id];
     }
 }
 
