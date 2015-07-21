@@ -32,7 +32,6 @@ enum{
 
 - (void)dealloc{
     _delegate = nil;
-//    [super dealloc];
 }
 
 - (CGSize)clipImageSize:(E_Image_Type)type{
@@ -102,7 +101,7 @@ enum{
                 WXUIImagePickerController *imagePickerController = [[WXUIImagePickerController alloc] init];
                 [imagePickerController setDelegate:self];
                 imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                NSMutableArray *mediaTypes = [[NSMutableArray alloc] init] ;
+                NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
                 [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
                 imagePickerController.mediaTypes = mediaTypes;
                 [_parentVC presentViewController:imagePickerController animated:YES completion:^{
@@ -160,7 +159,7 @@ enum{
         CGFloat rat = ((CGFloat)[self maxSizeOfImageType:_clipImageType])/(CGFloat)imgDataLength;
         if(rat < 1.0){
             imgData = UIImageJPEGRepresentation(image, sqrtf(rat));
-//            image = [UIImage imageWithData:imgData];
+            //            image = [UIImage imageWithData:imgData];
         }
         KFLog_Normal(YES, @"cliped image size = %d",(int)imgData.length);
         [_delegate imageClipeFinished:self finalImageData:imgData];

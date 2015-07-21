@@ -50,6 +50,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_Call,
     WXT_UrlFeed_Type_New_Sign,
     WXT_UrlFeed_Type_New_PersonalInfo,
+    WXT_UrlFeed_Type_New_Recharge,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

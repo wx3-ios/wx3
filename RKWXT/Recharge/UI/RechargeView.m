@@ -16,6 +16,8 @@
     UITextField *_numTextfield;
     UITextField *_pwdTextfield;
     RechargeModel *_model;
+    
+    UIActivityIndicatorView *testActivityIndicator;
 }
 @end
 
@@ -36,6 +38,13 @@
         
         _model = [[RechargeModel alloc] init];
         [_model setDelegate:self];
+        
+        testActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        testActivityIndicator.center = CGPointMake(IPHONE_SCREEN_WIDTH/2-100/2, 150);
+        testActivityIndicator.frame = CGRectMake(IPHONE_SCREEN_WIDTH/2-100/2, 150, 100, 100);
+        testActivityIndicator.color = [UIColor redColor];
+        [testActivityIndicator setHidesWhenStopped:YES];
+        [self addSubview:testActivityIndicator];
     }
     return self;
 }
@@ -138,18 +147,22 @@
         [UtilTool showAlertView:@"帐号或密码格式错误"];
         return;
     }
+    [testActivityIndicator setHidden:NO];
+    [testActivityIndicator startAnimating];
     NSString *numberStr = _numTextfield.text;
     NSString *pwdStr = _pwdTextfield.text;
-    [_model rechargeWithCardNum:numberStr andPwd:pwdStr withRechargePhone:_rechargeUserphoneStr];
+    [_model rechargeWithCardNum:numberStr andPwd:pwdStr];
 }
 
 -(void)rechargeSucceed{
+    [testActivityIndicator stopAnimating];
     [_numTextfield setText:nil];
     [_pwdTextfield setText:nil];
     [UtilTool showAlertView:@"充值成功"];
 }
 
 -(void)rechargeFailed:(NSString *)errorMsg{
+    [testActivityIndicator stopAnimating];
     if(!errorMsg){
         [UtilTool showAlertView:@"充值失败"];
         return;

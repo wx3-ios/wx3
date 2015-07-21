@@ -9,5 +9,6 @@
 #import "WXUITableViewCell.h"
 
 @interface BaseInfoHeadCell : WXUITableViewCell
+@property (nonatomic,strong) UIImage *img;
 
 @end

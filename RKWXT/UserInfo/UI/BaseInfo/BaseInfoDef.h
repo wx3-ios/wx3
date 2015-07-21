@@ -20,8 +20,8 @@ enum{
 };
 
 enum{
-//    BaseInfo_Userhead = 0,
-    BaseInfo_Nickname = 0,
+    BaseInfo_Userhead = 0,
+    BaseInfo_Nickname,
     BaseInfo_Usersex,
     BaseInfo_Userdate,
 

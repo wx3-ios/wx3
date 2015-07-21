@@ -10,12 +10,17 @@
 #import "BaseInfoDef.h"
 #import "PersonalInfoModel.h"
 #import "PersonalInfoEntity.h"
+#import "WXImageClipOBJ.h"
+#import "UserHeaderImgModel.h"
 
 #define Size self.bounds.size
 
-@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate,PersonalInfoModelDelegate>{
+@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate,PersonalInfoModelDelegate,WXImageClipOBJDelegate>{
     UITableView *_tableView;
     PersonalInfoModel *_model;
+    WXImageClipOBJ *_imageClipOBJ;
+    
+    UIImage *headerImg;
 }
 @property (nonatomic,assign) NSInteger bSex; //1男 2女
 @property (nonatomic,strong) NSString *nickNameStr;
@@ -24,7 +29,7 @@
 
 @implementation BaseInfoVC
 static NSString *_nameListArray[BaseInfo_Invalid]={
-//    @"头像",
+    @"头像",
     @"昵称",
     @"性别",
     @"出生日期"
@@ -43,7 +48,19 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     
     _model = [[PersonalInfoModel alloc] init];
     [_model setDelegate:self];
-    [self loadPersonalInfo];
+//    [self loadPersonalInfo];
+    
+    _imageClipOBJ = [[WXImageClipOBJ alloc] init];
+    [_imageClipOBJ setDelegate:self];
+    [_imageClipOBJ setClipImageType:E_ImageType_Personal_Img];
+    [_imageClipOBJ setParentVC:self];
+    
+    
+    NSString *iconPath = [NSString stringWithFormat:@"%@/icon/userIcon",[UtilTool documentPath]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if([fileManager fileExistsAtPath:iconPath]){
+        headerImg = [UIImage imageWithContentsOfFile:iconPath];
+    }
 }
 
 -(WXUIView*)tableForFootView{
@@ -97,11 +114,11 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = BaseInfoForCommonCellHeight;
-//    NSInteger section = indexPath.section;
-//    NSInteger row = indexPath.row;
-//    if(section == T_Base_UserInfo && row == BaseInfo_Userhead){
-//        height = BaseInfoForUserHeadHeight;
-//    }
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if(section == T_Base_UserInfo && row == BaseInfo_Userhead){
+        height = BaseInfoForUserHeadHeight;
+    }
     return height;
 }
 
@@ -114,6 +131,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell.textLabel setText:_nameListArray[row]];
     [cell.textLabel setFont:WXFont(15.0)];
+    [cell setImg:headerImg];
     [cell load];
     return cell;
 }
@@ -167,12 +185,12 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     NSInteger row = indexPath.row;
     switch (section) {
         case T_Base_UserInfo:
-//            if(row == BaseInfo_Userhead){
-//                cell = [self tableViewForBaseInfoHeadImgCell:row];
-//            }else{
-//                cell = [self tableViewForCommonCellAtRow:row];
-//            }
-            cell = [self tableViewForCommonCellAtRow:row];
+            if(row == BaseInfo_Userhead){
+                cell = [self tableViewForBaseInfoHeadImgCell:row];
+            }else{
+                cell = [self tableViewForCommonCellAtRow:row];
+            }
+//            cell = [self tableViewForCommonCellAtRow:row];
             break;
         case T_Base_ManagerInfo:
             cell = [self tableViewForManagerCellAtRow:row];
@@ -189,8 +207,11 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     NSInteger row = indexPath.row;
     if(section == T_Base_UserInfo){
         switch (row) {
-//            case BaseInfo_Userhead:
-//                break;
+            case BaseInfo_Userhead:
+            {
+                [self changeheadImg:nil];
+            }
+                break;
             case BaseInfo_Nickname:
             {
                 PersonNicknameVC *nickNameVC = [[PersonNicknameVC alloc] init];
@@ -316,6 +337,30 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark 头像
+-(void)changeheadImg:(id)sender{
+    [_imageClipOBJ beginChooseAndClipeImage];
+}
+
+-(void)imageClipeFinished:(WXImageClipOBJ *)clipOBJ finalImageData:(NSData *)imageData{
+    if(![[UserHeaderImgModel shareUserHeaderImgModel] uploadUserHeaderImgWith:imageData]){
+        [UtilTool showAlertView:@"上传失败"];
+        return;
+    }
+    headerImg = [UIImage imageWithData:imageData];
+//    NSString *iconPath = [NSString stringWithFormat:@"%@/icon/userIcon",[UtilTool documentPath]];
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    if([fileManager fileExistsAtPath:iconPath]){
+//        headerImg = [UIImage imageWithContentsOfFile:iconPath];
+//    }
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:BaseInfo_Userhead inSection:T_Base_UserInfo];
+    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexpath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)imageClipeFailed:(WXImageClipOBJ*)clipOBJ{
+    [UtilTool showAlertView:nil message:@"图片裁剪失败" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
 }
 
 @end

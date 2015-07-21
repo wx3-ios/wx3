@@ -233,6 +233,7 @@
 		128221ED1B18716E004613BB /* URLBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128221EB1B18716E004613BB /* URLBaseModel.m */; };
 		128254FD1B4B5F4900C60146 /* OrderListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128254FC1B4B5F4900C60146 /* OrderListTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		128255011B4BA5EF00C60146 /* OrderDealRefundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 128255001B4BA5EF00C60146 /* OrderDealRefundVC.m */; };
+		1282EF831B5E33B5004D2019 /* UserHeaderImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1282EF821B5E33B5004D2019 /* UserHeaderImgModel.m */; };
 		12846A8A1B252D720021F9FE /* LoginUpBgImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A861B252D720021F9FE /* LoginUpBgImg@2x.png */; };
 		12846A8B1B252D720021F9FE /* LoginUpSmallImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A871B252D720021F9FE /* LoginUpSmallImg@2x.png */; };
 		12846A8C1B252D720021F9FE /* LoginUserImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12846A881B252D720021F9FE /* LoginUserImg@2x.png */; };
@@ -1054,6 +1055,8 @@
 		128254FC1B4B5F4900C60146 /* OrderListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableView.m; sourceTree = "<group>"; };
 		128254FF1B4BA5EF00C60146 /* OrderDealRefundVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDealRefundVC.h; sourceTree = "<group>"; };
 		128255001B4BA5EF00C60146 /* OrderDealRefundVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDealRefundVC.m; sourceTree = "<group>"; };
+		1282EF811B5E33B5004D2019 /* UserHeaderImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderImgModel.h; sourceTree = "<group>"; };
+		1282EF821B5E33B5004D2019 /* UserHeaderImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderImgModel.m; sourceTree = "<group>"; };
 		12846A861B252D720021F9FE /* LoginUpBgImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUpBgImg@2x.png"; sourceTree = "<group>"; };
 		12846A871B252D720021F9FE /* LoginUpSmallImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUpSmallImg@2x.png"; sourceTree = "<group>"; };
 		12846A881B252D720021F9FE /* LoginUserImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginUserImg@2x.png"; sourceTree = "<group>"; };
@@ -2693,6 +2696,15 @@
 			path = Refund;
 			sourceTree = "<group>";
 		};
+		1282EF801B5E3397004D2019 /* UserHeader */ = {
+			isa = PBXGroup;
+			children = (
+				1282EF811B5E33B5004D2019 /* UserHeaderImgModel.h */,
+				1282EF821B5E33B5004D2019 /* UserHeaderImgModel.m */,
+			);
+			path = UserHeader;
+			sourceTree = "<group>";
+		};
 		12846A851B252D720021F9FE /* LoginImg */ = {
 			isa = PBXGroup;
 			children = (
@@ -3794,6 +3806,7 @@
 				12F9162E1B19B20900C94717 /* BaseInfoDef.h */,
 				12F9162B1B19B0AA00C94717 /* BaseInfoVC.h */,
 				12F9162C1B19B0AA00C94717 /* BaseInfoVC.m */,
+				1282EF801B5E3397004D2019 /* UserHeader */,
 				12F916361B19B8D800C94717 /* Common */,
 				12F916301B19B56A00C94717 /* UserAddress */,
 				12F916311B19B56A00C94717 /* userDate */,
@@ -5612,6 +5625,7 @@
 				12F963391B3D4BDF00FF6A3E /* SBJsonUTF8Stream.m in Sources */,
 				12F2D8101B1F0D9100C8017F /* OrderWaitPayGoodsInfoCell.m in Sources */,
 				1282218F1B1847E7004613BB /* URLDownloadOBJ.m in Sources */,
+				1282EF831B5E33B5004D2019 /* UserHeaderImgModel.m in Sources */,
 				775C58CB1ABA7B75005B6B40 /* SubShopArea.m in Sources */,
 				775C58B61ABA7B75005B6B40 /* RedPacket.m in Sources */,
 				128767011B51012700A79320 /* ShopTwoDimensionCell.m in Sources */,

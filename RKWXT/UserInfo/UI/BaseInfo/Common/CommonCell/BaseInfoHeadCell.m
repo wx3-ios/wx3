@@ -33,6 +33,9 @@
 
 -(void)load{
     [headImg setImage:[UIImage imageNamed:@"PersonalInfoHeadImg.jpg"]];
+    if(_img){
+        [headImg setImage:_img];
+    }
 }
 
 @end

@@ -11,7 +11,7 @@
 @protocol RechargeDelegate;
 @interface RechargeModel : NSObject
 @property (nonatomic,assign) id<RechargeDelegate>delegate;
--(void)rechargeWithCardNum:(NSString*)num andPwd:(NSString*)pwd withRechargePhone:(NSString*)rechargePhone;
+-(void)rechargeWithCardNum:(NSString*)num andPwd:(NSString*)pwd;
 
 @end
 

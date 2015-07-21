@@ -26,7 +26,7 @@
     [_webView setDelegate:self];
     [self addSubview:_webView];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"www.baidu.com"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_webURl]];
     if (request){
         [_webView loadRequest:request];
     }
