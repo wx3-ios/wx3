@@ -21,6 +21,7 @@
 #import "AboutShopVC.h"
 #import "JPushMessageCenterVC.h"
 #import "JPushMessageInfoVC.h"
+#import "FindCommonVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -130,6 +131,14 @@
     JPushMessageInfoVC *infoVC = [[JPushMessageInfoVC alloc] init];
     infoVC.messageID = messageID;
     [vc.wxNavigationController pushViewController:infoVC];
+}
+
+-(void)toWebVC:(id)sender url:(NSString *)webUrl title:(NSString *)title animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    FindCommonVC *webVC = [[FindCommonVC alloc] init];
+    webVC.webURl = webUrl;
+    webVC.titleName = title;
+    [vc.wxNavigationController pushViewController:webVC];
 }
 
 @end

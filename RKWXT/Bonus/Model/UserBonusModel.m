@@ -113,6 +113,22 @@
             [_denyBonusArr addObject:entity];
         }
     }
+    [self changeTurnForAllBonusArr:_userBonusArr];
+    [self changeTurnForAllBonusArr:_denyBonusArr];
+}
+
+-(void)changeTurnForAllBonusArr:(NSMutableArray*)arr{
+    [arr sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        UserBonusEntity *item1 = obj1;
+        UserBonusEntity *item2 = obj2;
+        if (item1.bonusValue > item2.bonusValue){
+            return NSOrderedDescending;
+        }else if (item1.bonusValue == item2.bonusValue){
+            return NSOrderedSame;
+        }else{
+            return NSOrderedAscending;
+        }
+    }];
 }
 
 -(BOOL)isValidBonus:(UserBonusEntity*)ent{
@@ -159,6 +175,7 @@
             [_denyBonusArr addObject:entity];
         }
     }
+    [self changeTurnForAllBonusArr:_denyBonusArr];
 }
 
 @end

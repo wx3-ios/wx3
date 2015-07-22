@@ -222,7 +222,13 @@
     NSInteger number = 0;
     switch (section) {
         case PersonalInfo_Order:
-            number = Order_Invalid;
+        {
+            if([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Eatable){
+                number = 0;
+            }else{
+                number = Order_Invalid;
+            }
+        }
             break;
 //        case PersonalInfo_Money:
 //            number = Money_Invalid;
@@ -247,6 +253,12 @@
     if(indexPath.section == PersonalInfo_Order && indexPath.row == Order_Category){
         height = 53;
     }
+    if([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Eatable){
+        if(indexPath.section == PersonalInfo_Order){
+            height = 0;
+        }
+    }
+    
 //    if(indexPath.section == PersonalInfo_Money && indexPath.row == Money_Category){
 //        height = 53;
 //    }

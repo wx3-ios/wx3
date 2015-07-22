@@ -109,6 +109,7 @@
         [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];
         
+        [[NewWXTLiDB sharedWXLibDB] loadData];
         //自动登录
         WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
 //        LoginModel *_loginModel = [[LoginModel alloc] init];

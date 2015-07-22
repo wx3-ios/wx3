@@ -10,7 +10,7 @@
 
 @interface HomePageTopEntity : NSObject
 @property (nonatomic,assign) NSInteger topType;//top_id
-@property (nonatomic,strong) NSString *linkAddress; //链接地址
+@property (nonatomic,assign) NSInteger linkID; //链接地址
 @property (nonatomic,strong) NSString *topImg; //图片URL
 
 +(HomePageTopEntity*)homePageTopEntityWithDictionary:(NSDictionary*)dic;

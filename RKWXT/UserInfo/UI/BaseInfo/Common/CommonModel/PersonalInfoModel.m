@@ -46,6 +46,7 @@
                 [_delegate updataPersonalInfoFailed:retData.errorDesc];
             }
         }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_UploadUserInfo object:nil];
             if(_delegate && [_delegate respondsToSelector:@selector(updataPersonalInfoSucceed)]){
                 [_delegate updataPersonalInfoSucceed];
             }
@@ -83,7 +84,6 @@
             }
         }else{
             [blockSelf parsePersonalInfo:[retData.data objectForKey:@"data"]];
-            [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_UploadUserInfo object:nil];
             if(_delegate && [_delegate respondsToSelector:@selector(loadPersonalInfoSucceed)]){
                 [_delegate loadPersonalInfoSucceed];
             }

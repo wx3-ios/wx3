@@ -22,8 +22,8 @@
         NSString *topImg = [dic objectForKey:@"top_image"];
         [self setTopImg:topImg];
         
-        NSString *address = [dic objectForKey:@"top_address_id"];
-        [self setLinkAddress:address];
+        NSInteger link = [[dic objectForKey:@"top_address_id"] integerValue];
+        [self setLinkID:link];
         
         NSInteger type = [[dic objectForKey:@"top_nav_type_id"] integerValue];
         [self setTopType:type];

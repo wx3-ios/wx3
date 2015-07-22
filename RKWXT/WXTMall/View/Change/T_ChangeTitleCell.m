@@ -18,7 +18,7 @@
         CGFloat textWidth = 70;
         CGFloat textHeight = 20;
         WXUILabel *textLabel = [[WXUILabel alloc] init];
-        textLabel.frame = CGRectMake(xOffset, yOffset, textWidth, textHeight);
+        textLabel.frame = CGRectMake(xOffset+12, yOffset, textWidth, textHeight);
         [textLabel setText:@"更多惊喜"];
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setFont:[UIFont systemFontOfSize:BigTextFont]];

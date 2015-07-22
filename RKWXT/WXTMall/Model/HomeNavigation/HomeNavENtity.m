@@ -32,8 +32,8 @@
         NSString *imgUrl = [dic objectForKey:@"nav_img"];
         [self setImgUrl:imgUrl];
         
-        NSString *address = [dic objectForKey:@"nav_address_id"];
-        [self setAddress:address];
+        NSInteger address = [[dic objectForKey:@"nav_address_id"] integerValue];
+        [self setNavID:address];
     }
     return self;
 }

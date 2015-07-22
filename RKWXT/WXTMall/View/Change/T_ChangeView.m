@@ -84,7 +84,7 @@
     HomePageSurpEntity *entity = self.cpxViewInfo;
     [_imgView setCpxViewInfo:entity.home_img];
     [_imgView load];
-    NSString *shopPrice = [NSString stringWithFormat:@"￥%f",entity.shop_price];
+    NSString *shopPrice = [NSString stringWithFormat:@"￥%.2f",entity.shop_price];
     [_moneylabel setText:shopPrice];
     [_descLabel setText:entity.goods_name];
 }

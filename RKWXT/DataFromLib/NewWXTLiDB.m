@@ -10,6 +10,7 @@
 #import "SCartListModel.h"
 #import "UserAddressModel.h"
 #import "UserBonusModel.h"
+#import "OrderListModel.h"
 
 @implementation NewWXTLiDB
 
@@ -27,6 +28,7 @@
     [[UserBonusModel shareUserBonusModel] loadUserBonus];
     [[UserBonusModel shareUserBonusModel] loadUserBonusMoney];
     [[UserAddressModel shareUserAddress] loadUserAddress];
+    [[OrderListModel shareOrderListModel] loadUserOrderList:0 to:5];
 }
 
 @end

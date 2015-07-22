@@ -187,6 +187,7 @@
     }
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell.textLabel setText:@"为我推荐"];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:BigTextFont]];
     return cell;
 }
 
@@ -220,6 +221,7 @@
     }
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell.textLabel setText:@"主题馆"];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:BigTextFont]];
     return cell;
 }
 
@@ -330,10 +332,10 @@
         return;
     }
     HomePageTopEntity *entity = [_model.top.data objectAtIndex:index];
-    switch (index) {
+    switch (entity.topType) {
         case HomePageJump_Type_GoodsInfo:
         {
-            [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:[entity.linkAddress integerValue] animated:YES];
+            [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:entity.linkID animated:YES];
         }
             break;
         case HomePageJump_Type_Catagary:
@@ -348,12 +350,17 @@
             break;
         case HomePageJump_Type_MessageInfo:
         {
-//            [[CoordinateController sharedCoordinateController] toJPushMessageInfoVC:self messageID:1 animated:YES];
+            [[CoordinateController sharedCoordinateController] toJPushMessageInfoVC:self messageID:entity.linkID animated:YES];
         }
             break;
         case HomePageJump_Type_UserBonus:
         {
             [[CoordinateController sharedCoordinateController] toUserBonusVC:self animated:YES];
+        }
+            break;
+        case HomePageJump_Type_BusinessAlliance:
+        {
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017" title:@"商家联盟" animated:YES];
         }
             break;
         default:
@@ -401,7 +408,44 @@
 }
 
 -(void)intructionClicked:(id)entity{
-    NSLog(@"我信介绍");
+    if(!entity){
+        return;
+    }
+    HomeNavENtity *navi = entity;
+    switch (navi.type) {
+        case HomePageJump_Type_GoodsInfo:
+        {
+            [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:navi.navID animated:YES];
+        }
+            break;
+        case HomePageJump_Type_Catagary:
+        {
+            [self toCatagaryListVC];
+        }
+            break;
+        case HomePageJump_Type_MessageCenter:
+        {
+            [self toSysPushMsgView];
+        }
+            break;
+        case HomePageJump_Type_MessageInfo:
+        {
+            [[CoordinateController sharedCoordinateController] toJPushMessageInfoVC:self messageID:navi.navID animated:YES];
+        }
+            break;
+        case HomePageJump_Type_UserBonus:
+        {
+            [[CoordinateController sharedCoordinateController] toUserBonusVC:self animated:YES];
+        }
+            break;
+        case HomePageJump_Type_BusinessAlliance:
+        {
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017" title:@"商家联盟" animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark HomePageSurprise

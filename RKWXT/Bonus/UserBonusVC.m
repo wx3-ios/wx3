@@ -123,6 +123,8 @@ enum{
     NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
     if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
         [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
+    }else{
+        [rightBtn setTitle:@"0元" forState:UIControlStateNormal];
     }
 }
 
@@ -131,6 +133,8 @@ enum{
     NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
     if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
         [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
+    }else{
+        [rightBtn setTitle:@"0元" forState:UIControlStateNormal];
     }
 }
 

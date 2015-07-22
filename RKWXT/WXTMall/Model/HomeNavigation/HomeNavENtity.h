@@ -13,7 +13,7 @@
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *desc;
 @property (nonatomic,assign) NSInteger type;
-@property (nonatomic,strong) NSString *address;
+@property (nonatomic,assign) NSInteger navID;
 
 +(HomeNavENtity*)homeNavigationEntityWithDic:(NSDictionary*)dic;
 
