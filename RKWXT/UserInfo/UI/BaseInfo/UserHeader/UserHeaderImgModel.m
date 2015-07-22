@@ -22,17 +22,17 @@
 }
 
 - (NSString*)userIconName{
-    return @"userHeadIcon";
+    return @"userIcon";
 }
 
 - (NSString*)iconDir{
     NSString *documentPath = [UtilTool documentPath];
-    return [documentPath stringByAppendingPathComponent:@"icon"];
+    return [documentPath stringByAppendingPathComponent:@"userIcon"];
 }
 
 - (NSString*)userIconPath{
     NSString *dir = [self iconDir];
-    return [dir stringByAppendingPathComponent:[self userIconName]];
+    return dir;
 }
 
 -(BOOL)uploadUserHeaderImgWith:(NSData *)imgData{
@@ -48,7 +48,14 @@
     if([fileManager fileExistsAtPath:iconTempPath]){
         [fileManager removeItemAtPath:iconTempPath error:nil];
     }
-    [imgData writeToFile:iconTempPath atomically:YES];
+    BOOL succeed = [imgData writeToFile:iconTempPath atomically:YES];
+    if(succeed){
+        KFLog_Normal(YES, @"头像保存成功");
+    }else{
+        KFLog_Normal(YES, @"头像保存失败");
+        return NO;
+    }
+    
     return YES;
 }
 

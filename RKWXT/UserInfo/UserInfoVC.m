@@ -8,6 +8,7 @@
 
 #import "UserInfoVC.h"
 #import "UserInfoDef.h"
+#import "UserHeaderImgModel.h"
 
 #define UserBgImageViewHeight (95+66)
 #define Size self.view.bounds.size
@@ -15,6 +16,9 @@
 @interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,PersonalOrderInfoDelegate>{
     UITableView *_tableView;
     WXUILabel *namelabel;
+    
+    UIImageView *iconImageView;
+    UIImage *_image;
 }
 @end
 
@@ -22,12 +26,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self addOBS];
     [self setCSTNavigationViewHidden:YES animated:NO];
     if(namelabel){
         WXTUserOBJ *user = [WXTUserOBJ sharedUserOBJ];
         if(user.nickname){
             [namelabel setText:user.nickname];
         }
+    }
+    
+    if([self userIconImage]){
+        [iconImageView setImage:[self userIconImage]];
     }
 }
 
@@ -49,6 +58,41 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(uploadUserIconSucceed) name:D_Notification_Name_UploadUserIcon object:nil];
+    [notificationCenter addObserver:self selector:@selector(uploadUserInfoSucceed) name:D_Notification_Name_UploadUserInfo object:nil];
+}
+
+-(void)removeOBS{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(UIImage*)userIconImage{
+    NSString *iconPath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if([fileManager fileExistsAtPath:iconPath] && iconImageView){
+        UIImage *img = [UIImage imageWithContentsOfFile:iconPath];
+        return img;
+    }
+    return nil;
+}
+
+-(void)uploadUserIconSucceed{
+    if([self userIconImage]){
+        [iconImageView setImage:[self userIconImage]];
+    }
+}
+
+-(void)uploadUserInfoSucceed{
+    if(namelabel){
+        WXTUserOBJ *user = [WXTUserOBJ sharedUserOBJ];
+        if(user.nickname){
+            [namelabel setText:user.nickname];
+        }
+    }
+}
+
 -(UIView *)viewForTableHeadView{
     UIView *headView = [[UIView alloc] init];
     
@@ -60,10 +104,14 @@
     CGFloat xOffset = 18;
     CGFloat yOffset = 22;
     UIImage *iconImg = [UIImage imageNamed:@"PersonalInfo.png"];
-    UIImageView *iconImageView = [[UIImageView alloc] init];
+    iconImageView = [[UIImageView alloc] init];
     iconImageView.frame = CGRectMake((IPHONE_SCREEN_WIDTH-iconImg.size.width)/2, yOffset, iconImg.size.width, iconImg.size.height);
     [iconImageView setImage:iconImg];
+    [iconImageView setBorderRadian:iconImg.size.width/2 width:1.0 color:[UIColor clearColor]];
     [headView addSubview:iconImageView];
+    if([self userIconImage]){
+        [iconImageView setImage:[self userIconImage]];
+    }
     
     yOffset += iconImg.size.height+3;
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
@@ -466,6 +514,11 @@
 
 -(void)personalInfoToWaitReceiveOrderList{
     [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:3 animated:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self removeOBS];
 }
 
 @end

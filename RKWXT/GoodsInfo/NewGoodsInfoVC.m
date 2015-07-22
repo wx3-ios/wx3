@@ -56,9 +56,6 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    if(_goodsId>2){
-        _goodsId = 1;
-    }
     _model.goodID = _goodsId;
     [_model loadGoodsInfo:_model.goodID];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];

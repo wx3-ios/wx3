@@ -155,6 +155,7 @@ enum{
             //清除用户信息
             WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
             [userDefault removeAllUserInfo];
+            [self removeData]; //清除数据缓存
             
             LoginVC *loginVC = [[LoginVC alloc] init];
             WXUINavigationController *navigationController = [[WXUINavigationController alloc] initWithRootViewController:loginVC];

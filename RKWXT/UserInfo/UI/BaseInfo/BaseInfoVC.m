@@ -12,6 +12,7 @@
 #import "PersonalInfoEntity.h"
 #import "WXImageClipOBJ.h"
 #import "UserHeaderImgModel.h"
+#import "WXService.h"
 
 #define Size self.bounds.size
 
@@ -48,15 +49,14 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     
     _model = [[PersonalInfoModel alloc] init];
     [_model setDelegate:self];
-//    [self loadPersonalInfo];
+    [self loadPersonalInfo];
     
     _imageClipOBJ = [[WXImageClipOBJ alloc] init];
     [_imageClipOBJ setDelegate:self];
     [_imageClipOBJ setClipImageType:E_ImageType_Personal_Img];
     [_imageClipOBJ setParentVC:self];
     
-    
-    NSString *iconPath = [NSString stringWithFormat:@"%@/icon/userIcon",[UtilTool documentPath]];
+    NSString *iconPath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if([fileManager fileExistsAtPath:iconPath]){
         headerImg = [UIImage imageWithContentsOfFile:iconPath];
@@ -345,18 +345,24 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 }
 
 -(void)imageClipeFinished:(WXImageClipOBJ *)clipOBJ finalImageData:(NSData *)imageData{
-    if(![[UserHeaderImgModel shareUserHeaderImgModel] uploadUserHeaderImgWith:imageData]){
+    if(![[UserHeaderImgModel shareUserHeaderImgModel] uploadUserHeaderImgWith:[self dataWithImage:[UIImage imageWithData:imageData]]]){
         [UtilTool showAlertView:@"上传失败"];
         return;
     }
     headerImg = [UIImage imageWithData:imageData];
-//    NSString *iconPath = [NSString stringWithFormat:@"%@/icon/userIcon",[UtilTool documentPath]];
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    if([fileManager fileExistsAtPath:iconPath]){
-//        headerImg = [UIImage imageWithContentsOfFile:iconPath];
-//    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_UploadUserIcon object:nil];
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:BaseInfo_Userhead inSection:T_Base_UserInfo];
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexpath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(NSData *)dataWithImage:(UIImage *)image{
+    NSData *data = nil;
+    if (UIImagePNGRepresentation(image) == nil) {
+        data = UIImageJPEGRepresentation(image, 1);
+    }else{
+        data = UIImagePNGRepresentation(image);
+    }
+    return data;
 }
 
 - (void)imageClipeFailed:(WXImageClipOBJ*)clipOBJ{

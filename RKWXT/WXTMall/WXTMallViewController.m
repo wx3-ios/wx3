@@ -318,6 +318,7 @@
 #pragma mark HomePageTopDelegate
 -(void)homePageTopLoadedSucceed{
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_TopImg] withRowAnimation:UITableViewRowAnimationFade];
+//    [_model.top toInit];
 }
 
 -(void)homePageTopLoadedFailed:(NSString *)error{
@@ -347,7 +348,7 @@
             break;
         case HomePageJump_Type_MessageInfo:
         {
-            //消息id不知道
+//            [[CoordinateController sharedCoordinateController] toJPushMessageInfoVC:self messageID:1 animated:YES];
         }
             break;
         case HomePageJump_Type_UserBonus:
@@ -363,6 +364,7 @@
 #pragma mark HomePageTheme
 -(void)homePageThemeLoadedSucceed{
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_TopicalInfo] withRowAnimation:UITableViewRowAnimationFade];
+//    [_model.theme toInit];
 }
 
 -(void)homePageThemeLoadedFailed:(NSString *)errorMsg{
@@ -376,6 +378,7 @@
 #pragma mark HomePageRecommond
 -(void)homePageRecLoadedSucceed{
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_ForMeInfo] withRowAnimation:UITableViewRowAnimationFade];
+//    [_model.recommend toInit];
 }
 
 -(void)homePageRecLoadedFailed:(NSString *)errorMsg{
@@ -390,6 +393,7 @@
 #pragma mark HomePageNav
 -(void)homeNavigationLoadSucceed{
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_WXIntroduce] withRowAnimation:UITableViewRowAnimationFade];
+//    [_model.navModel toInit];
 }
 
 -(void)homeNavigationLoadFailed:(NSString *)errorMsg{
@@ -403,6 +407,7 @@
 #pragma mark HomePageSurprise
 -(void)homePageSurpLoadedSucceed{
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_ChangeInfo] withRowAnimation:UITableViewRowAnimationFade];
+//    [_model.surprise toInit];
 }
 
 -(void)homePageSurpLoadedFailed:(NSString *)errorMsg{

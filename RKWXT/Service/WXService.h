@@ -58,6 +58,6 @@
 @interface WXService (UserInfo)
 //- (NSString*)iconDir;;//图片的目录
 //- (UIImage*)getFriendIcon:(NSInteger)rID;//获取好友图片~
-//- (BOOL)uploadIcon:(NSData*)imageData;//上传图像~
+- (BOOL)uploadIcon:(NSData*)imageData;//上传图像~
 //- (BOOL)updateUserInfo:(PersonalInfo*)entity;
 @end

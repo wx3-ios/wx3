@@ -93,6 +93,10 @@ typedef enum {
 
 #define	D_Notification_Name_AutoLoginHasCalled @"D_Notification_Name_AutoLoginHasCalled"//登录接口已经调用~
 
+#pragma mark 新个人中心
+#define D_Notification_Name_UploadUserIcon @"D_Notification_Name_UploadUserIcon"    //上传个人头像
+#define D_Notification_Name_UploadUserInfo @"D_Notification_Name_UploadUserInfo"    //上传个人信息
+
 //商城顶部图片~
 #define kGoodTopImageSize CGSizeMake(460.0,230.0)
 //icon图片~
