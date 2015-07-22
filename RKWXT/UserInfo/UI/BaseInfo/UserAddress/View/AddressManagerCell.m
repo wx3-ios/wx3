@@ -51,9 +51,15 @@
         xOffset = IPHONE_SCREEN_WIDTH-125;
         UIImage *editImg = [UIImage imageNamed:@"AddressEdit.png"];
         WXUIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        editBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-editImg.size.height)/2, editImg.size.width, editImg.size.height);
+        editBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-editImg.size.height)/2, editImg.size.width+norAddWidth/2, editImg.size.height);
         [editBtn setBackgroundColor:[UIColor clearColor]];
         [editBtn setImage:editImg forState:UIControlStateNormal];
+        [editBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [editBtn.titleLabel setTextAlignment:NSTextAlignmentRight];
+        [editBtn.titleLabel setFont:WXFont(12.0)];
+        [editBtn setTitleColor:WXColorWithInteger(0x8a8a8a) forState:UIControlStateNormal];
+        [editBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, editImg.size.width-10, 0, 0)];
         [editBtn addTarget:self action:@selector(editAddress) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:editBtn];
         
@@ -66,15 +72,21 @@
         [editLabel setText:@"编辑"];
         [editLabel setTextColor:WXColorWithInteger(0x8a8a8a)];
         [editLabel setFont:WXFont(12.0)];
-        [self.contentView addSubview:editLabel];
+//        [self.contentView addSubview:editLabel];
         
         
         UIImage *delImg = [UIImage imageNamed:@"AddressDel.png"];
         xGap += labelWidth+10;
         WXUIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        delBtn.frame = CGRectMake(xGap, (AddressManagerCellHeight-delImg.size.height)/2, delImg.size.width, delImg.size.height);
+        delBtn.frame = CGRectMake(xGap, (AddressManagerCellHeight-delImg.size.height)/2, delImg.size.width+labelWidth, delImg.size.height);
         [delBtn setBackgroundColor:[UIColor clearColor]];
-        [delBtn setImage:editImg forState:UIControlStateNormal];
+        [delBtn setImage:delImg forState:UIControlStateNormal];
+        [delBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [delBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [delBtn.titleLabel setTextAlignment:NSTextAlignmentRight];
+        [delBtn.titleLabel setFont:WXFont(12.0)];
+        [delBtn setTitleColor:WXColorWithInteger(0x8a8a8a) forState:UIControlStateNormal];
+        [delBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, delImg.size.width-10, 0, 0)];
         [delBtn addTarget:self action:@selector(delAdd) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:delBtn];
         
@@ -86,7 +98,7 @@
         [delLabel setText:@"删除"];
         [delLabel setTextColor:WXColorWithInteger(0x8a8a8a)];
         [delLabel setFont:WXFont(12.0)];
-        [self.contentView addSubview:delLabel];
+//        [self.contentView addSubview:delLabel];
     }
     return self;
 }
