@@ -10,7 +10,7 @@
 @end
 
 @interface KICropImageMaskView : UIView {
-    @private
+@private
     CGRect  _cropRect;
 }
 - (void)setCropSize:(CGSize)size;

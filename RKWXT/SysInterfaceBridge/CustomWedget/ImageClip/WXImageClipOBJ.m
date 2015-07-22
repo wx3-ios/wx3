@@ -32,6 +32,9 @@ enum{
 
 - (void)dealloc{
     _delegate = nil;
+    RELEASE_SAFELY(_parentVC);
+    RELEASE_SAFELY(_tagInfo);
+    [super dealloc];
 }
 
 - (CGSize)clipImageSize:(E_Image_Type)type{
@@ -88,11 +91,12 @@ enum{
                 WXUIImagePickerController *imagePickerController = [[WXUIImagePickerController alloc] init];
                 [imagePickerController setDelegate:self];
                 imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-                NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+                NSMutableArray *mediaTypes = [[[NSMutableArray alloc] init] autorelease];
                 [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
                 imagePickerController.mediaTypes = mediaTypes;
                 [_parentVC presentViewController:imagePickerController animated:YES completion:^{
                 }];
+                RELEASE_SAFELY(imagePickerController);
             }
             break;
         case E_ImagePickerMode_PhoneLabrary:
@@ -101,11 +105,12 @@ enum{
                 WXUIImagePickerController *imagePickerController = [[WXUIImagePickerController alloc] init];
                 [imagePickerController setDelegate:self];
                 imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+                NSMutableArray *mediaTypes = [[[NSMutableArray alloc] init] autorelease];
                 [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
                 imagePickerController.mediaTypes = mediaTypes;
                 [_parentVC presentViewController:imagePickerController animated:YES completion:^{
                 }];
+                RELEASE_SAFELY(imagePickerController);
             }
             break;
         default:
@@ -127,6 +132,7 @@ enum{
         [imageClipeVC setImage:image];
         [_parentVC presentViewController:imageClipeVC animated:YES completion:^{
         }];
+        RELEASE_SAFELY(imageClipeVC);
     }];
 }
 
@@ -139,7 +145,6 @@ enum{
 }
 
 #pragma mark VPImageCropperDelegate
-
 - (CGFloat)maxSizeOfImageType:(E_Image_Type)imageType{
     CGFloat imageLength = kImageDataMaxLength;
     switch (imageType) {

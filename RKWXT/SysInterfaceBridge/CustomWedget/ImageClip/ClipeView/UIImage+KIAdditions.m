@@ -12,7 +12,7 @@
 
 - (UIImage *)flip:(BOOL)isHorizontal {
     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-    if (&UIGraphicsBeginImageContextWithOptions != NULL) {
+    if (UIGraphicsBeginImageContextWithOptions != NULL) {
         UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     } else {
         UIGraphicsBeginImageContext(rect.size);
@@ -39,7 +39,7 @@
 
 - (UIImage *)resizeToWidth:(CGFloat)width height:(CGFloat)height {
     CGSize size = CGSizeMake(width, height);
-    if (&UIGraphicsBeginImageContextWithOptions != NULL) {
+    if (UIGraphicsBeginImageContextWithOptions != NULL) {
         UIGraphicsBeginImageContextWithOptions(size, NO, 0);
     } else {
         UIGraphicsBeginImageContext(size);

@@ -523,10 +523,10 @@
 		775842F71AB95A300039B129 /* PullTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758420E1AB95A300039B129 /* PullTableView.m */; };
 		775842F81AB95A300039B129 /* PSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842101AB95A300039B129 /* PSCollectionView.m */; };
 		775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842121AB95A300039B129 /* PSCollectionViewCell.m */; };
-		775842FA1AB95A300039B129 /* KICropImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842161AB95A300039B129 /* KICropImageView.m */; };
+		775842FA1AB95A300039B129 /* KICropImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842161AB95A300039B129 /* KICropImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		775842FB1AB95A300039B129 /* UIImage+KIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842181AB95A300039B129 /* UIImage+KIAdditions.m */; };
 		775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758421A1AB95A300039B129 /* WXImageClipVC.m */; };
-		775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758421C1AB95A300039B129 /* WXImageClipOBJ.m */; };
+		775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758421C1AB95A300039B129 /* WXImageClipOBJ.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		775842FE1AB95A300039B129 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7758421F1AB95A300039B129 /* LoadingCell.m */; };
 		775842FF1AB95A300039B129 /* LoadingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842211AB95A300039B129 /* LoadingEntity.m */; };
 		775843001AB95A300039B129 /* PictureBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775842241AB95A300039B129 /* PictureBrowseView.m */; };

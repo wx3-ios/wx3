@@ -25,10 +25,10 @@
     [super setFrame:frame];
     [[self scrollView] setFrame:self.bounds];
     [[self maskView] setFrame:self.bounds];
-    
-    if (CGSizeEqualToSize(_cropSize, CGSizeZero)) {
-        [self setCropSize:CGSizeMake(100, 100)];
-    }
+    //
+    //    if (CGSizeEqualToSize(_cropSize, CGSizeZero)) {
+    //        [self setCropSize:CGSizeMake(100, 100)];
+    //    }
 }
 
 - (UIScrollView *)scrollView {
@@ -64,8 +64,9 @@
 
 - (void)setImage:(UIImage *)image {
     if (image != _image) {
+        [_image release];
         _image = nil;
-        _image = image;
+        _image = [image retain];
     }
     [[self imageView] setImage:_image];
     
@@ -90,7 +91,7 @@
     CGFloat min = MAX(xScale, yScale);
     CGFloat max = 1.0;
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-//        max = 1.0 / [[UIScreen mainScreen] scale];
+        //        max = 1.0 / [[UIScreen mainScreen] scale];
         max = 1.0;
     }
     
@@ -112,8 +113,8 @@
     
     CGFloat x = (CGRectGetWidth(self.bounds) - width) / 2;
     CGFloat y = (CGRectGetHeight(self.bounds) - height) / 2;
-
-//    [[self maskView] setCropSize:_cropSize];
+    
+    [[self maskView] setCropSize:_cropSize];
     
     CGFloat top = y;
     CGFloat left = x;
@@ -140,7 +141,7 @@
     UIImage *image = [_image cropImageWithX:aX y:aY width:aWidth height:aHeight];
     
     image = [image resizeToWidth:_cropSize.width height:_cropSize.height];
-
+    
     return image;
 }
 
@@ -150,11 +151,15 @@
 }
 
 - (void)dealloc {
+    [_scrollView release];
     _scrollView = nil;
+    [_imageView release];
     _imageView = nil;
+    [_maskView release];
     _maskView = nil;
+    [_image release];
     _image = nil;
-//    [super dealloc];
+    [super dealloc];
 }
 @end
 
