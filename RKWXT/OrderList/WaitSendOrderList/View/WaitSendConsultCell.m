@@ -90,6 +90,17 @@
         [_payBtn setTitle:@"催单" forState:UIControlStateNormal];
         [_button2 setHidden:NO];
         [_button2 setTitle:@"退款" forState:UIControlStateNormal];
+        
+        NSInteger num = 0;
+        for(OrderListEntity *ent in entity.goodsArr){
+            if(ent.refund_status != Refund_Status_Normal){
+                num++;
+            }
+        }
+        if(num == [entity.goodsArr count]){
+            [_payBtn setHidden:YES];
+            [_button2 setHidden:YES];
+        }
     }
 }
 

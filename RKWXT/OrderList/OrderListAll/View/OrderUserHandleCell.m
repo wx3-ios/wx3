@@ -68,6 +68,12 @@
     }
     NSString *str1 = nil;
     NSString *str2 = nil;
+    NSInteger num = 0;
+    for(OrderListEntity *ent in entity.goodsArr){
+        if(ent.refund_status != Refund_Status_Normal){
+            num++;
+        }
+    }
     [_button1 setEnabled:YES];
     if(entity.pay_status == Pay_Status_WaitPay && entity.order_status == Order_Status_Normal){   //去支付和取消订单共存
         [_button1 setHidden:NO];
@@ -81,6 +87,11 @@
         [_button2 setHidden:NO];
         str1 = @"催单";
         str2 = @"退款";
+        
+        if(num == [entity.goodsArr count]){
+            [_button1 setHidden:YES];
+            [_button2 setHidden:YES];
+        }
     }
     
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend && entity.order_status == Order_Status_Normal){
@@ -88,6 +99,10 @@
         [_button2 setHidden:NO];
         str1 = @"完成";
         str2 = @"退款";
+        
+        if(num == [entity.goodsArr count]){
+            [_button2 setHidden:YES];
+        }
     }
     
     [_button1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
