@@ -21,7 +21,7 @@
         textLabel.frame = CGRectMake(xOffset+12, yOffset, textWidth, textHeight);
         [textLabel setText:@"更多惊喜"];
         [textLabel setBackgroundColor:[UIColor clearColor]];
-        [textLabel setFont:[UIFont systemFontOfSize:BigTextFont]];
+        [textLabel setFont:[UIFont systemFontOfSize:TextFont]];
         [textLabel setTextColor:WXColorWithInteger(BigTextColor)];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
         [self.contentView addSubview:textLabel];

@@ -20,12 +20,13 @@
 #define T_HomePageTopicalHeight         (70)
 #define T_HomePageChangeInfoHeight      (195)
 
-#define BigTextFont   (15.0)
+#define BigTextFont   (13.0)
+#define TextFont      (15.0)
 #define SmallTextFont (12.0)
 
 #define BigTextColor   (0x282828)
 #define SmallTextColor (0xa5a3a3)
-#define HomePageBGColor (0xefeff4)
+#define HomePageBGColor (0xf8f8f8)
 
 #define WxIntructionShow (2)
 #define ForMeShow        (3)
@@ -78,7 +79,7 @@ typedef enum{
 
 #pragma mark 导航跳转
 enum{
-    HomePageJump_Type_GoodsInfo = 0,    //商品详情
+    HomePageJump_Type_GoodsInfo = 1,    //商品详情
     HomePageJump_Type_Catagary,         //分类列表
     HomePageJump_Type_MessageCenter,    //消息中心
     HomePageJump_Type_MessageInfo,      //消息详情

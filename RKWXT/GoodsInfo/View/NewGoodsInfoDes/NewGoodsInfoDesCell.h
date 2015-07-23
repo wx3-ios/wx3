@@ -15,6 +15,6 @@
 @end
 
 @protocol PayAttentionToGoodsDelegate <NSObject>
--(void)payAttentionToSomeGoods:(id)entity;
+-(void)payAttentionToSomeGoods:(WXUIButton*)btn;
 
 @end

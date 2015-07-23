@@ -72,6 +72,7 @@ enum{
 enum{
     System_Setting = 0,
     System_About,
+    System_Share,
     
     System_Invalid
 };

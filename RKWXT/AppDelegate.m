@@ -27,6 +27,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "ScreenActivityVC.h"
 
+#import "WXWeiXinOBJ.h"
+
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
     ScreenActivityVC *activityVC;
@@ -80,6 +82,9 @@
     
     //自动登录通知
     [self addNotification];
+    
+    //向微信注册
+    [[WXWeiXinOBJ sharedWeiXinOBJ] registerApp];
     
 	return YES;
 }
@@ -477,6 +482,9 @@ void UncaughtExceptionHandler(NSException *exception) {
     [[AliPayControl sharedAliPayOBJ] handleAliPayURL:url];
     //微支付
     [WXApi handleOpenURL:url delegate:self];
+    //微信
+    [[WXWeiXinOBJ sharedWeiXinOBJ] handleOpenURL:url];
+    
     return YES;
 }
 

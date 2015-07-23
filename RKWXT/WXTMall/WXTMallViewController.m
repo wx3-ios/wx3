@@ -188,7 +188,7 @@
     }
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell.textLabel setText:@"为我推荐"];
-    [cell.textLabel setFont:[UIFont systemFontOfSize:BigTextFont]];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:TextFont]];
     return cell;
 }
 
@@ -222,7 +222,7 @@
     }
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell.textLabel setText:@"主题馆"];
-    [cell.textLabel setFont:[UIFont systemFontOfSize:BigTextFont]];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:TextFont]];
     return cell;
 }
 

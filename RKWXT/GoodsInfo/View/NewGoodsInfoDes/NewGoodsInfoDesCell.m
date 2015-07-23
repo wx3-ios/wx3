@@ -85,7 +85,7 @@
         [_attentionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
         [_attentionBtn.titleLabel setFont:[UIFont systemFontOfSize:smallTextFont]];
         [_attentionBtn setTitleColor:WXColorWithInteger(smallTextColor) forState:UIControlStateNormal];
-        [_attentionBtn addTarget:self action:@selector(payAttention) forControlEvents:UIControlEventTouchUpInside];
+        [_attentionBtn addTarget:self action:@selector(payAttention:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_attentionBtn];
         
         CGFloat width = 60;
@@ -93,7 +93,7 @@
         label.frame = CGRectMake(xOffset+(IPHONE_SCREEN_WIDTH-xOffset-width)/2, yOffset+9+(T_GoodsInfoDescHeight-yOffset-btnHeight)/2, width, btnHeight-8);
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextAlignment:NSTextAlignmentCenter];
-        [label setText:@"关注"];
+        [label setText:@"分享"];
         [label setFont:[UIFont systemFontOfSize:13.0]];
         [label setTextColor:[UIColor grayColor]];
         [self.contentView addSubview:label];
@@ -111,10 +111,10 @@
     }
 }
 
--(void)payAttention{
-    GoodsInfoEntity *entity = self.cellInfo;
+-(void)payAttention:(WXUIButton*)btn{
+//    GoodsInfoEntity *entity = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(payAttentionToSomeGoods:)]){
-        [_delegate payAttentionToSomeGoods:entity];
+        [_delegate payAttentionToSomeGoods:btn];
     }
 }
 

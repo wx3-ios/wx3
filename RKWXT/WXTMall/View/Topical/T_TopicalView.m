@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame];
     if(self){
         WXUIButton *bgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        bgBtn.frame = CGRectMake(0, 0, (IPHONE_SCREEN_WIDTH-3*xGap)/2, T_HomePageTopicalHeight-yGap);
+        bgBtn.frame = CGRectMake(0, 0, (IPHONE_SCREEN_WIDTH-3*xGap)/2, T_HomePageTopicalHeight);
         [bgBtn setBackgroundColor:[UIColor whiteColor]];
         [bgBtn addTarget:self action:@selector(wxIntruction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:bgBtn];

@@ -425,6 +425,14 @@
             [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
         }
             break;
+        case System_Share:
+        {
+            [cell.imageView setImage:[UIImage imageNamed:@"AboutWxImg.png"]];
+            [cell.textLabel setText:@"分享"];
+            [cell.textLabel setFont:WXFont(15.0)];
+            [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+        }
+            break;
         default:
             break;
     }
@@ -498,9 +506,13 @@
             if(row == System_Setting){
                 NewSystemSettingVC *systemSetting = [[NewSystemSettingVC alloc] init];
                 [self.wxNavigationController pushViewController:systemSetting];
-            }else{
+            }
+            if(row == System_About){
                 AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
                 [self.wxNavigationController pushViewController:aboutVC];
+            }
+            if(row == System_Share){
+            
             }
         }
             break;

@@ -17,11 +17,13 @@
 #import "ShoppingCartModel.h"
 #import "SCartListModel.h"
 #import "ShoppingCartEntity.h"
+#import "WXWeiXinOBJ.h"
+#import "DownSheet.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,PayAttentionToGoodsDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,PayAttentionToGoodsDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,DownSheetDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     BOOL _isOpen;
@@ -31,6 +33,8 @@
     ShoppingCartModel *_shopModel;
     
     WXUIButton *buyNowBtn;
+    
+    NSArray *menuList;
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end
@@ -83,6 +87,21 @@
     [self.view addSubview:rightView];
     
     [self addNotification];
+    [self initDropList];
+}
+
+-(void)initDropList{
+    DownSheetModel *model_1 = [[DownSheetModel alloc] init];
+    model_1.icon = @"Icon.png";
+    model_1.icon_on = @"Icon.png";
+    model_1.title = @"微信好友";
+    
+    DownSheetModel *model_2 = [[DownSheetModel alloc] init];
+    model_2.icon = @"Icon.png";
+    model_2.icon_on = @"Icon.png";
+    model_2.title = @"朋友圈";
+    
+    menuList = @[model_1,model_2];
 }
 
 -(void)addNotification{
@@ -380,7 +399,20 @@
 }
 
 #pragma mark delegate
--(void)payAttentionToSomeGoods:(id)entity{
+-(void)payAttentionToSomeGoods:(WXUIButton *)btn{
+    DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
+    sheet.delegate = self;
+    [sheet showInView:nil];
+}
+
+-(void)didSelectIndex:(NSInteger)index{
+    UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
+    if(index == 0){
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+    }
+    if(index == 1){
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+    }
 }
 
 -(void)goodsInfoModelLoadedSucceed{

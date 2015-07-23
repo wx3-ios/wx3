@@ -231,6 +231,11 @@
 		128221DD1B184E84004613BB /* HomePageWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128221D51B184E83004613BB /* HomePageWallet@2x.png */; };
 		128221EC1B18716E004613BB /* T_HPSubBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128221E91B18716E004613BB /* T_HPSubBaseModel.m */; };
 		128221ED1B18716E004613BB /* URLBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128221EB1B18716E004613BB /* URLBaseModel.m */; };
+		1282413D1B60C605001EE0BD /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 128241381B60C605001EE0BD /* libWeChatSDK.a */; };
+		1282413E1B60C605001EE0BD /* WXWeiXinOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 1282413C1B60C605001EE0BD /* WXWeiXinOBJ.m */; };
+		128241461B60D062001EE0BD /* DownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 128241411B60D062001EE0BD /* DownSheet.m */; };
+		128241471B60D062001EE0BD /* DownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128241431B60D062001EE0BD /* DownSheetCell.m */; };
+		128241481B60D062001EE0BD /* DownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128241451B60D062001EE0BD /* DownSheetModel.m */; };
 		128254FD1B4B5F4900C60146 /* OrderListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128254FC1B4B5F4900C60146 /* OrderListTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		128255011B4BA5EF00C60146 /* OrderDealRefundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 128255001B4BA5EF00C60146 /* OrderDealRefundVC.m */; };
 		1282EF831B5E33B5004D2019 /* UserHeaderImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1282EF821B5E33B5004D2019 /* UserHeaderImgModel.m */; };
@@ -1051,6 +1056,16 @@
 		128221E91B18716E004613BB /* T_HPSubBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T_HPSubBaseModel.m; sourceTree = "<group>"; };
 		128221EA1B18716E004613BB /* URLBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLBaseModel.h; sourceTree = "<group>"; };
 		128221EB1B18716E004613BB /* URLBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLBaseModel.m; sourceTree = "<group>"; };
+		128241381B60C605001EE0BD /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		128241391B60C605001EE0BD /* WeixinApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinApi.h; sourceTree = "<group>"; };
+		1282413B1B60C605001EE0BD /* WXWeiXinOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXWeiXinOBJ.h; sourceTree = "<group>"; };
+		1282413C1B60C605001EE0BD /* WXWeiXinOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWeiXinOBJ.m; sourceTree = "<group>"; };
+		128241401B60D062001EE0BD /* DownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheet.h; sourceTree = "<group>"; };
+		128241411B60D062001EE0BD /* DownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheet.m; sourceTree = "<group>"; };
+		128241421B60D062001EE0BD /* DownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheetCell.h; sourceTree = "<group>"; };
+		128241431B60D062001EE0BD /* DownSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheetCell.m; sourceTree = "<group>"; };
+		128241441B60D062001EE0BD /* DownSheetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheetModel.h; sourceTree = "<group>"; };
+		128241451B60D062001EE0BD /* DownSheetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheetModel.m; sourceTree = "<group>"; };
 		128254FB1B4B5F4900C60146 /* OrderListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableView.h; sourceTree = "<group>"; };
 		128254FC1B4B5F4900C60146 /* OrderListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableView.m; sourceTree = "<group>"; };
 		128254FF1B4BA5EF00C60146 /* OrderDealRefundVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDealRefundVC.h; sourceTree = "<group>"; };
@@ -2005,6 +2020,7 @@
 				12D55A451AC2BD8800F51F97 /* CoreTelephony.framework in Frameworks */,
 				12F572211B42255D00128294 /* libWeChatSDK.a in Frameworks */,
 				DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */,
+				1282413D1B60C605001EE0BD /* libWeChatSDK.a in Frameworks */,
 				12D52BC11AC2EFA000C5CE71 /* AudioToolbox.framework in Frameworks */,
 				12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */,
 				777059B51AAFE48C0097526C /* AddressBook.framework in Frameworks */,
@@ -2681,6 +2697,55 @@
 				128221D51B184E83004613BB /* HomePageWallet@2x.png */,
 			);
 			path = NewHomePage;
+			sourceTree = "<group>";
+		};
+		128241341B60C4E3001EE0BD /* ShareInterface */ = {
+			isa = PBXGroup;
+			children = (
+				1282413F1B60D062001EE0BD /* Classes */,
+				128241351B60C506001EE0BD /* qq */,
+				128241361B60C506001EE0BD /* weixin */,
+			);
+			path = ShareInterface;
+			sourceTree = "<group>";
+		};
+		128241351B60C506001EE0BD /* qq */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = qq;
+			sourceTree = "<group>";
+		};
+		128241361B60C506001EE0BD /* weixin */ = {
+			isa = PBXGroup;
+			children = (
+				128241371B60C605001EE0BD /* SDK */,
+				1282413B1B60C605001EE0BD /* WXWeiXinOBJ.h */,
+				1282413C1B60C605001EE0BD /* WXWeiXinOBJ.m */,
+			);
+			path = weixin;
+			sourceTree = "<group>";
+		};
+		128241371B60C605001EE0BD /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				128241381B60C605001EE0BD /* libWeChatSDK.a */,
+				128241391B60C605001EE0BD /* WeixinApi.h */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		1282413F1B60D062001EE0BD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				128241401B60D062001EE0BD /* DownSheet.h */,
+				128241411B60D062001EE0BD /* DownSheet.m */,
+				128241421B60D062001EE0BD /* DownSheetCell.h */,
+				128241431B60D062001EE0BD /* DownSheetCell.m */,
+				128241441B60D062001EE0BD /* DownSheetModel.h */,
+				128241451B60D062001EE0BD /* DownSheetModel.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		128254FE1B4BA55A00C60146 /* Refund */ = {
@@ -3970,6 +4035,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				128241341B60C4E3001EE0BD /* ShareInterface */,
 				127329141B5CE80F002AD4AE /* Company */,
 				12F180AC1B45121E00B9A80D /* JPushMessage */,
 				1203C1F61B3E2A7700C402E3 /* OrderPay */,
@@ -5670,6 +5736,7 @@
 				DD988A691B1DA47300B3790B /* OrderDetailCell.m in Sources */,
 				128136A41B33B394005F9929 /* ShoppingCartModel.m in Sources */,
 				775843391AB95A300039B129 /* WXUIWebView.m in Sources */,
+				128241461B60D062001EE0BD /* DownSheet.m in Sources */,
 				12F2D8001B1EF6DB00C8017F /* OrderConsultCell.m in Sources */,
 				775842DD1AB95A300039B129 /* UIImage+Render.m in Sources */,
 				12F2D7E91B1EAAF000C8017F /* WaitPayOrderListVC.m in Sources */,
@@ -5729,6 +5796,7 @@
 				DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
 				120A56CA1B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m in Sources */,
+				128241471B60D062001EE0BD /* DownSheetCell.m in Sources */,
 				12F2D7EC1B1EAB0400C8017F /* WaitReceiveOrderListVC.m in Sources */,
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
 				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
@@ -5999,6 +6067,7 @@
 				128221851B18467A004613BB /* WxIntructionView.m in Sources */,
 				775842E41AB95A300039B129 /* WXMiltiViewCell.m in Sources */,
 				775843C01AB971CF0039B129 /* UIFont+WXT.m in Sources */,
+				1282413E1B60C605001EE0BD /* WXWeiXinOBJ.m in Sources */,
 				775C583A1ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m in Sources */,
 				128221841B18467A004613BB /* WxIntructionCell.m in Sources */,
 				12F2D7DB1B1EA96B00C8017F /* DLFixedTabbarView.m in Sources */,
@@ -6006,6 +6075,7 @@
 				775842EC1AB95A300039B129 /* CrystalNavigationView.m in Sources */,
 				7758430F1AB95A300039B129 /* WXMultiGuideView.m in Sources */,
 				128136AA1B33C2A7005F9929 /* ShoppingCartEntity.m in Sources */,
+				128241481B60D062001EE0BD /* DownSheetModel.m in Sources */,
 				775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */,
 				1282217D1B18467A004613BB /* T_ChangeView.m in Sources */,
 				DD0E38B31B1BE5AC00AB4DB9 /* SystemMessageEntity.m in Sources */,
@@ -6209,6 +6279,7 @@
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/客户端demo/wepay_client/SDKExport",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib",
 					"$(SRCROOT)/RKWXT/Frameworks",
+					"$(PROJECT_DIR)/RKWXT/ShareInterface/weixin/SDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6244,6 +6315,7 @@
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib/wepay_demo/客户端demo/wepay_client/SDKExport",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/wechat/lib",
 					"$(SRCROOT)/RKWXT/Frameworks",
+					"$(PROJECT_DIR)/RKWXT/ShareInterface/weixin/SDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

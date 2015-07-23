@@ -25,7 +25,7 @@
 }
 
 - (CGSize)cpxViewSize{
-    return CGSizeMake((IPHONE_SCREEN_WIDTH-3*xGap)/2,T_HomePageChangeInfoHeight);
+    return CGSizeMake((IPHONE_SCREEN_WIDTH-3*xGap)/2+ChangeInfoShow-0.5,T_HomePageChangeInfoHeight);
 }
 
 - (WXCpxBaseView *)createSubCpxView{

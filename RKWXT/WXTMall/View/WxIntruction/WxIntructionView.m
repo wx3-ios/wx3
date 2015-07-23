@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame];
     if(self){
         CGFloat width = (IPHONE_SCREEN_WIDTH-3*xGap)/2;
-        CGFloat height = T_HomePageWXIntructionHeight-yGap;
+        CGFloat height = T_HomePageWXIntructionHeight;
         WXUIButton *bgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         bgBtn.frame = CGRectMake(0, 0.5, width, height);
         [bgBtn setBackgroundColor:[UIColor whiteColor]];

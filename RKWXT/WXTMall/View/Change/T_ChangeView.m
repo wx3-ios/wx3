@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame];
     if(self){
         CGFloat bgWidth = (IPHONE_SCREEN_WIDTH-3*xGap)/2;
-        CGFloat bgHeight = T_HomePageChangeInfoHeight-yGap;
+        CGFloat bgHeight = T_HomePageChangeInfoHeight;
         WXUIButton *bgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         bgBtn.frame = CGRectMake(0, 0, bgWidth, bgHeight);
         [bgBtn setBackgroundColor:[UIColor whiteColor]];
@@ -58,7 +58,7 @@
         [_descLabel setTextColor:WXColorWithInteger(0x323232)];
         [_descLabel setTextAlignment:NSTextAlignmentLeft];
         [_descLabel setNumberOfLines:0];
-        [_descLabel setFont:[UIFont systemFontOfSize:8.0]];
+        [_descLabel setFont:[UIFont systemFontOfSize:10.0]];
         [bgBtn addSubview:_descLabel];
     }
     return self;
