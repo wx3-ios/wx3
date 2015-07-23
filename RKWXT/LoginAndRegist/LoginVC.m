@@ -215,6 +215,7 @@
     [_pwdTextField setTintColor:WXColorWithInteger(0xdd2726)];
     [_pwdTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextField setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_pwdTextField setSecureTextEntry:YES];
     [_pwdTextField setPlaceHolder:@" 请输入密码" color:WXColorWithInteger(0xda7c7b)];
     UIImage *passwordIcon = [UIImage imageNamed:@"LoginUserPwd.png"];
     UIImageView *leftView1 = [[UIImageView alloc] initWithImage:passwordIcon];

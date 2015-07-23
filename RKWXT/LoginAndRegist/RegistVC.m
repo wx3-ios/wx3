@@ -122,7 +122,7 @@ enum{
     CGFloat titleSize = 18.0;
     WXTUIButton *_submitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     [_submitBtn setFrame:CGRectMake(xgap, yOffset, btnWidth1, btnHeight1)];
-    [_submitBtn setTitle:@"注册领免费话费" forState:UIControlStateNormal];
+    [_submitBtn setTitle:@"立即注册" forState:UIControlStateNormal];
     [_submitBtn.titleLabel setFont:WXTFont(titleSize)];
     [_submitBtn setBackgroundImageOfColor:[UIColor clearColor] controlState:UIControlStateNormal];
     [_submitBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];
@@ -239,6 +239,7 @@ enum{
     [_pwdTextfield setTintColor:WXColorWithInteger(0xdd2726)];
     [_pwdTextfield setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextfield setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_pwdTextfield setSecureTextEntry:YES];
     [_pwdTextfield setPlaceHolder:@" 请输入密码" color:WXColorWithInteger(0xda7c7b)];
     UIImage *passwordIcon = [UIImage imageNamed:@"RegistUserPwdImg.png"];
     UIImageView *leftView1 = [[UIImageView alloc] initWithImage:passwordIcon];
@@ -270,7 +271,6 @@ enum{
     yOffset += 10;
     _otherPhone = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
     [_otherPhone setReturnKeyType:UIReturnKeyDone];
-    [_otherPhone setSecureTextEntry:YES];
     [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_otherPhone addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
     [_otherPhone setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];

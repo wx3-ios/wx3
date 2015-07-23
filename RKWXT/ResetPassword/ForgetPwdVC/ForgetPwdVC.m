@@ -234,6 +234,7 @@ enum{
     [_pwdTextfield setTintColor:WXColorWithInteger(0xdd2726)];
     [_pwdTextfield setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextfield setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_pwdTextfield setSecureTextEntry:YES];
     [_pwdTextfield setPlaceHolder:@"请输入密码" color:WXColorWithInteger(0xd0d0d0)];
     [_pwdTextfield setFont:WXTFont(fontSize)];
     [self addSubview:_pwdTextfield];
@@ -279,6 +280,7 @@ enum{
     [_otherPhone setTintColor:WXColorWithInteger(0xdd2726)];
     [_otherPhone setLeftViewMode:UITextFieldViewModeAlways];
     [_otherPhone setKeyboardType:UIKeyboardTypeASCIICapable];
+    [_otherPhone setSecureTextEntry:YES];
     [_otherPhone setPlaceHolder:@"再次输入密码" color:WXColorWithInteger(0xd0d0d0)];
     [_otherPhone setFont:WXTFont(fontSize)];
     [self addSubview:_otherPhone];
@@ -457,6 +459,7 @@ enum{
 
 -(void)resetNewPwdSucceed{
     [self unShowWaitView];
+    [UtilTool showAlertView:@"重置成功"];
     [self.wxNavigationController popViewControllerAnimated:YES completion:^{
     }];
 //    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];

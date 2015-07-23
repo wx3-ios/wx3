@@ -21,7 +21,7 @@
             }
         }else{
             WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-            [userObj setSmsID:[[retData.data objectForKey:@""] integerValue]];
+            [userObj setSmsID:[[retData.data objectForKey:@"data"] integerValue]];
             if (_delegate && [_delegate respondsToSelector:@selector(forgetPwdSucceed)]){
                 [_delegate forgetPwdSucceed];
             }

@@ -66,6 +66,7 @@
     [_oldPwdField setTintColor:[UIColor blackColor]];
     [_oldPwdField setKeyboardType:UIKeyboardTypeASCIICapable];
     [_oldPwdField setBackgroundColor:[UIColor clearColor]];
+    [_oldPwdField setSecureTextEntry:YES];
     [_oldPwdField setPlaceHolder:@"请输入旧密码" color:WXColorWithInteger(0xb0b0b0)];
     [_oldPwdField setTextAlignment:NSTextAlignmentLeft];
     [self addSubview:_oldPwdField];
@@ -108,6 +109,7 @@
     [_newPwdField setKeyboardType:UIKeyboardTypeASCIICapable];
     [_newPwdField setBackgroundColor:[UIColor clearColor]];
     [_newPwdField setTextAlignment:NSTextAlignmentLeft];
+    [_newPwdField setSecureTextEntry:YES];
     [_newPwdField setPlaceHolder:@"请输入新密码" color:WXColorWithInteger(0xb0b0b0)];
     [self addSubview:_newPwdField];
     
@@ -147,6 +149,7 @@
     [_confirmPwd setKeyboardType:UIKeyboardTypeASCIICapable];
     [_confirmPwd setBackgroundColor:[UIColor clearColor]];
     [_confirmPwd setTintColor:[UIColor blackColor]];
+    [_confirmPwd setSecureTextEntry:YES];
     [_confirmPwd setTextAlignment:NSTextAlignmentLeft];
     [_confirmPwd setPlaceHolder:@"再次输入新密码" color:WXColorWithInteger(0xb0b0b0)];
     [self addSubview:_confirmPwd];
