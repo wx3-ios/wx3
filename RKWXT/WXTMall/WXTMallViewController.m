@@ -44,6 +44,7 @@
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setPullingDelegate:self];
+    [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_tableView setAllowsSelection:NO];
     [self addSubview:_tableView];

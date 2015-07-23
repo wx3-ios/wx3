@@ -86,9 +86,15 @@
 }
 
 -(void)showNameInBtnWith:(OrderListEntity*)entity{
+    if(entity.order_status == Order_Status_None){
+        [_button2 setHidden:YES];
+        [_payBtn setHidden:YES];
+        return;
+    }
     if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_HasSend){
         [_payBtn setTitle:@"确认收货" forState:UIControlStateNormal];
         [_button2 setHidden:NO];
+        [_payBtn setHidden:NO];
         [_button2 setTitle:@"退款" forState:UIControlStateNormal];
         
         NSInteger num = 0;

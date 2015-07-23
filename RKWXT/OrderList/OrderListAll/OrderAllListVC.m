@@ -28,24 +28,20 @@ typedef enum{
 @interface OrderAllListVC()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,OrderUserHandleDelegate,OrderGoodsDelegate>{
     OrderListTableView *_tableView;
     NSArray *orderListArr;  // 商品
+    
+    NSInteger orderlistCount;
 }
 @property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
 
 @implementation OrderAllListVC
 
--(id)init{
-    self = [super init];
-    if(self){
-    }
-    return self;
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self addOBS];
     if(_tableView && [orderListArr count] > 0){
-        [self pullingTableViewDidStartRefreshing:_tableView];
+        [[OrderListModel shareOrderListModel] setOrderlist_type:OrderList_Type_Refresh];
+        [[OrderListModel shareOrderListModel] loadUserOrderList:0 to:[orderListArr count]];
     }
 }
 
@@ -247,11 +243,12 @@ typedef enum{
 #pragma mark loadOrderlist
 -(void)loadOrderListSucceed{
     [self unShowWaitView];
-    if([orderListArr count] == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
+    if(orderlistCount == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
         _tableView.reachedTheEnd = YES;
     }
     self.e_cellRefreshing = E_CellRefreshing_Nothing;
     orderListArr = [OrderListModel shareOrderListModel].orderListAll;
+    orderlistCount = [orderListArr count];
     [self loadEmptyOrderListView];
     [_tableView reloadData];
 }
@@ -263,9 +260,9 @@ typedef enum{
         message = @"获取订单失败";
     }
     [UtilTool showAlertView:message];
-    if([orderListArr count] == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
-        _tableView.reachedTheEnd = YES;
-    }
+//    if([orderListArr count] == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
+//        _tableView.reachedTheEnd = YES;
+//    }
 }
 
 #pragma mark cancelOrderList
@@ -393,10 +390,12 @@ typedef enum{
 -(void)loadData{
     if(self.e_cellRefreshing == E_CellRefreshing_UnderWay){
         self.e_cellRefreshing = E_CellRefreshing_Finish;
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
         [_tableView tableViewDidFinishedLoadingWithMessage:@"刷新完成"];
         [[OrderListModel shareOrderListModel] setOrderlist_type:OrderList_Type_Refresh];
         [[OrderListModel shareOrderListModel] loadUserOrderList:0 to:[orderListArr count]];
     }else{
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
         [[OrderListModel shareOrderListModel] setOrderlist_type:OrderList_Type_Loading];
         [[OrderListModel shareOrderListModel] loadUserOrderList:[orderListArr count] to:GetOrderArrayEveryTime];
     }

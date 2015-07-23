@@ -25,6 +25,7 @@ typedef enum{
     Order_Status_Normal = 0, //订单可操作
     Order_Status_Complete, // 订单已完成
     Order_Status_Cancel,    //订单已取消
+    Order_Status_None,      //订单不可操作（可能由退款导致，此订单尚未交易完成）
 }Order_Status;
 
 //退款

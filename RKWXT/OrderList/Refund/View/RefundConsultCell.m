@@ -12,6 +12,7 @@
 @interface RefundConsultCell(){
     WXUIButton *_circleBtn;
     WXUILabel *_pricelabel;
+    WXUIButton *btn;
     
     BOOL selected;
 }
@@ -49,7 +50,7 @@
         CGFloat xOffset = 10;
         CGFloat btnwidth = 72;
         CGFloat btnHeight = 35;
-        WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+        btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-btnwidth, (RefundConsultCellHeight-btnHeight)/2, btnwidth, btnHeight);
         [btn setBorderRadian:2.0 width:0.1 color:WXColorWithInteger(0xdd2726)];
         [btn setBackgroundColor:WXColorWithInteger(0xdd2726)];
@@ -86,6 +87,16 @@
     }
     [_pricelabel setText:[NSString stringWithFormat:@"合计: ￥%.2f",price]];
     [self setCircleBtnImgWith:entity.selectAll];
+    
+    NSInteger num = 0;
+    for(OrderListEntity *ent in entity.goodsArr){
+        if(ent.refund_status != Refund_Status_Normal){
+            num++;
+        }
+    }
+    if(num == [entity.goodsArr count]){
+        [btn setHidden:YES];
+    }
 }
 
 //选择按钮点击

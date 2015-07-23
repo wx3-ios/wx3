@@ -34,7 +34,15 @@
     [listArr removeAllObjects];
     for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
         if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
-            [listArr addObject:entity];
+            NSInteger num = 0;
+            for(OrderListEntity *ent in entity.goodsArr){
+                if((ent.refund_status == Refund_Status_Being && ent.shopDeal_status == ShopDeal_Refund_Agree) || ent.refund_status == Refund_Status_HasDone){
+                    num++;
+                }
+            }
+            if(num != [entity.goodsArr count]){
+                [listArr addObject:entity];
+            }
         }
     }
     if(_tableView){

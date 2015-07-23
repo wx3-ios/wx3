@@ -94,6 +94,7 @@
     [_infoLabel setHidden:YES];
     if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
         [_infoLabel setHidden:NO];
+        [_infoLabel setEnabled:YES];
         [_infoLabel setBackgroundColor:[UIColor grayColor]];
         [_infoLabel setTitle:@"退款中" forState:UIControlStateNormal];
     }
@@ -103,9 +104,15 @@
         [_infoLabel setBackgroundColor:[UIColor grayColor]];
         [_infoLabel setTitle:@"已申请退款" forState:UIControlStateNormal];
     }
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Normal){
+    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Refuse){
+        [_infoLabel setTitle:@"商家拒绝退款" forState:UIControlStateNormal];
+        [_infoLabel setBackgroundColor:[UIColor grayColor]];
         [_infoLabel setHidden:NO];
-        [_infoLabel setEnabled:NO];
+        [_infoLabel setEnabled:YES];
+    }
+    if(entity.refund_status == Refund_Status_HasDone){
+        [_infoLabel setHidden:NO];
+        [_infoLabel setEnabled:YES];
         [_infoLabel setBackgroundColor:[UIColor grayColor]];
         [_infoLabel setTitle:@"已退款" forState:UIControlStateNormal];
     }
@@ -113,7 +120,7 @@
 
 -(void)searchRefundstate{
     OrderListEntity *entity = self.cellInfo;
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
+    if(entity.refund_status != Refund_Status_Normal){
         if(_delegate && [_delegate respondsToSelector:@selector(toOrderRefundSucceed:)]){
             [_delegate toOrderRefundSucceed:entity];
         }

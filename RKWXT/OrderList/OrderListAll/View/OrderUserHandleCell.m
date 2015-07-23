@@ -66,6 +66,12 @@
         [_button1 setBackgroundColor:[UIColor grayColor]];
         return;
     }
+    if(entity.order_status == Order_Status_None){
+        [_button1 setHidden:YES];
+        [_button2 setHidden:YES];
+        return;
+    }
+    
     NSString *str1 = nil;
     NSString *str2 = nil;
     NSInteger num = 0;
@@ -84,9 +90,8 @@
     
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_WaitSend && entity.order_status == Order_Status_Normal){
         [_button1 setHidden:NO];
-        [_button2 setHidden:NO];
-        str1 = @"催单";
-        str2 = @"退款";
+        [_button2 setHidden:YES];
+        str1 = @"退款";
         
         if(num == [entity.goodsArr count]){
             [_button1 setHidden:YES];
@@ -118,8 +123,8 @@
         }
     }
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_WaitSend && entity.order_status == Order_Status_Normal){
-        if(_delegate && [_delegate respondsToSelector:@selector(userHurryBtnClicked:)]){
-            [_delegate userHurryBtnClicked:entity];
+        if(_delegate && [_delegate respondsToSelector:@selector(userRefundBtnClicked:)]){
+            [_delegate userRefundBtnClicked:entity];
         }
     }
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend && entity.order_status == Order_Status_Normal){

@@ -87,9 +87,9 @@
 
 -(void)showNameInBtnWith:(OrderListEntity*)entity{
     if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
-        [_payBtn setTitle:@"催单" forState:UIControlStateNormal];
-        [_button2 setHidden:NO];
-        [_button2 setTitle:@"退款" forState:UIControlStateNormal];
+//        [_payBtn setTitle:@"催单" forState:UIControlStateNormal];
+        [_button2 setHidden:YES];
+        [_payBtn setTitle:@"退款" forState:UIControlStateNormal];
         
         NSInteger num = 0;
         for(OrderListEntity *ent in entity.goodsArr){
@@ -107,8 +107,8 @@
 -(void)sendGoods{
     OrderListEntity *entity = self.cellInfo;
     if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
-        if(_delegate && [_delegate respondsToSelector:@selector(userClickHurryBtn:)]){
-            [_delegate userClickHurryBtn:entity];
+        if(_delegate && [_delegate respondsToSelector:@selector(userClickRefundBtn:)]){
+            [_delegate userClickRefundBtn:entity];
         }
     }
 }

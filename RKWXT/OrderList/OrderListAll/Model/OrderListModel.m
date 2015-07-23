@@ -156,7 +156,6 @@
                     ent.refund_status = Refund_Status_Being;
                 }
             }
-            break;
         }
     }
     //退单品
@@ -166,7 +165,6 @@
                 for(OrderListEntity *ent in entity.goodsArr){
                     if(ent.orderGoodsID == orderGoodsID){
                         ent.refund_status = Refund_Status_Being;
-                        break;
                     }
                 }
             }

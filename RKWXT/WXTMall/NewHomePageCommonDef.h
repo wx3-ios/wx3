@@ -10,7 +10,7 @@
 #define RKWXT_NewHomePageCommonDef_h
 
 #define yGap                            (0.5)    //以下所有高度均是加了yGap后的高度
-#define xGap                            (0.4)
+#define xGap                            (0.3)
 #define T_HomePageTopImgHeight          (115)
 #define T_HomePageBaseFunctionHeight    (40)
 #define T_HomePageWXIntructionHeight    (92)
