@@ -192,6 +192,10 @@
 		127FDD781B57A76E0059BDB6 /* CallBtnUpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD751B57A76E0059BDB6 /* CallBtnUpImg@2x.png */; };
 		127FDD791B57A76E0059BDB6 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD761B57A76E0059BDB6 /* ContactInfoCall@2x.png */; };
 		127FDD7B1B57B2570059BDB6 /* woxinHidIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD7A1B57B2570059BDB6 /* woxinHidIcon@2x.png */; };
+		128083D01B61D0A100260B9F /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128083CF1B61D0A100260B9F /* TencentOpenAPI.framework */; };
+		128083D21B61D17700260B9F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 128083D11B61D17700260B9F /* libiconv.dylib */; };
+		128083D41B61D1BA00260B9F /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 128083D31B61D1BA00260B9F /* libstdc++.dylib */; };
+		128083D61B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 128083D51B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle */; };
 		128136A41B33B394005F9929 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A31B33B394005F9929 /* ShoppingCartModel.m */; };
 		128136A71B33C0AF005F9929 /* SCartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A61B33C0AF005F9929 /* SCartListModel.m */; };
 		128136AA1B33C2A7005F9929 /* ShoppingCartEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A91B33C2A7005F9929 /* ShoppingCartEntity.m */; };
@@ -981,6 +985,10 @@
 		127FDD751B57A76E0059BDB6 /* CallBtnUpImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBtnUpImg@2x.png"; sourceTree = "<group>"; };
 		127FDD761B57A76E0059BDB6 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
 		127FDD7A1B57B2570059BDB6 /* woxinHidIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woxinHidIcon@2x.png"; sourceTree = "<group>"; };
+		128083CF1B61D0A100260B9F /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		128083D11B61D17700260B9F /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		128083D31B61D1BA00260B9F /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		128083D51B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		128136A21B33B394005F9929 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
 		128136A31B33B394005F9929 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		128136A51B33C0AF005F9929 /* SCartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCartListModel.h; sourceTree = "<group>"; };
@@ -2001,6 +2009,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128083D41B61D1BA00260B9F /* libstdc++.dylib in Frameworks */,
+				128083D21B61D17700260B9F /* libiconv.dylib in Frameworks */,
 				12F572271B42267300128294 /* MobileCoreServices.framework in Frameworks */,
 				12F572251B42265600128294 /* libc++.dylib in Frameworks */,
 				12F572231B42263A00128294 /* libc.dylib in Frameworks */,
@@ -2018,6 +2028,7 @@
 				DDDAE9831ACAA8A800CC3FE9 /* SystemConfiguration.framework in Frameworks */,
 				12F9630F1B3D4B3800FF6A3E /* libcrypto.a in Frameworks */,
 				12D55A451AC2BD8800F51F97 /* CoreTelephony.framework in Frameworks */,
+				128083D01B61D0A100260B9F /* TencentOpenAPI.framework in Frameworks */,
 				12F572211B42255D00128294 /* libWeChatSDK.a in Frameworks */,
 				DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */,
 				1282413D1B60C605001EE0BD /* libWeChatSDK.a in Frameworks */,
@@ -4017,6 +4028,7 @@
 		2563B3DB1AAAD74000C04227 = {
 			isa = PBXGroup;
 			children = (
+				128083D51B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle */,
 				2563B3E61AAAD74000C04227 /* RKWXT */,
 				2563B3E51AAAD74000C04227 /* Products */,
 				A85B8011543037120ABCE5BB /* Pods */,
@@ -4988,6 +5000,9 @@
 		AD94EECE23B2F2543B7D284C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				128083D31B61D1BA00260B9F /* libstdc++.dylib */,
+				128083D11B61D17700260B9F /* libiconv.dylib */,
+				128083CF1B61D0A100260B9F /* TencentOpenAPI.framework */,
 				12F572261B42267300128294 /* MobileCoreServices.framework */,
 				12F572241B42265600128294 /* libc++.dylib */,
 				12F572221B42263A00128294 /* libc.dylib */,
@@ -5381,6 +5396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128083D61B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				1263EFE41ACD35820014C347 /* Icon-Small-50.png in Resources */,
 				1241E53B1AE9D89B00811D3F /* *N.png in Resources */,
 				1241E5381AE9D89B00811D3F /* HangupCall@2x.png in Resources */,
@@ -6263,6 +6279,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/RKWXT/ShareInterface/qq",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6299,6 +6316,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/RKWXT/ShareInterface/qq",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

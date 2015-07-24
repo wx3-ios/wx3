@@ -28,8 +28,9 @@
 #import "ScreenActivityVC.h"
 
 #import "WXWeiXinOBJ.h"
+#import <TencentOpenAPI/TencentOAuth.h>
 
-@interface AppDelegate (){
+@interface AppDelegate ()<TencentSessionDelegate>{
     CTCallCenter *_callCenter;
     ScreenActivityVC *activityVC;
 }
@@ -85,8 +86,14 @@
     
     //向微信注册
     [[WXWeiXinOBJ sharedWeiXinOBJ] registerApp];
+    [[TencentOAuth alloc] initWithAppId:@"1104707907" andDelegate:self];
     
 	return YES;
+}
+
+#pragma mark qqShared
+-(BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [TencentOAuth HandleOpenURL:url];
 }
 
 -(void)addNotification{
@@ -317,22 +324,12 @@ didRegisterUserNotificationSettings:
 (UIUserNotificationSettings *)notificationSettings {
 }
 
-// Called when your app has been activated by the user selecting an action from
-// a local notification.
-// A nil action identifier indicates the default action.
-// You should call the completion handler as soon as you've finished handling
-// the action.
 - (void)application:(UIApplication *)application
 handleActionWithIdentifier:(NSString *)identifier
 forLocalNotification:(UILocalNotification *)notification
   completionHandler:(void (^)())completionHandler {
 }
 
-// Called when your app has been activated by the user selecting an action from
-// a remote notification.
-// A nil action identifier indicates the default action.
-// You should call the completion handler as soon as you've finished handling
-// the action.
 - (void)application:(UIApplication *)application
 handleActionWithIdentifier:(NSString *)identifier
 forRemoteNotification:(NSDictionary *)userInfo
@@ -341,8 +338,6 @@ forRemoteNotification:(NSDictionary *)userInfo
 #endif
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-	// Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     CallViewController *callVC = [[CallViewController alloc] init];
     [callVC setEmptyText];
 }
@@ -352,16 +347,12 @@ forRemoteNotification:(NSDictionary *)userInfo
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-	// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-	// Saves changes in the application's managed object context before the application terminates.
 	[self saveContext];
 }
 
@@ -405,12 +396,10 @@ void UncaughtExceptionHandler(NSException *exception) {
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "WoXin.RKWXT" in the application's documents directory.
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 - (NSManagedObjectModel *)managedObjectModel {
-    // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
@@ -420,12 +409,9 @@ void UncaughtExceptionHandler(NSException *exception) {
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it.
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-    
-    // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"RKWXT.sqlite"];
@@ -438,8 +424,6 @@ void UncaughtExceptionHandler(NSException *exception) {
         dict[NSLocalizedFailureReasonErrorKey] = failureReason;
         dict[NSUnderlyingErrorKey] = error;
         error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-        // Replace this with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -449,7 +433,6 @@ void UncaughtExceptionHandler(NSException *exception) {
 
 
 - (NSManagedObjectContext *)managedObjectContext {
-    // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
@@ -469,8 +452,6 @@ void UncaughtExceptionHandler(NSException *exception) {
     if (managedObjectContext != nil) {
         NSError *error = nil;
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
@@ -484,7 +465,8 @@ void UncaughtExceptionHandler(NSException *exception) {
     [WXApi handleOpenURL:url delegate:self];
     //微信
     [[WXWeiXinOBJ sharedWeiXinOBJ] handleOpenURL:url];
-    
+    //qq
+    [TencentOAuth HandleOpenURL:url];
     return YES;
 }
 
