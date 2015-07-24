@@ -276,10 +276,10 @@
     DDLogDebug(@"已登录");
 }
 
-- (void)networkDidReceiveMessage:(NSNotification *)notification {   //锁屏状态APNS
+- (void)networkDidReceiveMessage:(NSNotification *)notification {  //应用内消息,由锁屏进入应用内
     NSDictionary *userInfo = [notification userInfo];
-    [APService handleRemoteNotification:userInfo];
-    [[JPushMessageModel shareJPushModel] initJPushWithDic:userInfo];
+//    [APService handleRemoteNotification:userInfo];
+    [[JPushMessageModel shareJPushModel] initJPushWithCloseDic:userInfo];
 }
 
 - (void)serviceError:(NSNotification *)notification {
@@ -293,10 +293,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo {
+didReceiveRemoteNotification:(NSDictionary *)userInfo {   //锁屏状态APNS,字段和应用内不同
     // Required
     [APService handleRemoteNotification:userInfo];
-    [[JPushMessageModel shareJPushModel] initJPushWithDic:userInfo];
+    [[JPushMessageModel shareJPushModel] initJPushWithCloseDic:userInfo];
 }
 
 - (void)application:(UIApplication *)application
@@ -304,7 +304,7 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     [APService showLocalNotificationAtFront:notification identifierKey:nil];
 }
 
-- (void)application:(UIApplication *)application    //应用内消息
+- (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void
                         (^)(UIBackgroundFetchResult))completionHandler {

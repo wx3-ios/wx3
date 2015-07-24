@@ -12,13 +12,20 @@
 #define kMaskShellDefaultAlpha (0.6)
 
 #define shareViewWidth (240)
-#define shareViewHeight (380)
+#define shareViewHeight (360)
 
 static NSString *shareImgArr[]={
     @"ShareQqImg.png",
     @"ShareQzoneImg.png",
     @"ShareWxFriendImg.png",
     @"ShareWxCircleImg.png",
+};
+
+static NSString *shareNameArr[]={
+    @"qq好友",
+    @"qq空间",
+    @"微信好友",
+    @"朋友圈",
 };
 
 @interface ShareBrowserView(){
@@ -87,7 +94,7 @@ static NSString *shareImgArr[]={
     _imageView = [[UIImageView alloc] init];
     [_shareView addSubview:_imageView];
     
-    yOffset += 21+200;
+    yOffset += 15+200;
     UILabel *textLabel1 = [[UILabel alloc] init];
     textLabel1.frame = CGRectMake((shareViewWidth-textlabelWidth)/2, yOffset, textlabelWidth, textLabelHeight);
     [textLabel1 setBackgroundColor:[UIColor clearColor]];
@@ -118,6 +125,15 @@ static NSString *shareImgArr[]={
         [sharebtn setImage:[UIImage imageNamed:shareImgArr[i]] forState:UIControlStateNormal];
         [sharebtn addTarget:self action:@selector(sharebtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_shareView addSubview:sharebtn];
+        
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.frame = CGRectMake(xGap+i*(imgWidth+xGap), yGap+imgHeight, imgWidth, 20);
+        [nameLabel setBackgroundColor:[UIColor clearColor]];
+        [nameLabel setText:shareNameArr[i]];
+        [nameLabel setFont:WXFont(10.0)];
+        [nameLabel setTextAlignment:NSTextAlignmentCenter];
+        [nameLabel setTextColor:WXColorWithInteger(0x000000)];
+        [_shareView addSubview:nameLabel];
     }
 }
 

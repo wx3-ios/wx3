@@ -15,6 +15,7 @@
 
 @interface JPushMessageModel(){
     NSMutableArray *_jpushMsgArr;
+    NSMutableArray *_proArr;
     T_Sqlite *fmdb;
 }
 @end
@@ -34,10 +35,12 @@
     self = [super init];
     if(self){
         _jpushMsgArr = [[NSMutableArray alloc] init];
+        _proArr = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
+//应用内
 -(void)initJPushWithDic:(NSDictionary *)dic{
     if(!dic){
         return;
@@ -47,10 +50,37 @@
     entity.content = [[dic objectForKey:@"aps"] objectForKey:@"alert"];
     [_jpushMsgArr addObject:entity];
     
+    for(JPushMsgEntity *ent in _proArr){
+        if(ent.push_id == entity.push_id){
+            return;
+        }
+    }
+    [_proArr addObject:entity];
     Sql_JpushData *jpush = [[Sql_JpushData alloc] init];
     [jpush insertData:entity.content withAbs:entity.abstract withImg:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.msgURL] withPushID:[NSString stringWithFormat:@"%ld",(long)entity.push_id]];
     [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_SystemMessageDetected object:nil];
 //    [self sound];
+}
+
+//锁屏
+-(void)initJPushWithCloseDic:(NSDictionary *)dic{
+    if(!dic){
+        return;
+    }
+    [_jpushMsgArr removeAllObjects];
+    JPushMsgEntity *entity = [JPushMsgEntity initWithJPushCloseMessageWithDic:dic];
+    entity.content = [dic objectForKey:@"title"];
+    [_jpushMsgArr addObject:entity];
+    
+    for(JPushMsgEntity *ent in _proArr){
+        if(ent.push_id == entity.push_id){
+            return;
+        }
+    }
+    [_proArr addObject:entity];
+    Sql_JpushData *jpush = [[Sql_JpushData alloc] init];
+    [jpush insertData:entity.content withAbs:entity.abstract withImg:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.msgURL] withPushID:[NSString stringWithFormat:@"%ld",(long)entity.push_id]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_SystemMessageDetected object:nil];
 }
 
 -(void)loadJPushData{

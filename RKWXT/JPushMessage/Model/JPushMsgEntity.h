@@ -16,5 +16,6 @@
 @property (nonatomic,strong) NSString *pushTime;
 
 +(JPushMsgEntity*)initWithJPushMessageWithDic:(NSDictionary*)dic;
++(JPushMsgEntity*)initWithJPushCloseMessageWithDic:(NSDictionary*)dic;
 
 @end

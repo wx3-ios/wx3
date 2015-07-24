@@ -35,4 +35,26 @@
     return self;
 }
 
++(JPushMsgEntity*)initWithJPushCloseMessageWithDic:(NSDictionary *)dic{
+    if(!dic){
+        return nil;
+    }
+    return [[self alloc] initWithCloseDic:dic];
+}
+
+-(id)initWithCloseDic:(NSDictionary*)dic{
+    self = [super init];
+    if(self){
+        NSString *ads = [[dic objectForKey:@"extras"] objectForKey:@"abstract"];
+        [self setAbstract:ads];
+        
+        NSString *urlImg = [[dic objectForKey:@"extras"] objectForKey:@"message_home_img"];
+        [self setMsgURL:urlImg];
+        
+        NSInteger pushID = [[[dic objectForKey:@"extras"] objectForKey:@"push_id"] integerValue];
+        [self setPush_id:pushID];
+    }
+    return self;
+}
+
 @end

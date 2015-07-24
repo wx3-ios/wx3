@@ -16,6 +16,7 @@
 
 +(JPushMessageModel*)shareJPushModel;
 -(void)initJPushWithDic:(NSDictionary*)dic;
+-(void)initJPushWithCloseDic:(NSDictionary*)dic;
 -(void)loadJPushData;
 -(void)deleteJPushWithPushID:(NSInteger)pushID;
 
