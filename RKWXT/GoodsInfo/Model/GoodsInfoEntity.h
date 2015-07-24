@@ -22,7 +22,8 @@
 @property (nonatomic,assign) NSInteger concernID;     //为0则未关注
 
 //商品行业基础属性
-@property (nonatomic,strong) NSArray *customArr;      //通用属性数组
+@property (nonatomic,strong) NSArray *customNameArr;      //通用属性数组名称
+@property (nonatomic,strong) NSArray *customInfoArr;      //通用属性数组内容
 @property (nonatomic,strong) NSString *customKey;     //通用参数key
 @property (nonatomic,strong) NSString *customValue;   //通用参数value
 

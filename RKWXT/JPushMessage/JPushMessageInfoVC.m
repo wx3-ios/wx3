@@ -25,7 +25,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setCSTNavigationViewHidden:YES animated:YES];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 -(void)viewDidLoad{

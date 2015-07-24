@@ -48,7 +48,8 @@
     
     for(NSDictionary *dic in stockArr){
         GoodsInfoEntity *entity = [GoodsInfoEntity goodsInfoEntityWithBaseDic:baseDic withStockDic:dic];
-        entity.customArr = [self storeStringInAttrArrayWithArr:attrArr];
+        entity.customNameArr = [self storeStringNameAttrArrayWithArr:attrArr];
+        entity.customInfoArr = [self storeStringInfoAttrArrayWithArr:attrArr];
         entity.imgArr = [self goodsInfoTopImgArrWithImgString:entity.bigImg];
         [_dataList addObject:entity];
     }
@@ -67,15 +68,27 @@
     return imgArr;
 }
 
--(NSArray*)storeStringInAttrArrayWithArr:(NSArray*)oldArr{
+-(NSArray*)storeStringNameAttrArrayWithArr:(NSArray*)oldArr{
     if(!oldArr){
         return nil;
     }
     NSMutableArray *attrArr = [[NSMutableArray alloc] init];
     for(NSDictionary *dic in oldArr){
         NSString *name = [dic objectForKey:@"attr_name"];
-        NSString *allNameStr = [name stringByAppendingString:[NSString stringWithFormat:@":%@",[dic objectForKey:@"attr_value"]]];
-        [attrArr addObject:allNameStr];
+//        NSString *allNameStr = [name stringByAppendingString:[NSString stringWithFormat:@":%@",[dic objectForKey:@"attr_value"]]];
+        [attrArr addObject:name];
+    }
+    return attrArr;
+}
+
+-(NSArray*)storeStringInfoAttrArrayWithArr:(NSArray*)oldArr{
+    if(!oldArr){
+        return nil;
+    }
+    NSMutableArray *attrArr = [[NSMutableArray alloc] init];
+    for(NSDictionary *dic in oldArr){
+        NSString *name = [dic objectForKey:@"attr_value"];
+        [attrArr addObject:name];
     }
     return attrArr;
 }

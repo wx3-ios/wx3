@@ -447,7 +447,7 @@
         cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
-    [cell.imageView setImage:[UIImage imageNamed:@"AboutWxImg.png"]];
+    [cell.imageView setImage:[UIImage imageNamed:@"PersonalShareImg.png"]];
     [cell.textLabel setText:@"分享"];
     [cell.textLabel setFont:WXFont(15.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];

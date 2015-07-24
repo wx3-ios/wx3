@@ -209,7 +209,7 @@
                 if(_selectedIndexPath.section == section){
                     if([_model.data count] > 0){
                         GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-                        return [entity.customArr count];
+                        return [entity.customNameArr count]+1;
                     }else{
                         return 1;
                     }
@@ -335,7 +335,9 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if([_model.data count] > 0){
         GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-        [cell setCellInfo:[entity.customArr objectAtIndex:row]];
+//        [cell setCellInfo:[entity.customNameArr objectAtIndex:row]];
+        [cell setName:[entity.customNameArr objectAtIndex:row-1]];
+        [cell setInfo:[entity.customInfoArr objectAtIndex:row-1]];
     }
     [cell load];
     return cell;

@@ -9,5 +9,7 @@
 #import "WXUITableViewCell.h"
 
 @interface NewGoodsInfoDownCell : WXUITableViewCell
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *info;
 
 @end
