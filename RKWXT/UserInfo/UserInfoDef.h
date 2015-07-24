@@ -36,6 +36,7 @@ enum{
     PersonalInfo_Call,
 //    PersonalInfo_Extend,
     PersonalInfo_System,
+    PersonalInfo_Share,
     
     PersonalInfo_Invalid
 };
@@ -72,7 +73,6 @@ enum{
 enum{
     System_Setting = 0,
     System_About,
-    System_Share,
     
     System_Invalid
 };

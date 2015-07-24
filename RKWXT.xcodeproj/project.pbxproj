@@ -196,6 +196,11 @@
 		128083D21B61D17700260B9F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 128083D11B61D17700260B9F /* libiconv.dylib */; };
 		128083D41B61D1BA00260B9F /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 128083D31B61D1BA00260B9F /* libstdc++.dylib */; };
 		128083D61B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 128083D51B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle */; };
+		128083DA1B62147E00260B9F /* ShareBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128083D91B62147E00260B9F /* ShareBrowserView.m */; };
+		128083E01B622A6D00260B9F /* ShareQqImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128083DC1B622A6D00260B9F /* ShareQqImg@2x.png */; };
+		128083E11B622A6D00260B9F /* ShareQzoneImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128083DD1B622A6D00260B9F /* ShareQzoneImg@2x.png */; };
+		128083E21B622A6D00260B9F /* ShareWxCircleImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128083DE1B622A6D00260B9F /* ShareWxCircleImg@2x.png */; };
+		128083E31B622A6D00260B9F /* ShareWxFriendImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128083DF1B622A6D00260B9F /* ShareWxFriendImg@2x.png */; };
 		128136A41B33B394005F9929 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A31B33B394005F9929 /* ShoppingCartModel.m */; };
 		128136A71B33C0AF005F9929 /* SCartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A61B33C0AF005F9929 /* SCartListModel.m */; };
 		128136AA1B33C2A7005F9929 /* ShoppingCartEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 128136A91B33C2A7005F9929 /* ShoppingCartEntity.m */; };
@@ -989,6 +994,12 @@
 		128083D11B61D17700260B9F /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		128083D31B61D1BA00260B9F /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		128083D51B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		128083D81B62147E00260B9F /* ShareBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareBrowserView.h; sourceTree = "<group>"; };
+		128083D91B62147E00260B9F /* ShareBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareBrowserView.m; sourceTree = "<group>"; };
+		128083DC1B622A6D00260B9F /* ShareQqImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareQqImg@2x.png"; sourceTree = "<group>"; };
+		128083DD1B622A6D00260B9F /* ShareQzoneImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareQzoneImg@2x.png"; sourceTree = "<group>"; };
+		128083DE1B622A6D00260B9F /* ShareWxCircleImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareWxCircleImg@2x.png"; sourceTree = "<group>"; };
+		128083DF1B622A6D00260B9F /* ShareWxFriendImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareWxFriendImg@2x.png"; sourceTree = "<group>"; };
 		128136A21B33B394005F9929 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
 		128136A31B33B394005F9929 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		128136A51B33C0AF005F9929 /* SCartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCartListModel.h; sourceTree = "<group>"; };
@@ -2594,6 +2605,26 @@
 			path = ResetPassword;
 			sourceTree = "<group>";
 		};
+		128083D71B62142900260B9F /* ShareView */ = {
+			isa = PBXGroup;
+			children = (
+				128083D81B62147E00260B9F /* ShareBrowserView.h */,
+				128083D91B62147E00260B9F /* ShareBrowserView.m */,
+			);
+			path = ShareView;
+			sourceTree = "<group>";
+		};
+		128083DB1B622A6100260B9F /* ShareImg */ = {
+			isa = PBXGroup;
+			children = (
+				128083DC1B622A6D00260B9F /* ShareQqImg@2x.png */,
+				128083DD1B622A6D00260B9F /* ShareQzoneImg@2x.png */,
+				128083DE1B622A6D00260B9F /* ShareWxCircleImg@2x.png */,
+				128083DF1B622A6D00260B9F /* ShareWxFriendImg@2x.png */,
+			);
+			path = ShareImg;
+			sourceTree = "<group>";
+		};
 		128221561B18467A004613BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2749,6 +2780,7 @@
 		1282413F1B60D062001EE0BD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				128083D71B62142900260B9F /* ShareView */,
 				128241401B60D062001EE0BD /* DownSheet.h */,
 				128241411B60D062001EE0BD /* DownSheet.m */,
 				128241421B60D062001EE0BD /* DownSheetCell.h */,
@@ -4118,6 +4150,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				128083DB1B622A6100260B9F /* ShareImg */,
 				128585041B3AA7E5005E240E /* MakeOrderImg */,
 				1295C5E21B293B24004C861D /* OrderImg */,
 				1295C5DD1B2919D6004C861D /* ResetPwd */,
@@ -5434,6 +5467,7 @@
 				1241E5521AE9D89B00811D3F /* delSel@2x.png in Resources */,
 				1245356B1AE9D20D004198C9 /* RechargeSign@2x.png in Resources */,
 				1241E5471AE9D89B00811D3F /* 5N@2x.png in Resources */,
+				128083E11B622A6D00260B9F /* ShareQzoneImg@2x.png in Resources */,
 				12F46A3E1B20012000B8EC98 /* T_GoodsInfo@2x.png in Resources */,
 				DDEA9EE41B1BFE5D00530C1C /* unreadBg@2x.png in Resources */,
 				12F46A381B20012000B8EC98 /* T_ArrowRight@2x.png in Resources */,
@@ -5504,6 +5538,7 @@
 				12846A8D1B252D720021F9FE /* LoginUserPwd@2x.png in Resources */,
 				775842E91AB95A300039B129 /* ZoneCode in Resources */,
 				12D52BBD1AC2EF4400C5CE71 /* dtmf-7.aif in Resources */,
+				128083E01B622A6D00260B9F /* ShareQqImg@2x.png in Resources */,
 				1245355A1AE9D146004198C9 /* sign5@2x.png in Resources */,
 				1241E5341AE9D89B00811D3F /* CallBackIconImgNor@2x.png in Resources */,
 				12D52BBE1AC2EF4400C5CE71 /* dtmf-8.aif in Resources */,
@@ -5525,6 +5560,7 @@
 				12D52BBA1AC2EF4400C5CE71 /* dtmf-4.aif in Resources */,
 				1245353B1AE9D146004198C9 /* signBg.jpg in Resources */,
 				775C58401ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				128083E21B622A6D00260B9F /* ShareWxCircleImg@2x.png in Resources */,
 				786155E31AC8E0CE0048B604 /* place.dat in Resources */,
 				1245350D1AE9D0BC004198C9 /* CallSelected@2x.png in Resources */,
 				124535511AE9D146004198C9 /* sign29@2x.png in Resources */,
@@ -5626,6 +5662,7 @@
 				1245354D1AE9D146004198C9 /* sign25@2x.png in Resources */,
 				1245353D1AE9D146004198C9 /* signEveryDay@2x.png in Resources */,
 				1241E5651AE9D91400811D3F /* T_Back@2x.png in Resources */,
+				128083E31B622A6D00260B9F /* ShareWxFriendImg@2x.png in Resources */,
 				1263EFE91ACD35820014C347 /* iTunesArtWork.png in Resources */,
 				1241E54D1AE9D89B00811D3F /* 8N@2x.png in Resources */,
 				1240D6E01AE916F40056AD6A /* post_type_bubble_flickr.png in Resources */,
@@ -6034,6 +6071,7 @@
 				1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
 				12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */,
+				128083DA1B62147E00260B9F /* ShareBrowserView.m in Sources */,
 				775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
 				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,

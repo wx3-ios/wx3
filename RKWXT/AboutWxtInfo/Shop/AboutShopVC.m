@@ -7,238 +7,87 @@
 //
 
 #import "AboutShopVC.h"
-#import "WXRemotionImgBtn.h"
-#import "PictureBrowseView.h"
-#import "AbouShopDef.h"
-#import "AboutShopEntity.h"
-#import "AboutShopModel.h"
-#import "NSString+HTML.h"
 
-#define ShopInfoHeadImgHeight (214)
+#define NormaleMessageUrl @"http://oldyun.67call.com/wx_html/index.php/Public/shop_detail"
 
-@interface AboutShopVC ()<UITableViewDataSource,UITableViewDelegate>{
-    UITableView *_tableView;
-    NSArray *shopInfoArr;
+@interface AboutShopVC()<UIWebViewDelegate>{
+    UIWebView *_webView;
 }
 @end
 
 @implementation AboutShopVC
 
-- (void)viewDidLoad{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setCSTNavigationViewHidden:YES animated:NO];
+}
+
+-(void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:kMerchantName];
-    [self loadtableView];
+    [self setCSTTitleColor:[UIColor blackColor]];
     
-    [self addOBS];
-    [[AboutShopModel shareShopModel] loadShopInfo];
-    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    _webView = [[WXUIWebView alloc] initWithFrame:self.bounds];
+    [_webView setDelegate:self];
+    [self addSubview:_webView];
+    
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?sid=%d&phone=%@",NormaleMessageUrl,kMerchantID,userObj.user];
+    
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [_webView loadRequest:request];
 }
 
--(void)loadtableView{
-    _tableView = [[WXUITableView alloc] initWithFrame:self.bounds];
-    [_tableView setDataSource:self];
-    [_tableView setDelegate:self];
-    [_tableView setBackgroundColor:[UIColor whiteColor]];
-    [self addSubview:_tableView];
-    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showWaitViewMode:E_WaiteView_Mode_Unblock title:@"正在加载数据"];
 }
 
--(void)addOBS{
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(loadShopInfoSucceed) name:K_Notification_Name_LoadShopInfoSucceed object:nil];
-    [notificationCenter addObserver:self selector:@selector(loadShopInfoFailed:) name:K_Notification_Name_LoadShopInfoFailed object:nil];
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self unShowWaitView];
 }
 
--(void)removeOBS{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [self unShowWaitView];
+    [UtilTool showAlertView:@"数据加载失败"];
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return AboutShop_Section_Invalid;
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *urlString = request.URL.absoluteString;
+    NSDictionary *paramDic = [self parseURL:urlString];
+    return [self jumpToParam:paramDic];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger row = 0;
-    switch (section) {
-        case AboutShop_Section_Head:
-            row = ShopHead_Row_Invalid;
-            break;
-        case AboutShop_Section_TwoDimension:
-        case AboutShop_Section_ShopInfo:
-            row = 1;
-        default:
-            break;
+-(NSDictionary*)parseURL:(NSString*)url{
+    NSArray *paramList = [url componentsSeparatedByString:@"?"];
+    if([paramList count] < 2){
+        return nil;
     }
-    return row;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat height = 0.0;
-    NSInteger section = indexPath.section;
-    switch (section) {
-        case AboutShop_Section_Head:
-        {
-            if(indexPath.row == ShopHead_Row_Img){
-                height = ShopInfoHeadImgHeight;
-            }else{
-                AboutShopEntity *entity = nil;
-                if([shopInfoArr count] > 0){
-                    entity = [shopInfoArr objectAtIndex:0];
-                    NSString *newStr = [entity.seller_desc stringByConvertingHTMLToPlainText];
-                    height = [newStr stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16]+15;
-                }
-            }
+    NSString *paramString = [paramList objectAtIndex:1];
+    paramList = [paramString componentsSeparatedByString:@"&"];
+    NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+    for(NSString *paramString in paramList){
+        NSArray *keyAndValue = [paramString componentsSeparatedByString:@"="];
+        if([keyAndValue count] != 2){
+            continue;
         }
-            break;
-        case AboutShop_Section_TwoDimension:
-            height = TwoDimensionCellHeight;
-            break;
-        case AboutShop_Section_ShopInfo:
-        {
-            AboutShopEntity *entity = nil;
-            if([shopInfoArr count] > 0){
-                NSString *address = [NSString stringWithFormat:@"分店地址:   %@",entity.address];
-                CGFloat height1 = [address stringHeight:[UIFont systemFontOfSize:14.0] width:IPHONE_SCREEN_WIDTH-16];
-                height = height1+55;
-            }
-        }
-            break;
-        default:
-            break;
+        [paramDic setObject:[keyAndValue objectAtIndex:1] forKey:[keyAndValue objectAtIndex:0]];
     }
-    return height;
+    if([paramDic allKeys] == 0){
+        return nil;
+    }
+    return paramDic;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    CGFloat height = 0.0;
-    if(section == AboutShop_Section_Head){
-        height = 0;
+-(BOOL)jumpToParam:(NSDictionary*)paramDic{
+    NSInteger gotoID = [[paramDic objectForKey:@"goods_id"] integerValue];
+    if(gotoID == -1){
+        [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+        }];
+        return NO;
     }else{
-        height = 10;
+        return YES;
     }
-    return height;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WXUITableViewCell *cell = nil;
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    switch (section) {
-        case AboutShop_Section_Head:
-        {
-            if(row == ShopHead_Row_Img){
-                cell = [self headImgCellAtRow:row];
-            }else{
-                cell = [self aboutShopInfoDescAtRow:row];
-            }
-        }
-            break;
-        case AboutShop_Section_TwoDimension:
-            cell = [self twoDimensionCellAtRow:row];
-            break;
-        case AboutShop_Section_ShopInfo:
-            cell = [self aboutShopInfoAtSection];
-            break;
-        default:
-            break;
-    }
-    return cell;
-}
-
-//关于商家顶部图片
--(WXUITableViewCell *)headImgCellAtRow:(NSInteger)row{
-    static NSString *identifier = @"headImg";
-    AboutShopTopImgCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[AboutShopTopImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    NSMutableArray *merchantImgViewArray = [[NSMutableArray alloc] init];
-    AboutShopEntity *entity = [shopInfoArr objectAtIndex:0];
-    for(NSString *url in entity.imgArr){
-        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, ShopInfoHeadImgHeight)];
-        [imgView setCpxViewInfo:url];
-        [merchantImgViewArray addObject:imgView];
-    }
-    cell = [[AboutShopTopImgCell alloc] initWithReuseIdentifier:identifier imageArray:merchantImgViewArray];
-    [cell load];
-    return cell;
-}
-
-//关于商家顶部描述
--(AboutShopInfoCell *)aboutShopInfoDescAtRow:(NSInteger)row{
-    static NSString *identifier = @"descriptionCell";
-    AboutShopInfoCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[AboutShopInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    
-    [cell setUserInteractionEnabled:NO];
-    if([shopInfoArr count] > 0){
-        AboutShopEntity *entity = [shopInfoArr objectAtIndex:0];
-        [cell loadAboutShopInfoDescription:entity.seller_desc];
-    }
-    return cell;
-}
-
-//所有分店列表
--(AboutShopInfoCell *)aboutShopInfoAtSection{
-    static NSString *identifier = @"shopInfoCell";
-    AboutShopInfoCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[AboutShopInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    [cell setUserInteractionEnabled:NO];
-    if([shopInfoArr count] > 0){
-        [cell setCellInfo:[shopInfoArr objectAtIndex:0]];
-    }
-    [cell load];
-    return cell;
-}
-
-//商家二维码
--(WXUITableViewCell *)twoDimensionCellAtRow:(NSInteger)row{
-    static NSString *identifier = @"twoDimensionCell";
-    ShopTwoDimensionCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[ShopTwoDimensionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    
-    return cell;
-}
-
-- (void)showDBarcodeFromThumbView:(UIView*)thumbDBarcode{
-    PictureBrowseView *pictureBrowse = [[PictureBrowseView alloc] init];
-    [pictureBrowse showthumbView:thumbDBarcode toDestView:self.view withImage:[UIImage imageNamed:@"TwoDimension.png"] animated:YES];
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSInteger section = indexPath.section;
-    if(section == AboutShop_Section_TwoDimension){
-        ShopTwoDimensionCell *cell = (ShopTwoDimensionCell*)[tableView cellForRowAtIndexPath:indexPath];
-        [self showDBarcodeFromThumbView:cell.thumbView];
-    }
-}
-
-//notification
--(void)loadShopInfoSucceed{
-    [self unShowWaitView];
-    shopInfoArr = [AboutShopModel shareShopModel].shopInfoArr;
-    [_tableView reloadData];
-}
-
--(void)loadShopInfoFailed:(NSNotification*)notification{
-    [self unShowWaitView];
-    NSString *message = notification.object;
-    if(!message){
-        message = @"获取商家信息失败";
-    }
-    [UtilTool showAlertView:message];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self removeOBS];
 }
 
 @end

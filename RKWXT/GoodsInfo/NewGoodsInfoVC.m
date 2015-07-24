@@ -19,6 +19,7 @@
 #import "ShoppingCartEntity.h"
 #import "WXWeiXinOBJ.h"
 #import "DownSheet.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
@@ -92,16 +93,31 @@
 
 -(void)initDropList{
     DownSheetModel *model_1 = [[DownSheetModel alloc] init];
-    model_1.icon = @"Icon.png";
-    model_1.icon_on = @"Icon.png";
-    model_1.title = @"微信好友";
+    model_1.icon = @"ShareQqImg.png";
+    model_1.icon_on = @"ShareQqImg.png";
+    model_1.title = @"分享到qq好友";
     
     DownSheetModel *model_2 = [[DownSheetModel alloc] init];
-    model_2.icon = @"Icon.png";
-    model_2.icon_on = @"Icon.png";
-    model_2.title = @"朋友圈";
+    model_2.icon = @"ShareQzoneImg.png";
+    model_2.icon_on = @"ShareQzoneImg.png";
+    model_2.title = @"分享到qq空间";
     
-    menuList = @[model_1,model_2];
+    DownSheetModel *model_3 = [[DownSheetModel alloc] init];
+    model_3.icon = @"ShareWxFriendImg.png";
+    model_3.icon_on = @"ShareWxFriendImg.png";
+    model_3.title = @"分享到微信好友";
+    
+    DownSheetModel *model_4 = [[DownSheetModel alloc] init];
+    model_4.icon = @"ShareWxCircleImg.png";
+    model_4.icon_on = @"ShareWxCircleImg.png";
+    model_4.title = @"分享到朋友圈";
+    
+    DownSheetModel *model_5 = [[DownSheetModel alloc] init];
+    model_5.icon = @"Icon.png";
+    model_5.icon_on = @"Icon.png";
+    model_5.title = @"取消";
+    
+    menuList = @[model_1,model_2,model_3,model_4,model_5];
 }
 
 -(void)addNotification{
@@ -407,11 +423,34 @@
 
 -(void)didSelectIndex:(NSInteger)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
-    if(index == 0){
+    if(index == Share_Friends){
         [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
     }
-    if(index == 1){
+    if(index == Share_Clrcle){
         [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+    }
+    if(index == Share_Qq){
+        NSString *url = @"www.67call.com";
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
+        QQApiSendResultCode sent = [QQApiInterface sendReq:req];
+        if(sent == EQQAPISENDSUCESS){
+            NSLog(@"qq好友分享成功");
+        }
+    }
+    if(index == Share_Qzone){
+        NSString *url = @"www.67call.com";
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
+        QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
+        if(sent == EQQAPISENDSUCESS){
+            NSLog(@"qq空间分享成功");
+        }
+    }
+    if(index == Share_Invalid){
+        NSLog(@"取消");
     }
 }
 
@@ -431,7 +470,7 @@
 -(void)gotoWebView{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     WXTMallListWebVC *webViewVC = [[WXTMallListWebVC alloc] init];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:_goodsId], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
     id ret = [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
     NSLog(@"ret = %@",ret);
     [self.wxNavigationController pushViewController:webViewVC];

@@ -33,6 +33,15 @@ enum{
     T_GoodsInfo_Invalid,
 };
 
+enum{
+    Share_Qq,
+    Share_Qzone,
+    Share_Friends,
+    Share_Clrcle,
+    
+    Share_Invalid,
+};
+
 #import "WXRemotionImgBtn.h"
 #import "MerchantImageCell.h"
 #import "NewGoodsInfoDesCell.h"

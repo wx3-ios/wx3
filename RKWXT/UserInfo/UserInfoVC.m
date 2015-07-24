@@ -9,14 +9,14 @@
 #import "UserInfoVC.h"
 #import "UserInfoDef.h"
 #import "UserHeaderImgModel.h"
-#import "DownSheet.h"
 #import "WXWeiXinOBJ.h"
 #import <TencentOpenAPI/QQApiInterface.h>
+#import "ShareBrowserView.h"
 
 #define UserBgImageViewHeight (95+66)
 #define Size self.view.bounds.size
 
-@interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,PersonalOrderInfoDelegate,DownSheetDelegate>{
+@interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,PersonalOrderInfoDelegate,ShareBrowserViewDelegate>{
     UITableView *_tableView;
     WXUILabel *namelabel;
     
@@ -61,32 +61,6 @@
     
     [_tableView setTableHeaderView:[self viewForTableHeadView]];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    
-    [self initDropList];
-}
-
--(void)initDropList{
-    DownSheetModel *model_1 = [[DownSheetModel alloc] init];
-    model_1.icon = @"Icon.png";
-    model_1.icon_on = @"Icon.png";
-    model_1.title = @"微信好友";
-    
-    DownSheetModel *model_2 = [[DownSheetModel alloc] init];
-    model_2.icon = @"Icon.png";
-    model_2.icon_on = @"Icon.png";
-    model_2.title = @"朋友圈";
-    
-    DownSheetModel *model_3 = [[DownSheetModel alloc] init];
-    model_3.icon = @"Icon.png";
-    model_3.icon_on = @"Icon.png";
-    model_3.title = @"qq好友";
-    
-    DownSheetModel *model_4 = [[DownSheetModel alloc] init];
-    model_4.icon = @"Icon.png";
-    model_4.icon_on = @"Icon.png";
-    model_4.title = @"qq空间";
-    
-    menuList = @[model_1,model_2,model_3,model_4];
 }
 
 -(void)addOBS{
@@ -273,6 +247,9 @@
         case PersonalInfo_System:
             number = System_Invalid;
             break;
+        case PersonalInfo_Share:
+            number = 1;
+            break;
         default:
             break;
     }
@@ -456,21 +433,26 @@
             [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
         }
             break;
-        case System_Share:
-        {
-            [cell.imageView setImage:[UIImage imageNamed:@"AboutWxImg.png"]];
-            [cell.textLabel setText:@"分享"];
-            [cell.textLabel setFont:WXFont(15.0)];
-            [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
-        }
-            break;
         default:
             break;
     }
     return cell;
 }
 
-
+//分享
+-(WXTUITableViewCell*)tableViewForShareCellAtRow{
+    static NSString *identifier = @"shareCell";
+    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
+    [cell.imageView setImage:[UIImage imageNamed:@"AboutWxImg.png"]];
+    [cell.textLabel setText:@"分享"];
+    [cell.textLabel setFont:WXFont(15.0)];
+    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+    return cell;
+}
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WXTUITableViewCell *cell = nil;
@@ -491,6 +473,9 @@
 //            break;
         case PersonalInfo_System:
             cell = [self tableViewForSystemCellAtRow:row];
+            break;
+        case PersonalInfo_Share:
+            cell = [self tableViewForShareCellAtRow];
             break;
         default:
             break;
@@ -542,9 +527,12 @@
                 AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
                 [self.wxNavigationController pushViewController:aboutVC];
             }
-            if(row == System_Share){
-                [self toShareQq];
-            }
+        }
+            break;
+        case PersonalInfo_Share:
+        {
+            WXUITableViewCell *cell = (WXUITableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
+            [self showShareBrowerFromThumbView:cell];
         }
             break;
         default:
@@ -552,35 +540,36 @@
     }
 }
 
+
 #pragma mark share
--(void)toShareQq{
-    DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
-    sheet.delegate = self;
-    [sheet showInView:nil];
+-(void)showShareBrowerFromThumbView:(UIView*)thumb{
+    ShareBrowserView *pictureBrowse = [[ShareBrowserView alloc] init];
+    pictureBrowse.delegate = self;
+    [pictureBrowse showShareThumbView:thumb toDestview:self.view withImage:[UIImage imageNamed:@"TwoDimension.png"]];
 }
 
--(void)didSelectIndex:(NSInteger)index{
+-(void)sharebtnClicked:(NSInteger)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
-    if(index == 0){
+    if(index == Share_Type_WxFriends){
         [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
     }
-    if(index == 1){
+    if(index == Share_Type_WxCircle){
         [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
     }
-    if(index == 2){
+    if(index == Share_Type_Qq){
         NSString *url = @"www.67call.com";
-        NSString *previewImageUrl = @"Icon-72.png";
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"测试" description:@"生活是一种态度" previewImageURL:[NSURL URLWithString:previewImageUrl]];
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface sendReq:req];
         if(sent == EQQAPISENDSUCESS){
             NSLog(@"qq好友分享成功");
         }
     }
-    if(index == 3){
+    if(index == Share_Type_Qzone){
         NSString *url = @"www.67call.com";
-        NSString *previewImageUrl = @"Icon-72.png";
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"测试" description:@"qq，一种生活态度" previewImageURL:[NSURL URLWithString:previewImageUrl]];
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
         if(sent == EQQAPISENDSUCESS){

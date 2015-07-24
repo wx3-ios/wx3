@@ -34,7 +34,7 @@ typedef enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setCSTNavigationViewHidden:YES animated:YES];
+    [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
 -(void)viewDidLoad{
@@ -63,19 +63,12 @@ typedef enum{
     NSString *boay = nil;
     if(paramDictionary){
         boay = [feedOBJ urlRequestParamFrom:paramDictionary];
-//        if(boay){
-//            urlString = [NSString stringWithFormat:@"%@?%@",urlString,boay];
-//        }
     }
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[boay dataUsingEncoding:NSUTF8StringEncoding]];
     [_webView loadRequest:request];
-    
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    [_webView loadRequest:request];
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
