@@ -13,6 +13,7 @@
 #import "RefundConsultCell.h"
 #import "OrderListModel.h"
 #import "RefundSucceedVC.h"
+#import "OrderCommonDef.h"
 
 #define TextViewHeight (65)
 
@@ -234,6 +235,7 @@ enum{
 }
 
 -(void)refundOrderSucceed{
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_RefundSucceed object:_entity];
     [UtilTool showTipView:@"退款金额将在7个工作日内退还到您的账户，请注意查收!"];
     [self.wxNavigationController popViewControllerAnimated:YES completion:^{
     }];

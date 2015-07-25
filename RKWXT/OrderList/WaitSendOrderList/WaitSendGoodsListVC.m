@@ -31,6 +31,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self addOBS];
     [listArr removeAllObjects];
     for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
         if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
@@ -60,6 +61,10 @@
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+}
+
+-(void)addOBS{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyRefundSucceed:) name:K_Notification_HomeOrder_RefundSucceed object:nil];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -164,6 +169,20 @@
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(NSInteger)indexPathOfOptCellWithOrder:(OrderListEntity*)orderEntity{
+    [listArr removeAllObjects];
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Normal && entity.goods_status == Goods_Status_WaitSend){
+            [listArr addObject:entity];
+        }
+    }
+    NSInteger index = 100000;
+    if (orderEntity && [listArr count] > 0){
+        index = [listArr indexOfObject:orderEntity];
+    }
+    return index;
+}
+
 #pragma mark userDeal
 -(void)userClickHurryBtn:(id)sender{
     OrderListEntity *entity = sender;
@@ -173,6 +192,18 @@
 -(void)userClickRefundBtn:(id)sender{
     OrderListEntity *entity = sender;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
+}
+
+-(void)applyRefundSucceed:(NSNotification*)notification{
+    OrderListEntity *ent = notification.object;
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.order_id == ent.order_id){
+            NSInteger index = [self indexPathOfOptCellWithOrder:entity];
+            if (index<100000){
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        }
+    }
 }
 
 //单品状态

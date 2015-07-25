@@ -24,7 +24,6 @@ typedef enum{
 
 @property (nonatomic,assign) Refund_Type refund_type;              //商家退款状态
 @property (nonatomic,assign) User_Refund_Type user_Refund_type;    //用户退款状态
-@property (nonatomic,strong) NSString *refund_total_money;
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *phone;
 @property (nonatomic,strong) NSString *address;

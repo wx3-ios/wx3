@@ -73,6 +73,7 @@ typedef enum{
     [notificationCenter addObserver:self selector:@selector(cancelOrderListFailed:) name:K_Notification_UserOderList_CancelFailed object:nil];
     [notificationCenter addObserver:self selector:@selector(completeOrderListSucceed:) name:K_Notification_UserOderList_CompleteSucceed object:nil];
     [notificationCenter addObserver:self selector:@selector(completeOrderListFailed:) name:K_Notification_UserOderList_CompleteFailed object:nil];
+    [notificationCenter addObserver:self selector:@selector(applyRefundSucceed:) name:K_Notification_HomeOrder_RefundSucceed object:nil];
 }
 
 -(void)removeOBS{
@@ -355,6 +356,20 @@ typedef enum{
     OrderListEntity *entity = sender;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
 }
+
+//申请退款成功
+-(void)applyRefundSucceed:(NSNotification*)notification{
+    OrderListEntity *ent = notification.object;
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.order_id == ent.order_id){
+            NSInteger index = [self indexPathOfOptCellWithOrder:entity];
+            if (index>=0){
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        }
+    }
+}
+
 //单品状态
 -(void)toOrderRefundSucceed:(id)sender{
     OrderListEntity *entity = sender;
@@ -416,7 +431,7 @@ typedef enum{
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self removeOBS];
+//    [self removeOBS];
 }
 
 @end

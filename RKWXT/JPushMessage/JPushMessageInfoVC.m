@@ -37,7 +37,7 @@
     [self addSubview:_webView];
     
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&msg_id=%ld",NormaleMessageUrl,userObj.user,(long)107];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&msg_id=%ld",NormaleMessageUrl,userObj.user,(long)_messageID];
     
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

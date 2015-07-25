@@ -23,6 +23,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self addOBS];
     [listArr removeAllObjects];
     for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
         if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend){
@@ -57,6 +58,7 @@
 -(void)addOBS{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(completeOrderSucceed:) name:K_Notification_UserOderList_CompleteSucceed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(completeOrderFailed:) name:K_Notification_UserOderList_CompleteFailed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyrefundSucceed:) name:K_Notification_HomeOrder_RefundSucceed object:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -182,6 +184,20 @@
 -(void)refundOrderBtnClicked:(id)sender{
     OrderListEntity *entity = sender;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
+}
+
+-(void)applyrefundSucceed:(NSNotification*)notification{
+    OrderListEntity *ent = notification.object;
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.order_id == ent.order_id){
+            NSInteger index = [self indexPathOfOptCellWithOrder:entity];
+            if (index<10000){
+                [_tableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+            }else{
+                [_tableView reloadData];
+            }
+        }
+    }
 }
 
 -(void)completeOrderSucceed:(NSNotification*)notification{

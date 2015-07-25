@@ -152,10 +152,8 @@ enum{
         cell = [[RefundSucceedConsultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    if([_model.refundStateArr count] > 0){
-        [cell setCellInfo:[_model.refundStateArr objectAtIndex:0]];
-        [cell load];
-    }
+    [cell setCellInfo:_entity];
+    [cell load];
     return cell;
 }
 

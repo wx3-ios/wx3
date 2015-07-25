@@ -337,14 +337,18 @@
     for(ShoppingCartEntity *entity1 in _cartList){
         if(entity1.selected){
             GoodsInfoEntity *entity = [self goodsEntityWithCartData:entity1];
-            [goodsArr addObject:entity];
+            if(entity){
+                [goodsArr addObject:entity];
+            }
         }
     }
     if([goodsArr count] == 0){
         [UtilTool showAlertView:@"商品不能为空"];
         return;
     }
-    [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];
+    if([goodsArr count] != 0){
+        [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];
+    }
 }
 
 -(GoodsInfoEntity*)goodsEntityWithCartData:(ShoppingCartEntity*)ent{
@@ -363,6 +367,7 @@
     entity.stockNumber = ent.stock_number;
     if(entity.stockNumber < ent.goods_Number){
         [UtilTool showAlertView:[NSString stringWithFormat:@"%@库存已不足",entity.intro]];
+        return nil;
     }
     return entity;
 }

@@ -47,9 +47,6 @@
         
         NSInteger refundState = [[dic objectForKey:@"refund_state"] integerValue];
         [self setUser_Refund_type:refundState];
-        
-        NSString *money = [dic objectForKey:@"refund_total_money"];
-        [self setRefund_total_money:money];
     }
     return self;
 }

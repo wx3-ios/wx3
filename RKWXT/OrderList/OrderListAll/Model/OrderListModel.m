@@ -109,7 +109,7 @@
 -(void)dealUserOrderListWithType:(DealOrderList_Type)type with:(NSString *)orderID{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", orderID, @"order_id", [NSNumber numberWithInt:(int)type], @"type", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", orderID, @"order_id", [NSNumber numberWithInt:(int)type], @"type", nil];
     __block OrderListModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_DealOrderList httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
@@ -134,7 +134,7 @@
 -(void)refundOrderWithRefundType:(Refund_Type)refundType withOrderGoodsID:(NSInteger)orderGoodsID orderID:(NSInteger)orderID withMessage:(NSString *)message{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool newStringWithAddSomeStr:5 withOldStr:@"123456"], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)orderID], @"order_id", [NSNumber numberWithInt:(int)refundType], @"type", message, @"apply_refund_cause", [NSNumber numberWithInt:(int)orderGoodsID], @"order_goods_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)orderID], @"order_id", [NSNumber numberWithInt:(int)refundType], @"type", message, @"apply_refund_cause", [NSNumber numberWithInt:(int)orderGoodsID], @"order_goods_id", nil];
     __block OrderListModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Refund httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){

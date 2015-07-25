@@ -72,7 +72,7 @@
 	aliPayOrder.seller = SellerID;
 	
 	aliPayOrder.productName = title; //商品标题
-	aliPayOrder.productDescription = @"1861313051"; //商品描述
+	aliPayOrder.productDescription = @"我信云"; //商品描述
 	aliPayOrder.amount = [NSString stringWithFormat:@"%.2f",amount]; //商品价格
 	aliPayOrder.notifyURL =  D_AliPayCallBackURLForUser; //回调URL
 	aliPayOrder.tradeNO = orderID;

@@ -11,6 +11,7 @@
 
 #define K_Notification_HomeOrder_ToPay @"K_Notification_HomeOrder_ToPay"   //去支付
 #define K_Notification_HomeOrder_ToRefund @"K_Notification_HomeOrder_ToRefund" //去退款
+#define K_Notification_HomeOrder_RefundSucceed @"K_Notification_HomeOrder_RefundSucceed" //申请退款成功
 #define K_Notification_HomeOrder_OrderInfo @"K_Notification_HomeOrder_OrderInfo"  //去订单详情
 #define K_Notification_HomeOrder_ToGoodsInfo @"K_Notification_HomeOrder_ToGoodsInfo"  //去商品详情
 #define K_Notification_HomeOrder_CallShopPhone @"K_Notification_HomeOrder_CallShopPhone"  //催单

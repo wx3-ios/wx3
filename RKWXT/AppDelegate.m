@@ -30,7 +30,7 @@
 #import "WXWeiXinOBJ.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 
-@interface AppDelegate ()<TencentSessionDelegate>{
+@interface AppDelegate (){
     CTCallCenter *_callCenter;
     ScreenActivityVC *activityVC;
 }
@@ -86,15 +86,15 @@
     
     //向微信注册
     [[WXWeiXinOBJ sharedWeiXinOBJ] registerApp];
-    [[TencentOAuth alloc] initWithAppId:@"1104707907" andDelegate:self];
+    [[TencentOAuth alloc] initWithAppId:@"1104707907" andDelegate:nil];
     
 	return YES;
 }
 
-#pragma mark qqShared
--(BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    return [TencentOAuth HandleOpenURL:url];
-}
+//#pragma mark qqShared
+//-(BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+//    return [TencentOAuth HandleOpenURL:url];
+//}
 
 -(void)addNotification{
     [NOTIFY_CENTER addObserver:self selector:@selector(loginSucceed:) name:KNotification_LoginSucceed object:nil];

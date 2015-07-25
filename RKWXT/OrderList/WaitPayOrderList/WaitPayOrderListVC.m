@@ -60,6 +60,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payOrderListSucceed) name:D_Notification_Name_AliPaySucceed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelOrderListSucceed:) name:K_Notification_UserOderList_CancelSucceed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelOrderListFailed:) name:K_Notification_UserOderList_CancelFailed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyRefundSucceed:) name:K_Notification_HomeOrder_RefundSucceed object:nil];
 }
 
 -(void)removeOBS{
@@ -206,8 +207,18 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToGoodsInfo object:goodsIDStr];
 }
 
--(void)toOrderRefundSucceed:(id)sender{
-    
+-(void)applyRefundSucceed:(NSNotification*)notification{
+    OrderListEntity *ent = notification.object;
+    for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
+        if(entity.order_id == ent.order_id){
+            NSInteger index = [self indexPathOfOptCellWithOrder:entity];
+            if (index<10000){
+                [_tableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+            }else{
+                [_tableView reloadData];
+            }
+        }
+    }
 }
 
 #pragma mark delegate
@@ -248,6 +259,9 @@
         message = @"取消订单失败";
     }
     [UtilTool showAlertView:message];
+}
+
+-(void)toOrderRefundSucceed:(id)sender{
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
