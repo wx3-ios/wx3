@@ -459,12 +459,12 @@
 }
 
 -(NSString*)sharedGoodsInfoDescription{
-    NSString *description = nil;
+    NSString *description = @"快来购买吧";
     return description;
 }
 
 -(NSString*)sharedGoodsInfoUrlString{
-    NSString *urlString = nil;
+    NSString *urlString = [NSString stringWithFormat:@"http://oldyun.67call.com/wx_html/index.php/Shop/index?shop_id=%d&sid=%d&go=good_detail&title=aa&goods_id=%ld",kSubShopID,kMerchantID,(long)_goodsId];
     return urlString;
 }
 
