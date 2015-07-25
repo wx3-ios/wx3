@@ -341,7 +341,7 @@
             break;
         case HomePageJump_Type_Catagary:
         {
-            [self toCatagaryListVC];
+            [self toCatagaryListVC:entity.linkID];
         }
             break;
         case HomePageJump_Type_MessageCenter:
@@ -380,7 +380,8 @@
 }
 
 -(void)topicalCellClicked:(id)entity{
-    [self toCatagaryListVC];
+    HomePageThmEntity *ent = entity;
+    [self toCatagaryListVC:ent.cat_id];
 }
 
 #pragma mark HomePageRecommond
@@ -421,7 +422,7 @@
             break;
         case HomePageJump_Type_Catagary:
         {
-            [self toCatagaryListVC];
+            [self toCatagaryListVC:navi.navID];
         }
             break;
         case HomePageJump_Type_MessageCenter:
@@ -466,13 +467,13 @@
 
 #pragma mark LeftBtn
 -(void)homePageToCategaryView{
-    [self toCatagaryListVC];
+    [self toCatagaryListVC:0];
 }
 
--(void)toCatagaryListVC{
+-(void)toCatagaryListVC:(NSInteger)catID{
     WXTMallListWebVC *webViewVC = [[[WXTMallListWebVC alloc] init] autorelease];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id", [NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id", [NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInteger:catID], @"cat_id", nil];
     [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_CatagaryList paramDictionary:dic];
     [self.wxNavigationController pushViewController:webViewVC];
 }

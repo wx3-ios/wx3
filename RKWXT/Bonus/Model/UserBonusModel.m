@@ -168,11 +168,13 @@
     if(bonusID<=0){
         return;
     }
+    NSArray *oldArr = _userBonusArr;
     _bonusMoney += money;
-    for(UserBonusEntity *entity in _userBonusArr){
+    for(UserBonusEntity *entity in oldArr){
         if(entity.bonusID == bonusID){
             [_userBonusArr removeObject:entity];
             [_denyBonusArr addObject:entity];
+            break;
         }
     }
     [self changeTurnForAllBonusArr:_denyBonusArr];

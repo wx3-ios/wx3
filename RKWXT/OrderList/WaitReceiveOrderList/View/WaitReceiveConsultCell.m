@@ -88,7 +88,9 @@
 -(void)showNameInBtnWith:(OrderListEntity*)entity{
     if(entity.order_status == Order_Status_None){
         [_button2 setHidden:YES];
-        [_payBtn setHidden:YES];
+        [_payBtn setHidden:NO];
+        [_payBtn setTitle:@"交易中" forState:UIControlStateNormal];
+        [_payBtn setBackgroundColor:[UIColor grayColor]];
         return;
     }
     if(entity.order_status == Order_Status_Complete){

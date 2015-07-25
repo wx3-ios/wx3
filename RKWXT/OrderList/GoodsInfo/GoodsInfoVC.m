@@ -11,9 +11,11 @@
 #import "OrderGoodsInfoDef.h"
 #import "CallBackVC.h"
 
-@interface GoodsInfoVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface GoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>{
     UITableView *_tableView;
     OrderListEntity *entity;
+    
+    NSString *shopPhone;
 }
 @end
 
@@ -257,14 +259,43 @@
     }
 }
 
+-(void)showAlertView:(NSString*)phone{
+    NSString *title = [NSString stringWithFormat:@"联系商家:%@",phone];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:title
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:kMerchantName
+                                  otherButtonTitles:@"系统", nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex > 2){
+        return;
+    }
+    if(shopPhone.length == 0){
+        return;
+    }
+    if(buttonIndex == 1){
+        [UtilTool callBySystemAPI:shopPhone];
+        return;
+    }
+    if(buttonIndex == 0){
+        CallBackVC *backVC = [[CallBackVC alloc] init];
+        backVC.phoneName = kMerchantName;
+        if([backVC callPhone:shopPhone]){
+            [self presentViewController:backVC animated:YES completion:^{
+            }];
+        }
+    }
+}
+
 -(void)callPhone{
     NSString *phoneStr = [self phoneWithoutNumber:entity.shopPhone];
-    CallBackVC *backVC = [[CallBackVC alloc] init];
-    backVC.phoneName = phoneStr;
-    if([backVC callPhone:phoneStr]){
-        [self presentViewController:backVC animated:YES completion:^{
-        }];
-    }
+    shopPhone = phoneStr;
+    [self showAlertView:shopPhone];
 }
 
 -(NSString*)phoneWithoutNumber:(NSString*)phone{

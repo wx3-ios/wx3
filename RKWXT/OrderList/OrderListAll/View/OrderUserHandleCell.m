@@ -67,13 +67,17 @@
         return;
     }
     if(entity.order_status == Order_Status_None){
-        [_button1 setHidden:YES];
+        [_button1 setHidden:NO];
         [_button2 setHidden:YES];
+        [_button1 setBackgroundColor:[UIColor grayColor]];
+        [_button1 setTitle:@"交易中" forState:UIControlStateNormal];
         return;
     }
     
     NSString *str1 = nil;
     NSString *str2 = nil;
+    [_button1 setEnabled:YES];
+    [_button2 setEnabled:YES];
     NSInteger num = 0;
     for(OrderListEntity *ent in entity.goodsArr){
         if(ent.refund_status != Refund_Status_Normal){
@@ -102,7 +106,7 @@
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend && entity.order_status == Order_Status_Normal){
         [_button1 setHidden:NO];
         [_button2 setHidden:NO];
-        str1 = @"完成";
+        str1 = @"确认收货";
         str2 = @"退款";
         
         if(num == [entity.goodsArr count]){

@@ -425,16 +425,19 @@
 
 -(void)didSelectIndex:(NSInteger)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
+    if([_model.data count] > 0){
+        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+        image = [UIImage imageNamed:entity.smallImg];
+    }
     if(index == Share_Friends){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:kMerchantName description:[UtilTool sharedString] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
     }
     if(index == Share_Clrcle){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:kMerchantName description:[UtilTool sharedString] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
     }
     if(index == Share_Qq){
-        NSString *url = @"www.67call.com";
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:kMerchantName description:[self sharedGoodsInfoDescription] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface sendReq:req];
         if(sent == EQQAPISENDSUCESS){
@@ -442,9 +445,8 @@
         }
     }
     if(index == Share_Qzone){
-        NSString *url = @"www.67call.com";
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:kMerchantName description:[self sharedGoodsInfoDescription] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
         if(sent == EQQAPISENDSUCESS){
@@ -454,6 +456,16 @@
     if(index == Share_Invalid){
         NSLog(@"取消");
     }
+}
+
+-(NSString*)sharedGoodsInfoDescription{
+    NSString *description = nil;
+    return description;
+}
+
+-(NSString*)sharedGoodsInfoUrlString{
+    NSString *urlString = nil;
+    return urlString;
 }
 
 -(void)goodsInfoModelLoadedSucceed{

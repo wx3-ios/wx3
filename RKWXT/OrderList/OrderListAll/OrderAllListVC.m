@@ -297,6 +297,7 @@ typedef enum{
     orderListArr = [OrderListModel shareOrderListModel].orderListAll;
     for(OrderListEntity *entity in orderListArr){
         if(entity.order_id == [orderID integerValue]){
+            entity.order_status = Order_Status_None;
             NSInteger index = [self indexPathOfOptCellWithOrder:entity];
             if (index>=0){
                 [_tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
@@ -431,7 +432,10 @@ typedef enum{
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//    [self removeOBS];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CancelSucceed object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CancelFailed object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CompleteFailed object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CompleteSucceed object:nil];
 }
 
 @end

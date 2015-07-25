@@ -271,15 +271,8 @@
 }
 
 + (NSString *)sharedURL{
-    NSString *urlString = @"http://yun.67call.com/down.php?id=";
-	if(!kIsDistributeServiceAddressOld){
-		urlString = @"http://web1.67call.com/down.php?id=";
-	}
+    NSString *urlString = @"http://wxa.67call.com/shop/index.php/index/app_down/id/";
     NSString *str = [NSString stringWithFormat:@"%@%d",urlString,kMerchantID];
-//    str  = [NSString stringWithFormat:@"%@%d",str,kMerchantID];
-//    if(kIsTest){
-//        str = @"http://woxin.67call.com/apptest/";
-//    }
     return str;
 }
 

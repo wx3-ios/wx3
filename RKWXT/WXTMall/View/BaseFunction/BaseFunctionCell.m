@@ -21,7 +21,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        NSArray *textArr = @[@"签到",@"充值",@"钱包",@"订单"];
+        NSArray *textArr = @[@"签到",@"充值",@"红包",@"订单"];
         NSArray *imgArr = @[@"HomePageSign.png",@"HomePageRecharge.png",@"HomePageWallet.png",@"HomePageOrderList.png"];
         CGFloat xgap = (IPHONE_SCREEN_WIDTH-4*OneFunctionWidth)/5;
         CGFloat yOffset = 3;

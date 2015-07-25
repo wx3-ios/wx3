@@ -205,7 +205,7 @@
     NSString *orderID = notification.object;
     for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
         if(entity.order_id == [orderID integerValue]){
-            entity.order_status = Order_Status_Complete;
+            entity.order_status = Order_Status_None;
             NSInteger index = [self indexPathOfOptCellWithOrder:entity];
             if (index<10000){
                 [_tableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];

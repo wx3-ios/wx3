@@ -109,6 +109,9 @@
         
         NSInteger redPacket = [[dic objectForKey:@"red_packet"] integerValue];
         [self setRed_packet:redPacket];
+        
+        NSString *shopPhone = [dic objectForKey:@"shop_telephone"];
+        [self setShopPhone:shopPhone];
     }
     return self;
 }

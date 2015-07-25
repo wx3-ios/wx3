@@ -551,15 +551,14 @@
 -(void)sharebtnClicked:(NSInteger)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
     if(index == Share_Type_WxFriends){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:kMerchantName description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
     }
     if(index == Share_Type_WxCircle){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:@"测试" description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:kMerchantName description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
     }
     if(index == Share_Type_Qq){
-        NSString *url = @"www.67call.com";
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[UtilTool sharedURL]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface sendReq:req];
         if(sent == EQQAPISENDSUCESS){
@@ -567,9 +566,8 @@
         }
     }
     if(index == Share_Type_Qzone){
-        NSString *url = @"www.67call.com";
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:@"我信" description:@"生活是一种态度" previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[UtilTool sharedString]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
         if(sent == EQQAPISENDSUCESS){

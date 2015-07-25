@@ -107,6 +107,9 @@
 
 -(void)complieteAddressEdit{
     if(_nameTextfield.text.length != 0 && _phoneTextfield.text.length != 0 && _addressTextfield.text.length != 0){
+        if(![self checkUserPhoneWithString:_phoneTextfield.text]){
+            return;
+        }
         if(_address_type == Address_Type_Insert){
             [[UserAddressModel shareUserAddress] insertUserAddressWithName:_nameTextfield.text withAdd:_addressTextfield.text withPhone:_phoneTextfield.text];
         }else{
@@ -116,6 +119,15 @@
     }else{
         [UtilTool showAlertView:@"信息不完整"];
     }
+}
+
+-(BOOL)checkUserPhoneWithString:(NSString*)phone{
+    NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:phone];
+    if(![UtilTool determineNumberTrue:phoneStr]){
+        [UtilTool showAlertView:@"您添加的号码格式不正确"];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark inserDate
