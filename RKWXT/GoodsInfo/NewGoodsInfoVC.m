@@ -464,7 +464,8 @@
 }
 
 -(NSString*)sharedGoodsInfoUrlString{
-    NSString *urlString = [NSString stringWithFormat:@"http://oldyun.67call.com/wx_html/index.php/Shop/index?shop_id=%d&sid=%d&go=good_detail&title=aa&goods_id=%ld",kSubShopID,kMerchantID,(long)_goodsId];
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    NSString *urlString = [NSString stringWithFormat:@"http://oldyun.67call.com/wx_html/index.php/Shop/index?shop_id=%d&sid=%d&go=good_detail&title=aa&goods_id=%ld&woxin_id=%@",kSubShopID,kMerchantID,(long)_goodsId,userDefault.wxtID];
     return urlString;
 }
 

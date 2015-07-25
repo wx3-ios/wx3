@@ -10,7 +10,7 @@
 #import "GoodsInfoDef.h"
 #import "GoodsInfoEntity.h"
 
-#define LabelWidth (100)
+#define LabelWidth (120)
 
 @interface NewGoodsInfoDesCell(){
     WXUILabel *_oldPrice;
@@ -30,11 +30,11 @@
         CGFloat yOffset = 15;
         CGFloat oldLabelHeight = 12;
         _oldPrice  = [[WXUILabel alloc] init];
-        _oldPrice.frame = CGRectMake(xOffset, yOffset, LabelWidth, oldLabelHeight);
+        _oldPrice.frame = CGRectMake(xOffset, yOffset+14+28, LabelWidth, oldLabelHeight);
         [_oldPrice setTextAlignment:NSTextAlignmentLeft];
         [_oldPrice setTextColor:WXColorWithInteger(smallTextColor)];
         [_oldPrice setFont:[UIFont systemFontOfSize:smallTextFont]];
-        [_oldPrice setBackgroundColor:[UIColor clearColor]];
+        [_oldPrice setBackgroundColor:[UIColor clearColor]]; 
         [self.contentView addSubview:_oldPrice];
         
         xOffset += LabelWidth+35;
@@ -62,7 +62,7 @@
         yOffset += newLabelHeight + 5;
         CGFloat descLabelHeight = 36;
         _descLabel = [[WXUILabel alloc] init];
-        _descLabel.frame = CGRectMake(12, yOffset, IPHONE_SCREEN_WIDTH-2*12-100, descLabelHeight);
+        _descLabel.frame = CGRectMake(12, yOffset-newLabelHeight-5, IPHONE_SCREEN_WIDTH-2*12-100, descLabelHeight);
         [_descLabel setBackgroundColor:[UIColor clearColor]];
         [_descLabel setTextAlignment:NSTextAlignmentLeft];
         [_descLabel setTextColor:WXColorWithInteger(bigTextColor)];

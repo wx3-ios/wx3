@@ -10,7 +10,7 @@
 #import "WXApiObject.h"
 #import "WXApi.h"
 
-#define D_WeiXinAppID @"wx8e8580671e7e018a"
+#define D_WeiXinAppID @"wx6708a2328dc2baa7"
 #define kThumbImageFileName @"Icon@2x.png"
 
 @interface WXWeiXinOBJ()<WXApiDelegate>
