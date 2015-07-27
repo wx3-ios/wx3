@@ -29,6 +29,7 @@
     NewGoodsInfoRightView *rightView;
     BOOL _isOpen;
     BOOL _showUpview;
+    BOOL _isBuy; // 是否为购买状态
     
     NewGoodsInfoModel *_model;
     ShoppingCartModel *_shopModel;
@@ -427,17 +428,21 @@
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
     if([_model.data count] > 0){
         GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-        image = [UIImage imageNamed:entity.smallImg];
+        NSURL *url = [NSURL URLWithString:entity.smallImg];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if(data){
+            image = [UIImage imageWithData:data];
+        }
     }
     if(index == Share_Friends){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:kMerchantName description:[UtilTool sharedString] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
     }
     if(index == Share_Clrcle){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:kMerchantName description:[UtilTool sharedString] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
     }
     if(index == Share_Qq){
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:kMerchantName description:[self sharedGoodsInfoDescription] previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface sendReq:req];
         if(sent == EQQAPISENDSUCESS){
@@ -446,7 +451,7 @@
     }
     if(index == Share_Qzone){
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:kMerchantName description:[self sharedGoodsInfoDescription] previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
         if(sent == EQQAPISENDSUCESS){
@@ -458,8 +463,18 @@
     }
 }
 
+-(NSString*)sharedGoodsInfoTitle{
+    NSString *title = @"";
+    if([_model.data count] > 0){
+        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+        title = entity.intro;
+    }
+    return title;
+}
+
 -(NSString*)sharedGoodsInfoDescription{
-    NSString *description = @"快来购买吧";
+    NSString *description = @"";
+    description = [NSString stringWithFormat:@"我在%@发现一个不错的商品，赶快来看看吧。",kMerchantName];
     return description;
 }
 
@@ -498,6 +513,7 @@
 }
 
 -(void)buyNowBtnClicked:(id)sender{
+    _isBuy = YES;
     if(_showUpview){
         _showUpview = NO;
     }else{
@@ -514,6 +530,7 @@
 
 #pragma mark 购物车
 -(void)insertMyShoppingCart:(id)sender{
+    _isBuy = NO;
     if([_model.data count] > 0){
         if(!rightView.stockID || !rightView.stockName){
             [rightView showDropListUpView];
@@ -573,6 +590,10 @@
 }
 
 -(void)toMakeOrder{
+    if(!_isBuy){
+        [self insertMyShoppingCart:nil];
+        return;
+    }
     if(rightView.stockID<=0){
         [UtilTool showAlertView:@"请先选择套餐"];
         return;

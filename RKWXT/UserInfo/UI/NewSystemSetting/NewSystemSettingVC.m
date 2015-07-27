@@ -208,7 +208,9 @@ enum{
     NSString *path = [UtilTool documentPath];
     path = [path stringByAppendingPathComponent:@"urlDataCache"];
     if(![fileManager fileExistsAtPath:path]){
-        [UtilTool showAlertView:@"清理完毕"];
+        if(quit){
+            [UtilTool showAlertView:@"清理完毕"];
+        }
     }
     [self unShowWaitView];
 }

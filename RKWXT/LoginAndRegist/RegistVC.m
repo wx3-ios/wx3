@@ -114,7 +114,11 @@ enum{
     CGRect tableRect = CGRectMake(0, 0, Size.width, yGap);
     [self createUserAndPwdTable:tableRect];
     
-    CGFloat yOffset = tableRect.size.height+65;
+    //没有推荐人
+    CGFloat yOffset = tableRect.size.height+15;
+    
+    //有推荐人
+    //yOffset = tableRect.size.height+65;
     CGFloat btnHeight1 = 41.0;
     CGFloat xgap = 20;
     CGFloat btnWidth1 = Size.width-2*xgap;
@@ -268,43 +272,43 @@ enum{
     [rightLine0 setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [_optShell addSubview:rightLine0];
     
-    yOffset += 10;
-    _otherPhone = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
-    [_otherPhone setReturnKeyType:UIReturnKeyDone];
-    [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
-    [_otherPhone addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
-    [_otherPhone setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
-    [_otherPhone setTextColor:WXColorWithInteger(0xda7c7b)];
-    [_otherPhone setTintColor:WXColorWithInteger(0xdd2726)];
-    [_otherPhone setLeftViewMode:UITextFieldViewModeAlways];
-    [_otherPhone setKeyboardType:UIKeyboardTypePhonePad];
-    [_otherPhone setPlaceHolder:@"输入介绍人(选填)" color:WXColorWithInteger(0xda7c7b)];
-    UIImage *otherIcon = [UIImage imageNamed:@"RegistOtherUser.png"];
-    UIImageView *leftView2 = [[UIImageView alloc] initWithImage:otherIcon];
-    [_otherPhone setLeftView:leftView2 leftGap:leftViewGap-3 rightGap:textGap];
-    [_otherPhone setFont:WXTFont(fontSize)];
-    [_optShell addSubview:_otherPhone];
-    
-    yOffset += height+5;
-    UILabel *leftLine4 = [[UILabel alloc] init];
-    leftLine4.frame = CGRectMake(xGap1, yOffset-lineHeight, 0.5, lineHeight);
-    [leftLine4 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:leftLine4];
-    
-    UILabel *downLine3 = [[UILabel alloc] init];
-    downLine3.frame = CGRectMake(xGap1, yOffset, Size.width-2*xGap1, 0.5);
-    [downLine3 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:downLine3];
-    
-    UILabel *leftLine5 = [[UILabel alloc] init];
-    leftLine5.frame = CGRectMake(xGap1+50, yOffset-lineHeight, 0.5, lineHeight);
-    [leftLine5 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:leftLine5];
-    
-    UILabel *rightLine3 = [[UILabel alloc] init];
-    rightLine3.frame = CGRectMake(Size.width-xGap1, yOffset-lineHeight, 0.5, lineHeight);
-    [rightLine3 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [_optShell addSubview:rightLine3];
+//    yOffset += 10;
+//    _otherPhone = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
+//    [_otherPhone setReturnKeyType:UIReturnKeyDone];
+//    [_otherPhone addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
+//    [_otherPhone addTarget:self action:@selector(showKeyBoard)  forControlEvents:UIControlEventEditingDidBegin];
+//    [_otherPhone setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
+//    [_otherPhone setTextColor:WXColorWithInteger(0xda7c7b)];
+//    [_otherPhone setTintColor:WXColorWithInteger(0xdd2726)];
+//    [_otherPhone setLeftViewMode:UITextFieldViewModeAlways];
+//    [_otherPhone setKeyboardType:UIKeyboardTypePhonePad];
+//    [_otherPhone setPlaceHolder:@"输入介绍人(选填)" color:WXColorWithInteger(0xda7c7b)];
+//    UIImage *otherIcon = [UIImage imageNamed:@"RegistOtherUser.png"];
+//    UIImageView *leftView2 = [[UIImageView alloc] initWithImage:otherIcon];
+//    [_otherPhone setLeftView:leftView2 leftGap:leftViewGap-3 rightGap:textGap];
+//    [_otherPhone setFont:WXTFont(fontSize)];
+//    [_optShell addSubview:_otherPhone];
+//    
+//    yOffset += height+5;
+//    UILabel *leftLine4 = [[UILabel alloc] init];
+//    leftLine4.frame = CGRectMake(xGap1, yOffset-lineHeight, 0.5, lineHeight);
+//    [leftLine4 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+//    [_optShell addSubview:leftLine4];
+//    
+//    UILabel *downLine3 = [[UILabel alloc] init];
+//    downLine3.frame = CGRectMake(xGap1, yOffset, Size.width-2*xGap1, 0.5);
+//    [downLine3 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+//    [_optShell addSubview:downLine3];
+//    
+//    UILabel *leftLine5 = [[UILabel alloc] init];
+//    leftLine5.frame = CGRectMake(xGap1+50, yOffset-lineHeight, 0.5, lineHeight);
+//    [leftLine5 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+//    [_optShell addSubview:leftLine5];
+//    
+//    UILabel *rightLine3 = [[UILabel alloc] init];
+//    rightLine3.frame = CGRectMake(Size.width-xGap1, yOffset-lineHeight, 0.5, lineHeight);
+//    [rightLine3 setBackgroundColor:WXColorWithInteger(0xdd2726)];
+//    [_optShell addSubview:rightLine3];
 }
 
 #pragma mark keyboard
@@ -333,7 +337,12 @@ enum{
         [UtilTool showAlertView:@"请输入手机号"];
         return NO;
     }
-    if(user.length != 11){
+//    if(user.length != 11){
+//        [UtilTool showAlertView:@"请输入正确的手机号码"];
+//        return NO;
+//    }
+    NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:_userTextField.text];
+    if(![UtilTool determineNumberTrue:phoneStr]){
         [UtilTool showAlertView:@"请输入正确的手机号码"];
         return NO;
     }
@@ -467,7 +476,7 @@ enum{
     }
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];  //暂时无需填写推荐人手机号
+    //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];
     if(!_otherPhone.text){
         _otherPhone.text = @"";
     }

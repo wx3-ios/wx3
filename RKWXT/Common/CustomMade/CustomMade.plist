@@ -7,7 +7,7 @@
 	<key>D_KEY_APP_CATEGORY</key>
 	<integer>1</integer>
 	<key>D_KEY_APP_MERCHANTNAME</key>
-	<string>邮信通</string>
+	<string>我信</string>
 	<key>D_KEY_APP_SUBSHOPID</key>
 	<integer>3</integer>
 	<key>D_KEY_FIND_NAME</key>
@@ -17,6 +17,6 @@
 	<key>D_KEY_MERCHANTID</key>
 	<integer>9</integer>
 	<key>D_KEY_SHOWCOMPANY</key>
-	<integer>0</integer>
+	<integer>1</integer>
 </dict>
 </plist>

@@ -318,7 +318,12 @@
         return NO;
     }
 //    NSString *userWithCountryCode = [self userWithCountryCode];
-    if(user.length != kUserExactLength){
+//    if(user.length != kUserExactLength){
+//        [UtilTool showAlertView:@"请输入正确的手机号码"];
+//        return NO;
+//    }
+    NSString *phoneStr = [UtilTool callPhoneNumberRemovePreWith:_userTextField.text];
+    if(![UtilTool determineNumberTrue:phoneStr]){
         [UtilTool showAlertView:@"请输入正确的手机号码"];
         return NO;
     }

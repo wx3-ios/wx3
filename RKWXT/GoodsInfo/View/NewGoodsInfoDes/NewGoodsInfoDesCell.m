@@ -10,7 +10,7 @@
 #import "GoodsInfoDef.h"
 #import "GoodsInfoEntity.h"
 
-#define LabelWidth (120)
+#define LabelWidth (110)
 
 @interface NewGoodsInfoDesCell(){
     WXUILabel *_oldPrice;
@@ -34,24 +34,24 @@
         [_oldPrice setTextAlignment:NSTextAlignmentLeft];
         [_oldPrice setTextColor:WXColorWithInteger(smallTextColor)];
         [_oldPrice setFont:[UIFont systemFontOfSize:smallTextFont]];
-        [_oldPrice setBackgroundColor:[UIColor clearColor]]; 
+        [_oldPrice setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_oldPrice];
         
-        xOffset += LabelWidth+35;
+        xOffset += LabelWidth+5;
         CGFloat textWidth = 50;
         CGFloat newLabelHeight = 14;
         WXUILabel *textLabel = [[WXUILabel alloc] init];
-        textLabel.frame = CGRectMake(xOffset, yOffset, textWidth, newLabelHeight);
+        textLabel.frame = CGRectMake(xOffset, yOffset+14+28, textWidth, newLabelHeight);
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
-        [textLabel setText:@"分销价:"];
+        [textLabel setText:@"市场价:"];
         [textLabel setTextColor:WXColorWithInteger(midTextColor)];
         [textLabel setFont:[UIFont systemFontOfSize:midTextFont]];
-//        [self.contentView addSubview:textLabel];
+        [self.contentView addSubview:textLabel];
         
         xOffset += textWidth;
         _newPrice = [[WXUILabel alloc] init];
-        _newPrice.frame = CGRectMake(xOffset, yOffset, textWidth+10, newLabelHeight);
+        _newPrice.frame = CGRectMake(xOffset, yOffset+14+28, textWidth+25, newLabelHeight);
         [_newPrice setBackgroundColor:[UIColor clearColor]];
         [_newPrice setTextAlignment:NSTextAlignmentLeft];
         [_newPrice setTextColor:WXColorWithInteger(midTextColor)];
@@ -103,8 +103,8 @@
 
 -(void)load{
     GoodsInfoEntity *entity = self.cellInfo;
-    [_oldPrice setText:[NSString stringWithFormat:@"原价 ￥%.2f",entity.market_price]];
-//    [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shop_price]];
+    [_oldPrice setText:[NSString stringWithFormat:@"店铺价:￥%.2f",entity.shop_price]];
+    [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.market_price]];
     [_descLabel setText:entity.intro];
     if(entity.concernID != 0){
         [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];

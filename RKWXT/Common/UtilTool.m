@@ -12,7 +12,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 //匹配手机的正则
-#define REGEX_MOBILE @"^1[34578]\\d{9}$"
+#define REGEX_MOBILE @"^1[34578][0-9]{9}$"
 //电话区号正则
 #define REGEX_TELEPHONE @"^0[123456789]\\d{8,10}"
 

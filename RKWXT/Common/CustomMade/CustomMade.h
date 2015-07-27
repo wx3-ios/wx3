@@ -17,9 +17,9 @@
 #define	kAreaID [CustomMadeOBJ sharedCustomMadeOBJS].areaID //区域ID
 #define kFindName [CustomMadeOBJ sharedCustomMadeOBJS].findSignName   //发现标签名字
 #define kShowFind  [CustomMadeOBJ sharedCustomMadeOBJS].showFindNav //展示发现nav
+#define kMerchantName [CustomMadeOBJ sharedCustomMadeOBJS].merchantName //软件的名称
 
 //以下目前都没用了
-#define kMerchantName [CustomMadeOBJ sharedCustomMadeOBJS].merchantName //软件的名称
 #define kAPPType [CustomMadeOBJ sharedCustomMadeOBJS].appType //app的类型~
 #define kCertificationType [CustomMadeOBJ sharedCustomMadeOBJS].certificationType //证书类型
 #define	kIsDistributeServiceAddressOld [CustomMadeOBJ sharedCustomMadeOBJS].isDistributeServerAddressOld//是否为老服务器~
