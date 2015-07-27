@@ -154,8 +154,8 @@ static NSString *shareNameArr[]={
     [self setThumbView:thumbView];
     [_maskShell setFrame:destView.bounds];
     [self setFrame:destView.bounds];
-    UIView *superView = thumbView.superview;
-    NSAssert(superView, @"thumb view has not add to super view");
+//    UIView *superView = thumbView.superview;
+//    NSAssert(superView, @"thumb view has not add to super view");
     _imageViewSourceRect = [destView convertRect:CGRectMake(_shareView.frame.size.width/2, _shareView.frame.size.height/2, 0, 0) fromView:thumbView.superview];
     [_imageView setImage:image];
     [_imageView setFrame:_imageViewSourceRect];
@@ -173,8 +173,10 @@ static NSString *shareNameArr[]={
 }
 
 - (void)show{
-    CGSize size = CGSizeMake(_imageViewDestRect.size.width, _imageViewDestRect.size.height);
-    [_imageView setFrame:CGRectMake((shareViewWidth-size.width)/2, 50, size.width, size.height)];
+//    CGSize size = CGSizeMake(_imageViewDestRect.size.width, _imageViewDestRect.size.height);
+    CGFloat imgWidth = 200;
+    CGFloat imgHeight = imgWidth;
+    [_imageView setFrame:CGRectMake((shareViewWidth-imgWidth)/2, 50, imgWidth, imgHeight)];
     [self.thumbView setAlpha:0.0];
     [self setAlpha:1.0];
 }
