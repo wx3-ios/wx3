@@ -366,7 +366,7 @@
     entity.stockBonus = ent.bonusValue;
     entity.stockNumber = ent.stock_number;
     if(entity.stockNumber < ent.goods_Number){
-        [UtilTool showAlertView:[NSString stringWithFormat:@"%@库存已不足",entity.intro]];
+        [UtilTool showAlertView:[NSString stringWithFormat:@"%@(%@)库存已不足",entity.intro,entity.stockName]];
         return nil;
     }
     return entity;

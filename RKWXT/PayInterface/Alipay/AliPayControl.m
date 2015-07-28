@@ -33,7 +33,7 @@
 }
 
 + (NSString*)aliURLSchemes{
-	return [NSString stringWithFormat:@"%@",kAliPayScheme];
+	return [NSString stringWithFormat:@"%@%d",kAliPayScheme,kMerchantID];
 }
 
 -(void)handleAliPayResult:(AlixPayResult*)result{

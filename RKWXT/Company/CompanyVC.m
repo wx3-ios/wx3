@@ -7,11 +7,32 @@
 //
 
 #import "CompanyVC.h"
+#import "WXTURLFeedOBJ.h"
+#import "WXWeiXinOBJ.h"
+#import "DownSheet.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 #define Size self.bounds.size
+#define kCompanyLoadUrl @"http://oldyun.67call.com/wx_html/index.php/Index/index_comp?"
 
-@interface CompanyVC()<UIWebViewDelegate>{
-    UIWebView *_webView;
+enum{
+    Share_Qq,
+    Share_Qzone,
+    Share_Friends,
+    Share_Clrcle,
+    
+    Share_Invalid,
+};
+
+@interface CompanyVC()<UIWebViewDelegate,DownSheetDelegate>{
+    WXUIWebView *_webView;
+    NSArray *menuList;
+    
+    //分享
+    NSString *title;
+    NSString *desc;
+    NSString *shareUrl;
+    NSString *imgUrl;
 }
 @end
 
@@ -22,31 +43,143 @@
     [self setCSTNavigationViewHidden:YES animated:NO];
 }
 
-- (void)viewDidLoad{
+-(void)viewDidLoad{
     [super viewDidLoad];
-    self.backgroundColor = WXColorWithInteger(0xefeff4);
+    [self setCSTTitleColor:[UIColor blackColor]];
     
-    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height)];
+    _webView = [[WXUIWebView alloc] initWithFrame:self.bounds];
     [_webView setDelegate:self];
     [self addSubview:_webView];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://oldyun.67call.com/wx_html/index.php/Index/index_comp?sid=7"]];
-    if (request){
-        [_webView loadRequest:request];
+    NSString *urlString = [NSString stringWithFormat:@"%@%d",kCompanyLoadUrl,kMerchantID];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    [_webView loadRequest:request];
+    
+    [self initDropList];
+}
+
+-(void)initDropList{
+    DownSheetModel *model_1 = [[DownSheetModel alloc] init];
+    model_1.icon = @"ShareQqImg.png";
+    model_1.icon_on = @"ShareQqImg.png";
+    model_1.title = @"分享到qq好友";
+    
+    DownSheetModel *model_2 = [[DownSheetModel alloc] init];
+    model_2.icon = @"ShareQzoneImg.png";
+    model_2.icon_on = @"ShareQzoneImg.png";
+    model_2.title = @"分享到qq空间";
+    
+    DownSheetModel *model_3 = [[DownSheetModel alloc] init];
+    model_3.icon = @"ShareWxFriendImg.png";
+    model_3.icon_on = @"ShareWxFriendImg.png";
+    model_3.title = @"分享到微信好友";
+    
+    DownSheetModel *model_4 = [[DownSheetModel alloc] init];
+    model_4.icon = @"ShareWxCircleImg.png";
+    model_4.icon_on = @"ShareWxCircleImg.png";
+    model_4.title = @"分享到朋友圈";
+    
+    DownSheetModel *model_5 = [[DownSheetModel alloc] init];
+    model_5.icon = @"Icon.png";
+    model_5.icon_on = @"Icon.png";
+    model_5.title = @"取消";
+    
+    menuList = @[model_1,model_2,model_3,model_4,model_5];
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showWaitViewMode:E_WaiteView_Mode_Unblock title:@"正在加载数据"];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self unShowWaitView];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [self unShowWaitView];
+    [UtilTool showAlertView:@"数据加载失败"];
+}
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *urlString = request.URL.absoluteString;
+    if(urlString){
+        shareUrl = urlString;
     }
+    NSDictionary *paramDic = [self parseURL:urlString];
+    return [self jumpToParam:paramDic];
 }
 
-#pragma mark webViewDelegate
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+-(NSDictionary*)parseURL:(NSString*)url{
+    NSArray *paramList = [url componentsSeparatedByString:@"?"];
+    if([paramList count] < 2){
+        return nil;
+    }
+    NSString *paramString = [paramList objectAtIndex:1];
+    paramList = [paramString componentsSeparatedByString:@"&"];
+    NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+    for(NSString *paramString in paramList){
+        NSArray *keyAndValue = [paramString componentsSeparatedByString:@"="];
+        if([keyAndValue count] != 2){
+            continue;
+        }
+        [paramDic setObject:[keyAndValue objectAtIndex:1] forKey:[keyAndValue objectAtIndex:0]];
+    }
+    if([paramDic allKeys] == 0){
+        return nil;
+    }
+    return paramDic;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    [self unShowWaitView];
+-(BOOL)jumpToParam:(NSDictionary*)paramDic{
+    if([[paramDic objectForKey:@"go"] isEqualToString:@"wx_intr"]){
+        title = [[paramDic objectForKey:@"title"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        desc = [[paramDic objectForKey:@"intro"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        imgUrl = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,[paramDic objectForKey:@"content_ico"]];
+        
+        DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
+        sheet.delegate = self;
+        [sheet showInView:nil];
+        
+        return NO;
+    }
+    return YES;
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    [self unShowWaitView];
+#pragma mark 分享
+-(void)didSelectIndex:(NSInteger)index{
+    UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
+    NSURL *url = [NSURL URLWithString:imgUrl];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if(data){
+        image = [UIImage imageWithData:data];
+    }
+    if(index == Share_Friends){
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:title description:desc linkURL:shareUrl thumbImage:image];
+    }
+    if(index == Share_Clrcle){
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:title description:desc linkURL:shareUrl thumbImage:image];
+    }
+    if(index == Share_Qq){
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:shareUrl] title:title description:desc previewImageData:data];
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
+        QQApiSendResultCode sent = [QQApiInterface sendReq:req];
+        if(sent == EQQAPISENDSUCESS){
+            NSLog(@"qq好友分享成功");
+        }
+    }
+    if(index == Share_Qzone){
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:shareUrl] title:title description:desc previewImageData:data];
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
+        QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
+        if(sent == EQQAPISENDSUCESS){
+            NSLog(@"qq空间分享成功");
+        }
+    }
+    if(index == Share_Invalid){
+        NSLog(@"取消");
+    }
 }
 
 @end

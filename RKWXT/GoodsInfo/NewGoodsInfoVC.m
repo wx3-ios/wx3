@@ -310,7 +310,7 @@
         cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
-    [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsIInfoDetail.png"]];
+    [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsInfo.png"]];
     [cell.textLabel setText:@"图文详情"];
     return cell;
 }
@@ -322,7 +322,7 @@
     if(!cell){
         cell = [[NewGoodsInfoBDCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsInfo.png"]];
+    [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsIInfoDetail.png"]];
     [cell.textLabel setText:@"产品参数"];
     [cell changeArrowWithDown:_isOpen];
     return cell;
@@ -357,7 +357,7 @@
         }
         if(indexPath.row == 0){
             [cell changeArrowWithDown:_isOpen];
-            [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsInfo.png"]];
+            [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsIInfoDetail.png"]];
             [cell.textLabel setText:@"产品参数"];
         }
         return cell;

@@ -14,6 +14,7 @@
 @interface MakeOrderGoodsListCell(){
     WXRemotionImgBtn *_imgView;
     UILabel *_nameLabel;
+    UILabel *_stockName;
     UILabel *_numLabel;
     UILabel *_priceLabel;
 }
@@ -44,16 +45,16 @@
         [_nameLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:_nameLabel];
         
-        CGFloat numWidth = 35;
-        CGFloat numHeight = 14;
-        CGFloat yGap = Order_Section_Height_GoodsList-(Order_Section_Height_GoodsList-imgHeight)/2-numHeight;
-        _numLabel = [[UILabel alloc] init];
-        _numLabel.frame = CGRectMake(xOffset, yGap, numWidth, numHeight);
-        [_numLabel setBackgroundColor:[UIColor clearColor]];
-        [_numLabel setTextAlignment:NSTextAlignmentLeft];
-        [_numLabel setFont:WXFont(13.0)];
-        [_numLabel setTextColor:WXColorWithInteger(0x6a6c6b)];
-        [self.contentView addSubview:_numLabel];
+        CGFloat yGap = Order_Section_Height_GoodsList-(Order_Section_Height_GoodsList-imgHeight)/2-16;
+        _stockName = [[UILabel alloc] init];
+        _stockName.frame = CGRectMake(xOffset, yGap, 100, 18);
+        [_stockName setBackgroundColor:[UIColor clearColor]];
+        [_stockName setTextAlignment:NSTextAlignmentLeft];
+        [_stockName setTextColor:WXColorWithInteger(0x000000)];
+        [_stockName setNumberOfLines:0];
+        [_stockName setFont:WXFont(13.0)];
+        [self.contentView addSubview:_stockName];
+        
         
         CGFloat priceWidth = 65;
         CGFloat priceHeight = 17;
@@ -64,6 +65,16 @@
         [_priceLabel setTextColor:WXColorWithInteger(0x000000)];
         [_priceLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:_priceLabel];
+        
+        CGFloat numWidth = 35;
+        CGFloat numHeight = 14;
+        _numLabel = [[UILabel alloc] init];
+        _numLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-12-numWidth, yOffset+priceHeight+10, numWidth, numHeight);
+        [_numLabel setBackgroundColor:[UIColor clearColor]];
+        [_numLabel setTextAlignment:NSTextAlignmentRight];
+        [_numLabel setFont:WXFont(13.0)];
+        [_numLabel setTextColor:WXColorWithInteger(0x000000)];
+        [self.contentView addSubview:_numLabel];
     }
     return self;
 }
@@ -74,6 +85,7 @@
     [_imgView load];
     [_nameLabel setText:entity.intro];
     [_numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.buyNumber]];
+    [_stockName setText:entity.stockName];
     CGFloat price = entity.buyNumber*entity.stockPrice;
     [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",price]];
 }

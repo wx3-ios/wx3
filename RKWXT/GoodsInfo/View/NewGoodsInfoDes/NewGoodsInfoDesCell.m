@@ -32,8 +32,8 @@
         _oldPrice  = [[WXUILabel alloc] init];
         _oldPrice.frame = CGRectMake(xOffset, yOffset+14+28, LabelWidth, oldLabelHeight);
         [_oldPrice setTextAlignment:NSTextAlignmentLeft];
-        [_oldPrice setTextColor:WXColorWithInteger(smallTextColor)];
-        [_oldPrice setFont:[UIFont systemFontOfSize:smallTextFont]];
+        [_oldPrice setTextColor:WXColorWithInteger(midTextColor)];
+        [_oldPrice setFont:[UIFont systemFontOfSize:13.0]];
         [_oldPrice setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_oldPrice];
         
@@ -45,8 +45,8 @@
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
         [textLabel setText:@"市场价:"];
-        [textLabel setTextColor:WXColorWithInteger(midTextColor)];
-        [textLabel setFont:[UIFont systemFontOfSize:midTextFont]];
+        [textLabel setTextColor:[UIColor grayColor]];
+        [textLabel setFont:[UIFont systemFontOfSize:12.0]];
         [self.contentView addSubview:textLabel];
         
         xOffset += textWidth;
@@ -55,8 +55,8 @@
         [_newPrice setBackgroundColor:[UIColor clearColor]];
         [_newPrice setTextAlignment:NSTextAlignmentLeft];
         [_newPrice setTextColor:WXColorWithInteger(midTextColor)];
-        [_newPrice setTextColor:[UIColor redColor]];
-        [_newPrice setFont:[UIFont systemFontOfSize:midTextFont]];
+        [_newPrice setTextColor:[UIColor grayColor]];
+        [_newPrice setFont:[UIFont systemFontOfSize:12.0]];
         [self.contentView addSubview:_newPrice];
         
         yOffset += newLabelHeight + 5;

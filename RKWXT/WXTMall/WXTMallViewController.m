@@ -157,7 +157,7 @@
     return cell;
 }
 
-//我信介绍
+//导航
 -(WXUITableViewCell*)tableViewForWxIntructionCellAtRow:(NSInteger)row{
     static NSString *identifier = @"wxIntructionCell";
     WxIntructionCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
@@ -171,7 +171,7 @@
     if(max > count){
         max = count;
     }
-    for(NSInteger i = row*ForMeShow; i < max; i++){
+    for(NSInteger i = row*WxIntructionShow; i < max; i++){
         [rowArray addObject:[_model.navModel.data objectAtIndex:i]];
     }
     [cell setDelegate:self];

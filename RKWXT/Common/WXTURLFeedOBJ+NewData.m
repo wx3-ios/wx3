@@ -80,6 +80,7 @@
         
         NSData *jsonData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
         NSString *str1 = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"服务器返回===%@",str1);
         if (error){
             NSInteger code = error.code;
             retFeedData.code = code;
