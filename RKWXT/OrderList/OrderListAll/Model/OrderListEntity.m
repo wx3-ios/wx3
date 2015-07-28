@@ -113,7 +113,7 @@
         NSString *shopPhone = [dic objectForKey:@"shop_telephone"];
         [self setShopPhone:shopPhone];
         
-        NSString *couriername = [dic objectForKey:@""];
+        NSString *couriername = [dic objectForKey:@"shipments_type"];
         [self setCourierName:couriername];
         
         NSString *couriernum = [dic objectForKey:@"tracking_number"];
