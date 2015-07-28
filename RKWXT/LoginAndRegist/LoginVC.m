@@ -68,6 +68,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setBackgroundColor:[UIColor whiteColor]];
+    [self setDexterity:E_Slide_Dexterity_None];
     
     _iconShell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Size.width, kLoginBigImgViewheight)];
     [_iconShell setClipsToBounds:YES];

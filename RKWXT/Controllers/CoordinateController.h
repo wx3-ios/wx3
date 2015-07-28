@@ -38,9 +38,9 @@ typedef enum {
 
 //- (void)toCallTabBarVC:(id)sender animated:(BOOL)animated;
 //- (void)toContactDetail:(id)sender contactInfo:(id)contactInfo contactType:(E_ContacterType)contactType animated:(BOOL)animated;//联系人详情
-//- (void)toGuideView:(id)sender mode:(E_GuideView_Mode)mode animated:(BOOL)animated;//引导页面
 
 //new
+-(void)toGuideView:(id)sender animated:(BOOL)animated;//引导页面
 -(void)toSignVC:(id)sender animated:(BOOL)animated;//签到
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated;//充值
 -(void)toOrderList:(id)sender selectedShow:(NSInteger)number animated:(BOOL)animated;//订单页面

@@ -39,6 +39,10 @@
     return navigationController;
 }
 
+-(void)toGuideView:(id)sender animated:(BOOL)animated{
+    
+}
+
 -(void)toSignVC:(id)sender animated:(BOOL)animated{
     WXUIViewController *vc = sender;
     SignViewController *signVC = [[SignViewController alloc] init];

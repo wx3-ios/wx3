@@ -26,6 +26,7 @@
 #import "JPushMessageModel.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "ScreenActivityVC.h"
+#import "WXTGuideVC.h"
 
 #import "WXWeiXinOBJ.h"
 #import <TencentOpenAPI/TencentOAuth.h>
@@ -129,7 +130,7 @@
         
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
     }else{
-        LoginVC *vc = [[LoginVC alloc] init];
+        WXTGuideVC *vc = [[WXTGuideVC alloc] init];
         self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
         [vc.navigationController setNavigationBarHidden:YES];
         [self.window setRootViewController:self.navigationController];
