@@ -112,6 +112,15 @@
         
         NSString *shopPhone = [dic objectForKey:@"shop_telephone"];
         [self setShopPhone:shopPhone];
+        
+        NSString *couriername = [dic objectForKey:@""];
+        [self setCourierName:couriername];
+        
+        NSString *couriernum = [dic objectForKey:@"tracking_number"];
+        [self setCourierNum:couriernum];
+        
+        NSString *remark = [dic objectForKey:@"remark"];
+        [self setRemark:remark];
     }
     return self;
 }

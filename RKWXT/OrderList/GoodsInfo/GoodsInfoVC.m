@@ -73,7 +73,29 @@
     [numberlabel setTextColor:[UIColor grayColor]];
     [footView addSubview:numberlabel];
     
-    yOffset += labelHeight+3;
+    yOffset += labelHeight;
+    CGFloat courierWidth = self.bounds.size.width/2;
+    CGFloat courierHeight = 15;
+    UILabel *courierlabel1 = [[UILabel alloc] init];
+    courierlabel1.frame = CGRectMake(xOffset, yOffset, courierWidth, courierHeight);
+    [courierlabel1 setBackgroundColor:[UIColor clearColor]];
+    [courierlabel1 setText:[NSString stringWithFormat:@"快递公司:%@",(entity.courierName?entity.courierName:@"")]];
+    [courierlabel1 setTextAlignment:NSTextAlignmentLeft];
+    [courierlabel1 setFont:WXFont(11.0)];
+    [courierlabel1 setTextColor:[UIColor grayColor]];
+    [footView addSubview:courierlabel1];
+    
+    yOffset += courierHeight;
+    UILabel *courierlabel2 = [[UILabel alloc] init];
+    courierlabel2.frame = CGRectMake(xOffset, yOffset, courierWidth, courierHeight);
+    [courierlabel2 setBackgroundColor:[UIColor clearColor]];
+    [courierlabel2 setText:[NSString stringWithFormat:@"快递单号:%@",(entity.courierNum?entity.courierNum:@"")]];
+    [courierlabel2 setTextAlignment:NSTextAlignmentLeft];
+    [courierlabel2 setFont:WXFont(11.0)];
+    [courierlabel2 setTextColor:[UIColor grayColor]];
+    [footView addSubview:courierlabel2];
+    
+    yOffset += courierHeight+8;
     footView.frame = CGRectMake(0, 0, self.bounds.size.width, yOffset);
     return footView;
 }

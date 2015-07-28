@@ -55,26 +55,44 @@
 
 -(void)load{
     OrderListEntity *entity = self.cellInfo;
-    if(entity.order_status == Order_Status_Cancel){
-        [_stateLabel setText:@"订单已关闭"];
-        return;
-    }
+    [_stateLabel setText:[self orderStatusWith:entity]];
+}
+
+-(NSString*)orderStatusWith:(OrderListEntity*)entity{
+    NSString *status = nil;
+    
     if(entity.order_status == Order_Status_Complete){
-        [_stateLabel setText:@"订单已完成"];
-        return;
+        return @"订单已完成";
+    }
+    if(entity.order_status == Order_Status_Cancel){
+        return @"订单已关闭";
+    }
+    if(entity.order_status == Order_Status_None){
+        return @"订单交易中";
     }
     if(entity.pay_status == Pay_Status_WaitPay){
-        [_stateLabel setText:@"等待付款"];
-        return;
+        return @"订单未付款";
     }
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_WaitSend){
-        [_stateLabel setText:@"买家已付款"];
-        return;
+        return @"订单未发货";
     }
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend){
-        [_stateLabel setText:@"卖家已发货"];
-        return;
+        return @"订单已发货";
     }
+    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Normal){
+        return @"已申请退款";
+    }
+    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
+        return @"已同意退款";
+    }
+    if(entity.refund_status == Refund_Status_Being && entity.refund_status == ShopDeal_Refund_Refuse){
+        return @"已拒绝退款";
+    }
+    if(entity.refund_status == Refund_Status_HasDone){
+        return @"订单已退款";
+    }
+    
+    return status;
 }
 
 @end
