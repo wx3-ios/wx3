@@ -35,6 +35,7 @@
     ShoppingCartModel *_shopModel;
     
     WXUIButton *buyNowBtn;
+    WXUIButton *insertCartBtn;
     
     NSArray *menuList;
 }
@@ -179,7 +180,7 @@
     
     xOffset += buyBtnWidth;
     CGFloat cartWidth = 123;
-    WXUIButton *insertCartBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    insertCartBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     insertCartBtn.frame = CGRectMake(xOffset, 0, cartWidth, btnHeight);
     [insertCartBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [insertCartBtn setTitle:@"加入购物车" forState:UIControlStateNormal];
@@ -534,7 +535,7 @@
     if([_model.data count] > 0){
         if(!rightView.stockID || !rightView.stockName){
             [rightView showDropListUpView];
-            [UtilTool showAlertView:@"请选择商品属性后再加入购物车"];
+//            [UtilTool showAlertView:@"请选择商品属性后再加入购物车"];
             return;
         }
         [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
@@ -560,6 +561,10 @@
 
 -(void)addGoodsToShoppingCartSucceed:(NSInteger)cartID{
     [self unShowWaitView];
+    [insertCartBtn setTitle:@"已加入购物车" forState:UIControlStateNormal];
+    [insertCartBtn setBackgroundColor:[UIColor grayColor]];
+    [insertCartBtn setEnabled:NO];
+    
     [UtilTool showAlertView:@"添加购物车成功"];
     GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
     NSString *cartIDStr = [NSString stringWithFormat:@"%ld",(long)cartID];
@@ -591,9 +596,16 @@
 
 -(void)toMakeOrder{
     if(!_isBuy){
+        if([_model.data count] > 0){
+            if(!rightView.stockID || !rightView.stockName){
+                [UtilTool showAlertView:@"请选择商品属性后再加入购物车"];
+                return;
+            }
+        }
         [self insertMyShoppingCart:nil];
         return;
     }
+    
     if(rightView.stockID<=0){
         [UtilTool showAlertView:@"请先选择套餐"];
         return;

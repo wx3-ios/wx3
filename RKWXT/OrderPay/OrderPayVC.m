@@ -154,7 +154,7 @@ enum{
     if(!_orderID){
         return;
     }
-    [[AliPayControl sharedAliPayOBJ] alipayOrderID:_orderID title:@"我信云科技" amount:_payMoney phpURL:@"" payTag:nil];
+    [[AliPayControl sharedAliPayOBJ] alipayOrderID:_orderID title:kMerchantName amount:_payMoney phpURL:@"" payTag:nil];
 }
 
 -(void)alipaySucceed{
