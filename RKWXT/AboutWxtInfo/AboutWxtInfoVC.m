@@ -198,7 +198,7 @@ enum{
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(entity.updateType == 1){
+    if(entity.updateType == 0){
         if(buttonIndex == 1){
             //itms-services://?action=download-manifest&url=https://gz.67call.com/Ios/2.plist
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:entity.appUrl]];
