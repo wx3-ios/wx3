@@ -7,7 +7,6 @@
 //
 
 #import "CompanyVC.h"
-#import "WXTURLFeedOBJ.h"
 #import "WXWeiXinOBJ.h"
 #import "DownSheet.h"
 #import <TencentOpenAPI/QQApiInterface.h>

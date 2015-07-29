@@ -12,6 +12,4 @@
 @interface JPushMessageInfoVC : WXUIViewController
 @property (nonatomic,assign) NSInteger messageID;
 
--(id)initWithData;
-
 @end
