@@ -136,7 +136,7 @@
     namelabel = [[WXUILabel alloc] init];
     namelabel.frame = CGRectMake((IPHONE_SCREEN_WIDTH-phoneLabelWidth)/2, yOffset, phoneLabelWidth, phoneLabelHeight);
     [namelabel setBackgroundColor:[UIColor clearColor]];
-    [namelabel setFont:WXFont(12.0)];
+    [namelabel setFont:WXFont(14.0)];
     [namelabel setTextColor:WXColorWithInteger(0xffffff)];
     [namelabel setTextAlignment:NSTextAlignmentCenter];
     [headView addSubview:namelabel];
@@ -150,11 +150,14 @@
     yOffset += phoneLabelHeight;
     xOffset += phoneLabelWidth;
     WXUIButton *nextBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    nextBtn.frame = CGRectMake((IPHONE_SCREEN_WIDTH-phoneLabelWidth)/2, yOffset, Size.width-xOffset, 20);
+    nextBtn.frame = CGRectMake((IPHONE_SCREEN_WIDTH-phoneLabelWidth-45)/2, yOffset, Size.width-xOffset+45, 20);
     [nextBtn setBackgroundColor:[UIColor clearColor]];
-    [nextBtn setTitle:@"账户管理/收货地址 >" forState:UIControlStateNormal];
+    [nextBtn setTitle:@"账户管理/收货地址 " forState:UIControlStateNormal];
+    [nextBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 20)];
+    [nextBtn setImage:[UIImage imageNamed:@"AddressNextImg.png"] forState:UIControlStateNormal];
+    [nextBtn setImageEdgeInsets:UIEdgeInsetsMake(0, Size.width-xOffset+10, 0, 0)];
     [nextBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
-    [nextBtn.titleLabel setFont:WXFont(12.0)];
+    [nextBtn.titleLabel setFont:WXFont(14.0)];
     [nextBtn addTarget:self action:@selector(nextPageSetInfo) forControlEvents:UIControlEventTouchUpInside];
     [headView addSubview:nextBtn];
     

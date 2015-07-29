@@ -147,11 +147,11 @@ enum{
 
 -(UIView*)showRechargeBtn{
     CGFloat xOffset = 22;
-    CGFloat btnHeight = 32;
+    CGFloat btnHeight = 40;
     CGFloat yOffset = WXT_Balance_Invalid*EveryCellHeight;
     WXTUIButton *btn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(xOffset, 1.4*yOffset, Size.width-2*xOffset, btnHeight);
-    [btn setBorderRadian:10.0 width:0.5 color:[UIColor clearColor]];
+    [btn setBorderRadian:6.0 width:0.5 color:[UIColor clearColor]];
     [btn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];
     [btn setTitle:@"立即充值" forState:UIControlStateNormal];
     [btn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];

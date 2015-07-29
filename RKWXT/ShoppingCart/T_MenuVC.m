@@ -113,7 +113,7 @@
     [_circleBtn addTarget:self action:@selector(selectAllBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:_circleBtn];
     
-    xOffset += imgSize.width+2;
+    xOffset += imgSize.width+4;
     CGFloat labelHeight = 17;
     WXUILabel *selLabel = [[WXUILabel alloc] init];
     selLabel.frame = CGRectMake(xOffset, (footHeight-labelHeight)/2, 50, labelHeight);
@@ -121,7 +121,7 @@
     [selLabel setText:@"全选"];
     [selLabel setTextAlignment:NSTextAlignmentLeft];
     [selLabel setTextColor:WXColorWithInteger(0x323232)];
-    [selLabel setFont:[UIFont systemFontOfSize:12.0]];
+    [selLabel setFont:[UIFont systemFontOfSize:14.0]];
     [footView addSubview:selLabel];
     RELEASE_SAFELY(selLabel);
     
@@ -135,7 +135,7 @@
     [sumLabel setTextAlignment:NSTextAlignmentRight];
     [sumLabel setText:@"合计:"];
     [sumLabel setFont:[UIFont systemFontOfSize:10.0]];
-    [sumLabel setTextColor:WXColorWithInteger(0xff9c00)];
+    [sumLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [footView addSubview:sumLabel];
     RELEASE_SAFELY(sumLabel);
     
@@ -147,7 +147,7 @@
     [_sumPrice setTextAlignment:NSTextAlignmentLeft];
     [_sumPrice setText:@"￥0.00"];
     [_sumPrice setFont:[UIFont systemFontOfSize:12.0]];
-    [_sumPrice setTextColor:WXColorWithInteger(0xff9c00)];
+    [_sumPrice setTextColor:WXColorWithInteger(0xdd2726)];
     [footView addSubview:_sumPrice];
     
     yOffset += sumHeight;
@@ -167,8 +167,8 @@
     _sumBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     _sumBtn.frame = CGRectMake(xOffset, (footHeight-btnHeight)/2, btnWidth, btnHeight);
     [_sumBtn setBorderRadian:3.0 width:0.5 color:WXColorWithInteger(0xff9c00)];
-    [_sumBtn setBackgroundImageOfColor:WXColorWithInteger(0xff9c00) controlState:UIControlStateNormal];;
-    [_sumBtn setBackgroundImageOfColor:WXColorWithInteger(0xdd8802) controlState:UIControlStateSelected];
+    [_sumBtn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];;
+    [_sumBtn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateSelected];
     [_sumBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
     [_sumBtn.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
     [_sumBtn setTitle:@"结算(0)" forState:UIControlStateNormal];

@@ -22,8 +22,8 @@ static NSString *shareImgArr[]={
 };
 
 static NSString *shareNameArr[]={
-    @"qq好友",
-    @"qq空间",
+    @"QQ好友",
+    @"QQ空间",
     @"微信好友",
     @"朋友圈",
 };
@@ -80,7 +80,7 @@ static NSString *shareNameArr[]={
     textLabel.frame = CGRectMake((shareViewWidth-textlabelWidth)/2, 15, textlabelWidth, textLabelHeight);
     [textLabel setBackgroundColor:[UIColor clearColor]];
     [textLabel setText:@"推荐应用给好友"];
-    [textLabel setFont:WXFont(18.0)];
+    [textLabel setFont:WXFont(16.0)];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
     [textLabel setTextColor:WXColorWithInteger(0xd9d9d9)];
     [_shareView addSubview:textLabel];
@@ -99,7 +99,7 @@ static NSString *shareNameArr[]={
     textLabel1.frame = CGRectMake((shareViewWidth-textlabelWidth)/2, yOffset, textlabelWidth, textLabelHeight);
     [textLabel1 setBackgroundColor:[UIColor clearColor]];
     [textLabel1 setText:kMerchantName];
-    [textLabel1 setFont:WXFont(18.0)];
+    [textLabel1 setFont:WXFont(16.0)];
     [textLabel1 setTextAlignment:NSTextAlignmentCenter];
     [textLabel1 setTextColor:WXColorWithInteger(0x000000)];
     [_shareView addSubview:textLabel1];

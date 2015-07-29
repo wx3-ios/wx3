@@ -27,14 +27,14 @@
         CGSize size = self.bounds.size;
         CGFloat xOffset = 12;
         CGFloat textHeight = 16;
-        CGFloat textWidth = 45;
+        CGFloat textWidth = 50;
         
         UILabel *textLabel = [[UILabel alloc] init];
         textLabel.frame = CGRectMake(xOffset, (OrderWaitPayConsultCellHeight-textHeight)/2, textWidth, textHeight);
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
         [textLabel setTextColor:WXColorWithInteger(0x6d6d6d)];
-        [textLabel setFont:WXTFont(12.0)];
+        [textLabel setFont:WXTFont(14.0)];
         [textLabel setText:@"实付款:"];
         [self.contentView addSubview:textLabel];
         
@@ -46,7 +46,7 @@
         [_consult setBackgroundColor:[UIColor clearColor]];
         [_consult setTextAlignment:NSTextAlignmentLeft];
         [_consult setTextColor:WXColorWithInteger(0x000000)];
-        [_consult setFont:WXTFont(15.0)];
+        [_consult setFont:WXTFont(14.0)];
         [self.contentView addSubview:_consult];
         
         CGFloat xGap = 10;
@@ -56,7 +56,7 @@
         _payBtn.frame = CGRectMake(size.width-xGap-btnWidth, (OrderWaitPayConsultCellHeight-btnHeight)/2, btnWidth, btnHeight);
         [_payBtn setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
         [_payBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
-        [_payBtn.titleLabel setFont:WXFont(12.0)];
+        [_payBtn.titleLabel setFont:WXFont(15.0)];
         [_payBtn addTarget:self action:@selector(payOrder) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_payBtn];
         
@@ -65,7 +65,7 @@
         [_button2 setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
         [_button2 setBackgroundColor:WXColorWithInteger(0xdd2726)];
         [_button2 setHidden:YES];
-        [_button2.titleLabel setFont:WXFont(12.0)];
+        [_button2.titleLabel setFont:WXFont(15.0)];
         [_button2 addTarget:self action:@selector(button2Clicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_button2];
     }

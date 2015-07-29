@@ -9,7 +9,7 @@
 #import "RechargeView.h"
 #import "RechargeModel.h"
 
-#define EveryCellHeight (44)
+#define EveryCellHeight (40)
 #define Size self.bounds.size
 
 @interface RechargeView()<RechargeDelegate>{
@@ -73,7 +73,7 @@
     _numTextfield = [[UITextField alloc] init];
     _numTextfield.frame = CGRectMake(xOffset, (EveryCellHeight-numHeight)/2, textfieldWidth, textfieldHeight);
     [_numTextfield setKeyboardType:UIKeyboardTypePhonePad];
-    [_numTextfield setPlaceholder:@"             请输入卡号"];
+    [_numTextfield setPlaceholder:@"请输入卡号"];
     [_numTextfield setTextColor:WXColorWithInteger(0x323232)];
     [_numTextfield setFont:WXTFont(14.0)];
     [_numTextfield addTarget:self action:@selector(startInput) forControlEvents:UIControlEventEditingDidBegin];
@@ -101,7 +101,7 @@
     _pwdTextfield = [[UITextField alloc] init];
     _pwdTextfield.frame = CGRectMake(xOffset, yOffset, textfieldWidth, textfieldHeight);
     [_pwdTextfield setKeyboardType:UIKeyboardTypePhonePad];
-    [_pwdTextfield setPlaceholder:@"             请输入密码"];
+    [_pwdTextfield setPlaceholder:@"请输入密码"];
     [_pwdTextfield setTextColor:WXColorWithInteger(0x323232)];
     [_pwdTextfield setFont:WXTFont(14.0)];
     [_pwdTextfield addTarget:self action:@selector(startInput) forControlEvents:UIControlEventEditingDidBegin];
@@ -116,7 +116,7 @@
     
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     okBtn.frame = CGRectMake(13, yOffset+21, Size.width-2*13, EveryCellHeight);
-    [okBtn setBorderRadian:10.0 width:1.0 color:[UIColor clearColor]];
+    [okBtn setBorderRadian:6.0 width:1.0 color:[UIColor clearColor]];
     [okBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [okBtn setTitle:@"确定" forState:UIControlStateNormal];
     [okBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];

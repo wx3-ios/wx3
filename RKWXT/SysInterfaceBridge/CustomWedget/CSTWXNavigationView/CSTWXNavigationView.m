@@ -43,7 +43,7 @@
         }
         _titleLable =[[WXUILabel alloc] initWithFrame:titleRect];
         [_titleLable setTextColor:[UIColor whiteColor]];
-        [_titleLable setFont:[UIFont systemFontOfSize:18.0]];
+        [_titleLable setFont:[UIFont systemFontOfSize:16.0]];
         [_titleLable setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:_titleLable];
     }

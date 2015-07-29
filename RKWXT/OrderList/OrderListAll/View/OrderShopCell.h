@@ -8,7 +8,7 @@
 
 #import "WXTUITableViewCell.h"
 
-#define OrderShopCellHeight     (45)
+#define OrderShopCellHeight     (30)
 
 @interface OrderShopCell : WXTUITableViewCell
 

@@ -84,7 +84,7 @@ enum{
     rightBtn.frame = CGRectMake(self.bounds.size.width-xgap-btnWidth, 35, btnWidth, btnHeight);
     [rightBtn setBackgroundColor:[UIColor clearColor]];
     [rightBtn setTitle:@"获取余额" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:WXColorWithInteger(0xff9d9b) forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightBtn.titleLabel setFont:WXFont(13.0)];
     [rightBtn addTarget:self action:@selector(toUseBonusRule) forControlEvents:UIControlEventTouchUpInside];
     

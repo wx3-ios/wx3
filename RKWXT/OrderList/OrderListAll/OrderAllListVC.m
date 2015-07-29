@@ -30,6 +30,8 @@ typedef enum{
     NSArray *orderListArr;  // 商品
     
     NSInteger orderlistCount;
+    
+    UIView *_shell;
 }
 @property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
@@ -81,17 +83,15 @@ typedef enum{
 }
 
 -(void)loadEmptyOrderListView{
-    if([orderListArr count] != 0){
-        return;
-    }
-    [_tableView setHidden:YES];
+    _shell = [[UIView alloc] init];
+    [_shell setBackgroundColor:[UIColor whiteColor]];
     
-    CGFloat yOffset = 120;
+    CGFloat yOffset = 10;
     UIImage *img = [UIImage imageNamed:@"NoOrderImg.png"];
     UIImageView *imgView = [[UIImageView alloc] init];
     imgView.frame = CGRectMake((self.bounds.size.width-img.size.width)/2, yOffset, img.size.width, img.size.height);
     [imgView setImage:img];
-    [self addSubview:imgView];
+    [_shell addSubview:imgView];
     
     yOffset += img.size.height+18;
     UILabel *label = [[UILabel alloc] init];
@@ -100,8 +100,21 @@ typedef enum{
     [label setTextAlignment:NSTextAlignmentCenter];
     [label setText:@"您还没有相关订单"];
     [label setTextColor:WXColorWithInteger(0x000000)];
-    [label setFont:WXFont(18.0)];
-    [self addSubview:label];
+    [label setFont:WXFont(15.0)];
+    [_shell addSubview:label];
+    
+    yOffset += 30;
+    [_shell setHidden:YES];
+    [_shell setFrame:CGRectMake(0, 110, IPHONE_SCREEN_WIDTH, 100)];
+    [self addSubview:_shell];
+    
+    if([orderListArr count] == 0){
+        [_tableView setHidden:YES];
+        [_shell setHidden:NO];
+    }else{
+        [_tableView setHidden:NO];
+        [_shell setHidden:YES];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

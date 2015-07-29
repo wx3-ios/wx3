@@ -30,7 +30,7 @@
         [uptextLabel setTextAlignment:NSTextAlignmentLeft];
         [uptextLabel setText:@"实付款:"];
         [uptextLabel setTextColor:WXColorWithInteger(0x000000)];
-        [uptextLabel setFont:WXFont(15.0)];
+        [uptextLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:uptextLabel];
         
         xGap -= labelWidth;
@@ -38,20 +38,20 @@
         _money.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap, yOffset, IPHONE_SCREEN_WIDTH-xGap, upHeight);
         [_money setBackgroundColor:[UIColor clearColor]];
         [_money setTextAlignment:NSTextAlignmentLeft];
-        [_money setFont:WXFont(15.0)];
+        [_money setFont:WXFont(14.0)];
         [_money setTextColor:WXColorWithInteger(0xdd2726)];
         [self.contentView addSubview:_money];
         
         yOffset += upHeight+8;
-        CGFloat xOffset = 170;
-        CGFloat dateWidth = 50;
+        CGFloat xOffset = 185;
+        CGFloat dateWidth = 55;
         CGFloat dateHeight = 15;
         UILabel *datelabel = [[UILabel alloc] init];
         datelabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset, yOffset, dateWidth, dateHeight);
         [datelabel setBackgroundColor:[UIColor clearColor]];
         [datelabel setTextAlignment:NSTextAlignmentLeft];
         [datelabel setTextColor:WXColorWithInteger(0x787978)];
-        [datelabel setFont:WXFont(11.0)];
+        [datelabel setFont:WXFont(12.0)];
         [datelabel setText:@"下单时间:"];
         [self.contentView addSubview:datelabel];
         
@@ -61,7 +61,7 @@
         [_dateLabel setBackgroundColor:[UIColor clearColor]];
         [_dateLabel setTextAlignment:NSTextAlignmentLeft];
         [_dateLabel setTextColor:WXColorWithInteger(0x787978)];
-        [_dateLabel setFont:WXFont(11.0)];
+        [_dateLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:_dateLabel];
     }
     return self;

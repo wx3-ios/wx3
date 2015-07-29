@@ -33,17 +33,17 @@
         _oldPrice.frame = CGRectMake(xOffset, yOffset+14+28, LabelWidth, oldLabelHeight);
         [_oldPrice setTextAlignment:NSTextAlignmentLeft];
         [_oldPrice setTextColor:WXColorWithInteger(midTextColor)];
-        [_oldPrice setFont:[UIFont systemFontOfSize:13.0]];
+        [_oldPrice setFont:[UIFont systemFontOfSize:18.0]];
         [_oldPrice setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_oldPrice];
         
         xOffset += LabelWidth+5;
-        CGFloat textWidth = 50;
+        CGFloat textWidth = 42;
         CGFloat newLabelHeight = 14;
         WXUILabel *textLabel = [[WXUILabel alloc] init];
         textLabel.frame = CGRectMake(xOffset, yOffset+14+28, textWidth, newLabelHeight);
         [textLabel setBackgroundColor:[UIColor clearColor]];
-        [textLabel setTextAlignment:NSTextAlignmentLeft];
+        [textLabel setTextAlignment:NSTextAlignmentRight];
         [textLabel setText:@"市场价:"];
         [textLabel setTextColor:[UIColor grayColor]];
         [textLabel setFont:[UIFont systemFontOfSize:12.0]];
@@ -59,6 +59,12 @@
         [_newPrice setFont:[UIFont systemFontOfSize:12.0]];
         [self.contentView addSubview:_newPrice];
         
+        UILabel *lineLabel = [[UILabel alloc] init];
+        lineLabel.frame = CGRectMake(xOffset-textWidth, yOffset+14+28+newLabelHeight/2, 2*textWidth, 0.5);
+        [lineLabel setBackgroundColor:[UIColor grayColor]];
+        [self.contentView addSubview:lineLabel];
+
+        
         yOffset += newLabelHeight + 5;
         CGFloat descLabelHeight = 36;
         _descLabel = [[WXUILabel alloc] init];
@@ -66,7 +72,7 @@
         [_descLabel setBackgroundColor:[UIColor clearColor]];
         [_descLabel setTextAlignment:NSTextAlignmentLeft];
         [_descLabel setTextColor:WXColorWithInteger(bigTextColor)];
-        [_descLabel setFont:[UIFont systemFontOfSize:bigTextFont]];
+        [_descLabel setFont:[UIFont systemFontOfSize:13]];
         [_descLabel setNumberOfLines:0];
         [self.contentView addSubview:_descLabel];
         
@@ -82,7 +88,7 @@
         CGFloat btnHeight = 25;
         _attentionBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         _attentionBtn.frame = CGRectMake(xOffset+(IPHONE_SCREEN_WIDTH-xOffset-btnWidth)/2, yOffset+(T_GoodsInfoDescHeight-yOffset-btnHeight-25)/2, btnWidth, btnHeight);
-        [_attentionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+        [_attentionBtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
         [_attentionBtn.titleLabel setFont:[UIFont systemFontOfSize:smallTextFont]];
         [_attentionBtn setTitleColor:WXColorWithInteger(smallTextColor) forState:UIControlStateNormal];
         [_attentionBtn addTarget:self action:@selector(payAttention:) forControlEvents:UIControlEventTouchUpInside];
@@ -95,7 +101,7 @@
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setText:@"分享"];
         [label setFont:[UIFont systemFontOfSize:13.0]];
-        [label setTextColor:[UIColor grayColor]];
+        [label setTextColor:WXColorWithInteger(0xcacaca)];
         [self.contentView addSubview:label];
     }
     return self;
@@ -103,7 +109,7 @@
 
 -(void)load{
     GoodsInfoEntity *entity = self.cellInfo;
-    [_oldPrice setText:[NSString stringWithFormat:@"店铺价:￥%.2f",entity.shop_price]];
+    [_oldPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shop_price]];
     [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.market_price]];
     [_descLabel setText:entity.intro];
     if(entity.concernID != 0){

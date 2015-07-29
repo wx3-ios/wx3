@@ -47,7 +47,7 @@
         [_moneylabel setBackgroundColor:[UIColor clearColor]];
         [_moneylabel setTextAlignment:NSTextAlignmentLeft];
         [_moneylabel setTextColor:WXColorWithInteger(0xc00000)];
-        [_moneylabel setFont:[UIFont systemFontOfSize:12.0]];
+        [_moneylabel setFont:[UIFont systemFontOfSize:14.0]];
         [bgBtn addSubview:_moneylabel];
         
         yOffset += moneyHeight;

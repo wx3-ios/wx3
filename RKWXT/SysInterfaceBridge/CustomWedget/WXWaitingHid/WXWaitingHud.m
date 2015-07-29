@@ -36,7 +36,7 @@
 		CGFloat length = progressViewRadius;
 		CGFloat tipHeight = 15.0;
 		CGSize shellSize = CGSizeMake(length,length);
-		CGRect shellRect = CGRectMake((size.width - length)*0.5, (size.height - shellSize.height)*0.5-150, shellSize.width, shellSize.height);
+		CGRect shellRect = CGRectMake((size.width - length)*0.5, (size.height - shellSize.height)*0.5-80, shellSize.width, shellSize.height);
 		_shell = [[UIView alloc] initWithFrame:shellRect];
 		[_shell setBackgroundColor:[UIColor clearColor]];
 		[self addSubview:_shell];

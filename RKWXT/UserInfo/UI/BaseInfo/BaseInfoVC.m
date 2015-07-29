@@ -176,6 +176,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
         nameStr = @"修改密码";
     }
     [cell.textLabel setText:nameStr];
+    [cell.textLabel setFont:WXFont(14.0)];
     return cell;
 }
 

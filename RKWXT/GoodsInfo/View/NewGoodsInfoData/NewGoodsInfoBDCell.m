@@ -9,6 +9,10 @@
 #import "NewGoodsInfoBDCell.h"
 #import "GoodsInfoDef.h"
 
+#define xOffset (15)
+#define imgWidth (8)
+#define imgHeight (12)
+
 @interface NewGoodsInfoBDCell(){
     WXUIImageView *_imgView;
 }
@@ -19,9 +23,6 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        CGFloat xOffset = 15;
-        CGFloat imgWidth = 8;
-        CGFloat imgHeight = 12;
         _imgView = [[WXUIImageView alloc] init];
         _imgView.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-imgWidth, (T_GoodsInfoOldBDCellHeight-imgHeight)/2, imgWidth, imgHeight);
         [_imgView setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];
@@ -34,8 +35,10 @@
 -(void)changeArrowWithDown:(BOOL)down{
     if (down) {
         _imgView.image = [UIImage imageNamed:@"T_ArrowDown.png"];
+        _imgView.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-imgWidth-4, (T_GoodsInfoOldBDCellHeight-imgHeight)/2, imgHeight, imgWidth);
     }else{
         _imgView.image = [UIImage imageNamed:@"T_ArrowRight.png"];
+        _imgView.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-imgWidth, (T_GoodsInfoOldBDCellHeight-imgHeight)/2, imgWidth, imgHeight);
     }
 }
 

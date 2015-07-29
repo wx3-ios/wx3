@@ -17,11 +17,11 @@
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
-        CGFloat xOffset = 25;
+        CGFloat xOffset = 32;
         CGFloat width = 30;
-        CGFloat height = 28;
+        CGFloat height = 12;
         _switch = [[WXUISwitch alloc] init];
-        _switch.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-width, (44-height)/2, width, height);
+        _switch.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-width, (44-height)/2-10, width, height);
         [_switch addTarget:self action:@selector(keyPadTone:) forControlEvents:UIControlEventValueChanged];
         [_switch setOnTintColor:WXColorWithInteger(0xdd2726)];
         [self.contentView addSubview:_switch];

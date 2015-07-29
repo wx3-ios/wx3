@@ -87,7 +87,7 @@ enum{
     textlabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight);
     [textlabel setBackgroundColor:[UIColor clearColor]];
     [textlabel setText:@"我信云科技有限公司"];
-    [textlabel setFont:WXTFont(20.0)];
+    [textlabel setFont:WXTFont(16.0)];
     [textlabel setTextColor:WXColorWithInteger(0x7c7c7c)];
     [textlabel setTextAlignment:NSTextAlignmentCenter];
     [_scrollerView addSubview:textlabel];
@@ -109,16 +109,16 @@ enum{
     
     yOffset += labelHeight;
     CGFloat btnWidth = Size.width-2*30;
-    CGFloat btnHeight = 30;
+    CGFloat btnHeight = 40;
     WXTUIButton *checkBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    checkBtn.frame = CGRectMake(30, yOffset, btnWidth, btnHeight+10);
+    checkBtn.frame = CGRectMake(30, yOffset, btnWidth, btnHeight);
 //    [checkBtn setBackgroundImageOfColor:[UIColor clearColor] controlState:UIControlStateNormal];
 //    [checkBtn setBackgroundImageOfColor:WXColorWithInteger(0x0c8bdf) controlState:UIControlStateSelected];
     [checkBtn setBackgroundColor:WXColorWithInteger(0xdc2826)];
-    [checkBtn setBorderRadian:10.0 width:0.5 color:WXColorWithInteger(0x969696)];
+    [checkBtn setBorderRadian:6.0 width:0.5 color:WXColorWithInteger(0x969696)];
     [checkBtn setTitle:@"检测版本" forState:UIControlStateNormal];
     [checkBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
-    [checkBtn.titleLabel setFont:WXFont(15.0)];
+    [checkBtn.titleLabel setFont:WXFont(14.0)];
     [checkBtn addTarget:self action:@selector(checkLastestVersion) forControlEvents:UIControlEventTouchUpInside];
     [_scrollerView addSubview:checkBtn];
 }
@@ -133,14 +133,14 @@ enum{
     xOffset = 8;
     yOffset = 8;
     CGFloat nameLabelWidth = 240;
-    CGFloat namelabelHeight = 20;
+    CGFloat namelabelHeight = 28;
     
     for(int i = 0; i < WXT_About_Invalid; i++){
         WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake((Size.width-nameLabelWidth)/2, yOffset, nameLabelWidth, namelabelHeight);
         btn.tag = i;
         [btn.titleLabel setFont:WXFont(14.0)];
-        [btn.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [btn.titleLabel setTextAlignment:NSTextAlignmentLeft];
         [btn setBackgroundColor:[UIColor clearColor]];
         [btn setTitle:baseNameArr[i] forState:UIControlStateNormal];
         [btn setTitleColor:WXColorWithInteger(0x8a8a8a) forState:UIControlStateNormal];

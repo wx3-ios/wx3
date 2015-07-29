@@ -20,7 +20,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 6;
-        CGFloat imgWidth = 12;
+        CGFloat imgWidth = 14;
         CGFloat imgHeight = imgWidth;
         UIImage *img = [UIImage imageNamed:@"OrderInfoState.png"];
         WXUIImageView *imgView = [[WXUIImageView alloc] init];
@@ -29,7 +29,7 @@
         [self.contentView addSubview:imgView];
         
         xOffset += imgWidth+8;
-        CGFloat labelWidth = 45;
+        CGFloat labelWidth = 52;
         CGFloat labelHeight = 10;
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(xOffset, (OrderInfoStateCellHeight-labelHeight)/2, labelWidth, labelHeight);
@@ -37,7 +37,7 @@
         [label setTextAlignment:NSTextAlignmentLeft];
         [label setText:@"订单状态:"];
         [label setTextColor:[UIColor blackColor]];
-        [label setFont:WXFont(10.0)];
+        [label setFont:WXFont(12.0)];
         [self.contentView addSubview:label];
         
         xOffset += labelWidth+4;
@@ -47,7 +47,7 @@
         [_stateLabel setBackgroundColor:[UIColor clearColor]];
         [_stateLabel setTextAlignment:NSTextAlignmentLeft];
         [_stateLabel setTextColor:WXColorWithInteger(0xdd2726)];
-        [_stateLabel setFont:WXFont(10.0)];
+        [_stateLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:_stateLabel];
     }
     return self;

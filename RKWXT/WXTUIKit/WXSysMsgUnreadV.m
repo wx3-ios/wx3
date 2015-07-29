@@ -12,7 +12,6 @@
 
 #define D_Notification_Name_RewardPacketDetected @"D_Notification_Name_RewardPacketDetected" //检测到一个红包推送
 
-
 @interface WXSysMsgUnreadV()
 {
     WXUIImageView *_unreadNumberImgV;

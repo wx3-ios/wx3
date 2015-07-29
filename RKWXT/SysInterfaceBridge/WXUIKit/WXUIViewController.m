@@ -231,9 +231,11 @@
 - (void)setBackNavigationBarItem{
     WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-//    [leftBtn setImage:[UIImage imagePathed:@"T_AllBack.png"] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imagePathed:@"CommonArrowLeft.png"] forState:UIControlStateNormal];
+    [leftBtn setTitle:@" 返回" forState:UIControlStateNormal];
+    [leftBtn.titleLabel setFont:WXFont(15.0)];
 //    [leftBtn setImage:[UIImage imagePathed:@"T_AllBackSel.png"] forState:UIControlStateSelected];
-    [leftBtn setTitle:@"<返回" forState:UIControlStateNormal];
+//    [leftBtn setTitle:@"<返回" forState:UIControlStateNormal];
     [leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     CGFloat yOffset = 0.0;
     if(isIOS7){

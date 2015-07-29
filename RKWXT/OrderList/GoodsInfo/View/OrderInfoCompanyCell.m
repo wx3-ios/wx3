@@ -42,7 +42,7 @@
         
         xOffset += nameWidth+5;
         CGFloat arrowWidth = 8;
-        CGFloat arrowHeight = 6;
+        CGFloat arrowHeight = 12;
         _nextImg = [[UIImageView alloc] init];
         _nextImg.frame = CGRectMake(IPHONE_SCREEN_WIDTH-arrowWidth-8, (OrderInfoCompanyCellHeight-arrowHeight)/2, arrowWidth, arrowHeight);
         [_nextImg setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];

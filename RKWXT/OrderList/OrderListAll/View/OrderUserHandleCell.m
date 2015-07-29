@@ -28,7 +28,7 @@
         _button1.frame = CGRectMake(size.width-xOffset, (OrderHandleCellHeight-btnHeight)/2, btnWidth, btnHeight);
         [_button1 setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
         [_button1 setBackgroundColor:WXColorWithInteger(0xdd2726)];
-        [_button1.titleLabel setFont:WXFont(12.0)];
+        [_button1.titleLabel setFont:WXFont(15.0)];
         [_button1 addTarget:self action:@selector(button1Clicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_button1];
         
@@ -37,7 +37,7 @@
         [_button2 setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
         [_button2 setBackgroundColor:WXColorWithInteger(0xdd2726)];
         [_button2 setHidden:YES];
-        [_button2.titleLabel setFont:WXFont(12.0)];
+        [_button2.titleLabel setFont:WXFont(15.0)];
         [_button2 addTarget:self action:@selector(button2Clicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_button2];
     }

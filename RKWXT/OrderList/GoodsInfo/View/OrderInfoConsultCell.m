@@ -28,7 +28,7 @@
         textLabel1.frame = CGRectMake(xOffset, yOffset, width, height);
         [textLabel1 setBackgroundColor:[UIColor clearColor]];
         [textLabel1 setTextAlignment:NSTextAlignmentLeft];
-        [textLabel1 setFont:WXFont(12.0)];
+        [textLabel1 setFont:WXFont(14.0)];
         [textLabel1 setText:@"商品总额"];
         [textLabel1 setTextColor:WXColorWithInteger(0x646464)];
         [self.contentView addSubview:textLabel1];
@@ -38,7 +38,7 @@
         _money.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-width, yOffset, width, height);
         [_money setBackgroundColor:[UIColor clearColor]];
         [_money setTextAlignment:NSTextAlignmentRight];
-        [_money setFont:WXFont(12.0)];
+        [_money setFont:WXFont(14.0)];
         [_money setTextColor:WXColorWithInteger(0xdd2726)];
         [self.contentView addSubview:_money];
         
@@ -47,7 +47,7 @@
         textLabel2.frame = CGRectMake(xOffset, yOffset, width, height);
         [textLabel2 setBackgroundColor:[UIColor clearColor]];
         [textLabel2 setTextAlignment:NSTextAlignmentLeft];
-        [textLabel2 setFont:WXFont(11.0)];
+        [textLabel2 setFont:WXFont(12.0)];
         [textLabel2 setText:@"+红包抵用:"];
         [textLabel2 setTextColor:WXColorWithInteger(0x6a6c6b)];
         [self.contentView addSubview:textLabel2];
@@ -56,7 +56,7 @@
         _bonus.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-width, yOffset, width, height);
         [_bonus setBackgroundColor:[UIColor clearColor]];
         [_bonus setTextAlignment:NSTextAlignmentRight];
-        [_bonus setFont:WXFont(11.0)];
+        [_bonus setFont:WXFont(12.0)];
         [_bonus setTextColor:WXColorWithInteger(0xdd2726)];
         [self.contentView addSubview:_bonus];
     }

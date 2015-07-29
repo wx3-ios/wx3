@@ -63,16 +63,17 @@ enum{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     CGFloat yOffset = 15;
     CGFloat labelHeight = 18;
+    CGFloat labelWidth = 80;
     UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.frame = CGRectMake(0, yOffset, Size.width/2-10, labelHeight);
+    phoneLabel.frame = CGRectMake(10, yOffset, labelWidth, labelHeight);
     [phoneLabel setBackgroundColor:[UIColor clearColor]];
-    [phoneLabel setTextAlignment:NSTextAlignmentRight];
+    [phoneLabel setTextAlignment:NSTextAlignmentLeft];
     [phoneLabel setText:[NSString stringWithFormat:@"充值账号: "]];
     [phoneLabel setFont:WXTFont(16.0)];
     [phoneLabel setTextColor:WXColorWithInteger(0x000000)];
     [headView addSubview:phoneLabel];
     
-    CGFloat xOffset = Size.width/2;
+    CGFloat xOffset = labelWidth+10;
     _textField = [[WXUITextField alloc] init];
     _textField.frame = CGRectMake(xOffset-5, yOffset, Size.width*2/3, labelHeight);
     [_textField setBackgroundColor:[UIColor clearColor]];
@@ -96,9 +97,9 @@ enum{
     UILabel *textLabel = [[UILabel alloc] init];
     textLabel.frame = CGRectMake(10, yOffset, Size.width-20, 25);
     [textLabel setBackgroundColor:WXColorWithInteger(0xe8e8e8)];
-    [textLabel setFont:WXTFont(10.0)];
-    [textLabel setText:@"请确认要充值的手机号码是否正确"];
-    [textLabel setTextAlignment:NSTextAlignmentCenter];
+    [textLabel setFont:WXTFont(12.0)];
+    [textLabel setText:@" 请确认要充值的手机号码是否正确"];
+    [textLabel setTextAlignment:NSTextAlignmentLeft];
     [textLabel setTextColor:WXColorWithInteger(0xaf8638)];
     [headView addSubview:textLabel];
     

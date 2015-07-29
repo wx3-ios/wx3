@@ -49,14 +49,14 @@
     
     CGFloat xOffset = 10;
     CGFloat yOffset = 6;
-    CGFloat btnWidth = 100;
-    CGFloat btnHeight = 25;
+    CGFloat btnWidth = 110;
+    CGFloat btnHeight = 30;
     UIButton *phoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     phoneBtn.frame = CGRectMake(self.bounds.size.width-xOffset-btnWidth, yOffset, btnWidth, btnHeight);
     [phoneBtn setBackgroundColor:[UIColor whiteColor]];
     [phoneBtn setBorderRadian:2.0 width:0.4 color:[UIColor grayColor]];
     [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
-    [phoneBtn.titleLabel setFont:WXFont(13.0)];
+    [phoneBtn.titleLabel setFont:WXFont(14.0)];
     [phoneBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [phoneBtn addTarget:self action:@selector(callPhone) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:phoneBtn];
@@ -69,7 +69,7 @@
     [numberlabel setBackgroundColor:[UIColor clearColor]];
     [numberlabel setText:[NSString stringWithFormat:@"订单号: %ld",(long)entity.order_id]];
     [numberlabel setTextAlignment:NSTextAlignmentLeft];
-    [numberlabel setFont:WXFont(11.0)];
+    [numberlabel setFont:WXFont(12.0)];
     [numberlabel setTextColor:[UIColor grayColor]];
     [footView addSubview:numberlabel];
     
@@ -81,7 +81,7 @@
     [courierlabel1 setBackgroundColor:[UIColor clearColor]];
     [courierlabel1 setText:[NSString stringWithFormat:@"快递公司:%@",(entity.courierName?entity.courierName:@"")]];
     [courierlabel1 setTextAlignment:NSTextAlignmentLeft];
-    [courierlabel1 setFont:WXFont(11.0)];
+    [courierlabel1 setFont:WXFont(12.0)];
     [courierlabel1 setTextColor:[UIColor grayColor]];
     [footView addSubview:courierlabel1];
     
@@ -91,7 +91,7 @@
     [courierlabel2 setBackgroundColor:[UIColor clearColor]];
     [courierlabel2 setText:[NSString stringWithFormat:@"快递单号:%@",(entity.courierNum?entity.courierNum:@"")]];
     [courierlabel2 setTextAlignment:NSTextAlignmentLeft];
-    [courierlabel2 setFont:WXFont(11.0)];
+    [courierlabel2 setFont:WXFont(12.0)];
     [courierlabel2 setTextColor:[UIColor grayColor]];
     [footView addSubview:courierlabel2];
     

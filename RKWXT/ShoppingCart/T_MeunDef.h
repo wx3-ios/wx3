@@ -22,10 +22,10 @@
 #define newPriceColor  (0x323232)
 #define markColor      (0x646464)
 
-#define NameFont       (12.0)
-#define InfoFont       (10.0)
+#define NameFont       (14.0)
+#define InfoFont       (12.0)
 #define oldPriceFont   (10.0)
-#define newPriceFont   (13.0)
+#define newPriceFont   (14.0)
 #define markFont       (10.0)
 
 #endif

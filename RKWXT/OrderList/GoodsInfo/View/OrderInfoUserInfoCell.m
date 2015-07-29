@@ -38,7 +38,7 @@
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setText:@"收货地址"];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
-        [textLabel setFont:WXFont(12.0)];
+        [textLabel setFont:WXFont(14.0)];
         [textLabel setTextColor:[UIColor blackColor]];
         [self.contentView addSubview:textLabel];
         
@@ -49,7 +49,7 @@
         _nameLabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight);
         [_nameLabel setBackgroundColor:[UIColor clearColor]];
         [_nameLabel setTextAlignment:NSTextAlignmentLeft];
-        [_nameLabel setFont:WXFont(10.0)];
+        [_nameLabel setFont:WXFont(12.0)];
         [_nameLabel setTextColor:[UIColor grayColor]];
         [self.contentView addSubview:_nameLabel];
         
@@ -61,7 +61,7 @@
         [_address setBackgroundColor:[UIColor clearColor]];
         [_address setTextAlignment:NSTextAlignmentLeft];
         [_address setTextColor:[UIColor grayColor]];
-        [_address setFont:WXFont(10.0)];
+        [_address setFont:WXFont(12.0)];
         [_address setNumberOfLines:0];
         [self.contentView addSubview:_address];
     }
@@ -78,7 +78,7 @@
     OrderListEntity *entity = cellInfo;
     CGFloat height = 42;
     NSString *add = entity.address;
-    CGSize size = [[self class] sizeOfString:add font:WXFont(10.0)];
+    CGSize size = [[self class] sizeOfString:add font:WXFont(12.0)];
     height += size.height;
     return height;
 }

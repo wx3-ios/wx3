@@ -56,7 +56,7 @@
         _payBtn.frame = CGRectMake(size.width-xGap-btnWidth, (WaitSendConsultCellHeight-btnHeight)/2, btnWidth, btnHeight);
         [_payBtn setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
         [_payBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
-        [_payBtn.titleLabel setFont:WXFont(12.0)];
+        [_payBtn.titleLabel setFont:WXFont(15.0)];
         [_payBtn addTarget:self action:@selector(sendGoods) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_payBtn];
         
@@ -65,7 +65,7 @@
         [_button2 setBorderRadian:4.0 width:0.5 color:[UIColor clearColor]];
         [_button2 setBackgroundColor:WXColorWithInteger(0xdd2726)];
         [_button2 setHidden:YES];
-        [_button2.titleLabel setFont:WXFont(12.0)];
+        [_button2.titleLabel setFont:WXFont(15.0)];
         [_button2 addTarget:self action:@selector(button2Clicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_button2];
     }

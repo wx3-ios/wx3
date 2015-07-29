@@ -51,11 +51,11 @@ enum{
     WXUIView *footView = [[WXUIView alloc] init];
     
     CGFloat yOffset = 40;
-    CGFloat btnHeight = 44;
+    CGFloat btnHeight = 40;
     quitBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     quitBtn.frame = CGRectMake(10, yOffset, IPHONE_SCREEN_WIDTH-2*10, btnHeight);
     [quitBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [quitBtn setBorderRadian:4.0 width:0.1 color:WXColorWithInteger(0xdd2726)];
+    [quitBtn setBorderRadian:6.0 width:0.1 color:WXColorWithInteger(0xdd2726)];
     [quitBtn setTitle:@"退出登陆" forState:UIControlStateNormal];
     [quitBtn setTitle:@"退出登陆" forState:UIControlStateSelected];
     [quitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -89,6 +89,7 @@ enum{
     }
     [cell setDelegate:self];
     [cell.textLabel setText:@"拨打按键音"];
+    [cell.textLabel setFont:WXFont(14.0)];
     return cell;
 }
 
@@ -100,6 +101,7 @@ enum{
     }
     NSString *string = [[self class] stringWithCellAtSection:indexPath.section];
     [cell.textLabel setText:string];
+    [cell.textLabel setFont:WXFont(14.0)];
     if(indexPath.section != T_Setting_RemoveData){
         [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     }

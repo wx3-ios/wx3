@@ -44,8 +44,8 @@
         UIImage *circleImg = [UIImage imageNamed:@"ShoppingCartCircle.png"];
         _circleBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         CGSize rect = circleImg.size;
-        rect.width += 3.0;
-        rect.height += 3.0;
+        rect.width += 8.0;
+        rect.height += 8.0;
         
         _circleBtn.frame = CGRectMake(xGap, (T_MenuCommonCellHeight-rect.width)/2, rect.width, rect.height);
         [_circleBtn setBackgroundColor:[UIColor clearColor]];
@@ -98,7 +98,7 @@
         [_oldPrice setTextAlignment:NSTextAlignmentCenter];
         [_oldPrice setTextColor:WXColorWithInteger(oldPriceColor)];
         [_oldPrice setFont:[UIFont systemFontOfSize:oldPriceFont]];
-        [self.contentView addSubview:_oldPrice];
+//        [self.contentView addSubview:_oldPrice];
         
         WXUILabel *lineLabel = [[WXUILabel alloc] init];
         lineLabel.frame = CGRectMake((IPHONE_SCREEN_WIDTH-priceXgap)/4, nameHeight/2, (IPHONE_SCREEN_WIDTH-priceXgap)/2, 1);
@@ -126,6 +126,7 @@
         [_numberLabel setBorderRadian:1.0 width:0.4 color:WXColorWithInteger(markColor)];
         [_numberLabel setTextColor:WXColorWithInteger(markColor)];
         [_numberLabel setText:@"1"];
+        [_numberLabel setFont:WXFont(12.0)];
         [_numberLabel setTextAlignment:NSTextAlignmentCenter];
         [self.contentView addSubview:_numberLabel];
         

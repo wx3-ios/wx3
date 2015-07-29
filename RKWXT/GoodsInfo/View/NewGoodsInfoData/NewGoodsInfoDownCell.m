@@ -26,7 +26,7 @@
         _commonLabel.frame = CGRectMake(15, 0, 100, OneCellHeight);
         [_commonLabel setBackgroundColor:[UIColor clearColor]];
         [_commonLabel setTextAlignment:NSTextAlignmentLeft];
-        [_commonLabel setTextColor:[UIColor blackColor]];
+        [_commonLabel setTextColor:WXColorWithInteger(0x9c9d9f)];
         [_commonLabel setFont:[UIFont systemFontOfSize:11.0]];
         [self.contentView addSubview:_commonLabel];
         

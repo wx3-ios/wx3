@@ -24,10 +24,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGSize size = self.bounds.size;
+        CGFloat yGap = 3;
         CGFloat xOffset = 10;
         CGFloat imgWidth = 15;
         CGFloat imgHeight = imgWidth;
-        _shopLogoImg = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (OrderShopCellHeight-imgHeight)/2, imgWidth, imgHeight)];
+        _shopLogoImg = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, yGap+(OrderShopCellHeight-imgHeight)/2, imgWidth, imgHeight)];
         [_shopLogoImg setUserInteractionEnabled:NO];
         [_shopLogoImg setImage:[UIImage imageNamed:@"Icon.png"]];
         [self.contentView addSubview:_shopLogoImg];
@@ -36,7 +37,7 @@
         CGFloat nameWidth = 150;
         CGFloat nameHeight = 15;
         _shopNameLabel = [[UILabel alloc] init];
-        _shopNameLabel.frame = CGRectMake(xOffset, (OrderShopCellHeight-nameHeight)/2, nameWidth, nameHeight);
+        _shopNameLabel.frame = CGRectMake(xOffset, yGap+(OrderShopCellHeight-nameHeight)/2, nameWidth, nameHeight);
         [_shopNameLabel setBackgroundColor:[UIColor clearColor]];
         [_shopNameLabel setTextAlignment:NSTextAlignmentLeft];
         [_shopNameLabel setTextColor:WXColorWithInteger(0x202020)];
@@ -47,7 +48,7 @@
         CGFloat arrowWidth = 8;
         CGFloat arrowHeight = 6;
         _nextImg = [[UIImageView alloc] init];
-        _nextImg.frame = CGRectMake(xOffset, (OrderShopCellHeight-arrowHeight)/2, arrowWidth, arrowHeight);
+        _nextImg.frame = CGRectMake(xOffset, yGap+(OrderShopCellHeight-arrowHeight)/2, arrowWidth, arrowHeight);
         [_nextImg setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];
 //        [self.contentView addSubview:_nextImg];
         
@@ -55,11 +56,11 @@
         CGFloat statusWidth = 100;
         CGFloat statusHeight = 20;
         _orderPayStatus = [[UILabel alloc] init];
-        _orderPayStatus.frame = CGRectMake(size.width-xgap-statusWidth, (OrderShopCellHeight-statusHeight)/2, statusWidth, statusHeight);
+        _orderPayStatus.frame = CGRectMake(size.width-xgap-statusWidth, yGap+(OrderShopCellHeight-statusHeight)/2, statusWidth, statusHeight);
         [_orderPayStatus setBackgroundColor:[UIColor clearColor]];
         [_orderPayStatus setTextAlignment:NSTextAlignmentRight];
         [_orderPayStatus setTextColor:WXColorWithInteger(0xdd2726)];
-        [_orderPayStatus setFont:WXTFont(11.0)];
+        [_orderPayStatus setFont:WXTFont(12.0)];
         [self.contentView addSubview:_orderPayStatus];
     }
     return self;
