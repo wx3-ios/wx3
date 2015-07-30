@@ -616,6 +616,10 @@
         [UtilTool showAlertView:@"该套餐已售完"];
         return;
     }
+    if(entity.stockNumber < rightView.goodsNum){
+        [UtilTool showAlertView:[NSString stringWithFormat:@"该套餐库存不足%d件",rightView.goodsNum]];
+        return;
+    }
     entity.buyNumber = (rightView.goodsNum<=0?1:rightView.goodsNum);
     [goodsArr addObject:entity];
     [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];
