@@ -241,7 +241,7 @@
     if(isIOS7){
         yOffset = 20.0;
     }
-    [leftBtn setFrame:CGRectMake(0, yOffset, kDefaultNavigationBarButtonSize.width+40, kDefaultNavigationBarButtonSize.height)];
+    [leftBtn setFrame:CGRectMake(0, yOffset, kDefaultNavigationBarButtonSize.width+20, kDefaultNavigationBarButtonSize.height)];
     [self setLeftNavigationItem:leftBtn];
 }
 

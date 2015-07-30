@@ -206,7 +206,7 @@
     
     
     yOffset += 10;
-    _pwdTextField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
+    _pwdTextField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap+7, yOffset, width, height)];
     [_pwdTextField setReturnKeyType:UIReturnKeyDone];
     [_pwdTextField setSecureTextEntry:YES];
     [_pwdTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
