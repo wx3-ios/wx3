@@ -164,24 +164,22 @@
 }
 
 -(void)invateFriend{
-    NSString *phoneStr1 = [_model.phoneNumbers objectAtIndex:0];
-    if(_model.phoneNumbers.count > 1){
-        NSString *phoneStr2 = [_model.phoneNumbers objectAtIndex:1];
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择好友手机号" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:phoneStr1,phoneStr2, nil];
-        actionSheet.delegate = self;
-        [actionSheet showInView:self.view];
+    if([_model.phoneNumbers count] == 1){
+        [self sendmessage:[_model.phoneNumbers objectAtIndex:0]];
+        return;
     }
-    else{
-        [self sendmessage:phoneStr1];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择手机号" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    for (int i = 0; i < [_model.phoneNumbers count]; i++) {
+        NSString *title = [_model.phoneNumbers objectAtIndex:i];
+        [actionSheet addButtonWithTitle:title];
     }
+    [actionSheet addButtonWithTitle:@"取消"];
+    [actionSheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(buttonIndex == 0){
-        [self sendmessage:[_model.phoneNumbers objectAtIndex:0]];
-    }
-    if(buttonIndex == 1){
-        [self sendmessage:[_model.phoneNumbers objectAtIndex:1]];
+    if(buttonIndex < [_model.phoneNumbers count]){
+        [self sendmessage:[_model.phoneNumbers objectAtIndex:buttonIndex]];
     }
 }
 

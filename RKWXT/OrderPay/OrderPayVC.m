@@ -21,7 +21,7 @@
 enum{
     OrderPay_Section_Money = 0,
     OrderPay_Section_Alipay,
-    OrderPay_Section_Wechat,
+//    OrderPay_Section_Wechat,
     
     OrderPay_Section_Invalid
 };
@@ -89,9 +89,9 @@ enum{
         case OrderPay_Section_Alipay:
             height = OrderAlipayCellHeight;
             break;
-        case OrderPay_Section_Wechat:
-            height = OrderWechatCellHeight;
-            break;
+//        case OrderPay_Section_Wechat:
+//            height = OrderWechatCellHeight;
+//            break;
         default:
             break;
     }
@@ -141,9 +141,9 @@ enum{
         case OrderPay_Section_Alipay:
             cell = [self tableViewForAlipayCell];
             break;
-        case OrderPay_Section_Wechat:
-            cell = [self tableViewForWechatCell];
-            break;
+//        case OrderPay_Section_Wechat:
+//            cell = [self tableViewForWechatCell];
+//            break;
         default:
             break;
     }
@@ -156,9 +156,9 @@ enum{
         case OrderPay_Section_Alipay:
             [self alipay];
             break;
-        case OrderPay_Section_Wechat:
-            [self wechatPay];
-            break;
+//        case OrderPay_Section_Wechat:
+//            [self wechatPay];
+//            break;
         default:
             break;
     }
