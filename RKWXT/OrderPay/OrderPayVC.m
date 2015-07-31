@@ -12,6 +12,9 @@
 #import "OrderPayMoneyCell.h"
 #import "AliPayControl.h"
 #import "PaySucceedModel.h"
+#import "WechatPayObj.h"
+#import "WechatPayModel.h"
+#import "WechatEntity.h"
 
 #define size self.bounds.size
 
@@ -23,12 +26,22 @@ enum{
     OrderPay_Section_Invalid
 };
 
-@interface OrderPayVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface OrderPayVC()<UITableViewDataSource,UITableViewDelegate,WechatPayModelDelegate>{
     UITableView *_tableView;
+    WechatPayModel *_model;
 }
 @end
 
 @implementation OrderPayVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[WechatPayModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -143,10 +156,36 @@ enum{
         case OrderPay_Section_Alipay:
             [self alipay];
             break;
-            
+        case OrderPay_Section_Wechat:
+            [self wechatPay];
+            break;
         default:
             break;
     }
+}
+
+#pragma mark wechat
+-(void)wechatPay{
+    [_model wechatPayWithOrderID:_orderID];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)wechatPayLoadSucceed{
+    [self unShowWaitView];
+    if([_model.wechatArr count] <= 0){
+        return;
+    }
+    WechatEntity *entity = [_model.wechatArr objectAtIndex:0];
+    WechatPayObj *wechatObj = [[WechatPayObj alloc] init];
+    [wechatObj wechatPayWith:entity];
+}
+
+-(void)wechatPayLoadFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"调用微支付失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 #pragma mark alipay

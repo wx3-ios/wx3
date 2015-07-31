@@ -71,6 +71,9 @@
     
     [_imgView setCpxViewInfo:entity.msgURL];
     [_imgView load];
+    if(!entity.msgURL){
+        [_imgView setImage:[UIImage imageNamed:@"Icon.png"]];
+    }
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[entity.pushTime integerValue]];
     NSString *timeString = [NSString stringWithFormat:@"%@",[date YMDHMString:E_YMDHM]];

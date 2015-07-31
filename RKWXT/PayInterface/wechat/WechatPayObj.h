@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@class WechatEntity;
 
 @interface WechatPayObj : NSObject
+
+-(void)wechatPayWith:(WechatEntity*)entity;
 
 @end
