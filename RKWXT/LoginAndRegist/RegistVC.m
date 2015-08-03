@@ -477,7 +477,7 @@ enum{
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     //    [_model registWithUserPhone:_userTextField.text andPwd:_pwdTextfield.text andSmsID:userDefault.smsID andCode:[_fetchPwd.text integerValue] andRecommondUser:@"18888888888"];
-    if(!userDefault.smsID == 0){
+    if(userDefault.smsID == 0){
         userDefault.smsID = 1;
     }
     
