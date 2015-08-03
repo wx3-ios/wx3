@@ -7,7 +7,7 @@
 //
 
 #define kAnimateDuration (2.0)
-#define kGuideViewNumber (4)
+#define kGuideViewNumber (3)
 
 #import "WXTGuideVC.h"
 #import "LoginVC.h"
@@ -37,12 +37,24 @@
     [self addSubview:_scrollView];
     [_scrollView setAutoresizingMask:UIViewAutoresizingNone];
     
+    
     CGSize scrollViewSize = _scrollView.bounds.size;
     for(NSInteger i = 0; i < kGuideViewNumber; i++){
         WXUIImageView *imageView = [[WXUIImageView alloc] initWithFrame:CGRectMake(size.width*i, 0, size.width, scrollViewSize.height)];
         UIImage *img = [self imageAtIndex:i];
         [imageView setImage:img];
         [_scrollView addSubview:imageView];
+        
+        if(i == kGuideViewNumber-1){
+            CGFloat btnWidth = 100;
+            CGFloat btnHeight = 30;
+            WXUIButton *button = [WXUIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = CGRectMake((size.width-btnWidth)/2, size.height-btnHeight-50, btnWidth, btnHeight);
+            [button setBackgroundImage:[UIImage imageNamed:@"GuideStartUseBtnNor.png"] forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageNamed:@"GuideStartUseBtnSel.png"] forState:UIControlStateSelected];
+            [button addTarget:self action:@selector(guideviewScrollFinished) forControlEvents:UIControlEventTouchUpInside];
+            [imageView addSubview:button];
+        }
     }
 }
 
@@ -51,7 +63,7 @@
 }
 
 -(UIImage*)imageAtIndex:(NSInteger)index{
-    NSString *imgFileName = [NSString stringWithFormat:@"guideIllustrate_%d.png",(int)index];
+    NSString *imgFileName = [NSString stringWithFormat:@"guideIllustrate_%d.jpg",(int)index];
     return [UIImage imageNamed:imgFileName];
 }
 
