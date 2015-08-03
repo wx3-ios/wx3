@@ -87,7 +87,7 @@
     
     //向微信注册
     [[WXWeiXinOBJ sharedWeiXinOBJ] registerApp];
-    [WXApi registerApp:@"wxd930ea5d5a258f4f" withDescription:@"wx"];
+//    [WXApi registerApp:@"wxd930ea5d5a258f4f" withDescription:@"wx"];
     //向qq注册
     id result = [[TencentOAuth alloc] initWithAppId:@"1104707907" andDelegate:nil];
     if(result){}
