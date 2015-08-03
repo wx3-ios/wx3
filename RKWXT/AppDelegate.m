@@ -75,7 +75,6 @@
     [[AddressBook sharedAddressBook] loadContact];
     [ContactUitl shareInstance];
 	[self initUI];
-    [self checkVersion];
     //监听电话
     [self listenSystemCall];
     // 集成极光推送功能
@@ -126,6 +125,7 @@
         [self.window makeKeyAndVisible];
         
         [[NewWXTLiDB sharedWXLibDB] loadData];
+        [self checkVersion];
         //自动登录
         WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
 //        LoginModel *_loginModel = [[LoginModel alloc] init];

@@ -54,6 +54,7 @@
             [button setBackgroundImage:[UIImage imageNamed:@"GuideStartUseBtnSel.png"] forState:UIControlStateSelected];
             [button addTarget:self action:@selector(guideviewScrollFinished) forControlEvents:UIControlEventTouchUpInside];
             [imageView addSubview:button];
+            [imageView setUserInteractionEnabled:YES];
         }
     }
 }
