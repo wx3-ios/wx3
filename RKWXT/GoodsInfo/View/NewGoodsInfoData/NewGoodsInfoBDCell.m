@@ -10,8 +10,8 @@
 #import "GoodsInfoDef.h"
 
 #define xOffset (15)
-#define imgWidth (8)
-#define imgHeight (12)
+#define imgWidth (7)
+#define imgHeight (11)
 
 @interface NewGoodsInfoBDCell(){
     WXUIImageView *_imgView;

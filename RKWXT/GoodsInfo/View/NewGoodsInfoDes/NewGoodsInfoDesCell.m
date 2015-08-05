@@ -27,10 +27,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 12;
-        CGFloat yOffset = 15;
+        CGFloat yOffset = 8;
         CGFloat oldLabelHeight = 12;
         _oldPrice  = [[WXUILabel alloc] init];
-        _oldPrice.frame = CGRectMake(xOffset, yOffset+14+28, LabelWidth, oldLabelHeight);
+        _oldPrice.frame = CGRectMake(xOffset, yOffset+14+30, LabelWidth, oldLabelHeight);
         [_oldPrice setTextAlignment:NSTextAlignmentLeft];
         [_oldPrice setTextColor:WXColorWithInteger(midTextColor)];
         [_oldPrice setFont:[UIFont systemFontOfSize:18.0]];
@@ -41,7 +41,7 @@
         CGFloat textWidth = 42;
         CGFloat newLabelHeight = 14;
         WXUILabel *textLabel = [[WXUILabel alloc] init];
-        textLabel.frame = CGRectMake(xOffset, yOffset+14+28, textWidth, newLabelHeight);
+        textLabel.frame = CGRectMake(xOffset, yOffset+14+30, textWidth, newLabelHeight);
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setTextAlignment:NSTextAlignmentRight];
         [textLabel setText:@"市场价:"];
@@ -51,7 +51,7 @@
         
         xOffset += textWidth;
         _newPrice = [[WXUILabel alloc] init];
-        _newPrice.frame = CGRectMake(xOffset, yOffset+14+28, textWidth+25, newLabelHeight);
+        _newPrice.frame = CGRectMake(xOffset, yOffset+14+30, textWidth+25, newLabelHeight);
         [_newPrice setBackgroundColor:[UIColor clearColor]];
         [_newPrice setTextAlignment:NSTextAlignmentLeft];
         [_newPrice setTextColor:WXColorWithInteger(midTextColor)];
@@ -60,7 +60,7 @@
         [self.contentView addSubview:_newPrice];
         
         UILabel *lineLabel = [[UILabel alloc] init];
-        lineLabel.frame = CGRectMake(xOffset-textWidth, yOffset+14+28+newLabelHeight/2, 2*textWidth, 0.5);
+        lineLabel.frame = CGRectMake(xOffset-textWidth, yOffset+14+30+newLabelHeight/2, 2*textWidth, 0.5);
         [lineLabel setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:lineLabel];
 
