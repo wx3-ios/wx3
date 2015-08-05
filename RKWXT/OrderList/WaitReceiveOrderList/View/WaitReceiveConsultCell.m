@@ -90,7 +90,7 @@
         [_button2 setHidden:YES];
         [_payBtn setHidden:NO];
         [_payBtn setTitle:@"交易中" forState:UIControlStateNormal];
-        [_payBtn setBackgroundColor:[UIColor grayColor]];
+        [_payBtn setBackgroundColor:WXColorWithInteger(0xa5a3a3)];
         return;
     }
     if(entity.order_status == Order_Status_Complete){

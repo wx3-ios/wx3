@@ -55,7 +55,7 @@
         [_button2 setHidden:YES];
         [_button1 setTitle:@"已关闭" forState:UIControlStateNormal];
         [_button1 setEnabled:NO];
-        [_button1 setBackgroundColor:[UIColor grayColor]];
+        [_button1 setBackgroundColor:WXColorWithInteger(0xa5a3a3)];
         return;
     }
     if(entity.order_status == Order_Status_Complete){
@@ -63,13 +63,13 @@
         [_button2 setHidden:YES];
         [_button1 setTitle:@"已完成" forState:UIControlStateNormal];
         [_button1 setEnabled:NO];
-        [_button1 setBackgroundColor:[UIColor grayColor]];
+        [_button1 setBackgroundColor:WXColorWithInteger(0xa5a3a3)];
         return;
     }
     if(entity.order_status == Order_Status_None){
         [_button1 setHidden:NO];
         [_button2 setHidden:YES];
-        [_button1 setBackgroundColor:[UIColor grayColor]];
+        [_button1 setBackgroundColor:WXColorWithInteger(0xa5a3a3)];
         [_button1 setTitle:@"交易中" forState:UIControlStateNormal];
         return;
     }

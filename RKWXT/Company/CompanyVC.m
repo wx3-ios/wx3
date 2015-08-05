@@ -12,7 +12,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 
 #define Size self.bounds.size
-#define kCompanyLoadUrl @"http://oldyun.67call.com/wx_html/index.php/Index/index_comp?"
+#define kCompanyLoadUrl @"http://oldyun.67call.com/wx_html/index.php/Index/index_comp?sid="
 
 enum{
     Share_Qq,

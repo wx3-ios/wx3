@@ -60,6 +60,10 @@ typedef enum{
     [_tableView setPullingDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    if (isIOS7 || isIOS8) {
+//        [_tableView setSeparatorInset:UIEdgeInsetsZero];
+//        [_tableView setSeparatorColor:WXColorWithInteger(0xEBEBEB)];
+    }
     
     [[OrderListModel shareOrderListModel] setOrderlist_type:OrderList_Type_Normal];
     [[OrderListModel shareOrderListModel] loadUserOrderList:0 to:GetOrderArrayEveryTime];
@@ -214,6 +218,27 @@ typedef enum{
     [cell setDelegate:self];
     [cell load];
     return cell;
+}
+
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

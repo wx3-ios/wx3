@@ -155,7 +155,7 @@ enum{
         yOffset += namelabelHeight+10;
         
         UILabel *line = [[UILabel alloc] init];
-        line.frame = CGRectMake(0, yOffset-7, Size.width-2*xOffset, 0.5);
+        line.frame = CGRectMake(0, yOffset-7, Size.width, 0.5);
         [line setBackgroundColor:WXColorWithInteger(0xEEEEEE)];
         [baseView addSubview:line];
     }

@@ -116,14 +116,14 @@ typedef enum{
     
     UIImage *eyeImg = [UIImage imageNamed:@"keyboardEye.png"];
     WXTUIButton *eyeBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height-8)/2, eyeImg.size.width+10, eyeImg.size.height+8);
+    eyeBtn.frame = CGRectMake(15, (InputTextHeight-eyeImg.size.height-8)/2+5, eyeImg.size.width+4, eyeImg.size.height+2);
     [eyeBtn setBackgroundColor:[UIColor clearColor]];
     [eyeBtn setBackgroundImage:eyeImg forState:UIControlStateNormal];
     [_keybView addSubview:eyeBtn];
     
     UIImage *img = [UIImage imageNamed:@"delNumber.png"];
     WXTUIButton *delBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-    delBtn.frame = CGRectMake(Size.width-img.size.width-20, (InputTextHeight-img.size.height-8)/2, img.size.width+10, img.size.height+8);
+    delBtn.frame = CGRectMake(Size.width-img.size.width-20, (InputTextHeight-img.size.height-8)/2+4, img.size.width+4, img.size.height+2);
     [delBtn setBackgroundColor:[UIColor clearColor]];
     [delBtn setBackgroundImage:img forState:UIControlStateNormal];
     [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];

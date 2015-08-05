@@ -47,7 +47,7 @@
         
         if(i == kGuideViewNumber-1){
             CGFloat btnWidth = 100;
-            CGFloat btnHeight = 30;
+            CGFloat btnHeight = 40;
             WXUIButton *button = [WXUIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake((size.width-btnWidth)/2, size.height-btnHeight-50, btnWidth, btnHeight);
             [button setBackgroundImage:[UIImage imageNamed:@"GuideStartUseBtnNor.png"] forState:UIControlStateNormal];

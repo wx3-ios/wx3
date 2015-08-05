@@ -60,7 +60,7 @@
         CGFloat btnHeight = 28;
         WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(self.bounds.size.width-xGap-btnWidth, (cellHeight-btnHeight)/2, btnWidth, btnHeight);
-        [btn setBorderRadian:10.0 width:1.0 color:[UIColor clearColor]];
+        [btn setBorderRadian:6.0 width:1.0 color:[UIColor clearColor]];
         [btn setBackgroundColor:WXColorWithInteger(0xdc2826)];
         [btn setTitle:@"领取" forState:UIControlStateNormal];
         [btn.titleLabel setFont:WXFont(15.0)];

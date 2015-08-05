@@ -7,7 +7,7 @@
 //
 
 #import "WXButton.h"
-#define kTitleLabelFontSize (12.0)
+#define kTitleLabelFontSize (10.0)
 #define kGapMax (2)
 @interface WXButton()
 {
