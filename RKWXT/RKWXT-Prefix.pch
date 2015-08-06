@@ -16,7 +16,8 @@
 
 //#define Test   //测试，目前只显示版本号
 
-#define AllImgPrefixUrlString @"http://oldyun.67call.com/wx3/Public/Uploads/"  //所有网络获取图片皆拼接此字符串前缀
+#define AllImgPrefixUrlString @"http://121.201.18.130/wx3/Public/Uploads/"  //所有网络获取图片皆拼接此字符串前缀
+#define WXTBaseUrl @"http://121.201.18.130/"  //基地址
 
 #define KTabBarHeight (45.0)
 

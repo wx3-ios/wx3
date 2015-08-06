@@ -22,7 +22,7 @@
 - (NSString*)rootURL:(WXT_UrlFeed_Type)type{
     NSString *url = nil;
     NSString *rootURL = [NSString stringWithFormat:@"https://api.67call.com/agent/call_api.php"];
-    NSString *newRootUrl = [NSString stringWithFormat:@"https://oldyun.67call.com/wx3api"];   //商城模块
+    NSString *newRootUrl = [NSString stringWithFormat:@"%@wx3api",WXTBaseUrl];   //商城模块
     switch (type) {
         case WXT_UrlFeed_Type_LoadBalance:
             url = @"";

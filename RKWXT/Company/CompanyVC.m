@@ -12,7 +12,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 
 #define Size self.bounds.size
-#define kCompanyLoadUrl @"http://oldyun.67call.com/wx_html/index.php/Index/index_comp?sid="
+#define kCompanyLoadUrl @"wx_html/index.php/Index/index_comp?sid="
 
 enum{
     Share_Qq,
@@ -51,7 +51,7 @@ enum{
     [_webView setDelegate:self];
     [self addSubview:_webView];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%d",kCompanyLoadUrl,kMerchantID];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%d",WXTBaseUrl,kCompanyLoadUrl,kMerchantID];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [_webView loadRequest:request];
     

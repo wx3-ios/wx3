@@ -9,7 +9,7 @@
 #import "WXTMallListWebVC.h"
 #import "NewGoodsInfoVC.h"
 
-#define MallCatagaryListUrl @"https://oldyun.67call.com/wx_html/index.php/Public/"
+#define MallCatagaryListUrl @"wx_html/index.php/Public/"
 
 typedef enum{
     Web_Goto_Type_GoodsInfo = 1, //商品详情
@@ -59,7 +59,7 @@ typedef enum{
     if(urlFeedType == WXT_UrlFeed_Type_NewMall_ImgAndText){
         typeStr = @"good_info";
     }
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",MallCatagaryListUrl,typeStr];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@",WXTBaseUrl,MallCatagaryListUrl,typeStr];
     NSString *boay = nil;
     if(paramDictionary){
         boay = [feedOBJ urlRequestParamFrom:paramDictionary];

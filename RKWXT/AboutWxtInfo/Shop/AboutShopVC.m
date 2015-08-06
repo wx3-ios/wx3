@@ -8,7 +8,7 @@
 
 #import "AboutShopVC.h"
 
-#define NormaleMessageUrl @"http://oldyun.67call.com/wx_html/index.php/Public/shop_detail"
+#define NormaleMessageUrl @"wx_html/index.php/Public/shop_detail"
 
 @interface AboutShopVC()<UIWebViewDelegate>{
     UIWebView *_webView;
@@ -31,7 +31,7 @@
     [self addSubview:_webView];
     
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSString *urlStr = [NSString stringWithFormat:@"%@?sid=%d&phone=%@",NormaleMessageUrl,kMerchantID,userObj.user];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?sid=%d&phone=%@",WXTBaseUrl,NormaleMessageUrl,kMerchantID,userObj.user];
     
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

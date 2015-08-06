@@ -11,7 +11,7 @@
 #import "DownSheet.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 
-#define NormaleMessageUrl @"http://oldyun.67call.com/wx_html/index.php/Public/messages"
+#define NormaleMessageUrl @"wx_html/index.php/Public/messages"
 
 enum{
     Share_Qq,
@@ -50,7 +50,7 @@ enum{
     [self addSubview:_webView];
     
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&msg_id=%ld",NormaleMessageUrl,userObj.user,(long)_messageID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?phone=%@&msg_id=%ld",WXTBaseUrl,NormaleMessageUrl,userObj.user,(long)_messageID];
     
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

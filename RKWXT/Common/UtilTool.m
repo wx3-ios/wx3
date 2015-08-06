@@ -271,8 +271,8 @@
 }
 
 + (NSString *)sharedURL{
-    NSString *urlString = @"http://oldyun.67call.com/wx_html/index.php/Public/app_download/sid/";
-    NSString *str = [NSString stringWithFormat:@"%@%d",urlString,kMerchantID];
+    NSString *urlString = @"wx_html/index.php/Public/app_download/sid/";
+    NSString *str = [NSString stringWithFormat:@"%@%@%d",WXTBaseUrl,urlString,kMerchantID];
     return str;
 }
 
