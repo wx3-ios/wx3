@@ -247,6 +247,9 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == PersonalInfo_Cut){
+        return 0;
+    }
     return 12;
 }
 
@@ -275,6 +278,8 @@
             number = System_Invalid;
             break;
         case PersonalInfo_Cut:
+            number = 0;
+            break;
         case PersonalInfo_Share:
             number = 1;
             break;
@@ -577,7 +582,8 @@
             break;
         case PersonalInfo_Cut:
         {
-        
+            UserCutVC *cutVC = [[UserCutVC alloc] init];
+            [self.wxNavigationController pushViewController:cutVC];
         }
             break;
         case PersonalInfo_Share:

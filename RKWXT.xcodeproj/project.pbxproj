@@ -283,6 +283,11 @@
 		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
 		12A3477A1B72ED2400D10C17 /* MakeOrderUserBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */; };
 		12A3477D1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3477C1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m */; };
+		12A347861B733F5600D10C17 /* UserCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347851B733F5600D10C17 /* UserCutVC.m */; };
+		12A347881B73447100D10C17 /* UserCut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A347871B73447100D10C17 /* UserCut@2x.png */; };
+		12A3478B1B73497F00D10C17 /* UserCutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478A1B73497F00D10C17 /* UserCutCell.m */; };
+		12A3478E1B734E6000D10C17 /* UserCutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478D1B734E6000D10C17 /* UserCutModel.m */; };
+		12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347901B73503F00D10C17 /* UserCutEntity.m */; };
 		12BD30F21B3E78B400170316 /* OrderAlipayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F11B3E78B400170316 /* OrderAlipayCell.m */; };
 		12BD30F51B3E78CA00170316 /* OrderWechatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F41B3E78CA00170316 /* OrderWechatCell.m */; };
 		12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BD30F61B3E79D700170316 /* OrderAlipayImg@2x.png */; };
@@ -1137,6 +1142,15 @@
 		12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderUserBalanceCell.m; sourceTree = "<group>"; };
 		12A3477B1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderBananceSwitchCell.h; sourceTree = "<group>"; };
 		12A3477C1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderBananceSwitchCell.m; sourceTree = "<group>"; };
+		12A347841B733F5600D10C17 /* UserCutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutVC.h; sourceTree = "<group>"; };
+		12A347851B733F5600D10C17 /* UserCutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutVC.m; sourceTree = "<group>"; };
+		12A347871B73447100D10C17 /* UserCut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCut@2x.png"; sourceTree = "<group>"; };
+		12A347891B73497F00D10C17 /* UserCutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutCell.h; sourceTree = "<group>"; };
+		12A3478A1B73497F00D10C17 /* UserCutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutCell.m; sourceTree = "<group>"; };
+		12A3478C1B734E6000D10C17 /* UserCutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutModel.h; sourceTree = "<group>"; };
+		12A3478D1B734E6000D10C17 /* UserCutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutModel.m; sourceTree = "<group>"; };
+		12A3478F1B73503F00D10C17 /* UserCutEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutEntity.h; sourceTree = "<group>"; };
+		12A347901B73503F00D10C17 /* UserCutEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutEntity.m; sourceTree = "<group>"; };
 		12BD30F01B3E78B400170316 /* OrderAlipayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAlipayCell.h; sourceTree = "<group>"; };
 		12BD30F11B3E78B400170316 /* OrderAlipayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAlipayCell.m; sourceTree = "<group>"; };
 		12BD30F31B3E78CA00170316 /* OrderWechatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderWechatCell.h; sourceTree = "<group>"; };
@@ -3074,6 +3088,37 @@
 			path = MakeOrderUserBalance;
 			sourceTree = "<group>";
 		};
+		12A3477E1B733E9300D10C17 /* UserCut */ = {
+			isa = PBXGroup;
+			children = (
+				12A347841B733F5600D10C17 /* UserCutVC.h */,
+				12A347851B733F5600D10C17 /* UserCutVC.m */,
+				12A3477F1B733F1700D10C17 /* Model */,
+				12A347801B733F1700D10C17 /* View */,
+			);
+			path = UserCut;
+			sourceTree = "<group>";
+		};
+		12A3477F1B733F1700D10C17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12A3478C1B734E6000D10C17 /* UserCutModel.h */,
+				12A3478D1B734E6000D10C17 /* UserCutModel.m */,
+				12A3478F1B73503F00D10C17 /* UserCutEntity.h */,
+				12A347901B73503F00D10C17 /* UserCutEntity.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12A347801B733F1700D10C17 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12A347891B73497F00D10C17 /* UserCutCell.h */,
+				12A3478A1B73497F00D10C17 /* UserCutCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		12BD30EF1B3E789F00170316 /* OrderPayType */ = {
 			isa = PBXGroup;
 			children = (
@@ -3862,6 +3907,7 @@
 		12F916251B19A79600C94717 /* PersonalInfo */ = {
 			isa = PBXGroup;
 			children = (
+				12A347871B73447100D10C17 /* UserCut@2x.png */,
 				128BB7401B68A56C004FCE66 /* AddressNextImg@2x.png */,
 				12F3CC671B1DE82C00E64DE4 /* PersonImg */,
 				12F4227A1B1D5A2900643DD7 /* AddressCircle@2x.png */,
@@ -4043,6 +4089,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				12A3477E1B733E9300D10C17 /* UserCut */,
 				12963B371B663DBB007418DE /* GuideView */,
 				128241341B60C4E3001EE0BD /* ShareInterface */,
 				127329141B5CE80F002AD4AE /* Company */,
@@ -5550,6 +5597,7 @@
 				1285850B1B3AA7E5005E240E /* MakeOrderBtnImg@2x.png in Resources */,
 				127FDD771B57A76E0059BDB6 /* CallBtnDownImg@2x.png in Resources */,
 				12D52BB81AC2EF4400C5CE71 /* dtmf-2.aif in Resources */,
+				12A347881B73447100D10C17 /* UserCut@2x.png in Resources */,
 				12F46A371B20012000B8EC98 /* T_ArrowDown@2x.png in Resources */,
 				1245353C1AE9D146004198C9 /* signBg@2x.jpg in Resources */,
 				1241E54A1AE9D89B00811D3F /* 6S@2x.png in Resources */,
@@ -5621,6 +5669,7 @@
 				12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */,
 				1284CC8C1B54DEB500D98F79 /* OrderInfoGoodsListCell.m in Sources */,
 				DDEA9EBE1B1BF2AD00530C1C /* WXTPayViewController.m in Sources */,
+				12A3478B1B73497F00D10C17 /* UserCutCell.m in Sources */,
 				128255011B4BA5EF00C60146 /* OrderDealRefundVC.m in Sources */,
 				775C58C61ABA7B75005B6B40 /* PersonalInfo.m in Sources */,
 				775842B81AB95A300039B129 /* WXUnreadSysMsgOBJ.m in Sources */,
@@ -5855,6 +5904,7 @@
 				128221C41B184C3B004613BB /* ASIDataCompressor.m in Sources */,
 				1295C5FA1B29A3BE004C861D /* WaitReceiveCell.m in Sources */,
 				775842F51AB95A300039B129 /* MessageInterceptor.m in Sources */,
+				12A3478E1B734E6000D10C17 /* UserCutModel.m in Sources */,
 				775843341AB95A300039B129 /* WXUITableViewController.m in Sources */,
 				12F3CC881B1DF77500E64DE4 /* PersonalInfoOrderListCell.m in Sources */,
 				120A2BEA1AB135DD006A28B1 /* RechargeCell.m in Sources */,
@@ -5971,6 +6021,7 @@
 				129D23481B4F9CB600008DA0 /* OrderInfoUserInfoCell.m in Sources */,
 				128767001B51012700A79320 /* AboutShopTopImgCell.m in Sources */,
 				DDEA9ED51B1BF44A00530C1C /* WXTCartDetailViewController.m in Sources */,
+				12A347861B733F5600D10C17 /* UserCutVC.m in Sources */,
 				1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */,
 				775843321AB95A300039B129 /* WXUITableView.m in Sources */,
 				12D0C8721AB685250039A197 /* AboutWxtInfoVC.m in Sources */,
@@ -6064,6 +6115,7 @@
 				12C2000D1B4E792600BE8EE8 /* RefundStateModel.m in Sources */,
 				775C58C91ABA7B75005B6B40 /* SubShopTime.m in Sources */,
 				128766E11B50B1C700A79320 /* AboutShopVC.m in Sources */,
+				12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */,
 				775842E01AB95A300039B129 /* UIView+Render.m in Sources */,
 				12F46A5D1B205D0400B8EC98 /* NewRightHeadCell.m in Sources */,
 				12F963321B3D4BDF00FF6A3E /* SBJsonStreamParserAccumulator.m in Sources */,
