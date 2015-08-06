@@ -22,7 +22,8 @@
 
 -(void)updataPayOrder:(Pay_Type)type withOrderID:(NSInteger)orderID{
     [self setStatus:E_ModelDataStatus_Loading];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)type], @"type", [NSNumber numberWithInt:(int)orderID], @"order_id", nil];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)type], @"type", [NSNumber numberWithInt:(int)orderID], @"order_id", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_UpdapaOrderID httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
     }];
 }

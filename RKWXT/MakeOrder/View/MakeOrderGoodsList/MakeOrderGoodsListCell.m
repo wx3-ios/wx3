@@ -56,10 +56,10 @@
         [self.contentView addSubview:_stockName];
         
         
-        CGFloat priceWidth = 65;
+        CGFloat priceWidth = 80;
         CGFloat priceHeight = 17;
         _priceLabel = [[UILabel alloc] init];
-        _priceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-12-priceWidth, yOffset, priceWidth, priceHeight);
+        _priceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-priceWidth, yOffset, priceWidth, priceHeight);
         [_priceLabel setBackgroundColor:[UIColor clearColor]];
         [_priceLabel setTextAlignment:NSTextAlignmentRight];
         [_priceLabel setTextColor:WXColorWithInteger(0x000000)];

@@ -19,6 +19,7 @@
 -(void)setToken:(NSString*)token;  //设置令牌
 -(void)setSmsID:(int)smsID;        //验证码ID
 -(void)setNickname:(NSString*)nickname; //昵称
+-(void)setSellerID:(NSString*)sellerID; //商家主键ID
 
 -(NSString*)wxtID;
 -(NSString*)user;
@@ -26,6 +27,7 @@
 -(NSString*)token;
 -(int)smsID;
 -(NSString*)nickname;
+-(NSString*)sellerID;
 
 -(void)removeAllUserInfo;
 

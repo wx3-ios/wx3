@@ -46,7 +46,7 @@
 -(void)loadUserAddress{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:2], @"type", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:2], @"type", nil];
     __block UserAddressModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_UserAddress httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
@@ -75,7 +75,7 @@
 -(void)insertUserAddressWithName:(NSString *)userName withAdd:(NSString *)address withPhone:(NSString *)phone{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", userName, @"consignee", phone, @"telephone", [NSNumber numberWithInt:1], @"type", address, @"address", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", userName, @"consignee", phone, @"telephone", [NSNumber numberWithInt:1], @"type", address, @"address", nil];
     __block UserAddressModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_UserAddress httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
@@ -99,7 +99,7 @@
 -(void)deleteUserAddressWithAddressID:(NSInteger)addressID{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:4], @"type", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)addressID], @"address_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:4], @"type", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)addressID], @"address_id", nil];
     __block UserAddressModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_UserAddress httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
@@ -122,7 +122,7 @@
 -(void)modifyUserAddressWithName:(NSString *)userName withAdd:(NSString *)address withPhone:(NSString *)phone withID:(NSInteger)address_id{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userName, @"consignee", phone, @"telephone", [NSNumber numberWithInt:3], @"type", address, @"address", [NSNumber numberWithInt:(int)address_id], @"address_id", userObj.wxtID, @"woxin_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userName, @"consignee", phone, @"telephone", [NSNumber numberWithInt:3], @"type", address, @"address", [NSNumber numberWithInt:(int)address_id], @"address_id", userObj.wxtID, @"woxin_id", nil];
     __block UserAddressModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_UserAddress httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
@@ -147,7 +147,7 @@
 -(void)setNormalAddressWithOldAddID:(NSInteger)oldAddID withNewAddID:(NSInteger)newAddID{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:5], @"type", [NSNumber numberWithInt:(int)oldAddID], @"old_address_id", [NSNumber numberWithInt:(int)newAddID], @"new_address_id", userObj.wxtID, @"woxin_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:5], @"type", [NSNumber numberWithInt:(int)oldAddID], @"old_address_id", [NSNumber numberWithInt:(int)newAddID], @"new_address_id", userObj.wxtID, @"woxin_id", nil];
     __block UserAddressModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_UserAddress httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){

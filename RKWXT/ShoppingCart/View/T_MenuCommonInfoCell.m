@@ -62,7 +62,7 @@
         
         xOffset += imgWidth+10;
         CGFloat yOffset = 10;
-        CGFloat nameWidth = 150;
+        CGFloat nameWidth = 130;
         CGFloat nameHeight = 16;
         _namelabel = [[WXUILabel alloc] init];
         _namelabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight);
@@ -73,11 +73,11 @@
 //        [_namelabel setNumberOfLines:0];
         [self.contentView addSubview:_namelabel];
         
-        CGFloat priceXgap = xOffset+nameWidth+4;
+        CGFloat priceXgap = xOffset+nameWidth;
         _newPrice = [[WXUILabel alloc] init];
         _newPrice.frame = CGRectMake(priceXgap, yOffset+10, IPHONE_SCREEN_WIDTH-priceXgap, nameHeight);
         [_newPrice setBackgroundColor:[UIColor clearColor]];
-        [_newPrice setTextAlignment:NSTextAlignmentCenter];
+        [_newPrice setTextAlignment:NSTextAlignmentRight];
         [_newPrice setTextColor:WXColorWithInteger(newPriceColor)];
         [_newPrice setFont:[UIFont systemFontOfSize:newPriceFont]];
         [self.contentView addSubview:_newPrice];
@@ -121,7 +121,7 @@
         xOffset += markWidth+8;
         CGFloat numBtnWidth = 27;
         _numberLabel = [[WXUILabel alloc] init];
-        _numberLabel.frame = CGRectMake(xOffset, yOffset, numBtnWidth, markWidth+2);
+        _numberLabel.frame = CGRectMake(xOffset, yOffset, numBtnWidth, markWidth);
         [_numberLabel setBackgroundColor:WXColorWithInteger(T_MenuCommonCellColor)];
         [_numberLabel setBorderRadian:1.0 width:0.5 color:WXColorWithInteger(markColor)];
         [_numberLabel setTextColor:WXColorWithInteger(markColor)];
@@ -134,7 +134,7 @@
         WXUIButton *minusBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         minusBtn.frame = CGRectMake(xOffset, yOffset, markWidth, markHeight);
         [minusBtn setBackgroundColor:WXColorWithInteger(T_MenuCommonCellColor)];
-        [minusBtn setBorderRadian:1.0 width:0.6 color:WXColorWithInteger(markColor)];
+        [minusBtn setBorderRadian:1.0 width:0.5 color:WXColorWithInteger(markColor)];
         [minusBtn setTitle:@"-" forState:UIControlStateNormal];
         [minusBtn setTitleColor:WXColorWithInteger(markColor) forState:UIControlStateNormal];
         [minusBtn addTarget:self action:@selector(minusBtnClick) forControlEvents:UIControlEventTouchUpInside];

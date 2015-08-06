@@ -50,6 +50,7 @@
         return;
     }
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:    //dictionaryWithObjectsAndKeys此方法遇nil认为结束，慎用
+                         userObj.sellerID, @"seller_user_id",
                          @"iOS", @"pid",
                          userObj.user, @"phone",
                          [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd",

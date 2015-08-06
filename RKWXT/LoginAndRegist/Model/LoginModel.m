@@ -25,7 +25,8 @@
             WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
             [userDefault setUser:userStr];
             [userDefault setPwd:pwdStr];
-            [userDefault setWxtID:[dic objectForKey:@"woxin_id"]];
+            [userDefault setWxtID:[[dic objectForKey:@"data"] objectForKey:@"woxin_id"]];
+            [userDefault setSellerID:[[dic objectForKey:@"data"] objectForKey:@"seller_user_id"]];
             [NOTIFY_CENTER postNotificationName:KNotification_LoginSucceed object:nil];
             if (_delegate && [_delegate respondsToSelector:@selector(loginSucceed)]){
                 [_delegate loginSucceed];

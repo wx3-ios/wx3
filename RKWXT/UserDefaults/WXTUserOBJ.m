@@ -46,6 +46,11 @@
     [userDefault setObject:nickname forKey:WXT_Userdefault_Nickname];
 }
 
+-(void)setSellerID:(NSString*)sellerID{
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    [userDefault setObject:sellerID forKey:WXT_Userdefault_SellerID];
+}
+
 -(void)setPwd:(NSString *)pwd{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     [userDefault setObject:pwd forKey:WXT_Userdefault_Pwd];
@@ -98,6 +103,15 @@
 -(int)smsID{
     WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
     return (int)[userDefault integerValueForKey:WXT_Userdefault_SmsID];
+}
+
+-(NSString*)sellerID{
+    WXTUserDefault *userDefault = [WXTUserDefault sharedWXUserDefault];
+    NSString *str = [userDefault textValueForKey:WXT_Userdefault_SellerID];
+    if(!str){
+        str = @"1";
+    }
+    return str;
 }
 
 - (void)removeAllUserInfo{

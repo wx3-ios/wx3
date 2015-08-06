@@ -29,6 +29,7 @@
 -(void)updataUserInfoWith:(NSInteger)sex withNickName:(NSString *)nickName withBirthday:(NSString *)birStr{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         userObj.sellerID, @"seller_user_id",
                          @"iOS", @"pid",
                          userObj.wxtID, @"woxin_id",
                          userObj.user, @"phone",
@@ -68,6 +69,7 @@
 -(void)loadUserInfo{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         userObj.sellerID, @"seller_user_id",
                          @"iOS", @"pid",
                          userObj.wxtID, @"woxin_id",
                          userObj.user, @"phone",

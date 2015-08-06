@@ -14,7 +14,7 @@
 
 -(void)rechargeWithCardNum:(NSString *)num andPwd:(NSString *)pwd{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)kMerchantID], @"sid", [NSNumber numberWithInteger:[UtilTool timeChange]], @"ts", userDefault.user, @"phone", [NSNumber numberWithInt:1], @"type", num, @"card_id", pwd, @"card_pwd", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userDefault.sellerID, @"seller_user_id", @"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)kMerchantID], @"sid", [NSNumber numberWithInteger:[UtilTool timeChange]], @"ts", userDefault.user, @"phone", [NSNumber numberWithInt:1], @"type", num, @"card_id", pwd, @"card_pwd", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_Recharge httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         if (retData.code != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(rechargeFailed:)]){
