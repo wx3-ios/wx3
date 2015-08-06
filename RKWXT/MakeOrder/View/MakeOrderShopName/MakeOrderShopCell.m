@@ -24,7 +24,7 @@
         [iconImgView setImage:img];
         [self.contentView addSubview:iconImgView];
         
-        xOffset += imgWidth+2;
+        xOffset += imgWidth+5;
         UIFont *font = WXFont(14.0);
         CGSize labelSize = [self sizeOfString:kMerchantName font:font];
         UILabel *nameLabel = [[UILabel alloc] init];
@@ -41,7 +41,7 @@
         UIImageView *arrowImgView = [[UIImageView alloc] init];
         arrowImgView.frame = CGRectMake(xOffset, (Order_Section_Height_ShopName-imgHeight)/2, imgWidth-3, imgHeight);
         [arrowImgView setImage:arrowImg];
-        [self.contentView addSubview:arrowImgView];
+//        [self.contentView addSubview:arrowImgView];
     }
     return self;
 }

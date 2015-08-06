@@ -24,7 +24,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat yOffset = 17;
-        CGFloat xOffset = 5;
+        CGFloat xOffset = 10;
         CGFloat nameWidth = 85;
         CGFloat nameHeight = 20;
         _namelabel = [[UILabel alloc] init];
@@ -44,7 +44,7 @@
         [_userPhone setFont:WXFont(15.0)];
         [self.contentView addSubview:_userPhone];
         
-        xOffset = 5;
+        xOffset = 10;
         yOffset += nameHeight+16;
         _address = [[UILabel alloc] init];
         _address.frame = CGRectMake(xOffset, yOffset, self.bounds.size.width-2*xOffset, 10);

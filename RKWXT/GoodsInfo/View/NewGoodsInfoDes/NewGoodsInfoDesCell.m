@@ -81,7 +81,7 @@
         yOffset = 10;
         WXUILabel *line = [[WXUILabel alloc] init];
         line.frame = CGRectMake(xOffset, yOffset, 0.5, T_GoodsInfoDescHeight-2*yOffset);
-        [line setBackgroundColor:WXColorWithInteger(smallTextColor)];
+        [line setBackgroundColor:WXColorWithInteger(0xcacaca)];
         [self.contentView addSubview:line];
         
         CGFloat btnWidth = 27;

@@ -36,6 +36,7 @@ enum{
     PersonalInfo_Call,
 //    PersonalInfo_Extend,
     PersonalInfo_System,
+    PersonalInfo_Cut,
     PersonalInfo_Share,
     
     PersonalInfo_Invalid

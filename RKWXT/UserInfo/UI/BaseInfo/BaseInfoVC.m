@@ -42,6 +42,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
+    [_tableView setBackgroundColor:WXColorWithInteger(0xf8f8f8)];
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
@@ -67,13 +68,13 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     WXUIView *footView = [[WXUIView alloc] init];
     
     CGFloat yOffset = 40;
-    CGFloat btnHeight = 44;
+    CGFloat btnHeight = 40;
     WXUIButton *submitBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     submitBtn.frame = CGRectMake(30, yOffset, IPHONE_SCREEN_WIDTH-2*30, btnHeight);
     [submitBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
-    [submitBtn setBorderRadian:10.0 width:0.1 color:WXColorWithInteger(0xdd2726)];
-    [submitBtn setTitle:@"提交信息" forState:UIControlStateNormal];
-    [submitBtn setTitle:@"提交信息" forState:UIControlStateSelected];
+    [submitBtn setBorderRadian:6.0 width:0.1 color:WXColorWithInteger(0xdd2726)];
+    [submitBtn setTitle:@"保存信息" forState:UIControlStateNormal];
+    [submitBtn setTitle:@"保存信息" forState:UIControlStateSelected];
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [submitBtn addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];

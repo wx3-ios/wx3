@@ -122,6 +122,27 @@
     menuList = @[model_1,model_2,model_3,model_4,model_5];
 }
 
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 -(void)addNotification{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toMakeOrder) name:K_Notification_GoodsInfo_CommitGoods object:nil];
 }
@@ -312,6 +333,7 @@
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsInfo.png"]];
     [cell.textLabel setText:@"图文详情"];
+    [cell.textLabel setFont:WXFont(13.0)];
     return cell;
 }
 
@@ -325,6 +347,7 @@
     [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsIInfoDetail.png"]];
     [cell.textLabel setText:@"产品参数"];
     [cell changeArrowWithDown:_isOpen];
+    [cell.textLabel setFont:WXFont(13.0)];
     return cell;
 }
 

@@ -1,22 +1,22 @@
 //
-//  MakeOrderUseBonusCell.m
+//  MakeOrderUserBalanceCell.m
 //  RKWXT
 //
-//  Created by SHB on 15/6/25.
+//  Created by SHB on 15/8/6.
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "MakeOrderUseBonusCell.h"
+#import "MakeOrderUserBalanceCell.h"
 #import "MakeOrderDef.h"
 #import "GoodsInfoEntity.h"
 
-@interface MakeOrderUseBonusCell(){
+@interface MakeOrderUserBalanceCell(){
     UILabel *_useBonus;
     UILabel *_money;
 }
 @end
 
-@implementation MakeOrderUseBonusCell
+@implementation MakeOrderUserBalanceCell
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -45,13 +45,13 @@
         [self.contentView addSubview:_useBonus];
         
         xOffset += labelWidth;
-        CGSize textSize = [self sizeOfString:@"元红包," font:WXFont(15.0)];
+        CGSize textSize = [self sizeOfString:@"元余额," font:WXFont(15.0)];
         UILabel *textLabel = [[UILabel alloc] init];
         textLabel.frame = CGRectMake(xOffset, (Order_Section_Height_BonusInfo-textSize.height)/2, textSize.width, textSize.height);
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
         [textLabel setTextColor:WXColorWithInteger(0x646464)];
-        [textLabel setText:@"元红包,"];
+        [textLabel setText:@"元余额,"];
         [textLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:textLabel];
         

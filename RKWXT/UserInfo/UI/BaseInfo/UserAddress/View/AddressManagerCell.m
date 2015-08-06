@@ -48,7 +48,7 @@
         [norAddLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:norAddLabel];
         
-        xOffset = IPHONE_SCREEN_WIDTH-125;
+        xOffset = IPHONE_SCREEN_WIDTH-105;
         UIImage *editImg = [UIImage imageNamed:@"AddressEdit.png"];
         WXUIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         editBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-editImg.size.height)/2, editImg.size.width+norAddWidth/2, editImg.size.height);
@@ -76,7 +76,7 @@
         
         
         UIImage *delImg = [UIImage imageNamed:@"AddressDel.png"];
-        xGap += labelWidth+10;
+        xGap += labelWidth-10;
         WXUIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         delBtn.frame = CGRectMake(xGap, (AddressManagerCellHeight-delImg.size.height)/2, delImg.size.width+labelWidth, delImg.size.height);
         [delBtn setBackgroundColor:[UIColor clearColor]];

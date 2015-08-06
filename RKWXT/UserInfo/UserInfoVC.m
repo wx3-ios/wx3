@@ -73,6 +73,30 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+////改变cell分割线置顶
+//-(void)viewDidLayoutSubviews{
+//    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+//    }
+//    
+//    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+//    }
+//}
+//
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NSInteger row = indexPath.row;
+//    if(row > 0){
+//        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+//            [cell setSeparatorInset:UIEdgeInsetsZero];
+//        }
+//        
+//        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//            [cell setLayoutMargins:UIEdgeInsetsZero];
+//        }
+//    }
+//}
+
 -(UIImage*)userIconImage{
     NSString *iconPath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -250,6 +274,7 @@
         case PersonalInfo_System:
             number = System_Invalid;
             break;
+        case PersonalInfo_Cut:
         case PersonalInfo_Share:
             number = 1;
             break;
@@ -442,6 +467,21 @@
     return cell;
 }
 
+//提成
+-(WXTUITableViewCell*)tableViewForUserCutCellAtRow{
+    static NSString *identifier = @"cutCell";
+    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
+    [cell.imageView setImage:[UIImage imageNamed:@"MyExtendImg.png"]];
+    [cell.textLabel setText:@"提成"];
+    [cell.textLabel setFont:WXFont(15.0)];
+    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+    return cell;
+}
+
 //分享
 -(WXTUITableViewCell*)tableViewForShareCellAtRow{
     static NSString *identifier = @"shareCell";
@@ -476,6 +516,9 @@
 //            break;
         case PersonalInfo_System:
             cell = [self tableViewForSystemCellAtRow:row];
+            break;
+        case PersonalInfo_Cut:
+            cell = [self tableViewForUserCutCellAtRow];
             break;
         case PersonalInfo_Share:
             cell = [self tableViewForShareCellAtRow];
@@ -530,6 +573,11 @@
                 AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
                 [self.wxNavigationController pushViewController:aboutVC];
             }
+        }
+            break;
+        case PersonalInfo_Cut:
+        {
+        
         }
             break;
         case PersonalInfo_Share:

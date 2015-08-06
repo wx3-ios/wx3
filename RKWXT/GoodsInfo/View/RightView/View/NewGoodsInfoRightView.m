@@ -55,7 +55,7 @@ enum{
         [self setFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT)];
         _bigView = [[WXMaskView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT)];
         [_bigView setDelegate:self];
-        [_bigView setBackgroundColor:[UIColor whiteColor]];
+        [_bigView setBackgroundColor:[UIColor blackColor]];
         [_bigView setAlpha:kMaskMaxAlpha];
         [self addSubview:_bigView];
         

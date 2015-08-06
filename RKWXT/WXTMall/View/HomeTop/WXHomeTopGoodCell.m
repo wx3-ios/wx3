@@ -46,7 +46,7 @@
         [self.contentView addSubview:_browser];
         
         CGFloat height = 20;
-        CGFloat xOffset = 220;
+        CGFloat xOffset = 260;
         _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(xOffset, rect.size.height - height, rect.size.width-xOffset, height)];
         [self.contentView addSubview:_pageControl];
         

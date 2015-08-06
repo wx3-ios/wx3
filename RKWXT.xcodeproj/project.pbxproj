@@ -281,6 +281,8 @@
 		12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */; };
 		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
 		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
+		12A3477A1B72ED2400D10C17 /* MakeOrderUserBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */; };
+		12A3477D1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3477C1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m */; };
 		12BD30F21B3E78B400170316 /* OrderAlipayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F11B3E78B400170316 /* OrderAlipayCell.m */; };
 		12BD30F51B3E78CA00170316 /* OrderWechatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F41B3E78CA00170316 /* OrderWechatCell.m */; };
 		12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BD30F61B3E79D700170316 /* OrderAlipayImg@2x.png */; };
@@ -1131,6 +1133,10 @@
 		12A050BE1B310050008CC38F /* HomeNavModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavModel.m; sourceTree = "<group>"; };
 		12A050C41B316B7E008CC38F /* WXTMallListWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallListWebVC.h; sourceTree = "<group>"; };
 		12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallListWebVC.m; sourceTree = "<group>"; };
+		12A347781B72ED2400D10C17 /* MakeOrderUserBalanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderUserBalanceCell.h; sourceTree = "<group>"; };
+		12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderUserBalanceCell.m; sourceTree = "<group>"; };
+		12A3477B1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderBananceSwitchCell.h; sourceTree = "<group>"; };
+		12A3477C1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderBananceSwitchCell.m; sourceTree = "<group>"; };
 		12BD30F01B3E78B400170316 /* OrderAlipayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAlipayCell.h; sourceTree = "<group>"; };
 		12BD30F11B3E78B400170316 /* OrderAlipayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAlipayCell.m; sourceTree = "<group>"; };
 		12BD30F31B3E78CA00170316 /* OrderWechatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderWechatCell.h; sourceTree = "<group>"; };
@@ -2764,6 +2770,7 @@
 		128584FF1B3A923D005E240E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				12A347771B72ED0700D10C17 /* MakeOrderUserBalance */,
 				12F380291B3BD0EE00E9690C /* MakeOrderSwitch */,
 				12F380251B3B9B9F00E9690C /* MakeOrderUseBonus */,
 				12F380181B3B8DE800E9690C /* MakeOrderGoodsList */,
@@ -3054,6 +3061,17 @@
 				12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */,
 			);
 			path = WebMallList;
+			sourceTree = "<group>";
+		};
+		12A347771B72ED0700D10C17 /* MakeOrderUserBalance */ = {
+			isa = PBXGroup;
+			children = (
+				12A347781B72ED2400D10C17 /* MakeOrderUserBalanceCell.h */,
+				12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */,
+				12A3477B1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.h */,
+				12A3477C1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m */,
+			);
+			path = MakeOrderUserBalance;
 			sourceTree = "<group>";
 		};
 		12BD30EF1B3E789F00170316 /* OrderPayType */ = {
@@ -5645,6 +5663,7 @@
 				128221C81B184C3B004613BB /* ASIInputStream.m in Sources */,
 				775842EA1AB95A300039B129 /* ZoneCodeEntity.m in Sources */,
 				775843131AB95A300039B129 /* WXSingleSelectVC.m in Sources */,
+				12A3477A1B72ED2400D10C17 /* MakeOrderUserBalanceCell.m in Sources */,
 				12F422861B1D5CC500643DD7 /* AddressEntity.m in Sources */,
 				12F3CC8E1B1E020300E64DE4 /* PersonalMoneyCell.m in Sources */,
 				12F3CC8B1B1E00AF00E64DE4 /* PersonalOrderInfoCell.m in Sources */,
@@ -6060,6 +6079,7 @@
 				DDB58F4C1AD3C6A2006248E9 /* CallViewController.m in Sources */,
 				DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */,
 				777A38561AC3933D001CF5FF /* WXTDatabase.m in Sources */,
+				12A3477D1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m in Sources */,
 				12BD30FC1B3E905A00170316 /* UserBonusModel.m in Sources */,
 				128221B21B184ABB004613BB /* ASIHTTPRequest.m in Sources */,
 				128766FF1B51012700A79320 /* AboutShopInfoCell.m in Sources */,
@@ -6147,7 +6167,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "70807541-3c65-4e9f-b30a-fe8340ecebff";
 				SDKROOT = iphoneos;
 			};
@@ -6184,6 +6204,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -6194,7 +6215,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45775F4393C07B1E2AC5B28B /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ding Bin (S7PY53887M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ding Bin (S7PY53887M)";
@@ -6220,7 +6241,7 @@
 					"$(SRCROOT)/RKWXT/Frameworks",
 					"$(PROJECT_DIR)/RKWXT/ShareInterface/weixin/SDK",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";
 				VALID_ARCHS = "armv7 armv7s";
@@ -6231,7 +6252,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen WoXin Network Technology Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6257,9 +6278,9 @@
 					"$(SRCROOT)/RKWXT/Frameworks",
 					"$(PROJECT_DIR)/RKWXT/ShareInterface/weixin/SDK",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";
+				PROVISIONING_PROFILE = "feee1274-d665-488b-a7f2-a7c75131cb73";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

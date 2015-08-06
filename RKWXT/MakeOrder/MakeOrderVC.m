@@ -17,9 +17,13 @@
 #define Size self.bounds.size
 #define DownViewHeight (59)
 
-@interface MakeOrderVC()<UITableViewDataSource,UITableViewDelegate,MakeOrderUserMsgTextFieldCellDelegate,WXUITableViewCellDelegate,MakeOrderSwitchCellDelegate,MakeOrderDelegate>{
+@interface MakeOrderVC()<UITableViewDataSource,UITableViewDelegate,MakeOrderUserMsgTextFieldCellDelegate,WXUITableViewCellDelegate,MakeOrderSwitchCellDelegate,MakeOrderDelegate/*,MakeOrderBananceSwitchCellDelegate*/>{
     UITableView *_tableView;
     MakeOrderModel *_model;
+    
+//    BOOL userbalance;
+//    NSInteger _balance;
+    
     BOOL userBonus;
     NSInteger _bonus;
     
@@ -52,6 +56,7 @@
     [self setCSTTitle:@"订单确认"];
     [self setBackgroundColor:[UIColor whiteColor]];
     userBonus = NO;
+//    userbalance = NO;
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height-DownViewHeight) style:UITableViewStyleGrouped];
     [_tableView setDelegate:self];
@@ -62,15 +67,27 @@
     
     [self addNotification];
     [self censusBonusValue];
+    [self censusBalanceValue];
 }
 
+//可使用红包
 -(void)censusBonusValue{
     for(GoodsInfoEntity *entity in _goodsList){
         _bonus += entity.stockBonus*entity.buyNumber;
-        if(_bonus > [UserBonusModel shareUserBonusModel].bonusMoney){
-            _bonus = [UserBonusModel shareUserBonusModel].bonusMoney;
-        }
     }
+    if(_bonus > [UserBonusModel shareUserBonusModel].bonusMoney){
+        _bonus = [UserBonusModel shareUserBonusModel].bonusMoney;
+    }
+}
+
+////可使用余额
+-(void)censusBalanceValue{
+//    for(GoodsInfoEntity *entity in _goodsList){
+//        _balance += entity.stockBonus*entity.buyNumber;
+//    }
+//    if(_balance > [UserBonusModel shareUserBonusModel].bonusMoney){
+//        _balance = [UserBonusModel shareUserBonusModel].bonusMoney;
+//    }
 }
 
 -(void)addNotification{
@@ -143,12 +160,23 @@
             height = Order_Section_Height_UserMesg;
             break;
         case Order_Section_UseBonus:
+        {
             if(row == 0){
                 height = Order_Section_Height_UseBonus;
             }else{
                 height = Order_Section_Height_BonusInfo;
             }
+        }
             break;
+//        case Order_Section_UserBalance:
+//        {
+//            if(row == 0){
+//                height = Order_Section_Height_UseBonus;
+//            }else{
+//                height = Order_Section_Height_BonusInfo;
+//            }
+//        }
+//            break;
         case Order_Section_GoodsMoney:
             if(row == 0){
                 height = Order_Section_Height_MoneyInfo;
@@ -174,6 +202,9 @@
         case Order_Section_UseBonus:
             row = (userBonus?2:1);
             break;
+//        case Order_Section_UserBalance:
+//            row = (userbalance?2:1);
+//            break;
         case Order_Section_GoodsList:
             row = [_goodsList count];
             break;
@@ -205,6 +236,7 @@
     if(!cell){
         cell = [[MakeOrderShopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell load];
     return cell;
 }
@@ -276,6 +308,36 @@
     return cell;
 }
 
+////使用余额
+//-(WXUITableViewCell *)tableViewForBalanceSwitchCellAtRow:(NSInteger)row{
+//    static NSString *identifier = @"balanceCell";
+//    MakeOrderBananceSwitchCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+//    if(!cell){
+//        cell = [[MakeOrderBananceSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    [cell setDelegate:self];
+//    [cell setCellInfo:[NSNumber numberWithInt:(userbalance?1:0)]];
+//    
+//    [cell.textLabel setText:@"使用余额抵现"];
+//    [cell.textLabel setFont:WXFont(14.0)];
+//    [cell.textLabel setTextColor:WXColorWithInteger(0x646464)];
+//    [cell load];
+//    return cell;
+//}
+//
+//-(WXUITableViewCell*)tableViewForBalanceMoneyCellAtRow:(NSInteger)row{
+//    static NSString *identifier = @"balanceMoneyCell";
+//    MakeOrderUserBalanceCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+//    if(!cell){
+//        cell = [[MakeOrderUserBalanceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    [cell setCellInfo:[NSString stringWithFormat:@"%ld",(long)_balance]];
+//    [cell load];
+//    return cell;
+//}
+
 //商品价格
 -(WXUITableViewCell*)tableViewForGoodsMoneyInfoAtRow:(NSInteger)row{
     static NSString *identifier = @"allMoneyCell";
@@ -288,6 +350,11 @@
     }else{
         [cell setBonusMoney:0];
     }
+//    if(userbalance){
+//        [cell setBalance:_balance];
+//    }else{
+//        [cell setBalance:0];
+//    }
     [cell setCellInfo:_goodsList];
     [cell load];
     return cell;
@@ -304,6 +371,9 @@
     }else{
         [cell setBonusMoney:0];
     }
+//    if(userbalance){
+//
+//    }
     [cell setCellInfo:_goodsList];
     [cell load];
     return cell;
@@ -342,6 +412,19 @@
             }
         }
             break;
+//        case Order_Section_UserBalance:
+//        {
+//            if(userbalance){
+//                if(row == 0){
+//                    cell = [self tableViewForBalanceSwitchCellAtRow:row];
+//                }else{
+//                    cell = [self tableViewForBalanceMoneyCellAtRow:row];
+//                }
+//            }else{
+//                cell = [self tableViewForBalanceSwitchCellAtRow:row];
+//            }
+//        }
+//            break;
         case Order_Section_GoodsMoney:
         {
             if(row == 0){
@@ -404,7 +487,7 @@
     }];
 }
 
-#pragma mark cell下拉
+#pragma mark BonusCell下拉
 -(void)didSelectCellRowFirstDo:(BOOL)firstDoInsert{
     userBonus = firstDoInsert;
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_UseBonus] withRowAnimation:UITableViewRowAnimationFade];
@@ -413,12 +496,27 @@
     }
 }
 
+//#pragma mark BalanceCell下拉
+//-(void)didSelectBalanceCellRowFirstDo:(BOOL)firstDoInsert{
+//    userbalance = firstDoInsert;
+//    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_UserBalance] withRowAnimation:UITableViewRowAnimationFade];
+//    if(userbalance){
+//        [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:Order_Section_UserBalance] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+//    }
+//}
+
 #pragma mark useBonusDelegate
 -(void)switchValueChanged{
     userBonus = !userBonus;
     [self didSelectCellRowFirstDo:userBonus];
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
 }
+
+//-(void)balanceSwitchValueChanged{
+//    userbalance = !userbalance;
+//    [self didSelectBalanceCellRowFirstDo:userbalance];
+//    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
+//}
 
 #pragma mark submit
 -(void)submitOrder{

@@ -13,6 +13,7 @@
 @interface MakeOrderGoodsMoneyCell(){
     UILabel *_money;
     UILabel *_bonus;
+    UILabel *_balanceLabel;
 }
 @end
 
@@ -60,6 +61,24 @@
         [_bonus setFont:WXFont(11.0)];
         [_bonus setTextColor:WXColorWithInteger(0xdd2726)];
         [self.contentView addSubview:_bonus];
+        
+        yOffset += height+8;
+        UILabel *textLabel3 = [[UILabel alloc] init];
+        textLabel3.frame = CGRectMake(xOffset, yOffset, width, height);
+        [textLabel3 setBackgroundColor:[UIColor clearColor]];
+        [textLabel3 setTextAlignment:NSTextAlignmentLeft];
+        [textLabel3 setFont:WXFont(11.0)];
+        [textLabel3 setText:@"+余额抵用:"];
+        [textLabel3 setTextColor:WXColorWithInteger(0x6a6c6b)];
+//        [self.contentView addSubview:textLabel3];
+        
+        _balanceLabel = [[UILabel alloc] init];
+        _balanceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-width, yOffset, width, height);
+        [_balanceLabel setBackgroundColor:[UIColor clearColor]];
+        [_balanceLabel setTextAlignment:NSTextAlignmentRight];
+        [_balanceLabel setFont:WXFont(11.0)];
+        [_balanceLabel setTextColor:WXColorWithInteger(0xdd2726)];
+//        [self.contentView addSubview:_balanceLabel];
     }
     return self;
 }
@@ -75,6 +94,9 @@
     
     NSString *bonusStr = [NSString stringWithFormat:@"-%ld",(long)_bonusMoney];
     [_bonus setText:bonusStr];
+    
+//    NSString *balanceStr = [NSString stringWithFormat:@"-%ld",(long)_balance];
+//    [_balanceLabel setText:balanceStr];
 }
 
 @end

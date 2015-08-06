@@ -36,7 +36,7 @@
         [changeBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 2, 0, 0)];
         [changeBtn setTitle:@"换一批" forState:UIControlStateNormal];
         [changeBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
-        [changeBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [changeBtn setTitleColor:WXColorWithInteger(0xcfcfcf) forState:UIControlStateNormal];
         [changeBtn.titleLabel setFont:WXFont(12.0)];
         [changeBtn addTarget:self action:@selector(changeOtherArray) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:changeBtn];

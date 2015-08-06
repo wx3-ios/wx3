@@ -23,14 +23,20 @@
     CGFloat yOffset = 10;
     CGFloat height = 30;
     nickName = [[WXUITextField alloc] init];
-    nickName.frame = CGRectMake(2, yOffset, self.bounds.size.width-4, height);
-    [nickName setBackgroundColor:[UIColor whiteColor]];
-    [nickName setBorderRadian:2.0 width:0.1 color:[UIColor grayColor]];
+    nickName.frame = CGRectMake(15, yOffset, self.bounds.size.width-2*15, height);
+    [nickName setBackgroundColor:[UIColor clearColor]];
+//    [nickName setBorderRadian:2.0 width:0.1 color:[UIColor grayColor]];
     [nickName setPlaceholder:@"请设置昵称"];
-    [nickName setTextAlignment:NSTextAlignmentCenter];
+    [nickName setTextAlignment:NSTextAlignmentLeft];
     [nickName setFont:WXFont(14.0)];
     [nickName addTarget:self action:@selector(personNickname) forControlEvents:UIControlEventEditingDidEnd];
     [self addSubview:nickName];
+    
+    yOffset += height;
+    UILabel *line = [[UILabel alloc] init];
+    line.frame = CGRectMake(0, yOffset, IPHONE_SCREEN_WIDTH, 0.5);
+    [line setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    [self addSubview:line];
 }
 
 -(void)personNickname{

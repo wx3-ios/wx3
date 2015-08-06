@@ -10,5 +10,6 @@
 
 @interface MakeOrderAllGoodsMoneyCell : WXUITableViewCell
 @property (nonatomic,assign) NSInteger bonusMoney;
+//@property (nonatomic,assign) NSInteger balanceMoney;
 
 @end

@@ -65,6 +65,9 @@
 
 -(UIImage*)imageAtIndex:(NSInteger)index{
     NSString *imgFileName = [NSString stringWithFormat:@"guideIllustrate_%d.jpg",(int)index];
+    if(self.view.bounds.size.width >= 320){
+        imgFileName = [NSString stringWithFormat:@"guideIllustrate_%d-568h@2x.jpg",(int)index];
+    }
     return [UIImage imageNamed:imgFileName];
 }
 

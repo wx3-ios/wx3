@@ -16,6 +16,7 @@
 #define Order_Section_Height_UserMesg  (50)
 #define Order_Section_Height_UseBonus  (44)
 #define Order_Section_Height_BonusInfo (54)
+//#define Order_Section_Height_MoneyInfo (80)  //余额支付
 #define Order_Section_Height_MoneyInfo (60)
 #define Order_Section_Height_GoodsMoney (60)
 
@@ -26,6 +27,7 @@ enum{
     Order_Section_PayStatus,
     Order_Section_UserMessage,
     Order_Section_UseBonus,
+//    Order_Section_UserBalance,//余额支付
     Order_Section_GoodsMoney,
     
     Order_Section_Invalid
@@ -40,5 +42,7 @@ enum{
 #import "MakeOrderSwitchCell.h"
 #import "MakeOrderGoodsMoneyCell.h"
 #import "MakeOrderAllGoodsMoneyCell.h"
+#import "MakeOrderUserBalanceCell.h"
+#import "MakeOrderBananceSwitchCell.h"
 
 #endif
