@@ -200,9 +200,9 @@ enum{
         desc = [[paramDic objectForKey:@"intro"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         imgUrl = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,[paramDic objectForKey:@"content_ico"]];
         
-        DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
+        DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:50];
         sheet.delegate = self;
-        [sheet showInView:nil];
+        [sheet showInView:self];
         
         return NO;
     }

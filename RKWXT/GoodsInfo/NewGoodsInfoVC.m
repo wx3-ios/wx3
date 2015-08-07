@@ -445,7 +445,7 @@
 -(void)payAttentionToSomeGoods:(WXUIButton *)btn{
     DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
     sheet.delegate = self;
-    [sheet showInView:nil];
+    [sheet showInView:self];
 }
 
 -(void)didSelectIndex:(NSInteger)index{
@@ -543,13 +543,6 @@
     }else{
         _showUpview = YES;
     }
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [_model setDelegate:nil];
-//    [_shopModel setDelegate:nil];
-    [rightView removeNotification];
 }
 
 #pragma mark 购物车
@@ -661,6 +654,13 @@
 -(void)backToLastPage{
     [self.wxNavigationController popViewControllerAnimated:YES completion:^{
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_model setDelegate:nil];
+    //    [_shopModel setDelegate:nil];
+    [rightView removeNotification];
 }
 
 @end
