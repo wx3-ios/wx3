@@ -288,6 +288,7 @@
 		12A3478B1B73497F00D10C17 /* UserCutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478A1B73497F00D10C17 /* UserCutCell.m */; };
 		12A3478E1B734E6000D10C17 /* UserCutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478D1B734E6000D10C17 /* UserCutModel.m */; };
 		12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347901B73503F00D10C17 /* UserCutEntity.m */; };
+		12A66B281B74AE4800542112 /* NoWifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A66B271B74AE4800542112 /* NoWifi@2x.png */; };
 		12BD30F21B3E78B400170316 /* OrderAlipayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F11B3E78B400170316 /* OrderAlipayCell.m */; };
 		12BD30F51B3E78CA00170316 /* OrderWechatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F41B3E78CA00170316 /* OrderWechatCell.m */; };
 		12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BD30F61B3E79D700170316 /* OrderAlipayImg@2x.png */; };
@@ -1151,6 +1152,7 @@
 		12A3478D1B734E6000D10C17 /* UserCutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutModel.m; sourceTree = "<group>"; };
 		12A3478F1B73503F00D10C17 /* UserCutEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutEntity.h; sourceTree = "<group>"; };
 		12A347901B73503F00D10C17 /* UserCutEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutEntity.m; sourceTree = "<group>"; };
+		12A66B271B74AE4800542112 /* NoWifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoWifi@2x.png"; sourceTree = "<group>"; };
 		12BD30F01B3E78B400170316 /* OrderAlipayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAlipayCell.h; sourceTree = "<group>"; };
 		12BD30F11B3E78B400170316 /* OrderAlipayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAlipayCell.m; sourceTree = "<group>"; };
 		12BD30F31B3E78CA00170316 /* OrderWechatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderWechatCell.h; sourceTree = "<group>"; };
@@ -2277,6 +2279,7 @@
 		1241E5541AE9D91400811D3F /* CommonImg */ = {
 			isa = PBXGroup;
 			children = (
+				12A66B271B74AE4800542112 /* NoWifi@2x.png */,
 				128BB73C1B6879E4004FCE66 /* CommonArrowLeft@2x.png */,
 				1241E5551AE9D91400811D3F /* AboutUsLogo@2x.png */,
 				1241E5561AE9D91400811D3F /* Arrow@2x.png */,
@@ -5405,6 +5408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12A66B281B74AE4800542112 /* NoWifi@2x.png in Resources */,
 				128083D61B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				1263EFE41ACD35820014C347 /* Icon-Small-50.png in Resources */,
 				1241E53B1AE9D89B00811D3F /* *N.png in Resources */,

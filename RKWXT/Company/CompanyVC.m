@@ -113,7 +113,7 @@ enum{
 //无网络情况下二次加载
 -(void)reloadFindData{
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-    NSString *urlString = [NSString stringWithFormat:@"%@%d",kCompanyLoadUrl,kMerchantID];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%d",WXTBaseUrl,kCompanyLoadUrl,kMerchantID];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [_webView loadRequest:request];
 }

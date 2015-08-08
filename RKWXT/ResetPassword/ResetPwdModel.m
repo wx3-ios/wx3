@@ -8,7 +8,7 @@
 
 #import "ResetPwdModel.h"
 #import "WXTURLFeedOBJ.h"
-#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
 
 @implementation ResetPwdModel
 
@@ -17,8 +17,8 @@
         return;
     }
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", userObj.user, @"phone", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", newPwd, @"newpwd", userObj.pwd, @"oldpwd", nil];
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchDataFromFeedType:WXT_UrlFeed_Type_ResetPwd httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", userObj.user, @"phone", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [UtilTool newStringWithAddSomeStr:5 withOldStr:newPwd], @"newpwd", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"oldpwd", nil];
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_ResetPwd httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
         if (retData.code != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(resetPwdFailed:)]){
                 [_delegate resetPwdFailed:retData.errorDesc];
