@@ -504,7 +504,7 @@
 
 -(NSString*)sharedGoodsInfoUrlString{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?shop_id=%d&sid=%d&go=good_detail&title=aa&goods_id=%ld&woxin_id=%@",WXTBaseUrl,kSubShopID,kMerchantID,(long)_goodsId,userDefault.wxtID];
+    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?shop_id=%d&MerchantID=%d&go=good_detail&title=aa&goods_id=%ld&woxin_id=%@",WXTBaseUrl,kSubShopID,kMerchantID,(long)_goodsId,userDefault.wxtID];
     return urlString;
 }
 

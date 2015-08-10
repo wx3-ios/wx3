@@ -44,15 +44,35 @@
     if(!dic){
         return;
     }
+    _cutMoney = 0;
     [_userCutBalance removeAllObjects];
-    UserCutEntity *entity = [UserCutEntity initUserCutEntityWithDic:dic];
-    [_userCutBalance addObject:entity];
+    for(NSDictionary *dataDic in [dic objectForKey:@"data"]){
+        UserCutEntity *entity = [UserCutEntity initUserCutEntityWithDic:dataDic];
+        _cutMoney += entity.money;
+        [_userCutBalance addObject:entity];
+    }
+    [self changeTurnForAllUserCutArr:_userCutBalance];
+}
+
+-(void)changeTurnForAllUserCutArr:(NSMutableArray*)arr{
+    [arr sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        UserCutEntity *item1 = obj1;
+        UserCutEntity *item2 = obj2;
+        if (item1.date < item2.date){
+            return NSOrderedDescending;
+        }else if (item1.date == item2.date){
+            return NSOrderedSame;
+        }else{
+            return NSOrderedAscending;
+        }
+    }];
 }
 
 -(void)loadUserCutBalance{
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"", nil];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", userObj.wxtID, @"woxin_id", [NSNumber numberWithInteger:kMerchantID], @"sid", [NSNumber numberWithInteger:kSubShopID], @"shop_id", nil];
     __block UserCutModel *blockSelf = self;
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_Invalid httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_UserCut httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if(retData.code != 0){
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_UserCut_LoadFailed object:retData.errorDesc];
         }else{

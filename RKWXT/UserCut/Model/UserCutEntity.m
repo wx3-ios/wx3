@@ -20,13 +20,13 @@
 -(id)initWithDic:(NSDictionary*)dic{
     self = [super init];
     if(self){
-        CGFloat money = [[dic objectForKey:@""] floatValue];
+        CGFloat money = [[dic objectForKey:@"ivide_money"] floatValue];
         [self setMoney:money];
         
-        NSInteger wxID = [[dic objectForKey:@""] integerValue];
+        NSInteger wxID = [[dic objectForKey:@"order_woxin_id"] integerValue];
         [self setUserID:wxID];
         
-        NSInteger date = [[dic objectForKey:@""] integerValue];
+        NSInteger date = [[dic objectForKey:@"add_time"] integerValue];
         [self setDate:date];
     }
     return self;

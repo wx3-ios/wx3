@@ -12,7 +12,8 @@
 #import "UserBonusVC.h"
 #import "MakeOrderVC.h"
 #import "OrderPayVC.h"
-#import "RechargeVC.h"
+//#import "RechargeVC.h"
+#import "RechargeTypeVC.h"
 #import "HomeOrderVC.h"
 #import "OrderListEntity.h"
 #import "OrderDealRefundVC.h"
@@ -51,7 +52,7 @@
 
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated{
     WXUIViewController *vc = sender;
-    RechargeVC *rechargeVC = [[RechargeVC alloc] init];
+    RechargeTypeVC *rechargeVC = [[RechargeTypeVC alloc] init];
     [vc.wxNavigationController pushViewController:rechargeVC];
 }
 

@@ -16,8 +16,10 @@
 
 //#define Test   //测试，目前只显示版本号
 
+//线上服务器地址: 121.201.18.130
+//测试服务器地址: oldyun.67call.com
 #define AllImgPrefixUrlString @"http://121.201.18.130/wx3/Public/Uploads/"  //所有网络获取图片皆拼接此字符串前缀
-#define WXTBaseUrl @"http://121.201.18.130/"  //基地址
+#define WXTBaseUrl @"https://121.201.18.130/"  //基地址
 
 #define KTabBarHeight (45.0)
 

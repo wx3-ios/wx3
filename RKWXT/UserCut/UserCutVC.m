@@ -39,11 +39,8 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     [self addOBS];
-    listArr = [UserCutModel shareUserCutBalanceModel].userCutBalance;
-    if(!listArr){
-        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-        [[UserCutModel shareUserCutBalanceModel] loadUserCutBalance];
-    }
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    [[UserCutModel shareUserCutBalanceModel] loadUserCutBalance];
 }
 
 -(void)addOBS{
@@ -171,7 +168,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return [listArr count];
 }
 
 -(WXUITableViewCell*)tableViewForUserCutCellAtRow:(NSInteger)row{
@@ -180,6 +177,7 @@
     if(!cell){
         cell = [[UserCutCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];;
     }
+    [cell setCellInfo:[listArr objectAtIndex:row]];
     [cell load];
     return cell;
 }
@@ -200,6 +198,10 @@
     [self unShowWaitView];
     listArr = [UserCutModel shareUserCutBalanceModel].userCutBalance;
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    
+    NSString *moneyStr = [NSString stringWithFormat:@"%.2f",[UserCutModel shareUserCutBalanceModel].cutMoney];
+    [_bigMoney setText:moneyStr];
+    [_smallMoney setText:moneyStr];
 }
 
 -(void)loadUserCutbalanceFailed:(NSNotification*)notification{

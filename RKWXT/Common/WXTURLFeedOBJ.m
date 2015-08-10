@@ -147,6 +147,9 @@
         case WXT_UrlFeed_Type_New_Wechat:
             url = @"/get_prepay_id.php";
             break;
+        case WXT_UrlFeed_Type_New_UserCut:
+            url = @"/get_divide_list.php";
+            break;
         default:
             break;
     }

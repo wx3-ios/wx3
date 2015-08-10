@@ -33,8 +33,8 @@ enum{
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:@"充值中心"];
-    
+    [self setCSTTitle:@"充值卡充值"];
+
 //    [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];

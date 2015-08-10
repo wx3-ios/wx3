@@ -289,6 +289,10 @@
 		12A3478E1B734E6000D10C17 /* UserCutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478D1B734E6000D10C17 /* UserCutModel.m */; };
 		12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347901B73503F00D10C17 /* UserCutEntity.m */; };
 		12A66B281B74AE4800542112 /* NoWifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A66B271B74AE4800542112 /* NoWifi@2x.png */; };
+		12B1F6901B788961009FBA6D /* RechargeTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F68F1B788961009FBA6D /* RechargeTypeVC.m */; };
+		12B1F6931B788A20009FBA6D /* RechargeTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6921B788A20009FBA6D /* RechargeTypeCell.m */; };
+		12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6951B789138009FBA6D /* RechargeListVC.m */; };
+		12B1F6991B789372009FBA6D /* RechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6981B789372009FBA6D /* RechargeListCell.m */; };
 		12BD30F21B3E78B400170316 /* OrderAlipayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F11B3E78B400170316 /* OrderAlipayCell.m */; };
 		12BD30F51B3E78CA00170316 /* OrderWechatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F41B3E78CA00170316 /* OrderWechatCell.m */; };
 		12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BD30F61B3E79D700170316 /* OrderAlipayImg@2x.png */; };
@@ -1153,6 +1157,14 @@
 		12A3478F1B73503F00D10C17 /* UserCutEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutEntity.h; sourceTree = "<group>"; };
 		12A347901B73503F00D10C17 /* UserCutEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutEntity.m; sourceTree = "<group>"; };
 		12A66B271B74AE4800542112 /* NoWifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoWifi@2x.png"; sourceTree = "<group>"; };
+		12B1F68E1B788961009FBA6D /* RechargeTypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeTypeVC.h; sourceTree = "<group>"; };
+		12B1F68F1B788961009FBA6D /* RechargeTypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeTypeVC.m; sourceTree = "<group>"; };
+		12B1F6911B788A20009FBA6D /* RechargeTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeTypeCell.h; sourceTree = "<group>"; };
+		12B1F6921B788A20009FBA6D /* RechargeTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeTypeCell.m; sourceTree = "<group>"; };
+		12B1F6941B789138009FBA6D /* RechargeListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeListVC.h; sourceTree = "<group>"; };
+		12B1F6951B789138009FBA6D /* RechargeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListVC.m; sourceTree = "<group>"; };
+		12B1F6971B789372009FBA6D /* RechargeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeListCell.h; sourceTree = "<group>"; };
+		12B1F6981B789372009FBA6D /* RechargeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListCell.m; sourceTree = "<group>"; };
 		12BD30F01B3E78B400170316 /* OrderAlipayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAlipayCell.h; sourceTree = "<group>"; };
 		12BD30F11B3E78B400170316 /* OrderAlipayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAlipayCell.m; sourceTree = "<group>"; };
 		12BD30F31B3E78CA00170316 /* OrderWechatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderWechatCell.h; sourceTree = "<group>"; };
@@ -2067,8 +2079,12 @@
 		120A2BBA1AB135DD006A28B1 /* Recharge */ = {
 			isa = PBXGroup;
 			children = (
+				12B1F68E1B788961009FBA6D /* RechargeTypeVC.h */,
+				12B1F68F1B788961009FBA6D /* RechargeTypeVC.m */,
 				120A2BBB1AB135DD006A28B1 /* RechargeVC.h */,
 				120A2BBC1AB135DD006A28B1 /* RechargeVC.m */,
+				12B1F6941B789138009FBA6D /* RechargeListVC.h */,
+				12B1F6951B789138009FBA6D /* RechargeListVC.m */,
 				120A2C0F1AB17025006A28B1 /* Model */,
 				120A2BBD1AB135DD006A28B1 /* UI */,
 			);
@@ -2082,6 +2098,10 @@
 				120A2BBF1AB135DD006A28B1 /* RechargeCell.m */,
 				120A2BC01AB135DD006A28B1 /* RechargeView.h */,
 				120A2BC11AB135DD006A28B1 /* RechargeView.m */,
+				12B1F6911B788A20009FBA6D /* RechargeTypeCell.h */,
+				12B1F6921B788A20009FBA6D /* RechargeTypeCell.m */,
+				12B1F6971B789372009FBA6D /* RechargeListCell.h */,
+				12B1F6981B789372009FBA6D /* RechargeListCell.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -5769,6 +5789,7 @@
 				12F46A591B20513200B8EC98 /* NewGoodsInfoRightView.m in Sources */,
 				128221901B1847E7004613BB /* URLNetCache.m in Sources */,
 				DDB58F541AD3C6A2006248E9 /* WXKeyPadModel.m in Sources */,
+				12B1F6991B789372009FBA6D /* RechargeListCell.m in Sources */,
 				775842F81AB95A300039B129 /* PSCollectionView.m in Sources */,
 				128221801B18467A004613BB /* CSTScrollBrowser.m in Sources */,
 				12F3802F1B3BE41C00E9690C /* MakeOrderGoodsMoneyCell.m in Sources */,
@@ -5889,6 +5910,7 @@
 				DDEA9ED91B1BF46900530C1C /* CartDetailCell.m in Sources */,
 				77DB93F11AAFE70D0021A816 /* MessageData.m in Sources */,
 				775C58C51ABA7B75005B6B40 /* TopADVEntity.m in Sources */,
+				12B1F6931B788A20009FBA6D /* RechargeTypeCell.m in Sources */,
 				12F46A281B1FFA6200B8EC98 /* GoodsInfoEntity.m in Sources */,
 				1284CC921B551CED00D98F79 /* RefundSucceedConsultCell.m in Sources */,
 				DD0E38BD1B1BE5AC00AB4DB9 /* SysMsgTimeCell.m in Sources */,
@@ -5964,6 +5986,7 @@
 				12F5722F1B4274DB00128294 /* NewSystemSettingVC.m in Sources */,
 				775843111AB95A300039B129 /* WXMutiScanViewCell.m in Sources */,
 				12F380281B3B9BAD00E9690C /* MakeOrderUseBonusCell.m in Sources */,
+				12B1F6901B788961009FBA6D /* RechargeTypeVC.m in Sources */,
 				12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */,
 				775842EE1AB95A300039B129 /* WXDetailTextCell.m in Sources */,
 				7758432A1AB95A300039B129 /* WXUIPageControl.m in Sources */,
@@ -5972,6 +5995,7 @@
 				77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */,
 				775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */,
 				775843041AB95A300039B129 /* DDMenuController.m in Sources */,
+				12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */,
 				775C58BE1ABA7B75005B6B40 /* WXGoodCategoryModel.m in Sources */,
 				775842D91AB95A300039B129 /* UIColor+WX.m in Sources */,
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,

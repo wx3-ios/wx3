@@ -7,6 +7,7 @@
 //
 
 #import "UserCutCell.h"
+#import "UserCutEntity.h"
 
 @interface UserCutCell(){
     WXUILabel *_money;
@@ -65,9 +66,10 @@
 }
 
 -(void)load{
-    [_money setText:@"您已获得5元分成"];
-    [_info setText:@"来自我信ID为10019分成"];
-    [_date setText:@"2015-08-02"];
+    UserCutEntity *entity = self.cellInfo;
+    [_money setText:[NSString stringWithFormat:@"您已获得%.2f元分成",entity.money]];
+    [_info setText:[NSString stringWithFormat:@"来自我信ID为%ld的分成",(long)entity.userID]];
+    [_date setText:[UtilTool getDateTimeFor:entity.date type:2]];
 }
 
 @end
