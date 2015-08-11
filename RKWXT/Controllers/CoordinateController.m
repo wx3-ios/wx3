@@ -95,6 +95,7 @@
     OrderPayVC *payVC = [[OrderPayVC alloc] init];
     payVC.orderID = [NSString stringWithFormat:@"%ld",(long)entity.order_id];
     payVC.payMoney = price;
+    payVC.orderpay_type = OrderPay_Type_Order;
     [vc.wxNavigationController pushViewController:payVC];
 }
 

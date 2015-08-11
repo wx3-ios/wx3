@@ -19,6 +19,6 @@ typedef enum{
 @interface PaySucceedModel : T_HPSubBaseModel
 
 +(PaySucceedModel*)sharePaySucceed;
--(void)updataPayOrder:(Pay_Type)type withOrderID:(NSInteger)orderID;
+-(void)updataPayOrder:(Pay_Type)type withOrderID:(NSString*)orderID;
 
 @end

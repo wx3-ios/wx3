@@ -25,7 +25,7 @@
 			<string>alipay</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>AliMobilePay100000</string>
+				<string>AliMobilePay9</string>
 			</array>
 		</dict>
 		<dict>

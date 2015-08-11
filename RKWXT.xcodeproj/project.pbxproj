@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1203C1F91B3E2A9E00C402E3 /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1203C1F81B3E2A9E00C402E3 /* OrderPayVC.m */; };
 		1203C2001B3E366600C402E3 /* OrderPayMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1203C1FF1B3E366600C402E3 /* OrderPayMoneyCell.m */; };
+		12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12048C721B799D35000DF7F5 /* RechargeListModel.m */; };
 		12062E771AEDFBC200073BCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9861ACAA8C000CC3FE9 /* Foundation.framework */; };
 		12062E781AEDFBCA00073BCB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */; };
 		120A2BE91AB135DD006A28B1 /* RechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2BBC1AB135DD006A28B1 /* RechargeVC.m */; };
@@ -739,6 +740,8 @@
 		1203C1F81B3E2A9E00C402E3 /* OrderPayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayVC.m; sourceTree = "<group>"; };
 		1203C1FE1B3E366600C402E3 /* OrderPayMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayMoneyCell.h; sourceTree = "<group>"; };
 		1203C1FF1B3E366600C402E3 /* OrderPayMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayMoneyCell.m; sourceTree = "<group>"; };
+		12048C711B799D35000DF7F5 /* RechargeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeListModel.h; sourceTree = "<group>"; };
+		12048C721B799D35000DF7F5 /* RechargeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListModel.m; sourceTree = "<group>"; };
 		120A2BBB1AB135DD006A28B1 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
 		120A2BBC1AB135DD006A28B1 /* RechargeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeVC.m; sourceTree = "<group>"; };
 		120A2BBE1AB135DD006A28B1 /* RechargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeCell.h; sourceTree = "<group>"; };
@@ -2199,6 +2202,8 @@
 			children = (
 				120A2C101AB17038006A28B1 /* RechargeModel.h */,
 				120A2C111AB17038006A28B1 /* RechargeModel.m */,
+				12048C711B799D35000DF7F5 /* RechargeListModel.h */,
+				12048C721B799D35000DF7F5 /* RechargeListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5829,6 +5834,7 @@
 				128241471B60D062001EE0BD /* DownSheetCell.m in Sources */,
 				12F2D7EC1B1EAB0400C8017F /* WaitReceiveOrderListVC.m in Sources */,
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
+				12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */,
 				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
 				12F46A2B1B1FFCD000B8EC98 /* NewGoodsInfoVC.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,

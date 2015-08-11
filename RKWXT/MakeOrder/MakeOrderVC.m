@@ -574,6 +574,7 @@
     OrderPayVC *payVC = [[OrderPayVC alloc] init];
     payVC.payMoney = [self allGoodsTotalMoney];
     payVC.orderID = _model.orderID;
+    payVC.orderpay_type = OrderPay_Type_Order;
     [self.wxNavigationController pushViewController:payVC];
 }
 

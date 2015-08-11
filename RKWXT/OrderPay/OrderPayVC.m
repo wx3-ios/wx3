@@ -193,15 +193,26 @@ enum{
     if(!_orderID){
         return;
     }
-    [[AliPayControl sharedAliPayOBJ] alipayOrderID:_orderID title:kMerchantName amount:_payMoney phpURL:@"" payTag:nil];
+    
+    [[AliPayControl sharedAliPayOBJ] alipayOrderID:[self newChangeOrderID] title:kMerchantName amount:_payMoney phpURL:@"" payTag:nil];
 }
 
 -(void)alipaySucceed{
-    [[PaySucceedModel sharePaySucceed] updataPayOrder:Pay_Type_AliPay withOrderID:[_orderID integerValue]];
+    [[PaySucceedModel sharePaySucceed] updataPayOrder:Pay_Type_AliPay withOrderID:[self newChangeOrderID]];
+    if(_orderpay_type == OrderPay_Type_Recharge){
+        [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+        }];
+        return;
+    }
     [self toOrderList];
 }
 
 -(void)back{
+    if(_orderpay_type == OrderPay_Type_Recharge){
+        [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+        }];
+        return;
+    }
     [self toOrderList];
 }
 
@@ -216,6 +227,24 @@ enum{
             [[CoordinateController sharedCoordinateController] toOrderList:navigationController.rootViewController selectedShow:0 animated:YES];
         }];
     }
+}
+
+-(NSString*)newChangeOrderID{
+    NSString *newStr = nil;
+    switch (_orderpay_type) {
+        case OrderPay_Type_Order:
+            newStr = [NSString stringWithFormat:@"S%@",_orderID];
+            break;
+        case OrderPay_Type_Recharge:
+            newStr = [NSString stringWithFormat:@"R%@",_orderID];
+            break;
+        case OrderPay_Type_Money:
+            newStr = [NSString stringWithFormat:@"P%@",_orderID];
+            break;
+        default:
+            break;
+    }
+    return newStr;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

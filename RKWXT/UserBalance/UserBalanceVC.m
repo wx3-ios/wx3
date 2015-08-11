@@ -161,8 +161,9 @@ enum{
 }
 
 -(void)gotoRecharge{
-    RechargeVC *rechargeVC = [[RechargeVC alloc] init];
-    [self.wxNavigationController pushViewController:rechargeVC];
+//    RechargeVC *rechargeVC = [[RechargeVC alloc] init];
+//    [self.wxNavigationController pushViewController:rechargeVC];
+    [[CoordinateController sharedCoordinateController] toRechargeVC:self animated:YES];
 }
 
 -(void)loadUserBalanceSucceed{

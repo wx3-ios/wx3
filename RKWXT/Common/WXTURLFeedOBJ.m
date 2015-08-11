@@ -150,6 +150,9 @@
         case WXT_UrlFeed_Type_New_UserCut:
             url = @"/get_divide_list.php";
             break;
+        case WXT_UrlFeed_Type_New_RechargeList:
+            url = @"/insert_recharge_order.php";
+            break;
         default:
             break;
     }
