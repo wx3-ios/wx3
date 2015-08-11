@@ -59,9 +59,16 @@
         [_titleLabel setText:@"充值卡"];
         [_infoLabel setText:@"充值卡适用于所有手机用户"];
     }else{
-        [_imgView setImage:[UIImage imageNamed:@"wxtRecharge.png"]];
+        [_imgView setImage:[UIImage imageNamed:@"RechargeListImg.png"]];
         [_titleLabel setText:@"充值话费"];
         [_infoLabel setText:@"支付宝安全支付"];
+        
+        CGFloat imgWidth = 35;
+        CGFloat imgHeight = imgWidth;
+        CGRect rect = _imgView.frame;
+        rect.origin.y = (RechargeTypeCellHeight-imgHeight)/2;
+        rect.size.height = imgHeight;
+        [_imgView setFrame:rect];
     }
 }
 

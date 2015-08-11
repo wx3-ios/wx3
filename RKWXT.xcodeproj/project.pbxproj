@@ -10,6 +10,7 @@
 		1203C1F91B3E2A9E00C402E3 /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1203C1F81B3E2A9E00C402E3 /* OrderPayVC.m */; };
 		1203C2001B3E366600C402E3 /* OrderPayMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1203C1FF1B3E366600C402E3 /* OrderPayMoneyCell.m */; };
 		12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12048C721B799D35000DF7F5 /* RechargeListModel.m */; };
+		12048C7B1B79FBF4000DF7F5 /* RechargeListImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12048C7A1B79FBF4000DF7F5 /* RechargeListImg@2x.png */; };
 		12062E771AEDFBC200073BCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9861ACAA8C000CC3FE9 /* Foundation.framework */; };
 		12062E781AEDFBCA00073BCB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */; };
 		120A2BE91AB135DD006A28B1 /* RechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2BBC1AB135DD006A28B1 /* RechargeVC.m */; };
@@ -742,6 +743,7 @@
 		1203C1FF1B3E366600C402E3 /* OrderPayMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayMoneyCell.m; sourceTree = "<group>"; };
 		12048C711B799D35000DF7F5 /* RechargeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeListModel.h; sourceTree = "<group>"; };
 		12048C721B799D35000DF7F5 /* RechargeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListModel.m; sourceTree = "<group>"; };
+		12048C7A1B79FBF4000DF7F5 /* RechargeListImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RechargeListImg@2x.png"; sourceTree = "<group>"; };
 		120A2BBB1AB135DD006A28B1 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
 		120A2BBC1AB135DD006A28B1 /* RechargeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeVC.m; sourceTree = "<group>"; };
 		120A2BBE1AB135DD006A28B1 /* RechargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeCell.h; sourceTree = "<group>"; };
@@ -2314,6 +2316,7 @@
 				1241E55B1AE9D91400811D3F /* T_Back@2x.png */,
 				1241E55C1AE9D91400811D3F /* T_BackSel@2x.png */,
 				1241E55E1AE9D91400811D3F /* wxtRecharge@2x.png */,
+				12048C7A1B79FBF4000DF7F5 /* RechargeListImg@2x.png */,
 			);
 			path = CommonImg;
 			sourceTree = "<group>";
@@ -5606,6 +5609,7 @@
 				1241E5401AE9D89B00811D3F /* 1S@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,
 				12F67BB01B32BDA000F5BDE1 /* citySelectedImg@2x.png in Resources */,
+				12048C7B1B79FBF4000DF7F5 /* RechargeListImg@2x.png in Resources */,
 				1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */,
 				1241E54B1AE9D89B00811D3F /* 7N@2x.png in Resources */,
 				1241E5631AE9D91400811D3F /* T_AllBack@2x.png in Resources */,
