@@ -33,6 +33,15 @@
 		120B754E1B1C19EA00B8746C /* PersonSexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B754D1B1C19EA00B8746C /* PersonSexVC.m */; };
 		120B75511B1C36BE00B8746C /* PersonDatePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B75501B1C36BE00B8746C /* PersonDatePickerVC.m */; };
 		120B75541B1C3B7100B8746C /* PersonNicknameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B75531B1C3B7100B8746C /* PersonNicknameVC.m */; };
+		120EB3D71B7B563B0036A77C /* shake.wav in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3CD1B7B563B0036A77C /* shake.wav */; };
+		120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3CE1B7B563B0036A77C /* Shake_01.png */; };
+		120EB3D91B7B563B0036A77C /* Shake_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3CF1B7B563B0036A77C /* Shake_01@2x.png */; };
+		120EB3DA1B7B563B0036A77C /* Shake_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3D01B7B563B0036A77C /* Shake_02.png */; };
+		120EB3DB1B7B563B0036A77C /* Shake_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3D11B7B563B0036A77C /* Shake_02@2x.png */; };
+		120EB3DC1B7B563B0036A77C /* shake_match.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3D21B7B563B0036A77C /* shake_match.m4r */; };
+		120EB3DD1B7B563B0036A77C /* SharkBlackImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3D31B7B563B0036A77C /* SharkBlackImg.png */; };
+		120EB3DE1B7B563B0036A77C /* SharkBlackImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3D41B7B563B0036A77C /* SharkBlackImg@2x.png */; };
+		120EB3DF1B7B563B0036A77C /* SharkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EB3D61B7B563B0036A77C /* SharkVC.m */; };
 		1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804251ACB899B009DB7E7 /* DBImage.m */; };
 		1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804271ACB899B009DB7E7 /* DBImageRequest.m */; };
 		1218042E1ACB899B009DB7E7 /* DBImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804291ACB899B009DB7E7 /* DBImageView.m */; };
@@ -784,6 +793,16 @@
 		120B75501B1C36BE00B8746C /* PersonDatePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDatePickerVC.m; sourceTree = "<group>"; };
 		120B75521B1C3B7100B8746C /* PersonNicknameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonNicknameVC.h; sourceTree = "<group>"; };
 		120B75531B1C3B7100B8746C /* PersonNicknameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonNicknameVC.m; sourceTree = "<group>"; };
+		120EB3CD1B7B563B0036A77C /* shake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake.wav; sourceTree = "<group>"; };
+		120EB3CE1B7B563B0036A77C /* Shake_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shake_01.png; sourceTree = "<group>"; };
+		120EB3CF1B7B563B0036A77C /* Shake_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shake_01@2x.png"; sourceTree = "<group>"; };
+		120EB3D01B7B563B0036A77C /* Shake_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shake_02.png; sourceTree = "<group>"; };
+		120EB3D11B7B563B0036A77C /* Shake_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shake_02@2x.png"; sourceTree = "<group>"; };
+		120EB3D21B7B563B0036A77C /* shake_match.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = shake_match.m4r; sourceTree = "<group>"; };
+		120EB3D31B7B563B0036A77C /* SharkBlackImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SharkBlackImg.png; sourceTree = "<group>"; };
+		120EB3D41B7B563B0036A77C /* SharkBlackImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkBlackImg@2x.png"; sourceTree = "<group>"; };
+		120EB3D51B7B563B0036A77C /* SharkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharkVC.h; sourceTree = "<group>"; };
+		120EB3D61B7B563B0036A77C /* SharkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharkVC.m; sourceTree = "<group>"; };
 		121804241ACB899B009DB7E7 /* DBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImage.h; sourceTree = "<group>"; };
 		121804251ACB899B009DB7E7 /* DBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBImage.m; sourceTree = "<group>"; };
 		121804261ACB899B009DB7E7 /* DBImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImageRequest.h; sourceTree = "<group>"; };
@@ -2219,6 +2238,23 @@
 				120A2C651AB1804E006A28B1 /* SignEntity.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		120EB3CC1B7B563B0036A77C /* Shark */ = {
+			isa = PBXGroup;
+			children = (
+				120EB3CD1B7B563B0036A77C /* shake.wav */,
+				120EB3CE1B7B563B0036A77C /* Shake_01.png */,
+				120EB3CF1B7B563B0036A77C /* Shake_01@2x.png */,
+				120EB3D01B7B563B0036A77C /* Shake_02.png */,
+				120EB3D11B7B563B0036A77C /* Shake_02@2x.png */,
+				120EB3D21B7B563B0036A77C /* shake_match.m4r */,
+				120EB3D31B7B563B0036A77C /* SharkBlackImg.png */,
+				120EB3D41B7B563B0036A77C /* SharkBlackImg@2x.png */,
+				120EB3D51B7B563B0036A77C /* SharkVC.h */,
+				120EB3D61B7B563B0036A77C /* SharkVC.m */,
+			);
+			path = Shark;
 			sourceTree = "<group>";
 		};
 		121804231ACB899B009DB7E7 /* DBImageView */ = {
@@ -4120,6 +4156,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				120EB3CC1B7B563B0036A77C /* Shark */,
 				12A3477E1B733E9300D10C17 /* UserCut */,
 				12963B371B663DBB007418DE /* GuideView */,
 				128241341B60C4E3001EE0BD /* ShareInterface */,
@@ -5459,9 +5496,11 @@
 				128221DA1B184E84004613BB /* HomePageRecharge@2x.png in Resources */,
 				1263EFE71ACD35820014C347 /* Icon.png in Resources */,
 				128585101B3AA7E5005E240E /* MakeOrderUserPhoneImg@2x.png in Resources */,
+				120EB3DC1B7B563B0036A77C /* shake_match.m4r in Resources */,
 				12F2D8061B1F01E900C8017F /* failedImage@2x.png in Resources */,
 				1263EFEB1ACD44A30014C347 /* Icon-72.png in Resources */,
 				129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */,
+				120EB3DA1B7B563B0036A77C /* Shake_02.png in Resources */,
 				12F3CC7C1B1DE82C00E64DE4 /* PersonalInfoHeadImg.jpg in Resources */,
 				12F422811B1D5A2900643DD7 /* AddressSelNormal@2x.png in Resources */,
 				12F2D8071B1F01E900C8017F /* initImage@2x.png in Resources */,
@@ -5477,6 +5516,7 @@
 				12F46A381B20012000B8EC98 /* T_ArrowRight@2x.png in Resources */,
 				1241E5731AE9D98600811D3F /* Default-568h@2x.png in Resources */,
 				1241E5661AE9D91400811D3F /* T_BackSel@2x.png in Resources */,
+				120EB3D71B7B563B0036A77C /* shake.wav in Resources */,
 				1245350E1AE9D0BC004198C9 /* FindNormal@2x.png in Resources */,
 				1245355F1AE9D146004198C9 /* SignNow@2x.png in Resources */,
 				12D52BBF1AC2EF4400C5CE71 /* dtmf-9.aif in Resources */,
@@ -5492,6 +5532,7 @@
 				12F3CC781B1DE82C00E64DE4 /* MyExtendImg@2x.png in Resources */,
 				128221DB1B184E84004613BB /* HomePageSearch@2x.png in Resources */,
 				775842AF1AB95A300039B129 /* CustomMade.plist in Resources */,
+				120EB3DD1B7B563B0036A77C /* SharkBlackImg.png in Resources */,
 				124535421AE9D146004198C9 /* sign14@2x.png in Resources */,
 				127FDD781B57A76E0059BDB6 /* CallBtnUpImg@2x.png in Resources */,
 				1245354F1AE9D146004198C9 /* sign27@2x.png in Resources */,
@@ -5563,6 +5604,7 @@
 				124535471AE9D146004198C9 /* sign1@2x.png in Resources */,
 				12F465E71B6F0DE200A8F5AF /* GuideStartUseBtnNor@2x.png in Resources */,
 				1245354A1AE9D146004198C9 /* sign22@2x.png in Resources */,
+				120EB3DB1B7B563B0036A77C /* Shake_02@2x.png in Resources */,
 				1241E5371AE9D89B00811D3F /* dialSel@2x.png in Resources */,
 				1241E5421AE9D89B00811D3F /* 2S@2x.png in Resources */,
 				1241E5501AE9D89B00811D3F /* 9S@2x.png in Resources */,
@@ -5579,6 +5621,7 @@
 				12D52BBB1AC2EF4400C5CE71 /* dtmf-5.aif in Resources */,
 				1241E54F1AE9D89B00811D3F /* 9N@2x.png in Resources */,
 				124535561AE9D146004198C9 /* sign33@2x.png in Resources */,
+				120EB3D91B7B563B0036A77C /* Shake_01@2x.png in Resources */,
 				1245350C1AE9D0BC004198C9 /* CallNormal@2x.png in Resources */,
 				1263EFE61ACD35820014C347 /* Icon-Small@2x.png in Resources */,
 				1241E5641AE9D91400811D3F /* T_AllBackSel@2x.png in Resources */,
@@ -5601,6 +5644,7 @@
 				12F465E31B6F0DE200A8F5AF /* guideIllustrate_1-568h@2x.jpg in Resources */,
 				12D52BB51AC2EF4400C5CE71 /* dtmf-*.aif in Resources */,
 				128766F71B50F1D200A79320 /* TwoDimension@2x.png in Resources */,
+				120EB3DE1B7B563B0036A77C /* SharkBlackImg@2x.png in Resources */,
 				1285850C1B3AA7E5005E240E /* MakeOrderLinImg@2x.png in Resources */,
 				12D52BBC1AC2EF4400C5CE71 /* dtmf-6.aif in Resources */,
 				12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */,
@@ -5617,6 +5661,7 @@
 				1241E53F1AE9D89B00811D3F /* 1N@2x.png in Resources */,
 				12F46A401B20012000B8EC98 /* T_ShoppingCart@2x.png in Resources */,
 				1241E5361AE9D89B00811D3F /* callHistoryBtnImg@2x.png in Resources */,
+				120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */,
 				12F4227F1B1D5A2900643DD7 /* AddressDel@2x.png in Resources */,
 				1285850F1B3AA7E5005E240E /* MakeOrderUserNameImg@2x.png in Resources */,
 				124535401AE9D146004198C9 /* sign12@2x.png in Resources */,
@@ -6049,6 +6094,7 @@
 				775843051AB95A300039B129 /* StrikeThroughLabel.m in Sources */,
 				12F916241B19A24E00C94717 /* HomePageSurpModel.m in Sources */,
 				12F915F91B19506000C94717 /* T_MenuVC.m in Sources */,
+				120EB3DF1B7B563B0036A77C /* SharkVC.m in Sources */,
 				1262E2C51ACA50B600667C54 /* FindEntity.m in Sources */,
 				129D234B1B4FA84A00008DA0 /* OrderInfoConsultCell.m in Sources */,
 				775842E21AB95A300039B129 /* WXCpxBaseView.m in Sources */,

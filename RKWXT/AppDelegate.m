@@ -42,36 +42,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    Enabling keyboard manager
-    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
-    
     [[IQKeyboardManager sharedManager] setEnable:YES];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:15];
-    // Enabling autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard.
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
-    
-    //Setting toolbar behavious to IQAutoToolbarBySubviews. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order.
     [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarBySubviews];
-    
-    //Resign textField if touched outside of UITextField/UITextView.
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
-#if DEBUG
-    setenv("XcodeColors", "YES", 1);//加载颜色插件
-    NSString *logsDirectory = [DOC_PATH stringByAppendingPathComponent:@"logs"];
-    DDLogFileManagerDefault *fileManager = [[DDLogFileManagerDefault alloc]initWithLogsDirectory:logsDirectory];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyyMMdd HH:MM:ss"];
-    DDLogFileFormatterDefault *logFormatter = [[DDLogFileFormatterDefault alloc]initWithDateFormatter:formatter];
     
-    DDFileLogger *fileLogger = [[DDFileLogger alloc]initWithLogFileManager:fileManager];
-    fileLogger.maximumFileSize = kDDDefaultLogMaxFileSize * 4;
-    fileLogger.rollingFrequency = kDDDefaultLogRollingFrequency; // 1 day rolling
-    [fileLogger setLogFormatter:logFormatter];
-    [DDLog addLogger:fileLogger];
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];// 允许颜色
-#endif
-    DDLogError(@"%@", DOC_PATH);
+    
     [[AddressBook sharedAddressBook] loadContact];
     [ContactUitl shareInstance];
 	[self initUI];
@@ -93,11 +70,6 @@
     
 	return YES;
 }
-
-//#pragma mark qqShared
-//-(BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-//    return [TencentOAuth HandleOpenURL:url];
-//}
 
 -(void)addNotification{
     [NOTIFY_CENTER addObserver:self selector:@selector(loginSucceed:) name:KNotification_LoginSucceed object:nil];
@@ -360,41 +332,7 @@ forRemoteNotification:(NSDictionary *)userInfo
 	[self saveContext];
 }
 
-#pragma mark 崩溃日志
-void UncaughtExceptionHandler(NSException *exception) {
-    /**
-     *  获取异常崩溃信息
-     */
-    NSArray *callStack = [exception callStackSymbols];
-    NSString *reason = [exception reason];
-    NSString *name = [exception name];
-    NSString *content = [NSString stringWithFormat:@"========程序异常崩溃，请配合发送异常报告，谢谢合作========\nname:%@\nreason:\n%@\ncallStackSymbols:\n%@",name,reason,[callStack componentsJoinedByString:@"\n"]];
-    
-    /**
-     *  把异常崩溃信息发送至开发者邮件
-     */
-    
-    NSMutableString *mailUrl = [NSMutableString string];
-    //添加收件人
-    NSArray *toRecipients = [NSArray arrayWithObject: @"1256752005@qq.com"];
-    [mailUrl appendFormat:@"mailto:%@", [toRecipients componentsJoinedByString:@","]];
-    //添加抄送
-    NSArray *ccRecipients = [NSArray arrayWithObjects:@"1667906749@qq.com", nil];
-    [mailUrl appendFormat:@"?cc=%@", [ccRecipients componentsJoinedByString:@","]];
-    //添加密送
-    NSArray *bccRecipients = [NSArray arrayWithObjects:nil];
-    [mailUrl appendFormat:@"&bcc=%@", [bccRecipients componentsJoinedByString:@","]];
-    //添加主题
-    [mailUrl appendString:[NSString stringWithFormat:@"&subject=%@",kMerchantName]];
-    //添加邮件内容
-    [mailUrl appendString:[NSString stringWithFormat:@"&body=<b></b>%@",content]];
-    
-    NSString* email = [mailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
-}
-
 #pragma mark - Core Data stack
-
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
@@ -435,7 +373,6 @@ void UncaughtExceptionHandler(NSException *exception) {
     return _persistentStoreCoordinator;
 }
 
-
 - (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
@@ -471,10 +408,22 @@ void UncaughtExceptionHandler(NSException *exception) {
     [[WXWeiXinOBJ sharedWeiXinOBJ] handleOpenURL:url];
     //qq
     [TencentOAuth HandleOpenURL:url];
-    return YES;
+    return NO;
 }
 
-- (void)dealloc {
-    [self unObserveAllNotifications];
+//微信分享回调
+-(void)onResp:(BaseResp*)resp{
+    if([resp isKindOfClass:[SendMessageToWXResp class]]){
+        NSInteger error = resp.errCode;
+        if(error != 0){
+            NSString *msgError = resp.errStr;
+            if(msgError){
+                [UtilTool showAlertView:nil message:msgError delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            }
+        }else{
+            [UtilTool showAlertView:nil message:@"恭喜您,微信分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        }
+    }
 }
+
 @end

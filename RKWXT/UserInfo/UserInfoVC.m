@@ -624,7 +624,7 @@
     }
     if(index == Share_Type_Qzone){
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[UtilTool sharedString]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[UtilTool sharedURL]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
         if(sent == EQQAPISENDSUCESS){
