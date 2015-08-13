@@ -40,7 +40,7 @@
         [self addSubview:_imgView];
         
         yOffset = imgHeight;
-        CGFloat moneyWidth = 80;
+        CGFloat moneyWidth = 100;
         CGFloat moneyHeight = 12;
         _moneylabel = [[WXUILabel alloc] init];
         _moneylabel.frame = CGRectMake(8, yOffset, moneyWidth, moneyHeight);

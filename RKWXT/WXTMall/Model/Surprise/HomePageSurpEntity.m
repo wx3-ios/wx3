@@ -28,6 +28,9 @@
         
         NSString *imgUrl = [dic objectForKey:@"goods_home_img"];
         [self setHome_img:imgUrl];
+        
+        CGFloat shop_price = [[dic objectForKey:@"shop_price"] floatValue];
+        [self setShop_price:shop_price];
     }
     return self;
 }

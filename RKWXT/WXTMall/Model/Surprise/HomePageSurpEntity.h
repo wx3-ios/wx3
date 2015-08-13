@@ -14,7 +14,7 @@
 @property (nonatomic,strong) NSString *goods_name;
 @property (nonatomic,strong) NSString *home_img;
 @property (nonatomic,strong) NSString *goods_intro;
-@property (nonatomic,assign) CGFloat market_price;
+//@property (nonatomic,assign) CGFloat market_price;
 @property (nonatomic,assign) CGFloat shop_price;
 
 +(HomePageSurpEntity*)homePageSurpEntityWithDictionary:(NSDictionary*)dic;

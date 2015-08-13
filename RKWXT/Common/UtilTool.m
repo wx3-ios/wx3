@@ -272,7 +272,7 @@
 
 + (NSString *)sharedURL{
     NSString *urlString = @"wx_html/index.php/Public/app_download/sid/";
-    NSString *str = [NSString stringWithFormat:@"%@%@%d",WXTBaseUrl,urlString,kMerchantID];
+    NSString *str = [NSString stringWithFormat:@"%@%@%d",WXTShareBaseUrl,urlString,kMerchantID];
     return str;
 }
 
