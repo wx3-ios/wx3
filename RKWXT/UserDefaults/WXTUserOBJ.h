@@ -20,6 +20,7 @@
 -(void)setSmsID:(int)smsID;        //验证码ID
 -(void)setNickname:(NSString*)nickname; //昵称
 -(void)setSellerID:(NSString*)sellerID; //商家主键ID
+-(void)SetUserLoginFirst:(BOOL)first; //升级新商家临时记录
 
 -(NSString*)wxtID;
 -(NSString*)user;
@@ -28,6 +29,7 @@
 -(int)smsID;
 -(NSString*)nickname;
 -(NSString*)sellerID;
+-(BOOL)userFirstLogin;
 
 -(void)removeAllUserInfo;
 

@@ -11,9 +11,7 @@
 #import "IQKeyboardManager.h"
 #import "DDFileLogger.h"
 #import "LoginVC.h"
-#import "WXTUITabBarController.h"
 #import "WXTVersion.h"
-#import "RootViewController.h"
 #import <CoreTelephony/CTCall.h>
 #import <CoreTelephony/CTCallCenter.h>
 #import "ContactUitl.h"
@@ -30,8 +28,10 @@
 
 #import "WXWeiXinOBJ.h"
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "UserInfoVC.h"
 
-@interface AppDelegate (){
+@interface AppDelegate ()<QQApiInterfaceDelegate>{
     CTCallCenter *_callCenter;
     ScreenActivityVC *activityVC;
 }
@@ -103,6 +103,7 @@
 //        LoginModel *_loginModel = [[LoginModel alloc] init];
 //        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
         
+        [userDefault SetUserLoginFirst:YES];
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
     }else{
         WXTGuideVC *vc = [[WXTGuideVC alloc] init];
@@ -132,6 +133,10 @@
 -(BOOL)checkUserInfo{
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
     if(!userDefault.user || !userDefault.pwd || !userDefault.wxtID){
+        return NO;
+    }
+    if(!userDefault.userFirstLogin){
+        [userDefault removeAllUserInfo];
         return NO;
     }
     return YES;
@@ -408,7 +413,10 @@ forRemoteNotification:(NSDictionary *)userInfo
     [[WXWeiXinOBJ sharedWeiXinOBJ] handleOpenURL:url];
     //qq
     [TencentOAuth HandleOpenURL:url];
-    return NO;
+    
+    UserInfoVC *infoVC = [[UserInfoVC alloc] init];
+    [QQApiInterface handleOpenURL:url delegate:infoVC];
+    return YES;
 }
 
 //微信分享回调
@@ -421,7 +429,7 @@ forRemoteNotification:(NSDictionary *)userInfo
                 [UtilTool showAlertView:nil message:msgError delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
             }
         }else{
-            [UtilTool showAlertView:nil message:@"恭喜您,微信分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [UtilTool showAlertView:nil message:@"微信分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
         }
     }
 }

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TencentOpenAPI/QQApiInterface.h>
 
-@interface UserInfoVC : WXUIViewController
+@interface UserInfoVC : WXUIViewController<QQApiInterfaceDelegate>
 
 @end

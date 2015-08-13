@@ -10,7 +10,6 @@
 #import "UserInfoDef.h"
 #import "UserHeaderImgModel.h"
 #import "WXWeiXinOBJ.h"
-#import <TencentOpenAPI/QQApiInterface.h>
 #import "ShareBrowserView.h"
 
 #define UserBgImageViewHeight (95+66)
@@ -633,6 +632,18 @@
     }
 }
 
+#pragma mark qqDelegate
+-(void)onResp:(QQBaseResp *)resp{
+    if([resp isKindOfClass:[SendMessageToQQResp class]]){
+        NSInteger error = [resp.result integerValue];
+        if(error != 0){
+        }else{
+            [UtilTool showAlertView:nil message:@"QQ分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        }
+    }
+}
+-(void)onReq:(QQBaseReq *)req{}
+-(void)isOnlineResponse:(NSDictionary *)response{}
 
 -(void)nextPageSetInfo{
     BaseInfoVC *baseInfoVC = [[BaseInfoVC alloc] init];
