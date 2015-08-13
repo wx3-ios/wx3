@@ -311,6 +311,8 @@
 		12BD30FC1B3E905A00170316 /* UserBonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30FB1B3E905A00170316 /* UserBonusModel.m */; };
 		12BD30FF1B3E9ADF00170316 /* NewWXTLiDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30FE1B3E9ADF00170316 /* NewWXTLiDB.m */; };
 		12BD31021B3E9E1600170316 /* UserBonusEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD31011B3E9E1600170316 /* UserBonusEntity.m */; };
+		12C069191B7C743600C05D42 /* FindUnionImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C069171B7C743600C05D42 /* FindUnionImg@2x.png */; };
+		12C0691A1B7C743600C05D42 /* FindWeatherImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C069181B7C743600C05D42 /* FindWeatherImg@2x.png */; };
 		12C2000D1B4E792600BE8EE8 /* RefundStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2000C1B4E792600BE8EE8 /* RefundStateModel.m */; };
 		12C200101B4E7B0900BE8EE8 /* RefundStateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2000F1B4E7B0900BE8EE8 /* RefundStateEntity.m */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
@@ -1201,6 +1203,8 @@
 		12BD30FE1B3E9ADF00170316 /* NewWXTLiDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWXTLiDB.m; sourceTree = "<group>"; };
 		12BD31001B3E9E1600170316 /* UserBonusEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBonusEntity.h; sourceTree = "<group>"; };
 		12BD31011B3E9E1600170316 /* UserBonusEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBonusEntity.m; sourceTree = "<group>"; };
+		12C069171B7C743600C05D42 /* FindUnionImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindUnionImg@2x.png"; sourceTree = "<group>"; };
+		12C069181B7C743600C05D42 /* FindWeatherImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindWeatherImg@2x.png"; sourceTree = "<group>"; };
 		12C2000B1B4E792600BE8EE8 /* RefundStateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundStateModel.h; sourceTree = "<group>"; };
 		12C2000C1B4E792600BE8EE8 /* RefundStateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundStateModel.m; sourceTree = "<group>"; };
 		12C2000E1B4E7B0900BE8EE8 /* RefundStateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundStateEntity.h; sourceTree = "<group>"; };
@@ -2342,6 +2346,8 @@
 		1241E5541AE9D91400811D3F /* CommonImg */ = {
 			isa = PBXGroup;
 			children = (
+				12C069171B7C743600C05D42 /* FindUnionImg@2x.png */,
+				12C069181B7C743600C05D42 /* FindWeatherImg@2x.png */,
 				12A66B271B74AE4800542112 /* NoWifi@2x.png */,
 				128BB73C1B6879E4004FCE66 /* CommonArrowLeft@2x.png */,
 				1241E5551AE9D91400811D3F /* AboutUsLogo@2x.png */,
@@ -5518,6 +5524,7 @@
 				1241E5661AE9D91400811D3F /* T_BackSel@2x.png in Resources */,
 				120EB3D71B7B563B0036A77C /* shake.wav in Resources */,
 				1245350E1AE9D0BC004198C9 /* FindNormal@2x.png in Resources */,
+				12C0691A1B7C743600C05D42 /* FindWeatherImg@2x.png in Resources */,
 				1245355F1AE9D146004198C9 /* SignNow@2x.png in Resources */,
 				12D52BBF1AC2EF4400C5CE71 /* dtmf-9.aif in Resources */,
 				124535591AE9D146004198C9 /* sign4@2x.png in Resources */,
@@ -5564,6 +5571,7 @@
 				1241E5531AE9D89B00811D3F /* keyboardEye@2x.png in Resources */,
 				12F3CC791B1DE82C00E64DE4 /* MyWalletImg@2x.png in Resources */,
 				12F3CC7D1B1DE82C00E64DE4 /* ShoppingCartImg@2x.png in Resources */,
+				12C069191B7C743600C05D42 /* FindUnionImg@2x.png in Resources */,
 				12F46A3A1B20012000B8EC98 /* T_AttentionSel@2x.png in Resources */,
 				1241E5681AE9D91400811D3F /* wxtRecharge@2x.png in Resources */,
 				127FDD7B1B57B2570059BDB6 /* woxinHidIcon@2x.png in Resources */,

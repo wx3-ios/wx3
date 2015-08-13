@@ -34,7 +34,7 @@ enum{
 -(id)init{
     self = [super init];
     if(self){
-        imgArr = @[@"Icon.png", @"Icon.png"];
+        imgArr = @[@"FindUnionImg.png", @"FindWeatherImg.png"];
         nameArr = @[@"商家联盟", @"天气"];
         webUrl = @[@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017", @"http://weather.html5.qq.com"];
     }

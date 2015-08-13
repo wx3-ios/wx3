@@ -31,7 +31,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "UserInfoVC.h"
 
-@interface AppDelegate ()<QQApiInterfaceDelegate>{
+@interface AppDelegate (){
     CTCallCenter *_callCenter;
     ScreenActivityVC *activityVC;
 }
