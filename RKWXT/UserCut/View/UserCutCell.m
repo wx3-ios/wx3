@@ -43,7 +43,7 @@
         
         yOffset += textHeight+4;
         _info = [[WXUILabel alloc] init];
-        _info.frame = CGRectMake(xOffset, yOffset, textWidth, textHeight);
+        _info.frame = CGRectMake(xOffset, yOffset, textWidth+10, textHeight);
         [_info setBackgroundColor:[UIColor clearColor]];
         [_info setTextAlignment:NSTextAlignmentLeft];
         [_info setTextColor:WXColorWithInteger(0x979797)];

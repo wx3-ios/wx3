@@ -153,6 +153,9 @@
         case WXT_UrlFeed_Type_New_RechargeList:
             url = @"/insert_recharge_order.php";
             break;
+        case WXT_UrlFeed_Type_New_LuckyGoodsList:
+            url = @"";
+            break;
         default:
             break;
     }

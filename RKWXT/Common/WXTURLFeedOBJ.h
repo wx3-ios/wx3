@@ -54,6 +54,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_Wechat,
     WXT_UrlFeed_Type_New_UserCut,
     WXT_UrlFeed_Type_New_RechargeList,
+    WXT_UrlFeed_Type_New_LuckyGoodsList,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;
