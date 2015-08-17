@@ -78,7 +78,11 @@
         [_tableView setSeparatorColor:WXColorWithInteger(0xEBEBEB)];
     }
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    [self addSubview:[self downViewShow]];
+    if(_goodsInfo_type == GoodsInfo_LuckyGoods){
+        _tableView.frame = CGRectMake(0, 0, size.width, size.height);
+    }else{
+        [self addSubview:[self downViewShow]];
+    }
     
     WXUIButton *btn = [self createNavBackBtn];
     [_tableView addSubview:btn];

@@ -10,6 +10,7 @@
 #import "LuckyGoodsShowCell.h"
 #import "SharkVC.h"
 #import "LuckyGoodsModel.h"
+#import "NewGoodsInfoVC.h"
 
 #define Size self.bounds.size
 
@@ -44,6 +45,7 @@
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [self addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
 -(WXUIButton*)createRightBtn{
@@ -51,8 +53,30 @@
     rightBtn.frame = CGRectMake(0, 0, 30, 30);
     [rightBtn setBackgroundColor:[UIColor clearColor]];
     [rightBtn setTitle:@"抽奖" forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:WXFont(13.0)];
     [rightBtn addTarget:self action:@selector(gotoSharkVC) forControlEvents:UIControlEventTouchUpInside];
     return rightBtn;
+}
+
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -60,7 +84,8 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [goodsArr count];
+//    return [goodsArr count];
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -88,6 +113,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NewGoodsInfoVC *infoVC = [[NewGoodsInfoVC alloc] init];
+    infoVC.goodsInfo_type = GoodsInfo_LuckyGoods;
+    infoVC.goodsId = 1;
+    [self.wxNavigationController pushViewController:infoVC];
 }
 
 -(void)gotoSharkVC{

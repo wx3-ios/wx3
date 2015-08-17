@@ -491,7 +491,9 @@
     switch (index) {
         case T_BaseFunction_Sign:
         {
-            [[CoordinateController sharedCoordinateController] toSignVC:self animated:YES];
+//            [[CoordinateController sharedCoordinateController] toSignVC:self animated:YES];
+            LuckyGoodsShowVC *luckyGoodsVC = [[LuckyGoodsShowVC alloc] init];
+            [self.wxNavigationController pushViewController:luckyGoodsVC];
         }
             break;
         case T_BaseFunction_Recharge:

@@ -204,6 +204,10 @@ enum{
         }];
         return;
     }
+    if(_orderpay_type == OrderPay_Section_Money){
+        [self toLuckyGoodsOrderList];
+        return;
+    }
     [self toOrderList];
 }
 
@@ -213,9 +217,18 @@ enum{
         }];
         return;
     }
+    if(_orderpay_type == OrderPay_Section_Money){
+        [self toLuckyGoodsOrderList];
+        return;
+    }
     [self toOrderList];
 }
 
+-(void)toLuckyGoodsOrderList{
+    
+}
+
+//去商城订单列表
 -(void)toOrderList{
     WXUINavigationController *navigationController = [CoordinateController sharedNavigationController];
     UIViewController *orderVC = [navigationController lastViewControllerOfClass:NSClassFromString(@"HomeOrderVC")];

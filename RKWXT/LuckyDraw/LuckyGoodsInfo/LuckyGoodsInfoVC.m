@@ -256,7 +256,6 @@ enum{
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WXUITableViewCell *cell = nil;
     if(_isOpen && indexPath.section == LuckyGoodsInfo_Section_GoodsInfo){
         static NSString *identifier = @"goodsInfoBDCell";
         NewGoodsInfoBDCell *cell = (NewGoodsInfoBDCell*)[tableView dequeueReusableCellWithIdentifier:identifier];

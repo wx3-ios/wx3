@@ -8,7 +8,7 @@
 
 #import "WXUITableViewCell.h"
 
-#define LuckyGoodsShowCellHeight 128
+#define LuckyGoodsShowCellHeight 90
 
 @interface LuckyGoodsShowCell : WXUITableViewCell
 

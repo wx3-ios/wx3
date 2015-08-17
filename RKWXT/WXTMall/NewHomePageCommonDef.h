@@ -67,6 +67,7 @@ enum{
 #import "HomePageRecEntity.h"
 #import "HomePageThmEntity.h"
 #import "HomeNavENtity.h"
+#import "LuckyGoodsShowVC.h"
 #define Size self.bounds.size
 
 typedef enum{

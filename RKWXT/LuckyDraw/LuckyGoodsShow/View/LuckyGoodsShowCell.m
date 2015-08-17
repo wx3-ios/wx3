@@ -49,18 +49,19 @@
         _price.frame = CGRectMake(xOffset, yOffset, priceWidth, priceHeight);
         [_price setBackgroundColor:[UIColor clearColor]];
         [_price setTextAlignment:NSTextAlignmentLeft];
-        [_price setTextColor:WXColorWithInteger(0x000000)];
-        [_price setFont:WXFont(12.0)];
+        [_price setTextColor:WXColorWithInteger(0xdd2726)];
+        [_price setFont:WXFont(16.0)];
         [self.contentView addSubview:_price];
     }
     return self;
 }
 
 -(void)load{
-    [_imgView setCpxViewInfo:nil];
-    [_imgView load];
-    [_name setText:@""];
-    [_price setText:@""];
+//    [_imgView setCpxViewInfo:nil];
+//    [_imgView load];
+    [_imgView setImage:[UIImage imageNamed:@"Icon.png"]];
+    [_name setText:@"我信科技有限公司"];
+    [_price setText:@"￥12.00"];
 }
 
 @end
