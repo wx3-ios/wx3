@@ -8,7 +8,7 @@
 
 #import "LuckyGoodsShowVC.h"
 #import "LuckyGoodsShowCell.h"
-#import "SharkVC.h"
+#import "LuckyShakeVC.h"
 #import "LuckyGoodsModel.h"
 #import "NewGoodsInfoVC.h"
 
@@ -46,6 +46,9 @@
     [_tableView setDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    [_model loadLuckyGoodsList];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(WXUIButton*)createRightBtn{
@@ -84,8 +87,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return [goodsArr count];
-    return 2;
+    return [goodsArr count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -100,6 +102,7 @@
     if(!cell){
         cell = [[LuckyGoodsShowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setCellInfo:goodsArr[row]];
     [cell load];
     return cell;
 }
@@ -120,7 +123,7 @@
 }
 
 -(void)gotoSharkVC{
-    SharkVC *sharkVC = [[SharkVC alloc] init];
+    LuckyShakeVC *sharkVC = [[LuckyShakeVC alloc] init];
     [self.wxNavigationController pushViewController:sharkVC];
 }
 

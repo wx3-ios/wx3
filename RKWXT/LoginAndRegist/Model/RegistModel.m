@@ -20,6 +20,8 @@
                 [_delegate registFailed:retData.errorDesc];
             }
         }else{
+            WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+            [userObj setUser:userStr];
             if (_delegate && [_delegate respondsToSelector:@selector(registSucceed)]){
                 [_delegate registSucceed];
             }

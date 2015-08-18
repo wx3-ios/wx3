@@ -15,6 +15,7 @@
 #import "WechatPayObj.h"
 #import "WechatPayModel.h"
 #import "WechatEntity.h"
+#import "LuckyGoodsOrderList.h"
 
 #define size self.bounds.size
 
@@ -204,7 +205,7 @@ enum{
         }];
         return;
     }
-    if(_orderpay_type == OrderPay_Section_Money){
+    if(_orderpay_type == OrderPay_Type_Lucky){
         [self toLuckyGoodsOrderList];
         return;
     }
@@ -217,7 +218,7 @@ enum{
         }];
         return;
     }
-    if(_orderpay_type == OrderPay_Section_Money){
+    if(_orderpay_type == OrderPay_Type_Lucky){
         [self toLuckyGoodsOrderList];
         return;
     }
@@ -225,7 +226,16 @@ enum{
 }
 
 -(void)toLuckyGoodsOrderList{
-    
+    WXUINavigationController *navigationController = [CoordinateController sharedNavigationController];
+    UIViewController *orderVC = [navigationController lastViewControllerOfClass:NSClassFromString(@"LuckyGoodsOrderList")];
+    if(orderVC){
+        [navigationController popToViewController:orderVC animated:YES Completion:^{
+        }];
+    }else{
+        [navigationController popToRootViewControllerAnimated:NO Completion:^{
+            [[CoordinateController sharedCoordinateController] toLuckyOrderList:navigationController.rootViewController animated:YES];
+        }];
+    }
 }
 
 //去商城订单列表
@@ -251,7 +261,7 @@ enum{
         case OrderPay_Type_Recharge:
             newStr = [NSString stringWithFormat:@"R%@",_orderID];
             break;
-        case OrderPay_Type_Money:
+        case OrderPay_Type_Lucky:
             newStr = [NSString stringWithFormat:@"P%@",_orderID];
             break;
         default:

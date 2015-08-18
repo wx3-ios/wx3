@@ -11,7 +11,9 @@
 @interface LuckyGoodsEntity : NSObject
 @property (nonatomic,strong) NSString *imgUrl;
 @property (nonatomic,strong) NSString *name;
-@property (nonatomic,assign) CGFloat price;
+@property (nonatomic,assign) CGFloat market_price;
+@property (nonatomic,assign) CGFloat shop_price;
+@property (nonatomic,assign) NSInteger goodsID;
 
 +(LuckyGoodsEntity*)initLuckyGoodsWithDic:(NSDictionary*)dic;
 

@@ -8,13 +8,6 @@
 
 #import "WXUITableViewCell.h"
 
-@protocol PayAttentionToGoodsDelegate;
-
 @interface NewGoodsInfoDesCell : WXUITableViewCell
-@property (nonatomic,assign) id<PayAttentionToGoodsDelegate>delegate;
-@end
-
-@protocol PayAttentionToGoodsDelegate <NSObject>
--(void)payAttentionToSomeGoods:(WXUIButton*)btn;
 
 @end

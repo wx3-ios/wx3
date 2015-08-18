@@ -63,6 +63,10 @@
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoardDur:) name:UIKeyboardDidHideNotification object:nil];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    if(userObj.user && _userTextField){
+        [_userTextField setText:userObj.user];
+    }
 }
 
 - (void)viewDidLoad{

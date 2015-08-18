@@ -27,17 +27,21 @@
     return self;
 }
 
--(void)parseLuckyGoodsWith:(NSDictionary*)dic{
-    if(!dic){
+-(void)parseLuckyGoodsWith:(NSArray*)arr{
+    if(!arr){
         return;
     }
     [_luckyGoodsArr removeAllObjects];
-    LuckyGoodsEntity *entity = [LuckyGoodsEntity initLuckyGoodsWithDic:dic];
-    [_luckyGoodsArr addObject:entity];
+    for(NSDictionary *dic in arr){
+        LuckyGoodsEntity *entity = [LuckyGoodsEntity initLuckyGoodsWithDic:dic];
+        entity.imgUrl = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.imgUrl];
+        [_luckyGoodsArr addObject:entity];
+    }
 }
 
 -(void)loadLuckyGoodsList{
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:@"", @"", nil];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.sellerID, @"seller_user_id", userObj.wxtID, @"woxin_id", userObj.user, @"phone", [NSNumber numberWithInteger:kMerchantID], @"sid", nil];
     __block LuckyGoodsModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LuckyGoodsList httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if(retData.code != 0){
@@ -45,7 +49,7 @@
                 [_delegate loadLuckyGoodsFailed:retData.errorDesc];
             }
         }else{
-            [blockSelf parseLuckyGoodsWith:nil];
+            [blockSelf parseLuckyGoodsWith:[retData.data objectForKey:@"data"]];
             if(_delegate && [_delegate respondsToSelector:@selector(loadLuckyGoodsSuceeed)]){
                 [_delegate loadLuckyGoodsSuceeed];
             }

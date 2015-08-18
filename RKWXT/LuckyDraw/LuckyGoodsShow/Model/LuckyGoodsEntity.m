@@ -20,14 +20,20 @@
 -(id)initWithDic:(NSDictionary*)dic{
     self = [super init];
     if(self){
-        NSString *imgUrl = [dic objectForKey:@""];
+        NSString *imgUrl = [dic objectForKey:@"goods_home_img"];
         [self setImgUrl:imgUrl];
         
-        NSString *name = [dic objectForKey:@""];
+        NSString *name = [dic objectForKey:@"goods_name"];
         [self setName:name];
         
-        CGFloat price = [[dic objectForKey:@""] floatValue];
-        [self setPrice:price];
+        CGFloat price = [[dic objectForKey:@"market_price"] floatValue];
+        [self setMarket_price:price];
+        
+        CGFloat price1 = [[dic objectForKey:@"shop_price"] floatValue];
+        [self setShop_price:price1];
+        
+        NSInteger goods_id = [[dic objectForKey:@"goods_id"] integerValue];
+        [self setGoodsID:goods_id];
     }
     return self;
 }

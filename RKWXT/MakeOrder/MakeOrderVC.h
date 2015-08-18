@@ -8,7 +8,6 @@
 
 #import "WXUIViewController.h"
 
-
 @interface MakeOrderVC : WXUIViewController
 @property (nonatomic,strong) id goodsList;
 

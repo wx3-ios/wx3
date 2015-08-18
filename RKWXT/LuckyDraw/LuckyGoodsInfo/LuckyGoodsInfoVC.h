@@ -7,8 +7,9 @@
 //
 
 #import "WXUIViewController.h"
+@class LuckySharkEntity;
 
 @interface LuckyGoodsInfoVC : WXUIViewController
-@property (nonatomic,assign) NSInteger luckyGoodsID;
+@property (nonatomic,strong) LuckySharkEntity *luckyEnt;
 
 @end

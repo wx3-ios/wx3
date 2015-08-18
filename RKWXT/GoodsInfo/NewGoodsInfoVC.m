@@ -23,10 +23,12 @@
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
+#define TopNavigationViewHeight (64)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,PayAttentionToGoodsDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,DownSheetDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,DownSheetDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
+    WXUIImageView *topImgView;
     BOOL _isOpen;
     BOOL _showUpview;
     BOOL _isBuy; // 是否为购买状态
@@ -84,8 +86,7 @@
         [self addSubview:[self downViewShow]];
     }
     
-    WXUIButton *btn = [self createNavBackBtn];
-    [_tableView addSubview:btn];
+    [self crateTopNavigationView];
     
     //侧拉
     _showUpview = YES;
@@ -163,17 +164,54 @@
     return rightView;
 }
 
--(WXUIButton*)createNavBackBtn{
-    CGFloat xOffset = 20;
-    CGFloat yOffset = 30;
-    CGFloat btnWidth = 30;
-    CGFloat btnHeight = btnWidth;
+-(void)crateTopNavigationView{
+    WXUIView *topView = [[WXUIView alloc] init];
+    topView.frame = CGRectMake(0, 0, self.bounds.size.width, TopNavigationViewHeight);
+    [topView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:topView];
+    
+    CGFloat xGap = 10;
+    CGFloat yGap = 10;
+    topImgView = [[WXUIImageView alloc] init];
+    topImgView.frame = topView.frame;
+    [topImgView setBackgroundColor:[UIColor whiteColor]];
+    [topImgView setAlpha:0.1];
+    [topView addSubview:topImgView];
+    
+    CGFloat btnWidth = 25;
+    CGFloat btnHeight = 25;
     WXUIButton *backBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(xOffset, yOffset, btnWidth, btnHeight);
-    [backBtn setImage:[UIImage imageNamed:@"T_Back.png"] forState:UIControlStateNormal];
+    backBtn.frame = CGRectMake(xGap, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
     [backBtn setBackgroundColor:[UIColor clearColor]];
+    [backBtn setImage:[UIImage imageNamed:@"CommonArrowLeft.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backToLastPage) forControlEvents:UIControlEventTouchUpInside];
-    return backBtn;
+    [topView addSubview:backBtn];
+    
+    CGFloat labelWidth = 80;
+    CGFloat labelHeight = 30;
+    WXUILabel *titleLabel = [[WXUILabel alloc] init];
+    titleLabel.frame = CGRectMake((self.bounds.size.width-labelWidth)/2, TopNavigationViewHeight-yGap-labelHeight, labelWidth, labelHeight);
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel setFont:WXFont(15.0)];
+    [titleLabel setText:@"商品详情"];
+    [titleLabel setTextColor:WXColorWithInteger(0x000000)];
+    [topView addSubview:titleLabel];
+    
+    WXUIButton *sharebtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    sharebtn.frame = CGRectMake(self.bounds.size.width-xGap-btnWidth, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
+    [sharebtn setBackgroundColor:[UIColor clearColor]];
+    [sharebtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
+    [sharebtn addTarget:self action:@selector(sharebtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:sharebtn];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint contentOffset = scrollView.contentOffset;
+    CGFloat number = contentOffset.y/self.bounds.size.width;
+    number = (number>=1.0?1.0:number);
+    number = (number<0.1?0.1:number);
+    [topImgView setAlpha:1.4*number];
 }
 
 -(WXUIView *)downViewShow{
@@ -319,7 +357,6 @@
         cell = [[NewGoodsInfoDesCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setDelegate:self];
     if([_model.data count] > 0){
         [cell setCellInfo:[_model.data objectAtIndex:0]];
     }
@@ -446,7 +483,7 @@
 }
 
 #pragma mark delegate
--(void)payAttentionToSomeGoods:(WXUIButton *)btn{
+-(void)sharebtnClicked{
     DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
     sheet.delegate = self;
     [sheet showInView:self];

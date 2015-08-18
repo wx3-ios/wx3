@@ -82,7 +82,7 @@
         WXUILabel *line = [[WXUILabel alloc] init];
         line.frame = CGRectMake(xOffset, yOffset, 0.5, T_GoodsInfoDescHeight-2*yOffset);
         [line setBackgroundColor:WXColorWithInteger(0xcacaca)];
-        [self.contentView addSubview:line];
+//        [self.contentView addSubview:line];
         
         CGFloat btnWidth = 27;
         CGFloat btnHeight = 25;
@@ -91,8 +91,8 @@
         [_attentionBtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
         [_attentionBtn.titleLabel setFont:[UIFont systemFontOfSize:smallTextFont]];
         [_attentionBtn setTitleColor:WXColorWithInteger(smallTextColor) forState:UIControlStateNormal];
-        [_attentionBtn addTarget:self action:@selector(payAttention:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_attentionBtn];
+//        [_attentionBtn addTarget:self action:@selector(payAttention:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.contentView addSubview:_attentionBtn];
         
         CGFloat width = 60;
         WXUILabel *label = [[WXUILabel alloc] init];
@@ -102,7 +102,7 @@
         [label setText:@"分享"];
         [label setFont:[UIFont systemFontOfSize:13.0]];
         [label setTextColor:WXColorWithInteger(0xcacaca)];
-        [self.contentView addSubview:label];
+//        [self.contentView addSubview:label];
     }
     return self;
 }
@@ -112,16 +112,9 @@
     [_oldPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shop_price]];
     [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.market_price]];
     [_descLabel setText:entity.intro];
-    if(entity.concernID != 0){
-        [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
-    }
-}
-
--(void)payAttention:(WXUIButton*)btn{
-//    GoodsInfoEntity *entity = self.cellInfo;
-    if(_delegate && [_delegate respondsToSelector:@selector(payAttentionToSomeGoods:)]){
-        [_delegate payAttentionToSomeGoods:btn];
-    }
+//    if(entity.concernID != 0){
+//        [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
+//    }
 }
 
 @end

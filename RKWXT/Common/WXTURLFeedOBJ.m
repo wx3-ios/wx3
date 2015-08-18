@@ -154,7 +154,13 @@
             url = @"/insert_recharge_order.php";
             break;
         case WXT_UrlFeed_Type_New_LuckyGoodsList:
-            url = @"";
+            url = @"/get_all_award.php";
+            break;
+        case WXT_UrlFeed_Type_New_LuckyShark:
+            url = @"/get_lottery_draw_goods.php";
+            break;
+        case WXT_UrlFeed_Type_New_LuckyMakeOrder:
+            url = @"/insert_award_order.php";
             break;
         default:
             break;

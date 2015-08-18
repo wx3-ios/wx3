@@ -38,7 +38,7 @@
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:NO animated:NO];
     if(_tableView){
-        [_tableView reloadData];
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_UserInfo] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -224,6 +224,7 @@
     if(!cell){
         cell = [[MakeOrderUserInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell load];
     return cell;

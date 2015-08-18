@@ -23,6 +23,7 @@
 #import "JPushMessageCenterVC.h"
 #import "JPushMessageInfoVC.h"
 #import "FindCommonVC.h"
+#import "LuckyGoodsOrderList.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -60,6 +61,12 @@
     WXUIViewController *vc = sender;
     HomeOrderVC *orderListVC = [[HomeOrderVC alloc] init];
     orderListVC.selectedNum = number;
+    [vc.wxNavigationController pushViewController:orderListVC];
+}
+
+-(void)toLuckyOrderList:(id)sender animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    LuckyGoodsOrderList *orderListVC = [[LuckyGoodsOrderList alloc] init];
     [vc.wxNavigationController pushViewController:orderListVC];
 }
 

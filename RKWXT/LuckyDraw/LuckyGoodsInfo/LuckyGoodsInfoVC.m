@@ -12,6 +12,15 @@
 #import "NewGoodsInfoBDCell.h"
 #import "NewGoodsInfoDownCell.h"
 #import "WXTMallListWebVC.h"
+#import "NewGoodsInfoModel.h"
+#import "GoodsInfoEntity.h"
+#import "WXRemotionImgBtn.h"
+#import "GoodsInfoDef.h"
+#import "LuckyGoodsMakeOrderVC.h"
+#import "LuckySharkEntity.h"
+#import "DownSheet.h"
+#import "WXWeiXinOBJ.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 #define size self.bounds.size
 #define TopNavigationViewHeight (64)
@@ -26,9 +35,17 @@ enum{
     LuckyGoodsInfo_Section_Invalid,
 };
 
-@interface LuckyGoodsInfoVC ()<UITableViewDataSource,UITableViewDelegate>{
+@interface LuckyGoodsInfoVC ()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,DownSheetDelegate>{
     UITableView *_tableView;
     BOOL _isOpen;
+    
+    WXUIImageView *topImgView;
+    
+    NewGoodsInfoModel *_model;
+    
+    LuckySharkEntity *luckyEntity;
+    
+    NSArray *menuList;
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 
@@ -50,8 +67,48 @@ enum{
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     [self crateTopNavigationView];
+    [self initDropList];
+    
+    luckyEntity = _luckyEnt;
+    _model = [[NewGoodsInfoModel alloc] init];
+    [_model setDelegate:self];
+    [_model loadGoodsInfo:luckyEntity.goods_id];
+    
+    if(luckyEntity.goods_price > 0){
+        [self createDownView];
+    }
+}
+
+-(void)initDropList{
+    DownSheetModel *model_1 = [[DownSheetModel alloc] init];
+    model_1.icon = @"ShareQqImg.png";
+    model_1.icon_on = @"ShareQqImg.png";
+    model_1.title = @"分享到qq好友";
+    
+    DownSheetModel *model_2 = [[DownSheetModel alloc] init];
+    model_2.icon = @"ShareQzoneImg.png";
+    model_2.icon_on = @"ShareQzoneImg.png";
+    model_2.title = @"分享到qq空间";
+    
+    DownSheetModel *model_3 = [[DownSheetModel alloc] init];
+    model_3.icon = @"ShareWxFriendImg.png";
+    model_3.icon_on = @"ShareWxFriendImg.png";
+    model_3.title = @"分享到微信好友";
+    
+    DownSheetModel *model_4 = [[DownSheetModel alloc] init];
+    model_4.icon = @"ShareWxCircleImg.png";
+    model_4.icon_on = @"ShareWxCircleImg.png";
+    model_4.title = @"分享到朋友圈";
+    
+    DownSheetModel *model_5 = [[DownSheetModel alloc] init];
+    model_5.icon = @"Icon.png";
+    model_5.icon_on = @"Icon.png";
+    model_5.title = @"取消";
+    
+    menuList = @[model_1,model_2,model_3,model_4,model_5];
 }
 
 -(void)crateTopNavigationView{
@@ -62,9 +119,10 @@ enum{
     
     CGFloat xGap = 10;
     CGFloat yGap = 10;
-    WXUIImageView *topImgView = [[WXUIImageView alloc] init];
+    topImgView = [[WXUIImageView alloc] init];
     topImgView.frame = topView.frame;
-    [topImgView setImage:[UIImage imageNamed:@""]];
+    [topImgView setBackgroundColor:[UIColor whiteColor]];
+    [topImgView setAlpha:0.1];
     [topView addSubview:topImgView];
     
     CGFloat btnWidth = 25;
@@ -72,7 +130,7 @@ enum{
     WXUIButton *backBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(xGap, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
     [backBtn setBackgroundColor:[UIColor clearColor]];
-    [backBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"CommonArrowLeft.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:backBtn];
     
@@ -83,15 +141,32 @@ enum{
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     [titleLabel setFont:WXFont(15.0)];
+    [titleLabel setText:@"商品详情"];
     [titleLabel setTextColor:WXColorWithInteger(0x000000)];
     [topView addSubview:titleLabel];
 
     WXUIButton *sharebtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     sharebtn.frame = CGRectMake(size.width-xGap-btnWidth, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
     [sharebtn setBackgroundColor:[UIColor clearColor]];
-    [sharebtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [sharebtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
     [sharebtn addTarget:self action:@selector(sharebtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:sharebtn];
+}
+
+-(void)createDownView{
+    WXUIButton *leftbtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    leftbtn.frame = CGRectMake(0, size.height-DownViewHeight, size.width/2, DownViewHeight);
+    [leftbtn setBackgroundColor:WXColorWithInteger(0x888888)];
+    [leftbtn setTitle:@"取消" forState:UIControlStateNormal];
+    [leftbtn addTarget:self action:@selector(cancelPayGoods) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:leftbtn];
+    
+    WXUIButton *rightbtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    rightbtn.frame = CGRectMake(size.width/2, size.height-DownViewHeight, size.width/2, DownViewHeight);
+    [rightbtn setBackgroundColor:WXColorWithInteger(0xdd27262)];
+    [rightbtn setTitle:@"付邮费" forState:UIControlStateNormal];
+    [rightbtn addTarget:self action:@selector(payGoods) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:rightbtn];
 }
 
 //改变cell分割线置顶
@@ -116,7 +191,7 @@ enum{
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return LuckyGoodsInfo_Section_TopInfo;
+    return LuckyGoodsInfo_Section_Invalid;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -131,12 +206,12 @@ enum{
         {
             if(_isOpen){
                 if(_selectedIndexPath.section == section){
-//                    if([_model.data count] > 0){
-//                        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-//                        return [entity.customNameArr count]+1;
-//                    }else{
-//                        return 1;
-//                    }
+                    if([_model.data count] > 0){
+                        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                        return [entity.customNameArr count]+1;
+                    }else{
+                        return 1;
+                    }
                 }
             }else{
                 return 1;
@@ -185,16 +260,16 @@ enum{
         cell = [[LuckyGoodsInfoTopImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     NSMutableArray *merchantImgViewArray = [[NSMutableArray alloc] init];
-//    GoodsInfoEntity *entity = nil;
-//    if([_model.data count] > 0){
-//        entity = [_model.data objectAtIndex:0];
-//    }
-//    for(int i = 0; i< [entity.imgArr count]; i++){
-//        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, T_GoodsInfoTopImgHeight)];
-//        [imgView setExclusiveTouch:NO];
-//        [imgView setCpxViewInfo:[entity.imgArr objectAtIndex:i]];
-//        [merchantImgViewArray addObject:imgView];
-//    }
+    GoodsInfoEntity *entity = nil;
+    if([_model.data count] > 0){
+        entity = [_model.data objectAtIndex:0];
+    }
+    for(int i = 0; i< [entity.imgArr count]; i++){
+        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, size.width, T_GoodsInfoTopImgHeight)];
+        [imgView setExclusiveTouch:NO];
+        [imgView setCpxViewInfo:[entity.imgArr objectAtIndex:i]];
+        [merchantImgViewArray addObject:imgView];
+    }
     cell = [[LuckyGoodsInfoTopImgCell alloc] initWithLuckyReuseIdentifier:identifier imageArray:merchantImgViewArray];
     [cell load];
     return cell;
@@ -205,6 +280,12 @@ enum{
     LuckyGoodsDesCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[LuckyGoodsDesCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setUserInteractionEnabled:NO];
+    if([_model.data count] > 0){
+        [cell setCellInfo:[_model.data objectAtIndex:0]];
+        [cell setNewprice:luckyEntity.goods_price];
+        [cell setName:luckyEntity.stockName];
     }
     [cell load];
     return cell;
@@ -245,12 +326,11 @@ enum{
         cell = [[NewGoodsInfoDownCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    if([_model.data count] > 0){
-//        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-//        //        [cell setCellInfo:[entity.customNameArr objectAtIndex:row]];
-//        [cell setName:[entity.customNameArr objectAtIndex:row-1]];
-//        [cell setInfo:[entity.customInfoArr objectAtIndex:row-1]];
-//    }
+    if([_model.data count] > 0){
+        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+        [cell setName:[entity.customNameArr objectAtIndex:row-1]];
+        [cell setInfo:[entity.customInfoArr objectAtIndex:row-1]];
+    }
     [cell load];
     return cell;
 }
@@ -317,6 +397,14 @@ enum{
     }
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint contentOffset = scrollView.contentOffset;
+    CGFloat number = contentOffset.y/size.width;
+    number = (number>=1.0?1.0:number);
+    number = (number<0.1?0.1:number);
+    [topImgView setAlpha:1.4*number];
+}
+
 #pragma mark cell下拉
 -(void)didSelectCellRowFirstDo:(BOOL)firstDoInsert nextDo:(BOOL)nextDoInsert{
     _isOpen = firstDoInsert;
@@ -329,16 +417,122 @@ enum{
 }
 
 -(void)gotoWebView{
-//    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     WXTMallListWebVC *webViewVC = [[WXTMallListWebVC alloc] init];
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:_goodsId], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
-//    id ret = [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
-//    NSLog(@"ret = %@",ret);
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:luckyEntity.goods_id], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
+    id ret = [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
+    NSLog(@"ret = %@",ret);
     [self.wxNavigationController pushViewController:webViewVC];
 }
 
+//分享
 -(void)sharebtnClicked{
-    
+    DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
+    sheet.delegate = self;
+    [sheet showInView:self];
+}
+
+-(void)didSelectIndex:(NSInteger)index{
+    UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
+    if([_model.data count] > 0){
+        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+        NSURL *url = [NSURL URLWithString:entity.smallImg];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if(data){
+            image = [UIImage imageWithData:data];
+        }
+    }
+    if(index == Share_Friends){
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
+    }
+    if(index == Share_Clrcle){
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
+    }
+    if(index == Share_Qq){
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] previewImageData:data];
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
+        QQApiSendResultCode sent = [QQApiInterface sendReq:req];
+        if(sent == EQQAPISENDSUCESS){
+            NSLog(@"qq好友分享成功");
+        }
+    }
+    if(index == Share_Qzone){
+        NSData *data = UIImagePNGRepresentation(image);
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] previewImageData:data];
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
+        QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
+        if(sent == EQQAPISENDSUCESS){
+            NSLog(@"qq空间分享成功");
+        }
+    }
+    if(index == Share_Invalid){
+        NSLog(@"取消");
+    }
+}
+
+-(NSString*)sharedGoodsInfoTitle{
+    NSString *title = @"";
+    if([_model.data count] > 0){
+        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+        title = entity.intro;
+    }
+    return title;
+}
+
+-(NSString*)sharedGoodsInfoDescription{
+    NSString *description = @"";
+    description = [NSString stringWithFormat:@"我在我信商城抽到一个奖品,免费的哦,赶快来看看吧。"];
+    return description;
+}
+
+-(NSString*)sharedGoodsInfoUrlString{
+    NSString *strB = [[self sharedGoodsInfoTitle] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?shop_id=%d&MerchantID=100000&go=good_detail&title=%@&goods_id=%ld&woxin_id=%@",WXTShareBaseUrl,kSubShopID,strB,(long)_luckyEnt.goods_id,userDefault.wxtID];
+    return urlString;
+}
+
+#pragma mark model
+-(void)goodsInfoModelLoadedSucceed{
+    [self unShowWaitView];
+    [_tableView reloadData];
+    [_model setDelegate:nil];
+}
+
+-(void)goodsInfoModelLoadedFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取信息失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
+#pragma mark cacel
+-(void)cancelPayGoods{
+    [self back];
+}
+
+-(void)payGoods{
+    NSMutableArray *goodsArr = [[NSMutableArray alloc] init];
+    GoodsInfoEntity *entity = [self priceForStock:luckyEntity.stock_id];
+    entity.buyNumber = 1;
+    [goodsArr addObject:entity];
+    LuckyGoodsMakeOrderVC *vc = [[LuckyGoodsMakeOrderVC alloc] init];
+    vc.goodsList = goodsArr;
+    vc.payMoney = luckyEntity.goods_price;
+    vc.lotty_id = luckyEntity.lottery_id;
+    [self.wxNavigationController pushViewController:vc];
+}
+
+-(GoodsInfoEntity*)priceForStock:(NSInteger)stockID{
+    GoodsInfoEntity *ent = nil;
+    for(GoodsInfoEntity *entity in _model.data){
+        if(entity.stockID == stockID){
+            ent = entity;
+        }
+    }
+    return ent;
 }
 
 -(void)back{

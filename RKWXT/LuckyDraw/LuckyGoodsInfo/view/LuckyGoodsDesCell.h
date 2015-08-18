@@ -11,5 +11,7 @@
 #define LuckyGoodsDesCellHeight (80)
 
 @interface LuckyGoodsDesCell : WXUITableViewCell
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,assign) CGFloat newprice;
 
 @end

@@ -1,26 +1,25 @@
 //
-//  MakeOrderGoodsListCell.m
+//  LuckyGoodsMakeOrderCell.m
 //  RKWXT
 //
-//  Created by SHB on 15/6/25.
+//  Created by SHB on 15/8/18.
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "MakeOrderGoodsListCell.h"
+#import "LuckyGoodsMakeOrderCell.h"
 #import "WXRemotionImgBtn.h"
 #import "MakeOrderDef.h"
 #import "GoodsInfoEntity.h"
 
-@interface MakeOrderGoodsListCell(){
+@interface LuckyGoodsMakeOrderCell(){
     WXRemotionImgBtn *_imgView;
     UILabel *_nameLabel;
     UILabel *_stockName;
-    UILabel *_numLabel;
     UILabel *_priceLabel;
 }
 @end
 
-@implementation MakeOrderGoodsListCell
+@implementation LuckyGoodsMakeOrderCell
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -65,16 +64,6 @@
         [_priceLabel setTextColor:WXColorWithInteger(0x000000)];
         [_priceLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:_priceLabel];
-        
-        CGFloat numWidth = 35;
-        CGFloat numHeight = 14;
-        _numLabel = [[UILabel alloc] init];
-        _numLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-12-numWidth, yOffset+priceHeight+10, numWidth, numHeight);
-        [_numLabel setBackgroundColor:[UIColor clearColor]];
-        [_numLabel setTextAlignment:NSTextAlignmentRight];
-        [_numLabel setFont:WXFont(13.0)];
-        [_numLabel setTextColor:WXColorWithInteger(0x000000)];
-        [self.contentView addSubview:_numLabel];
     }
     return self;
 }
@@ -84,7 +73,6 @@
     [_imgView setCpxViewInfo:entity.smallImg];
     [_imgView load];
     [_nameLabel setText:entity.intro];
-    [_numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.buyNumber]];
     [_stockName setText:entity.stockName];
     CGFloat price = entity.buyNumber*entity.stockPrice;
     [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",price]];

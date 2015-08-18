@@ -289,6 +289,14 @@
 		129D23481B4F9CB600008DA0 /* OrderInfoUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D23471B4F9CB600008DA0 /* OrderInfoUserInfoCell.m */; };
 		129D234B1B4FA84A00008DA0 /* OrderInfoConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D234A1B4FA84A00008DA0 /* OrderInfoConsultCell.m */; };
 		129D234E1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D234D1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m */; };
+		129F32971B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32961B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m */; };
+		129F329A1B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32991B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.m */; };
+		129F329D1B82D2DF004DFFB1 /* LuckySharkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F329C1B82D2DF004DFFB1 /* LuckySharkModel.m */; };
+		129F32A01B830855004DFFB1 /* LuckySharkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F329F1B830855004DFFB1 /* LuckySharkEntity.m */; };
+		129F32A31B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32A21B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m */; };
+		129F32A91B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32A81B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.m */; };
+		129F32AC1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32AB1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m */; };
+		129F32AF1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32AE1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m */; };
 		12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */; };
 		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
 		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
@@ -330,6 +338,11 @@
 		12C12F311B81C5C500345BEE /* LuckyOrderMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C12F301B81C5C500345BEE /* LuckyOrderMoneyCell.m */; };
 		12C12F341B81C8AC00345BEE /* LuckyOrderContactSellerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C12F331B81C8AC00345BEE /* LuckyOrderContactSellerCell.m */; };
 		12C12F371B81CB6900345BEE /* LuckyOrderNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C12F361B81CB6900345BEE /* LuckyOrderNumberCell.m */; };
+		12C12F3B1B81DA6D00345BEE /* LuckyShakeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C12F3A1B81DA6D00345BEE /* LuckyShakeVC.m */; };
+		12C12F411B81DD2200345BEE /* SharkBigImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C12F3E1B81DD2200345BEE /* SharkBigImg@2x.png */; };
+		12C12F421B81DD2200345BEE /* SharkCenterImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C12F3F1B81DD2200345BEE /* SharkCenterImg@2x.png */; };
+		12C12F431B81DD2200345BEE /* SharkRuleImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C12F401B81DD2200345BEE /* SharkRuleImg@2x.png */; };
+		12C12F451B81DFB500345BEE /* SharkBigImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C12F441B81DFB500345BEE /* SharkBigImg.png */; };
 		12C2000D1B4E792600BE8EE8 /* RefundStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2000C1B4E792600BE8EE8 /* RefundStateModel.m */; };
 		12C200101B4E7B0900BE8EE8 /* RefundStateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2000F1B4E7B0900BE8EE8 /* RefundStateEntity.m */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
@@ -1180,6 +1193,22 @@
 		129D234A1B4FA84A00008DA0 /* OrderInfoConsultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoConsultCell.m; sourceTree = "<group>"; };
 		129D234C1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoFactMOneyCell.h; sourceTree = "<group>"; };
 		129D234D1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoFactMOneyCell.m; sourceTree = "<group>"; };
+		129F32951B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsMakeOrderVC.h; sourceTree = "<group>"; };
+		129F32961B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderVC.m; sourceTree = "<group>"; };
+		129F32981B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyMakeOrderCompanyCell.h; sourceTree = "<group>"; };
+		129F32991B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyMakeOrderCompanyCell.m; sourceTree = "<group>"; };
+		129F329B1B82D2DF004DFFB1 /* LuckySharkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckySharkModel.h; sourceTree = "<group>"; };
+		129F329C1B82D2DF004DFFB1 /* LuckySharkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckySharkModel.m; sourceTree = "<group>"; };
+		129F329E1B830855004DFFB1 /* LuckySharkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckySharkEntity.h; sourceTree = "<group>"; };
+		129F329F1B830855004DFFB1 /* LuckySharkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckySharkEntity.m; sourceTree = "<group>"; };
+		129F32A11B831299004DFFB1 /* LuckyGoodsMakeOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsMakeOrderCell.h; sourceTree = "<group>"; };
+		129F32A21B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderCell.m; sourceTree = "<group>"; };
+		129F32A71B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsMakeOrderMoneyCell.h; sourceTree = "<group>"; };
+		129F32A81B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderMoneyCell.m; sourceTree = "<group>"; };
+		129F32AA1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsMakeOrderDateCell.h; sourceTree = "<group>"; };
+		129F32AB1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderDateCell.m; sourceTree = "<group>"; };
+		129F32AD1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsMakeOrderModel.h; sourceTree = "<group>"; };
+		129F32AE1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderModel.m; sourceTree = "<group>"; };
 		12A050BA1B30FFB3008CC38F /* HomeNavENtity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavENtity.h; sourceTree = "<group>"; };
 		12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavENtity.m; sourceTree = "<group>"; };
 		12A050BD1B310050008CC38F /* HomeNavModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavModel.h; sourceTree = "<group>"; };
@@ -1256,6 +1285,12 @@
 		12C12F331B81C8AC00345BEE /* LuckyOrderContactSellerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyOrderContactSellerCell.m; sourceTree = "<group>"; };
 		12C12F351B81CB6900345BEE /* LuckyOrderNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyOrderNumberCell.h; sourceTree = "<group>"; };
 		12C12F361B81CB6900345BEE /* LuckyOrderNumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyOrderNumberCell.m; sourceTree = "<group>"; };
+		12C12F391B81DA6D00345BEE /* LuckyShakeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyShakeVC.h; sourceTree = "<group>"; };
+		12C12F3A1B81DA6D00345BEE /* LuckyShakeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyShakeVC.m; sourceTree = "<group>"; };
+		12C12F3E1B81DD2200345BEE /* SharkBigImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkBigImg@2x.png"; sourceTree = "<group>"; };
+		12C12F3F1B81DD2200345BEE /* SharkCenterImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkCenterImg@2x.png"; sourceTree = "<group>"; };
+		12C12F401B81DD2200345BEE /* SharkRuleImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkRuleImg@2x.png"; sourceTree = "<group>"; };
+		12C12F441B81DFB500345BEE /* SharkBigImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SharkBigImg.png; sourceTree = "<group>"; };
 		12C2000B1B4E792600BE8EE8 /* RefundStateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundStateModel.h; sourceTree = "<group>"; };
 		12C2000C1B4E792600BE8EE8 /* RefundStateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundStateModel.m; sourceTree = "<group>"; };
 		12C2000E1B4E7B0900BE8EE8 /* RefundStateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundStateEntity.h; sourceTree = "<group>"; };
@@ -3181,6 +3216,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		129F32931B82BEE9004DFFB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				129F32AD1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.h */,
+				129F32AE1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		129F32941B82BEE9004DFFB1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				129F32981B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.h */,
+				129F32991B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.m */,
+				129F32A11B831299004DFFB1 /* LuckyGoodsMakeOrderCell.h */,
+				129F32A21B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m */,
+				129F32A71B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.h */,
+				129F32A81B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.m */,
+				129F32AA1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.h */,
+				129F32AB1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		12A050B91B30FD47008CC38F /* HomeNavigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -3286,6 +3345,7 @@
 		12C0691B1B7C9A9900C05D42 /* LuckyDraw */ = {
 			isa = PBXGroup;
 			children = (
+				12C12F381B81DA5600345BEE /* LuckyShark */,
 				12C12F1D1B81921000345BEE /* LuckyGoodsOrderInfo */,
 				12C12F141B818A5B00345BEE /* LuckyGoodsOrderList */,
 				12C12F131B818A1900345BEE /* LuckyGoodsMakeOrder */,
@@ -3329,6 +3389,10 @@
 		12C12F131B818A1900345BEE /* LuckyGoodsMakeOrder */ = {
 			isa = PBXGroup;
 			children = (
+				129F32951B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.h */,
+				129F32961B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m */,
+				129F32931B82BEE9004DFFB1 /* Model */,
+				129F32941B82BEE9004DFFB1 /* View */,
 			);
 			path = LuckyGoodsMakeOrder;
 			sourceTree = "<group>";
@@ -3395,6 +3459,39 @@
 				12C12F331B81C8AC00345BEE /* LuckyOrderContactSellerCell.m */,
 				12C12F351B81CB6900345BEE /* LuckyOrderNumberCell.h */,
 				12C12F361B81CB6900345BEE /* LuckyOrderNumberCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12C12F381B81DA5600345BEE /* LuckyShark */ = {
+			isa = PBXGroup;
+			children = (
+				12C12F391B81DA6D00345BEE /* LuckyShakeVC.h */,
+				12C12F3A1B81DA6D00345BEE /* LuckyShakeVC.m */,
+				12C12F3C1B81DA7E00345BEE /* Mode */,
+				12C12F3D1B81DA7E00345BEE /* View */,
+			);
+			path = LuckyShark;
+			sourceTree = "<group>";
+		};
+		12C12F3C1B81DA7E00345BEE /* Mode */ = {
+			isa = PBXGroup;
+			children = (
+				129F329B1B82D2DF004DFFB1 /* LuckySharkModel.h */,
+				129F329C1B82D2DF004DFFB1 /* LuckySharkModel.m */,
+				129F329E1B830855004DFFB1 /* LuckySharkEntity.h */,
+				129F329F1B830855004DFFB1 /* LuckySharkEntity.m */,
+			);
+			path = Mode;
+			sourceTree = "<group>";
+		};
+		12C12F3D1B81DA7E00345BEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12C12F441B81DFB500345BEE /* SharkBigImg.png */,
+				12C12F3E1B81DD2200345BEE /* SharkBigImg@2x.png */,
+				12C12F3F1B81DD2200345BEE /* SharkCenterImg@2x.png */,
+				12C12F401B81DD2200345BEE /* SharkRuleImg@2x.png */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5711,6 +5808,7 @@
 				124535581AE9D146004198C9 /* sign3@2x.png in Resources */,
 				124535131AE9D0BC004198C9 /* UserSelected@2x.png in Resources */,
 				1241E5521AE9D89B00811D3F /* delSel@2x.png in Resources */,
+				12C12F421B81DD2200345BEE /* SharkCenterImg@2x.png in Resources */,
 				1241E5471AE9D89B00811D3F /* 5N@2x.png in Resources */,
 				128083E11B622A6D00260B9F /* ShareQzoneImg@2x.png in Resources */,
 				12F46A3E1B20012000B8EC98 /* T_GoodsInfo@2x.png in Resources */,
@@ -5775,6 +5873,7 @@
 				1241E5351AE9D89B00811D3F /* CallBackIconImgSel@2x.png in Resources */,
 				1245354E1AE9D146004198C9 /* sign26@2x.png in Resources */,
 				1241E5411AE9D89B00811D3F /* 2N@2x.png in Resources */,
+				12C12F411B81DD2200345BEE /* SharkBigImg@2x.png in Resources */,
 				1272490F1B2574C9001BDC15 /* RegistUserPwdImg@2x.png in Resources */,
 				DDEA9EE31B1BFE5D00530C1C /* sysPushMessageIcon@2x.png in Resources */,
 				128221DD1B184E84004613BB /* HomePageWallet@2x.png in Resources */,
@@ -5837,6 +5936,7 @@
 				128221D71B184E84004613BB /* HomePageLeftBtn@2x.png in Resources */,
 				12F465E11B6F0DE200A8F5AF /* guideIllustrate_0-568h@2x.jpg in Resources */,
 				1241E5511AE9D89B00811D3F /* delNumber@2x.png in Resources */,
+				12C12F451B81DFB500345BEE /* SharkBigImg.png in Resources */,
 				12F46A3F1B20012000B8EC98 /* T_GoodsInfoShare@2x.png in Resources */,
 				1241E5601AE9D91400811D3F /* Arrow@2x.png in Resources */,
 				12D52BB41AC2EF4400C5CE71 /* dtmf-#.aif in Resources */,
@@ -5864,6 +5964,7 @@
 				1241E5631AE9D91400811D3F /* T_AllBack@2x.png in Resources */,
 				129D23451B4F984400008DA0 /* OrderInfoUserAdd@2x.png in Resources */,
 				1241E53F1AE9D89B00811D3F /* 1N@2x.png in Resources */,
+				12C12F431B81DD2200345BEE /* SharkRuleImg@2x.png in Resources */,
 				12F46A401B20012000B8EC98 /* T_ShoppingCart@2x.png in Resources */,
 				1241E5361AE9D89B00811D3F /* callHistoryBtnImg@2x.png in Resources */,
 				120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */,
@@ -6083,6 +6184,7 @@
 				775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */,
 				775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */,
 				12E471D71B1F270C00559995 /* WaitSendConsultCell.m in Sources */,
+				129F32AF1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m in Sources */,
 				77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */,
 				DDEA9F0D1B1C2F2E00530C1C /* GoodsDetailCell.m in Sources */,
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
@@ -6107,6 +6209,7 @@
 				120A2BEE1AB135DD006A28B1 /* T_SignGifView.m in Sources */,
 				12F2D7DC1B1EA96B00C8017F /* DLScrollTabbarView.m in Sources */,
 				DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */,
+				129F32A91B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.m in Sources */,
 				1282218E1B1847E7004613BB /* RemotionFileEntity.m in Sources */,
 				775843151AB95A300039B129 /* WXTouchEventView.m in Sources */,
 				7758431C1AB95A300039B129 /* WXMFMessageComposeVC.m in Sources */,
@@ -6176,6 +6279,7 @@
 				775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */,
 				128766F41B50ED8400A79320 /* AboutShopModel.m in Sources */,
 				DDEA9ED91B1BF46900530C1C /* CartDetailCell.m in Sources */,
+				129F329D1B82D2DF004DFFB1 /* LuckySharkModel.m in Sources */,
 				77DB93F11AAFE70D0021A816 /* MessageData.m in Sources */,
 				775C58C51ABA7B75005B6B40 /* TopADVEntity.m in Sources */,
 				12B1F6931B788A20009FBA6D /* RechargeTypeCell.m in Sources */,
@@ -6205,6 +6309,7 @@
 				120A2BEA1AB135DD006A28B1 /* RechargeCell.m in Sources */,
 				12F9163B1B19B90B00C94717 /* BaseInfoCommonCell.m in Sources */,
 				12F963361B3D4BDF00FF6A3E /* SBJsonStreamWriterAccumulator.m in Sources */,
+				12C12F3B1B81DA6D00345BEE /* LuckyShakeVC.m in Sources */,
 				127329131B5CDDF4002AD4AE /* AboutVC.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
 				126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */,
@@ -6267,6 +6372,7 @@
 				77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */,
 				775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */,
 				775843041AB95A300039B129 /* DDMenuController.m in Sources */,
+				129F32AC1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m in Sources */,
 				12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */,
 				775C58BE1ABA7B75005B6B40 /* WXGoodCategoryModel.m in Sources */,
 				775842D91AB95A300039B129 /* UIColor+WX.m in Sources */,
@@ -6292,6 +6398,7 @@
 				12F9162D1B19B0AA00C94717 /* BaseInfoVC.m in Sources */,
 				12F380351B3BEF6F00E9690C /* UserAddressModel.m in Sources */,
 				120B754E1B1C19EA00B8746C /* PersonSexVC.m in Sources */,
+				129F329A1B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.m in Sources */,
 				125A76AA1B56628C00959AD8 /* ScreenActivityVC.m in Sources */,
 				7758430D1AB95A300039B129 /* WXCheckMenu.m in Sources */,
 				775843361AB95A300039B129 /* WXUITextView.m in Sources */,
@@ -6332,6 +6439,7 @@
 				775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
 				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,
+				129F32971B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m in Sources */,
 				12F1D64F1B2692DA003924DF /* RFSegmentView.m in Sources */,
 				12F2D7EF1B1ECEF700C8017F /* WaitSendGoodsListVC.m in Sources */,
 				12F2CCE61B4CCDF50085F78F /* ResetNewPwdModel.m in Sources */,
@@ -6370,6 +6478,7 @@
 				12F2D7D81B1EA96B00C8017F /* DLLRUCache.m in Sources */,
 				775C583B1ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m in Sources */,
 				DD0E38AF1B1BE5AC00AB4DB9 /* SysMsgSqlite.m in Sources */,
+				129F32A31B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m in Sources */,
 				775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */,
 				12F2D7F61B1EE7C300C8017F /* OrderAllListVC.m in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
@@ -6401,6 +6510,7 @@
 				1243CCB91AE7C31B003E0943 /* WXTUITabbarVC.m in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,
 				775C58C81ABA7B75005B6B40 /* ShopInfo.m in Sources */,
+				129F32A01B830855004DFFB1 /* LuckySharkEntity.m in Sources */,
 				129D234E1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,

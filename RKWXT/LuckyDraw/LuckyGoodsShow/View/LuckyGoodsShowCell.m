@@ -8,6 +8,7 @@
 
 #import "LuckyGoodsShowCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LuckyGoodsEntity.h"
 
 @interface LuckyGoodsShowCell(){
     WXRemotionImgBtn *_imgView;
@@ -23,10 +24,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 10;
-        CGFloat imgWidth = 80;
+        CGFloat imgWidth = 70;
         CGFloat imgHeight = imgWidth;
         _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (LuckyGoodsShowCellHeight-imgHeight)/2, imgWidth, imgHeight)];
-        [_imgView setExclusiveTouch:NO];
         [self.contentView addSubview:_imgView];
         
         xOffset += imgWidth+10;
@@ -57,11 +57,11 @@
 }
 
 -(void)load{
-//    [_imgView setCpxViewInfo:nil];
-//    [_imgView load];
-    [_imgView setImage:[UIImage imageNamed:@"Icon.png"]];
-    [_name setText:@"我信科技有限公司"];
-    [_price setText:@"￥12.00"];
+    LuckyGoodsEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:entity.imgUrl];
+    [_imgView load];
+    [_name setText:entity.name];
+    [_price setText:[NSString stringWithFormat:@"%.2f",entity.market_price]];
 }
 
 @end

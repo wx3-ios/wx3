@@ -27,7 +27,7 @@
         
         UIView *bgView = [[UIView alloc] init];
         bgView.frame = CGRectMake(0, yOffset, IPHONE_SCREEN_WIDTH, Order_Section_Height_UserInfo-2*yOffset);
-        [bgView setBackgroundColor:[UIColor brownColor]];
+        [bgView setBackgroundColor:WXColorWithInteger(0xfefaf1)];
         [self.contentView addSubview:bgView];
         
         UIImage *upImg = [UIImage imageNamed:@"MakeOrderLinImg.png"];
