@@ -162,6 +162,9 @@
         case WXT_UrlFeed_Type_New_LuckyMakeOrder:
             url = @"/insert_award_order.php";
             break;
+        case WXT_UrlFeed_Type_New_LoadJPushMessage:
+            url = @"/get_new_message.php";
+            break;
         default:
             break;
     }

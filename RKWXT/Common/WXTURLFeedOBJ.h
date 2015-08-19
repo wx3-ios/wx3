@@ -57,6 +57,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_LuckyGoodsList,
     WXT_UrlFeed_Type_New_LuckyShark,
     WXT_UrlFeed_Type_New_LuckyMakeOrder,
+    WXT_UrlFeed_Type_New_LoadJPushMessage,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

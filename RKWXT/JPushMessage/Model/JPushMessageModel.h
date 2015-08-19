@@ -15,6 +15,7 @@
 @property (nonatomic,strong) NSArray *jpushMsgArr;
 
 +(JPushMessageModel*)shareJPushModel;
+-(void)loadJPushMessageFromService;
 -(void)initJPushWithDic:(NSDictionary*)dic;
 -(void)initJPushWithCloseDic:(NSDictionary*)dic;
 -(void)loadJPushData;

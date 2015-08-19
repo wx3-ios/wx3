@@ -12,6 +12,7 @@
 #import "JPushDef.h"
 #import "T_Sqlite.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "WXTURLFeedOBJ+NewData.h"
 
 @interface JPushMessageModel(){
     NSMutableArray *_jpushMsgArr;
@@ -40,6 +41,42 @@
     return self;
 }
 
+//收到新消息后，点击icon无法获取到新消息，那么要从服务器获取最新的一条消息
+-(void)loadJPushMessageFromService{
+    [self loadJPushData];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    if([userObj.sellerID integerValue] <= 1){
+        return;
+    }
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.sellerID, @"seller_user_id", @"iOS", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInteger:kMerchantID], @"sid", nil];
+    __block JPushMessageModel *blockSelf = self;
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LoadJPushMessage httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+        if(retData.code != 0){
+        }else{
+            [blockSelf parseJPushMessageWithDic:[retData.data objectForKey:@"data"]];
+        }
+    }];
+}
+
+-(void)parseJPushMessageWithDic:(NSDictionary*)dic{
+    if(!dic){
+        return;
+    }
+    JPushMsgEntity *entity = [JPushMsgEntity initWithJPushMessageWithDic:dic];
+    for(JPushMsgEntity *ent in _jpushMsgArr){
+        if(ent.push_id == entity.push_id && ent.push_id != 0){
+            return;
+        }
+    }
+    entity.content = [dic objectForKey:@"push_title"];
+    [_jpushMsgArr addObject:entity];
+    [_proArr addObject:entity];
+    
+    Sql_JpushData *jpush = [[Sql_JpushData alloc] init];
+    [jpush insertData:entity.content withAbs:entity.abstract withImg:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.msgURL] withPushID:[NSString stringWithFormat:@"%ld",(long)entity.push_id]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_SystemMessageDetected object:nil];
+}
+
 //应用内
 -(void)initJPushWithDic:(NSDictionary *)dic{
     if(!dic){
@@ -51,7 +88,7 @@
     [_jpushMsgArr addObject:entity];
     
     for(JPushMsgEntity *ent in _proArr){
-        if(ent.push_id == entity.push_id){
+        if(ent.push_id == entity.push_id && ent.push_id != 0){
             return;
         }
     }
@@ -73,7 +110,7 @@
     [_jpushMsgArr addObject:entity];
     
     for(JPushMsgEntity *ent in _proArr){
-        if(ent.push_id == entity.push_id){
+        if(ent.push_id == entity.push_id && ent.push_id != 0){
             return;
         }
     }

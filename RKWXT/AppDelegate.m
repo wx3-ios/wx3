@@ -34,6 +34,8 @@
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
     ScreenActivityVC *activityVC;
+    
+    BOOL hasDeal;
 }
 
 @end
@@ -286,10 +288,11 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
 }
 
 - (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo
+didReceiveRemoteNotification:(NSDictionary *)userInfo  //点击锁屏消息打开应用收到的消息或者在应用内收到的消息
 fetchCompletionHandler:(void
                         (^)(UIBackgroundFetchResult))completionHandler {
     // IOS 7 Support Required
+    hasDeal = YES;
     [APService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
     [[JPushMessageModel shareJPushModel] initJPushWithDic:userInfo];
@@ -324,6 +327,7 @@ forRemoteNotification:(NSDictionary *)userInfo
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    hasDeal = NO;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];  //设置图标0
 }
 
@@ -331,6 +335,9 @@ forRemoteNotification:(NSDictionary *)userInfo
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    if(!hasDeal){
+        [[JPushMessageModel shareJPushModel] loadJPushMessageFromService];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
