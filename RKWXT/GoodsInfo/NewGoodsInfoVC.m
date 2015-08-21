@@ -20,12 +20,13 @@
 #import "WXWeiXinOBJ.h"
 #import "DownSheet.h"
 #import <TencentOpenAPI/QQApiInterface.h>
+#import "NewGoodsInfoTopImgView.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,DownSheetDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,DownSheetDelegate,MerchantImageCellDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     WXUIImageView *topImgView;
@@ -38,6 +39,7 @@
     
     WXUIButton *buyNowBtn;
     WXUIButton *insertCartBtn;
+    WXUIButton *backBtn;
     
     NSArray *menuList;
 }
@@ -180,7 +182,7 @@
     
     CGFloat btnWidth = 25;
     CGFloat btnHeight = 25;
-    WXUIButton *backBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    backBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(xGap, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
     [backBtn setBackgroundColor:[UIColor clearColor]];
     [backBtn setImage:[UIImage imageNamed:@"CommonArrowLeft.png"] forState:UIControlStateNormal];
@@ -211,7 +213,16 @@
     CGFloat number = contentOffset.y/self.bounds.size.width;
     number = (number>=1.0?1.0:number);
     number = (number<0.1?0.1:number);
-    [topImgView setAlpha:1.4*number];
+    [topImgView setAlpha:1.6*number];
+    if(number >= 0.5){
+        [UIView animateWithDuration:0.6 animations:^{
+            [backBtn setImage:[UIImage imageNamed:@"GoodsInfoGaryBackImg.png"] forState:UIControlStateNormal];
+        }];
+    }else{
+        [UIView animateWithDuration:0.6 animations:^{
+            [backBtn setImage:[UIImage imageNamed:@"CommonArrowLeft.png"] forState:UIControlStateNormal];
+        }];
+    }
 }
 
 -(WXUIView *)downViewShow{
@@ -345,8 +356,18 @@
         [merchantImgViewArray addObject:imgView];
     }
     cell = [[MerchantImageCell alloc] initWithReuseIdentifier:identifier imageArray:merchantImgViewArray];
+    [cell setDelegate:self];
     [cell load];
     return cell;
+}
+
+-(void)clickTopGoodAtIndex:(NSInteger)index{
+    NewGoodsInfoTopImgView *topImgView1 = [[NewGoodsInfoTopImgView alloc] init];
+    GoodsInfoEntity *entity = nil;
+    if([_model.data count] > 0){
+        entity = [_model.data objectAtIndex:0];
+    }
+    [topImgView1 showTopImgViewWithRootView:self.view withTopImgArr:entity.imgArr];
 }
 
 //商品描述

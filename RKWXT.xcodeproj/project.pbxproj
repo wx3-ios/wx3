@@ -29,6 +29,9 @@
 		120A2C161AB17A92006A28B1 /* SignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C151AB17A92006A28B1 /* SignModel.m */; };
 		120A2C661AB1804E006A28B1 /* SignEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2C651AB1804E006A28B1 /* SignEntity.m */; };
 		120A56CA1B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A56C91B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m */; };
+		120B5D941B86CC01009564F5 /* NewGoodsInfoTopImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B5D931B86CC01009564F5 /* NewGoodsInfoTopImgView.m */; };
+		120B5D971B86D9D9009564F5 /* NewGoodsInfoTopImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B5D961B86D9D9009564F5 /* NewGoodsInfoTopImgCell.m */; };
+		120B5D991B871991009564F5 /* GoodsInfoGaryBackImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120B5D981B871991009564F5 /* GoodsInfoGaryBackImg@2x.png */; };
 		120B75491B1C0F2100B8746C /* BaseInfoHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B75481B1C0F2100B8746C /* BaseInfoHeadCell.m */; };
 		120B754E1B1C19EA00B8746C /* PersonSexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B754D1B1C19EA00B8746C /* PersonSexVC.m */; };
 		120B75511B1C36BE00B8746C /* PersonDatePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B75501B1C36BE00B8746C /* PersonDatePickerVC.m */; };
@@ -820,6 +823,11 @@
 		120A2C651AB1804E006A28B1 /* SignEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEntity.m; sourceTree = "<group>"; };
 		120A56C81B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXTURLFeedOBJ+NewData.h"; sourceTree = "<group>"; };
 		120A56C91B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXTURLFeedOBJ+NewData.m"; sourceTree = "<group>"; };
+		120B5D921B86CC01009564F5 /* NewGoodsInfoTopImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGoodsInfoTopImgView.h; sourceTree = "<group>"; };
+		120B5D931B86CC01009564F5 /* NewGoodsInfoTopImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGoodsInfoTopImgView.m; sourceTree = "<group>"; };
+		120B5D951B86D9D9009564F5 /* NewGoodsInfoTopImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGoodsInfoTopImgCell.h; sourceTree = "<group>"; };
+		120B5D961B86D9D9009564F5 /* NewGoodsInfoTopImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGoodsInfoTopImgCell.m; sourceTree = "<group>"; };
+		120B5D981B871991009564F5 /* GoodsInfoGaryBackImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsInfoGaryBackImg@2x.png"; sourceTree = "<group>"; };
 		120B75471B1C0F2100B8746C /* BaseInfoHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInfoHeadCell.h; sourceTree = "<group>"; };
 		120B75481B1C0F2100B8746C /* BaseInfoHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInfoHeadCell.m; sourceTree = "<group>"; };
 		120B754C1B1C19EA00B8746C /* PersonSexVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonSexVC.h; sourceTree = "<group>"; };
@@ -2337,6 +2345,17 @@
 				120A2C651AB1804E006A28B1 /* SignEntity.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		120B5D911B86C62C009564F5 /* BackgroundView */ = {
+			isa = PBXGroup;
+			children = (
+				120B5D921B86CC01009564F5 /* NewGoodsInfoTopImgView.h */,
+				120B5D931B86CC01009564F5 /* NewGoodsInfoTopImgView.m */,
+				120B5D951B86D9D9009564F5 /* NewGoodsInfoTopImgCell.h */,
+				120B5D961B86D9D9009564F5 /* NewGoodsInfoTopImgCell.m */,
+			);
+			path = BackgroundView;
 			sourceTree = "<group>";
 		};
 		120E16241B846159009401F2 /* Model */ = {
@@ -4004,6 +4023,7 @@
 		12F46A251B1FF93600B8EC98 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				120B5D911B86C62C009564F5 /* BackgroundView */,
 				12F46A541B20510500B8EC98 /* RightView */,
 				12F46A421B20237600B8EC98 /* NewGoodsInfoData */,
 				12F46A431B20237600B8EC98 /* NewGoodsInfoDes */,
@@ -4015,6 +4035,7 @@
 		12F46A2C1B20012000B8EC98 /* T_GoodsInfo */ = {
 			isa = PBXGroup;
 			children = (
+				120B5D981B871991009564F5 /* GoodsInfoGaryBackImg@2x.png */,
 				128BB73E1B68A4BF004FCE66 /* T_ShareGoods@2x.png */,
 				12F46A2D1B20012000B8EC98 /* T_ArrowDown@2x.png */,
 				12F46A2E1B20012000B8EC98 /* T_ArrowRight@2x.png */,
@@ -5791,6 +5812,7 @@
 				12A66B281B74AE4800542112 /* NoWifi@2x.png in Resources */,
 				128083D61B61D21D00260B9F /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				1263EFE41ACD35820014C347 /* Icon-Small-50.png in Resources */,
+				120B5D991B871991009564F5 /* GoodsInfoGaryBackImg@2x.png in Resources */,
 				1241E53B1AE9D89B00811D3F /* *N.png in Resources */,
 				12F465E21B6F0DE200A8F5AF /* guideIllustrate_0@2x.jpg in Resources */,
 				1241E5381AE9D89B00811D3F /* HangupCall@2x.png in Resources */,
@@ -6149,6 +6171,7 @@
 				775842DD1AB95A300039B129 /* UIImage+Render.m in Sources */,
 				12C12F341B81C8AC00345BEE /* LuckyOrderContactSellerCell.m in Sources */,
 				12F2D7E91B1EAAF000C8017F /* WaitPayOrderListVC.m in Sources */,
+				120B5D971B86D9D9009564F5 /* NewGoodsInfoTopImgCell.m in Sources */,
 				12F915FC1B19507600C94717 /* T_MenuCommonInfoCell.m in Sources */,
 				775843161AB95A300039B129 /* WXUIBaseButton.m in Sources */,
 				12F9632F1B3D4BDF00FF6A3E /* NSObject+SBJson.m in Sources */,
@@ -6214,6 +6237,7 @@
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
 				12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */,
 				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
+				120B5D941B86CC01009564F5 /* NewGoodsInfoTopImgView.m in Sources */,
 				12AA52FB1B7DE10A003B893F /* LuckyGoodsInfoVC.m in Sources */,
 				12F46A2B1B1FFCD000B8EC98 /* NewGoodsInfoVC.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,

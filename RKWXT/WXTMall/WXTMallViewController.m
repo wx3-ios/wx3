@@ -51,6 +51,8 @@
     
     [self createTopBtn];
     [_model loadData];
+    
+    [self pullingTableViewDidStartRefreshing:_tableView];
 }
 
 -(void)createTopBtn{
