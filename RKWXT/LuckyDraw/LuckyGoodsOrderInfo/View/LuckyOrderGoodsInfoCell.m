@@ -8,6 +8,7 @@
 
 #import "LuckyOrderGoodsInfoCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LuckyOrderEntity.h"
 
 @interface LuckyOrderGoodsInfoCell(){
     WXRemotionImgBtn *_goodsImg;
@@ -66,6 +67,13 @@
 }
 
 -(void)load{
+    LuckyOrderEntity *entity = self.cellInfo;
+    [_goodsImg setCpxViewInfo:entity.goods_img];
+    [_goodsImg load];
+    
+    [_infoLabel setText:entity.goods_name];
+    [_goodsInfo setText:entity.stockName];
+    [_goodsPrice setText:[NSString stringWithFormat:@"%.2f",entity.market_price]];
 }
 
 @end

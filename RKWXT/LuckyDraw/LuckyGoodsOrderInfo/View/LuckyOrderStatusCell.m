@@ -7,6 +7,7 @@
 //
 
 #import "LuckyOrderStatusCell.h"
+#import "LuckyOrderEntity.h"
 
 @interface LuckyOrderStatusCell(){
     UILabel *_stateLabel;
@@ -53,7 +54,31 @@
 }
 
 -(void)load{
-    [_stateLabel setText:@"买家未付款"];
+    LuckyOrderEntity *entity = self.cellInfo;
+    
+    NSString *type = [self orderTypeWith:entity.pay_status withSendStatus:entity.send_status WithOrderStatus:entity.order_status];
+    [_stateLabel setText:type];
+}
+
+-(NSString*)orderTypeWith:(LuckyOrder_Pay)payStatus withSendStatus:(LuckyOrder_Send)sendStatus WithOrderStatus:(LuckyOrder_Status)orderStatus{
+    NSString *str = nil;
+    if(orderStatus == LuckyOrder_Status_Done){
+        return @"订单已完成";
+    }
+    if(orderStatus == LuckyOrder_Status_Close){
+        return @"订单已关闭";
+    }
+    if(payStatus == LuckyOrder_Pay_Wait){
+        return @"订单未付款";
+    }
+    if(payStatus == LuckyOrder_Pay_Done && sendStatus == LuckyOrder_Send_Wait){
+        return @"订单未发货";
+    }
+    if(payStatus == LuckyOrder_Pay_Done && sendStatus == LuckyOrder_Send_Done){
+        return @"订单已发货";
+    }
+    
+    return str;
 }
 
 @end

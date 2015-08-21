@@ -11,6 +11,7 @@
 @interface LuckySharkEntity : NSObject
 @property (nonatomic,assign) NSInteger goods_id;
 @property (nonatomic,strong) NSString *imgUrl;
+@property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *stockName;
 @property (nonatomic,assign) CGFloat goods_price;
 @property (nonatomic,assign) CGFloat market_price;

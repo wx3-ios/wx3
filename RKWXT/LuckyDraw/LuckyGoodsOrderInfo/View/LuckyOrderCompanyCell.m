@@ -25,7 +25,7 @@
         CGFloat imgHeight = imgWidth;
         _shopLogoImg = [[WXUIImageView alloc] initWithFrame:CGRectMake(xOffset, (LuckyOrderCompanyCellHeight-imgHeight)/2, imgWidth, imgHeight)];
         [_shopLogoImg setUserInteractionEnabled:NO];
-        [_shopLogoImg setImage:[UIImage imageNamed:@"Icon.png"]];
+        [_shopLogoImg setImage:[UIImage imageNamed:@"AboutUsLogo.png"]];
         [self.contentView addSubview:_shopLogoImg];
         
         xOffset += imgWidth+6;
@@ -34,6 +34,7 @@
         _shopNameLabel = [[UILabel alloc] init];
         _shopNameLabel.frame = CGRectMake(xOffset, (LuckyOrderCompanyCellHeight-nameHeight)/2, nameWidth, nameHeight);
         [_shopNameLabel setBackgroundColor:[UIColor clearColor]];
+        [_shopNameLabel setText:@"我信云科技有限公司"];
         [_shopNameLabel setTextAlignment:NSTextAlignmentLeft];
         [_shopNameLabel setTextColor:WXColorWithInteger(0x202020)];
         [_shopNameLabel setFont:WXTFont(14.0)];
@@ -51,7 +52,6 @@
 }
 
 -(void)load{
-    [_shopNameLabel setText:kMerchantName];
 }
 
 @end

@@ -88,6 +88,9 @@
         if(_versionEntity.updateType == WXT_Version_Force){
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"升级提示" message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"马上升级", nil];
             [alert show];
+            
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:@"" forKey:CheckDate];
         }
     }
 }

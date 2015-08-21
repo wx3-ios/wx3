@@ -39,7 +39,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 	if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         CGRect rect = [self bounds];
-        rect.size.height = T_HomePageTopImgHeight-yGap;
+        rect.size.height = rect.size.width/3-yGap;
         _browser = [[CSTScrollBrowser alloc] initWithFrame:rect];
         [_browser setScrollDelegate:self];
         [_browser setGap:0.0];
@@ -66,9 +66,10 @@
 -(void)load{
     NSArray *goodEntityArray = self.cellInfo;
     [self toInit];
+    CGRect rect = [self bounds];
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     for(HomePageTopEntity *topADVEntity in goodEntityArray){
-        WXRemotionImgBtn *imgView = [[[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, T_HomePageTopImgHeight-yGap)] autorelease];
+        WXRemotionImgBtn *imgView = [[[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, rect.size.width/3-yGap)] autorelease];
         [imgView setCpxViewInfo:topADVEntity.topImg];
         [imgView load];
         [imgView setDelegate:self];

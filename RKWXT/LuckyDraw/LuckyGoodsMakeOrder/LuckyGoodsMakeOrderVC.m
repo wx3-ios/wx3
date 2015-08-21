@@ -265,10 +265,11 @@ enum{
         case MakeOrder_Section_Company:
         {
             AboutShopVC *vc = [[AboutShopVC alloc] init];
-            vc.wxID = 1000000;
+            vc.shopID = 1000000;
             [self.wxNavigationController pushViewController:vc];
         }
             break;
+        
             
         default:
             break;
@@ -283,7 +284,8 @@ enum{
     GoodsInfoEntity *goodsEntity = [_goodsList objectAtIndex:0];
     NSInteger length = AllImgPrefixUrlString.length;
     NSString *smallImgStr = [goodsEntity.smallImg substringFromIndex:length];
-    [_model luckyGoodsMakeOrderWith:_lotty_id withGoodsID:goodsEntity.goods_id withName:goodsEntity.intro withImgUrl:smallImgStr withGoodsStockID:goodsEntity.stockID withStockName:goodsEntity.stockName WithMoney:_payMoney];
+    [_model luckyGoodsMakeOrderWith:_lotty_id withGoodsID:goodsEntity.goods_id withName:goodsEntity.intro withImgUrl:smallImgStr withGoodsStockID:goodsEntity.stockID withStockName:goodsEntity.stockName WithMoney:_payMoney withMarket:goodsEntity.market_price];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)luckyGoodsMakeOrderSucceed{

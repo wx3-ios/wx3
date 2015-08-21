@@ -31,8 +31,8 @@
     [self addSubview:_webView];
     
     NSInteger companyID = kMerchantID;
-    if(_wxID>0){
-        companyID = _wxID;
+    if(_shopID>0){
+        companyID = _shopID;
     }
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSString *urlStr = [NSString stringWithFormat:@"%@%@?sid=%d&phone=%@",WXTBaseUrl,NormaleMessageUrl,companyID,userObj.user];

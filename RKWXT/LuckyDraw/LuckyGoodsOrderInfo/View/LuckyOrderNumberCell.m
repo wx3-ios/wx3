@@ -7,6 +7,7 @@
 //
 
 #import "LuckyOrderNumberCell.h"
+#import "LuckyOrderEntity.h"
 
 @interface LuckyOrderNumberCell(){
     WXUILabel *_orderIDLabel;
@@ -54,7 +55,10 @@
 }
 
 -(void)load{
-    
+    LuckyOrderEntity *entity = self.cellInfo;
+    [_orderIDLabel setText:[NSString stringWithFormat:@"订单编号 %ld",(long)entity.order_id]];
+    [_orderType setText:[NSString stringWithFormat:@"快递方式 %@",entity.send_type]];
+    [_numberLabel setText:[NSString stringWithFormat:@"快递单号 %@",entity.send_number]];
 }
 
 @end

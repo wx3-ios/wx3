@@ -8,7 +8,7 @@
 
 #import "WXUITableViewCell.h"
 
-#define LuckyOrderStatusCellHeight (28)
+#define LuckyOrderStatusCellHeight (30)
 
 @interface LuckyOrderStatusCell : WXUITableViewCell
 

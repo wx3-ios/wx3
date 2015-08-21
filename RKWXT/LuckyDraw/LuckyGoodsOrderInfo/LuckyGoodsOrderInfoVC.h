@@ -8,6 +8,9 @@
 
 #import "WXUIViewController.h"
 
+@class LuckyOrderEntity;
+
 @interface LuckyGoodsOrderInfoVC : WXUIViewController
+@property (nonatomic,strong) LuckyOrderEntity *luckyEntity;
 
 @end

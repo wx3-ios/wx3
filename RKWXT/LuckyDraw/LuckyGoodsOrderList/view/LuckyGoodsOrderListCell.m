@@ -7,9 +7,11 @@
 //
 
 #import "LuckyGoodsOrderListCell.h"
+#import "LuckyOrderEntity.h"
+#import "WXRemotionImgBtn.h"
 
 @interface LuckyGoodsOrderListCell(){
-    WXUIImageView *_imgView;
+    WXRemotionImgBtn *_imgView;
     WXUILabel *_nameLabel;
     WXUILabel *_deslabel;
     WXUILabel *_dateLabel;
@@ -25,12 +27,11 @@
         CGFloat xOffset = 10;
         CGFloat imgWidth = 41;
         CGFloat imgHeight = imgWidth;
-        _imgView = [[WXUIImageView alloc] init];
-        _imgView.frame = CGRectMake(xOffset, (LuckyGoodsOrderListCellHeight-imgHeight)/2, imgWidth, imgHeight);
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (LuckyGoodsOrderListCellHeight-imgHeight)/2, imgWidth, imgHeight)];
         [_imgView setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_imgView];
         
-        xOffset += imgWidth+1;
+        xOffset += imgWidth+5;
         CGFloat yOffset = 12;
         CGFloat dateLabelWidth = 65;
         CGFloat nameLabelWidth = IPHONE_SCREEN_WIDTH-xOffset-dateLabelWidth-10;
@@ -43,7 +44,7 @@
         [_nameLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:_nameLabel];
         
-        yOffset += namelabelHeight+10;
+        yOffset += namelabelHeight+2;
         CGFloat desLabelHeight = 17;
         _deslabel = [[WXUILabel alloc] init];
         _deslabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, desLabelHeight);
@@ -64,7 +65,7 @@
         [_dateLabel setTextColor:WXColorWithInteger(0x8e8e8e)];
         [self.contentView addSubview:_dateLabel];
         
-        yGap += dateLabelHeight+15;
+        yGap += dateLabelHeight+5;
         _typeLabel = [[WXUILabel alloc] init];
         _typeLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-dateLabelWidth, yGap, dateLabelWidth, dateLabelHeight);
         [_typeLabel setBackgroundColor:[UIColor clearColor]];
@@ -77,11 +78,39 @@
 }
 
 -(void)load{
-    [_imgView setImage:[UIImage imageNamed:@"Icon.png"]];
-    [_nameLabel setText:@"我信科技有限公司"];
-    [_deslabel setText:@"科技型"];
-    [_dateLabel setText:@"2015-08-17"];
-    [_typeLabel setText:@"未支付"];
+    LuckyOrderEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:entity.goods_img];
+    [_imgView load];
+    
+    [_nameLabel setText:entity.goods_name];
+    [_deslabel setText:entity.stockName];
+    
+    NSString *timeStr = [UtilTool getDateTimeFor:entity.makeOrderTime type:2];
+    [_dateLabel setText:timeStr];
+    
+    NSString *type = [self orderTypeWith:entity.pay_status withSendStatus:entity.send_status WithOrderStatus:entity.order_status];
+    [_typeLabel setText:type];
+}
+
+-(NSString*)orderTypeWith:(LuckyOrder_Pay)payStatus withSendStatus:(LuckyOrder_Send)sendStatus WithOrderStatus:(LuckyOrder_Status)orderStatus{
+    NSString *str = nil;
+    if(orderStatus == LuckyOrder_Status_Done){
+        return @"已完成";
+    }
+    if(orderStatus == LuckyOrder_Status_Close){
+        return @"已关闭";
+    }
+    if(payStatus == LuckyOrder_Pay_Wait){
+        return @"待付款";
+    }
+    if(payStatus == LuckyOrder_Pay_Done && sendStatus == LuckyOrder_Send_Wait){
+        return @"待发货";
+    }
+    if(payStatus == LuckyOrder_Pay_Done && sendStatus == LuckyOrder_Send_Done){
+        return @"待收货";
+    }
+    
+    return str;
 }
 
 @end

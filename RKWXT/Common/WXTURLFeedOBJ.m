@@ -162,8 +162,14 @@
         case WXT_UrlFeed_Type_New_LuckyMakeOrder:
             url = @"/insert_award_order.php";
             break;
+        case WXT_UrlFeed_Type_New_LuckyOrderList:
+            url = @"/get_award_order.php";
+            break;
         case WXT_UrlFeed_Type_New_LoadJPushMessage:
             url = @"/get_new_message.php";
+            break;
+        case WXT_UrlFeed_Type_New_CompleteLuckyOrder:
+            url = @"/update_award_status.php";
             break;
         default:
             break;

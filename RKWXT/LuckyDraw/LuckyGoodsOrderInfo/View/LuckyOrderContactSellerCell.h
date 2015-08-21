@@ -19,6 +19,7 @@
 
 @protocol LuckyOrderContactSellerCellDelegate <NSObject>
 -(void)luckyOrderLeftBtnClicked;
--(void)luckyOrderRightBtnClicked;
+-(void)luckyOrderPayBtnClicked;
+-(void)luckyOrderCompleteBtnClicked;
 
 @end

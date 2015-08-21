@@ -8,7 +8,7 @@
 
 #import "WXUITableViewCell.h"
 
-#define LuckyOrderCompanyCellHeight 30
+#define LuckyOrderCompanyCellHeight 34
 
 @interface LuckyOrderCompanyCell : WXUITableViewCell
 

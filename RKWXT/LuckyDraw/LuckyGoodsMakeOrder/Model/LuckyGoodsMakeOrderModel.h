@@ -14,7 +14,7 @@
 @property (nonatomic,assign) id<LuckyGoodsMakeOrderModelDelegate>delegate;
 @property (nonatomic,strong) NSString *orderID;
 
--(void)luckyGoodsMakeOrderWith:(NSInteger)lottery_id withGoodsID:(NSInteger)goods_id withName:(NSString*)goods_name withImgUrl:(NSString*)imgUrl withGoodsStockID:(NSInteger)stockID withStockName:(NSString*)stockName WithMoney:(CGFloat)money;
+-(void)luckyGoodsMakeOrderWith:(NSInteger)lottery_id withGoodsID:(NSInteger)goods_id withName:(NSString*)goods_name withImgUrl:(NSString*)imgUrl withGoodsStockID:(NSInteger)stockID withStockName:(NSString*)stockName WithMoney:(CGFloat)money withMarket:(CGFloat)marketPrice;
 @end
 
 @protocol LuckyGoodsMakeOrderModelDelegate <NSObject>

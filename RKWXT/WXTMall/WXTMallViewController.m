@@ -99,7 +99,7 @@
     NSInteger section = indexPath.section;
     switch (section) {
         case T_HomePage_TopImg:
-            height = T_HomePageTopImgHeight;
+            height = Size.width/3;
             break;
         case T_HomePage_BaseFunction:
             height = T_HomePageBaseFunctionHeight;

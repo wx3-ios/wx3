@@ -24,7 +24,7 @@
         [self setImgUrl:imgUrl];
         
         NSString *name = [dic objectForKey:@"goods_name"];
-        [self setStockName:name];
+        [self setName:name];
         
         CGFloat shopPrice = [[dic objectForKey:@"shop_price"] floatValue];
         [self setShop_price:shopPrice];
@@ -46,6 +46,9 @@
         
         NSInteger lott = [[dic objectForKey:@"lottery_id"] integerValue];
         [self setLottery_id:lott];
+        
+        NSString *stockName = [dic objectForKey:@"goods_stock_name"];
+        [self setStockName:stockName];
     }
     return self;
 }

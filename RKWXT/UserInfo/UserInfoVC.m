@@ -46,7 +46,6 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-//    [self setCSTTitle:@"我"];
     [self.view setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     CGSize size = self.bounds.size;
@@ -71,30 +70,6 @@
 -(void)removeOBS{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-////改变cell分割线置顶
-//-(void)viewDidLayoutSubviews{
-//    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
-//    }
-//    
-//    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
-//    }
-//}
-//
-//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSInteger row = indexPath.row;
-//    if(row > 0){
-//        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//            [cell setSeparatorInset:UIEdgeInsetsZero];
-//        }
-//        
-//        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//            [cell setLayoutMargins:UIEdgeInsetsZero];
-//        }
-//    }
-//}
 
 -(UIImage*)userIconImage{
     NSString *iconPath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
@@ -276,11 +251,8 @@
         case PersonalInfo_System:
             number = System_Invalid;
             break;
-        case PersonalInfo_Cut:
-            number = 1;
-            break;
-        case PersonalInfo_Share:
-            number = 1;
+        case PersonalInfo_CutAndShare:
+            number = User_Invalid;
             break;
         default:
             break;
@@ -472,32 +444,33 @@
 }
 
 //提成
--(WXTUITableViewCell*)tableViewForUserCutCellAtRow{
+-(WXTUITableViewCell*)tableViewForUserCutCellAtRow:(NSInteger)row{
     static NSString *identifier = @"cutCell";
     WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
-    [cell.imageView setImage:[UIImage imageNamed:@"MyExtendImg.png"]];
-    [cell.textLabel setText:@"提成"];
-    [cell.textLabel setFont:WXFont(15.0)];
-    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
-    return cell;
-}
-
-//分享
--(WXTUITableViewCell*)tableViewForShareCellAtRow{
-    static NSString *identifier = @"shareCell";
-    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    switch (row) {
+        case User_Cut:
+        {
+            [cell.imageView setImage:[UIImage imageNamed:@"MyExtendImg.png"]];
+            [cell.textLabel setText:@"提成"];
+            [cell.textLabel setFont:WXFont(15.0)];
+            [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+        }
+            break;
+        case User_Share:
+        {
+            [cell.imageView setImage:[UIImage imageNamed:@"PersonalShareImg.png"]];
+            [cell.textLabel setText:@"分享"];
+            [cell.textLabel setFont:WXFont(15.0)];
+            [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+        }
+            break;
+        default:
+            break;
     }
-    [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
-    [cell.imageView setImage:[UIImage imageNamed:@"PersonalShareImg.png"]];
-    [cell.textLabel setText:@"分享"];
-    [cell.textLabel setFont:WXFont(15.0)];
-    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     return cell;
 }
 
@@ -521,11 +494,8 @@
         case PersonalInfo_System:
             cell = [self tableViewForSystemCellAtRow:row];
             break;
-        case PersonalInfo_Cut:
-            cell = [self tableViewForUserCutCellAtRow];
-            break;
-        case PersonalInfo_Share:
-            cell = [self tableViewForShareCellAtRow];
+        case PersonalInfo_CutAndShare:
+            cell = [self tableViewForUserCutCellAtRow:row];
             break;
         default:
             break;
@@ -579,16 +549,16 @@
             }
         }
             break;
-        case PersonalInfo_Cut:
+        case PersonalInfo_CutAndShare:
         {
-            UserCutVC *cutVC = [[UserCutVC alloc] init];
-            [self.wxNavigationController pushViewController:cutVC];
-        }
-            break;
-        case PersonalInfo_Share:
-        {
-            WXUITableViewCell *cell = (WXUITableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
-            [self showShareBrowerFromThumbView:cell];
+            if(row == User_Cut){
+                UserCutVC *cutVC = [[UserCutVC alloc] init];
+                [self.wxNavigationController pushViewController:cutVC];
+            }
+            if(row == User_Share){
+                WXUITableViewCell *cell = (WXUITableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
+                [self showShareBrowerFromThumbView:cell];
+            }
         }
             break;
         default:

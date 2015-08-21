@@ -37,8 +37,7 @@ enum{
     PersonalInfo_Call,
 //    PersonalInfo_Extend,
     PersonalInfo_System,
-    PersonalInfo_Cut,
-    PersonalInfo_Share,
+    PersonalInfo_CutAndShare,
     
     PersonalInfo_Invalid
 };
@@ -77,6 +76,13 @@ enum{
     System_About,
     
     System_Invalid
+};
+
+enum{
+    User_Cut = 0,
+    User_Share,
+    
+    User_Invalid
 };
 
 #endif

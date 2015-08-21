@@ -13,6 +13,8 @@
 #import "LuckyGoodsInfoVC.h"
 #import "LuckySharkEntity.h"
 
+#import "LuckyGoodsOrderList.h"
+
 #define kDuration 0.3
 #define yGap 60
 #define CenterImgYGap 215
@@ -230,6 +232,8 @@
 }
 
 -(void)gotoSharkRuleVC{
+    LuckyGoodsOrderList *vc = [[LuckyGoodsOrderList alloc] init];
+    [self.wxNavigationController pushViewController:vc];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

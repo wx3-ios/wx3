@@ -33,6 +33,8 @@
 		120B754E1B1C19EA00B8746C /* PersonSexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B754D1B1C19EA00B8746C /* PersonSexVC.m */; };
 		120B75511B1C36BE00B8746C /* PersonDatePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B75501B1C36BE00B8746C /* PersonDatePickerVC.m */; };
 		120B75541B1C3B7100B8746C /* PersonNicknameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120B75531B1C3B7100B8746C /* PersonNicknameVC.m */; };
+		120E16271B846169009401F2 /* LuckyOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 120E16261B846169009401F2 /* LuckyOrderListModel.m */; };
+		120E162A1B846718009401F2 /* LuckyOrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 120E16291B846718009401F2 /* LuckyOrderEntity.m */; };
 		120EB3D71B7B563B0036A77C /* shake.wav in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3CD1B7B563B0036A77C /* shake.wav */; };
 		120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3CE1B7B563B0036A77C /* Shake_01.png */; };
 		120EB3D91B7B563B0036A77C /* Shake_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3CF1B7B563B0036A77C /* Shake_01@2x.png */; };
@@ -352,6 +354,7 @@
 		12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D0C8751AB6AA8C0039A197 /* WXTVersion.m */; };
 		12D0C87C1AB6B2970039A197 /* VersionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D0C87B1AB6B2970039A197 /* VersionModel.m */; };
 		12D0C8801AB6C0E60039A197 /* VersionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D0C87F1AB6C0E60039A197 /* VersionEntity.m */; };
+		12D1E31A1B85E840004B88FB /* LuckyGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D1E3191B85E840004B88FB /* LuckyGoodsInfoModel.m */; };
 		12D52BB41AC2EF4400C5CE71 /* dtmf-#.aif in Resources */ = {isa = PBXBuildFile; fileRef = 12D52BA81AC2EF4400C5CE71 /* dtmf-#.aif */; };
 		12D52BB51AC2EF4400C5CE71 /* dtmf-*.aif in Resources */ = {isa = PBXBuildFile; fileRef = 12D52BA91AC2EF4400C5CE71 /* dtmf-*.aif */; };
 		12D52BB61AC2EF4400C5CE71 /* dtmf-0.aif in Resources */ = {isa = PBXBuildFile; fileRef = 12D52BAA1AC2EF4400C5CE71 /* dtmf-0.aif */; };
@@ -825,6 +828,10 @@
 		120B75501B1C36BE00B8746C /* PersonDatePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDatePickerVC.m; sourceTree = "<group>"; };
 		120B75521B1C3B7100B8746C /* PersonNicknameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonNicknameVC.h; sourceTree = "<group>"; };
 		120B75531B1C3B7100B8746C /* PersonNicknameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonNicknameVC.m; sourceTree = "<group>"; };
+		120E16251B846169009401F2 /* LuckyOrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyOrderListModel.h; sourceTree = "<group>"; };
+		120E16261B846169009401F2 /* LuckyOrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyOrderListModel.m; sourceTree = "<group>"; };
+		120E16281B846718009401F2 /* LuckyOrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyOrderEntity.h; sourceTree = "<group>"; };
+		120E16291B846718009401F2 /* LuckyOrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyOrderEntity.m; sourceTree = "<group>"; };
 		120EB3CD1B7B563B0036A77C /* shake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake.wav; sourceTree = "<group>"; };
 		120EB3CE1B7B563B0036A77C /* Shake_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shake_01.png; sourceTree = "<group>"; };
 		120EB3CF1B7B563B0036A77C /* Shake_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shake_01@2x.png"; sourceTree = "<group>"; };
@@ -1308,6 +1315,8 @@
 		12D0C87B1AB6B2970039A197 /* VersionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionModel.m; sourceTree = "<group>"; };
 		12D0C87E1AB6C0E60039A197 /* VersionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionEntity.h; sourceTree = "<group>"; };
 		12D0C87F1AB6C0E60039A197 /* VersionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionEntity.m; sourceTree = "<group>"; };
+		12D1E3181B85E840004B88FB /* LuckyGoodsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsInfoModel.h; sourceTree = "<group>"; };
+		12D1E3191B85E840004B88FB /* LuckyGoodsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsInfoModel.m; sourceTree = "<group>"; };
 		12D52BA81AC2EF4400C5CE71 /* dtmf-#.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dtmf-#.aif"; sourceTree = "<group>"; };
 		12D52BA91AC2EF4400C5CE71 /* dtmf-*.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dtmf-*.aif"; sourceTree = "<group>"; };
 		12D52BAA1AC2EF4400C5CE71 /* dtmf-0.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dtmf-0.aif"; sourceTree = "<group>"; };
@@ -2326,6 +2335,17 @@
 				120A2C151AB17A92006A28B1 /* SignModel.m */,
 				120A2C641AB1804E006A28B1 /* SignEntity.h */,
 				120A2C651AB1804E006A28B1 /* SignEntity.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		120E16241B846159009401F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				120E16251B846169009401F2 /* LuckyOrderListModel.h */,
+				120E16261B846169009401F2 /* LuckyOrderListModel.m */,
+				120E16281B846718009401F2 /* LuckyOrderEntity.h */,
+				120E16291B846718009401F2 /* LuckyOrderEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3402,17 +3422,10 @@
 			children = (
 				12C12F171B818A8200345BEE /* LuckyGoodsOrderList.h */,
 				12C12F181B818A8200345BEE /* LuckyGoodsOrderList.m */,
-				12C12F151B818A7000345BEE /* Model */,
+				120E16241B846159009401F2 /* Model */,
 				12C12F161B818A7000345BEE /* view */,
 			);
 			path = LuckyGoodsOrderList;
-			sourceTree = "<group>";
-		};
-		12C12F151B818A7000345BEE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		12C12F161B818A7000345BEE /* view */ = {
@@ -3438,6 +3451,8 @@
 		12C12F1E1B81922300345BEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				12D1E3181B85E840004B88FB /* LuckyGoodsInfoModel.h */,
+				12D1E3191B85E840004B88FB /* LuckyGoodsInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6118,6 +6133,7 @@
 				12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */,
 				12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */,
 				1273291E1B5CFFEE002AD4AE /* PersonalInfoEntity.m in Sources */,
+				120E16271B846169009401F2 /* LuckyOrderListModel.m in Sources */,
 				12F963371B3D4BDF00FF6A3E /* SBJsonStreamWriterState.m in Sources */,
 				775C58B71ABA7B75005B6B40 /* RedPacketBalance.m in Sources */,
 				1295C5FE1B29B2DB004C861D /* OverdueCell.m in Sources */,
@@ -6439,6 +6455,7 @@
 				775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
 				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,
+				12D1E31A1B85E840004B88FB /* LuckyGoodsInfoModel.m in Sources */,
 				129F32971B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m in Sources */,
 				12F1D64F1B2692DA003924DF /* RFSegmentView.m in Sources */,
 				12F2D7EF1B1ECEF700C8017F /* WaitSendGoodsListVC.m in Sources */,
@@ -6550,6 +6567,7 @@
 				12BD30FC1B3E905A00170316 /* UserBonusModel.m in Sources */,
 				12C12F1C1B818C0700345BEE /* LuckyGoodsOrderListCell.m in Sources */,
 				128221B21B184ABB004613BB /* ASIHTTPRequest.m in Sources */,
+				120E162A1B846718009401F2 /* LuckyOrderEntity.m in Sources */,
 				128766FF1B51012700A79320 /* AboutShopInfoCell.m in Sources */,
 				12E471C51B1F178D00559995 /* WaitReceiveGoodsInfoCell.m in Sources */,
 				127329171B5CE84E002AD4AE /* CompanyVC.m in Sources */,

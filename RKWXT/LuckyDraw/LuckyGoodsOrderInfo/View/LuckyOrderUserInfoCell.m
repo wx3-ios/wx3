@@ -7,6 +7,7 @@
 //
 
 #import "LuckyOrderUserInfoCell.h"
+#import "LuckyOrderEntity.h"
 
 @interface LuckyOrderUserInfoCell(){
     UILabel *_nameLabel;
@@ -68,7 +69,31 @@
 }
 
 -(void)load{
-    
+    LuckyOrderEntity *entity = self.cellInfo;
+    [_nameLabel setText:[NSString stringWithFormat:@"%@   %@",entity.userName,entity.userPhone]];
+    [_address setText:entity.address];
+}
+
++(CGFloat)cellHeightOfInfo:(id)cellInfo{
+    LuckyOrderEntity *entity = cellInfo;
+    CGFloat height = 42;
+    NSString *add = entity.address;
+    CGSize size = [[self class] sizeOfString:add font:WXFont(12.0)];
+    height += size.height;
+    return height;
+}
+
++(CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{
+    if(!txt || [txt isKindOfClass:[NSNull class]]){
+        txt = @" ";
+    }
+    if(isIOS7){
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        return [txt sizeWithAttributes:@{NSFontAttributeName: font}];
+#endif
+    }else{
+        return [txt sizeWithFont:font];
+    }
 }
 
 @end

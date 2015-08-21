@@ -7,6 +7,7 @@
 //
 
 #import "LuckyOrderMoneyCell.h"
+#import "LuckyOrderEntity.h"
 
 @interface LuckyOrderMoneyCell(){
     UILabel *_moneyLabel;
@@ -52,7 +53,7 @@
         [self.contentView addSubview:totallabel];
         
         _totalMoney = [[UILabel alloc] init];
-        _totalMoney.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-freLabelWidth, yOffset, labelWidth, freLabelHeight);
+        _totalMoney.frame = CGRectMake(IPHONE_SCREEN_WIDTH-10-freLabelWidth, yOffset, freLabelWidth, freLabelHeight);
         [_totalMoney setBackgroundColor:[UIColor clearColor]];
         [_totalMoney setTextAlignment:NSTextAlignmentRight];
         [_totalMoney setTextColor:WXColorWithInteger(0xdd2726)];
@@ -63,7 +64,18 @@
 }
 
 -(void)load{
+    LuckyOrderEntity *entity = self.cellInfo;
+    [_moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.goods_price]];
     
+    if(entity.order_status == LuckyOrder_Status_Close || entity.pay_status == LuckyOrder_Pay_Wait){
+        [_totalMoney setText:@"￥0.00"];
+        return;
+    }
+    if(entity.order_status == LuckyOrder_Status_Done || entity.pay_status == LuckyOrder_Pay_Done){
+        [_totalMoney setText:[NSString stringWithFormat:@"￥%.2f",entity.goods_price]];
+        return;
+    }
 }
+
 
 @end
