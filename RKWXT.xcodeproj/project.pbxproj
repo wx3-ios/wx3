@@ -313,6 +313,7 @@
 		12A3478E1B734E6000D10C17 /* UserCutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478D1B734E6000D10C17 /* UserCutModel.m */; };
 		12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347901B73503F00D10C17 /* UserCutEntity.m */; };
 		12A66B281B74AE4800542112 /* NoWifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A66B271B74AE4800542112 /* NoWifi@2x.png */; };
+		12A850EF1B880CD200276D2A /* SharkImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A850EE1B880CD200276D2A /* SharkImg@2x.png */; };
 		12AA52FB1B7DE10A003B893F /* LuckyGoodsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AA52FA1B7DE10A003B893F /* LuckyGoodsInfoVC.m */; };
 		12AA52FE1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AA52FD1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m */; };
 		12AA53011B7DF140003B893F /* LuckyGoodsDesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AA53001B7DF140003B893F /* LuckyGoodsDesCell.m */; };
@@ -1244,6 +1245,7 @@
 		12A3478F1B73503F00D10C17 /* UserCutEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutEntity.h; sourceTree = "<group>"; };
 		12A347901B73503F00D10C17 /* UserCutEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutEntity.m; sourceTree = "<group>"; };
 		12A66B271B74AE4800542112 /* NoWifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoWifi@2x.png"; sourceTree = "<group>"; };
+		12A850EE1B880CD200276D2A /* SharkImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkImg@2x.png"; sourceTree = "<group>"; };
 		12AA52F91B7DE10A003B893F /* LuckyGoodsInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsInfoVC.h; sourceTree = "<group>"; };
 		12AA52FA1B7DE10A003B893F /* LuckyGoodsInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsInfoVC.m; sourceTree = "<group>"; };
 		12AA52FC1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsInfoTopImgCell.h; sourceTree = "<group>"; };
@@ -4309,6 +4311,7 @@
 		12F916251B19A79600C94717 /* PersonalInfo */ = {
 			isa = PBXGroup;
 			children = (
+				12A850EE1B880CD200276D2A /* SharkImg@2x.png */,
 				12A347871B73447100D10C17 /* UserCut@2x.png */,
 				128BB7401B68A56C004FCE66 /* AddressNextImg@2x.png */,
 				12F3CC671B1DE82C00E64DE4 /* PersonImg */,
@@ -5835,6 +5838,7 @@
 				128585101B3AA7E5005E240E /* MakeOrderUserPhoneImg@2x.png in Resources */,
 				120EB3DC1B7B563B0036A77C /* shake_match.m4r in Resources */,
 				12F2D8061B1F01E900C8017F /* failedImage@2x.png in Resources */,
+				12A850EF1B880CD200276D2A /* SharkImg@2x.png in Resources */,
 				1263EFEB1ACD44A30014C347 /* Icon-72.png in Resources */,
 				129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */,
 				120EB3DA1B7B563B0036A77C /* Shake_02.png in Resources */,

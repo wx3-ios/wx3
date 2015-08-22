@@ -242,6 +242,9 @@
 //        case PersonalInfo_Money:
 //            number = Money_Invalid;
 //            break;
+        case PersonalInfo_SharkOrder:
+            number = 1;
+            break;
         case PersonalInfo_Call:
             number = Call_Invalid;
             break;
@@ -266,7 +269,7 @@
         height = 53;
     }
     if([CustomMadeOBJ sharedCustomMadeOBJS].appCategory == E_App_Category_Eatable){
-        if(indexPath.section == PersonalInfo_Order){
+        if(indexPath.section == PersonalInfo_Order || indexPath.section == PersonalInfo_SharkOrder){
             height = 0;
         }
     }
@@ -317,6 +320,21 @@
     [cell setDelegate:self];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell load];
+    return cell;
+}
+
+//抽奖订单
+-(WXTUITableViewCell*)tableViewForSharkOrderCell{
+    static NSString *identifier = @"sharkOrderCell";
+    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
+    [cell.imageView setImage:[UIImage imageNamed:@"SharkImg.png"]];
+    [cell.textLabel setText:@"奖品订单"];
+    [cell.textLabel setFont:WXFont(15.0)];
+    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     return cell;
 }
 
@@ -482,6 +500,9 @@
         case PersonalInfo_Order:
             cell = [self tableViewForOrderCell:row];
             break;
+        case PersonalInfo_SharkOrder:
+            cell = [self tableViewForSharkOrderCell];
+            break;
 //        case PersonalInfo_Money:
 //            cell = [self tableViewForMoneyCell:row];
 //            break;
@@ -514,6 +535,12 @@
                 HomeOrderVC *orderListVC = [[HomeOrderVC alloc] init];
                 [self.wxNavigationController pushViewController:orderListVC];
             }
+        }
+            break;
+        case PersonalInfo_SharkOrder:
+        {
+            LuckyGoodsOrderList *orderList = [[LuckyGoodsOrderList alloc] init];
+            [self.wxNavigationController pushViewController:orderList];
         }
             break;
 //        case PersonalInfo_Money:

@@ -30,10 +30,12 @@
 #import "HomeOrderVC.h"
 #import "UserBonusVC.h"
 #import "UserCutVC.h"
+#import "LuckyGoodsOrderList.h"
 
 enum{
     PersonalInfo_Order = 0,
 //    PersonalInfo_Money,
+    PersonalInfo_SharkOrder,
     PersonalInfo_Call,
 //    PersonalInfo_Extend,
     PersonalInfo_System,
