@@ -17,6 +17,7 @@
 
 @interface UserInfoVC()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,PersonalOrderInfoDelegate,ShareBrowserViewDelegate>{
     UITableView *_tableView;
+    UIImageView *bgImageView;
     WXUILabel *namelabel;
     
     UIImageView *iconImageView;
@@ -99,9 +100,10 @@
 -(UIView *)viewForTableHeadView{
     UIView *headView = [[UIView alloc] init];
     
-    UIImageView *bgImageView = [[UIImageView alloc] init];
+    bgImageView = [[UIImageView alloc] init];
     bgImageView.frame = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
     [bgImageView setImage:[UIImage imageNamed:@"PersonalInfoBgViewImg.png"]];
+    [bgImageView setContentMode:UIViewContentModeScaleAspectFill];
     [headView addSubview:bgImageView];
     
     CGFloat xOffset = 18;
@@ -214,6 +216,19 @@
     CGRect rect = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
     [headView setFrame:rect];
     return headView;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat yOffset  = scrollView.contentOffset.y;
+    CGFloat xOffset = 0;
+    if (yOffset < 0) {
+        CGRect f = bgImageView.frame;
+        f.origin.y = yOffset;
+        f.size.height =  -yOffset+UserBgImageViewHeight;
+        f.origin.x = xOffset;
+        f.size.width = 320 + fabsf(xOffset)*2;
+        bgImageView.frame = f;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

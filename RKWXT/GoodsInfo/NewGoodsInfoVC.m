@@ -444,6 +444,7 @@
             [cell changeArrowWithDown:_isOpen];
             [cell.imageView setImage:[UIImage imageNamed:@"T_GoodsIInfoDetail.png"]];
             [cell.textLabel setText:@"产品参数"];
+            [cell.textLabel setFont:WXFont(13.0)];
         }
         return cell;
     }else{

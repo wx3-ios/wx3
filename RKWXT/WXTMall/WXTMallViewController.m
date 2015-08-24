@@ -74,13 +74,9 @@
         case T_HomePage_TopImg:
         case T_HomePage_BaseFunction:
         case T_HomePage_Topical:
-            row = ([_model.theme.data count]==0?0:1);
-            break;
+        case T_HomePage_ForMe:
         case T_HomePage_Change:
             row = 1;
-            break;
-        case T_HomePage_ForMe:
-            row = ([_model.recommend.data count]==0?0:1);
             break;
         case T_HomePage_WXIntroduce:
             row = [_model.navModel.data count]/WxIntructionShow+[_model.navModel.data count]%WxIntructionShow;

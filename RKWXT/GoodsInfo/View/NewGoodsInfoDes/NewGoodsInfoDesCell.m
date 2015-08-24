@@ -51,7 +51,7 @@
         
         xOffset += textWidth;
         _newPrice = [[WXUILabel alloc] init];
-        _newPrice.frame = CGRectMake(xOffset, yOffset+14+30, textWidth+25, newLabelHeight);
+        _newPrice.frame = CGRectMake(xOffset, yOffset+14+30, textWidth+25+10, newLabelHeight);
         [_newPrice setBackgroundColor:[UIColor clearColor]];
         [_newPrice setTextAlignment:NSTextAlignmentLeft];
         [_newPrice setTextColor:WXColorWithInteger(midTextColor)];
