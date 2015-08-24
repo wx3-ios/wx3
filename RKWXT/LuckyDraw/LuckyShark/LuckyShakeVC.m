@@ -12,6 +12,7 @@
 #import "LuckySharkModel.h"
 #import "LuckyGoodsInfoVC.h"
 #import "LuckySharkEntity.h"
+#import "WXCommonWebView.h"
 
 #define kDuration 0.3
 #define yGap 60
@@ -230,6 +231,10 @@
 }
 
 -(void)gotoSharkRuleVC{
+    WXCommonWebView *vc = [[WXCommonWebView alloc] init];
+    vc.webUrlString = @"http://wx3.67call.com/wx_html/index.php/Public/rule";
+    vc.urlType = WebView_Type_SingleUrl;
+    [self.wxNavigationController pushViewController:vc];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

@@ -302,6 +302,7 @@
 		129F32A91B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32A81B83151F004DFFB1 /* LuckyGoodsMakeOrderMoneyCell.m */; };
 		129F32AC1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32AB1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m */; };
 		129F32AF1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32AE1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m */; };
+		129F9A6B1B8AB76F00BC80A9 /* WXCommonWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9A6A1B8AB76F00BC80A9 /* WXCommonWebView.m */; };
 		12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */; };
 		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
 		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
@@ -1225,6 +1226,8 @@
 		129F32AB1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderDateCell.m; sourceTree = "<group>"; };
 		129F32AD1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsMakeOrderModel.h; sourceTree = "<group>"; };
 		129F32AE1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderModel.m; sourceTree = "<group>"; };
+		129F9A691B8AB76F00BC80A9 /* WXCommonWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXCommonWebView.h; sourceTree = "<group>"; };
+		129F9A6A1B8AB76F00BC80A9 /* WXCommonWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXCommonWebView.m; sourceTree = "<group>"; };
 		12A050BA1B30FFB3008CC38F /* HomeNavENtity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavENtity.h; sourceTree = "<group>"; };
 		12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavENtity.m; sourceTree = "<group>"; };
 		12A050BD1B310050008CC38F /* HomeNavModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavModel.h; sourceTree = "<group>"; };
@@ -3281,6 +3284,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		129F9A681B8AB74000BC80A9 /* CommonWebview */ = {
+			isa = PBXGroup;
+			children = (
+				129F9A691B8AB76F00BC80A9 /* WXCommonWebView.h */,
+				129F9A6A1B8AB76F00BC80A9 /* WXCommonWebView.m */,
+			);
+			path = CommonWebview;
+			sourceTree = "<group>";
+		};
 		12A050B91B30FD47008CC38F /* HomeNavigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -3386,6 +3398,7 @@
 		12C0691B1B7C9A9900C05D42 /* LuckyDraw */ = {
 			isa = PBXGroup;
 			children = (
+				129F9A681B8AB74000BC80A9 /* CommonWebview */,
 				12C12F381B81DA5600345BEE /* LuckyShark */,
 				12C12F1D1B81921000345BEE /* LuckyGoodsOrderInfo */,
 				12C12F141B818A5B00345BEE /* LuckyGoodsOrderList */,
@@ -6269,6 +6282,7 @@
 				775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */,
 				DDB58F561AD3C6A2006248E9 /* WXContacterVC.m in Sources */,
 				120A2BF21AB135DE006A28B1 /* UserInfoCommonCell.m in Sources */,
+				129F9A6B1B8AB76F00BC80A9 /* WXCommonWebView.m in Sources */,
 				DDEA9EDD1B1BF9EF00530C1C /* WXTGoodsDetailViewController.m in Sources */,
 				1282217F1B18467A004613BB /* T_ForMeView.m in Sources */,
 				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
