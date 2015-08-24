@@ -159,6 +159,9 @@
         case WXT_UrlFeed_Type_New_LuckyShark:
             url = @"/get_lottery_draw_goods.php";
             break;
+        case WXT_UrlFeed_Type_New_SharkNumber:
+            url = @"/";
+            break;
         case WXT_UrlFeed_Type_New_LuckyMakeOrder:
             url = @"/insert_award_order.php";
             break;

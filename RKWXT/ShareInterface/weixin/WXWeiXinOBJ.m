@@ -104,7 +104,7 @@
                 [UtilTool showAlertView:nil message:msgError delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
             }
         }else{
-            [UtilTool showAlertView:nil message:@"恭喜您,微信分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [UtilTool showAlertView:nil message:@"微信分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
         }
     }
 }

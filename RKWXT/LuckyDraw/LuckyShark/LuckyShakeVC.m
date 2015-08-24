@@ -13,12 +13,13 @@
 #import "LuckyGoodsInfoVC.h"
 #import "LuckySharkEntity.h"
 #import "WXCommonWebView.h"
+#import "LuckySharkNumberModel.h"
 
 #define kDuration 0.3
 #define yGap 60
 #define CenterImgYGap 215
 
-@interface LuckyShakeVC ()<LuckySharkModelDelegate>{
+@interface LuckyShakeVC ()<LuckySharkModelDelegate,LuckySharkNumberModelDelegate>{
     WXUIImageView *centerImgView;
     UILabel *label;
     UILabel *_numberLabel;
@@ -29,6 +30,7 @@
     BOOL waitting;
     
     LuckySharkModel *_model;
+    LuckySharkNumberModel *_numModel;
 }
 
 @end
@@ -38,6 +40,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
+    
+    _numModel = [[LuckySharkNumberModel alloc] init];
+    [_numModel setDelegate:self];
+    [_numModel loadLuckySharkNumber];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -126,7 +133,7 @@
     _numberLabel = [[UILabel alloc] init];
     _numberLabel.frame = CGRectMake(text1Width, self.bounds.size.height-yOffset, numberWidth, textheight);
     [_numberLabel setBackgroundColor:[UIColor clearColor]];
-    [_numberLabel setText:@"1"];
+    [_numberLabel setText:@"0"];
     [_numberLabel setTextAlignment:NSTextAlignmentCenter];
     [_numberLabel setTextColor:WXColorWithInteger(0xffec14)];
     [_numberLabel setFont:WXFont(15.0)];
@@ -202,6 +209,23 @@
     SystemSoundID soundID = 0;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
     AudioServicesPlaySystemSound(soundID);
+}
+
+#pragma mark sharkNumDelegate
+-(void)loadLuckySharkNumberSucceed{
+    [self unShowWaitView];
+    if(_numModel < 0){
+        return;
+    }
+    [_numberLabel setText:[NSString stringWithFormat:@"%ld",(long)_numModel.number]];
+}
+
+-(void)loadLuckySharkNumberFailed:(NSString *)errormsg{
+    [self unShowWaitView];
+    if(!errormsg){
+        errormsg = @"获取抽奖次数失败";
+    }
+    [UtilTool showAlertView:errormsg];
 }
 
 #pragma mark sharkDelegate
