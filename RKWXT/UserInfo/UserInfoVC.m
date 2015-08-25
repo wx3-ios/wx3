@@ -11,6 +11,7 @@
 #import "UserHeaderImgModel.h"
 #import "WXWeiXinOBJ.h"
 #import "ShareBrowserView.h"
+#import "ShareSucceedModel.h"
 
 #define UserBgImageViewHeight (95+66)
 #define Size self.view.bounds.size
@@ -650,6 +651,7 @@
         NSInteger error = [resp.result integerValue];
         if(error != 0){
         }else{
+            [[ShareSucceedModel sharedSucceed] sharedSucceed];
             [UtilTool showAlertView:nil message:@"QQ分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
         }
     }

@@ -118,7 +118,7 @@
 
 -(void)createTextAndbtnView{
     CGFloat yOffset = 100;
-    CGFloat numberWidth = 16;
+    CGFloat numberWidth = 20;
     CGFloat textheight = 18;
     CGFloat text1Width = self.bounds.size.width/2-numberWidth-5;
     UILabel *text1Label = [[UILabel alloc] init];

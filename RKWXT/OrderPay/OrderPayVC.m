@@ -194,7 +194,7 @@ enum{
         return;
     }
     
-    [[AliPayControl sharedAliPayOBJ] alipayOrderID:[self newChangeOrderID] title:kMerchantName amount:0.1 phpURL:@"" payTag:nil];
+    [[AliPayControl sharedAliPayOBJ] alipayOrderID:[self newChangeOrderID] title:kMerchantName amount:_payMoney phpURL:@"" payTag:nil];
 }
 
 -(void)alipaySucceed{

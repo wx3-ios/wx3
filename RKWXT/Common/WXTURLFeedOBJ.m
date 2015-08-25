@@ -160,7 +160,7 @@
             url = @"/get_lottery_draw_goods.php";
             break;
         case WXT_UrlFeed_Type_New_SharkNumber:
-            url = @"/";
+            url = @"/get_award_number.php";
             break;
         case WXT_UrlFeed_Type_New_LuckyMakeOrder:
             url = @"/insert_award_order.php";
@@ -173,6 +173,9 @@
             break;
         case WXT_UrlFeed_Type_New_CompleteLuckyOrder:
             url = @"/update_award_status.php";
+            break;
+        case WXT_UrlFeed_Type_New_SharedSucceed:
+            url = @"/get_share_award.php";
             break;
         default:
             break;

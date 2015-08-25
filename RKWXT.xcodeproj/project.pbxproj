@@ -319,6 +319,7 @@
 		12AA52FB1B7DE10A003B893F /* LuckyGoodsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AA52FA1B7DE10A003B893F /* LuckyGoodsInfoVC.m */; };
 		12AA52FE1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AA52FD1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m */; };
 		12AA53011B7DF140003B893F /* LuckyGoodsDesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AA53001B7DF140003B893F /* LuckyGoodsDesCell.m */; };
+		12B05DF21B8C3CC80083D648 /* ShareSucceedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B05DF11B8C3CC80083D648 /* ShareSucceedModel.m */; };
 		12B1F6901B788961009FBA6D /* RechargeTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F68F1B788961009FBA6D /* RechargeTypeVC.m */; };
 		12B1F6931B788A20009FBA6D /* RechargeTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6921B788A20009FBA6D /* RechargeTypeCell.m */; };
 		12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6951B789138009FBA6D /* RechargeListVC.m */; };
@@ -1258,6 +1259,8 @@
 		12AA52FD1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsInfoTopImgCell.m; sourceTree = "<group>"; };
 		12AA52FF1B7DF140003B893F /* LuckyGoodsDesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsDesCell.h; sourceTree = "<group>"; };
 		12AA53001B7DF140003B893F /* LuckyGoodsDesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsDesCell.m; sourceTree = "<group>"; };
+		12B05DF01B8C3CC80083D648 /* ShareSucceedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSucceedModel.h; sourceTree = "<group>"; };
+		12B05DF11B8C3CC80083D648 /* ShareSucceedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSucceedModel.m; sourceTree = "<group>"; };
 		12B1F68E1B788961009FBA6D /* RechargeTypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeTypeVC.h; sourceTree = "<group>"; };
 		12B1F68F1B788961009FBA6D /* RechargeTypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeTypeVC.m; sourceTree = "<group>"; };
 		12B1F6911B788A20009FBA6D /* RechargeTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeTypeCell.h; sourceTree = "<group>"; };
@@ -2752,6 +2755,8 @@
 			children = (
 				128083D81B62147E00260B9F /* ShareBrowserView.h */,
 				128083D91B62147E00260B9F /* ShareBrowserView.m */,
+				12B05DF01B8C3CC80083D648 /* ShareSucceedModel.h */,
+				12B05DF11B8C3CC80083D648 /* ShareSucceedModel.m */,
 			);
 			path = ShareView;
 			sourceTree = "<group>";
@@ -6232,6 +6237,7 @@
 				128B59911B53D6C5006D790B /* WXTMallViewController.m in Sources */,
 				77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */,
 				DDB58F531AD3C6A2006248E9 /* SysContacterEntityEx.m in Sources */,
+				12B05DF21B8C3CC80083D648 /* ShareSucceedModel.m in Sources */,
 				12F963341B3D4BDF00FF6A3E /* SBJsonStreamParserState.m in Sources */,
 				129D23411B4F96F600008DA0 /* OrderInfoStateCell.m in Sources */,
 				DDB58F461AD3C6A2006248E9 /* ContactDetailCell.m in Sources */,

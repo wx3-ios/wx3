@@ -30,6 +30,7 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "UserInfoVC.h"
+#import "ShareSucceedModel.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -436,6 +437,7 @@ forRemoteNotification:(NSDictionary *)userInfo
                 [UtilTool showAlertView:nil message:msgError delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
             }
         }else{
+            [[ShareSucceedModel sharedSucceed] sharedSucceed];
             [UtilTool showAlertView:nil message:@"微信分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
         }
     }

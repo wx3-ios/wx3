@@ -76,6 +76,7 @@ enum{
     _model = [[NewGoodsInfoModel alloc] init];
     [_model setDelegate:self];
     [_model loadGoodsInfo:luckyEntity.goods_id];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     
     if(luckyEntity.goods_price > 0){
         [self createDownView];
