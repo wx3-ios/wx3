@@ -11,16 +11,27 @@
 #import "LuckyShakeVC.h"
 #import "LuckyGoodsModel.h"
 #import "NewGoodsInfoVC.h"
+#import "OrderListTableView.h"
+
+typedef enum{
+    E_CellRefreshing_Nothing = 0,
+    E_CellRefreshing_UnderWay,
+    E_CellRefreshing_Finish,
+    
+    E_CellRefreshing_Invalid,
+}E_CellRefreshing;
 
 #define Size self.bounds.size
+#define EveryTimeLoadDataNumber 20
 
-@interface LuckyGoodsShowVC ()<UITableViewDataSource,UITableViewDelegate,LuckyGoodsModelDelegate>{
-    UITableView *_tableView;
+@interface LuckyGoodsShowVC ()<UITableViewDataSource,UITableViewDelegate,LuckyGoodsModelDelegate,PullingRefreshTableViewDelegate>{
+    OrderListTableView *_tableView;
     WXUIButton *rightBtn;
     NSArray *goodsArr;
+    NSInteger orderlistCount;
     LuckyGoodsModel *_model;
 }
-
+@property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
 
 @implementation LuckyGoodsShowVC
@@ -40,14 +51,17 @@
     [self setBackgroundColor:[UIColor whiteColor]];
     [self setRightNavigationItem:[self createRightBtn]];
     
-    _tableView = [[UITableView alloc] init];
+    self.e_cellRefreshing = E_CellRefreshing_Nothing;
+    _tableView = [[OrderListTableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
+    [_tableView setPullingDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-    [_model loadLuckyGoodsList];
+    [_model setType:LuckyGoods_Type_Normal];
+    [_model loadLuckyGoodsListWith:0 with:EveryTimeLoadDataNumber];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
@@ -129,7 +143,12 @@
 
 -(void)loadLuckyGoodsSuceeed{
     [self unShowWaitView];
+    if(orderlistCount == [_model.luckyGoodsArr count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
+        _tableView.reachedTheEnd = YES;
+    }
+    self.e_cellRefreshing = E_CellRefreshing_Nothing;
     goodsArr = _model.luckyGoodsArr;
+    orderlistCount = [goodsArr count];
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
@@ -139,6 +158,51 @@
         errorMsg = @"获取商品失败";
     }
     [UtilTool showAlertView:errorMsg];
+}
+
+#pragma mark pullingDelegate
+-(void)pullingTableViewDidStartRefreshing:(OrderListTableView *)tableView{
+    self.e_cellRefreshing = E_CellRefreshing_UnderWay;
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+}
+
+-(NSDate*)pullingTableViewRefreshingFinishedDate{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSString *dateStr = [UtilTool getCurDateTime:1];
+    NSDate *date = [df dateFromString:dateStr];
+    return date;
+}
+
+-(void)pullingTableViewDidStartLoading:(OrderListTableView *)tableView{
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+}
+
+-(void)loadData{
+    if(self.e_cellRefreshing == E_CellRefreshing_UnderWay){
+        self.e_cellRefreshing = E_CellRefreshing_Finish;
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+        [_tableView tableViewDidFinishedLoadingWithMessage:@"刷新完成"];
+        [_model setType:LuckyGoods_Type_Refresh];
+        [_model loadLuckyGoodsListWith:0 with:[goodsArr count]];
+    }else{
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+        [_model setType:LuckyGoods_Type_Loading];
+        [_model loadLuckyGoodsListWith:[goodsArr count] with:EveryTimeLoadDataNumber];
+    }
+    if(!_tableView.reachedTheEnd){
+        [_tableView tableViewDidFinishedLoading];
+        _tableView.reachedTheEnd = NO;
+    }
+}
+
+#pragma mark - Scroll
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_tableView tableViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_tableView tableViewDidEndDragging:scrollView];
 }
 
 - (void)didReceiveMemoryWarning {

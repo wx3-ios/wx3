@@ -307,6 +307,7 @@
 		12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BB1B30FFB3008CC38F /* HomeNavENtity.m */; };
 		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
 		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
+		12A0B43C1B8DBB47005682EA /* FTPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A0B43B1B8DBB47005682EA /* FTPHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		12A3477A1B72ED2400D10C17 /* MakeOrderUserBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */; };
 		12A3477D1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3477C1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m */; };
 		12A347861B733F5600D10C17 /* UserCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347851B733F5600D10C17 /* UserCutVC.m */; };
@@ -1238,6 +1239,8 @@
 		12A050BE1B310050008CC38F /* HomeNavModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavModel.m; sourceTree = "<group>"; };
 		12A050C41B316B7E008CC38F /* WXTMallListWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTMallListWebVC.h; sourceTree = "<group>"; };
 		12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallListWebVC.m; sourceTree = "<group>"; };
+		12A0B43A1B8DBB47005682EA /* FTPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPHelper.h; sourceTree = "<group>"; };
+		12A0B43B1B8DBB47005682EA /* FTPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPHelper.m; sourceTree = "<group>"; };
 		12A347781B72ED2400D10C17 /* MakeOrderUserBalanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderUserBalanceCell.h; sourceTree = "<group>"; };
 		12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderUserBalanceCell.m; sourceTree = "<group>"; };
 		12A3477B1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderBananceSwitchCell.h; sourceTree = "<group>"; };
@@ -3321,6 +3324,15 @@
 			path = WebMallList;
 			sourceTree = "<group>";
 		};
+		12A0B4391B8DBB30005682EA /* Ftp */ = {
+			isa = PBXGroup;
+			children = (
+				12A0B43A1B8DBB47005682EA /* FTPHelper.h */,
+				12A0B43B1B8DBB47005682EA /* FTPHelper.m */,
+			);
+			path = Ftp;
+			sourceTree = "<group>";
+		};
 		12A347771B72ED0700D10C17 /* MakeOrderUserBalance */ = {
 			isa = PBXGroup;
 			children = (
@@ -4786,6 +4798,7 @@
 		775841DB1AB95A300039B129 /* CustomWedget */ = {
 			isa = PBXGroup;
 			children = (
+				12A0B4391B8DBB30005682EA /* Ftp */,
 				775841DC1AB95A300039B129 /* ComplexViewInCellOrNet */,
 				775841E71AB95A300039B129 /* CountryCode */,
 				775841F21AB95A300039B129 /* CSTWXNavigationView */,
@@ -6577,6 +6590,7 @@
 				DD0E38B51B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m in Sources */,
 				775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */,
 				DD0E38BB1B1BE5AC00AB4DB9 /* SysMsgModel.m in Sources */,
+				12A0B43C1B8DBB47005682EA /* FTPHelper.m in Sources */,
 				12F2D7FA1B1EE96500C8017F /* OrderShopCell.m in Sources */,
 				1243CCB91AE7C31B003E0943 /* WXTUITabbarVC.m in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,

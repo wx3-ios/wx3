@@ -106,7 +106,8 @@
     [invateBtn setBorderRadian:10.0 width:0.5 color:WXColorWithInteger(0xdd2726)];
     [invateBtn setBackgroundImageOfColor:WXColorWithInteger(0xdd2726) controlState:UIControlStateNormal];
     [invateBtn setBackgroundImageOfColor:WXColorWithInteger(0x96e1fd) controlState:UIControlStateSelected];
-    [invateBtn setTitle:@"邀请Ta加入我信通" forState:UIControlStateNormal];
+    NSString *str = [NSString stringWithFormat:@"邀请Ta加入%@",kMerchantName];
+    [invateBtn setTitle:str forState:UIControlStateNormal];
     [invateBtn setTitleColor:WXColorWithInteger(0xFFFFFF) forState:UIControlStateNormal];
     [invateBtn addTarget:self action:@selector(invateFriend) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:invateBtn];

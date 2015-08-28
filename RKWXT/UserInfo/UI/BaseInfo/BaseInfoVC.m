@@ -13,10 +13,11 @@
 #import "WXImageClipOBJ.h"
 #import "UserHeaderImgModel.h"
 #import "WXService.h"
+#import "FTPHelper.h"
 
 #define Size self.bounds.size
 
-@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate,PersonalInfoModelDelegate,WXImageClipOBJDelegate>{
+@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate,PersonalInfoModelDelegate,WXImageClipOBJDelegate,FTPHelperDelegate>{
     UITableView *_tableView;
     PersonalInfoModel *_model;
     WXImageClipOBJ *_imageClipOBJ;
@@ -355,6 +356,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_UploadUserIcon object:nil];
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:BaseInfo_Userhead inSection:T_Base_UserInfo];
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexpath] withRowAnimation:UITableViewRowAnimationFade];
+//    [self upUserData:[UIImage imageWithData:imageData]];
 }
 
 -(NSData *)dataWithImage:(UIImage *)image{
@@ -369,6 +371,42 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 
 - (void)imageClipeFailed:(WXImageClipOBJ*)clipOBJ{
     [UtilTool showAlertView:nil message:@"图片裁剪失败" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+}
+
+#pragma mark upHead
+-(void)upUserData:(UIImage*)image{
+    NSData *dataImg = UIImagePNGRepresentation(image);
+    NSString *imageName = [[NSString alloc] initWithString:(NSString*)[self timeStampAsString]];
+    [self sendFileByData:dataImg fileName:imageName];
+    NSLog(@"imageName %@",imageName);
+}
+
+-(void)sendFileByPath:(NSURL*)filePath{
+    [self ftpSetting];
+    [FTPHelper upload:filePath];
+}
+
+-(NSString*)timeStampAsString{
+    NSDate *nowDate = [NSDate date];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"EEE-MMM-dd-hh-mm-ss"];
+    NSString *locationString = [@"RT" stringByAppendingString:[df stringFromDate:nowDate]];
+    return [locationString stringByAppendingFormat:@".png"];
+}
+
+-(void)ftpSetting{
+    [FTPHelper sharedInstance].delegate = self;
+    [FTPHelper sharedInstance].uname = @"caoxiaoming";
+    [FTPHelper sharedInstance].pword = @"123...abc";
+    [FTPHelper sharedInstance].urlString = @"ftp://211.154.151.164:1901";
+//    [FTPHelper sharedInstance].uname = @"admin";
+//    [FTPHelper sharedInstance].pword = @"Abcd1234";
+//    [FTPHelper sharedInstance].urlString = @"ftp://192.168.1.218:21";
+}
+
+-(void)sendFileByData:(NSData*)fileData fileName:(NSString*)name{
+    [self ftpSetting];
+    [FTPHelper uploadByData:fileData fileName:name];
 }
 
 @end

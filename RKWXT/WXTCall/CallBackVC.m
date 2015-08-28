@@ -244,7 +244,7 @@
 
 -(void)makeCallPhoneFailed:(NSString *)failedMsg{
     if(!failedMsg){
-        failedMsg = @"本机网络不畅，请设置网络连接";
+        failedMsg = @"呼叫失败";
     }
     [UtilTool showAlertView:failedMsg];
     [self back];
