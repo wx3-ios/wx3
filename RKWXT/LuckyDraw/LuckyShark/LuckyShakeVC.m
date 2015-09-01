@@ -268,6 +268,7 @@
     [activityView stopAnimating];
     [label setHidden:YES];
     waitting = NO;
+    [_model setDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning {

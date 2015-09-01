@@ -10,9 +10,10 @@
 #import "NewGoodsInfoTopImgCell.h"
 #import "WXRemotionImgBtn.h"
 
-@interface NewGoodsInfoTopImgView()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfotopImgCellDelegate>{
+@interface NewGoodsInfoTopImgView()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfotopImgCellDelegate,UIGestureRecognizerDelegate>{
     UITableView *_tableView;
     NSArray *imgArr;
+    NSInteger lastScale;
 }
 @end
 
@@ -36,6 +37,32 @@
     
     [self setBackgroundColor:[UIColor blackColor]];
     [self setUserInteractionEnabled:YES];
+    
+    lastScale = 1.0;
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scaGesture:)];
+    [pinchRecognizer setDelegate:self];
+    [self addGestureRecognizer:pinchRecognizer];
+}
+
+-(void)scaGesture:(id)sender{
+    [self bringSubviewToFront:[(UIPinchGestureRecognizer*)sender view]];
+    //当手指离开屏幕时，将lastcale设置为1.0
+    if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded){
+        lastScale = 1.0;
+        return;
+    }
+    CGFloat third = 0;
+//    CGFloat scale = 1.0-(lastScale-[(UIPinchGestureRecognizer*)sender scale]);
+    CGAffineTransform currentTransform = [(UIPinchGestureRecognizer*)sender view].transform;
+    if(lastScale>=1){
+        third = 1.01;
+    }else{
+        third = 0.99;
+    }
+    
+    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, third, third);
+    [[(UIPinchGestureRecognizer*)sender view] setTransform:newTransform];
+    lastScale = [(UIPinchGestureRecognizer*)sender scale];
 }
 
 -(void)showTopImgViewWithRootView:(UIView *)rootView withTopImgArr:(NSArray *)topImgArr{
@@ -73,10 +100,10 @@
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     NSMutableArray *merchantImgViewArray = [[NSMutableArray alloc] init];
     for(int i = 0; i< [imgArr count]; i++){
-        WXRemotionImgBtn *imgView1 = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
-        [imgView1 setExclusiveTouch:NO];
-        [imgView1 setCpxViewInfo:[imgArr objectAtIndex:i]];
-        [merchantImgViewArray addObject:imgView1];
+        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
+        [imgView setExclusiveTouch:NO];
+        [imgView setCpxViewInfo:[imgArr objectAtIndex:i]];
+        [merchantImgViewArray addObject:imgView];
     }
     cell = [[NewGoodsInfoTopImgCell alloc] initWithReuseIdentifier:identifier imgNameArray:merchantImgViewArray];
     [cell setDelegate:self];

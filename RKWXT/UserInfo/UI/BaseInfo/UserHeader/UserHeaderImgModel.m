@@ -27,7 +27,8 @@
 
 - (NSString*)iconDir{
     NSString *documentPath = [UtilTool documentPath];
-    return [documentPath stringByAppendingPathComponent:@"userIcon"];
+    NSString *path = [NSString stringWithFormat:@"%@/userIcon.png",documentPath];
+    return path;
 }
 
 - (NSString*)userIconPath{

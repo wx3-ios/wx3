@@ -286,6 +286,7 @@
 		12963B3A1B663DBB007418DE /* WXTGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12963B391B663DBB007418DE /* WXTGuideVC.m */; };
 		129674361AB6EAED00597B17 /* ContactInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */; };
 		129674371AB6EAED00597B17 /* ContactInfoHeadImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */; };
+		12989F8D1B900F0100D0AA9F /* FTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 12989F8C1B900F0100D0AA9F /* FTPManager.m */; };
 		129D23391B4F738900008DA0 /* GoodsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D23381B4F738900008DA0 /* GoodsInfoVC.m */; };
 		129D233E1B4F79A200008DA0 /* OrderInfoCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D233D1B4F79A200008DA0 /* OrderInfoCompanyCell.m */; };
 		129D23411B4F96F600008DA0 /* OrderInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129D23401B4F96F600008DA0 /* OrderInfoStateCell.m */; };
@@ -308,6 +309,7 @@
 		12A050BF1B310050008CC38F /* HomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050BE1B310050008CC38F /* HomeNavModel.m */; };
 		12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */; };
 		12A0B43C1B8DBB47005682EA /* FTPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A0B43B1B8DBB47005682EA /* FTPHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		12A0F5A51B954B7700CFF8E5 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A0F5A41B954B7700CFF8E5 /* NetworkManager.m */; };
 		12A3477A1B72ED2400D10C17 /* MakeOrderUserBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */; };
 		12A3477D1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3477C1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m */; };
 		12A347861B733F5600D10C17 /* UserCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347851B733F5600D10C17 /* UserCutVC.m */; };
@@ -1198,6 +1200,8 @@
 		12963B391B663DBB007418DE /* WXTGuideVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTGuideVC.m; sourceTree = "<group>"; };
 		129674321AB6EAED00597B17 /* ContactInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoBack@2x.png"; sourceTree = "<group>"; };
 		129674331AB6EAED00597B17 /* ContactInfoHeadImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoHeadImg@2x.png"; sourceTree = "<group>"; };
+		12989F8B1B900F0100D0AA9F /* FTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPManager.h; sourceTree = "<group>"; };
+		12989F8C1B900F0100D0AA9F /* FTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPManager.m; sourceTree = "<group>"; };
 		129D23371B4F738900008DA0 /* GoodsInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfoVC.h; sourceTree = "<group>"; };
 		129D23381B4F738900008DA0 /* GoodsInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsInfoVC.m; sourceTree = "<group>"; };
 		129D233A1B4F76AE00008DA0 /* OrderGoodsInfoDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderGoodsInfoDef.h; sourceTree = "<group>"; };
@@ -1241,6 +1245,8 @@
 		12A050C51B316B7E008CC38F /* WXTMallListWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTMallListWebVC.m; sourceTree = "<group>"; };
 		12A0B43A1B8DBB47005682EA /* FTPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPHelper.h; sourceTree = "<group>"; };
 		12A0B43B1B8DBB47005682EA /* FTPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPHelper.m; sourceTree = "<group>"; };
+		12A0F5A31B954B7700CFF8E5 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = "../../../../../../../Downloads/SimpleFTPSample/Ancillary Code/NetworkManager.h"; sourceTree = "<group>"; };
+		12A0F5A41B954B7700CFF8E5 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = "../../../../../../../Downloads/SimpleFTPSample/Ancillary Code/NetworkManager.m"; sourceTree = "<group>"; };
 		12A347781B72ED2400D10C17 /* MakeOrderUserBalanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderUserBalanceCell.h; sourceTree = "<group>"; };
 		12A347791B72ED2400D10C17 /* MakeOrderUserBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOrderUserBalanceCell.m; sourceTree = "<group>"; };
 		12A3477B1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOrderBananceSwitchCell.h; sourceTree = "<group>"; };
@@ -3329,6 +3335,8 @@
 			children = (
 				12A0B43A1B8DBB47005682EA /* FTPHelper.h */,
 				12A0B43B1B8DBB47005682EA /* FTPHelper.m */,
+				12989F8B1B900F0100D0AA9F /* FTPManager.h */,
+				12989F8C1B900F0100D0AA9F /* FTPManager.m */,
 			);
 			path = Ftp;
 			sourceTree = "<group>";
@@ -5006,6 +5014,8 @@
 				128221871B1847E7004613BB /* RemotionFileEntity.m */,
 				128221881B1847E7004613BB /* URLDownloadOBJ.h */,
 				128221891B1847E7004613BB /* URLDownloadOBJ.m */,
+				12A0F5A31B954B7700CFF8E5 /* NetworkManager.h */,
+				12A0F5A41B954B7700CFF8E5 /* NetworkManager.m */,
 				1282218A1B1847E7004613BB /* URLNetCache.h */,
 				1282218B1B1847E7004613BB /* URLNetCache.m */,
 				1282218C1B1847E7004613BB /* URLNetNotificationOBJ.h */,
@@ -6457,6 +6467,7 @@
 				775843041AB95A300039B129 /* DDMenuController.m in Sources */,
 				129F32AC1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m in Sources */,
 				12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */,
+				12989F8D1B900F0100D0AA9F /* FTPManager.m in Sources */,
 				775C58BE1ABA7B75005B6B40 /* WXGoodCategoryModel.m in Sources */,
 				775842D91AB95A300039B129 /* UIColor+WX.m in Sources */,
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
@@ -6627,6 +6638,7 @@
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
 				125A76B01B56747F00959AD8 /* JPushInfoModel.m in Sources */,
+				12A0F5A51B954B7700CFF8E5 /* NetworkManager.m in Sources */,
 				12A050BC1B30FFB3008CC38F /* HomeNavENtity.m in Sources */,
 				DDB58F4C1AD3C6A2006248E9 /* CallViewController.m in Sources */,
 				DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */,

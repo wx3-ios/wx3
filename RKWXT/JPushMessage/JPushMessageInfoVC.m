@@ -146,7 +146,7 @@ enum{
         
         DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
         sheet.delegate = self;
-        [sheet showInView:nil];
+        [sheet showInView:self];
         
         return NO;
     }

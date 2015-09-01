@@ -13,11 +13,21 @@
 #import "WXImageClipOBJ.h"
 #import "UserHeaderImgModel.h"
 #import "WXService.h"
-#import "FTPHelper.h"
+
+#import "NetworkManager.h"
+#include <CFNetwork/CFNetwork.h>
+
+#define FtpUrl @"ftp://211.154.151.164"
+#define UserName @"ftpuser"
+#define UserPwd @"123456"
+
+enum {
+    kSendBufferSize = 32768
+};
 
 #define Size self.bounds.size
 
-@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate,PersonalInfoModelDelegate,WXImageClipOBJDelegate,FTPHelperDelegate>{
+@interface BaseInfoVC ()<UITableViewDataSource,UITableViewDelegate,PersonaSexSelectDelegate,PersonDatePickerDelegate,PersonNickNameDelegate,PersonalInfoModelDelegate,WXImageClipOBJDelegate,NSStreamDelegate>{
     UITableView *_tableView;
     PersonalInfoModel *_model;
     WXImageClipOBJ *_imageClipOBJ;
@@ -27,9 +37,20 @@
 @property (nonatomic,assign) NSInteger bSex; //1男 2女
 @property (nonatomic,strong) NSString *nickNameStr;
 @property (nonatomic,strong) NSString *dateStr;
+
+@property (nonatomic, assign, readonly ) BOOL              isSending;
+@property (nonatomic, strong, readwrite) NSOutputStream *  networkStream;
+@property (nonatomic, strong, readwrite) NSInputStream *   fileStream;
+@property (nonatomic, assign, readonly ) uint8_t *         buffer;
+@property (nonatomic, assign, readwrite) size_t            bufferOffset;
+@property (nonatomic, assign, readwrite) size_t            bufferLimit;
 @end
 
 @implementation BaseInfoVC
+{
+    uint8_t                     _buffer[kSendBufferSize];
+}
+
 static NSString *_nameListArray[BaseInfo_Invalid]={
     @"头像",
     @"昵称",
@@ -349,14 +370,13 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 
 -(void)imageClipeFinished:(WXImageClipOBJ *)clipOBJ finalImageData:(NSData *)imageData{
     if(![[UserHeaderImgModel shareUserHeaderImgModel] uploadUserHeaderImgWith:[self dataWithImage:[UIImage imageWithData:imageData]]]){
-        [UtilTool showAlertView:@"上传失败"];
         return;
     }
     headerImg = [UIImage imageWithData:imageData];
     [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_UploadUserIcon object:nil];
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:BaseInfo_Userhead inSection:T_Base_UserInfo];
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexpath] withRowAnimation:UITableViewRowAnimationFade];
-//    [self upUserData:[UIImage imageWithData:imageData]];
+    [self sendDocumentToFTPService];
 }
 
 -(NSData *)dataWithImage:(UIImage *)image{
@@ -373,40 +393,117 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     [UtilTool showAlertView:nil message:@"图片裁剪失败" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
 }
 
-#pragma mark upHead
--(void)upUserData:(UIImage*)image{
-    NSData *dataImg = UIImagePNGRepresentation(image);
-    NSString *imageName = [[NSString alloc] initWithString:(NSString*)[self timeStampAsString]];
-    [self sendFileByData:dataImg fileName:imageName];
-    NSLog(@"imageName %@",imageName);
+#pragma mark 上传头像
+- (uint8_t *)buffer{
+    return self->_buffer;
 }
 
--(void)sendFileByPath:(NSURL*)filePath{
-    [self ftpSetting];
-    [FTPHelper upload:filePath];
+- (BOOL)isSending{
+    return (self.networkStream != nil);
 }
 
--(NSString*)timeStampAsString{
-    NSDate *nowDate = [NSDate date];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"EEE-MMM-dd-hh-mm-ss"];
-    NSString *locationString = [@"RT" stringByAppendingString:[df stringFromDate:nowDate]];
-    return [locationString stringByAppendingFormat:@".png"];
+- (void)startSend:(NSString *)filePath{
+    BOOL                    success;
+    NSURL *                 url;
+    url = [[NetworkManager sharedInstance] smartURLForString:FtpUrl];
+    success = (url != nil);
+    if (success) {
+        url = CFBridgingRelease(
+                                CFURLCreateCopyAppendingPathComponent(NULL, (__bridge CFURLRef) url, (__bridge CFStringRef) [filePath lastPathComponent], false)
+                                );
+        success = (url != nil);
+    }
+    
+    if (!success){
+    } else {
+        self.fileStream = [NSInputStream inputStreamWithFileAtPath:filePath];
+        assert(self.fileStream != nil);
+        [self.fileStream open];
+        self.networkStream = CFBridgingRelease(
+                                               CFWriteStreamCreateWithFTPURL(NULL, (__bridge CFURLRef) url)
+                                               );
+        success = [self.networkStream setProperty:UserName forKey:(id)kCFStreamPropertyFTPUserName];
+        success = [self.networkStream setProperty:UserPwd forKey:(id)kCFStreamPropertyFTPPassword];
+        self.networkStream.delegate = self;
+        [self.networkStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [self.networkStream open];
+    }
 }
 
--(void)ftpSetting{
-    [FTPHelper sharedInstance].delegate = self;
-    [FTPHelper sharedInstance].uname = @"caoxiaoming";
-    [FTPHelper sharedInstance].pword = @"123...abc";
-    [FTPHelper sharedInstance].urlString = @"ftp://211.154.151.164:1901";
-//    [FTPHelper sharedInstance].uname = @"admin";
-//    [FTPHelper sharedInstance].pword = @"Abcd1234";
-//    [FTPHelper sharedInstance].urlString = @"ftp://192.168.1.218:21";
+- (void)stopSendWithStatus:(NSString *)statusString{
+    if (self.networkStream != nil) {
+        [self.networkStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        self.networkStream.delegate = nil;
+        [self.networkStream close];
+        self.networkStream = nil;
+    }
+    if (self.fileStream != nil) {
+        [self.fileStream close];
+        self.fileStream = nil;
+    }
+    [self unShowWaitView];
+    [UtilTool showAlertView:@"上传头像成功"];
 }
 
--(void)sendFileByData:(NSData*)fileData fileName:(NSString*)name{
-    [self ftpSetting];
-    [FTPHelper uploadByData:fileData fileName:name];
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode{
+    assert(aStream == self.networkStream);
+    switch (eventCode) {
+        case NSStreamEventOpenCompleted: {
+            NSLog(@"Opened connection");
+        } break;
+        case NSStreamEventHasBytesAvailable: {
+        } break;
+        case NSStreamEventHasSpaceAvailable: {
+            NSLog(@"Sending");
+            
+            if (self.bufferOffset == self.bufferLimit) {
+                NSInteger   bytesRead;
+                bytesRead = [self.fileStream read:self.buffer maxLength:kSendBufferSize];
+                
+                if (bytesRead == -1) {
+                    [self unShowWaitView];
+                    [UtilTool showAlertView:@"上传头像失败"];
+                } else if (bytesRead == 0) {
+                    [self stopSendWithStatus:nil];
+                } else {
+                    self.bufferOffset = 0;
+                    self.bufferLimit  = bytesRead;
+                }
+            }
+            
+            if (self.bufferOffset != self.bufferLimit) {
+                NSInteger   bytesWritten;
+                bytesWritten = [self.networkStream write:&self.buffer[self.bufferOffset] maxLength:self.bufferLimit - self.bufferOffset];
+                assert(bytesWritten != 0);
+                if (bytesWritten == -1) {
+                    [self unShowWaitView];
+                    [UtilTool showAlertView:@"上传头像失败"];
+                } else {
+                    self.bufferOffset += bytesWritten;
+                }
+            }
+        } break;
+        case NSStreamEventErrorOccurred: {
+            [self unShowWaitView];
+            [UtilTool showAlertView:@"上传头像失败"];
+        } break;
+        case NSStreamEventEndEncountered: {
+            // ignore
+        } break;
+        default: {
+            assert(NO);
+        } break;
+    }
+}
+
+#pragma mark * Actions
+-(void)sendDocumentToFTPService{
+    if (!self.isSending ) {
+        NSString * filePath;
+        filePath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
+        [self startSend:filePath];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    }
 }
 
 @end
