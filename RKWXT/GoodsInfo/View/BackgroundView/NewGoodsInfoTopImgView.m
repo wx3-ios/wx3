@@ -41,7 +41,7 @@
     lastScale = 1.0;
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scaGesture:)];
     [pinchRecognizer setDelegate:self];
-    [self addGestureRecognizer:pinchRecognizer];
+//    [self addGestureRecognizer:pinchRecognizer];
 }
 
 -(void)scaGesture:(id)sender{

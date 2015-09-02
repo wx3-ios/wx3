@@ -7,7 +7,6 @@
 //
 
 #import "FTPManager.h"
-#import "NetworkManager.h"
 #include <CFNetwork/CFNetwork.h>
 
 enum {
@@ -59,7 +58,7 @@ enum {
     
     // First get and check the URL.
     
-    url = [[NetworkManager sharedInstance] smartURLForString:@"ftp://211.154.151.164"];
+//    url = [[NetworkManager sharedInstance] smartURLForString:@"ftp://211.154.151.164"];
     success = (url != nil);
     
     if (success) {
