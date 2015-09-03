@@ -14,6 +14,8 @@
     UITableView *_tableView;
     NSArray *imgArr;
     NSInteger lastScale;
+    
+    WXRemotionImgBtn *imgView;
 }
 @end
 
@@ -41,7 +43,7 @@
     lastScale = 1.0;
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scaGesture:)];
     [pinchRecognizer setDelegate:self];
-//    [self addGestureRecognizer:pinchRecognizer];
+//    [_tableView addGestureRecognizer:pinchRecognizer];
 }
 
 -(void)scaGesture:(id)sender{
@@ -55,9 +57,9 @@
 //    CGFloat scale = 1.0-(lastScale-[(UIPinchGestureRecognizer*)sender scale]);
     CGAffineTransform currentTransform = [(UIPinchGestureRecognizer*)sender view].transform;
     if(lastScale>=1){
-        third = 1.01;
+        third = 1.03;
     }else{
-        third = 0.99;
+        third = 0.97;
     }
     
     CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, third, third);
@@ -100,7 +102,7 @@
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     NSMutableArray *merchantImgViewArray = [[NSMutableArray alloc] init];
     for(int i = 0; i< [imgArr count]; i++){
-        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
+        imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
         [imgView setExclusiveTouch:NO];
         [imgView setCpxViewInfo:[imgArr objectAtIndex:i]];
         [merchantImgViewArray addObject:imgView];

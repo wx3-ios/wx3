@@ -7,8 +7,6 @@
 //
 
 #import "NewGoodsInfoBigImgView.h"
-#import "SDPhotoGroup.h"
-#import "SDPhotoItem.h"
 
 @interface NewGoodsInfoBigImgView ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -48,16 +46,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    SDPhotoGroup *photoGroup = [[SDPhotoGroup alloc] init];
-    NSMutableArray *temp = [NSMutableArray array];
-    [_imgArr enumerateObjectsUsingBlock:^(NSString *src, NSUInteger idx, BOOL *stop) {
-        SDPhotoItem *item = [[SDPhotoItem alloc] init];
-        item.thumbnail_pic = src;
-        [temp addObject:item];
-    }];
-    
-    photoGroup.photoItemArray = [temp copy];
-    [cell.contentView addSubview:photoGroup];
     return cell;
 }
 

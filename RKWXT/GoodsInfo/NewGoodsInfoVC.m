@@ -22,6 +22,9 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "NewGoodsInfoTopImgView.h"
 
+#import "NewImageZoomView.h"
+#import "GoodsInfoImageZoomView.h"
+
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
@@ -362,12 +365,16 @@
 }
 
 -(void)clickTopGoodAtIndex:(NSInteger)index{
-    NewGoodsInfoTopImgView *topImgView1 = [[NewGoodsInfoTopImgView alloc] init];
+//    NewGoodsInfoTopImgView *topImgView1 = [[NewGoodsInfoTopImgView alloc] init];
     GoodsInfoEntity *entity = nil;
     if([_model.data count] > 0){
         entity = [_model.data objectAtIndex:0];
     }
-    [topImgView1 showTopImgViewWithRootView:self.view withTopImgArr:entity.imgArr];
+//    [topImgView1 showTopImgViewWithRootView:self.view withTopImgArr:entity.imgArr];
+    
+    NewImageZoomView *img = [[NewImageZoomView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height )imgViewSize:CGSizeZero];
+    [self.view addSubview:img];
+    [img updateImageDate:entity.imgArr selectIndex:index];
 }
 
 //商品描述
