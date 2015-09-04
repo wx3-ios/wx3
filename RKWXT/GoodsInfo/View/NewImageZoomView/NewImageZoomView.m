@@ -61,7 +61,7 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(TapsAction:)];
     [tapGesture setNumberOfTapsRequired:1];
-    [m_TableView addGestureRecognizer:tapGesture];
+    [self addGestureRecognizer:tapGesture];
     
     progressLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 40, self.frame.size.width, 20)];
     progressLabel.backgroundColor = [UIColor clearColor];

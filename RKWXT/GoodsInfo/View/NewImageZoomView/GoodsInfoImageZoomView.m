@@ -88,7 +88,7 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(TapsAction:)];
     [tapGesture setNumberOfTapsRequired:HandOneTap];
-    [_containerView addGestureRecognizer:tapGesture];
+//    [_containerView addGestureRecognizer:tapGesture];
     
     //双击失败之后执行单击
     [tapGesture requireGestureRecognizerToFail:doubleTapGesture];

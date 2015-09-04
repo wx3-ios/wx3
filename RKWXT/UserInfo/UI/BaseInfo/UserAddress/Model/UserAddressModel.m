@@ -89,6 +89,9 @@
             entity.userPhone = phone;
             entity.address = address;
             entity.address_id = [[retData.data objectForKey:@"data"] integerValue];
+            if([_userAddressArr count] == 0){
+                entity.normalID = 1;
+            }
             [_userAddressArr addObject:entity];
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserAddress_InsertDataSucceed object:nil];
         }
