@@ -109,8 +109,15 @@
         [userDefault SetUserLoginFirst:YES];
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
     }else{
-        WXTGuideVC *vc = [[WXTGuideVC alloc] init];
-        self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
+        WXUIViewController *vc = nil;
+        if(kMerchantID == 100000){
+            vc = [[WXTGuideVC alloc] init];
+            self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
+        }else{
+            vc = [[LoginVC alloc] init];
+            self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
+        }
+        
         [vc.navigationController setNavigationBarHidden:YES];
         [self.window setRootViewController:self.navigationController];
         [self.window makeKeyAndVisible];

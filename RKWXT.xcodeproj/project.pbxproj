@@ -310,6 +310,7 @@
 		129EEBBC1B97E3AF0062349E /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 129EEBB61B97E3AF0062349E /* SDWebImageDecoder.m */; };
 		129EEBBD1B97E3AF0062349E /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 129EEBB81B97E3AF0062349E /* SDWebImageManager.m */; };
 		129EEBBE1B97E3AF0062349E /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 129EEBBB1B97E3AF0062349E /* SDWebImagePrefetcher.m */; };
+		129EEBC11B97EF130062349E /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 129EEBC01B97EF130062349E /* DDProgressView.m */; };
 		129F32971B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32961B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m */; };
 		129F329A1B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F32991B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.m */; };
 		129F329D1B82D2DF004DFFB1 /* LuckySharkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F329C1B82D2DF004DFFB1 /* LuckySharkModel.m */; };
@@ -1267,6 +1268,8 @@
 		129EEBB91B97E3AF0062349E /* SDWebImageManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManagerDelegate.h; sourceTree = "<group>"; };
 		129EEBBA1B97E3AF0062349E /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImagePrefetcher.h; sourceTree = "<group>"; };
 		129EEBBB1B97E3AF0062349E /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImagePrefetcher.m; sourceTree = "<group>"; };
+		129EEBBF1B97EF130062349E /* DDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDProgressView.h; sourceTree = "<group>"; };
+		129EEBC01B97EF130062349E /* DDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDProgressView.m; sourceTree = "<group>"; };
 		129F32951B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyGoodsMakeOrderVC.h; sourceTree = "<group>"; };
 		129F32961B82BF07004DFFB1 /* LuckyGoodsMakeOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyGoodsMakeOrderVC.m; sourceTree = "<group>"; };
 		129F32981B82C8E5004DFFB1 /* LuckyMakeOrderCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyMakeOrderCompanyCell.h; sourceTree = "<group>"; };
@@ -3344,6 +3347,8 @@
 				129EEBB01B97DDF40062349E /* RoundButton.m */,
 				129EEBB11B97DDF40062349E /* RoundImageView.h */,
 				129EEBB21B97DDF40062349E /* RoundImageView.m */,
+				129EEBBF1B97EF130062349E /* DDProgressView.h */,
+				129EEBC01B97EF130062349E /* DDProgressView.m */,
 			);
 			path = NewImageZoomView;
 			sourceTree = "<group>";
@@ -6596,6 +6601,7 @@
 				129EEB841B97DB950062349E /* NewGoodsInfoZoomImgItem.m in Sources */,
 				DDB58F501AD3C6A2006248E9 /* WXTCallHistoryCell.m in Sources */,
 				129D233E1B4F79A200008DA0 /* OrderInfoCompanyCell.m in Sources */,
+				129EEBC11B97EF130062349E /* DDProgressView.m in Sources */,
 				7758435C1AB95FAC0039B129 /* WXService.m in Sources */,
 				DDB58F4E1AD3C6A2006248E9 /* CallHistoryCell.m in Sources */,
 				1284CC851B54ADB900D98F79 /* PaySucceedModel.m in Sources */,

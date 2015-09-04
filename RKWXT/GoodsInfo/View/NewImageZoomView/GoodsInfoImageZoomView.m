@@ -27,14 +27,14 @@
 - (float)getImgWidthFactor {
     return   self.bounds.size.width / self.image.size.width;
 }
-
 //获取图片和显示视图高度的比例系数
 - (float)getImgHeightFactor {
     return  self.bounds.size.height / self.image.size.height;
 }
 
 //获获取尺寸
-- (CGSize)newSizeByoriginalSize:(CGSize)oldSize maxSize:(CGSize)mSize{
+- (CGSize)newSizeByoriginalSize:(CGSize)oldSize maxSize:(CGSize)mSize
+{
     if (oldSize.width <= 0 || oldSize.height <= 0) {
         return CGSizeZero;
     }
@@ -52,12 +52,14 @@
             newSize = CGSizeMake(newWidth, mSize.height);
         }
     }else {
+        
         newSize = oldSize;
     }
     return newSize;
 }
 
 - (void)_initView {
+    
     self.backgroundColor = [UIColor blackColor];
     self.clipsToBounds = YES;
     self.contentMode = UIViewContentModeScaleAspectFill;
@@ -91,6 +93,15 @@
     //双击失败之后执行单击
     [tapGesture requireGestureRecognizerToFail:doubleTapGesture];
     
+    
+    DDProgressView *pro = [[DDProgressView alloc] initWithFrame:CGRectMake(0.0f, (self.bounds.size.height - 2) * 0.5, self.frame.size.width, 3)];
+    self.progress = pro;
+    self.progress.progress = 0.0;
+    self.progress.hidden = YES;
+    self.progress.innerColor = [UIColor blueColor];//进度颜色
+    self.progress.emptyColor = [UIColor whiteColor];//背景
+    [self addSubview:self.progress];
+    
     //    CGSize showSize = [self newSizeByoriginalSize:self.image.size maxSize:self.bounds.size];
     //
     //    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, showSize.width, showSize.height)];
@@ -104,16 +115,22 @@
     
 }
 
-- (void)resetViewFrame:(CGRect)newFrame{
+- (void)resetViewFrame:(CGRect)newFrame
+{
     self.frame = newFrame;
     _scrollView.frame = self.bounds;
     _containerView.frame = self.bounds;
+    
+    CGSize vsize = self.frame.size;
+    self.progress.hidden = NO;
+    self.progress.frame = CGRectMake(15, (vsize.height - 2) * 0.5,vsize.width - 30 , 2);
 }
 
 
 #pragma mark- 手势事件
 //单击 / 双击 手势
-- (void)TapsAction:(UITapGestureRecognizer *)tap{
+- (void)TapsAction:(UITapGestureRecognizer *)tap
+{
     NSInteger tapCount = tap.numberOfTapsRequired;
     if (HandDoubleTap == tapCount) {
         //双击
@@ -170,13 +187,24 @@
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     if ([manager webImageDownoaderWithUrl:[NSURL URLWithString:downImgUrl]]) {
         float downLoadProgress = [manager getImageDidDownloadProgressWithUrl:[NSURL URLWithString:downImgUrl]];
+        self.progress.hidden = NO;;
+        self.progress.progress = downLoadProgress;
         NSLog(@"---************************获取下载进度: %f url: %@",downLoadProgress,downImgUrl);
+        if (downLoadProgress >= 1) {
+            self.progress.hidden = YES;
+        }
+        
     }else {
+        self.progress.hidden = YES;
     }
+    
+    
+    self.progress.progress = 0;
     [self loadImeWithUrl:downImgUrl];
 }
 - (void)setImageViewWithImg:(UIImage *)img {
     self.scrollView.scrollEnabled = YES;
+    self.progress.hidden = YES;
     
     self.imageView.image = img;
     CGSize showSize = [self newSizeByoriginalSize:img.size maxSize:self.bounds.size];
@@ -298,10 +326,12 @@
             self.image = cachedImage;
             [self setImageViewWithImg:self.image];
         }else {
+            self.progress.hidden = NO;
             //未下载 需要去下载 内部会处理 此图是否下载中
             [manager downloadWithURL:[NSURL URLWithString:imageUrl] delegate:self];
         }
     }else {
+        self.progress.hidden = YES;
     }
 }
 
@@ -309,6 +339,8 @@
 {
     //下载图片成功
     if ([imageManager webImageDownoaderWithUrl:[NSURL URLWithString:downImgUrl]]) {
+        self.progress.progress = 1.0;
+        self.progress.hidden = YES;
         
         self.image = image;
         [self setImageViewWithImg:self.image];
@@ -316,9 +348,12 @@
         NSLog(@"当前 -- 下载图片成功");
     }
 }
-- (void)webImageManager:(SDWebImageManager *)imageManager didFailWithError:(NSError *)error{
+- (void)webImageManager:(SDWebImageManager *)imageManager didFailWithError:(NSError *)error
+{
     //下载图片失败
     if ([imageManager webImageDownoaderWithUrl:[NSURL URLWithString:downImgUrl]]) {
+        self.progress.hidden = YES;
+        self.progress.progress = 0.0;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"图片下载失败!\n请检查网络后重试"
                                                        delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
         [alert show];
@@ -338,6 +373,10 @@
     
     if ([downloader webImageDownoaderWithUrl:[NSURL URLWithString:downImgUrl]]) {
         float downLoadProgress = [downloader getImageDidDownloadProgressWithUrl:[NSURL URLWithString:downImgUrl]];
+        self.progress.progress = downLoadProgress;
+        if (downLoadProgress >= 1) {
+            self.progress.hidden = YES;
+        }
         NSLog(@"是当前url:%@ 下载进度: %f",downImgUrl,downLoadProgress);
     }else {
         NSLog(@"不是 ---- 当前url");

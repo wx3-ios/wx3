@@ -46,10 +46,10 @@
         [_scrollView addSubview:imageView];
         
         if(i == kGuideViewNumber-1){
-            CGFloat btnWidth = 100;
+            CGFloat btnWidth = 140;
             CGFloat btnHeight = 40;
             WXUIButton *button = [WXUIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake((size.width-btnWidth)/2, size.height-btnHeight-50, btnWidth, btnHeight);
+            button.frame = CGRectMake((size.width-btnWidth)/2, size.height-btnHeight-60, btnWidth, btnHeight);
             [button setBackgroundImage:[UIImage imageNamed:@"GuideStartUseBtnNor.png"] forState:UIControlStateNormal];
             [button setBackgroundImage:[UIImage imageNamed:@"GuideStartUseBtnSel.png"] forState:UIControlStateSelected];
             [button addTarget:self action:@selector(guideviewScrollFinished) forControlEvents:UIControlEventTouchUpInside];

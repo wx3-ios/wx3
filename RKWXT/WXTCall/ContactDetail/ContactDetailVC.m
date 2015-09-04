@@ -99,7 +99,7 @@
     UIView *footView = [[UIView alloc] init];
     
     CGFloat yOffset = 52;
-    CGFloat btnWidth = 160;
+    CGFloat btnWidth = 200;
     CGFloat btnHeight = 30;
     WXTUIButton *invateBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     invateBtn.frame = CGRectMake((Size.width-btnWidth)/2, yOffset, btnWidth, btnHeight);

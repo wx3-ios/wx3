@@ -9,6 +9,7 @@
 #import "WXUIView.h"
 #import "SDWebImageManagerDelegate.h"
 #import "SDWebImageManager.h"
+#import "DDProgressView.h"
 
 @interface GoodsInfoImageZoomView : UIView <UIScrollViewDelegate,SDWebImageManagerDelegate>{
     CGFloat viewscale;
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) BOOL isViewing;
 @property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) DDProgressView *progress;
 
 - (void)resetViewFrame:(CGRect)newFrame;
 - (void)updateImage:(NSString *)imgName;
