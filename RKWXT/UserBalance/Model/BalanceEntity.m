@@ -27,6 +27,9 @@
         
         NSInteger state = [[dic objectForKey:@"is_combo"] integerValue];
         [self setType:state];
+        
+        NSInteger normalDate = [[dic objectForKey:@"telephone_fare_expiry"] integerValue];
+        [self setNormalDate:normalDate];
     }
     return self;
 }

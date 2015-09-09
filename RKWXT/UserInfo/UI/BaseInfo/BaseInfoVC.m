@@ -16,10 +16,12 @@
 
 #import "NetworkManager.h"
 #include <CFNetwork/CFNetwork.h>
+#import "UserHeaderModel.h"
+#import "WXRemotionImgBtn.h"
 
-#define FtpUrl @"ftp://211.154.151.164"
-#define UserName @"ftpuser"
-#define UserPwd @"123456"
+#define FtpUrl @"ftp://wx3.67call.com"
+#define UserName @"picuser"
+#define UserPwd @"KoYYooop7728###"
 
 enum {
     kSendBufferSize = 32768
@@ -61,6 +63,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCSTTitle:@"个人资料"];
+    [[UserHeaderModel shareUserHeaderModel] loadUserHeaderImageWith];
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
@@ -79,11 +82,11 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     [_imageClipOBJ setClipImageType:E_ImageType_Personal_Img];
     [_imageClipOBJ setParentVC:self];
     
-    NSString *iconPath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if([fileManager fileExistsAtPath:iconPath]){
-        headerImg = [UIImage imageWithContentsOfFile:iconPath];
-    }
+//    NSString *iconPath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    if([fileManager fileExistsAtPath:iconPath]){
+//        headerImg = [UIImage imageWithContentsOfFile:iconPath];
+//    }
 }
 
 -(WXUIView*)tableForFootView{
@@ -155,6 +158,7 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
     [cell.textLabel setText:_nameListArray[row]];
     [cell.textLabel setFont:WXFont(15.0)];
     [cell setImg:headerImg];
+    [cell setCellInfo:[UserHeaderModel shareUserHeaderModel].userHeaderImg];
     [cell load];
     return cell;
 }
@@ -442,6 +446,8 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
         self.fileStream = nil;
     }
     [self unShowWaitView];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    [[UserHeaderModel shareUserHeaderModel] updateUserHeaderSucceed:[NSString stringWithFormat:@"%@userIcon.png",userObj.wxtID]];
     [UtilTool showAlertView:@"上传头像成功"];
 }
 

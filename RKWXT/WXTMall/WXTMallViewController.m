@@ -363,7 +363,7 @@
             break;
         case HomePageJump_Type_BusinessAlliance:
         {
-            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017" title:@"商家联盟" animated:YES];
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
         }
             break;
         default:
@@ -444,7 +444,7 @@
             break;
         case HomePageJump_Type_BusinessAlliance:
         {
-            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017" title:@"商家联盟" animated:YES];
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
         }
             break;
         default:
@@ -493,9 +493,9 @@
     switch (index) {
         case T_BaseFunction_Sign:
         {
-//            [[CoordinateController sharedCoordinateController] toSignVC:self animated:YES];
-            LuckyGoodsShowVC *luckyGoodsVC = [[LuckyGoodsShowVC alloc] init];
-            [self.wxNavigationController pushViewController:luckyGoodsVC];
+            [[CoordinateController sharedCoordinateController] toSignVC:self animated:YES];
+//            LuckyGoodsShowVC *luckyGoodsVC = [[LuckyGoodsShowVC alloc] init];
+//            [self.wxNavigationController pushViewController:luckyGoodsVC];
         }
             break;
         case T_BaseFunction_Recharge:

@@ -27,7 +27,8 @@
 
 - (NSString*)iconDir{
     NSString *documentPath = [UtilTool documentPath];
-    NSString *path = [NSString stringWithFormat:@"%@/userIcon.png",documentPath];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSString *path = [NSString stringWithFormat:@"%@/%@userIcon.png",documentPath,userObj.wxtID];
     return path;
 }
 

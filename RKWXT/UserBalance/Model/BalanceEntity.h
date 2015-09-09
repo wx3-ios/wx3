@@ -17,6 +17,7 @@ typedef enum{
 @property (nonatomic,assign) CGFloat money;
 @property (nonatomic,assign) UserBalance_Type type;
 @property (nonatomic,strong) NSString *date;
+@property (nonatomic,assign) NSInteger normalDate;
 
 +(BalanceEntity*)initUserBalanceWithDic:(NSDictionary*)dic;
 

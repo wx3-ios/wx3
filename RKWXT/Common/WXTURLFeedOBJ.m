@@ -177,6 +177,12 @@
         case WXT_UrlFeed_Type_New_SharedSucceed:
             url = @"/get_share_award.php";
             break;
+        case WXT_UrlFeed_Type_New_UpdateUserHeader:
+            url = @"/app_upload_userpic.php";
+            break;
+        case WXT_UrlFeed_Type_New_LoadUserHeader:
+            url = @"/get_user_pic.php";
+            break;
         default:
             break;
     }

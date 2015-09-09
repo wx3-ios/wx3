@@ -53,6 +53,9 @@
 		1218042F1ACB899B009DB7E7 /* DBImageViewCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1218042B1ACB899B009DB7E7 /* DBImageViewCache.m */; };
 		121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804311ACB90C7009DB7E7 /* FindCommonVC.m */; };
 		121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */; };
+		121AC74C1B9EB80A007AC44B /* NewUserCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */; };
+		121AC7531B9ECF15007AC44B /* UserRefereeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC7521B9ECF15007AC44B /* UserRefereeCell.m */; };
+		1220140A1BA00C360080B994 /* UserHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122014091BA00C360080B994 /* UserHeaderModel.m */; };
 		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
@@ -886,6 +889,12 @@
 		121804311ACB90C7009DB7E7 /* FindCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindCommonVC.m; sourceTree = "<group>"; };
 		121804341ACB99AB009DB7E7 /* WXTFindCommmonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTFindCommmonCell.h; sourceTree = "<group>"; };
 		121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTFindCommmonCell.m; sourceTree = "<group>"; };
+		121AC74A1B9EB80A007AC44B /* NewUserCutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserCutVC.h; sourceTree = "<group>"; };
+		121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserCutVC.m; sourceTree = "<group>"; };
+		121AC7511B9ECF15007AC44B /* UserRefereeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRefereeCell.h; path = RKWXT/NewUserCut/View/UserRefereeCell.h; sourceTree = SOURCE_ROOT; };
+		121AC7521B9ECF15007AC44B /* UserRefereeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRefereeCell.m; path = RKWXT/NewUserCut/View/UserRefereeCell.m; sourceTree = SOURCE_ROOT; };
+		122014081BA00C360080B994 /* UserHeaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderModel.h; sourceTree = "<group>"; };
+		122014091BA00C360080B994 /* UserHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderModel.m; sourceTree = "<group>"; };
 		12228A6A1AB1B1D000CF0800 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		12228A6B1AB1B1D000CF0800 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		12228A711AB1BABA00CF0800 /* RegistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistVC.h; sourceTree = "<group>"; };
@@ -2485,6 +2494,34 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		121AC7471B9EB7CF007AC44B /* NewUserCut */ = {
+			isa = PBXGroup;
+			children = (
+				121AC74A1B9EB80A007AC44B /* NewUserCutVC.h */,
+				121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */,
+				121AC7501B9ECEDE007AC44B /* View */,
+				121AC7481B9EB7F5007AC44B /* Model */,
+			);
+			path = NewUserCut;
+			sourceTree = "<group>";
+		};
+		121AC7481B9EB7F5007AC44B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		121AC7501B9ECEDE007AC44B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				121AC7511B9ECF15007AC44B /* UserRefereeCell.h */,
+				121AC7521B9ECF15007AC44B /* UserRefereeCell.m */,
+			);
+			name = View;
+			path = Model/View;
+			sourceTree = "<group>";
+		};
 		12228A691AB1B1C300CF0800 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -3018,6 +3055,8 @@
 		1282EF801B5E3397004D2019 /* UserHeader */ = {
 			isa = PBXGroup;
 			children = (
+				122014081BA00C360080B994 /* UserHeaderModel.h */,
+				122014091BA00C360080B994 /* UserHeaderModel.m */,
 				1282EF811B5E33B5004D2019 /* UserHeaderImgModel.h */,
 				1282EF821B5E33B5004D2019 /* UserHeaderImgModel.m */,
 			);
@@ -4686,6 +4725,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				121AC7471B9EB7CF007AC44B /* NewUserCut */,
 				12C0691B1B7C9A9900C05D42 /* LuckyDraw */,
 				120EB3CC1B7B563B0036A77C /* Shark */,
 				12A3477E1B733E9300D10C17 /* UserCut */,
@@ -6319,6 +6359,7 @@
 				775C58CB1ABA7B75005B6B40 /* SubShopArea.m in Sources */,
 				775C58B61ABA7B75005B6B40 /* RedPacket.m in Sources */,
 				128767011B51012700A79320 /* ShopTwoDimensionCell.m in Sources */,
+				121AC7531B9ECF15007AC44B /* UserRefereeCell.m in Sources */,
 				12963B3A1B663DBB007418DE /* WXTGuideVC.m in Sources */,
 				12F180B91B45190800B9A80D /* Sql_JpushData.m in Sources */,
 				7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */,
@@ -6780,6 +6821,7 @@
 				12F916061B1950E600C94717 /* T_InsertData.m in Sources */,
 				775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */,
 				12F916211B19A18600C94717 /* HomePageSurpEntity.m in Sources */,
+				121AC74C1B9EB80A007AC44B /* NewUserCutVC.m in Sources */,
 				775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */,
 				775843261AB95A300039B129 /* WXUILabel.m in Sources */,
 				1261F0181AE659AC00693710 /* HangupModel.m in Sources */,
@@ -6812,6 +6854,7 @@
 				12BD30FC1B3E905A00170316 /* UserBonusModel.m in Sources */,
 				12C12F1C1B818C0700345BEE /* LuckyGoodsOrderListCell.m in Sources */,
 				128221B21B184ABB004613BB /* ASIHTTPRequest.m in Sources */,
+				1220140A1BA00C360080B994 /* UserHeaderModel.m in Sources */,
 				120E162A1B846718009401F2 /* LuckyOrderEntity.m in Sources */,
 				128766FF1B51012700A79320 /* AboutShopInfoCell.m in Sources */,
 				12E471C51B1F178D00559995 /* WaitReceiveGoodsInfoCell.m in Sources */,

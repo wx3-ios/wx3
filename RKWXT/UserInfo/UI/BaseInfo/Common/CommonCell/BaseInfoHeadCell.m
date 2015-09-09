@@ -7,9 +7,10 @@
 //
 
 #import "BaseInfoHeadCell.h"
+#import "WXRemotionImgBtn.h"
 
 @interface BaseInfoHeadCell(){
-    UIImageView *headImg;
+    WXRemotionImgBtn *headImg;
 }
 
 @end
@@ -22,8 +23,8 @@
         CGSize size = self.bounds.size;
         CGFloat xOffset = 18;
         CGFloat headImgWith = 60;
-        headImg = [[UIImageView alloc] init];
-        headImg.frame = CGRectMake(size.width-xOffset-headImgWith-10, (81-headImgWith)/2, headImgWith, headImgWith);
+        headImg = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(size.width-xOffset-headImgWith-10, (81-headImgWith)/2, headImgWith, headImgWith)];
+        [headImg setUserInteractionEnabled:NO];
         [headImg setBorderRadian:30.0 width:1.0 color:[UIColor clearColor]];
         [headImg setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:headImg];
@@ -32,9 +33,16 @@
 }
 
 -(void)load{
-    [headImg setImage:[UIImage imageNamed:@"PersonalInfoHeadImg.jpg"]];
+    NSString *iconName = self.cellInfo;
     if(_img){
         [headImg setImage:_img];
+    }else{
+        if(iconName){
+            [headImg setCpxViewInfo:iconName];
+            [headImg load];
+        }else{
+            [headImg setImage:[UIImage imageNamed:@"PersonalInfoHeadImg.jpg"]];
+        }
     }
 }
 

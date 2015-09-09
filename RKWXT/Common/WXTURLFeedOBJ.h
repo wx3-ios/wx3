@@ -62,6 +62,8 @@ typedef enum {
     WXT_UrlFeed_Type_New_LoadJPushMessage,
     WXT_UrlFeed_Type_New_CompleteLuckyOrder,
     WXT_UrlFeed_Type_New_SharedSucceed,
+    WXT_UrlFeed_Type_New_UpdateUserHeader,
+    WXT_UrlFeed_Type_New_LoadUserHeader,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

@@ -12,6 +12,8 @@
 #import "WXWeiXinOBJ.h"
 #import "ShareBrowserView.h"
 #import "ShareSucceedModel.h"
+#import "UserHeaderModel.h"
+#import "WXRemotionImgBtn.h"
 
 #define UserBgImageViewHeight (95+66)
 #define Size self.view.bounds.size
@@ -21,7 +23,7 @@
     UIImageView *bgImageView;
     WXUILabel *namelabel;
     
-    UIImageView *iconImageView;
+    WXRemotionImgBtn *iconImageView;
     UIImage *_image;
     
     NSArray *menuList;
@@ -110,13 +112,14 @@
     CGFloat xOffset = 18;
     CGFloat yOffset = 22;
     UIImage *iconImg = [UIImage imageNamed:@"PersonalInfo.png"];
-    iconImageView = [[UIImageView alloc] init];
-    iconImageView.frame = CGRectMake((IPHONE_SCREEN_WIDTH-iconImg.size.width)/2, yOffset, iconImg.size.width, iconImg.size.height);
+    iconImageView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((IPHONE_SCREEN_WIDTH-iconImg.size.width)/2, yOffset, iconImg.size.width, iconImg.size.height)];
     [iconImageView setImage:iconImg];
+    [iconImageView setUserInteractionEnabled:NO];
     [iconImageView setBorderRadian:iconImg.size.width/2 width:1.0 color:[UIColor clearColor]];
     [headView addSubview:iconImageView];
-    if([self userIconImage]){
-        [iconImageView setImage:[self userIconImage]];
+    if([UserHeaderModel shareUserHeaderModel].userHeaderImg){
+        [iconImageView setCpxViewInfo:[UserHeaderModel shareUserHeaderModel].userHeaderImg];
+        [iconImageView load];
     }
     
     yOffset += iconImg.size.height+3;
@@ -240,6 +243,9 @@
 //    if(section == PersonalInfo_Cut){
 //        return 0;
 //    }
+    if(section == PersonalInfo_SharkOrder){
+        return 0;
+    }
     return 12;
 }
 
@@ -259,7 +265,7 @@
 //            number = Money_Invalid;
 //            break;
         case PersonalInfo_SharkOrder:
-            number = 1;
+            number = 0;
             break;
         case PersonalInfo_Call:
             number = Call_Invalid;

@@ -175,7 +175,8 @@ enum{
     
         if(entity.type == UserBalance_Type_Normal){
             [_status setText:@"普通用户"];
-            [_date setText:@"永久有效"];
+//            [_date setText:@"永久有效"];
+            [_date setText:[NSString stringWithFormat:@"%@",[UtilTool getDateTimeFor:entity.normalDate type:2]]];
         }else{
             [_status setText:@"VIP用户"];
             NSString *dateStr = [UtilTool getDateTimeFor:[entity.date integerValue] type:2];

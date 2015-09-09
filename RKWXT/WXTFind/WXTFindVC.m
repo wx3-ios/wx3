@@ -36,7 +36,7 @@ enum{
     if(self){
         imgArr = @[@"FindUnionImg.png", @"FindWeatherImg.png"];
         nameArr = @[@"商家联盟", @"天气"];
-        webUrl = @[@"http://sjlm1.67call.com/shop/index.php/Union/index/seller_id/10017", @"http://weather.html5.qq.com"];
+        webUrl = @[@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant", @"http://weather.html5.qq.com"];
     }
     return self;
 }
