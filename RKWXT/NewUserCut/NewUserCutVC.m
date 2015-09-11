@@ -9,6 +9,9 @@
 #import "NewUserCutVC.h"
 #import "NewGoodsInfoBDCell.h"
 #import "UserRefereeCell.h"
+#import "NewMyClientVC.h"
+#import "MyCutRefereeModel.h"
+#import "MyRefereeEntity.h"
 
 #define Size self.bounds.size
 
@@ -19,12 +22,15 @@ enum{
     NewCut_Section_invalid,
 };
 
-@interface NewUserCutVC ()<UITableViewDataSource,UITableViewDelegate>{
+@interface NewUserCutVC ()<UITableViewDataSource,UITableViewDelegate,LoadMyCutRefereeModelDelegate>{
     UITableView *_tableView;
     WXUILabel *_bigMoney;
     WXUILabel *_smallMoney;
     
     BOOL _isOpen;
+    
+    MyCutRefereeModel *_model;
+    NSArray *myCutArr;
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end
@@ -46,6 +52,11 @@ enum{
     [self addSubview:_tableView];
     [_tableView setTableHeaderView:[self tableviewForHeadView]];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    _model = [[MyCutRefereeModel alloc] init];
+    [_model setDelegate:self];
+    [_model loadMyCutRefereeInfo];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(UIView*)tableviewForHeadView{
@@ -124,7 +135,7 @@ enum{
         {
             if(_isOpen){
                 if(_selectedIndexPath.section == section){
-                    if(1 > 0){
+                    if([myCutArr count] > 0){
                         return 2;
                     }else{
                         return 1;
@@ -142,7 +153,18 @@ enum{
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 9;
+    CGFloat height = 0;
+    switch (section) {
+        case NewCut_Section_team:
+            height = 9;
+            break;
+        case NewCut_Section_Referee:
+            height = 0;
+            break;
+        default:
+            break;
+    }
+    return height;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -152,8 +174,7 @@ enum{
         case NewCut_Section_team:
             height = 44;
             break;
-        case NewCut_Section_Referee:
-        {
+        case NewCut_Section_Referee:{
             if(indexPath.row == 0){
                 height = 44;
             }else{
@@ -203,8 +224,10 @@ enum{
         cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];;
     }
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
-    [cell.imageView setImage:[UIImage imageNamed:@""]];
+    [cell.imageView setImage:[UIImage imageNamed:@"MyCutTeam.png"]];
     [cell.textLabel setText:@"我的团队"];
+    [cell.textLabel setFont:WXFont(16.0)];
+    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     [cell load];
     return cell;
 }
@@ -216,10 +239,25 @@ enum{
     if(!cell){
         cell = [[NewGoodsInfoBDCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell.imageView setImage:[UIImage imageNamed:@""]];
+    [cell.imageView setImage:[UIImage imageNamed:@"MyCutReferee.png"]];
     [cell.textLabel setText:@"我的推荐者"];
     [cell changeArrowWithDown:_isOpen];
-    [cell.textLabel setFont:WXFont(13.0)];
+    [cell.textLabel setFont:WXFont(16.0)];
+    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+    return cell;
+}
+
+-(WXUITableViewCell*)tableViewForRefereeCell{
+    static NSString *identifier = @"refereeCell";
+    UserRefereeCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[UserRefereeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setUserInteractionEnabled:NO];
+    if([myCutArr count] > 0){
+        [cell setCellInfo:myCutArr[0]];
+    }
+    [cell load];
     return cell;
 }
 
@@ -231,13 +269,13 @@ enum{
             cell = [[NewGoodsInfoBDCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         if(indexPath.row > 0){
-//            cell = (NewGoodsInfoBDCell*)[self tabelViewForDownCellAtRow:indexPath.row];
+            cell = (NewGoodsInfoBDCell*)[self tableViewForRefereeCell];
         }
         if(indexPath.row == 0){
             [cell changeArrowWithDown:_isOpen];
-            [cell.imageView setImage:[UIImage imageNamed:@""]];
+            [cell.imageView setImage:[UIImage imageNamed:@"MyCutReferee.png"]];
             [cell.textLabel setText:@"我的推荐者"];
-            [cell.textLabel setFont:WXFont(13.0)];
+            [cell.textLabel setFont:WXFont(16.0)];
         }
         return cell;
     }else{
@@ -259,6 +297,57 @@ enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    if(section == NewCut_Section_team){
+        NewMyClientVC *clientVC = [[NewMyClientVC alloc] init];
+        [self.wxNavigationController pushViewController:clientVC];
+    }
+    if(section == NewCut_Section_Referee){
+        if(indexPath.row == 0){
+            if([indexPath isEqual:_selectedIndexPath]){
+                [self didSelectCellRowFirstDo:NO nextDo:NO];
+                _selectedIndexPath = nil;
+            }else{
+                if(!_selectedIndexPath){
+                    [self setSelectedIndexPath:indexPath];
+                    [self didSelectCellRowFirstDo:YES nextDo:NO];
+                }else{
+                    [self didSelectCellRowFirstDo:NO nextDo:YES];
+                }
+            }
+        }
+    }
+}
+
+#pragma mark cell下拉
+-(void)didSelectCellRowFirstDo:(BOOL)firstDoInsert nextDo:(BOOL)nextDoInsert{
+    _isOpen = firstDoInsert;
+    NewGoodsInfoBDCell *cell = (NewGoodsInfoBDCell*)[_tableView cellForRowAtIndexPath:_selectedIndexPath];
+    [cell changeArrowWithDown:firstDoInsert];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:NewCut_Section_Referee] withRowAnimation:UITableViewRowAnimationFade];
+    if(_isOpen){
+        [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:NewCut_Section_Referee] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    }
+}
+
+#pragma mark myCutRefereeDelegate
+-(void)loadMyCutRefereeInfoSucceed{
+    [self unShowWaitView];
+    myCutArr = _model.myCutInfoArr;
+    if([myCutArr count] > 0){
+        MyRefereeEntity *entity = [myCutArr objectAtIndex:0];
+        [_bigMoney setText:[NSString stringWithFormat:@"%.2f",entity.cutMoney]];
+        [_smallMoney setText:[NSString stringWithFormat:@"%.2f",entity.cutMoney]];
+    }
+    [_tableView reloadData];
+}
+
+-(void)loadMyCutRefereeInfoFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取提成失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 - (void)didReceiveMemoryWarning {

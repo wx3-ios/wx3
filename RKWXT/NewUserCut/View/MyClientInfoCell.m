@@ -1,18 +1,18 @@
 //
-//  UserRefereeCell.m
+//  MyClientInfoCell.m
 //  RKWXT
 //
-//  Created by SHB on 15/9/8.
+//  Created by SHB on 15/9/10.
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "UserRefereeCell.h"
+#import "MyClientInfoCell.h"
 #import "WXRemotionImgBtn.h"
-#import "MyRefereeEntity.h"
+#import "MyClientEntity.h"
 
 #define IconImgWidth 52
 
-@interface UserRefereeCell(){
+@interface MyClientInfoCell(){
     WXRemotionImgBtn *_imgView;
     WXUILabel *_nameLabel;
     WXUILabel *_companyLabel;
@@ -21,7 +21,7 @@
 }
 @end
 
-@implementation UserRefereeCell
+@implementation MyClientInfoCell
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -35,7 +35,7 @@
         [self.contentView addSubview:_imgView];
         
         xOffset += imgWidth+10;
-        yOffset += 5;
+        yOffset += 6;
         CGFloat nameWidth = 200;
         CGFloat nameHight = 20;
         _nameLabel = [[WXUILabel alloc] init];
@@ -46,7 +46,7 @@
         [_nameLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:_nameLabel];
         
-        yOffset += nameHight+3;
+        yOffset += nameHight+5;
         _companyLabel = [[WXUILabel alloc] init];
         _companyLabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHight);
         [_companyLabel setBackgroundColor:[UIColor clearColor]];
@@ -56,7 +56,7 @@
         [self.contentView addSubview:_companyLabel];
         
         CGFloat xGap = 15;
-        yOffset += nameHight+15;
+        yOffset += nameHight+8;
         CGFloat textWidth = 70;
         CGFloat textHeight = 20;
         WXUILabel *textLabel = [[WXUILabel alloc] init];
@@ -64,7 +64,7 @@
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
         [textLabel setFont:WXFont(14.0)];
-        [textLabel setText:@"我的贡献:"];
+        [textLabel setText:@"我的提成:"];
         [textLabel setTextColor:WXColorWithInteger(0x000000)];
         [self.contentView addSubview:textLabel];
         
@@ -81,7 +81,7 @@
         _registerTimeLabel = [[WXUILabel alloc] init];
         _registerTimeLabel.frame = CGRectMake(13, yOffset, 150, textHeight);
         [_registerTimeLabel setBackgroundColor:[UIColor clearColor]];
-        [_registerTimeLabel setTextColor:WXColorWithInteger(0xbdbdbd)];
+        [_registerTimeLabel setTextColor:WXColorWithInteger(0xababab)];
         [_registerTimeLabel setTextAlignment:NSTextAlignmentLeft];
         [_registerTimeLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:_registerTimeLabel];
@@ -90,10 +90,10 @@
 }
 
 -(void)load{
-    MyRefereeEntity *entity = self.cellInfo;
+    MyClientEntity *entity = self.cellInfo;
     UIImage *iconImg = [UIImage imageNamed:@"PersonalInfoHeadImg.jpg"];
     [_imgView setImage:iconImg];
-    if(![entity.userIconImg isEqualToString:AllImgPrefixUrlString] && !entity.userIconImg){
+    if(![entity.userIconImg isEqualToString:AllImgPrefixUrlString] && entity.userIconImg){
         [_imgView setCpxViewInfo:entity.userIconImg];
         [_imgView load];
     }
@@ -105,7 +105,7 @@
     }
     [_nameLabel setText:nameText];
     [_companyLabel setText:[self userPhoneChangedWithOldStr:entity.userPhone]];
-    [_moneyLabel setText:[NSString stringWithFormat:@"  ￥%.2f",entity.allMoney]];
+    [_moneyLabel setText:[NSString stringWithFormat:@"  ￥%.2f",entity.cutMoney]];
     [_registerTimeLabel setText:[NSString stringWithFormat:@"注册时间: %@",[UtilTool getDateTimeFor:entity.registTime type:2]]];
 }
 

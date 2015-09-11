@@ -8,7 +8,7 @@
 
 #import "WXUITableViewCell.h"
 
-#define UserRefereeCellHeight (125)
+#define UserRefereeCellHeight (128)
 
 @interface UserRefereeCell : WXUITableViewCell
 

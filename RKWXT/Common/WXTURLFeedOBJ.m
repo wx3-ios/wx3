@@ -183,6 +183,15 @@
         case WXT_UrlFeed_Type_New_LoadUserHeader:
             url = @"/get_user_pic.php";
             break;
+        case WXT_UrlFeed_Type_New_LoadMyCutInfo:
+            url = @"/get_divide_list2.php";
+            break;
+        case WXT_UrlFeed_Type_New_LoadMyClientPerson:
+            url = @"/get_divide_userlist.php";
+            break;
+        case WXT_UrlFeed_Type_New_LoadMyClientInfo:
+            url = @"/get_singleuser_divide.php";
+            break;
         default:
             break;
     }

@@ -8,6 +8,7 @@
 
 #import "BaseInfoHeadCell.h"
 #import "WXRemotionImgBtn.h"
+#import "UserHeaderImgModel.h"
 
 @interface BaseInfoHeadCell(){
     WXRemotionImgBtn *headImg;
@@ -41,9 +42,19 @@
             [headImg setCpxViewInfo:iconName];
             [headImg load];
         }else{
-            [headImg setImage:[UIImage imageNamed:@"PersonalInfoHeadImg.jpg"]];
+            [headImg setImage:[self userIconImage]];
         }
     }
+}
+
+-(UIImage*)userIconImage{
+    NSString *iconPath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if([fileManager fileExistsAtPath:iconPath]){
+        UIImage *img = [UIImage imageWithContentsOfFile:iconPath];
+        return img;
+    }
+    return nil;
 }
 
 @end

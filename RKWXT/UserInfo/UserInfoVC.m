@@ -14,6 +14,7 @@
 #import "ShareSucceedModel.h"
 #import "UserHeaderModel.h"
 #import "WXRemotionImgBtn.h"
+#import "NewUserCutVC.h"
 
 #define UserBgImageViewHeight (95+66)
 #define Size self.view.bounds.size
@@ -601,7 +602,8 @@
         case PersonalInfo_CutAndShare:
         {
             if(row == User_Cut){
-                UserCutVC *cutVC = [[UserCutVC alloc] init];
+//                UserCutVC *cutVC = [[UserCutVC alloc] init];
+                NewUserCutVC *cutVC = [[NewUserCutVC alloc] init];
                 [self.wxNavigationController pushViewController:cutVC];
             }
             if(row == User_Share){

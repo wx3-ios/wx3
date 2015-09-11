@@ -110,7 +110,7 @@
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
     }else{
         WXUIViewController *vc = nil;
-        if(kMerchantID == 100000){
+        if(kMerchantID == 100000 || kMerchantID == 10145){
             vc = [[WXTGuideVC alloc] init];
             self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:vc];
         }else{
