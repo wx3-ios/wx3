@@ -136,7 +136,10 @@ enum{
             if(_isOpen){
                 if(_selectedIndexPath.section == section){
                     if([myCutArr count] > 0){
-                        return 2;
+                        MyRefereeEntity *ent = [myCutArr objectAtIndex:0];
+                        if(ent.userID > 0){
+                            return 2;
+                        }
                     }else{
                         return 1;
                     }
@@ -304,6 +307,12 @@ enum{
     }
     if(section == NewCut_Section_Referee){
         if(indexPath.row == 0){
+            if([myCutArr count] > 0){
+                MyRefereeEntity *ent = [myCutArr objectAtIndex:0];
+                if(ent.userID == 0){
+                    return;
+                }
+            }
             if([indexPath isEqual:_selectedIndexPath]){
                 [self didSelectCellRowFirstDo:NO nextDo:NO];
                 _selectedIndexPath = nil;

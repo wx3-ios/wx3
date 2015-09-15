@@ -94,9 +94,13 @@ typedef enum{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(show) name:ShowKeyBoard object:nil];
     [defaultCenter addObserver:self selector:@selector(callPhoneNumber) name:CallPhone object:nil];
-    [defaultCenter addObserver:self selector:@selector(callHistoryChanged) name:D_Notification_Name_CallRecordAdded object:nil];
+    [defaultCenter addObserver:self selector:@selector(systemContactsHasLoadedSucceed)
+                          name:D_Notification_Name_AddressBookHasChanged object:nil];
+//    [defaultCenter addObserver:self selector:@selector(callHistoryChanged) name:D_Notification_Name_CallRecordAdded object:nil];
+    [defaultCenter addObserver:self selector:@selector(callHistoryHasLoaded) name:@"callHistoryHasLoaded" object:nil];
     [defaultCenter addObserver:self selector:@selector(setEmptyText) name:D_Notification_Name_SystemCallFinished object:nil];
 }
+
 
 -(void)createKeyboardView{
     _keybView = [[UIView alloc] init];
@@ -207,6 +211,7 @@ typedef enum{
 
 -(void)longPressBtn:(id)sender{
     [self setEmptyText];
+    [_model searchContacter:@"1"];
     self.keyPad_type = E_KeyPad_Show;
     _downview_type = DownView_Del;
 }
@@ -412,7 +417,8 @@ typedef enum{
 }
 
 -(void)reloadData{
-    [_tableView reloadData];
+//    [_tableView reloadData];
+    [_model searchContacter:@"1"];
 }
 
 -(void)callHistoryName:(NSString *)nameStr andPhone:(NSString *)phoneStr{
@@ -428,9 +434,12 @@ typedef enum{
     textString = @"";
     phoneName = @"";
     _showContacters = NO;
-    [_model searchContacter:@"1"];
     [_tableView reloadData];
     [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
+}
+
+-(void)systemContactsHasLoadedSucceed{
+    [_model searchContacter:@"1"];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -438,9 +447,13 @@ typedef enum{
     [NOTIFY_CENTER removeObserver:self];
 }
 
+-(void)callHistoryHasLoaded{
+    [_tableView reloadData];
+}
+
 #pragma mark WXKeyPadModelDelegate
 -(void)callHistoryChanged{
-    [_tableView reloadData];
+//    [_tableView reloadData];
 }
 
 -(void)callRecordHasCleared{

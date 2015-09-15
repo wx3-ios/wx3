@@ -41,7 +41,7 @@ enum{
     if(self){
         _model = [[VersionModel alloc] init];
         [_model setDelegate:self];
-        baseNameArr = @[@"客服电话: 0755-61665888",@"客服QQ: 2898621164",@"官方网站: www.67call.com"];
+        baseNameArr = @[@"客服电话: 4007889388",@"客服QQ: 2898621164",@"官方网站: www.67call.com"];
     }
     return self;
 }
@@ -219,8 +219,6 @@ enum{
     [UtilTool showAlertView:errorMsg];
 }
 
-
-
 #pragma mark other
 -(void)btnClicked:(id)sender{
     WXUIButton *btn = (WXUIButton*)sender;
@@ -230,7 +228,7 @@ enum{
             break;
         case WXT_About_Phone:
         {
-            NSString *phoneStr = [self phoneWithoutNumber:@"075561665888"];
+            NSString *phoneStr = [self phoneWithoutNumber:@"4007889388"];
             CallBackVC *backVC = [[CallBackVC alloc] init];
             backVC.phoneName = phoneStr;
             if([backVC callPhone:phoneStr]){

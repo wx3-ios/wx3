@@ -156,6 +156,7 @@
     [super viewWillDisappear:animated];
     [NOTIFY_CENTER postNotificationName:kTableViewHidden object:nil];
     [NOTIFY_CENTER removeObserver:self];
+    [_recentCall reloadData];
     [_recentCall setEmptyText];
     [_recentCall setKeyPad_type:E_KeyPad_Down];
 }

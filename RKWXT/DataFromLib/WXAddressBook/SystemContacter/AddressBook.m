@@ -119,7 +119,7 @@ void MyAddressBookExternalChangeCallback (ABAddressBookRef addressBook, CFDictio
 			[contactList addObjectsFromArray:tempArray];
 			[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:D_Notification_Name_AddressBookHasChanged object:nil userInfo:nil];
 //			if([[ServiceMonitor sharedServiceMonitor] hasLogin]){
-				[selfAddressBook uploadSysContacters:tempArray];
+//				[selfAddressBook uploadSysContacters:tempArray];
 //			}
 		}
     });

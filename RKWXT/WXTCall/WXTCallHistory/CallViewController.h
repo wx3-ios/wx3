@@ -43,6 +43,7 @@ typedef enum{
 @property (nonatomic,assign) E_KeyPad_Type keyPad_type;
 -(void)addNotification;
 -(void)setEmptyText;
+-(void)reloadData;
 @end
 
 @protocol CallPhoneDelegate <NSObject>

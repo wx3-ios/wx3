@@ -267,7 +267,7 @@
     label2.frame = CGRectMake(Size.width/2, Size.height-20, Size.width/2-xOffset, label1Height);
     [label2 setBackgroundColor:[UIColor clearColor]];
     [label2 setTextAlignment:NSTextAlignmentRight];
-    [label2 setText:@"客服电话:61335655"];
+    [label2 setText:@"客服电话:4007889388"];
     [label2 setFont:WXFont(10.0)];
     [label2 setTextColor:WXColorWithInteger(0xda7c7b)];
     [self addSubview:label2];

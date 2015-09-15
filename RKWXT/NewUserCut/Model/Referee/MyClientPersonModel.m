@@ -47,8 +47,11 @@
     }];
 }
 
--(void)parseMyClientPersonListWith:(NSArray*)arr{
+-(void)parseMyClientPersonListWith:(id)arr{
     if(!arr){
+        return;
+    }
+    if([arr isKindOfClass:[NSString class]]){
         return;
     }
     [_clientList removeAllObjects];

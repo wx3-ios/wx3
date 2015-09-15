@@ -445,7 +445,6 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
         [self.fileStream close];
         self.fileStream = nil;
     }
-    [self unShowWaitView];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     [[UserHeaderModel shareUserHeaderModel] updateUserHeaderSucceed:[NSString stringWithFormat:@"%@userIcon.png",userObj.wxtID]];
     [UtilTool showAlertView:@"上传头像成功"];
@@ -467,7 +466,6 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
                 bytesRead = [self.fileStream read:self.buffer maxLength:kSendBufferSize];
                 
                 if (bytesRead == -1) {
-                    [self unShowWaitView];
                     [UtilTool showAlertView:@"上传头像失败"];
                 } else if (bytesRead == 0) {
                     [self stopSendWithStatus:nil];
@@ -482,7 +480,6 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
                 bytesWritten = [self.networkStream write:&self.buffer[self.bufferOffset] maxLength:self.bufferLimit - self.bufferOffset];
                 assert(bytesWritten != 0);
                 if (bytesWritten == -1) {
-                    [self unShowWaitView];
                     [UtilTool showAlertView:@"上传头像失败"];
                 } else {
                     self.bufferOffset += bytesWritten;
@@ -490,7 +487,6 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
             }
         } break;
         case NSStreamEventErrorOccurred: {
-            [self unShowWaitView];
             [UtilTool showAlertView:@"上传头像失败"];
         } break;
         case NSStreamEventEndEncountered: {
@@ -508,7 +504,6 @@ static NSString *_nameListArray[BaseInfo_Invalid]={
         NSString * filePath;
         filePath = [NSString stringWithFormat:@"%@",[[UserHeaderImgModel shareUserHeaderImgModel] userIconPath]];
         [self startSend:filePath];
-        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     }
 }
 
