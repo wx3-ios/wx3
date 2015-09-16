@@ -201,9 +201,10 @@ typedef enum{
     if(textString.length == 0){
         _downview_type = DownView_Del;
         [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
-        [_model searchContacter:@"1"];
+//        [_model searchContacter:@"1"];
         _showContacters = NO;
-        [_tableView reloadData];
+        [self callHistoryHasLoaded];
+//        [_tableView reloadData];
     }else{
         [self showSearchResult];
     }
@@ -211,7 +212,8 @@ typedef enum{
 
 -(void)longPressBtn:(id)sender{
     [self setEmptyText];
-    [_model searchContacter:@"1"];
+//    [_model searchContacter:@"1"];
+    [self callHistoryHasLoaded];
     self.keyPad_type = E_KeyPad_Show;
     _downview_type = DownView_Del;
 }
@@ -346,9 +348,9 @@ typedef enum{
         cell = [[WXTCallHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:callHistoryCellIdentifier] ;
     }
     [cell setDelegate:self];
-    CallHistoryEntityExt *callHistoryEntity = [_model.callHistoryList objectAtIndex:row];
-    NSString *name = [self searchPhoneNameWithUserPhones:callHistoryEntity.callHistoryEntity.phoneNumber];
-    [cell setUserName:name];
+//    CallHistoryEntityExt *callHistoryEntity = [_model.callHistoryList objectAtIndex:row];
+//    NSString *name = [self searchPhoneNameWithUserPhones:callHistoryEntity.callHistoryEntity.phoneNumber];
+//    [cell setUserName:name];
     [cell setCellInfo:[_model.callHistoryList objectAtIndex:row]];
     [cell load];
     return cell;
@@ -417,8 +419,7 @@ typedef enum{
 }
 
 -(void)reloadData{
-//    [_tableView reloadData];
-    [_model searchContacter:@"1"];
+    [self callHistoryHasLoaded];
 }
 
 -(void)callHistoryName:(NSString *)nameStr andPhone:(NSString *)phoneStr{
@@ -439,7 +440,7 @@ typedef enum{
 }
 
 -(void)systemContactsHasLoadedSucceed{
-    [_model searchContacter:@"1"];
+    [self callHistoryHasLoaded];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -448,12 +449,12 @@ typedef enum{
 }
 
 -(void)callHistoryHasLoaded{
+    [_model searchContacter:@"1"];
     [_tableView reloadData];
 }
 
 #pragma mark WXKeyPadModelDelegate
 -(void)callHistoryChanged{
-//    [_tableView reloadData];
 }
 
 -(void)callRecordHasCleared{

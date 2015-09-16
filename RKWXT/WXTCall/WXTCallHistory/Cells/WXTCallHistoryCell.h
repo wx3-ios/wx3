@@ -12,7 +12,7 @@
 @interface WXTCallHistoryCell : WXUITableViewCell
 //@property (nonatomic, strong) CallHistoryEntity * callHistoryEntity;
 @property (nonatomic,assign) id<CallHistoryDelegate>delegate;
-@property (nonatomic,strong) NSString *userName;
+//@property (nonatomic,strong) NSString *userName;
 @end
 
 @protocol CallHistoryDelegate <NSObject>

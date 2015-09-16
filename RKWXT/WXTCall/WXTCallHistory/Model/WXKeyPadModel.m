@@ -98,7 +98,7 @@
             }
         }
     }
-    [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:@"callHistoryHasLoaded" object:nil userInfo:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadWithName:@"callHistoryHasLoaded" object:nil userInfo:nil];
     
 //    for(CallHistoryEntity *entity in _list){
 //        NSString *phoneNumber = entity.phoneNumber;

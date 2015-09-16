@@ -227,7 +227,7 @@
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM-dd HH:mm";
     NSString * dateStr = [formatter stringFromDate:date];
-    CallHistoryEntity *entity = [[CallHistoryEntity alloc] initWithName:@"我信" telephone:phoneStr startTime:dateStr duration:5 type:E_CallHistoryType_MakingReaded];
+    CallHistoryEntity *entity = [[CallHistoryEntity alloc] initWithName:_phoneName telephone:phoneStr startTime:dateStr duration:5 type:E_CallHistoryType_MakingReaded];
     [[CallRecord sharedCallRecord] addSingleCallRecord:entity];
     return YES;
 }

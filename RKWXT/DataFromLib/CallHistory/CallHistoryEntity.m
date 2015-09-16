@@ -27,6 +27,8 @@
         NSString *phoneNumber = paramArray[E_CallRecordParamIndex_Phone];
         phoneNumber = [[TelNOOBJ sharedTelNOOBJ] telNumberFromOrigin:phoneNumber];
         [self setPhoneNumber:phoneNumber];
+        NSString *nameStr = [paramArray objectAtIndex:E_CallRecordParamIndex_Name];
+        [self setName:nameStr];
         E_CallHistoryType type = [self callRecordTypeOf:[paramArray objectAtIndex:E_CallRecordParamIndex_Type]];
         [self setHistoryType:type];
         //        NSInteger startTime = [[paramArray objectAtIndex:E_CallRecordParamIndex_Start] integerValue];

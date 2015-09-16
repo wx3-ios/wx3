@@ -124,8 +124,8 @@
     ContactBaseEntity * contactEntity = entityExt.contacterEntity;
     
 //    NSString *name = [contactEntity nameShow];
-    if(!_userName){
-        _userName = @"未知";
+    if(!entity.name){
+        entity.name = entity.phoneNumber;
     }
 //
     NSArray *array = [contactEntity contactPhoneArray];
@@ -134,7 +134,7 @@
         phone = [self phoneNumberIsWoxinUser:entity.phoneNumber withContactPhoneArray:array];
     }
     
-    [_nameLabel setText:_userName];
+    [_nameLabel setText:entity.name];
     
     NSString *prePhone = [UtilTool callPhoneNumberRemovePreWith:entity.phoneNumber];
     [_userPhone setText:prePhone];
@@ -146,7 +146,7 @@
 -(void)callHistory{
     CallHistoryEntityExt *entityExt = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(callHistoryName:andPhone:)]){
-        [_delegate callHistoryName:_userName andPhone:entityExt.callHistoryEntity.phoneNumber];
+        [_delegate callHistoryName:entityExt.callHistoryEntity.name andPhone:entityExt.callHistoryEntity.phoneNumber];
     }
 }
 

@@ -31,7 +31,7 @@
         
         xOffset += imgWidth+13;
         yOffset += 22;
-        CGFloat labelWidth = 70;
+        CGFloat labelWidth = 90;
         CGFloat labelHeight = 16;
         _moneylabel = [[UILabel alloc] init];
         _moneylabel.frame = CGRectMake(xOffset, yOffset, labelWidth, labelHeight);

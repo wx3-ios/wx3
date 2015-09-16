@@ -19,6 +19,7 @@ typedef enum {
 
 enum{
     E_CallRecordParamIndex_UID = 0,
+    E_CallRecordParamIndex_Name,
     E_CallRecordParamIndex_Phone,
     E_CallRecordParamIndex_Start,
     E_CallRecordParamIndex_Duration,

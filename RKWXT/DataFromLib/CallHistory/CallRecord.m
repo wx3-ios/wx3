@@ -73,12 +73,12 @@
             for (int i= 0 ; i < [result count]; i++) {
                 EGODatabaseRow * databaseRow = [result rowAtIndex:i];
                 NSInteger cid = [databaseRow intForColumn:kWXTCall_Column_CID];
-                //                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
+                NSString * name = [databaseRow stringForColumn:kWXTCall_Column_Name];
                 NSString * telephone = [databaseRow stringForColumn:kWXTCall_Column_Telephone];
                 NSString * startTime = [databaseRow stringForColumn:kWXTCall_Column_Date];
                 NSInteger  duration = [databaseRow intForColumn:kWXTCall_Column_Duration];
                 int type = [databaseRow intForColumn:kWXTCall_Column_Date];
-                NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
+                NSArray * array = [NSArray arrayWithObjects:[NSNumber numberWithInteger:cid],name,telephone,startTime,[NSNumber numberWithInteger:duration],[NSNumber numberWithInt:type], nil];
                 CallHistoryEntity * entity = [CallHistoryEntity recordWithParamArray:array];
                 [_callHistoryList addObject:entity];
             }
@@ -95,17 +95,17 @@
     if (!record){NSAssert(record == nil, @"通话记录为空，不能添加到数据库中"); return;};
 //    NSArray * callArray = [self recordForPhoneNumber:record.phoneNumber];
 //    if (callArray.count != 0){return;}
-    BOOL result = [self addRecord:record.phoneNumber recordType:record.callType startTime:record.callStartTime duration:record.duration];
+    BOOL result = [self addRecord:record.name num:record.phoneNumber recordType:record.callType startTime:record.callStartTime duration:record.duration];
     if (result) {
         [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_CallRecordAdded object:record];
     }
 }
 
-- (BOOL)addRecord:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
+- (BOOL)addRecord:(NSString*)name num:(NSString*)phoneNumber recordType:(E_CallHistoryType)recordType
         startTime:(NSString*)startTime duration:(NSInteger)duration{
     __block NSInteger result;
     [_database createWXTTable:kWXTCallTable finishedBlock:^(void){
-        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,@"我信",phoneNumber,startTime,(long)duration,recordType]];
+        EGODatabaseResult * dbResult = [_database.database executeQuery:[NSString stringWithFormat:kWXTInsertCallHistory,name,phoneNumber,startTime,(long)duration,recordType]];
         result = [dbResult errorCode];
     }];
     if (result != 0) {
