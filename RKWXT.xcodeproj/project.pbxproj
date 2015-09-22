@@ -182,7 +182,6 @@
 		1272490D1B2574C9001BDC15 /* RegistOtherUser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1272490A1B2574C9001BDC15 /* RegistOtherUser@2x.png */; };
 		1272490E1B2574C9001BDC15 /* RegistUserImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1272490B1B2574C9001BDC15 /* RegistUserImg@2x.png */; };
 		1272490F1B2574C9001BDC15 /* RegistUserPwdImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1272490C1B2574C9001BDC15 /* RegistUserPwdImg@2x.png */; };
-		127249111B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127249101B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png */; };
 		1273290D1B5C9336002AD4AE /* GlowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 127329061B5C9336002AD4AE /* GlowImageView.m */; };
 		1273290E1B5C9336002AD4AE /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 127329081B5C9336002AD4AE /* MenuButton.m */; };
 		1273290F1B5C9336002AD4AE /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1273290A1B5C9336002AD4AE /* MenuItem.m */; };
@@ -354,6 +353,7 @@
 		12B1F6931B788A20009FBA6D /* RechargeTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6921B788A20009FBA6D /* RechargeTypeCell.m */; };
 		12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6951B789138009FBA6D /* RechargeListVC.m */; };
 		12B1F6991B789372009FBA6D /* RechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6981B789372009FBA6D /* RechargeListCell.m */; };
+		12B3FE311BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12B3FE301BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png */; settings = {ASSET_TAGS = (); }; };
 		12BD30F21B3E78B400170316 /* OrderAlipayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F11B3E78B400170316 /* OrderAlipayCell.m */; };
 		12BD30F51B3E78CA00170316 /* OrderWechatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F41B3E78CA00170316 /* OrderWechatCell.m */; };
 		12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BD30F61B3E79D700170316 /* OrderAlipayImg@2x.png */; };
@@ -1057,7 +1057,6 @@
 		1272490A1B2574C9001BDC15 /* RegistOtherUser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RegistOtherUser@2x.png"; sourceTree = "<group>"; };
 		1272490B1B2574C9001BDC15 /* RegistUserImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RegistUserImg@2x.png"; sourceTree = "<group>"; };
 		1272490C1B2574C9001BDC15 /* RegistUserPwdImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RegistUserPwdImg@2x.png"; sourceTree = "<group>"; };
-		127249101B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PersonalInfoBgViewImg@2x.png"; sourceTree = "<group>"; };
 		127329051B5C9336002AD4AE /* GlowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowImageView.h; sourceTree = "<group>"; };
 		127329061B5C9336002AD4AE /* GlowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlowImageView.m; sourceTree = "<group>"; };
 		127329071B5C9336002AD4AE /* MenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuButton.h; sourceTree = "<group>"; };
@@ -1366,6 +1365,7 @@
 		12B1F6951B789138009FBA6D /* RechargeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListVC.m; sourceTree = "<group>"; };
 		12B1F6971B789372009FBA6D /* RechargeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeListCell.h; sourceTree = "<group>"; };
 		12B1F6981B789372009FBA6D /* RechargeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListCell.m; sourceTree = "<group>"; };
+		12B3FE301BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PersonalInfoBgViewImg@2x.png"; sourceTree = "<group>"; };
 		12BD30F01B3E78B400170316 /* OrderAlipayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAlipayCell.h; sourceTree = "<group>"; };
 		12BD30F11B3E78B400170316 /* OrderAlipayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAlipayCell.m; sourceTree = "<group>"; };
 		12BD30F31B3E78CA00170316 /* OrderWechatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderWechatCell.h; sourceTree = "<group>"; };
@@ -4215,7 +4215,6 @@
 		12F3CC671B1DE82C00E64DE4 /* PersonImg */ = {
 			isa = PBXGroup;
 			children = (
-				127249101B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png */,
 				12F3CC681B1DE82C00E64DE4 /* AboutWxImg@2x.png */,
 				12F3CC691B1DE82C00E64DE4 /* MyCallMoneyImg@2x.png */,
 				12F3CC6A1B1DE82C00E64DE4 /* MyDistributionImg@2x.png */,
@@ -4224,6 +4223,7 @@
 				12F3CC6D1B1DE82C00E64DE4 /* OrderListImg@2x.png */,
 				12F3CC6E1B1DE82C00E64DE4 /* PersonalInfo@2x.png */,
 				12F3CC6F1B1DE82C00E64DE4 /* PersonalInfoHeadImg.jpg */,
+				12B3FE301BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png */,
 				12F3CC701B1DE82C00E64DE4 /* ShoppingCartImg@2x.png */,
 				12F3CC711B1DE82C00E64DE4 /* SignGainCallMoney@2x.png */,
 				12F3CC721B1DE82C00E64DE4 /* SysSettingImg@2x.png */,
@@ -6124,7 +6124,6 @@
 				124535461AE9D146004198C9 /* sign19@2x.png in Resources */,
 				124535121AE9D0BC004198C9 /* UserNormal@2x.png in Resources */,
 				1241E5301AE9D89B00811D3F /* CallBackBtn@2x.png in Resources */,
-				127249111B258E06001BDC15 /* PersonalInfoBgViewImg@2x.png in Resources */,
 				1241E5461AE9D89B00811D3F /* 4S@2x.png in Resources */,
 				1241E5311AE9D89B00811D3F /* CallBtnImg@2x.png in Resources */,
 				124535521AE9D146004198C9 /* sign2@2x.png in Resources */,
@@ -6228,6 +6227,7 @@
 				1241E5341AE9D89B00811D3F /* CallBackIconImgNor@2x.png in Resources */,
 				12D52BBE1AC2EF4400C5CE71 /* dtmf-8.aif in Resources */,
 				12F3CC771B1DE82C00E64DE4 /* MyDistributionImg@2x.png in Resources */,
+				12B3FE311BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png in Resources */,
 				12F465E81B6F0DE200A8F5AF /* GuideStartUseBtnSel@2x.png in Resources */,
 				127FDD791B57A76E0059BDB6 /* ContactInfoCall@2x.png in Resources */,
 				128BB73D1B6879E4004FCE66 /* CommonArrowLeft@2x.png in Resources */,
@@ -7070,6 +7070,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ding Bin (S7PY53887M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ding Bin (S7PY53887M)";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7108,6 +7109,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen WoXin Network Technology Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

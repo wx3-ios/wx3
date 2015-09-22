@@ -66,13 +66,13 @@
 
 - (BOOL)sendMode:(E_WeiXin_Mode)mode title:(NSString*)title description:(NSString*)description
          linkURL:(NSString*)url thumbImage:(UIImage*)image{
-    if(![WXApi isWXAppInstalled]){
-        [UtilTool showAlertView:nil message:@"您还没有安装微信，暂不支持此功能。" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        return NO;
-    }else if(![WXApi isWXAppSupportApi]){
-        [UtilTool showAlertView:nil message:@"您的微信版本太低,请下载最新版本。" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        return NO;
-    }
+//    if(![WXApi isWXAppInstalled]){
+//        [UtilTool showAlertView:nil message:@"您还没有安装微信，暂不支持此功能。" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//        return NO;
+//    }else if(![WXApi isWXAppSupportApi]){
+//        [UtilTool showAlertView:nil message:@"您的微信版本太低,请下载最新版本。" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//        return NO;
+//    }
     WXMediaMessage *message = [WXMediaMessage message];
     if(title){
         [message setTitle:title];

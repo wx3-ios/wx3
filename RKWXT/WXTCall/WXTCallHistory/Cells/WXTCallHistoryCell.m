@@ -124,7 +124,7 @@
     ContactBaseEntity * contactEntity = entityExt.contacterEntity;
     
 //    NSString *name = [contactEntity nameShow];
-    if(!entity.name){
+    if(!entity.name || [entity.name isEqualToString:@"我信"]){
         entity.name = entity.phoneNumber;
     }
 //

@@ -28,7 +28,7 @@
 #define AlipayPubKey   @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB"
 
 //账号充值回调
-#define D_AliPayCallBackURLForUser @"http://oldyun.67call.com/wx3order/wx3alipay/notify_url.php"
+#define D_AliPayCallBackURLForUser @"http://wx3.67call.com/wx3order/wx3alipay/notify_url.php"
 
 #endif
 
