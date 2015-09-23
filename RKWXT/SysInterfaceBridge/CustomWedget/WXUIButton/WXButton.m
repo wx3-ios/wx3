@@ -270,7 +270,7 @@
                 CGFloat yOffset = (size.height - iconSize.height - titleSize.height - kGapMax)*0.5;
                 iconRect.origin.y = yOffset;
                 yOffset += iconRect.size.height + kGapMax;
-                titleRect.origin.y = yOffset-3;
+                titleRect.origin.y = yOffset;
             }
             titleRect.origin.x = (size.width - titleRect.size.width)*0.5;
             iconRect.origin.x = (size.width - iconRect.size.width)*0.5;

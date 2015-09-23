@@ -13,7 +13,7 @@
 #import "UIView+Render.h"
 #import "CallBackVC.h"
 
-#define DownLoadUrl @"http://wxa.67call.com/shop/index.php/index/app_down/id/"
+#define DownLoadUrl @"http://121.201.18.130/wx_html/index.php/Public/app_download/sid/"
 
 #define Size self.bounds.size
 
