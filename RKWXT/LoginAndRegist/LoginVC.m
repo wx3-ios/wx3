@@ -102,7 +102,7 @@
     [registBtn addTarget:self action:@selector(toRegister) forControlEvents:UIControlEventTouchUpInside];
     [_iconShell addSubview:registBtn];
     
-    _optShell = [[UIView alloc] initWithFrame:CGRectMake(0, kLoginBigImgViewheight, Size.width, Size.height - kLoginBigImgViewheight-kLoginDownViewHeight)];
+    _optShell = [[UIView alloc] initWithFrame:CGRectMake(0, kLoginBigImgViewheight, Size.width, Size.height - kLoginBigImgViewheight-kLoginDownViewHeight+25)];
     [_optShell setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:_optShell];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
