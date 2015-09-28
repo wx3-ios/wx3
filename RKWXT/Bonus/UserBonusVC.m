@@ -88,7 +88,7 @@ enum{
     [rightBtn.titleLabel setFont:WXFont(13.0)];
     [rightBtn addTarget:self action:@selector(toUseBonusRule) forControlEvents:UIControlEventTouchUpInside];
     
-    NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
+    NSString *moneyStr = [NSString stringWithFormat:@"%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
     if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
         [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
     }
@@ -120,7 +120,7 @@ enum{
 }
 
 -(void)changeUserBonusMoney{
-    NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
+    NSString *moneyStr = [NSString stringWithFormat:@"%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
     if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
         [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
     }else{
@@ -130,7 +130,7 @@ enum{
 
 -(void)loadUserBonusSucceed{
     [self unShowWaitView];
-    NSString *moneyStr = [NSString stringWithFormat:@"红包:%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
+    NSString *moneyStr = [NSString stringWithFormat:@"%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
     if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
         [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
     }else{

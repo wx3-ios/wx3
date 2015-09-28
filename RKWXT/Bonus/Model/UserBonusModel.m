@@ -58,6 +58,7 @@
     __block UserBonusModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LoadUserBonus httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
+            _bonusMoney = 0;
             [blockSelf setStatus:E_ModelDataStatus_LoadFailed];
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserBonus_UserBonusFailed object:retData.errorDesc];
         }else{

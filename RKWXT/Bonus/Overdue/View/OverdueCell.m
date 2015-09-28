@@ -34,7 +34,7 @@
         [self.contentView addSubview:textLabel];
         
         xOffset += textlabelWidth;
-        CGFloat moneyWidth = 42;
+        CGFloat moneyWidth = 60;
         CGFloat moneyHeight = 28;
         _moneyLabel = [[UILabel alloc] init];
         _moneyLabel.frame = CGRectMake(xOffset, (cellHeight-moneyHeight)/2, moneyWidth, moneyHeight);
@@ -74,7 +74,30 @@
     NSString *moneyStr = [NSString stringWithFormat:@"%ld",(long)entity.bonusValue];
     [_moneyLabel setText:moneyStr];
     [_datelaebl setText:[self bonusDescriptionWithEnt:entity]];
+    
+    CGSize size = [self sizeOfString:moneyStr font:WXFont(22.0)];
+    CGRect rect = _moneyLabel.frame;
+    rect.size.width = size.width;
+    [_moneyLabel setFrame:rect];
+    
+    CGRect rect1 = _datelaebl.frame;
+    rect1.origin.x = rect.origin.x+rect.size.width+4;
+    [_datelaebl setFrame:rect1];
 }
+
+- (CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{
+    if(!txt || [txt isKindOfClass:[NSNull class]]){
+        txt = @" ";
+    }
+    if(isIOS7){
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        return [txt sizeWithAttributes:@{NSFontAttributeName: font}];
+#endif
+    }else{
+        return [txt sizeWithFont:font];
+    }
+}
+
 
 -(NSString *)bonusDescriptionWithEnt:(UserBonusEntity*)entity{
     NSString *desc = nil;

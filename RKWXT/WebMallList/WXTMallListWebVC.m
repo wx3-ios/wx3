@@ -59,7 +59,7 @@ typedef enum{
     if(urlFeedType == WXT_UrlFeed_Type_NewMall_ImgAndText){
         typeStr = @"good_info";
     }
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@",WXTBaseUrl,MallCatagaryListUrl,typeStr];
+    NSString *urlString = [NSString stringWithFormat:@"http://wx3.67call.com/%@%@",MallCatagaryListUrl,typeStr];
     NSString *boay = nil;
     if(paramDictionary){
         boay = [feedOBJ urlRequestParamFrom:paramDictionary];
@@ -130,7 +130,7 @@ typedef enum{
     if(gotoID != 0){
         if(gotoID == -1){
             [self.wxNavigationController popViewControllerAnimated:YES completion:^{
-                }];
+            }];
             return NO;
         }
         [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:[[paramDic objectForKey:@"goods_id"] integerValue] animated:YES];
