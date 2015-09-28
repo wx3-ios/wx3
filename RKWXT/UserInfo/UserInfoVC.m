@@ -628,14 +628,14 @@
 -(void)sharebtnClicked:(NSInteger)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
     if(index == Share_Type_WxFriends){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:kMerchantName description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:kMerchantName description:[UtilTool sharedString] linkURL:[self userShareAppWIthString] thumbImage:image];
     }
     if(index == Share_Type_WxCircle){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:kMerchantName description:[UtilTool sharedString] linkURL:[UtilTool sharedURL] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:kMerchantName description:[UtilTool sharedString] linkURL:[self userShareAppWIthString] thumbImage:image];
     }
     if(index == Share_Type_Qq){
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[UtilTool sharedURL]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self userShareAppWIthString]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface sendReq:req];
         if(sent == EQQAPISENDSUCESS){
@@ -644,13 +644,19 @@
     }
     if(index == Share_Type_Qzone){
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[UtilTool sharedURL]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self userShareAppWIthString]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
         if(sent == EQQAPISENDSUCESS){
             NSLog(@"qq空间分享成功");
         }
     }
+}
+
+-(NSString*)userShareAppWIthString{
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSString *imgUrlStr = [NSString stringWithFormat:@"http://121.201.18.130/wx_html/index.php/Public/app_download/sid/%ld/woxin_id/%@",(long)kMerchantID,userObj.wxtID];
+    return imgUrlStr;
 }
 
 #pragma mark qqDelegate

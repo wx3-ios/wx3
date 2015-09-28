@@ -47,6 +47,14 @@
 		120EB3DD1B7B563B0036A77C /* SharkBlackImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3D31B7B563B0036A77C /* SharkBlackImg.png */; };
 		120EB3DE1B7B563B0036A77C /* SharkBlackImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EB3D41B7B563B0036A77C /* SharkBlackImg@2x.png */; };
 		120EB3DF1B7B563B0036A77C /* SharkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EB3D61B7B563B0036A77C /* SharkVC.m */; };
+		120EC77E1BB8F31800538637 /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7701BB8F31800538637 /* bitstream.c */; settings = {ASSET_TAGS = (); }; };
+		120EC77F1BB8F31800538637 /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7721BB8F31800538637 /* mask.c */; settings = {ASSET_TAGS = (); }; };
+		120EC7801BB8F31800538637 /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7741BB8F31800538637 /* qrencode.c */; settings = {ASSET_TAGS = (); }; };
+		120EC7811BB8F31800538637 /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7761BB8F31800538637 /* qrinput.c */; settings = {ASSET_TAGS = (); }; };
+		120EC7821BB8F31800538637 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7781BB8F31800538637 /* qrspec.c */; settings = {ASSET_TAGS = (); }; };
+		120EC7831BB8F31800538637 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC77A1BB8F31800538637 /* rscode.c */; settings = {ASSET_TAGS = (); }; };
+		120EC7841BB8F31800538637 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC77C1BB8F31800538637 /* split.c */; settings = {ASSET_TAGS = (); }; };
+		120EC7871BB8F33C00538637 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7861BB8F33C00538637 /* QRCodeGenerator.m */; settings = {ASSET_TAGS = (); }; };
 		1211210F1BA2775000651E4A /* MyCutReferee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1211210D1BA2775000651E4A /* MyCutReferee@2x.png */; };
 		121121101BA2775000651E4A /* MyCutTeam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1211210E1BA2775000651E4A /* MyCutTeam@2x.png */; };
 		121121171BA277DB00651E4A /* MyCutRefereeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121121161BA277DB00651E4A /* MyCutRefereeModel.m */; };
@@ -889,6 +897,22 @@
 		120EB3D41B7B563B0036A77C /* SharkBlackImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkBlackImg@2x.png"; sourceTree = "<group>"; };
 		120EB3D51B7B563B0036A77C /* SharkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharkVC.h; sourceTree = "<group>"; };
 		120EB3D61B7B563B0036A77C /* SharkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharkVC.m; sourceTree = "<group>"; };
+		120EC7701BB8F31800538637 /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
+		120EC7711BB8F31800538637 /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
+		120EC7721BB8F31800538637 /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
+		120EC7731BB8F31800538637 /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
+		120EC7741BB8F31800538637 /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
+		120EC7751BB8F31800538637 /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
+		120EC7761BB8F31800538637 /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
+		120EC7771BB8F31800538637 /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
+		120EC7781BB8F31800538637 /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
+		120EC7791BB8F31800538637 /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
+		120EC77A1BB8F31800538637 /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
+		120EC77B1BB8F31800538637 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
+		120EC77C1BB8F31800538637 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
+		120EC77D1BB8F31800538637 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		120EC7851BB8F33C00538637 /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
+		120EC7861BB8F33C00538637 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		1211210D1BA2775000651E4A /* MyCutReferee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyCutReferee@2x.png"; sourceTree = "<group>"; };
 		1211210E1BA2775000651E4A /* MyCutTeam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyCutTeam@2x.png"; sourceTree = "<group>"; };
 		121121151BA277DB00651E4A /* MyCutRefereeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCutRefereeModel.h; sourceTree = "<group>"; };
@@ -2504,6 +2528,27 @@
 			path = Shark;
 			sourceTree = "<group>";
 		};
+		120EC76F1BB8F30000538637 /* CreatePictureLib */ = {
+			isa = PBXGroup;
+			children = (
+				120EC7701BB8F31800538637 /* bitstream.c */,
+				120EC7711BB8F31800538637 /* bitstream.h */,
+				120EC7721BB8F31800538637 /* mask.c */,
+				120EC7731BB8F31800538637 /* mask.h */,
+				120EC7741BB8F31800538637 /* qrencode.c */,
+				120EC7751BB8F31800538637 /* qrencode.h */,
+				120EC7761BB8F31800538637 /* qrinput.c */,
+				120EC7771BB8F31800538637 /* qrinput.h */,
+				120EC7781BB8F31800538637 /* qrspec.c */,
+				120EC7791BB8F31800538637 /* qrspec.h */,
+				120EC77A1BB8F31800538637 /* rscode.c */,
+				120EC77B1BB8F31800538637 /* rscode.h */,
+				120EC77C1BB8F31800538637 /* split.c */,
+				120EC77D1BB8F31800538637 /* split.h */,
+			);
+			path = CreatePictureLib;
+			sourceTree = "<group>";
+		};
 		121121141BA277DB00651E4A /* Referee */ = {
 			isa = PBXGroup;
 			children = (
@@ -2916,6 +2961,9 @@
 		128083D71B62142900260B9F /* ShareView */ = {
 			isa = PBXGroup;
 			children = (
+				120EC7851BB8F33C00538637 /* QRCodeGenerator.h */,
+				120EC7861BB8F33C00538637 /* QRCodeGenerator.m */,
+				120EC76F1BB8F30000538637 /* CreatePictureLib */,
 				128083D81B62147E00260B9F /* ShareBrowserView.h */,
 				128083D91B62147E00260B9F /* ShareBrowserView.m */,
 				12B05DF01B8C3CC80083D648 /* ShareSucceedModel.h */,
@@ -6534,6 +6582,7 @@
 				12F963311B3D4BDF00FF6A3E /* SBJsonStreamParser.m in Sources */,
 				7758430E1AB95A300039B129 /* WXError.m in Sources */,
 				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
+				120EC77E1BB8F31800538637 /* bitstream.c in Sources */,
 				775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */,
 				12A0F5EC1B95985900CFF8E5 /* NewGoodsInfoBigImgView.m in Sources */,
 				775843101AB95A300039B129 /* WXMutiScanView.m in Sources */,
@@ -6625,6 +6674,7 @@
 				12F963121B3D4B3800FF6A3E /* AlipayOBJ.m in Sources */,
 				775843181AB95A300039B129 /* ProgressView.m in Sources */,
 				775842EB1AB95A300039B129 /* ZoneCodeOBJ.m in Sources */,
+				120EC7831BB8F31800538637 /* rscode.c in Sources */,
 				129EEBAE1B97DDAF0062349E /* UIImage+Category.m in Sources */,
 				120B75491B1C0F2100B8746C /* BaseInfoHeadCell.m in Sources */,
 				12BD30FF1B3E9ADF00170316 /* NewWXTLiDB.m in Sources */,
@@ -6672,6 +6722,7 @@
 				12F3CC881B1DF77500E64DE4 /* PersonalInfoOrderListCell.m in Sources */,
 				120A2BEA1AB135DD006A28B1 /* RechargeCell.m in Sources */,
 				12F9163B1B19B90B00C94717 /* BaseInfoCommonCell.m in Sources */,
+				120EC7801BB8F31800538637 /* qrencode.c in Sources */,
 				12F963361B3D4BDF00FF6A3E /* SBJsonStreamWriterAccumulator.m in Sources */,
 				12C12F3B1B81DA6D00345BEE /* LuckyShakeVC.m in Sources */,
 				127329131B5CDDF4002AD4AE /* AboutVC.m in Sources */,
@@ -6817,6 +6868,7 @@
 				12F1D64F1B2692DA003924DF /* RFSegmentView.m in Sources */,
 				12C2CE1C1BA12A3D00797DA4 /* NewMyClientVC.m in Sources */,
 				12F2D7EF1B1ECEF700C8017F /* WaitSendGoodsListVC.m in Sources */,
+				120EC7871BB8F33C00538637 /* QRCodeGenerator.m in Sources */,
 				129EEBB31B97DDF40062349E /* RoundButton.m in Sources */,
 				12F2CCE61B4CCDF50085F78F /* ResetNewPwdModel.m in Sources */,
 				DD0E38AB1B1BE5AC00AB4DB9 /* MenuExtra.m in Sources */,
@@ -6829,6 +6881,7 @@
 				12C12F221B81925000345BEE /* LuckyGoodsOrderInfoVC.m in Sources */,
 				12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */,
 				775843171AB95A300039B129 /* LoadLabel.m in Sources */,
+				120EC77F1BB8F31800538637 /* mask.c in Sources */,
 				2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */,
 				775843381AB95A300039B129 /* WXUIViewController.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
@@ -6857,6 +6910,7 @@
 				129F32A31B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m in Sources */,
 				775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */,
 				12F2D7F61B1EE7C300C8017F /* OrderAllListVC.m in Sources */,
+				120EC7811BB8F31800538637 /* qrinput.c in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				12F46A4D1B202F8800B8EC98 /* NewGoodsInfoBDCell.m in Sources */,
 				12F422921B1D830400643DD7 /* AddressEditVC.m in Sources */,
@@ -6911,6 +6965,7 @@
 				12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */,
 				775842E01AB95A300039B129 /* UIView+Render.m in Sources */,
 				12C12F2E1B81C3EE00345BEE /* LuckyOrderGoodsInfoCell.m in Sources */,
+				120EC7821BB8F31800538637 /* qrspec.c in Sources */,
 				12F46A5D1B205D0400B8EC98 /* NewRightHeadCell.m in Sources */,
 				12F963321B3D4BDF00FF6A3E /* SBJsonStreamParserAccumulator.m in Sources */,
 				775842E31AB95A300039B129 /* WXCpxBtnImgView.m in Sources */,
@@ -6926,6 +6981,7 @@
 				DDB58F4C1AD3C6A2006248E9 /* CallViewController.m in Sources */,
 				DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */,
 				777A38561AC3933D001CF5FF /* WXTDatabase.m in Sources */,
+				120EC7841BB8F31800538637 /* split.c in Sources */,
 				12A3477D1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m in Sources */,
 				12BD30FC1B3E905A00170316 /* UserBonusModel.m in Sources */,
 				12C12F1C1B818C0700345BEE /* LuckyGoodsOrderListCell.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "ShareBrowserView.h"
+#import "QRCodeGenerator.h"
 
 #define kAnimateDefaultDuration (0.3)
 #define kMaskShellDefaultAlpha (0.6)
@@ -156,8 +157,11 @@ static NSString *shareNameArr[]={
     [self setFrame:destView.bounds];
 //    UIView *superView = thumbView.superview;
 //    NSAssert(superView, @"thumb view has not add to super view");
+    
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSString *imgUrlStr = [NSString stringWithFormat:@"http://121.201.18.130/wx_html/index.php/Public/app_download/sid/%ld/woxin_id/%@",(long)kMerchantID,userObj.wxtID];
     _imageViewSourceRect = [destView convertRect:CGRectMake(_shareView.frame.size.width/2, _shareView.frame.size.height/2, 0, 0) fromView:thumbView.superview];
-    [_imageView setImage:image];
+    [_imageView setImage:[QRCodeGenerator qrImageForString:imgUrlStr imageSize:shareViewWidth/2]];
     [_imageView setFrame:_imageViewSourceRect];
     
     CGSize destViewSize = destView.bounds.size;
