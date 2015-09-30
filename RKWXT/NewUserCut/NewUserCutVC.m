@@ -13,6 +13,16 @@
 #import "MyCutRefereeModel.h"
 #import "MyRefereeEntity.h"
 
+#import "SearchUserAliAccountModel.h"
+#import "UserAliEntity.h"
+
+#import "UserWithdrawalsVC.h"
+#import "ConfirmUserAliPayVC.h"
+#import "ApplyAliWithdrawalsVC.h"
+#import "WithdrawalsRecordListVC.h"
+
+#import "WXDropListView.h"
+
 #define Size self.bounds.size
 
 enum{
@@ -22,7 +32,21 @@ enum{
     NewCut_Section_invalid,
 };
 
-@interface NewUserCutVC ()<UITableViewDataSource,UITableViewDelegate,LoadMyCutRefereeModelDelegate>{
+enum{
+    //提现
+    DropList_Section_Money = 0,
+    //提现记录
+    DropList_Section_Record,
+    
+    DropList_Section_Invalid,
+};
+
+static NSString* g_dropItemList[DropList_Section_Invalid] ={
+    @"提现",
+    @"提现记录",
+};
+
+@interface NewUserCutVC ()<UITableViewDataSource,UITableViewDelegate,LoadMyCutRefereeModelDelegate,SearchUserAliAccountModelDelegate,WXDropListViewDelegate>{
     UITableView *_tableView;
     WXUILabel *_bigMoney;
     WXUILabel *_smallMoney;
@@ -31,11 +55,23 @@ enum{
     
     MyCutRefereeModel *_model;
     NSArray *myCutArr;
+    
+    SearchUserAliAccountModel *aliModel;
+    UserAliEntity *userAliEntity;
+    CGFloat userMoney;
+    
+    WXDropListView *_dropListView;
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end
 
 @implementation NewUserCutVC
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self changeUserWithdrawalsInfoSucceed];
+    [self applyAliSucceed];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,11 +88,68 @@ enum{
     [self addSubview:_tableView];
     [_tableView setTableHeaderView:[self tableviewForHeadView]];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self createNavRightBtn];
     
     _model = [[MyCutRefereeModel alloc] init];
     [_model setDelegate:self];
     [_model loadMyCutRefereeInfo];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    
+    aliModel = [[SearchUserAliAccountModel alloc] init];
+    [aliModel setDelegate:self];
+    [aliModel searchUserAliPayAccount];
+}
+
+-(void)createNavRightBtn{
+    WXUIButton *rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    [rightBtn setBackgroundColor:[UIColor clearColor]];
+    [rightBtn setTitle:@"提现" forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:WXFont(14.0)];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self setRightNavigationItem:rightBtn];
+    
+    _dropListView = [self createDropListViewWith:rightBtn];
+    [_dropListView unshow:NO];
+    [self addSubview:_dropListView];
+}
+
+//下拉菜单
+- (WXDropListView*)createDropListViewWith:(WXUIButton*)btn{
+    CGFloat height = 40;
+    NSInteger row = DropList_Section_Invalid;
+    CGFloat width = 150;
+    CGRect rect = CGRectMake(IPHONE_SCREEN_WIDTH - width, 0, width, row*height);
+    WXDropListView *dropListView = [[WXDropListView alloc] initWithFrame:self.bounds menuButton:btn dropListFrame:rect];
+    [dropListView setDelegate:self];
+    [dropListView setFont:[UIFont systemFontOfSize:15.0]];
+    [dropListView setDropDirection:E_DropDirection_Left];
+    
+    NSMutableArray *itemArray = [NSMutableArray array];
+    for (int i = 0; i < DropList_Section_Invalid; i++) {
+        WXDropListItem *item = [[WXDropListItem alloc] init];
+        [item setTitle:g_dropItemList[i]];
+        [itemArray addObject:item];
+    }
+    [dropListView setDataList:itemArray];
+    return dropListView;
+}
+
+#pragma mark DropListDelegate
+- (void)menuClickAtIndex:(NSInteger)index{
+    switch (index) {
+        case DropList_Section_Money:
+            [self gotoUserWithdrawalsVC];
+            break;
+        case DropList_Section_Record:
+        {
+            WithdrawalsRecordListVC *listVC = [[WithdrawalsRecordListVC alloc] init];
+            [self.wxNavigationController pushViewController:listVC];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 -(UIView*)tableviewForHeadView{
@@ -112,7 +205,7 @@ enum{
     textLabel.frame = CGRectMake((Size.width-smallWidth)/2, yOffset, smallWidth, smallHeight);
     [textLabel setBackgroundColor:[UIColor clearColor]];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [textLabel setText:@"余额"];
+    [textLabel setText:@"提成"];
     [textLabel setTextColor:WXColorWithInteger(0x828282)];
     [textLabel setFont:WXFont(11.0)];
     [headView addSubview:textLabel];
@@ -345,8 +438,9 @@ enum{
     myCutArr = _model.myCutInfoArr;
     if([myCutArr count] > 0){
         MyRefereeEntity *entity = [myCutArr objectAtIndex:0];
-        [_bigMoney setText:[NSString stringWithFormat:@"%.2f",entity.cutMoney]];
+        [_bigMoney setText:[NSString stringWithFormat:@"%.2f",entity.balance]];
         [_smallMoney setText:[NSString stringWithFormat:@"%.2f",entity.cutMoney]];
+        userMoney = entity.balance;
     }
     [_tableView reloadData];
 }
@@ -357,6 +451,70 @@ enum{
         errorMsg = @"获取提成失败";
     }
     [UtilTool showAlertView:errorMsg];
+}
+
+#pragma mark withdrawals
+-(void)gotoUserWithdrawalsVC{
+    //添加帐号
+    if(userAliEntity.userali_type == UserAliCount_Type_None){
+        ConfirmUserAliPayVC *comfirmVC = [[ConfirmUserAliPayVC alloc] init];
+        comfirmVC.titleString = @"验证信息";
+        [self.wxNavigationController pushViewController:comfirmVC];
+    }
+    //审核中
+    if(userAliEntity.userali_type == UserAliCount_Type_Submit){
+        UserWithdrawalsVC *userWithdrawalsVC = [[UserWithdrawalsVC alloc] init];
+        [self.wxNavigationController pushViewController:userWithdrawalsVC];
+    }
+    //有账号
+    if(userAliEntity.userali_type == UserAliCount_Type_Succeed){
+        ApplyAliWithdrawalsVC *appliAliVC = [[ApplyAliWithdrawalsVC alloc] init];
+        appliAliVC.entity = userAliEntity;
+        appliAliVC.money = userMoney;
+        [self.wxNavigationController pushViewController:appliAliVC];
+    }
+    //审核未通过
+    if(userAliEntity.userali_type == UserAliCount_Type_Failed){
+        [UtilTool showAlertView:@"抱歉，您的支付宝账户信息审核未通过"];
+    }
+}
+
+//提现成功后的通知
+-(void)applyAliSucceed{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    CGFloat moneyValue = [userDefaults floatForKey:ApplySucceed];
+    
+    if([myCutArr count] > 0 && moneyValue > 0){
+        [UtilTool showAlertView:@"申请提现成功，系统将自动转到您的支付宝账户，请注意查收"];
+        MyRefereeEntity *entity = [myCutArr objectAtIndex:0];
+        [_bigMoney setText:[NSString stringWithFormat:@"%.2f",entity.balance-moneyValue]];
+        [_tableView reloadData];
+    }
+}
+
+//修改用户提现账号成功后的通知
+-(void)changeUserWithdrawalsInfoSucceed{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([userDefaults boolForKey:ConfirmSign]){
+        userAliEntity.userali_type = UserAliCount_Type_Submit;
+    }
+}
+
+-(void)searchUserAliPayAccountSucceed{
+    if([aliModel.userAliAcountArr count] > 0){
+        userAliEntity = [aliModel.userAliAcountArr objectAtIndex:0];
+    }
+}
+
+-(void)searchUserAliPayAccountFailed:(NSString *)errorMsg{
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:NO forKey:ConfirmSign];
+    [userDefaults setFloat:0 forKey:ApplySucceed];
 }
 
 - (void)didReceiveMemoryWarning {

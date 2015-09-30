@@ -496,7 +496,7 @@
         case User_Cut:
         {
             [cell.imageView setImage:[UIImage imageNamed:@"MyExtendImg.png"]];
-            [cell.textLabel setText:@"提成"];
+            [cell.textLabel setText:@"我的提成"];
             [cell.textLabel setFont:WXFont(15.0)];
             [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
         }
@@ -504,7 +504,7 @@
         case User_Share:
         {
             [cell.imageView setImage:[UIImage imageNamed:@"PersonalShareImg.png"]];
-            [cell.textLabel setText:@"分享"];
+            [cell.textLabel setText:@"邀请好友"];
             [cell.textLabel setFont:WXFont(15.0)];
             [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
         }

@@ -55,6 +55,12 @@
 		120EC7831BB8F31800538637 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC77A1BB8F31800538637 /* rscode.c */; settings = {ASSET_TAGS = (); }; };
 		120EC7841BB8F31800538637 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 120EC77C1BB8F31800538637 /* split.c */; settings = {ASSET_TAGS = (); }; };
 		120EC7871BB8F33C00538637 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7861BB8F33C00538637 /* QRCodeGenerator.m */; settings = {ASSET_TAGS = (); }; };
+		120EC78D1BB9177800538637 /* UserWithdrawalsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EC78C1BB9177800538637 /* UserWithdrawalsVC.m */; settings = {ASSET_TAGS = (); }; };
+		120EC7901BB9194600538637 /* UserWithdrawals@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 120EC78F1BB9194600538637 /* UserWithdrawals@2x.png */; settings = {ASSET_TAGS = (); }; };
+		120EC7931BB91D9200538637 /* ConfirmUserAliPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7921BB91D9200538637 /* ConfirmUserAliPayVC.m */; settings = {ASSET_TAGS = (); }; };
+		120EC7961BB94AE100538637 /* SearchUserAliAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7951BB94AE100538637 /* SearchUserAliAccountModel.m */; settings = {ASSET_TAGS = (); }; };
+		120EC7991BB94DFA00538637 /* UserAliEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EC7981BB94DFA00538637 /* UserAliEntity.m */; settings = {ASSET_TAGS = (); }; };
+		120EC79C1BB954A400538637 /* ConfirmUserAliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 120EC79B1BB954A400538637 /* ConfirmUserAliModel.m */; settings = {ASSET_TAGS = (); }; };
 		1211210F1BA2775000651E4A /* MyCutReferee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1211210D1BA2775000651E4A /* MyCutReferee@2x.png */; };
 		121121101BA2775000651E4A /* MyCutTeam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1211210E1BA2775000651E4A /* MyCutTeam@2x.png */; };
 		121121171BA277DB00651E4A /* MyCutRefereeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121121161BA277DB00651E4A /* MyCutRefereeModel.m */; };
@@ -62,6 +68,13 @@
 		1213FEB11BA2BCE000CAB746 /* MyClientPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1213FEB01BA2BCE000CAB746 /* MyClientPersonModel.m */; };
 		1213FEB41BA2C0E700CAB746 /* MyClientEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1213FEB31BA2C0E700CAB746 /* MyClientEntity.m */; };
 		1213FEB71BA2CA4600CAB746 /* MyClientInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1213FEB61BA2CA4600CAB746 /* MyClientInfoModel.m */; };
+		1214B5811BBA196000A7D810 /* AliSendMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1214B5801BBA196000A7D810 /* AliSendMsgModel.m */; settings = {ASSET_TAGS = (); }; };
+		1214B5871BBA214300A7D810 /* ApplyAliWithdrawalsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1214B5861BBA214300A7D810 /* ApplyAliWithdrawalsVC.m */; settings = {ASSET_TAGS = (); }; };
+		1214B58A1BBA297D00A7D810 /* ApplyAliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1214B5891BBA297D00A7D810 /* ApplyAliModel.m */; settings = {ASSET_TAGS = (); }; };
+		1214B58D1BBA5F6200A7D810 /* WithdrawalsRecordListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1214B58C1BBA5F6200A7D810 /* WithdrawalsRecordListVC.m */; settings = {ASSET_TAGS = (); }; };
+		1214B5901BBA609200A7D810 /* WithdrawadsRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1214B58F1BBA609200A7D810 /* WithdrawadsRecordListModel.m */; settings = {ASSET_TAGS = (); }; };
+		1214B5961BBA65AC00A7D810 /* AliRecordListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1214B5951BBA65AC00A7D810 /* AliRecordListCell.m */; settings = {ASSET_TAGS = (); }; };
+		1214B5991BBA721800A7D810 /* WithdrawalsRecordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1214B5981BBA721800A7D810 /* WithdrawalsRecordEntity.m */; settings = {ASSET_TAGS = (); }; };
 		1218042C1ACB899B009DB7E7 /* DBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804251ACB899B009DB7E7 /* DBImage.m */; };
 		1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804271ACB899B009DB7E7 /* DBImageRequest.m */; };
 		1218042E1ACB899B009DB7E7 /* DBImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804291ACB899B009DB7E7 /* DBImageView.m */; };
@@ -913,6 +926,17 @@
 		120EC77D1BB8F31800538637 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		120EC7851BB8F33C00538637 /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
 		120EC7861BB8F33C00538637 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
+		120EC78B1BB9177800538637 /* UserWithdrawalsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserWithdrawalsVC.h; sourceTree = "<group>"; };
+		120EC78C1BB9177800538637 /* UserWithdrawalsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserWithdrawalsVC.m; sourceTree = "<group>"; };
+		120EC78F1BB9194600538637 /* UserWithdrawals@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserWithdrawals@2x.png"; sourceTree = "<group>"; };
+		120EC7911BB91D9200538637 /* ConfirmUserAliPayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmUserAliPayVC.h; sourceTree = "<group>"; };
+		120EC7921BB91D9200538637 /* ConfirmUserAliPayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmUserAliPayVC.m; sourceTree = "<group>"; };
+		120EC7941BB94AE100538637 /* SearchUserAliAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserAliAccountModel.h; sourceTree = "<group>"; };
+		120EC7951BB94AE100538637 /* SearchUserAliAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserAliAccountModel.m; sourceTree = "<group>"; };
+		120EC7971BB94DFA00538637 /* UserAliEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAliEntity.h; sourceTree = "<group>"; };
+		120EC7981BB94DFA00538637 /* UserAliEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAliEntity.m; sourceTree = "<group>"; };
+		120EC79A1BB954A400538637 /* ConfirmUserAliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmUserAliModel.h; sourceTree = "<group>"; };
+		120EC79B1BB954A400538637 /* ConfirmUserAliModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmUserAliModel.m; sourceTree = "<group>"; };
 		1211210D1BA2775000651E4A /* MyCutReferee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyCutReferee@2x.png"; sourceTree = "<group>"; };
 		1211210E1BA2775000651E4A /* MyCutTeam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyCutTeam@2x.png"; sourceTree = "<group>"; };
 		121121151BA277DB00651E4A /* MyCutRefereeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCutRefereeModel.h; sourceTree = "<group>"; };
@@ -925,6 +949,20 @@
 		1213FEB31BA2C0E700CAB746 /* MyClientEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClientEntity.m; sourceTree = "<group>"; };
 		1213FEB51BA2CA4600CAB746 /* MyClientInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClientInfoModel.h; sourceTree = "<group>"; };
 		1213FEB61BA2CA4600CAB746 /* MyClientInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClientInfoModel.m; sourceTree = "<group>"; };
+		1214B57F1BBA196000A7D810 /* AliSendMsgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliSendMsgModel.h; sourceTree = "<group>"; };
+		1214B5801BBA196000A7D810 /* AliSendMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliSendMsgModel.m; sourceTree = "<group>"; };
+		1214B5851BBA214300A7D810 /* ApplyAliWithdrawalsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyAliWithdrawalsVC.h; sourceTree = "<group>"; };
+		1214B5861BBA214300A7D810 /* ApplyAliWithdrawalsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyAliWithdrawalsVC.m; sourceTree = "<group>"; };
+		1214B5881BBA297D00A7D810 /* ApplyAliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyAliModel.h; sourceTree = "<group>"; };
+		1214B5891BBA297D00A7D810 /* ApplyAliModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyAliModel.m; sourceTree = "<group>"; };
+		1214B58B1BBA5F6200A7D810 /* WithdrawalsRecordListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawalsRecordListVC.h; sourceTree = "<group>"; };
+		1214B58C1BBA5F6200A7D810 /* WithdrawalsRecordListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsRecordListVC.m; sourceTree = "<group>"; };
+		1214B58E1BBA609200A7D810 /* WithdrawadsRecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawadsRecordListModel.h; sourceTree = "<group>"; };
+		1214B58F1BBA609200A7D810 /* WithdrawadsRecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawadsRecordListModel.m; sourceTree = "<group>"; };
+		1214B5941BBA65AC00A7D810 /* AliRecordListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRecordListCell.h; sourceTree = "<group>"; };
+		1214B5951BBA65AC00A7D810 /* AliRecordListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRecordListCell.m; sourceTree = "<group>"; };
+		1214B5971BBA721800A7D810 /* WithdrawalsRecordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawalsRecordEntity.h; sourceTree = "<group>"; };
+		1214B5981BBA721800A7D810 /* WithdrawalsRecordEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsRecordEntity.m; sourceTree = "<group>"; };
 		121804241ACB899B009DB7E7 /* DBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImage.h; sourceTree = "<group>"; };
 		121804251ACB899B009DB7E7 /* DBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBImage.m; sourceTree = "<group>"; };
 		121804261ACB899B009DB7E7 /* DBImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBImageRequest.h; sourceTree = "<group>"; };
@@ -2549,6 +2587,61 @@
 			path = CreatePictureLib;
 			sourceTree = "<group>";
 		};
+		120EC7881BB916EF00538637 /* withdrawals */ = {
+			isa = PBXGroup;
+			children = (
+				120EC78B1BB9177800538637 /* UserWithdrawalsVC.h */,
+				120EC78C1BB9177800538637 /* UserWithdrawalsVC.m */,
+				120EC7911BB91D9200538637 /* ConfirmUserAliPayVC.h */,
+				120EC7921BB91D9200538637 /* ConfirmUserAliPayVC.m */,
+				1214B5851BBA214300A7D810 /* ApplyAliWithdrawalsVC.h */,
+				1214B5861BBA214300A7D810 /* ApplyAliWithdrawalsVC.m */,
+				1214B58B1BBA5F6200A7D810 /* WithdrawalsRecordListVC.h */,
+				1214B58C1BBA5F6200A7D810 /* WithdrawalsRecordListVC.m */,
+				120EC7891BB9170500538637 /* Model */,
+				120EC78A1BB9170500538637 /* View */,
+			);
+			path = withdrawals;
+			sourceTree = "<group>";
+		};
+		120EC7891BB9170500538637 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				120EC7941BB94AE100538637 /* SearchUserAliAccountModel.h */,
+				120EC7951BB94AE100538637 /* SearchUserAliAccountModel.m */,
+				120EC7971BB94DFA00538637 /* UserAliEntity.h */,
+				120EC7981BB94DFA00538637 /* UserAliEntity.m */,
+				120EC79A1BB954A400538637 /* ConfirmUserAliModel.h */,
+				120EC79B1BB954A400538637 /* ConfirmUserAliModel.m */,
+				1214B57F1BBA196000A7D810 /* AliSendMsgModel.h */,
+				1214B5801BBA196000A7D810 /* AliSendMsgModel.m */,
+				1214B5881BBA297D00A7D810 /* ApplyAliModel.h */,
+				1214B5891BBA297D00A7D810 /* ApplyAliModel.m */,
+				1214B58E1BBA609200A7D810 /* WithdrawadsRecordListModel.h */,
+				1214B58F1BBA609200A7D810 /* WithdrawadsRecordListModel.m */,
+				1214B5971BBA721800A7D810 /* WithdrawalsRecordEntity.h */,
+				1214B5981BBA721800A7D810 /* WithdrawalsRecordEntity.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		120EC78A1BB9170500538637 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1214B5941BBA65AC00A7D810 /* AliRecordListCell.h */,
+				1214B5951BBA65AC00A7D810 /* AliRecordListCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		120EC78E1BB9190500538637 /* withdrawals */ = {
+			isa = PBXGroup;
+			children = (
+				120EC78F1BB9194600538637 /* UserWithdrawals@2x.png */,
+			);
+			path = withdrawals;
+			sourceTree = "<group>";
+		};
 		121121141BA277DB00651E4A /* Referee */ = {
 			isa = PBXGroup;
 			children = (
@@ -2593,6 +2686,7 @@
 		121AC7471B9EB7CF007AC44B /* NewUserCut */ = {
 			isa = PBXGroup;
 			children = (
+				120EC7881BB916EF00538637 /* withdrawals */,
 				121AC74A1B9EB80A007AC44B /* NewUserCutVC.h */,
 				121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */,
 				12C2CE1A1BA12A3D00797DA4 /* NewMyClientVC.h */,
@@ -4913,6 +5007,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				120EC78E1BB9190500538637 /* withdrawals */,
 				12963B3B1B663DE8007418DE /* GuideImg */,
 				128083DB1B622A6100260B9F /* ShareImg */,
 				128585041B3AA7E5005E240E /* MakeOrderImg */,
@@ -6259,6 +6354,7 @@
 				12F46A3A1B20012000B8EC98 /* T_AttentionSel@2x.png in Resources */,
 				1241E5681AE9D91400811D3F /* wxtRecharge@2x.png in Resources */,
 				127FDD7B1B57B2570059BDB6 /* woxinHidIcon@2x.png in Resources */,
+				120EC7901BB9194600538637 /* UserWithdrawals@2x.png in Resources */,
 				1241E5351AE9D89B00811D3F /* CallBackIconImgSel@2x.png in Resources */,
 				1245354E1AE9D146004198C9 /* sign26@2x.png in Resources */,
 				1241E5411AE9D89B00811D3F /* 2N@2x.png in Resources */,
@@ -6460,6 +6556,7 @@
 				7758435D1AB95FAC0039B129 /* WXServiceParse.m in Sources */,
 				775842E81AB95A300039B129 /* TelNOOBJ.m in Sources */,
 				120A2BEC1AB135DD006A28B1 /* SignViewController.m in Sources */,
+				1214B5901BBA609200A7D810 /* WithdrawadsRecordListModel.m in Sources */,
 				12F2D7FD1B1EF11900C8017F /* OrderGoodsCell.m in Sources */,
 				775842BE1AB95A300039B129 /* WXMaskView.m in Sources */,
 				12F422951B1D85FC00643DD7 /* AddSqlite.m in Sources */,
@@ -6476,7 +6573,9 @@
 				128767011B51012700A79320 /* ShopTwoDimensionCell.m in Sources */,
 				121AC7531B9ECF15007AC44B /* UserRefereeCell.m in Sources */,
 				12963B3A1B663DBB007418DE /* WXTGuideVC.m in Sources */,
+				120EC7961BB94AE100538637 /* SearchUserAliAccountModel.m in Sources */,
 				12F180B91B45190800B9A80D /* Sql_JpushData.m in Sources */,
+				120EC78D1BB9177800538637 /* UserWithdrawalsVC.m in Sources */,
 				7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */,
 				128B456F1B6B24F100591137 /* WechatEntity.m in Sources */,
 				DDEA9EE01B1BFD5D00530C1C /* WXSysMsgUnreadV.m in Sources */,
@@ -6511,6 +6610,7 @@
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
 				DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */,
 				12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */,
+				120EC79C1BB954A400538637 /* ConfirmUserAliModel.m in Sources */,
 				12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */,
 				1273291E1B5CFFEE002AD4AE /* PersonalInfoEntity.m in Sources */,
 				120E16271B846169009401F2 /* LuckyOrderListModel.m in Sources */,
@@ -6623,6 +6723,7 @@
 				DDB58F431AD3C6A2006248E9 /* CallBackVC.m in Sources */,
 				12E471C81B1F187000559995 /* WaitReceiveConsultCell.m in Sources */,
 				DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */,
+				1214B58A1BBA297D00A7D810 /* ApplyAliModel.m in Sources */,
 				12F916161B199A4500C94717 /* HomePageRecModel.m in Sources */,
 				12F963301B3D4BDF00FF6A3E /* SBJsonParser.m in Sources */,
 				7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */,
@@ -6649,6 +6750,7 @@
 				775843061AB95A300039B129 /* TxtparseOBJ.m in Sources */,
 				129EEB811B97DAF60062349E /* NewImageZoomView.m in Sources */,
 				12F180C31B4521B400B9A80D /* JPushMessageCenterVC.m in Sources */,
+				120EC7991BB94DFA00538637 /* UserAliEntity.m in Sources */,
 				775843251AB95A300039B129 /* WXUIImageView.m in Sources */,
 				775C58C21ABA7B75005B6B40 /* ActData.m in Sources */,
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
@@ -6688,6 +6790,7 @@
 				2563B3EA1AAAD74000C04227 /* main.m in Sources */,
 				120A2BE91AB135DD006A28B1 /* RechargeVC.m in Sources */,
 				775842D41AB95A300039B129 /* NSNotificationAdditions.m in Sources */,
+				120EC7931BB91D9200538637 /* ConfirmUserAliPayVC.m in Sources */,
 				775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */,
 				128766F41B50ED8400A79320 /* AboutShopModel.m in Sources */,
 				DDEA9ED91B1BF46900530C1C /* CartDetailCell.m in Sources */,
@@ -6740,6 +6843,7 @@
 				12F3801E1B3B932200E9690C /* MakeOrderPayStatusCell.m in Sources */,
 				DDB58F471AD3C6A2006248E9 /* ContactsCallViewController.m in Sources */,
 				DD0E38B01B1BE5AC00AB4DB9 /* WXShopCartEntity.m in Sources */,
+				1214B5871BBA214300A7D810 /* ApplyAliWithdrawalsVC.m in Sources */,
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
 				12F2CCF81B4D238A0085F78F /* RefundConsultCell.m in Sources */,
 				775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */,
@@ -6769,11 +6873,13 @@
 				DDB58F4E1AD3C6A2006248E9 /* CallHistoryCell.m in Sources */,
 				1284CC851B54ADB900D98F79 /* PaySucceedModel.m in Sources */,
 				775C58CA1ABA7B75005B6B40 /* SubShop.m in Sources */,
+				1214B5991BBA721800A7D810 /* WithdrawalsRecordEntity.m in Sources */,
 				1218042F1ACB899B009DB7E7 /* DBImageViewCache.m in Sources */,
 				775842FC1AB95A300039B129 /* WXImageClipVC.m in Sources */,
 				12F180CA1B454D9A00B9A80D /* OrderListModel.m in Sources */,
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
+				1214B58D1BBA5F6200A7D810 /* WithdrawalsRecordListVC.m in Sources */,
 				1213FEB11BA2BCE000CAB746 /* MyClientPersonModel.m in Sources */,
 				1261F0141AE6596A00693710 /* CallModel.m in Sources */,
 				775C58CC1ABA7B75005B6B40 /* SubShopModel.m in Sources */,
@@ -6805,6 +6911,7 @@
 				127329101B5C9336002AD4AE /* PopMenu.m in Sources */,
 				128221C31B184C3B004613BB /* ASIAuthenticationDialog.m in Sources */,
 				12F46A221B1FE40D00B8EC98 /* NewHomePageModel.m in Sources */,
+				1214B5961BBA65AC00A7D810 /* AliRecordListCell.m in Sources */,
 				12E471D41B1F268100559995 /* WaitSendGoodsInfoCell.m in Sources */,
 				775C58DC1ABAB87E005B6B40 /* CoordinateController.m in Sources */,
 				775842F61AB95A300039B129 /* PullPsCollectionView.m in Sources */,
@@ -6952,6 +7059,7 @@
 				775C58C01ABA7B75005B6B40 /* WXGoodListModel.m in Sources */,
 				12F916211B19A18600C94717 /* HomePageSurpEntity.m in Sources */,
 				121AC74C1B9EB80A007AC44B /* NewUserCutVC.m in Sources */,
+				1214B5811BBA196000A7D810 /* AliSendMsgModel.m in Sources */,
 				775C58BC1ABA7B75005B6B40 /* SetMealEntity.m in Sources */,
 				775843261AB95A300039B129 /* WXUILabel.m in Sources */,
 				1261F0181AE659AC00693710 /* HangupModel.m in Sources */,

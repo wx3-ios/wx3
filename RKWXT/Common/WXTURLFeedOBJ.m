@@ -192,6 +192,18 @@
         case WXT_UrlFeed_Type_New_LoadMyClientInfo:
             url = @"/get_singleuser_divide.php";
             break;
+        case WXT_UrlFeed_Type_New_LoadUserAliAccount:
+            url = @"/app_get_withdraw_account.php";
+            break;
+        case WXT_UrlFeed_Type_New_SubmitUserAliAcount:
+            url = @"/app_set_withdraw_account.php";
+            break;
+        case WXT_UrlFeed_Type_New_ApplyAliMoney:
+            url = @"/app_user_withdraw.php";
+            break;
+        case WXT_UrlFeed_Type_New_LoadAliRecordList:
+            url = @"/app_user_withdraw_list.php";
+            break;
         default:
             break;
     }

@@ -15,6 +15,7 @@
 @property (nonatomic,strong) NSString *userIconImg;
 @property (nonatomic,assign) CGFloat cutMoney;
 @property (nonatomic,assign) CGFloat allMoney;
+@property (nonatomic,assign) CGFloat balance;
 @property (nonatomic,assign) NSInteger registTime;
 
 +(MyRefereeEntity*)initRefereeEntityWithDic:(NSDictionary*)dic;

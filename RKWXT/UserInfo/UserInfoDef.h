@@ -38,8 +38,8 @@ enum{
     PersonalInfo_SharkOrder,
     PersonalInfo_Call,
 //    PersonalInfo_Extend,
-    PersonalInfo_System,
     PersonalInfo_CutAndShare,
+    PersonalInfo_System,
     
     PersonalInfo_Invalid
 };
