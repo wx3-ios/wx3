@@ -97,7 +97,7 @@
     }
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     if([clientArr count] > 0){
-        [cell setCellInfo:[clientArr objectAtIndex:0]];
+        [cell setCellInfo:[clientArr objectAtIndex:section]];
     }
     [cell load];
     return cell;

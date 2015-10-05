@@ -31,6 +31,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "UserInfoVC.h"
 #import "ShareSucceedModel.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -54,7 +55,7 @@
     
     [[AddressBook sharedAddressBook] loadContact];
     [ContactUitl shareInstance];
-	[self initUI];
+    [self initUI];
     //监听电话
     [self listenSystemCall];
     // 集成极光推送功能
@@ -66,12 +67,12 @@
     
     //向微信注册
     [[WXWeiXinOBJ sharedWeiXinOBJ] registerApp];
-//    [WXApi registerApp:@"wxd930ea5d5a258f4f" withDescription:@"wx"];
+    //    [WXApi registerApp:@"wxd930ea5d5a258f4f" withDescription:@"wx"];
     //向qq注册
     id result = [[TencentOAuth alloc] initWithAppId:@"1104707907" andDelegate:nil];
     if(result){}
     
-	return YES;
+    return YES;
 }
 
 -(void)addNotification{
@@ -84,13 +85,13 @@
 }
 
 -(void)initUI{
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	self.window.backgroundColor = [UIColor whiteColor];
-//    activityVC = [[ScreenActivityVC alloc] init];
-//    self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:activityVC];
-//    [self.window setRootViewController:self.navigationController];
-//    [self.window makeKeyAndVisible];
-//    return;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    //    activityVC = [[ScreenActivityVC alloc] init];
+    //    self.navigationController = [[WXUINavigationController alloc] initWithRootViewController:activityVC];
+    //    [self.window setRootViewController:self.navigationController];
+    //    [self.window makeKeyAndVisible];
+    //    return;
     
     BOOL userInfo = [self checkUserInfo];
     if(userInfo){
@@ -103,8 +104,8 @@
         [self checkVersion];
         //自动登录
         WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-//        LoginModel *_loginModel = [[LoginModel alloc] init];
-//        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
+        //        LoginModel *_loginModel = [[LoginModel alloc] init];
+        //        [_loginModel loginWithUser:userDefault.user andPwd:userDefault.pwd];
         
         [userDefault SetUserLoginFirst:YES];
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
@@ -173,31 +174,31 @@
 #pragma mark 极光推送功能
 -(void)initJPushApi{
     // Required
-    #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
-        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-            //categories
-            [APService
-             registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                 UIUserNotificationTypeSound |
-                                                 UIUserNotificationTypeAlert)
-             categories:nil];
-        } else {
-            //categories nil
-            [APService
-             registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                 UIRemoteNotificationTypeSound |
-                                                 UIRemoteNotificationTypeAlert)
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        //categories
+        [APService
+         registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                             UIUserNotificationTypeSound |
+                                             UIUserNotificationTypeAlert)
+         categories:nil];
+    } else {
+        //categories nil
+        [APService
+         registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                             UIRemoteNotificationTypeSound |
+                                             UIRemoteNotificationTypeAlert)
 #else
-             //categories nil
-             categories:nil];
-            [APService
-             registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                 UIRemoteNotificationTypeSound |
-                                                 UIRemoteNotificationTypeAlert)
+         //categories nil
+         categories:nil];
+        [APService
+         registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                             UIRemoteNotificationTypeSound |
+                                             UIRemoteNotificationTypeAlert)
 #endif
-             // Required
-             categories:nil];
-        }
+         // Required
+         categories:nil];
+    }
     [self addObserver];
 }
 
@@ -269,7 +270,7 @@
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {  //应用内消息,由锁屏进入应用内
     NSDictionary *userInfo = [notification userInfo];
-//    [APService handleRemoteNotification:userInfo];
+    //    [APService handleRemoteNotification:userInfo];
     [[JPushMessageModel shareJPushModel] initJPushWithCloseDic:userInfo];
 }
 
@@ -349,7 +350,7 @@ forRemoteNotification:(NSDictionary *)userInfo
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-	[self saveContext];
+    [self saveContext];
 }
 
 #pragma mark - Core Data stack
@@ -421,7 +422,7 @@ forRemoteNotification:(NSDictionary *)userInfo
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     //支付宝
-    [[AliPayControl sharedAliPayOBJ] handleAliPayURL:url];
+    //    [[AliPayControl sharedAliPayOBJ] handleAliPayURL:url];
     //微支付
     [WXApi handleOpenURL:url delegate:self];
     //微信
@@ -448,6 +449,16 @@ forRemoteNotification:(NSDictionary *)userInfo
             [UtilTool showAlertView:nil message:@"微信分享成功" delegate:nil tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
         }
     }
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    //跳转支付宝钱包进行支付，处理支付结果
+    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+    }];
+    return YES;
 }
 
 @end

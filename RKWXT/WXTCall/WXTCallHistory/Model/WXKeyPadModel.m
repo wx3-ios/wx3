@@ -50,7 +50,7 @@
         }
         
         if(entity.historyType == E_CallHistoryType_MakingReaded_Invalid){
-            continue;
+//            continue;
         }
         if(entityExt){
             if([entityExt canMergeRecord:entity]){
