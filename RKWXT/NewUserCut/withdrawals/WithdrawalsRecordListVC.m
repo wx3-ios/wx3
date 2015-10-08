@@ -130,7 +130,7 @@ typedef enum{
 -(void)loadUserWithdrawadlsRecordListFailed:(NSString *)errorMsg{
     [self unShowWaitView];
     if(!errorMsg){
-        errorMsg = @"获取商品失败";
+        errorMsg = @"获取数据失败";
     }
     [UtilTool showAlertView:errorMsg];
     _tableView.reachedTheEnd = YES;
