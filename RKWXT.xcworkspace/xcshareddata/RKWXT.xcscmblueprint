@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1BF173E4162522006F48E9B58BCA749805F8BE67",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F72339642854CC075E0748BC992572E080761CC3" : 0,
+    "1BF173E4162522006F48E9B58BCA749805F8BE67" : 0,
+    "8256D7E5705457084742BC944791A60E3FDCDC98" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "522491A9-3B5B-4225-B067-520A8D805B70",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F72339642854CC075E0748BC992572E080761CC3" : "gjtjb\/RKWXT\/PayInterface\/wechat\/lib\/wepay_demo",
+    "1BF173E4162522006F48E9B58BCA749805F8BE67" : "gjtjb2",
+    "8256D7E5705457084742BC944791A60E3FDCDC98" : "gjtjb"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RKWXT",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RKWXT.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.67call.com:leting\/gjtjb.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1BF173E4162522006F48E9B58BCA749805F8BE67"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.67call.com:leting\/gjtjb.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8256D7E5705457084742BC944791A60E3FDCDC98"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shaojiankui\/wepay_demo",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F72339642854CC075E0748BC992572E080761CC3"
+    }
+  ]
+}
