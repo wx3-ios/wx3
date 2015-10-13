@@ -1,18 +1,22 @@
 {
   "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1BF173E4162522006F48E9B58BCA749805F8BE67",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "6ec3b86d-b301-894a-b5cd-261cfab5c012++9314" : {
 
+    }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "F72339642854CC075E0748BC992572E080761CC3" : 0,
     "1BF173E4162522006F48E9B58BCA749805F8BE67" : 0,
-    "8256D7E5705457084742BC944791A60E3FDCDC98" : 0
+    "F72339642854CC075E0748BC992572E080761CC3" : 0,
+    "8256D7E5705457084742BC944791A60E3FDCDC98" : 0,
+    "6ec3b86d-b301-894a-b5cd-261cfab5c012++9314" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "522491A9-3B5B-4225-B067-520A8D805B70",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "F72339642854CC075E0748BC992572E080761CC3" : "gjtjb\/RKWXT\/PayInterface\/wechat\/lib\/wepay_demo",
     "1BF173E4162522006F48E9B58BCA749805F8BE67" : "gjtjb2",
-    "8256D7E5705457084742BC944791A60E3FDCDC98" : "gjtjb"
+    "F72339642854CC075E0748BC992572E080761CC3" : "gjtjb\/RKWXT\/PayInterface\/wechat\/lib\/wepay_demo",
+    "8256D7E5705457084742BC944791A60E3FDCDC98" : "gjtjb",
+    "6ec3b86d-b301-894a-b5cd-261cfab5c012++9314" : "wx_v3\/RKWXT\/ShareInterface\/weixin\/SDK\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "RKWXT",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -22,6 +26,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.67call.com:leting\/gjtjb.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1BF173E4162522006F48E9B58BCA749805F8BE67"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.16.11\/www",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6ec3b86d-b301-894a-b5cd-261cfab5c012++9314"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.67call.com:leting\/gjtjb.git",

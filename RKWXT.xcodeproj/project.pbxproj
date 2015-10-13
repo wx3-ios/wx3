@@ -87,6 +87,11 @@
 		12228A6C1AB1B1D000CF0800 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A6B1AB1B1D000CF0800 /* LoginModel.m */; };
 		12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A721AB1BABA00CF0800 /* RegistVC.m */; };
 		12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12228A751AB1C0F200CF0800 /* RegistModel.m */; };
+		123316E81BCCE803004649DC /* FindJingdong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E31BCCE803004649DC /* FindJingdong@2x.png */; settings = {ASSET_TAGS = (); }; };
+		123316E91BCCE803004649DC /* FIndLvyou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E41BCCE803004649DC /* FIndLvyou@2x.png */; settings = {ASSET_TAGS = (); }; };
+		123316EA1BCCE803004649DC /* FindShop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E51BCCE803004649DC /* FindShop@2x.png */; settings = {ASSET_TAGS = (); }; };
+		123316EB1BCCE803004649DC /* FindTaobao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E61BCCE803004649DC /* FindTaobao@2x.png */; settings = {ASSET_TAGS = (); }; };
+		123316EC1BCCE803004649DC /* FindWeather@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E71BCCE803004649DC /* FindWeather@2x.png */; settings = {ASSET_TAGS = (); }; };
 		1241E5301AE9D89B00811D3F /* CallBackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1241E50B1AE9D89B00811D3F /* CallBackBtn@2x.png */; };
 		1241E5311AE9D89B00811D3F /* CallBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1241E50C1AE9D89B00811D3F /* CallBtnImg@2x.png */; };
 		1241E5321AE9D89B00811D3F /* CallBackBgImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1241E50D1AE9D89B00811D3F /* CallBackBgImg.jpg */; };
@@ -994,6 +999,12 @@
 		12228A741AB1C0F200CF0800 /* RegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistModel.h; sourceTree = "<group>"; };
 		12228A751AB1C0F200CF0800 /* RegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistModel.m; sourceTree = "<group>"; };
 		123316D41BCC911F004649DC /* WeixinApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinApi.h; sourceTree = "<group>"; };
+		123316D51BCC9691004649DC /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
+		123316E31BCCE803004649DC /* FindJingdong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindJingdong@2x.png"; sourceTree = "<group>"; };
+		123316E41BCCE803004649DC /* FIndLvyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FIndLvyou@2x.png"; sourceTree = "<group>"; };
+		123316E51BCCE803004649DC /* FindShop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindShop@2x.png"; sourceTree = "<group>"; };
+		123316E61BCCE803004649DC /* FindTaobao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindTaobao@2x.png"; sourceTree = "<group>"; };
+		123316E71BCCE803004649DC /* FindWeather@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindWeather@2x.png"; sourceTree = "<group>"; };
 		1241E50B1AE9D89B00811D3F /* CallBackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBackBtn@2x.png"; sourceTree = "<group>"; };
 		1241E50C1AE9D89B00811D3F /* CallBtnImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBtnImg@2x.png"; sourceTree = "<group>"; };
 		1241E50D1AE9D89B00811D3F /* CallBackBgImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CallBackBgImg.jpg; sourceTree = "<group>"; };
@@ -2827,6 +2838,18 @@
 				126CA4111AB2FC9400E08A0B /* GainModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		123316E21BCCE803004649DC /* FindImage */ = {
+			isa = PBXGroup;
+			children = (
+				123316E31BCCE803004649DC /* FindJingdong@2x.png */,
+				123316E41BCCE803004649DC /* FIndLvyou@2x.png */,
+				123316E51BCCE803004649DC /* FindShop@2x.png */,
+				123316E61BCCE803004649DC /* FindTaobao@2x.png */,
+				123316E71BCCE803004649DC /* FindWeather@2x.png */,
+			);
+			path = FindImage;
 			sourceTree = "<group>";
 		};
 		1241E50A1AE9D89B00811D3F /* CallBack */ = {
@@ -5200,6 +5223,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				123316E21BCCE803004649DC /* FindImage */,
 				120EC78E1BB9190500538637 /* withdrawals */,
 				12963B3B1B663DE8007418DE /* GuideImg */,
 				128083DB1B622A6100260B9F /* ShareImg */,
@@ -6084,6 +6108,7 @@
 		AD94EECE23B2F2543B7D284C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				123316D51BCC9691004649DC /* libPods-AFNetworking.a */,
 				128083D31B61D1BA00260B9F /* libstdc++.dylib */,
 				128083D11B61D17700260B9F /* libiconv.dylib */,
 				128083CF1B61D0A100260B9F /* TencentOpenAPI.framework */,
@@ -6485,11 +6510,13 @@
 				1241E5521AE9D89B00811D3F /* delSel@2x.png in Resources */,
 				12C12F421B81DD2200345BEE /* SharkCenterImg@2x.png in Resources */,
 				1241E5471AE9D89B00811D3F /* 5N@2x.png in Resources */,
+				123316EC1BCCE803004649DC /* FindWeather@2x.png in Resources */,
 				128083E11B622A6D00260B9F /* ShareQzoneImg@2x.png in Resources */,
 				12F46A3E1B20012000B8EC98 /* T_GoodsInfo@2x.png in Resources */,
 				12F465E61B6F0DE200A8F5AF /* guideIllustrate_2@2x.jpg in Resources */,
 				DDEA9EE41B1BFE5D00530C1C /* unreadBg@2x.png in Resources */,
 				12F46A381B20012000B8EC98 /* T_ArrowRight@2x.png in Resources */,
+				123316EA1BCCE803004649DC /* FindShop@2x.png in Resources */,
 				1241E5731AE9D98600811D3F /* Default-568h@2x.png in Resources */,
 				1241E5661AE9D91400811D3F /* T_BackSel@2x.png in Resources */,
 				120EB3D71B7B563B0036A77C /* shake.wav in Resources */,
@@ -6524,6 +6551,7 @@
 				128221D61B184E84004613BB /* HomePageChange@2x.png in Resources */,
 				124535541AE9D146004198C9 /* sign31@2x.png in Resources */,
 				12846A8B1B252D720021F9FE /* LoginUpSmallImg@2x.png in Resources */,
+				123316E81BCCE803004649DC /* FindJingdong@2x.png in Resources */,
 				12F3CC7F1B1DE82C00E64DE4 /* SysSettingImg@2x.png in Resources */,
 				12D52BB91AC2EF4400C5CE71 /* dtmf-3.aif in Resources */,
 				1241E5611AE9D91400811D3F /* LoadDataLogo@2x.png in Resources */,
@@ -6574,6 +6602,7 @@
 				1263EFE51ACD35820014C347 /* Icon-Small.png in Resources */,
 				12F422801B1D5A2900643DD7 /* AddressEdit@2x.png in Resources */,
 				1245350F1AE9D0BC004198C9 /* FindSelected@2x.png in Resources */,
+				123316EB1BCCE803004649DC /* FindTaobao@2x.png in Resources */,
 				1285850E1B3AA7E5005E240E /* MakeOrderSmImg@2x.png in Resources */,
 				12D52BBA1AC2EF4400C5CE71 /* dtmf-4.aif in Resources */,
 				1245353B1AE9D146004198C9 /* signBg.jpg in Resources */,
@@ -6667,6 +6696,7 @@
 				12F3CC761B1DE82C00E64DE4 /* MyCallMoneyImg@2x.png in Resources */,
 				124535451AE9D146004198C9 /* sign18@2x.png in Resources */,
 				1241E55F1AE9D91400811D3F /* AboutUsLogo@2x.png in Resources */,
+				123316E91BCCE803004649DC /* FIndLvyou@2x.png in Resources */,
 				1241E5331AE9D89B00811D3F /* CallBackBgImg@2x.jpg in Resources */,
 				1241E53E1AE9D89B00811D3F /* 0S@2x.png in Resources */,
 				1245354D1AE9D146004198C9 /* sign25@2x.png in Resources */,
@@ -7476,8 +7506,10 @@
 					"$(SRCROOT)/RKWXT/Frameworks",
 					"$(PROJECT_DIR)/RKWXT/ShareInterface/weixin/SDK",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/Alipay",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wx.company.pushdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";
 				VALID_ARCHS = "armv7 armv7s";
@@ -7534,10 +7566,12 @@
 					"$(SRCROOT)/RKWXT/Frameworks",
 					"$(PROJECT_DIR)/RKWXT/ShareInterface/weixin/SDK",
 					"$(PROJECT_DIR)/RKWXT/PayInterface/Alipay",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wx.company.pushdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";
+				PROVISIONING_PROFILE = "4bbdbfa5-5744-4f80-b756-59313d6499de";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

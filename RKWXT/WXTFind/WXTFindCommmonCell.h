@@ -8,10 +8,21 @@
 
 #import "WXUITableViewCell.h"
 
-#define FindCommonCellHeight (44)
+typedef enum{
+    FinCommon_Type_One = 1,
+    FinCommon_Type_Two,
+    FinCommon_Type_Three,
+}FinCommon_Type;
+
+#define FindCommonCellHeight (85)
+
+@protocol WXTFindCommmonCellDelegate;
 
 @interface WXTFindCommmonCell : WXUITableViewCell
-@property (nonatomic,strong) NSString *img;
-@property (nonatomic,strong) NSString *name;
+@property (nonatomic,assign) id<WXTFindCommmonCellDelegate>delegate;
+@end
+
+@protocol WXTFindCommmonCellDelegate <NSObject>
+-(void)wxtFindCommonCellClicked:(FinCommon_Type)type;
 
 @end
