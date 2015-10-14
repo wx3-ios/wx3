@@ -5,17 +5,17 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>廊坊我信云</string>
+	<string>城市名人酒店</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.wx.companyExplicit.chengshimingrenjiudian</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.1.11.0</string>
+	<string>3.1.12.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -23,7 +23,7 @@
 			<string>alipay</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>AliMobilePay10189</string>
+				<string>AliMobilePay10206</string>
 			</array>
 		</dict>
 		<dict>
