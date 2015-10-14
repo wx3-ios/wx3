@@ -998,7 +998,6 @@
 		12228A721AB1BABA00CF0800 /* RegistVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistVC.m; sourceTree = "<group>"; };
 		12228A741AB1C0F200CF0800 /* RegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistModel.h; sourceTree = "<group>"; };
 		12228A751AB1C0F200CF0800 /* RegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistModel.m; sourceTree = "<group>"; };
-		123316D41BCC911F004649DC /* WeixinApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinApi.h; sourceTree = "<group>"; };
 		123316D51BCC9691004649DC /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		123316E31BCCE803004649DC /* FindJingdong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindJingdong@2x.png"; sourceTree = "<group>"; };
 		123316E41BCCE803004649DC /* FIndLvyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FIndLvyou@2x.png"; sourceTree = "<group>"; };
@@ -1548,6 +1547,7 @@
 		12B1F6971B789372009FBA6D /* RechargeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeListCell.h; sourceTree = "<group>"; };
 		12B1F6981B789372009FBA6D /* RechargeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListCell.m; sourceTree = "<group>"; };
 		12B3FE301BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PersonalInfoBgViewImg@2x.png"; sourceTree = "<group>"; };
+		12B5C6711BCE0794001340BD /* WeixinApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinApi.h; sourceTree = "<group>"; };
 		12BD30F01B3E78B400170316 /* OrderAlipayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAlipayCell.h; sourceTree = "<group>"; };
 		12BD30F11B3E78B400170316 /* OrderAlipayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAlipayCell.m; sourceTree = "<group>"; };
 		12BD30F31B3E78CA00170316 /* OrderWechatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderWechatCell.h; sourceTree = "<group>"; };
@@ -3471,8 +3471,8 @@
 		128241371B60C605001EE0BD /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				12B5C6711BCE0794001340BD /* WeixinApi.h */,
 				128241381B60C605001EE0BD /* libWeChatSDK.a */,
-				123316D41BCC911F004649DC /* WeixinApi.h */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
