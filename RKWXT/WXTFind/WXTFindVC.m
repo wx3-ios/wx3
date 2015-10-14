@@ -7,13 +7,12 @@
 
 
 #import "WXTFindVC.h"
-#import "WXTFindCommmonCell.h"
 #import "FindCommonVC.h"
 
+#define FindCommonCellHeight (85)
 #define Size self.bounds.size
 
-@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>{
-    UIView *shellView;
+@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
     
     NSArray *commonImgArr;
@@ -61,19 +60,13 @@
     UIView *commonView = [[UIView alloc] init];
     [commonView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
-    UIImage *commonImg = [UIImage imageNamed:@"FindShop.png"];
-    for(NSInteger i = 0; i < 3; i++){
-//        CGSize size1 = [self sizeOfString:commonImgName[i] font:WXFont(12.0)];
+    for(NSInteger i = 0; i < [commonImgArr count]; i++){
         WXUIButton *bgImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         [bgImgBtn setBackgroundColor:[UIColor whiteColor]];
-        bgImgBtn.frame = CGRectMake(i*(Size.width/4)+Size.width/4, 0, Size.width/4, FindCommonCellHeight);
-        [bgImgBtn setBorderRadian:0 width:0.3 color:[UIColor grayColor]];
+        bgImgBtn.frame = CGRectMake(i*(Size.width/4)+Size.width/4, 0, Size.width/4-1, FindCommonCellHeight);
         
         [bgImgBtn setImage:[UIImage imageNamed:commonImgArr[i]] forState:UIControlStateNormal];
-        [bgImgBtn setImageEdgeInsets:UIEdgeInsetsMake(15, (Size.width/4-commonImg.size.width)/2, FindCommonCellHeight/2, 0)];
-        
         [bgImgBtn setTitle:commonImgName[i] forState:UIControlStateNormal];
-        [bgImgBtn setTitleEdgeInsets:UIEdgeInsetsMake(FindCommonCellHeight/2, 1, 0, 10)];
         [bgImgBtn setTitleColor:WXColorWithInteger(0x646464) forState:UIControlStateNormal];
         [bgImgBtn.titleLabel setFont:WXFont(12.0)];
         
@@ -82,38 +75,60 @@
         [commonView addSubview:bgImgBtn];
         
         if(i == 0){
-            bgImgBtn.frame = CGRectMake(0, 0, Size.width/2, FindCommonCellHeight);
-            [bgImgBtn setImageEdgeInsets:UIEdgeInsetsMake(15, (Size.width/2-commonImg.size.width)/2, FindCommonCellHeight/2, 0)];
-            [bgImgBtn setTitleEdgeInsets:UIEdgeInsetsMake(FindCommonCellHeight/2, 5, 0, 17)];
+            bgImgBtn.frame = CGRectMake(0, 0, Size.width/2-1, FindCommonCellHeight);
         }
-        if(i == 1){
-            [bgImgBtn setTitleEdgeInsets:UIEdgeInsetsMake(FindCommonCellHeight/2, -6, 0, 17)];
-        }
+        
+        CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(bgImgBtn.bounds), CGRectGetMidY(bgImgBtn.bounds));
+        CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(bgImgBtn.imageView.bounds));
+        CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(bgImgBtn.bounds)-CGRectGetMidY(bgImgBtn.titleLabel.bounds));
+        CGPoint startImageViewCenter = bgImgBtn.imageView.center;
+        CGPoint startTitleLabelCenter = bgImgBtn.titleLabel.center;
+        CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
+        CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
+        bgImgBtn.imageEdgeInsets = UIEdgeInsetsMake(20, imageEdgeInsetsLeft, FindCommonCellHeight/2, imageEdgeInsetsRight);
+        CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
+        CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
+        bgImgBtn.titleEdgeInsets = UIEdgeInsetsMake(FindCommonCellHeight/2-5, titleEdgeInsetsLeft, 0, titleEdgeInsetsRight);
     }
     
-    CGFloat yoffset = FindCommonCellHeight;
+    CGFloat yoffset = FindCommonCellHeight+1;
     
-    for(NSInteger j = 0; j < 2; j++){
-//        CGSize size2 = [self sizeOfString:@"1" font:WXFont(12.0)];
-        WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        [commonBtn setBackgroundColor:[UIColor whiteColor]];
-        commonBtn.frame = CGRectMake(j*(Size.width/4), yoffset, Size.width/4, FindCommonCellHeight);
-        [commonBtn setBorderRadian:0 width:0.2 color:[UIColor grayColor]];
+    for(NSInteger k = 0; k < [imgArr count]/4+([imgArr count]%4>0?1:0); k++){
+        for(NSInteger j = 0; j < 4; j++){
+            WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+            [commonBtn setBackgroundColor:[UIColor whiteColor]];
+            commonBtn.frame = CGRectMake(j*(Size.width/4), yoffset, Size.width/4-1, FindCommonCellHeight);
+            [commonBtn setBorderRadian:0 width:1 color:[UIColor clearColor]];
+            
+            [commonBtn setImage:[UIImage imageNamed:imgArr[j]] forState:UIControlStateNormal];
+            [commonBtn setTitle:nameArr[j] forState:UIControlStateNormal];
+            [commonBtn setTitleColor:WXColorWithInteger(0x646464) forState:UIControlStateNormal];
+            [commonBtn.titleLabel setFont:WXFont(12.0)];
+            
+            commonBtn.tag = j;
+            [commonBtn addTarget:self action:@selector(gotoCommonWeb:) forControlEvents:UIControlEventTouchUpInside];
+            [commonView addSubview:commonBtn];
+            
+            
+            CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(commonBtn.bounds), CGRectGetMidY(commonBtn.bounds));
+            CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(commonBtn.imageView.bounds));
+            CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(commonBtn.bounds)-CGRectGetMidY(commonBtn.titleLabel.bounds));
+            CGPoint startImageViewCenter = commonBtn.imageView.center;
+            CGPoint startTitleLabelCenter = commonBtn.titleLabel.center;
+            CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
+            CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
+            commonBtn.imageEdgeInsets = UIEdgeInsetsMake(20, imageEdgeInsetsLeft, FindCommonCellHeight/2, imageEdgeInsetsRight);
+            CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
+            CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
+            commonBtn.titleEdgeInsets = UIEdgeInsetsMake(FindCommonCellHeight/2-5, titleEdgeInsetsLeft, 0, titleEdgeInsetsRight);
         
-        [commonBtn setImage:[UIImage imageNamed:imgArr[j]] forState:UIControlStateNormal];
-        [commonBtn setImageEdgeInsets:UIEdgeInsetsMake(15, (Size.width/4-commonImg.size.width)/2-8, FindCommonCellHeight/2, 0)];
-        
-        [commonBtn setTitle:nameArr[j] forState:UIControlStateNormal];
-        [commonBtn setTitleEdgeInsets:UIEdgeInsetsMake(FindCommonCellHeight/2-10, -19, 0, 0)];
-        [commonBtn setTitleColor:WXColorWithInteger(0x646464) forState:UIControlStateNormal];
-        [commonBtn.titleLabel setFont:WXFont(12.0)];
-        
-        commonBtn.tag = j;
-        [commonBtn addTarget:self action:@selector(gotoCommonWeb:) forControlEvents:UIControlEventTouchUpInside];
-        [commonView addSubview:commonBtn];
+            if(j == ([imgArr count]-4*k)-1){
+                break;
+            }
+        }
+        yoffset += FindCommonCellHeight+1;
     }
     
-    yoffset += FindCommonCellHeight;
     commonView.frame = CGRectMake(0, 0, Size.width, yoffset);
     return commonView;
 }
@@ -124,51 +139,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
-}
-
--(WXUITableViewCell*)findCommonCellAtSection:(NSInteger)section{
-    static NSString *identifier = @"findCommonCell";
-    WXTFindCommmonCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[WXTFindCommmonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    [cell load];
-    return cell;
+    return 0;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WXUITableViewCell *cell = nil;
-    NSInteger section = indexPath.section;
-    cell = [self findCommonCellAtSection:section];
     return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-}
-
-//改变cell分割线置顶
--(void)viewDidLayoutSubviews{
-    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
-    }
-    
-    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
-    }
-}
-
-- (CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{
-    if(!txt || [txt isKindOfClass:[NSNull class]]){
-        txt = @" ";
-    }
-    if(isIOS7){
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-        return [txt sizeWithAttributes:@{NSFontAttributeName: font}];
-#endif
-    }else{
-        return [txt sizeWithFont:font];
-    }
 }
 
 #pragma mark
