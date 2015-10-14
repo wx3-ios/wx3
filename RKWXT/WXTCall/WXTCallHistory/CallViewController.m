@@ -68,13 +68,11 @@ typedef enum{
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    [_model searchContacter:@"1"];
 
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, self.bounds.size.height)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
-//    [_tableView setEditing:YES animated:YES];
     [self addSubview:_tableView];
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -201,10 +199,8 @@ typedef enum{
     if(textString.length == 0){
         _downview_type = DownView_Del;
         [[NSNotificationCenter defaultCenter] postNotificationName:DelNumberToEnd object:nil];
-//        [_model searchContacter:@"1"];
         _showContacters = NO;
         [self callHistoryHasLoaded];
-//        [_tableView reloadData];
     }else{
         [self showSearchResult];
     }
@@ -212,7 +208,6 @@ typedef enum{
 
 -(void)longPressBtn:(id)sender{
     [self setEmptyText];
-//    [_model searchContacter:@"1"];
     [self callHistoryHasLoaded];
     self.keyPad_type = E_KeyPad_Show;
     _downview_type = DownView_Del;

@@ -9,6 +9,8 @@
 #import "UserRefereeCell.h"
 #import "WXRemotionImgBtn.h"
 #import "MyRefereeEntity.h"
+#import "WXKeyPadModel.h"
+#import "SysContacterEntityEx.h"
 
 #define IconImgWidth 52
 
@@ -18,6 +20,8 @@
     WXUILabel *_companyLabel;
     WXUILabel *_moneyLabel;
     WXUILabel *_registerTimeLabel;
+    
+    WXKeyPadModel *_model;
 }
 @end
 
@@ -26,6 +30,9 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
+        _model = [[WXKeyPadModel alloc] init];
+        [_model searchContacter:@"1"];
+        
         CGFloat xOffset = 10;
         CGFloat yOffset = 10;
         CGFloat imgWidth = IconImgWidth;
@@ -99,29 +106,49 @@
     }
     [_imgView setBorderRadian:IconImgWidth/2 width:1.0 color:[UIColor clearColor]];
     
-    NSString *nameText = [NSString stringWithFormat:@"%ld",(long)entity.userID];
+    NSString *nameText = [NSString stringWithFormat:@"ID:%ld",(long)entity.userID];
     if(entity.nickName.length != 0){
-        nameText = [NSString stringWithFormat:@"%@ (%ld)",entity.nickName,(long)entity.userID];
+        nameText = [NSString stringWithFormat:@"%@ (ID:%ld)",entity.nickName,(long)entity.userID];
     }
     [_nameLabel setText:nameText];
     [_companyLabel setText:[self userPhoneChangedWithOldStr:entity.userPhone]];
     [_moneyLabel setText:[NSString stringWithFormat:@"  ￥%.2f",entity.allMoney]];
     [_registerTimeLabel setText:[NSString stringWithFormat:@"注册时间: %@",[UtilTool getDateTimeFor:entity.registTime type:2]]];
+    if(entity.registTime == 0){
+        [_registerTimeLabel setText:[NSString stringWithFormat:@"注册时间: 2015-05-01"]];
+    }
 }
 
 -(NSString*)userPhoneChangedWithOldStr:(NSString*)oldStr{
     if(!oldStr){
         return nil;
     }
-    if(oldStr.length != 11){
-        return nil;
-    }
     
+    NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
+    if(![userName isEqualToString:oldStr]){
+        return userName;
+    }
     NSString *newStr = nil;
     newStr = [oldStr substringWithRange:NSMakeRange(0, 3)];
     newStr = [newStr stringByAppendingString:@"****"];
     newStr = [newStr stringByAppendingString:[oldStr substringFromIndex:7]];
     return newStr;
+}
+
+//根据手机号匹配用户名，如果未匹配到返回手机号
+-(NSString*)searchPhoneNameWithUserPhone:(NSString*)userPhone{
+    if(!userPhone){
+        return nil;
+    }
+    for(SysContacterEntityEx *entity in _model.contacterFilter){
+        for(NSString *phoneStr in entity.contactEntity.phoneNumbers){
+            NSString *newPhoneStr = [UtilTool callPhoneNumberRemovePreWith:phoneStr];
+            if([userPhone isEqualToString:newPhoneStr]){
+                return entity.contactEntity.fullName?entity.contactEntity.fullName:phoneStr;
+            }
+        }
+    }
+    return userPhone;
 }
 
 @end
