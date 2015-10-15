@@ -18,6 +18,8 @@
     WXUILabel *_newPrice;
     WXUILabel *_descLabel;
     WXUIButton *_attentionBtn;
+    WXUILabel *_redPacket;
+    WXUILabel *_cutLabel;
 }
 @end
 
@@ -103,6 +105,26 @@
         [label setFont:[UIFont systemFontOfSize:13.0]];
         [label setTextColor:WXColorWithInteger(0xcacaca)];
 //        [self.contentView addSubview:label];
+        
+        _redPacket = [[WXUILabel alloc] init];
+        _redPacket.frame = CGRectMake(12, _oldPrice.frame.origin.y+btnHeight, 100, btnHeight);
+        [_redPacket setBackgroundColor:[UIColor clearColor]];
+        [_redPacket setText:@"该商品可使用红包"];
+        [_redPacket setTextAlignment:NSTextAlignmentLeft];
+        [_redPacket setTextColor:WXColorWithInteger(0xdd2726)];
+        [_redPacket setFont:WXFont(12.0)];
+        [_redPacket setHidden:YES];
+        [self.contentView addSubview:_redPacket];
+        
+        _cutLabel = [[WXUILabel alloc] init];
+        _cutLabel.frame = CGRectMake(12, _oldPrice.frame.origin.y+btnHeight, 100, btnHeight);
+        [_cutLabel setBackgroundColor:[UIColor clearColor]];
+        [_cutLabel setText:@"该商品有提成"];
+        [_cutLabel setTextAlignment:NSTextAlignmentLeft];
+        [_cutLabel setTextColor:WXColorWithInteger(0xdd2726)];
+        [_cutLabel setFont:WXFont(12.0)];
+        [_cutLabel setHidden:YES];
+        [self.contentView addSubview:_cutLabel];
     }
     return self;
 }
@@ -115,6 +137,31 @@
 //    if(entity.concernID != 0){
 //        [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
 //    }
+    if(entity.use_red){
+        [_redPacket setHidden:NO];
+    }
+    
+    if(entity.use_cut){
+        [_cutLabel setHidden:NO];
+        if(entity.use_red){
+            CGRect rect = _cutLabel.frame;
+            rect.origin.y += 25;
+            [_cutLabel setFrame:rect];
+        }
+    }
+}
+
++(CGFloat)cellHeightOfInfo:(id)cellInfo{
+    GoodsInfoEntity *entity = cellInfo;
+    if(entity){
+        if(entity.use_red && entity.use_cut){
+            return T_GoodsInfoDescHeight+50;
+        }
+        if(entity.use_red || entity.use_cut){
+            return T_GoodsInfoDescHeight+30;
+        }
+    }
+    return T_GoodsInfoDescHeight;
 }
 
 @end

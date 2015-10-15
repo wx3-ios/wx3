@@ -115,7 +115,7 @@
     [_moneyLabel setText:[NSString stringWithFormat:@"  ￥%.2f",entity.cutMoney]];
     [_registerTimeLabel setText:[NSString stringWithFormat:@"注册时间: %@",[UtilTool getDateTimeFor:entity.registTime type:2]]];
     if(entity.registTime == 0){
-        [_registerTimeLabel setText:[NSString stringWithFormat:@"注册时间: 2015-05-01"]];
+        [_registerTimeLabel setText:[NSString stringWithFormat:@"注册时间: 2015-10-01"]];
     }
 }
 

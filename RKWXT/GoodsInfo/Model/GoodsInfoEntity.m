@@ -63,6 +63,9 @@
         
         NSInteger stockBonus = [[stockDic objectForKey:@"is_use_red"] integerValue];
         [self setStockBonus:stockBonus];
+        if(stockBonus > 0){
+            [self setUse_red:YES];
+        }
     }
     return self;
 }

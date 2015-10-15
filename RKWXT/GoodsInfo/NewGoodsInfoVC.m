@@ -312,7 +312,7 @@
             height = T_GoodsInfoTopImgHeight;
             break;
         case T_GoodsInfo_Description:
-            height = T_GoodsInfoDescHeight;
+            height = [NewGoodsInfoDesCell cellHeightOfInfo:([_model.data count] > 0?[_model.data objectAtIndex:0]:nil)];
             break;
         case T_GoodsInfo_WebShow:
             height = T_GoodsInfoWebCellHeight;
@@ -694,17 +694,17 @@
     }
     
     if(rightView.stockID<=0){
-        [UtilTool showAlertView:@"请先选择套餐"];
+        [UtilTool showAlertView:@"请先选择属性"];
         return;
     }
     NSMutableArray *goodsArr = [[NSMutableArray alloc] init];
     GoodsInfoEntity *entity = [self priceForStock:rightView.stockID];
     if(entity.stockNumber==0){
-        [UtilTool showAlertView:@"该套餐已售完"];
+        [UtilTool showAlertView:@"该属性已售完"];
         return;
     }
     if(entity.stockNumber < rightView.goodsNum){
-        [UtilTool showAlertView:[NSString stringWithFormat:@"该套餐库存不足%d件",rightView.goodsNum]];
+        [UtilTool showAlertView:[NSString stringWithFormat:@"该属性库存不足%d件",rightView.goodsNum]];
         return;
     }
     entity.buyNumber = (rightView.goodsNum<=0?1:rightView.goodsNum);

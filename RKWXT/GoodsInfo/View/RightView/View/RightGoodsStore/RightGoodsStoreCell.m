@@ -22,7 +22,7 @@
     if(self){
         CGFloat xOffset = 30;
         CGFloat yOffset = 5;
-        CGFloat labelWidth = 150;
+        CGFloat labelWidth = 170;
         CGFloat labelheight = 25;
         _money = [[UILabel alloc] init];
         _money.frame = CGRectMake(xOffset, yOffset, labelWidth, labelheight);

@@ -11,6 +11,7 @@
 		1203C2001B3E366600C402E3 /* OrderPayMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1203C1FF1B3E366600C402E3 /* OrderPayMoneyCell.m */; };
 		12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12048C721B799D35000DF7F5 /* RechargeListModel.m */; };
 		12048C7B1B79FBF4000DF7F5 /* RechargeListImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12048C7A1B79FBF4000DF7F5 /* RechargeListImg@2x.png */; };
+		1205951E1BCF52F3009E6986 /* UpdataPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 1205951D1BCF52F3009E6986 /* UpdataPicture.m */; settings = {ASSET_TAGS = (); }; };
 		12062E771AEDFBC200073BCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9861ACAA8C000CC3FE9 /* Foundation.framework */; };
 		12062E781AEDFBCA00073BCB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */; };
 		120A2BE91AB135DD006A28B1 /* RechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2BBC1AB135DD006A28B1 /* RechargeVC.m */; };
@@ -862,6 +863,8 @@
 		12048C711B799D35000DF7F5 /* RechargeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeListModel.h; sourceTree = "<group>"; };
 		12048C721B799D35000DF7F5 /* RechargeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListModel.m; sourceTree = "<group>"; };
 		12048C7A1B79FBF4000DF7F5 /* RechargeListImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RechargeListImg@2x.png"; sourceTree = "<group>"; };
+		1205951C1BCF52F3009E6986 /* UpdataPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdataPicture.h; sourceTree = "<group>"; };
+		1205951D1BCF52F3009E6986 /* UpdataPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdataPicture.m; sourceTree = "<group>"; };
 		120A2BBB1AB135DD006A28B1 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
 		120A2BBC1AB135DD006A28B1 /* RechargeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeVC.m; sourceTree = "<group>"; };
 		120A2BBE1AB135DD006A28B1 /* RechargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeCell.h; sourceTree = "<group>"; };
@@ -3507,6 +3510,8 @@
 		1282EF801B5E3397004D2019 /* UserHeader */ = {
 			isa = PBXGroup;
 			children = (
+				1205951C1BCF52F3009E6986 /* UpdataPicture.h */,
+				1205951D1BCF52F3009E6986 /* UpdataPicture.m */,
 				122014081BA00C360080B994 /* UserHeaderModel.h */,
 				122014091BA00C360080B994 /* UserHeaderModel.m */,
 				1282EF811B5E33B5004D2019 /* UserHeaderImgModel.h */,
@@ -6867,6 +6872,7 @@
 				77DB94271AAFEEBC0021A816 /* UserAgent.m in Sources */,
 				12F3CC911B1E026C00E64DE4 /* PersonalCallCell.m in Sources */,
 				1213FEB41BA2C0E700CAB746 /* MyClientEntity.m in Sources */,
+				1205951E1BCF52F3009E6986 /* UpdataPicture.m in Sources */,
 				12C12F311B81C5C500345BEE /* LuckyOrderMoneyCell.m in Sources */,
 				775842BD1AB95A300039B129 /* WXGuidMaskView.m in Sources */,
 				7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */,

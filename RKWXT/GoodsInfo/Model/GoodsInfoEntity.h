@@ -35,6 +35,8 @@
 @property (nonatomic,assign) NSInteger stockBonus; //商品可用红包
 
 @property (nonatomic,assign) BOOL selested;
+@property (nonatomic,assign) BOOL use_red;
+@property (nonatomic,assign) BOOL use_cut;
 @property (nonatomic,assign) NSInteger buyNumber;
 
 +(GoodsInfoEntity*)goodsInfoEntityWithBaseDic:(NSDictionary*)baseDic withStockDic:(NSDictionary*)stockDic;

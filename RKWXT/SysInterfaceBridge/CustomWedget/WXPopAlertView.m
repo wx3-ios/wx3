@@ -49,7 +49,7 @@
         [self setFrame:CGRectMake(0, 0, sizeKeyWindow.width, sizeKeyWindow.height)];
         
         _baseView = [[WXUIView alloc] initWithFrame:CGRectMake(0, 0, 200, 10)];
-		UIImage *bgImage = [UIImage imageFromColor:kOtherColor(E_App_Other_Color_NavBar)];
+		UIImage *bgImage = [UIImage imageFromColor:WXColorWithInteger(0xdd2726)];
         [_baseView setBackgroundImage:bgImage];
         [self addSubview:_baseView];
         
