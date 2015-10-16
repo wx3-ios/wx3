@@ -18,20 +18,19 @@
 #import "SCartListModel.h"
 #import "ShoppingCartEntity.h"
 #import "WXWeiXinOBJ.h"
-#import "DownSheet.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "NewGoodsInfoTopImgView.h"
 
 #import "NewImageZoomView.h"
 #import "GoodsInfoImageZoomView.h"
-
+#import "CDSideBarController.h"
 #import "NewGoodsInfoWebViewViewController.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,DownSheetDelegate,MerchantImageCellDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     WXUIImageView *topImgView;
@@ -47,6 +46,7 @@
     WXUIButton *backBtn;
     
     NSArray *menuList;
+    CDSideBarController *sideBar;
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end
@@ -106,6 +106,11 @@
     [self initDropList];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [sideBar insertMenuButtonOnView:self.view atPosition:CGPointMake(self.bounds.size.width-35, TopNavigationViewHeight-35)];
+}
+
 -(void)initWebView{
     //初始化图文详情页面，方便上拉加载数据
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
@@ -118,32 +123,9 @@
 }
 
 -(void)initDropList{
-    DownSheetModel *model_1 = [[DownSheetModel alloc] init];
-    model_1.icon = @"ShareQqImg.png";
-    model_1.icon_on = @"ShareQqImg.png";
-    model_1.title = @"分享到qq好友";
-    
-    DownSheetModel *model_2 = [[DownSheetModel alloc] init];
-    model_2.icon = @"ShareQzoneImg.png";
-    model_2.icon_on = @"ShareQzoneImg.png";
-    model_2.title = @"分享到qq空间";
-    
-    DownSheetModel *model_3 = [[DownSheetModel alloc] init];
-    model_3.icon = @"ShareWxFriendImg.png";
-    model_3.icon_on = @"ShareWxFriendImg.png";
-    model_3.title = @"分享到微信好友";
-    
-    DownSheetModel *model_4 = [[DownSheetModel alloc] init];
-    model_4.icon = @"ShareWxCircleImg.png";
-    model_4.icon_on = @"ShareWxCircleImg.png";
-    model_4.title = @"分享到朋友圈";
-    
-    DownSheetModel *model_5 = [[DownSheetModel alloc] init];
-    model_5.icon = @"Icon.png";
-    model_5.icon_on = @"Icon.png";
-    model_5.title = @"取消";
-    
-    menuList = @[model_1,model_2,model_3,model_4,model_5];
+    NSArray *imageList = @[[UIImage imageNamed:@"ShareQqImg.png"], [UIImage imageNamed:@"ShareQzoneImg.png"], [UIImage imageNamed:@"ShareWxFriendImg.png"], [UIImage imageNamed:@"ShareWxCircleImg.png"]];
+    sideBar = [[CDSideBarController alloc] initWithImages:imageList];
+    sideBar.delegate = self;
 }
 
 //改变cell分割线置顶
@@ -217,12 +199,12 @@
     [titleLabel setTextColor:WXColorWithInteger(0x000000)];
 //    [topView addSubview:titleLabel];
     
-    WXUIButton *sharebtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    sharebtn.frame = CGRectMake(self.bounds.size.width-xGap-btnWidth, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
-    [sharebtn setBackgroundColor:[UIColor clearColor]];
-    [sharebtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
-    [sharebtn addTarget:self action:@selector(sharebtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [topView addSubview:sharebtn];
+//    WXUIButton *sharebtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+//    sharebtn.frame = CGRectMake(self.bounds.size.width-xGap-btnWidth, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
+//    [sharebtn setBackgroundColor:[UIColor clearColor]];
+//    [sharebtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
+//    [sharebtn addTarget:self action:@selector(sharebtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [topView addSubview:sharebtn];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -526,13 +508,7 @@
 }
 
 #pragma mark delegate
--(void)sharebtnClicked{
-    DownSheet *sheet = [[DownSheet alloc] initWithlist:menuList height:0];
-    sheet.delegate = self;
-    [sheet showInView:self];
-}
-
--(void)didSelectIndex:(NSInteger)index{
+-(void)menuButtonClicked:(int)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
     if([_model.data count] > 0){
         GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
@@ -565,9 +541,6 @@
         if(sent == EQQAPISENDSUCESS){
             NSLog(@"qq空间分享成功");
         }
-    }
-    if(index == Share_Invalid){
-        NSLog(@"取消");
     }
 }
 

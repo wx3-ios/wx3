@@ -404,6 +404,7 @@
 		12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6951B789138009FBA6D /* RechargeListVC.m */; };
 		12B1F6991B789372009FBA6D /* RechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B1F6981B789372009FBA6D /* RechargeListCell.m */; };
 		12B3FE311BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12B3FE301BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png */; settings = {ASSET_TAGS = (); }; };
+		12B8651A1BD098000029692B /* CDSideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B865191BD098000029692B /* CDSideBarController.m */; settings = {ASSET_TAGS = (); }; };
 		12BD30F21B3E78B400170316 /* OrderAlipayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F11B3E78B400170316 /* OrderAlipayCell.m */; };
 		12BD30F51B3E78CA00170316 /* OrderWechatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BD30F41B3E78CA00170316 /* OrderWechatCell.m */; };
 		12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BD30F61B3E79D700170316 /* OrderAlipayImg@2x.png */; };
@@ -1574,6 +1575,8 @@
 		12B1F6981B789372009FBA6D /* RechargeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeListCell.m; sourceTree = "<group>"; };
 		12B3FE301BB10807001A45E6 /* PersonalInfoBgViewImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PersonalInfoBgViewImg@2x.png"; sourceTree = "<group>"; };
 		12B5C6711BCE0794001340BD /* WeixinApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinApi.h; sourceTree = "<group>"; };
+		12B865181BD098000029692B /* CDSideBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSideBarController.h; sourceTree = "<group>"; };
+		12B865191BD098000029692B /* CDSideBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSideBarController.m; sourceTree = "<group>"; };
 		12BD30F01B3E78B400170316 /* OrderAlipayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAlipayCell.h; sourceTree = "<group>"; };
 		12BD30F11B3E78B400170316 /* OrderAlipayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAlipayCell.m; sourceTree = "<group>"; };
 		12BD30F31B3E78CA00170316 /* OrderWechatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderWechatCell.h; sourceTree = "<group>"; };
@@ -3534,6 +3537,7 @@
 		1282413F1B60D062001EE0BD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				12B865171BD097EE0029692B /* RightShareView */,
 				128083D71B62142900260B9F /* ShareView */,
 				128241401B60D062001EE0BD /* DownSheet.h */,
 				128241411B60D062001EE0BD /* DownSheet.m */,
@@ -4104,6 +4108,15 @@
 				12AA53001B7DF140003B893F /* LuckyGoodsDesCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		12B865171BD097EE0029692B /* RightShareView */ = {
+			isa = PBXGroup;
+			children = (
+				12B865181BD098000029692B /* CDSideBarController.h */,
+				12B865191BD098000029692B /* CDSideBarController.m */,
+			);
+			path = RightShareView;
 			sourceTree = "<group>";
 		};
 		12BD30EF1B3E789F00170316 /* OrderPayType */ = {
@@ -7039,6 +7052,7 @@
 				DDB58F481AD3C6A2006248E9 /* ContactBaseEntity+Detail.m in Sources */,
 				1295C5F51B299A66004C861D /* BonusOverdueVC.m in Sources */,
 				121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */,
+				12B8651A1BD098000029692B /* CDSideBarController.m in Sources */,
 				1265FBD51BC2B39F007D354A /* APAuthV2Info.m in Sources */,
 				129D23391B4F738900008DA0 /* GoodsInfoVC.m in Sources */,
 				775C58BB1ABA7B75005B6B40 /* CallRecord.m in Sources */,
