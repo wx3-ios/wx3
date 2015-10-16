@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 roderick. All rights reserved.
 //
 
-#import "WXUIViewController.h"
+#import "NLMainViewController.h"
 
 typedef enum{
     GoodsInfo_Normal = 0,
     GoodsInfo_LuckyGoods,
 }GoodsInfo_Type;
 
-@interface NewGoodsInfoVC : WXUIViewController
+@interface NewGoodsInfoVC : NLMainViewController
 @property (nonatomic,assign) GoodsInfo_Type goodsInfo_type;
 @property (nonatomic,assign) NSInteger goodsId;
 

@@ -12,6 +12,14 @@
 		12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12048C721B799D35000DF7F5 /* RechargeListModel.m */; };
 		12048C7B1B79FBF4000DF7F5 /* RechargeListImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12048C7A1B79FBF4000DF7F5 /* RechargeListImg@2x.png */; };
 		1205951E1BCF52F3009E6986 /* UpdataPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 1205951D1BCF52F3009E6986 /* UpdataPicture.m */; settings = {ASSET_TAGS = (); }; };
+		1205952E1BCF994F009E6986 /* NLMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 120595211BCF994F009E6986 /* NLMainTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		1205952F1BCF994F009E6986 /* NLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 120595231BCF994F009E6986 /* NLMainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		120595301BCF994F009E6986 /* NLPullDownRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 120595251BCF994F009E6986 /* NLPullDownRefreshView.m */; settings = {ASSET_TAGS = (); }; };
+		120595311BCF994F009E6986 /* NLPullUpRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 120595271BCF994F009E6986 /* NLPullUpRefreshView.m */; settings = {ASSET_TAGS = (); }; };
+		120595321BCF994F009E6986 /* NLSubTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 120595291BCF994F009E6986 /* NLSubTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		120595331BCF994F009E6986 /* NLSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1205952B1BCF994F009E6986 /* NLSubViewController.m */; settings = {ASSET_TAGS = (); }; };
+		120595371BCFA3C9009E6986 /* NewGoodsInfoWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 120595361BCFA3C9009E6986 /* NewGoodsInfoWebViewViewController.m */; settings = {ASSET_TAGS = (); }; };
+		120595391BCFA544009E6986 /* arrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 120595381BCFA544009E6986 /* arrowDown.png */; settings = {ASSET_TAGS = (); }; };
 		12062E771AEDFBC200073BCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9861ACAA8C000CC3FE9 /* Foundation.framework */; };
 		12062E781AEDFBCA00073BCB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */; };
 		120A2BE91AB135DD006A28B1 /* RechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 120A2BBC1AB135DD006A28B1 /* RechargeVC.m */; };
@@ -865,6 +873,21 @@
 		12048C7A1B79FBF4000DF7F5 /* RechargeListImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RechargeListImg@2x.png"; sourceTree = "<group>"; };
 		1205951C1BCF52F3009E6986 /* UpdataPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdataPicture.h; sourceTree = "<group>"; };
 		1205951D1BCF52F3009E6986 /* UpdataPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdataPicture.m; sourceTree = "<group>"; };
+		120595201BCF994F009E6986 /* NLMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLMainTableViewController.h; sourceTree = "<group>"; };
+		120595211BCF994F009E6986 /* NLMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLMainTableViewController.m; sourceTree = "<group>"; };
+		120595221BCF994F009E6986 /* NLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLMainViewController.h; sourceTree = "<group>"; };
+		120595231BCF994F009E6986 /* NLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLMainViewController.m; sourceTree = "<group>"; };
+		120595241BCF994F009E6986 /* NLPullDownRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLPullDownRefreshView.h; sourceTree = "<group>"; };
+		120595251BCF994F009E6986 /* NLPullDownRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLPullDownRefreshView.m; sourceTree = "<group>"; };
+		120595261BCF994F009E6986 /* NLPullUpRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLPullUpRefreshView.h; sourceTree = "<group>"; };
+		120595271BCF994F009E6986 /* NLPullUpRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLPullUpRefreshView.m; sourceTree = "<group>"; };
+		120595281BCF994F009E6986 /* NLSubTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLSubTableViewController.h; sourceTree = "<group>"; };
+		120595291BCF994F009E6986 /* NLSubTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLSubTableViewController.m; sourceTree = "<group>"; };
+		1205952A1BCF994F009E6986 /* NLSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLSubViewController.h; sourceTree = "<group>"; };
+		1205952B1BCF994F009E6986 /* NLSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLSubViewController.m; sourceTree = "<group>"; };
+		120595351BCFA3C9009E6986 /* NewGoodsInfoWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGoodsInfoWebViewViewController.h; sourceTree = "<group>"; };
+		120595361BCFA3C9009E6986 /* NewGoodsInfoWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGoodsInfoWebViewViewController.m; sourceTree = "<group>"; };
+		120595381BCFA544009E6986 /* arrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowDown.png; sourceTree = "<group>"; };
 		120A2BBB1AB135DD006A28B1 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
 		120A2BBC1AB135DD006A28B1 /* RechargeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeVC.m; sourceTree = "<group>"; };
 		120A2BBE1AB135DD006A28B1 /* RechargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeCell.h; sourceTree = "<group>"; };
@@ -2490,6 +2513,34 @@
 				1203C1FF1B3E366600C402E3 /* OrderPayMoneyCell.m */,
 			);
 			path = OrderPayMoney;
+			sourceTree = "<group>";
+		};
+		1205951F1BCF9918009E6986 /* NewControl */ = {
+			isa = PBXGroup;
+			children = (
+				120595201BCF994F009E6986 /* NLMainTableViewController.h */,
+				120595211BCF994F009E6986 /* NLMainTableViewController.m */,
+				120595221BCF994F009E6986 /* NLMainViewController.h */,
+				120595231BCF994F009E6986 /* NLMainViewController.m */,
+				120595241BCF994F009E6986 /* NLPullDownRefreshView.h */,
+				120595251BCF994F009E6986 /* NLPullDownRefreshView.m */,
+				120595261BCF994F009E6986 /* NLPullUpRefreshView.h */,
+				120595271BCF994F009E6986 /* NLPullUpRefreshView.m */,
+				120595281BCF994F009E6986 /* NLSubTableViewController.h */,
+				120595291BCF994F009E6986 /* NLSubTableViewController.m */,
+				1205952A1BCF994F009E6986 /* NLSubViewController.h */,
+				1205952B1BCF994F009E6986 /* NLSubViewController.m */,
+				1205952C1BCF994F009E6986 /* resources */,
+			);
+			path = NewControl;
+			sourceTree = "<group>";
+		};
+		1205952C1BCF994F009E6986 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				120595381BCFA544009E6986 /* arrowDown.png */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 		120A2BBA1AB135DD006A28B1 /* Recharge */ = {
@@ -4689,6 +4740,9 @@
 				12F46A411B20029800B8EC98 /* GoodsInfoDef.h */,
 				12F46A291B1FFCD000B8EC98 /* NewGoodsInfoVC.h */,
 				12F46A2A1B1FFCD000B8EC98 /* NewGoodsInfoVC.m */,
+				120595351BCFA3C9009E6986 /* NewGoodsInfoWebViewViewController.h */,
+				120595361BCFA3C9009E6986 /* NewGoodsInfoWebViewViewController.m */,
+				1205951F1BCF9918009E6986 /* NewControl */,
 				12F46A241B1FF93600B8EC98 /* Model */,
 				12F46A251B1FF93600B8EC98 /* View */,
 			);
@@ -6709,6 +6763,7 @@
 				128083E51B6232EA00260B9F /* PersonalShareImg@2x.png in Resources */,
 				1241E5651AE9D91400811D3F /* T_Back@2x.png in Resources */,
 				128083E31B622A6D00260B9F /* ShareWxFriendImg@2x.png in Resources */,
+				120595391BCFA544009E6986 /* arrowDown.png in Resources */,
 				1263EFE91ACD35820014C347 /* iTunesArtWork.png in Resources */,
 				1241E54D1AE9D89B00811D3F /* 8N@2x.png in Resources */,
 				1272490D1B2574C9001BDC15 /* RegistOtherUser@2x.png in Resources */,
@@ -6807,6 +6862,7 @@
 				1265FBE01BC2B39F007D354A /* RSADataVerifier.m in Sources */,
 				7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */,
 				128B456F1B6B24F100591137 /* WechatEntity.m in Sources */,
+				1205952E1BCF994F009E6986 /* NLMainTableViewController.m in Sources */,
 				DDEA9EE01B1BFD5D00530C1C /* WXSysMsgUnreadV.m in Sources */,
 				1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */,
 				12F916051B1950E600C94717 /* T_Sqlite.m in Sources */,
@@ -6835,6 +6891,7 @@
 				775843301AB95A300039B129 /* WXUITabBarItem.m in Sources */,
 				12228A731AB1BABA00CF0800 /* RegistVC.m in Sources */,
 				1284CC8F1B551B0800D98F79 /* RefundSucceedGoodsListCell.m in Sources */,
+				120595321BCF994F009E6986 /* NLSubTableViewController.m in Sources */,
 				12AA52FE1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m in Sources */,
 				775842FB1AB95A300039B129 /* UIImage+KIAdditions.m in Sources */,
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
@@ -6928,6 +6985,7 @@
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
+				120595311BCF994F009E6986 /* NLPullUpRefreshView.m in Sources */,
 				DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
 				120A56CA1B2EE8730048A1CA /* WXTURLFeedOBJ+NewData.m in Sources */,
@@ -6938,11 +6996,13 @@
 				12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */,
 				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
 				120B5D941B86CC01009564F5 /* NewGoodsInfoTopImgView.m in Sources */,
+				120595371BCFA3C9009E6986 /* NewGoodsInfoWebViewViewController.m in Sources */,
 				1265FBDB1BC2B39F007D354A /* DataVerifier.m in Sources */,
 				12AA52FB1B7DE10A003B893F /* LuckyGoodsInfoVC.m in Sources */,
 				12F46A2B1B1FFCD000B8EC98 /* NewGoodsInfoVC.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
+				1205952F1BCF994F009E6986 /* NLMainViewController.m in Sources */,
 				DD0E38AE1B1BE5AC00AB4DB9 /* SysMsgItem.m in Sources */,
 				DDB58F491AD3C6A2006248E9 /* ContactBaseEntity.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
@@ -7044,6 +7104,7 @@
 				128221ED1B18716E004613BB /* URLBaseModel.m in Sources */,
 				12F2D7DD1B1EA96B00C8017F /* DLTabedSlideView.m in Sources */,
 				12F46A501B20311100B8EC98 /* NewGoodsInfoDownCell.m in Sources */,
+				120595331BCF994F009E6986 /* NLSubViewController.m in Sources */,
 				DD0E38B11B1BE5AC00AB4DB9 /* WXShopCartSqlite.m in Sources */,
 				129EEBAB1B97DD160062349E /* ClubNoImgPlaceholderView.m in Sources */,
 				775C58BD1ABA7B75005B6B40 /* WXGood.m in Sources */,
@@ -7062,6 +7123,7 @@
 				12F9163B1B19B90B00C94717 /* BaseInfoCommonCell.m in Sources */,
 				120EC7801BB8F31800538637 /* qrencode.c in Sources */,
 				12F963361B3D4BDF00FF6A3E /* SBJsonStreamWriterAccumulator.m in Sources */,
+				120595301BCF994F009E6986 /* NLPullDownRefreshView.m in Sources */,
 				12C12F3B1B81DA6D00345BEE /* LuckyShakeVC.m in Sources */,
 				127329131B5CDDF4002AD4AE /* AboutVC.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,

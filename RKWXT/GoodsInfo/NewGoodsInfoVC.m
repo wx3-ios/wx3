@@ -25,6 +25,8 @@
 #import "NewImageZoomView.h"
 #import "GoodsInfoImageZoomView.h"
 
+#import "NewGoodsInfoWebViewViewController.h"
+
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
@@ -73,13 +75,14 @@
     _model.goodID = _goodsId;
     [_model loadGoodsInfo:_model.goodID];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    [self initWebView];
     
     CGSize size = self.bounds.size;
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 0, size.width, size.height-DownViewHeight);
+    _tableView.frame = CGRectMake(0, 0, size.width, size.height);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
-    [self addSubview:_tableView];
+    [self.scrollView addSubview:_tableView];
     if(isIOS7){
         [_tableView setSeparatorInset:UIEdgeInsetsMake(0, 2, 0, 2)];
         [_tableView setSeparatorColor:WXColorWithInteger(0xEBEBEB)];
@@ -88,7 +91,7 @@
     if(_goodsInfo_type == GoodsInfo_LuckyGoods){
         _tableView.frame = CGRectMake(0, 0, size.width, size.height);
     }else{
-        [self addSubview:[self downViewShow]];
+        [self.view addSubview:[self downViewShow]];
     }
     
     [self crateTopNavigationView];
@@ -101,6 +104,17 @@
     
     [self addNotification];
     [self initDropList];
+}
+
+-(void)initWebView{
+    //初始化图文详情页面，方便上拉加载数据
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:_goodsId], @"goods_id",[NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", nil];
+    
+    CGSize size = self.bounds.size;
+    self.scrollView.contentSize = CGSizeMake(size.width, size.height);
+    self.subViewController = [[NewGoodsInfoWebViewViewController alloc] initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
+    self.subViewController.mainViewController = self;
 }
 
 -(void)initDropList{
@@ -201,7 +215,7 @@
     [titleLabel setFont:WXFont(15.0)];
     [titleLabel setText:@"商品详情"];
     [titleLabel setTextColor:WXColorWithInteger(0x000000)];
-    [topView addSubview:titleLabel];
+//    [topView addSubview:titleLabel];
     
     WXUIButton *sharebtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     sharebtn.frame = CGRectMake(self.bounds.size.width-xGap-btnWidth, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
@@ -264,7 +278,7 @@
     [insertCartBtn addTarget:self action:@selector(insertMyShoppingCart:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:insertCartBtn];
     
-    CGRect rect = CGRectMake(0, self.bounds.size.height-DownViewHeight+7, self.bounds.size.width, DownViewHeight);
+    CGRect rect = CGRectMake(0, self.view.bounds.size.height-DownViewHeight, self.bounds.size.width, DownViewHeight);
     [footView setFrame:rect];
     return footView;
 }
