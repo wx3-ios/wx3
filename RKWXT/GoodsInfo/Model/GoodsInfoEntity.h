@@ -33,6 +33,7 @@
 @property (nonatomic,assign) CGFloat stockPrice;   //组合价格
 @property (nonatomic,assign) NSInteger stockNumber; //组合库存数量
 @property (nonatomic,assign) NSInteger stockBonus; //商品可用红包
+@property (nonatomic,assign) CGFloat userCut;      //商品分成多少
 
 @property (nonatomic,assign) BOOL selested;
 @property (nonatomic,assign) BOOL use_red;

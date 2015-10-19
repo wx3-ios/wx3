@@ -66,6 +66,12 @@
         if(stockBonus > 0){
             [self setUse_red:YES];
         }
+        
+        CGFloat divide = [[stockDic objectForKey:@"divide"] floatValue];
+        [self setUserCut:divide];
+        if(divide > 0){
+            [self setUse_cut:YES];
+        }
     }
     return self;
 }

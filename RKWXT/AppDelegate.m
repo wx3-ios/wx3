@@ -420,18 +420,19 @@ forRemoteNotification:(NSDictionary *)userInfo
     }
 }
 
+//此方法不可用
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     //支付宝
-    //    [[AliPayControl sharedAliPayOBJ] handleAliPayURL:url];
+//    [[AliPayControl sharedAliPayOBJ] handleAliPayURL:url];
     //微支付
-    [WXApi handleOpenURL:url delegate:self];
-    //微信
-    [[WXWeiXinOBJ sharedWeiXinOBJ] handleOpenURL:url];
-    //qq
-    [TencentOAuth HandleOpenURL:url];
-    
-    UserInfoVC *infoVC = [[UserInfoVC alloc] init];
-    [QQApiInterface handleOpenURL:url delegate:infoVC];
+//    [WXApi handleOpenURL:url delegate:self];
+//    //微信
+//    [[WXWeiXinOBJ sharedWeiXinOBJ] handleOpenURL:url];
+//    //qq
+//    [TencentOAuth HandleOpenURL:url];
+//    
+//    UserInfoVC *infoVC = [[UserInfoVC alloc] init];
+//    [QQApiInterface handleOpenURL:url delegate:infoVC];
     return YES;
 }
 
@@ -458,6 +459,16 @@ forRemoteNotification:(NSDictionary *)userInfo
     //跳转支付宝钱包进行支付，处理支付结果
     [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
     }];
+    
+    //微支付
+    [WXApi handleOpenURL:url delegate:self];
+    //微信
+    [[WXWeiXinOBJ sharedWeiXinOBJ] handleOpenURL:url];
+    //qq
+    [TencentOAuth HandleOpenURL:url];
+    
+    UserInfoVC *infoVC = [[UserInfoVC alloc] init];
+    [QQApiInterface handleOpenURL:url delegate:infoVC];
     return YES;
 }
 
