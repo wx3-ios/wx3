@@ -50,13 +50,17 @@
     static NSString *identifier = @"clientCell";
     WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     }
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell.textLabel setText:itemsArr[row]];
     [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     [cell.textLabel setFont:WXFont(16.0)];
+    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%ld",(long)_number]];
+    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
+    [cell.detailTextLabel setFont:WXFont(14.0)];
     return cell;
 }
 

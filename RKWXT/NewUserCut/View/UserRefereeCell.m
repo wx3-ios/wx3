@@ -126,7 +126,7 @@
     
     NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
     if(![userName isEqualToString:oldStr]){
-        return userName;
+        return [NSString stringWithFormat:@"%@(%@)",userName,oldStr];
     }
     NSString *newStr = nil;
     newStr = [oldStr substringWithRange:NSMakeRange(0, 3)];

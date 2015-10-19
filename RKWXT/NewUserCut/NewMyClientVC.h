@@ -9,5 +9,6 @@
 #import "WXUIViewController.h"
 
 @interface NewMyClientVC : WXUIViewController
+@property (nonatomic,assign) NSInteger number;
 
 @end
