@@ -58,9 +58,9 @@
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     [cell.textLabel setFont:WXFont(16.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%ld",(long)_number]];
-    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
-    [cell.detailTextLabel setFont:WXFont(14.0)];
+//    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%ld",(long)_number]];
+//    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
+//    [cell.detailTextLabel setFont:WXFont(14.0)];
     return cell;
 }
 

@@ -324,9 +324,9 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     [cell.textLabel setText:@"我的团队"];
     [cell.textLabel setFont:WXFont(16.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
-    [cell.detailTextLabel setText:@"(180)"];
-    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
-    [cell.detailTextLabel setFont:WXFont(14.0)];
+//    [cell.detailTextLabel setText:@"(180)"];
+//    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
+//    [cell.detailTextLabel setFont:WXFont(14.0)];
     [cell load];
     return cell;
 }
