@@ -157,7 +157,7 @@
 }
 
 -(void)goodsListCellClicked:(id)entity{
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_ClassifyGoodsClicked object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

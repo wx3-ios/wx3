@@ -18,6 +18,10 @@
 @property (nonatomic,assign) CGFloat balance;
 @property (nonatomic,assign) NSInteger registTime;
 
+@property (nonatomic,assign) NSInteger parent_1;
+@property (nonatomic,assign) NSInteger parent_2;
+@property (nonatomic,assign) NSInteger parent_3;
+
 +(MyRefereeEntity*)initRefereeEntityWithDic:(NSDictionary*)dic;
 
 @end

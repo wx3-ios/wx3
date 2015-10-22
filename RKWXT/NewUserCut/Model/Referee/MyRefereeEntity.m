@@ -49,6 +49,18 @@
             NSInteger time = [[parent objectForKey:@"register_time"] integerValue];
             [self setRegistTime:time];
         }
+        
+        id subnumber = [dic objectForKey:@"subnumber"];
+        if([subnumber isKindOfClass:[NSDictionary class]]){
+            NSInteger parent_1 = [[subnumber objectForKey:@"parent_1n"] integerValue];
+            [self setParent_1:parent_1];
+            
+            NSInteger parent_2 = [[subnumber objectForKey:@"parent_2n"] integerValue];
+            [self setParent_2:parent_2];
+            
+            NSInteger parent_3 = [[subnumber objectForKey:@"parent_3n"] integerValue];
+            [self setParent_3:parent_3];
+        }
     }
     return self;
 }

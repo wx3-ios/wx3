@@ -7,8 +7,9 @@
 //
 
 #import "WXUIViewController.h"
+@class MyRefereeEntity;
 
 @interface NewMyClientVC : WXUIViewController
-@property (nonatomic,assign) NSInteger number;
+@property (nonatomic,strong) MyRefereeEntity *entity;
 
 @end

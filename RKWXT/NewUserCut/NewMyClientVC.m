@@ -8,12 +8,13 @@
 
 #import "NewMyClientVC.h"
 #import "MyClientInfoVC.h"
+#import "MyRefereeEntity.h"
 
 #define size self.bounds.size
 
 @interface NewMyClientVC()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
-    
+    MyRefereeEntity *refEntity;
     NSArray *itemsArr;
 }
 @end
@@ -36,6 +37,7 @@
     itemsArr = @[@"一级客户",
                  @"二级客户",
                  @"三级客户"];
+    refEntity = _entity;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -58,9 +60,18 @@
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     [cell.textLabel setFont:WXFont(16.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
-//    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%ld",(long)_number]];
-//    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
-//    [cell.detailTextLabel setFont:WXFont(14.0)];
+    
+    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
+    [cell.detailTextLabel setFont:WXFont(14.0)];
+    if(row == 0 && refEntity.parent_1 != 0){
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"(%ld)",(long)refEntity.parent_1]];
+    }
+    if(row == 1 && refEntity.parent_2 != 0){
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"(%ld)",(long)refEntity.parent_2]];
+    }
+    if(row == 2 && refEntity.parent_3 != 0){
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"(%ld)",(long)refEntity.parent_3]];
+    }
     return cell;
 }
 

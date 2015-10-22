@@ -60,6 +60,7 @@ enum{
 #import "NewHomePageModel.h"
 #import "SignViewController.h"
 #import "WXTMallListWebVC.h"
+#import "ClassifyListVC.h"
 #import "WXSysMsgUnreadV.h"
 #import "JPushMessageCenterVC.h"
 

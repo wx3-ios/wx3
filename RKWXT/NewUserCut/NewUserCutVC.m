@@ -324,9 +324,14 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     [cell.textLabel setText:@"我的团队"];
     [cell.textLabel setFont:WXFont(16.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
-//    [cell.detailTextLabel setText:@"(180)"];
-//    [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
-//    [cell.detailTextLabel setFont:WXFont(14.0)];
+    
+    MyRefereeEntity *entity = nil;
+    if([myCutArr count] > 0){
+        entity = myCutArr[0];
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"(%ld)",(long)(entity.parent_1+entity.parent_2+entity.parent_3)]];
+        [cell.detailTextLabel setTextColor:WXColorWithInteger(0x000000)];
+        [cell.detailTextLabel setFont:WXFont(14.0)];
+    }
     [cell load];
     return cell;
 }
@@ -399,7 +404,11 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     NSInteger section = indexPath.section;
     if(section == NewCut_Section_team){
         NewMyClientVC *clientVC = [[NewMyClientVC alloc] init];
-        clientVC.number = 1;
+        MyRefereeEntity *entity = nil;
+        if([myCutArr count] > 0){
+            entity = myCutArr[0];
+        }
+        clientVC.entity = entity;
         [self.wxNavigationController pushViewController:clientVC];
     }
     if(section == NewCut_Section_Referee){

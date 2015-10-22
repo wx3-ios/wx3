@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+#define D_Notification_Name_ClassifyGoodsClicked @"D_Notification_Name_ClassifyGoodsClicked"
+
 @interface ClassifyRightListView : WXUIViewController
 -(void)addNotification;
 
