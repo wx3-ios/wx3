@@ -7,6 +7,7 @@
 //
 
 #import "ClassifyLeftTableViewCell.h"
+#import "CLassifyEntity.h"
 
 @interface ClassifyLeftTableViewCell(){
     WXUILabel *textLabel;
@@ -32,9 +33,9 @@
 }
 
 -(void)load{
-    NSString *text = self.cellInfo;
-    [textLabel setText:text];
-    if([_selectedStr isEqualToString:text]){
+    CLassifyEntity *entity = self.cellInfo;
+    [textLabel setText:entity.catName];
+    if([entity.catName isEqualToString:_selectedStr]){
         [textLabel setTextColor:WXColorWithInteger(0xdd2726)];
     }else{
         [textLabel setTextColor:WXColorWithInteger(0x000000)];

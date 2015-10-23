@@ -7,6 +7,8 @@
 //
 
 #import "ClassifyLeftListView.h"
+#import "ClassifyModel.h"
+#import "CLassifyEntity.h"
 
 #define size self.bounds.size
 
@@ -24,6 +26,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
+    [self addOBS];
 }
 
 - (void)viewDidLoad {
@@ -37,26 +40,11 @@
     [_tableView setDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    
-    listArr = @[@{@"title":@"000"},
-                @{@"title":@"001"},
-                @{@"title":@"002"},
-                @{@"title":@"003"},
-                @{@"title":@"004"},
-                @{@"title":@"005"},
-                @{@"title":@"006"},
-                @{@"title":@"007"},
-                @{@"title":@"008"},
-                @{@"title":@"009"},
-                @{@"title":@"010"},
-                @{@"title":@"011"},
-                @{@"title":@"012"},
-                @{@"title":@"013"},
-                @{@"title":@"014"},
-                @{@"title":@"015"}
-                   ];
-    
-    [self reloadTableview];
+}
+
+-(void)addOBS{
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(loadClassifyDataSucceed) name:D_Notification_Name_LoadClassifyData_Succeed object:nil];
 }
 
 //改变cell分割线置顶
@@ -96,14 +84,15 @@
     }
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     [cell.selectedBackgroundView setBackgroundColor:WXColorWithInteger(0xefeff4)];
-    [cell setCellInfo:[listArr[indexPath.row] objectForKey:@"title"]];
+    [cell setCellInfo:listArr[indexPath.row]];
     [cell setSelectedStr:titleStr];
     [cell load];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    titleStr = [listArr[indexPath.row] objectForKey:@"title"];
+    CLassifyEntity *entity = listArr[indexPath.row];
+    titleStr = entity.catName;
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
     NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:lastCount inSection:0];
@@ -114,12 +103,15 @@
     [defaultCenter postNotificationName:@"userSelectRow" object:[NSNumber numberWithInteger:indexPath.row]];
 }
 
+-(void)loadClassifyDataSucceed{
+    listArr = [ClassifyModel shareClassifyNodel].classifyDataArr;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [self reloadTableview];
+}
+
 -(void)reloadTableview{
-    titleStr = [listArr[0] objectForKey:@"title"];
     NSIndexPath *first = [NSIndexPath indexPathForRow:0 inSection:0];
     [_tableView selectRowAtIndexPath:first animated:YES scrollPosition:UITableViewScrollPositionTop];
-    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter postNotificationName:@"userSelectRow" object:[NSNumber numberWithInteger:0]];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,6 +11,9 @@
 #import "ClassifyRightListView.h"
 #import "WXTUITextField.h"
 #import "ClassifySearchVC.h"
+#import "ClassifyModel.h"
+#import "ClassifyGoodsListVC.h"
+#import "NewGoodsInfoVC.h"
 
 #define size self.bounds.size
 #define yGap (10)
@@ -21,6 +24,8 @@
     
     ClassifyLeftListView *_leftView;
     ClassifyRightListView *_rightView;
+    
+    ClassifyModel *_classifyModel;
 }
 
 @end
@@ -37,12 +42,17 @@
     [super viewDidLoad];
     [self setCSTTitle:@"分类"];
     [self setBackgroundColor:[UIColor whiteColor]];
-    
     [self createListViewUI];
+    
+    [[ClassifyModel shareClassifyNodel] loadAllClassifyData];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)addOBS{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoGoodsListVC) name:D_Notification_Name_ClassifyGoodsClicked object:nil];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(loadClassifyDataSucceed) name:D_Notification_Name_LoadClassifyData_Succeed object:nil];
+    [defaultCenter addObserver:self selector:@selector(loadClassifyDataFailed:) name:D_Notification_Name_LoadClassifyData_Failed object:nil];
+    [defaultCenter addObserver:self selector:@selector(gotoGoodsListVC:) name:D_Notification_Name_ClassifyGoodsClicked object:nil];
 }
 
 -(void)createSearchViewUI{
@@ -77,8 +87,25 @@
     
     _leftView = [[ClassifyLeftListView alloc] init];
     [_leftView.view setFrame:CGRectMake(0, yOffset, leftViewWidth, size.height-yOffset)];
+    [_leftView.view setHidden:YES];
+    [_rightView.view setHidden:YES];
     [self addSubview:_leftView.view];
     [self addSubview:_rightView.view];
+}
+
+-(void)loadClassifyDataSucceed{
+    [_leftView.view setHidden:NO];
+    [_rightView.view setHidden:NO];
+    [self unShowWaitView];
+}
+
+-(void)loadClassifyDataFailed:(NSNotification*)notification{
+    [self unShowWaitView];
+    NSString *errorMsg = notification.object;
+    if(!errorMsg){
+        errorMsg = @"获取分类数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 -(void)startInput{
@@ -86,7 +113,19 @@
     [self.wxNavigationController pushViewController:searchVC];
 }
 
--(void)gotoGoodsListVC{
+-(void)gotoGoodsListVC:(NSNotification*)notification{
+    NSDictionary *catDic = notification.object;
+    if([[[catDic allKeys] objectAtIndex:0] isEqualToString:@"goods_name"] || [[[catDic allKeys] objectAtIndex:0] isEqualToString:@"goods_home_img"] || [[[catDic allKeys] objectAtIndex:0] isEqualToString:@"goods_id"]){
+        NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
+        goodsInfoVC.goodsId = [[catDic objectForKey:@"goods_id"] integerValue];
+        goodsInfoVC.goodsInfo_type = GoodsInfo_Normal;
+        [self.wxNavigationController pushViewController:goodsInfoVC];
+    }else{
+        ClassifyGoodsListVC *listVC = [[ClassifyGoodsListVC alloc] init];
+        listVC.cat_id = [[catDic objectForKey:@"cat_id"] integerValue];
+        listVC.titleName = [catDic objectForKey:@"cat_name"];
+        [self.wxNavigationController pushViewController:listVC];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

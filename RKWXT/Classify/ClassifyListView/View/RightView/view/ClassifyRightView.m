@@ -38,7 +38,7 @@
         [_imgView setUserInteractionEnabled:NO];
         [bgBtn addSubview:_imgView];
         
-        yOffset += imgHeight;
+        yOffset += imgHeight+8;
         CGFloat width = bgWidth-2*xOffset;
         CGFloat height = 20;
         _nameLabel = [[WXUILabel alloc] init];
@@ -69,7 +69,16 @@
 }
 
 -(void)load{
-    [_nameLabel setText:@"123"];
+    NSDictionary *dic = self.cpxViewInfo;
+    if([[[dic allKeys] objectAtIndex:0] isEqualToString:@"goods_name"] || [[[dic allKeys] objectAtIndex:0] isEqualToString:@"goods_home_img"] || [[[dic allKeys] objectAtIndex:0] isEqualToString:@"goods_id"]){
+        [_nameLabel setText:[dic objectForKey:@"goods_name"]];
+        [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,[dic objectForKey:@"goods_home_img"]]];
+        [_imgView load];
+    }else{
+        [_nameLabel setText:[dic objectForKey:@"cat_name"]];
+        [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,[dic objectForKey:@"cat_img"]]];
+        [_imgView load];
+    }
 }
 
 @end

@@ -9,14 +9,17 @@
 #import "ClassifyRightListView.h"
 #import "ClassifyRightCell.h"
 #import "ClassifyRightDef.h"
+#import "ClassifyModel.h"
+#import "CLassifyEntity.h"
 
 #define size self.bounds.size
 
 @interface ClassifyRightListView ()<UITableViewDataSource,UITableViewDelegate,ClassifyRightCellDelegate>{
     UITableView *_tableView;
     NSArray *listArr;
-    NSArray *arr;
     NSInteger selectRow;
+    
+    CLassifyEntity *classifyEntity;
 }
 
 @end
@@ -26,14 +29,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
-}
-
--(id)init{
-    self = [super init];
-    if(self){
-        arr = [[NSMutableArray alloc] init];
-    }
-    return self;
 }
 
 - (void)viewDidLoad {
@@ -49,61 +44,12 @@
     [_tableView setAllowsSelection:NO];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    
-    listArr = @[
-                   @{@"title":@"000",
-                     @"list":@[@"aaa",@"aaa1",@"aaa"]
-                     },
-                   @{@"title":@"001",
-                     @"list":@[@"aaa",@"aaa1"]
-                     },
-                   @{@"title":@"002",
-                     @"list":@[@"aaa",@"aaa1",@"aaa"]
-                     },
-                   @{@"title":@"003",
-                     @"list":@[@"aaa"]
-                     },
-                   @{@"title":@"004",
-                     @"list":@[@"aaa",@"aaa1",@"aaa"]
-                     },
-                   @{@"title":@"005",
-                     @"list":@[@"aaa"]
-                     },
-                   @{@"title":@"006",
-                     @"list":@[@"aaa",@"aaa1",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]
-                     },
-                   @{@"title":@"007",
-                     @"list":@[@"aaa",@"aaa1",@"aaa"]
-                     },
-                   @{@"title":@"008",
-                     @"list":@[@"aaa",@"aaa1",@"aaa",@"aaa"]
-                     },
-                   @{@"title":@"009",
-                     @"list":@[@"aaa",@"aaa1",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]
-                     },
-                   @{@"title":@"010",
-                     @"list":@[@"aaa",@"aaa1",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]
-                     },
-                   @{@"title":@"011",
-                     @"list":@[@"aaa",@"aaa1",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]
-                     },
-                   @{@"title":@"012",
-                     @"list":@[@"aaa",@"aaa1",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa",@"aaa"]
-                     },
-                   @{@"title":@"013",
-                     @"list":@[@"aaa",@"aaa1",@"aaa"]
-                     },
-                   @{@"title":@"014",
-                     @"list":@[@"aaa",@"aaa1",@"aaa"]
-                     },
-                   @{@"title":@"015",
-                     @"list":@[@"aaa",@"aaa1",@"aaa",@"aaa",@"aaa",@"aaa"]
-                     }
-                   ];
 }
 
 -(void)addNotification{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadGoodsList:) name:@"userSelectRow" object:nil];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(reloadGoodsList:) name:@"userSelectRow" object:nil];
+    [notificationCenter addObserver:self selector:@selector(loadCLassifyDataSucceed) name:D_Notification_Name_LoadClassifyData_Succeed object:nil];
 }
 
 -(void)removeOBS{
@@ -111,7 +57,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [arr count]/showNumber+([arr count]%showNumber>0?1:0);
+    return [classifyEntity.dataArr count]/showNumber+([classifyEntity.dataArr count]%showNumber>0?1:0);
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -131,12 +77,12 @@
     [cell setBackgroundColor:WXColorWithInteger(0xefeff4)];
     NSMutableArray *rowArray = [NSMutableArray array];
     NSInteger max = (row+1)*showNumber;
-    NSInteger count = [arr count];
+    NSInteger count = [classifyEntity.dataArr count];
     if(max > count){
         max = count;
     }
     for(NSInteger i = row*showNumber; i < max; i++){
-        [rowArray addObject:[arr objectAtIndex:i]];
+        [rowArray addObject:[classifyEntity.dataArr objectAtIndex:i]];
     }
     [cell setDelegate:self];
     [cell loadCpxViewInfos:rowArray];
@@ -150,14 +96,20 @@
     return cell;
 }
 
+-(void)loadCLassifyDataSucceed{
+    classifyEntity = [ClassifyModel shareClassifyNodel].classifyDataArr[0];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 -(void)reloadGoodsList:(NSNotification*)notification{
     selectRow = [notification.object integerValue];
-    arr = [[listArr objectAtIndex:selectRow] objectForKey:@"list"];
-    [_tableView reloadData];
+    classifyEntity = [ClassifyModel shareClassifyNodel].classifyDataArr[selectRow];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)goodsListCellClicked:(id)entity{
-    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_ClassifyGoodsClicked object:nil];
+    NSDictionary *catDic = entity;
+    [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_ClassifyGoodsClicked object:catDic];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
