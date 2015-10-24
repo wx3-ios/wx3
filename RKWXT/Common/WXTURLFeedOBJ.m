@@ -210,6 +210,9 @@
         case WXT_UrlFeed_Type_New_LoadClassifyGoodsList:
             url = @"/get_cat_goods.php";
             break;
+        case WXT_UrlFeed_Type_New_SearchGoods:
+            url = @"/app_search.php";
+            break;
         default:
             break;
     }

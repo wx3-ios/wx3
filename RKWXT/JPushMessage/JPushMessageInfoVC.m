@@ -105,7 +105,7 @@ enum{
     NSString *urlString = request.URL.absoluteString;
     if(urlString){
         WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-        webUrl = [NSString stringWithFormat:@"%@&phone=%@",urlString,userObj.user];
+        webUrl = [NSString stringWithFormat:@"%@&phone=%@&woxin_id=%@",urlString,userObj.user,userObj.wxtID];
     }
     NSDictionary *paramDic = [self parseURL:urlString];
     return [self jumpToParam:paramDic];

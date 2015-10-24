@@ -200,6 +200,7 @@
 		1245355D1AE9D146004198C9 /* sign8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124535381AE9D146004198C9 /* sign8@2x.png */; };
 		1245355E1AE9D146004198C9 /* sign9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124535391AE9D146004198C9 /* sign9@2x.png */; };
 		1245355F1AE9D146004198C9 /* SignNow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1245353A1AE9D146004198C9 /* SignNow@2x.png */; };
+		125418141BDB6F66004A7DF5 /* SearchResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 125418131BDB6F66004A7DF5 /* SearchResultEntity.m */; settings = {ASSET_TAGS = (); }; };
 		125A76AA1B56628C00959AD8 /* ScreenActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76A91B56628C00959AD8 /* ScreenActivityVC.m */; };
 		125A76AD1B5673E100959AD8 /* JPushMessageInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76AC1B5673E100959AD8 /* JPushMessageInfoVC.m */; };
 		125A76B01B56747F00959AD8 /* JPushInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76AF1B56747F00959AD8 /* JPushInfoModel.m */; };
@@ -1162,6 +1163,8 @@
 		124535381AE9D146004198C9 /* sign8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign8@2x.png"; sourceTree = "<group>"; };
 		124535391AE9D146004198C9 /* sign9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign9@2x.png"; sourceTree = "<group>"; };
 		1245353A1AE9D146004198C9 /* SignNow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignNow@2x.png"; sourceTree = "<group>"; };
+		125418121BDB6F66004A7DF5 /* SearchResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultEntity.h; sourceTree = "<group>"; };
+		125418131BDB6F66004A7DF5 /* SearchResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultEntity.m; sourceTree = "<group>"; };
 		125A76A81B56628C00959AD8 /* ScreenActivityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenActivityVC.h; sourceTree = "<group>"; };
 		125A76A91B56628C00959AD8 /* ScreenActivityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenActivityVC.m; sourceTree = "<group>"; };
 		125A76AB1B5673E100959AD8 /* JPushMessageInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushMessageInfoVC.h; sourceTree = "<group>"; };
@@ -3831,6 +3834,8 @@
 		128E295A1BD5EBCD00137688 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				125418121BDB6F66004A7DF5 /* SearchResultEntity.h */,
+				125418131BDB6F66004A7DF5 /* SearchResultEntity.m */,
 				12A9D4501BD768FE0033B238 /* CLassifySearchModel.h */,
 				12A9D4511BD768FE0033B238 /* CLassifySearchModel.m */,
 				12A9D4471BD733B70033B238 /* ClassifyHistoryModel.h */,
@@ -7615,6 +7620,7 @@
 				128136AA1B33C2A7005F9929 /* ShoppingCartEntity.m in Sources */,
 				128241481B60D062001EE0BD /* DownSheetModel.m in Sources */,
 				775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */,
+				125418141BDB6F66004A7DF5 /* SearchResultEntity.m in Sources */,
 				1282217D1B18467A004613BB /* T_ChangeView.m in Sources */,
 				12C2CE251BA12FFC00797DA4 /* MyClientInfoCell.m in Sources */,
 				DD0E38B31B1BE5AC00AB4DB9 /* SystemMessageEntity.m in Sources */,

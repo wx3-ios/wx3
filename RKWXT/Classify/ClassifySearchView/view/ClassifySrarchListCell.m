@@ -7,7 +7,7 @@
 //
 
 #import "ClassifySrarchListCell.h"
-#import "ClassifySqlEntity.h"
+#import "SearchResultEntity.h"
 
 @interface ClassifySrarchListCell(){
     WXUILabel *nameLabel;
@@ -34,11 +34,15 @@
 }
 
 -(void)load{
-    NSString *name = self.cellInfo;
-    [nameLabel setText:name];
-    if([name isEqualToString:AlertName]){
+    SearchResultEntity *entity = self.cellInfo;
+    if([entity isKindOfClass:[NSString class]]){
+        [nameLabel setText:AlertName];
         [nameLabel setFont:WXFont(12.0)];
         [nameLabel setTextColor:[UIColor grayColor]];
+    }else{
+        [nameLabel setText:entity.goodsName];
+        [nameLabel setFont:WXFont(14.0)];
+        [nameLabel setTextColor:WXColorWithInteger(0x606062)];
     }
 }
 

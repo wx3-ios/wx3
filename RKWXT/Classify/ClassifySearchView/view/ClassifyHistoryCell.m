@@ -37,7 +37,7 @@
         [_timeLabel setBackgroundColor:[UIColor clearColor]];
         [_timeLabel setTextAlignment:NSTextAlignmentRight];
         [_timeLabel setTextColor:[UIColor grayColor]];
-        [_timeLabel setFont:WXFont(12.0)];
+        [_timeLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:_timeLabel];
     }
     return self;
@@ -53,6 +53,7 @@
     }else{
         [_timeLabel setHidden:NO];
         [nameLabel setText:entity.recordName];
+        [_timeLabel setFont:WXFont(14.0)];
 
         NSString *time = [UtilTool getDateTimeFor:entity.recordTime type:1];
         NSString *timerStr = [self dateWithTimeInterval:time];

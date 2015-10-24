@@ -16,6 +16,11 @@
 #import "ClassifyInsertData.h"
 #import "ClassifySqlEntity.h"
 
+#import "CLassifySearchModel.h"
+#import "SearchResultEntity.h"
+
+#import "NewGoodsInfoVC.h"
+
 #define Size self.bounds.size
 enum{
     CLassify_Search_Goods = 0,
@@ -24,7 +29,7 @@ enum{
     CLassify_Search_Invalid,
 };
 
-@interface ClassifySearchVC()<UIAlertViewDelegate,WXDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
+@interface ClassifySearchVC()<UIAlertViewDelegate,WXDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CLassifySearchModelDelegate>{
     WXUIButton *dropListBtn;
     WXDropListView *_dropListView;
     WXUITextField *_textField;
@@ -36,6 +41,7 @@ enum{
     NSArray *historyListArr;
     
     ClassifyHistoryModel *_historyModel;
+    CLassifySearchModel *_searchModel;
 }
 @end
 
@@ -67,6 +73,9 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
     [self addOBS];
     _historyModel = [[ClassifyHistoryModel alloc] init];
     [_historyModel loadClassifyHistoryList];
+    
+    _searchModel = [[CLassifySearchModel alloc] init];
+    [_searchModel setDelegate:self];
 }
 
 -(void)addOBS{
@@ -124,7 +133,7 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
     
     _dropListView = [self createDropListViewWith:dropListBtn];
     [_dropListView unshow:NO];
-    [self.view addSubview:_dropListView];
+//    [self.view addSubview:_dropListView];
     
     xOffset += dropListBtnWidth+8;
     _textField = [[WXUITextField alloc] initWithFrame:CGRectMake(xOffset, yOffset-3, Size.width-xOffset-rightBtnWidth-2*10, btnHeight)];
@@ -195,6 +204,8 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
         [cell setCellInfo:AlertName];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }else{
+        SearchResultEntity *entity = searchListArr[row-1];
+        [cell setCellInfo:entity];
     }
     [cell load];
     return cell;
@@ -231,6 +242,14 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(!showHistory){
+        [self insertHistoryData];  //加入本地数据库
+        
+        SearchResultEntity *entity = [searchListArr objectAtIndex:indexPath.row-1];
+        NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
+        [goodsInfoVC setGoodsId:entity.goodsID];
+        [self.wxNavigationController pushViewController:goodsInfoVC];
+    }
 }
 
 #pragma mark delete
@@ -268,8 +287,14 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
         [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }else{
         showHistory = NO;
-        [_tableView reloadData];
+        _searchModel.searchType = Search_Type_Goods;
+        [_searchModel classifySearchWith:_textField.text];
     }
+}
+
+-(void)classifySearchResultSucceed{
+    searchListArr = _searchModel.searchResultArr;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark sql
@@ -279,15 +304,12 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
 }
 
 -(void)delClassifyHistoryOneRecordSucceed{
-    
 }
 
 //测试插入数据
 -(void)textFieldDone:(id)sender{
     WXUITextField *textField = sender;
     [textField resignFirstResponder];
-    
-    [self insertHistoryData];
 }
 
 -(void)insertHistoryData{

@@ -73,6 +73,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_LoadAliRecordList,
     WXT_UrlFeed_Type_New_LoadClassifyData,
     WXT_UrlFeed_Type_New_LoadClassifyGoodsList,
+    WXT_UrlFeed_Type_New_SearchGoods,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

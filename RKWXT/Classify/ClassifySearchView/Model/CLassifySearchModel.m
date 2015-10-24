@@ -8,6 +8,7 @@
 
 #import "CLassifySearchModel.h"
 #import "WXTURLFeedOBJ+NewData.h"
+#import "SearchResultEntity.h"
 
 @interface CLassifySearchModel(){
     NSMutableArray *_searchResultArr;
@@ -25,14 +26,25 @@
     return self;
 }
 
+-(void)parseSearchResultWith:(id)arr{
+    [_searchResultArr removeAllObjects];
+    if([arr isKindOfClass:[NSString class]]){
+        return;
+    }
+    for(NSDictionary *dic in arr){
+        SearchResultEntity *entity = [SearchResultEntity initSearchResultEntityWith:dic];
+        [_searchResultArr addObject:entity];
+    }
+}
+
 -(void)classifySearchWith:(NSString *)searchStr{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.wxtID, @"woxin_id", userObj.sellerID, @"seller_user_id", [NSNumber numberWithInt:(int)kMerchantID], @"sid", [NSNumber numberWithInt:(int)kSubShopID], @"shop_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)_searchType], @"type", [NSNumber numberWithInt:(int)kMerchantID], @"sid", [NSNumber numberWithInt:(int)kSubShopID], @"shop_id", searchStr, @"keyword", nil];
     __block CLassifySearchModel *blockSelf = self;
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LoadMyClientPerson httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_SearchGoods httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if(retData.code != 0){
         }else{
-//            [blockSelf parseMyClientPersonListWith:[retData.data objectForKey:@"data"]];
+            [blockSelf parseSearchResultWith:[retData.data objectForKey:@"data"]];
             if(_delegate && [_delegate respondsToSelector:@selector(classifySearchResultSucceed)]){
                 [_delegate classifySearchResultSucceed];
             }

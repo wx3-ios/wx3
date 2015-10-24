@@ -9,6 +9,8 @@
 #import "ClassifyGoodsListVC.h"
 #import "ClassifyGoodsListCell.h"
 #import "ClassifyGoodsModel.h"
+#import "NewGoodsInfoVC.h"
+#import "ClassiftGoodsEntity.h"
 
 #define Size self.bounds.size
 
@@ -82,6 +84,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tabelView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    ClassiftGoodsEntity *entity = [listArr objectAtIndex:row];
+    NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
+    goodsInfoVC.goodsId = entity.goodsID;
+    [self.wxNavigationController pushViewController:goodsInfoVC];
 }
 
 #pragma mark modelDelegate
