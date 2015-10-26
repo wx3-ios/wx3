@@ -259,6 +259,7 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
         name = entity.recordName;
     }
     [self insertHistoryData:name andRecordID:goodsID];  //加入本地数据库
+    
     //去详情页面
     NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
     [goodsInfoVC setGoodsId:goodsID];

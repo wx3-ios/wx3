@@ -35,7 +35,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self addOBS];
-    [self createSearchViewUI];
 }
 
 - (void)viewDidLoad {
@@ -43,6 +42,7 @@
     [self setCSTTitle:@"分类"];
     [self setBackgroundColor:[UIColor whiteColor]];
     [self createListViewUI];
+    [self createSearchViewUI];
     
     [[ClassifyModel shareClassifyNodel] loadAllClassifyData];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
@@ -63,7 +63,10 @@
     [_textField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
     [_textField setTextColor:WXColorWithInteger(0xda7c7b)];
     [_textField setTintColor:WXColorWithInteger(0xdd2726)];
-    [_textField setPlaceholder:@"🔍寻找你喜欢的商品、店铺"];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ClassifySearchImg.png"]];
+    [_textField setLeftView:imgView leftGap:10 rightGap:0];
+    [_textField setLeftViewMode:UITextFieldViewModeUnlessEditing];
+    [_textField setPlaceholder:@"寻找你喜欢的商品、店铺"];
     [self addSubview:_textField];
     
     WXUIButton *clearBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
@@ -131,8 +134,12 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [_textField removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [_textField.inputView setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
