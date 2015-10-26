@@ -11,5 +11,6 @@
 #define AlertName @"搜索结果"
 
 @interface ClassifySrarchListCell : WXUITableViewCell
+@property (nonatomic,assign) NSInteger count;
 
 @end

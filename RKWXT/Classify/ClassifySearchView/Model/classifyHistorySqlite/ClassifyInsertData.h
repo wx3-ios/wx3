@@ -10,6 +10,6 @@
 
 @interface ClassifyInsertData : NSObject
 
--(BOOL)insertData:(NSString*)recordName with:(NSString*)other;
+-(BOOL)insertData:(NSString*)recordName withRecordID:(NSString*)recordID with:(NSString*)other;
 
 @end

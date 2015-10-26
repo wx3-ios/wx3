@@ -36,7 +36,7 @@
 -(void)load{
     SearchResultEntity *entity = self.cellInfo;
     if([entity isKindOfClass:[NSString class]]){
-        [nameLabel setText:AlertName];
+        [nameLabel setText:[NSString stringWithFormat:@"%@  (%ld条)",AlertName,(long)_count]];
         [nameLabel setFont:WXFont(12.0)];
         [nameLabel setTextColor:[UIColor grayColor]];
     }else{

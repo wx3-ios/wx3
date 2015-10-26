@@ -11,5 +11,6 @@
 #define AlertRecordName @"历史搜索"
 
 @interface ClassifyHistoryCell : WXUITableViewCell
+@property (nonatomic,assign) NSInteger count;
 
 @end

@@ -11,6 +11,7 @@
 @interface ClassifySqlEntity : NSObject
 @property (nonatomic,assign) NSInteger recordTime;
 @property (nonatomic,strong) NSString *recordName;
+@property (nonatomic,strong) NSString *recordID;
 @property (nonatomic,strong) NSString *other; //预留
 
 @end

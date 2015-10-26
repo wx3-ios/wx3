@@ -14,8 +14,8 @@
     ClassifySql *fmdb;
 }
 
--(BOOL)insertData:(NSString *)recordName with:(NSString *)other{
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@')",@"CLASSIFY",RecordName,RecordTime,Other,recordName,[self insertSearchHistoryTime],other];
+-(BOOL)insertData:(NSString *)recordName withRecordID:(NSString *)recordID with:(NSString *)other{
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@' , '%@' , '%@' , '%@') VALUES ('%@' , '%@' , '%@' , '%@')",@"CLASSIFY",RecordName,RecordTime,RecordID,Other,recordName,[self insertSearchHistoryTime],recordID,other];
     fmdb = [[ClassifySql alloc] init];
     [fmdb createOrOpendb];
     [fmdb createTable];

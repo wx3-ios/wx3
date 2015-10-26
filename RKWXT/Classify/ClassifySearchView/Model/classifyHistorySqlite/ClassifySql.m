@@ -26,7 +26,7 @@
 }
 
 -(void)createTable{
-    NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS CLASSIFY (ID INTEGER PRIMARY KEY AUTOINCREMENT, RecordName TEXT, RecordTime TEXT ,Other TEXT)";
+    NSString *sqlCreateTable = @"CREATE TABLE IF NOT EXISTS CLASSIFY (ID INTEGER PRIMARY KEY AUTOINCREMENT, RecordName TEXT , RecordTime TEXT , RecordID TEXT , Other TEXT)";
     [self execSql:sqlCreateTable];
 }
 
@@ -42,12 +42,16 @@
             char *time = (char *)sqlite3_column_text(statement, 2);   //记录的时间
             NSString *_rtime = [[NSString alloc] initWithUTF8String:time];
             
+            char *recordID = (char *)sqlite3_column_text(statement, 3); //记录的ID
+            NSString *_recordID = [[NSString alloc] initWithUTF8String:recordID];
+            
             char *other = (char *)sqlite3_column_text(statement, 3);   //预留字段
             NSString *_other = [[NSString alloc] initWithUTF8String:other];
         
             ClassifySqlEntity *entity = [[ClassifySqlEntity alloc] init];
             entity.recordName = _name;
             entity.recordTime = [_rtime integerValue];
+            entity.recordID = _recordID;
             entity.other = _other;
             [all addObject:entity];
         }

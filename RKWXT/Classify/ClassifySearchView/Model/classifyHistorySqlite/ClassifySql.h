@@ -12,6 +12,7 @@
 #define DBNAME        @"Classify.sqlite"
 #define RecordName    @"RecordName"
 #define RecordTime    @"RecordTime"
+#define RecordID      @"RecordID"
 #define Other         @"Other"
 
 @interface ClassifySql : NSObject{

@@ -47,7 +47,7 @@
     ClassifySqlEntity *entity = self.cellInfo;
     if([entity isKindOfClass:[NSString class]]){
         [_timeLabel setHidden:YES];
-        [nameLabel setText:AlertRecordName];
+        [nameLabel setText:[NSString stringWithFormat:@"%@  (%ld条)",AlertRecordName,(long)_count]];
         [nameLabel setFont:WXFont(12.0)];
         [nameLabel setTextColor:[UIColor grayColor]];
     }else{

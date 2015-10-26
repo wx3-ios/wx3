@@ -202,6 +202,7 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
     }
     if(row == 0){
         [cell setCellInfo:AlertName];
+        [cell setCount:[searchListArr count]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }else{
         SearchResultEntity *entity = searchListArr[row-1];
@@ -220,6 +221,7 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
     }
     if(row == 0){
         [cell setCellInfo:AlertRecordName];
+        [cell setCount:[historyListArr count]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }else{
         ClassifySqlEntity *entity = historyListArr[row-1];
@@ -242,14 +244,25 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(!showHistory){
-        [self insertHistoryData];  //加入本地数据库
-        
-        SearchResultEntity *entity = [searchListArr objectAtIndex:indexPath.row-1];
-        NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
-        [goodsInfoVC setGoodsId:entity.goodsID];
-        [self.wxNavigationController pushViewController:goodsInfoVC];
+    if(indexPath.row == 0){
+        return;
     }
+    NSInteger goodsID = 0;
+    NSString *name = nil;
+    if(!showHistory){
+        SearchResultEntity *entity = [searchListArr objectAtIndex:indexPath.row-1];
+        goodsID = entity.goodsID;
+        name = entity.goodsName;
+    }else{
+        ClassifySqlEntity *entity = historyListArr[indexPath.row-1];
+        goodsID = [entity.recordID integerValue];
+        name = entity.recordName;
+    }
+    [self insertHistoryData:name andRecordID:goodsID];  //加入本地数据库
+    //去详情页面
+    NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
+    [goodsInfoVC setGoodsId:goodsID];
+    [self.wxNavigationController pushViewController:goodsInfoVC];
 }
 
 #pragma mark delete
@@ -312,19 +325,19 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
     [textField resignFirstResponder];
 }
 
--(void)insertHistoryData{
-    if(_textField.text.length == 0){
+-(void)insertHistoryData:(NSString*)recordName andRecordID:(NSInteger)recordID{
+    if(recordName.length == 0){
         return;
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for(ClassifySqlEntity *entity in historyListArr){
-            if([entity.recordName isEqualToString:_textField.text]){
+            if([entity.recordName isEqualToString:recordName]){
                 [_historyModel deleteClassifyRecordWith:entity.recordName];
                 break;
             }
         }
         ClassifyInsertData *insertData = [[ClassifyInsertData alloc] init];
-        [insertData insertData:_textField.text with:@""];
+        [insertData insertData:recordName withRecordID:[NSString stringWithFormat:@"%ld",(long)recordID] with:@""];
         dispatch_async(dispatch_get_main_queue(), ^{
             [_historyModel loadClassifyHistoryList];
         });
