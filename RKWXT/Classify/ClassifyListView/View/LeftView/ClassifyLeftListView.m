@@ -17,6 +17,8 @@
     NSArray *listArr;
     NSString *titleStr;
     NSInteger lastCount;
+    
+    BOOL isSelect;
 }
 
 @end
@@ -110,7 +112,20 @@
 }
 
 -(void)reloadTableview{
-    NSIndexPath *first = [NSIndexPath indexPathForRow:0 inSection:0];
+    isSelect = NO;
+    NSInteger count = 0;
+    for(CLassifyEntity *ent in listArr){
+        if(ent.catID == _cat_id){
+            count++;
+            isSelect = YES;
+            break;
+        }
+        count++;
+    }
+    if(_cat_id == 0 || !isSelect){
+        count = 0;
+    }
+    NSIndexPath *first = [NSIndexPath indexPathForRow:(count==0?0:count-1) inSection:0];
     [_tableView selectRowAtIndexPath:first animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 

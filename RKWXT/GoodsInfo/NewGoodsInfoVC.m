@@ -26,11 +26,15 @@
 #import "CDSideBarController.h"
 #import "NewGoodsInfoWebViewViewController.h"
 
+//底部
+#import "GoodsInfoPacketCell.h"
+#import "GoodsInfoDownView.h"
+
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate,GoodsInfoPacketCellDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     WXUIImageView *topImgView;
@@ -278,6 +282,18 @@
         case T_GoodsInfo_WebShow:
             row = 1;
             break;
+        case T_GoodsInfo_DownView:
+        {
+            if([_model.data count] > 0){
+                GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                if(entity.use_cut || entity.use_red){
+                    return 1;
+                }else{
+                    return 0;
+                }
+            }
+        }
+            break;
         case T_GoodsInfo_BaseData:
         {
             if(_isOpen){
@@ -310,6 +326,19 @@
         case T_GoodsInfo_Description:
             height = [NewGoodsInfoDesCell cellHeightOfInfo:([_model.data count] > 0?[_model.data objectAtIndex:0]:nil)];
             break;
+        case T_GoodsInfo_DownView:
+        {
+            if([_model.data count] > 0){
+                GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                if(entity.use_cut || entity.use_red){
+                    return GoodsInfoPacketCellHeight;
+                }else{
+                    return 0;
+                }
+            }
+        }
+            break;
+
         case T_GoodsInfo_WebShow:
             height = T_GoodsInfoWebCellHeight;
             break;
@@ -330,6 +359,16 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     CGFloat height = 0.0;
+    if(section == T_GoodsInfo_DownView){
+        if([_model.data count] > 0){
+            GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+            if(entity.use_cut || entity.use_red){
+                return 10.0;
+            }else{
+                return 0;
+            }
+        }
+    }
     if(section == T_GoodsInfo_WebShow){
         height = 10.0;
     }
@@ -384,6 +423,22 @@
     if([_model.data count] > 0){
         [cell setCellInfo:[_model.data objectAtIndex:0]];
     }
+    [cell load];
+    return cell;
+}
+
+//红包和提成
+-(WXUITableViewCell*)tableViewShowPacketAndCut{
+    static NSString *identifier = @"userCutCell";
+    GoodsInfoPacketCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[GoodsInfoPacketCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([_model.data count] > 0){
+        [cell setCellInfo:[_model.data objectAtIndex:0]];
+    }
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -459,6 +514,9 @@
                 break;
             case T_GoodsInfo_Description:
                 cell = [self tableViewForGoodsInfoDescCell];
+                break;
+            case T_GoodsInfo_DownView:
+                cell = [self tableViewShowPacketAndCut];
                 break;
             case T_GoodsInfo_WebShow:
                 cell = [self tableViewWebShowCell];
@@ -586,6 +644,20 @@
     id ret = [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_ImgAndText paramDictionary:dic];
     NSLog(@"ret = %@",ret);
     [self.wxNavigationController pushViewController:webViewVC];
+}
+
+#pragma mark showDownView
+-(void)goodsInfoPacketCellBtnClicked{
+    CGFloat height = 0;
+    GoodsInfoEntity *ent = [_model.data objectAtIndex:0];
+    if(ent.use_red && ent.use_cut){
+        height = 283;
+    }else{
+        height = 180;
+    }
+    GoodsInfoDownView *downView = [[GoodsInfoDownView alloc] init];
+    [downView setDataArr:_model.data];
+    [downView showDownView:height toDestview:self.view];
 }
 
 #pragma mark downBtnClicked

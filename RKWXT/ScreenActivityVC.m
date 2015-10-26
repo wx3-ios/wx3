@@ -41,7 +41,7 @@
     [webView setDelegate:self];
     [self.view addSubview:webView];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://oldyun.67call.com/wx_html/index.php/Public/anim_r"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://.67call.com/wx_html/index.php/Public/anim_r"]];
     [webView loadRequest:request];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];

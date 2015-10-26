@@ -87,6 +87,7 @@
     
     _leftView = [[ClassifyLeftListView alloc] init];
     [_leftView.view setFrame:CGRectMake(0, yOffset, leftViewWidth, size.height-yOffset)];
+    _leftView.cat_id = _cat_id;
     [_leftView.view setHidden:YES];
     [_rightView.view setHidden:YES];
     [self addSubview:_leftView.view];

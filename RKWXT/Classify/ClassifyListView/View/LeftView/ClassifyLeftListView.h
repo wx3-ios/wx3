@@ -10,5 +10,6 @@
 #import "ClassifyLeftTableViewCell.h"
 
 @interface ClassifyLeftListView : WXUIViewController
+@property (nonatomic,assign) NSInteger cat_id;
 
 @end

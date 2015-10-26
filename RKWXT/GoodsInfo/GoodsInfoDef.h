@@ -27,6 +27,7 @@
 enum{
     T_GoodsInfo_TopImg = 0,
     T_GoodsInfo_Description,
+    T_GoodsInfo_DownView,
     T_GoodsInfo_WebShow,
     T_GoodsInfo_BaseData,
     

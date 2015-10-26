@@ -92,6 +92,11 @@
 		121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */; };
 		121AC74C1B9EB80A007AC44B /* NewUserCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */; };
 		121AC7531B9ECF15007AC44B /* UserRefereeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC7521B9ECF15007AC44B /* UserRefereeCell.m */; };
+		121EBCCC1BDDC7B300D1F307 /* GoodsInfoPacketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121EBCCB1BDDC7B300D1F307 /* GoodsInfoPacketCell.m */; settings = {ASSET_TAGS = (); }; };
+		121EBCD01BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 121EBCCD1BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png */; settings = {ASSET_TAGS = (); }; };
+		121EBCD11BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 121EBCCE1BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png */; settings = {ASSET_TAGS = (); }; };
+		121EBCD21BDDCB2700D1F307 /* GoodsInfoRedImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 121EBCCF1BDDCB2700D1F307 /* GoodsInfoRedImg@2x.png */; settings = {ASSET_TAGS = (); }; };
+		121EBCD51BDE049300D1F307 /* GoodsInfoDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 121EBCD41BDE049300D1F307 /* GoodsInfoDownView.m */; settings = {ASSET_TAGS = (); }; };
 		1220140A1BA00C360080B994 /* UserHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122014091BA00C360080B994 /* UserHeaderModel.m */; };
 		1221C1C41BD9D4BB004B681D /* ClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1221C1C31BD9D4BB004B681D /* ClassifyModel.m */; settings = {ASSET_TAGS = (); }; };
 		1221C1C71BD9DAAF004B681D /* CLassifyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1221C1C61BD9DAAF004B681D /* CLassifyEntity.m */; settings = {ASSET_TAGS = (); }; };
@@ -1042,6 +1047,13 @@
 		121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserCutVC.m; sourceTree = "<group>"; };
 		121AC7511B9ECF15007AC44B /* UserRefereeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRefereeCell.h; path = RKWXT/NewUserCut/View/UserRefereeCell.h; sourceTree = SOURCE_ROOT; };
 		121AC7521B9ECF15007AC44B /* UserRefereeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRefereeCell.m; path = RKWXT/NewUserCut/View/UserRefereeCell.m; sourceTree = SOURCE_ROOT; };
+		121EBCCA1BDDC7B300D1F307 /* GoodsInfoPacketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfoPacketCell.h; sourceTree = "<group>"; };
+		121EBCCB1BDDC7B300D1F307 /* GoodsInfoPacketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsInfoPacketCell.m; sourceTree = "<group>"; };
+		121EBCCD1BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsInfoCutImg@2x.png"; sourceTree = "<group>"; };
+		121EBCCE1BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsInfoDownImg@2x.png"; sourceTree = "<group>"; };
+		121EBCCF1BDDCB2700D1F307 /* GoodsInfoRedImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsInfoRedImg@2x.png"; sourceTree = "<group>"; };
+		121EBCD31BDE049300D1F307 /* GoodsInfoDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfoDownView.h; sourceTree = "<group>"; };
+		121EBCD41BDE049300D1F307 /* GoodsInfoDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsInfoDownView.m; sourceTree = "<group>"; };
 		122014081BA00C360080B994 /* UserHeaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderModel.h; sourceTree = "<group>"; };
 		122014091BA00C360080B994 /* UserHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderModel.m; sourceTree = "<group>"; };
 		1221C1C21BD9D4BB004B681D /* ClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyModel.h; sourceTree = "<group>"; };
@@ -2953,6 +2965,17 @@
 			);
 			name = View;
 			path = Model/View;
+			sourceTree = "<group>";
+		};
+		121EBCC91BDDC72200D1F307 /* ShowDownView */ = {
+			isa = PBXGroup;
+			children = (
+				121EBCCA1BDDC7B300D1F307 /* GoodsInfoPacketCell.h */,
+				121EBCCB1BDDC7B300D1F307 /* GoodsInfoPacketCell.m */,
+				121EBCD31BDE049300D1F307 /* GoodsInfoDownView.h */,
+				121EBCD41BDE049300D1F307 /* GoodsInfoDownView.m */,
+			);
+			path = ShowDownView;
 			sourceTree = "<group>";
 		};
 		1221C1C81BDA1684004B681D /* Model */ = {
@@ -5025,6 +5048,7 @@
 		12F46A251B1FF93600B8EC98 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				121EBCC91BDDC72200D1F307 /* ShowDownView */,
 				129EEB7E1B97DADF0062349E /* NewImageZoomView */,
 				12A0F5A61B9597D200CFF8E5 /* SDBigImg */,
 				120B5D911B86C62C009564F5 /* BackgroundView */,
@@ -5039,6 +5063,9 @@
 		12F46A2C1B20012000B8EC98 /* T_GoodsInfo */ = {
 			isa = PBXGroup;
 			children = (
+				121EBCCD1BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png */,
+				121EBCCE1BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png */,
+				121EBCCF1BDDCB2700D1F307 /* GoodsInfoRedImg@2x.png */,
 				128E295F1BD5EF5100137688 /* T_BackWhite@2x.png */,
 				120B5D981B871991009564F5 /* GoodsInfoGaryBackImg@2x.png */,
 				128BB73E1B68A4BF004FCE66 /* T_ShareGoods@2x.png */,
@@ -6941,6 +6968,7 @@
 				1245354A1AE9D146004198C9 /* sign22@2x.png in Resources */,
 				120EB3DB1B7B563B0036A77C /* Shake_02@2x.png in Resources */,
 				1241E5371AE9D89B00811D3F /* dialSel@2x.png in Resources */,
+				121EBCD01BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png in Resources */,
 				1241E5421AE9D89B00811D3F /* 2S@2x.png in Resources */,
 				1241E5501AE9D89B00811D3F /* 9S@2x.png in Resources */,
 				128221D91B184E84004613BB /* HomePageOrderList@2x.png in Resources */,
@@ -6957,6 +6985,7 @@
 				1241E54F1AE9D89B00811D3F /* 9N@2x.png in Resources */,
 				124535561AE9D146004198C9 /* sign33@2x.png in Resources */,
 				120EB3D91B7B563B0036A77C /* Shake_01@2x.png in Resources */,
+				121EBCD21BDDCB2700D1F307 /* GoodsInfoRedImg@2x.png in Resources */,
 				1245350C1AE9D0BC004198C9 /* CallNormal@2x.png in Resources */,
 				1263EFE61ACD35820014C347 /* Icon-Small@2x.png in Resources */,
 				1241E5641AE9D91400811D3F /* T_AllBackSel@2x.png in Resources */,
@@ -7015,6 +7044,7 @@
 				12D52BB81AC2EF4400C5CE71 /* dtmf-2.aif in Resources */,
 				12A347881B73447100D10C17 /* UserCut@2x.png in Resources */,
 				12F46A371B20012000B8EC98 /* T_ArrowDown@2x.png in Resources */,
+				121EBCD11BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png in Resources */,
 				1245353C1AE9D146004198C9 /* signBg@2x.jpg in Resources */,
 				1241E54A1AE9D89B00811D3F /* 6S@2x.png in Resources */,
 				12F3CC761B1DE82C00E64DE4 /* MyCallMoneyImg@2x.png in Resources */,
@@ -7404,6 +7434,7 @@
 				120595301BCF994F009E6986 /* NLPullDownRefreshView.m in Sources */,
 				12C12F3B1B81DA6D00345BEE /* LuckyShakeVC.m in Sources */,
 				127329131B5CDDF4002AD4AE /* AboutVC.m in Sources */,
+				121EBCD51BDE049300D1F307 /* GoodsInfoDownView.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
 				126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */,
 				775842C01AB95A300039B129 /* WXGuideMaskControl.m in Sources */,
@@ -7485,6 +7516,7 @@
 				77DB943B1AAFF3830021A816 /* UIView+Sizing.m in Sources */,
 				12F3801B1B3B8DF800E9690C /* MakeOrderGoodsListCell.m in Sources */,
 				775843141AB95A300039B129 /* WXButton.m in Sources */,
+				121EBCCC1BDDC7B300D1F307 /* GoodsInfoPacketCell.m in Sources */,
 				12F9161D1B199FDC00C94717 /* HomePageThemeModel.m in Sources */,
 				775843001AB95A300039B129 /* PictureBrowseView.m in Sources */,
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,

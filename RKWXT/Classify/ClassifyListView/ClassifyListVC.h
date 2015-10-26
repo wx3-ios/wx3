@@ -9,5 +9,6 @@
 #import "WXUIViewController.h"
 
 @interface ClassifyListVC : WXUIViewController
+@property (nonatomic,assign) NSInteger cat_id;
 
 @end
