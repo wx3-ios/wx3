@@ -42,6 +42,9 @@
     [_classifyDataArr removeAllObjects];
     for(NSDictionary *dic in arr){
         CLassifyEntity *entity = [CLassifyEntity initClassifyEntityWith:dic];
+        if([entity.dataArr count] == 0){
+            continue;
+        }
         [_classifyDataArr addObject:entity];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:D_Notification_Name_LoadClassifyData_Succeed object:nil];

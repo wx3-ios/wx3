@@ -127,6 +127,10 @@
     }
     NSIndexPath *first = [NSIndexPath indexPathForRow:(count==0?0:count-1) inSection:0];
     [_tableView selectRowAtIndexPath:first animated:YES scrollPosition:UITableViewScrollPositionTop];
+    if(_cat_id != 0 && count != 0){
+        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+        [defaultCenter postNotificationName:@"userSelectRow" object:[NSNumber numberWithInteger:count-1]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

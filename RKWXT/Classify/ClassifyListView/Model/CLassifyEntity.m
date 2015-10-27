@@ -35,10 +35,6 @@
         }
         
         id subData = [dic objectForKey:@"subdata"];
-        if([subData isKindOfClass:[NSString class]]){
-            [self setDataArr:subData];
-        }
-        
         if([subData isKindOfClass:[NSArray class]]){
             [self setDataArr:subData];
         }

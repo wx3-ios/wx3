@@ -110,7 +110,7 @@
         [_baseView addSubview:redPacket];
         
         yOffset += textLabelHeight;
-        NSString *redText = @"每个红包都有使用范围和使用有效期（如果您支付账户里有红包）.每个红包都有使用范围和使用有效期（如果您支付账户里有红包）";
+        NSString *redText = @"该商品可使用红包，如果您的红包尚有余额，那么您可以在下单时候选择是否适用红包，使用红包可以抵用一部分现金。";
         CGSize redSize = [self sizeForString:redText font:WXFont(9.0) constrainedToSize:CGSizeMake(IPHONE_SCREEN_WIDTH-redPacket.frame.origin.x-10, 0) lineBreakMode:NSLineBreakByWordWrapping];
         CGFloat redTextHeight = redSize.height*2.5;
         WXUILabel *redInfo = [[WXUILabel alloc] init];
@@ -149,7 +149,7 @@
         [_baseView addSubview:cutLabel];
         
         yOffset += textLabelHeight;
-        NSString *cutText = @"每个红包都有使用范围和使用有效期（如果您支付账户里有红包）,每个红包都有使用范围和使用有效期（如果您支付账户里有红包）";
+        NSString *cutText = @"该商品有分成，如果您有推荐人，那么在您购买该商品后，您的推荐人将会获得一部分分成。";
         CGSize cutSize = [self sizeForString:cutText font:WXFont(9.0) constrainedToSize:CGSizeMake(IPHONE_SCREEN_WIDTH-cutLabel.frame.origin.x-10, 0) lineBreakMode:NSLineBreakByWordWrapping];
         CGFloat cutTextHeight = cutSize.height*2.5;
         WXUILabel *cutInfo = [[WXUILabel alloc] init];

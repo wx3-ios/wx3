@@ -21,7 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 10;
-        CGFloat labelWidth = 200;
+        CGFloat labelWidth = 150;
         CGFloat labelHeight = 25;
         nameLabel = [[WXUILabel alloc] init];
         nameLabel.frame = CGRectMake(xOffset, (44-labelHeight)/2, labelWidth, labelHeight);
@@ -31,7 +31,7 @@
         [nameLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:nameLabel];
         
-        CGFloat timeWidth = 100;
+        CGFloat timeWidth = 140;
         _timeLabel = [[WXUILabel alloc] init];
         _timeLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-timeWidth-xOffset, (44-labelHeight)/2, timeWidth, labelHeight);
         [_timeLabel setBackgroundColor:[UIColor clearColor]];
