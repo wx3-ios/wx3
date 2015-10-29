@@ -25,6 +25,15 @@
         
         NSInteger goodsID = [[dic objectForKey:@"goods_id"] integerValue];
         [self setGoodsID:goodsID];
+        
+        NSString *imgUrl = [dic objectForKey:@"goods_home_img"];
+        [self setImg:imgUrl];
+        
+        CGFloat marketPrice = [[dic objectForKey:@"market_price"] floatValue];
+        [self setMarket_price:marketPrice];
+        
+        CGFloat shopPrice = [[dic objectForKey:@"shop_price"] floatValue];
+        [self setShop_price:shopPrice];
     }
     return self;
 }

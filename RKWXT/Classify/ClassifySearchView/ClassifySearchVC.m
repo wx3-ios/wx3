@@ -20,6 +20,7 @@
 #import "SearchResultEntity.h"
 
 #import "NewGoodsInfoVC.h"
+#import "CLassifySearchListVC.h"
 
 #define Size self.bounds.size
 enum{
@@ -324,6 +325,12 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
 -(void)textFieldDone:(id)sender{
     WXUITextField *textField = sender;
     [textField resignFirstResponder];
+    
+    if([searchListArr count] > 0){
+        CLassifySearchListVC *searchListVC = [[CLassifySearchListVC alloc] init];
+        searchListVC.searchList = searchListArr;
+        [self.wxNavigationController pushViewController:searchListVC];
+    }
 }
 
 -(void)insertHistoryData:(NSString*)recordName andRecordID:(NSInteger)recordID{

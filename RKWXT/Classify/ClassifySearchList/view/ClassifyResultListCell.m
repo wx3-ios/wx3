@@ -1,16 +1,16 @@
 //
-//  ClassifyGoodsListCell.m
+//  ClassifyResultListCell.m
 //  RKWXT
 //
-//  Created by SHB on 15/10/23.
+//  Created by SHB on 15/10/29.
 //  Copyright © 2015年 roderick. All rights reserved.
 //
 
-#import "ClassifyGoodsListCell.h"
+#import "ClassifyResultListCell.h"
 #import "WXRemotionImgBtn.h"
-#import "ClassiftGoodsEntity.h"
+#import "SearchResultEntity.h"
 
-@interface ClassifyGoodsListCell(){
+@interface ClassifyResultListCell(){
     WXRemotionImgBtn *_imgView;
     WXUILabel *_nameLabel;
     WXUILabel *_marketPrice;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation ClassifyGoodsListCell
+@implementation ClassifyResultListCell
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -28,7 +28,7 @@
         CGFloat xOffset = 8;
         CGFloat imgWidth = 98;
         CGFloat imgHeight = imgWidth;
-        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (ClassifyGoodsListCellHeight-imgHeight)/2, imgWidth, imgHeight)];
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (ClassifyResultListCellHeight-imgHeight)/2, imgWidth, imgHeight)];
         [_imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:_imgView];
         
@@ -73,8 +73,8 @@
 }
 
 -(void)load{
-    ClassiftGoodsEntity *entity = self.cellInfo;
-    [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goodsImg]];
+    SearchResultEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.img]];
     [_imgView load];
     [_nameLabel setText:entity.goodsName];
     

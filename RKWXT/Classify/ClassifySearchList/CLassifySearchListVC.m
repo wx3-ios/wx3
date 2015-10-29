@@ -1,43 +1,30 @@
 //
-//  ClassifyGoodsListVC.m
+//  CLassifySearchListVC.m
 //  RKWXT
 //
-//  Created by SHB on 15/10/23.
+//  Created by SHB on 15/10/29.
 //  Copyright © 2015年 roderick. All rights reserved.
 //
 
-#import "ClassifyGoodsListVC.h"
-#import "ClassifyGoodsListCell.h"
-#import "ClassifyGoodsModel.h"
+#import "CLassifySearchListVC.h"
+#import "ClassifyResultListCell.h"
 #import "NewGoodsInfoVC.h"
-#import "ClassiftGoodsEntity.h"
+#import "SearchResultEntity.h"
 
 #define Size self.bounds.size
 
-@interface ClassifyGoodsListVC()<UITableViewDataSource,UITableViewDelegate,ClassifyGoodsModelDelegate>{
+@interface CLassifySearchListVC()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tabelView;
-    NSArray *listArr;
     WXUIButton *rightBtn;
     BOOL showUp;
-    
-    ClassifyGoodsModel *_model;
 }
 @end
 
-@implementation ClassifyGoodsListVC
-
--(id)init{
-    self = [super init];
-    if(self){
-        _model = [[ClassifyGoodsModel alloc] init];
-        [_model setDelegate:self];
-    }
-    return self;
-}
+@implementation CLassifySearchListVC
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:_titleName];
+    [self setCSTTitle:@"搜索结果"];
     [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tabelView = [[UITableView alloc] init];
@@ -48,9 +35,6 @@
     [self addSubview:_tabelView];
     [_tabelView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self createRightItemBtn];
-    
-    [_model loadClassifyGoodsListData:_cat_id];
-    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)createRightItemBtn{
@@ -74,21 +58,21 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [listArr count];
+    return [_searchList count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return ClassifyGoodsListCellHeight;
+    return ClassifyResultListCellHeight;
 }
 
 -(WXUITableViewCell*)tableViewForGoodsListCellAt:(NSInteger)row{
     static NSString *identifier = @"goodsListCell";
-    ClassifyGoodsListCell *cell = [_tabelView dequeueReusableCellWithIdentifier:identifier];
+    ClassifyResultListCell *cell = [_tabelView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[ClassifyGoodsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[ClassifyResultListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    if([listArr count] > 0){
-        [cell setCellInfo:listArr[row]];
+    if([_searchList count] > 0){
+        [cell setCellInfo:_searchList[row]];
     }
     [cell load];
     return cell;
@@ -104,7 +88,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tabelView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger row = indexPath.row;
-    ClassiftGoodsEntity *entity = [listArr objectAtIndex:row];
+    SearchResultEntity *entity = [_searchList objectAtIndex:row];
     NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
     goodsInfoVC.goodsId = entity.goodsID;
     [self.wxNavigationController pushViewController:goodsInfoVC];
@@ -114,20 +98,20 @@
     showUp = !showUp;
     if(showUp){
         [rightBtn setImage:[UIImage imageNamed:@"GoodsListDownImg.png"] forState:UIControlStateNormal];
-        listArr = [self goodsPriceDownSort];
+        _searchList = [self goodsPriceDownSort];
         [_tabelView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }else{
         [rightBtn setImage:[UIImage imageNamed:@"GoodsListUpImg.png"] forState:UIControlStateNormal];
-        listArr = [self goodsPriceUpSort];
+        _searchList = [self goodsPriceUpSort];
         [_tabelView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
 //升序排序
 -(NSArray*)goodsPriceUpSort{
-    NSArray *sortArray = [listArr sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
-        ClassiftGoodsEntity *entity_0 = obj1;
-        ClassiftGoodsEntity *entity_1 = obj2;
+    NSArray *sortArray = [_searchList sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        SearchResultEntity *entity_0 = obj1;
+        SearchResultEntity *entity_1 = obj2;
         
         if (entity_0.shop_price > entity_1.shop_price){
             return NSOrderedDescending;
@@ -141,9 +125,9 @@
 
 //降序排序
 -(NSArray*)goodsPriceDownSort{
-    NSArray *sortArray = [listArr sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
-        ClassiftGoodsEntity *entity_0 = obj1;
-        ClassiftGoodsEntity *entity_1 = obj2;
+    NSArray *sortArray = [_searchList sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        SearchResultEntity *entity_0 = obj1;
+        SearchResultEntity *entity_1 = obj2;
         
         if (entity_0.shop_price < entity_1.shop_price){
             return NSOrderedDescending;
@@ -153,21 +137,6 @@
         return NSOrderedSame;
     }];
     return sortArray;
-}
-
-#pragma mark modelDelegate
--(void)loadClassifyGoodsListDataSucceed{
-    [self unShowWaitView];
-    listArr = _model.goodsListArr;
-    [_tabelView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-}
-
--(void)loadClassifyGoodsListDataFailed:(NSString *)errorMsg{
-    [self unShowWaitView];
-    if(!errorMsg){
-        errorMsg = @"获取商品列表失败";
-    }
-    [UtilTool showAlertView:errorMsg];
 }
 
 @end

@@ -60,6 +60,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
+    [self addNotification];
 }
 
 -(id)init{
@@ -106,7 +107,6 @@
     [rightView unshow:NO];
     [self.view addSubview:rightView];
     
-    [self addNotification];
     [self initDropList];
 }
 
@@ -791,6 +791,7 @@
     [_model setDelegate:nil];
     //    [_shopModel setDelegate:nil];
     [rightView removeNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

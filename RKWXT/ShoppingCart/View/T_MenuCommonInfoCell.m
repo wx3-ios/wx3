@@ -75,7 +75,7 @@
         
         CGFloat priceXgap = xOffset+nameWidth;
         _newPrice = [[WXUILabel alloc] init];
-        _newPrice.frame = CGRectMake(priceXgap, yOffset+10, IPHONE_SCREEN_WIDTH-priceXgap, nameHeight);
+        _newPrice.frame = CGRectMake(priceXgap, yOffset+10, IPHONE_SCREEN_WIDTH-priceXgap-5, nameHeight);
         [_newPrice setBackgroundColor:[UIColor clearColor]];
         [_newPrice setTextAlignment:NSTextAlignmentRight];
         [_newPrice setTextColor:WXColorWithInteger(newPriceColor)];

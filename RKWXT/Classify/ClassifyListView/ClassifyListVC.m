@@ -119,7 +119,13 @@
 
 -(void)gotoGoodsListVC:(NSNotification*)notification{
     NSDictionary *catDic = notification.object;
-    if([[[catDic allKeys] objectAtIndex:0] isEqualToString:@"goods_name"] || [[[catDic allKeys] objectAtIndex:0] isEqualToString:@"goods_home_img"] || [[[catDic allKeys] objectAtIndex:0] isEqualToString:@"goods_id"]){
+    BOOL isGoods = NO;
+    for(NSString *key in [catDic allKeys]){
+        if([key isEqualToString:@"goods_id"]){
+            isGoods = YES;
+        }
+    }
+    if(isGoods){
         NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
         goodsInfoVC.goodsId = [[catDic objectForKey:@"goods_id"] integerValue];
         goodsInfoVC.goodsInfo_type = GoodsInfo_Normal;

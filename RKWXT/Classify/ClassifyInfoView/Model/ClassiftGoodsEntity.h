@@ -12,6 +12,8 @@
 @property (nonatomic,assign) NSInteger goodsID;
 @property (nonatomic,strong) NSString *goodsImg;
 @property (nonatomic,strong) NSString *goodsName;
+@property (nonatomic,assign) CGFloat market_price;
+@property (nonatomic,assign) CGFloat shop_price;
 
 +(ClassiftGoodsEntity*)initCLassifyGoodsListData:(NSDictionary*)dic;
 

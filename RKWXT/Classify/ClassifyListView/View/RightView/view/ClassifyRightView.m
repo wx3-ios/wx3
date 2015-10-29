@@ -70,7 +70,13 @@
 
 -(void)load{
     NSDictionary *dic = self.cpxViewInfo;
-    if([[[dic allKeys] objectAtIndex:0] isEqualToString:@"goods_name"] || [[[dic allKeys] objectAtIndex:0] isEqualToString:@"goods_home_img"] || [[[dic allKeys] objectAtIndex:0] isEqualToString:@"goods_id"]){
+    BOOL isGoods = NO;
+    for(NSString *key in [dic allKeys]){
+        if([key isEqualToString:@"goods_id"]){
+            isGoods = YES;
+        }
+    }
+    if(isGoods){
         [_nameLabel setText:[dic objectForKey:@"goods_name"]];
         [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,[dic objectForKey:@"goods_home_img"]]];
         [_imgView load];
