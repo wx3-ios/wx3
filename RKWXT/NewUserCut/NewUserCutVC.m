@@ -490,9 +490,10 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     if(userAliEntity.userali_type == UserAliCount_Type_Failed){
         [UtilTool showAlertView:@"抱歉，您的支付宝账户信息审核未通过，请重新填写"];
         
-        ConfirmUserAliPayVC *comfirmVC = [[ConfirmUserAliPayVC alloc] init];
-        comfirmVC.titleString = @"验证信息";
-        [self.wxNavigationController pushViewController:comfirmVC];
+        ConfirmUserAliPayVC *confirmVC = [[ConfirmUserAliPayVC alloc] init];
+        confirmVC.titleString = @"验证信息";
+        confirmVC.confirmType = Confirm_Type_Change;
+        [self.wxNavigationController pushViewController:confirmVC];
     }
 }
 

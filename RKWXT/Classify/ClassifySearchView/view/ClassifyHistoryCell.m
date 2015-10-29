@@ -51,13 +51,15 @@
         [nameLabel setFont:WXFont(12.0)];
         [nameLabel setTextColor:[UIColor grayColor]];
     }else{
-        [_timeLabel setHidden:NO];
         [nameLabel setText:entity.recordName];
-        [_timeLabel setFont:WXFont(14.0)];
+        [nameLabel setTextColor:WXColorWithInteger(0x606062)];
+        [nameLabel setFont:WXFont(14.0)];
 
         NSString *time = [UtilTool getDateTimeFor:entity.recordTime type:1];
         NSString *timerStr = [self dateWithTimeInterval:time];
         [_timeLabel setText:timerStr];
+        [_timeLabel setHidden:NO];
+        [_timeLabel setFont:WXFont(14.0)];
     }
 }
 

@@ -55,6 +55,10 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
+    if(_historyModel){
+        [self addOBS];
+        [_historyModel loadClassifyHistoryList];
+    }
 }
 
 -(void)viewDidLoad{

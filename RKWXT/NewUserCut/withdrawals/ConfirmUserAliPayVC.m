@@ -334,7 +334,11 @@
         }
         [_model confirmUserAliAcountWith:_userTextField.text with:_nameField.text with:UserAli_Change with:[_codeField.text integerValue] with:_userPhoneField.text];
     }else{
-        [_model confirmUserAliAcountWith:_userTextField.text with:_nameField.text with:UserAli_Confirm with:[_codeField.text integerValue] with:_userPhoneField.text];
+        if(_confirmType == Confirm_Type_Change){
+            [_model confirmUserAliAcountWith:_userTextField.text with:_nameField.text with:UserAli_Change with:[_codeField.text integerValue] with:_userPhoneField.text];
+        }else{
+            [_model confirmUserAliAcountWith:_userTextField.text with:_nameField.text with:UserAli_Confirm with:[_codeField.text integerValue] with:_userPhoneField.text];
+        }
     }
 }
 
