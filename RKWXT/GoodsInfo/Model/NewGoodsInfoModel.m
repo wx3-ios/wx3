@@ -13,6 +13,8 @@
 
 @interface NewGoodsInfoModel(){
     NSMutableArray *_dataList;
+    BOOL use_red;
+    BOOL use_cut;
 }
 @end
 
@@ -52,6 +54,18 @@
         entity.customInfoArr = [self storeStringInfoAttrArrayWithArr:attrArr];
         entity.imgArr = [self goodsInfoTopImgArrWithImgString:entity.bigImg];
         [_dataList addObject:entity];
+        if(entity.use_cut){
+            use_cut = YES;
+        }
+        if(entity.use_red){
+            use_red = YES;
+        }
+    }
+    if(use_cut || use_red){
+        for(GoodsInfoEntity *ent in _dataList){
+            ent.use_red = use_red;
+            ent.use_cut = use_cut;
+        }
     }
 }
 
