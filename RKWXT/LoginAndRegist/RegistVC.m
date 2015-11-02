@@ -244,7 +244,7 @@ enum{
     [_pwdTextfield setLeftViewMode:UITextFieldViewModeAlways];
     [_pwdTextfield setKeyboardType:UIKeyboardTypeASCIICapable];
     [_pwdTextfield setSecureTextEntry:YES];
-    [_pwdTextfield setPlaceHolder:@" 请输入密码" color:WXColorWithInteger(0xda7c7b)];
+    [_pwdTextfield setPlaceHolder:@" 请设置密码" color:WXColorWithInteger(0xda7c7b)];
     UIImage *passwordIcon = [UIImage imageNamed:@"RegistUserPwdImg.png"];
     UIImageView *leftView1 = [[UIImageView alloc] initWithImage:passwordIcon];
     [_pwdTextfield setLeftView:leftView1 leftGap:leftViewGap rightGap:textGap];

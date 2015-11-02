@@ -7936,7 +7936,7 @@
 					"$(PROJECT_DIR)/RKWXT/PayInterface/Alipay",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wx.company.pushdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";
