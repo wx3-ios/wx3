@@ -10,14 +10,6 @@
 
 #define GoodsInfoPacketCellHeight 44.0
 
-@protocol GoodsInfoPacketCellDelegate;
-
 @interface GoodsInfoPacketCell : WXUITableViewCell
-@property (nonatomic,assign) id<GoodsInfoPacketCellDelegate>delegate;
-
-@end
-
-@protocol GoodsInfoPacketCellDelegate <NSObject>
--(void)goodsInfoPacketCellBtnClicked;
 
 @end

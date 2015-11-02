@@ -34,7 +34,7 @@
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate,GoodsInfoPacketCellDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     WXUIImageView *topImgView;
@@ -438,7 +438,6 @@
     if([_model.data count] > 0){
         [cell setCellInfo:[_model.data objectAtIndex:0]];
     }
-    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -536,6 +535,9 @@
     NSInteger section = indexPath.section;
     if(section == T_GoodsInfo_WebShow){
         [self gotoWebView];
+    }
+    if(section == T_GoodsInfo_DownView){
+        [self goodsInfoPacketCellBtnClicked];
     }
     if(section == T_GoodsInfo_BaseData){
         if(indexPath.row == 0){

@@ -64,7 +64,7 @@
         btn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-5-btnWidth, (GoodsInfoPacketCellHeight-btnHeight)/2, btnWidth, btnHeight);
         [btn setBackgroundColor:[UIColor clearColor]];
         [btn setImage:[UIImage imageNamed:@"GoodsInfoDownImg.png"] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(showUsePacketAndCutView) forControlEvents:UIControlEventTouchUpInside];
+        [btn setEnabled:NO];
         [self.contentView addSubview:btn];
     }
     return self;
@@ -92,12 +92,6 @@
 }
 
 -(void)load{
-}
-
--(void)showUsePacketAndCutView{
-    if(_delegate && [_delegate respondsToSelector:@selector(goodsInfoPacketCellBtnClicked)]){
-        [_delegate goodsInfoPacketCellBtnClicked];
-    }
 }
 
 @end

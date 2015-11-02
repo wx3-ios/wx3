@@ -74,7 +74,7 @@
 
 -(void)load{
     ClassiftGoodsEntity *entity = self.cellInfo;
-    [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goodsImg]];
+    [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@",entity.goodsImg]];
     [_imgView load];
     [_nameLabel setText:entity.goodsName];
     
