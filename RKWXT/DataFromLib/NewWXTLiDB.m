@@ -8,7 +8,7 @@
 
 #import "NewWXTLiDB.h"
 #import "SCartListModel.h"
-#import "UserAddressModel.h"
+#import "NewUserAddressModel.h"
 #import "UserBonusModel.h"
 #import "OrderListModel.h"
 #import "UserHeaderModel.h"
@@ -28,7 +28,8 @@
 //    [[SCartListModel shareShoppingCartModel] loadShoppingCartList];
     [[UserBonusModel shareUserBonusModel] loadUserBonus];
     [[UserBonusModel shareUserBonusModel] loadUserBonusMoney];
-    [[UserAddressModel shareUserAddress] loadUserAddress];
+    [NewUserAddressModel shareUserAddress].address_type = UserAddress_Type_Search;
+    [[NewUserAddressModel shareUserAddress] loadUserAddress];
     [[OrderListModel shareOrderListModel] loadUserOrderList:0 to:5];
     [[UserHeaderModel shareUserHeaderModel] loadUserHeaderImageWith];
 }

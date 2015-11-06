@@ -18,6 +18,7 @@
 #import "NewWXTLiDB.h"
 #import "ForgetPwdVC.h"
 #import "APService.h"
+#import "AllAreaDataModel.h"
 
 #define Size self.bounds.size
 #define kLoginBigImgViewheight (220)
@@ -420,8 +421,14 @@
         WXTDatabase * database = [WXTDatabase shareDatabase];
         [database createDatabase:userDefault.wxtID];
         [[NewWXTLiDB sharedWXLibDB] loadData];
+        [self checkAreaVersion];
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
     }];
+}
+
+-(void)checkAreaVersion{
+    AllAreaDataModel *model = [AllAreaDataModel shareAllAreaData];
+    [model checkAllAreaVersion];
 }
 
 -(void)loginFailed:(NSString *)errrorMsg{

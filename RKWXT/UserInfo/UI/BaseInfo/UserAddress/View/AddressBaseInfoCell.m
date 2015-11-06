@@ -7,7 +7,7 @@
 //
 
 #import "AddressBaseInfoCell.h"
-#import "AddressEntity.h"
+#import "AreaEntity.h"
 
 #define Ygap (17+16+20+20)
 
@@ -59,23 +59,23 @@
 }
 
 -(void)load{
-    AddressEntity *entity = self.cellInfo;
+    AreaEntity *entity = self.cellInfo;
     [_namelabel setText:entity.userName];
     [_userPhone setText:entity.userPhone];
-    [_address setText:entity.address];
+    [_address setText:[NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address]];
 }
 
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{
     CGFloat height = 0.0;
-    AddressEntity *entity = cellInfo;
-    height = Ygap+[[self class] addressHeight:entity.address];
+    AreaEntity *entity = cellInfo;
+    height = Ygap+[[self class] addressHeight:[NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address]];
     return height;
 }
 
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    AddressEntity *entity = self.cellInfo;
-    CGFloat addHeight = [[self class] addressHeight:entity.address];
+    AreaEntity *entity = self.cellInfo;
+    CGFloat addHeight = [[self class] addressHeight:[NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address]];
     CGRect rect = _address.frame;
     rect.size.height = addHeight;
     [_address setFrame:rect];

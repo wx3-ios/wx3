@@ -7,7 +7,7 @@
 //
 
 #import "WXUITableViewCell.h"
-@class AddressEntity;
+@class AreaEntity;
 #define AddressManagerCellHeight (39)
 
 @protocol AddressManagerDelegate;
@@ -16,8 +16,8 @@
 @end
 
 @protocol AddressManagerDelegate <NSObject>
--(void)setAddressNormal:(AddressEntity*)entity;
--(void)editAddressInfo:(AddressEntity*)entity;
--(void)delAddress:(AddressEntity*)entity;
+-(void)setAddressNormal:(AreaEntity*)entity;
+-(void)editAddressInfo:(AreaEntity*)entity;
+-(void)delAddress:(AreaEntity*)entity;
 
 @end

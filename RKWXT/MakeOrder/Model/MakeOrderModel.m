@@ -10,8 +10,8 @@
 #import "WXTURLFeedOBJ.h"
 #import "WXTURLFeedOBJ+NewData.h"
 #import "GoodsInfoEntity.h"
-#import "UserAddressModel.h"
-#import "AddressEntity.h"
+#import "NewUserAddressModel.h"
+#import "AreaEntity.h"
 #import "NSObject+SBJson.h"
 
 @interface MakeOrderModel(){
@@ -42,7 +42,7 @@
 -(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString *)remark withGoodsList:(NSArray *)goodsList{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    AddressEntity *entity = [self addressEntity];
+    AreaEntity *entity = [self addressEntity];
     if(!entity){
         if (_delegate && [_delegate respondsToSelector:@selector(makeOrderFailed:)]){
             [_delegate makeOrderFailed:@"请设置收货信息"];
@@ -94,12 +94,12 @@
     return arr;
 }
 
--(AddressEntity *)addressEntity{
-    if([[UserAddressModel shareUserAddress].userAddressArr count] == 0){
+-(AreaEntity *)addressEntity{
+    if([[NewUserAddressModel shareUserAddress].userAddressArr count] == 0){
         return nil;
     }
-    AddressEntity *entity = nil;
-    for(AddressEntity *ent in [UserAddressModel shareUserAddress].userAddressArr){
+    AreaEntity *entity = nil;
+    for(AreaEntity *ent in [NewUserAddressModel shareUserAddress].userAddressArr){
         if(ent.normalID == 1){
             entity = ent;
         }

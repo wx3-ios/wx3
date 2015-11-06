@@ -213,6 +213,15 @@
         case WXT_UrlFeed_Type_New_SearchGoods:
             url = @"/app_search.php";
             break;
+        case WXT_UrlFeed_Type_New_CheckAreaVersion:
+            url = @"";
+            break;
+        case WXT_UrlFeed_Type_New_LoadAreaData:
+            url = @"/get_all_area.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_NewUserAddress:
+            url = @"/get_user_address2.php";
+            break;
         default:
             break;
     }

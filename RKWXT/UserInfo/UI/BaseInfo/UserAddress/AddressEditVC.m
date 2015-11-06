@@ -32,10 +32,10 @@
 
 -(void)addNotification{
     NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
-    [notification addObserver:self selector:@selector(insertAddressSucceed) name:K_Notification_UserAddress_InsertDataSucceed object:nil];
-    [notification addObserver:self selector:@selector(insertAddressFailed:) name:K_Notification_UserAddress_InsertDataFailed object:nil];
-    [notification addObserver:self selector:@selector(modifyAddressSucceed) name:K_Notification_UserAddress_ModifyDateSucceed object:nil];
-    [notification addObserver:self selector:@selector(modifyAddressFailed:) name:K_Notification_UserAddress_ModifyDateFailed object:nil];
+//    [notification addObserver:self selector:@selector(insertAddressSucceed) name:K_Notification_UserAddress_InsertDataSucceed object:nil];
+//    [notification addObserver:self selector:@selector(insertAddressFailed:) name:K_Notification_UserAddress_InsertDataFailed object:nil];
+//    [notification addObserver:self selector:@selector(modifyAddressSucceed) name:K_Notification_UserAddress_ModifyDateSucceed object:nil];
+//    [notification addObserver:self selector:@selector(modifyAddressFailed:) name:K_Notification_UserAddress_ModifyDateFailed object:nil];
 }
 
 -(void)removeNotification{
@@ -112,9 +112,9 @@
             return;
         }
         if(_address_type == Address_Type_Insert){
-            [[UserAddressModel shareUserAddress] insertUserAddressWithName:_nameTextfield.text withAdd:_addressTextfield.text withPhone:_phoneTextfield.text];
+//            [[UserAddressModel shareUserAddress] insertUserAddressWithName:_nameTextfield.text withAdd:_addressTextfield.text withPhone:_phoneTextfield.text];
         }else{
-            [[UserAddressModel shareUserAddress] modifyUserAddressWithName:_nameTextfield.text withAdd:_addressTextfield.text withPhone:_phoneTextfield.text withID:_entity.address_id];
+//            [[UserAddressModel shareUserAddress] modifyUserAddressWithName:_nameTextfield.text withAdd:_addressTextfield.text withPhone:_phoneTextfield.text withID:_entity.addressID];
         }
         [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     }else{

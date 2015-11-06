@@ -8,8 +8,8 @@
 
 #import "LuckyGoodsMakeOrderModel.h"
 #import "WXTURLFeedOBJ+NewData.h"
-#import "UserAddressModel.h"
-#import "AddressEntity.h"
+#import "NewUserAddressModel.h"
+#import "AreaEntity.h"
 
 @interface LuckyGoodsMakeOrderModel(){
 }
@@ -28,7 +28,7 @@
 
 -(void)luckyGoodsMakeOrderWith:(NSInteger)lottery_id withGoodsID:(NSInteger)goods_id withName:(NSString *)goods_name withImgUrl:(NSString *)imgUrl withGoodsStockID:(NSInteger)stockID withStockName:(NSString *)stockName WithMoney:(CGFloat)money withMarket:(CGFloat)marketPrice{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    AddressEntity *entity = [self addressEntity];
+    AreaEntity *entity = [self addressEntity];
     if(!entity){
         if (_delegate && [_delegate respondsToSelector:@selector(luckyGoodsMakeOrderFailed:)]){
             [_delegate luckyGoodsMakeOrderFailed:@"请设置收货信息"];
@@ -50,12 +50,12 @@
     }];
 }
 
--(AddressEntity *)addressEntity{
-    if([[UserAddressModel shareUserAddress].userAddressArr count] == 0){
+-(AreaEntity *)addressEntity{
+    if([[NewUserAddressModel shareUserAddress].userAddressArr count] == 0){
         return nil;
     }
-    AddressEntity *entity = nil;
-    for(AddressEntity *ent in [UserAddressModel shareUserAddress].userAddressArr){
+    AreaEntity *entity = nil;
+    for(AreaEntity *ent in [NewUserAddressModel shareUserAddress].userAddressArr){
         if(ent.normalID == 1){
             entity = ent;
         }

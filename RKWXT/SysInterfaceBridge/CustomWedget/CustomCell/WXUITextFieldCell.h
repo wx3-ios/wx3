@@ -15,6 +15,7 @@
 //默认为100
 @property (nonatomic,assign)CGFloat textLabelWidth;
 @property (nonatomic,readonly)WXUITextField *textField;
+@property (nonatomic,strong) NSString *alertText;
 @property (nonatomic,assign)id<WXUITextFieldCellDelegate>delegate;
 @end
 

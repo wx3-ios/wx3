@@ -8,8 +8,8 @@
 
 #import "MakeOrderUserInfoCell.h"
 #import "MakeOrderDef.h"
-#import "UserAddressModel.h"
-#import "AddressEntity.h"
+#import "NewUserAddressModel.h"
+#import "AreaEntity.h"
 
 @interface MakeOrderUserInfoCell(){
     UILabel *_nameLabel;
@@ -92,11 +92,11 @@
 }
 
 -(void)load{
-    for(AddressEntity *entity in [UserAddressModel shareUserAddress].userAddressArr){
+    for(AreaEntity *entity in [NewUserAddressModel shareUserAddress].userAddressArr){
         if(entity.normalID == 1){
             [_nameLabel setText:entity.userName];
             [_phoneLabel setText:entity.userPhone];
-            [_addLabel setText:entity.address];
+            [_addLabel setText:[NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address]];
         }
     }
 }

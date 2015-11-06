@@ -24,7 +24,7 @@
         [self setAddress:addr];
         
         NSInteger addID = [[dic objectForKey:@"address_id"] integerValue];
-        [self setAddress_id:addID];
+        [self setAddressID:addID];
         
         NSString *person = [dic objectForKey:@"consignee"];
         [self setUserName:person];

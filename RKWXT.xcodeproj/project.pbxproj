@@ -92,6 +92,11 @@
 		121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */; };
 		121AC74C1B9EB80A007AC44B /* NewUserCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */; };
 		121AC7531B9ECF15007AC44B /* UserRefereeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC7521B9ECF15007AC44B /* UserRefereeCell.m */; };
+		121E8F921BEAF9BD0047373A /* CityListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8F911BEAF9BD0047373A /* CityListVC.m */; };
+		121E8F961BEB069B0047373A /* AllAreaDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8F951BEB069B0047373A /* AllAreaDataModel.m */; };
+		121E8F991BEB095B0047373A /* LoadAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8F981BEB095B0047373A /* LoadAreaModel.m */; };
+		121E8FA01BEB334D0047373A /* AreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8F9F1BEB334D0047373A /* AreaEntity.m */; };
+		121E8FA61BEB44360047373A /* LocalAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8FA51BEB44360047373A /* LocalAreaModel.m */; };
 		121EBCCC1BDDC7B300D1F307 /* GoodsInfoPacketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121EBCCB1BDDC7B300D1F307 /* GoodsInfoPacketCell.m */; };
 		121EBCD01BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 121EBCCD1BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png */; };
 		121EBCD11BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 121EBCCE1BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png */; };
@@ -112,6 +117,8 @@
 		1229F6271BE1B33600258B43 /* ClassifyResultListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */; };
 		1229F62A1BE1C40500258B43 /* GoodsListDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */; };
 		1229F62B1BE1C40500258B43 /* GoodsListUpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6291BE1C40500258B43 /* GoodsListUpImg@2x.png */; };
+		1232C1D61BEC8D810033DFA0 /* NewUserAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */; };
+		1232C1D91BEC9B160033DFA0 /* NewUserAddressPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D81BEC9B160033DFA0 /* NewUserAddressPhoneCell.m */; };
 		123316E81BCCE803004649DC /* FindJingdong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E31BCCE803004649DC /* FindJingdong@2x.png */; };
 		123316E91BCCE803004649DC /* FIndLvyou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E41BCCE803004649DC /* FIndLvyou@2x.png */; };
 		123316EA1BCCE803004649DC /* FindShop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E51BCCE803004649DC /* FindShop@2x.png */; };
@@ -240,6 +247,11 @@
 		1265FBDE1BC2B39F007D354A /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1265FBCD1BC2B39F007D354A /* openssl_wrapper.m */; };
 		1265FBDF1BC2B39F007D354A /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1265FBCF1BC2B39F007D354A /* RSADataSigner.m */; };
 		1265FBE01BC2B39F007D354A /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 1265FBD11BC2B39F007D354A /* RSADataVerifier.m */; };
+		12665ADC1BE9B2A400FAE406 /* CityAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 12665ADB1BE9B2A400FAE406 /* CityAddress.m */; };
+		12665ADF1BE9B70700FAE406 /* NewAddressEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12665ADE1BE9B70700FAE406 /* NewAddressEditVC.m */; };
+		12665AE21BE9D73200FAE406 /* NewAddressAreaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12665AE11BE9D73200FAE406 /* NewAddressAreaCell.m */; };
+		12665AE51BE9EC4100FAE406 /* NewAddressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12665AE41BE9EC4100FAE406 /* NewAddressInfoCell.m */; };
+		12665AE81BEA061B00FAE406 /* NewAddressTextfieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12665AE71BEA061B00FAE406 /* NewAddressTextfieldCell.m */; };
 		126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */; };
 		126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3D11AB2744600E08A0B /* WXTUserDefault.m */; };
 		126CA3DB1AB278FC00E08A0B /* WXTFindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */; };
@@ -498,6 +510,11 @@
 		12D87DA01BD4ED9300579FF6 /* ClassifyRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87D9F1BD4ED9300579FF6 /* ClassifyRightCell.m */; };
 		12D87DA41BD4F04A00579FF6 /* ClassifyRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA31BD4F04A00579FF6 /* ClassifyRightView.m */; };
 		12D87DA71BD5008E00579FF6 /* ClassifyDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */; };
+		12D96ED01BE84AE70043B219 /* AllCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D96ECF1BE84AE70043B219 /* AllCityModel.m */; };
+		12D96ED21BE8D27B0043B219 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12D96ED11BE8D27B0043B219 /* area.plist */; };
+		12E07FF11BEB7BFB0051DAD5 /* EditUserAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */; };
+		12E07FF71BEB7D410051DAD5 /* AreaDataSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */; };
+		12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */; };
 		12E471C51B1F178D00559995 /* WaitReceiveGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471C41B1F178D00559995 /* WaitReceiveGoodsInfoCell.m */; };
 		12E471C81B1F187000559995 /* WaitReceiveConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471C71B1F187000559995 /* WaitReceiveConsultCell.m */; };
 		12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471CA1B1F19B700559995 /* WaitReceiveTitleCell.m */; };
@@ -1052,6 +1069,16 @@
 		121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserCutVC.m; sourceTree = "<group>"; };
 		121AC7511B9ECF15007AC44B /* UserRefereeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRefereeCell.h; path = RKWXT/NewUserCut/View/UserRefereeCell.h; sourceTree = SOURCE_ROOT; };
 		121AC7521B9ECF15007AC44B /* UserRefereeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRefereeCell.m; path = RKWXT/NewUserCut/View/UserRefereeCell.m; sourceTree = SOURCE_ROOT; };
+		121E8F901BEAF9BD0047373A /* CityListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListVC.h; sourceTree = "<group>"; };
+		121E8F911BEAF9BD0047373A /* CityListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListVC.m; sourceTree = "<group>"; };
+		121E8F941BEB069B0047373A /* AllAreaDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllAreaDataModel.h; sourceTree = "<group>"; };
+		121E8F951BEB069B0047373A /* AllAreaDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllAreaDataModel.m; sourceTree = "<group>"; };
+		121E8F971BEB095B0047373A /* LoadAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadAreaModel.h; sourceTree = "<group>"; };
+		121E8F981BEB095B0047373A /* LoadAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadAreaModel.m; sourceTree = "<group>"; };
+		121E8F9E1BEB334D0047373A /* AreaEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaEntity.h; sourceTree = "<group>"; };
+		121E8F9F1BEB334D0047373A /* AreaEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaEntity.m; sourceTree = "<group>"; };
+		121E8FA41BEB44360047373A /* LocalAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAreaModel.h; sourceTree = "<group>"; };
+		121E8FA51BEB44360047373A /* LocalAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalAreaModel.m; sourceTree = "<group>"; };
 		121EBCCA1BDDC7B300D1F307 /* GoodsInfoPacketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfoPacketCell.h; sourceTree = "<group>"; };
 		121EBCCB1BDDC7B300D1F307 /* GoodsInfoPacketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsInfoPacketCell.m; sourceTree = "<group>"; };
 		121EBCCD1BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsInfoCutImg@2x.png"; sourceTree = "<group>"; };
@@ -1086,6 +1113,10 @@
 		1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyResultListCell.m; sourceTree = "<group>"; };
 		1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsListDownImg@2x.png"; sourceTree = "<group>"; };
 		1229F6291BE1C40500258B43 /* GoodsListUpImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsListUpImg@2x.png"; sourceTree = "<group>"; };
+		1232C1D41BEC8D810033DFA0 /* NewUserAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserAddressModel.h; sourceTree = "<group>"; };
+		1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserAddressModel.m; sourceTree = "<group>"; };
+		1232C1D71BEC9B160033DFA0 /* NewUserAddressPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserAddressPhoneCell.h; sourceTree = "<group>"; };
+		1232C1D81BEC9B160033DFA0 /* NewUserAddressPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserAddressPhoneCell.m; sourceTree = "<group>"; };
 		123316D51BCC9691004649DC /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		123316E31BCCE803004649DC /* FindJingdong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindJingdong@2x.png"; sourceTree = "<group>"; };
 		123316E41BCCE803004649DC /* FIndLvyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FIndLvyou@2x.png"; sourceTree = "<group>"; };
@@ -1313,6 +1344,16 @@
 		1265FBCF1BC2B39F007D354A /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
 		1265FBD01BC2B39F007D354A /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
 		1265FBD11BC2B39F007D354A /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
+		12665ADA1BE9B2A400FAE406 /* CityAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityAddress.h; sourceTree = "<group>"; };
+		12665ADB1BE9B2A400FAE406 /* CityAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityAddress.m; sourceTree = "<group>"; };
+		12665ADD1BE9B70700FAE406 /* NewAddressEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddressEditVC.h; sourceTree = "<group>"; };
+		12665ADE1BE9B70700FAE406 /* NewAddressEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAddressEditVC.m; sourceTree = "<group>"; };
+		12665AE01BE9D73200FAE406 /* NewAddressAreaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddressAreaCell.h; sourceTree = "<group>"; };
+		12665AE11BE9D73200FAE406 /* NewAddressAreaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAddressAreaCell.m; sourceTree = "<group>"; };
+		12665AE31BE9EC4100FAE406 /* NewAddressInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddressInfoCell.h; sourceTree = "<group>"; };
+		12665AE41BE9EC4100FAE406 /* NewAddressInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAddressInfoCell.m; sourceTree = "<group>"; };
+		12665AE61BEA061B00FAE406 /* NewAddressTextfieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddressTextfieldCell.h; sourceTree = "<group>"; };
+		12665AE71BEA061B00FAE406 /* NewAddressTextfieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAddressTextfieldCell.m; sourceTree = "<group>"; };
 		126CA3CC1AB2709D00E08A0B /* WXTUserOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTUserOBJ.h; sourceTree = "<group>"; };
 		126CA3CD1AB2709D00E08A0B /* WXTUserOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTUserOBJ.m; sourceTree = "<group>"; };
 		126CA3CF1AB272EA00E08A0B /* WXTUserdefaultDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXTUserdefaultDefine.h; sourceTree = "<group>"; };
@@ -1766,6 +1807,15 @@
 		12D87DA31BD4F04A00579FF6 /* ClassifyRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyRightView.m; sourceTree = "<group>"; };
 		12D87DA51BD5008E00579FF6 /* ClassifyDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyDownCell.h; sourceTree = "<group>"; };
 		12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyDownCell.m; sourceTree = "<group>"; };
+		12D96ECE1BE84AE70043B219 /* AllCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCityModel.h; sourceTree = "<group>"; };
+		12D96ECF1BE84AE70043B219 /* AllCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCityModel.m; sourceTree = "<group>"; };
+		12D96ED11BE8D27B0043B219 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		12E07FEF1BEB7BFB0051DAD5 /* EditUserAreaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserAreaVC.h; sourceTree = "<group>"; };
+		12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserAreaVC.m; sourceTree = "<group>"; };
+		12E07FF31BEB7D410051DAD5 /* AreaDataSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaDataSql.h; sourceTree = "<group>"; };
+		12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaDataSql.m; sourceTree = "<group>"; };
+		12E07FF51BEB7D410051DAD5 /* AreaInsertData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaInsertData.h; sourceTree = "<group>"; };
+		12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaInsertData.m; sourceTree = "<group>"; };
 		12E471C31B1F178D00559995 /* WaitReceiveGoodsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitReceiveGoodsInfoCell.h; sourceTree = "<group>"; };
 		12E471C41B1F178D00559995 /* WaitReceiveGoodsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitReceiveGoodsInfoCell.m; sourceTree = "<group>"; };
 		12E471C61B1F187000559995 /* WaitReceiveConsultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitReceiveConsultCell.h; sourceTree = "<group>"; };
@@ -2979,6 +3029,22 @@
 			path = Model/View;
 			sourceTree = "<group>";
 		};
+		121E8F931BEB066F0047373A /* AllData */ = {
+			isa = PBXGroup;
+			children = (
+				121E8F941BEB069B0047373A /* AllAreaDataModel.h */,
+				121E8F951BEB069B0047373A /* AllAreaDataModel.m */,
+				121E8F9E1BEB334D0047373A /* AreaEntity.h */,
+				121E8F9F1BEB334D0047373A /* AreaEntity.m */,
+				121E8F971BEB095B0047373A /* LoadAreaModel.h */,
+				121E8F981BEB095B0047373A /* LoadAreaModel.m */,
+				121E8FA41BEB44360047373A /* LocalAreaModel.h */,
+				121E8FA51BEB44360047373A /* LocalAreaModel.m */,
+				12E07FF21BEB7D410051DAD5 /* sql */,
+			);
+			path = AllData;
+			sourceTree = "<group>";
+		};
 		121EBCC91BDDC72200D1F307 /* ShowDownView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3042,6 +3108,15 @@
 				1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		1232C1D31BEC8D630033DFA0 /* NewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1232C1D41BEC8D810033DFA0 /* NewUserAddressModel.h */,
+				1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */,
+			);
+			path = NewModel;
 			sourceTree = "<group>";
 		};
 		123316E21BCCE803004649DC /* FindImage */ = {
@@ -4643,6 +4718,70 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		12D96EC61BE844CC0043B219 /* CitySelect */ = {
+			isa = PBXGroup;
+			children = (
+				12D96ED11BE8D27B0043B219 /* area.plist */,
+				121E8F931BEB066F0047373A /* AllData */,
+				12D96ECB1BE848820043B219 /* Location */,
+				12D96EC71BE8471D0043B219 /* Area */,
+				12D96EC81BE8471D0043B219 /* City */,
+			);
+			path = CitySelect;
+			sourceTree = "<group>";
+		};
+		12D96EC71BE8471D0043B219 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
+		12D96EC81BE8471D0043B219 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				121E8F901BEAF9BD0047373A /* CityListVC.h */,
+				121E8F911BEAF9BD0047373A /* CityListVC.m */,
+				12D96ECC1BE848C50043B219 /* Model */,
+				12D96ECD1BE848C50043B219 /* View */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		12D96ECB1BE848820043B219 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		12D96ECC1BE848C50043B219 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12D96ECE1BE84AE70043B219 /* AllCityModel.h */,
+				12D96ECF1BE84AE70043B219 /* AllCityModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12D96ECD1BE848C50043B219 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12E07FF21BEB7D410051DAD5 /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				12E07FF31BEB7D410051DAD5 /* AreaDataSql.h */,
+				12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */,
+				12E07FF51BEB7D410051DAD5 /* AreaInsertData.h */,
+				12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
 		12E471C21B1F177100559995 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -5029,6 +5168,7 @@
 		12F422821B1D5C2800643DD7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1232C1D31BEC8D630033DFA0 /* NewModel */,
 				12F380331B3BEF6F00E9690C /* UserAddressModel.h */,
 				12F380341B3BEF6F00E9690C /* UserAddressModel.m */,
 				12F422841B1D5CC500643DD7 /* AddressEntity.h */,
@@ -5037,6 +5177,8 @@
 				12F422941B1D85FC00643DD7 /* AddSqlite.m */,
 				12F422961B1D8A4000643DD7 /* InsertAddress.h */,
 				12F422971B1D8A4000643DD7 /* InsertAddress.m */,
+				12665ADA1BE9B2A400FAE406 /* CityAddress.h */,
+				12665ADB1BE9B2A400FAE406 /* CityAddress.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5048,6 +5190,14 @@
 				12F4228B1B1D61E100643DD7 /* AddressBaseInfoCell.m */,
 				12F4228D1B1D61F900643DD7 /* AddressManagerCell.h */,
 				12F4228E1B1D61F900643DD7 /* AddressManagerCell.m */,
+				12665AE01BE9D73200FAE406 /* NewAddressAreaCell.h */,
+				12665AE11BE9D73200FAE406 /* NewAddressAreaCell.m */,
+				12665AE31BE9EC4100FAE406 /* NewAddressInfoCell.h */,
+				12665AE41BE9EC4100FAE406 /* NewAddressInfoCell.m */,
+				12665AE61BEA061B00FAE406 /* NewAddressTextfieldCell.h */,
+				12665AE71BEA061B00FAE406 /* NewAddressTextfieldCell.m */,
+				1232C1D71BEC9B160033DFA0 /* NewUserAddressPhoneCell.h */,
+				1232C1D81BEC9B160033DFA0 /* NewUserAddressPhoneCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5412,6 +5562,10 @@
 				12F422881B1D5D8100643DD7 /* ManagerAddressVC.m */,
 				12F422901B1D830400643DD7 /* AddressEditVC.h */,
 				12F422911B1D830400643DD7 /* AddressEditVC.m */,
+				12665ADD1BE9B70700FAE406 /* NewAddressEditVC.h */,
+				12665ADE1BE9B70700FAE406 /* NewAddressEditVC.m */,
+				12E07FEF1BEB7BFB0051DAD5 /* EditUserAreaVC.h */,
+				12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */,
 				12F422821B1D5C2800643DD7 /* Model */,
 				12F422831B1D5C2800643DD7 /* View */,
 			);
@@ -5528,6 +5682,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				12D96EC61BE844CC0043B219 /* CitySelect */,
 				12D87D821BD4C0C200579FF6 /* Classify */,
 				121AC7471B9EB7CF007AC44B /* NewUserCut */,
 				12C0691B1B7C9A9900C05D42 /* LuckyDraw */,
@@ -7052,6 +7207,7 @@
 				12D52BBC1AC2EF4400C5CE71 /* dtmf-6.aif in Resources */,
 				12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */,
 				12F3CC751B1DE82C00E64DE4 /* AboutWxImg@2x.png in Resources */,
+				12D96ED21BE8D27B0043B219 /* area.plist in Resources */,
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				1241E5401AE9D89B00811D3F /* 1S@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,
@@ -7145,6 +7301,7 @@
 			files = (
 				DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */,
 				775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */,
+				12D96ED01BE84AE70043B219 /* AllCityModel.m in Sources */,
 				7758430C1AB95A300039B129 /* WXActivityButton.m in Sources */,
 				12F46A531B2034F500B8EC98 /* NewGoodsInfoModel.m in Sources */,
 				DD0E38B61B1BE5AC00AB4DB9 /* WXBaseSqlite.m in Sources */,
@@ -7153,6 +7310,7 @@
 				12F67BB81B32C87800F5BDE1 /* RightGoodsSelNumCell.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
 				12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */,
+				12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */,
 				1284CC8C1B54DEB500D98F79 /* OrderInfoGoodsListCell.m in Sources */,
 				DDEA9EBE1B1BF2AD00530C1C /* WXTPayViewController.m in Sources */,
 				12A3478B1B73497F00D10C17 /* UserCutCell.m in Sources */,
@@ -7218,6 +7376,7 @@
 				12F3CC8B1B1E00AF00E64DE4 /* PersonalOrderInfoCell.m in Sources */,
 				DD0E38BA1B1BE5AC00AB4DB9 /* SysMsgDetailVC.m in Sources */,
 				129EEBA51B97DC930062349E /* SDWebImageDownloader.m in Sources */,
+				121E8FA61BEB44360047373A /* LocalAreaModel.m in Sources */,
 				128E296A1BD63BDC00137688 /* ClassifySrarchListCell.m in Sources */,
 				77D197621ABC246000FAA4CE /* RootViewController.m in Sources */,
 				12AA53011B7DF140003B893F /* LuckyGoodsDesCell.m in Sources */,
@@ -7232,6 +7391,7 @@
 				12AA52FE1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m in Sources */,
 				775842FB1AB95A300039B129 /* UIImage+KIAdditions.m in Sources */,
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
+				12665AE21BE9D73200FAE406 /* NewAddressAreaCell.m in Sources */,
 				DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */,
 				12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */,
 				120EC79C1BB954A400538637 /* ConfirmUserAliModel.m in Sources */,
@@ -7279,6 +7439,7 @@
 				1265FBDA1BC2B39F007D354A /* DataSigner.m in Sources */,
 				775843231AB95A300039B129 /* WXUIButton.m in Sources */,
 				775842B41AB95A300039B129 /* WXFileManager.m in Sources */,
+				12E07FF71BEB7D410051DAD5 /* AreaDataSql.m in Sources */,
 				12F46A591B20513200B8EC98 /* NewGoodsInfoRightView.m in Sources */,
 				128221901B1847E7004613BB /* URLNetCache.m in Sources */,
 				DDB58F541AD3C6A2006248E9 /* WXKeyPadModel.m in Sources */,
@@ -7299,6 +7460,7 @@
 				120A2C161AB17A92006A28B1 /* SignModel.m in Sources */,
 				128B59911B53D6C5006D790B /* WXTMallViewController.m in Sources */,
 				77DB942E1AAFF0BE0021A816 /* NSDictionary+Plist.m in Sources */,
+				1232C1D91BEC9B160033DFA0 /* NewUserAddressPhoneCell.m in Sources */,
 				DDB58F531AD3C6A2006248E9 /* SysContacterEntityEx.m in Sources */,
 				12B05DF21B8C3CC80083D648 /* ShareSucceedModel.m in Sources */,
 				12F963341B3D4BDF00FF6A3E /* SBJsonStreamParserState.m in Sources */,
@@ -7341,10 +7503,12 @@
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
 				1205952F1BCF994F009E6986 /* NLMainViewController.m in Sources */,
+				12665ADC1BE9B2A400FAE406 /* CityAddress.m in Sources */,
 				DD0E38AE1B1BE5AC00AB4DB9 /* SysMsgItem.m in Sources */,
 				DDB58F491AD3C6A2006248E9 /* ContactBaseEntity.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
 				12C12F2B1B81BA1300345BEE /* LuckyOrderCompanyCell.m in Sources */,
+				12665AE81BEA061B00FAE406 /* NewAddressTextfieldCell.m in Sources */,
 				120A2BEE1AB135DD006A28B1 /* T_SignGifView.m in Sources */,
 				12F2D7DC1B1EA96B00C8017F /* DLScrollTabbarView.m in Sources */,
 				DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */,
@@ -7561,6 +7725,7 @@
 				77DB94201AAFED400021A816 /* UIViewController+Helper.m in Sources */,
 				127329101B5C9336002AD4AE /* PopMenu.m in Sources */,
 				128221C31B184C3B004613BB /* ASIAuthenticationDialog.m in Sources */,
+				12665AE51BE9EC4100FAE406 /* NewAddressInfoCell.m in Sources */,
 				1229F6271BE1B33600258B43 /* ClassifyResultListCell.m in Sources */,
 				12F46A221B1FE40D00B8EC98 /* NewHomePageModel.m in Sources */,
 				1214B5961BBA65AC00A7D810 /* AliRecordListCell.m in Sources */,
@@ -7589,6 +7754,7 @@
 				120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */,
 				12F422891B1D5D8100643DD7 /* ManagerAddressVC.m in Sources */,
 				12C2CE2B1BA1331C00797DA4 /* MyClientMoneyCell.m in Sources */,
+				121E8F921BEAF9BD0047373A /* CityListVC.m in Sources */,
 				12D87DA01BD4ED9300579FF6 /* ClassifyRightCell.m in Sources */,
 				775842DF1AB95A300039B129 /* UIResponder+FirstResponder.m in Sources */,
 				128E295E1BD5EBE600137688 /* ClassifySearchVC.m in Sources */,
@@ -7646,7 +7812,9 @@
 				12A9D4401BD72E6B0033B238 /* ClassifySql.m in Sources */,
 				120EC77F1BB8F31800538637 /* mask.c in Sources */,
 				2563B48B1AAAFF6B00C04227 /* HttpNetUtils.m in Sources */,
+				12665ADF1BE9B70700FAE406 /* NewAddressEditVC.m in Sources */,
 				775843381AB95A300039B129 /* WXUIViewController.m in Sources */,
+				12E07FF11BEB7BFB0051DAD5 /* EditUserAreaVC.m in Sources */,
 				2563B3F01AAAD74000C04227 /* RKWXT.xcdatamodeld in Sources */,
 				12BD30F21B3E78B400170316 /* OrderAlipayCell.m in Sources */,
 				12F916101B198AA600C94717 /* HomePageTopEntity.m in Sources */,
@@ -7661,6 +7829,7 @@
 				775842DE1AB95A300039B129 /* UIImage+iPhone5.m in Sources */,
 				128136A71B33C0AF005F9929 /* SCartListModel.m in Sources */,
 				1282217B1B18467A004613BB /* T_ChangeCell.m in Sources */,
+				1232C1D61BEC8D810033DFA0 /* NewUserAddressModel.m in Sources */,
 				775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */,
 				775843351AB95A300039B129 /* WXUITextField.m in Sources */,
 				775842D51AB95A300039B129 /* NSString+Encrypt.m in Sources */,
@@ -7674,6 +7843,7 @@
 				129F32A31B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m in Sources */,
 				775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */,
 				12F2D7F61B1EE7C300C8017F /* OrderAllListVC.m in Sources */,
+				121E8F991BEB095B0047373A /* LoadAreaModel.m in Sources */,
 				120EC7811BB8F31800538637 /* qrinput.c in Sources */,
 				12228A761AB1C0F200CF0800 /* RegistModel.m in Sources */,
 				12F46A4D1B202F8800B8EC98 /* NewGoodsInfoBDCell.m in Sources */,
@@ -7686,6 +7856,7 @@
 				775C583A1ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m in Sources */,
 				128221841B18467A004613BB /* WxIntructionCell.m in Sources */,
 				12F2D7DB1B1EA96B00C8017F /* DLFixedTabbarView.m in Sources */,
+				121E8FA01BEB334D0047373A /* AreaEntity.m in Sources */,
 				775842E51AB95A300039B129 /* WXRemotionImgBtn.m in Sources */,
 				775842EC1AB95A300039B129 /* CrystalNavigationView.m in Sources */,
 				7758430F1AB95A300039B129 /* WXMultiGuideView.m in Sources */,
@@ -7704,6 +7875,7 @@
 				DD0E38BB1B1BE5AC00AB4DB9 /* SysMsgModel.m in Sources */,
 				12A0B43C1B8DBB47005682EA /* FTPHelper.m in Sources */,
 				12F2D7FA1B1EE96500C8017F /* OrderShopCell.m in Sources */,
+				121E8F961BEB069B0047373A /* AllAreaDataModel.m in Sources */,
 				1243CCB91AE7C31B003E0943 /* WXTUITabbarVC.m in Sources */,
 				12D0C8761AB6AA8C0039A197 /* WXTVersion.m in Sources */,
 				775C58C81ABA7B75005B6B40 /* ShopInfo.m in Sources */,
@@ -7936,7 +8108,7 @@
 					"$(PROJECT_DIR)/RKWXT/PayInterface/Alipay",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wx.company.pushdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "eda59b2e-976d-40d1-80d3-f16406e0dd71";

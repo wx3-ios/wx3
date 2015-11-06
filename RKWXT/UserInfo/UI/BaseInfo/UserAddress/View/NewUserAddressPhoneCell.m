@@ -1,31 +1,27 @@
 //
-//  WXUITextFieldCell.m
-//  CallTesting
+//  NewUserAddressPhoneCell.m
+//  RKWXT
 //
-//  Created by le ting on 5/13/14.
-//  Copyright (c) 2014 ios. All rights reserved.
+//  Created by SHB on 15/11/6.
+//  Copyright © 2015年 roderick. All rights reserved.
 //
 
-#import "WXUITextFieldCell.h"
+#import "NewUserAddressPhoneCell.h"
 
-@interface WXUITextFieldCell()<UITextFieldDelegate>
-{
+@interface NewUserAddressPhoneCell()<UITextFieldDelegate>{
     WXUITextField *_textField;
 }
 @end
 
-@implementation WXUITextFieldCell
+@implementation NewUserAddressPhoneCell
 @synthesize textLabelWidth = _textLabelWidth;
 @synthesize delegate = _delegate;
 
-- (void)dealloc{
-    _delegate = nil;
-//    [super dealloc];
-}
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
-        _textField = [[WXUITextField alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        CGFloat xOffset = 10;
+        CGFloat height = 25;
+        _textField = [[WXUITextField alloc] initWithFrame:CGRectMake(xOffset, (44-height)/2, IPHONE_SCREEN_WIDTH-2*xOffset, height)];
         [_textField setTextAlignment:NSTextAlignmentLeft];
         [_textField setReturnKeyType:UIReturnKeyDone];
         [_textField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -40,20 +36,15 @@
 
 -(void)load{
     [_textField setPlaceholder:_alertText];
-}
-
-- (void)setFrame:(CGRect)frame{
-    [super setFrame:frame];
-    
-    CGSize size = frame.size;
-    CGFloat textLabelWidth = self.textLabelWidth;
-    CGRect textFieldRect = CGRectMake(textLabelWidth, 0, size.width-textLabelWidth - kTextFieldGap, size.height);
-    [_textField setFrame:textFieldRect];
+    NSString *phone = self.cellInfo;
+    if(phone){
+        [_textField setText:phone];
+    }
 }
 
 - (void)textValueDidChanged:(id)sender{
-    if(_delegate && [_delegate respondsToSelector:@selector(textFiledValueDidChanged:)]){
-        [_delegate textFiledValueDidChanged:self];
+    if(_delegate && [_delegate respondsToSelector:@selector(textFiledPhoneValueDidChanged:)]){
+        [_delegate textFiledPhoneValueDidChanged:_textField.text];
     }
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "AddressManagerCell.h"
-#import "AddressEntity.h"
+#import "AreaEntity.h"
 
 @interface AddressManagerCell(){
     WXUIButton *_selBtn;
@@ -29,7 +29,7 @@
         CGSize size = img.size;
         size.width += 3.0;
         size.height += 3.0;
-        _selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _selBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         _selBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-size.height)/2, size.width, size.height);
         [_selBtn setBackgroundColor:[UIColor clearColor]];
         [_selBtn setImage:img forState:UIControlStateNormal];
@@ -50,7 +50,7 @@
         
         xOffset = IPHONE_SCREEN_WIDTH-105;
         UIImage *editImg = [UIImage imageNamed:@"AddressEdit.png"];
-        WXUIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        WXUIButton *editBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         editBtn.frame = CGRectMake(xOffset, (AddressManagerCellHeight-editImg.size.height)/2, editImg.size.width+norAddWidth/2, editImg.size.height);
         [editBtn setBackgroundColor:[UIColor clearColor]];
         [editBtn setImage:editImg forState:UIControlStateNormal];
@@ -77,7 +77,7 @@
         
         UIImage *delImg = [UIImage imageNamed:@"AddressDel.png"];
         xGap += labelWidth-10;
-        WXUIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        WXUIButton *delBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         delBtn.frame = CGRectMake(xGap, (AddressManagerCellHeight-delImg.size.height)/2, delImg.size.width+labelWidth, delImg.size.height);
         [delBtn setBackgroundColor:[UIColor clearColor]];
         [delBtn setImage:delImg forState:UIControlStateNormal];
@@ -104,7 +104,7 @@
 }
 
 -(void)load{
-    AddressEntity *ent = self.cellInfo;
+    AreaEntity *ent = self.cellInfo;
     [self setAddressNormal:(ent.normalID==1?YES:NO)];
 }
 
@@ -123,21 +123,21 @@
 }
 
 -(void)setAddressCircleNormal{
-    AddressEntity *ent = self.cellInfo;
+    AreaEntity *ent = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(setAddressNormal:)]){
         [_delegate setAddressNormal:ent];
     }
 }
 
 -(void)editAddress{
-    AddressEntity *entity = self.cellInfo;
+    AreaEntity *entity = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(editAddressInfo:)]){
         [_delegate editAddressInfo:entity];
     }
 }
 
 -(void)delAdd{
-    AddressEntity *entity = self.cellInfo;
+    AreaEntity *entity = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(delAddress:)]){
         [_delegate delAddress:entity];
     }
