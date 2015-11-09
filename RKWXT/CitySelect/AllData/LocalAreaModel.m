@@ -48,7 +48,7 @@
 
 -(void)loadLocalAreaData{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"test3.plist"];
+        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:ServiceAreaPlist];
         NSMutableDictionary *infolist = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
         localDic = infolist;
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -58,6 +58,9 @@
 }
 
 -(void)startLoadAreaData{
+//    if([localDic count] == 0){
+//        return;
+//    }
     [self loadAllProvince:localDic];
 }
 

@@ -19,7 +19,7 @@
         WXUIButton *cartBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         cartBtn.frame = CGRectMake(xOffset, (PersonalOrderInfoCellHeight-btnHeight)/2+3, btnWidth, btnHeight);
         [cartBtn setImage:[UIImage imageNamed:@"ShoppingCartImg.png"] forState:UIControlStateNormal];
-        [cartBtn setImageEdgeInsets:(UIEdgeInsetsMake(0, 28, btnHeight/2, 0))];
+        [cartBtn setImageEdgeInsets:(UIEdgeInsetsMake(0, 30, btnHeight/2, 0))];
         [cartBtn setTitle:@"购物车" forState:UIControlStateNormal];
         [cartBtn setTitleEdgeInsets:(UIEdgeInsetsMake(20, 0, 0, 0))];
         [cartBtn setTitleColor:WXColorWithInteger(0x707070) forState:UIControlStateNormal];
@@ -32,7 +32,7 @@
         WXUIButton *waitPayBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         waitPayBtn.frame = CGRectMake(xOffset, (PersonalOrderInfoCellHeight-btnHeight)/2+3, btnWidth, btnHeight);
         [waitPayBtn setImage:[UIImage imageNamed:@"WaitingPayImg.png"] forState:UIControlStateNormal];
-        [waitPayBtn setImageEdgeInsets:(UIEdgeInsetsMake(0, 28, btnHeight/2, 0))];
+        [waitPayBtn setImageEdgeInsets:(UIEdgeInsetsMake(0, 35, btnHeight/2, 0))];
         [waitPayBtn setTitle:@"待付款" forState:UIControlStateNormal];
         [waitPayBtn setTitleEdgeInsets:(UIEdgeInsetsMake(20, 0, 0, 0))];
         [waitPayBtn setTitleColor:WXColorWithInteger(0x707070) forState:UIControlStateNormal];

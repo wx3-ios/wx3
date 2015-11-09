@@ -73,7 +73,7 @@
     for(GoodsInfoEntity *entity in listArr){
         price += entity.buyNumber*entity.stockPrice;
     }
-    NSString *moneyStr = [NSString stringWithFormat:@"￥%.2f",price-_bonusMoney];
+    NSString *moneyStr = [NSString stringWithFormat:@"￥%.2f",price-_bonusMoney+_carriageMoney];
     [_money setText:moneyStr];
     
     NSInteger time = [UtilTool timeChange];

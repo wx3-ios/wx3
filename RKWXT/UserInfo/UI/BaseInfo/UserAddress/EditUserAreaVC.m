@@ -69,8 +69,10 @@ enum{
     [self addSubview:[self staticFootView]];
     
     self.cityList = [[LocalAreaModel shareLocalArea] searchCityArrayWithProvinceID:[LocalAreaModel shareLocalArea].areaEntity.areaID];
-    AreaEntity *cityEntity = [self.cityList objectAtIndex:0];
-    self.disList = [[LocalAreaModel shareLocalArea] searchDistricArrayWithCityID:cityEntity.areaID];
+    if([self.cityList count] > 0){
+        AreaEntity *cityEntity = [self.cityList objectAtIndex:0];
+        self.disList = [[LocalAreaModel shareLocalArea] searchDistricArrayWithCityID:cityEntity.areaID];
+    }
     
     if(_entity){
         self.userName = _entity.userName;

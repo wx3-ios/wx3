@@ -53,6 +53,7 @@ enum{
     [self addnotification];
     
     _addListArr = [NewUserAddressModel shareUserAddress].userAddressArr;
+    [[LocalAreaModel shareLocalArea] loadLocalAreaData];
 }
 
 -(void)addnotification{

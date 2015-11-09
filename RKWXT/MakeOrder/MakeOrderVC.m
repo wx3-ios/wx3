@@ -13,11 +13,15 @@
 #import "OrderPayVC.h"
 #import "ManagerAddressVC.h"
 #import "UserBonusModel.h"
+#import "SearchCarriageMoney.h"
+//地址
+#import "NewUserAddressModel.h"
+#import "AreaEntity.h"
 
 #define Size self.bounds.size
 #define DownViewHeight (59)
 
-@interface MakeOrderVC()<UITableViewDataSource,UITableViewDelegate,MakeOrderUserMsgTextFieldCellDelegate,WXUITableViewCellDelegate,MakeOrderSwitchCellDelegate,MakeOrderDelegate/*,MakeOrderBananceSwitchCellDelegate*/>{
+@interface MakeOrderVC()<UITableViewDataSource,UITableViewDelegate,MakeOrderUserMsgTextFieldCellDelegate,WXUITableViewCellDelegate,MakeOrderSwitchCellDelegate,MakeOrderDelegate,SearchCarriageMoneyDelegate/*,MakeOrderBananceSwitchCellDelegate*/>{
     UITableView *_tableView;
     MakeOrderModel *_model;
     
@@ -28,6 +32,8 @@
     NSInteger _bonus;
     
     CGFloat allGoodsMoney;
+    
+    SearchCarriageMoney *carriageModel;
 }
 @property (nonatomic,strong) NSString *userMessage;
 @end
@@ -38,6 +44,7 @@
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:NO animated:NO];
     if(_tableView){
+        [self loadCarriageMoney];
         [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_UserInfo] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
@@ -47,6 +54,9 @@
     if(self){
         _model = [[MakeOrderModel alloc] init];
         [_model setDelegate:self];
+        
+        carriageModel = [[SearchCarriageMoney alloc] init];
+        [carriageModel setDelegate:self];
     }
     return self;
 }
@@ -65,9 +75,30 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self addSubview:[self createDownView]];
     
+    [self loadCarriageMoney];
     [self addNotification];
     [self censusBonusValue];
     [self censusBalanceValue];
+}
+
+-(void)loadCarriageMoney{
+    BOOL is_postage = YES;  //默认包邮
+    NSInteger provinceID = [self parseUserAddressProvinceID];
+    NSString *goodsInfo = [[NSString alloc] init];
+    for(GoodsInfoEntity *entity in _goodsList){
+        if(goodsInfo.length > 0){
+            goodsInfo = [goodsInfo stringByAppendingString:@"^"];
+        }
+        goodsInfo = [goodsInfo stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld",(long)entity.goods_id,(long)entity.buyNumber]];
+        
+        if(entity.postage == Goods_Postage_Have){
+            is_postage = NO;  //不包邮
+        }
+    }
+    if(!is_postage){
+        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    }
 }
 
 //可使用红包
@@ -356,6 +387,8 @@
 //    }else{
 //        [cell setBalance:0];
 //    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setCarriageMoney:carriageModel.carriageMoney];
     [cell setCellInfo:_goodsList];
     [cell load];
     return cell;
@@ -375,6 +408,8 @@
 //    if(userbalance){
 //
 //    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setCarriageMoney:carriageModel.carriageMoney];
     [cell setCellInfo:_goodsList];
     [cell load];
     return cell;
@@ -519,6 +554,20 @@
 //    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
 //}
 
+#pragma mark carriageDelegate
+-(void)searchCarriageMoneySucceed{
+    [self unShowWaitView];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)searchCarriageMoneyFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取运费失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
 #pragma mark submit
 -(void)submitOrder{
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
@@ -528,7 +577,7 @@
         [arr addObject:dic];
 //        [arr addObject:dic];
     }
-    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withGoodsList:arr];
+    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
 }
 
 -(NSDictionary*)goodsDicWithEntity:(GoodsInfoEntity*)entity{
@@ -543,6 +592,16 @@
     return dic;
 }
 
+//省份ID
+-(NSInteger)parseUserAddressProvinceID{
+    for(AreaEntity *entity in [NewUserAddressModel shareUserAddress].userAddressArr){
+        if(entity.normalID == 1){
+            return entity.proID;
+        }
+    }
+    return 0;
+}
+
 //订单总金额
 -(CGFloat)allGoodsOldMoney{
     CGFloat price = 0.0;
@@ -553,12 +612,14 @@
     
     return price;
 }
+
 //订单应付金额
 -(CGFloat)allGoodsTotalMoney{
     CGFloat totalMoney = [self allGoodsOldMoney];
     if(userBonus){
         totalMoney -= _bonus;
     }
+    totalMoney += carriageModel.carriageMoney;
     return totalMoney;
 }
 

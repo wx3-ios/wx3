@@ -119,6 +119,7 @@
 		1229F62B1BE1C40500258B43 /* GoodsListUpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6291BE1C40500258B43 /* GoodsListUpImg@2x.png */; };
 		1232C1D61BEC8D810033DFA0 /* NewUserAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */; };
 		1232C1D91BEC9B160033DFA0 /* NewUserAddressPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D81BEC9B160033DFA0 /* NewUserAddressPhoneCell.m */; };
+		1232C1DC1BECB80E0033DFA0 /* SearchCarriageMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1DB1BECB80E0033DFA0 /* SearchCarriageMoney.m */; };
 		123316E81BCCE803004649DC /* FindJingdong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E31BCCE803004649DC /* FindJingdong@2x.png */; };
 		123316E91BCCE803004649DC /* FIndLvyou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E41BCCE803004649DC /* FIndLvyou@2x.png */; };
 		123316EA1BCCE803004649DC /* FindShop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123316E51BCCE803004649DC /* FindShop@2x.png */; };
@@ -1117,6 +1118,8 @@
 		1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserAddressModel.m; sourceTree = "<group>"; };
 		1232C1D71BEC9B160033DFA0 /* NewUserAddressPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserAddressPhoneCell.h; sourceTree = "<group>"; };
 		1232C1D81BEC9B160033DFA0 /* NewUserAddressPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserAddressPhoneCell.m; sourceTree = "<group>"; };
+		1232C1DA1BECB80E0033DFA0 /* SearchCarriageMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCarriageMoney.h; sourceTree = "<group>"; };
+		1232C1DB1BECB80E0033DFA0 /* SearchCarriageMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCarriageMoney.m; sourceTree = "<group>"; };
 		123316D51BCC9691004649DC /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		123316E31BCCE803004649DC /* FindJingdong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindJingdong@2x.png"; sourceTree = "<group>"; };
 		123316E41BCCE803004649DC /* FIndLvyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FIndLvyou@2x.png"; sourceTree = "<group>"; };
@@ -3825,6 +3828,8 @@
 			children = (
 				12F962F51B3D314100FF6A3E /* MakeOrderModel.h */,
 				12F962F61B3D314100FF6A3E /* MakeOrderModel.m */,
+				1232C1DA1BECB80E0033DFA0 /* SearchCarriageMoney.h */,
+				1232C1DB1BECB80E0033DFA0 /* SearchCarriageMoney.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -7355,6 +7360,7 @@
 				7758431D1AB95A300039B129 /* WXUIActionSheet.m in Sources */,
 				128B456F1B6B24F100591137 /* WechatEntity.m in Sources */,
 				12A9D4491BD733B70033B238 /* ClassifyHistoryModel.m in Sources */,
+				1232C1DC1BECB80E0033DFA0 /* SearchCarriageMoney.m in Sources */,
 				1205952E1BCF994F009E6986 /* NLMainTableViewController.m in Sources */,
 				DDEA9EE01B1BFD5D00530C1C /* WXSysMsgUnreadV.m in Sources */,
 				1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */,

@@ -66,6 +66,7 @@ enum{
         [_clipeview setClipsToBounds:YES];
         [self addSubview:_clipeview];
         
+        
         CGRect rect = CGRectMake(_clipeview.bounds.origin.x, _clipeview.bounds.origin.y, _clipeview.bounds.size.width, _clipeview.bounds.size.height-46);
         _tableView = [[UITableView alloc] init];
         _tableView.frame = rect;
@@ -84,6 +85,7 @@ enum{
     }
     return self;
 }
+
 
 -(void)addNotification{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadGoodsInfoSucceed) name:K_Notification_GoodsInfo_LoadSucceed object:nil];
@@ -240,6 +242,11 @@ enum{
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setDelegate:self];
+    if([_dataArr count] > 0 && !ent){
+        ent = [_dataArr objectAtIndex:0];
+        _stockName = ent.stockName;
+        _stockID = ent.stockID;
+    }
     [cell setGoodsEntity:ent];
     [cell setCellInfo:[_dataArr objectAtIndex:row]];
     [cell load];

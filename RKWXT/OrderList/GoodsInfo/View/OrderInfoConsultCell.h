@@ -8,7 +8,7 @@
 
 #import "WXTUITableViewCell.h"
 
-#define OrderInfoConsultCellHeight (60)
+#define OrderInfoConsultCellHeight (80)
 
 @interface OrderInfoConsultCell : WXTUITableViewCell
 

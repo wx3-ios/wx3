@@ -13,6 +13,7 @@
 @interface MakeOrderGoodsMoneyCell(){
     UILabel *_money;
     UILabel *_bonus;
+    UILabel *_carriage;
     UILabel *_balanceLabel;
 }
 @end
@@ -68,9 +69,27 @@
         [textLabel3 setBackgroundColor:[UIColor clearColor]];
         [textLabel3 setTextAlignment:NSTextAlignmentLeft];
         [textLabel3 setFont:WXFont(11.0)];
-        [textLabel3 setText:@"+余额抵用:"];
+        [textLabel3 setText:@"+运费:"];
         [textLabel3 setTextColor:WXColorWithInteger(0x6a6c6b)];
-//        [self.contentView addSubview:textLabel3];
+        [self.contentView addSubview:textLabel3];
+        
+        _carriage = [[UILabel alloc] init];
+        _carriage.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-width, yOffset, width, height);
+        [_carriage setBackgroundColor:[UIColor clearColor]];
+        [_carriage setTextAlignment:NSTextAlignmentRight];
+        [_carriage setFont:WXFont(11.0)];
+        [_carriage setTextColor:WXColorWithInteger(0xdd2726)];
+        [self.contentView addSubview:_carriage];
+        
+        yOffset += height+8;
+        UILabel *textLabel4 = [[UILabel alloc] init];
+        textLabel4.frame = CGRectMake(xOffset, yOffset, width, height);
+        [textLabel4 setBackgroundColor:[UIColor clearColor]];
+        [textLabel4 setTextAlignment:NSTextAlignmentLeft];
+        [textLabel4 setFont:WXFont(11.0)];
+        [textLabel4 setText:@"+余额抵用:"];
+        [textLabel4 setTextColor:WXColorWithInteger(0x6a6c6b)];
+//        [self.contentView addSubview:textLabel4];
         
         _balanceLabel = [[UILabel alloc] init];
         _balanceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-width, yOffset, width, height);
@@ -94,6 +113,9 @@
     
     NSString *bonusStr = [NSString stringWithFormat:@"-%ld",(long)_bonusMoney];
     [_bonus setText:bonusStr];
+    
+    NSString *carriageStr = [NSString stringWithFormat:@"+%.2f",_carriageMoney];
+    [_carriage setText:carriageStr];
     
 //    NSString *balanceStr = [NSString stringWithFormat:@"-%ld",(long)_balance];
 //    [_balanceLabel setText:balanceStr];

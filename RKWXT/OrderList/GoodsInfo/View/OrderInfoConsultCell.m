@@ -12,6 +12,7 @@
 @interface OrderInfoConsultCell(){
     UILabel *_money;
     UILabel *_bonus;
+    UILabel *_carriage;
 }
 @end
 
@@ -59,6 +60,24 @@
         [_bonus setFont:WXFont(12.0)];
         [_bonus setTextColor:WXColorWithInteger(0xdd2726)];
         [self.contentView addSubview:_bonus];
+        
+        yOffset += height+8;
+        UILabel *textLabel3 = [[UILabel alloc] init];
+        textLabel3.frame = CGRectMake(xOffset, yOffset, width, height);
+        [textLabel3 setBackgroundColor:[UIColor clearColor]];
+        [textLabel3 setTextAlignment:NSTextAlignmentLeft];
+        [textLabel3 setFont:WXFont(12.0)];
+        [textLabel3 setText:@"+运费:"];
+        [textLabel3 setTextColor:WXColorWithInteger(0x6a6c6b)];
+        [self.contentView addSubview:textLabel3];
+        
+        _carriage = [[UILabel alloc] init];
+        _carriage.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-width, yOffset, width, height);
+        [_carriage setBackgroundColor:[UIColor clearColor]];
+        [_carriage setTextAlignment:NSTextAlignmentRight];
+        [_carriage setFont:WXFont(12.0)];
+        [_carriage setTextColor:WXColorWithInteger(0xdd2726)];
+        [self.contentView addSubview:_carriage];
     }
     return self;
 }
@@ -74,6 +93,9 @@
     
     NSString *bonusStr = [NSString stringWithFormat:@"-%ld",(long)entity.red_packet];
     [_bonus setText:bonusStr];
+    
+    NSString *carriage = [NSString stringWithFormat:@"+%ld",(long)0];
+    [_carriage setText:carriage];
 }
 
 @end

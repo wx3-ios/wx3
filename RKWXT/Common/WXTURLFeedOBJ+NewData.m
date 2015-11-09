@@ -23,7 +23,7 @@
         timeout = timeoutInterval;
     }
     
-    if(type == WXT_UrlFeed_Type_NewMall_MakeOrder){
+    if(type == WXT_UrlFeed_Type_New_NewMakeOrder || type == WXT_UrlFeed_Type_NewMall_MakeOrder){
         NSArray *firstArr = [paramString componentsSeparatedByString:@"goods="];
         NSString *firstStr = [firstArr objectAtIndex:0];
         NSArray *newArr = [feed objectForKey:@"goods"];

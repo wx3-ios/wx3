@@ -93,6 +93,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == lastCount){
+        return;
+    }
     CLassifyEntity *entity = listArr[indexPath.row];
     titleStr = entity.catName;
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -130,6 +133,7 @@
     if(_cat_id != 0 && count != 0){
         NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
         [defaultCenter postNotificationName:@"userSelectRow" object:[NSNumber numberWithInteger:count-1]];
+        lastCount = count-1;
     }
 }
 

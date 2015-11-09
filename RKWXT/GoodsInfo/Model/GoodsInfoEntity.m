@@ -48,6 +48,9 @@
         CGFloat marketPrice = [[baseDic objectForKey:@"market_price"] floatValue];
         [self setMarket_price:marketPrice];
         
+        NSInteger postage = [[baseDic objectForKey:@"is_postage"] integerValue];
+        [self setPostage:postage];
+        
         //库存
         NSInteger stockID = [[stockDic objectForKey:@"goods_stock_id"] integerValue];
         [self setStockID:stockID];

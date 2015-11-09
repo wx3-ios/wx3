@@ -18,6 +18,8 @@
     WXUILabel *_newPrice;
     WXUILabel *_descLabel;
     WXUIButton *_attentionBtn;
+    
+    WXUILabel *postageLabel;
 }
 @end
 
@@ -49,6 +51,7 @@
         [textLabel setFont:[UIFont systemFontOfSize:12.0]];
         [self.contentView addSubview:textLabel];
         
+        
         xOffset += textWidth;
         _newPrice = [[WXUILabel alloc] init];
         _newPrice.frame = CGRectMake(xOffset, yOffset+14+30, textWidth+25+10, newLabelHeight);
@@ -58,6 +61,17 @@
         [_newPrice setTextColor:[UIColor grayColor]];
         [_newPrice setFont:[UIFont systemFontOfSize:12.0]];
         [self.contentView addSubview:_newPrice];
+        
+        postageLabel = [[WXUILabel alloc] init];
+        postageLabel.frame = CGRectMake(14, _newPrice.frame.origin.y+_newPrice.frame.size.height+12, textWidth, newLabelHeight);
+        [postageLabel setBackgroundColor:[UIColor clearColor]];
+        [postageLabel setTextAlignment:NSTextAlignmentLeft];
+        [postageLabel setTextColor:WXColorWithInteger(0xdd2726)];
+        [postageLabel setText:@"包邮"];
+        [postageLabel setFont:WXFont(14.0)];
+        [postageLabel setHidden:YES];
+        [self.contentView addSubview:postageLabel];
+        
         
         UILabel *lineLabel = [[UILabel alloc] init];
         lineLabel.frame = CGRectMake(xOffset-textWidth, yOffset+14+30+newLabelHeight/2, 2*textWidth, 0.5);
@@ -115,9 +129,17 @@
 //    if(entity.concernID != 0){
 //        [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
 //    }
+    
+    if(entity.postage == Goods_Postage_None){
+        [postageLabel setHidden:NO];
+    }
 }
 
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{
+    GoodsInfoEntity *entity = cellInfo;
+    if(entity.postage == Goods_Postage_None){
+        return T_GoodsInfoDescHeight+25;
+    }
     return T_GoodsInfoDescHeight;
 }
 

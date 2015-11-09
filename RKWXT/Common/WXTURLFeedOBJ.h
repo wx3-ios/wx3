@@ -79,6 +79,8 @@ typedef enum {
     WXT_UrlFeed_Type_New_CheckAreaVersion,
     WXT_UrlFeed_Type_New_LoadAreaData,
     WXT_UrlFeed_Type_NewMall_NewUserAddress,
+    WXT_UrlFeed_Type_New_SearchCarriageMoney,
+    WXT_UrlFeed_Type_New_NewMakeOrder,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

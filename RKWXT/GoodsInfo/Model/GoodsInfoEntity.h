@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum{
+    Goods_Postage_Have = 0,   //不包邮
+    Goods_Postage_None,       //包邮
+}Goods_Postage;
+
 @interface GoodsInfoEntity : NSObject
 //商品基本介绍
 @property (nonatomic,assign) NSInteger goods_id;      //商品id
@@ -17,6 +22,7 @@
 @property (nonatomic,strong) NSArray *imgArr;         //顶部图片数组
 @property (nonatomic,assign) CGFloat market_price;    //市场价
 @property (nonatomic,assign) CGFloat shop_price;      //店铺价
+@property (nonatomic,assign) Goods_Postage postage;   //邮费
 @property (nonatomic,assign) CGFloat distribution_Price;   //分销价
 @property (nonatomic,strong) NSString *meterage_name; //商家名
 @property (nonatomic,assign) NSInteger concernID;     //为0则未关注

@@ -34,7 +34,6 @@
 #import <AlipaySDK/AlipaySDK.h>
 
 #import "AllAreaDataModel.h"
-#import "LocalAreaModel.h"
 
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
@@ -64,7 +63,6 @@
     // 集成极光推送功能
     [self initJPushApi];
     [APService setupWithOption:launchOptions];
-    [[LocalAreaModel shareLocalArea] loadLocalAreaData];
     
     //自动登录通知
     [self addNotification];

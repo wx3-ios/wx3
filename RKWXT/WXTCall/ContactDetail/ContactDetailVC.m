@@ -15,10 +15,15 @@
 
 #define DownLoadUrl @"http://121.201.18.130/wx_html/index.php/Public/app_download/sid/"
 
+#define UserBgImageViewHeight (180)
 #define Size self.bounds.size
 
 @interface ContactDetailVC()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>{
     UITableView *_tableView;
+    UIImageView *bgImgView;
+    UIImageView *headImgView;
+    UIButton *backBtn;
+    UILabel *nameLabel;
 }
 @end
 
@@ -51,15 +56,18 @@
     UIView *headView = [[UIView alloc] init];
     
     UIImage *bgImg = [UIImage imageNamed:@"ContactInfoBgImg.png"];
-    UIImageView *imgView = [[UIImageView alloc] init];
-    imgView.frame = CGRectMake(0, 0, Size.width, 180);
-    [imgView setImage:bgImg];
-    [headView addSubview:imgView];
+    bgImgView = [[UIImageView alloc] init];
+    bgImgView.frame = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
+    [bgImgView setImage:bgImg];
+    [headView addSubview:bgImgView];
+    if(_model.icon){
+        [bgImgView setImage:_model.icon];
+    }
 
     CGFloat xOffset = 15;
     CGFloat yOffset = 35;
     UIImage *img = [UIImage imageNamed:@"ContactInfoBack.png"];
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(xOffset, yOffset, img.size.width, img.size.height);
     [backBtn setBackgroundImage:img forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
@@ -67,21 +75,23 @@
     
     yOffset += 20;
     // 图像参数不管
+    CGFloat imgWidth = 70;
     UIImage * headImg = nil;
-//    if (_model.icon == nil) {
+    if (_model.icon == nil) {
         headImg = [UIImage imageNamed:@"ContactInfoHeadImg.png"];
-//    }else{
-//        headImg = _model.icon;
-//    }
-    UIImageView *headImgView = [[UIImageView alloc] init];
-    headImgView.frame = CGRectMake((Size.width-headImg.size.width)/2, yOffset, headImg.size.width, headImg.size.height);
+    }else{
+        headImg = _model.icon;
+    }
+    headImgView = [[UIImageView alloc] init];
+    headImgView.frame = CGRectMake((Size.width-imgWidth)/2, yOffset, imgWidth, imgWidth);
+    [headImgView setBorderRadian:imgWidth/2 width:1.0 color:[UIColor clearColor]];
     [headImgView setImage:headImg];
     [headView addSubview:headImgView];
     
-    yOffset += headImg.size.height;
+    yOffset += imgWidth;
     CGFloat nameLabelWidth = 100;
     CGFloat nameheight = 25;
-    UILabel *nameLabel = [[UILabel alloc] init];
+    nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake((Size.width-nameLabelWidth)/2, yOffset, nameLabelWidth, nameheight);
     [nameLabel setBackgroundColor:[UIColor clearColor]];
     [nameLabel setText:_model.fullName];
@@ -90,7 +100,7 @@
     [nameLabel setTextColor:[UIColor whiteColor]];
     [headView addSubview:nameLabel];
     
-    CGRect rect = CGRectMake(0, 0, Size.width, 180);
+    CGRect rect = CGRectMake(0, 0, Size.width, UserBgImageViewHeight);
     [headView setFrame:rect];
     return headView;
 }
@@ -115,6 +125,28 @@
     CGRect rect = CGRectMake(0, 0, Size.width, 200);
     [footView setFrame:rect];
     return footView;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat yOffset  = scrollView.contentOffset.y;
+    CGFloat xOffset = 0;
+    if (yOffset < 0) {
+        CGRect f = bgImgView.frame;
+        f.origin.y = yOffset;
+        f.size.height =  -yOffset+UserBgImageViewHeight;
+        f.origin.x = xOffset;
+        f.size.width = 320 + fabsf(xOffset)*2;
+        bgImgView.frame = f;
+    }
+    if(yOffset == 0){
+        [headImgView setHidden:NO];
+        [backBtn setHidden:NO];
+        [nameLabel setHidden:NO];
+    }else{
+        [backBtn setHidden:YES];
+        [nameLabel setHidden:YES];
+        [headImgView setHidden:YES];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

@@ -299,6 +299,9 @@ typedef enum{
         message = @"获取订单失败";
     }
     [UtilTool showAlertView:message];
+    if([message isEqualToString:@"没有您要查询的订单"]){
+        _tableView.reachedTheEnd = YES;
+    }
 //    if([orderListArr count] == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
 //        _tableView.reachedTheEnd = YES;
 //    }

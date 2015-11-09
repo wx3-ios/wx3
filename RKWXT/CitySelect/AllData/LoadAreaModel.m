@@ -43,7 +43,7 @@
 -(void)writeAllAreaDataToPlist:(id)data{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"test3.plist"];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:ServiceAreaPlist];
     
     __block NSInteger count = 0;
     __block NSMutableDictionary *dictPlist = [[NSMutableDictionary alloc] init];

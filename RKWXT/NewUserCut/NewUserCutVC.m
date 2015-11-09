@@ -312,7 +312,7 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     }
 }
 
-//我的团队
+//我的下级
 -(WXUITableViewCell*)tableViewForUserCutCell{
     static NSString *identifier = @"cutCell";
     WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
@@ -321,7 +321,7 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     }
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell.imageView setImage:[UIImage imageNamed:@"MyCutTeam.png"]];
-    [cell.textLabel setText:@"我的团队"];
+    [cell.textLabel setText:@"店小二"];
     [cell.textLabel setFont:WXFont(16.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     
@@ -336,7 +336,7 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     return cell;
 }
 
-//我的推荐人
+//我的上级
 -(WXUITableViewCell*)tableViewForBaseDataCell:(NSIndexPath*)indexpath{
     static NSString *identifier = @"baseDateCell";
     NewGoodsInfoBDCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
@@ -344,7 +344,7 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
         cell = [[NewGoodsInfoBDCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell.imageView setImage:[UIImage imageNamed:@"MyCutReferee.png"]];
-    [cell.textLabel setText:@"我的推荐者"];
+    [cell.textLabel setText:@"我的boss"];
     [cell changeArrowWithDown:_isOpen];
     [cell.textLabel setFont:WXFont(16.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];

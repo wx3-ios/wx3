@@ -57,6 +57,14 @@
     [userDefaults setObject:newVersion forKey:CheckAreaVersion];
 }
 
+-(void)removeAreaPlist{
+    NSFileManager *manager=[NSFileManager defaultManager];
+    NSString *filepath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:ServiceAreaPlist];
+    if ([manager removeItemAtPath:filepath error:nil]) {
+        NSLog(@"areaPlist文件删除成功");
+    }
+}
+
 +(NSString*)lastCheckDate{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     return [userDefault objectForKey:CheckAreaVersion];

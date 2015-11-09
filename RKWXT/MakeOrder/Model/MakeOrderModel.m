@@ -39,7 +39,7 @@
     return self.status == E_ModelDataStatus_Init || self.status == E_ModelDataStatus_LoadFailed;
 }
 
--(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString *)remark withGoodsList:(NSArray *)goodsList{
+-(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString *)remark withProID:(NSInteger)proID withCarriage:(CGFloat)postage withGoodsList:(NSArray *)goodsList{
     [self setStatus:E_ModelDataStatus_Loading];
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     AreaEntity *entity = [self addressEntity];
@@ -49,6 +49,7 @@
         }
         return;
     }
+    NSString *address = [NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:    //dictionaryWithObjectsAndKeys此方法遇nil认为结束，慎用
                          userObj.sellerID, @"seller_user_id",
                          @"iOS", @"pid",
@@ -60,15 +61,18 @@
                          userObj.wxtID, @"woxin_id",
                          entity.userName, @"consignee",
                          entity.userPhone, @"telephone",
-                         entity.address, @"address",
+                         address, @"address",
+                         [NSNumber numberWithInt:(int)kMerchantID], @"sid",
                          [NSNumber numberWithFloat:allMoney], @"order_total_money",
                          [NSNumber numberWithFloat:totalMoney], @"total_fee",
                          [NSNumber numberWithInt:(int)packet], @"red_packet",
+                         [NSNumber numberWithFloat:postage], @"postage",
+                         [NSNumber numberWithInt:(int)proID], @"provincial_id",
                          goodsList, @"goods",
                          remark, @"remark",
                          nil];
     __block MakeOrderModel *blockSelf = nil;
-    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_MakeOrder httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_NewMakeOrder httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
             [blockSelf setStatus:E_ModelDataStatus_LoadFailed];
             if (_delegate && [_delegate respondsToSelector:@selector(makeOrderFailed:)]){
