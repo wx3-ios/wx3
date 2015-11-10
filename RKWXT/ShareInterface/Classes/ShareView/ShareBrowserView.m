@@ -95,6 +95,13 @@ static NSString *shareNameArr[]={
     _imageView = [[UIImageView alloc] init];
     [_shareView addSubview:_imageView];
     
+    CGFloat logoWidth = 41;
+    CGFloat logoHeight = logoWidth;
+    WXUIImageView *logoView = [[WXUIImageView alloc] init];
+    logoView.frame = CGRectMake((200-logoWidth)/2, (200-logoHeight)/2, logoWidth, logoHeight);
+    [logoView setImage:[UIImage imageNamed:@"Icon.png"]];
+//    [_imageView addSubview:logoView];
+    
     yOffset += 15+200;
     UILabel *textLabel1 = [[UILabel alloc] init];
     textLabel1.frame = CGRectMake((shareViewWidth-textlabelWidth)/2, yOffset, textlabelWidth, textLabelHeight);

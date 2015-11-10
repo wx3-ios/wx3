@@ -28,7 +28,7 @@
     [self addOBS];
     [listArr removeAllObjects];
     for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
-        if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend){
+        if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend && entity.order_status == Order_Status_Normal){
             [listArr addObject:entity];
         }
     }

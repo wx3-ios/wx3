@@ -512,7 +512,6 @@
 		12D87DA41BD4F04A00579FF6 /* ClassifyRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA31BD4F04A00579FF6 /* ClassifyRightView.m */; };
 		12D87DA71BD5008E00579FF6 /* ClassifyDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */; };
 		12D96ED01BE84AE70043B219 /* AllCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D96ECF1BE84AE70043B219 /* AllCityModel.m */; };
-		12D96ED21BE8D27B0043B219 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12D96ED11BE8D27B0043B219 /* area.plist */; };
 		12E07FF11BEB7BFB0051DAD5 /* EditUserAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */; };
 		12E07FF71BEB7D410051DAD5 /* AreaDataSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */; };
 		12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */; };
@@ -1812,7 +1811,6 @@
 		12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyDownCell.m; sourceTree = "<group>"; };
 		12D96ECE1BE84AE70043B219 /* AllCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCityModel.h; sourceTree = "<group>"; };
 		12D96ECF1BE84AE70043B219 /* AllCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCityModel.m; sourceTree = "<group>"; };
-		12D96ED11BE8D27B0043B219 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
 		12E07FEF1BEB7BFB0051DAD5 /* EditUserAreaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserAreaVC.h; sourceTree = "<group>"; };
 		12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserAreaVC.m; sourceTree = "<group>"; };
 		12E07FF31BEB7D410051DAD5 /* AreaDataSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaDataSql.h; sourceTree = "<group>"; };
@@ -4726,7 +4724,6 @@
 		12D96EC61BE844CC0043B219 /* CitySelect */ = {
 			isa = PBXGroup;
 			children = (
-				12D96ED11BE8D27B0043B219 /* area.plist */,
 				121E8F931BEB066F0047373A /* AllData */,
 				12D96ECB1BE848820043B219 /* Location */,
 				12D96EC71BE8471D0043B219 /* Area */,
@@ -7212,7 +7209,6 @@
 				12D52BBC1AC2EF4400C5CE71 /* dtmf-6.aif in Resources */,
 				12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */,
 				12F3CC751B1DE82C00E64DE4 /* AboutWxImg@2x.png in Resources */,
-				12D96ED21BE8D27B0043B219 /* area.plist in Resources */,
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				1241E5401AE9D89B00811D3F /* 1S@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,

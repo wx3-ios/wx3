@@ -66,7 +66,7 @@
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ClassifySearchImg.png"]];
     [_textField setLeftView:imgView leftGap:10 rightGap:0];
     [_textField setLeftViewMode:UITextFieldViewModeUnlessEditing];
-    [_textField setPlaceholder:@"寻找你喜欢的商品、店铺"];
+    [_textField setPlaceholder:@"寻找你喜欢的商品"];
     [_textField setFont:WXFont(12.0)];
     [self addSubview:_textField];
     

@@ -121,6 +121,9 @@
         
         NSString *remark = [dic objectForKey:@"remark"];
         [self setRemark:remark];
+        
+        CGFloat postage = [[dic objectForKey:@"postage"] floatValue];
+        [self setPostage:postage];
     }
     return self;
 }

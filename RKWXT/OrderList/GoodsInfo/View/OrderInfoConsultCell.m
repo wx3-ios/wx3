@@ -94,7 +94,7 @@
     NSString *bonusStr = [NSString stringWithFormat:@"-%ld",(long)entity.red_packet];
     [_bonus setText:bonusStr];
     
-    NSString *carriage = [NSString stringWithFormat:@"+%ld",(long)0];
+    NSString *carriage = [NSString stringWithFormat:@"+%.2f",entity.postage];
     [_carriage setText:carriage];
 }
 

@@ -64,6 +64,7 @@
         number += ent.sales_num;
         price += ent.factPayMoney;
     }
+    price += entity.postage;
     [_goodsNum setText:[NSString stringWithFormat:@"共%ld件商品",(long)number]];
     [_consult setText:[NSString stringWithFormat:@"￥%.2f",price]];
     number = 0;

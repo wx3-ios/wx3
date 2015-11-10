@@ -78,6 +78,7 @@
         number += ent.sales_num;
         price += ent.sales_num*ent.sales_price;
     }
+    price += entity.postage;
     [_consult setText:[NSString stringWithFormat:@"￥%.2f",price]];
     number = 0;
     price = 0;

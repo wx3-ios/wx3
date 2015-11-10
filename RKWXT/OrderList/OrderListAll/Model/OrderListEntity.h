@@ -76,6 +76,7 @@ typedef enum{
 @property (nonatomic,assign) CGFloat factRedPacket; //商品使用总红包
 @property (nonatomic,assign) NSInteger orderGoodsID; //退款所用专属id
 @property (nonatomic,assign) CGFloat refundTotalMoney; //退款金额
+@property (nonatomic,assign) CGFloat postage;   //订单运费
 
 @property (nonatomic,assign) BOOL selected;
 @property (nonatomic,assign) BOOL selectAll;

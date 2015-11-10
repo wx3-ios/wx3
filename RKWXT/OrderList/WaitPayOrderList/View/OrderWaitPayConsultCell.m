@@ -35,7 +35,7 @@
         [textLabel setTextAlignment:NSTextAlignmentLeft];
         [textLabel setTextColor:WXColorWithInteger(0x6d6d6d)];
         [textLabel setFont:WXTFont(14.0)];
-        [textLabel setText:@"实付款:"];
+        [textLabel setText:@"待付款:"];
         [self.contentView addSubview:textLabel];
         
         xOffset += textWidth;
@@ -78,6 +78,7 @@
         number += ent.sales_num;
         price += ent.factPayMoney;
     }
+    price += entity.postage;
     [_consult setText:[NSString stringWithFormat:@"￥%.2f",price]];
     number = 0;
     price = 0;
