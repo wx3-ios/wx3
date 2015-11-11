@@ -72,28 +72,19 @@
     OrderListEntity *entity = self.cellInfo;
     [_nameLabel setText:[NSString stringWithFormat:@"%@  %@",entity.consignee,entity.userPhone]];
     [_address setText:entity.address];
+    
+    CGRect rect = _address.frame;
+    rect.size.height = [entity.address stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-10];
+    [_address setFrame:rect];
 }
 
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{
     OrderListEntity *entity = cellInfo;
     CGFloat height = 42;
     NSString *add = entity.address;
-    CGSize size = [[self class] sizeOfString:add font:WXFont(12.0)];
-    height += size.height;
+    CGFloat addHeight = [add stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-10];
+    height += addHeight;
     return height;
-}
-
-+(CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{
-    if(!txt || [txt isKindOfClass:[NSNull class]]){
-        txt = @" ";
-    }
-    if(isIOS7){
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-        return [txt sizeWithAttributes:@{NSFontAttributeName: font}];
-#endif
-    }else{
-        return [txt sizeWithFont:font];
-    }
 }
 
 @end

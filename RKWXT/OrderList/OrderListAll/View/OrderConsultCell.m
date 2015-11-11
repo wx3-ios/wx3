@@ -24,9 +24,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGSize size = self.bounds.size;
-        CGFloat xOffset = 200;
+        CGFloat xOffset = 210;
         CGFloat height = 16;
-        CGFloat numWidth = 67;
+        CGFloat numWidth = 75;
         _goodsNum = [[UILabel alloc] init];
         _goodsNum.frame = CGRectMake(size.width-xOffset, (OrderConsultCellHeight-height)/2, numWidth, height);
         [_goodsNum setBackgroundColor:[UIColor clearColor]];

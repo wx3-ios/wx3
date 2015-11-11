@@ -158,6 +158,8 @@
     [_imgView load];
     [_namelabel setText:entity.goods_name];
     [_infoLabel setText:entity.stockName];
+    [_numberLabel setText:[NSString stringWithFormat:@"%ld",(long)entity.goods_Number]];
+    number = entity.goods_Number;
     
     NSString *newPrice = [NSString stringWithFormat:@"￥%.2f",entity.goods_price];
     [_newPrice setText:newPrice];

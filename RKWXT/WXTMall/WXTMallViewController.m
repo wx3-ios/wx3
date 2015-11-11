@@ -478,9 +478,9 @@
 //    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id", [NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInteger:catID], @"cat_id", nil];
 //    [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_CatagaryList paramDictionary:dic];
 //    [self.wxNavigationController pushViewController:webViewVC];
-    ClassifyListVC *webViewVC = [[[ClassifyListVC alloc] init] autorelease];
-//    LuckyGoodsShowVC *webViewVC = [[[LuckyGoodsShowVC alloc] init] autorelease];
-    webViewVC.cat_id = catID;
+//    ClassifyListVC *webViewVC = [[[ClassifyListVC alloc] init] autorelease];
+    LuckyGoodsShowVC *webViewVC = [[[LuckyGoodsShowVC alloc] init] autorelease];
+//    webViewVC.cat_id = catID;
     [self.wxNavigationController pushViewController:webViewVC];
 }
 
