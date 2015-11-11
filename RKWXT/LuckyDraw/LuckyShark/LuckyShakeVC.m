@@ -41,6 +41,9 @@
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
     
+    _model = [[LuckySharkModel alloc] init];
+    [_model setDelegate:self];
+    
     _numModel = [[LuckySharkNumberModel alloc] init];
     [_numModel setDelegate:self];
     [_numModel loadLuckySharkNumber];
@@ -111,9 +114,6 @@
     [self addSubview:label];
     
     [self createTextAndbtnView];
-    
-    _model = [[LuckySharkModel alloc] init];
-    [_model setDelegate:self];
 }
 
 -(void)createTextAndbtnView{
@@ -131,7 +131,7 @@
     [self addSubview:text1Label];
     
     _numberLabel = [[UILabel alloc] init];
-    _numberLabel.frame = CGRectMake(text1Width, self.bounds.size.height-yOffset, numberWidth, textheight);
+    _numberLabel.frame = CGRectMake(text1Width, self.bounds.size.height-yOffset, numberWidth+10, textheight);
     [_numberLabel setBackgroundColor:[UIColor clearColor]];
     [_numberLabel setText:@"0"];
     [_numberLabel setTextAlignment:NSTextAlignmentCenter];
@@ -140,7 +140,7 @@
     [self addSubview:_numberLabel];
     
     UILabel *text2Label = [[UILabel alloc] init];
-    text2Label.frame = CGRectMake(text1Width+numberWidth, self.bounds.size.height-yOffset, self.bounds.size.width-text1Width-numberWidth, textheight);
+    text2Label.frame = CGRectMake(text1Width+numberWidth+10, self.bounds.size.height-yOffset, self.bounds.size.width-text1Width-numberWidth, textheight);
     [text2Label setBackgroundColor:[UIColor clearColor]];
     [text2Label setText:@"次抽奖机会"];
     [text2Label setTextAlignment:NSTextAlignmentLeft];
@@ -170,6 +170,10 @@
         return;
     }
     if(motion == UIEventSubtypeMotionShake){
+        if(_numModel.number <= 0){
+            [UtilTool showAlertView:@"您已经没有抽奖机会了"];
+            return;
+        }
         waitting = YES;
         [self startPlayMusic];
         [self addAnimations];
@@ -214,7 +218,7 @@
 #pragma mark sharkNumDelegate
 -(void)loadLuckySharkNumberSucceed{
     [self unShowWaitView];
-    if(_numModel < 0){
+    if(_numModel.number <= 0){
         return;
     }
     [_numberLabel setText:[NSString stringWithFormat:@"%ld",(long)_numModel.number]];
@@ -233,7 +237,7 @@
     waitting = NO;
     [activityView stopAnimating];
     [label setHidden:YES];
-    [self stopPlayMusic];
+//    [self stopPlayMusic];
     
     [UtilTool showAlertView:@"恭喜您中奖!"];
     if([_model.luckyGoodsArr count] > 0){

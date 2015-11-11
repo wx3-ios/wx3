@@ -12,6 +12,7 @@
 #import "LuckyGoodsModel.h"
 #import "NewGoodsInfoVC.h"
 #import "OrderListTableView.h"
+#import "LuckyGoodsEntity.h"
 
 typedef enum{
     E_CellRefreshing_Nothing = 0,
@@ -130,9 +131,10 @@ typedef enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    LuckyGoodsEntity *entity = [_model.luckyGoodsArr objectAtIndex:indexPath.row];
     NewGoodsInfoVC *infoVC = [[NewGoodsInfoVC alloc] init];
     infoVC.goodsInfo_type = GoodsInfo_LuckyGoods;
-    infoVC.goodsId = 1;
+    infoVC.goodsId = entity.goodsID;
     [self.wxNavigationController pushViewController:infoVC];
 }
 
@@ -158,6 +160,9 @@ typedef enum{
         errorMsg = @"获取商品失败";
     }
     [UtilTool showAlertView:errorMsg];
+    if([errorMsg isEqualToString:@"没有您要查询的数据"]){
+        _tableView.reachedTheEnd = YES;
+    }
 }
 
 #pragma mark pullingDelegate

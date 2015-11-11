@@ -9,5 +9,6 @@
 #import "WXUITableViewCell.h"
 
 @interface NewGoodsInfoDesCell : WXUITableViewCell
+@property (nonatomic,assign) BOOL isLucky;
 
 @end

@@ -41,6 +41,7 @@
     BOOL _isOpen;
     BOOL _showUpview;
     BOOL _isBuy; // 是否为购买状态
+    BOOL _isLucky;//是否为抽奖
     
     NewGoodsInfoModel *_model;
     ShoppingCartModel *_shopModel;
@@ -94,6 +95,7 @@
     }
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     if(_goodsInfo_type == GoodsInfo_LuckyGoods){
+        _isLucky = YES;
         _tableView.frame = CGRectMake(0, 0, size.width, size.height);
     }else{
         [self.view addSubview:[self downViewShow]];
@@ -423,6 +425,7 @@
     if([_model.data count] > 0){
         [cell setCellInfo:[_model.data objectAtIndex:0]];
     }
+    cell.isLucky = _isLucky;
     [cell load];
     return cell;
 }

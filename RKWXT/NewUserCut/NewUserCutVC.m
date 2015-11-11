@@ -378,7 +378,7 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
         if(indexPath.row == 0){
             [cell changeArrowWithDown:_isOpen];
             [cell.imageView setImage:[UIImage imageNamed:@"MyCutReferee.png"]];
-            [cell.textLabel setText:@"我的推荐者"];
+            [cell.textLabel setText:@"我的boss"];
             [cell.textLabel setFont:WXFont(16.0)];
         }
         return cell;

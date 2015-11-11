@@ -130,7 +130,7 @@
 //        [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
 //    }
     
-    if(entity.postage == Goods_Postage_None){
+    if(entity.postage == Goods_Postage_None && !_isLucky){
         [postageLabel setHidden:NO];
     }
 }
