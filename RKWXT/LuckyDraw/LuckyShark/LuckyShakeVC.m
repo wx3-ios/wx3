@@ -14,6 +14,7 @@
 #import "LuckySharkEntity.h"
 #import "WXCommonWebView.h"
 #import "LuckySharkNumberModel.h"
+#import "LuckyGoodsShowVC.h"
 
 #define kDuration 0.3
 #define yGap 60
@@ -158,6 +159,14 @@
     [ruleBtn.titleLabel setTextColor:WXColorWithInteger(0xffffff)];
     [ruleBtn addTarget:self action:@selector(gotoSharkRuleVC) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:ruleBtn];
+    
+    WXUIButton *goodsBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    goodsBtn.frame = CGRectMake((self.bounds.size.width-btnWidth)/2, ruleBtn.frame.origin.y+ruleBtn.frame.size.height+5, btnWidth, btnHeight);
+    [goodsBtn setBackgroundImage:[UIImage imageNamed:@"SharkRuleImg.png"] forState:UIControlStateNormal];
+    [goodsBtn setTitle:@"查看奖品" forState:UIControlStateNormal];
+    [goodsBtn.titleLabel setTextColor:WXColorWithInteger(0xffffff)];
+    [goodsBtn addTarget:self action:@selector(searchLuckyGoodsListVC) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:goodsBtn];
 }
 
 -(BOOL)canBecomeFirstResponder{
@@ -265,6 +274,11 @@
     [self.wxNavigationController pushViewController:vc];
 }
 
+-(void)searchLuckyGoodsListVC{
+    LuckyGoodsShowVC *showVC = [[LuckyGoodsShowVC alloc] init];
+    [self.wxNavigationController pushViewController:showVC];
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self setCSTNavigationViewHidden:NO animated:NO];
@@ -273,6 +287,7 @@
     [label setHidden:YES];
     waitting = NO;
     [_model setDelegate:nil];
+    [_numModel setDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -214,7 +214,7 @@
             url = @"/app_search.php";
             break;
         case WXT_UrlFeed_Type_New_CheckAreaVersion:
-            url = @"";
+            url = @"/get_area_version.php";
             break;
         case WXT_UrlFeed_Type_New_LoadAreaData:
             url = @"/get_all_area.php";

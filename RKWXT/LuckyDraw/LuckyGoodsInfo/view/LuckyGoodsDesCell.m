@@ -74,7 +74,7 @@
         [_stockLabel setFont:WXFont(13.0)];
         [_stockLabel setNumberOfLines:0];
         [_stockLabel setTextColor:WXColorWithInteger(0xcacaca)];
-        [self.contentView addSubview:_stockLabel];
+//        [self.contentView addSubview:_stockLabel];
     }
     return self;
 }

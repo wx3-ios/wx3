@@ -244,9 +244,9 @@
 //    if(section == PersonalInfo_Cut){
 //        return 0;
 //    }
-    if(section == PersonalInfo_SharkOrder){
-        return 0;
-    }
+//    if(section == PersonalInfo_SharkOrder){
+//        return 0;
+//    }
     return 12;
 }
 
@@ -266,7 +266,7 @@
 //            number = Money_Invalid;
 //            break;
         case PersonalInfo_SharkOrder:
-            number = 0;
+            number = 1;
             break;
         case PersonalInfo_Call:
             number = Call_Invalid;

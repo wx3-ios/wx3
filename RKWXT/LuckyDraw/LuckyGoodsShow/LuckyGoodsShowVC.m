@@ -8,7 +8,6 @@
 
 #import "LuckyGoodsShowVC.h"
 #import "LuckyGoodsShowCell.h"
-#import "LuckyShakeVC.h"
 #import "LuckyGoodsModel.h"
 #import "NewGoodsInfoVC.h"
 #import "OrderListTableView.h"
@@ -31,6 +30,8 @@ typedef enum{
     NSArray *goodsArr;
     NSInteger orderlistCount;
     LuckyGoodsModel *_model;
+    
+    BOOL showUp;
 }
 @property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
@@ -50,7 +51,6 @@ typedef enum{
     [super viewDidLoad];
     [self setCSTTitle:@"奖品列表"];
     [self setBackgroundColor:[UIColor whiteColor]];
-    [self setRightNavigationItem:[self createRightBtn]];
     
     self.e_cellRefreshing = E_CellRefreshing_Nothing;
     _tableView = [[OrderListTableView alloc] init];
@@ -60,20 +60,27 @@ typedef enum{
     [_tableView setPullingDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self createRightBtn];
     
     [_model setType:LuckyGoods_Type_Normal];
     [_model loadLuckyGoodsListWith:0 with:EveryTimeLoadDataNumber];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
--(WXUIButton*)createRightBtn{
+-(void)createRightBtn{
+    CGFloat btnWidth = 60;
+    CGFloat btnHeight = 25;
     rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    rightBtn.frame = CGRectMake(Size.width-btnWidth-10, 66-btnHeight-10, btnWidth, 25);
     [rightBtn setBackgroundColor:[UIColor clearColor]];
-    [rightBtn setTitle:@"抽奖" forState:UIControlStateNormal];
-    [rightBtn.titleLabel setFont:WXFont(13.0)];
-    [rightBtn addTarget:self action:@selector(gotoSharkVC) forControlEvents:UIControlEventTouchUpInside];
-    return rightBtn;
+    [rightBtn setTitle:@"价格" forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:WXFont(14.0)];
+    [rightBtn setTitleColor:WXColorWithInteger(0x000000) forState:UIControlStateNormal];
+    [rightBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 15)];
+    [rightBtn setImage:[UIImage imageNamed:@"GoodsListUpImg.png"] forState:UIControlStateNormal];
+    [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 45, 0, 0)];
+    [rightBtn addTarget:self action:@selector(changeListViewShow) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rightBtn];
 }
 
 //改变cell分割线置顶
@@ -138,9 +145,49 @@ typedef enum{
     [self.wxNavigationController pushViewController:infoVC];
 }
 
--(void)gotoSharkVC{
-    LuckyShakeVC *sharkVC = [[LuckyShakeVC alloc] init];
-    [self.wxNavigationController pushViewController:sharkVC];
+-(void)changeListViewShow{
+    showUp = !showUp;
+    if(showUp){
+        [rightBtn setImage:[UIImage imageNamed:@"GoodsListDownImg.png"] forState:UIControlStateNormal];
+        goodsArr = [self goodsPriceDownSort];
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }else{
+        [rightBtn setImage:[UIImage imageNamed:@"GoodsListUpImg.png"] forState:UIControlStateNormal];
+        goodsArr = [self goodsPriceUpSort];
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+//升序排序
+-(NSArray*)goodsPriceUpSort{
+    NSArray *sortArray = [goodsArr sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        LuckyGoodsEntity *entity_0 = obj1;
+        LuckyGoodsEntity *entity_1 = obj2;
+        
+        if (entity_0.market_price > entity_1.market_price){
+            return NSOrderedDescending;
+        }else if (entity_0.market_price < entity_1.market_price){
+            return NSOrderedAscending;
+        }
+        return NSOrderedSame;
+    }];
+    return sortArray;
+}
+
+//降序排序
+-(NSArray*)goodsPriceDownSort{
+    NSArray *sortArray = [goodsArr sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        LuckyGoodsEntity *entity_0 = obj1;
+        LuckyGoodsEntity *entity_1 = obj2;
+        
+        if (entity_0.market_price < entity_1.market_price){
+            return NSOrderedDescending;
+        }else if (entity_0.market_price > entity_1.market_price){
+            return NSOrderedAscending;
+        }
+        return NSOrderedSame;
+    }];
+    return sortArray;
 }
 
 -(void)loadLuckyGoodsSuceeed{
@@ -154,6 +201,7 @@ typedef enum{
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
+#pragma mark luckyModelDelegate
 -(void)loadLuckyGoodsFailed:(NSString *)errorMsg{
     [self unShowWaitView];
     if(!errorMsg){

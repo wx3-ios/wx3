@@ -479,7 +479,7 @@
 //    [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_CatagaryList paramDictionary:dic];
 //    [self.wxNavigationController pushViewController:webViewVC];
 //    ClassifyListVC *webViewVC = [[[ClassifyListVC alloc] init] autorelease];
-    LuckyGoodsShowVC *webViewVC = [[[LuckyGoodsShowVC alloc] init] autorelease];
+    LuckyShakeVC *webViewVC = [[[LuckyShakeVC alloc] init] autorelease];
 //    webViewVC.cat_id = catID;
     [self.wxNavigationController pushViewController:webViewVC];
 }

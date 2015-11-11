@@ -37,21 +37,21 @@
 -(void)checkAllAreaVersion{
 //    [_model loadAllAreaData];
 //    return;
-//    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.user, @"phone", [NSNumber numberWithInt:(int)kMerchantID], @"sid", [NSNumber numberWithInt:(int)kSubShopID], @"shop_id", nil];
-//    __block AllAreaDataModel *blockSelf = self;
-//    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_CheckAreaVersion httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
-//        if(retData.code != 0){
-//        }else{
-//            [blockSelf compareLocalAreaVersionToServiceAreaVersion:[retData.data objectForKey:@"data"]];
-//        }
-//    }];
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:(int)kMerchantID], @"sid", [NSNumber numberWithInt:(int)kSubShopID], @"shop_id", nil];
+    __block AllAreaDataModel *blockSelf = self;
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_CheckAreaVersion httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
+        if(retData.code != 0){
+        }else{
+            NSString *newVersion = [NSString stringWithFormat:@"%ld",(long)[[retData.data objectForKey:@"data"] objectForKey:@"area_version"]];
+            [blockSelf compareLocalAreaVersionToServiceAreaVersion:newVersion];
+        }
+    }];
 }
 
 -(void)compareLocalAreaVersionToServiceAreaVersion:(NSString*)newVersion{
     if(![newVersion isEqualToString:[[self class] lastCheckDate]]){
-        [_model loadAllAreaData];
-        return;
+        [self removeAreaPlist];
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:newVersion forKey:CheckAreaVersion];
@@ -60,7 +60,13 @@
 -(void)removeAreaPlist{
     NSFileManager *manager=[NSFileManager defaultManager];
     NSString *filepath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:ServiceAreaPlist];
+    if(![manager fileExistsAtPath:ServiceAreaPlist]){
+        [_model loadAllAreaData];
+        NSLog(@"没有areaPlist文件");
+        return;
+    }
     if ([manager removeItemAtPath:filepath error:nil]) {
+        [_model loadAllAreaData];
         NSLog(@"areaPlist文件删除成功");
     }
 }
