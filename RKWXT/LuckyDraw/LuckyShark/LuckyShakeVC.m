@@ -16,6 +16,10 @@
 #import "LuckySharkNumberModel.h"
 #import "LuckyGoodsShowVC.h"
 
+#import "WinningView.h"
+#import "WXUIViewController+WinningPopView.h"
+#import "WinningViewAnimationDrop.h"
+
 #define kDuration 0.3
 #define yGap 60
 #define CenterImgYGap 215
@@ -29,6 +33,8 @@
     NSTimer *_resultTimer;
     
     BOOL waitting;
+    BOOL hasLucky;
+    BOOL isLoading;
     
     LuckySharkModel *_model;
     LuckySharkNumberModel *_numModel;
@@ -45,10 +51,14 @@
     _model = [[LuckySharkModel alloc] init];
     [_model setDelegate:self];
     
+    isLoading = YES;
     _numModel = [[LuckySharkNumberModel alloc] init];
     [_numModel setDelegate:self];
     [_numModel loadLuckySharkNumber];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoWinningGoodsInfo) name:@"gotoWinningGoodsInfoVC" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeWinningView1) name:@"closeWinningViewNoti" object:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -132,7 +142,7 @@
     [self addSubview:text1Label];
     
     _numberLabel = [[UILabel alloc] init];
-    _numberLabel.frame = CGRectMake(text1Width, self.bounds.size.height-yOffset, numberWidth+10, textheight);
+    _numberLabel.frame = CGRectMake(text1Width, self.bounds.size.height-yOffset, numberWidth+20, textheight);
     [_numberLabel setBackgroundColor:[UIColor clearColor]];
     [_numberLabel setText:@"0"];
     [_numberLabel setTextAlignment:NSTextAlignmentCenter];
@@ -141,7 +151,7 @@
     [self addSubview:_numberLabel];
     
     UILabel *text2Label = [[UILabel alloc] init];
-    text2Label.frame = CGRectMake(text1Width+numberWidth+10, self.bounds.size.height-yOffset, self.bounds.size.width-text1Width-numberWidth, textheight);
+    text2Label.frame = CGRectMake(text1Width+numberWidth+20, self.bounds.size.height-yOffset, self.bounds.size.width-text1Width-numberWidth, textheight);
     [text2Label setBackgroundColor:[UIColor clearColor]];
     [text2Label setText:@"次抽奖机会"];
     [text2Label setTextAlignment:NSTextAlignmentLeft];
@@ -174,8 +184,14 @@
 }
 
 -(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if(isLoading){
+        return;
+    }
+    if(hasLucky){
+        return;
+    }
     if(waitting){
-        NSLog(@"上一个请求还没有结束");
+        NSLog(@"上一个请求还没有结束1");
         return;
     }
     if(motion == UIEventSubtypeMotionShake){
@@ -187,7 +203,7 @@
         [self startPlayMusic];
         [self addAnimations];
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startActivityView) userInfo:nil repeats:NO];
-        _resultTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(startLucky) userInfo:nil repeats:NO];
+        _resultTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(startLucky) userInfo:nil repeats:NO];
     }
 }
 
@@ -199,12 +215,15 @@
 }
 
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if(isLoading){
+        return;
+    }
     if(waitting){
-        NSLog(@"上一个请求还没有结束");
+        NSLog(@"上一个请求还没有结束2");
         return;
     }
     if(motion == UIEventSubtypeMotionShake){
-        waitting = YES;
+        waitting = NO;
     }
 }
 
@@ -217,6 +236,10 @@
     [_model loadUserShark];
 }
 
+-(void)closeWinningView1{
+    waitting = NO;
+}
+
 -(void)stopPlayMusic{
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"shake_match.m4r" withExtension:nil];
     SystemSoundID soundID = 0;
@@ -226,6 +249,7 @@
 
 #pragma mark sharkNumDelegate
 -(void)loadLuckySharkNumberSucceed{
+    isLoading = NO;
     [self unShowWaitView];
     if(_numModel.number <= 0){
         return;
@@ -234,6 +258,7 @@
 }
 
 -(void)loadLuckySharkNumberFailed:(NSString *)errormsg{
+    isLoading = NO;
     [self unShowWaitView];
     if(!errormsg){
         errormsg = @"获取抽奖次数失败";
@@ -243,17 +268,30 @@
 
 #pragma mark sharkDelegate
 -(void)luckySharkSucceed{
+    if(_numModel.number >= 1){
+        _numModel.number -= 1;
+        [_numberLabel setText:[NSString stringWithFormat:@"%ld",(long)_numModel.number]];
+    }
     waitting = NO;
     [activityView stopAnimating];
     [label setHidden:YES];
 //    [self stopPlayMusic];
     
-    [UtilTool showAlertView:@"恭喜您中奖!"];
     if([_model.luckyGoodsArr count] > 0){
+        hasLucky = YES;
         LuckySharkEntity *entity = [_model.luckyGoodsArr objectAtIndex:0];
-        LuckyGoodsInfoVC *vc = [[LuckyGoodsInfoVC alloc] init];
-        vc.luckyEnt = entity;
-        [self.wxNavigationController pushViewController:vc];
+        
+        WinningView *view = [WinningView defaultPopupView];
+        view.parentVC = self;
+        view.imgUrl = entity.imgUrl;
+        view.name = entity.name;
+        [view initial];
+        
+        [self presentPopupView:view animation:[WinningViewAnimationDrop new] dismissed:^{
+            hasLucky = NO;
+            NSLog(@"动画结束");
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoWinningGoodsInfo) name:@"gotoWinningGoodsInfoVC" object:nil];
+        }];
     }
 }
 
@@ -265,6 +303,14 @@
         errorMsg = @"抽奖失败";
     }
     [UtilTool showAlertView:errorMsg];
+}
+
+-(void)gotoWinningGoodsInfo{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"closeWinningViewNoti" object:nil];
+    LuckySharkEntity *entity = [_model.luckyGoodsArr objectAtIndex:0];
+    LuckyGoodsInfoVC *vc = [[LuckyGoodsInfoVC alloc] init];
+    vc.luckyEnt = entity;
+    [self.wxNavigationController pushViewController:vc];
 }
 
 -(void)gotoSharkRuleVC{
@@ -282,10 +328,12 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self setCSTNavigationViewHidden:NO animated:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self resignFirstResponder];
     [activityView stopAnimating];
     [label setHidden:YES];
     waitting = NO;
+    hasLucky = NO;
     [_model setDelegate:nil];
     [_numModel setDelegate:nil];
 }

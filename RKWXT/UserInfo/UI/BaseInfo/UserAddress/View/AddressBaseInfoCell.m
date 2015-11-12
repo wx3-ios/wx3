@@ -9,7 +9,7 @@
 #import "AddressBaseInfoCell.h"
 #import "AreaEntity.h"
 
-#define Ygap (17+16+20+20)
+#define Ygap (17+20+5+20+5)
 
 @interface AddressBaseInfoCell(){
     UILabel *_namelabel;
@@ -45,9 +45,9 @@
         [self.contentView addSubview:_userPhone];
         
         xOffset = 10;
-        yOffset += nameHeight+16;
+        yOffset += nameHeight+5;
         _address = [[UILabel alloc] init];
-        _address.frame = CGRectMake(xOffset, yOffset, self.bounds.size.width-2*xOffset, 10);
+        _address.frame = CGRectMake(xOffset, yOffset, self.bounds.size.width-2*xOffset, 20);
         [_address setBackgroundColor:[UIColor clearColor]];
         [_address setTextAlignment:NSTextAlignmentLeft];
         [_address setTextColor:WXColorWithInteger(0x8a8a8a)];
@@ -68,7 +68,8 @@
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{
     CGFloat height = 0.0;
     AreaEntity *entity = cellInfo;
-    height = Ygap+[[self class] addressHeight:[NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address]];
+    CGFloat addHeight = [[self class] addressHeight:[NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address]];
+    height = Ygap-20+addHeight;
     return height;
 }
 
@@ -76,13 +77,14 @@
     [super setFrame:frame];
     AreaEntity *entity = self.cellInfo;
     CGFloat addHeight = [[self class] addressHeight:[NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address]];
+    
     CGRect rect = _address.frame;
     rect.size.height = addHeight;
     [_address setFrame:rect];
 }
 
 +(CGFloat)addressHeight:(NSString*)address{
-    CGFloat height = [address stringHeight:WXFont(15.0) width:IPHONE_SCREEN_WIDTH-2*5];
+    CGFloat height = [address stringHeight:WXFont(15.0) width:IPHONE_SCREEN_WIDTH-2*10];
     return height;
 }
 

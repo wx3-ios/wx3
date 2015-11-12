@@ -482,6 +482,13 @@
 		12C2CE251BA12FFC00797DA4 /* MyClientInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2CE241BA12FFC00797DA4 /* MyClientInfoCell.m */; };
 		12C2CE281BA1326700797DA4 /* MyClientMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2CE271BA1326700797DA4 /* MyClientMoneyVC.m */; };
 		12C2CE2B1BA1331C00797DA4 /* MyClientMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2CE2A1BA1331C00797DA4 /* MyClientMoneyCell.m */; };
+		12C64D781BF41F460039CC39 /* WinningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C64D771BF41F460039CC39 /* WinningView.m */; };
+		12C64D7B1BF42C170039CC39 /* WinningBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C64D7A1BF42C170039CC39 /* WinningBackgroundView.m */; };
+		12C64D7E1BF42F260039CC39 /* WXUIViewController+WinningPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C64D7D1BF42F260039CC39 /* WXUIViewController+WinningPopView.m */; };
+		12C64D811BF437F50039CC39 /* WinningViewAnimationDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C64D801BF437F50039CC39 /* WinningViewAnimationDrop.m */; };
+		12C64D851BF446850039CC39 /* SharkCloseBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C64D821BF446850039CC39 /* SharkCloseBtnImg@2x.png */; };
+		12C64D861BF446850039CC39 /* SharkGoodsBtnImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C64D831BF446850039CC39 /* SharkGoodsBtnImg@2x.png */; };
+		12C64D871BF446850039CC39 /* SharkShellImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C64D841BF446850039CC39 /* SharkShellImg@2x.png */; };
 		12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */; };
 		12CFE64B1AC1A077009C710B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */; };
 		12CFE6511AC1A210009C710B /* CallHistoryEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CFE6501AC1A210009C710B /* CallHistoryEntity.m */; };
@@ -1766,6 +1773,17 @@
 		12C2CE271BA1326700797DA4 /* MyClientMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClientMoneyVC.m; sourceTree = "<group>"; };
 		12C2CE291BA1331C00797DA4 /* MyClientMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyClientMoneyCell.h; path = RKWXT/NewUserCut/MyClientMoneyCell.h; sourceTree = SOURCE_ROOT; };
 		12C2CE2A1BA1331C00797DA4 /* MyClientMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyClientMoneyCell.m; path = RKWXT/NewUserCut/MyClientMoneyCell.m; sourceTree = SOURCE_ROOT; };
+		12C64D761BF41F460039CC39 /* WinningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningView.h; sourceTree = "<group>"; };
+		12C64D771BF41F460039CC39 /* WinningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningView.m; sourceTree = "<group>"; };
+		12C64D791BF42C170039CC39 /* WinningBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningBackgroundView.h; sourceTree = "<group>"; };
+		12C64D7A1BF42C170039CC39 /* WinningBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningBackgroundView.m; sourceTree = "<group>"; };
+		12C64D7C1BF42F260039CC39 /* WXUIViewController+WinningPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXUIViewController+WinningPopView.h"; sourceTree = "<group>"; };
+		12C64D7D1BF42F260039CC39 /* WXUIViewController+WinningPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXUIViewController+WinningPopView.m"; sourceTree = "<group>"; };
+		12C64D7F1BF437F50039CC39 /* WinningViewAnimationDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningViewAnimationDrop.h; sourceTree = "<group>"; };
+		12C64D801BF437F50039CC39 /* WinningViewAnimationDrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningViewAnimationDrop.m; sourceTree = "<group>"; };
+		12C64D821BF446850039CC39 /* SharkCloseBtnImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkCloseBtnImg@2x.png"; sourceTree = "<group>"; };
+		12C64D831BF446850039CC39 /* SharkGoodsBtnImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkGoodsBtnImg@2x.png"; sourceTree = "<group>"; };
+		12C64D841BF446850039CC39 /* SharkShellImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkShellImg@2x.png"; sourceTree = "<group>"; };
 		12CCD7EC1AC0184400A5BDF0 /* defaultContactIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultContactIcon@2x.png"; sourceTree = "<group>"; };
 		12CFE64A1AC1A077009C710B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		12CFE64F1AC1A210009C710B /* CallHistoryEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallHistoryEntity.h; sourceTree = "<group>"; };
@@ -4550,7 +4568,11 @@
 		12C12F3D1B81DA7E00345BEE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				12C64D751BF41E270039CC39 /* AlertView */,
 				12C12F441B81DFB500345BEE /* SharkBigImg.png */,
+				12C64D821BF446850039CC39 /* SharkCloseBtnImg@2x.png */,
+				12C64D831BF446850039CC39 /* SharkGoodsBtnImg@2x.png */,
+				12C64D841BF446850039CC39 /* SharkShellImg@2x.png */,
 				12C12F3E1B81DD2200345BEE /* SharkBigImg@2x.png */,
 				12C12F3F1B81DD2200345BEE /* SharkCenterImg@2x.png */,
 				12C12F401B81DD2200345BEE /* SharkRuleImg@2x.png */,
@@ -4567,6 +4589,21 @@
 				12C2000F1B4E7B0900BE8EE8 /* RefundStateEntity.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		12C64D751BF41E270039CC39 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				12C64D761BF41F460039CC39 /* WinningView.h */,
+				12C64D771BF41F460039CC39 /* WinningView.m */,
+				12C64D791BF42C170039CC39 /* WinningBackgroundView.h */,
+				12C64D7A1BF42C170039CC39 /* WinningBackgroundView.m */,
+				12C64D7F1BF437F50039CC39 /* WinningViewAnimationDrop.h */,
+				12C64D801BF437F50039CC39 /* WinningViewAnimationDrop.m */,
+				12C64D7C1BF42F260039CC39 /* WXUIViewController+WinningPopView.h */,
+				12C64D7D1BF42F260039CC39 /* WXUIViewController+WinningPopView.m */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		12D0C86F1AB684FE0039A197 /* AboutWxtInfo */ = {
@@ -7180,6 +7217,7 @@
 				1241E54F1AE9D89B00811D3F /* 9N@2x.png in Resources */,
 				124535561AE9D146004198C9 /* sign33@2x.png in Resources */,
 				120EB3D91B7B563B0036A77C /* Shake_01@2x.png in Resources */,
+				12C64D851BF446850039CC39 /* SharkCloseBtnImg@2x.png in Resources */,
 				121EBCD21BDDCB2700D1F307 /* GoodsInfoRedImg@2x.png in Resources */,
 				1245350C1AE9D0BC004198C9 /* CallNormal@2x.png in Resources */,
 				1263EFE61ACD35820014C347 /* Icon-Small@2x.png in Resources */,
@@ -7234,6 +7272,7 @@
 				777059AD1AAFDEC40097526C /* Localize.strings in Resources */,
 				1241E54E1AE9D89B00811D3F /* 8S@2x.png in Resources */,
 				12846A8C1B252D720021F9FE /* LoginUserImg@2x.png in Resources */,
+				12C64D871BF446850039CC39 /* SharkShellImg@2x.png in Resources */,
 				1285850B1B3AA7E5005E240E /* MakeOrderBtnImg@2x.png in Resources */,
 				127FDD771B57A76E0059BDB6 /* CallBtnDownImg@2x.png in Resources */,
 				12D52BB81AC2EF4400C5CE71 /* dtmf-2.aif in Resources */,
@@ -7241,6 +7280,7 @@
 				12F46A371B20012000B8EC98 /* T_ArrowDown@2x.png in Resources */,
 				121EBCD11BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png in Resources */,
 				1245353C1AE9D146004198C9 /* signBg@2x.jpg in Resources */,
+				12C64D861BF446850039CC39 /* SharkGoodsBtnImg@2x.png in Resources */,
 				1241E54A1AE9D89B00811D3F /* 6S@2x.png in Resources */,
 				12F3CC761B1DE82C00E64DE4 /* MyCallMoneyImg@2x.png in Resources */,
 				124535451AE9D146004198C9 /* sign18@2x.png in Resources */,
@@ -7347,6 +7387,7 @@
 				775C58CB1ABA7B75005B6B40 /* SubShopArea.m in Sources */,
 				775C58B61ABA7B75005B6B40 /* RedPacket.m in Sources */,
 				128767011B51012700A79320 /* ShopTwoDimensionCell.m in Sources */,
+				12C64D7E1BF42F260039CC39 /* WXUIViewController+WinningPopView.m in Sources */,
 				121AC7531B9ECF15007AC44B /* UserRefereeCell.m in Sources */,
 				12963B3A1B663DBB007418DE /* WXTGuideVC.m in Sources */,
 				120EC7961BB94AE100538637 /* SearchUserAliAccountModel.m in Sources */,
@@ -7617,6 +7658,7 @@
 				12F2D7DD1B1EA96B00C8017F /* DLTabedSlideView.m in Sources */,
 				1221C1D51BDA1B45004B681D /* ClassiftGoodsEntity.m in Sources */,
 				12F46A501B20311100B8EC98 /* NewGoodsInfoDownCell.m in Sources */,
+				12C64D7B1BF42C170039CC39 /* WinningBackgroundView.m in Sources */,
 				120595331BCF994F009E6986 /* NLSubViewController.m in Sources */,
 				DD0E38B11B1BE5AC00AB4DB9 /* WXShopCartSqlite.m in Sources */,
 				129EEBAB1B97DD160062349E /* ClubNoImgPlaceholderView.m in Sources */,
@@ -7809,6 +7851,7 @@
 				12F380171B3B88BC00E9690C /* MakeOrderShopCell.m in Sources */,
 				12F380211B3B95E400E9690C /* MakeOrderUserMsgTextFieldCell.m in Sources */,
 				12C12F221B81925000345BEE /* LuckyGoodsOrderInfoVC.m in Sources */,
+				12C64D781BF41F460039CC39 /* WinningView.m in Sources */,
 				12A050C61B316B7E008CC38F /* WXTMallListWebVC.m in Sources */,
 				775843171AB95A300039B129 /* LoadLabel.m in Sources */,
 				12A9D4401BD72E6B0033B238 /* ClassifySql.m in Sources */,
@@ -7866,6 +7909,7 @@
 				128241481B60D062001EE0BD /* DownSheetModel.m in Sources */,
 				775842BF1AB95A300039B129 /* WXTapGuideView.m in Sources */,
 				125418141BDB6F66004A7DF5 /* SearchResultEntity.m in Sources */,
+				12C64D811BF437F50039CC39 /* WinningViewAnimationDrop.m in Sources */,
 				1282217D1B18467A004613BB /* T_ChangeView.m in Sources */,
 				12C2CE251BA12FFC00797DA4 /* MyClientInfoCell.m in Sources */,
 				DD0E38B31B1BE5AC00AB4DB9 /* SystemMessageEntity.m in Sources */,

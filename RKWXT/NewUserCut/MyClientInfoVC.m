@@ -26,7 +26,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     if(!_titleName){
-        _titleName = @"我的客户";
+        _titleName = @"店小二";
     }
     [self setCSTTitle:_titleName];
     [self setBackgroundColor:WXColorWithInteger(0xefeff4)];

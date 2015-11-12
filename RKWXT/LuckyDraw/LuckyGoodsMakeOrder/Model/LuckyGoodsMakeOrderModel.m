@@ -35,7 +35,8 @@
         }
         return;
     }
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.user, @"phone", [NSNumber numberWithInteger:lottery_id], @"lottery_id", userObj.wxtID, @"woxin_id", [NSNumber numberWithInteger:goods_id], @"goods_id", goods_name, @"goods_name", imgUrl, @"goods_img", [NSNumber numberWithInteger:stockID], @"goods_stock_id", stockName, @"goods_stock_name", [NSNumber numberWithFloat:money], @"total_fee", entity.address, @"address", entity.userName, @"consignee", entity.userPhone, @"telephone", [NSNumber numberWithFloat:marketPrice], @"market_price", nil];
+    NSString *address = [NSString stringWithFormat:@"%@%@%@%@",entity.proName,entity.cityName,entity.disName,entity.address];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.user, @"phone", [NSNumber numberWithInteger:lottery_id], @"lottery_id", userObj.wxtID, @"woxin_id", [NSNumber numberWithInteger:goods_id], @"goods_id", goods_name, @"goods_name", imgUrl, @"goods_img", [NSNumber numberWithInteger:stockID], @"goods_stock_id", stockName, @"goods_stock_name", [NSNumber numberWithFloat:money], @"total_fee", address, @"address", entity.userName, @"consignee", entity.userPhone, @"telephone", [NSNumber numberWithFloat:marketPrice], @"market_price", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LuckyMakeOrder httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if(retData.code != 0){
             if(_delegate && [_delegate respondsToSelector:@selector(luckyGoodsMakeOrderFailed:)]){

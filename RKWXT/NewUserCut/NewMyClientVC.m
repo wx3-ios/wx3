@@ -23,7 +23,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setCSTTitle:@"我的客户"];
+    [self setCSTTitle:@"店小二"];
     [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
     
     _tableView = [[UITableView alloc] init];

@@ -103,7 +103,7 @@ enum{
             height = LuckyOrderStatusCellHeight;
             break;
         case LuckyGoodsOrderInfo_Section_BaseInfo:
-            height = [LuckyOrderUserInfoCell cellHeightOfInfo:nil];
+            height = [LuckyOrderUserInfoCell cellHeightOfInfo:entity.address];
             break;
         case LuckyGoodsOrderInfo_Section_Company:
             height = LuckyOrderCompanyCellHeight;

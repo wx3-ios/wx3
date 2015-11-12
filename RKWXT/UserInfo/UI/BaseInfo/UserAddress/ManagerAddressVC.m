@@ -99,7 +99,9 @@ enum{
     CGFloat height = 0.0;
     switch (indexPath.row) {
         case Address_BaseInfo:
-            height = [AddressBaseInfoCell cellHeightOfInfo:_addListArr[indexPath.row]];
+            if([_addListArr count] > 0){
+                height = [AddressBaseInfoCell cellHeightOfInfo:_addListArr[indexPath.section]];
+            }
             break;
         case Address_Manager:
             height = AddressManagerCellHeight;

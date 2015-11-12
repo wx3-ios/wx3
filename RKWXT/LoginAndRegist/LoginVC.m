@@ -89,7 +89,7 @@
     UIImage *icon = [UIImage imageNamed:@"LoginUpSmallImg.png"];
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOffset, yOffset, icon.size.width, icon.size.height)];
     [iconImageView setImage:icon];
-    [_iconShell addSubview:iconImageView];
+//    [_iconShell addSubview:iconImageView];
     
     CGFloat btnWidth = 51;
     CGFloat btnHeight = 23;
@@ -262,7 +262,7 @@
     [label1 setText:@"微信公众号: woxin1000"];
     [label1 setFont:WXFont(10.0)];
     [label1 setTextColor:WXColorWithInteger(0xda7c7b)];
-    [self addSubview:label1];
+//    [self addSubview:label1];
     
     UILabel *label2 = [[UILabel alloc] init];
     label2.frame = CGRectMake(Size.width/2, Size.height-20, Size.width/2-xOffset, label1Height);
@@ -271,7 +271,7 @@
     [label2 setText:@"客服电话:4007889388"];
     [label2 setFont:WXFont(10.0)];
     [label2 setTextColor:WXColorWithInteger(0xda7c7b)];
-    [self addSubview:label2];
+//    [self addSubview:label2];
 }
 
 #pragma mark KeyBoard

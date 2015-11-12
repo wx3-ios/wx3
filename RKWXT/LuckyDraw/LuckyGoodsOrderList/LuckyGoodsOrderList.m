@@ -162,6 +162,9 @@ typedef enum{
     if(!errorMsg){
         errorMsg = @"获取订单列表失败";
     }
+    if([errorMsg isEqualToString:@"没有您要查询的数据"]){
+        _tableView.reachedTheEnd = YES;
+    }
     [UtilTool showAlertView:errorMsg];
 }
 

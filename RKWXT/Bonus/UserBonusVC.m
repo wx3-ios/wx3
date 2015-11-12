@@ -89,9 +89,8 @@ enum{
     [rightBtn addTarget:self action:@selector(toUseBonusRule) forControlEvents:UIControlEventTouchUpInside];
     
     NSString *moneyStr = [NSString stringWithFormat:@"%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
-    if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
-        [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
-    }
+    [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
+    
     return rightBtn;
 }
 
@@ -131,11 +130,7 @@ enum{
 -(void)loadUserBonusSucceed{
     [self unShowWaitView];
     NSString *moneyStr = [NSString stringWithFormat:@"%ld元",(long)[UserBonusModel shareUserBonusModel].bonusMoney];
-    if([UserBonusModel shareUserBonusModel].bonusMoney > 0){
-        [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
-    }else{
-        [rightBtn setTitle:@"0元" forState:UIControlStateNormal];
-    }
+    [rightBtn setTitle:moneyStr forState:UIControlStateNormal];
 }
 
 -(void)loadUserBonusFailed:(NSNotification*)notification{
@@ -145,6 +140,7 @@ enum{
         msg = @"获取红包余额失败";
     }
     [UtilTool showAlertView:msg];
+    [rightBtn setTitle:@"0元" forState:UIControlStateNormal];
 }
 
 -(void)toUseBonusRule{

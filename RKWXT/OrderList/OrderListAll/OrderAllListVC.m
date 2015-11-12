@@ -282,7 +282,7 @@ typedef enum{
 #pragma mark loadOrderlist
 -(void)loadOrderListSucceed{
     [self unShowWaitView];
-    if(orderlistCount == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
+    if(orderlistCount == [[OrderListModel shareOrderListModel].orderListAll count] && self.e_cellRefreshing != E_CellRefreshing_Finish && [OrderListModel shareOrderListModel].orderlist_type == OrderList_Type_Loading){
         _tableView.reachedTheEnd = YES;
     }
     self.e_cellRefreshing = E_CellRefreshing_Nothing;
@@ -477,6 +477,7 @@ typedef enum{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CancelFailed object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CompleteFailed object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CompleteSucceed object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

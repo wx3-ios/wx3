@@ -165,7 +165,7 @@ enum{
     WXUIButton *rightbtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     rightbtn.frame = CGRectMake(size.width/2, size.height-DownViewHeight, size.width/2, DownViewHeight);
     [rightbtn setBackgroundColor:WXColorWithInteger(0xdd27262)];
-    [rightbtn setTitle:@"付邮费" forState:UIControlStateNormal];
+    [rightbtn setTitle:@"立即领取" forState:UIControlStateNormal];
     [rightbtn addTarget:self action:@selector(payGoods) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rightbtn];
 }
@@ -483,7 +483,7 @@ enum{
 
 -(NSString*)sharedGoodsInfoDescription{
     NSString *description = @"";
-    description = [NSString stringWithFormat:@"我在我信商城抽到一个奖品,免费的哦,赶快来看看吧。"];
+    description = [NSString stringWithFormat:@"我在%@商城抽到一个奖品,免费的哦,赶快来看看吧。",kMerchantName];
     return description;
 }
 
@@ -498,7 +498,6 @@ enum{
 -(void)goodsInfoModelLoadedSucceed{
     [self unShowWaitView];
     [_tableView reloadData];
-    [_model setDelegate:nil];
 }
 
 -(void)goodsInfoModelLoadedFailed:(NSString *)errorMsg{
@@ -539,6 +538,11 @@ enum{
 -(void)back{
     [self.wxNavigationController popViewControllerAnimated:YES completion:^{
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_model setDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning {
