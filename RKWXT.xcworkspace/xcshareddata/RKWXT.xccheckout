@@ -12,6 +12,8 @@
 	<dict>
 		<key>1BF173E4162522006F48E9B58BCA749805F8BE67</key>
 		<string>gitlab.67call.com:leting/gjtjb.git</string>
+		<key>6ec3b86d-b301-894a-b5cd-261cfab5c012++9314</key>
+		<string>svn://192.168.16.11/www</string>
 		<key>8256D7E5705457084742BC944791A60E3FDCDC98</key>
 		<string>gitlab.67call.com:leting/gjtjb.git</string>
 		<key>F72339642854CC075E0748BC992572E080761CC3</key>
@@ -23,6 +25,8 @@
 	<dict>
 		<key>1BF173E4162522006F48E9B58BCA749805F8BE67</key>
 		<string>..</string>
+		<key>6ec3b86d-b301-894a-b5cd-261cfab5c012++9314</key>
+		<string>../../wx_v3/RKWXT/ShareInterface/weixin/SDK</string>
 		<key>8256D7E5705457084742BC944791A60E3FDCDC98</key>
 		<string>../../gjtjb</string>
 		<key>F72339642854CC075E0748BC992572E080761CC3</key>
@@ -51,6 +55,14 @@
 			<string>1BF173E4162522006F48E9B58BCA749805F8BE67</string>
 			<key>IDESourceControlWCCName</key>
 			<string>gjtjb2</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6ec3b86d-b301-894a-b5cd-261cfab5c012++9314</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SDK</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

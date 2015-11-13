@@ -52,6 +52,7 @@
 -(void)compareLocalAreaVersionToServiceAreaVersion:(NSString*)newVersion{
     if(![newVersion isEqualToString:[[self class] lastCheckDate]]){
         [self removeAreaPlist];
+        
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:newVersion forKey:CheckAreaVersion];
