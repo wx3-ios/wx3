@@ -38,12 +38,6 @@ typedef enum{
 
 @implementation LuckyGoodsShowVC
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    _model = [[LuckyGoodsModel alloc] init];
-    [_model setDelegate:self];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCSTTitle:@"奖品列表"];
@@ -58,6 +52,9 @@ typedef enum{
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self createRightBtn];
+    
+    _model = [[LuckyGoodsModel alloc] init];
+    [_model setDelegate:self];
     
     [_model setType:LuckyGoods_Type_Normal];
     [_model loadLuckyGoodsListWith:0 with:EveryTimeLoadDataNumber];

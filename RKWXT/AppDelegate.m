@@ -35,6 +35,9 @@
 
 #import "AllAreaDataModel.h"
 
+//腾讯bugly
+//#import <Bugly/CrashReporter.h>
+
 @interface AppDelegate (){
     CTCallCenter *_callCenter;
     ScreenActivityVC *activityVC;
@@ -74,6 +77,13 @@
     id result = [[TencentOAuth alloc] initWithAppId:@"1104707907" andDelegate:nil];
     if(result){}
     
+    //初始化bugly
+//    [[CrashReporter sharedInstance] installWithAppId:@"900011965"];
+    // 调试阶段开启sdk日志打印, 发布阶段请务必关闭
+//#if DEBUG == 1
+//    [[CrashReporter sharedInstance] enableLog:YES];
+//#endif
+    
     return YES;
 }
 
@@ -105,6 +115,7 @@
         [[NewWXTLiDB sharedWXLibDB] loadData];
         [self checkVersion];
         [self checkAreaVersion];
+        
         //自动登录
         WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
         //        LoginModel *_loginModel = [[LoginModel alloc] init];
@@ -112,6 +123,7 @@
         
         [userDefault SetUserLoginFirst:YES];
         [APService setTags:[NSSet setWithObject:[NSString stringWithFormat:@"%@",userDefault.user]] alias:nil callbackSelector:nil object:nil];
+//        [[CrashReporter sharedInstance] setUserId:[NSString stringWithFormat:@"用户:%@", userDefault.user]];
     }else{
         WXUIViewController *vc = nil;
         if(kMerchantID == 100000 || kMerchantID == 10145){

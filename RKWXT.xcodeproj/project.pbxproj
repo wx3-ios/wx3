@@ -511,6 +511,7 @@
 		12D52BBF1AC2EF4400C5CE71 /* dtmf-9.aif in Resources */ = {isa = PBXBuildFile; fileRef = 12D52BB31AC2EF4400C5CE71 /* dtmf-9.aif */; };
 		12D52BC11AC2EFA000C5CE71 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D52BC01AC2EFA000C5CE71 /* AudioToolbox.framework */; };
 		12D55A451AC2BD8800F51F97 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D55A441AC2BD8800F51F97 /* CoreTelephony.framework */; };
+		12D689E11BF5867B0092AB3D /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D689E01BF5867B0092AB3D /* Bugly.framework */; };
 		12D87D8A1BD4C1AB00579FF6 /* ClassifyListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87D891BD4C1AB00579FF6 /* ClassifyListVC.m */; };
 		12D87D971BD4CF3C00579FF6 /* ClassifyLeftListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87D931BD4CF3C00579FF6 /* ClassifyLeftListView.m */; };
 		12D87D981BD4CF3C00579FF6 /* ClassifyRightListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87D961BD4CF3C00579FF6 /* ClassifyRightListView.m */; };
@@ -1812,6 +1813,7 @@
 		12D52BB31AC2EF4400C5CE71 /* dtmf-9.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dtmf-9.aif"; sourceTree = "<group>"; };
 		12D52BC01AC2EFA000C5CE71 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		12D55A441AC2BD8800F51F97 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		12D689E01BF5867B0092AB3D /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		12D87D881BD4C1AB00579FF6 /* ClassifyListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyListVC.h; sourceTree = "<group>"; };
 		12D87D891BD4C1AB00579FF6 /* ClassifyListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyListVC.m; sourceTree = "<group>"; };
 		12D87D921BD4CF3C00579FF6 /* ClassifyLeftListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyLeftListView.h; sourceTree = "<group>"; };
@@ -2615,6 +2617,7 @@
 			files = (
 				128083D41B61D1BA00260B9F /* libstdc++.dylib in Frameworks */,
 				128083D21B61D17700260B9F /* libiconv.dylib in Frameworks */,
+				12D689E11BF5867B0092AB3D /* Bugly.framework in Frameworks */,
 				1265FBD71BC2B39F007D354A /* libssl.a in Frameworks */,
 				12F572271B42267300128294 /* MobileCoreServices.framework in Frameworks */,
 				12F572251B42265600128294 /* libc++.dylib in Frameworks */,
@@ -6685,6 +6688,7 @@
 		AD94EECE23B2F2543B7D284C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12D689E01BF5867B0092AB3D /* Bugly.framework */,
 				123316D51BCC9691004649DC /* libPods-AFNetworking.a */,
 				128083D31B61D1BA00260B9F /* libstdc++.dylib */,
 				128083D11B61D17700260B9F /* libiconv.dylib */,
