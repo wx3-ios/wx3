@@ -38,13 +38,10 @@ typedef enum{
 
 @implementation LuckyGoodsShowVC
 
--(id)init{
-    self = [super init];
-    if(self){
-        _model = [[LuckyGoodsModel alloc] init];
-        [_model setDelegate:self];
-    }
-    return self;
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    _model = [[LuckyGoodsModel alloc] init];
+    [_model setDelegate:self];
 }
 
 - (void)viewDidLoad {
@@ -256,6 +253,11 @@ typedef enum{
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     [_tableView tableViewDidEndDragging:scrollView];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_model setDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning {

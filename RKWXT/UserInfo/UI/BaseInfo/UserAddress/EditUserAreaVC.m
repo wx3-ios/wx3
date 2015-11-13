@@ -275,7 +275,6 @@ enum{
         self.disList = disArr;
         self.disEnt = disEntity;
 
-        
         [picker selectRow:0 inComponent:CITY_COMPONENT animated:YES];
         [picker reloadComponent:CITY_COMPONENT];
         [picker selectRow:0 inComponent:DISTRICT_COMPONENT animated:YES];
@@ -290,6 +289,17 @@ enum{
         [picker selectRow:0 inComponent:DISTRICT_COMPONENT animated:YES];
         [picker reloadComponent:DISTRICT_COMPONENT];
     }else{
+        AreaEntity *proEntity = nil;
+        if(!self.proEnt){
+            proEntity = [[LocalAreaModel shareLocalArea].provinceArr objectAtIndex:0];
+            [LocalAreaModel shareLocalArea].selectedProvince = proEntity.areaName;
+            self.proEnt = proEntity;
+        }
+        if(!self.cityEnt){
+            NSArray *cityArray = [[LocalAreaModel shareLocalArea] searchCityArrayWithProvinceID:proEntity.areaID];
+            AreaEntity *cityEntity = [cityArray objectAtIndex:0];
+            self.cityEnt = cityEntity;
+        }
         self.disEnt = [self.disList objectAtIndex:row];
     }
     
