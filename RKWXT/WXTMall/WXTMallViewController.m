@@ -104,7 +104,7 @@
             height = Size.width/3;
             break;
         case T_HomePage_BaseFunction:
-            height = T_HomePageBaseFunctionHeight;
+            height = T_HomePageBaseFunctionHeight*2;
             break;
         case T_HomePage_WXIntroduce:
             height = T_HomePageWXIntructionHeight;
@@ -478,9 +478,8 @@
 //    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:kSubShopID], @"shop_id", [NSNumber numberWithInteger:kMerchantID], @"sid", userObj.user, @"phone", [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd", [NSNumber numberWithInteger:catID], @"cat_id", nil];
 //    [webViewVC initWithFeedType:WXT_UrlFeed_Type_NewMall_CatagaryList paramDictionary:dic];
 //    [self.wxNavigationController pushViewController:webViewVC];
-//    ClassifyListVC *webViewVC = [[[ClassifyListVC alloc] init] autorelease];
-    LuckyShakeVC *webViewVC = [[[LuckyShakeVC alloc] init] autorelease];
-//    webViewVC.cat_id = catID;
+    ClassifyListVC *webViewVC = [[[ClassifyListVC alloc] init] autorelease];
+    webViewVC.cat_id = catID;
     [self.wxNavigationController pushViewController:webViewVC];
 }
 
@@ -495,16 +494,15 @@
         return;
     }
     switch (index) {
+        case T_BaseFunction_Shark:
+        {
+            LuckyShakeVC *webViewVC = [[[LuckyShakeVC alloc] init] autorelease];
+            [self.wxNavigationController pushViewController:webViewVC];
+        }
+            break;
         case T_BaseFunction_Sign:
         {
             [[CoordinateController sharedCoordinateController] toSignVC:self animated:YES];
-//            LuckyGoodsShowVC *luckyGoodsVC = [[LuckyGoodsShowVC alloc] init];
-//            [self.wxNavigationController pushViewController:luckyGoodsVC];
-        }
-            break;
-        case T_BaseFunction_Recharge:
-        {
-            [[CoordinateController sharedCoordinateController] toRechargeVC:self animated:YES];
         }
             break;
         case T_BaseFunction_Wallet:
@@ -515,6 +513,28 @@
         case T_BaseFunction_Order:
         {
             [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:0 animated:YES];
+        }
+            break;
+        case T_BaseFunction_Recharge:
+        {
+            [[CoordinateController sharedCoordinateController] toRechargeVC:self animated:YES];
+        }
+            break;
+        case T_BaseFunction_Balance:
+        {
+            UserBalanceVC *balanceVC = [[UserBalanceVC alloc] init];
+            [self.wxNavigationController pushViewController:balanceVC];
+        }
+            break;
+        case T_BaseFunction_Cut:
+        {
+            NewUserCutVC *userCutVC = [[NewUserCutVC alloc] init];
+            [self.wxNavigationController pushViewController:userCutVC];
+        }
+            break;
+        case T_BaseFunction_Union:
+        {
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
         }
             break;
         default:

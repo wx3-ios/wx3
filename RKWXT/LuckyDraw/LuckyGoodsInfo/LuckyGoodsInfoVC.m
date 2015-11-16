@@ -24,7 +24,7 @@
 
 #define size self.bounds.size
 #define TopNavigationViewHeight (64)
-#define DownViewHeight (50)
+#define DownViewHeight (40)
 
 enum{
     LuckyGoodsInfo_Section_TopImg = 0,
@@ -158,14 +158,14 @@ enum{
     WXUIButton *leftbtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     leftbtn.frame = CGRectMake(0, size.height-DownViewHeight, size.width/2, DownViewHeight);
     [leftbtn setBackgroundColor:WXColorWithInteger(0x888888)];
-    [leftbtn setTitle:@"取消" forState:UIControlStateNormal];
+    [leftbtn setTitle:@"放弃" forState:UIControlStateNormal];
     [leftbtn addTarget:self action:@selector(cancelPayGoods) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:leftbtn];
     
     WXUIButton *rightbtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     rightbtn.frame = CGRectMake(size.width/2, size.height-DownViewHeight, size.width/2, DownViewHeight);
     [rightbtn setBackgroundColor:WXColorWithInteger(0xdd27262)];
-    [rightbtn setTitle:@"立即领取" forState:UIControlStateNormal];
+    [rightbtn setTitle:@"免费领取" forState:UIControlStateNormal];
     [rightbtn addTarget:self action:@selector(payGoods) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rightbtn];
 }

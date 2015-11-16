@@ -101,7 +101,7 @@
         return @"已关闭";
     }
     if(payStatus == LuckyOrder_Pay_Wait){
-        return @"待付款";
+        return @"待领取";
     }
     if(payStatus == LuckyOrder_Pay_Done && sendStatus == LuckyOrder_Send_Wait){
         return @"待发货";

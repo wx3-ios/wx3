@@ -167,6 +167,7 @@
     [ruleBtn setBackgroundImage:[UIImage imageNamed:@"SharkRuleImg.png"] forState:UIControlStateNormal];
     [ruleBtn setTitle:@"活动规则" forState:UIControlStateNormal];
     [ruleBtn.titleLabel setTextColor:WXColorWithInteger(0xffffff)];
+    [ruleBtn.titleLabel setFont:WXFont(13.0)];
     [ruleBtn addTarget:self action:@selector(gotoSharkRuleVC) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:ruleBtn];
     
@@ -175,6 +176,7 @@
     [goodsBtn setBackgroundImage:[UIImage imageNamed:@"SharkRuleImg.png"] forState:UIControlStateNormal];
     [goodsBtn setTitle:@"查看奖品" forState:UIControlStateNormal];
     [goodsBtn.titleLabel setTextColor:WXColorWithInteger(0xffffff)];
+    [goodsBtn.titleLabel setFont:WXFont(13.0)];
     [goodsBtn addTarget:self action:@selector(searchLuckyGoodsListVC) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:goodsBtn];
 }
@@ -196,7 +198,7 @@
     }
     if(motion == UIEventSubtypeMotionShake){
         if(_numModel.number <= 0){
-            [UtilTool showAlertView:@"您已经没有抽奖机会了"];
+            [UtilTool showTipView:@"抽奖机会用完了，获取更多抽奖机会的方法在活动规则里面哦"];
             return;
         }
         waitting = YES;

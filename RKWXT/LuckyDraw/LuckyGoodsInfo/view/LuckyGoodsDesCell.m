@@ -82,7 +82,7 @@
 -(void)load{
     GoodsInfoEntity *entity = self.cellInfo;
     [_descLabel setText:entity.intro];
-    [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",_newprice]];
+    [_newPrice setText:[NSString stringWithFormat:@"￥0"]];
     [_stockLabel setText:_name];
     [_oldPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.market_price]];
 }

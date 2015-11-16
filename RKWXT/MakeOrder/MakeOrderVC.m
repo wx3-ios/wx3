@@ -75,7 +75,7 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self addSubview:[self createDownView]];
     
-    [self loadCarriageMoney];
+//    [self loadCarriageMoney];
     [self addNotification];
     [self censusBonusValue];
     [self censusBalanceValue];
