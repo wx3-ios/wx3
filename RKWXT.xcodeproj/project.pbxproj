@@ -925,6 +925,9 @@
 		DDEA9EE41B1BFE5D00530C1C /* unreadBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDEA9EE21B1BFE5D00530C1C /* unreadBg@2x.png */; };
 		DDEA9F0D1B1C2F2E00530C1C /* GoodsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9F0C1B1C2F2E00530C1C /* GoodsDetailCell.m */; };
 		DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9F101B1C3A1800530C1C /* StrechyParallaxScrollView.m */; };
+		DDFBC05E1BF9C4EF003E71A2 /* FindZhiwoyun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFBC05D1BF9C4EF003E71A2 /* FindZhiwoyun@2x.png */; };
+		DDFBC0601BF9C669003E71A2 /* FindHusheng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFBC05F1BF9C669003E71A2 /* FindHusheng@2x.png */; };
+		DDFBC0631BF9C6C3003E71A2 /* WXWebViewShareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC0621BF9C6C3003E71A2 /* WXWebViewShareVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2613,6 +2616,10 @@
 		DDEA9F0C1B1C2F2E00530C1C /* GoodsDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailCell.m; sourceTree = "<group>"; };
 		DDEA9F0F1B1C3A1800530C1C /* StrechyParallaxScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrechyParallaxScrollView.h; sourceTree = "<group>"; };
 		DDEA9F101B1C3A1800530C1C /* StrechyParallaxScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrechyParallaxScrollView.m; sourceTree = "<group>"; };
+		DDFBC05D1BF9C4EF003E71A2 /* FindZhiwoyun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindZhiwoyun@2x.png"; sourceTree = "<group>"; };
+		DDFBC05F1BF9C669003E71A2 /* FindHusheng@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindHusheng@2x.png"; sourceTree = "<group>"; };
+		DDFBC0611BF9C6C3003E71A2 /* WXWebViewShareVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXWebViewShareVC.h; sourceTree = "<group>"; };
+		DDFBC0621BF9C6C3003E71A2 /* WXWebViewShareVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWebViewShareVC.m; sourceTree = "<group>"; };
 		E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3149,6 +3156,8 @@
 		123316E21BCCE803004649DC /* FindImage */ = {
 			isa = PBXGroup;
 			children = (
+				DDFBC05F1BF9C669003E71A2 /* FindHusheng@2x.png */,
+				DDFBC05D1BF9C4EF003E71A2 /* FindZhiwoyun@2x.png */,
 				123316E31BCCE803004649DC /* FindJingdong@2x.png */,
 				123316E41BCCE803004649DC /* FIndLvyou@2x.png */,
 				123316E51BCCE803004649DC /* FindShop@2x.png */,
@@ -3533,6 +3542,8 @@
 				126CA3DA1AB278FC00E08A0B /* WXTFindVC.m */,
 				121804301ACB90C7009DB7E7 /* FindCommonVC.h */,
 				121804311ACB90C7009DB7E7 /* FindCommonVC.m */,
+				DDFBC0611BF9C6C3003E71A2 /* WXWebViewShareVC.h */,
+				DDFBC0621BF9C6C3003E71A2 /* WXWebViewShareVC.m */,
 				121804331ACB997C009DB7E7 /* UI */,
 				1262E2C01ACA509400667C54 /* WXTFindModel */,
 			);
@@ -7133,6 +7144,7 @@
 				120EB3DD1B7B563B0036A77C /* SharkBlackImg.png in Resources */,
 				124535421AE9D146004198C9 /* sign14@2x.png in Resources */,
 				127FDD781B57A76E0059BDB6 /* CallBtnUpImg@2x.png in Resources */,
+				DDFBC05E1BF9C4EF003E71A2 /* FindZhiwoyun@2x.png in Resources */,
 				121121101BA2775000651E4A /* MyCutTeam@2x.png in Resources */,
 				1245354F1AE9D146004198C9 /* sign27@2x.png in Resources */,
 				1241E5391AE9D89B00811D3F /* #N@2x.png in Resources */,
@@ -7312,6 +7324,7 @@
 				120595391BCFA544009E6986 /* arrowDown.png in Resources */,
 				1263EFE91ACD35820014C347 /* iTunesArtWork.png in Resources */,
 				1241E54D1AE9D89B00811D3F /* 8N@2x.png in Resources */,
+				DDFBC0601BF9C669003E71A2 /* FindHusheng@2x.png in Resources */,
 				1272490D1B2574C9001BDC15 /* RegistOtherUser@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7389,6 +7402,7 @@
 				775842E81AB95A300039B129 /* TelNOOBJ.m in Sources */,
 				120A2BEC1AB135DD006A28B1 /* SignViewController.m in Sources */,
 				1214B5901BBA609200A7D810 /* WithdrawadsRecordListModel.m in Sources */,
+				DDFBC0631BF9C6C3003E71A2 /* WXWebViewShareVC.m in Sources */,
 				12F2D7FD1B1EF11900C8017F /* OrderGoodsCell.m in Sources */,
 				775842BE1AB95A300039B129 /* WXMaskView.m in Sources */,
 				12F422951B1D85FC00643DD7 /* AddSqlite.m in Sources */,

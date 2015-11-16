@@ -267,6 +267,15 @@
 
 + (NSString*)sharedString{
     NSString *str = [NSString stringWithFormat:@"这年头没好事哪敢骚扰你，用%@打国内电话低至3分。",kMerchantName];
+    if (kMerchantID == 10192) {
+        str = [NSString  stringWithFormat:@"下载进口特惠商城，手机话费充100送378，8分钱／分钟打遍全国。"];
+    }
+    if(kMerchantID == 10233 || kMerchantID == 10248 || kMerchantID == 10249){
+        str = [NSString stringWithFormat:@"这个世界上肯定有一个人能帮到你，你也会帮到另一个人。分享到朋友圈去帮助更多的人"];
+    }
+    if(kMerchantID == 10198){
+        str = [NSString stringWithFormat:@"这年头没好事哪敢骚扰您，了解世纪医微通，您会感激我一辈子……"];
+    }
     return str;
 }
 

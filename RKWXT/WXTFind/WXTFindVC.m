@@ -8,6 +8,7 @@
 
 #import "WXTFindVC.h"
 #import "FindCommonVC.h"
+#import "WXWebViewShareVC.h"
 
 #define FindCommonCellHeight (85)
 #define Size self.bounds.size
@@ -35,8 +36,19 @@
         commonUrl = @[@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant", @"http://re.jd.com", @"http://www.taobao.com"];
         
         imgArr = @[@"FIndLvyou.png", @"FindWeather.png"];
-        nameArr = @[@"去哪儿网", @"墨迹天气"];
+        nameArr = @[@"去哪儿网", @"天气"];
         webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com"];
+        
+        if(kMerchantID == 10248){
+            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindZhiwoyun.png"];
+            nameArr = @[@"去哪儿网", @"天气", @"微名片"];
+            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx.1wili.com/livehouse.html"];
+        }
+        if(kMerchantID == 10233 || kMerchantID == 10249){
+            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindHusheng.png"];
+            nameArr = @[@"去哪儿网", @"天气", @"OO直播"];
+            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx.1wili.com/livehouse.html"];
+        }
     }
     return self;
 }
@@ -158,6 +170,11 @@
 
 -(void)gotoCommonWeb:(id)sender{
     WXUIButton *btn = sender;
+    if(btn.tag == 2 && kMerchantID == 10248){
+        WXWebViewShareVC *webVC = [[WXWebViewShareVC alloc] init];
+        [self.wxNavigationController pushViewController:webVC];
+        return;
+    }
     FindCommonVC *commonVC = [[FindCommonVC alloc] init];
     commonVC.webURl = [webUrl objectAtIndex:btn.tag];
     commonVC.titleName = [nameArr objectAtIndex:btn.tag];
