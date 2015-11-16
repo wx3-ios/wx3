@@ -239,6 +239,15 @@
     picker.messageComposeDelegate = self;
     
     NSString *msg = [NSString stringWithFormat:@"这年头没好事哪敢骚扰你，用我信通打国内电话低至3分。下载地址:%@%d",DownLoadUrl,(int)kMerchantID];
+    if(kMerchantID == 10233 || kMerchantID == 10248 || kMerchantID  == 10249){
+        msg = [NSString stringWithFormat:@"这个世界上肯定有一个人能帮到你，你也会帮到另一个人。分享到朋友圈去帮助更多的人。下载地址:%@%d",DownLoadUrl,(int)kMerchantID];
+    }
+    if (kMerchantID == 10192) {
+        msg = [NSString  stringWithFormat:@"下载进口特惠商城，手机话费充100送378，8分钱／分钟打遍全国。下载地址:%@%d",DownLoadUrl,(int)kMerchantID];
+    }
+    if(kMerchantID == 10198){
+        msg = [NSString stringWithFormat:@"这年头没好事哪敢骚扰您，了解世纪医微通，您会感激我一辈子……下载地址:%@%d",DownLoadUrl,(int)kMerchantID];
+    }
     picker.body = [[NSString alloc] initWithString:msg];
     
     NSArray *array = [NSArray arrayWithObjects:stringNum,nil];
