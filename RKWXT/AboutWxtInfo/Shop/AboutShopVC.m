@@ -35,7 +35,7 @@
         companyID = _shopID;
     }
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?sid=%d&phone=%@",WXTBaseUrl,NormaleMessageUrl,companyID,userObj.user];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?sid=%d&phone=%@",WXTWebBaseUrl,NormaleMessageUrl,companyID,userObj.user];
     
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

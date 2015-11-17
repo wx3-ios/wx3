@@ -265,7 +265,7 @@ enum{
         case MakeOrder_Section_Company:
         {
             AboutShopVC *vc = [[AboutShopVC alloc] init];
-            vc.shopID = 1000000;
+            vc.shopID = 100000;
             [self.wxNavigationController pushViewController:vc];
         }
             break;
