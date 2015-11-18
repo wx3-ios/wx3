@@ -92,6 +92,8 @@
 		121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121804351ACB99AB009DB7E7 /* WXTFindCommmonCell.m */; };
 		121AC74C1B9EB80A007AC44B /* NewUserCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */; };
 		121AC7531B9ECF15007AC44B /* UserRefereeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121AC7521B9ECF15007AC44B /* UserRefereeCell.m */; };
+		121E39B81BFACB130098173F /* WXShopCityListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E39B71BFACB130098173F /* WXShopCityListVC.m */; };
+		121E39BE1BFAD8E70098173F /* WXShopUnionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E39BD1BFAD8E70098173F /* WXShopUnionVC.m */; };
 		121E8F921BEAF9BD0047373A /* CityListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8F911BEAF9BD0047373A /* CityListVC.m */; };
 		121E8F961BEB069B0047373A /* AllAreaDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8F951BEB069B0047373A /* AllAreaDataModel.m */; };
 		121E8F991BEB095B0047373A /* LoadAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121E8F981BEB095B0047373A /* LoadAreaModel.m */; };
@@ -1083,6 +1085,10 @@
 		121AC74B1B9EB80A007AC44B /* NewUserCutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserCutVC.m; sourceTree = "<group>"; };
 		121AC7511B9ECF15007AC44B /* UserRefereeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRefereeCell.h; path = RKWXT/NewUserCut/View/UserRefereeCell.h; sourceTree = SOURCE_ROOT; };
 		121AC7521B9ECF15007AC44B /* UserRefereeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRefereeCell.m; path = RKWXT/NewUserCut/View/UserRefereeCell.m; sourceTree = SOURCE_ROOT; };
+		121E39B61BFACB130098173F /* WXShopCityListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXShopCityListVC.h; sourceTree = "<group>"; };
+		121E39B71BFACB130098173F /* WXShopCityListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXShopCityListVC.m; sourceTree = "<group>"; };
+		121E39BC1BFAD8E70098173F /* WXShopUnionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXShopUnionVC.h; sourceTree = "<group>"; };
+		121E39BD1BFAD8E70098173F /* WXShopUnionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXShopUnionVC.m; sourceTree = "<group>"; };
 		121E8F901BEAF9BD0047373A /* CityListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListVC.h; sourceTree = "<group>"; };
 		121E8F911BEAF9BD0047373A /* CityListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListVC.m; sourceTree = "<group>"; };
 		121E8F941BEB069B0047373A /* AllAreaDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllAreaDataModel.h; sourceTree = "<group>"; };
@@ -3063,6 +3069,56 @@
 			path = Model/View;
 			sourceTree = "<group>";
 		};
+		121E39B31BFAC9300098173F /* CityList */ = {
+			isa = PBXGroup;
+			children = (
+				121E39B61BFACB130098173F /* WXShopCityListVC.h */,
+				121E39B71BFACB130098173F /* WXShopCityListVC.m */,
+				121E39B51BFAC9480098173F /* View */,
+				121E39B41BFAC9410098173F /* model */,
+			);
+			path = CityList;
+			sourceTree = "<group>";
+		};
+		121E39B41BFAC9410098173F /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		121E39B51BFAC9480098173F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		121E39B91BFAD8A20098173F /* WXShopUnion */ = {
+			isa = PBXGroup;
+			children = (
+				121E39BC1BFAD8E70098173F /* WXShopUnionVC.h */,
+				121E39BD1BFAD8E70098173F /* WXShopUnionVC.m */,
+				121E39BA1BFAD8BF0098173F /* Model */,
+				121E39BB1BFAD8BF0098173F /* View */,
+			);
+			path = WXShopUnion;
+			sourceTree = "<group>";
+		};
+		121E39BA1BFAD8BF0098173F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		121E39BB1BFAD8BF0098173F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		121E8F931BEB066F0047373A /* AllData */ = {
 			isa = PBXGroup;
 			children = (
@@ -4784,19 +4840,11 @@
 		12D96EC61BE844CC0043B219 /* CitySelect */ = {
 			isa = PBXGroup;
 			children = (
+				121E39B31BFAC9300098173F /* CityList */,
 				121E8F931BEB066F0047373A /* AllData */,
-				12D96ECB1BE848820043B219 /* Location */,
-				12D96EC71BE8471D0043B219 /* Area */,
 				12D96EC81BE8471D0043B219 /* City */,
 			);
 			path = CitySelect;
-			sourceTree = "<group>";
-		};
-		12D96EC71BE8471D0043B219 /* Area */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Area;
 			sourceTree = "<group>";
 		};
 		12D96EC81BE8471D0043B219 /* City */ = {
@@ -4808,13 +4856,6 @@
 				12D96ECD1BE848C50043B219 /* View */,
 			);
 			path = City;
-			sourceTree = "<group>";
-		};
-		12D96ECB1BE848820043B219 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Location;
 			sourceTree = "<group>";
 		};
 		12D96ECC1BE848C50043B219 /* Model */ = {
@@ -5744,6 +5785,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				121E39B91BFAD8A20098173F /* WXShopUnion */,
 				12D96EC61BE844CC0043B219 /* CitySelect */,
 				12D87D821BD4C0C200579FF6 /* Classify */,
 				121AC7471B9EB7CF007AC44B /* NewUserCut */,
@@ -7594,12 +7636,14 @@
 				DDB58F451AD3C6A2006248E9 /* ContactDetailVC.m in Sources */,
 				1214B58A1BBA297D00A7D810 /* ApplyAliModel.m in Sources */,
 				12F916161B199A4500C94717 /* HomePageRecModel.m in Sources */,
+				121E39BE1BFAD8E70098173F /* WXShopUnionVC.m in Sources */,
 				12F963301B3D4BDF00FF6A3E /* SBJsonParser.m in Sources */,
 				7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */,
 				12F2CCF21B4D11710085F78F /* RefundCompanyCell.m in Sources */,
 				775C58D11ABA7B75005B6B40 /* WXContacterEntity.m in Sources */,
 				12D87DA41BD4F04A00579FF6 /* ClassifyRightView.m in Sources */,
 				775842F21AB95A300039B129 /* WXDropListView.m in Sources */,
+				121E39B81BFACB130098173F /* WXShopCityListVC.m in Sources */,
 				12A9D4521BD768FE0033B238 /* CLassifySearchModel.m in Sources */,
 				775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */,
 				DDB58F561AD3C6A2006248E9 /* WXContacterVC.m in Sources */,

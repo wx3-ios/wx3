@@ -53,6 +53,7 @@
     [_model loadData];
     
     [self pullingTableViewDidStartRefreshing:_tableView];
+    [[LocalAreaModel shareLocalArea] loadLocalAreaData];
 }
 
 -(void)createTopBtn{
@@ -534,7 +535,9 @@
             break;
         case T_BaseFunction_Union:
         {
-            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
+//            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
+            WXShopUnionVC *unionVC = [[WXShopUnionVC alloc] init];
+            [self.wxNavigationController pushViewController:unionVC];
         }
             break;
         default:

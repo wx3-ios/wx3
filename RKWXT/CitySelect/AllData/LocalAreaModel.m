@@ -9,6 +9,7 @@
 #import "LocalAreaModel.h"
 #import "AreaDataSql.h"
 #import "AreaEntity.h"
+#import "PinYinSearchOBJ.h"
 
 @interface LocalAreaModel(){
     NSDictionary *localDic;
@@ -17,6 +18,10 @@
     NSMutableArray *_cityArr;
     NSMutableDictionary *_citiesDic;
     NSMutableDictionary *_districtDic;
+    
+    NSMutableArray *_keys;
+    NSMutableDictionary *_cityDic;
+    NSMutableArray *_searchCity;
 }
 @end
 
@@ -25,6 +30,8 @@
 @synthesize cityArr = _cityArr;
 @synthesize citiesDic = _citiesDic;
 @synthesize districtDic = _districtDic;
+@synthesize cityDic = _cityDic;
+@synthesize searchCity = _searchCity;
 
 +(LocalAreaModel*)shareLocalArea{
     static dispatch_once_t onceToken;
@@ -42,6 +49,9 @@
         _cityArr = [[NSMutableArray alloc] init];
         _citiesDic = [[NSMutableDictionary alloc] init];
         _districtDic = [[NSMutableDictionary alloc] init];
+        _keys = [[NSMutableArray alloc] init];
+        _cityDic = [[NSMutableDictionary alloc] init];
+        _searchCity = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -83,7 +93,7 @@
                 _selectedProvince = entity.areaName;
                 _areaEntity = entity;
 //                [self loadAllCity:dic];  //省份过滤后过滤市
-//                [self loadLocalCity:dic];
+                [self loadLocalCity:dic];
             }
         });
     });
@@ -108,10 +118,96 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //市过滤后过滤区县
 //            [self loadLocalDistrict:dic];
+            [self parseAllCityKeys];
         });
     });
 }
 
+//解析所有key
+-(void)parseAllCityKeys{
+    if([_keys respondsToSelector:@selector(removeAllObjects)]){ //未知的原因导致——_keys对象出现问题
+        [_keys removeAllObjects];
+    }else{
+        _keys = [[NSMutableArray alloc] init];
+    }
+    for(AreaEntity *entity in _cityArr){
+        char ch = '#';
+        NSString *name = entity.areaName;
+        if(name && name.length > 0){
+            char aCh = pinyinFirstLetter([name characterAtIndex:0]);
+            if((aCh >='a' && aCh <='z') || (aCh >= 'A' && aCh <= 'Z') ){
+                ch = toupper(aCh);
+            }
+        }
+        NSString *key = [NSString stringWithFormat:@"%c",ch];
+        if([_keys indexOfObject:key] == NSNotFound){
+            [_keys addObject:key];
+        }
+    }
+    
+    [self parseCityDic];
+}
+
+- (NSArray*)allKeys{
+    _keys = (NSMutableArray*)[_keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    return _keys;
+}
+
+//解析所有城市按照首字母存入字典,多音字?
+-(void)parseCityDic{
+    NSArray *allKey = [self allKeys];
+    if([allKey count] == 0){
+        return;
+    }
+    [_cityDic removeAllObjects];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for(NSString *c in allKey){
+            NSMutableArray *cityArr = [[NSMutableArray alloc] init];
+            for(AreaEntity *entity in _cityArr){
+                char aCh = pinyinFirstLetter([entity.areaName characterAtIndex:0]);
+                NSString *key = [NSString stringWithFormat:@"%c",toupper(aCh)];
+                if([[entity.areaName substringToIndex:1] isEqualToString:@"长"] || [[entity.areaName substringToIndex:1] isEqualToString:@"重"]){
+                    key = @"C";
+                }
+                if([key isEqualToString:c]){
+                    [cityArr addObject:entity];
+                }
+            }
+            [_cityDic setObject:cityArr forKey:c];
+        }
+    });
+}
+
+//搜索
+-(void)searchCityArrayWithKeyword:(NSString *)keyword{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+        for(AreaEntity *entity in _cityArr){
+            if([self matchingString:keyword cityName:entity.areaName]){
+                [_searchCity addObject:entity];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:CityListSearchResultNoti object:nil];
+        });
+    });
+}
+
+-(BOOL)matchingString:(NSString *)string cityName:(NSString*)cityName{
+    if(!string || [string length] == 0){
+        return NO;
+    }
+    
+    if([PinYinSearchOBJ isIncludeString:string inString:cityName]){
+        return YES;
+    }
+    return NO;
+}
+
+-(void)removeMatchingCity{
+    [_searchCity removeAllObjects];
+}
+
+/*
 //根据省获取市的字典
 -(void)loadAllCity:(NSDictionary*)dic{
     [_citiesDic removeAllObjects];
@@ -134,7 +230,8 @@
         }
     });
 }
-
+ */
+/*
 -(void)loadLocalDistrict:(NSDictionary*)dic{
     [_districtDic removeAllObjects];
     __block NSMutableArray *disList = [[NSMutableArray alloc] init];
@@ -156,6 +253,7 @@
         }
     });
 }
+ */
 
 //以上方法有点问题
 -(NSArray *)searchCityArrayWithProvinceID:(NSInteger)provinceID{
