@@ -132,7 +132,7 @@ typedef enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LuckyGoodsEntity *entity = [_model.luckyGoodsArr objectAtIndex:indexPath.row];
+    LuckyGoodsEntity *entity = [goodsArr objectAtIndex:indexPath.row];
     NewGoodsInfoVC *infoVC = [[NewGoodsInfoVC alloc] init];
     infoVC.goodsInfo_type = GoodsInfo_LuckyGoods;
     infoVC.goodsId = entity.goodsID;
