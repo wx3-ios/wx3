@@ -72,6 +72,26 @@
     [userDefault setBool:bGeneralAgency forKey:D_WXUserdefault_Key_bGeneralAgency];
 }
 
+-(void)setUserLocationCity:(NSString *)cityName{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    [userDefault setObject:cityName forKey:D_WXUserdefault_Location_City];
+}
+
+-(void)setUserLocationArea:(NSString *)areaName{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    [userDefault setObject:areaName forKey:D_WXUserdefault_Location_Area];
+}
+
+-(void)setUserLocationLatitude:(CGFloat)latitude{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    [userDefault setFloat:latitude forkey:D_WXUserdefault_Location_Latitude];
+}
+
+-(void)setUserLocationLongitude:(CGFloat)longitude{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    [userDefault setFloat:longitude forkey:D_WXUserdefault_Location_Longitude];
+}
+
 - (NSString*)woxinID{
 	WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
 	return [userDefault textValueForKey:D_WXUserdefault_Key_tWoxinID];
@@ -175,6 +195,26 @@
 - (BOOL)isGeneralAgency{
     WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
     return [userDefault boolValueForKey:D_WXUserdefault_Key_bGeneralAgency];
+}
+
+-(NSString*)userLocationCity{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    return [userDefault textValueForKey:D_WXUserdefault_Location_City];
+}
+
+-(NSString*)userLocationArea{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    return [userDefault textValueForKey:D_WXUserdefault_Location_Area];
+}
+
+-(CGFloat)userLocationLatitude{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    return [userDefault floatValueForKey:D_WXUserdefault_Location_Latitude];
+}
+
+-(CGFloat)userLocationLongitude{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    return [userDefault floatValueForKey:D_WXUserdefault_Location_Longitude];
 }
 
 //合并账号信息

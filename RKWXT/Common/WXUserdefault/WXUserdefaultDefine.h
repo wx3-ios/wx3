@@ -58,6 +58,12 @@
 #define D_WXUserdefault_Key_iBirth @"D_WXUserdefault_Key_iBirth"//生日
 #define D_WXUserdefault_Key_tAddress @"D_WXUserdefault_Key_tAddress"//地址
 
+//定位
+#define D_WXUserdefault_Location_City @"D_WXUserdefault_Location_City"  //用户定位城市
+#define D_WXUserdefault_Location_Area @"D_WXUserdefault_Location_Area" //用户定位区域
+#define D_WXUserdefault_Location_Latitude @"D_WXUserdefault_Location_Latitude" //经纬度
+#define D_WXUserdefault_Location_Longitude @"D_WXUserdefault_Location_Longitude"
+
 #pragma mark 提示mask
 #define D_WXUserdefault_Key_bMaskHomePage           @"D_WXUserdefault_Key_bMaskHomePage"//主页面
 #define D_WXUserdefault_Key_bMaskSliderSetting      @"D_WXUserdefault_Key_bMaskSliderSetting"//侧滑栏

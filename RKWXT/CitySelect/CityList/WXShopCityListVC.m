@@ -9,12 +9,19 @@
 #import "WXShopCityListVC.h"
 #import "LocalAreaModel.h"
 #import "AreaEntity.h"
+#import "WXCityListLocationCell.h"
 
 #define Size self.bounds.size
 #define NavViewHeight (64)
 #define kSearchBarHeight (44)
 
-@interface WXShopCityListVC()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate>{
+enum{
+    CityList_Section_Location = 0,
+    
+    CityList_Section_Invalid,
+};
+
+@interface WXShopCityListVC()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,WXCityListLocationCellDelegate>{
     UITableView *_tableView;
     WXUISearchBar *_searchBar;
     UISearchDisplayController *_searchDisplayController;
@@ -65,21 +72,36 @@
     [closeBtn setTitle:@"X" forState:UIControlStateNormal];
     [closeBtn addTarget:self action:@selector(closeCityListVC) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeBtn];
+    
+    CGFloat labelWidth = 200;
+    CGFloat labelHeight = 25;
+    WXUILabel *titleLabel = [[WXUILabel alloc] init];
+    titleLabel.frame = CGRectMake((Size.width-labelWidth)/2, 30, labelWidth, labelHeight);
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel setText:[NSString stringWithFormat:@"当前城市-%@",_titleStr]];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setFont:WXFont(14.0)];
+    [self.view addSubview:titleLabel];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     NSInteger section = 1;
     if(tableView == _tableView){
-        section = [[[LocalAreaModel shareLocalArea] allKeys] count];
+        section = [[[LocalAreaModel shareLocalArea] allKeys] count] + CityList_Section_Invalid;
     }
     return section;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView == _tableView){
-        NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section];
-        NSArray *cityListArr = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
-        return [cityListArr count];
+        if(CityList_Section_Location == section){
+            return 1;
+        }else{
+            NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-1];
+            NSArray *cityListArr = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
+            return [cityListArr count];
+        }
     }else{
         return [[LocalAreaModel shareLocalArea].searchCity count];
     }
@@ -113,13 +135,25 @@
     return 0;
 }
 
+-(WXUITableViewCell*)tableViewForLocationCityCell{
+    static NSString *identifier = @"locationCell";
+    WXCityListLocationCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXCityListLocationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setDelegate:self];
+    [cell load];
+    return cell;
+}
+
 -(WXUITableViewCell*)tableViewForCityListCell:(NSInteger)section atRow:(NSInteger)row{
     static NSString *identifier = @"cityListCell";
     WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section];
+    NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-1];
     NSArray *cityList = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
     AreaEntity *ent = [cityList objectAtIndex:row];
     [cell.textLabel setText:ent.areaName];
@@ -142,7 +176,11 @@
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
     if(_tableView == tableView){
-        cell = [self tableViewForCityListCell:section atRow:row];
+        if(section == CityList_Section_Location){
+            cell = [self tableViewForLocationCityCell];
+        }else{
+            cell = [self tableViewForCityListCell:section atRow:row];
+        }
     }else{
         cell = [self tableViewForSearchCityCell:row];
     }
@@ -151,12 +189,21 @@
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headView = nil;
-    if(section >= 0 && tableView == _tableView){
-        headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)] ;
+    if(section >= CityList_Section_Invalid && tableView == _tableView){
+        headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
         [headView setBackgroundColor:WXColorWithInteger(0xf6f6f6)];
         WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 20)] ;
         [label setTextColor:WXColorWithInteger(0xa0a0a0)];
-        [label setText:[[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section]];
+        [label setText:[[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-1]];
+        [label setFont:WXFont(12.0)];
+        [headView addSubview:label];
+        return headView;
+    }else{
+        headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
+        [headView setBackgroundColor:WXColorWithInteger(0xf6f6f6)];
+        WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 20)] ;
+        [label setTextColor:WXColorWithInteger(0xa0a0a0)];
+        [label setText:@"定位城市-"];
         [label setFont:WXFont(12.0)];
         [headView addSubview:label];
         return headView;
@@ -198,6 +245,11 @@
 -(void)searchCityResult{
     [_searchDisplayController.searchResultsTableView setContentOffset:CGPointMake(0, 0) animated:YES];
     [_searchDisplayController.searchResultsTableView reloadData];
+}
+
+#pragma mark locationBtnClicked
+-(void)wxCityListLocationCellBtnCLicked{
+    
 }
 
 #pragma mark closeBtn
