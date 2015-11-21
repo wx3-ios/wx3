@@ -287,7 +287,7 @@
                                   initWithTitle:title
                                   delegate:self
                                   cancelButtonTitle:@"取消"
-                                  destructiveButtonTitle:kMerchantName
+                                  destructiveButtonTitle:[NSString stringWithFormat:@"使用%@",kMerchantName]
                                   otherButtonTitles:@"系统", nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
     [actionSheet showInView:self.view];

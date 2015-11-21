@@ -71,6 +71,9 @@ enum{
 #import "LuckyShakeVC.h"
 #import "UserBalanceVC.h"
 #import "NewUserCutVC.h"
+
+#import "LocalAreaModel.h"
+#import "WXShopUnionVC.h"
 #define Size self.bounds.size
 
 typedef enum{

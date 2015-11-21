@@ -137,12 +137,17 @@ typedef enum{
     WXUITableViewCell *cell = nil;
     NSInteger row = indexPath.row;
     cell = [self tableViewForLuckyGoodsListCellAtRow:row];
+    if(indexPath.row > 4){
+        [cell.textLabel setHidden:YES];
+    }else{
+        [cell.textLabel setHidden:NO];
+    }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LuckyGoodsEntity *entity = [_model.luckyGoodsArr objectAtIndex:indexPath.row];
+    LuckyGoodsEntity *entity = [goodsArr objectAtIndex:indexPath.row];
     NewGoodsInfoVC *infoVC = [[NewGoodsInfoVC alloc] init];
     infoVC.goodsInfo_type = GoodsInfo_LuckyGoods;
     infoVC.goodsId = entity.goodsID;
@@ -221,6 +226,20 @@ typedef enum{
         [totalLastTime replaceObjectAtIndex:i withObject:dic];
     }
 }
+
+//-(void)refreshLessTime{
+//    NSUInteger time;
+//    for (int i = 0; i < [totalLastTime count]; i++) {
+//        time = [[[totalLastTime objectAtIndex:i] objectForKey:@"lastTime"] integerValue];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[[[totalLastTime objectAtIndex:i] objectForKey:@"indexPath"] integerValue] inSection:0];
+//        LuckyGoodsShowCell *cell = (LuckyGoodsShowCell *)[_tableView cellForRowAtIndexPath:indexPath];
+//        cell.textLabel.text = [NSString stringWithFormat:@"剩%d",--time];
+//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//        [dic setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
+//        [dic setValue:[NSString stringWithFormat:@"%d",time]  forKey:@"lastTime"];
+//        [totalLastTime replaceObjectAtIndex:i withObject:dic];
+//    }
+//}
 
 #pragma mark luckyModelDelegate
 -(void)loadLuckyGoodsFailed:(NSString *)errorMsg{

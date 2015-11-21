@@ -41,7 +41,7 @@
 - (void)setSubCityName:(NSString *)subCityName;
 - (NSString *)subCityName;
 
-//清楚登陆消息
+//清除登陆消息
 - (void)removeLoginInfo;
 
 #pragma 功能待定~
@@ -59,4 +59,16 @@
 - (NSInteger)subAgentID;
 - (NSInteger)iAuthority;
 - (BOOL)isGeneralAgency;
+
+#pragma mark 定位
+- (void)setUserLocationCity:(NSString*)cityName;
+- (void)setUserLocationArea:(NSString*)areaName;
+- (void)setUserLocationLatitude:(CGFloat)latitude;
+- (void)setUserLocationLongitude:(CGFloat)longitude;
+
+- (NSString *)userLocationCity;
+- (NSString *)userLocationArea;
+- (CGFloat)userLocationLatitude;
+- (CGFloat)userLocationLongitude;
+
 @end

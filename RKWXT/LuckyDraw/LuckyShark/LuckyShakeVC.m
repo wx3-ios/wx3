@@ -254,7 +254,7 @@
     isLoading = NO;
     [self unShowWaitView];
     if(_numModel.number <= 0){
-        return;
+        [UtilTool showTipView:@"抽奖机会用完了，获取更多抽奖机会的方法在活动规则里面哦"];
     }
     [_numberLabel setText:[NSString stringWithFormat:@"%ld",(long)_numModel.number]];
 }
