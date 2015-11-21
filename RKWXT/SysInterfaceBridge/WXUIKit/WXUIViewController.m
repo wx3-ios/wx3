@@ -266,6 +266,10 @@
 - (void)setCSTTitleColor:(UIColor*)color{
     [_cstNavigationView setTitleColor:color];
 }
+- (void)setCSTTitleView:(UIView *)titleView{
+    [_cstNavigationView setTitleView:titleView];
+}
+
 
 - (WXUINavigationController *)wxNavigationController{
     UIViewController *parentVC = [self parentViewController];

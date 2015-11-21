@@ -228,6 +228,10 @@
         case WXT_UrlFeed_Type_New_NewMakeOrder:
             url = @"/insert_order2.php";
             break;
+        case  WXT_UrlFeed_Type_TimeToBuy:
+            url = @"/get_scare_buying.php";
+            break;
+           
         default:
             break;
     }

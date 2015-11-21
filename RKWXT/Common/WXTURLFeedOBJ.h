@@ -83,6 +83,10 @@ typedef enum {
     WXT_UrlFeed_Type_New_NewMakeOrder,
     
     WXT_UrlFeed_Type_Invalid,
+    
+    //限时购
+    WXT_UrlFeed_Type_TimeToBuy
+    
 }WXT_UrlFeed_Type;
 
 @interface WXTURLFeedOBJ : NSObject

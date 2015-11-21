@@ -20,4 +20,5 @@
 - (void)setTitle:(NSString*)title;
 - (void)setTitleFont:(UIFont*)font;
 - (void)setTitleColor:(UIColor*)color;
+- (void)setTitleView:(UIView*)titleView;
 @end

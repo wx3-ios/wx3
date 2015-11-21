@@ -54,6 +54,7 @@ typedef enum {
 - (void)setCSTTitle:(NSString*)title;
 - (void)setCSTTitleFont:(UIFont*)font;
 - (void)setCSTTitleColor:(UIColor*)color;
+- (void)setCSTTitleView:(UIView*)titleView;
 //隐藏导航栏
 //这个函数必须要在所有view加载之前调用～
 - (void)setCSTNavigationViewHidden:(BOOL)hidden animated:(BOOL)animated;

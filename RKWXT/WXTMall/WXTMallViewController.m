@@ -9,6 +9,8 @@
 #import "WXTMallViewController.h"
 #import "NewHomePageCommonDef.h"
 
+#import "WXToSnapUpController.h"
+
 @interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate,WXSysMsgUnreadVDelegate,HomePageTopDelegate,HomePageThemeDelegate,HomePageRecDelegate,HomeNavModelDelegate,HomePageSurpDelegate>{
     PullingRefreshTableView *_tableView;
     WXSysMsgUnreadV * _unreadView;
@@ -49,11 +51,23 @@
     [_tableView setAllowsSelection:NO];
     [self addSubview:_tableView];
     
-    [self createTopBtn];
+    //[self createTopBtn];
     [_model loadData];
     
     [self pullingTableViewDidStartRefreshing:_tableView];
+#warning 添加了一个入口，跳转到限时搜索
+    WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    leftBtn.frame = CGRectMake(0, 6, 30, 30);
+    [leftBtn setImage:[UIImage imageNamed:@"HomePageLeftBtn.png"] forState:UIControlStateNormal];
+    [leftBtn addTarget:self action:@selector(clickNavRightBar) forControlEvents:UIControlEventTouchUpInside];
+    [self setLeftNavigationItem:leftBtn];
 }
+
+- (void)clickNavRightBar{
+    WXToSnapUpController *tosnap = [[WXToSnapUpController alloc]init];
+    [self.wxNavigationController pushViewController:tosnap];
+}
+
 
 -(void)createTopBtn{
     WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];

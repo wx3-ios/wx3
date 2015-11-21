@@ -116,4 +116,15 @@
     [_titleLable setTextColor:color];
 }
 
+- (void)setTitleView:(UIView *)titleView{
+    if (titleView) {
+        [_titleLable removeFromSuperview];
+        CGRect recrt = titleView.frame;
+        recrt.origin.x = (self.frame.size.width - titleView.frame.size.width ) / 2;
+        recrt.origin.y = IPHONE_STATUS_BAR_HEIGHT + (self.frame.size.height - titleView.frame.size.height - IPHONE_STATUS_BAR_HEIGHT ) / 2;
+        titleView.frame = recrt;
+        [self addSubview:titleView];
+    }
+}
+
 @end
