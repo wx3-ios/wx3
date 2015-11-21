@@ -527,10 +527,6 @@
 		12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471CA1B1F19B700559995 /* WaitReceiveTitleCell.m */; };
 		12E471D41B1F268100559995 /* WaitSendGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471D31B1F268100559995 /* WaitSendGoodsInfoCell.m */; };
 		12E471D71B1F270C00559995 /* WaitSendConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471D61B1F270C00559995 /* WaitSendConsultCell.m */; };
-		12E668D61BF9A8B4001F01F1 /* HomePageBalance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E668D21BF9A8B4001F01F1 /* HomePageBalance@2x.png */; };
-		12E668D71BF9A8B4001F01F1 /* HomePageCut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E668D31BF9A8B4001F01F1 /* HomePageCut@2x.png */; };
-		12E668D81BF9A8B4001F01F1 /* HomePageShark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E668D41BF9A8B4001F01F1 /* HomePageShark@2x.png */; };
-		12E668D91BF9A8B4001F01F1 /* HomePageUnion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E668D51BF9A8B4001F01F1 /* HomePageUnion@2x.png */; };
 		12F180AB1B44D54900B9A80D /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12F180AA1B44D54900B9A80D /* PushConfig.plist */; };
 		12F180B91B45190800B9A80D /* Sql_JpushData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180B81B45190800B9A80D /* Sql_JpushData.m */; };
 		12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F180BC1B45219300B9A80D /* JPushMessageModel.m */; };
@@ -1874,10 +1870,6 @@
 		12E471D31B1F268100559995 /* WaitSendGoodsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitSendGoodsInfoCell.m; sourceTree = "<group>"; };
 		12E471D51B1F270C00559995 /* WaitSendConsultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitSendConsultCell.h; sourceTree = "<group>"; };
 		12E471D61B1F270C00559995 /* WaitSendConsultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitSendConsultCell.m; sourceTree = "<group>"; };
-		12E668D21BF9A8B4001F01F1 /* HomePageBalance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomePageBalance@2x.png"; sourceTree = "<group>"; };
-		12E668D31BF9A8B4001F01F1 /* HomePageCut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomePageCut@2x.png"; sourceTree = "<group>"; };
-		12E668D41BF9A8B4001F01F1 /* HomePageShark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomePageShark@2x.png"; sourceTree = "<group>"; };
-		12E668D51BF9A8B4001F01F1 /* HomePageUnion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomePageUnion@2x.png"; sourceTree = "<group>"; };
 		12F180AA1B44D54900B9A80D /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		12F180B71B45190800B9A80D /* Sql_JpushData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sql_JpushData.h; sourceTree = "<group>"; };
 		12F180B81B45190800B9A80D /* Sql_JpushData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sql_JpushData.m; sourceTree = "<group>"; };
@@ -3798,10 +3790,6 @@
 		128221CD1B184E83004613BB /* NewHomePage */ = {
 			isa = PBXGroup;
 			children = (
-				12E668D21BF9A8B4001F01F1 /* HomePageBalance@2x.png */,
-				12E668D31BF9A8B4001F01F1 /* HomePageCut@2x.png */,
-				12E668D41BF9A8B4001F01F1 /* HomePageShark@2x.png */,
-				12E668D51BF9A8B4001F01F1 /* HomePageUnion@2x.png */,
 				12F2D8041B1F01E900C8017F /* failedImage@2x.png */,
 				12F2D8051B1F01E900C8017F /* initImage@2x.png */,
 				DDEA9EE11B1BFE5D00530C1C /* sysPushMessageIcon@2x.png */,
@@ -7394,7 +7382,6 @@
 				121EBCD91BDE320800D1F307 /* ClassifySearchImg@2x.png in Resources */,
 				128083E21B622A6D00260B9F /* ShareWxCircleImg@2x.png in Resources */,
 				786155E31AC8E0CE0048B604 /* place.dat in Resources */,
-				12E668D71BF9A8B4001F01F1 /* HomePageCut@2x.png in Resources */,
 				12F465E51B6F0DE200A8F5AF /* guideIllustrate_2-568h@2x.jpg in Resources */,
 				1245350D1AE9D0BC004198C9 /* CallSelected@2x.png in Resources */,
 				124535511AE9D146004198C9 /* sign29@2x.png in Resources */,
@@ -7465,7 +7452,6 @@
 				1241E5631AE9D91400811D3F /* T_AllBack@2x.png in Resources */,
 				129D23451B4F984400008DA0 /* OrderInfoUserAdd@2x.png in Resources */,
 				1241E53F1AE9D89B00811D3F /* 1N@2x.png in Resources */,
-				12E668D81BF9A8B4001F01F1 /* HomePageShark@2x.png in Resources */,
 				12C12F431B81DD2200345BEE /* SharkRuleImg@2x.png in Resources */,
 				12F46A401B20012000B8EC98 /* T_ShoppingCart@2x.png in Resources */,
 				1241E5361AE9D89B00811D3F /* callHistoryBtnImg@2x.png in Resources */,
@@ -7499,8 +7485,6 @@
 				1241E55F1AE9D91400811D3F /* AboutUsLogo@2x.png in Resources */,
 				123316E91BCCE803004649DC /* FIndLvyou@2x.png in Resources */,
 				1241E5331AE9D89B00811D3F /* CallBackBgImg@2x.jpg in Resources */,
-				12E668D91BF9A8B4001F01F1 /* HomePageUnion@2x.png in Resources */,
-				12E668D61BF9A8B4001F01F1 /* HomePageBalance@2x.png in Resources */,
 				1241E53E1AE9D89B00811D3F /* 0S@2x.png in Resources */,
 				1245354D1AE9D146004198C9 /* sign25@2x.png in Resources */,
 				1245353D1AE9D146004198C9 /* signEveryDay@2x.png in Resources */,
