@@ -887,7 +887,6 @@
 		DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */; };
 		DD1C64271BFADC5100F962FC /* SearchTimeGoodsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */; };
 		DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C649D1BFB28A700F962FC /* TimeShopModer.m */; };
-		DD2581CB1BFC52C500D42982 /* CountDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2581CA1BFC52C500D42982 /* CountDownView.m */; };
 		DD351C581AD8B85000DF0C7E /* libPods-CocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
@@ -2573,8 +2572,6 @@
 		DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTimeGoodsController.m; sourceTree = "<group>"; };
 		DD1C649C1BFB28A700F962FC /* TimeShopModer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeShopModer.h; sourceTree = "<group>"; };
 		DD1C649D1BFB28A700F962FC /* TimeShopModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeShopModer.m; sourceTree = "<group>"; };
-		DD2581C91BFC52C500D42982 /* CountDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDownView.h; sourceTree = "<group>"; };
-		DD2581CA1BFC52C500D42982 /* CountDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDownView.m; sourceTree = "<group>"; };
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD7EB57E1B27D5F90005A97C /* WXTAPNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTAPNViewController.h; sourceTree = "<group>"; };
 		DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTAPNViewController.m; sourceTree = "<group>"; };
@@ -7216,8 +7213,6 @@
 				DDFBC0951BFA05AB003E71A2 /* HeardView.m */,
 				DDFBC0971BFA05C2003E71A2 /* HeardTopView.h */,
 				DDFBC0981BFA05C2003E71A2 /* HeardTopView.m */,
-				DD2581C91BFC52C500D42982 /* CountDownView.h */,
-				DD2581CA1BFC52C500D42982 /* CountDownView.m */,
 				DDFBC09A1BFA05D6003E71A2 /* HeardGoodsView.h */,
 				DDFBC09B1BFA05D6003E71A2 /* HeardGoodsView.m */,
 				DDFBC09D1BFA0CD2003E71A2 /* ToDaySnapUPCell.h */,
@@ -7829,7 +7824,6 @@
 				12F963301B3D4BDF00FF6A3E /* SBJsonParser.m in Sources */,
 				7758431F1AB95A300039B129 /* WXUIAlertView.m in Sources */,
 				12F2CCF21B4D11710085F78F /* RefundCompanyCell.m in Sources */,
-				DD2581CB1BFC52C500D42982 /* CountDownView.m in Sources */,
 				775C58D11ABA7B75005B6B40 /* WXContacterEntity.m in Sources */,
 				12D87DA41BD4F04A00579FF6 /* ClassifyRightView.m in Sources */,
 				775842F21AB95A300039B129 /* WXDropListView.m in Sources */,

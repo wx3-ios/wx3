@@ -25,7 +25,8 @@
 @property (nonatomic,strong)NSMutableArray *end_goods;
 @property (nonatomic,strong)NSMutableArray *end_time_goods;
 //时间
-@property (nonatomic,strong)NSMutableArray *totalTime;
+@property (nonatomic,strong)NSMutableArray *TimeGoods;
+@property (nonatomic,strong)NSMutableArray *topTime;
 
 @property (nonatomic,assign)BOOL pullUp;
 @property (nonatomic,assign)int count;
@@ -34,6 +35,20 @@
 @end
 
 @implementation WXToSnapUpController
+- (NSMutableArray*)topTime{
+    if (!_topTime) {
+        _topTime = [NSMutableArray array];
+    }
+    return _topTime;
+}
+
+- (NSMutableArray*)TimeGoods{
+    if (!_TimeGoods) {
+        _TimeGoods = [NSMutableArray array];
+    }
+    return _TimeGoods;
+}
+
 
 #pragma mark ------  系统方法
 - (void)viewDidLoad {
@@ -54,61 +69,17 @@
     timeShop.delegate = self;
     [timeShop timeShopModeListWithCount:_count page:1];
     
-
+   
 //#warning 右侧进入搜素
 //    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 200, 200, 300)];
 //    button.backgroundColor = [UIColor redColor];
 //    [button addTarget:self action:@selector(clackBtn) forControlEvents:UIControlEventTouchDown];
 //    [self.view addSubview:button];
 //    [self setRightNavigationItem:button];
-    NSLog(@"%s %d", __FUNCTION__, __LINE__);
-
-    self.totalTime = [NSMutableArray array];
-    for (int i = 0; i < self.beg_time_goods.count; i++) {
-        
-        NSTimeInterval beg_time = [self.beg_time_goods[i] longLongValue];
-        NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:beg_time];
-        NSMutableDictionary *endDict = [NSMutableDictionary dictionary];
-        [endDict setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
-        [endDict setValue:[NSString stringWithFormat:@"%@",beg_date] forKey:@"beg_date"];
-        [self.totalTime addObject:endDict];
-        
-    }
-    
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(moreTime) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
-  
-}
-
-- (void)moreTime{
-
-
-//    NSDate *now_date  = nil;
-//    for (int i = 0; i < self.beg_time_goods.count; i++) {
-//        
-//        NSDate *beg_date = [self.totalTime[i] valueForKey:@"beg_date"];
-//        now_date = [[NSDate date] laterDate:beg_date];
-//         NSLog(@">>>>>>>>>>>>>%s %d", __FUNCTION__, __LINE__);
-//        NSTimeInterval end_time = [self.end_time_goods[i] longLongValue];
-//        NSDate *end_date = [NSDate dateWithTimeIntervalSince1970:end_time];
-//        
-//        NSCalendar *cal = [NSCalendar currentCalendar];
-//        NSCalendarUnit unit =  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-//        NSDateComponents *com = [cal components:unit fromDate:now_date toDate:end_date options:0];
-//        
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[[[self.totalTime objectAtIndex:i] objectForKey:@"indexPath"] integerValue] inSection:1];
-//        ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[self.tableview cellForRowAtIndexPath:indexPath];
-//        cell.textLabel.text = [NSString stringWithFormat:@"%d : %d : %d",com.hour,com.minute,com.second];
-//        
-//        NSMutableDictionary *end_dict = [NSMutableDictionary dictionary];
-//        [end_dict setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
-//        [end_dict setValue:[NSString stringWithFormat:@"%@",now_date]  forKey:@"beg_date"];
-//        [self.totalTime addObject:end_dict];
-//        
-//    }
-    
     
 }
+
+
 
 
 
@@ -166,9 +137,11 @@
     self.heardview = [[HeardView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 180) goodsArray:self.goodsarray];
     self.heardview.goodsArray = self.goodsarray;
      self.heardview.delegate = self;
+    
     return  self.heardview;
 }
 
+//今日抢购
 - (UIView*)timeGoodsHeard{
     UIView *titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
     titleView.backgroundColor = [UIColor whiteColor];
@@ -214,7 +187,8 @@
     dict[@"type"] = [NSNumber numberWithInt:1];
     dict[@"page"] = [NSNumber numberWithInt:_count];
     dict[@"shop_id"] = [NSNumber numberWithInt:kSubShopID];
-    debugLog(@"%@",dict);
+   
+    
     
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_TimeToBuy httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
         
@@ -236,12 +210,12 @@
                     
                     if (nowTime > [dict[@"end_time"] longLongValue]) {
                         moder.beg_imageHidden = YES;
-                        moder.downHidden = NO;
-                        moder.end_Image_Hidden = YES;
-                    }else{
-                        moder.beg_imageHidden = YES;
                         moder.downHidden = YES;
                         moder.end_Image_Hidden = NO;
+                    }else{
+                        moder.beg_imageHidden = YES;
+                        moder.downHidden = NO;
+                        moder.end_Image_Hidden = YES;
                     }
                     
                 }else {
@@ -270,11 +244,12 @@
     
 }
 
+//网络请求失败
 - (void)timeShopModerWithFailed:(NSString *)errorMsg{
     debugLog(@"没有数据");
 }
 
-
+//网络请求成功
 - (void)timeShopModerWithGoodArr:(NSMutableArray *)goodsArr timeGoods:(NSMutableArray *)timeGoods beg_goods:(NSMutableArray *)beg_goods beg_time_goods:(NSMutableArray *)beg_time_goods end_goods:(NSMutableArray *)end_goods end_time_goods:(NSMutableArray *)end_time_goods{
     self.goodsarray = goodsArr;
     self.timearray = timeGoods;
@@ -285,7 +260,80 @@
     
     
     
-     [self.tableview reloadData];
+    for (int i = 0; i < self.timearray.count; i++) {
+        
+        NSTimeInterval end_time = [end_time_goods[i] longLongValue];
+        NSDate *end_date = [NSDate dateWithTimeIntervalSince1970:end_time];
+        NSMutableDictionary *endDict = [NSMutableDictionary dictionary];
+        [endDict setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
+        [endDict setValue:end_date forKey:@"end_date"];
+        [self.TimeGoods addObject:endDict];
+        
+    }
+    
+    for (int i = 0; i < end_goods.count; i++) {
+        NSTimeInterval beg_time =[end_time_goods[i] longLongValue];
+        NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:beg_time];
+        
+        HeardGoodsView *goods = self.heardview.goods;
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:goods forKey:@"Goods"];
+        [dict setValue:beg_date forKey:@"end_date"];
+        [self.topTime addObject:dict];
+       
+    }
+    
+    
+    NSTimer *timero = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(moreTime) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timero forMode:NSRunLoopCommonModes];
+    
+    [self.tableview reloadData];
+}
+
+- (void)moreTime{
+    
+    
+        NSDate *now_date  = [NSDate date];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSCalendarUnit unit =  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+   
+    for (int i = 0; i < self.timearray.count; i++) {
+
+        NSDate *end_date = [self.TimeGoods[i] valueForKey:@"end_date"];
+        
+        NSDateComponents *com = [cal components:unit fromDate:now_date toDate:end_date options:0];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[[[self.TimeGoods objectAtIndex:i] objectForKey:@"indexPath"] integerValue] inSection:1];
+        ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[self.tableview cellForRowAtIndexPath:indexPath];
+        cell.timeDown.text = [NSString stringWithFormat:@"%d:%d:%02d",com.hour,com.minute,com.second];
+        
+        
+         NSMutableDictionary *end_dict = [NSMutableDictionary dictionary];
+        [end_dict setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
+        [end_dict setValue:end_date  forKey:@"end_date"];
+        [self.TimeGoods addObject:end_dict];
+              
+    }
+    
+    for (int i = 0; i < self.end_goods.count; i++) {
+
+        NSDate *end_date = [self.topTime[i] valueForKey:@"end_date"];
+        
+        NSDateComponents *com = [cal components:unit fromDate:now_date toDate:end_date options:0];
+         HeardGoodsView *goods = [self.topTime[i] valueForKey:@"Goods"];
+      
+        goods.timeDown.text  = [NSString stringWithFormat:@"%02d:%02d:%02d",com.hour,com.minute,com.second];
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:goods forKey:@"Goods"];
+        [dict setValue:end_date forKey:@"end_date"];
+        [self.topTime addObject:dict];
+        
+    }
+    
+    
 }
 
 @end

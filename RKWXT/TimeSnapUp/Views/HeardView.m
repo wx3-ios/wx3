@@ -12,7 +12,7 @@
 
 @interface HeardView ()
 @property (nonatomic,strong)HeardTopView *top;
-@property (nonatomic,strong)HeardGoodsView *goods;
+
 @end
 
 @implementation HeardView
@@ -39,6 +39,7 @@
             [goods addGestureRecognizer:tap];
             [self addSubview:goods];
             self.goods = goods;
+         
         }
         
         

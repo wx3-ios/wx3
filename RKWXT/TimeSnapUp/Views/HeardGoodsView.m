@@ -17,25 +17,9 @@
 @property (nonatomic,strong)UILabel *orgina_price;
 @property (nonatomic,strong)UILabel *buying_price;
 
-/** 倒计时 */
-@property (nonatomic,strong)UILabel *timeDown;
-@property (nonatomic,assign,getter=isDownHidden)BOOL downHidden; //是否显示
-/** 距离倒计时 */
-@property (nonatomic,strong)UIImageView *beg_image;
-@property (nonatomic,assign,getter=isImageHidden)BOOL imageHidden; //是否显示
-@property (nonatomic,strong)UILabel *beg_time;
-@property (nonatomic,strong)UILabel *beg_open;
-/** 结束 */
-@property (nonatomic,strong)UIImageView *over_image;
-@property (nonatomic,assign,getter=isOver_Image_Hidden)BOOL over_Image_Hidden;
-@property (nonatomic,strong)UILabel *over_label;
 
-@property (nonatomic,strong)NSTimer *timer;
 
-//@property (nonatomic,strong)UILabel *orginalLable;
-//@property (nonatomic,strong)UILabel *snapLabel;
-//@property (nonatomic,strong)UILabel *orginalPrice;
-//@property (nonatomic,strong)UILabel *snapPrice;
+
 @property (nonatomic,strong)UIView *drawview;
 @end
 
@@ -69,7 +53,6 @@
         //即将开始
         UIImageView *beg_image = [[UIImageView alloc]init];
         beg_image.hidden = self.isImageHidden == YES;
-
         [self.iconimage addSubview:beg_image];
         self.beg_image = beg_image;
 
@@ -89,12 +72,11 @@
         
         //开始
         UILabel *timeDown = [[UILabel alloc]init];
-        timeDown.backgroundColor = [UIColor redColor];
         timeDown.alpha = 0.7;
         timeDown.textColor = [UIColor whiteColor];
-        timeDown.font = [UIFont systemFontOfSize:10];
+        timeDown.font = [UIFont systemFontOfSize:12];
         timeDown.hidden = self.isDownHidden == NO;
-
+        timeDown.textColor = [UIColor blackColor];
         [self.iconimage addSubview:timeDown];
         self.timeDown =  timeDown;
         
@@ -114,62 +96,11 @@
         
         
         
-     /*   {
-            UILabel *orginalLable = [[UILabel alloc]init];
-            //        orginalLable.font = [UIFont systemFontOfSize:10];
-            //        orginalLable.textAlignment = NSTextAlignmentRight;
-            //        orginalLable.textColor = [UIColor colorWithHexString:@"#868686"];
-            //        [self addSubview:orginalLable];
-            //        self.orginalLable = orginalLable;
-            //
-            //        UILabel *snapLabel = [[UILabel alloc]init];
-            //        snapLabel.font = [UIFont systemFontOfSize:10];
-            //        snapLabel.textAlignment = NSTextAlignmentRight;
-            //        snapLabel.textColor = [UIColor colorWithHexString:@"#dd2726"];
-            //        [self addSubview:snapLabel];
-            //        self.snapLabel = snapLabel;
-            //
-            //        UILabel *orginalPrice = [[UILabel alloc]init];
-            //        orginalPrice.font = [UIFont systemFontOfSize:11];
-            //        orginalPrice.textAlignment = NSTextAlignmentLeft;
-            //        orginalPrice.textColor = [UIColor colorWithHexString:@"#868686"];
-            //        [self addSubview:orginalPrice];
-            //        self.orginalPrice = orginalPrice;
-            //
-            //        UILabel *snapPrice = [[UILabel alloc]init];
-            //        snapPrice.font = [UIFont systemFontOfSize:14];
-            //        snapPrice.textAlignment = NSTextAlignmentLeft;
-            //        snapPrice.textColor = [UIColor colorWithHexString:@"#dd2726"];
-            //        [self addSubview:snapPrice];
-            //        self.snapPrice = snapPrice;
-            //        
-            //
-        }
-*/
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(begTimer) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-        self.timer = timer;
-      
+        
     }
     return self;
 }
 
-- (void)begTimer{
-    //现在时间
-    NSDate *date = [NSDate date];
-    NSTimeInterval now_date = [date timeIntervalSince1970];
-    
-    if (now_date > [self.data.begin_time longLongValue]) {
-        self.imageHidden = NO;
-        self.downHidden = YES;
-        if (now_date > [self.data.end_time longLongValue]) {
-            self.downHidden = NO;
-            self.over_Image_Hidden = YES;
-            [self.timer invalidate];
-        }
-    }
-    
-}
 
 
 
@@ -179,13 +110,38 @@
     
     [self setContentView];
     
-    [self setConuntViewFrame];
+   
+    
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(begTimer) userInfo:nil repeats:YES];
+//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+//    self.timer = timer;
+    
+     [self setConuntViewFrame];
     
     self.beg_image.hidden = data.isImageHidden;
     self.timeDown.hidden = data.isDownHidden;
     self.over_image.hidden = data.isEnd_Image_Hidden;
     
 }
+
+//- (void)begTimer{
+//    //现在时间
+//    NSDate *now_date = [NSDate date];
+//    //结束时间
+//    NSTimeInterval timer = [self.data.end_time longLongValue];
+//    NSDate *end_date = [NSDate dateWithTimeIntervalSince1970:timer];
+//    
+//    NSCalendar *dar = [NSCalendar currentCalendar];
+//    NSCalendarUnit unit = NSCalendarUnitHour | NSCalendarUnitMinute| NSCalendarUnitSecond;
+//    NSDateComponents *com = [dar components:unit fromDate:now_date toDate:end_date options:0];
+//    
+//    self.timeDown.text = [NSString stringWithFormat:@"%d:%d:%d",com.hour,com.minute,com.second];
+//
+//    
+//    
+//}
+
+
 
 - (void)setContentView{
     
@@ -208,11 +164,7 @@
     self.beg_open.text = @" 即将开抢";
     
     //开始
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
-    NSDateFormatter *mater = [[NSDateFormatter alloc]init];
-    [mater setDateFormat:@"HH:mm"];
-    NSString *str1= [mater stringFromDate:date];
-    self.timeDown.text = str1;
+    self.timeDown.text = self.data.top_time_countdown;
     
      //结束
     UIImage *end_image = [UIImage imageNamed:@"end"];
@@ -220,11 +172,6 @@
     self.over_label.text = @"已抢光";
    
     
-    
-//    self.orginalLable.text = @"原价:";
-//    self.snapLabel.text =  @"抢购价:";
-//    self.orginalPrice.text = self.data.goods_price;
-//    self.snapPrice.text = self.data.scare_buying_price;
 }
 
 - (void)setConuntViewFrame{
@@ -233,7 +180,6 @@
     CGFloat imageX = 0;
     CGFloat imageY = 0;
     self.iconimage.frame = CGRectMake(imageX, imageY, imageW, imageH);
-    
     
     CGFloat buyingW = self.width;
     CGFloat buyingH = priceH/2;
@@ -246,7 +192,6 @@
     CGFloat oringX = 0;
     CGFloat oringY = self.buying_price.bottom;
     self.orgina_price.frame = CGRectMake(oringX, oringY, oringW, oringH);
-
     
     CGSize size = [NSString sizeWithString:self.buying_price.text font:[UIFont systemFontOfSize:10]];
     CGFloat maskW = size.width;
@@ -270,10 +215,10 @@
     CGFloat beg_LY = beg_timeH;
     CGSize size_beg = [NSString sizeWithString:self.beg_open.text font:[UIFont systemFontOfSize:10]];
     self.beg_open.frame = (CGRect){{timeX,beg_LY},size_beg};
-   
     
     //开始
-
+    CGSize sizeT = [NSString sizeWithString:self.timeDown.text font:[UIFont systemFontOfSize:12]];
+    self.timeDown.frame = (CGRect){{0,0},sizeT};
     
     //结束
     CGFloat overX = 5;
@@ -286,46 +231,7 @@
     CGFloat overLY = ( overH - over.height ) / 2;
     self.over_label.frame = (CGRect){{overLX,overLY},over};
     
- 
-    
-    
-    
-    
-    
-    
-    
-//    CGFloat priceW = imageW / 2;
-//    CGFloat priceH = (self.height - imageH ) / 2;
-//    
-//    CGFloat nameX = 0;
-//    CGFloat nameY = imageH;
-//    self.orginalLable.frame =(CGRect){{nameX,nameY},{priceW,priceH}};
-//    
-//    
-//    
-//    CGFloat buyingX = self.orginalLable.right;
-//    CGFloat buyingY = imageH;
-//    self.orginalPrice.frame =(CGRect){{buyingX,buyingY},{priceW,priceH}};
-//    
-//    
-//    
-//    CGFloat priceX = 0;
-//    CGFloat priceY = self.orginalLable.bottom;
-//    self.snapLabel.frame =(CGRect){{priceX,priceY},priceW,priceH};
-//    
-//    
-//    CGFloat buyingpX = self.snapLabel.right;
-//    CGFloat buyingpY = priceY;
-//    self.snapPrice.frame =(CGRect){{buyingpX,buyingpY},{priceW,priceH}};
-//    
-//    CGSize size = [NSString sizeWithString:self.snapPrice.text font:[UIFont systemFontOfSize:11] maxW:priceW];
-//    CGFloat drawW = size.width - 0.5;
-//    CGFloat drawH = 0.5;
-//    CGFloat drawY = self.orginalPrice.height / 2 + 1;
-//    self.drawview.frame = CGRectMake(0.5, drawY, drawW, drawH);
-    
-    
-}
+    }
 
 
 @end

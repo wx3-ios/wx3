@@ -21,7 +21,6 @@
 #import "HeardView.h"
 #import "HeardTopView.h"
 #import "HeardGoodsView.h"
-#import "CountDownView.h"
 
 #import "UIViewAdditions.h"
 #import "NSString+XBCategory.h"

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HeardView;
+@class HeardView,HeardGoodsView;
 @protocol HeardViewDelegate <NSObject>
 
 - (void)heardViewTouch:(HeardView*)heard;
@@ -15,6 +15,7 @@
 @end
 
 @interface HeardView : UIView
+@property (nonatomic,strong)HeardGoodsView *goods;
 @property (nonatomic,weak)id<HeardViewDelegate> delegate;
 @property (nonatomic,strong)NSArray *goodsArray;
 - (instancetype)initWithFrame:(CGRect)frame goodsArray:(NSArray*)goodsArray;

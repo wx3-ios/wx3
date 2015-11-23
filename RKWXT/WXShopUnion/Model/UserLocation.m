@@ -38,7 +38,7 @@
     }
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation *currentLocation = [locations lastObject];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
