@@ -206,12 +206,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
     
-    ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[tableView cellForRowAtIndexPath:indexPath];
-    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
-    newGoods.lEntity = cell.data;
-    [self.wxNavigationController pushViewController:newGoods];
-    
+    if (section == 0) {
+        
+        
+    }else{
+       
+        ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[tableView cellForRowAtIndexPath:indexPath];
+        NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
+        newGoods.lEntity = cell.data;
+        [self.wxNavigationController pushViewController:newGoods];
+
+    }
+ 
 }
 
 
@@ -321,8 +330,6 @@
     }
     
     
-  
-
     for (int i = 0; i < self.goodsarray.count; i++) {
         NSDate *end_date = [self.topTime[i] valueForKey:@"end_date"];
         NSDateComponents *com = [cal components:unit fromDate:now_date toDate:end_date options:0];
@@ -342,9 +349,34 @@
 }
 
 #pragma mark ---- 代理方法
-- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell{
-    debugLog(@"%@",cell);
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell index:(NSInteger)index{
+    HeardGoodsView *goods = nil;
+    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
+    newGoods.lEntity = cell.goods.data;
     
+    switch (index) {
+        case ToSnapUpTopTypeIndexOne:{
+            goods = cell.goodsArray[ToSnapUpTopTypeIndexOne];
+            newGoods.lEntity = goods.data;
+            debugLog(@"%@>>>>>>>>>>>>", goods);
+        }
+         break;
+        case ToSnapUpTopTypeIndexTwo:{
+            goods = cell.goodsArray[ToSnapUpTopTypeIndexTwo];
+            newGoods.lEntity = goods.data;
+              debugLog(@"%@>>>", cell.goods);
+        }
+            break;
+        case ToSnapUpTopTypeIndexThree:{
+            goods = cell.goodsArray[ToSnapUpTopTypeIndexThree];
+            newGoods.lEntity = goods.data;
+              debugLog(@"%@*******>>>",cell.goods);
+        }
+            break;
+       
+    }
+    
+    //[self.wxNavigationController pushViewController:newGoods];
 }
 
 

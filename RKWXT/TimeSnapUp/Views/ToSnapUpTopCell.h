@@ -11,9 +11,18 @@
 
 @protocol ToSnapUpTopCellDelegate  <NSObject>
 
-- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell*)cell;
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell*)cell index:(NSInteger)index;
 
 @end
+
+
+typedef NS_ENUM(NSInteger, ToSnapUpTopType) {
+    ToSnapUpTopTypeIndexOne,
+    ToSnapUpTopTypeIndexTwo,
+    ToSnapUpTopTypeIndexThree,
+};
+
+
 
 @interface ToSnapUpTopCell : UITableViewCell
 @property (nonatomic,strong)HeardGoodsView *goods;
