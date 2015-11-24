@@ -60,6 +60,7 @@
         goods.data = goodsArray[i];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTouch:)];
         [goods addGestureRecognizer:tap];
+         tap.view.tag = i;
         [self.contentView addSubview:goods];
         self.goods = goods;
         [self.childArray addObject:goods];
@@ -67,11 +68,14 @@
     
 }
 
-- (void)clickTouch:(HeardGoodsView*)goods{
-    if ([self.delegate respondsToSelector:@selector(toSnapUpToCellWithTouch:)]) {
-        [self.delegate toSnapUpToCellWithTouch:self];
+- (void)clickTouch:(UITapGestureRecognizer*)tap{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(toSnapUpToCellWithTouch:index:)]) {
+        [self.delegate toSnapUpToCellWithTouch:self index:tap.view.tag];
     }
 }
+
+
+
 
 
 + (CGFloat)cellHeight{
