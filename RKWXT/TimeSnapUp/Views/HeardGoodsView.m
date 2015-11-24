@@ -117,7 +117,7 @@
 - (void)setContentView{
     
     [self.iconimage setCpxViewInfo:self.data.add_goods_home_img];
-    [self.iconimage setButtonEnable:YES];
+    [self.iconimage setButtonEnable:NO];
     [self.iconimage load];
     
     self.orgina_price.text = [NSString stringWithFormat:@"￥%@",self.data.goods_price];

@@ -18,8 +18,9 @@
         self.scare_buying_price = dict[@"scare_buying_price"];
         self.goods_name = dict[@"goods_name"];
         self.goods_home_img = dict[@"goods_home_img"];
-        
-        
+        self.scare_buying_id = dict[@"scare_buying_id"];
+        self.shop_id = dict[@"shop_id"];
+        self.goods_id = dict[@"goods_id"];
     }
     return self;
 }

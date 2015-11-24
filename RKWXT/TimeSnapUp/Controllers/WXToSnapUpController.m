@@ -15,6 +15,7 @@
 #import "SearchTimeGoodsController.h"
 #import "WXTURLFeedOBJ.h"
 #import "WXUIActivityIndicatorView.h"
+#import "NewGoodsInfoVC.h"
 
 
 @interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
@@ -205,8 +206,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    debugLog(@"点击了CRLL");
+    
+    ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[tableView cellForRowAtIndexPath:indexPath];
+    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
+    newGoods.lEntity = cell.data;
+    [self.wxNavigationController pushViewController:newGoods];
+    
 }
+
+
+
 
 
 
@@ -329,12 +338,13 @@
         [self.topTime addObject:dict];
     }
     
-    
+
 }
 
 #pragma mark ---- 代理方法
 - (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell{
-   
+    debugLog(@"%@",cell);
+    
 }
 
 

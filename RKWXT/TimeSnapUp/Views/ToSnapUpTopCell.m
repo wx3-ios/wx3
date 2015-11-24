@@ -58,7 +58,7 @@
         CGFloat goodsX = TopMargin + (T_GoodsMaegin + widch) * i;
         goods.frame = CGRectMake(goodsX, 0, widch, self.height);
         goods.data = goodsArray[i];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTouch)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTouch:)];
         [goods addGestureRecognizer:tap];
         [self.contentView addSubview:goods];
         self.goods = goods;
@@ -67,7 +67,7 @@
     
 }
 
-- (void)clickTouch{
+- (void)clickTouch:(HeardGoodsView*)goods{
     if ([self.delegate respondsToSelector:@selector(toSnapUpToCellWithTouch:)]) {
         [self.delegate toSnapUpToCellWithTouch:self];
     }
