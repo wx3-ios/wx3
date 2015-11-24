@@ -31,10 +31,7 @@
 @property (nonatomic,assign,getter=isImageHidden)BOOL beg_imageHidden; //是否显示
 @property (nonatomic,assign,getter=isDownHidden)BOOL downHidden; //是否显示
 @property (nonatomic,strong)NSString *time_countdown; //倒计时
-@property (nonatomic,strong)NSString *top_time_countdown;
-
-
-
+@property (nonatomic,strong)NSString *top_time_countdown; //倒计时
 
 /** 添加时间  */
 @property (nonatomic,strong)NSString *add_time;

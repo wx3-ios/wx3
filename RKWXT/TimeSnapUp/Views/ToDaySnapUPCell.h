@@ -12,19 +12,9 @@
 /** 倒计时 */
 @property (nonatomic,strong)UILabel *timeDown;
 
-/** 距离倒计时 */
-@property (nonatomic,strong)UIImageView *beg_image;
-
-@property (nonatomic,strong)UILabel *beg_time;
-@property (nonatomic,strong)UILabel *beg_open;
-/** 结束 */
-@property (nonatomic,strong)UIImageView *over_image;
-
-@property (nonatomic,strong)UILabel *over_label;
-
-
-
 
 @property (nonatomic,strong)TimeShopData *data;
 + (CGFloat)cellHeight;
++ (instancetype)toDaySnapTopCell:(UITableView*)tableview;
+
 @end

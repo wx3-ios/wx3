@@ -28,9 +28,34 @@
 @property (nonatomic,strong)UIButton *buyingBtn;
 
 
+/** 距离倒计时 */
+@property (nonatomic,strong)UIImageView *beg_image;
+
+@property (nonatomic,strong)UILabel *beg_time;
+@property (nonatomic,strong)UILabel *beg_open;
+/** 结束 */
+@property (nonatomic,strong)UIImageView *over_image;
+
+@property (nonatomic,strong)UILabel *over_label;
+
+
+
+
 @end
 
 @implementation ToDaySnapUPCell
+
++ (instancetype)toDaySnapTopCell:(UITableView *)tableview{
+    NSString *cellIndef = @"toDaySnapTopCell";
+    ToDaySnapUPCell *cell = [tableview dequeueReusableCellWithIdentifier:cellIndef];
+    if (!cell) {
+        cell = [[ToDaySnapUPCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndef ];
+    }
+    return cell;
+}
+
+
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.contentView.backgroundColor = [UIColor clearColor];
@@ -104,7 +129,7 @@
         
         //开始
         UILabel *timeDown = [[UILabel alloc]init];
-        timeDown.backgroundColor = [UIColor redColor];
+        timeDown.backgroundColor = [UIColor grayColor];
         timeDown.alpha = 0.7;
         timeDown.textColor = [UIColor whiteColor];
         timeDown.font = [UIFont systemFontOfSize:12];

@@ -72,11 +72,10 @@
         
         //开始
         UILabel *timeDown = [[UILabel alloc]init];
-        timeDown.alpha = 0.7;
+        timeDown.backgroundColor = [UIColor grayColor];
         timeDown.textColor = [UIColor whiteColor];
         timeDown.font = [UIFont systemFontOfSize:12];
         timeDown.hidden = self.isDownHidden == NO;
-        timeDown.textColor = [UIColor blackColor];
         [self.iconimage addSubview:timeDown];
         self.timeDown =  timeDown;
         
@@ -108,39 +107,17 @@
 - (void)setData:(TimeShopData *)data{
     _data = data;
     
-    [self setContentView];
     
-   
-    
-//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(begTimer) userInfo:nil repeats:YES];
-//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-//    self.timer = timer;
-    
-     [self setConuntViewFrame];
     
     self.beg_image.hidden = data.isImageHidden;
     self.timeDown.hidden = data.isDownHidden;
     self.over_image.hidden = data.isEnd_Image_Hidden;
+    [self setContentView];
+    [self setConuntViewFrame];
+    
+  
     
 }
-
-//- (void)begTimer{
-//    //现在时间
-//    NSDate *now_date = [NSDate date];
-//    //结束时间
-//    NSTimeInterval timer = [self.data.end_time longLongValue];
-//    NSDate *end_date = [NSDate dateWithTimeIntervalSince1970:timer];
-//    
-//    NSCalendar *dar = [NSCalendar currentCalendar];
-//    NSCalendarUnit unit = NSCalendarUnitHour | NSCalendarUnitMinute| NSCalendarUnitSecond;
-//    NSDateComponents *com = [dar components:unit fromDate:now_date toDate:end_date options:0];
-//    
-//    self.timeDown.text = [NSString stringWithFormat:@"%d:%d:%d",com.hour,com.minute,com.second];
-//
-//    
-//    
-//}
-
 
 
 - (void)setContentView{

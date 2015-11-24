@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class TimeShopData;
 @protocol TimeShopModerDelegate <NSObject>
 //请求网络成功
 - (void)timeShopModerWithGoodArr:(NSMutableArray*)goodsArr timeGoods:(NSMutableArray*)timeGoods beg_goods:(NSMutableArray*)beg_goods beg_time_goods:(NSMutableArray*)beg_time_goods end_goods:(NSMutableArray*)end_goods end_time_goods:(NSMutableArray*)end_time_goods;//请求网络失败
+//刷新
+- (void)pullUpRefreshWithData:(TimeShopData*)data  beg_time:(NSString*)beg_time end_time:(NSString*)end_time;
+
+
+
 - (void)timeShopModerWithFailed:(NSString *)errorMsg;
 @end
 
@@ -26,4 +31,5 @@
 
 
 - (void)timeShopModeListWithCount:(NSInteger)count  page:(NSInteger)page ;
+- (void)pullUpRefreshWithCount:(NSInteger)count ;
 @end

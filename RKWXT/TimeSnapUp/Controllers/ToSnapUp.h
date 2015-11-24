@@ -18,8 +18,6 @@
 
 #import "TimeShopModer.h"
 
-#import "HeardView.h"
-#import "HeardTopView.h"
 #import "HeardGoodsView.h"
 
 #import "UIViewAdditions.h"
