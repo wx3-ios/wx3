@@ -78,7 +78,7 @@
         [self.contentView addSubview:postageLabel];
         
         //限时购
-        [self createLimitBuyView:postageLabel.frame.origin.y+postageLabel.frame.size.height];
+        [self createLimitBuyView:postageLabel.frame.origin.y+postageLabel.frame.size.height+10];
         
         UILabel *lineLabel = [[UILabel alloc] init];
         lineLabel.frame = CGRectMake(xOffset-textWidth, yOffset+14+30+newLabelHeight/2, 2*textWidth, 0.5);
@@ -124,57 +124,47 @@
     
     WXUILabel *upLine = [[WXUILabel alloc] init];
     upLine.frame = CGRectMake(0, 0.5, IPHONE_SCREEN_WIDTH, 0.5);
-    [upLine setBackgroundColor:[UIColor grayColor]];
+    [upLine setBackgroundColor:WXColorWithInteger(0xcacaca)];
     [limitBuyView addSubview:upLine];
     
-    CGFloat xOffset = 15;
-    CGFloat imgWidth = 80;
+    CGFloat xOffset = 10;
+    CGFloat imgWidth = 75;
     CGFloat imgHeight = 26;
     yOffset += 0.5+(44-imgHeight)/2;
     WXUIImageView *imgView = [[WXUIImageView alloc] init];
-    imgView.frame = CGRectMake(xOffset, yOffset, imgWidth, imgHeight);
+    imgView.frame = CGRectMake(xOffset, (40-imgHeight)/2, imgWidth, imgHeight);
     [imgView setImage:[UIImage imageNamed:@"LimitGoodsInfoClickBgImg.png"]];
     [limitBuyView addSubview:imgView];
     
-    xOffset += 1;
+    xOffset += 3;
     CGFloat clickImgWidth = 18;
     CGFloat clickImgHeight = clickImgWidth;
     WXUIImageView *clickImg = [[WXUIImageView alloc] init];
-    clickImg.frame = CGRectMake(xOffset, yOffset, clickImgWidth, clickImgHeight);
+    clickImg.frame = CGRectMake(xOffset, (40-clickImgHeight)/2, clickImgWidth, clickImgHeight);
     [clickImg setImage:[UIImage imageNamed:@"LimitGoodsInfoClickImg.png"]];
     [limitBuyView addSubview:clickImg];
     
     CGFloat textLabelWidth = 50;
     CGFloat textLabelHeight = 25;
     WXUILabel *textLabel = [[WXUILabel alloc] init];
-    textLabel.frame = CGRectMake(xOffset+clickImgWidth+5, yOffset, textLabelWidth, textLabelHeight);
+    textLabel.frame = CGRectMake(xOffset+clickImgWidth+3, (40-textLabelHeight)/2, textLabelWidth, textLabelHeight);
     [textLabel setBackgroundColor:[UIColor clearColor]];
     [textLabel setText:@"限时购"];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [textLabel setFont:WXFont(14.0)];
+    [textLabel setFont:WXFont(13.0)];
     [textLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [limitBuyView addSubview:textLabel];
     
-    xOffset = 15+imgWidth+6;
-    CGFloat saveLabelWidth = 72;
+    xOffset = 11+imgWidth;
+    CGFloat saveLabelWidth = 95;
     CGFloat saveLabelHeight = 25;
     _saveMoneyLabel = [[WXUILabel alloc] init];
-    _saveMoneyLabel.frame = CGRectMake(xOffset, (44-saveLabelHeight)/2, saveLabelWidth, saveLabelHeight);
+    _saveMoneyLabel.frame = CGRectMake(xOffset, (40-saveLabelHeight)/2, saveLabelWidth, saveLabelHeight);
     [_saveMoneyLabel setBackgroundColor:[UIColor clearColor]];
     [_saveMoneyLabel setTextAlignment:NSTextAlignmentCenter];
     [_saveMoneyLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [_saveMoneyLabel setFont:WXFont(14.0)];
     [limitBuyView addSubview:_saveMoneyLabel];
-    
-    xOffset += saveLabelWidth;
-    _overTime = [[WXUILabel alloc] init];
-    _overTime.frame = CGRectMake(xOffset, (44-saveLabelHeight)/2, IPHONE_SCREEN_WIDTH-xOffset, saveLabelHeight);
-    [_overTime setBackgroundColor:[UIColor clearColor]];
-    [_overTime setTextAlignment:NSTextAlignmentLeft];
-    [_overTime setTextColor:WXColorWithInteger(0x969696)];
-    [_overTime setFont:WXFont(14.0)];
-    [limitBuyView addSubview:_overTime];
-    [self.contentView addSubview:limitBuyView];
 }
 
 -(void)load{
@@ -188,6 +178,10 @@
     
     if(entity.postage == Goods_Postage_None && !_isLucky){
         [postageLabel setHidden:NO];
+    }else{
+        CGRect rect = limitBuyView.frame;
+        rect.origin.y -= 12;
+        [limitBuyView setFrame:rect];
     }
     
     if(_lEntity){
@@ -195,10 +189,30 @@
         TimeShopData *limitEntity = _lEntity;
         [_oldPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.goods_price floatValue]]];
         [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.scare_buying_price floatValue]]];
-        [_overTime setText:[self limitTime:[limitEntity.begin_time integerValue] andEndTime:[limitEntity.end_time integerValue]]];
+        [_saveMoneyLabel setText:[NSString stringWithFormat:@"已省%.2f元",[limitEntity.goods_price floatValue]-[limitEntity.scare_buying_price floatValue]]];
     }else{
         [limitBuyView setHidden:YES];
     }
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+}
+
+-(void)refreshLessTime{
+    if(limitBuyView){
+        [_overTime removeFromSuperview];
+        [limitBuyView removeFromSuperview];
+    }
+    TimeShopData *limitEntity = _lEntity;
+    _overTime = [[WXUILabel alloc] init];
+    _overTime.frame = CGRectMake(180, (40-25)/2, IPHONE_SCREEN_WIDTH-180, 25);
+    [_overTime setBackgroundColor:[UIColor clearColor]];
+    [_overTime setTextAlignment:NSTextAlignmentRight];
+    [_overTime setTextColor:WXColorWithInteger(0x969696)];
+    [_overTime setFont:WXFont(14.0)];
+    [_overTime setText:[self limitTime:[limitEntity.begin_time integerValue] andEndTime:[limitEntity.end_time integerValue]]];
+    [limitBuyView addSubview:_overTime];
+    [self.contentView addSubview:limitBuyView];
 }
 
 -(NSString*)limitTime:(NSInteger)startTime andEndTime:(NSInteger)endTime{
@@ -208,13 +222,13 @@
         NSInteger hour = (startTime-currentTime)/3600;
         NSInteger minute = (startTime-currentTime)%3600/60;
         NSInteger seconds = (startTime-currentTime)%3600%60/60;
-        limitTime = [NSString stringWithFormat:@"还剩下%ld小时%ld分%ld秒",(long)hour,(long)minute,(long)seconds];
+        limitTime = [NSString stringWithFormat:@"还剩%ld小时%ld分%ld秒",(long)hour,(long)minute,(long)seconds];
     }
     if(startTime <= currentTime && currentTime <= endTime){
         NSInteger hour = (endTime-currentTime)/3600;
         NSInteger minute = (endTime-currentTime)%3600/60;
-        NSInteger seconds = (endTime-currentTime)%3600%60/60;
-        limitTime = [NSString stringWithFormat:@"还剩下%ld小时%ld分%ld秒",(long)hour,(long)minute,(long)seconds];
+        NSInteger seconds = (endTime-currentTime)%3600%60%60;
+        limitTime = [NSString stringWithFormat:@"还剩%ld小时%ld分%ld秒",(long)hour,(long)minute,(long)seconds];
     }
     if(currentTime >= endTime){
         limitTime = @"抢购时间已结束";

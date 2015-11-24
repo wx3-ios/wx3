@@ -87,7 +87,7 @@
     _model.goodID = _goodsId;
     if(_goodsInfo_type == GoodsInfo_LimitGoods){
         limitEntity  = _lEntity;
-        [_model loadGoodsInfo:_model.goodID withLimitGoodsID:[limitEntity.scare_buying_id integerValue]];
+        [_model loadGoodsInfo:[limitEntity.goods_id integerValue] withLimitGoodsID:[limitEntity.scare_buying_id integerValue]];
     }else{
         [_model loadGoodsInfo:_model.goodID];
     }
@@ -352,7 +352,7 @@
         case T_GoodsInfo_Description:
             height = [NewGoodsInfoDesCell cellHeightOfInfo:([_model.data count] > 0?[_model.data objectAtIndex:0]:nil)];
             if(_lEntity){
-                height += 44;
+                height += 40;
             }
             break;
         case T_GoodsInfo_DownView:
@@ -452,6 +452,7 @@
     if([_model.data count] > 0){
         [cell setCellInfo:[_model.data objectAtIndex:0]];
     }
+    [cell setLEntity:limitEntity];
     cell.isLucky = _isLucky;
     [cell load];
     return cell;
@@ -665,8 +666,8 @@
     
     //限时购倒计时
     if(_lEntity){
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+//        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
     }
 }
 
@@ -807,6 +808,16 @@
     if(entity.stockNumber < rightView.goodsNum){
         [UtilTool showAlertView:[NSString stringWithFormat:@"该属性库存不足%d件",rightView.goodsNum]];
         return;
+    }
+    if(limitEntity){
+        if([limitEntity.scare_buying_number integerValue] < rightView.goodsNum){
+            [UtilTool showAlertView:[NSString stringWithFormat:@"库存已不足%d件",rightView.goodsNum]];
+            return;
+        }
+        if(rightView.goodsNum > [limitEntity.user_scare_buying_number integerValue]){
+            [UtilTool showAlertView:[NSString stringWithFormat:@"每人限购%ld件",(long)[limitEntity.user_scare_buying_number integerValue]]];
+            return;
+        }
     }
     entity.buyNumber = (rightView.goodsNum<=0?1:rightView.goodsNum);
     [goodsArr addObject:entity];

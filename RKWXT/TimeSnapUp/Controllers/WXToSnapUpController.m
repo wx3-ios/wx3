@@ -209,6 +209,7 @@
     
     ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[tableView cellForRowAtIndexPath:indexPath];
     NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
+    newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
     newGoods.lEntity = cell.data;
     [self.wxNavigationController pushViewController:newGoods];
     
