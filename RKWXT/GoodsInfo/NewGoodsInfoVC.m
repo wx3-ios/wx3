@@ -662,6 +662,16 @@
     rightView.dataArr = _model.data;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_LoadSucceed object:nil];
     [_model setDelegate:nil];
+    
+    //限时购倒计时
+    if(_lEntity){
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+    }
+}
+
+-(void)refreshLessTime{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Description] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)goodsInfoModelLoadedFailed:(NSString *)errorMsg{
