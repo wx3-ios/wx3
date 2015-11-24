@@ -28,6 +28,15 @@
 @property (nonatomic,strong)UIButton *buyingBtn;
 
 
+/** 距离倒计时 */
+@property (nonatomic,strong)UIImageView *beg_image;
+
+@property (nonatomic,strong)UILabel *beg_time;
+@property (nonatomic,strong)UILabel *beg_open;
+/** 结束 */
+@property (nonatomic,strong)UIImageView *over_image;
+
+@property (nonatomic,strong)UILabel *over_label;
 
 
 
@@ -35,6 +44,18 @@
 @end
 
 @implementation ToDaySnapUPCell
+
++ (instancetype)toDaySnapTopCell:(UITableView *)tableview{
+    NSString *cellIndef = @"toDaySnapTopCell";
+    ToDaySnapUPCell *cell = [tableview dequeueReusableCellWithIdentifier:cellIndef];
+    if (!cell) {
+        cell = [[ToDaySnapUPCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndef ];
+    }
+    return cell;
+}
+
+
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.contentView.backgroundColor = [UIColor clearColor];
@@ -108,10 +129,10 @@
         
         //开始
         UILabel *timeDown = [[UILabel alloc]init];
-        timeDown.backgroundColor = [UIColor redColor];
+        timeDown.backgroundColor = [UIColor grayColor];
         timeDown.alpha = 0.7;
         timeDown.textColor = [UIColor whiteColor];
-        timeDown.font = [UIFont systemFontOfSize:10];
+        timeDown.font = [UIFont systemFontOfSize:12];
         
         [self.iconimage addSubview:timeDown];
         self.timeDown =  timeDown;
@@ -141,7 +162,7 @@
     _data = data;
     
 
-     [self setCountFrame];
+    
     
     [self.iconimage setUserInteractionEnabled:NO];
     [self.iconimage setCpxViewInfo:data.add_goods_home_img];
@@ -150,12 +171,7 @@
     self.orgin_price.text = [NSString stringWithFormat:@"￥%@",data.goods_price];
     self.buying_price.text = [NSString stringWithFormat:@"￥%@",data.scare_buying_price];
     
-    self.beg_image.hidden = data.isImageHidden;
-    self.timeDown.hidden = data.isDownHidden;
-    self.over_image.hidden = data.isEnd_Image_Hidden;
-    
-    
-    
+  
     
     
     
@@ -171,11 +187,7 @@
     self.beg_open.text = @" 即将开抢";
     
     //开始
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
-    NSDateFormatter *mater = [[NSDateFormatter alloc]init];
-    [mater setDateFormat:@"dd:HH:mm"];
-    NSString *str1= [mater stringFromDate:date];
-    self.timeDown.text = str1;
+    self.timeDown.text = data.time_countdown;
     
     //结束
     UIImage *end_image = [UIImage imageNamed:@"end"];
@@ -183,8 +195,18 @@
     self.over_label.text = @"已抢光";
     
     
+    self.beg_image.hidden = data.isImageHidden == YES;
+    self.timeDown.hidden = data.isDownHidden == YES;
+    self.over_image.hidden = data.isEnd_Image_Hidden == YES;
     
-
+    if (!data.isDownHidden) {
+        self.buyingBtn.backgroundColor = [UIColor redColor];
+    }else{
+         self.buyingBtn.backgroundColor = [UIColor grayColor];
+    }
+    
+    
+    [self setCountFrame];
    
 }
 
@@ -264,7 +286,7 @@
     self.beg_open.frame = (CGRect){{timeX,beg_LY},size_beg};
     
     //开始
-    CGSize sizeT = [NSString sizeWithString:self.timeDown.text font:[UIFont systemFontOfSize:10]];
+    CGSize sizeT = [NSString sizeWithString:self.timeDown.text font:[UIFont systemFontOfSize:12]];
     self.timeDown.frame = (CGRect){{0,0},sizeT};
     
     
@@ -281,40 +303,7 @@
     
     
     
-    
-    
-//    CGFloat countW = imageW;
-//    CGFloat countH = 20;
-//    CGFloat countX = imageX;
-//    CGFloat countY = imageH - countH;
-//    self.countdown.frame = CGRectMake(countX, countY, countW, countH);
-    
-    
-//    NSString *str1 = self.orginollabel.text;
-//    CGSize size1 = [NSString sizeWithString:str1 font:[UIFont systemFontOfSize:11] maxW:nameW];
-//    
-//    
-//    CGFloat limitX = nameX;
-//    CGFloat limitY = self.nameLable.bottom + C_N_P_Spcing;
-//    self.buyingNumbel.frame = (CGRect){{limitX,limitY},{self.nameLable.width,size1.height}};
-//    
-//    //价格宽度
-//    CGFloat priceW = self.buyingNumbel.width * 0.6;
-//    CGFloat  orginw = self.buyingNumbel.width - priceW;
-//    CGFloat orginX = nameX;
-//    CGFloat orginY = self.buyingNumbel.bottom + C_N_P_Spcing;
-//    self.orginollabel.frame = (CGRect){{orginX,orginY},{orginw,size1.height}};
-//    
-//    //下划线
-//    CGFloat underW = size1.width - 3;
-//    CGFloat underH = 0.5;
-//    CGFloat underX = orginX + 0.5;
-//    CGFloat underY = orginY + size1.height / 2;
-//    self.under.frame = CGRectMake(underX, underY, underW, underH);
-//    
-//    CGFloat disX = self.orginollabel.right;
-//    CGFloat disY = orginY;
-//    self.distribution.frame = (CGRect){{disX,disY},{priceW,size1.height}};
+   
     
 }
 

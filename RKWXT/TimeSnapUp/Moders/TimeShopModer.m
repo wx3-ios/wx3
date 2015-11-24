@@ -75,10 +75,6 @@
             }
             
         }else{
-            //现在时间
-            NSDate *date = [NSDate date];
-            NSTimeInterval nowTime = [date timeIntervalSince1970];
-           
             
             NSArray *array = retData.data[@"data"];
             NSRange range = NSMakeRange(0, 3);
@@ -88,29 +84,12 @@
                 //开始时间
                 NSTimeInterval beg_time = [dic[@"begin_time"] longLongValue];
                 NSTimeInterval end_time = [dic[@"end_time"] longLongValue];
+                 TimeShopData *moder = [[TimeShopData alloc]initWithDict:dic];
                 
-                TimeShopData *moder = [[TimeShopData alloc]initWithDict:dic];
-                if (nowTime > beg_time) {
-                    moder.beg_imageHidden = YES;
-                    moder.downHidden = NO;
-                    moder.end_Image_Hidden = YES;
-                    
-                    if (nowTime > end_time) {
-                        moder.beg_imageHidden = YES;
-                        moder.downHidden = NO;
-                        moder.end_Image_Hidden = YES;
-                    }else{
-                        moder.beg_imageHidden = YES;
-                        moder.downHidden = YES;
-                        moder.end_Image_Hidden = NO;
-                    }
-                    
-                }else {
-                    moder.beg_imageHidden = NO;
-                    moder.downHidden = YES;
-                    moder.end_Image_Hidden = YES;
-              }
-              [self.goodsA addObject:moder];
+                 //判断
+                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder];
+                
+                [self.goodsA addObject:moder];
                 
                //取出时间
                 [self.beg_goods addObject:dic[@"begin_time"]];
@@ -119,38 +98,21 @@
             }
             
             
-            
             NSRange range1 = NSMakeRange(3,array.count - 3);
             NSArray *timeGoods = [array subarrayWithRange:range1];
             for (NSDictionary *dict in timeGoods) {
                 //开始时间
                 NSTimeInterval beg_time = [dict[@"begin_time"] longLongValue];
                 NSTimeInterval end_time = [dict[@"end_time"] longLongValue];
+              TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
                 
-                TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
-                if (nowTime > beg_time) {
-                    moder.beg_imageHidden = YES;
-                    moder.downHidden = NO;
-                    moder.end_Image_Hidden = YES;
-                    
-                    if (nowTime > end_time) {
-                        moder.beg_imageHidden = YES;
-                        moder.downHidden = NO;
-                        moder.end_Image_Hidden = YES;
-                    }else{
-                        moder.beg_imageHidden = YES;
-                        moder.downHidden = YES;
-                        moder.end_Image_Hidden = NO;
-                    }
-                    
-                }else {
-                    moder.beg_imageHidden = NO;
-                    moder.downHidden = YES;
-                    moder.end_Image_Hidden = YES;
-                }
-                 [self.timeGoodsA addObject:moder];
+                //判断
+                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder];
+               
                 
-                //取出时间
+                [self.timeGoodsA addObject:moder];
+                
+              
                 //取出时间
                 [self.beg_time_goods addObject:dict[@"begin_time"]];
                 [self.end_time_goods addObject:dict[@"end_time"]];
@@ -168,6 +130,92 @@
     }];
 
     }
+
+
+
+- (void)pullUpRefreshWithCount:(NSInteger)count{
+    
+    NSDate *localDate = [NSDate date]; //获取当前时间
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[localDate timeIntervalSince1970]];  //转化为UNIX时间戳
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"pid"] = @"ios";
+    dict[@"ver"] =  [UtilTool currentVersion];
+    dict[@"ts"] = timeSp;
+    dict[@"type"] = [NSNumber numberWithInt:1];
+    dict[@"page"] = [NSNumber numberWithInt:count];
+    dict[@"shop_id"] = [NSNumber numberWithInt:kSubShopID];
+    
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_TimeToBuy httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
+        
+        if(retData.code != 0){     
+            if (self.delegate && [self.delegate respondsToSelector:@selector(timeShopModerWithFailed:)]) {
+                [self.delegate timeShopModerWithFailed:retData.errorDesc];
+            }
+            
+        }else{
+          
+            NSArray *array = retData.data[@"data"];
+            for (NSDictionary *dict in array) {
+                NSTimeInterval beg_time = [dict[@"begin_time"] longLongValue];
+                NSTimeInterval end_time = [dict[@"end_time"] longLongValue];
+                TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
+                
+                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder];
+                
+                if (self.delegate && [self.delegate respondsToSelector:@selector(pullUpRefreshWithData:beg_time:end_time:)]) {
+                    [self.delegate pullUpRefreshWithData:moder beg_time:dict[@"begin_time"] end_time:dict[@"end_time"]];
+                }
+
+
+            }
+            
+        }
+    }];
+    
+}
+    
+
+
+//
+- (void)moreTimeWithBeg_time:(NSTimeInterval)beg_time end_time:(NSTimeInterval)end_time timeShopData:(TimeShopData*)moder {
+    
+    
+    
+    NSDate *now_date = [NSDate date];
+    NSTimeInterval nowTime = [now_date timeIntervalSince1970];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSCalendarUnit unit =  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    
+    //比较时间
+    NSDate *end_date = [NSDate dateWithTimeIntervalSince1970:end_time];
+    NSDateComponents *com = [cal components:unit fromDate:now_date toDate:end_date options:0];
+    moder.time_countdown = [NSString stringWithFormat:@"%02d:%02d:%02d",com.hour,com.minute,com.second];
+    moder.top_time_countdown = [NSString stringWithFormat:@"%02d:%02d:%02d",com.hour,com.minute,com.second];
+    
+    if (nowTime > beg_time) {
+        moder.beg_imageHidden = YES;
+        moder.downHidden = NO;
+        moder.end_Image_Hidden = YES;
+        
+        if (nowTime > end_time) {
+            moder.beg_imageHidden = YES;
+            moder.downHidden = YES;
+            moder.end_Image_Hidden = NO;
+        }else{
+            moder.beg_imageHidden = YES;
+            moder.downHidden = NO;
+            moder.end_Image_Hidden = YES;
+        }
+        
+    }else {
+        moder.beg_imageHidden = NO;
+        moder.downHidden = YES;
+        moder.end_Image_Hidden = YES;
+    }
+}
+
+
 
 
 @end

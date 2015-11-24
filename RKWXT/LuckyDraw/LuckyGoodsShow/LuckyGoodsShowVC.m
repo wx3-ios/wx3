@@ -227,20 +227,6 @@ typedef enum{
     }
 }
 
-//-(void)refreshLessTime{
-//    NSUInteger time;
-//    for (int i = 0; i < [totalLastTime count]; i++) {
-//        time = [[[totalLastTime objectAtIndex:i] objectForKey:@"lastTime"] integerValue];
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[[[totalLastTime objectAtIndex:i] objectForKey:@"indexPath"] integerValue] inSection:0];
-//        LuckyGoodsShowCell *cell = (LuckyGoodsShowCell *)[_tableView cellForRowAtIndexPath:indexPath];
-//        cell.textLabel.text = [NSString stringWithFormat:@"剩%d",--time];
-//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//        [dic setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
-//        [dic setValue:[NSString stringWithFormat:@"%d",time]  forKey:@"lastTime"];
-//        [totalLastTime replaceObjectAtIndex:i withObject:dic];
-//    }
-//}
-
 #pragma mark luckyModelDelegate
 -(void)loadLuckyGoodsFailed:(NSString *)errorMsg{
     [self unShowWaitView];

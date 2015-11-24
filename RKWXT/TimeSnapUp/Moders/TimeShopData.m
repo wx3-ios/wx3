@@ -23,6 +23,7 @@
     }
     return self;
 }
+
 - (NSString*)add_goods_home_img{
     
     return  [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,_goods_home_img];
