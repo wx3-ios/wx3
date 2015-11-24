@@ -15,9 +15,10 @@
 #import "SearchTimeGoodsController.h"
 #import "WXTURLFeedOBJ.h"
 #import "WXUIActivityIndicatorView.h"
+#import "NewGoodsInfoVC.h"
 
 
-@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate>
+@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray *goodsarray;
 @property (nonatomic,strong)NSMutableArray *timearray;
@@ -114,8 +115,8 @@
     if (!cell) {
         cell = [[ToSnapUpTopCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndef goodsArray:self.goodsarray];
     }
-       cell.goodsArray = self.goodsarray;
-    
+    cell.goodsArray = self.goodsarray;
+    cell.delegate  =self;
     return cell;
 }
 
@@ -205,12 +206,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    debugLog(@"点击了CRLL");
+    
+    ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[tableView cellForRowAtIndexPath:indexPath];
+    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
+    newGoods.lEntity = cell.data;
+    [self.wxNavigationController pushViewController:newGoods];
+    
 }
 
 
 
-#pragma mark ---- 自定义代理方法
+
+
+
+
+#pragma mark ---- 网络处理
 
 //网络请求失败
 - (void)timeShopModerWithFailed:(NSString *)errorMsg{
@@ -328,8 +338,16 @@
         [self.topTime addObject:dict];
     }
     
+
+}
+
+#pragma mark ---- 代理方法
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell{
+    debugLog(@"%@",cell);
     
 }
+
+
 
 
 

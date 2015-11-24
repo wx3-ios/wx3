@@ -103,9 +103,6 @@
         [self.orgin_price addSubview:drawview];
         self.drawview = drawview;
 
-
-        
-
         
         //即将开始
         UIImageView *beg_image = [[UIImageView alloc]init];
@@ -161,8 +158,6 @@
 -(void)setData:(TimeShopData *)data{
     _data = data;
     
-
-    
     
     [self.iconimage setUserInteractionEnabled:NO];
     [self.iconimage setCpxViewInfo:data.add_goods_home_img];
@@ -172,9 +167,6 @@
     self.buying_price.text = [NSString stringWithFormat:@"￥%@",data.scare_buying_price];
     
   
-    
-    
-    
     //即将开始
     NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
     NSDateFormatter *matter = [[NSDateFormatter alloc]init];
@@ -306,6 +298,15 @@
    
     
 }
+
+
+
+
+
+
+
+
+
 
 + (CGFloat)cellHeight{
     return C_ImageW + C_Margin + C_Margin;

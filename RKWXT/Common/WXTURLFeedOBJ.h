@@ -85,7 +85,11 @@ typedef enum {
     WXT_UrlFeed_Type_Invalid,
     
     //限时购
-    WXT_UrlFeed_Type_TimeToBuy
+    WXT_UrlFeed_Type_TimeToBuy,
+    //单个商品
+    WXT_UrlFeed_Type_SingleTimeGoods
+    
+    
     
 }WXT_UrlFeed_Type;
 

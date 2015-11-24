@@ -231,7 +231,10 @@
         case  WXT_UrlFeed_Type_TimeToBuy:
             url = @"/get_scare_buying.php";
             break;
-           
+        case  WXT_UrlFeed_Type_SingleTimeGoods:
+            url = @"/get_single_goods_info.php";
+            break;
+       
         default:
             break;
     }
