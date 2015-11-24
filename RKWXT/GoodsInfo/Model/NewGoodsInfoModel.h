@@ -16,7 +16,8 @@
 @property (nonatomic,assign) NSInteger goodID;
 @property (nonatomic,strong) GoodsInfoEntity *entity;
 
--(void)loadGoodsInfo:(NSInteger)goods_id;
+-(void)loadGoodsInfo:(NSInteger)goods_id;  //普通商品
+-(void)loadGoodsInfo:(NSInteger)goods_id withLimitGoodsID:(NSInteger)limitGoodsID;
 -(BOOL)shouldDataReload;
 
 @end

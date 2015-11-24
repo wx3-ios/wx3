@@ -76,8 +76,7 @@
     NSString *moneyStr = [NSString stringWithFormat:@"￥%.2f",entity.total_fee];
     [_money setText:moneyStr];
     
-    NSInteger time = [UtilTool timeChange];
-    [_dateLabel setText:[UtilTool getDateTimeFor:time type:1]];
+    [_dateLabel setText:[UtilTool getDateTimeFor:entity.add_time type:1]];
 }
 
 @end

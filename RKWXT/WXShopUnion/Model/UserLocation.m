@@ -17,6 +17,11 @@
 @implementation UserLocation
 
 -(void)startLocation{
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        [UtilTool showAlertView:@"定位功能未开启"];
+        return;
+    }
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = 10;
@@ -72,6 +77,5 @@
         }
     }];
 }
-
 
 @end

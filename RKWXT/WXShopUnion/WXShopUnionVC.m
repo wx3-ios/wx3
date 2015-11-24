@@ -37,6 +37,8 @@
     [leftBtn setTitle:@"城市" forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(gotoCityListVC) forControlEvents:UIControlEventTouchUpInside];
     [self setRightNavigationItem:leftBtn];
+    
+    [[LocalAreaModel shareLocalArea] loadLocalAreaData];
 }
 
 -(void)addNotification{

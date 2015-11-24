@@ -10,6 +10,8 @@
 #import "GoodsInfoDef.h"
 #import "GoodsInfoEntity.h"
 
+#import "TimeShopData.h"
+
 #define LabelWidth (110)
 
 @interface NewGoodsInfoDesCell(){
@@ -50,7 +52,6 @@
         [textLabel setTextColor:[UIColor grayColor]];
         [textLabel setFont:[UIFont systemFontOfSize:12.0]];
         [self.contentView addSubview:textLabel];
-        
         
         xOffset += textWidth;
         _newPrice = [[WXUILabel alloc] init];
@@ -107,16 +108,6 @@
         [_attentionBtn setTitleColor:WXColorWithInteger(smallTextColor) forState:UIControlStateNormal];
 //        [_attentionBtn addTarget:self action:@selector(payAttention:) forControlEvents:UIControlEventTouchUpInside];
 //        [self.contentView addSubview:_attentionBtn];
-        
-        CGFloat width = 60;
-        WXUILabel *label = [[WXUILabel alloc] init];
-        label.frame = CGRectMake(xOffset+(IPHONE_SCREEN_WIDTH-xOffset-width)/2, yOffset+9+(T_GoodsInfoDescHeight-yOffset-btnHeight)/2, width, btnHeight-8);
-        [label setBackgroundColor:[UIColor clearColor]];
-        [label setTextAlignment:NSTextAlignmentCenter];
-        [label setText:@"分享"];
-        [label setFont:[UIFont systemFontOfSize:13.0]];
-        [label setTextColor:WXColorWithInteger(0xcacaca)];
-//        [self.contentView addSubview:label];
     }
     return self;
 }
@@ -132,6 +123,12 @@
     
     if(entity.postage == Goods_Postage_None && !_isLucky){
         [postageLabel setHidden:NO];
+    }
+    
+    if(_lEntity){
+        TimeShopData *limitEntity = _lEntity;
+        [_oldPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.goods_price floatValue]]];
+        [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.scare_buying_price floatValue]]];
     }
 }
 
