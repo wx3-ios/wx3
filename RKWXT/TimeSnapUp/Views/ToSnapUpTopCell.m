@@ -65,10 +65,7 @@
         [self.childArray addObject:goods];
     }
     
-   
 }
-
-
 
 - (void)clickTouch{
     if ([self.delegate respondsToSelector:@selector(toSnapUpToCellWithTouch:)]) {
@@ -80,6 +77,8 @@
 + (CGFloat)cellHeight{
     return 140;
 }
+
+
 
 
 @end

@@ -17,7 +17,7 @@
 #import "WXUIActivityIndicatorView.h"
 
 
-@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate>
+@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray *goodsarray;
 @property (nonatomic,strong)NSMutableArray *timearray;
@@ -114,8 +114,8 @@
     if (!cell) {
         cell = [[ToSnapUpTopCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndef goodsArray:self.goodsarray];
     }
-       cell.goodsArray = self.goodsarray;
-    
+    cell.goodsArray = self.goodsarray;
+    cell.delegate  =self;
     return cell;
 }
 
@@ -210,7 +210,8 @@
 
 
 
-#pragma mark ---- 自定义代理方法
+
+#pragma mark ---- 网络处理
 
 //网络请求失败
 - (void)timeShopModerWithFailed:(NSString *)errorMsg{
@@ -330,6 +331,13 @@
     
     
 }
+
+#pragma mark ---- 代理方法
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell{
+   
+}
+
+
 
 
 

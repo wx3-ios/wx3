@@ -93,26 +93,20 @@
         self.over_label = over_label;
         
         
-        
-        
-        
     }
     return self;
 }
 
 
-
-
-
 - (void)setData:(TimeShopData *)data{
     _data = data;
     
-    
+     [self setContentView];
     
     self.beg_image.hidden = data.isImageHidden;
     self.timeDown.hidden = data.isDownHidden;
     self.over_image.hidden = data.isEnd_Image_Hidden;
-    [self setContentView];
+   
     [self setConuntViewFrame];
     
   
@@ -123,6 +117,7 @@
 - (void)setContentView{
     
     [self.iconimage setCpxViewInfo:self.data.add_goods_home_img];
+    [self.iconimage setButtonEnable:YES];
     [self.iconimage load];
     
     self.orgina_price.text = [NSString stringWithFormat:@"￥%@",self.data.goods_price];
@@ -209,6 +204,8 @@
     self.over_label.frame = (CGRect){{overLX,overLY},over};
     
     }
+
+
 
 
 @end
