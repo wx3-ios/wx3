@@ -10,13 +10,17 @@
 #import "LocalAreaModel.h"
 #import "AreaEntity.h"
 #import "WXCityListLocationCell.h"
+#import "WXUserCurrentCityCell.h"
 
 #define Size self.bounds.size
 #define NavViewHeight (64)
 #define kSearchBarHeight (44)
 
+#define UserCurrentSearchCity @"UserCurrentSearchCity"
+
 enum{
     CityList_Section_Location = 0,
+    CityList_Section_Current,
     
     CityList_Section_Invalid,
 };
@@ -25,6 +29,8 @@ enum{
     UITableView *_tableView;
     WXUISearchBar *_searchBar;
     UISearchDisplayController *_searchDisplayController;
+    
+    NSArray *currentCity;
 }
 @end
 
@@ -33,6 +39,9 @@ enum{
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self createNavView];
+    
+    NSUserDefaults *userDrfault = [NSUserDefaults standardUserDefaults];
+    currentCity = [userDrfault arrayForKey:UserCurrentSearchCity];
 
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, kSearchBarHeight+NavViewHeight, Size.width, Size.height-kSearchBarHeight-NavViewHeight);
@@ -95,10 +104,10 @@ enum{
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView == _tableView){
-        if(CityList_Section_Location == section){
+        if(section < CityList_Section_Invalid){
             return 1;
         }else{
-            NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-1];
+            NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-CityList_Section_Invalid];
             NSArray *cityListArr = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
             return [cityListArr count];
         }
@@ -147,13 +156,26 @@ enum{
     return cell;
 }
 
+-(WXUITableViewCell*)tableViewForUserCurrentCityCell{
+    static NSString *identifier = @"currentCell";
+    WXUserCurrentCityCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXUserCurrentCityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    if([currentCity count] > 0){
+        [cell setCellInfo:currentCity];
+    }
+    [cell load];
+    return cell;
+}
+
 -(WXUITableViewCell*)tableViewForCityListCell:(NSInteger)section atRow:(NSInteger)row{
     static NSString *identifier = @"cityListCell";
     WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-1];
+    NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-CityList_Section_Invalid];
     NSArray *cityList = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
     AreaEntity *ent = [cityList objectAtIndex:row];
     [cell.textLabel setText:ent.areaName];
@@ -176,8 +198,13 @@ enum{
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
     if(_tableView == tableView){
-        if(section == CityList_Section_Location){
-            cell = [self tableViewForLocationCityCell];
+        if(section < CityList_Section_Invalid){
+            if(section == CityList_Section_Location){
+                cell = [self tableViewForLocationCityCell];
+            }
+            if(section == CityList_Section_Current){
+                cell = [self tableViewForUserCurrentCityCell];
+            }
         }else{
             cell = [self tableViewForCityListCell:section atRow:row];
         }
@@ -192,18 +219,29 @@ enum{
     if(section >= CityList_Section_Invalid && tableView == _tableView){
         headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
         [headView setBackgroundColor:WXColorWithInteger(0xf6f6f6)];
-        WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 20)] ;
+        WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 20)];
         [label setTextColor:WXColorWithInteger(0xa0a0a0)];
-        [label setText:[[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-1]];
+        [label setText:[[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-CityList_Section_Invalid]];
         [label setFont:WXFont(12.0)];
         [headView addSubview:label];
         return headView;
-    }else{
+    }
+    if(section == CityList_Section_Location){
         headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
         [headView setBackgroundColor:WXColorWithInteger(0xf6f6f6)];
-        WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 20)] ;
+        WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 20)];
         [label setTextColor:WXColorWithInteger(0xa0a0a0)];
-        [label setText:@"定位城市-"];
+        [label setText:@"定位城市"];
+        [label setFont:WXFont(12.0)];
+        [headView addSubview:label];
+        return headView;
+    }
+    if(section == CityList_Section_Current){
+        headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
+        [headView setBackgroundColor:WXColorWithInteger(0xf6f6f6)];
+        WXUILabel *label = [[WXUILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 20)];
+        [label setTextColor:WXColorWithInteger(0xa0a0a0)];
+        [label setText:@"最近访问城市"];
         [label setFont:WXFont(12.0)];
         [headView addSubview:label];
         return headView;
@@ -213,6 +251,40 @@ enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if(_tableView == tableView){
+        if(section >= CityList_Section_Invalid){
+            NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-CityList_Section_Invalid];
+            NSArray *cityList = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
+            AreaEntity *ent = [cityList objectAtIndex:row];
+            NSLog(@"点击城市===%@",ent.areaName);
+            [self storageCurrentCity:ent.areaName];
+        }
+    }else{
+        AreaEntity *ent = [[LocalAreaModel shareLocalArea].searchCity objectAtIndex:row];
+        NSLog(@"点击城市===%@",ent.areaName);
+        [self storageCurrentCity:ent.areaName];
+    }
+}
+
+#pragma mark 最近访问城市存储
+-(void)storageCurrentCity:(NSString*)cityName{
+    if(cityName.length == 0){
+        return;
+    }
+    NSMutableArray *cityArr = [[NSMutableArray alloc] init];
+    [cityArr addObject:cityName];
+    for(NSString *name in currentCity){
+        if(![cityName isEqualToString:name]){
+            [cityArr addObject:name];
+            if([cityArr count] == 3){
+                break;
+            }
+        }
+    }
+    NSUserDefaults *userDrfault = [NSUserDefaults standardUserDefaults];
+    [userDrfault setObject:cityArr forKey:UserCurrentSearchCity];
 }
 
 #pragma mark search
@@ -249,7 +321,8 @@ enum{
 
 #pragma mark locationBtnClicked
 -(void)wxCityListLocationCellBtnCLicked{
-    
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [self storageCurrentCity:userObj.userLocationCity];
 }
 
 #pragma mark closeBtn

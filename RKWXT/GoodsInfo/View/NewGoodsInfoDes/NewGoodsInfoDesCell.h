@@ -8,7 +8,9 @@
 
 #import "WXUITableViewCell.h"
 
+@class TimeShopData;
 @interface NewGoodsInfoDesCell : WXUITableViewCell
 @property (nonatomic,assign) BOOL isLucky;
+@property (nonatomic,strong) TimeShopData *lEntity;
 
 @end

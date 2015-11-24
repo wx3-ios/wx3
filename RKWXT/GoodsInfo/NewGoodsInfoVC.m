@@ -30,6 +30,9 @@
 #import "GoodsInfoPacketCell.h"
 #import "GoodsInfoDownView.h"
 
+//限时购
+#import "TimeShopData.h"
+
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
@@ -52,6 +55,9 @@
     
     NSArray *menuList;
     CDSideBarController *sideBar;
+    
+    //限时购
+    TimeShopData *limitEntity;
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end
@@ -79,7 +85,12 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     _model.goodID = _goodsId;
-    [_model loadGoodsInfo:_model.goodID];
+    if(_goodsInfo_type == GoodsInfo_LimitGoods){
+        limitEntity  = _lEntity;
+        [_model loadGoodsInfo:_model.goodID withLimitGoodsID:[limitEntity.scare_buying_id integerValue]];
+    }else{
+        [_model loadGoodsInfo:_model.goodID];
+    }
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     [self initWebView];
     
@@ -94,11 +105,15 @@
         [_tableView setSeparatorColor:WXColorWithInteger(0xEBEBEB)];
     }
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    if(_goodsInfo_type == GoodsInfo_Normal){
+        [self.view addSubview:[self downViewShow]];
+    }
     if(_goodsInfo_type == GoodsInfo_LuckyGoods){
         _isLucky = YES;
         _tableView.frame = CGRectMake(0, 0, size.width, size.height);
-    }else{
-        [self.view addSubview:[self downViewShow]];
+    }
+    if(_goodsInfo_type == GoodsInfo_LimitGoods){
+        [self.view addSubview:[self createLimitBuyDownView]];
     }
     
     [self crateTopNavigationView];
@@ -204,13 +219,6 @@
     [titleLabel setText:@"商品详情"];
     [titleLabel setTextColor:WXColorWithInteger(0x000000)];
 //    [topView addSubview:titleLabel];
-    
-//    WXUIButton *sharebtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-//    sharebtn.frame = CGRectMake(self.bounds.size.width-xGap-btnWidth, TopNavigationViewHeight-yGap-btnHeight, btnWidth, btnHeight);
-//    [sharebtn setBackgroundColor:[UIColor clearColor]];
-//    [sharebtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
-//    [sharebtn addTarget:self action:@selector(sharebtnClicked) forControlEvents:UIControlEventTouchUpInside];
-//    [topView addSubview:sharebtn];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -228,6 +236,22 @@
             [backBtn setImage:[UIImage imageNamed:@"CommonArrowLeft.png"] forState:UIControlStateNormal];
         }];
     }
+}
+
+-(WXUIView*)createLimitBuyDownView{
+    WXUIView *footView = [[WXUIView alloc] init];
+    
+    CGFloat btnHeight = DownViewHeight;
+    buyNowBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    buyNowBtn.frame = CGRectMake(0, 0, self.bounds.size.width, btnHeight);
+    [buyNowBtn setBackgroundColor:WXColorWithInteger(0xff9c00)];
+    [buyNowBtn setTitle:@"立即购买" forState:UIControlStateNormal];
+    [buyNowBtn addTarget:self action:@selector(buyNowBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [footView addSubview:buyNowBtn];
+    
+    CGRect rect = CGRectMake(0, self.view.bounds.size.height-DownViewHeight, self.bounds.size.width, DownViewHeight);
+    [footView setFrame:rect];
+    return footView;
 }
 
 -(WXUIView *)downViewShow{
@@ -327,6 +351,9 @@
             break;
         case T_GoodsInfo_Description:
             height = [NewGoodsInfoDesCell cellHeightOfInfo:([_model.data count] > 0?[_model.data objectAtIndex:0]:nil)];
+            if(_lEntity){
+                height += 44;
+            }
             break;
         case T_GoodsInfo_DownView:
         {
