@@ -53,6 +53,9 @@
     
 //    [self createTopBtn];
     [_model loadData];
+    //定位
+    UserLocation *userLocation = [[UserLocation alloc] init];
+    [userLocation startLocation];
     
     [self pullingTableViewDidStartRefreshing:_tableView];
 #warning 添加了一个入口，跳转到限时搜索

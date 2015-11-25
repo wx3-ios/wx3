@@ -10,8 +10,6 @@
 #import "WXShopUnionDef.h"
 
 @interface WXShopUnionVC()<ShopUnionDropListViewDelegate>{
-    UserLocation *userLocation;
-    
     WXShopUnionAreaView *_areaListView;
     BOOL showAreaview;
 }
@@ -19,19 +17,9 @@
 
 @implementation WXShopUnionVC
 
--(id)init{
-    self = [super init];
-    if(self){
-        userLocation = [[UserLocation alloc] init];
-    }
-    return self;
-}
-
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"商家联盟"];
-    [userLocation startLocation];
-    [self addNotification];
     
     WXUIButton *rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake(0, 0, 40, 40);
@@ -57,20 +45,7 @@
     return _areaListView;
 }
 
--(void)addNotification{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLocationSucceed) name:K_Notification_Name_UserLocation_Succeed object:nil];
-}
-
--(void)userLocationSucceed{
-    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-    [UtilTool showAlertView:[NSString stringWithFormat:@"定位城市－%@",userObj.userLocationCity]];
-}
-
 -(void)gotoCityListVC{
-//    WXShopCityListVC *cityListVC = [[WXShopCityListVC alloc] init];
-//    cityListVC.titleStr = @"深圳";
-//    [self presentViewController:cityListVC animated:YES completion:nil];
-    
     if(showAreaview){
         showAreaview = NO;
         [_areaListView selectCityArea];

@@ -74,6 +74,9 @@ enum{
 
 #import "LocalAreaModel.h"
 #import "WXShopUnionVC.h"
+
+//定位
+#import "UserLocation.h"
 #define Size self.bounds.size
 
 typedef enum{
