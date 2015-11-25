@@ -7,12 +7,13 @@
 //
 
 #import "WXShopUnionVC.h"
-#import "WXShopCityListVC.h"
-#import "LocalAreaModel.h"
-#import "UserLocation.h"
+#import "WXShopUnionDef.h"
 
-@interface WXShopUnionVC(){
+@interface WXShopUnionVC()<ShopUnionDropListViewDelegate>{
     UserLocation *userLocation;
+    
+    WXShopUnionAreaView *_areaListView;
+    BOOL showAreaview;
 }
 @end
 
@@ -32,13 +33,28 @@
     [userLocation startLocation];
     [self addNotification];
     
-    WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn.frame = CGRectMake(0, 0, 40, 40);
-    [leftBtn setTitle:@"城市" forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(gotoCityListVC) forControlEvents:UIControlEventTouchUpInside];
-    [self setRightNavigationItem:leftBtn];
+    WXUIButton *rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(0, 0, 40, 40);
+    [rightBtn setTitle:@"城市" forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(gotoCityListVC) forControlEvents:UIControlEventTouchUpInside];
+    [self setRightNavigationItem:rightBtn];
+    
+    //下拉区域列表
+    showAreaview = YES;
+    _areaListView = [self createAreaDropListViewWith:rightBtn];
+    [_areaListView unshow:NO];
+    [self addSubview:_areaListView];
     
     [[LocalAreaModel shareLocalArea] loadLocalAreaData];
+}
+
+-(WXShopUnionAreaView*)createAreaDropListViewWith:(WXUIButton*)btn{
+    CGFloat width = self.bounds.size.width;
+    CGFloat height = 300;
+    CGRect rect = CGRectMake(0, 0, width, height);
+    _areaListView = [[WXShopUnionAreaView alloc] initWithFrame:self.bounds menuButton:btn dropListFrame:rect];
+    [_areaListView setDelegate:self];
+    return _areaListView;
 }
 
 -(void)addNotification{
@@ -51,9 +67,20 @@
 }
 
 -(void)gotoCityListVC{
-    WXShopCityListVC *cityListVC = [[WXShopCityListVC alloc] init];
-    cityListVC.titleStr = @"深圳";
-    [self presentViewController:cityListVC animated:YES completion:nil];
+//    WXShopCityListVC *cityListVC = [[WXShopCityListVC alloc] init];
+//    cityListVC.titleStr = @"深圳";
+//    [self presentViewController:cityListVC animated:YES completion:nil];
+    
+    if(showAreaview){
+        showAreaview = NO;
+        [_areaListView selectCityArea];
+    }else{
+        showAreaview = YES;
+    }
+}
+
+-(void)changeCityArea{
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
