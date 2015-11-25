@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TimeShopData;
-@interface ToDaySnapUPCell : UITableViewCell
+@class TimeShopData,ToDaySnapUPCell;
+
+@protocol ToDaySnapUPCellDelegate <NSObject>
+
+- (void)toDaySnapUpCell:(ToDaySnapUPCell*)cell;
+
+@end
+
+
+@interface ToDaySnapUPCell : WXUITableViewCell
 /** 倒计时 */
 @property (nonatomic,strong)UILabel *timeDown;
-
-
 @property (nonatomic,strong)TimeShopData *data;
+@property (nonatomic,strong)id <ToDaySnapUPCellDelegate> delegate;
 + (CGFloat)cellHeight;
 + (instancetype)toDaySnapTopCell:(UITableView*)tableview;
 

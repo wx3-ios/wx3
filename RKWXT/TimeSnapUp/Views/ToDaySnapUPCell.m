@@ -59,6 +59,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.contentView.backgroundColor = [UIColor clearColor];
+        self.width = [UIScreen mainScreen].bounds.size.width;
         
         [self.backView removeFromSuperview];
         UIView *backView = [[UIView alloc]initWithFrame:self.bounds];
@@ -93,6 +94,8 @@
         UIButton *buyingBtn = [[UIButton alloc]init];
         buyingBtn.backgroundColor = [UIColor colorWithHexString:@"dd2726"];
         buyingBtn.layer.cornerRadius = 5;
+        buyingBtn.userInteractionEnabled = YES;
+        [buyingBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown];
         [buyingBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
         [self.backView addSubview:buyingBtn];
          self.buyingBtn = buyingBtn;
@@ -159,7 +162,7 @@
     _data = data;
     
     
-    [self.iconimage setUserInteractionEnabled:NO];
+    [self.iconimage setButtonEnable:NO];
     [self.iconimage setCpxViewInfo:data.add_goods_home_img];
     [self.iconimage load];
      self.nameLable.text = data.goods_name;
@@ -191,10 +194,12 @@
     self.timeDown.hidden = data.isDownHidden == YES;
     self.over_image.hidden = data.isEnd_Image_Hidden == YES;
     
-    if (!data.isDownHidden) {
+    if (!self.timeDown.hidden) {
         self.buyingBtn.backgroundColor = [UIColor redColor];
+        self.buyingBtn.userInteractionEnabled = NO;
     }else{
          self.buyingBtn.backgroundColor = [UIColor grayColor];
+         self.buyingBtn.userInteractionEnabled = YES;
     }
     
     
@@ -217,9 +222,6 @@
     CGFloat imageX = C_Margin;
     CGFloat imageY = C_Margin;
     self.iconimage.frame = CGRectMake(imageX, imageY, imageW, imageH);
-    
-    
-   
     
     
     NSString *str = @" \n ";
@@ -251,14 +253,11 @@
     self.drawview.frame = CGRectMake(draewX, draewY, size1.width, drawH);
     
     
- 
-    CGFloat btnX = self.width - 15 - buyingBtnW;
-    CGFloat btnY =C_ImageW + C_Margin + C_Margin - 26 - 15;
     CGFloat btnW = buyingBtnW;
-    CGFloat btnH = 26;
+    CGFloat btnH = 32;
+    CGFloat btnX = self.width - 15 - buyingBtnW;
+    CGFloat btnY =C_ImageW + C_Margin + C_Margin - btnH - 15;
     self.buyingBtn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-    
-    
     
     
     
@@ -300,14 +299,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 + (CGFloat)cellHeight{
     return C_ImageW + C_Margin + C_Margin;
 }
@@ -317,6 +308,15 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    
+}
+
+- (void)clickBtn{
+   
+        if (self.delegate &&[self.delegate respondsToSelector:@selector(toDaySnapTopCell:)]) {
+            [self.delegate toDaySnapUpCell:self];
+       
+    }
     
 }
 

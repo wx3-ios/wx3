@@ -18,7 +18,7 @@
 #import "NewGoodsInfoVC.h"
 
 
-@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
+@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate,ToDaySnapUPCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray *goodsarray;
 @property (nonatomic,strong)NSMutableArray *timearray;
@@ -59,6 +59,7 @@
     TimeShopModer *timeShop = [[TimeShopModer alloc]init];
     timeShop.delegate = self;
     [timeShop timeShopModeListWithCount:1 page:_count];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     self.timeShop = timeShop;
    
 //#warning 右侧进入搜素
@@ -86,7 +87,7 @@
     if (section == 1) {
         return self.timearray.count;
     }
-    return  1;
+    return  self.TimeGoods.count ? 1 : 0;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -123,6 +124,7 @@
 - (UITableViewCell*)ToDaySnapUPCell:(NSIndexPath*)indexPath{
     ToDaySnapUPCell * cell = [ToDaySnapUPCell  toDaySnapTopCell:self.tableview];
     cell.data = self.timearray[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -159,7 +161,7 @@
 
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(TopMargin, 12.5, self.view.width, titleView.height - 25)];
     label.textAlignment = NSTextAlignmentLeft;
-    label.text = @"提前抢";
+    label.text = @" 提前抢";
     label.font = [UIFont systemFontOfSize:15];
     [titleView addSubview:label];
     
@@ -171,7 +173,7 @@
     UIView *titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
     titleView.backgroundColor = [UIColor whiteColor];
     
-    UIView *didscview = [[UIView alloc]initWithFrame:CGRectMake(0, 0.5, self.view.width, 0.5)];
+    UIView *didscview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 0.5)];
     didscview.backgroundColor = [UIColor grayColor];
     [titleView addSubview:didscview];
     
@@ -205,24 +207,19 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    
-    if (section == 0) {
-        
-        
-    }else{
-       
-        ToDaySnapUPCell *cell = (ToDaySnapUPCell*)[tableView cellForRowAtIndexPath:indexPath];
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1) {
+        TimeShopData *data = self.timearray[indexPath.row];
         NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
-        newGoods.lEntity = cell.data;
+        newGoods.lEntity = data;
         [self.wxNavigationController pushViewController:newGoods];
-
     }
- 
+    ToSnapUpTopCell *cell = (ToSnapUpTopCell*)[self.tableview cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
+    
 }
-
 
 
 
@@ -235,26 +232,22 @@
 - (void)timeShopModerWithFailed:(NSString *)errorMsg{
     [self unShowWaitView];
     if(!errorMsg){
-        errorMsg = @"获取商品失败";
+        errorMsg = @"加载数据失败";
     }
-//    [UtilTool showAlertView:errorMsg];
+    [UtilTool showAlertView:errorMsg];
     
-}
-
-- (void)unShowWaitView{
-    [_waitingView stopAnimating];
-    [_waitingView setHidden:YES];
- 
 }
 
 //网络请求成功
 - (void)timeShopModerWithGoodArr:(NSMutableArray *)goodsArr timeGoods:(NSMutableArray *)timeGoods beg_goods:(NSMutableArray *)beg_goods beg_time_goods:(NSMutableArray *)beg_time_goods end_goods:(NSMutableArray *)end_goods end_time_goods:(NSMutableArray *)end_time_goods{
+    [self unShowWaitView];
     self.goodsarray = goodsArr;
     self.timearray = timeGoods;
     self.beg_goods = beg_goods;
     self.beg_time_goods = beg_time_goods;
     self.end_goods = end_goods;
     self.end_time_goods = end_time_goods;
+    
    
 
     [self timeDown];
@@ -352,31 +345,39 @@
 - (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell index:(NSInteger)index{
     HeardGoodsView *goods = nil;
     NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
-    newGoods.lEntity = cell.goods.data;
-    
     switch (index) {
         case ToSnapUpTopTypeIndexOne:{
-            goods = cell.goodsArray[ToSnapUpTopTypeIndexOne];
+            goods = cell.childArray[ToSnapUpTopTypeIndexOne];
             newGoods.lEntity = goods.data;
-            debugLog(@"%@>>>>>>>>>>>>", goods);
+             debugLog(@"%@",goods.data.goods_name);
         }
          break;
         case ToSnapUpTopTypeIndexTwo:{
-            goods = cell.goodsArray[ToSnapUpTopTypeIndexTwo];
+            goods = cell.childArray[ToSnapUpTopTypeIndexTwo];
             newGoods.lEntity = goods.data;
-              debugLog(@"%@>>>", cell.goods);
+             debugLog(@"%@",goods.data.goods_name);
         }
             break;
         case ToSnapUpTopTypeIndexThree:{
-            goods = cell.goodsArray[ToSnapUpTopTypeIndexThree];
+            goods = cell.childArray[ToSnapUpTopTypeIndexThree];
             newGoods.lEntity = goods.data;
-              debugLog(@"%@*******>>>",cell.goods);
+             debugLog(@"%@",goods.data.goods_name);
         }
             break;
        
     }
     
-    //[self.wxNavigationController pushViewController:newGoods];
+   
+    
+    [self.wxNavigationController pushViewController:newGoods];
+}
+
+- (void)toDaySnapUpCell:(ToDaySnapUPCell *)cell{
+    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
+    newGoods.lEntity = cell.data;
+    [self.wxNavigationController pushViewController:newGoods];
+    
+   
 }
 
 

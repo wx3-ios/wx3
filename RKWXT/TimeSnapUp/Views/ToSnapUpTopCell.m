@@ -40,6 +40,22 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier  goodsArray:(NSArray*)goodsArray{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
       
+        self.width = [UIScreen mainScreen].bounds.size.width;
+        
+        CGFloat widch = (self.width - ( TopMargin * 2 ) - (T_GoodsMaegin * 2) ) / goodsArray.count;
+        
+        for (int i = 0; i < goodsArray.count; i++) {
+            HeardGoodsView *goods = [[HeardGoodsView alloc]init];
+            CGFloat goodsX = TopMargin + (T_GoodsMaegin + widch) * i;
+            goods.frame = CGRectMake(goodsX, 0, widch, self.height);
+            goods.data = goodsArray[i];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTouch:)];
+            [goods addGestureRecognizer:tap];
+            tap.view.tag = i;
+            [self.contentView addSubview:goods];
+            self.goods = goods;
+            [self.childArray addObject:goods];
+        }
       
         
     }
@@ -51,20 +67,7 @@
     _goodsArray = goodsArray;
     
     
-    CGFloat widch = (self.width - ( TopMargin * 2 ) - (T_GoodsMaegin * 2) ) / goodsArray.count;
-    
-    for (int i = 0; i < goodsArray.count; i++) {
-        HeardGoodsView *goods = [[HeardGoodsView alloc]init];
-        CGFloat goodsX = TopMargin + (T_GoodsMaegin + widch) * i;
-        goods.frame = CGRectMake(goodsX, 0, widch, self.height);
-        goods.data = goodsArray[i];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTouch:)];
-        [goods addGestureRecognizer:tap];
-         tap.view.tag = i;
-        [self.contentView addSubview:goods];
-        self.goods = goods;
-        [self.childArray addObject:goods];
-    }
+  
     
 }
 
@@ -81,6 +84,15 @@
 + (CGFloat)cellHeight{
     return 140;
 }
+
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    
+}
+
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+    
+}
+
 
 
 
