@@ -71,6 +71,8 @@ typedef enum {
     WXT_UrlFeed_Type_New_SubmitUserAliAcount,
     WXT_UrlFeed_Type_New_ApplyAliMoney,
     WXT_UrlFeed_Type_New_LoadAliRecordList,
+    
+    //分类
     WXT_UrlFeed_Type_New_LoadClassifyData,
     WXT_UrlFeed_Type_New_LoadClassifyGoodsList,
     WXT_UrlFeed_Type_New_SearchGoods,
@@ -83,15 +85,15 @@ typedef enum {
     WXT_UrlFeed_Type_New_NewMakeOrder,
     WXT_UrlFeed_Type_New_LimitBuyMakeOrder,
     
-    WXT_UrlFeed_Type_Invalid,
-    
     //限时购
     WXT_UrlFeed_Type_TimeToBuy,
     //单个商品
-    WXT_UrlFeed_Type_SingleTimeGoods
+    WXT_UrlFeed_Type_SingleTimeGoods,
     
+    //收藏
+    WXT_UrlFeed_Type_New_PayAttention,
     
-    
+    WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;
 
 @interface WXTURLFeedOBJ : NSObject

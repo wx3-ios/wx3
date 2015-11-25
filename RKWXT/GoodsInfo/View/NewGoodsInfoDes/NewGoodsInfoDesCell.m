@@ -20,6 +20,7 @@
     WXUILabel *_newPrice;
     WXUILabel *_descLabel;
     WXUIButton *_attentionBtn;
+    WXUILabel *_attentionLabel;
     //邮费
     WXUILabel *postageLabel;
     //限时购
@@ -106,17 +107,25 @@
         WXUILabel *line = [[WXUILabel alloc] init];
         line.frame = CGRectMake(xOffset, yOffset, 0.5, T_GoodsInfoDescHeight-2*yOffset);
         [line setBackgroundColor:WXColorWithInteger(0xcacaca)];
-//        [self.contentView addSubview:line];
+        [self.contentView addSubview:line];
         
         CGFloat btnWidth = 27;
         CGFloat btnHeight = 25;
         _attentionBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         _attentionBtn.frame = CGRectMake(xOffset+(IPHONE_SCREEN_WIDTH-xOffset-btnWidth)/2, yOffset+(T_GoodsInfoDescHeight-yOffset-btnHeight-25)/2, btnWidth, btnHeight);
-        [_attentionBtn setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
+        [_attentionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
         [_attentionBtn.titleLabel setFont:[UIFont systemFontOfSize:smallTextFont]];
         [_attentionBtn setTitleColor:WXColorWithInteger(smallTextColor) forState:UIControlStateNormal];
-//        [_attentionBtn addTarget:self action:@selector(payAttention:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.contentView addSubview:_attentionBtn];
+        [_attentionBtn addTarget:self action:@selector(payAttention:) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_attentionBtn];
+        
+        _attentionLabel = [[WXUILabel alloc] init];
+        _attentionLabel.frame = CGRectMake(_attentionBtn.frame.origin.x-(60-btnWidth)/2, _attentionBtn.frame.origin.y+_attentionBtn.frame.size.height, 60, 25);
+        [_attentionLabel setBackgroundColor:[UIColor clearColor]];
+        [_attentionLabel setTextAlignment:NSTextAlignmentCenter];
+        [_attentionLabel setTextColor:WXColorWithInteger(0xcacaca)];
+        [_attentionLabel setFont:WXFont(12.0)];
+        [self.contentView addSubview:_attentionLabel];
     }
     return self;
 }
@@ -181,9 +190,10 @@
     
     if(entity.postage == Goods_Postage_None && !_isLucky){
         [postageLabel setHidden:NO];
+        [limitBuyView setFrame:CGRectMake(0, 99, IPHONE_SCREEN_WIDTH, 44)];
     }else{
-        CGRect rect = limitBuyView.frame;
-        rect.origin.y -= 16;
+        CGRect rect = CGRectMake(0, 115, IPHONE_SCREEN_WIDTH, 44);
+        rect.origin.y -= 32;
         [limitBuyView setFrame:rect];
     }
     
@@ -195,6 +205,20 @@
         [_saveMoneyLabel setText:[NSString stringWithFormat:@"已省%.2f元",[limitEntity.goods_price floatValue]-[limitEntity.scare_buying_price floatValue]]];
     }else{
         [limitBuyView setHidden:YES];
+    }
+    
+    if(_isLucky){
+        [_attentionBtn setHidden:YES];
+    }else{
+        [_attentionBtn setHidden:NO];
+    }
+    
+    if(_isAttention){
+        [_attentionBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
+        [_attentionLabel setText:@"已收藏"];
+    }else{
+        [_attentionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+        [_attentionLabel setText:@"收藏"];
     }
 
     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
@@ -248,6 +272,19 @@
         return T_GoodsInfoDescHeight+25;
     }
     return T_GoodsInfoDescHeight;
+}
+
+#pragma mark payAttention
+-(void)payAttention:(id)sender{
+    if(_lEntity){
+        if(_delegate && [_delegate respondsToSelector:@selector(goodsInfoPayAttentionBtnClicked:)]){
+            [_delegate goodsInfoPayAttentionBtnClicked:limitEntity];
+        }
+    }else{
+        if(_delegate && [_delegate respondsToSelector:@selector(goodsInfoPayAttentionBtnClicked:)]){
+            [_delegate goodsInfoPayAttentionBtnClicked:self.cellInfo];
+        }
+    }
 }
 
 @end

@@ -32,12 +32,14 @@
 
 //限时购
 #import "TimeShopData.h"
+//收藏
+#import "GoodsAttentionModel.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate,NewGoodsInfoDesCellDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     WXUIImageView *topImgView;
@@ -58,6 +60,9 @@
     
     //限时购
     TimeShopData *limitEntity;
+    //收藏
+    GoodsAttentionModel *attentionModel;
+    BOOL isAttention;
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end
@@ -78,6 +83,9 @@
         _isOpen = NO;
         _shopModel = [[ShoppingCartModel alloc] init];
         [_shopModel setDelegate:self];
+        
+        attentionModel = [[GoodsAttentionModel alloc] init];
+        isAttention = NO;
     }
     return self;
 }
@@ -88,6 +96,8 @@
     if(_goodsInfo_type == GoodsInfo_LimitGoods){
         limitEntity  = _lEntity;
         [_model loadGoodsInfo:[limitEntity.goods_id integerValue] withLimitGoodsID:[limitEntity.scare_buying_id integerValue]];
+        _model.goodID = [limitEntity.goods_id integerValue];
+        _goodsId = [limitEntity.goods_id integerValue];
     }else{
         [_model loadGoodsInfo:_model.goodID];
     }
@@ -171,7 +181,13 @@
 }
 
 -(void)addNotification{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toMakeOrder) name:K_Notification_GoodsInfo_CommitGoods object:nil];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(toMakeOrder) name:K_Notification_GoodsInfo_CommitGoods object:nil];
+    [defaultCenter addObserver:self selector:@selector(searchGoodsAttentionSucceed:) name:K_Notification_Name_SearchGoodsAttentionSucceed object:nil];
+    [defaultCenter addObserver:self selector:@selector(goodsPayAttentionSucceed:) name:K_Notification_Name_GoodsPayAttentionSucceed object:nil];
+    [defaultCenter addObserver:self selector:@selector(goodsPayAttentionFailed:) name:K_Notification_Name_GoodsPayAttentionFailed object:nil];
+    [defaultCenter addObserver:self selector:@selector(goodsCancelAttentionSucceed:) name:K_Notification_Name_GoodsCancelAttentionSucceed object:nil];
+    [defaultCenter addObserver:self selector:@selector(goodsCancelAttentionFailed:) name:K_Notification_Name_GoodsCancelAttentionFailed object:nil];
 }
 
 -(void)removeNotification{
@@ -462,6 +478,10 @@
     if([limitEntity.scare_buying_number integerValue] != 0 && [limitEntity.end_time integerValue] > [UtilTool timeChange]){
         [cell setLEntity:limitEntity];
     }
+    if(!_isLucky){
+        [cell setIsAttention:isAttention];
+        [cell setDelegate:self];
+    }
     cell.isLucky = _isLucky;
     [cell load];
     return cell;
@@ -673,11 +693,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_LoadSucceed object:nil];
     [_model setDelegate:nil];
     
-    //限时购倒计时
-    if(_lEntity){
-//        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
-//        [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
-    }
+    //查询是否已收藏
+    [attentionModel searchGoodsPayAttention:_goodsId];
 }
 
 -(void)refreshLessTime{
@@ -848,6 +865,40 @@
         }
     }
     return ent;
+}
+
+#pragma mark attention
+-(void)goodsInfoPayAttentionBtnClicked:(id)entity{
+    if(!isAttention){
+        [attentionModel goodsPayAttention:_goodsId and:rightView.stockID andLimitID:[limitEntity.scare_buying_id integerValue]];
+    }else{
+        [attentionModel cancelGoodsAttention:_goodsId];
+    }
+}
+
+//查看商品是否收藏
+-(void)searchGoodsAttentionSucceed:(NSNotification*)notification{
+    isAttention = YES;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Description] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+//添加收藏
+-(void)goodsPayAttentionSucceed:(NSNotification*)notification{
+    isAttention = YES;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Description] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)goodsPayAttentionFailed:(NSNotification*)notification{
+}
+
+//取消收藏
+-(void)goodsCancelAttentionSucceed:(NSNotification*)notification{
+    isAttention = NO;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Description] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)goodsCancelAttentionFailed:(NSNotification*)notification{
+    
 }
 
 -(void)backToLastPage{

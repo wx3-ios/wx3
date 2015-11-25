@@ -9,8 +9,16 @@
 #import "WXUITableViewCell.h"
 
 @class TimeShopData;
+@protocol NewGoodsInfoDesCellDelegate;
+
 @interface NewGoodsInfoDesCell : WXUITableViewCell
 @property (nonatomic,assign) BOOL isLucky;
+@property (nonatomic,assign) id<NewGoodsInfoDesCellDelegate>delegate;
 @property (nonatomic,strong) TimeShopData *lEntity;
+@property (nonatomic,assign) BOOL isAttention;
+@end
+
+@protocol NewGoodsInfoDesCellDelegate <NSObject>
+-(void)goodsInfoPayAttentionBtnClicked:(id)entity;
 
 @end

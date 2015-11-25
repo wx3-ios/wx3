@@ -106,6 +106,7 @@
 		121EBCD51BDE049300D1F307 /* GoodsInfoDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 121EBCD41BDE049300D1F307 /* GoodsInfoDownView.m */; };
 		121EBCD91BDE320800D1F307 /* ClassifySearchImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 121EBCD81BDE320800D1F307 /* ClassifySearchImg@2x.png */; };
 		1220140A1BA00C360080B994 /* UserHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122014091BA00C360080B994 /* UserHeaderModel.m */; };
+		12204AC71C058B6B00EE5751 /* GoodsAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12204AC61C058B6B00EE5751 /* GoodsAttentionModel.m */; };
 		1220B4D01C03F2CB0053F734 /* WXUserCurrentCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1220B4CF1C03F2CB0053F734 /* WXUserCurrentCityCell.m */; };
 		1220FE631C05520200C90E33 /* WXShopUnionAreaListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1220FE5E1C05520200C90E33 /* WXShopUnionAreaListCell.m */; };
 		1220FE641C05520200C90E33 /* WXShopUnionAreaListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1220FE601C05520200C90E33 /* WXShopUnionAreaListView.m */; };
@@ -1139,6 +1140,8 @@
 		121EBCD81BDE320800D1F307 /* ClassifySearchImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClassifySearchImg@2x.png"; sourceTree = "<group>"; };
 		122014081BA00C360080B994 /* UserHeaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderModel.h; sourceTree = "<group>"; };
 		122014091BA00C360080B994 /* UserHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderModel.m; sourceTree = "<group>"; };
+		12204AC51C058B6B00EE5751 /* GoodsAttentionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsAttentionModel.h; sourceTree = "<group>"; };
+		12204AC61C058B6B00EE5751 /* GoodsAttentionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsAttentionModel.m; sourceTree = "<group>"; };
 		1220B4CE1C03F2CB0053F734 /* WXUserCurrentCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUserCurrentCityCell.h; sourceTree = "<group>"; };
 		1220B4CF1C03F2CB0053F734 /* WXUserCurrentCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUserCurrentCityCell.m; sourceTree = "<group>"; };
 		1220FE551C054E6F00C90E33 /* WXShopUnionDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXShopUnionDef.h; sourceTree = "<group>"; };
@@ -5435,6 +5438,8 @@
 				12F46A521B2034F500B8EC98 /* NewGoodsInfoModel.m */,
 				128136A21B33B394005F9929 /* ShoppingCartModel.h */,
 				128136A31B33B394005F9929 /* ShoppingCartModel.m */,
+				12204AC51C058B6B00EE5751 /* GoodsAttentionModel.h */,
+				12204AC61C058B6B00EE5751 /* GoodsAttentionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -8274,6 +8279,7 @@
 				12C2000D1B4E792600BE8EE8 /* RefundStateModel.m in Sources */,
 				775C58C91ABA7B75005B6B40 /* SubShopTime.m in Sources */,
 				128766E11B50B1C700A79320 /* AboutShopVC.m in Sources */,
+				12204AC71C058B6B00EE5751 /* GoodsAttentionModel.m in Sources */,
 				12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */,
 				775842E01AB95A300039B129 /* UIView+Render.m in Sources */,
 				12C12F2E1B81C3EE00345BEE /* LuckyOrderGoodsInfoCell.m in Sources */,

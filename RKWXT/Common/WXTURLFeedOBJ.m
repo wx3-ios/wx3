@@ -237,6 +237,9 @@
         case WXT_UrlFeed_Type_New_LimitBuyMakeOrder:
             url = @"/scare_buying_insert_order.php";
             break;
+        case WXT_UrlFeed_Type_New_PayAttention:
+            url = @"/user_store_goods.php";
+            break;
         default:
             break;
     }
