@@ -26,6 +26,9 @@
     WXUIView *limitBuyView;
     WXUILabel *_saveMoneyLabel;
     WXUILabel *_overTime;
+    
+    TimeShopData *limitEntity;
+    NSTimer *timer;
 }
 @end
 
@@ -78,7 +81,7 @@
         [self.contentView addSubview:postageLabel];
         
         //限时购
-        [self createLimitBuyView:postageLabel.frame.origin.y+postageLabel.frame.size.height+10];
+        [self createLimitBuyView:postageLabel.frame.origin.y+postageLabel.frame.size.height+23];
         
         UILabel *lineLabel = [[UILabel alloc] init];
         lineLabel.frame = CGRectMake(xOffset-textWidth, yOffset+14+30+newLabelHeight/2, 2*textWidth, 0.5);
@@ -180,21 +183,21 @@
         [postageLabel setHidden:NO];
     }else{
         CGRect rect = limitBuyView.frame;
-        rect.origin.y -= 12;
+        rect.origin.y -= 16;
         [limitBuyView setFrame:rect];
     }
     
     if(_lEntity){
         [limitBuyView setHidden:NO];
-        TimeShopData *limitEntity = _lEntity;
+        limitEntity = _lEntity;
         [_oldPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.goods_price floatValue]]];
         [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.scare_buying_price floatValue]]];
         [_saveMoneyLabel setText:[NSString stringWithFormat:@"已省%.2f元",[limitEntity.goods_price floatValue]-[limitEntity.scare_buying_price floatValue]]];
     }else{
         [limitBuyView setHidden:YES];
     }
-    
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
+
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
 }
 
@@ -203,7 +206,6 @@
         [_overTime removeFromSuperview];
         [limitBuyView removeFromSuperview];
     }
-    TimeShopData *limitEntity = _lEntity;
     _overTime = [[WXUILabel alloc] init];
     _overTime.frame = CGRectMake(180, (40-25)/2, IPHONE_SCREEN_WIDTH-180, 25);
     [_overTime setBackgroundColor:[UIColor clearColor]];
@@ -213,6 +215,9 @@
     [_overTime setText:[self limitTime:[limitEntity.begin_time integerValue] andEndTime:[limitEntity.end_time integerValue]]];
     [limitBuyView addSubview:_overTime];
     [self.contentView addSubview:limitBuyView];
+    if([limitEntity.scare_buying_number integerValue] == 0){
+        [_overTime setText:@"已抢光"];
+    }
 }
 
 -(NSString*)limitTime:(NSInteger)startTime andEndTime:(NSInteger)endTime{
@@ -221,7 +226,7 @@
     if(startTime >= currentTime){
         NSInteger hour = (startTime-currentTime)/3600;
         NSInteger minute = (startTime-currentTime)%3600/60;
-        NSInteger seconds = (startTime-currentTime)%3600%60/60;
+        NSInteger seconds = (startTime-currentTime)%3600%60%60;
         limitTime = [NSString stringWithFormat:@"还剩%ld小时%ld分%ld秒",(long)hour,(long)minute,(long)seconds];
     }
     if(startTime <= currentTime && currentTime <= endTime){
@@ -232,6 +237,7 @@
     }
     if(currentTime >= endTime){
         limitTime = @"抢购时间已结束";
+        [timer invalidate];
     }
     return limitTime;
 }

@@ -48,5 +48,6 @@ enum{
 #import "NewGoodsInfoDesCell.h"
 #import "NewGoodsInfoDownCell.h"
 #import "NewGoodsInfoBDCell.h"
+#import "MakeOrderVC.h"
 
 #endif
