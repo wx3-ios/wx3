@@ -118,10 +118,10 @@
                 [self.end_time_goods addObject:dict[@"end_time"]];
             }
             
-            
+            __block TimeShopModer *blockModer = self;
             //代理
             if (self.delegate && [self.delegate respondsToSelector:@selector(timeShopModerWithGoodArr:timeGoods:beg_goods:beg_time_goods:end_goods:end_time_goods:)]) {
-               
+                 [blockModer setStatus:E_ModelDataStatus_LoadSucceed];
                 [self.delegate timeShopModerWithGoodArr:self.goodsA timeGoods:self.timeGoodsA beg_goods:self.beg_goods beg_time_goods:self.beg_time_goods end_goods:self.end_goods end_time_goods:self.end_time_goods];
             }
             

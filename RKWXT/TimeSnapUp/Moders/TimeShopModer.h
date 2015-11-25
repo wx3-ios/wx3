@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "T_HPSubBaseModel.h"
+#import "BaseModel.h"
 @class TimeShopData;
 @protocol TimeShopModerDelegate <NSObject>
 //请求网络成功
@@ -19,7 +21,7 @@
 - (void)timeShopModerWithFailed:(NSString *)errorMsg;
 @end
 
-@interface TimeShopModer : NSObject
+@interface TimeShopModer : T_HPSubBaseModel
 @property (nonatomic,weak)id<TimeShopModerDelegate> delegate;
 @property (nonatomic,strong)NSMutableArray *goodsA;
 @property (nonatomic,strong)NSMutableArray *timeGoodsA;
