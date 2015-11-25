@@ -234,7 +234,9 @@
         case  WXT_UrlFeed_Type_SingleTimeGoods:
             url = @"/get_single_goods_info.php";
             break;
-       
+        case WXT_UrlFeed_Type_New_LimitBuyMakeOrder:
+            url = @"/scare_buying_insert_order.php";
+            break;
         default:
             break;
     }

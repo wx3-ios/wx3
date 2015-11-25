@@ -51,7 +51,7 @@
     [_tableView setAllowsSelection:NO];
     [self addSubview:_tableView];
     
-    //[self createTopBtn];
+//    [self createTopBtn];
     [_model loadData];
     
     [self pullingTableViewDidStartRefreshing:_tableView];
@@ -68,13 +68,27 @@
     [self.wxNavigationController pushViewController:tosnap];
 }
 
-
 -(void)createTopBtn{
     WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn.frame = CGRectMake(0, 6, 30, 30);
+    leftBtn.frame = CGRectMake(20, 6, 60, 40);
     [leftBtn setImage:[UIImage imageNamed:@"HomePageLeftBtn.png"] forState:UIControlStateNormal];
+    [leftBtn setTitle:@"分类" forState:UIControlStateNormal];
+    [leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftBtn.titleLabel setFont:WXFont(10.0)];
     [leftBtn addTarget:self action:@selector(homePageToCategaryView) forControlEvents:UIControlEventTouchUpInside];
     [self setLeftNavigationItem:leftBtn];
+    
+    CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(leftBtn.titleLabel.bounds), CGRectGetMidY(leftBtn.titleLabel.bounds));
+    CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(leftBtn.imageView.bounds));
+    CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(leftBtn.bounds)-CGRectGetMidY(leftBtn.titleLabel.bounds));
+    CGPoint startImageViewCenter = leftBtn.imageView.center;
+    CGPoint startTitleLabelCenter = leftBtn.titleLabel.center;
+    CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
+    CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
+    leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, imageEdgeInsetsLeft, 40/3, imageEdgeInsetsRight);
+    CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
+    CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
+    leftBtn.titleEdgeInsets = UIEdgeInsetsMake(40*2/3-5, titleEdgeInsetsLeft, 0, titleEdgeInsetsRight);
     
     _unreadView = [[WXSysMsgUnreadV alloc] initWithFrame:CGRectMake(0, 0, kDefaultNavigationBarButtonSize.width, kDefaultNavigationBarButtonSize.height)];
     [_unreadView setDelegate:self];

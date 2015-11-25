@@ -18,12 +18,16 @@
 #import "NewUserAddressModel.h"
 #import "AreaEntity.h"
 
+#import "TimeShopData.h"
+
 #define Size self.bounds.size
 #define DownViewHeight (59)
 
 @interface MakeOrderVC()<UITableViewDataSource,UITableViewDelegate,MakeOrderUserMsgTextFieldCellDelegate,WXUITableViewCellDelegate,MakeOrderSwitchCellDelegate,MakeOrderDelegate,SearchCarriageMoneyDelegate/*,MakeOrderBananceSwitchCellDelegate*/>{
     UITableView *_tableView;
     MakeOrderModel *_model;
+    
+    TimeShopData *limitEntity;
     
 //    BOOL userbalance;
 //    NSInteger _balance;
@@ -79,6 +83,8 @@
     [self addNotification];
     [self censusBonusValue];
     [self censusBalanceValue];
+    
+    limitEntity = _lEntity;
 }
 
 -(void)loadCarriageMoney{
@@ -570,12 +576,15 @@
 
 #pragma mark submit
 -(void)submitOrder{
+    if(_lEntity){
+        [self submitLimitOrder];
+        return;
+    }
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     for(GoodsInfoEntity *entity in _goodsList){
         NSDictionary *dic = [self goodsDicWithEntity:entity];
         [arr addObject:dic];
-//        [arr addObject:dic];
     }
     [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
 }
@@ -589,6 +598,30 @@
     NSInteger length = AllImgPrefixUrlString.length;
     NSString *smallImgStr = [entity.smallImg substringFromIndex:length];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:goodsID ,@"goods_id", entity.intro, @"goods_name", smallImgStr, @"goods_img", stockID, @"goods_stock_id", stockName, @"goods_stock_name", price, @"sales_price", number, @"sales_number", nil];
+    return dic;
+}
+
+//限时购
+-(void)submitLimitOrder{
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for(GoodsInfoEntity *entity in _goodsList){
+        NSDictionary *dic = [self limitGoodsDicWithEntity:entity];
+        [arr addObject:dic];
+    }
+    [_model submitLimitOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
+}
+
+-(NSDictionary*)limitGoodsDicWithEntity:(GoodsInfoEntity*)entity{
+    NSString *goodsID = [NSString stringWithFormat:@"%ld",(long)entity.goods_id];
+    NSString *stockID = [NSString stringWithFormat:@"%ld",(long)entity.stockID];
+    NSString *stockName = [NSString stringWithFormat:@"%@",entity.stockName];
+    NSString *price = [NSString stringWithFormat:@"%f",entity.stockPrice];
+    NSString *number = [NSString stringWithFormat:@"%ld",(long)entity.buyNumber];
+    NSInteger length = AllImgPrefixUrlString.length;
+    NSString *limitID = [NSString stringWithFormat:@"%ld",(long)[limitEntity.scare_buying_id integerValue]];
+    NSString *smallImgStr = [entity.smallImg substringFromIndex:length];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:goodsID ,@"goods_id", entity.intro, @"goods_name", smallImgStr, @"goods_img", stockID, @"goods_stock_id", stockName, @"goods_stock_name", price, @"sales_price", number, @"sales_number", limitID, @"scare_buying_id", nil];
     return dic;
 }
 

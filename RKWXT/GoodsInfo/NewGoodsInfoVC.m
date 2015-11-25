@@ -87,7 +87,7 @@
     _model.goodID = _goodsId;
     if(_goodsInfo_type == GoodsInfo_LimitGoods){
         limitEntity  = _lEntity;
-        [_model loadGoodsInfo:_model.goodID withLimitGoodsID:[limitEntity.scare_buying_id integerValue]];
+        [_model loadGoodsInfo:[limitEntity.goods_id integerValue] withLimitGoodsID:[limitEntity.scare_buying_id integerValue]];
     }else{
         [_model loadGoodsInfo:_model.goodID];
     }
@@ -248,6 +248,11 @@
     [buyNowBtn setTitle:@"立即购买" forState:UIControlStateNormal];
     [buyNowBtn addTarget:self action:@selector(buyNowBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:buyNowBtn];
+    if([limitEntity.scare_buying_number integerValue] == 0 || [limitEntity.end_time integerValue] < [UtilTool timeChange]){
+        [buyNowBtn setEnabled:NO];
+        [buyNowBtn setBackgroundColor:[UIColor grayColor]];
+        [buyNowBtn setTitle:@"抢购结束" forState:UIControlStateNormal];
+    }
     
     CGRect rect = CGRectMake(0, self.view.bounds.size.height-DownViewHeight, self.bounds.size.width, DownViewHeight);
     [footView setFrame:rect];
@@ -352,7 +357,9 @@
         case T_GoodsInfo_Description:
             height = [NewGoodsInfoDesCell cellHeightOfInfo:([_model.data count] > 0?[_model.data objectAtIndex:0]:nil)];
             if(_lEntity){
-                height += 44;
+                if([limitEntity.scare_buying_number integerValue] != 0 && [limitEntity.end_time integerValue] > [UtilTool timeChange]){
+                    height += 40;
+                }
             }
             break;
         case T_GoodsInfo_DownView:
@@ -451,6 +458,9 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if([_model.data count] > 0){
         [cell setCellInfo:[_model.data objectAtIndex:0]];
+    }
+    if([limitEntity.scare_buying_number integerValue] != 0 && [limitEntity.end_time integerValue] > [UtilTool timeChange]){
+        [cell setLEntity:limitEntity];
     }
     cell.isLucky = _isLucky;
     [cell load];
@@ -662,6 +672,16 @@
     rightView.dataArr = _model.data;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_LoadSucceed object:nil];
     [_model setDelegate:nil];
+    
+    //限时购倒计时
+    if(_lEntity){
+//        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+    }
+}
+
+-(void)refreshLessTime{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Description] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)goodsInfoModelLoadedFailed:(NSString *)errorMsg{
@@ -798,9 +818,26 @@
         [UtilTool showAlertView:[NSString stringWithFormat:@"该属性库存不足%d件",rightView.goodsNum]];
         return;
     }
+    if(limitEntity){
+        if([limitEntity.scare_buying_number integerValue] < rightView.goodsNum){
+            [UtilTool showAlertView:[NSString stringWithFormat:@"库存已不足%d件",rightView.goodsNum]];
+            return;
+        }
+        if(rightView.goodsNum > [limitEntity.user_scare_buying_number integerValue] && [limitEntity.user_scare_buying_number integerValue] != 0){
+            [UtilTool showAlertView:[NSString stringWithFormat:@"每人限购%ld件",(long)[limitEntity.user_scare_buying_number integerValue]]];
+            return;
+        }
+    }
     entity.buyNumber = (rightView.goodsNum<=0?1:rightView.goodsNum);
     [goodsArr addObject:entity];
-    [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];
+    if(_lEntity){
+        MakeOrderVC *orderVC = [[MakeOrderVC alloc] init];
+        orderVC.goodsList = goodsArr;
+        orderVC.lEntity = _lEntity;
+        [self.wxNavigationController pushViewController:orderVC];
+    }else{
+        [[CoordinateController sharedCoordinateController] toMakeOrderVC:self orderInfo:goodsArr animated:YES];
+    }
 }
 
 -(GoodsInfoEntity*)priceForStock:(NSInteger)stockID{

@@ -8,7 +8,9 @@
 
 #import "WXUIViewController.h"
 
+@class TimeShopData;
 @interface MakeOrderVC : WXUIViewController
 @property (nonatomic,strong) id goodsList;
+@property (nonatomic,strong) TimeShopData *lEntity;
 
 @end
