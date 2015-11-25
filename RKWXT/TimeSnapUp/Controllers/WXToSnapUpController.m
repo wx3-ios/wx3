@@ -214,6 +214,7 @@
         TimeShopData *data = self.timearray[indexPath.row];
         NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
         newGoods.lEntity = data;
+        newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
         [self.wxNavigationController pushViewController:newGoods];
     }
     ToSnapUpTopCell *cell = (ToSnapUpTopCell*)[self.tableview cellForRowAtIndexPath:indexPath];
@@ -368,13 +369,14 @@
     }
     
    
-    
+    newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
     [self.wxNavigationController pushViewController:newGoods];
 }
 
 - (void)toDaySnapUpCell:(ToDaySnapUPCell *)cell{
     NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
     newGoods.lEntity = cell.data;
+    newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
     [self.wxNavigationController pushViewController:newGoods];
     
    
