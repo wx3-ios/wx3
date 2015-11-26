@@ -94,7 +94,7 @@
         UIButton *buyingBtn = [[UIButton alloc]init];
         buyingBtn.backgroundColor = [UIColor colorWithHexString:@"dd2726"];
         buyingBtn.layer.cornerRadius = 5;
-        buyingBtn.userInteractionEnabled = YES;
+        buyingBtn.enabled = self.timeDown.hidden == NO;
         [buyingBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown];
         [buyingBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
         [self.backView addSubview:buyingBtn];
@@ -196,10 +196,10 @@
     
     if (!self.timeDown.hidden) {
         self.buyingBtn.backgroundColor = [UIColor redColor];
-        self.buyingBtn.userInteractionEnabled = NO;
+        self.buyingBtn.enabled = YES;
     }else{
          self.buyingBtn.backgroundColor = [UIColor grayColor];
-         self.buyingBtn.userInteractionEnabled = YES;
+         self.buyingBtn.enabled = NO;
     }
     
     

@@ -7219,7 +7219,6 @@
 				DDFBC0741BFA01D5003E71A2 /* Views */,
 				DDFBC0711BFA01D5003E71A2 /* Lib */,
 				DDFBC0721BFA01D5003E71A2 /* Moders */,
-				DDFBC0731BFA01D5003E71A2 /* TimeResoue */,
 			);
 			path = TimeSnapUp;
 			sourceTree = "<group>";
@@ -7257,13 +7256,6 @@
 				DDFB257C1BFDE142002E73EC /* TimeShopData.m */,
 			);
 			path = Moders;
-			sourceTree = "<group>";
-		};
-		DDFBC0731BFA01D5003E71A2 /* TimeResoue */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TimeResoue;
 			sourceTree = "<group>";
 		};
 		DDFBC0741BFA01D5003E71A2 /* Views */ = {

@@ -57,7 +57,6 @@
             [self.childArray addObject:goods];
         }
       
-        
     }
     return self;
 }
@@ -65,9 +64,6 @@
 
 -(void)setGoodsArray:(NSArray *)goodsArray{
     _goodsArray = goodsArray;
-    
-    
-  
     
 }
 

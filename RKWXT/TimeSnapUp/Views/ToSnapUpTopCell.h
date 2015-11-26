@@ -11,7 +11,7 @@
 
 @protocol ToSnapUpTopCellDelegate  <NSObject>
 
-- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell*)cell index:(NSInteger)index;
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell*)cell index:(int)index;
 
 @end
 

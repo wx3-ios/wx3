@@ -235,7 +235,7 @@
     if(!errorMsg){
         errorMsg = @"加载数据失败";
     }
-    [UtilTool showAlertView:errorMsg];
+   // [UtilTool showAlertView:errorMsg];
     
 }
 
@@ -343,26 +343,26 @@
 }
 
 #pragma mark ---- 代理方法
-- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell index:(NSInteger)index{
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell index:(int)index{
     HeardGoodsView *goods = nil;
+    NSLog(@"%ld>>>>>>>",(long)index);
     NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
     switch (index) {
         case ToSnapUpTopTypeIndexOne:{
             goods = cell.childArray[ToSnapUpTopTypeIndexOne];
             newGoods.lEntity = goods.data;
-             debugLog(@"%@",goods.data.goods_name);
+            
         }
          break;
         case ToSnapUpTopTypeIndexTwo:{
             goods = cell.childArray[ToSnapUpTopTypeIndexTwo];
             newGoods.lEntity = goods.data;
-             debugLog(@"%@",goods.data.goods_name);
-        }
+                    }
             break;
         case ToSnapUpTopTypeIndexThree:{
             goods = cell.childArray[ToSnapUpTopTypeIndexThree];
             newGoods.lEntity = goods.data;
-             debugLog(@"%@",goods.data.goods_name);
+            
         }
             break;
        
