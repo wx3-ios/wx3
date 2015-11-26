@@ -82,6 +82,11 @@
     [userDefault setObject:areaName forKey:D_WXUserdefault_Location_Area];
 }
 
+-(void)setUserCurrentCity:(NSString *)currentCity{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    [userDefault setObject:currentCity forKey:D_WXUserdefault_UserCurrentCity];
+}
+
 -(void)setUserLocationLatitude:(CGFloat)latitude{
     WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
     [userDefault setFloat:latitude forkey:D_WXUserdefault_Location_Latitude];
@@ -200,6 +205,11 @@
 -(NSString*)userLocationCity{
     WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
     return [userDefault textValueForKey:D_WXUserdefault_Location_City];
+}
+
+-(NSString*)userCurrentCity{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    return [userDefault textValueForKey:D_WXUserdefault_UserCurrentCity];
 }
 
 -(NSString*)userLocationArea{

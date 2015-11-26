@@ -67,6 +67,7 @@
             cityName = city;
             NSLog(@"定位完成:%@",cityName);
             [userObj setUserLocationCity:cityName];
+            [userObj setUserCurrentCity:cityName];
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_UserLocation_Succeed object:nil];
             //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
             [manager stopUpdatingLocation];

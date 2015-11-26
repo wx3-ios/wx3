@@ -63,11 +63,13 @@
 #pragma mark 定位
 - (void)setUserLocationCity:(NSString*)cityName;
 - (void)setUserLocationArea:(NSString*)areaName;
+- (void)setUserCurrentCity:(NSString*)currentCity;
 - (void)setUserLocationLatitude:(CGFloat)latitude;
 - (void)setUserLocationLongitude:(CGFloat)longitude;
 
 - (NSString *)userLocationCity;
 - (NSString *)userLocationArea;
+- (NSString *)userCurrentCity;
 - (CGFloat)userLocationLatitude;
 - (CGFloat)userLocationLongitude;
 

@@ -46,8 +46,8 @@ enum{
 -(id)initWithFrame:(CGRect)frame menuButton:(WXUIButton *)menuButton dropListFrame:(CGRect)dropListFrame{
     self = [super initWithFrame:frame];
     if(self){
-        _bigView = [[WXMaskView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, IPHONE_SCREEN_HEIGHT)];
-        [_bigView setAlpha:0.0];
+        [self setFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT)];
+        _bigView = [[WXMaskView alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT)];
         [_bigView setDelegate:self];
         [_bigView setBackgroundColor:[UIColor blackColor]];
         [_bigView setAlpha:kMaskMaxAlpha];
@@ -75,7 +75,7 @@ enum{
         listArea = @[@"龙岗区", @"龙华新区", @"罗湖区", @"南山区", @"盐田区", @"宝安区"];
         CGRect rect = self.bounds;
         rect.size.height = 170;
-        [self setFrame:rect];
+        [_clipeView setFrame:rect];
         _originListRect = rect;
     }
     return self;
@@ -87,6 +87,7 @@ enum{
 -(void)menuBtnClick{
     if(_dropListStatus == DropListStatus_Open){
         [self showAnimated:YES];
+        [_tableView reloadData];
     }else{
         [self unshow:YES];
     }
@@ -94,6 +95,7 @@ enum{
 
 -(void)maskViewIsClicked{
     [self unshow:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_MaskviewClicked object:nil];
 }
 
 -(void)showAnimated:(BOOL)animated{
@@ -187,7 +189,6 @@ enum{
     if(!cell){
         cell = [[WXShopUnionAreaListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-//    [cell disableTouchDelay];
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -210,6 +211,7 @@ enum{
     if(!cell){
         cell = [[WXShopUnionCityChooseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell load];
     return cell;
 }
@@ -233,11 +235,29 @@ enum{
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    switch (section) {
+        case ShopUnionArea_Section_CityChoose:
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_ShopUnionAreaViewCityChoose object:nil];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
-#pragma mark
+#pragma mark areaDelegate
 -(void)shopUnionAreaClicked:(id)entity{
+    NSString *name = entity;
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [userObj setUserLocationArea:name];
     
+    [self unshow:YES];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:ShopUnionArea_Section_AreaList] withRowAnimation:UITableViewRowAnimationFade];
+    if(_delegate && [_delegate respondsToSelector:@selector(changeCityArea:)]){
+        [_delegate changeCityArea:name];
+    }
 }
 
 @end

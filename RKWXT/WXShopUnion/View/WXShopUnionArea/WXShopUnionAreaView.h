@@ -8,6 +8,9 @@
 
 #import "WXUIView.h"
 
+#define K_Notification_Name_ShopUnionAreaViewCityChoose @"K_Notification_Name_ShopUnionAreaViewCityChoose"
+#define K_Notification_Name_MaskviewClicked @"K_Notification_Name_MaskviewClicked"
+
 @protocol ShopUnionDropListViewDelegate;
 
 @interface WXShopUnionAreaView : WXUIView
@@ -20,6 +23,6 @@
 @end
 
 @protocol ShopUnionDropListViewDelegate <NSObject>
--(void)changeCityArea;
+-(void)changeCityArea:(id)entity;
 
 @end

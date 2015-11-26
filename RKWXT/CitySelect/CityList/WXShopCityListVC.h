@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+#define ShopUnion_City_Changed @"ShopUnion_City_Changed"
+
 @interface WXShopCityListVC : WXUIViewController
 @property (nonatomic,strong) NSString *titleStr;
 

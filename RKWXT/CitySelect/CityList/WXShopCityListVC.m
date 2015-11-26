@@ -162,6 +162,7 @@ enum{
     if(!cell){
         cell = [[WXUserCurrentCityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if([currentCity count] > 0){
         [cell setCellInfo:currentCity];
     }
@@ -253,19 +254,24 @@ enum{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
+    NSString *cityName = nil;
     if(_tableView == tableView){
         if(section >= CityList_Section_Invalid){
             NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-CityList_Section_Invalid];
             NSArray *cityList = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
             AreaEntity *ent = [cityList objectAtIndex:row];
-            NSLog(@"点击城市===%@",ent.areaName);
             [self storageCurrentCity:ent.areaName];
+            cityName = ent.areaName;
         }
     }else{
         AreaEntity *ent = [[LocalAreaModel shareLocalArea].searchCity objectAtIndex:row];
-        NSLog(@"点击城市===%@",ent.areaName);
         [self storageCurrentCity:ent.areaName];
+        cityName = ent.areaName;
     }
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [userObj setUserCurrentCity:cityName];
+    [userObj setUserLocationArea:@""];
+    [self closeCityListVC];
 }
 
 #pragma mark 最近访问城市存储
