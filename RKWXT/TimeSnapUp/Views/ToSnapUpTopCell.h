@@ -11,13 +11,13 @@
 
 @protocol ToSnapUpTopCellDelegate  <NSObject>
 
-- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell*)cell index:(int)index;
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell*)cell index:(NSInteger)index;
 
 @end
 
 
 typedef NS_ENUM(NSInteger, ToSnapUpTopType) {
-    ToSnapUpTopTypeIndexOne,
+    ToSnapUpTopTypeIndexOne = 0,
     ToSnapUpTopTypeIndexTwo,
     ToSnapUpTopTypeIndexThree,
 };
@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, ToSnapUpTopType) {
 @property (nonatomic,strong)HeardGoodsView *goods;
 @property (nonatomic,strong)NSArray *goodsArray;
 @property (nonatomic,strong)NSMutableArray *childArray;
-@property (nonatomic,assign)id<ToSnapUpTopCellDelegate> delegate;
+@property (nonatomic,weak)id<ToSnapUpTopCellDelegate> delegate;
 
 + (CGFloat)cellHeight;
 

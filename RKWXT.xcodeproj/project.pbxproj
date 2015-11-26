@@ -901,6 +901,11 @@
 		DD1C64271BFADC5100F962FC /* SearchTimeGoodsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */; };
 		DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C649D1BFB28A700F962FC /* TimeShopModer.m */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD65EF281C06D89E00086240 /* CollectionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF271C06D89E00086240 /* CollectionListVC.m */; };
+		DD65EF2B1C06D92100086240 /* CollectionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF2A1C06D92100086240 /* CollectionListCell.m */; };
+		DD65EF311C06D98900086240 /* GoodsListModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF301C06D98900086240 /* GoodsListModer.m */; };
+		DD65EF341C06D9A200086240 /* GoodsListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF331C06D9A200086240 /* GoodsListInfo.m */; };
+		DD65EF391C0702A000086240 /* TimeLimt.png in Resources */ = {isa = PBXBuildFile; fileRef = DD65EF381C0702A000086240 /* TimeLimt.png */; };
 		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
 		DD988A5D1B1D408500B3790B /* EScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A5C1B1D408500B3790B /* EScrollerView.m */; };
 		DD988A691B1DA47300B3790B /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A681B1DA47300B3790B /* OrderDetailCell.m */; };
@@ -925,9 +930,6 @@
 		DDB58F551AD3C6A2006248E9 /* WXContacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F401AD3C6A2006248E9 /* WXContacterCell.m */; };
 		DDB58F561AD3C6A2006248E9 /* WXContacterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */; };
 		DDB5C22C1BFED226000925E8 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C2261BFED226000925E8 /* time.png */; };
-		DDB5C22D1BFED226000925E8 /* 限时购界面_06.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C2271BFED226000925E8 /* 限时购界面_06.png */; };
-		DDB5C22E1BFED226000925E8 /* BtnBak.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C2281BFED226000925E8 /* BtnBak.png */; };
-		DDB5C22F1BFED226000925E8 /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C2291BFED226000925E8 /* end.png */; };
 		DDB5C2301BFED226000925E8 /* 限时购界面_17.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C22A1BFED226000925E8 /* 限时购界面_17.png */; };
 		DDB5C2311BFED226000925E8 /* beg_time.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C22B1BFED226000925E8 /* beg_time.png */; };
 		DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9801ACAA88F00CC3FE9 /* CoreFoundation.framework */; };
@@ -2606,6 +2608,15 @@
 		DD1C649D1BFB28A700F962FC /* TimeShopModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeShopModer.m; sourceTree = "<group>"; };
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD65EF201C06BC2D00086240 /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Debug-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
+		DD65EF261C06D89E00086240 /* CollectionListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListVC.h; sourceTree = "<group>"; };
+		DD65EF271C06D89E00086240 /* CollectionListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListVC.m; sourceTree = "<group>"; };
+		DD65EF291C06D92100086240 /* CollectionListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListCell.h; sourceTree = "<group>"; };
+		DD65EF2A1C06D92100086240 /* CollectionListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListCell.m; sourceTree = "<group>"; };
+		DD65EF2F1C06D98900086240 /* GoodsListModer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListModer.h; sourceTree = "<group>"; };
+		DD65EF301C06D98900086240 /* GoodsListModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListModer.m; sourceTree = "<group>"; };
+		DD65EF321C06D9A200086240 /* GoodsListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListInfo.h; sourceTree = "<group>"; };
+		DD65EF331C06D9A200086240 /* GoodsListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListInfo.m; sourceTree = "<group>"; };
+		DD65EF381C0702A000086240 /* TimeLimt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimeLimt.png; sourceTree = "<group>"; };
 		DD7EB57E1B27D5F90005A97C /* WXTAPNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTAPNViewController.h; sourceTree = "<group>"; };
 		DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTAPNViewController.m; sourceTree = "<group>"; };
 		DD817A211ADE062500586634 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -2653,9 +2664,6 @@
 		DDB58F411AD3C6A2006248E9 /* WXContacterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterVC.h; sourceTree = "<group>"; };
 		DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterVC.m; sourceTree = "<group>"; };
 		DDB5C2261BFED226000925E8 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
-		DDB5C2271BFED226000925E8 /* 限时购界面_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "限时购界面_06.png"; sourceTree = "<group>"; };
-		DDB5C2281BFED226000925E8 /* BtnBak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBak.png; sourceTree = "<group>"; };
-		DDB5C2291BFED226000925E8 /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
 		DDB5C22A1BFED226000925E8 /* 限时购界面_17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "限时购界面_17.png"; sourceTree = "<group>"; };
 		DDB5C22B1BFED226000925E8 /* beg_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beg_time.png; sourceTree = "<group>"; };
 		DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -5897,6 +5905,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				DD65EF221C06D83500086240 /* MyShopCollection */,
 				DDFBC06D1BFA01D5003E71A2 /* TimeSnapUp */,
 				121E39B91BFAD8A20098173F /* WXShopUnion */,
 				12D96EC61BE844CC0043B219 /* CitySelect */,
@@ -7033,6 +7042,47 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		DD65EF221C06D83500086240 /* MyShopCollection */ = {
+			isa = PBXGroup;
+			children = (
+				DD65EF231C06D83500086240 /* Controllers */,
+				DD65EF241C06D83500086240 /* Moders */,
+				DD65EF251C06D83500086240 /* Views */,
+			);
+			name = MyShopCollection;
+			path = TimeSnapUp/MyShopCollection;
+			sourceTree = "<group>";
+		};
+		DD65EF231C06D83500086240 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD65EF261C06D89E00086240 /* CollectionListVC.h */,
+				DD65EF271C06D89E00086240 /* CollectionListVC.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DD65EF241C06D83500086240 /* Moders */ = {
+			isa = PBXGroup;
+			children = (
+				DD65EF381C0702A000086240 /* TimeLimt.png */,
+				DD65EF2F1C06D98900086240 /* GoodsListModer.h */,
+				DD65EF301C06D98900086240 /* GoodsListModer.m */,
+				DD65EF321C06D9A200086240 /* GoodsListInfo.h */,
+				DD65EF331C06D9A200086240 /* GoodsListInfo.m */,
+			);
+			path = Moders;
+			sourceTree = "<group>";
+		};
+		DD65EF251C06D83500086240 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD65EF291C06D92100086240 /* CollectionListCell.h */,
+				DD65EF2A1C06D92100086240 /* CollectionListCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DD988A5A1B1D408500B3790B /* EScrollerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -7139,9 +7189,6 @@
 			isa = PBXGroup;
 			children = (
 				DDB5C2261BFED226000925E8 /* time.png */,
-				DDB5C2271BFED226000925E8 /* 限时购界面_06.png */,
-				DDB5C2281BFED226000925E8 /* BtnBak.png */,
-				DDB5C2291BFED226000925E8 /* end.png */,
 				DDB5C22A1BFED226000925E8 /* 限时购界面_17.png */,
 				DDB5C22B1BFED226000925E8 /* beg_time.png */,
 			);
@@ -7431,7 +7478,6 @@
 				12D52BB91AC2EF4400C5CE71 /* dtmf-3.aif in Resources */,
 				1241E5611AE9D91400811D3F /* LoadDataLogo@2x.png in Resources */,
 				1241E54C1AE9D89B00811D3F /* 7S@2x.png in Resources */,
-				DDB5C22E1BFED226000925E8 /* BtnBak.png in Resources */,
 				124535411AE9D146004198C9 /* sign13@2x.png in Resources */,
 				1241E5321AE9D89B00811D3F /* CallBackBgImg.jpg in Resources */,
 				124535501AE9D146004198C9 /* sign28@2x.png in Resources */,
@@ -7500,6 +7546,7 @@
 				1241E5501AE9D89B00811D3F /* 9S@2x.png in Resources */,
 				128221D91B184E84004613BB /* HomePageOrderList@2x.png in Resources */,
 				1245355C1AE9D146004198C9 /* sign7@2x.png in Resources */,
+				DD65EF391C0702A000086240 /* TimeLimt.png in Resources */,
 				DDB5C2311BFED226000925E8 /* beg_time.png in Resources */,
 				128BB7411B68A56C004FCE66 /* AddressNextImg@2x.png in Resources */,
 				12BD30F91B3E79D700170316 /* OrderWechatImg@2x.png in Resources */,
@@ -7563,7 +7610,6 @@
 				120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */,
 				12F4227F1B1D5A2900643DD7 /* AddressDel@2x.png in Resources */,
 				1285850F1B3AA7E5005E240E /* MakeOrderUserNameImg@2x.png in Resources */,
-				DDB5C22F1BFED226000925E8 /* end.png in Resources */,
 				128E29671BD6282600137688 /* ClassifySearchStoreImg@2x.png in Resources */,
 				124535401AE9D146004198C9 /* sign12@2x.png in Resources */,
 				1245353E1AE9D146004198C9 /* sign10@2x.png in Resources */,
@@ -7576,7 +7622,6 @@
 				12C64D871BF446850039CC39 /* SharkShellImg@2x.png in Resources */,
 				1285850B1B3AA7E5005E240E /* MakeOrderBtnImg@2x.png in Resources */,
 				127FDD771B57A76E0059BDB6 /* CallBtnDownImg@2x.png in Resources */,
-				DDB5C22D1BFED226000925E8 /* 限时购界面_06.png in Resources */,
 				DDFBC0891BFA02C8003E71A2 /* goods.plist in Resources */,
 				12D52BB81AC2EF4400C5CE71 /* dtmf-2.aif in Resources */,
 				12A347881B73447100D10C17 /* UserCut@2x.png in Resources */,
@@ -7837,6 +7882,7 @@
 				775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */,
 				775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */,
 				12E471D71B1F270C00559995 /* WaitSendConsultCell.m in Sources */,
+				DD65EF2B1C06D92100086240 /* CollectionListCell.m in Sources */,
 				129F32AF1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m in Sources */,
 				77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */,
 				DDEA9F0D1B1C2F2E00530C1C /* GoodsDetailCell.m in Sources */,
@@ -7862,6 +7908,7 @@
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
 				1205952F1BCF994F009E6986 /* NLMainViewController.m in Sources */,
 				12665ADC1BE9B2A400FAE406 /* CityAddress.m in Sources */,
+				DD65EF311C06D98900086240 /* GoodsListModer.m in Sources */,
 				DD0E38AE1B1BE5AC00AB4DB9 /* SysMsgItem.m in Sources */,
 				DDB58F491AD3C6A2006248E9 /* ContactBaseEntity.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
@@ -8036,6 +8083,7 @@
 				12F963331B3D4BDF00FF6A3E /* SBJsonStreamParserAdapter.m in Sources */,
 				120B75511B1C36BE00B8746C /* PersonDatePickerVC.m in Sources */,
 				121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */,
+				DD65EF281C06D89E00086240 /* CollectionListVC.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
 				12F572321B42766D00128294 /* T_SettingSwitchCell.m in Sources */,
 				12D87DA71BD5008E00579FF6 /* ClassifyDownCell.m in Sources */,
@@ -8105,6 +8153,7 @@
 				1213FEB71BA2CA4600CAB746 /* MyClientInfoModel.m in Sources */,
 				12F916131B198ADE00C94717 /* HomePageRecEntity.m in Sources */,
 				DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */,
+				DD65EF341C06D9A200086240 /* GoodsListInfo.m in Sources */,
 				12F9162D1B19B0AA00C94717 /* BaseInfoVC.m in Sources */,
 				12F380351B3BEF6F00E9690C /* UserAddressModel.m in Sources */,
 				120B754E1B1C19EA00B8746C /* PersonSexVC.m in Sources */,

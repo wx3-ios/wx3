@@ -17,6 +17,7 @@
 #import "WXUIActivityIndicatorView.h"
 #import "NewGoodsInfoVC.h"
 
+#import "CollectionListVC.h"
 
 @interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate,ToDaySnapUPCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
@@ -63,18 +64,18 @@
     self.timeShop = timeShop;
    
 //#warning 右侧进入搜素
-//    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 200, 200, 300)];
-//    button.backgroundColor = [UIColor redColor];
-//    [button addTarget:self action:@selector(clackBtn) forControlEvents:UIControlEventTouchDown];
-//    [self.view addSubview:button];
-//    [self setRightNavigationItem:button];
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 200, 200, 300)];
+    button.backgroundColor = [UIColor redColor];
+    [button addTarget:self action:@selector(clackBtn) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:button];
+    [self setRightNavigationItem:button];
     
 }
 
 
 
 - (void)clackBtn{
-    SearchTimeGoodsController *Searchvc = [[SearchTimeGoodsController alloc]init];
+    CollectionListVC *Searchvc = [[CollectionListVC alloc]init];
     [self.wxNavigationController pushViewController:Searchvc];
 }
 
@@ -142,7 +143,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 48;
+        return 40;
     }
     return 40;
 }
@@ -161,7 +162,7 @@
 
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(TopMargin, 12.5, self.view.width, titleView.height - 25)];
     label.textAlignment = NSTextAlignmentLeft;
-    label.text = @" 提前抢";
+    label.text = @" 天天疯抢";
     label.font = [UIFont systemFontOfSize:15];
     [titleView addSubview:label];
     
@@ -343,15 +344,13 @@
 }
 
 #pragma mark ---- 代理方法
-- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell index:(int)index{
+- (void)toSnapUpToCellWithTouch:(ToSnapUpTopCell *)cell index:(NSInteger)index{
     HeardGoodsView *goods = nil;
-    NSLog(@"%ld>>>>>>>",(long)index);
     NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
     switch (index) {
         case ToSnapUpTopTypeIndexOne:{
             goods = cell.childArray[ToSnapUpTopTypeIndexOne];
             newGoods.lEntity = goods.data;
-            
         }
          break;
         case ToSnapUpTopTypeIndexTwo:{
@@ -365,21 +364,11 @@
             
         }
             break;
-       
-    }
+         }
     
    
     newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
     [self.wxNavigationController pushViewController:newGoods];
-}
-
-- (void)toDaySnapUpCell:(ToDaySnapUPCell *)cell{
-    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
-    newGoods.lEntity = cell.data;
-    newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
-    [self.wxNavigationController pushViewController:newGoods];
-    
-   
 }
 
 
