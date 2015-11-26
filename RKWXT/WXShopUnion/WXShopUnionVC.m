@@ -103,7 +103,6 @@
     [_areaListView unshow:YES];
     [rightBtn setImage:[UIImage imageNamed:@"GoodsListDownImg.png"] forState:UIControlStateNormal];
     WXShopCityListVC *cityListVC = [[WXShopCityListVC alloc] init];
-    cityListVC.titleStr = @"深圳";
     [self presentViewController:cityListVC animated:YES completion:^{
     }];
 }

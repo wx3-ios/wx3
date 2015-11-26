@@ -25,7 +25,7 @@ enum{
     CityList_Section_Invalid,
 };
 
-@interface WXShopCityListVC()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,WXCityListLocationCellDelegate>{
+@interface WXShopCityListVC()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,WXCityListLocationCellDelegate,WXUserCurrentCityCellDelegate>{
     UITableView *_tableView;
     WXUISearchBar *_searchBar;
     UISearchDisplayController *_searchDisplayController;
@@ -88,7 +88,8 @@ enum{
     titleLabel.frame = CGRectMake((Size.width-labelWidth)/2, 30, labelWidth, labelHeight);
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [titleLabel setText:[NSString stringWithFormat:@"当前城市-%@",_titleStr]];
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [titleLabel setText:[NSString stringWithFormat:@"当前城市-%@",(userObj.userCurrentCity?userObj.userCurrentCity:userObj.userLocationCity)]];
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setFont:WXFont(14.0)];
     [self.view addSubview:titleLabel];
@@ -166,6 +167,7 @@ enum{
     if([currentCity count] > 0){
         [cell setCellInfo:currentCity];
     }
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -268,13 +270,15 @@ enum{
         [self storageCurrentCity:ent.areaName];
         cityName = ent.areaName;
     }
-    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-    [userObj setUserCurrentCity:cityName];
-    [userObj setUserLocationArea:@""];
-    [self closeCityListVC];
+    [self storeUserCurrentCity:cityName];
 }
 
 #pragma mark 最近访问城市存储
+-(void)userCurrentCityCellBtnClicked:(NSInteger)number{
+    NSString *cityName = [currentCity objectAtIndex:number-1];
+    [self storageCurrentCity:cityName];
+}
+
 -(void)storageCurrentCity:(NSString*)cityName{
     if(cityName.length == 0){
         return;
@@ -291,6 +295,8 @@ enum{
     }
     NSUserDefaults *userDrfault = [NSUserDefaults standardUserDefaults];
     [userDrfault setObject:cityArr forKey:UserCurrentSearchCity];
+    
+    [self storeUserCurrentCity:cityName];
 }
 
 #pragma mark search
@@ -329,6 +335,16 @@ enum{
 -(void)wxCityListLocationCellBtnCLicked{
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
     [self storageCurrentCity:userObj.userLocationCity];
+}
+
+#pragma mark changeCurrentCity
+-(void)storeUserCurrentCity:(NSString*)cityName{
+    //选择城市后重新保存城市，并将区域置为空
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [userObj setUserCurrentCity:cityName];
+    [userObj setUserLocationArea:@""];
+    //回到上一页面
+    [self closeCityListVC];
 }
 
 #pragma mark closeBtn
