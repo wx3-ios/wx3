@@ -13,7 +13,7 @@
 #define buyingBtnW (100)
 
 @interface ToDaySnapUPCell ()
-@property (nonatomic,strong)UIView *backView;
+@property (nonatomic,strong)UIView *contentView;
 /** 头像  */
 @property (nonatomic,strong)WXRemotionImgBtn *iconimage ;
 /** 商品名 */
@@ -61,43 +61,38 @@
         self.contentView.backgroundColor = [UIColor clearColor];
         self.width = [UIScreen mainScreen].bounds.size.width;
         
-        [self.backView removeFromSuperview];
-        UIView *backView = [[UIView alloc]initWithFrame:self.bounds];
-        [self.contentView addSubview:backView];
-        self.backView = backView;
         
         
         WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]init];
-        [self.backView addSubview:iconimage];
+        [self.contentView addSubview:iconimage];
         self.iconimage = iconimage;
         
         UILabel *namelabel = [[UILabel alloc]init];
         namelabel.font = [UIFont systemFontOfSize:14];
         namelabel.numberOfLines = 2;
-        [self.backView addSubview:namelabel];
+        [self.contentView addSubview:namelabel];
          self.nameLable = namelabel;
 
         UILabel *buying_price = [[UILabel alloc]init];
         buying_price.font = [UIFont systemFontOfSize:14];
         buying_price.textAlignment = NSTextAlignmentLeft;
         buying_price.textColor = [UIColor colorWithHexString:@"#dd2726"];
-        [self.backView addSubview:buying_price];
+        [self.contentView addSubview:buying_price];
          self.buying_price = buying_price;
         
         UILabel *orgin_price = [[UILabel alloc]init];
         orgin_price.font = [UIFont systemFontOfSize:10];
         orgin_price.textAlignment = NSTextAlignmentLeft;
         orgin_price.textColor = [UIColor colorWithHexString:@"#909090"];
-        [self.backView addSubview:orgin_price];
+        [self.contentView addSubview:orgin_price];
          self.orgin_price = orgin_price;
         
         UIButton *buyingBtn = [[UIButton alloc]init];
         buyingBtn.backgroundColor = [UIColor colorWithHexString:@"dd2726"];
         buyingBtn.layer.cornerRadius = 5;
-        buyingBtn.userInteractionEnabled = YES;
         [buyingBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown];
         [buyingBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
-        [self.backView addSubview:buyingBtn];
+        [self.contentView addSubview:buyingBtn];
          self.buyingBtn = buyingBtn;
         
         
@@ -196,12 +191,11 @@
     
     if (!self.timeDown.hidden) {
         self.buyingBtn.backgroundColor = [UIColor redColor];
-        self.buyingBtn.userInteractionEnabled = NO;
+        self.buyingBtn.enabled = NO;
     }else{
          self.buyingBtn.backgroundColor = [UIColor grayColor];
-         self.buyingBtn.userInteractionEnabled = YES;
+         self.buyingBtn.enabled = YES;
     }
-    
     
     [self setCountFrame];
    
@@ -312,11 +306,8 @@
 }
 
 - (void)clickBtn{
-   
-        if (self.delegate &&[self.delegate respondsToSelector:@selector(toDaySnapTopCell:)]) {
-            [self.delegate toDaySnapUpCell:self];
-       
-    }
+    
+    return;
     
 }
 

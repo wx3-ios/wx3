@@ -16,7 +16,7 @@ typedef enum{
 }GoodsInfo_Type;
 
 @interface NewGoodsInfoVC : NLMainViewController
-@property (nonatomic,assign) GoodsInfo_Type goodsInfo_type;
+@property (nonatomic,assign) GoodsInfo_Type  goodsInfo_type;
 @property (nonatomic,assign) NSInteger goodsId;
 
 //限时购

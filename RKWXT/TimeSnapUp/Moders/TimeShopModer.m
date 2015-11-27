@@ -87,7 +87,7 @@
                  TimeShopData *moder = [[TimeShopData alloc]initWithDict:dic];
                 
                  //判断
-                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder];
+                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
                 
                 [self.goodsA addObject:moder];
                 
@@ -107,7 +107,7 @@
               TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
                 
                 //判断
-                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder];
+                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
                
                 
                 [self.timeGoodsA addObject:moder];
@@ -155,12 +155,13 @@
         }else{
           
             NSArray *array = retData.data[@"data"];
+                       
             for (NSDictionary *dict in array) {
                 NSTimeInterval beg_time = [dict[@"begin_time"] longLongValue];
                 NSTimeInterval end_time = [dict[@"end_time"] longLongValue];
                 TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
                 
-                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder];
+                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
                 
                 if (self.delegate && [self.delegate respondsToSelector:@selector(pullUpRefreshWithData:beg_time:end_time:)]) {
                     [self.delegate pullUpRefreshWithData:moder beg_time:dict[@"begin_time"] end_time:dict[@"end_time"]];
@@ -177,8 +178,8 @@
 
 
 //
-- (void)moreTimeWithBeg_time:(NSTimeInterval)beg_time end_time:(NSTimeInterval)end_time timeShopData:(TimeShopData*)moder {
-    
+- (void)moreTimeWithBeg_time:(NSTimeInterval)beg_time end_time:(NSTimeInterval)end_time timeShopData:(TimeShopData*)moder scareBuyingN:(NSString*)scarceBuyingN{
+    NSUInteger count = [scarceBuyingN integerValue];
     
     
     NSDate *now_date = [NSDate date];
@@ -207,6 +208,13 @@
             moder.downHidden = NO;
             moder.end_Image_Hidden = YES;
         }
+        
+        if (count <= 0) {
+            moder.beg_imageHidden = YES;
+            moder.downHidden = YES;
+            moder.end_Image_Hidden = NO;
+        }
+        
         
     }else {
         moder.beg_imageHidden = NO;
