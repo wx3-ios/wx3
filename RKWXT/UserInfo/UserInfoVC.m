@@ -266,7 +266,7 @@
 //            number = Money_Invalid;
 //            break;
         case PersonalInfo_SharkOrder:
-            number = 1;
+            number = Shark_Invalid;
             break;
         case PersonalInfo_Call:
             number = Call_Invalid;
@@ -347,17 +347,35 @@
 }
 
 //抽奖订单
--(WXTUITableViewCell*)tableViewForSharkOrderCell{
+-(WXTUITableViewCell*)tableViewForSharkOrderCell:(NSInteger)row{
     static NSString *identifier = @"sharkOrderCell";
     WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
-    [cell.imageView setImage:[UIImage imageNamed:@"SharkImg.png"]];
-    [cell.textLabel setText:@"奖品订单"];
-    [cell.textLabel setFont:WXFont(15.0)];
-    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+    switch (row) {
+        case Shark_Order:
+        {
+            [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
+            [cell.imageView setImage:[UIImage imageNamed:@"SharkImg.png"]];
+            [cell.textLabel setText:@"奖品订单"];
+            [cell.textLabel setFont:WXFont(15.0)];
+            [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+        }
+            break;
+        case Shark_Store:
+        {
+            [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
+            [cell.imageView setImage:[UIImage imageNamed:@"UserStoreGoodsImg.png"]];
+            [cell.textLabel setText:@"我的收藏"];
+            [cell.textLabel setFont:WXFont(15.0)];
+            [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
+        }
+            break;
+        default:
+            break;
+    }
+    
     return cell;
 }
 
@@ -524,7 +542,7 @@
             cell = [self tableViewForOrderCell:row];
             break;
         case PersonalInfo_SharkOrder:
-            cell = [self tableViewForSharkOrderCell];
+            cell = [self tableViewForSharkOrderCell:row];
             break;
 //        case PersonalInfo_Money:
 //            cell = [self tableViewForMoneyCell:row];
@@ -562,8 +580,13 @@
             break;
         case PersonalInfo_SharkOrder:
         {
-            LuckyGoodsOrderList *orderList = [[LuckyGoodsOrderList alloc] init];
-            [self.wxNavigationController pushViewController:orderList];
+            if(row == Shark_Order){
+                LuckyGoodsOrderList *orderList = [[LuckyGoodsOrderList alloc] init];
+                [self.wxNavigationController pushViewController:orderList];
+            }else{
+                CollectionListVC *collectionVC = [[CollectionListVC alloc] init];
+                [self.wxNavigationController pushViewController:collectionVC];
+            }
         }
             break;
 //        case PersonalInfo_Money:

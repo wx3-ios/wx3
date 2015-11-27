@@ -31,6 +31,7 @@
 #import "UserBonusVC.h"
 #import "UserCutVC.h"
 #import "LuckyGoodsOrderList.h"
+#import "CollectionListVC.h"
 
 enum{
     PersonalInfo_Order = 0,
@@ -50,6 +51,13 @@ enum{
     Order_Category,
     
     Order_Invalid
+};
+
+enum{
+    Shark_Order = 0,
+    Shark_Store,
+    
+    Shark_Invalid,
 };
 
 enum{
