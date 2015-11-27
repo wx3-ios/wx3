@@ -66,7 +66,7 @@
     dict[@"type"] = [NSNumber numberWithInt:count];
     dict[@"page"] = [NSNumber numberWithInt:page];
     dict[@"shop_id"] = [NSNumber numberWithInt:kSubShopID];
-    
+     __block TimeShopModer *blockModer = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_TimeToBuy httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
         
         if(retData.code != 0){
@@ -87,7 +87,7 @@
                  TimeShopData *moder = [[TimeShopData alloc]initWithDict:dic];
                 
                  //判断
-                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
+                [blockModer moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
                 
                 [self.goodsA addObject:moder];
                 
@@ -118,7 +118,7 @@
                 [self.end_time_goods addObject:dict[@"end_time"]];
             }
             
-            __block TimeShopModer *blockModer = self;
+           
             //代理
             if (self.delegate && [self.delegate respondsToSelector:@selector(timeShopModerWithGoodArr:timeGoods:beg_goods:beg_time_goods:end_goods:end_time_goods:)]) {
                  [blockModer setStatus:E_ModelDataStatus_LoadSucceed];
@@ -145,6 +145,7 @@
     dict[@"page"] = [NSNumber numberWithInt:count];
     dict[@"shop_id"] = [NSNumber numberWithInt:kSubShopID];
     
+    __block TimeShopModer *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_TimeToBuy httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
         
         if(retData.code != 0){     
@@ -161,7 +162,7 @@
                 NSTimeInterval end_time = [dict[@"end_time"] longLongValue];
                 TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
                 
-                [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
+                [blockSelf moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
                 
                 if (self.delegate && [self.delegate respondsToSelector:@selector(pullUpRefreshWithData:beg_time:end_time:)]) {
                     [self.delegate pullUpRefreshWithData:moder beg_time:dict[@"begin_time"] end_time:dict[@"end_time"]];

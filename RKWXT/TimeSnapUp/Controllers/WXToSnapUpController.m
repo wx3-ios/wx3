@@ -243,6 +243,7 @@
 
 //网络请求成功
 - (void)timeShopModerWithGoodArr:(NSMutableArray *)goodsArr timeGoods:(NSMutableArray *)timeGoods beg_goods:(NSMutableArray *)beg_goods beg_time_goods:(NSMutableArray *)beg_time_goods end_goods:(NSMutableArray *)end_goods end_time_goods:(NSMutableArray *)end_time_goods{
+    
     [self unShowWaitView];
     self.goodsarray = goodsArr;
     self.timearray = timeGoods;

@@ -49,17 +49,18 @@
     dict[@"ts"] = timeSp;
     dict[@"type"] = [NSNumber numberWithInt:type];
     dict[@"seller_user_id"] = userobj.sellerID;
+    
+    __block GoodsListModer *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_PayAttention httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
         
         if (retData.code != 0) {
             
             if (_delegate && [_delegate respondsToSelector:@selector(requestNotWorkFailure:)]) {
                 [_delegate requestNotWorkFailure:retData.errorDesc];
-
             }
             
         }else{
-            [self  analyticalDictionary:retData.data];
+            [blockSelf  analyticalDictionary:retData.data];
             if (_delegate && [self.delegate respondsToSelector:@selector(requestNotWorkSuccessful:)]) {
                 [_delegate requestNotWorkSuccessful:self.goodsID];
             }

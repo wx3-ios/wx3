@@ -44,8 +44,9 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.width = [UIScreen mainScreen].bounds.size.width;
-        
-        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]init];
+        CGFloat imageW = 80;
+        CGFloat imageH = 80;
+        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]initWithFrame:CGRectMake(leftMargin, topMargin, imageW, imageH)];
         [self.contentView addSubview:iconimage];
         self.iconImage = iconimage;
         

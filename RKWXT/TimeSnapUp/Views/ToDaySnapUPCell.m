@@ -62,8 +62,12 @@
         self.width = [UIScreen mainScreen].bounds.size.width;
         
         
+        CGFloat imageW = C_ImageW;
+        CGFloat imageH = C_ImageW;
+        CGFloat imageX = C_Margin;
+        CGFloat imageY = C_Margin;
         
-        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]init];
+        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]initWithFrame:CGRectMake(imageX, imageY , imageW, imageH)];
         [self.contentView addSubview:iconimage];
         self.iconimage = iconimage;
         
