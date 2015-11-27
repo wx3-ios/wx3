@@ -155,6 +155,7 @@
         }else{
           
             NSArray *array = retData.data[@"data"];
+                       
             for (NSDictionary *dict in array) {
                 NSTimeInterval beg_time = [dict[@"begin_time"] longLongValue];
                 NSTimeInterval end_time = [dict[@"end_time"] longLongValue];

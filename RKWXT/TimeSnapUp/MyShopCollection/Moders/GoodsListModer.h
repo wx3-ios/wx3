@@ -10,12 +10,12 @@
 
 @protocol GoodsListModerDelegate  <NSObject>
 //成功
-- (void)requestNotWorkSuccessful:(NSMutableArray*)goodsInfo;
+- (void)requestNotWorkSuccessful:(NSMutableArray*)goodsID;
 //失败
 - (void)requestNotWorkFailure:(NSString*)error;
 @end
 @interface GoodsListModer : NSObject
-@property (nonatomic,strong)NSMutableArray *goodsInfo;
+@property (nonatomic,strong)NSMutableArray *goodsID;
 @property (nonatomic,weak)id<GoodsListModerDelegate> delegate;
 //网络请求
 - (void)requestNotWork:(NSInteger)type;

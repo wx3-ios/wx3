@@ -10,24 +10,28 @@
 #import "WXTURLFeedOBJ.h"
 #import "WXTURLFeedOBJ+NewData.h"
 #import "GoodsListInfo.h"
+#import "MerchantID.h"
+#import "TimeShopData.h"
 
 
 @implementation GoodsListModer
-- (NSMutableArray*)goodsInfo{
-    if (!_goodsInfo) {
-        _goodsInfo = [NSMutableArray array];
+
+
+- (NSMutableArray*)goodsID{
+    if (!_goodsID) {
+        _goodsID = [NSMutableArray array];
     }
-    return _goodsInfo;
+    return _goodsID;
 }
 
 - (void)analyticalDictionary:(NSDictionary*)data{
     NSMutableArray *array = data[@"data"];
 
-    
-    
     for (NSDictionary *dict in array) {
-        GoodsListInfo *info = [[GoodsListInfo alloc]initWithDict:dict[@"goods"]];
-        [self.goodsInfo addObject:info];
+        
+        MerchantID *chant = [[MerchantID alloc]initWithDict:dict];
+        [self.goodsID addObject:chant];
+        
     }
     
     
@@ -57,7 +61,7 @@
         }else{
             [self  analyticalDictionary:retData.data];
             if (_delegate && [self.delegate respondsToSelector:@selector(requestNotWorkSuccessful:)]) {
-                [_delegate requestNotWorkSuccessful:self.goodsInfo];
+                [_delegate requestNotWorkSuccessful:self.goodsID];
             }
             
         }

@@ -116,6 +116,7 @@
     ToSnapUpTopCell *cell = [self.tableview dequeueReusableCellWithIdentifier:cellIndef];
     if (!cell) {
         cell = [[ToSnapUpTopCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndef goodsArray:self.goodsarray];
+        cell.height = [ToSnapUpTopCell cellHeight];
     }
     cell.goodsArray = self.goodsarray;
     cell.delegate  =self;

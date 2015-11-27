@@ -12,6 +12,8 @@
 #import "UIColor+XBCategory.h"
 #import "NSString+XBCategory.h"
 #import "UIViewAdditions.h"
+#import "TimeShopData.h"
+#import "MerchantID.h"
 
 #define leftMargin (10)
 #define topMargin (20)
@@ -69,25 +71,31 @@
     return self;
 }
 
--(void)setInfo:(GoodsListInfo *)info{
-    _info = info;
+
+- (void)setChartID:(MerchantID *)chartID{
+    _chartID = chartID;
+    
+    TimeShopData *info  = chartID.dataArray[0];
     
     [self.iconImage setCpxViewInfo:info.add_goods_home_img];
     [self.iconImage setButtonEnable:NO];
     [self.iconImage load];
-    
 
     
-    if (info.scare_buying_id == nil || info.scare_buying_id.length == 0) {
-        self.price.text = info.goods_price;
+    NSUInteger count = [chartID.scare_buying_id integerValue];
+    if (count <= 0) {
         self.timeLimit.hidden = YES;
-    }else{
+        self.price.text = [NSString stringWithFormat:@"￥%@",info.goods_price];
+    }else {
         self.timeLimit.hidden = NO;
-        self.price.text = info.scare_buying_price;
+        self.price.text = [NSString stringWithFormat:@"￥%@",info.scare_buying_price]; 
     }
-    self.goodsName.text = info.goods_name;
+    
+    
+     self.goodsName.text = info.goods_name;
+    
    
-   
+
     [self setContentFrame];
 }
 
@@ -95,7 +103,7 @@
 - (void)setContentFrame{
     self.width = [UIScreen mainScreen].bounds.size.width;
     
-    CGFloat imageW = 98;
+    CGFloat imageW = 80;
     CGFloat imageH = imageW;
     self.iconImage.frame = CGRectMake(leftMargin, topMargin, imageW, imageH);
     
@@ -114,9 +122,17 @@
 
 
 + (CGFloat)cellHeight{
-    return 100;
+    return 120;
 }
 
+
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+    
+}
 
 
 @end

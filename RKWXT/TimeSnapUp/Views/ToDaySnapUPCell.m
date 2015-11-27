@@ -90,7 +90,6 @@
         UIButton *buyingBtn = [[UIButton alloc]init];
         buyingBtn.backgroundColor = [UIColor colorWithHexString:@"dd2726"];
         buyingBtn.layer.cornerRadius = 5;
-        buyingBtn.enabled = self.timeDown.hidden == NO;
         [buyingBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown];
         [buyingBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
         [self.contentView addSubview:buyingBtn];
@@ -307,11 +306,8 @@
 }
 
 - (void)clickBtn{
-   
-        if (self.delegate &&[self.delegate respondsToSelector:@selector(toDaySnapTopCell:)]) {
-            [self.delegate toDaySnapUpCell:self];
-       
-    }
+    
+    return;
     
 }
 

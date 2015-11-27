@@ -19,11 +19,13 @@
            _goods_name = dict[@"goods_name"];
            _goods_home_img = dict[@"goods_home_img"];
            _goods_number = dict[@"goods_number"];
-        
+           _goods_id = dict[@"goods_id"];
         
     }
     return self;
 }
+
+
 
 -(void)setAdd_goods_home_img:(NSString *)add_goods_home_img{
     _add_goods_home_img = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,_goods_home_img];

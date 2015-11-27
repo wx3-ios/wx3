@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class GoodsListInfo;
+@class TimeShopData,MerchantID;
 @interface CollectionListCell : UITableViewCell
-@property (nonatomic,strong)GoodsListInfo *info;
+@property (nonatomic,strong)MerchantID *chartID;
 + (instancetype)collectionCreatCell:(UITableView*)tableview;
 + (CGFloat)cellHeight;
 @end

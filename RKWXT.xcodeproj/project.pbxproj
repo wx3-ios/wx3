@@ -897,6 +897,7 @@
 		DD0E38BD1B1BE5AC00AB4DB9 /* SysMsgTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A51B1BE5AC00AB4DB9 /* SysMsgTimeCell.m */; };
 		DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A71B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m */; };
 		DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */; };
+		DD15BB4C1C07EAF500EFCBAF /* MerchantID.m in Sources */ = {isa = PBXBuildFile; fileRef = DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */; };
 		DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */; };
 		DD1C64271BFADC5100F962FC /* SearchTimeGoodsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */; };
 		DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C649D1BFB28A700F962FC /* TimeShopModer.m */; };
@@ -2600,6 +2601,8 @@
 		DD0E38A81B1BE5AC00AB4DB9 /* SysMsgUIDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgUIDef.h; sourceTree = "<group>"; };
 		DD0E38A91B1BE5AC00AB4DB9 /* SysMsgVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgVC.h; sourceTree = "<group>"; };
 		DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgVC.m; sourceTree = "<group>"; };
+		DD15BB4A1C07EAF500EFCBAF /* MerchantID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantID.h; sourceTree = "<group>"; };
+		DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantID.m; sourceTree = "<group>"; };
 		DD1C63E21BFAC41800F962FC /* UIColor+XBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+XBCategory.h"; sourceTree = "<group>"; };
 		DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XBCategory.m"; sourceTree = "<group>"; };
 		DD1C64251BFADC5100F962FC /* SearchTimeGoodsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTimeGoodsController.h; sourceTree = "<group>"; };
@@ -7068,6 +7071,8 @@
 				DD65EF381C0702A000086240 /* TimeLimt.png */,
 				DD65EF2F1C06D98900086240 /* GoodsListModer.h */,
 				DD65EF301C06D98900086240 /* GoodsListModer.m */,
+				DD15BB4A1C07EAF500EFCBAF /* MerchantID.h */,
+				DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */,
 				DD65EF321C06D9A200086240 /* GoodsListInfo.h */,
 				DD65EF331C06D9A200086240 /* GoodsListInfo.m */,
 			);
@@ -8003,6 +8008,7 @@
 				775842D41AB95A300039B129 /* NSNotificationAdditions.m in Sources */,
 				120EC7931BB91D9200538637 /* ConfirmUserAliPayVC.m in Sources */,
 				775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */,
+				DD15BB4C1C07EAF500EFCBAF /* MerchantID.m in Sources */,
 				128766F41B50ED8400A79320 /* AboutShopModel.m in Sources */,
 				DDEA9ED91B1BF46900530C1C /* CartDetailCell.m in Sources */,
 				129F329D1B82D2DF004DFFB1 /* LuckySharkModel.m in Sources */,

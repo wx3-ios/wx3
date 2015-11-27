@@ -9,13 +9,17 @@
 #import "CollectionListVC.h"
 #import "CollectionListCell.h"
 #import "GoodsListModer.h"
+#import "MerchantID.h"
+#import "TimeShopData.h"
+#import "UIViewAdditions.h"
 
 #import "GoodsListInfo.h"
 #import "NewGoodsInfoVC.h"
-
+#import "GoodsAttentionModel.h"
 @interface CollectionListVC ()<UITableViewDataSource,UITableViewDelegate,GoodsListModerDelegate>
 @property (nonatomic,strong)UITableView *tableview;
-@property (nonatomic,strong)NSArray *goodsInfo;
+@property (nonatomic,strong)NSArray *goodsID;
+@property (nonatomic,strong)GoodsListModer *moder;
 @end
 
 @implementation CollectionListVC
@@ -25,34 +29,35 @@
     
     [self setCSTTitle:@"收藏列表"];
     
-    
-    UITableView *tableview = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    [self.view addSubview:tableview];
+    UITableView *tableview = [[UITableView alloc]initWithFrame:self.bounds style:UITableViewStylePlain];
+    [self addSubview:tableview];
     tableview.delegate = self;
     tableview.dataSource = self;
     self.tableview = tableview;
-    
-    GoodsListModer *moder = [[GoodsListModer alloc]init];
-    moder.delegate  = self;
-    [moder requestNotWork:2];
-    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-    
-  
-}
+ 
+   }
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setCSTNavigationViewHidden:NO animated:NO];
+    
+     GoodsListModer *moder = [[GoodsListModer alloc]init];
+     [moder requestNotWork:2];
+     moder.delegate  = self;
+   // [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.goodsInfo.count;
+    return self.goodsID.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CollectionListCell *cell = [CollectionListCell collectionCreatCell:tableView];
-    cell.info = self.goodsInfo[indexPath.row];
+    cell.height = [CollectionListCell cellHeight];
+    cell.chartID = self.goodsID[indexPath.row];
     return cell;
 }
 
@@ -63,17 +68,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    GoodsListInfo *info = self.goodsInfo[indexPath.row];
-//    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
-//    newGoods.lEntity = info;
-//    newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
-//    [self.wxNavigationController pushViewController:newGoods];
+    MerchantID *chantID = self.goodsID[indexPath.row];
+    NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
+
+    NSUInteger count = [chantID.scare_buying_id integerValue];
+    if (count <= 0) {
+         newGoods.goodsId = [chantID.goods_id integerValue];
+    }else{
+        TimeShopData *info = chantID.dataArray[0];
+        newGoods.lEntity = info;
+        newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
+    }
+    
+    [self.wxNavigationController pushViewController:newGoods];
+    
 }
 
 
 #pragma mark  -- ------------------- 代理方法
-- (void)requestNotWorkSuccessful:(NSMutableArray *)goodsInfo{
-    self.goodsInfo = goodsInfo;
+- (void)requestNotWorkSuccessful:(NSMutableArray *)goodsID{
+    self.goodsID = goodsID;
     
     [self.tableview reloadData];
 }
@@ -85,7 +99,7 @@
     if(!error){
         error = @"加载数据失败";
     }
-    [UtilTool showAlertView:error];
+   // [UtilTool showAlertView:error];
 
 }
 

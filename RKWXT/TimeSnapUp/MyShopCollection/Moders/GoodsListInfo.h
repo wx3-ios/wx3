@@ -18,7 +18,7 @@
 @property (nonatomic,strong)NSString *goods_home_img; //商品图片
 @property (nonatomic,strong)NSString *add_goods_home_img; //商品图片链接
 @property (nonatomic,strong)NSString *goods_number; //库存数量
-
+@property (nonatomic,strong)NSString *goods_id; //库存数量
 //"scare_buying_id": "16",
 //"shop_id": "3",
 //"goods_id": "100003",
