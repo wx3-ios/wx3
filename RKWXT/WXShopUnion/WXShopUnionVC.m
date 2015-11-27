@@ -9,12 +9,17 @@
 #import "WXShopUnionVC.h"
 #import "WXShopUnionDef.h"
 
-#define Size self.bounds.size
+#define ShopUnionDownVieHeight (45)
 
-@interface WXShopUnionVC()<ShopUnionDropListViewDelegate>{
+@interface WXShopUnionVC()<ShopUnionDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,WXShopUnionActivityCell,WXShopUnionHotShopTitleCellDelegate,WXShopUnionHotShopCellDelegate>{
     WXShopUnionAreaView *_areaListView;
     BOOL showAreaview;
     WXUIButton *rightBtn;
+    
+    UITableView *_tableView;
+    
+    NSMutableArray *hotGoodsArr;
+    NSArray *hotShopArr;
 }
 @end
 
@@ -32,7 +37,48 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"商家联盟"];
+    [self createRightNavBtn];
     
+    hotShopArr = @[@"我信云科技", @"蒂凡尼家居", @"辽宁"];
+    hotGoodsArr = [[NSMutableArray alloc] init];
+    
+    _tableView = [[UITableView alloc] init];
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-ShopUnionDownVieHeight);
+    [_tableView setDataSource:self];
+    [_tableView setDelegate:self];
+    [self addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self addSubview:[self createUnionDownView]];
+    [self setupRefresh];
+    
+    //下拉区域列表
+    showAreaview = YES;
+    _areaListView = [self createAreaDropListViewWith:rightBtn];
+    [_areaListView unshow:NO];
+    [self addSubview:_areaListView];
+    [[LocalAreaModel shareLocalArea] loadLocalAreaData];
+}
+
+//集成刷新控件
+-(void)setupRefresh{
+    //1.下拉刷新(进入刷新状态会调用self的headerRefreshing)
+    [_tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    [_tableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [_tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
+    
+    //设置文字
+    _tableView.headerPullToRefreshText = @"下拉刷新";
+    _tableView.headerReleaseToRefreshText = @"松开刷新";
+    _tableView.headerRefreshingText = @"刷新中";
+    
+    _tableView.footerPullToRefreshText = @"上拉加载";
+    _tableView.footerReleaseToRefreshText = @"松开加载";
+    _tableView.footerRefreshingText = @"加载中";
+}
+
+-(void)createRightNavBtn{
     CGFloat btnWidth = 85;
     CGFloat btnHeight = 25;
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
@@ -47,14 +93,6 @@
     [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(0, btnWidth-15, 0, 0)];
     [rightBtn addTarget:self action:@selector(showAreaView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightBtn];
-    
-    //下拉区域列表
-    showAreaview = YES;
-    _areaListView = [self createAreaDropListViewWith:rightBtn];
-    [_areaListView unshow:NO];
-    [self addSubview:_areaListView];
-    
-    [[LocalAreaModel shareLocalArea] loadLocalAreaData];
 }
 
 -(WXShopUnionAreaView*)createAreaDropListViewWith:(WXUIButton*)btn{
@@ -66,14 +104,258 @@
     return _areaListView;
 }
 
+-(WXUIView*)createUnionDownView{
+    WXUIView *downView = [[WXUIView alloc] init];
+    downView.frame = CGRectMake(0, Size.height-ShopUnionDownVieHeight, Size.width, ShopUnionDownVieHeight);
+    [downView setBackgroundColor:WXColorWithInteger(0xffffff)];
+
+    CGFloat btnWidth = Size.width/3;
+    CGFloat btnHeight = 40;
+    for(NSInteger i = 0; i < 3; i++){
+        WXUIButton *userOrderBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+        userOrderBtn.frame = CGRectMake(i*btnWidth, (ShopUnionDownVieHeight-btnHeight)/2, btnWidth, btnHeight);
+        [userOrderBtn setBackgroundColor:[UIColor clearColor]];
+        [userOrderBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.975 green:0.936 blue:0.920 alpha:1.000] controlState:UIControlStateHighlighted];
+        [userOrderBtn.titleLabel setFont:WXFont(15.0)];
+        [userOrderBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];
+        if(i == ShopUnionDownView_UserOrder){
+            [userOrderBtn setTitle:@"订单" forState:UIControlStateNormal];
+        }
+        if(i == ShopUnionDownView_UserStore){
+            [userOrderBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
+        }
+        if(i == ShopUnionDownView_UserShoppingCar){
+            [userOrderBtn setTitle:@"购物车" forState:UIControlStateNormal];
+        }
+        userOrderBtn.tag = i;
+        [userOrderBtn addTarget:self action:@selector(shopUnionDownViewBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [downView addSubview:userOrderBtn];
+    }
+    return downView;
+}
+
 -(void)addOBS{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(gotoCityListVC) name:K_Notification_Name_ShopUnionAreaViewCityChoose object:nil];
     [defaultCenter addObserver:self selector:@selector(maskViewClicked) name:K_Notification_Name_MaskviewClicked object:nil];
 }
 
--(void)removeOBS{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+#pragma mark tableview
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return ShopUnion_Section_Invalid;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSInteger row = 1;
+    switch (section) {
+        case ShopUnion_Section_HotShop:
+            row = 2;
+            break;
+        case ShopUnion_Section_HotGoods:
+            row = 1+[hotGoodsArr count];
+            break;
+        default:
+            break;
+    }
+    return row;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 0;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    switch (section) {
+        case ShopUnion_Section_Classify:
+            height = ShopUnionClassifyRowHeight;
+            break;
+        case ShopUnion_Section_Activity:
+            height = ShopUnionActivityRowHeight;
+            break;
+        case ShopUnion_Section_HotShop:
+        {
+            if(row == 0){
+                return ShopUnionHotShopTextHeight;
+            }else{
+                return ShopUnionHotShopListHeight;
+            }
+        }
+            break;
+        case ShopUnion_Section_HotGoods:
+        {
+            if(row == 0){
+                return ShopUnionHotGoodsTextHeight;
+            }else{
+                return ShopUnionHotGoodsListHeight;
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    return height;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    CGFloat height = 0;
+    switch (section) {
+        case ShopUnion_Section_Activity:
+            height = 5;
+            break;
+        case ShopUnion_Section_HotShop:
+            height = 10;
+            break;
+        case ShopUnion_Section_HotGoods:
+            height = 10;
+            break;
+        default:
+            break;
+    }
+    return height;
+}
+
+//分类
+-(WXUITableViewCell*)shopUnionClassifyCell{
+    static NSString *identifier = @"classifyCell";
+    ShopUnionClassifyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[ShopUnionClassifyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell load];
+    return cell;
+}
+
+//活动
+-(WXUITableViewCell*)shopUnionActivityCell{
+    static NSString *identifier = @"activityCell";
+    WXShopUnionActivityCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXShopUnionActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setDelegate:self];
+    [cell load];
+    return cell;
+}
+
+//推荐商家title
+-(WXUITableViewCell*)shopUnionHotShopTitleCell{
+    static NSString *identifier = @"hotShopTitleCell";
+    WXShopUnionHotShopTitleCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXShopUnionHotShopTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setDelegate:self];
+    [cell load];
+    return cell;
+}
+
+//推荐商家
+-(WXUITableViewCell*)shopUnionHotShopCell:(NSInteger)row{
+    static NSString *identifier = @"hotShopCell";
+    WXShopUnionHotShopCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXShopUnionHotShopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    NSMutableArray *rowArray = [NSMutableArray array];
+    NSInteger max = row*3;
+    NSInteger count = [hotShopArr count];
+    if(max > count){
+        max = count;
+    }
+    for(NSInteger i = (row-1)*3; i < max; i++){
+        [rowArray addObject:[hotShopArr objectAtIndex:i]];
+    }
+    [cell setDelegate:self];
+    [cell loadCpxViewInfos:rowArray];
+    [cell load];
+    return cell;
+}
+
+//推荐商品标题
+-(WXUITableViewCell*)shopUnionHotGoodsTitleCell{
+    static NSString *identifier = @"hotGoodsTitleCell";
+    WXShopUnionHotGoodsTitleCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXShopUnionHotGoodsTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell load];
+    return cell;
+}
+
+//推荐商品
+-(WXUITableViewCell*)shopUnionHotGoodsCell:(NSInteger)row{
+    static NSString *identifier = @"hotGoodsCell";
+    WXShopUnionHotGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXShopUnionHotGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell load];
+    return cell;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WXUITableViewCell *cell = nil;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    switch (section) {
+        case ShopUnion_Section_Classify:
+            cell = [self shopUnionClassifyCell];
+            break;
+        case ShopUnion_Section_Activity:
+            cell = [self shopUnionActivityCell];
+            break;
+        case ShopUnion_Section_HotShop:
+        {
+            if(row == 0){
+                cell = [self shopUnionHotShopTitleCell];
+            }else{
+                cell = [self shopUnionHotShopCell:row];
+            }
+        }
+            break;
+        case ShopUnion_Section_HotGoods:
+        {
+            if(row == 0){
+                cell = [self shopUnionHotGoodsTitleCell];
+            }else{
+                cell = [self shopUnionHotGoodsCell:row];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)showAreaView{
@@ -86,6 +368,36 @@
     }
 }
 
+#pragma mark 刷新
+-(void)headerRefreshing{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_tableView reloadData];
+        [_tableView headerEndRefreshing];
+    });
+}
+
+-(void)loadMoreGoods{
+    [hotGoodsArr addObject:@"你好"];
+    [hotGoodsArr addObject:@"你好"];
+    [hotGoodsArr addObject:@"你好"];
+    [hotGoodsArr addObject:@"你好"];
+    [hotGoodsArr addObject:@"你好"];
+    [hotGoodsArr addObject:@"你好"];
+    [hotGoodsArr addObject:@"你好"];
+    
+//    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:ShopUnion_Section_HotGoods] withRowAnimation:UITableViewRowAnimationFade];
+    [_tableView reloadData];
+    [_tableView footerEndRefreshing];
+}
+
+-(void)footerRefreshing{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [_tableView reloadData];
+//        [_tableView footerEndRefreshing];
+        [self loadMoreGoods];
+    });
+}
+
 #pragma mark cityAreaDelegate
 -(void)changeCityArea:(id)entity{
     NSString *name = entity;
@@ -96,6 +408,7 @@
 -(void)changeCity{
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
     [rightBtn setTitle:userObj.userCurrentCity forState:UIControlStateNormal];
+    [_tableView headerBeginRefreshing];
 }
 
 #pragma mark tocityList
@@ -107,12 +420,38 @@
     }];
 }
 
+#pragma mark shopActivityDelegate
+-(void)wxShopUnionActivityCellClicked{
+    NSLog(@"商家联盟活动");
+}
+
+#pragma mark hotShopTitleDelegate
+-(void)shopUnionHotShopTitleClicked{
+    NSLog(@"查看更多商家");
+}
+
+#pragma mark hotShopDelegate
+-(void)shopUnionHotShopCellBtnClicked:(id)sender{
+    NSLog(@"推荐商家");
+}
+
+#pragma mark maskViewDelegate
 -(void)maskViewClicked{
     [self showAreaView];
 }
 
+#pragma mark downViewDelegate
+-(void)shopUnionDownViewBtnClicked:(id)sender{
+    WXUIButton *btn = sender;
+    NSLog(@"用户按钮==%ld",(long)btn.tag);
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)removeOBS{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
