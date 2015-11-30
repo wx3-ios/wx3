@@ -19,7 +19,7 @@
 
 #import "CollectionListVC.h"
 
-@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate,ToDaySnapUPCellDelegate>
+@interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray *goodsarray;
 @property (nonatomic,strong)NSMutableArray *timearray;
@@ -126,7 +126,6 @@
 - (UITableViewCell*)ToDaySnapUPCell:(NSIndexPath*)indexPath{
     ToDaySnapUPCell * cell = [ToDaySnapUPCell  toDaySnapTopCell:self.tableview];
     cell.data = self.timearray[indexPath.row];
-    cell.delegate = self;
     return cell;
 }
 
@@ -233,16 +232,49 @@
 
 //网络请求失败
 - (void)timeShopModerWithFailed:(NSString *)errorMsg{
+    //[self  noNewData];
+    
     [self unShowWaitView];
     if(!errorMsg){
         errorMsg = @"加载数据失败";
     }
    // [UtilTool showAlertView:errorMsg];
     
+
+    
 }
+
+//- (void)noNewData{
+//    CGFloat viewW = [UIScreen mainScreen].bounds.size.width;
+//    CGFloat viewH = 40;
+//    CGFloat viewY = self.tableview.contentSize.height;
+//    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(0,viewY, viewW, viewH)];
+//    downView.backgroundColor = [UIColor redColor];
+//    
+//    [self.tableview addSubview:downView];
+//    
+//    [UIView transitionWithView:downView duration:2 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+//        CGRect rect = downView.frame;
+//        rect.origin.y -=40;
+//        downView.frame = rect;
+//    } completion:^(BOOL finished) {
+//     
+//        [UIView animateWithDuration:2.0 animations:^{
+//            CGRect rect = downView.frame;
+//            rect.origin.y += 60;
+//            downView.frame = rect;
+//        }];
+//        
+//        [downView removeFromSuperview];
+//    }];
+//    
+//    
+//}
+
 
 //网络请求成功
 - (void)timeShopModerWithGoodArr:(NSMutableArray *)goodsArr timeGoods:(NSMutableArray *)timeGoods beg_goods:(NSMutableArray *)beg_goods beg_time_goods:(NSMutableArray *)beg_time_goods end_goods:(NSMutableArray *)end_goods end_time_goods:(NSMutableArray *)end_time_goods{
+    
     [self unShowWaitView];
     self.goodsarray = goodsArr;
     self.timearray = timeGoods;
@@ -263,6 +295,8 @@
        [self.timearray addObject:data];
       [self.beg_time_goods addObject:beg_time];
       [self.end_time_goods addObject:end_time];
+    
+    
     
       [self timeDown];
       [self.tableview reloadData];

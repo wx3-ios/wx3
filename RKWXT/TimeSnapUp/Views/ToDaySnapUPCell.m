@@ -62,8 +62,12 @@
         self.width = [UIScreen mainScreen].bounds.size.width;
         
         
+        CGFloat imageW = C_ImageW;
+        CGFloat imageH = C_ImageW;
+        CGFloat imageX = C_Margin;
+        CGFloat imageY = C_Margin;
         
-        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]init];
+        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]initWithFrame:CGRectMake(imageX, imageY , imageW, imageH)];
         [self.contentView addSubview:iconimage];
         self.iconimage = iconimage;
         
@@ -104,7 +108,7 @@
         
         //即将开始
         UIImageView *beg_image = [[UIImageView alloc]init];
-        
+        self.over_image.alpha = 0.5;
         [self.iconimage addSubview:beg_image];
         self.beg_image = beg_image;
         
@@ -125,7 +129,7 @@
         //开始
         UILabel *timeDown = [[UILabel alloc]init];
         timeDown.backgroundColor = [UIColor grayColor];
-        timeDown.alpha = 0.7;
+        timeDown.alpha = 0.5;
         timeDown.textColor = [UIColor whiteColor];
         timeDown.font = [UIFont systemFontOfSize:12];
         
@@ -134,6 +138,7 @@
         
         //结束
         UIImageView *over_image = [[UIImageView alloc]init];
+       
         [self.iconimage addSubview:over_image];
         self.over_image = over_image;
         

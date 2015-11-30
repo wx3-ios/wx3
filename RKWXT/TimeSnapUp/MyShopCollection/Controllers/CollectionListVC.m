@@ -18,8 +18,9 @@
 #import "GoodsAttentionModel.h"
 @interface CollectionListVC ()<UITableViewDataSource,UITableViewDelegate,GoodsListModerDelegate>
 @property (nonatomic,strong)UITableView *tableview;
-@property (nonatomic,strong)NSArray *goodsID;
+@property (nonatomic,strong)NSMutableArray *goodsID;
 @property (nonatomic,strong)GoodsListModer *moder;
+@property (nonatomic,assign)NSInteger index;
 @end
 
 @implementation CollectionListVC
@@ -35,17 +36,28 @@
     tableview.dataSource = self;
     self.tableview = tableview;
  
+  
+    
    }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-     GoodsListModer *moder = [[GoodsListModer alloc]init];
-     [moder requestNotWork:2];
-     moder.delegate  = self;
-   // [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    GoodsListModer *moder = [[GoodsListModer alloc]init];
+    [moder requestNotWork:2];
+    moder.delegate  = self;
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goodsCancelAttentionSucceed:) name:K_Notification_Name_GoodsCancelAttentionSucceed object:nil];
 }
+
+
+//- (void)goodsCancelAttentionSucceed:(NSNotification*)Notification{
+//
+//    
+//    
+//}
 
 
 
@@ -67,6 +79,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
     
     MerchantID *chantID = self.goodsID[indexPath.row];
     NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
@@ -79,6 +92,7 @@
         newGoods.lEntity = info;
         newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
     }
+      self.index = indexPath.row;
     
     [self.wxNavigationController pushViewController:newGoods];
     
@@ -87,19 +101,21 @@
 
 #pragma mark  -- ------------------- 代理方法
 - (void)requestNotWorkSuccessful:(NSMutableArray *)goodsID{
-    self.goodsID = goodsID;
+     [self unShowWaitView];
     
+    self.goodsID = goodsID;
     [self.tableview reloadData];
+   
 }
 
 
 
 - (void)requestNotWorkFailure:(NSString *)error{
-    [self unShowWaitView];
     if(!error){
-        error = @"加载数据失败";
+        error = @"没有收藏商品";
     }
-   // [UtilTool showAlertView:error];
+    
+   [UtilTool showAlertView:error];
 
 }
 

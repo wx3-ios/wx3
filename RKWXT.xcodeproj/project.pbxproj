@@ -923,6 +923,7 @@
 		DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A71B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m */; };
 		DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */; };
 		DD15BB4C1C07EAF500EFCBAF /* MerchantID.m in Sources */ = {isa = PBXBuildFile; fileRef = DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */; };
+		DD15BB4E1C0850D700EFCBAF /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = DD15BB4D1C0850D700EFCBAF /* end.png */; };
 		DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */; };
 		DD1C64271BFADC5100F962FC /* SearchTimeGoodsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */; };
 		DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C649D1BFB28A700F962FC /* TimeShopModer.m */; };
@@ -956,7 +957,6 @@
 		DDB58F551AD3C6A2006248E9 /* WXContacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F401AD3C6A2006248E9 /* WXContacterCell.m */; };
 		DDB58F561AD3C6A2006248E9 /* WXContacterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */; };
 		DDB5C22C1BFED226000925E8 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C2261BFED226000925E8 /* time.png */; };
-		DDB5C2301BFED226000925E8 /* 限时购界面_17.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C22A1BFED226000925E8 /* 限时购界面_17.png */; };
 		DDB5C2311BFED226000925E8 /* beg_time.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C22B1BFED226000925E8 /* beg_time.png */; };
 		DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9801ACAA88F00CC3FE9 /* CoreFoundation.framework */; };
 		DDDAE9831ACAA8A800CC3FE9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9821ACAA8A800CC3FE9 /* SystemConfiguration.framework */; };
@@ -2674,6 +2674,7 @@
 		DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgVC.m; sourceTree = "<group>"; };
 		DD15BB4A1C07EAF500EFCBAF /* MerchantID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantID.h; sourceTree = "<group>"; };
 		DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantID.m; sourceTree = "<group>"; };
+		DD15BB4D1C0850D700EFCBAF /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
 		DD1C63E21BFAC41800F962FC /* UIColor+XBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+XBCategory.h"; sourceTree = "<group>"; };
 		DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XBCategory.m"; sourceTree = "<group>"; };
 		DD1C64251BFADC5100F962FC /* SearchTimeGoodsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTimeGoodsController.h; sourceTree = "<group>"; };
@@ -2738,7 +2739,6 @@
 		DDB58F411AD3C6A2006248E9 /* WXContacterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXContacterVC.h; sourceTree = "<group>"; };
 		DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContacterVC.m; sourceTree = "<group>"; };
 		DDB5C2261BFED226000925E8 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
-		DDB5C22A1BFED226000925E8 /* 限时购界面_17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "限时购界面_17.png"; sourceTree = "<group>"; };
 		DDB5C22B1BFED226000925E8 /* beg_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beg_time.png; sourceTree = "<group>"; };
 		DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -7375,7 +7375,7 @@
 			isa = PBXGroup;
 			children = (
 				DDB5C2261BFED226000925E8 /* time.png */,
-				DDB5C22A1BFED226000925E8 /* 限时购界面_17.png */,
+				DD15BB4D1C0850D700EFCBAF /* end.png */,
 				DDB5C22B1BFED226000925E8 /* beg_time.png */,
 			);
 			name = Resouse;
@@ -7700,6 +7700,7 @@
 				775842E91AB95A300039B129 /* ZoneCode in Resources */,
 				12D52BBD1AC2EF4400C5CE71 /* dtmf-7.aif in Resources */,
 				128083E01B622A6D00260B9F /* ShareQqImg@2x.png in Resources */,
+				DD15BB4E1C0850D700EFCBAF /* end.png in Resources */,
 				1245355A1AE9D146004198C9 /* sign5@2x.png in Resources */,
 				1241E5341AE9D89B00811D3F /* CallBackIconImgNor@2x.png in Resources */,
 				12D52BBE1AC2EF4400C5CE71 /* dtmf-8.aif in Resources */,
@@ -7758,7 +7759,6 @@
 				1241E5641AE9D91400811D3F /* T_AllBackSel@2x.png in Resources */,
 				1241E5431AE9D89B00811D3F /* 3N@2x.png in Resources */,
 				1241E53A1AE9D89B00811D3F /* #S@2x.png in Resources */,
-				DDB5C2301BFED226000925E8 /* 限时购界面_17.png in Resources */,
 				12F46A391B20012000B8EC98 /* T_Attention@2x.png in Resources */,
 				12F3CC811B1DE82C00E64DE4 /* WaitingPayImg@2x.png in Resources */,
 				128221D71B184E84004613BB /* HomePageLeftBtn@2x.png in Resources */,
