@@ -234,6 +234,11 @@
 		1245355D1AE9D146004198C9 /* sign8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124535381AE9D146004198C9 /* sign8@2x.png */; };
 		1245355E1AE9D146004198C9 /* sign9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124535391AE9D146004198C9 /* sign9@2x.png */; };
 		1245355F1AE9D146004198C9 /* SignNow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1245353A1AE9D146004198C9 /* SignNow@2x.png */; };
+		124A575F1C0848CE00D4DEC6 /* HomeLimitBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 124A575E1C0848CE00D4DEC6 /* HomeLimitBuyModel.m */; };
+		124A57621C08495200D4DEC6 /* HomeLimitBuyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 124A57611C08495200D4DEC6 /* HomeLimitBuyEntity.m */; };
+		124A57661C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 124A57651C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.m */; };
+		124A57691C08529800D4DEC6 /* HomeLimitBuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 124A57681C08529800D4DEC6 /* HomeLimitBuyCell.m */; };
+		124A576C1C0852EB00D4DEC6 /* HomeLimitBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 124A576B1C0852EB00D4DEC6 /* HomeLimitBuyView.m */; };
 		125418141BDB6F66004A7DF5 /* SearchResultEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 125418131BDB6F66004A7DF5 /* SearchResultEntity.m */; };
 		125A76AA1B56628C00959AD8 /* ScreenActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76A91B56628C00959AD8 /* ScreenActivityVC.m */; };
 		125A76AD1B5673E100959AD8 /* JPushMessageInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 125A76AC1B5673E100959AD8 /* JPushMessageInfoVC.m */; };
@@ -1318,6 +1323,16 @@
 		124535381AE9D146004198C9 /* sign8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign8@2x.png"; sourceTree = "<group>"; };
 		124535391AE9D146004198C9 /* sign9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign9@2x.png"; sourceTree = "<group>"; };
 		1245353A1AE9D146004198C9 /* SignNow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignNow@2x.png"; sourceTree = "<group>"; };
+		124A575D1C0848CE00D4DEC6 /* HomeLimitBuyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeLimitBuyModel.h; sourceTree = "<group>"; };
+		124A575E1C0848CE00D4DEC6 /* HomeLimitBuyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeLimitBuyModel.m; sourceTree = "<group>"; };
+		124A57601C08495200D4DEC6 /* HomeLimitBuyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeLimitBuyEntity.h; sourceTree = "<group>"; };
+		124A57611C08495200D4DEC6 /* HomeLimitBuyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeLimitBuyEntity.m; sourceTree = "<group>"; };
+		124A57641C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeLimitBuyTitleCell.h; sourceTree = "<group>"; };
+		124A57651C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeLimitBuyTitleCell.m; sourceTree = "<group>"; };
+		124A57671C08529800D4DEC6 /* HomeLimitBuyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeLimitBuyCell.h; sourceTree = "<group>"; };
+		124A57681C08529800D4DEC6 /* HomeLimitBuyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeLimitBuyCell.m; sourceTree = "<group>"; };
+		124A576A1C0852EB00D4DEC6 /* HomeLimitBuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeLimitBuyView.h; sourceTree = "<group>"; };
+		124A576B1C0852EB00D4DEC6 /* HomeLimitBuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeLimitBuyView.m; sourceTree = "<group>"; };
 		125418121BDB6F66004A7DF5 /* SearchResultEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultEntity.h; sourceTree = "<group>"; };
 		125418131BDB6F66004A7DF5 /* SearchResultEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultEntity.m; sourceTree = "<group>"; };
 		125A76A81B56628C00959AD8 /* ScreenActivityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenActivityVC.h; sourceTree = "<group>"; };
@@ -3613,6 +3628,30 @@
 			path = CallImg;
 			sourceTree = "<group>";
 		};
+		124A575C1C0848AD00D4DEC6 /* LimitBuy */ = {
+			isa = PBXGroup;
+			children = (
+				124A575D1C0848CE00D4DEC6 /* HomeLimitBuyModel.h */,
+				124A575E1C0848CE00D4DEC6 /* HomeLimitBuyModel.m */,
+				124A57601C08495200D4DEC6 /* HomeLimitBuyEntity.h */,
+				124A57611C08495200D4DEC6 /* HomeLimitBuyEntity.m */,
+			);
+			path = LimitBuy;
+			sourceTree = "<group>";
+		};
+		124A57631C084C8800D4DEC6 /* LimitBuy */ = {
+			isa = PBXGroup;
+			children = (
+				124A57641C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.h */,
+				124A57651C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.m */,
+				124A57671C08529800D4DEC6 /* HomeLimitBuyCell.h */,
+				124A57681C08529800D4DEC6 /* HomeLimitBuyCell.m */,
+				124A576A1C0852EB00D4DEC6 /* HomeLimitBuyView.h */,
+				124A576B1C0852EB00D4DEC6 /* HomeLimitBuyView.m */,
+			);
+			path = LimitBuy;
+			sourceTree = "<group>";
+		};
 		1261F0101AE6591400693710 /* CallModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3929,6 +3968,7 @@
 				128221E91B18716E004613BB /* T_HPSubBaseModel.m */,
 				128221EA1B18716E004613BB /* URLBaseModel.h */,
 				128221EB1B18716E004613BB /* URLBaseModel.m */,
+				124A575C1C0848AD00D4DEC6 /* LimitBuy */,
 				12A050B91B30FD47008CC38F /* HomeNavigation */,
 				12F9161E1B19A16700C94717 /* Surprise */,
 				12F916171B199EE700C94717 /* Theme */,
@@ -3941,6 +3981,7 @@
 		1282215A1B18467A004613BB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				124A57631C084C8800D4DEC6 /* LimitBuy */,
 				1282215B1B18467A004613BB /* BaseFunction */,
 				1282215E1B18467A004613BB /* Change */,
 				128221651B18467A004613BB /* ForMe */,
@@ -7853,6 +7894,7 @@
 				12F67BB81B32C87800F5BDE1 /* RightGoodsSelNumCell.m in Sources */,
 				775C58391ABA5F31005B6B40 /* ChineseToPinyinResource.m in Sources */,
 				12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */,
+				124A576C1C0852EB00D4DEC6 /* HomeLimitBuyView.m in Sources */,
 				12B12E751C0841DA00F9BC5D /* MJRefreshHeaderView.m in Sources */,
 				12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */,
 				1284CC8C1B54DEB500D98F79 /* OrderInfoGoodsListCell.m in Sources */,
@@ -8004,6 +8046,7 @@
 				775842F81AB95A300039B129 /* PSCollectionView.m in Sources */,
 				128221801B18467A004613BB /* CSTScrollBrowser.m in Sources */,
 				12F3802F1B3BE41C00E9690C /* MakeOrderGoodsMoneyCell.m in Sources */,
+				124A57621C08495200D4DEC6 /* HomeLimitBuyEntity.m in Sources */,
 				12C200101B4E7B0900BE8EE8 /* RefundStateEntity.m in Sources */,
 				7758433A1AB95A300039B129 /* WXUIWindow.m in Sources */,
 				7758435B1AB95FAC0039B129 /* WXService+UserInfo.m in Sources */,
@@ -8213,6 +8256,7 @@
 				1282217E1B18467A004613BB /* T_ForMeCell.m in Sources */,
 				12C0692A1B7CAF2F00C05D42 /* LuckyGoodsEntity.m in Sources */,
 				1277D00E1AC50E4F0008D9B6 /* WXTResetPwdVC.m in Sources */,
+				124A57691C08529800D4DEC6 /* HomeLimitBuyCell.m in Sources */,
 				DDEA9EBD1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m in Sources */,
 				7758432F1AB95A300039B129 /* WXUITabBar.m in Sources */,
 				775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */,
@@ -8280,6 +8324,7 @@
 				77DB94241AAFEE1F0021A816 /* MZLoadingCircle.m in Sources */,
 				775C58371ABA5F31005B6B40 /* ContactUitl.m in Sources */,
 				775843041AB95A300039B129 /* DDMenuController.m in Sources */,
+				124A57661C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.m in Sources */,
 				129F32AC1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m in Sources */,
 				12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */,
 				12989F8D1B900F0100D0AA9F /* FTPManager.m in Sources */,
@@ -8500,6 +8545,7 @@
 				12F67BB41B32BFB400F5BDE1 /* RightGoodsStoreCell.m in Sources */,
 				12F422981B1D8A4000643DD7 /* InsertAddress.m in Sources */,
 				128221C71B184C3B004613BB /* ASIFormDataRequest.m in Sources */,
+				124A575F1C0848CE00D4DEC6 /* HomeLimitBuyModel.m in Sources */,
 				775842FA1AB95A300039B129 /* KICropImageView.m in Sources */,
 				775843031AB95A300039B129 /* BaseSearchLV.m in Sources */,
 				125A76B01B56747F00959AD8 /* JPushInfoModel.m in Sources */,

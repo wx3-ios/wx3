@@ -14,6 +14,7 @@
     HomePageThemeModel *_theme;
     HomePageSurpModel *_surprise;
     HomeNavModel *_navModel;
+    HomeLimitBuyModel *_limitModel;
 }
 @end
 
@@ -26,6 +27,7 @@
         _theme = [[HomePageThemeModel alloc] init];
         _surprise = [[HomePageSurpModel alloc] init];
         _navModel = [[HomeNavModel alloc] init];
+        _limitModel = [[HomeLimitBuyModel alloc] init];
     }
     return self;
 }
@@ -36,18 +38,20 @@
     [_theme toInit];
     [_surprise toInit];
     [_navModel toInit];
+    [_limitModel toInit];
 }
 
--(void)setDelegate:(id<HomePageTopDelegate,HomePageRecDelegate,HomePageThemeDelegate,HomePageSurpDelegate,HomeNavModelDelegate>)delegate{
+-(void)setDelegate:(id<HomePageTopDelegate,HomePageRecDelegate,HomePageThemeDelegate,HomePageSurpDelegate,HomeNavModelDelegate,HomeLimitBuyModelDelegate>)delegate{
     [_top setDelegate:delegate];
     [_recommend setDelegate:delegate];
     [_theme setDelegate:delegate];
     [_surprise setDelegate:delegate];
     [_navModel setDelegate:delegate];
+    [_limitModel setDelegate:delegate];
 }
 
 -(BOOL)isSomeDataNeedReload{
-    return [_top dataNeedReload] || [_recommend dataNeedReload] || [_theme dataNeedReload] || [_surprise dataNeedReload] || [_navModel dataNeedReload];
+    return [_top dataNeedReload] || [_recommend dataNeedReload] || [_theme dataNeedReload] || [_surprise dataNeedReload] || [_navModel dataNeedReload] || [_limitModel dataNeedReload];
 }
 
 -(void)loadData{
@@ -65,6 +69,9 @@
     }
     if([_navModel dataNeedReload]){
         [_navModel loadData];
+    }
+    if([_limitModel dataNeedReload]){
+        [_limitModel loadData];
     }
 }
 
