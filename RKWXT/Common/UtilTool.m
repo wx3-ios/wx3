@@ -270,7 +270,7 @@
     if (kMerchantID == 10192) {
         str = [NSString  stringWithFormat:@"下载进口特惠商城，手机话费充100送378，8分钱／分钟打遍全国。"];
     }
-    if(kMerchantID == 10233 || kMerchantID == 10248 || kMerchantID == 10249){
+    if(kMerchantID == 10233 || kMerchantID == 10248 || kMerchantID == 10249 || kMerchantID == 10264){
         str = [NSString stringWithFormat:@"这个世界上肯定有一个人能帮到你，你也会帮到另一个人。分享到朋友圈去帮助更多的人"];
     }
     if(kMerchantID == 10198){

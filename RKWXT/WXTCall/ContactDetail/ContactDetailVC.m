@@ -239,7 +239,7 @@
     picker.messageComposeDelegate = self;
     
     NSString *msg = [NSString stringWithFormat:@"这年头没好事哪敢骚扰你，用我信通打国内电话低至3分。下载地址:%@%d",DownLoadUrl,(int)kMerchantID];
-    if(kMerchantID == 10233 || kMerchantID == 10248 || kMerchantID  == 10249){
+    if(kMerchantID == 10233 || kMerchantID == 10248 || kMerchantID  == 10249 || kMerchantID == 10264){
         msg = [NSString stringWithFormat:@"这个世界上肯定有一个人能帮到你，你也会帮到另一个人。分享到朋友圈去帮助更多的人。下载地址:%@%d",DownLoadUrl,(int)kMerchantID];
     }
     if (kMerchantID == 10192) {
