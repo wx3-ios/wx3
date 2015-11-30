@@ -108,7 +108,7 @@
         
         //即将开始
         UIImageView *beg_image = [[UIImageView alloc]init];
-        self.over_image.alpha = 0.5;
+        self.over_image.alpha = 0.7;
         [self.iconimage addSubview:beg_image];
         self.beg_image = beg_image;
         
@@ -129,16 +129,16 @@
         //开始
         UILabel *timeDown = [[UILabel alloc]init];
         timeDown.backgroundColor = [UIColor grayColor];
-        timeDown.alpha = 0.5;
+        timeDown.alpha = 0.8;
         timeDown.textColor = [UIColor whiteColor];
         timeDown.font = [UIFont systemFontOfSize:12];
-        
+        timeDown.textAlignment = NSTextAlignmentCenter;
         [self.iconimage addSubview:timeDown];
         self.timeDown =  timeDown;
         
         //结束
         UIImageView *over_image = [[UIImageView alloc]init];
-       
+        over_image.alpha = 0.7;
         [self.iconimage addSubview:over_image];
         self.over_image = over_image;
         
@@ -276,7 +276,7 @@
     self.beg_open.frame = (CGRect){{timeX,beg_LY},size_beg};
     
     //开始
-    CGSize sizeT = [NSString sizeWithString:self.timeDown.text font:[UIFont systemFontOfSize:12]];
+    CGSize sizeT = [NSString sizeWithString:[NSString stringWithFormat:@"  %@",self.timeDown.text] font:[UIFont systemFontOfSize:12]];
     self.timeDown.frame = (CGRect){{0,0},sizeT};
     
     
