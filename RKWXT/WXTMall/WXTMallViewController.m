@@ -13,6 +13,8 @@
     PullingRefreshTableView *_tableView;
     WXSysMsgUnreadV * _unreadView;
     NewHomePageModel *_model;
+    
+    BOOL limitDataSucceed;
 }
 @property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
@@ -102,14 +104,14 @@
             row = 1;
             break;
         case T_HomePage_LimitBuy:
-        case T_HomePage_LimitBuyInfo:
         {
-            if([_model.limitModel.data count] == 0){
-                row = 0;
-            }else{
+            row = 0;
+            if([_model.limitModel.data count] > 0 && limitDataSucceed){
                 row = 1;
             }
         }
+        case T_HomePage_LimitBuyInfo:
+            row = 1;
             break;
         case T_HomePage_WXIntroduce:
             row = [_model.navModel.data count]/WxIntructionShow+[_model.navModel.data count]%WxIntructionShow;
@@ -149,7 +151,7 @@
             break;
         case T_HomePage_LimitBuy:
         {
-            if([_model.limitModel.data count] == 0){
+            if([_model.limitModel.data count] == 0 && limitDataSucceed){
                 height = 0;
             }else{
                 height = T_HomePageTextSectionHeight;
@@ -487,10 +489,14 @@
 
 #pragma mark limitBuy
 -(void)homeLimitBuyLoadSucceed{
+    limitDataSucceed = YES;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_LimitBuy] withRowAnimation:UITableViewRowAnimationFade];
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_LimitBuyInfo] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)homeLimitBuyLoadFailed:(NSString *)errorMsg{
+    limitDataSucceed = YES;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_LimitBuy] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)HomeLimitBuyCellBtnClicked:(id)entity{
@@ -696,6 +702,8 @@
         if([self isNeed]){
             [_model loadData];
         }
+        limitDataSucceed = YES;
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_LimitBuy] withRowAnimation:UITableViewRowAnimationFade];
         [_tableView tableViewDidFinishedLoadingWithMessage:@"刷新完成"];
     }else{
     }
