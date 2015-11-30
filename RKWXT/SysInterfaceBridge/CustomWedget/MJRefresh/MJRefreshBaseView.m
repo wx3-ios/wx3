@@ -49,7 +49,7 @@
 - (UIImageView *)arrowImage
 {
     if (!_arrowImage) {
-        UIImageView *arrowImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MJRefreshSrcName(@"arrow.png")]];
+        UIImageView *arrowImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MJRefreshSrcName(@"")]];
         arrowImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         [self addSubview:_arrowImage = arrowImage];
     }
@@ -93,7 +93,11 @@
     self.arrowImage.center = CGPointMake(arrowX, self.mj_height * 0.5);
     
     // 2.指示器
-    self.activityView.center = self.arrowImage.center;
+    if([self.pullToRefreshText isEqualToString:@"下拉刷新"]){
+        self.activityView.frame = CGRectMake(IPHONE_SCREEN_WIDTH/2-60, 0, 30, 30);
+    }else{
+        self.activityView.frame = CGRectMake(IPHONE_SCREEN_WIDTH/2-60, 15, 30, 30);
+    }
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
