@@ -8,7 +8,7 @@
 
 #import "NLMainViewController.h"
 
-@class TimeShopData;
+@class TimeShopData,NewGoodsInfoVC;
 typedef enum{
     GoodsInfo_Normal = 0,
     GoodsInfo_LuckyGoods,
@@ -17,8 +17,8 @@ typedef enum{
 
 @protocol NewGoodsInfoVCDelegate <NSObject>
 
-- (void)cancelGoodsCollection:(TimeShopData*)data goodsID:(NSInteger)goodsID;
-- (void)addGoodsCollection:(TimeShopData*)data goodsID:(NSInteger)goodsID;
+- (void)cancelGoodsCollection:(NewGoodsInfoVC*)infoVC data:(TimeShopData*)data goodsID:(NSInteger)goodsID;
+- (void)addGoodsCollection:(NewGoodsInfoVC*)infoVC data:(TimeShopData*)data;
 
 @end
 

@@ -931,7 +931,6 @@
 		DD65EF281C06D89E00086240 /* CollectionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF271C06D89E00086240 /* CollectionListVC.m */; };
 		DD65EF2B1C06D92100086240 /* CollectionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF2A1C06D92100086240 /* CollectionListCell.m */; };
 		DD65EF311C06D98900086240 /* GoodsListModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF301C06D98900086240 /* GoodsListModer.m */; };
-		DD65EF341C06D9A200086240 /* GoodsListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF331C06D9A200086240 /* GoodsListInfo.m */; };
 		DD65EF391C0702A000086240 /* TimeLimt.png in Resources */ = {isa = PBXBuildFile; fileRef = DD65EF381C0702A000086240 /* TimeLimt.png */; };
 		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
 		DD988A5D1B1D408500B3790B /* EScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A5C1B1D408500B3790B /* EScrollerView.m */; };
@@ -2689,8 +2688,6 @@
 		DD65EF2A1C06D92100086240 /* CollectionListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListCell.m; sourceTree = "<group>"; };
 		DD65EF2F1C06D98900086240 /* GoodsListModer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListModer.h; sourceTree = "<group>"; };
 		DD65EF301C06D98900086240 /* GoodsListModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListModer.m; sourceTree = "<group>"; };
-		DD65EF321C06D9A200086240 /* GoodsListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListInfo.h; sourceTree = "<group>"; };
-		DD65EF331C06D9A200086240 /* GoodsListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListInfo.m; sourceTree = "<group>"; };
 		DD65EF381C0702A000086240 /* TimeLimt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimeLimt.png; sourceTree = "<group>"; };
 		DD7EB57E1B27D5F90005A97C /* WXTAPNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTAPNViewController.h; sourceTree = "<group>"; };
 		DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTAPNViewController.m; sourceTree = "<group>"; };
@@ -7254,8 +7251,6 @@
 				DD65EF301C06D98900086240 /* GoodsListModer.m */,
 				DD15BB4A1C07EAF500EFCBAF /* MerchantID.h */,
 				DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */,
-				DD65EF321C06D9A200086240 /* GoodsListInfo.h */,
-				DD65EF331C06D9A200086240 /* GoodsListInfo.m */,
 			);
 			path = Moders;
 			sourceTree = "<group>";
@@ -8357,7 +8352,6 @@
 				1213FEB71BA2CA4600CAB746 /* MyClientInfoModel.m in Sources */,
 				12F916131B198ADE00C94717 /* HomePageRecEntity.m in Sources */,
 				DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */,
-				DD65EF341C06D9A200086240 /* GoodsListInfo.m in Sources */,
 				12F9162D1B19B0AA00C94717 /* BaseInfoVC.m in Sources */,
 				12D4066A1C07EF4600289791 /* WXShopUnionHotShopTitleCell.m in Sources */,
 				12F380351B3BEF6F00E9690C /* UserAddressModel.m in Sources */,

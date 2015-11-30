@@ -78,9 +78,9 @@
          self.nameLable = namelabel;
         
         UILabel *buyingNumber = [[UILabel alloc]init];
-        buyingNumber.font = [UIFont systemFontOfSize:14];
+        buyingNumber.font = [UIFont systemFontOfSize:12];
         buyingNumber.textAlignment = NSTextAlignmentLeft;
-        buyingNumber.textColor = [UIColor colorWithHexString:@"#000000"];
+        buyingNumber.textColor = [UIColor grayColor];
         [self.contentView addSubview:buyingNumber];
         self.buyingNumber = buyingNumber;
 
