@@ -39,10 +39,14 @@
         nameArr = @[@"去哪儿网", @"天气"];
         webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com"];
         
-        if(kMerchantID == 10248){
-            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindZhiwoyun.png"];
-            nameArr = @[@"去哪儿网", @"天气", @"微名片"];
-            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx.1wili.com/livehouse.html"];
+        if(kMerchantID == 10248){ //这个商家要将商家联盟和微名片的位置交换
+            commonImgArr = @[@"FindZhiwoyun.png", @"FindJingdong.png", @"FindTaobao.png"];
+            commonImgName = @[@"微名片", @"京东", @"淘宝网"];
+            commonUrl = @[@"http://wx.1wili.com/livehouse.html", @"http://re.jd.com", @"http://www.taobao.com"];
+            
+            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindShop.png"];
+            nameArr = @[@"去哪儿网", @"天气", @"商家联盟"];
+            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant"];
         }
         if(kMerchantID == 10233 || kMerchantID == 10249){
             imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindHusheng.png"];

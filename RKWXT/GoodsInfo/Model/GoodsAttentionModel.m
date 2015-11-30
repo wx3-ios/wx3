@@ -19,7 +19,7 @@
         if(retData.code != 0){
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_GoodsPayAttentionFailed object:retData.errorDesc];
         }else{
-            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_GoodsPayAttentionSucceed object:retData.data];
+            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_GoodsPayAttentionSucceed object:[NSNumber numberWithInteger:goodsID]];
         }
     }];
 }
@@ -44,7 +44,7 @@
         if(retData.code != 0){
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_GoodsCancelAttentionFailed object:retData.errorDesc];
         }else{
-            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_GoodsCancelAttentionSucceed object:retData.data];
+            [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_GoodsCancelAttentionSucceed object:[NSNumber numberWithInteger:goodsID]];
         }
     }];
 }
