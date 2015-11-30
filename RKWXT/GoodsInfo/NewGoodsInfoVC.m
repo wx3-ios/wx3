@@ -885,6 +885,11 @@
 //添加收藏
 -(void)goodsPayAttentionSucceed:(NSNotification*)notification{
     isAttention = YES;
+    
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(addGoodsCollection: goodsID:)]) {
+//        [self.delegate addGoodsCollection:self.lEntity goodsID:self.goodsId];
+//    }
+    
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Description] withRowAnimation:UITableViewRowAnimationFade];
 }
 
@@ -893,7 +898,13 @@
 
 //取消收藏
 -(void)goodsCancelAttentionSucceed:(NSNotification*)notification{
+  
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelGoodsCollection:goodsID:)]) {
+//        [self.delegate cancelGoodsCollection:self.lEntity goodsID:self.goodsId];
+//    }
+    
     isAttention = NO;
+    
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Description] withRowAnimation:UITableViewRowAnimationFade];
 }
 

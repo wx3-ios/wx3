@@ -16,7 +16,7 @@
 #import "GoodsListInfo.h"
 #import "NewGoodsInfoVC.h"
 #import "GoodsAttentionModel.h"
-@interface CollectionListVC ()<UITableViewDataSource,UITableViewDelegate,GoodsListModerDelegate>
+@interface CollectionListVC ()<UITableViewDataSource,UITableViewDelegate,GoodsListModerDelegate,NewGoodsInfoVCDelegate>
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray *goodsID;
 @property (nonatomic,strong)GoodsListModer *moder;
@@ -36,7 +36,10 @@
     tableview.dataSource = self;
     self.tableview = tableview;
  
-  
+//        GoodsListModer *moder = [[GoodsListModer alloc]init];
+//        [moder requestNotWork:2];
+//        moder.delegate  = self;
+//        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     
    }
 
@@ -49,15 +52,8 @@
     moder.delegate  = self;
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goodsCancelAttentionSucceed:) name:K_Notification_Name_GoodsCancelAttentionSucceed object:nil];
 }
 
-
-//- (void)goodsCancelAttentionSucceed:(NSNotification*)Notification{
-//
-//    
-//    
-//}
 
 
 
@@ -83,7 +79,7 @@
     
     MerchantID *chantID = self.goodsID[indexPath.row];
     NewGoodsInfoVC *newGoods = [[NewGoodsInfoVC alloc]init];
-
+    //newGoods.delegate = self;
     NSUInteger count = [chantID.scare_buying_id integerValue];
     if (count <= 0) {
          newGoods.goodsId = [chantID.goods_id integerValue];
@@ -120,7 +116,25 @@
 }
 
 
+- (void)cancelGoodsCollection:(TimeShopData *)data goodsID:(NSInteger)goodsID{
+    NSArray *array = [NSArray arrayWithArray:self.goodsID];
+    
+    for (MerchantID *chantID in array) {
+        for (TimeShopData *shopTime in chantID.dataArray) {
+            
+            if ([shopTime isEqual:data]) {
+                [self.goodsID removeObject:chantID];
+            }
+        }
+    }
+    
+    [self.tableview reloadData];
+}
 
+- (void)addGoodsCollection:(TimeShopData *)data{
+    
+    
+}
 
 
 

@@ -15,10 +15,17 @@ typedef enum{
     GoodsInfo_LimitGoods,
 }GoodsInfo_Type;
 
+@protocol NewGoodsInfoVCDelegate <NSObject>
+
+- (void)cancelGoodsCollection:(TimeShopData*)data goodsID:(NSInteger)goodsID;
+- (void)addGoodsCollection:(TimeShopData*)data goodsID:(NSInteger)goodsID;
+
+@end
+
 @interface NewGoodsInfoVC : NLMainViewController
 @property (nonatomic,assign) GoodsInfo_Type  goodsInfo_type;
 @property (nonatomic,assign) NSInteger goodsId;
-
+@property (nonatomic,weak)id<NewGoodsInfoVCDelegate> delegate;
 //限时购
 @property (nonatomic,strong) TimeShopData *lEntity;
 
