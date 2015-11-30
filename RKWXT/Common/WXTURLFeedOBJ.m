@@ -66,6 +66,9 @@
         case WXT_UrlFeed_Type_NewMall_Nav:
             url = @"/get_navigation.php";
             break;
+        case WXT_UrlFeed_Type_NewMal_LimitBuy:
+            url = @"/";
+            break;
         case WXT_UrlFeed_Type_NewMall_Theme:
             url = @"/get_theme_list.php";
             break;

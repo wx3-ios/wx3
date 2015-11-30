@@ -12,15 +12,17 @@
 #import "HomePageThemeModel.h"
 #import "HomePageSurpModel.h"
 #import "HomeNavModel.h"
+#import "HomeLimitBuyModel.h"
 
 @interface NewHomePageModel : NSObject
-@property (nonatomic,assign) id<HomePageTopDelegate,HomePageRecDelegate,HomePageThemeDelegate,HomePageSurpDelegate>delegate;
+@property (nonatomic,assign) id<HomePageTopDelegate,HomePageRecDelegate,HomePageThemeDelegate,HomePageSurpDelegate,HomeLimitBuyModelDelegate>delegate;
 
 @property (nonatomic,readonly) HomePageTop *top;
 @property (nonatomic,readonly) HomePageRecModel *recommend;
 @property (nonatomic,readonly) HomePageThemeModel *theme;
 @property (nonatomic,readonly) HomePageSurpModel *surprise;
 @property (nonatomic,readonly) HomeNavModel *navModel;
+@property (nonatomic,readonly) HomeLimitBuyModel *limitModel;
 
 -(BOOL)isSomeDataNeedReload;
 -(void)loadData;

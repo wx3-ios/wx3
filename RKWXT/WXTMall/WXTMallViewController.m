@@ -9,9 +9,7 @@
 #import "WXTMallViewController.h"
 #import "NewHomePageCommonDef.h"
 
-#import "WXToSnapUpController.h"
-
-@interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate,WXSysMsgUnreadVDelegate,HomePageTopDelegate,HomePageThemeDelegate,HomePageRecDelegate,HomeNavModelDelegate,HomePageSurpDelegate>{
+@interface WXTMallViewController ()<UITableViewDelegate,UITableViewDataSource,PullingRefreshTableViewDelegate,WXHomeTopGoodCellDelegate,BaseFunctionCellBtnClicked,wxIntructionCellDelegate,forMeCellDeleagte,TopicalCellDeleagte,changeTitleCellDelegate,ChangeCellDelegate,WXSysMsgUnreadVDelegate,HomePageTopDelegate,HomePageThemeDelegate,HomePageRecDelegate,HomeNavModelDelegate,HomePageSurpDelegate,HomeLimitBuyCellDelegate,HomeLimitBuyModelDelegate>{
     PullingRefreshTableView *_tableView;
     WXSysMsgUnreadV * _unreadView;
     NewHomePageModel *_model;
@@ -48,22 +46,16 @@
     [_tableView setPullingDelegate:self];
     [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [_tableView setAllowsSelection:NO];
+//    [_tableView setAllowsSelection:NO];
     [self addSubview:_tableView];
     
-//    [self createTopBtn];
+    [self createTopBtn];
     [_model loadData];
     //定位
     UserLocation *userLocation = [[UserLocation alloc] init];
     [userLocation startLocation];
     
     [self pullingTableViewDidStartRefreshing:_tableView];
-#warning 添加了一个入口，跳转到限时搜索
-    WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn.frame = CGRectMake(0, 6, 30, 30);
-    [leftBtn setImage:[UIImage imageNamed:@"HomePageLeftBtn.png"] forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(clickNavRightBar) forControlEvents:UIControlEventTouchUpInside];
-    [self setLeftNavigationItem:leftBtn];
 }
 
 - (void)clickNavRightBar{
@@ -109,6 +101,16 @@
         case T_HomePage_Change:
             row = 1;
             break;
+        case T_HomePage_LimitBuy:
+        case T_HomePage_LimitBuyInfo:
+        {
+            if([_model.limitModel.data count] == 0){
+                row = 0;
+            }else{
+                row = 1;
+            }
+        }
+            break;
         case T_HomePage_WXIntroduce:
             row = [_model.navModel.data count]/WxIntructionShow+[_model.navModel.data count]%WxIntructionShow;
             break;
@@ -144,6 +146,24 @@
         case T_HomePage_Topical:
         case T_HomePage_Change:
             height = T_HomePageTextSectionHeight;
+            break;
+        case T_HomePage_LimitBuy:
+        {
+            if([_model.limitModel.data count] == 0){
+                height = 0;
+            }else{
+                height = T_HomePageTextSectionHeight;
+            }
+        }
+            break;
+        case T_HomePage_LimitBuyInfo:
+        {
+            if([_model.limitModel.data count] == 0){
+                return 0;
+            }else{
+                height = T_HomePageLimitBuyHeight;
+            }
+        }
             break;
         case T_HomePage_ForMeInfo:
             height = T_HomePageForMeHeight;
@@ -212,6 +232,41 @@
     return cell;
 }
 
+//限时购
+-(WXUITableViewCell*)tableViewForLimitBuyTitleCell{
+    static NSString *identfier = @"limitBuyTitleCell";
+    HomeLimitBuyTitleCell *cell = [_tableView dequeueReusableCellWithIdentifier:identfier];
+    if(!cell){
+        cell = [[HomeLimitBuyTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
+    }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
+    [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
+    [cell load];
+    return cell;
+}
+
+-(WXUITableViewCell*)tableViewForLimitBuy:(NSInteger)row{
+    static NSString *identifier = @"limitBuyCell";
+    HomeLimitBuyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[HomeLimitBuyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
+    NSMutableArray *rowArray = [NSMutableArray array];
+    NSInteger max = (row+1)*LimitBuyShow;
+    NSInteger count = [_model.limitModel.data count];
+    if(max > count){
+        max = count;
+    }
+    for(NSInteger i = row*LimitBuyShow; i < max; i++){
+        [rowArray addObject:[_model.limitModel.data objectAtIndex:i]];
+    }
+    [cell setDelegate:self];
+    [cell loadCpxViewInfos:rowArray];
+    [cell load];
+    return cell;
+}
+
 //为我推荐
 -(WXUITableViewCell*)tableViewForMeCell{
     static NSString *identifier = @"forMeCell";
@@ -219,6 +274,7 @@
     if(!cell){
         cell = [[[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell.textLabel setText:@"为我推荐"];
     [cell.textLabel setFont:[UIFont systemFontOfSize:TextFont]];
@@ -253,6 +309,7 @@
     if(!cell){
         cell = [[[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell.textLabel setText:@"主题馆"];
     [cell.textLabel setFont:[UIFont systemFontOfSize:TextFont]];
@@ -287,6 +344,7 @@
     if(!cell){
         cell = [[[T_ChangeTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setDelegate:self];
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     return cell;
@@ -327,6 +385,12 @@
         case T_HomePage_WXIntroduce:
             cell = [self tableViewForWxIntructionCellAtRow:row];
             break;
+        case T_HomePage_LimitBuy:
+            cell = [self tableViewForLimitBuyTitleCell];
+            break;
+        case T_HomePage_LimitBuyInfo:
+            cell = [self tableViewForLimitBuy:row];
+            break;
         case T_HomePage_ForMe:
             cell = [self tableViewForMeCell];
             break;
@@ -349,6 +413,24 @@
             break;
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    switch (section) {
+        case T_HomePage_LimitBuy:
+        {
+            if(indexPath.row == 0){
+                WXToSnapUpController *tosnap = [[WXToSnapUpController alloc] init];
+                [self.wxNavigationController pushViewController:tosnap];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark HomePageTopDelegate
@@ -400,6 +482,22 @@
         default:
             break;
     }
+}
+
+#pragma mark limitBuy
+-(void)homeLimitBuyLoadSucceed{
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_HomePage_LimitBuyInfo] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)homeLimitBuyLoadFailed:(NSString *)errorMsg{
+}
+
+-(void)HomeLimitBuyCellBtnClicked:(id)entity{
+    TimeShopData *entit = entity;
+    NewGoodsInfoVC *goodsInfoVC = [[NewGoodsInfoVC alloc] init];
+    goodsInfoVC.lEntity = entit;
+    goodsInfoVC.goodsInfo_type = GoodsInfo_LimitGoods;
+    [self.wxNavigationController pushViewController:goodsInfoVC];
 }
 
 #pragma mark HomePageTheme
@@ -565,9 +663,9 @@
             break;
         case T_BaseFunction_Union:
         {
-//            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
-            WXShopUnionVC *unionVC = [[WXShopUnionVC alloc] init];
-            [self.wxNavigationController pushViewController:unionVC];
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
+//            WXShopUnionVC *unionVC = [[WXShopUnionVC alloc] init];
+//            [self.wxNavigationController pushViewController:unionVC];
         }
             break;
         default:

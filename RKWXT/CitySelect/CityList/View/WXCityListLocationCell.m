@@ -19,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 10;
-        CGFloat btnWidth = (IPHONE_SCREEN_WIDTH-4*xOffset)/3;
+        CGFloat btnWidth = (IPHONE_SCREEN_WIDTH-9-4*xOffset)/3;
         CGFloat btnHeight = 30;
         locationBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         locationBtn.frame = CGRectMake(xOffset, (44-btnHeight)/2, btnWidth, btnHeight);

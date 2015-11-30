@@ -14,7 +14,7 @@
 #define T_HomePageTopImgHeight          (115)
 #define T_HomePageBaseFunctionHeight    (40)
 #define T_HomePageWXIntructionHeight    (92)
-#define T_HomePageLimitBuyHeight        (110)
+#define T_HomePageLimitBuyHeight        (140)
 #define T_HomePageTextSectionHeight     (27)
 #define T_HomePageForMeHeight           (145)
 #define T_HomePageTopicalHeight         (70)
@@ -32,13 +32,15 @@
 #define ForMeShow        (3)
 #define TopicalShow      (2)
 #define ChangeInfoShow   (2)
+#define LimitBuyShow     (3)
 
 //section
 enum{
     T_HomePage_TopImg = 0,     //顶部图片
     T_HomePage_BaseFunction,   //4个基础功能模块
     T_HomePage_WXIntroduce,    //我信介绍
-//    T_HomePage_LimitBuy,       //限时购
+    T_HomePage_LimitBuy,       //限时购
+    T_HomePage_LimitBuyInfo,
     T_HomePage_ForMe,          //为我推荐
     T_HomePage_ForMeInfo,      //
     T_HomePage_Topical,        //主题馆
@@ -53,6 +55,8 @@ enum{
 #import "WXHomeTopGoodCell.h"
 #import "BaseFunctionCell.h"
 #import "WxIntructionCell.h"
+#import "HomeLimitBuyTitleCell.h"
+#import "HomeLimitBuyCell.h"
 #import "T_ForMeCell.h"
 #import "T_TopicalCell.h"
 #import "T_ChangeTitleCell.h"
@@ -71,6 +75,9 @@ enum{
 #import "LuckyShakeVC.h"
 #import "UserBalanceVC.h"
 #import "NewUserCutVC.h"
+#import "WXToSnapUpController.h"
+#import "TimeShopData.h"
+#import "NewGoodsInfoVC.h"
 
 #import "LocalAreaModel.h"
 #import "WXShopUnionVC.h"
