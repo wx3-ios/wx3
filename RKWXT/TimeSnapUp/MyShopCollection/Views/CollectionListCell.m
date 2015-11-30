@@ -7,7 +7,6 @@
 //
 
 #import "CollectionListCell.h"
-#import "GoodsListInfo.h"
 #import "WXRemotionImgBtn.h"
 #import "UIColor+XBCategory.h"
 #import "NSString+XBCategory.h"

@@ -9,7 +9,6 @@
 #import "GoodsListModer.h"
 #import "WXTURLFeedOBJ.h"
 #import "WXTURLFeedOBJ+NewData.h"
-#import "GoodsListInfo.h"
 #import "MerchantID.h"
 #import "TimeShopData.h"
 
@@ -31,10 +30,9 @@
         
         MerchantID *chant = [[MerchantID alloc]initWithDict:dict];
         [self.goodsID addObject:chant];
-        
     }
     
-    
+
 }
 
 

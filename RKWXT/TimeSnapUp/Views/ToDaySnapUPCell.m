@@ -78,9 +78,9 @@
          self.nameLable = namelabel;
         
         UILabel *buyingNumber = [[UILabel alloc]init];
-        buyingNumber.font = [UIFont systemFontOfSize:14];
+        buyingNumber.font = [UIFont systemFontOfSize:12];
         buyingNumber.textAlignment = NSTextAlignmentLeft;
-        buyingNumber.textColor = [UIColor colorWithHexString:@"#000000"];
+        buyingNumber.textColor = [UIColor grayColor];
         [self.contentView addSubview:buyingNumber];
         self.buyingNumber = buyingNumber;
 
@@ -178,13 +178,13 @@
     
     if ([data.user_scare_buying_number isEqualToString:@"0"]) {
        NSString *str1 = @"不限";
-       NSString *str = [NSString stringWithFormat:@"抢购数量:%@",str1];
+       NSString *str = [NSString stringWithFormat:@"限购数量:%@",str1];
       
         self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:str1 fontColor:[UIColor colorWithHexString:@"#dd2726"]];
         
     }else{
         
-        NSString *str = [NSString stringWithFormat:@"抢购数量:%@",data.user_scare_buying_number];
+        NSString *str = [NSString stringWithFormat:@"限购数量:%@",data.user_scare_buying_number];
         self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:data.user_scare_buying_number fontColor:[UIColor colorWithHexString:@"#dd2726"]];
 
     }
