@@ -203,7 +203,13 @@
         limitEntity = _lEntity;
         [_newPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.goods_price floatValue]]];
         [_oldPrice setText:[NSString stringWithFormat:@"￥%.2f",[limitEntity.scare_buying_price floatValue]]];
-        [_saveMoneyLabel setText:[NSString stringWithFormat:@"已省%.2f元",[limitEntity.goods_price floatValue]-[limitEntity.scare_buying_price floatValue]]];
+        NSString *saveStr = [NSString stringWithFormat:@"已省%.2f元",[limitEntity.goods_price floatValue]-[limitEntity.scare_buying_price floatValue]];
+        [_saveMoneyLabel setText:saveStr];
+        
+        CGSize titleSize = [saveStr sizeWithFont:WXFont(14.0) constrainedToSize:CGSizeMake(MAXFLOAT, 25)];
+        CGRect rect = _saveMoneyLabel.frame;
+        rect.size.width = titleSize.width;
+        [_saveMoneyLabel setFrame:rect];
     }else{
         [limitBuyView setHidden:YES];
     }
@@ -236,9 +242,11 @@
         [limitBuyView removeFromSuperview];
     }
     _overTime = [[WXUILabel alloc] init];
-    _overTime.frame = CGRectMake(180, (40-25)/2, IPHONE_SCREEN_WIDTH-180, 25);
+    
+    CGRect rect = _saveMoneyLabel.frame;
+    _overTime.frame = CGRectMake(rect.size.width+rect.origin.x+2, (40-25)/2, IPHONE_SCREEN_WIDTH-rect.size.width-rect.origin.x-5, 25);
     [_overTime setBackgroundColor:[UIColor clearColor]];
-    [_overTime setTextAlignment:NSTextAlignmentRight];
+    [_overTime setTextAlignment:NSTextAlignmentLeft];
     [_overTime setTextColor:WXColorWithInteger(0x969696)];
     [_overTime setFont:WXFont(14.0)];
     [_overTime setText:[self limitTime:[limitEntity.begin_time integerValue] andEndTime:[limitEntity.end_time integerValue]]];
