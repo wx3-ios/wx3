@@ -33,7 +33,7 @@ typedef enum{
     
     BOOL showUp;
     
-    NSMutableArray *totalLastTime;
+//    NSMutableArray *totalLastTime;
 }
 @property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
@@ -45,13 +45,13 @@ typedef enum{
     [self setCSTTitle:@"奖品列表"];
     [self setBackgroundColor:[UIColor whiteColor]];
     
-    totalLastTime = [[NSMutableArray alloc] init];
-    for(int i = 0; i< 4; i++){
-        NSMutableDictionary *overDic = [[NSMutableDictionary alloc] init];
-        [overDic setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
-        [overDic setValue:[NSString stringWithFormat:@"%d",100+i]  forKey:@"lastTime"];
-        [totalLastTime addObject:overDic];
-    }
+//    totalLastTime = [[NSMutableArray alloc] init];
+//    for(int i = 0; i< 4; i++){
+//        NSMutableDictionary *overDic = [[NSMutableDictionary alloc] init];
+//        [overDic setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
+//        [overDic setValue:[NSString stringWithFormat:@"%d",100+i]  forKey:@"lastTime"];
+//        [totalLastTime addObject:overDic];
+//    }
     
     self.e_cellRefreshing = E_CellRefreshing_Nothing;
     _tableView = [[OrderListTableView alloc] init];
@@ -209,23 +209,23 @@ typedef enum{
     orderlistCount = [goodsArr count];
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
+//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
 }
 
--(void)refreshLessTime{
-    NSUInteger time;
-    for (int i = 0; i < [totalLastTime count]; i++) {
-        time = [[[totalLastTime objectAtIndex:i] objectForKey:@"lastTime"] integerValue];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[[[totalLastTime objectAtIndex:i] objectForKey:@"indexPath"] integerValue] inSection:0];
-        LuckyGoodsShowCell *cell = (LuckyGoodsShowCell *)[_tableView cellForRowAtIndexPath:indexPath];
-        cell.textLabel.text = [NSString stringWithFormat:@"剩%d",--time];
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
-        [dic setValue:[NSString stringWithFormat:@"%d",time]  forKey:@"lastTime"];
-        [totalLastTime replaceObjectAtIndex:i withObject:dic];
-    }
-}
+//-(void)refreshLessTime{
+//    NSUInteger time;
+//    for (int i = 0; i < [totalLastTime count]; i++) {
+//        time = [[[totalLastTime objectAtIndex:i] objectForKey:@"lastTime"] integerValue];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[[[totalLastTime objectAtIndex:i] objectForKey:@"indexPath"] integerValue] inSection:0];
+//        LuckyGoodsShowCell *cell = (LuckyGoodsShowCell *)[_tableView cellForRowAtIndexPath:indexPath];
+//        cell.textLabel.text = [NSString stringWithFormat:@"剩%d",--time];
+//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//        [dic setValue:[NSString stringWithFormat:@"%d",i] forKey:@"indexPath"];
+//        [dic setValue:[NSString stringWithFormat:@"%d",time]  forKey:@"lastTime"];
+//        [totalLastTime replaceObjectAtIndex:i withObject:dic];
+//    }
+//}
 
 #pragma mark luckyModelDelegate
 -(void)loadLuckyGoodsFailed:(NSString *)errorMsg{

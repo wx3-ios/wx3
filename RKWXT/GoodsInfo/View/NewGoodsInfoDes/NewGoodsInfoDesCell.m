@@ -19,6 +19,7 @@
     WXUILabel *_lineLabel;
     WXUILabel *_newPrice;
     WXUILabel *_descLabel;
+    WXUILabel *line;
     WXUIButton *_attentionBtn;
     WXUILabel *_attentionLabel;
     //邮费
@@ -104,7 +105,7 @@
         
         xOffset = IPHONE_SCREEN_WIDTH-62;
         yOffset = 10;
-        WXUILabel *line = [[WXUILabel alloc] init];
+        line = [[WXUILabel alloc] init];
         line.frame = CGRectMake(xOffset, yOffset, 0.5, T_GoodsInfoDescHeight-2*yOffset);
         [line setBackgroundColor:WXColorWithInteger(0xcacaca)];
         [self.contentView addSubview:line];
@@ -208,9 +209,13 @@
     }
     
     if(_isLucky){
+        [line setHidden:YES];
         [_attentionBtn setHidden:YES];
+        [_attentionLabel setHidden:YES];
     }else{
+        [line setHidden:NO];
         [_attentionBtn setHidden:NO];
+        [_attentionLabel setHidden:NO];
     }
     
     if(_isAttention){
