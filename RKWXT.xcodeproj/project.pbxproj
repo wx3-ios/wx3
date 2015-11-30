@@ -562,6 +562,9 @@
 		12D87DA41BD4F04A00579FF6 /* ClassifyRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA31BD4F04A00579FF6 /* ClassifyRightView.m */; };
 		12D87DA71BD5008E00579FF6 /* ClassifyDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */; };
 		12D96ED01BE84AE70043B219 /* AllCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D96ECF1BE84AE70043B219 /* AllCityModel.m */; };
+		12D9F5FB1C0C43BC00D7C765 /* UserOnceClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */; };
+		12D9F5FC1C0C43BC00D7C765 /* UserSecondClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5F91C0C43BC00D7C765 /* UserSecondClientImg@2x.png */; };
+		12D9F5FD1C0C43BC00D7C765 /* UserThirdClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5FA1C0C43BC00D7C765 /* UserThirdClientImg@2x.png */; };
 		12E07FF11BEB7BFB0051DAD5 /* EditUserAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */; };
 		12E07FF71BEB7D410051DAD5 /* AreaDataSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */; };
 		12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */; };
@@ -1972,6 +1975,9 @@
 		12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyDownCell.m; sourceTree = "<group>"; };
 		12D96ECE1BE84AE70043B219 /* AllCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCityModel.h; sourceTree = "<group>"; };
 		12D96ECF1BE84AE70043B219 /* AllCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCityModel.m; sourceTree = "<group>"; };
+		12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserOnceClientImg@2x.png"; sourceTree = "<group>"; };
+		12D9F5F91C0C43BC00D7C765 /* UserSecondClientImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserSecondClientImg@2x.png"; sourceTree = "<group>"; };
+		12D9F5FA1C0C43BC00D7C765 /* UserThirdClientImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserThirdClientImg@2x.png"; sourceTree = "<group>"; };
 		12E07FEF1BEB7BFB0051DAD5 /* EditUserAreaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserAreaVC.h; sourceTree = "<group>"; };
 		12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserAreaVC.m; sourceTree = "<group>"; };
 		12E07FF31BEB7D410051DAD5 /* AreaDataSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaDataSql.h; sourceTree = "<group>"; };
@@ -3148,6 +3154,9 @@
 		120EC78E1BB9190500538637 /* withdrawals */ = {
 			isa = PBXGroup;
 			children = (
+				12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */,
+				12D9F5F91C0C43BC00D7C765 /* UserSecondClientImg@2x.png */,
+				12D9F5FA1C0C43BC00D7C765 /* UserThirdClientImg@2x.png */,
 				120EC78F1BB9194600538637 /* UserWithdrawals@2x.png */,
 			);
 			path = withdrawals;
@@ -7597,6 +7606,7 @@
 				1263EFE71ACD35820014C347 /* Icon.png in Resources */,
 				128585101B3AA7E5005E240E /* MakeOrderUserPhoneImg@2x.png in Resources */,
 				120EB3DC1B7B563B0036A77C /* shake_match.m4r in Resources */,
+				12D9F5FD1C0C43BC00D7C765 /* UserThirdClientImg@2x.png in Resources */,
 				12211F201C070D220016512A /* ShopUnionHotImg@2x.png in Resources */,
 				12F2D8061B1F01E900C8017F /* failedImage@2x.png in Resources */,
 				12A850EF1B880CD200276D2A /* SharkImg@2x.png in Resources */,
@@ -7730,6 +7740,7 @@
 				124535471AE9D146004198C9 /* sign1@2x.png in Resources */,
 				12F465E71B6F0DE200A8F5AF /* GuideStartUseBtnNor@2x.png in Resources */,
 				1245354A1AE9D146004198C9 /* sign22@2x.png in Resources */,
+				12D9F5FB1C0C43BC00D7C765 /* UserOnceClientImg@2x.png in Resources */,
 				120EB3DB1B7B563B0036A77C /* Shake_02@2x.png in Resources */,
 				1241E5371AE9D89B00811D3F /* dialSel@2x.png in Resources */,
 				121EBCD01BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png in Resources */,
@@ -7800,6 +7811,7 @@
 				1241E5361AE9D89B00811D3F /* callHistoryBtnImg@2x.png in Resources */,
 				120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */,
 				12F4227F1B1D5A2900643DD7 /* AddressDel@2x.png in Resources */,
+				12D9F5FC1C0C43BC00D7C765 /* UserSecondClientImg@2x.png in Resources */,
 				1285850F1B3AA7E5005E240E /* MakeOrderUserNameImg@2x.png in Resources */,
 				128E29671BD6282600137688 /* ClassifySearchStoreImg@2x.png in Resources */,
 				124535401AE9D146004198C9 /* sign12@2x.png in Resources */,

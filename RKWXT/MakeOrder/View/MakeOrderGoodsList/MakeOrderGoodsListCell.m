@@ -86,8 +86,7 @@
     [_nameLabel setText:entity.intro];
     [_numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.buyNumber]];
     [_stockName setText:entity.stockName];
-    CGFloat price = entity.buyNumber*entity.stockPrice;
-    [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",price]];
+    [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice]];
 }
 
 -(void)setFrame:(CGRect)frame{

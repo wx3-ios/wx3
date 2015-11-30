@@ -16,6 +16,7 @@
     UITableView *_tableView;
     MyRefereeEntity *refEntity;
     NSArray *itemsArr;
+    NSArray *itemsImgArr;
 }
 @end
 
@@ -37,6 +38,7 @@
     itemsArr = @[@"一级客户",
                  @"二级客户",
                  @"三级客户"];
+    itemsImgArr = @[@"UserOnceClientImg.png", @"UserSecondClientImg.png", @"UserThirdClientImg.png"];
     refEntity = _entity;
 }
 
@@ -56,6 +58,7 @@
     }
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell.textLabel setText:itemsArr[row]];
+    [cell.imageView setImage:[UIImage imageNamed:itemsImgArr[row]]];
     [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
     [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     [cell.textLabel setFont:WXFont(16.0)];
