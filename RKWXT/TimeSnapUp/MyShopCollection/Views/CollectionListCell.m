@@ -92,6 +92,10 @@
         self.price.text = [NSString stringWithFormat:@"￥%@",info.scare_buying_price]; 
     }
     
+    if (info.scare_buying_price.length == 0 || info.goods_price.length == 0) {
+        self.price.text = @"￥0.0";
+    }
+    
     
      self.goodsName.text = info.goods_name;
     

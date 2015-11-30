@@ -215,8 +215,6 @@
 
 
 
-
-
 #pragma mark ---- 网络处理
 
 //网络请求失败
@@ -229,54 +227,58 @@
     }
    // [UtilTool showAlertView:errorMsg];
     
-    //[self noNewData];
+    [self noNewData];
     
 }
 
-//- (void)noNewData{
-//    CGFloat viewW = [UIScreen mainScreen].bounds.size.width;
-//    CGFloat viewH = 40;
-//    CGFloat viewY = self.tableview.contentSize.height;
-//    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(0,viewY, viewW, viewH)];
-//    downView.backgroundColor = [UIColor yellowColor];
-//    
-//    [self.tableview addSubview:downView];
-//    
-//    
-//    [UIView animateWithDuration:2.0 animations:^{
-//        CGRect rect = downView.frame;
-//        rect.origin.y -= 40;
-//        downView.frame = rect;
-//        //self.tableview.contentSize.height = downView.frame.origin.y;
-//        CGSize size = self.tableview.contentSize;
-//        size.height = downView.frame.origin.y;
-//        self.tableview.contentSize = size;
-//        
-//    } completion:^(BOOL finished) {
-//        if (finished) {
-//            [UIView animateWithDuration:1.0 animations:^{
-//                CGRect rect = downView.frame;
-//                rect.origin.y += 40;
-//                downView.frame = rect;
-//                
-//                CGSize size = self.tableview.contentSize;
-//                size.height = downView.frame.origin.y;
-//                self.tableview.height = size.height;
-//            } completion:^(BOOL finished) {
-//                
-//                [downView removeFromSuperview];
-//            }];
-//            
-//            
-//            
-//        }
-//        
-//    }];
-//
-//   
-//    
-//    
-//}
+- (void)noNewData{
+    CGFloat viewW = [UIScreen mainScreen].bounds.size.width;
+    CGFloat viewH = 40;
+    CGFloat viewY = self.tableview.contentSize.height;
+    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(0,viewY, viewW, viewH)];
+    downView.backgroundColor = [UIColor whiteColor];
+    [self.tableview addSubview:downView];
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:downView.bounds];
+    label.textColor = [UIColor grayColor];
+    label.font = [UIFont systemFontOfSize:14];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = @"已经是最新数据了";
+    [downView addSubview:label];
+    
+    
+    [UIView animateWithDuration:1.5 animations:^{
+        
+        CGRect tableRect = self.tableview.frame;
+        tableRect.origin.y -= 41;
+        self.tableview.frame = tableRect;
+        
+        CGRect rect = downView.frame;
+        rect.origin.y -= 41;
+        downView.frame = rect;
+      
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:1.2 animations:^{
+                CGRect rect = downView.frame;
+                rect.origin.y += 40;
+                downView.frame = rect;
+              CGRect tableRect = self.tableview.frame;
+                tableRect.origin.y += 40;
+                self.tableview.frame = tableRect;
+            } completion:^(BOOL finished) {
+                
+                [downView removeFromSuperview];
+            }];
+            
+        }
+        
+    }];
+
+   
+    
+    
+}
 
 
 //网络请求成功

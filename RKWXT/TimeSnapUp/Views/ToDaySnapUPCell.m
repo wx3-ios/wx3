@@ -13,7 +13,6 @@
 #define buyingBtnW (100)
 
 @interface ToDaySnapUPCell ()
-@property (nonatomic,strong)UIView *contentView;
 /** 头像  */
 @property (nonatomic,strong)WXRemotionImgBtn *iconimage ;
 /** 商品名 */
@@ -26,7 +25,8 @@
 @property (nonatomic,strong)UILabel *orgin_price;
 /** 抢购按钮 */
 @property (nonatomic,strong)UIButton *buyingBtn;
-
+/** 抢购数量 */
+@property (nonatomic,strong)UILabel *buyingNumber;
 
 /** 距离倒计时 */
 @property (nonatomic,strong)UIImageView *beg_image;
@@ -76,6 +76,13 @@
         namelabel.numberOfLines = 2;
         [self.contentView addSubview:namelabel];
          self.nameLable = namelabel;
+        
+        UILabel *buyingNumber = [[UILabel alloc]init];
+        buyingNumber.font = [UIFont systemFontOfSize:14];
+        buyingNumber.textAlignment = NSTextAlignmentLeft;
+        buyingNumber.textColor = [UIColor colorWithHexString:@"#000000"];
+        [self.contentView addSubview:buyingNumber];
+        self.buyingNumber = buyingNumber;
 
         UILabel *buying_price = [[UILabel alloc]init];
         buying_price.font = [UIFont systemFontOfSize:14];
@@ -169,6 +176,19 @@
     self.orgin_price.text = [NSString stringWithFormat:@"￥%@",data.goods_price];
     self.buying_price.text = [NSString stringWithFormat:@"￥%@",data.scare_buying_price];
     
+    if (data.scare_buying_number.length == 0 || data.scare_buying_number == nil) {
+       NSString *str1 = @"不限";
+       NSString *str = [NSString stringWithFormat:@"抢购数量:%@",str1];
+      
+        self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:str1 fontColor:[UIColor colorWithHexString:@"#dd2726"]];
+        
+    }else{
+        
+        NSString *str = [NSString stringWithFormat:@"抢购数量:%@",data.scare_buying_number];
+        self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:data.scare_buying_number fontColor:[UIColor colorWithHexString:@"#dd2726"]];
+
+    }
+    
   
     //即将开始
     NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
@@ -208,9 +228,6 @@
 
 
 
-
-
-
 //  计算位置
 - (void)setCountFrame{
     CGFloat widch = self.contentView.width;
@@ -232,9 +249,13 @@
     CGFloat nameY = C_N_Spcing;
     self.nameLable.frame = (CGRect){{nameX,nameY},{nameW,size.height}};
     
+    CGFloat numberY = self.nameLable.bottom ;
+    self.buyingNumber.frame = CGRectMake(nameX, numberY, nameW, size.height / 2);
+    
+    
     
     CGFloat buyingX = nameX;
-    CGFloat buyingY = self.nameLable.bottom + 15;
+    CGFloat buyingY = self.buyingNumber.bottom + 5;
     CGFloat buyingW = nameW  - buyingBtnW;
     CGFloat buyingH = size.height / 2;
     self.buying_price.frame = CGRectMake(buyingX, buyingY, buyingW, buyingH);
@@ -242,7 +263,7 @@
     CGFloat oringX = nameX;
     CGFloat oringY = self.buying_price.bottom;
     CGFloat oringW = nameW  - buyingW;
-    CGFloat oringH = size.height;
+    CGFloat oringH = size.height / 2;
     self.orgin_price.frame = CGRectMake(oringX, oringY, oringW, oringH);
     
     CGSize size1 = [NSString sizeWithString:self.orgin_price.text font:[UIFont systemFontOfSize:10]];
