@@ -476,7 +476,8 @@
             break;
         case HomePageJump_Type_BusinessAlliance:
         {
-            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
+            NSString *shopUnionUrl = [NSString stringWithFormat:@"%@wx_html/index.php/Public/alliance_merchant",WXTWebBaseUrl];
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:shopUnionUrl title:@"商家联盟" animated:YES];
         }
             break;
         default:
@@ -573,7 +574,8 @@
             break;
         case HomePageJump_Type_BusinessAlliance:
         {
-            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
+            NSString *shopUnionUrl = [NSString stringWithFormat:@"%@wx_html/index.php/Public/alliance_merchant",WXTWebBaseUrl];
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:shopUnionUrl title:@"商家联盟" animated:YES];
         }
             break;
         default:
@@ -663,7 +665,8 @@
             break;
         case T_BaseFunction_Union:
         {
-            [[CoordinateController sharedCoordinateController] toWebVC:self url:@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant" title:@"商家联盟" animated:YES];
+            NSString *shopUnionUrl = [NSString stringWithFormat:@"%@wx_html/index.php/Public/alliance_merchant",WXTWebBaseUrl];
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:shopUnionUrl title:@"商家联盟" animated:YES];
 //            WXShopUnionVC *unionVC = [[WXShopUnionVC alloc] init];
 //            [self.wxNavigationController pushViewController:unionVC];
         }

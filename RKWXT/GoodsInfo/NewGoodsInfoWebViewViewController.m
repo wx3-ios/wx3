@@ -57,7 +57,7 @@ typedef enum{
     if(urlFeedType == WXT_UrlFeed_Type_NewMall_ImgAndText){
         typeStr = @"good_info_test";
     }
-    NSString *urlString = [NSString stringWithFormat:@"http://wx3.67call.com/%@%@",MallCatagaryListUrl,typeStr];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@",WXTWebBaseUrl,MallCatagaryListUrl,typeStr];
     NSString *boay = nil;
     if(paramDictionary){
         boay = [feedOBJ urlRequestParamFrom:paramDictionary];

@@ -317,7 +317,7 @@
 
 -(void)gotoSharkRuleVC{
     WXCommonWebView *vc = [[WXCommonWebView alloc] init];
-    vc.webUrlString = @"http://wx3.67call.com/wx_html/index.php/Public/rule";
+    vc.webUrlString = [NSString stringWithFormat:@"%@wx_html/index.php/Public/rule",WXTWebBaseUrl];
     vc.urlType = WebView_Type_SingleUrl;
     [self.wxNavigationController pushViewController:vc];
 }
