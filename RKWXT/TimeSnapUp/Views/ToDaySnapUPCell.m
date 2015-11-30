@@ -100,7 +100,7 @@
         
         UIButton *buyingBtn = [[UIButton alloc]init];
         buyingBtn.backgroundColor = [UIColor colorWithHexString:@"dd2726"];
-        buyingBtn.layer.cornerRadius = 5;
+        buyingBtn.layer.cornerRadius = 4;
         [buyingBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown];
         [buyingBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
         [self.contentView addSubview:buyingBtn];
@@ -176,7 +176,7 @@
     self.orgin_price.text = [NSString stringWithFormat:@"￥%@",data.goods_price];
     self.buying_price.text = [NSString stringWithFormat:@"￥%@",data.scare_buying_price];
     
-    if (data.scare_buying_number.length == 0 || data.scare_buying_number == nil) {
+    if ([data.user_scare_buying_number isEqualToString:@"0"]) {
        NSString *str1 = @"不限";
        NSString *str = [NSString stringWithFormat:@"抢购数量:%@",str1];
       
@@ -184,8 +184,8 @@
         
     }else{
         
-        NSString *str = [NSString stringWithFormat:@"抢购数量:%@",data.scare_buying_number];
-        self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:data.scare_buying_number fontColor:[UIColor colorWithHexString:@"#dd2726"]];
+        NSString *str = [NSString stringWithFormat:@"抢购数量:%@",data.user_scare_buying_number];
+        self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:data.user_scare_buying_number fontColor:[UIColor colorWithHexString:@"#dd2726"]];
 
     }
     
@@ -255,13 +255,13 @@
     
     
     CGFloat buyingX = nameX;
-    CGFloat buyingY = self.buyingNumber.bottom + 5;
+    CGFloat buyingY = self.buyingNumber.bottom + 4;
     CGFloat buyingW = nameW  - buyingBtnW;
     CGFloat buyingH = size.height / 2;
     self.buying_price.frame = CGRectMake(buyingX, buyingY, buyingW, buyingH);
     
     CGFloat oringX = nameX;
-    CGFloat oringY = self.buying_price.bottom;
+    CGFloat oringY = self.buying_price.bottom + 2;
     CGFloat oringW = nameW  - buyingW;
     CGFloat oringH = size.height / 2;
     self.orgin_price.frame = CGRectMake(oringX, oringY, oringW, oringH);

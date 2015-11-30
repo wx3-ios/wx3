@@ -219,7 +219,6 @@
 
 //网络请求失败
 - (void)timeShopModerWithFailed:(NSString *)errorMsg{
-    //[self  noNewData];
     
     [self unShowWaitView];
     if(!errorMsg){
@@ -227,7 +226,7 @@
     }
    // [UtilTool showAlertView:errorMsg];
     
-    [self noNewData];
+   // [self noNewData];
     
 }
 
