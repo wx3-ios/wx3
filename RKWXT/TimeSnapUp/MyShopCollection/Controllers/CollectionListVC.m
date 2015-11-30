@@ -34,6 +34,7 @@
     tableview.delegate = self;
     tableview.dataSource = self;
     self.tableview = tableview;
+    [tableview setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     GoodsListModer *moder = [[GoodsListModer alloc]init];
     [moder requestNotWork:2];
