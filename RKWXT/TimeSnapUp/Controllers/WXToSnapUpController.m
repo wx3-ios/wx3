@@ -17,7 +17,7 @@
 #import "WXUIActivityIndicatorView.h"
 #import "NewGoodsInfoVC.h"
 
-#import "CollectionListVC.h"
+
 
 @interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
@@ -62,22 +62,11 @@
     [timeShop timeShopModeListWithCount:1 page:_count];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     self.timeShop = timeShop;
-   
-//#warning 右侧进入搜素
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 200, 200, 300)];
-    button.backgroundColor = [UIColor redColor];
-    [button addTarget:self action:@selector(clackBtn) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:button];
-    [self setRightNavigationItem:button];
+    
+    
     
 }
 
-
-
-- (void)clackBtn{
-    CollectionListVC *Searchvc = [[CollectionListVC alloc]init];
-    [self.wxNavigationController pushViewController:Searchvc];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
@@ -240,7 +229,7 @@
     }
    // [UtilTool showAlertView:errorMsg];
     
-
+    //[self noNewData];
     
 }
 
@@ -249,24 +238,42 @@
 //    CGFloat viewH = 40;
 //    CGFloat viewY = self.tableview.contentSize.height;
 //    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(0,viewY, viewW, viewH)];
-//    downView.backgroundColor = [UIColor redColor];
+//    downView.backgroundColor = [UIColor yellowColor];
 //    
 //    [self.tableview addSubview:downView];
 //    
-//    [UIView transitionWithView:downView duration:2 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+//    
+//    [UIView animateWithDuration:2.0 animations:^{
 //        CGRect rect = downView.frame;
-//        rect.origin.y -=40;
+//        rect.origin.y -= 40;
 //        downView.frame = rect;
-//    } completion:^(BOOL finished) {
-//     
-//        [UIView animateWithDuration:2.0 animations:^{
-//            CGRect rect = downView.frame;
-//            rect.origin.y += 60;
-//            downView.frame = rect;
-//        }];
+//        //self.tableview.contentSize.height = downView.frame.origin.y;
+//        CGSize size = self.tableview.contentSize;
+//        size.height = downView.frame.origin.y;
+//        self.tableview.contentSize = size;
 //        
-//        [downView removeFromSuperview];
+//    } completion:^(BOOL finished) {
+//        if (finished) {
+//            [UIView animateWithDuration:1.0 animations:^{
+//                CGRect rect = downView.frame;
+//                rect.origin.y += 40;
+//                downView.frame = rect;
+//                
+//                CGSize size = self.tableview.contentSize;
+//                size.height = downView.frame.origin.y;
+//                self.tableview.height = size.height;
+//            } completion:^(BOOL finished) {
+//                
+//                [downView removeFromSuperview];
+//            }];
+//            
+//            
+//            
+//        }
+//        
 //    }];
+//
+//   
 //    
 //    
 //}

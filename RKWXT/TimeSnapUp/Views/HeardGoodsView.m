@@ -60,6 +60,7 @@
         beg_time.textAlignment = NSTextAlignmentCenter;
         beg_time.textColor = [UIColor whiteColor];
         beg_time.font = [UIFont systemFontOfSize:10];
+        beg_image.alpha = 0.7;
         [self.beg_image addSubview:beg_time];
         self.beg_time = beg_time;
         
@@ -75,12 +76,15 @@
         timeDown.backgroundColor = [UIColor grayColor];
         timeDown.textColor = [UIColor whiteColor];
         timeDown.font = [UIFont systemFontOfSize:12];
+        timeDown.alpha = 0.8;
+        timeDown.textAlignment = NSTextAlignmentCenter;
         timeDown.hidden = self.isDownHidden == NO;
         [self.iconimage addSubview:timeDown];
         self.timeDown =  timeDown;
         
         //结束
         UIImageView *over_image = [[UIImageView alloc]init];
+        over_image.alpha = 0.7;
         over_image.hidden = self.isOver_Image_Hidden == NO;
         [self.iconimage addSubview:over_image];
         self.over_image = over_image;
@@ -189,7 +193,7 @@
     self.beg_open.frame = (CGRect){{timeX,beg_LY},size_beg};
     
     //开始
-    CGSize sizeT = [NSString sizeWithString:self.timeDown.text font:[UIFont systemFontOfSize:12]];
+    CGSize sizeT = [NSString sizeWithString:[NSString stringWithFormat:@"  %@",self.timeDown.text] font:[UIFont systemFontOfSize:12]];
     self.timeDown.frame = (CGRect){{0,0},sizeT};
     
     //结束
