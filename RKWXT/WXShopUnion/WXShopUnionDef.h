@@ -14,6 +14,7 @@
 #import "UserLocation.h"
 #import "WXShopUnionAreaView.h"
 #import "MJRefresh.h"
+#import "WXTUITextField.h"
 
 #import "ShopUnionClassifyCell.h"
 #import "WXShopUnionActivityCell.h"
