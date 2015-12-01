@@ -40,6 +40,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier  goodsArray:(NSArray*)goodsArray{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.width = [UIScreen mainScreen].bounds.size.width;
+        self.height = 140;
+        
         
         CGFloat widch = (self.width - ( TopMargin * 2 ) - (T_GoodsMaegin * 2) ) / goodsArray.count;
         

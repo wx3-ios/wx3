@@ -9,6 +9,7 @@
 #import "HeardGoodsView.h"
 #import "TimeShopData.h"
 #import "ToSnapUp.h"
+#import "NSDate+Time.h"
 
 #define priceH (45)
 
@@ -128,17 +129,24 @@
     self.buying_price.text = [NSString stringWithFormat:@"￥%@",self.data.scare_buying_price];
     
     
-      //即将开始
+    
+    //即将开始
     NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
     NSDateFormatter *matter = [[NSDateFormatter alloc]init];
-    [matter setDateFormat:@"HH:mm"];
-    NSString *str = [matter stringFromDate:beg_date];
+    [matter setDateFormat:@"dd:HH:mm"];
+    NSString *str = nil;
+    if ([NSDate timeJetLagWithEndTime:beg_date]) {
+        str = [matter stringFromDate:beg_date];
+    }else{
+        [matter setDateFormat:@"MM - dd"];
+        str = [matter stringFromDate:beg_date];
+        
+    }
     
     UIImage *image = [UIImage imageNamed:@"beg_time"];
     self.beg_image.image = image;
-    self.beg_time.text = str;
     self.beg_open.text = @" 即将开抢";
-    
+    self.beg_time.text = str;
     //开始
     self.timeDown.text = self.data.top_time_countdown;
     
