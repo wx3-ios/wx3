@@ -16,6 +16,7 @@
 #import "WXRemotionImgBtn.h"
 #import "NewUserCutVC.h"
 
+#import "AboutStoreInfoVc.h"
 #define UserBgImageViewHeight (95+66)
 #define Size self.view.bounds.size
 
@@ -617,7 +618,9 @@
                 [self.wxNavigationController pushViewController:systemSetting];
             }
             if(row == System_About){
+#warning 调到商家控制器
                 AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
+                //AboutStoreInfoVc *aboutVC = [[AboutStoreInfoVc alloc]init];
                 [self.wxNavigationController pushViewController:aboutVC];
             }
         }

@@ -26,8 +26,12 @@
         CGFloat allMoney = [[dic objectForKey:@"contribute_total_amount"] floatValue];
         [self setAllMoney:allMoney];
         
-        CGFloat balance = [[dic objectForKey:@"balance"] floatValue];
-        [self setBalance:balance];
+        if([[dic objectForKey:@"balance"] isKindOfClass:[NSString class]]){
+            CGFloat balance = [[dic objectForKey:@"balance"] floatValue];
+            [self setBalance:balance];
+        }else{
+            [self setBalance:0];
+        }
         
         id parent = [dic objectForKey:@"parent_1"];
         if([parent isKindOfClass:[NSString class]]){

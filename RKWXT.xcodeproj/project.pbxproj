@@ -926,16 +926,16 @@
 		DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A71B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m */; };
 		DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */; };
 		DD1490061C0D2E3B00D48663 /* NSDate+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1490051C0D2E3B00D48663 /* NSDate+Time.m */; };
-		DD15BB4C1C07EAF500EFCBAF /* MerchantID.m in Sources */ = {isa = PBXBuildFile; fileRef = DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */; };
+		DD1490141C0D496000D48663 /* CollectionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD14900A1C0D496000D48663 /* CollectionListVC.m */; };
+		DD1490151C0D496000D48663 /* GoodsListModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD14900D1C0D496000D48663 /* GoodsListModer.m */; };
+		DD1490161C0D496000D48663 /* MerchantID.m in Sources */ = {isa = PBXBuildFile; fileRef = DD14900F1C0D496000D48663 /* MerchantID.m */; };
+		DD1490171C0D496000D48663 /* TimeLimt.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1490101C0D496000D48663 /* TimeLimt.png */; };
+		DD1490181C0D496000D48663 /* CollectionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1490131C0D496000D48663 /* CollectionListCell.m */; };
 		DD15BB4E1C0850D700EFCBAF /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = DD15BB4D1C0850D700EFCBAF /* end.png */; };
 		DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */; };
 		DD1C64271BFADC5100F962FC /* SearchTimeGoodsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */; };
 		DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C649D1BFB28A700F962FC /* TimeShopModer.m */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		DD65EF281C06D89E00086240 /* CollectionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF271C06D89E00086240 /* CollectionListVC.m */; };
-		DD65EF2B1C06D92100086240 /* CollectionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF2A1C06D92100086240 /* CollectionListCell.m */; };
-		DD65EF311C06D98900086240 /* GoodsListModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD65EF301C06D98900086240 /* GoodsListModer.m */; };
-		DD65EF391C0702A000086240 /* TimeLimt.png in Resources */ = {isa = PBXBuildFile; fileRef = DD65EF381C0702A000086240 /* TimeLimt.png */; };
 		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
 		DD988A5D1B1D408500B3790B /* EScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A5C1B1D408500B3790B /* EScrollerView.m */; };
 		DD988A691B1DA47300B3790B /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A681B1DA47300B3790B /* OrderDetailCell.m */; };
@@ -968,6 +968,7 @@
 		DDDAE98B1ACAA8D400CC3FE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE98A1ACAA8D400CC3FE9 /* UIKit.framework */; };
 		DDDAE98D1ACAA8DE00CC3FE9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE98C1ACAA8DE00CC3FE9 /* Security.framework */; };
 		DDDAE9921ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */; };
+		DDDEE2691C0D940900947393 /* AboutStoreInfoVc.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDEE2681C0D940900947393 /* AboutStoreInfoVc.m */; };
 		DDEA9EBD1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9EBA1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m */; };
 		DDEA9EBE1B1BF2AD00530C1C /* WXTPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9EBC1B1BF2AD00530C1C /* WXTPayViewController.m */; };
 		DDEA9ED51B1BF44A00530C1C /* WXTCartDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9ED41B1BF44A00530C1C /* WXTCartDetailViewController.m */; };
@@ -2680,8 +2681,15 @@
 		DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgVC.m; sourceTree = "<group>"; };
 		DD1490041C0D2E3B00D48663 /* NSDate+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Time.h"; sourceTree = "<group>"; };
 		DD1490051C0D2E3B00D48663 /* NSDate+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Time.m"; sourceTree = "<group>"; };
-		DD15BB4A1C07EAF500EFCBAF /* MerchantID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantID.h; sourceTree = "<group>"; };
-		DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantID.m; sourceTree = "<group>"; };
+		DD1490091C0D496000D48663 /* CollectionListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListVC.h; sourceTree = "<group>"; };
+		DD14900A1C0D496000D48663 /* CollectionListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListVC.m; sourceTree = "<group>"; };
+		DD14900C1C0D496000D48663 /* GoodsListModer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListModer.h; sourceTree = "<group>"; };
+		DD14900D1C0D496000D48663 /* GoodsListModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListModer.m; sourceTree = "<group>"; };
+		DD14900E1C0D496000D48663 /* MerchantID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantID.h; sourceTree = "<group>"; };
+		DD14900F1C0D496000D48663 /* MerchantID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantID.m; sourceTree = "<group>"; };
+		DD1490101C0D496000D48663 /* TimeLimt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimeLimt.png; sourceTree = "<group>"; };
+		DD1490121C0D496000D48663 /* CollectionListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListCell.h; sourceTree = "<group>"; };
+		DD1490131C0D496000D48663 /* CollectionListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListCell.m; sourceTree = "<group>"; };
 		DD15BB4D1C0850D700EFCBAF /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
 		DD1C63E21BFAC41800F962FC /* UIColor+XBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+XBCategory.h"; sourceTree = "<group>"; };
 		DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XBCategory.m"; sourceTree = "<group>"; };
@@ -2691,13 +2699,6 @@
 		DD1C649D1BFB28A700F962FC /* TimeShopModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeShopModer.m; sourceTree = "<group>"; };
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD65EF201C06BC2D00086240 /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Debug-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
-		DD65EF261C06D89E00086240 /* CollectionListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListVC.h; sourceTree = "<group>"; };
-		DD65EF271C06D89E00086240 /* CollectionListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListVC.m; sourceTree = "<group>"; };
-		DD65EF291C06D92100086240 /* CollectionListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListCell.h; sourceTree = "<group>"; };
-		DD65EF2A1C06D92100086240 /* CollectionListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListCell.m; sourceTree = "<group>"; };
-		DD65EF2F1C06D98900086240 /* GoodsListModer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListModer.h; sourceTree = "<group>"; };
-		DD65EF301C06D98900086240 /* GoodsListModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListModer.m; sourceTree = "<group>"; };
-		DD65EF381C0702A000086240 /* TimeLimt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimeLimt.png; sourceTree = "<group>"; };
 		DD7EB57E1B27D5F90005A97C /* WXTAPNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTAPNViewController.h; sourceTree = "<group>"; };
 		DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTAPNViewController.m; sourceTree = "<group>"; };
 		DD817A211ADE062500586634 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -2757,6 +2758,8 @@
 		DDDAE98C1ACAA8DE00CC3FE9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DDDAE9911ACAAA2100CC3FE9 /* libPushSDK-1.8.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.3.a"; sourceTree = "<group>"; };
 		DDDAE9931ACAAA3E00CC3FE9 /* APService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		DDDEE2671C0D940900947393 /* AboutStoreInfoVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutStoreInfoVc.h; sourceTree = "<group>"; };
+		DDDEE2681C0D940900947393 /* AboutStoreInfoVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutStoreInfoVc.m; sourceTree = "<group>"; };
 		DDEA9EB91B1BF2AD00530C1C /* WXTOrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTOrderConfirmViewController.h; sourceTree = "<group>"; };
 		DDEA9EBA1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTOrderConfirmViewController.m; sourceTree = "<group>"; };
 		DDEA9EBB1B1BF2AD00530C1C /* WXTPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTPayViewController.h; sourceTree = "<group>"; };
@@ -4964,6 +4967,8 @@
 				128766DC1B50B18E00A79320 /* Shop */,
 				12D0C8701AB685250039A197 /* AboutWxtInfoVC.h */,
 				12D0C8711AB685250039A197 /* AboutWxtInfoVC.m */,
+				DDDEE2671C0D940900947393 /* AboutStoreInfoVc.h */,
+				DDDEE2681C0D940900947393 /* AboutStoreInfoVc.m */,
 				12D0C8731AB6AA710039A197 /* WXTVersion */,
 				127329111B5CDDF4002AD4AE /* AboutVC.h */,
 				127329121B5CDDF4002AD4AE /* AboutVC.m */,
@@ -6096,7 +6101,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
-				DD65EF221C06D83500086240 /* MyShopCollection */,
+				DD1490071C0D496000D48663 /* MyShopCollection */,
 				DDFBC06D1BFA01D5003E71A2 /* TimeSnapUp */,
 				121E39B91BFAD8A20098173F /* WXShopUnion */,
 				12D96EC61BE844CC0043B219 /* CitySelect */,
@@ -7199,6 +7204,46 @@
 			path = SystemMessage;
 			sourceTree = "<group>";
 		};
+		DD1490071C0D496000D48663 /* MyShopCollection */ = {
+			isa = PBXGroup;
+			children = (
+				DD1490081C0D496000D48663 /* Controllers */,
+				DD14900B1C0D496000D48663 /* Moders */,
+				DD1490111C0D496000D48663 /* Views */,
+			);
+			path = MyShopCollection;
+			sourceTree = "<group>";
+		};
+		DD1490081C0D496000D48663 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD1490091C0D496000D48663 /* CollectionListVC.h */,
+				DD14900A1C0D496000D48663 /* CollectionListVC.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DD14900B1C0D496000D48663 /* Moders */ = {
+			isa = PBXGroup;
+			children = (
+				DD14900C1C0D496000D48663 /* GoodsListModer.h */,
+				DD14900D1C0D496000D48663 /* GoodsListModer.m */,
+				DD14900E1C0D496000D48663 /* MerchantID.h */,
+				DD14900F1C0D496000D48663 /* MerchantID.m */,
+				DD1490101C0D496000D48663 /* TimeLimt.png */,
+			);
+			path = Moders;
+			sourceTree = "<group>";
+		};
+		DD1490111C0D496000D48663 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD1490121C0D496000D48663 /* CollectionListCell.h */,
+				DD1490131C0D496000D48663 /* CollectionListCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DD1C64211BFADC2E00F962FC /* SearchTimeGoods */ = {
 			isa = PBXGroup;
 			children = (
@@ -7231,47 +7276,6 @@
 		DD1C64241BFADC2E00F962FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		DD65EF221C06D83500086240 /* MyShopCollection */ = {
-			isa = PBXGroup;
-			children = (
-				DD65EF231C06D83500086240 /* Controllers */,
-				DD65EF241C06D83500086240 /* Moders */,
-				DD65EF251C06D83500086240 /* Views */,
-			);
-			name = MyShopCollection;
-			path = TimeSnapUp/MyShopCollection;
-			sourceTree = "<group>";
-		};
-		DD65EF231C06D83500086240 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				DD65EF261C06D89E00086240 /* CollectionListVC.h */,
-				DD65EF271C06D89E00086240 /* CollectionListVC.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		DD65EF241C06D83500086240 /* Moders */ = {
-			isa = PBXGroup;
-			children = (
-				DD65EF381C0702A000086240 /* TimeLimt.png */,
-				DD65EF2F1C06D98900086240 /* GoodsListModer.h */,
-				DD65EF301C06D98900086240 /* GoodsListModer.m */,
-				DD15BB4A1C07EAF500EFCBAF /* MerchantID.h */,
-				DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */,
-			);
-			path = Moders;
-			sourceTree = "<group>";
-		};
-		DD65EF251C06D83500086240 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				DD65EF291C06D92100086240 /* CollectionListCell.h */,
-				DD65EF2A1C06D92100086240 /* CollectionListCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -7654,6 +7658,7 @@
 				12846A8A1B252D720021F9FE /* LoginUpBgImg@2x.png in Resources */,
 				12F3CC781B1DE82C00E64DE4 /* MyExtendImg@2x.png in Resources */,
 				128221DB1B184E84004613BB /* HomePageSearch@2x.png in Resources */,
+				DD1490171C0D496000D48663 /* TimeLimt.png in Resources */,
 				775842AF1AB95A300039B129 /* CustomMade.plist in Resources */,
 				120EB3DD1B7B563B0036A77C /* SharkBlackImg.png in Resources */,
 				124535421AE9D146004198C9 /* sign14@2x.png in Resources */,
@@ -7748,7 +7753,6 @@
 				1241E5501AE9D89B00811D3F /* 9S@2x.png in Resources */,
 				128221D91B184E84004613BB /* HomePageOrderList@2x.png in Resources */,
 				1245355C1AE9D146004198C9 /* sign7@2x.png in Resources */,
-				DD65EF391C0702A000086240 /* TimeLimt.png in Resources */,
 				DDB5C2311BFED226000925E8 /* beg_time.png in Resources */,
 				128BB7411B68A56C004FCE66 /* AddressNextImg@2x.png in Resources */,
 				12BD30F91B3E79D700170316 /* OrderWechatImg@2x.png in Resources */,
@@ -7961,6 +7965,7 @@
 				DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */,
 				1232C1DC1BECB80E0033DFA0 /* SearchCarriageMoney.m in Sources */,
 				1205952E1BCF994F009E6986 /* NLMainTableViewController.m in Sources */,
+				DD1490161C0D496000D48663 /* MerchantID.m in Sources */,
 				DDEA9EE01B1BFD5D00530C1C /* WXSysMsgUnreadV.m in Sources */,
 				1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */,
 				DDFBC07A1BFA0209003E71A2 /* UIViewAdditions.m in Sources */,
@@ -8084,6 +8089,7 @@
 				775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */,
 				12F963311B3D4BDF00FF6A3E /* SBJsonStreamParser.m in Sources */,
 				7758430E1AB95A300039B129 /* WXError.m in Sources */,
+				DD1490181C0D496000D48663 /* CollectionListCell.m in Sources */,
 				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
 				120EC77E1BB8F31800538637 /* bitstream.c in Sources */,
 				775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */,
@@ -8092,7 +8098,6 @@
 				775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */,
 				775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */,
 				12E471D71B1F270C00559995 /* WaitSendConsultCell.m in Sources */,
-				DD65EF2B1C06D92100086240 /* CollectionListCell.m in Sources */,
 				12B12E781C0841DA00F9BC5D /* UIView+MJExtension.m in Sources */,
 				129F32AF1B8326CC004DFFB1 /* LuckyGoodsMakeOrderModel.m in Sources */,
 				77DB93E81AAFE6F50021A816 /* ContactData.m in Sources */,
@@ -8119,7 +8124,6 @@
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
 				1205952F1BCF994F009E6986 /* NLMainViewController.m in Sources */,
 				12665ADC1BE9B2A400FAE406 /* CityAddress.m in Sources */,
-				DD65EF311C06D98900086240 /* GoodsListModer.m in Sources */,
 				DD0E38AE1B1BE5AC00AB4DB9 /* SysMsgItem.m in Sources */,
 				DDB58F491AD3C6A2006248E9 /* ContactBaseEntity.m in Sources */,
 				126CA40F1AB2DB1200E08A0B /* FetchPwdModel.m in Sources */,
@@ -8215,7 +8219,6 @@
 				775842D41AB95A300039B129 /* NSNotificationAdditions.m in Sources */,
 				120EC7931BB91D9200538637 /* ConfirmUserAliPayVC.m in Sources */,
 				775842FD1AB95A300039B129 /* WXImageClipOBJ.m in Sources */,
-				DD15BB4C1C07EAF500EFCBAF /* MerchantID.m in Sources */,
 				128766F41B50ED8400A79320 /* AboutShopModel.m in Sources */,
 				DDEA9ED91B1BF46900530C1C /* CartDetailCell.m in Sources */,
 				129F329D1B82D2DF004DFFB1 /* LuckySharkModel.m in Sources */,
@@ -8299,7 +8302,6 @@
 				12F963331B3D4BDF00FF6A3E /* SBJsonStreamParserAdapter.m in Sources */,
 				120B75511B1C36BE00B8746C /* PersonDatePickerVC.m in Sources */,
 				121804321ACB90C7009DB7E7 /* FindCommonVC.m in Sources */,
-				DD65EF281C06D89E00086240 /* CollectionListVC.m in Sources */,
 				77DB94381AAFF35F0021A816 /* ColorLabel.m in Sources */,
 				12F572321B42766D00128294 /* T_SettingSwitchCell.m in Sources */,
 				12D87DA71BD5008E00579FF6 /* ClassifyDownCell.m in Sources */,
@@ -8324,6 +8326,7 @@
 				12F5722F1B4274DB00128294 /* NewSystemSettingVC.m in Sources */,
 				12C12F191B818A8200345BEE /* LuckyGoodsOrderList.m in Sources */,
 				775843111AB95A300039B129 /* WXMutiScanViewCell.m in Sources */,
+				DD1490151C0D496000D48663 /* GoodsListModer.m in Sources */,
 				12F380281B3B9BAD00E9690C /* MakeOrderUseBonusCell.m in Sources */,
 				12B1F6901B788961009FBA6D /* RechargeTypeVC.m in Sources */,
 				1265FBD91BC2B39F007D354A /* base64.m in Sources */,
@@ -8459,6 +8462,7 @@
 				DD999F931B204C7B00086D1C /* UIButton+UIButtonImageWithLable.m in Sources */,
 				1282217A1B18467A004613BB /* BaseFunctionCell.m in Sources */,
 				128585021B3A9261005E240E /* MakeOrderVC.m in Sources */,
+				DDDEE2691C0D940900947393 /* AboutStoreInfoVc.m in Sources */,
 				128585181B3AAF5F005E240E /* MakeOrderUserInfoCell.m in Sources */,
 				12F5722A1B422A2A00128294 /* WechatPayObj.m in Sources */,
 				1203C1F91B3E2A9E00C402E3 /* OrderPayVC.m in Sources */,
@@ -8537,6 +8541,7 @@
 				1261F0181AE659AC00693710 /* HangupModel.m in Sources */,
 				12F4228F1B1D61F900643DD7 /* AddressManagerCell.m in Sources */,
 				DDFBC09C1BFA05D6003E71A2 /* HeardGoodsView.m in Sources */,
+				DD1490141C0D496000D48663 /* CollectionListVC.m in Sources */,
 				DDB58F511AD3C6A2006248E9 /* CallHistoryEntityExt.m in Sources */,
 				1262E2C61ACA50B600667C54 /* WXTFindModel.m in Sources */,
 				775843021AB95A300039B129 /* BaseSearchEntity.m in Sources */,
