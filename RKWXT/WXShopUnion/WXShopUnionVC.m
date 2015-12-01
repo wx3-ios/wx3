@@ -15,6 +15,7 @@
     WXShopUnionAreaView *_areaListView;
     BOOL showAreaview;
     WXUIButton *rightBtn;
+    WXTUITextField *_textField;
     
     UITableView *_tableView;
     
@@ -57,6 +58,25 @@
     [_areaListView unshow:NO];
     [self addSubview:_areaListView];
     [[LocalAreaModel shareLocalArea] loadLocalAreaData];
+}
+
+-(void)createTopSearchView{
+    CGFloat xOffset = 50;
+    CGFloat width = Size.width-xOffset-10-85;
+    CGFloat height = 27;
+    _textField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, 66-height-10, width, height)];
+    [_textField setEnabled:NO];
+    [_textField setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    [_textField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
+    [_textField addTarget:self action:@selector(textfiledStartInput) forControlEvents:UIControlEventEditingChanged];
+    [_textField setTextColor:WXColorWithInteger(0xda7c7b)];
+    [_textField setTintColor:WXColorWithInteger(0xdd2726)];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ClassifySearchImg.png"]];
+    [_textField setLeftView:imgView leftGap:10 rightGap:0];
+    [_textField setLeftViewMode:UITextFieldViewModeUnlessEditing];
+    [_textField setPlaceholder:@"搜索商家或商品"];
+    [_textField setFont:WXFont(12.0)];
+    [self.view addSubview:_textField];
 }
 
 //集成刷新控件
@@ -449,6 +469,15 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [_textField.inputView setHidden:YES];
+}
+
+-(void)textfiledStartInput{
+    
 }
 
 -(void)removeOBS{

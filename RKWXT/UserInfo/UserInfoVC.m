@@ -359,7 +359,7 @@
         {
             [cell setDefaultAccessoryView:WXT_CellDefaultAccessoryType_HasNext];
             [cell.imageView setImage:[UIImage imageNamed:@"SharkImg.png"]];
-            [cell.textLabel setText:@"奖品订单"];
+            [cell.textLabel setText:@"  奖品订单"];
             [cell.textLabel setFont:WXFont(15.0)];
             [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
         }

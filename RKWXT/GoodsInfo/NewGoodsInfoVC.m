@@ -269,6 +269,11 @@
         [buyNowBtn setBackgroundColor:[UIColor grayColor]];
         [buyNowBtn setTitle:@"抢购结束" forState:UIControlStateNormal];
     }
+    if([limitEntity.begin_time integerValue] > [UtilTool timeChange]){
+        [buyNowBtn setEnabled:NO];
+        [buyNowBtn setBackgroundColor:[UIColor grayColor]];
+        [buyNowBtn setTitle:@"活动未开始" forState:UIControlStateNormal];
+    }
     
     CGRect rect = CGRectMake(0, self.view.bounds.size.height-DownViewHeight, self.bounds.size.width, DownViewHeight);
     [footView setFrame:rect];
