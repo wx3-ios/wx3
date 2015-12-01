@@ -57,7 +57,7 @@
         UIImage *image = [UIImage imageNamed:@"unreadBg.png"];
         CGSize imgSize = image.size;
         _unreadNumberImgV = [[WXUIImageView alloc] initWithImage:image];
-        CGRect unreadViewRect = CGRectMake(-imgSize.width*0.3 + (frame.size.width-btnSize.width)/2.0, (frame.size.height-btnSize.height)/2.0-imgSize.height*0.3, imgSize.width, imgSize.height);
+        CGRect unreadViewRect = CGRectMake(-imgSize.width*0.3 + (frame.size.width-btnSize.width)/2.0-5, (frame.size.height-btnSize.height)/2.0-imgSize.height*0.3-10, imgSize.width, imgSize.height);
         [_unreadNumberImgV setFrame:unreadViewRect];
         [leftBtn addSubview:_unreadNumberImgV];
         
@@ -71,6 +71,7 @@
 }
 
 - (void)setUnreadNumber:(NSInteger)number{
+    number = 1;
     [_unreadNumberImgV setHidden:number <= 0];
     if(number > 0){
         NSString *text = [NSString stringWithFormat:@"%d",(int)number];
