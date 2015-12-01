@@ -9,6 +9,7 @@
 #import "ToDaySnapUPCell.h"
 #import "TimeShopData.h"
 #import "ToSnapUp.h"
+#import "NSDate+Time.h"
 
 #define buyingBtnW (100)
 
@@ -168,39 +169,53 @@
 -(void)setData:(TimeShopData *)data{
     _data = data;
     
+    [self setContent:data];
+ 
     
+    [self setCountFrame];
+   
+}
+
+//计算内容
+- (void)setContent:(TimeShopData*)data{
     [self.iconimage setButtonEnable:NO];
     [self.iconimage setCpxViewInfo:data.add_goods_home_img];
     [self.iconimage load];
-     self.nameLable.text = data.goods_name;
+    self.nameLable.text = data.goods_name;
     self.orgin_price.text = [NSString stringWithFormat:@"￥%@",data.goods_price];
     self.buying_price.text = [NSString stringWithFormat:@"￥%@",data.scare_buying_price];
     
     if ([data.user_scare_buying_number isEqualToString:@"0"]) {
-       NSString *str1 = @"不限";
-       NSString *str = [NSString stringWithFormat:@"限购数量:%@",str1];
-      
+        NSString *str1 = @"不限";
+        NSString *str = [NSString stringWithFormat:@"限购数量:%@",str1];
+        
         self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:str1 fontColor:[UIColor colorWithHexString:@"#dd2726"]];
         
     }else{
         
         NSString *str = [NSString stringWithFormat:@"限购数量:%@",data.user_scare_buying_number];
         self.buyingNumber.attributedText = [NSString changeFontAddColor:str sonStr:data.user_scare_buying_number fontColor:[UIColor colorWithHexString:@"#dd2726"]];
-
+        
     }
     
-  
+    
     //即将开始
     NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
     NSDateFormatter *matter = [[NSDateFormatter alloc]init];
     [matter setDateFormat:@"dd:HH:mm"];
-    NSString *str = [matter stringFromDate:beg_date];
+    NSString *str = nil;
+    if ([NSDate timeJetLagWithEndTime:beg_date]) {
+        str = [matter stringFromDate:beg_date];
+    }else{
+        [matter setDateFormat:@"MM - dd"];
+        str = [matter stringFromDate:beg_date];
+        
+    }
     
     UIImage *image = [UIImage imageNamed:@"beg_time"];
     self.beg_image.image = image;
-    self.beg_time.text = str;
     self.beg_open.text = @" 即将开抢";
-    
+    self.beg_time.text = str;
     //开始
     self.timeDown.text = data.time_countdown;
     
@@ -218,13 +233,12 @@
         self.buyingBtn.backgroundColor = [UIColor redColor];
         self.buyingBtn.enabled = NO;
     }else{
-         self.buyingBtn.backgroundColor = [UIColor grayColor];
-         self.buyingBtn.enabled = YES;
+        self.buyingBtn.backgroundColor = [UIColor grayColor];
+        self.buyingBtn.enabled = YES;
     }
-    
-    [self setCountFrame];
-   
 }
+
+
 
 
 

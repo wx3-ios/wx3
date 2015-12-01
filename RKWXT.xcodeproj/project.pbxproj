@@ -925,6 +925,7 @@
 		DD0E38BD1B1BE5AC00AB4DB9 /* SysMsgTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A51B1BE5AC00AB4DB9 /* SysMsgTimeCell.m */; };
 		DD0E38BE1B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38A71B1BE5AC00AB4DB9 /* SysMsgToDetailTipView.m */; };
 		DD0E38BF1B1BE5AC00AB4DB9 /* SysMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */; };
+		DD1490061C0D2E3B00D48663 /* NSDate+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1490051C0D2E3B00D48663 /* NSDate+Time.m */; };
 		DD15BB4C1C07EAF500EFCBAF /* MerchantID.m in Sources */ = {isa = PBXBuildFile; fileRef = DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */; };
 		DD15BB4E1C0850D700EFCBAF /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = DD15BB4D1C0850D700EFCBAF /* end.png */; };
 		DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */; };
@@ -2677,6 +2678,8 @@
 		DD0E38A81B1BE5AC00AB4DB9 /* SysMsgUIDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgUIDef.h; sourceTree = "<group>"; };
 		DD0E38A91B1BE5AC00AB4DB9 /* SysMsgVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgVC.h; sourceTree = "<group>"; };
 		DD0E38AA1B1BE5AC00AB4DB9 /* SysMsgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgVC.m; sourceTree = "<group>"; };
+		DD1490041C0D2E3B00D48663 /* NSDate+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Time.h"; sourceTree = "<group>"; };
+		DD1490051C0D2E3B00D48663 /* NSDate+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Time.m"; sourceTree = "<group>"; };
 		DD15BB4A1C07EAF500EFCBAF /* MerchantID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantID.h; sourceTree = "<group>"; };
 		DD15BB4B1C07EAF500EFCBAF /* MerchantID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantID.m; sourceTree = "<group>"; };
 		DD15BB4D1C0850D700EFCBAF /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
@@ -7479,6 +7482,8 @@
 				DDFBC0791BFA0209003E71A2 /* NSString+XBCategory.m */,
 				DD1C63E21BFAC41800F962FC /* UIColor+XBCategory.h */,
 				DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */,
+				DD1490041C0D2E3B00D48663 /* NSDate+Time.h */,
+				DD1490051C0D2E3B00D48663 /* NSDate+Time.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -8022,6 +8027,7 @@
 				120B5D971B86D9D9009564F5 /* NewGoodsInfoTopImgCell.m in Sources */,
 				12F915FC1B19507600C94717 /* T_MenuCommonInfoCell.m in Sources */,
 				775843161AB95A300039B129 /* WXUIBaseButton.m in Sources */,
+				DD1490061C0D2E3B00D48663 /* NSDate+Time.m in Sources */,
 				12F9632F1B3D4BDF00FF6A3E /* NSObject+SBJson.m in Sources */,
 				129EEBBE1B97E3AF0062349E /* SDWebImagePrefetcher.m in Sources */,
 				12BD31021B3E9E1600170316 /* UserBonusEntity.m in Sources */,

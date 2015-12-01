@@ -91,7 +91,7 @@
         self.price.text = [NSString stringWithFormat:@"￥%@",info.scare_buying_price]; 
     }
     
-    if (info.scare_buying_price.length == 0 || info.goods_price.length == 0) {
+    if (chartID.goods_id == nil || [chartID.goods_id isEqualToString:@"0"]) {
         self.price.text = @"￥0.0";
     }
     
