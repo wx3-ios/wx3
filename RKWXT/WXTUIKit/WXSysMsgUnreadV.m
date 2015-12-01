@@ -71,7 +71,6 @@
 }
 
 - (void)setUnreadNumber:(NSInteger)number{
-    number = 1;
     [_unreadNumberImgV setHidden:number <= 0];
     if(number > 0){
         NSString *text = [NSString stringWithFormat:@"%d",(int)number];
