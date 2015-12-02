@@ -202,15 +202,17 @@
     //即将开始
     NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
     NSDateFormatter *matter = [[NSDateFormatter alloc]init];
-    [matter setDateFormat:@"dd:HH:mm"];
+    [matter setDateFormat:@"HH:mm:ss"];
     NSString *str = nil;
-    if ([NSDate timeJetLagWithEndTime:beg_date]) {
+    if ([NSDate isCurrentDay:beg_date]) {
         str = [matter stringFromDate:beg_date];
     }else{
         [matter setDateFormat:@"MM - dd"];
         str = [matter stringFromDate:beg_date];
         
     }
+  
+    
     
     UIImage *image = [UIImage imageNamed:@"beg_time"];
     self.beg_image.image = image;

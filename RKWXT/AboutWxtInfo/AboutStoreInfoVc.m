@@ -15,6 +15,9 @@
 #import "WXTVersion.h"
 #import "VersionModel.h"
 #import "VersionEntity.h"
+#import "WXTURLFeedOBJ+Data.h"
+#import "WXTURLFeedOBJ+NewData.h"
+#import "WXTURLFeedOBJ.h"
 
 #define Size self.bounds.size
 #define EveryCellHeight (36)
@@ -27,6 +30,12 @@ enum{
     WXT_About_Invalid,
 };
 
+enum{
+    WXT_About_Store_Qq  = 0,
+    WXT_About_Store_Phone,
+    WXT_About_Store,
+};
+
 @interface AboutStoreInfoVc()<UIScrollViewDelegate,UIGestureRecognizerDelegate,CheckVersionDelegate>{
     UIScrollView *_scrollerView;
     NSArray *baseStoreName;
@@ -35,17 +44,25 @@ enum{
     VersionEntity *entity;
     BOOL copy;
 }
+@property (nonatomic,strong)NSArray *storyArr;
 @end
 
 @implementation AboutStoreInfoVc
+
+- (NSArray*)storyArr{
+    if (!_storyArr) {
+        _storyArr = [NSArray array];
+    }
+    return _storyArr;
+}
 
 -(id)init{
     self = [super init];
     if(self){
         _model = [[VersionModel alloc] init];
         [_model setDelegate:self];
-         baseNameArr = @[@"技术电话: 4007889388",@"官方QQ: 2898621164",@"官方网站: www.67call.com"];
-         baseStoreName = @[@"QQ: 4007889388",@"商家热线: 2898621164",@"公司网址: www.67call.com"];
+         baseNameArr = @[@"招商电话: 400-788-9388",@"技术QQ: 2898621164",@"官方: www.67call.com"];
+         baseStoreName = @[@"客服QQ:",@"客服电话:"];
     }
     return self;
 }
@@ -74,12 +91,38 @@ enum{
     [self showBaseInfo];
     [self createDownView];
     
-    copy = NO;
+      copy = NO;
+    
+    [self setRequestNetWork];
 }
 
 
+- (void)setRequestNetWork{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"sid"] = [NSNumber numberWithInt:kMerchantID];
 
+    [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_Store_Center httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
+        
+        if (retData.code != 0) {
+            [self setRequestFaliure:retData.errorDesc];
+            
+        }else{
+            [self setRequestData:retData.data];
+        }
+    }];
+    
+    
+}
 
+- (void)setRequestFaliure:(NSString*)error{
+    
+    
+}
+
+- (void)setRequestData:(NSDictionary*)data{
+    NSDictionary *dict = data[@"data"];
+    self.storyArr  = @[dict[@"seller_name"],dict[@"cus_ser_qq"],dict[@"cus_ser_phone"]];
+}
 
 -(void)createBaseView{
     CGFloat yOffset = 29;
@@ -95,7 +138,7 @@ enum{
     UILabel *textlabel = [[UILabel alloc] init];
     textlabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight);
     [textlabel setBackgroundColor:[UIColor clearColor]];
-    [textlabel setText:@"我信云科技有限公司"];
+    //[textlabel setText:self.storyArr[0]];
     [textlabel setFont:WXTFont(16.0)];
     [textlabel setTextColor:WXColorWithInteger(0x7c7c7c)];
     [textlabel setTextAlignment:NSTextAlignmentCenter];
@@ -134,9 +177,9 @@ enum{
 
 - (void)createBaseStoewInfo{
     CGFloat xOffset = 0;
-    CGFloat yOffset = 190;
+    CGFloat yOffset = 220;
     UIView *baseView = [[UIView alloc] init];
-    baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_About_Invalid);
+    baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_About_Store);
     [baseView setBackgroundColor:[UIColor whiteColor]];
     baseView.userInteractionEnabled = YES;
     
@@ -146,19 +189,19 @@ enum{
     CGFloat nameLabelWidth = (self.view.width - 2 * 30);
     CGFloat namelabelHeight = 28;
     
-    for(int i = 0; i < WXT_About_Invalid; i++){
+    for(int i = 0; i < WXT_About_Store; i++){
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(30, yOffset, nameLabelWidth, namelabelHeight)];
         button.tag  = i;
         button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button setTitle:baseStoreName[i] forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%@",baseStoreName[i]] forState:UIControlStateNormal];
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         [button setTitleColor:[UIColor colorWithHexString:@"0X8a8a8a"] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(btnClickedStore:) forControlEvents:UIControlEventTouchUpInside];
         [baseView addSubview:button];
         
-        if(i == WXT_About_Qq){
-            UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(copy:)];
+        if(i == WXT_About_Store_Qq){
+            UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(copyStore:)];
             [longPressGesture setDelegate:self];
             longPressGesture.minimumPressDuration = 0.5;//默认0.5秒
             [button addGestureRecognizer:longPressGesture];
@@ -176,10 +219,10 @@ enum{
 
 -(void)showBaseInfo{
     CGFloat xOffset = 0;
-    CGFloat yOffset = 320;
+    CGFloat yOffset = 300;
     UIView *baseView = [[UIView alloc] init];
     baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_About_Invalid);
-    [baseView setBackgroundColor:[UIColor yellowColor]];
+    [baseView setBackgroundColor:[UIColor whiteColor]];
     
     xOffset = 8;
     yOffset = 8;
@@ -203,24 +246,7 @@ enum{
             longPressGesture.minimumPressDuration = 0.5;//默认0.5秒
             [button addGestureRecognizer:longPressGesture];
         }
-
         
-        
-//        WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-//        btn.frame = CGRectMake(0, yOffset, nameLabelWidth, namelabelHeight);
-//        btn.tag = i;
-//        [btn.titleLabel setFont:WXFont(14.0)];
-//        [btn setBackgroundColor:[UIColor clearColor]];
-//        [btn setTitle:baseNameArr[i] forState:UIControlStateNormal];
-//        [btn setTitleColor:WXColorWithInteger(0x8a8a8a) forState:UIControlStateNormal];
-//        [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
-//        [baseView addSubview:btn];
-//        if(i == WXT_About_Qq){
-//            UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(copy:)];
-//            [longPressGesture setDelegate:self];
-//            longPressGesture.minimumPressDuration = 0.5;//默认0.5秒
-//            [btn addGestureRecognizer:longPressGesture];
-//        }
         yOffset += namelabelHeight+10;
         
         UILabel *line = [[UILabel alloc] init];
@@ -287,6 +313,49 @@ enum{
     }
     [UtilTool showAlertView:errorMsg];
 }
+
+
+#pragma mark ---- 商家
+-(void)btnClickedStore:(id)sender{
+    UIButton *btn = (UIButton*)sender;
+    switch (btn.tag) {
+        case WXT_About_Qq:
+            [UtilTool showAlertView:@"长按复制qq号码"];
+            break;
+        case WXT_About_Phone:
+        {
+            UIButton *button = (UIButton*)sender;
+            NSString *phoneStr = button.titleLabel.text;
+            CallBackVC *backVC = [[CallBackVC alloc] init];
+            backVC.phoneName = phoneStr;
+            if([backVC callPhone:phoneStr]){
+                [self presentViewController:backVC animated:YES completion:^{
+                }];
+            }
+        }
+            break;
+        case WXT_About_Web:
+        {
+            NSString *wbUrl = @"www.67call.com";
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",wbUrl]]];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)copyStore:(UIButton*)button{
+    if(copy){
+        return;
+    }
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    NSString *text = button.titleLabel.text;
+    [pasteboard setString:text];
+    [UtilTool showTipView:@"复制完成"];
+    copy = YES;
+}
+
 
 #pragma mark other
 -(void)btnClicked:(id)sender{

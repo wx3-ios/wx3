@@ -9,6 +9,7 @@
 #import "NSDate+Time.h"
 
 @implementation NSDate (Time)
+//判断现在和未来时间差是否小于24
 + (BOOL)timeJetLagWithEndTime:(NSDate*)endTime{
     NSDate *nowDate = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -16,11 +17,32 @@
     
     NSDateComponents *com = [calendar components:unit fromDate:nowDate toDate:endTime options:0];
     
-    if (com.year == 0 && com.month == 0 && com.day ==0) {
+    
+    
+    if (com.year == 0 && com.month == 0 && com.day == 0 ) {
+        
+        return YES;
+        
+    }
+    
+    return NO;
+}
+
+//判断是不是同一天
++ (BOOL)isCurrentDay:(NSDate *)aDate
+{
+    if (aDate==nil) return NO;
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+    NSDate *today = [cal dateFromComponents:components];
+    components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:aDate];
+    NSDate *otherDate = [cal dateFromComponents:components];
+    if([today isEqualToDate:otherDate]){
         return YES;
     }
     
-    return (com.year == 0 && com.month == 0 && com.day ==0);
+    return NO;
 }
 
 + (NSDateComponents*)compareTime:(NSDate*)compareDate{

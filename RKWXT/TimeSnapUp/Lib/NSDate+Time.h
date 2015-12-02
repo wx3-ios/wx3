@@ -10,5 +10,6 @@
 
 @interface NSDate (Time)
 + (BOOL)timeJetLagWithEndTime:(NSDate*)endTime;
++ (BOOL)isCurrentDay:(NSDate *)aDate;
 + (NSDateComponents*)compareTime:(NSDate*)compareDate;
 @end

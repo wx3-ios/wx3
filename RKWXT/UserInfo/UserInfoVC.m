@@ -619,8 +619,8 @@
             }
             if(row == System_About){
 #warning 调到商家控制器
-                AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
-                //AboutStoreInfoVc *aboutVC = [[AboutStoreInfoVc alloc]init];
+               // AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
+                AboutStoreInfoVc *aboutVC = [[AboutStoreInfoVc alloc]init];
                 [self.wxNavigationController pushViewController:aboutVC];
             }
         }

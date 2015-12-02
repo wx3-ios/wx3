@@ -243,6 +243,10 @@
         case WXT_UrlFeed_Type_New_PayAttention:
             url = @"/user_store_goods.php";
             break;
+        case WXT_UrlFeed_Type_Store_Center:
+            url = @"/get_seller_info.php";
+            break;
+            
         default:
             break;
     }

@@ -28,7 +28,9 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]init];
+        CGFloat imageW = self.width;
+        CGFloat imageH = imageW;
+        WXRemotionImgBtn *iconimage = [[WXRemotionImgBtn alloc]initWithFrame:CGRectMake(0, 0, imageW, imageH)];
         [self addSubview:iconimage];
         self.iconimage = iconimage;
         
@@ -130,12 +132,13 @@
     
     
     
+   
     //即将开始
     NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
     NSDateFormatter *matter = [[NSDateFormatter alloc]init];
-    [matter setDateFormat:@"dd:HH:mm"];
+    [matter setDateFormat:@"HH:mm:ss"];
     NSString *str = nil;
-    if ([NSDate timeJetLagWithEndTime:beg_date]) {
+    if ([NSDate isCurrentDay:beg_date]) {
         str = [matter stringFromDate:beg_date];
     }else{
         [matter setDateFormat:@"MM - dd"];
