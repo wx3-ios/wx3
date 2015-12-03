@@ -10,8 +10,11 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 @interface NSString (XBCategory)
+// 限宽
 + (CGSize)sizeWithString:(NSString*)string font:(UIFont*)font maxW:(CGFloat)maxW;
+// 不限宽高
 + (CGSize)sizeWithString:(NSString*)string font:(UIFont*)font;
+// 限高
 + (CGSize)sizeWithString:(NSString*)string font:(UIFont*)font maxH:(CGFloat)maxH;
 //一个字符串指定其中字符颜色和大小  返回带有属性的字体
 + (NSMutableAttributedString*)changeFontAddColor:(NSString*)rootStr  sonStr:(NSString*)sonStr fontColor:(UIColor*)fontColor ;

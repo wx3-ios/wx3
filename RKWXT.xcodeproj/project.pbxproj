@@ -935,6 +935,10 @@
 		DD1C63E41BFAC41800F962FC /* UIColor+XBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C63E31BFAC41800F962FC /* UIColor+XBCategory.m */; };
 		DD1C64271BFADC5100F962FC /* SearchTimeGoodsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */; };
 		DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C649D1BFB28A700F962FC /* TimeShopModer.m */; };
+		DD3356D21C1014A200F12395 /* StoreList.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD3356D11C1014A200F12395 /* StoreList.plist */; };
+		DD3356D51C101DF000F12395 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3356D41C101DF000F12395 /* PhotoView.m */; };
+		DD3356D81C1020E300F12395 /* StoreListData.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3356D71C1020E300F12395 /* StoreListData.m */; };
+		DD3357221C10525E00F12395 /* StoreListModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3357211C10525E00F12395 /* StoreListModer.m */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
 		DD988A5D1B1D408500B3790B /* EScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD988A5C1B1D408500B3790B /* EScrollerView.m */; };
@@ -979,6 +983,16 @@
 		DDEA9EE41B1BFE5D00530C1C /* unreadBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDEA9EE21B1BFE5D00530C1C /* unreadBg@2x.png */; };
 		DDEA9F0D1B1C2F2E00530C1C /* GoodsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9F0C1B1C2F2E00530C1C /* GoodsDetailCell.m */; };
 		DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9F101B1C3A1800530C1C /* StrechyParallaxScrollView.m */; };
+		DDFA97471C0FCCCD00B83653 /* StoreDetailsInfoVc.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFA97461C0FCCCD00B83653 /* StoreDetailsInfoVc.m */; };
+		DDFA97501C0FCEC100B83653 /* discountBack.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA97491C0FCEC100B83653 /* discountBack.png */; };
+		DDFA97511C0FCEC100B83653 /* discount.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA974A1C0FCEC100B83653 /* discount.png */; };
+		DDFA97521C0FCEC100B83653 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA974B1C0FCEC100B83653 /* divider.png */; };
+		DDFA97531C0FCEC100B83653 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA974C1C0FCEC100B83653 /* phone.png */; };
+		DDFA97541C0FCEC100B83653 /* store.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA974D1C0FCEC100B83653 /* store.png */; };
+		DDFA97551C0FCEC100B83653 /* storelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA974E1C0FCEC100B83653 /* storelogo.png */; };
+		DDFA97561C0FCEC100B83653 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA974F1C0FCEC100B83653 /* bg.png */; };
+		DDFA97591C0FCFEC00B83653 /* StoreHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFA97581C0FCFEC00B83653 /* StoreHeardView.m */; };
+		DDFA975C1C0FD32800B83653 /* StoreListInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFA975B1C0FD32800B83653 /* StoreListInfoCell.m */; };
 		DDFB1FB41C03315800C1CEFE /* ToSnapUpTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB1FB31C03315800C1CEFE /* ToSnapUpTopCell.m */; };
 		DDFB25301BFDCD0F002E73EC /* 003.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB252F1BFDCD0F002E73EC /* 003.png */; };
 		DDFB257D1BFDE142002E73EC /* TimeShopData.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB257C1BFDE142002E73EC /* TimeShopData.m */; };
@@ -2697,6 +2711,13 @@
 		DD1C64261BFADC5100F962FC /* SearchTimeGoodsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTimeGoodsController.m; sourceTree = "<group>"; };
 		DD1C649C1BFB28A700F962FC /* TimeShopModer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeShopModer.h; sourceTree = "<group>"; };
 		DD1C649D1BFB28A700F962FC /* TimeShopModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeShopModer.m; sourceTree = "<group>"; };
+		DD3356D11C1014A200F12395 /* StoreList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StoreList.plist; sourceTree = "<group>"; };
+		DD3356D31C101DF000F12395 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		DD3356D41C101DF000F12395 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
+		DD3356D61C1020E300F12395 /* StoreListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListData.h; sourceTree = "<group>"; };
+		DD3356D71C1020E300F12395 /* StoreListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListData.m; sourceTree = "<group>"; };
+		DD3357201C10525E00F12395 /* StoreListModer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListModer.h; sourceTree = "<group>"; };
+		DD3357211C10525E00F12395 /* StoreListModer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListModer.m; sourceTree = "<group>"; };
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD65EF201C06BC2D00086240 /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Debug-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD7EB57E1B27D5F90005A97C /* WXTAPNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTAPNViewController.h; sourceTree = "<group>"; };
@@ -2778,6 +2799,19 @@
 		DDEA9F0C1B1C2F2E00530C1C /* GoodsDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailCell.m; sourceTree = "<group>"; };
 		DDEA9F0F1B1C3A1800530C1C /* StrechyParallaxScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrechyParallaxScrollView.h; sourceTree = "<group>"; };
 		DDEA9F101B1C3A1800530C1C /* StrechyParallaxScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrechyParallaxScrollView.m; sourceTree = "<group>"; };
+		DDFA97451C0FCCCD00B83653 /* StoreDetailsInfoVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailsInfoVc.h; sourceTree = "<group>"; };
+		DDFA97461C0FCCCD00B83653 /* StoreDetailsInfoVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailsInfoVc.m; sourceTree = "<group>"; };
+		DDFA97491C0FCEC100B83653 /* discountBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discountBack.png; sourceTree = "<group>"; };
+		DDFA974A1C0FCEC100B83653 /* discount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discount.png; sourceTree = "<group>"; };
+		DDFA974B1C0FCEC100B83653 /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
+		DDFA974C1C0FCEC100B83653 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		DDFA974D1C0FCEC100B83653 /* store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store.png; sourceTree = "<group>"; };
+		DDFA974E1C0FCEC100B83653 /* storelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storelogo.png; sourceTree = "<group>"; };
+		DDFA974F1C0FCEC100B83653 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		DDFA97571C0FCFEC00B83653 /* StoreHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreHeardView.h; sourceTree = "<group>"; };
+		DDFA97581C0FCFEC00B83653 /* StoreHeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreHeardView.m; sourceTree = "<group>"; };
+		DDFA975A1C0FD32800B83653 /* StoreListInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListInfoCell.h; sourceTree = "<group>"; };
+		DDFA975B1C0FD32800B83653 /* StoreListInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListInfoCell.m; sourceTree = "<group>"; };
 		DDFB1FB21C03315800C1CEFE /* ToSnapUpTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToSnapUpTopCell.h; sourceTree = "<group>"; };
 		DDFB1FB31C03315800C1CEFE /* ToSnapUpTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToSnapUpTopCell.m; sourceTree = "<group>"; };
 		DDFB252F1BFDCD0F002E73EC /* 003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 003.png; sourceTree = "<group>"; };
@@ -6101,6 +6135,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				DDFA97411C0FCB8000B83653 /* StoreDetailsInfo */,
 				DD1490071C0D496000D48663 /* MyShopCollection */,
 				DDFBC06D1BFA01D5003E71A2 /* TimeSnapUp */,
 				121E39B91BFAD8A20098173F /* WXShopUnion */,
@@ -7455,6 +7490,65 @@
 			path = StrechyParallaxScrollView;
 			sourceTree = "<group>";
 		};
+		DDFA97411C0FCB8000B83653 /* StoreDetailsInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DDFA97421C0FCB8000B83653 /* Controllers */,
+				DDFA97431C0FCB8000B83653 /* Moders */,
+				DDFA97441C0FCB8000B83653 /* Views */,
+			);
+			path = StoreDetailsInfo;
+			sourceTree = "<group>";
+		};
+		DDFA97421C0FCB8000B83653 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDFA97451C0FCCCD00B83653 /* StoreDetailsInfoVc.h */,
+				DDFA97461C0FCCCD00B83653 /* StoreDetailsInfoVc.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DDFA97431C0FCB8000B83653 /* Moders */ = {
+			isa = PBXGroup;
+			children = (
+				DDFA97481C0FCE8600B83653 /* Resouse */,
+				DD3356D11C1014A200F12395 /* StoreList.plist */,
+				DD3356D61C1020E300F12395 /* StoreListData.h */,
+				DD3356D71C1020E300F12395 /* StoreListData.m */,
+				DD3357201C10525E00F12395 /* StoreListModer.h */,
+				DD3357211C10525E00F12395 /* StoreListModer.m */,
+			);
+			path = Moders;
+			sourceTree = "<group>";
+		};
+		DDFA97441C0FCB8000B83653 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDFA97571C0FCFEC00B83653 /* StoreHeardView.h */,
+				DDFA97581C0FCFEC00B83653 /* StoreHeardView.m */,
+				DDFA975A1C0FD32800B83653 /* StoreListInfoCell.h */,
+				DDFA975B1C0FD32800B83653 /* StoreListInfoCell.m */,
+				DD3356D31C101DF000F12395 /* PhotoView.h */,
+				DD3356D41C101DF000F12395 /* PhotoView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDFA97481C0FCE8600B83653 /* Resouse */ = {
+			isa = PBXGroup;
+			children = (
+				DDFA97491C0FCEC100B83653 /* discountBack.png */,
+				DDFA974A1C0FCEC100B83653 /* discount.png */,
+				DDFA974B1C0FCEC100B83653 /* divider.png */,
+				DDFA974C1C0FCEC100B83653 /* phone.png */,
+				DDFA974D1C0FCEC100B83653 /* store.png */,
+				DDFA974E1C0FCEC100B83653 /* storelogo.png */,
+				DDFA974F1C0FCEC100B83653 /* bg.png */,
+			);
+			path = Resouse;
+			sourceTree = "<group>";
+		};
 		DDFBC06D1BFA01D5003E71A2 /* TimeSnapUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -7590,6 +7684,7 @@
 				120B5D991B871991009564F5 /* GoodsInfoGaryBackImg@2x.png in Resources */,
 				1241E53B1AE9D89B00811D3F /* *N.png in Resources */,
 				1229F62A1BE1C40500258B43 /* GoodsListDownImg@2x.png in Resources */,
+				DDFA97521C0FCEC100B83653 /* divider.png in Resources */,
 				12F465E21B6F0DE200A8F5AF /* guideIllustrate_0@2x.jpg in Resources */,
 				1241E5381AE9D89B00811D3F /* HangupCall@2x.png in Resources */,
 				124535571AE9D146004198C9 /* sign34@2x.png in Resources */,
@@ -7644,6 +7739,7 @@
 				128E29631BD6248200137688 /* ClassifySearchBtnImg@2x.png in Resources */,
 				1245355F1AE9D146004198C9 /* SignNow@2x.png in Resources */,
 				12D52BBF1AC2EF4400C5CE71 /* dtmf-9.aif in Resources */,
+				DDFA97501C0FCEC100B83653 /* discountBack.png in Resources */,
 				124535591AE9D146004198C9 /* sign4@2x.png in Resources */,
 				124535531AE9D146004198C9 /* sign30@2x.png in Resources */,
 				12CCD7ED1AC0184400A5BDF0 /* defaultContactIcon@2x.png in Resources */,
@@ -7705,6 +7801,7 @@
 				120EC7901BB9194600538637 /* UserWithdrawals@2x.png in Resources */,
 				1241E5351AE9D89B00811D3F /* CallBackIconImgSel@2x.png in Resources */,
 				1245354E1AE9D146004198C9 /* sign26@2x.png in Resources */,
+				DDFA97551C0FCEC100B83653 /* storelogo.png in Resources */,
 				1241E5411AE9D89B00811D3F /* 2N@2x.png in Resources */,
 				12C12F411B81DD2200345BEE /* SharkBigImg@2x.png in Resources */,
 				1272490F1B2574C9001BDC15 /* RegistUserPwdImg@2x.png in Resources */,
@@ -7715,6 +7812,7 @@
 				775842E91AB95A300039B129 /* ZoneCode in Resources */,
 				12D52BBD1AC2EF4400C5CE71 /* dtmf-7.aif in Resources */,
 				128083E01B622A6D00260B9F /* ShareQqImg@2x.png in Resources */,
+				DDFA97561C0FCEC100B83653 /* bg.png in Resources */,
 				DD15BB4E1C0850D700EFCBAF /* end.png in Resources */,
 				1245355A1AE9D146004198C9 /* sign5@2x.png in Resources */,
 				1241E5341AE9D89B00811D3F /* CallBackIconImgNor@2x.png in Resources */,
@@ -7736,6 +7834,7 @@
 				1245353B1AE9D146004198C9 /* signBg.jpg in Resources */,
 				1265FBD31BC2B39F007D354A /* AlipaySDK.bundle in Resources */,
 				775C58401ABA5F31005B6B40 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				DD3356D21C1014A200F12395 /* StoreList.plist in Resources */,
 				121EBCD91BDE320800D1F307 /* ClassifySearchImg@2x.png in Resources */,
 				128083E21B622A6D00260B9F /* ShareWxCircleImg@2x.png in Resources */,
 				786155E31AC8E0CE0048B604 /* place.dat in Resources */,
@@ -7766,6 +7865,7 @@
 				12D52BBB1AC2EF4400C5CE71 /* dtmf-5.aif in Resources */,
 				1241E54F1AE9D89B00811D3F /* 9N@2x.png in Resources */,
 				124535561AE9D146004198C9 /* sign33@2x.png in Resources */,
+				DDFA97541C0FCEC100B83653 /* store.png in Resources */,
 				120EB3D91B7B563B0036A77C /* Shake_01@2x.png in Resources */,
 				12C64D851BF446850039CC39 /* SharkCloseBtnImg@2x.png in Resources */,
 				121EBCD21BDDCB2700D1F307 /* GoodsInfoRedImg@2x.png in Resources */,
@@ -7783,6 +7883,7 @@
 				1241E5511AE9D89B00811D3F /* delNumber@2x.png in Resources */,
 				12C12F451B81DFB500345BEE /* SharkBigImg.png in Resources */,
 				12F46A3F1B20012000B8EC98 /* T_GoodsInfoShare@2x.png in Resources */,
+				DDFA97511C0FCEC100B83653 /* discount.png in Resources */,
 				1241E5601AE9D91400811D3F /* Arrow@2x.png in Resources */,
 				12D52BB41AC2EF4400C5CE71 /* dtmf-#.aif in Resources */,
 				1241E53C1AE9D89B00811D3F /* *S.png in Resources */,
@@ -7811,6 +7912,7 @@
 				129D23451B4F984400008DA0 /* OrderInfoUserAdd@2x.png in Resources */,
 				1241E53F1AE9D89B00811D3F /* 1N@2x.png in Resources */,
 				12C12F431B81DD2200345BEE /* SharkRuleImg@2x.png in Resources */,
+				DDFA97531C0FCEC100B83653 /* phone.png in Resources */,
 				12F46A401B20012000B8EC98 /* T_ShoppingCart@2x.png in Resources */,
 				1241E5361AE9D89B00811D3F /* callHistoryBtnImg@2x.png in Resources */,
 				120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */,
@@ -8003,6 +8105,7 @@
 				120595321BCF994F009E6986 /* NLSubTableViewController.m in Sources */,
 				12AA52FE1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m in Sources */,
 				775842FB1AB95A300039B129 /* UIImage+KIAdditions.m in Sources */,
+				DD3356D81C1020E300F12395 /* StoreListData.m in Sources */,
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
 				12665AE21BE9D73200FAE406 /* NewAddressAreaCell.m in Sources */,
 				DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */,
@@ -8105,6 +8208,7 @@
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
+				DDFA97591C0FCFEC00B83653 /* StoreHeardView.m in Sources */,
 				120595311BCF994F009E6986 /* NLPullUpRefreshView.m in Sources */,
 				DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
@@ -8177,6 +8281,7 @@
 				120EC7991BB94DFA00538637 /* UserAliEntity.m in Sources */,
 				775843251AB95A300039B129 /* WXUIImageView.m in Sources */,
 				775C58C21ABA7B75005B6B40 /* ActData.m in Sources */,
+				DDFA97471C0FCCCD00B83653 /* StoreDetailsInfoVc.m in Sources */,
 				775842EF1AB95A300039B129 /* WXUITextFieldCell.m in Sources */,
 				DDB58F551AD3C6A2006248E9 /* WXContacterCell.m in Sources */,
 				12F963381B3D4BDF00FF6A3E /* SBJsonTokeniser.m in Sources */,
@@ -8402,6 +8507,7 @@
 				1282217C1B18467A004613BB /* T_ChangeTitleCell.m in Sources */,
 				12C069271B7CACB600C05D42 /* LuckyGoodsModel.m in Sources */,
 				120B75541B1C3B7100B8746C /* PersonNicknameVC.m in Sources */,
+				DD3356D51C101DF000F12395 /* PhotoView.m in Sources */,
 				775843051AB95A300039B129 /* StrikeThroughLabel.m in Sources */,
 				12F916241B19A24E00C94717 /* HomePageSurpModel.m in Sources */,
 				12F915F91B19506000C94717 /* T_MenuVC.m in Sources */,
@@ -8441,6 +8547,7 @@
 				DD0E38AB1B1BE5AC00AB4DB9 /* MenuExtra.m in Sources */,
 				775843371AB95A300039B129 /* WXUIView.m in Sources */,
 				12F9161A1B199F0300C94717 /* HomePageThmEntity.m in Sources */,
+				DDFA975C1C0FD32800B83653 /* StoreListInfoCell.m in Sources */,
 				1273291B1B5CF73C002AD4AE /* PersonalInfoModel.m in Sources */,
 				775843581AB95FAC0039B129 /* ServiceMonitor.m in Sources */,
 				12F380171B3B88BC00E9690C /* MakeOrderShopCell.m in Sources */,
@@ -8517,6 +8624,7 @@
 				775C58CD1ABA7B75005B6B40 /* AddressBook.m in Sources */,
 				12D0C8801AB6C0E60039A197 /* VersionEntity.m in Sources */,
 				DD0E38B51B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m in Sources */,
+				DD3357221C10525E00F12395 /* StoreListModer.m in Sources */,
 				775843C41AB971CF0039B129 /* WXTUITableViewCell.m in Sources */,
 				DD0E38BB1B1BE5AC00AB4DB9 /* SysMsgModel.m in Sources */,
 				12A0B43C1B8DBB47005682EA /* FTPHelper.m in Sources */,

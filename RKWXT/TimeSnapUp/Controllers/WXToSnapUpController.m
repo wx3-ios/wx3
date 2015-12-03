@@ -17,7 +17,7 @@
 #import "WXUIActivityIndicatorView.h"
 #import "NewGoodsInfoVC.h"
 
-
+#import "StoreDetailsInfoVc.h"
 
 @interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
@@ -63,9 +63,18 @@
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     self.timeShop = timeShop;
     
-    
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
+    button.backgroundColor = [UIColor blackColor];
+    [button addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown ];
+    [self setRightNavigationItem:button];
     
 }
+
+- (void)clickBtn{
+    StoreDetailsInfoVc *vc = [[StoreDetailsInfoVc alloc]init];
+    [self.wxNavigationController pushViewController:vc];
+}
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
