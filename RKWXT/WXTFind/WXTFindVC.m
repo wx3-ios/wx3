@@ -28,6 +28,9 @@
 
 @implementation WXTFindVC
 
+//微名片  http://wx3.67call.com/wx_html/index.php/Vcard/index
+//路演视频 http://wx3.67call.com/wx_html/index.php/Vcard/hsindex
+//oo直播 http://wx.1wili.com/livehouse.html
 -(id)init{
     self = [super init];
     if(self){
@@ -39,16 +42,25 @@
         nameArr = @[@"去哪儿网", @"天气"];
         webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com"];
         
-        if(kMerchantID == 10248){ //这个商家要将商家联盟和微名片的位置交换
+        if(kMerchantID == 10248){ //智我云要将商家联盟和微名片的位置交换
             commonImgArr = @[@"FindZhiwoyun.png", @"FindJingdong.png", @"FindTaobao.png"];
             commonImgName = @[@"微名片", @"京东", @"淘宝网"];
-            commonUrl = @[@"http://wx.1wili.com/livehouse.html", @"http://re.jd.com", @"http://www.taobao.com"];
+            commonUrl = @[@"http://wx3.67call.com/wx_html/index.php/Vcard/index", @"http://re.jd.com", @"http://www.taobao.com"];
             
             imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindShop.png"];
             nameArr = @[@"去哪儿网", @"天气", @"商家联盟"];
             webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant"];
         }
-        if(kMerchantID == 10233 || kMerchantID == 10249){
+        if(kMerchantID == 10233){ //10233 互生集团要将商家联盟和路演视频的位置交换
+            commonImgArr = @[@"FindVideoImg.png", @"FindJingdong.png", @"FindTaobao.png"];
+            commonImgName = @[@"路演视频", @"京东", @"淘宝网"];
+            commonUrl = @[@"http://wx3.67call.com/wx_html/index.php/Vcard/hsindex", @"http://re.jd.com", @"http://www.taobao.com"];
+            
+            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindShop.png"];
+            nameArr = @[@"去哪儿网", @"天气", @"商家联盟"];
+            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant"];
+        }
+        if(kMerchantID == 10249){
             imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindHusheng.png"];
             nameArr = @[@"去哪儿网", @"天气", @"OO直播"];
             webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx.1wili.com/livehouse.html"];
@@ -166,6 +178,12 @@
 #pragma mark
 -(void)gotoShopMertan:(id)sender{
     WXUIButton *btn = sender;
+    if((kMerchantID == 10248 || kMerchantID == 10233) && btn.tag == 0){
+        WXWebViewShareVC *vc = [[WXWebViewShareVC alloc] init];
+        vc.webUrlStr = [commonUrl objectAtIndex:0];
+        [self.wxNavigationController pushViewController:vc];
+        return;
+    }
     FindCommonVC *commonVC = [[FindCommonVC alloc] init];
     commonVC.webURl = [commonUrl objectAtIndex:btn.tag];
     commonVC.titleName = [commonImgName objectAtIndex:btn.tag];
@@ -174,9 +192,11 @@
 
 -(void)gotoCommonWeb:(id)sender{
     WXUIButton *btn = sender;
-    if(btn.tag == 2 && kMerchantID == 10248){
-        WXWebViewShareVC *webVC = [[WXWebViewShareVC alloc] init];
-        [self.wxNavigationController pushViewController:webVC];
+    if(btn.tag == 2 && (kMerchantID == 10248 || kMerchantID == 10233)){
+        FindCommonVC *commonVC = [[FindCommonVC alloc] init];
+        commonVC.webURl = [webUrl objectAtIndex:2];
+        commonVC.titleName = [nameArr objectAtIndex:2];
+        [self.wxNavigationController pushViewController:commonVC];
         return;
     }
     FindCommonVC *commonVC = [[FindCommonVC alloc] init];

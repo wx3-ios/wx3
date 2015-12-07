@@ -66,7 +66,7 @@
     dict[@"type"] = [NSNumber numberWithInt:count];
     dict[@"page"] = [NSNumber numberWithInt:page];
     dict[@"shop_id"] = [NSNumber numberWithInt:kSubShopID];
-     __block TimeShopModer *blockModer = self;
+    __block TimeShopModer *blockModer = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_TimeToBuy httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
         
         if(retData.code != 0){
@@ -77,51 +77,62 @@
         }else{
             
             NSArray *array = retData.data[@"data"];
-            NSRange range = NSMakeRange(0, 3);
+            NSRange range = NSMakeRange(0, 0);
+            
+            if (array.count < 3) {
+                range = NSMakeRange(0, array.count);
+            }else{
+                range = NSMakeRange(0, 3);
+            }
             NSArray *goods = [array subarrayWithRange:range];
+            
             
             for (NSDictionary *dic in goods) {
                 //开始时间
                 NSTimeInterval beg_time = [dic[@"begin_time"] longLongValue];
                 NSTimeInterval end_time = [dic[@"end_time"] longLongValue];
-                 TimeShopData *moder = [[TimeShopData alloc]initWithDict:dic];
+                TimeShopData *moder = [[TimeShopData alloc]initWithDict:dic];
                 
-                 //判断
+                //判断
                 [blockModer moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
                 
                 [self.goodsA addObject:moder];
                 
-               //取出时间
+                //取出时间
                 [self.beg_goods addObject:dic[@"begin_time"]];
                 [self.end_goods addObject:dic[@"end_time"]];
-            
+                
             }
             
             
-            NSRange range1 = NSMakeRange(3,array.count - 3);
+            NSRange range1 = NSMakeRange(0,0);
+            if (array.count > 3) {
+                range1 = NSMakeRange(3,array.count - 3);
+            }
+            
             NSArray *timeGoods = [array subarrayWithRange:range1];
             for (NSDictionary *dict in timeGoods) {
                 //开始时间
                 NSTimeInterval beg_time = [dict[@"begin_time"] longLongValue];
                 NSTimeInterval end_time = [dict[@"end_time"] longLongValue];
-              TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
+                TimeShopData *moder = [[TimeShopData alloc]initWithDict:dict];
                 
                 //判断
                 [self moreTimeWithBeg_time:beg_time end_time:end_time timeShopData:moder scareBuyingN:moder.scare_buying_number];
-               
+                
                 
                 [self.timeGoodsA addObject:moder];
                 
-              
+                
                 //取出时间
                 [self.beg_time_goods addObject:dict[@"begin_time"]];
                 [self.end_time_goods addObject:dict[@"end_time"]];
             }
             
-           
+            
             //代理
             if (self.delegate && [self.delegate respondsToSelector:@selector(timeShopModerWithGoodArr:timeGoods:beg_goods:beg_time_goods:end_goods:end_time_goods:)]) {
-                 [blockModer setStatus:E_ModelDataStatus_LoadSucceed];
+                [blockModer setStatus:E_ModelDataStatus_LoadSucceed];
                 [self.delegate timeShopModerWithGoodArr:self.goodsA timeGoods:self.timeGoodsA beg_goods:self.beg_goods beg_time_goods:self.beg_time_goods end_goods:self.end_goods end_time_goods:self.end_time_goods];
             }
             
@@ -129,7 +140,7 @@
         }
     }];
 
-    }
+}
 
 
 

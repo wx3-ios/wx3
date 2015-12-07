@@ -56,6 +56,7 @@
             CLPlacemark *placemark = [array objectAtIndex:0];
             NSLog(@"当前位置%@",placemark.name);
             NSLog(@"当前所属区域 = %@",placemark.subLocality);
+            NSLog(@"当前所在省 = %@",placemark.administrativeArea);
             [userObj setUserLocationArea:placemark.subLocality];
             //获取城市
             NSString *city = placemark.locality;

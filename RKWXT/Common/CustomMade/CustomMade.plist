@@ -17,6 +17,6 @@
 	<key>D_KEY_MERCHANTID</key>
 	<integer>9</integer>
 	<key>D_KEY_SHOWCOMPANY</key>
-	<integer>1</integer>
+	<integer>0</integer>
 </dict>
 </plist>

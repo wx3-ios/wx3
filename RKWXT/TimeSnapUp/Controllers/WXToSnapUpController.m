@@ -17,8 +17,6 @@
 #import "WXUIActivityIndicatorView.h"
 #import "NewGoodsInfoVC.h"
 
-#import "StoreDetailsInfoVc.h"
-
 @interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray *goodsarray;
@@ -71,8 +69,6 @@
 }
 
 - (void)clickBtn{
-    StoreDetailsInfoVc *vc = [[StoreDetailsInfoVc alloc]init];
-    [self.wxNavigationController pushViewController:vc];
 }
 
 
@@ -86,7 +82,7 @@
     if (section == 1) {
         return self.timearray.count;
     }
-    return  self.TimeGoods.count ? 1 : 0;
+    return  self.goodsarray.count ? 1 : 0;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

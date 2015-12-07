@@ -9,5 +9,6 @@
 #import "WXUIViewController.h"
 
 @interface WXWebViewShareVC : WXUIViewController
+@property (nonatomic,strong) NSString *webUrlStr;
 
 @end

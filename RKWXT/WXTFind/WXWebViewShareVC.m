@@ -47,9 +47,7 @@ enum{
     [_webView setDelegate:self];
     [self addSubview:_webView];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@wx_html/index.php/Vcard/index",WXTWebBaseUrl];
-    
-    NSURL *url = [NSURL URLWithString:urlStr];
+    NSURL *url = [NSURL URLWithString:_webUrlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:request];
     

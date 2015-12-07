@@ -43,7 +43,7 @@
         self.height = 140;
         
         
-        CGFloat widch = (self.width - ( TopMargin * 2 ) - (T_GoodsMaegin * 2) ) / goodsArray.count;
+        CGFloat widch = (self.width - ( TopMargin * 2 ) - (T_GoodsMaegin * 2) ) / 3;
         
         for (int i = 0; i < goodsArray.count; i++) {
             HeardGoodsView *goods = [[HeardGoodsView alloc]init];

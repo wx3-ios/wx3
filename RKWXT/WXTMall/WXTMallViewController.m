@@ -54,8 +54,8 @@
     [self createTopBtn];
     [_model loadData];
     //定位
-//    UserLocation *userLocation = [[UserLocation alloc] init];
-//    [userLocation startLocation];
+    UserLocation *userLocation = [[UserLocation alloc] init];
+    [userLocation startLocation];
     
     [self pullingTableViewDidStartRefreshing:_tableView];
 }
