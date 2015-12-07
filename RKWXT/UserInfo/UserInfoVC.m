@@ -618,10 +618,17 @@
                 [self.wxNavigationController pushViewController:systemSetting];
             }
             if(row == System_About){
-#warning 调到商家控制器
-               // AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
-                AboutStoreInfoVc *aboutVC = [[AboutStoreInfoVc alloc]init];
-                [self.wxNavigationController pushViewController:aboutVC];
+#warning 选择是否跳到商家控制器
+                
+                if ([kMerchantName isEqualToString:@"我信云"]) {
+                     AboutWxtInfoVC *aboutVC = [[AboutWxtInfoVC alloc] init];
+                    [self.wxNavigationController pushViewController:aboutVC];
+
+                }else{
+                    AboutStoreInfoVc *aboutVC = [[AboutStoreInfoVc alloc]init];
+                    [self.wxNavigationController pushViewController:aboutVC];
+                }
+              
             }
         }
             break;

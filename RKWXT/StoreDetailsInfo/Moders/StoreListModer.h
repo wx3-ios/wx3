@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class StoreListModer;
 @protocol  StoreListModerDelegate <NSObject>
-//请求网络数据
+//请求网络数据成功
 - (void)storeListWithData:(StoreListModer*)moder;
 //请求网络数据失败
 - (void)storeListWithFailure:(StoreListModer*)moder;

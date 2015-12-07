@@ -51,14 +51,14 @@
         UIView *drawview = [[UIView alloc]init];
         drawview.backgroundColor = [UIColor colorWithHexString:@"#909091"];
         [self.orgina_price addSubview:drawview];
-         self.drawview = drawview;
-       
+        self.drawview = drawview;
+        
         //即将开始
         UIImageView *beg_image = [[UIImageView alloc]init];
         beg_image.hidden = self.isImageHidden == YES;
         [self.iconimage addSubview:beg_image];
         self.beg_image = beg_image;
-
+        
         UILabel *beg_time = [[UILabel alloc]init];
         beg_time.textAlignment = NSTextAlignmentCenter;
         beg_time.textColor = [UIColor whiteColor];
@@ -108,15 +108,15 @@
 - (void)setData:(TimeShopData *)data{
     _data = data;
     
-     [self setContentView];
+    [self setContentView];
     
     self.beg_image.hidden = data.isImageHidden;
     self.timeDown.hidden = data.isDownHidden;
     self.over_image.hidden = data.isEnd_Image_Hidden;
-   
+    
     [self setConuntViewFrame];
     
-  
+    
     
 }
 
@@ -132,7 +132,6 @@
     
     
     
-   
     //即将开始
     NSDate *beg_date = [NSDate dateWithTimeIntervalSince1970:[self.data.begin_time longLongValue]];
     NSDateFormatter *matter = [[NSDateFormatter alloc]init];
@@ -153,11 +152,11 @@
     //开始
     self.timeDown.text = self.data.top_time_countdown;
     
-     //结束
+    //结束
     UIImage *end_image = [UIImage imageNamed:@"end"];
     self.over_image.image = end_image;
     self.over_label.text = @"已抢光";
-   
+    
     
 }
 
@@ -186,7 +185,7 @@
     CGFloat maskX = (self.width - size.width) / 2;
     CGFloat maskY = buyingH /2;
     self.drawview.frame = CGRectMake(maskX, maskY, maskW, maskH);
-
+    
     
     CGFloat timeX = 0;
     CGFloat timeY = 0;
@@ -218,7 +217,7 @@
     CGFloat overLY = ( overH - over.height ) / 2;
     self.over_label.frame = (CGRect){{overLX,overLY},over};
     
-    }
+}
 
 
 

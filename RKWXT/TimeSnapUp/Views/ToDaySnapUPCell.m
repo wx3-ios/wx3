@@ -76,7 +76,7 @@
         namelabel.font = [UIFont systemFontOfSize:14];
         namelabel.numberOfLines = 2;
         [self.contentView addSubview:namelabel];
-         self.nameLable = namelabel;
+        self.nameLable = namelabel;
         
         UILabel *buyingNumber = [[UILabel alloc]init];
         buyingNumber.font = [UIFont systemFontOfSize:12];
@@ -84,20 +84,20 @@
         buyingNumber.textColor = [UIColor grayColor];
         [self.contentView addSubview:buyingNumber];
         self.buyingNumber = buyingNumber;
-
+        
         UILabel *buying_price = [[UILabel alloc]init];
         buying_price.font = [UIFont systemFontOfSize:14];
         buying_price.textAlignment = NSTextAlignmentLeft;
         buying_price.textColor = [UIColor colorWithHexString:@"#dd2726"];
         [self.contentView addSubview:buying_price];
-         self.buying_price = buying_price;
+        self.buying_price = buying_price;
         
         UILabel *orgin_price = [[UILabel alloc]init];
         orgin_price.font = [UIFont systemFontOfSize:10];
         orgin_price.textAlignment = NSTextAlignmentLeft;
         orgin_price.textColor = [UIColor colorWithHexString:@"#909090"];
         [self.contentView addSubview:orgin_price];
-         self.orgin_price = orgin_price;
+        self.orgin_price = orgin_price;
         
         UIButton *buyingBtn = [[UIButton alloc]init];
         buyingBtn.backgroundColor = [UIColor colorWithHexString:@"dd2726"];
@@ -105,14 +105,14 @@
         [buyingBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown];
         [buyingBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
         [self.contentView addSubview:buyingBtn];
-         self.buyingBtn = buyingBtn;
+        self.buyingBtn = buyingBtn;
         
         
         UIView *drawview = [[UIView alloc]init];
         drawview.backgroundColor = [UIColor colorWithHexString:@"#909091"];
         [self.orgin_price addSubview:drawview];
         self.drawview = drawview;
-
+        
         
         //即将开始
         UIImageView *beg_image = [[UIImageView alloc]init];
@@ -170,10 +170,10 @@
     _data = data;
     
     [self setContent:data];
- 
+    
     
     [self setCountFrame];
-   
+    
 }
 
 //计算内容
@@ -211,8 +211,6 @@
         str = [matter stringFromDate:beg_date];
         
     }
-  
-    
     
     UIImage *image = [UIImage imageNamed:@"beg_time"];
     self.beg_image.image = image;
@@ -330,7 +328,7 @@
     
     
     
-   
+    
     
 }
 

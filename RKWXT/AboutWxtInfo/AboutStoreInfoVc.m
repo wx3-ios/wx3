@@ -61,8 +61,8 @@ enum{
     if(self){
         _model = [[VersionModel alloc] init];
         [_model setDelegate:self];
-         baseNameArr = @[@"招商电话: 400-788-9388",@"技术QQ: 2898621164",@"官方: www.67call.com"];
-         baseStoreName = @[@"客服QQ:",@"客服电话:"];
+        baseNameArr = @[@"招商电话: 4007889388",@"技术QQ: 2898621164",@"官方网址: www.67call.com"];
+        baseStoreName = @[@"客服QQ: ",@"客服电话: "];
     }
     return self;
 }
@@ -86,21 +86,19 @@ enum{
     [self addSubview:_scrollerView];
     
     
-    [self createBaseStoewInfo];
-    [self createBaseView];
-    [self showBaseInfo];
-    [self createDownView];
     
-      copy = NO;
+    
+    copy = NO;
     
     [self setRequestNetWork];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 
 - (void)setRequestNetWork{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"sid"] = [NSNumber numberWithInt:kMerchantID];
-
+    
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_Store_Center httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dict completion:^(URLFeedData *retData) {
         
         if (retData.code != 0) {
@@ -115,13 +113,25 @@ enum{
 }
 
 - (void)setRequestFaliure:(NSString*)error{
-    
+    [self unShowWaitView];
+    if(!error){
+        error = @"加载数据失败";
+    }
+    [UtilTool showAlertView:error];
     
 }
 
 - (void)setRequestData:(NSDictionary*)data{
+    [self unShowWaitView];
+    
     NSDictionary *dict = data[@"data"];
     self.storyArr  = @[dict[@"seller_name"],dict[@"cus_ser_qq"],dict[@"cus_ser_phone"]];
+    
+    [self createBaseView];
+    [self createBaseStoewInfo];
+    [self showBaseInfo];
+    [self createDownView];
+    
 }
 
 -(void)createBaseView{
@@ -138,28 +148,28 @@ enum{
     UILabel *textlabel = [[UILabel alloc] init];
     textlabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight);
     [textlabel setBackgroundColor:[UIColor clearColor]];
-    //[textlabel setText:self.storyArr[0]];
+    [textlabel setText:self.storyArr[0]];
     [textlabel setFont:WXTFont(16.0)];
     [textlabel setTextColor:WXColorWithInteger(0x7c7c7c)];
     [textlabel setTextAlignment:NSTextAlignmentCenter];
     [_scrollerView addSubview:textlabel];
     
-    WXTVersion *version = [WXTVersion sharedVersion];
-    NSString *currentVersion = [version showCurrentVersion];
-#ifdef Test
-    currentVersion = [version currentVersion];
-#endif
-    yOffset += labelHeight+5;
-    UILabel *versionLabel = [[UILabel alloc] init];
-    versionLabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight-10);
-    [versionLabel setBackgroundColor:[UIColor clearColor]];
-    [versionLabel setText:[NSString stringWithFormat:@"v%@",currentVersion]];
-    //    [versionLabel setTextColor:WXColorWithInteger(0x000000)];
-    [versionLabel setTextAlignment:NSTextAlignmentCenter];
-    [versionLabel setFont:WXTFont(14.0)];
-    [_scrollerView addSubview:versionLabel];
+    //    WXTVersion *version = [WXTVersion sharedVersion];
+    //    NSString *currentVersion = [version showCurrentVersion];
+    //#ifdef Test
+    //    currentVersion = [version currentVersion];
+    //#endif
+    //    yOffset += labelHeight+5;
+    //    UILabel *versionLabel = [[UILabel alloc] init];
+    //    versionLabel.frame = CGRectMake((Size.width-labelWidth)/2, yOffset, labelWidth, labelHeight-10);
+    //    [versionLabel setBackgroundColor:[UIColor clearColor]];
+    //    [versionLabel setText:[NSString stringWithFormat:@"v%@",currentVersion]];
+    //    //    [versionLabel setTextColor:WXColorWithInteger(0x000000)];
+    //    [versionLabel setTextAlignment:NSTextAlignmentCenter];
+    //    [versionLabel setFont:WXTFont(14.0)];
+    //    [_scrollerView addSubview:versionLabel];
     
-    yOffset += labelHeight;
+    yOffset += labelHeight + 10;
     CGFloat btnWidth = Size.width-2*30;
     CGFloat btnHeight = 40;
     WXTUIButton *checkBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
@@ -177,7 +187,7 @@ enum{
 
 - (void)createBaseStoewInfo{
     CGFloat xOffset = 0;
-    CGFloat yOffset = 220;
+    CGFloat yOffset = 180;
     UIView *baseView = [[UIView alloc] init];
     baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_About_Store);
     [baseView setBackgroundColor:[UIColor whiteColor]];
@@ -193,7 +203,7 @@ enum{
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(30, yOffset, nameLabelWidth, namelabelHeight)];
         button.tag  = i;
         button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button setTitle:[NSString stringWithFormat:@"%@",baseStoreName[i]] forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%@%@",baseStoreName[i],self.storyArr[i+1]] forState:UIControlStateNormal];
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         [button setTitleColor:[UIColor colorWithHexString:@"0X8a8a8a"] forState:UIControlStateNormal];
@@ -219,7 +229,7 @@ enum{
 
 -(void)showBaseInfo{
     CGFloat xOffset = 0;
-    CGFloat yOffset = 300;
+    CGFloat yOffset = 260;
     UIView *baseView = [[UIView alloc] init];
     baseView.frame = CGRectMake(xOffset, yOffset, Size.width-2*xOffset, EveryCellHeight*WXT_About_Invalid);
     [baseView setBackgroundColor:[UIColor whiteColor]];
@@ -319,10 +329,10 @@ enum{
 -(void)btnClickedStore:(id)sender{
     UIButton *btn = (UIButton*)sender;
     switch (btn.tag) {
-        case WXT_About_Qq:
+        case WXT_About_Store_Qq:
             [UtilTool showAlertView:@"长按复制qq号码"];
             break;
-        case WXT_About_Phone:
+        case WXT_About_Store_Phone:
         {
             UIButton *button = (UIButton*)sender;
             NSString *phoneStr = button.titleLabel.text;
@@ -334,23 +344,16 @@ enum{
             }
         }
             break;
-        case WXT_About_Web:
-        {
-            NSString *wbUrl = @"www.67call.com";
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",wbUrl]]];
-        }
-            break;
-        default:
-            break;
+            
     }
 }
 
-- (void)copyStore:(UIButton*)button{
+- (void)copyStore:(id*)pan{
     if(copy){
         return;
     }
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    NSString *text = button.titleLabel.text;
+    NSString *text = self.storyArr[1];
     [pasteboard setString:text];
     [UtilTool showTipView:@"复制完成"];
     copy = YES;

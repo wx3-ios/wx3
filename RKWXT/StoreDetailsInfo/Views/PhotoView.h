@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 @class PhotoView;
 @protocol PhotoViewDelegate <NSObject>
-- (void)checkStoreInfoWithIndex:(PhotoView*)photo  index:(int)Index;
+- (void)photoCheckStoreInfoWithIndex:(PhotoView*)photo  index:(int)Index;
 @end
 
+
 @interface PhotoView : UIView
+
 @property (nonatomic,strong)NSArray *photoCount;
+@property (nonatomic,strong)NSMutableArray *photoImageArr;
+@property (nonatomic,strong)UIImageView *photoImage;
 @property (nonatomic,weak)id <PhotoViewDelegate> delegate;
+
 @end
