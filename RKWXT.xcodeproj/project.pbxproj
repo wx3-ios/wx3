@@ -1006,6 +1006,7 @@
 		DDFBC08A1BFA02C8003E71A2 /* time.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFBC0841BFA02C8003E71A2 /* time.plist */; };
 		DDFBC09C1BFA05D6003E71A2 /* HeardGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC09B1BFA05D6003E71A2 /* HeardGoodsView.m */; };
 		DDFBC09F1BFA0CD2003E71A2 /* ToDaySnapUPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC09E1BFA0CD2003E71A2 /* ToDaySnapUPCell.m */; };
+		DDFE40BA1C1167440052D48D /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFE40B91C1167440052D48D /* like.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2834,6 +2835,7 @@
 		DDFBC09B1BFA05D6003E71A2 /* HeardGoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeardGoodsView.m; sourceTree = "<group>"; };
 		DDFBC09D1BFA0CD2003E71A2 /* ToDaySnapUPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDaySnapUPCell.h; sourceTree = "<group>"; };
 		DDFBC09E1BFA0CD2003E71A2 /* ToDaySnapUPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDaySnapUPCell.m; sourceTree = "<group>"; };
+		DDFE40B91C1167440052D48D /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		E39BD341CB0DBF5E8BCFB644 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -7545,6 +7547,7 @@
 				DDFA974D1C0FCEC100B83653 /* store.png */,
 				DDFA974E1C0FCEC100B83653 /* storelogo.png */,
 				DDFA974F1C0FCEC100B83653 /* bg.png */,
+				DDFE40B91C1167440052D48D /* like.png */,
 			);
 			path = Resouse;
 			sourceTree = "<group>";
@@ -7934,6 +7937,7 @@
 				DDFBC0891BFA02C8003E71A2 /* goods.plist in Resources */,
 				12D52BB81AC2EF4400C5CE71 /* dtmf-2.aif in Resources */,
 				12A347881B73447100D10C17 /* UserCut@2x.png in Resources */,
+				DDFE40BA1C1167440052D48D /* like.png in Resources */,
 				12F46A371B20012000B8EC98 /* T_ArrowDown@2x.png in Resources */,
 				121EBCD11BDDCB2700D1F307 /* GoodsInfoDownImg@2x.png in Resources */,
 				1245353C1AE9D146004198C9 /* signBg@2x.jpg in Resources */,

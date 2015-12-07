@@ -13,7 +13,9 @@
 #import "NSString+XBCategory.h"
 
 #import "StoreListData.h"
-@interface StoreListInfoCell ()<PhotoViewDelegate>
+@interface StoreListInfoCell ()
+@property (nonatomic,strong)UIView *addView;
+
 @property (nonatomic,strong)UIImageView *iconImage;
 @property (nonatomic,strong)UILabel *storeName;
 @property (nonatomic,strong)UILabel *name;
@@ -27,30 +29,38 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+        
+        [self.addView removeFromSuperview];
+        
+        self.addView = [[UIView alloc]initWithFrame:self.bounds];
+        [self.contentView addSubview:self.addView];
+        
+        
+        
         self.width = [UIScreen mainScreen].bounds.size.width;
         
         UIImageView *iconImage = [[UIImageView alloc]init];
-        [self.contentView addSubview:iconImage];
+        [self.addView addSubview:iconImage];
         self.iconImage = iconImage;
         
         UILabel *storeName= [[UILabel alloc]init];
         storeName.font = [UIFont systemFontOfSize:14];
-        [self.contentView addSubview:storeName];
+        [self.addView addSubview:storeName];
         self.storeName = storeName;
         
         UILabel *name= [[UILabel alloc]init];
         name.font = [UIFont systemFontOfSize:10];
         name.textColor = [UIColor colorWithHexString:@"#9b9b9b"];
-        [self.contentView addSubview:name];
+        [self.addView addSubview:name];
         self.name = name;
         
         PhotoView *photoView = [[PhotoView alloc]init];
-        photoView.delegate = self;
-        [self.contentView addSubview:photoView];
+        [self.addView addSubview:photoView];
         self.photoView = photoView;
         
         UIImageView *bgImage = [[UIImageView alloc]init];
-        [self.contentView addSubview:bgImage];
+        [self.addView addSubview:bgImage];
         UIImage *bg = [UIImage imageNamed:@"discountBack"];
         bgImage.image = bg;
         self.bgImage = bgImage;
@@ -59,14 +69,16 @@
         nowShop.font = [UIFont systemFontOfSize:12];
         nowShop.textColor = [UIColor colorWithHexString:@"#ffffff"];
         [self.bgImage addSubview:nowShop];
-         self.nowShop = nowShop;
+        self.nowShop = nowShop;
         
         
         UILabel *discount= [[UILabel alloc]init];
-        [self.contentView addSubview:discount];
+        [self.addView addSubview:discount];
         self.discount = discount;
         discount.numberOfLines = 2;
         self.discount.backgroundColor = [UIColor redColor];
+        
+        
     }
     return self;
 }
@@ -76,9 +88,20 @@
 -(void)setData:(StoreListData *)data{
     _data = data;
     
+    [self setContentCreate];
+    
     [self setContent];
+    
     [self setcontentFrame];
 }
+
+- (void)setContentCreate{
+ 
+    
+    
+    
+}
+
 
 - (void)setContent{
     self.name.text = self.data.name;
@@ -86,9 +109,13 @@
     self.iconImage.image = [UIImage imageNamed:self.data.icon];
     self.photoView.photoCount = self.data.content;
     self.discount.text = @"这是一个悲伤的\n\n故事";
+    
+    
+ 
 }
 
 - (void)setcontentFrame{
+    
     self.width = [UIScreen mainScreen].bounds.size.width;
     
     CGFloat icomW = 30;
@@ -114,7 +141,7 @@
     self.nowShop.frame = CGRectMake(5, 5,self.bgImage.width - 10, self.bgImage.height - 10);
     self.nowShop.backgroundColor = [UIColor orangeColor];
     self.nowShop.textAlignment = NSTextAlignmentCenter;
-   
+    
     CGFloat discountX = self.nowShop.right + 15;
     self.discount.frame = CGRectMake(discountX, bgimageY, self.width - discountX, 40);
     

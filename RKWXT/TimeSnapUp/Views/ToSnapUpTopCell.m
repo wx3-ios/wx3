@@ -43,19 +43,25 @@
         self.height = 140;
         
         
-        CGFloat widch = (self.width - ( TopMargin * 2 ) - (T_GoodsMaegin * 2) ) / goodsArray.count;
+        CGFloat widch = (self.width - ( TopMargin * 2 ) - (T_GoodsMaegin * 2) ) / 3;
+        
+        
         
         for (int i = 0; i < goodsArray.count; i++) {
+            
             HeardGoodsView *goods = [[HeardGoodsView alloc]init];
             CGFloat goodsX = TopMargin + (T_GoodsMaegin + widch) * i;
             goods.frame = CGRectMake(goodsX, 0, widch, self.height);
+            
             goods.data = goodsArray[i];
+            
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTouch:)];
             [goods addGestureRecognizer:tap];
             tap.view.tag = i;
             [self.contentView addSubview:goods];
             self.goods = goods;
             [self.childArray addObject:goods];
+            
         }
         
     }

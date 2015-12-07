@@ -14,8 +14,6 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor yellowColor];
-        
-
     }
     return self;
 }
@@ -23,6 +21,10 @@
 
 - (void)setPhotoCount:(NSArray *)photoCount{
     _photoCount = photoCount;
+    
+    self.width = 320;
+    self.height = 98;
+ 
     
     NSInteger count = self.photoCount.count;
     CGFloat imageW = 93;
@@ -34,19 +36,31 @@
         CGFloat imageX = leftMargin + (i * (imageW + margin));
         
         photo.frame = CGRectMake(imageX, 0, imageW, self.height);
-        photo.backgroundColor = [UIColor grayColor];
+        photo.backgroundColor = [UIColor redColor];
+        photo.userInteractionEnabled = YES;
         [self addSubview:photo];
+        self.photoImage = photo;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTap:)];
-        tap.view.tag = i;
         [photo addGestureRecognizer:tap];
+        tap.view.tag = i;
+       
+        [self.photoImageArr addObject:self.photoImage];
     }
 }
 
 - (void)clickTap:(UITapGestureRecognizer*)tap{
-    if (_delegate && [_delegate respondsToSelector:@selector(checkStoreInfoWithIndex:index:)]) {
-        [self.delegate checkStoreInfoWithIndex:self index:tap.view.tag];
+   
+    if (_delegate && [_delegate respondsToSelector:@selector(photoCheckStoreInfoWithIndex:index:)]) {
+        [self.delegate photoCheckStoreInfoWithIndex:self index:tap.view.tag];
     }
+}
+
+- (NSMutableArray*)photoImageArr{
+    if (!_photoImageArr) {
+        _photoImageArr = [NSMutableArray array];
+    }
+    return _photoImageArr;
 }
 
 @end

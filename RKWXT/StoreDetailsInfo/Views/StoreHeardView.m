@@ -38,10 +38,17 @@
             int row = i * imageW;
             carousel.backgroundColor = [UIColor orangeColor];
             carousel.frame = CGRectMake(row, 0, imageW, imageH);
+            carousel.userInteractionEnabled = YES;
             [_scrollew addSubview:carousel];
             
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTouch:)];
+            [carousel addGestureRecognizer:tap];
+            tap.view.tag = i;
+            
+            
+            
             UIView *storeInfo = [[UIView alloc]init];
-            storeInfo.backgroundColor = [UIColor yellowColor];
+            storeInfo.backgroundColor = [UIColor grayColor];
             storeInfo.frame = CGRectMake(row, imageH, imageW, 80);
             [_scrollew addSubview:storeInfo];
             self.storeInfo = storeInfo;
@@ -51,14 +58,14 @@
             name.font = [UIFont systemFontOfSize:15];
             [storeInfo addSubview:name];
             
-            UILabel *info = [[UILabel alloc]initWithFrame:CGRectMake(10, name.bottom + 10, self.width - phoneW - 2, 30)];
+            UILabel *info = [[UILabel alloc]initWithFrame:CGRectMake(10, name.bottom + 5, self.width - phoneW - 5, 25)];
             info.backgroundColor = [UIColor blueColor];
             info.font = [UIFont systemFontOfSize:14];
             info.numberOfLines = 2;
             info.textColor = [UIColor colorWithHexString:@"#9b9b9b"];
             [storeInfo addSubview:info];
             
-            UIButton *phoneBtn = [[UIButton alloc]initWithFrame:CGRectMake(info.right + 2,name.bottom, 30, 30)];
+            UIButton *phoneBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.width - 30 - 10,20, 30, 30)];
             UIImage *image = [UIImage imageNamed:@"phone"];
             phoneBtn.backgroundColor = [UIColor orangeColor];
             [phoneBtn setBackgroundImage:image forState:UIControlStateNormal];
@@ -66,7 +73,7 @@
             [storeInfo addSubview:phoneBtn];
             
             UIImage *divider = [UIImage imageNamed:@"divider"];
-            UIImageView *dividerImage = [[UIImageView alloc]initWithFrame:CGRectMake(info.right + 0.5, name.bottom, 1, 40)];
+            UIImageView *dividerImage = [[UIImageView alloc]initWithFrame:CGRectMake(info.right + 1,20, 1, 40)];
             dividerImage.image = divider;
             [storeInfo addSubview:dividerImage];
             
@@ -145,6 +152,11 @@
     }
 }
 
-
+- (void)clickTouch:(UITapGestureRecognizer*)tap{
+    NSLog(@">>>>>>>>>");
+    if (_delegate && [_delegate respondsToSelector:@selector(storeHeardView:index:)]) {
+        [self.delegate storeHeardView:self index:tap.view.tag];
+    }
+}
 
 @end

@@ -9,10 +9,13 @@
 #import "WXUIScrollView.h"
 @class  StoreHeardView;
 @protocol StoreHeardViewDelegate <NSObject>
-
+//点击拨打电话
 - (void)storeHeardViewWihthPhone:(StoreHeardView*)heardView;
-
+//点击轮播图片
+- (void)storeHeardView:(StoreHeardView*)heardView  index:(int)index;
 @end
+
+
 @interface StoreHeardView : UIView
 @property (nonatomic,weak)id<StoreHeardViewDelegate> delegate;
 @end

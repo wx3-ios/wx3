@@ -17,7 +17,7 @@
 #import "WXUIActivityIndicatorView.h"
 #import "NewGoodsInfoVC.h"
 
-#import "StoreDetailsInfoVc.h"
+
 
 @interface WXToSnapUpController ()<UITableViewDataSource,UITableViewDelegate,TimeShopModerDelegate,ToSnapUpTopCellDelegate>
 @property (nonatomic,strong)UITableView *tableview;
@@ -46,7 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCSTTitle:@"限时购"];
-     _count =1;
+    _count =1;
     
     UITableView *tableview = [[UITableView alloc]initWithFrame:self.bounds style:UITableViewStyleGrouped];
     [self addSubview:tableview];
@@ -63,18 +63,9 @@
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     self.timeShop = timeShop;
     
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
-    button.backgroundColor = [UIColor blackColor];
-    [button addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchDown ];
-    [self setRightNavigationItem:button];
+    
     
 }
-
-- (void)clickBtn{
-    StoreDetailsInfoVc *vc = [[StoreDetailsInfoVc alloc]init];
-    [self.wxNavigationController pushViewController:vc];
-}
-
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -86,24 +77,25 @@
     if (section == 1) {
         return self.timearray.count;
     }
-    return  self.TimeGoods.count ? 1 : 0;
+    
+    return  self.goodsarray.count ? 1 : 0;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = indexPath.section;
-   // NSInteger row = indexPath.row;
+    // NSInteger row = indexPath.row;
     UITableViewCell *cell = nil;
     switch (section) {
         case 0:{
             cell = [self setToSnapTopCell];
         }
-         break;
+            break;
         case 1:{
             cell = [self ToDaySnapUPCell:indexPath];
         }
             break;
     }
-   
+    
     return cell;
     
 }
@@ -157,7 +149,7 @@
     
     UIView *titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
     titleView.backgroundColor = [UIColor whiteColor];
-
+    
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(TopMargin, 12.5, self.view.width, titleView.height - 25)];
     label.textAlignment = NSTextAlignmentLeft;
     label.text = @" 天天疯抢";
@@ -193,16 +185,16 @@
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-   
-      self.pullUp = YES;
+    
+    self.pullUp = YES;
     
     //_pullUp 是否可以上拉加载，向上拉的偏移超过50就加载
     if (self.pullUp && scrollView.frame.size.height+scrollView.contentOffset.y > scrollView.contentSize.height + 50)
     {
-          _count++;
+        _count++;
         
         [self.timeShop pullUpRefreshWithCount:_count];
-       
+        
     }
 }
 
@@ -233,9 +225,9 @@
     if(!errorMsg){
         errorMsg = @"加载数据失败";
     }
-   // [UtilTool showAlertView:errorMsg];
+    // [UtilTool showAlertView:errorMsg];
     
-   // [self noNewData];
+    // [self noNewData];
     
 }
 
@@ -264,14 +256,14 @@
         CGRect rect = downView.frame;
         rect.origin.y -= 41;
         downView.frame = rect;
-      
+        
     } completion:^(BOOL finished) {
         if (finished) {
             [UIView animateWithDuration:1.2 animations:^{
                 CGRect rect = downView.frame;
                 rect.origin.y += 40;
                 downView.frame = rect;
-              CGRect tableRect = self.tableview.frame;
+                CGRect tableRect = self.tableview.frame;
                 tableRect.origin.y += 40;
                 self.tableview.frame = tableRect;
             } completion:^(BOOL finished) {
@@ -282,8 +274,8 @@
         }
         
     }];
-
-   
+    
+    
     
     
 }
@@ -300,8 +292,8 @@
     self.end_goods = end_goods;
     self.end_time_goods = end_time_goods;
     
-   
-
+    
+    
     [self timeDown];
     
     [self.tableview reloadData];
@@ -309,22 +301,22 @@
 
 
 - (void)pullUpRefreshWithData:(TimeShopData *)data beg_time:(NSString*)beg_time end_time:(NSString*)end_time{
-       [self.timearray addObject:data];
-      [self.beg_time_goods addObject:beg_time];
-      [self.end_time_goods addObject:end_time];
+    [self.timearray addObject:data];
+    [self.beg_time_goods addObject:beg_time];
+    [self.end_time_goods addObject:end_time];
     
     
     
-      [self timeDown];
-      [self.tableview reloadData];
+    [self timeDown];
+    [self.tableview reloadData];
 }
 
 
 //倒计时方法
 - (void)timeDown{
     
-      self.TimeGoods  = [NSMutableArray array];
-        for (int i = 0; i < self.timearray.count; i++) {
+    self.TimeGoods  = [NSMutableArray array];
+    for (int i = 0; i < self.timearray.count; i++) {
         
         NSTimeInterval end_time = [self.end_time_goods[i] longLongValue];
         NSDate *end_date = [NSDate dateWithTimeIntervalSince1970:end_time];
@@ -382,17 +374,17 @@
         NSDateComponents *com = [cal components:unit fromDate:now_date toDate:end_date options:0];
         ToSnapUpTopCell *cell = (ToSnapUpTopCell*)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         NSInteger index = [[self.topTime[i] objectForKey:@"index"] integerValue];
-          
+        
         HeardGoodsView *goods = cell.childArray[index];
         goods.timeDown.text = [NSString stringWithFormat:@"%02d:%02d:%02d",com.hour,com.minute,com.second];
-
+        
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:[NSString stringWithFormat:@"%d",i] forKey:@"index"];
         [dict setValue:end_date  forKey:@"end_date"];
         [self.topTime addObject:dict];
     }
     
-
+    
 }
 
 #pragma mark ---- 代理方法
@@ -404,11 +396,11 @@
             goods = cell.childArray[ToSnapUpTopTypeIndexOne];
             newGoods.lEntity = goods.data;
         }
-         break;
+            break;
         case ToSnapUpTopTypeIndexTwo:{
             goods = cell.childArray[ToSnapUpTopTypeIndexTwo];
             newGoods.lEntity = goods.data;
-                    }
+        }
             break;
         case ToSnapUpTopTypeIndexThree:{
             goods = cell.childArray[ToSnapUpTopTypeIndexThree];
@@ -416,9 +408,9 @@
             
         }
             break;
-         }
+    }
     
-   
+    
     newGoods.goodsInfo_type = GoodsInfo_LimitGoods;
     [self.wxNavigationController pushViewController:newGoods];
 }

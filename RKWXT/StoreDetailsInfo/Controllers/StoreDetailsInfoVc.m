@@ -13,7 +13,7 @@
 #import "StoreListData.h"
 #import "PhotoView.h"
 
-@interface StoreDetailsInfoVc ()<UITableViewDelegate,UITableViewDataSource,StoreHeardViewDelegate>
+@interface StoreDetailsInfoVc ()<UITableViewDelegate,UITableViewDataSource,StoreHeardViewDelegate,PhotoViewDelegate>
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)NSArray *array;
 @end
@@ -46,9 +46,14 @@
     tableview.tableHeaderView = [self setHeardView];
     self.tableview = tableview;
     
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
-    [button addTarget:self action:@selector(clickLove) forControlEvents:UIControlEventTouchDown];
-    [self setRightNavigationItem:button ];
+
+    
+    WXUIButton *rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(20, 6, 60, 40);
+    [rightBtn addTarget:self action:@selector(clickLove) forControlEvents:UIControlEventTouchDown];
+    [rightBtn setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self setRightNavigationItem:rightBtn];
     
 }
 
@@ -74,17 +79,9 @@
         cell.height = [StoreListInfoCell cellHeightForRow];
     }
     cell.data = self.array[indexPath.row];
-    StoreListData *data = self.array[indexPath.row];
-    cell.photoView.photoCount = data.content;
+    cell.photoView.delegate = self;
     return cell;
 }
-
-//- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    if (section == 0) {
-//       
-//    }
-//    return [[UIView alloc]init];
-//}
 
 - (UIView*)setHeardView{
     StoreHeardView *heardView = [[StoreHeardView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
@@ -102,6 +99,39 @@
     NSLog(@"在拨打电话");
 }
 
+- (void)storeHeardView:(StoreHeardView *)heardView index:(int)index{
+    switch (index) {
+        case 0:
+            NSLog(@"00000");
+            break;
+        case 1:
+            NSLog(@"111111");
+            break;
+        case 2:
+            NSLog(@"222222");
+            break;
+            
+        default:
+            break;
+    }
 
+}
+
+- (void)photoCheckStoreInfoWithIndex:(PhotoView *)photo index:(int)Index{
+    switch (Index) {
+        case 0:
+            NSLog(@"00000");
+            break;
+        case 1:
+            NSLog(@"111111");
+            break;
+        case 2:
+            NSLog(@"222222");
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

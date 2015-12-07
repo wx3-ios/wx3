@@ -9,9 +9,7 @@
 #import "WXUITableViewCell.h"
 
 #import "StoreListData.h"
-@class PhotoView,StoreListInfoCell;
-@protocol StoreListInfoCellDelegate <NSObject>
-@end
+@class PhotoView;
 
 @interface StoreListInfoCell : WXUITableViewCell
 @property (nonatomic,strong)StoreListData *data;

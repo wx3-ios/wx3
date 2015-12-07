@@ -10,4 +10,14 @@
 
 @implementation StoreListModer
 
+- (void)requestWithNetWork{
+    
+}
+
+
+//保存收藏
+- (void)saveCollection{
+    
+}
+
 @end
