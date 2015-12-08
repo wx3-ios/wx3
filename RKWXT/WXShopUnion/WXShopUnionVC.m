@@ -50,6 +50,7 @@
     [super viewDidLoad];
     [self setCSTTitle:@"商家联盟"];
     [self createRightNavBtn];
+    [self createTopSearchView];
     
     hotShopArr = @[@"我信云科技", @"蒂凡尼家居", @"辽宁"];
     
@@ -60,7 +61,6 @@
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self addSubview:[self createUnionDownView]];
-    [self setupRefresh];
     
     //下拉区域列表
     showAreaview = YES;
@@ -70,14 +70,14 @@
     [[LocalAreaModel shareLocalArea] loadLocalAreaData];
     
     [_model loadShopUnionData:0];
+    [self setupRefresh];
 }
 
 -(void)createTopSearchView{
-    CGFloat xOffset = 50;
-    CGFloat width = Size.width-xOffset-10-85;
+    CGFloat xOffset = 60;
+    CGFloat width = Size.width-xOffset-10-80;
     CGFloat height = 27;
     _textField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, 66-height-10, width, height)];
-    [_textField setEnabled:NO];
     [_textField setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [_textField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
     [_textField addTarget:self action:@selector(textfiledStartInput) forControlEvents:UIControlEventEditingChanged];
