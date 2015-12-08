@@ -9,6 +9,7 @@
 #import "WXShopUnionHotGoodsCell.h"
 #import "WXShopUnionDef.h"
 #import "WXRemotionImgBtn.h"
+#import "ShopUnionHotGoodsEntity.h"
 
 @interface WXShopUnionHotGoodsCell(){
     WXRemotionImgBtn *imgView;
@@ -44,7 +45,7 @@
         [self.contentView addSubview:nameLabel];
         
         yOffset += nameHeight+15;
-        CGFloat moneyLabelWidth = 100;
+        CGFloat moneyLabelWidth = 140;
         CGFloat moneyLabelHeight = 20;
         moneyLabel = [[WXUILabel alloc] init];
         moneyLabel.frame = CGRectMake(xOffset, yOffset, moneyLabelWidth, moneyLabelHeight);
@@ -54,7 +55,7 @@
         [moneyLabel setFont:WXFont(17.0)];
         [self.contentView addSubview:moneyLabel];
         
-        yOffset += moneyLabelHeight+12;
+        yOffset += moneyLabelHeight+6;
         CGFloat otherLabelWidth = 95;
         CGFloat otherLabelHieght = 15;
         otherlabel = [[WXUILabel alloc] init];
@@ -69,10 +70,11 @@
 }
 
 -(void)load{
-    [imgView setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+    ShopUnionHotGoodsEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.goodsImg];
     [imgView load];
-    [nameLabel setText:@"中华人民共和国万岁!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-    [moneyLabel setText:@"￥50.00"];
+    [nameLabel setText:entity.goodsName];
+    [moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.shopPrice]];
     [otherlabel setText:@"还不知道"];
 }
 

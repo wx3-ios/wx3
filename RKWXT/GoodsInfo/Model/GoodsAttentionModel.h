@@ -17,10 +17,10 @@
 @interface GoodsAttentionModel : NSObject
 
 //查看该商品是否已经收藏
--(void)searchGoodsPayAttention:(NSInteger)goodsID;
+-(void)searchGoodsPayAttention:(NSInteger)goodsID limitID:(NSInteger)limitID;
 //收藏商品
 -(void)goodsPayAttention:(NSInteger)goodsID and:(NSInteger)stockID andLimitID:(NSInteger)limitID;
 //取消收藏
--(void)cancelGoodsAttention:(NSInteger)goodsID;
+-(void)cancelGoodsAttention:(NSInteger)goodsID limitID:(NSInteger)limitID;
 
 @end

@@ -9,6 +9,7 @@
 #import "ShopUnionClassifyCell.h"
 #import "ShopUnionScrollView.h"
 #import "WXShopUnionDef.h"
+#import "ShopUnionClassifyEntity.h"
 
 #define kTimerInterval (5.0)
 #define kOneCellShowNumber (5)
@@ -17,8 +18,8 @@
     UIPageControl *_pageControl;
     NSInteger _currentPage;
     
-    NSArray *classifyNameArr;
-    NSArray *classifyImgArr;
+//    NSArray *classifyNameArr;
+    NSArray *classifyArr;
     
     WXUIView *leftView;
     WXUIView *rightView;
@@ -61,8 +62,8 @@
 }
 
 -(void)initClassifyImg{
-    classifyNameArr = @[@"热门", @"服装", @"美食茶酒", @"家具建材", @"生活服务", @"美容护肤", @"医房药品", @"汽车配件", @"灯饰照明", @"其他", @"更多", @"更多1", @"更多2", @"更多3", @"生活服务", @"美容护肤", @"更多4", @"汽车配件", @"灯饰照明", @"更多5"];
-    classifyImgArr = @[@"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png"];
+//    classifyNameArr = @[@"热门", @"服装", @"美食茶酒", @"家具建材", @"生活服务", @"美容护肤", @"医房药品", @"汽车配件", @"灯饰照明", @"其他", @"更多", @"更多1", @"更多2", @"更多3", @"生活服务", @"美容护肤", @"更多4", @"汽车配件", @"灯饰照明", @"更多5"];
+//    classifyImgArr = @[@"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png", @"ShopUnionFoodImg.png", @"ShopUnionHotImg.png", @"ShopUnionDressImg.png"];
 }
 
 - (void)toInit{
@@ -76,11 +77,7 @@
     [_merchantImgViewArray removeAllObjects];
     [self toInit];
     
-    [self initClassifyImg];
-    if([classifyImgArr count] != [classifyNameArr count]){
-        return;
-    }
-    
+    classifyArr = self.cellInfo;
     
     //leftView
     CGRect rect = [self bounds];
@@ -91,15 +88,16 @@
     CGFloat yGap = 18;
     for(NSInteger j = 0; j < 2; j++){
         for(NSInteger i = 0; i < kOneCellShowNumber; i++){
+            ShopUnionClassifyEntity *entity = [classifyArr objectAtIndex:i+(j==1?kOneCellShowNumber:0)];
             WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
             [commonBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
             [commonBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
             commonBtn.frame = CGRectMake(xOffset+i*(btnWidth+xOffset), yOffset+j*(yOffset+btnHeight), btnWidth, btnHeight);
-            [commonBtn setImage:[UIImage imageNamed:classifyImgArr[i+(j==1?5:0)]] forState:UIControlStateNormal];
-            [commonBtn setTitle:classifyNameArr[i+(j==1?5:0)] forState:UIControlStateNormal];
+            [commonBtn setImage:[UIImage imageNamed:entity.industryImg] forState:UIControlStateNormal];
+            [commonBtn setTitle:entity.industryName forState:UIControlStateNormal];
             [commonBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateNormal];
             [commonBtn.titleLabel setFont:WXFont(10.0)];
-            commonBtn.tag = i+(j==1?5:0);
+            commonBtn.tag = entity.industryID;
             [commonBtn addTarget:self action:@selector(buttonImageClicked:) forControlEvents:UIControlEventTouchUpInside];
             [leftView addSubview:commonBtn];
             [_merchantImgViewArray addObject:_browser];
@@ -119,18 +117,22 @@
     }
     
     //rightView
-    if([classifyImgArr count] > 10){
+    if([classifyArr count] > 10){
         for(int j = 0; j < 2; j++){
             for(int i = 0; i < kOneCellShowNumber; i++){
+                if(10+(j==1?i+1+5:i+1) > [classifyArr count]){
+                    break;
+                }
+                ShopUnionClassifyEntity *entity = [classifyArr objectAtIndex:i+(j==1?kOneCellShowNumber:0)+10];
                 WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
                 [commonBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
                 [commonBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
                 commonBtn.frame = CGRectMake(xOffset+i*(btnWidth+xOffset), yOffset+j*(yOffset+btnHeight), btnWidth, btnHeight);
-                [commonBtn setImage:[UIImage imageNamed:classifyImgArr[i+(j==1?5:0)+10]] forState:UIControlStateNormal];
-                [commonBtn setTitle:classifyNameArr[i+(j==1?5:0)+10] forState:UIControlStateNormal];
+                [commonBtn setImage:[UIImage imageNamed:entity.industryImg] forState:UIControlStateNormal];
+                [commonBtn setTitle:entity.industryName forState:UIControlStateNormal];
                 [commonBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateNormal];
                 [commonBtn.titleLabel setFont:WXFont(10.0)];
-                commonBtn.tag = i+(j==1?5:0)+10;
+                commonBtn.tag = entity.industryID;
                 [commonBtn addTarget:self action:@selector(buttonImageClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [rightView addSubview:commonBtn];
                 [_merchantImgViewArray addObject:_browser];

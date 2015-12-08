@@ -72,6 +72,11 @@
     [userDefault setBool:bGeneralAgency forKey:D_WXUserdefault_Key_bGeneralAgency];
 }
 
+-(void)setUserLocationPro:(NSString *)proName{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    [userDefault setObject:proName forKey:D_WXUserdefault_Location_Pro];
+}
+
 -(void)setUserLocationCity:(NSString *)cityName{
     WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
     [userDefault setObject:cityName forKey:D_WXUserdefault_Location_City];
@@ -200,6 +205,11 @@
 - (BOOL)isGeneralAgency{
     WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
     return [userDefault boolValueForKey:D_WXUserdefault_Key_bGeneralAgency];
+}
+
+-(NSString*)userLocationPro{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    return [userDefault textValueForKey:D_WXUserdefault_Location_Pro];
 }
 
 -(NSString*)userLocationCity{

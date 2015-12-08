@@ -67,6 +67,7 @@
             NSString * cityName = nil;
             cityName = city;
             NSLog(@"定位完成:%@",cityName);
+            [userObj setUserLocationPro:placemark.administrativeArea];
             [userObj setUserLocationCity:cityName];
             if(!userObj.userCurrentCity){
                 [userObj setUserCurrentCity:cityName];

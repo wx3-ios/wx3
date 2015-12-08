@@ -246,7 +246,9 @@
         case WXT_UrlFeed_Type_Store_Center:
             url = @"/get_seller_info.php";
             break;
-            
+        case WXT_UrlFeed_Type_Home_ShopUnion:
+            url = @"/get_seller_union_home.php";
+            break;
         default:
             break;
     }

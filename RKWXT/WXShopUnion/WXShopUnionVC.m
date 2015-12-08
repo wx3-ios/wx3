@@ -11,7 +11,7 @@
 
 #define ShopUnionDownVieHeight (45)
 
-@interface WXShopUnionVC()<ShopUnionDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,WXShopUnionActivityCell,WXShopUnionHotShopTitleCellDelegate,WXShopUnionHotShopCellDelegate>{
+@interface WXShopUnionVC()<ShopUnionDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,WXShopUnionActivityCell,WXShopUnionHotShopTitleCellDelegate,WXShopUnionHotShopCellDelegate,WXShopUnionModelDelegate,ShopUnionClassifyCellDelegate>{
     WXShopUnionAreaView *_areaListView;
     BOOL showAreaview;
     WXUIButton *rightBtn;
@@ -19,8 +19,10 @@
     
     UITableView *_tableView;
     
-    NSMutableArray *hotGoodsArr;
+    NSArray *hotGoodsArr;
     NSArray *hotShopArr;
+    
+    WXShopUnionModel *_model;
 }
 @end
 
@@ -35,13 +37,21 @@
     }
 }
 
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[WXShopUnionModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"商家联盟"];
     [self createRightNavBtn];
     
     hotShopArr = @[@"我信云科技", @"蒂凡尼家居", @"辽宁"];
-    hotGoodsArr = [[NSMutableArray alloc] init];
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-ShopUnionDownVieHeight);
@@ -58,6 +68,8 @@
     [_areaListView unshow:NO];
     [self addSubview:_areaListView];
     [[LocalAreaModel shareLocalArea] loadLocalAreaData];
+    
+    [_model loadShopUnionData:0];
 }
 
 -(void)createTopSearchView{
@@ -262,6 +274,10 @@
         cell = [[ShopUnionClassifyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([_model.classifyShopArr count] > 0){
+        [cell setCellInfo:_model.classifyShopArr];
+    }
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -335,6 +351,9 @@
     if(!cell){
         cell = [[WXShopUnionHotGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    if([hotGoodsArr count] > 0){
+        [cell setCellInfo:[hotGoodsArr objectAtIndex:row-1]];
+    }
     [cell load];
     return cell;
 }
@@ -388,6 +407,17 @@
     }
 }
 
+#pragma mark dataDelegate
+-(void)loadShopUnionDataSucceed{
+    hotGoodsArr = _model.hotGoodsArr;
+    [_tableView reloadData];
+    [_tableView footerEndRefreshing];
+}
+
+-(void)loadShopUnionDataFailed:(NSString *)errorMsg{
+    
+}
+
 #pragma mark 刷新
 -(void)headerRefreshing{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -397,24 +427,13 @@
 }
 
 -(void)loadMoreGoods{
-    [hotGoodsArr addObject:@"你好"];
-    [hotGoodsArr addObject:@"你好"];
-    [hotGoodsArr addObject:@"你好"];
-    [hotGoodsArr addObject:@"你好"];
-    [hotGoodsArr addObject:@"你好"];
-    [hotGoodsArr addObject:@"你好"];
-    [hotGoodsArr addObject:@"你好"];
-    
-//    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:ShopUnion_Section_HotGoods] withRowAnimation:UITableViewRowAnimationFade];
-    [_tableView reloadData];
-    [_tableView footerEndRefreshing];
 }
 
 -(void)footerRefreshing{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [_tableView reloadData];
-//        [_tableView footerEndRefreshing];
-        [self loadMoreGoods];
+        [_tableView reloadData];
+        [_tableView footerEndRefreshing];
+//        [self loadMoreGoods];
     });
 }
 
@@ -438,6 +457,11 @@
     WXShopCityListVC *cityListVC = [[WXShopCityListVC alloc] init];
     [self presentViewController:cityListVC animated:YES completion:^{
     }];
+}
+
+#pragma mark classifyDelegate
+-(void)clickClassifyBtnAtIndex:(NSInteger)index{
+    NSLog(@"行业ID = %ld",(long)index);
 }
 
 #pragma mark shopActivityDelegate

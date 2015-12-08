@@ -671,10 +671,10 @@
             break;
         case T_BaseFunction_Union:
         {
-            NSString *shopUnionUrl = [NSString stringWithFormat:@"%@wx_html/index.php/Public/alliance_merchant",WXTWebBaseUrl];
-            [[CoordinateController sharedCoordinateController] toWebVC:self url:shopUnionUrl title:@"商家联盟" animated:YES];
-//            WXShopUnionVC *unionVC = [[WXShopUnionVC alloc] init];
-//            [self.wxNavigationController pushViewController:unionVC];
+//            NSString *shopUnionUrl = [NSString stringWithFormat:@"%@wx_html/index.php/Public/alliance_merchant",WXTWebBaseUrl];
+//            [[CoordinateController sharedCoordinateController] toWebVC:self url:shopUnionUrl title:@"商家联盟" animated:YES];
+            WXShopUnionVC *unionVC = [[WXShopUnionVC alloc] init];
+            [self.wxNavigationController pushViewController:unionVC];
         }
             break;
         default:

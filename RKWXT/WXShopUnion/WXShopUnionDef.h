@@ -23,6 +23,8 @@
 #import "WXShopUnionHotGoodsTitleCell.h"
 #import "WXShopUnionHotGoodsCell.h"
 
+#import "WXShopUnionModel.h"
+
 #define Size self.bounds.size
 #define ShopUnionClassifyRowHeight (165)
 #define ShopUnionActivityRowHeight (115)

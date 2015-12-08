@@ -94,9 +94,13 @@ typedef enum {
     //收藏
     WXT_UrlFeed_Type_New_PayAttention,
     
-    WXT_UrlFeed_Type_Invalid,
      //商家个人中心
-    WXT_UrlFeed_Type_Store_Center
+    WXT_UrlFeed_Type_Store_Center,
+    
+    //商家联盟
+    WXT_UrlFeed_Type_Home_ShopUnion,
+    
+    WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;
 
 @interface WXTURLFeedOBJ : NSObject

@@ -699,7 +699,7 @@
     [_model setDelegate:nil];
     
     //查询是否已收藏
-    [attentionModel searchGoodsPayAttention:_goodsId];
+    [attentionModel searchGoodsPayAttention:_goodsId limitID:[limitEntity.scare_buying_id integerValue]];
 }
 
 -(void)refreshLessTime{
@@ -877,7 +877,7 @@
     if(!isAttention){
         [attentionModel goodsPayAttention:_goodsId and:rightView.stockID andLimitID:[limitEntity.scare_buying_id integerValue]];
     }else{
-        [attentionModel cancelGoodsAttention:_goodsId];
+        [attentionModel cancelGoodsAttention:_goodsId limitID:[limitEntity.scare_buying_id integerValue]];
     }
 }
 

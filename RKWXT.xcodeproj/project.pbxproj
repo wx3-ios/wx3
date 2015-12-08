@@ -489,6 +489,8 @@
 		12A3478B1B73497F00D10C17 /* UserCutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478A1B73497F00D10C17 /* UserCutCell.m */; };
 		12A3478E1B734E6000D10C17 /* UserCutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A3478D1B734E6000D10C17 /* UserCutModel.m */; };
 		12A347911B73503F00D10C17 /* UserCutEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A347901B73503F00D10C17 /* UserCutEntity.m */; };
+		12A42F901C1661AC005936F3 /* ShopUnionHotShopEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A42F8F1C1661AC005936F3 /* ShopUnionHotShopEntity.m */; };
+		12A42F931C1661C0005936F3 /* ShopUnionHotGoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A42F921C1661C0005936F3 /* ShopUnionHotGoodsEntity.m */; };
 		12A66B281B74AE4800542112 /* NoWifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A66B271B74AE4800542112 /* NoWifi@2x.png */; };
 		12A850EF1B880CD200276D2A /* SharkImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A850EE1B880CD200276D2A /* SharkImg@2x.png */; };
 		12A9D4401BD72E6B0033B238 /* ClassifySql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A9D43F1BD72E6B0033B238 /* ClassifySql.m */; };
@@ -603,6 +605,8 @@
 		12D87DA01BD4ED9300579FF6 /* ClassifyRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87D9F1BD4ED9300579FF6 /* ClassifyRightCell.m */; };
 		12D87DA41BD4F04A00579FF6 /* ClassifyRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA31BD4F04A00579FF6 /* ClassifyRightView.m */; };
 		12D87DA71BD5008E00579FF6 /* ClassifyDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */; };
+		12D911F81C158D830000D446 /* WXShopUnionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D911F71C158D830000D446 /* WXShopUnionModel.m */; };
+		12D912021C159BF50000D446 /* ShopUnionClassifyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D912011C159BF50000D446 /* ShopUnionClassifyEntity.m */; };
 		12D96ED01BE84AE70043B219 /* AllCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D96ECF1BE84AE70043B219 /* AllCityModel.m */; };
 		12D9F5FB1C0C43BC00D7C765 /* UserOnceClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */; };
 		12D9F5FC1C0C43BC00D7C765 /* UserSecondClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5F91C0C43BC00D7C765 /* UserSecondClientImg@2x.png */; };
@@ -1896,6 +1900,10 @@
 		12A3478D1B734E6000D10C17 /* UserCutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutModel.m; sourceTree = "<group>"; };
 		12A3478F1B73503F00D10C17 /* UserCutEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutEntity.h; sourceTree = "<group>"; };
 		12A347901B73503F00D10C17 /* UserCutEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutEntity.m; sourceTree = "<group>"; };
+		12A42F8E1C1661AC005936F3 /* ShopUnionHotShopEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopUnionHotShopEntity.h; sourceTree = "<group>"; };
+		12A42F8F1C1661AC005936F3 /* ShopUnionHotShopEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopUnionHotShopEntity.m; sourceTree = "<group>"; };
+		12A42F911C1661C0005936F3 /* ShopUnionHotGoodsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopUnionHotGoodsEntity.h; sourceTree = "<group>"; };
+		12A42F921C1661C0005936F3 /* ShopUnionHotGoodsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopUnionHotGoodsEntity.m; sourceTree = "<group>"; };
 		12A66B271B74AE4800542112 /* NoWifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoWifi@2x.png"; sourceTree = "<group>"; };
 		12A850EE1B880CD200276D2A /* SharkImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkImg@2x.png"; sourceTree = "<group>"; };
 		12A9D43E1BD72E6B0033B238 /* ClassifySql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifySql.h; sourceTree = "<group>"; };
@@ -2089,6 +2097,10 @@
 		12D87DA31BD4F04A00579FF6 /* ClassifyRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyRightView.m; sourceTree = "<group>"; };
 		12D87DA51BD5008E00579FF6 /* ClassifyDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyDownCell.h; sourceTree = "<group>"; };
 		12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyDownCell.m; sourceTree = "<group>"; };
+		12D911F61C158D830000D446 /* WXShopUnionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXShopUnionModel.h; sourceTree = "<group>"; };
+		12D911F71C158D830000D446 /* WXShopUnionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXShopUnionModel.m; sourceTree = "<group>"; };
+		12D912001C159BF50000D446 /* ShopUnionClassifyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopUnionClassifyEntity.h; sourceTree = "<group>"; };
+		12D912011C159BF50000D446 /* ShopUnionClassifyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopUnionClassifyEntity.m; sourceTree = "<group>"; };
 		12D96ECE1BE84AE70043B219 /* AllCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCityModel.h; sourceTree = "<group>"; };
 		12D96ECF1BE84AE70043B219 /* AllCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCityModel.m; sourceTree = "<group>"; };
 		12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserOnceClientImg@2x.png"; sourceTree = "<group>"; };
@@ -3406,8 +3418,11 @@
 		121E39BA1BFAD8BF0098173F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				12D911FC1C159B080000D446 /* Entity */,
 				122744001C0051B80051938F /* UserLocation.h */,
 				122744011C0051B80051938F /* UserLocation.m */,
+				12D911F61C158D830000D446 /* WXShopUnionModel.h */,
+				12D911F71C158D830000D446 /* WXShopUnionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5618,6 +5633,19 @@
 				12D87DA61BD5008E00579FF6 /* ClassifyDownCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		12D911FC1C159B080000D446 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				12D912001C159BF50000D446 /* ShopUnionClassifyEntity.h */,
+				12D912011C159BF50000D446 /* ShopUnionClassifyEntity.m */,
+				12A42F8E1C1661AC005936F3 /* ShopUnionHotShopEntity.h */,
+				12A42F8F1C1661AC005936F3 /* ShopUnionHotShopEntity.m */,
+				12A42F911C1661C0005936F3 /* ShopUnionHotGoodsEntity.h */,
+				12A42F921C1661C0005936F3 /* ShopUnionHotGoodsEntity.m */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		12D96EC61BE844CC0043B219 /* CitySelect */ = {
@@ -8457,6 +8485,7 @@
 				1222F86B1C0EC1FC0031DF33 /* LMShopInfoBaseFunctionCell.m in Sources */,
 				1232C1DC1BECB80E0033DFA0 /* SearchCarriageMoney.m in Sources */,
 				1205952E1BCF994F009E6986 /* NLMainTableViewController.m in Sources */,
+				12A42F931C1661C0005936F3 /* ShopUnionHotGoodsEntity.m in Sources */,
 				DD1490161C0D496000D48663 /* MerchantID.m in Sources */,
 				DDEA9EE01B1BFD5D00530C1C /* WXSysMsgUnreadV.m in Sources */,
 				1218042D1ACB899B009DB7E7 /* DBImageRequest.m in Sources */,
@@ -8498,6 +8527,7 @@
 				120595321BCF994F009E6986 /* NLSubTableViewController.m in Sources */,
 				12AA52FE1B7DED2A003B893F /* LuckyGoodsInfoTopImgCell.m in Sources */,
 				775842FB1AB95A300039B129 /* UIImage+KIAdditions.m in Sources */,
+				12D911F81C158D830000D446 /* WXShopUnionModel.m in Sources */,
 				775843281AB95A300039B129 /* WXUINavigationController.m in Sources */,
 				12665AE21BE9D73200FAE406 /* NewAddressAreaCell.m in Sources */,
 				DD0E38B91B1BE5AC00AB4DB9 /* SysMsgCell.m in Sources */,
@@ -8609,6 +8639,7 @@
 				12F2D7EC1B1EAB0400C8017F /* WaitReceiveOrderListVC.m in Sources */,
 				128221C61B184C3B004613BB /* ASIDownloadCache.m in Sources */,
 				121121171BA277DB00651E4A /* MyCutRefereeModel.m in Sources */,
+				12D912021C159BF50000D446 /* ShopUnionClassifyEntity.m in Sources */,
 				12048C731B799D35000DF7F5 /* RechargeListModel.m in Sources */,
 				DDEA9F111B1C3A1800530C1C /* StrechyParallaxScrollView.m in Sources */,
 				120B5D941B86CC01009564F5 /* NewGoodsInfoTopImgView.m in Sources */,
@@ -8776,6 +8807,7 @@
 				12C0692A1B7CAF2F00C05D42 /* LuckyGoodsEntity.m in Sources */,
 				1277D00E1AC50E4F0008D9B6 /* WXTResetPwdVC.m in Sources */,
 				124A57691C08529800D4DEC6 /* HomeLimitBuyCell.m in Sources */,
+				12A42F901C1661AC005936F3 /* ShopUnionHotShopEntity.m in Sources */,
 				DDEA9EBD1B1BF2AD00530C1C /* WXTOrderConfirmViewController.m in Sources */,
 				7758432F1AB95A300039B129 /* WXUITabBar.m in Sources */,
 				775843241AB95A300039B129 /* WXUIImagePickerController.m in Sources */,

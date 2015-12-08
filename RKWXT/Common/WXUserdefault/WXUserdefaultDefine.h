@@ -59,6 +59,7 @@
 #define D_WXUserdefault_Key_tAddress @"D_WXUserdefault_Key_tAddress"//地址
 
 //定位
+#define D_WXUserdefault_Location_Pro @"D_WXUserdefault_Location_Pro"  //用户所在省份
 #define D_WXUserdefault_Location_City @"D_WXUserdefault_Location_City"  //用户定位城市
 #define D_WXUserdefault_Location_Area @"D_WXUserdefault_Location_Area" //用户定位区域
 #define D_WXUserdefault_UserCurrentCity @"D_WXUserdefault_UserCurrentCity"  //用户当前查看城市

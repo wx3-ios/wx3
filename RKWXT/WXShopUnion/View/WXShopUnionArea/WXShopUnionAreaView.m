@@ -74,7 +74,7 @@ enum{
         
         listArea = @[@"龙岗区", @"龙华新区", @"罗湖区", @"南山区", @"盐田区", @"宝安区"];
         CGRect rect = self.bounds;
-        rect.size.height = 170;
+        rect.size.height = 100;
         [_clipeView setFrame:rect];
         _originListRect = rect;
     }
@@ -140,7 +140,8 @@ enum{
     NSInteger row = 0;
     switch (section) {
         case ShopUnionArea_Section_AreaList:
-            row = [listArea count]/3+([listArea count]%3>0?1:0);
+//            row = [listArea count]/3+([listArea count]%3>0?1:0);
+            row = 0;
             break;
         case ShopUnionArea_Section_CityChoose:
             row = 1;

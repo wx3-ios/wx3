@@ -61,12 +61,14 @@
 - (BOOL)isGeneralAgency;
 
 #pragma mark 定位
+- (void)setUserLocationPro:(NSString*)proName;
 - (void)setUserLocationCity:(NSString*)cityName;
 - (void)setUserLocationArea:(NSString*)areaName;
 - (void)setUserCurrentCity:(NSString*)currentCity;
 - (void)setUserLocationLatitude:(CGFloat)latitude;
 - (void)setUserLocationLongitude:(CGFloat)longitude;
 
+- (NSString *)userLocationPro;
 - (NSString *)userLocationCity;
 - (NSString *)userLocationArea;
 - (NSString *)userCurrentCity;
