@@ -8,6 +8,7 @@
 
 #import "UserCutSourceListCell.h"
 #import "WXRemotionImgBtn.h"
+#import "UserCutSourceEntity.h"
 
 @interface UserCutSourceListCell(){
     WXUILabel *timeLabel;
@@ -40,6 +41,7 @@
         [self.contentView addSubview:upLineLabel];
         
         imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (UserCutSourceListCellHeight-imgHeight)/2, imgWidth, imgHeight)];
+        [imgView setBorderRadian:imgWidth/2 width:1.0 color:[UIColor clearColor]];
         [imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:imgView];
         
@@ -58,7 +60,7 @@
         [self.contentView addSubview:moneyLabel];
         
         textLabel = [[WXUILabel alloc] init];
-        textLabel.frame = CGRectMake(xOffset, imgView.frame.origin.y+labelHeight, IPHONE_SCREEN_WIDTH-xOffset, labelHeight);
+        textLabel.frame = CGRectMake(xOffset, imgView.frame.origin.y+labelHeight+2, IPHONE_SCREEN_WIDTH-xOffset, labelHeight);
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
         [textLabel setFont:WXFont(14.0)];
@@ -69,7 +71,28 @@
 }
 
 -(void)load{
+    UserCutSourceEntity *entity = self.cellInfo;
+    if([entity.registerTime isEqualToString:@"1970-01-01"]){
+        [timeLabel setText:@"2015-10-01"];
+    }else{
+        [timeLabel setText:entity.registerTime];
+    }
     
+    UIImage *iconImg = [UIImage imageNamed:@"PersonalInfo.png"];
+    [imgView setImage:iconImg];
+    if(![entity.imgUrl isEqualToString:@""] && entity.imgUrl){
+        [imgView setCpxViewInfo:entity.imgUrl];
+        [imgView load];
+    }
+    [moneyLabel setText:[NSString stringWithFormat:@"%.2f",entity.money]];
+    
+    
+    NSString *name = nil;
+    name = [NSString stringWithFormat:@"%ld",(long)entity.wxID];
+    if(![entity.nickName isEqualToString:@""] && entity.nickName){
+        name = entity.nickName;
+    }
+    [textLabel setText:[NSString stringWithFormat:@"来自%@的分成",name]];
 }
 
 @end

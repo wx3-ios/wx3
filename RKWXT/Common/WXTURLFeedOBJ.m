@@ -207,6 +207,9 @@
         case WXT_UrlFeed_Type_New_LoadAliRecordList:
             url = @"/app_user_withdraw_list.php";
             break;
+        case WXT_UrlFeed_Type_New_UserCutSource:
+            url = @"/get_divide_info.php";
+            break;
         case WXT_UrlFeed_Type_New_LoadClassifyData:
             url = @"/get_top_category.php";
             break;

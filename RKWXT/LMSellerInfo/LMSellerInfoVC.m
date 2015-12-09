@@ -27,7 +27,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCSTTitle:@"商家详情"];
+    [self setBackgroundColor:[UIColor whiteColor]];
     
+    _tableView = [[UITableView alloc] init];
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
+    [self addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

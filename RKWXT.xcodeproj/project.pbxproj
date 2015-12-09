@@ -143,6 +143,8 @@
 		1229F6271BE1B33600258B43 /* ClassifyResultListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */; };
 		1229F62A1BE1C40500258B43 /* GoodsListDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */; };
 		1229F62B1BE1C40500258B43 /* GoodsListUpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6291BE1C40500258B43 /* GoodsListUpImg@2x.png */; };
+		122F5EB11C17B7080045AF41 /* UserCutSourceArrowImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122F5EB01C17B7080045AF41 /* UserCutSourceArrowImg@2x.png */; };
+		122F5EB31C17BB6B0045AF41 /* UserCutRankingList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122F5EB21C17BB6B0045AF41 /* UserCutRankingList@2x.png */; };
 		1232C1D61BEC8D810033DFA0 /* NewUserAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */; };
 		1232C1D91BEC9B160033DFA0 /* NewUserAddressPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D81BEC9B160033DFA0 /* NewUserAddressPhoneCell.m */; };
 		1232C1DC1BECB80E0033DFA0 /* SearchCarriageMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1DB1BECB80E0033DFA0 /* SearchCarriageMoney.m */; };
@@ -500,6 +502,9 @@
 		12A42FAD1C16B56C005936F3 /* LMSellerInfoSmImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A42FAB1C16B56C005936F3 /* LMSellerInfoSmImg@2x.png */; };
 		12A42FB01C16B7EC005936F3 /* LMMoreSellerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A42FAF1C16B7EC005936F3 /* LMMoreSellerListCell.m */; };
 		12A42FB31C16B879005936F3 /* LMMoreSellerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A42FB21C16B879005936F3 /* LMMoreSellerListView.m */; };
+		12A42FC01C16D21A005936F3 /* UserCutSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A42FBF1C16D21A005936F3 /* UserCutSourceModel.m */; };
+		12A42FC31C16D359005936F3 /* UserCutSourceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A42FC21C16D359005936F3 /* UserCutSourceEntity.m */; };
+		12A42FC61C16EA4C005936F3 /* UserCutMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A42FC51C16EA4C005936F3 /* UserCutMoneyCell.m */; };
 		12A66B281B74AE4800542112 /* NoWifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A66B271B74AE4800542112 /* NoWifi@2x.png */; };
 		12A850EF1B880CD200276D2A /* SharkImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12A850EE1B880CD200276D2A /* SharkImg@2x.png */; };
 		12A9D4401BD72E6B0033B238 /* ClassifySql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A9D43F1BD72E6B0033B238 /* ClassifySql.m */; };
@@ -1295,6 +1300,8 @@
 		1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyResultListCell.m; sourceTree = "<group>"; };
 		1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsListDownImg@2x.png"; sourceTree = "<group>"; };
 		1229F6291BE1C40500258B43 /* GoodsListUpImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsListUpImg@2x.png"; sourceTree = "<group>"; };
+		122F5EB01C17B7080045AF41 /* UserCutSourceArrowImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCutSourceArrowImg@2x.png"; sourceTree = "<group>"; };
+		122F5EB21C17BB6B0045AF41 /* UserCutRankingList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCutRankingList@2x.png"; sourceTree = "<group>"; };
 		1232C1D41BEC8D810033DFA0 /* NewUserAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserAddressModel.h; sourceTree = "<group>"; };
 		1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserAddressModel.m; sourceTree = "<group>"; };
 		1232C1D71BEC9B160033DFA0 /* NewUserAddressPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserAddressPhoneCell.h; sourceTree = "<group>"; };
@@ -1929,6 +1936,12 @@
 		12A42FAF1C16B7EC005936F3 /* LMMoreSellerListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMMoreSellerListCell.m; sourceTree = "<group>"; };
 		12A42FB11C16B879005936F3 /* LMMoreSellerListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMMoreSellerListView.h; sourceTree = "<group>"; };
 		12A42FB21C16B879005936F3 /* LMMoreSellerListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMMoreSellerListView.m; sourceTree = "<group>"; };
+		12A42FBE1C16D21A005936F3 /* UserCutSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutSourceModel.h; sourceTree = "<group>"; };
+		12A42FBF1C16D21A005936F3 /* UserCutSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutSourceModel.m; sourceTree = "<group>"; };
+		12A42FC11C16D359005936F3 /* UserCutSourceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCutSourceEntity.h; sourceTree = "<group>"; };
+		12A42FC21C16D359005936F3 /* UserCutSourceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCutSourceEntity.m; sourceTree = "<group>"; };
+		12A42FC41C16EA4C005936F3 /* UserCutMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCutMoneyCell.h; path = RKWXT/NewUserCut/RankingList/UserCutSource/Model/UserCutMoneyCell.h; sourceTree = SOURCE_ROOT; };
+		12A42FC51C16EA4C005936F3 /* UserCutMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserCutMoneyCell.m; path = RKWXT/NewUserCut/RankingList/UserCutSource/Model/UserCutMoneyCell.m; sourceTree = SOURCE_ROOT; };
 		12A66B271B74AE4800542112 /* NoWifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoWifi@2x.png"; sourceTree = "<group>"; };
 		12A850EE1B880CD200276D2A /* SharkImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SharkImg@2x.png"; sourceTree = "<group>"; };
 		12A9D43E1BD72E6B0033B238 /* ClassifySql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifySql.h; sourceTree = "<group>"; };
@@ -3309,6 +3322,8 @@
 		120EC78E1BB9190500538637 /* withdrawals */ = {
 			isa = PBXGroup;
 			children = (
+				122F5EB21C17BB6B0045AF41 /* UserCutRankingList@2x.png */,
+				122F5EB01C17B7080045AF41 /* UserCutSourceArrowImg@2x.png */,
 				12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */,
 				12D9F5F91C0C43BC00D7C765 /* UserSecondClientImg@2x.png */,
 				12D9F5FA1C0C43BC00D7C765 /* UserThirdClientImg@2x.png */,
@@ -3394,6 +3409,8 @@
 				12C2CE241BA12FFC00797DA4 /* MyClientInfoCell.m */,
 				12C2CE291BA1331C00797DA4 /* MyClientMoneyCell.h */,
 				12C2CE2A1BA1331C00797DA4 /* MyClientMoneyCell.m */,
+				12A42FC41C16EA4C005936F3 /* UserCutMoneyCell.h */,
+				12A42FC51C16EA4C005936F3 /* UserCutMoneyCell.m */,
 			);
 			name = View;
 			path = Model/View;
@@ -4378,6 +4395,10 @@
 		126EE3EF1C1533CB003CF629 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				12A42FBE1C16D21A005936F3 /* UserCutSourceModel.h */,
+				12A42FBF1C16D21A005936F3 /* UserCutSourceModel.m */,
+				12A42FC11C16D359005936F3 /* UserCutSourceEntity.h */,
+				12A42FC21C16D359005936F3 /* UserCutSourceEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -8175,6 +8196,7 @@
 				12F4227E1B1D5A2900643DD7 /* AddressCircle@2x.png in Resources */,
 				1245354C1AE9D146004198C9 /* sign24@2x.png in Resources */,
 				124535461AE9D146004198C9 /* sign19@2x.png in Resources */,
+				122F5EB31C17BB6B0045AF41 /* UserCutRankingList@2x.png in Resources */,
 				124535121AE9D0BC004198C9 /* UserNormal@2x.png in Resources */,
 				1241E5301AE9D89B00811D3F /* CallBackBtn@2x.png in Resources */,
 				1241E5461AE9D89B00811D3F /* 4S@2x.png in Resources */,
@@ -8368,6 +8390,7 @@
 				DDFB25301BFDCD0F002E73EC /* 003.png in Resources */,
 				12F465E11B6F0DE200A8F5AF /* guideIllustrate_0-568h@2x.jpg in Resources */,
 				DDFBC08A1BFA02C8003E71A2 /* time.plist in Resources */,
+				122F5EB11C17B7080045AF41 /* UserCutSourceArrowImg@2x.png in Resources */,
 				1241E5511AE9D89B00811D3F /* delNumber@2x.png in Resources */,
 				12C12F451B81DFB500345BEE /* SharkBigImg.png in Resources */,
 				12F46A3F1B20012000B8EC98 /* T_GoodsInfoShare@2x.png in Resources */,
@@ -8610,6 +8633,7 @@
 				12F180BF1B45219300B9A80D /* JPushMessageModel.m in Sources */,
 				120EC79C1BB954A400538637 /* ConfirmUserAliModel.m in Sources */,
 				12F2D7DA1B1EA96B00C8017F /* DLSlideView.m in Sources */,
+				12A42FC01C16D21A005936F3 /* UserCutSourceModel.m in Sources */,
 				1273291E1B5CFFEE002AD4AE /* PersonalInfoEntity.m in Sources */,
 				DDFBC09F1BFA0CD2003E71A2 /* ToDaySnapUPCell.m in Sources */,
 				120E16271B846169009401F2 /* LuckyOrderListModel.m in Sources */,
@@ -8635,6 +8659,7 @@
 				12F915FC1B19507600C94717 /* T_MenuCommonInfoCell.m in Sources */,
 				775843161AB95A300039B129 /* WXUIBaseButton.m in Sources */,
 				DD1490061C0D2E3B00D48663 /* NSDate+Time.m in Sources */,
+				12A42FC31C16D359005936F3 /* UserCutSourceEntity.m in Sources */,
 				12F9632F1B3D4BDF00FF6A3E /* NSObject+SBJson.m in Sources */,
 				129EEBBE1B97E3AF0062349E /* SDWebImagePrefetcher.m in Sources */,
 				12BD31021B3E9E1600170316 /* UserBonusEntity.m in Sources */,
@@ -8878,6 +8903,7 @@
 				12C12F3B1B81DA6D00345BEE /* LuckyShakeVC.m in Sources */,
 				127329131B5CDDF4002AD4AE /* AboutVC.m in Sources */,
 				121EBCD51BDE049300D1F307 /* GoodsInfoDownView.m in Sources */,
+				12A42FC61C16EA4C005936F3 /* UserCutMoneyCell.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
 				126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */,
 				775842C01AB95A300039B129 /* WXGuideMaskControl.m in Sources */,

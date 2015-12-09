@@ -9,6 +9,7 @@
 #import "NewUserCutVC.h"
 #import "NewGoodsInfoBDCell.h"
 #import "UserRefereeCell.h"
+#import "UserCutMoneyCell.h"
 #import "NewMyClientVC.h"
 #import "MyCutRefereeModel.h"
 #import "MyRefereeEntity.h"
@@ -20,13 +21,17 @@
 #import "ConfirmUserAliPayVC.h"
 #import "ApplyAliWithdrawalsVC.h"
 #import "WithdrawalsRecordListVC.h"
+#import "UserCutSourceListVC.h"
+#import "WXJuniorListVC.h"
 
 #import "WXDropListView.h"
 
 #define Size self.bounds.size
 
 enum{
-    NewCut_Section_team = 0,
+    NewCut_Section_Money = 0,
+    NewCut_Section_team,
+    NewCut_Section_RankingList,
     NewCut_Section_Referee,
     
     NewCut_Section_invalid,
@@ -49,7 +54,6 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
 @interface NewUserCutVC ()<UITableViewDataSource,UITableViewDelegate,LoadMyCutRefereeModelDelegate,SearchUserAliAccountModelDelegate,WXDropListViewDelegate>{
     UITableView *_tableView;
     WXUILabel *_bigMoney;
-    WXUILabel *_smallMoney;
     
     BOOL _isOpen;
     
@@ -188,29 +192,7 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     [line setBackgroundColor:WXColorWithInteger(0xcfcfcf)];
     [headView addSubview:line];
     
-    yOffset += 15;
-    CGFloat smallWidth = 80;
-    CGFloat smallHeight = 20;
-    _smallMoney = [[WXUILabel alloc] init];
-    _smallMoney.frame = CGRectMake((Size.width-smallWidth)/2, yOffset, smallWidth, smallHeight);
-    [_smallMoney setBackgroundColor:[UIColor clearColor]];
-    [_smallMoney setText:@"0.00"];
-    [_smallMoney setTextAlignment:NSTextAlignmentCenter];
-    [_smallMoney setFont:WXFont(15.0)];
-    [_smallMoney setTextColor:WXColorWithInteger(0x000000)];
-    [headView addSubview:_smallMoney];
-    
-    yOffset += smallHeight;
-    WXUILabel *textLabel = [[WXUILabel alloc] init];
-    textLabel.frame = CGRectMake((Size.width-smallWidth)/2, yOffset, smallWidth, smallHeight);
-    [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [textLabel setText:@"提成"];
-    [textLabel setTextColor:WXColorWithInteger(0x828282)];
-    [textLabel setFont:WXFont(11.0)];
-    [headView addSubview:textLabel];
-    
-    headView.frame = CGRectMake(0, 0, Size.width, 196);
+    headView.frame = CGRectMake(0, 0, Size.width, 131);
     return headView;
 }
 
@@ -222,6 +204,8 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     NSInteger row = 0;
     switch (section) {
         case NewCut_Section_team:
+        case NewCut_Section_RankingList:
+        case NewCut_Section_Money:
             row = 1;
             break;
         case NewCut_Section_Referee:
@@ -254,7 +238,9 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
         case NewCut_Section_team:
             height = 9;
             break;
+        case NewCut_Section_Money:
         case NewCut_Section_Referee:
+        case NewCut_Section_RankingList:
             height = 0;
             break;
         default:
@@ -267,7 +253,11 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     CGFloat height = 0.0;
     NSInteger section = indexPath.section;
     switch (section) {
+        case NewCut_Section_Money:
+            height = UserCutMoneyCellHeight;
+            break;
         case NewCut_Section_team:
+        case NewCut_Section_RankingList:
             height = 44;
             break;
         case NewCut_Section_Referee:{
@@ -312,6 +302,22 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     }
 }
 
+//提成金额
+-(WXUITableViewCell*)userCutMoneyCell{
+    static NSString *identifier = @"moneyCell";
+    UserCutMoneyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[UserCutMoneyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
+    if([myCutArr count] > 0){
+        MyRefereeEntity *entity = [myCutArr objectAtIndex:0];
+        [cell setCellInfo:entity];
+    }
+    [cell load];
+    return cell;
+}
+
 //我的下级
 -(WXUITableViewCell*)tableViewForUserCutCell{
     static NSString *identifier = @"cutCell";
@@ -333,6 +339,21 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
         [cell.detailTextLabel setFont:WXFont(14.0)];
     }
     [cell load];
+    return cell;
+}
+
+//排行榜
+-(WXUITableViewCell*)userCutRankingListCell{
+    static NSString *identifier = @"rankingListCell";
+    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];;
+    }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
+    [cell.imageView setImage:[UIImage imageNamed:@"UserCutRankingList.png"]];
+    [cell.textLabel setText:@"排行榜"];
+    [cell.textLabel setFont:WXFont(16.0)];
+    [cell.textLabel setTextColor:WXColorWithInteger(0x000000)];
     return cell;
 }
 
@@ -386,8 +407,14 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
         WXUITableViewCell *cell = nil;
         NSInteger section = indexPath.section;
         switch (section) {
+            case NewCut_Section_Money:
+                cell = [self userCutMoneyCell];
+                break;
             case NewCut_Section_team:
                 cell = [self tableViewForUserCutCell];
+                break;
+            case NewCut_Section_RankingList:
+                cell = [self userCutRankingListCell];
                 break;
             case NewCut_Section_Referee:
                 cell = [self tableViewForBaseDataCell:indexPath];
@@ -410,6 +437,18 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
         }
         clientVC.entity = entity;
         [self.wxNavigationController pushViewController:clientVC];
+    }
+    if(section == NewCut_Section_RankingList){
+        WXJuniorListVC *juniorListVC = [[WXJuniorListVC alloc] init];
+        [self.wxNavigationController pushViewController:juniorListVC];
+    }
+    if(section == NewCut_Section_Money){
+        UserCutSourceListVC *listVC = [[UserCutSourceListVC alloc] init];
+        if([myCutArr count] > 0){
+            MyRefereeEntity *entity = [myCutArr objectAtIndex:0];
+            listVC.money = entity.cutMoney;
+        }
+        [self.wxNavigationController pushViewController:listVC];
     }
     if(section == NewCut_Section_Referee){
         if(indexPath.row == 0){
@@ -452,7 +491,7 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     if([myCutArr count] > 0){
         MyRefereeEntity *entity = [myCutArr objectAtIndex:0];
         [_bigMoney setText:[NSString stringWithFormat:@"%.2f",entity.balance]];
-        [_smallMoney setText:[NSString stringWithFormat:@"%.2f",entity.cutMoney]];
+//        [_smallMoney setText:[NSString stringWithFormat:@"%.2f",entity.cutMoney]];
         userMoney = entity.balance;
     }
     [_tableView reloadData];

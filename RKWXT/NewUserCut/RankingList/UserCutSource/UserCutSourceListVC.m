@@ -10,18 +10,28 @@
 #import "UserCutSourceListCell.h"
 #import "WXRemotionImgBtn.h"
 #import "UserHeaderModel.h"
+#import "UserCutSourceModel.h"
 
 #define Size self.bounds.size
 
-@interface UserCutSourceListVC ()<UITableViewDataSource,UITableViewDelegate>{
+@interface UserCutSourceListVC ()<UITableViewDataSource,UITableViewDelegate,UserCutSourceModelDelegate>{
     UITableView *_tableView;
-    WXUILabel *moneyLabel;
     NSArray *listArr;
+    UserCutSourceModel *_model;
 }
 
 @end
 
 @implementation UserCutSourceListVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[UserCutSourceModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,13 +45,15 @@
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self addSubview:_tableView];
     [_tableView setTableHeaderView:[self tableViewForHeaderView]];
+    
+    [_model loadUserCutSource];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(WXUIView*)tableViewForHeaderView{
     WXUIView *headerView = [[WXUIView alloc] init];
     [headerView setBackgroundColor:[UIColor whiteColor]];
     
-    CGFloat headerViewHeight = 105;
     CGFloat xOffset = 10;
     CGFloat imgViewWidth = 65;
     CGFloat imgViewHeight = imgViewWidth;
@@ -52,7 +64,7 @@
     [iconImageView setBorderRadian:imgViewWidth/2 width:1.0 color:[UIColor clearColor]];
     [headerView addSubview:iconImageView];
     if([UserHeaderModel shareUserHeaderModel].userHeaderImg){
-        [iconImageView setCpxViewInfo:[UserHeaderModel shareUserHeaderModel].userHeaderImg];
+        [iconImageView setCpxViewInfo:@"http://wx3.67call.com/wx3/Public/Uploads/20150930/20150930093551_343552.png"];
         [iconImageView load];
     }
     
@@ -77,15 +89,37 @@
     [nickName setText:nickNameStr];
     
     yOffset += labelHeight+14;
-    moneyLabel = [[WXUILabel alloc] init];
+    WXUILabel *moneyLabel = [[WXUILabel alloc] init];
     moneyLabel.frame = CGRectMake(xOffset, yOffset, labelWidth, labelHeight);
     [moneyLabel setBackgroundColor:[UIColor clearColor]];
     [moneyLabel setTextAlignment:NSTextAlignmentLeft];
     [moneyLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [moneyLabel setFont:WXFont(18.0)];
+    [moneyLabel setText:[NSString stringWithFormat:@"%.2f",_money]];
     [headerView addSubview:moneyLabel];
     
-    [headerView setFrame:CGRectMake(0, 0, Size.width, headerViewHeight)];
+    yOffset = iconImageView.frame.origin.y+iconImageView.frame.size.height+11;
+    CGFloat arrowImgWidth = 20;
+    CGFloat arrowImgHeight = 7;
+    WXUILabel *leftLine = [[WXUILabel alloc] init];
+    leftLine.frame = CGRectMake(0, yOffset, Size.width/3-arrowImgWidth/2+17, 0.5);
+    [leftLine setBackgroundColor:[UIColor grayColor]];
+    [headerView addSubview:leftLine];
+    
+    WXUILabel *rightLine = [[WXUILabel alloc] init];
+    rightLine.frame = CGRectMake(Size.width/3+arrowImgWidth/2+17-1, yOffset, Size.width-Size.width/3-arrowImgWidth, 0.5);
+    [rightLine setBackgroundColor:[UIColor grayColor]];
+    [headerView addSubview:rightLine];
+    
+    yOffset += 0.5;
+    WXUIImageView *arrowImgView = [[WXUIImageView alloc] init];
+    arrowImgView.frame = CGRectMake(Size.width/3-arrowImgWidth/2+17, yOffset, arrowImgWidth, arrowImgHeight);
+    [arrowImgView setImage:[UIImage imageNamed:@"UserCutSourceArrowImg.png"]];
+    [headerView addSubview:arrowImgView];
+    
+    yOffset += arrowImgHeight;
+    
+    [headerView setFrame:CGRectMake(0, 0, Size.width, yOffset)];
     return headerView;
 }
 
@@ -97,6 +131,10 @@
     return [listArr count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UserCutSourceListCellHeight;
+}
+
 -(WXUITableViewCell*)userCutSourceListCell:(NSInteger)row{
     static NSString *identifier = @"listCell";
     UserCutSourceListCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
@@ -104,6 +142,9 @@
         cell = [[UserCutSourceListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([listArr count] > 0){
+        [cell setCellInfo:[listArr objectAtIndex:row]];
+    }
     [cell load];
     return cell;
 }
@@ -113,6 +154,21 @@
     NSInteger row = indexPath.row;
     cell = [self userCutSourceListCell:row];
     return cell;
+}
+
+#pragma mark userCutSourceDelegate
+-(void)loadUserCutSourceSucceed{
+    [self unShowWaitView];
+    listArr = _model.sourceArr;
+    [_tableView reloadData];
+}
+
+-(void)loadUserCutSourceFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 - (void)didReceiveMemoryWarning {

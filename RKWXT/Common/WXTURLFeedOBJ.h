@@ -65,6 +65,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_SharedSucceed,
     WXT_UrlFeed_Type_New_UpdateUserHeader,
     WXT_UrlFeed_Type_New_LoadUserHeader,
+    //提成
     WXT_UrlFeed_Type_New_LoadMyCutInfo,
     WXT_UrlFeed_Type_New_LoadMyClientPerson,
     WXT_UrlFeed_Type_New_LoadMyClientInfo,
@@ -72,6 +73,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_SubmitUserAliAcount,
     WXT_UrlFeed_Type_New_ApplyAliMoney,
     WXT_UrlFeed_Type_New_LoadAliRecordList,
+    WXT_UrlFeed_Type_New_UserCutSource,
     
     //分类
     WXT_UrlFeed_Type_New_LoadClassifyData,
