@@ -74,6 +74,7 @@ typedef enum {
     WXT_UrlFeed_Type_New_ApplyAliMoney,
     WXT_UrlFeed_Type_New_LoadAliRecordList,
     WXT_UrlFeed_Type_New_UserCutSource,
+    WXT_UrlFeed_Type_New_JuniorList,
     
     //分类
     WXT_UrlFeed_Type_New_LoadClassifyData,

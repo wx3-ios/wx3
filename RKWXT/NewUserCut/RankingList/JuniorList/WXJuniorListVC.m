@@ -8,17 +8,28 @@
 
 #import "WXJuniorListVC.h"
 #import "WXJuniorListCell.h"
+#import "WXJuniorListModel.h"
 
 #define Size self.bounds.size
 
-@interface WXJuniorListVC ()<UITableViewDataSource,UITableViewDelegate>{
+@interface WXJuniorListVC ()<UITableViewDataSource,UITableViewDelegate,WXJuniorListModelDelegate>{
     UITableView *_tableView;
     NSArray *listArr;
+    WXJuniorListModel *_model;
 }
 
 @end
 
 @implementation WXJuniorListVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[WXJuniorListModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +42,30 @@
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    [_model loadWXJuniorListData];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -52,6 +87,9 @@
         cell = [[WXJuniorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([listArr count] > 0){
+        [cell setCellInfo:[listArr objectAtIndex:row]];
+    }
     [cell load];
     return cell;
 }
@@ -61,6 +99,21 @@
     NSInteger row = indexPath.row;
     cell = [self juniorPersonListCell:row];
     return cell;
+}
+
+#pragma mark juniorModel Delegate
+-(void)loadWXJuniorListDataSucceed{
+    [self unShowWaitView];
+    listArr = _model.juniorArr;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)loadWXJuniorListDataFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 - (void)didReceiveMemoryWarning {

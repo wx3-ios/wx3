@@ -72,11 +72,7 @@
 
 -(void)load{
     UserCutSourceEntity *entity = self.cellInfo;
-    if([entity.registerTime isEqualToString:@"1970-01-01"]){
-        [timeLabel setText:@"2015-10-01"];
-    }else{
-        [timeLabel setText:entity.registerTime];
-    }
+    [timeLabel setText:entity.grade];
     
     UIImage *iconImg = [UIImage imageNamed:@"PersonalInfo.png"];
     [imgView setImage:iconImg];
@@ -84,7 +80,7 @@
         [imgView setCpxViewInfo:entity.imgUrl];
         [imgView load];
     }
-    [moneyLabel setText:[NSString stringWithFormat:@"%.2f",entity.money]];
+    [moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.money]];
     
     
     NSString *name = nil;

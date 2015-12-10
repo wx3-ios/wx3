@@ -273,7 +273,11 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
 
 #pragma mark delete
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 0){
+    if(showHistory){
+        if(indexPath.row == 0){
+            return NO;
+        }
+    }else{
         return NO;
     }
     return YES;

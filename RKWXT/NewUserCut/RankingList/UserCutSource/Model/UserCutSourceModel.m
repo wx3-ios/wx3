@@ -31,6 +31,7 @@
         return;
     }
     [_sourceArr removeAllObjects];
+    NSInteger count = 0;
     NSArray *keys = [dic allKeys];
     for(NSString *name in keys){
         for(NSDictionary *dic1 in [dic objectForKey:name]){
@@ -38,8 +39,19 @@
             if(![entity.imgUrl isEqualToString:@""]){
                 entity.imgUrl = [NSString stringWithFormat:@"http://wx3.67call.com/wx3/Public/Uploads/%@",entity.imgUrl];
             }
+            NSString *key = [keys objectAtIndex:count];
+            if([key isEqualToString:@"p1"]){
+                entity.grade = @"一级";
+            }
+            if([key isEqualToString:@"p2"]){
+                entity.grade = @"二级";
+            }
+            if([key isEqualToString:@"p3"]){
+                entity.grade = @"三级";
+            }
             [_sourceArr addObject:entity];
         }
+        count ++;
     }
 }
 

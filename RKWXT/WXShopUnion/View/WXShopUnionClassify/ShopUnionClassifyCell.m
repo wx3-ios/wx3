@@ -7,7 +7,6 @@
 //
 
 #import "ShopUnionClassifyCell.h"
-#import "ShopUnionScrollView.h"
 #import "WXShopUnionDef.h"
 #import "ShopUnionClassifyEntity.h"
 

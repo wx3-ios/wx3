@@ -16,6 +16,8 @@
 @property (nonatomic,assign) CGFloat money;
 @property (nonatomic,assign) NSInteger wxID;
 
+@property (nonatomic,strong) NSString *grade;
+
 +(UserCutSourceEntity*)initUserCutSourceEntityWith:(NSDictionary*)dic;
 
 @end

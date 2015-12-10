@@ -276,6 +276,7 @@
     if(!cell){
         cell = [[[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_None];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell.textLabel setText:@"为我推荐"];

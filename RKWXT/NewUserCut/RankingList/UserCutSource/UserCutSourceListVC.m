@@ -11,6 +11,7 @@
 #import "WXRemotionImgBtn.h"
 #import "UserHeaderModel.h"
 #import "UserCutSourceModel.h"
+#import "UserCutSourceEntity.h"
 
 #define Size self.bounds.size
 
@@ -95,7 +96,7 @@
     [moneyLabel setTextAlignment:NSTextAlignmentLeft];
     [moneyLabel setTextColor:WXColorWithInteger(0xdd2726)];
     [moneyLabel setFont:WXFont(18.0)];
-    [moneyLabel setText:[NSString stringWithFormat:@"%.2f",_money]];
+    [moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",_money]];
     [headerView addSubview:moneyLabel];
     
     yOffset = iconImageView.frame.origin.y+iconImageView.frame.size.height+11;
@@ -159,8 +160,23 @@
 #pragma mark userCutSourceDelegate
 -(void)loadUserCutSourceSucceed{
     [self unShowWaitView];
-    listArr = _model.sourceArr;
+    listArr = [self goodsPriceDownSort];
     [_tableView reloadData];
+}
+
+-(NSArray*)goodsPriceDownSort{
+    NSArray *sortArray = [_model.sourceArr sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        UserCutSourceEntity *entity_0 = obj1;
+        UserCutSourceEntity *entity_1 = obj2;
+        
+        if (entity_0.money < entity_1.money){
+            return NSOrderedDescending;
+        }else if (entity_0.money > entity_1.money){
+            return NSOrderedAscending;
+        }
+        return NSOrderedSame;
+    }];
+    return sortArray;
 }
 
 -(void)loadUserCutSourceFailed:(NSString *)errorMsg{
