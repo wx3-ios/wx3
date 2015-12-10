@@ -329,7 +329,7 @@ static NSString* g_dropItemList[CLassify_Search_Invalid] ={
 -(void)delClassifyHistoryOneRecordSucceed{
 }
 
-//测试插入数据
+//插入数据
 -(void)textFieldDone:(id)sender{
     WXUITextField *textField = sender;
     [textField resignFirstResponder];

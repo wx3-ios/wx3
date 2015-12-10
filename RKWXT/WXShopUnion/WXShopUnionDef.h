@@ -25,6 +25,8 @@
 
 #import "WXShopUnionModel.h"
 
+#import "LMSearchListVC.h"
+
 #define Size self.bounds.size
 #define ShopUnionClassifyRowHeight (165)
 #define ShopUnionActivityRowHeight (115)

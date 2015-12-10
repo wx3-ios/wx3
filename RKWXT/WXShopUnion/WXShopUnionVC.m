@@ -80,15 +80,22 @@
     _textField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, 66-height-10, width, height)];
     [_textField setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [_textField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
-    [_textField addTarget:self action:@selector(textfiledStartInput) forControlEvents:UIControlEventEditingChanged];
+//    [_textField addTarget:self action:@selector(textfiledStartInput) forControlEvents:UIControlEventEditingDidBegin];
     [_textField setTextColor:WXColorWithInteger(0xda7c7b)];
     [_textField setTintColor:WXColorWithInteger(0xdd2726)];
+    [_textField setEnabled:NO];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ClassifySearchImg.png"]];
     [_textField setLeftView:imgView leftGap:10 rightGap:0];
     [_textField setLeftViewMode:UITextFieldViewModeUnlessEditing];
     [_textField setPlaceholder:@"搜索商家或商品"];
     [_textField setFont:WXFont(12.0)];
     [self.view addSubview:_textField];
+    
+    WXUIButton *clearBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    clearBtn.frame = _textField.frame;
+    [clearBtn setBackgroundColor:[UIColor clearColor]];
+    [clearBtn addTarget:self action:@selector(textfiledStartInput) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:clearBtn];
 }
 
 //集成刷新控件
@@ -501,7 +508,8 @@
 }
 
 -(void)textfiledStartInput{
-    
+    LMSearchListVC *searchListVC = [[LMSearchListVC alloc] init];
+    [self.wxNavigationController pushViewController:searchListVC];
 }
 
 -(void)removeOBS{
