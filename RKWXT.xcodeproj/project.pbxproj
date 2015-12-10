@@ -636,6 +636,8 @@
 		12D9F5FB1C0C43BC00D7C765 /* UserOnceClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */; };
 		12D9F5FC1C0C43BC00D7C765 /* UserSecondClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5F91C0C43BC00D7C765 /* UserSecondClientImg@2x.png */; };
 		12D9F5FD1C0C43BC00D7C765 /* UserThirdClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5FA1C0C43BC00D7C765 /* UserThirdClientImg@2x.png */; };
+		12DF795B1C19681B00CD81B3 /* LMSellerListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DF795A1C19681B00CD81B3 /* LMSellerListVC.m */; };
+		12DF795E1C1969D600CD81B3 /* LMSellerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DF795D1C1969D600CD81B3 /* LMSellerListCell.m */; };
 		12E07FF11BEB7BFB0051DAD5 /* EditUserAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */; };
 		12E07FF71BEB7D410051DAD5 /* AreaDataSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */; };
 		12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */; };
@@ -2173,6 +2175,10 @@
 		12D9F5F81C0C43BC00D7C765 /* UserOnceClientImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserOnceClientImg@2x.png"; sourceTree = "<group>"; };
 		12D9F5F91C0C43BC00D7C765 /* UserSecondClientImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserSecondClientImg@2x.png"; sourceTree = "<group>"; };
 		12D9F5FA1C0C43BC00D7C765 /* UserThirdClientImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserThirdClientImg@2x.png"; sourceTree = "<group>"; };
+		12DF79591C19681B00CD81B3 /* LMSellerListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerListVC.h; sourceTree = "<group>"; };
+		12DF795A1C19681B00CD81B3 /* LMSellerListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerListVC.m; sourceTree = "<group>"; };
+		12DF795C1C1969D600CD81B3 /* LMSellerListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerListCell.h; sourceTree = "<group>"; };
+		12DF795D1C1969D600CD81B3 /* LMSellerListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerListCell.m; sourceTree = "<group>"; };
 		12E07FEF1BEB7BFB0051DAD5 /* EditUserAreaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserAreaVC.h; sourceTree = "<group>"; };
 		12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserAreaVC.m; sourceTree = "<group>"; };
 		12E07FF31BEB7D410051DAD5 /* AreaDataSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaDataSql.h; sourceTree = "<group>"; };
@@ -4432,6 +4438,7 @@
 			children = (
 				12A42F961C168C5A005936F3 /* LMSellerInfoVC.h */,
 				12A42F971C168C5A005936F3 /* LMSellerInfoVC.m */,
+				12DF79561C1967EB00CD81B3 /* LMSellerList */,
 				12A42F951C168B6B005936F3 /* View */,
 				12A42F941C168B60005936F3 /* Model */,
 			);
@@ -5860,6 +5867,33 @@
 		12D96ECD1BE848C50043B219 /* View */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12DF79561C1967EB00CD81B3 /* LMSellerList */ = {
+			isa = PBXGroup;
+			children = (
+				12DF79591C19681B00CD81B3 /* LMSellerListVC.h */,
+				12DF795A1C19681B00CD81B3 /* LMSellerListVC.m */,
+				12DF79571C1967FE00CD81B3 /* Model */,
+				12DF79581C1967FE00CD81B3 /* View */,
+			);
+			path = LMSellerList;
+			sourceTree = "<group>";
+		};
+		12DF79571C1967FE00CD81B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12DF79581C1967FE00CD81B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12DF795C1C1969D600CD81B3 /* LMSellerListCell.h */,
+				12DF795D1C1969D600CD81B3 /* LMSellerListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -8828,6 +8862,7 @@
 				120A2BEF1AB135DE006A28B1 /* BalanceEntity.m in Sources */,
 				775842F71AB95A300039B129 /* PullTableView.m in Sources */,
 				775842FE1AB95A300039B129 /* LoadingCell.m in Sources */,
+				12DF795E1C1969D600CD81B3 /* LMSellerListCell.m in Sources */,
 				120595311BCF994F009E6986 /* NLPullUpRefreshView.m in Sources */,
 				DD0E38BC1B1BE5AC00AB4DB9 /* SysMsgOBS.m in Sources */,
 				775842D21AB95A300039B129 /* GTMNSString+HTML.m in Sources */,
@@ -8873,6 +8908,7 @@
 				12D87DA41BD4F04A00579FF6 /* ClassifyRightView.m in Sources */,
 				775842F21AB95A300039B129 /* WXDropListView.m in Sources */,
 				122744021C0051B80051938F /* UserLocation.m in Sources */,
+				12DF795B1C19681B00CD81B3 /* LMSellerListVC.m in Sources */,
 				121E39B81BFACB130098173F /* WXShopCityListVC.m in Sources */,
 				12A9D4521BD768FE0033B238 /* CLassifySearchModel.m in Sources */,
 				775843C51AB971CF0039B129 /* WXTUITextField.m in Sources */,

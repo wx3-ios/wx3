@@ -37,7 +37,7 @@
         for(NSDictionary *dic1 in [dic objectForKey:name]){
             UserCutSourceEntity *entity = [UserCutSourceEntity initUserCutSourceEntityWith:dic1];
             if(![entity.imgUrl isEqualToString:@""]){
-                entity.imgUrl = [NSString stringWithFormat:@"http://wx3.67call.com/wx3/Public/Uploads/%@",entity.imgUrl];
+                entity.imgUrl = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.imgUrl];
             }
             NSString *key = [keys objectAtIndex:count];
             if([key isEqualToString:@"p1"]){

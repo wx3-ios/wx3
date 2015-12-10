@@ -69,7 +69,6 @@
     [self addSubview:_areaListView];
     [[LocalAreaModel shareLocalArea] loadLocalAreaData];
     
-    [_model loadShopUnionData:0];
     [self setupRefresh];
 }
 
@@ -417,20 +416,22 @@
 #pragma mark dataDelegate
 -(void)loadShopUnionDataSucceed{
     hotGoodsArr = _model.hotGoodsArr;
+    [_tableView headerEndRefreshing];
     [_tableView reloadData];
-    [_tableView footerEndRefreshing];
 }
 
 -(void)loadShopUnionDataFailed:(NSString *)errorMsg{
-    
+    [self unShowWaitView];
+    [_tableView headerEndRefreshing];
+    if(!errorMsg){
+        errorMsg = @"获取数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 #pragma mark 刷新
 -(void)headerRefreshing{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_tableView reloadData];
-        [_tableView headerEndRefreshing];
-    });
+    [_model loadShopUnionData:0];
 }
 
 -(void)loadMoreGoods{

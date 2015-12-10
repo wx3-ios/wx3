@@ -37,7 +37,7 @@
         
         JuniorListEntity *entity = [JuniorListEntity initJuniorListEntity:dic];
         if(![entity.imgUrl isEqualToString:@""] && entity.imgUrl){
-            entity.imgUrl = [NSString stringWithFormat:@"http://wx3.67call.com/wx3/Public/Uploads/%@",entity.imgUrl];
+            entity.imgUrl = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.imgUrl];
         }
         entity.rankingNum = count;
         [_juniorArr addObject:entity];

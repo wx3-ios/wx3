@@ -65,7 +65,7 @@
     [iconImageView setBorderRadian:imgViewWidth/2 width:1.0 color:[UIColor clearColor]];
     [headerView addSubview:iconImageView];
     if([UserHeaderModel shareUserHeaderModel].userHeaderImg){
-        [iconImageView setCpxViewInfo:@"http://wx3.67call.com/wx3/Public/Uploads/20150930/20150930093551_343552.png"];
+        [iconImageView setCpxViewInfo:[UserHeaderModel shareUserHeaderModel].userHeaderImg];
         [iconImageView load];
     }
     
