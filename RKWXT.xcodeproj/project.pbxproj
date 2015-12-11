@@ -638,6 +638,9 @@
 		12D9F5FD1C0C43BC00D7C765 /* UserThirdClientImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D9F5FA1C0C43BC00D7C765 /* UserThirdClientImg@2x.png */; };
 		12DF795B1C19681B00CD81B3 /* LMSellerListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DF795A1C19681B00CD81B3 /* LMSellerListVC.m */; };
 		12DF795E1C1969D600CD81B3 /* LMSellerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DF795D1C1969D600CD81B3 /* LMSellerListCell.m */; };
+		12DF79641C1971D200CD81B3 /* LMShoppingCartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DF79631C1971D200CD81B3 /* LMShoppingCartVC.m */; };
+		12DF79671C1979DE00CD81B3 /* LMShoppingCartTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DF79661C1979DE00CD81B3 /* LMShoppingCartTitleCell.m */; };
+		12DF796A1C1982A700CD81B3 /* LMShoppingCartGoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DF79691C1982A700CD81B3 /* LMShoppingCartGoodsListCell.m */; };
 		12E07FF11BEB7BFB0051DAD5 /* EditUserAreaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */; };
 		12E07FF71BEB7D410051DAD5 /* AreaDataSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */; };
 		12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */; };
@@ -2179,6 +2182,12 @@
 		12DF795A1C19681B00CD81B3 /* LMSellerListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerListVC.m; sourceTree = "<group>"; };
 		12DF795C1C1969D600CD81B3 /* LMSellerListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerListCell.h; sourceTree = "<group>"; };
 		12DF795D1C1969D600CD81B3 /* LMSellerListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerListCell.m; sourceTree = "<group>"; };
+		12DF79621C1971D200CD81B3 /* LMShoppingCartVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMShoppingCartVC.h; sourceTree = "<group>"; };
+		12DF79631C1971D200CD81B3 /* LMShoppingCartVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShoppingCartVC.m; sourceTree = "<group>"; };
+		12DF79651C1979DE00CD81B3 /* LMShoppingCartTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMShoppingCartTitleCell.h; sourceTree = "<group>"; };
+		12DF79661C1979DE00CD81B3 /* LMShoppingCartTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShoppingCartTitleCell.m; sourceTree = "<group>"; };
+		12DF79681C1982A700CD81B3 /* LMShoppingCartGoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMShoppingCartGoodsListCell.h; sourceTree = "<group>"; };
+		12DF79691C1982A700CD81B3 /* LMShoppingCartGoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShoppingCartGoodsListCell.m; sourceTree = "<group>"; };
 		12E07FEF1BEB7BFB0051DAD5 /* EditUserAreaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserAreaVC.h; sourceTree = "<group>"; };
 		12E07FF01BEB7BFB0051DAD5 /* EditUserAreaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserAreaVC.m; sourceTree = "<group>"; };
 		12E07FF31BEB7D410051DAD5 /* AreaDataSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaDataSql.h; sourceTree = "<group>"; };
@@ -5898,6 +5907,35 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		12DF795F1C19719000CD81B3 /* LMShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				12DF79621C1971D200CD81B3 /* LMShoppingCartVC.h */,
+				12DF79631C1971D200CD81B3 /* LMShoppingCartVC.m */,
+				12DF79601C1971A400CD81B3 /* Model */,
+				12DF79611C1971A400CD81B3 /* View */,
+			);
+			path = LMShoppingCart;
+			sourceTree = "<group>";
+		};
+		12DF79601C1971A400CD81B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12DF79611C1971A400CD81B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12DF79651C1979DE00CD81B3 /* LMShoppingCartTitleCell.h */,
+				12DF79661C1979DE00CD81B3 /* LMShoppingCartTitleCell.m */,
+				12DF79681C1982A700CD81B3 /* LMShoppingCartGoodsListCell.h */,
+				12DF79691C1982A700CD81B3 /* LMShoppingCartGoodsListCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		12E07FF21BEB7D410051DAD5 /* sql */ = {
 			isa = PBXGroup;
 			children = (
@@ -6814,6 +6852,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				12DF795F1C19719000CD81B3 /* LMShoppingCart */,
 				122F5EB41C17CC5C0045AF41 /* LMSearchView */,
 				1255C38D1C15723800D08971 /* StoreDetailsInfo */,
 				126EE3E31C152376003CF629 /* LMSellerInfo */,
@@ -8767,6 +8806,7 @@
 				775C58B71ABA7B75005B6B40 /* RedPacketBalance.m in Sources */,
 				1295C5FE1B29B2DB004C861D /* OverdueCell.m in Sources */,
 				DD0E38B81B1BE5AC00AB4DB9 /* WXSqliteItem.m in Sources */,
+				12DF796A1C1982A700CD81B3 /* LMShoppingCartGoodsListCell.m in Sources */,
 				128221CC1B184CF4004613BB /* URLNetOperation.m in Sources */,
 				775C58B91ABA7B75005B6B40 /* RedPacketRule.m in Sources */,
 				129EEBA21B97DC930062349E /* MKAnnotationView+WebCache.m in Sources */,
@@ -8916,6 +8956,7 @@
 				120A2BF21AB135DE006A28B1 /* UserInfoCommonCell.m in Sources */,
 				12D87D8A1BD4C1AB00579FF6 /* ClassifyListVC.m in Sources */,
 				129F9A6B1B8AB76F00BC80A9 /* WXCommonWebView.m in Sources */,
+				12DF79671C1979DE00CD81B3 /* LMShoppingCartTitleCell.m in Sources */,
 				DDEA9EDD1B1BF9EF00530C1C /* WXTGoodsDetailViewController.m in Sources */,
 				1282217F1B18467A004613BB /* T_ForMeView.m in Sources */,
 				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
@@ -9164,6 +9205,7 @@
 				120A2C121AB17038006A28B1 /* RechargeModel.m in Sources */,
 				12A42FA81C16B3E4005936F3 /* LMMoreSellerActivityCell.m in Sources */,
 				12F422891B1D5D8100643DD7 /* ManagerAddressVC.m in Sources */,
+				12DF79641C1971D200CD81B3 /* LMShoppingCartVC.m in Sources */,
 				12C2CE2B1BA1331C00797DA4 /* MyClientMoneyCell.m in Sources */,
 				126ADA431C0FE69100CD2050 /* LMShopInfoSalesGoodsVC.m in Sources */,
 				12D406621C07EBD400289791 /* WXShopUnionActivityCell.m in Sources */,
