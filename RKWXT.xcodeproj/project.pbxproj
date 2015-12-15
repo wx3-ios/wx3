@@ -162,6 +162,29 @@
 		123282251C1FA32100EA9DEE /* LMSellerClassifyDropListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282241C1FA32100EA9DEE /* LMSellerClassifyDropListCell.m */; };
 		123282281C1FA38A00EA9DEE /* SellerDropListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282271C1FA38A00EA9DEE /* SellerDropListView.m */; };
 		1232822B1C1FBDC400EA9DEE /* SellerClassifyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232822A1C1FBDC400EA9DEE /* SellerClassifyListCell.m */; };
+		123282361C1FE91700EA9DEE /* LMHomeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282351C1FE91700EA9DEE /* LMHomeOrderVC.m */; };
+		1232823B1C1FEBD200EA9DEE /* LMAllOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232823A1C1FEBD200EA9DEE /* LMAllOrderListVC.m */; };
+		1232823E1C1FEED600EA9DEE /* LMAllOrderListShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232823D1C1FEED600EA9DEE /* LMAllOrderListShopCell.m */; };
+		123282411C1FF19800EA9DEE /* LMAllOrderGoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282401C1FF19800EA9DEE /* LMAllOrderGoodsListCell.m */; };
+		123282441C1FF2F000EA9DEE /* LMSellerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123282431C1FF2F000EA9DEE /* LMSellerIcon@2x.png */; };
+		123282471C1FF81500EA9DEE /* LMAllOrderUserHandleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282461C1FF81500EA9DEE /* LMAllOrderUserHandleCell.m */; };
+		1232824B1C20044100EA9DEE /* LMWaitPayOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232824A1C20044100EA9DEE /* LMWaitPayOrderVC.m */; };
+		1232824E1C2004CC00EA9DEE /* LMWaitPayOrderShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232824D1C2004CC00EA9DEE /* LMWaitPayOrderShopCell.m */; };
+		123282511C20052E00EA9DEE /* LMWaitPayOrderGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282501C20052E00EA9DEE /* LMWaitPayOrderGoodsCell.m */; };
+		123282541C2005CE00EA9DEE /* LMWaitPayOrderUserhandleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282531C2005CE00EA9DEE /* LMWaitPayOrderUserhandleCell.m */; };
+		123282581C20072D00EA9DEE /* LMWaitReceiveOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282571C20072D00EA9DEE /* LMWaitReceiveOrderVC.m */; };
+		1232825B1C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232825A1C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.m */; };
+		1232825E1C200CFD00EA9DEE /* LMWaitReceiveOrderGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232825D1C200CFD00EA9DEE /* LMWaitReceiveOrderGoodsCell.m */; };
+		123282611C200D4800EA9DEE /* LMWaitReceiveOrderUserHandleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282601C200D4800EA9DEE /* LMWaitReceiveOrderUserHandleCell.m */; };
+		123282651C2016A100EA9DEE /* LMWaitEvaluteOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282641C2016A100EA9DEE /* LMWaitEvaluteOrderVC.m */; };
+		123282681C2016E000EA9DEE /* LMWaitEvaluteOrderShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282671C2016E000EA9DEE /* LMWaitEvaluteOrderShopCell.m */; };
+		1232826B1C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232826A1C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.m */; };
+		1232826E1C2017FB00EA9DEE /* LMWaitEvaluteUserHandleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232826D1C2017FB00EA9DEE /* LMWaitEvaluteUserHandleCell.m */; };
+		123282711C2018B800EA9DEE /* LMOrderEvaluteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282701C2018B800EA9DEE /* LMOrderEvaluteVC.m */; };
+		123282751C201FFC00EA9DEE /* LMEvaluteGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282741C201FFC00EA9DEE /* LMEvaluteGoodsCell.m */; };
+		123282781C20226B00EA9DEE /* LMEvaluteUserHandleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 123282771C20226B00EA9DEE /* LMEvaluteUserHandleCell.m */; };
+		1232827B1C2025E000EA9DEE /* EvaluteEmptyImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 123282791C2025E000EA9DEE /* EvaluteEmptyImg@2x.png */; };
+		1232827C1C2025E000EA9DEE /* EvaluteFullImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1232827A1C2025E000EA9DEE /* EvaluteFullImg@2x.png */; };
 		1232C1D61BEC8D810033DFA0 /* NewUserAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */; };
 		1232C1D91BEC9B160033DFA0 /* NewUserAddressPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1D81BEC9B160033DFA0 /* NewUserAddressPhoneCell.m */; };
 		1232C1DC1BECB80E0033DFA0 /* SearchCarriageMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 1232C1DB1BECB80E0033DFA0 /* SearchCarriageMoney.m */; };
@@ -1363,6 +1386,50 @@
 		123282271C1FA38A00EA9DEE /* SellerDropListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerDropListView.m; sourceTree = "<group>"; };
 		123282291C1FBDC400EA9DEE /* SellerClassifyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerClassifyListCell.h; sourceTree = "<group>"; };
 		1232822A1C1FBDC400EA9DEE /* SellerClassifyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerClassifyListCell.m; sourceTree = "<group>"; };
+		123282331C1FE8F800EA9DEE /* LMOrderCommonDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMOrderCommonDef.h; sourceTree = "<group>"; };
+		123282341C1FE91700EA9DEE /* LMHomeOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMHomeOrderVC.h; sourceTree = "<group>"; };
+		123282351C1FE91700EA9DEE /* LMHomeOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHomeOrderVC.m; sourceTree = "<group>"; };
+		123282391C1FEBD200EA9DEE /* LMAllOrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAllOrderListVC.h; sourceTree = "<group>"; };
+		1232823A1C1FEBD200EA9DEE /* LMAllOrderListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAllOrderListVC.m; sourceTree = "<group>"; };
+		1232823C1C1FEED600EA9DEE /* LMAllOrderListShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAllOrderListShopCell.h; sourceTree = "<group>"; };
+		1232823D1C1FEED600EA9DEE /* LMAllOrderListShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAllOrderListShopCell.m; sourceTree = "<group>"; };
+		1232823F1C1FF19800EA9DEE /* LMAllOrderGoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAllOrderGoodsListCell.h; sourceTree = "<group>"; };
+		123282401C1FF19800EA9DEE /* LMAllOrderGoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAllOrderGoodsListCell.m; sourceTree = "<group>"; };
+		123282431C1FF2F000EA9DEE /* LMSellerIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMSellerIcon@2x.png"; sourceTree = "<group>"; };
+		123282451C1FF81500EA9DEE /* LMAllOrderUserHandleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAllOrderUserHandleCell.h; sourceTree = "<group>"; };
+		123282461C1FF81500EA9DEE /* LMAllOrderUserHandleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAllOrderUserHandleCell.m; sourceTree = "<group>"; };
+		123282491C20044100EA9DEE /* LMWaitPayOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitPayOrderVC.h; sourceTree = "<group>"; };
+		1232824A1C20044100EA9DEE /* LMWaitPayOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitPayOrderVC.m; sourceTree = "<group>"; };
+		1232824C1C2004CC00EA9DEE /* LMWaitPayOrderShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitPayOrderShopCell.h; sourceTree = "<group>"; };
+		1232824D1C2004CC00EA9DEE /* LMWaitPayOrderShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitPayOrderShopCell.m; sourceTree = "<group>"; };
+		1232824F1C20052E00EA9DEE /* LMWaitPayOrderGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitPayOrderGoodsCell.h; sourceTree = "<group>"; };
+		123282501C20052E00EA9DEE /* LMWaitPayOrderGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitPayOrderGoodsCell.m; sourceTree = "<group>"; };
+		123282521C2005CE00EA9DEE /* LMWaitPayOrderUserhandleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitPayOrderUserhandleCell.h; sourceTree = "<group>"; };
+		123282531C2005CE00EA9DEE /* LMWaitPayOrderUserhandleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitPayOrderUserhandleCell.m; sourceTree = "<group>"; };
+		123282561C20072D00EA9DEE /* LMWaitReceiveOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitReceiveOrderVC.h; sourceTree = "<group>"; };
+		123282571C20072D00EA9DEE /* LMWaitReceiveOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitReceiveOrderVC.m; sourceTree = "<group>"; };
+		123282591C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitReceiveOrderShopCell.h; sourceTree = "<group>"; };
+		1232825A1C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitReceiveOrderShopCell.m; sourceTree = "<group>"; };
+		1232825C1C200CFD00EA9DEE /* LMWaitReceiveOrderGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitReceiveOrderGoodsCell.h; sourceTree = "<group>"; };
+		1232825D1C200CFD00EA9DEE /* LMWaitReceiveOrderGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitReceiveOrderGoodsCell.m; sourceTree = "<group>"; };
+		1232825F1C200D4800EA9DEE /* LMWaitReceiveOrderUserHandleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitReceiveOrderUserHandleCell.h; sourceTree = "<group>"; };
+		123282601C200D4800EA9DEE /* LMWaitReceiveOrderUserHandleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitReceiveOrderUserHandleCell.m; sourceTree = "<group>"; };
+		123282631C2016A100EA9DEE /* LMWaitEvaluteOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitEvaluteOrderVC.h; sourceTree = "<group>"; };
+		123282641C2016A100EA9DEE /* LMWaitEvaluteOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitEvaluteOrderVC.m; sourceTree = "<group>"; };
+		123282661C2016E000EA9DEE /* LMWaitEvaluteOrderShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitEvaluteOrderShopCell.h; sourceTree = "<group>"; };
+		123282671C2016E000EA9DEE /* LMWaitEvaluteOrderShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitEvaluteOrderShopCell.m; sourceTree = "<group>"; };
+		123282691C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitEvaluteOrderGoodsCell.h; sourceTree = "<group>"; };
+		1232826A1C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitEvaluteOrderGoodsCell.m; sourceTree = "<group>"; };
+		1232826C1C2017FB00EA9DEE /* LMWaitEvaluteUserHandleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWaitEvaluteUserHandleCell.h; sourceTree = "<group>"; };
+		1232826D1C2017FB00EA9DEE /* LMWaitEvaluteUserHandleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWaitEvaluteUserHandleCell.m; sourceTree = "<group>"; };
+		1232826F1C2018B800EA9DEE /* LMOrderEvaluteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMOrderEvaluteVC.h; sourceTree = "<group>"; };
+		123282701C2018B800EA9DEE /* LMOrderEvaluteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMOrderEvaluteVC.m; sourceTree = "<group>"; };
+		123282731C201FFC00EA9DEE /* LMEvaluteGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEvaluteGoodsCell.h; sourceTree = "<group>"; };
+		123282741C201FFC00EA9DEE /* LMEvaluteGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEvaluteGoodsCell.m; sourceTree = "<group>"; };
+		123282761C20226B00EA9DEE /* LMEvaluteUserHandleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEvaluteUserHandleCell.h; sourceTree = "<group>"; };
+		123282771C20226B00EA9DEE /* LMEvaluteUserHandleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEvaluteUserHandleCell.m; sourceTree = "<group>"; };
+		123282791C2025E000EA9DEE /* EvaluteEmptyImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EvaluteEmptyImg@2x.png"; sourceTree = "<group>"; };
+		1232827A1C2025E000EA9DEE /* EvaluteFullImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EvaluteFullImg@2x.png"; sourceTree = "<group>"; };
 		1232C1D41BEC8D810033DFA0 /* NewUserAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserAddressModel.h; sourceTree = "<group>"; };
 		1232C1D51BEC8D810033DFA0 /* NewUserAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserAddressModel.m; sourceTree = "<group>"; };
 		1232C1D71BEC9B160033DFA0 /* NewUserAddressPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserAddressPhoneCell.h; sourceTree = "<group>"; };
@@ -3887,6 +3954,160 @@
 				123282271C1FA38A00EA9DEE /* SellerDropListView.m */,
 			);
 			path = LMSellerClassifyDropListView;
+			sourceTree = "<group>";
+		};
+		1232822C1C1FE65A00EA9DEE /* LMOrderList */ = {
+			isa = PBXGroup;
+			children = (
+				123282331C1FE8F800EA9DEE /* LMOrderCommonDef.h */,
+				123282341C1FE91700EA9DEE /* LMHomeOrderVC.h */,
+				123282351C1FE91700EA9DEE /* LMHomeOrderVC.m */,
+				1232822D1C1FE84800EA9DEE /* LMAllOrder */,
+				1232822E1C1FE84800EA9DEE /* LMOrderInfo */,
+				1232822F1C1FE84800EA9DEE /* LMOrderRefund */,
+				123282301C1FE84800EA9DEE /* LMWaitEvaluateOrder */,
+				123282311C1FE84800EA9DEE /* LMWaitPayOrder */,
+				123282321C1FE84800EA9DEE /* LMWaitReceiveOrder */,
+			);
+			path = LMOrderList;
+			sourceTree = "<group>";
+		};
+		1232822D1C1FE84800EA9DEE /* LMAllOrder */ = {
+			isa = PBXGroup;
+			children = (
+				123282391C1FEBD200EA9DEE /* LMAllOrderListVC.h */,
+				1232823A1C1FEBD200EA9DEE /* LMAllOrderListVC.m */,
+				123282371C1FEBAB00EA9DEE /* Model */,
+				123282381C1FEBAB00EA9DEE /* View */,
+			);
+			path = LMAllOrder;
+			sourceTree = "<group>";
+		};
+		1232822E1C1FE84800EA9DEE /* LMOrderInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LMOrderInfo;
+			sourceTree = "<group>";
+		};
+		1232822F1C1FE84800EA9DEE /* LMOrderRefund */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LMOrderRefund;
+			sourceTree = "<group>";
+		};
+		123282301C1FE84800EA9DEE /* LMWaitEvaluateOrder */ = {
+			isa = PBXGroup;
+			children = (
+				123282631C2016A100EA9DEE /* LMWaitEvaluteOrderVC.h */,
+				123282641C2016A100EA9DEE /* LMWaitEvaluteOrderVC.m */,
+				1232826F1C2018B800EA9DEE /* LMOrderEvaluteVC.h */,
+				123282701C2018B800EA9DEE /* LMOrderEvaluteVC.m */,
+				123282621C20168700EA9DEE /* View */,
+			);
+			path = LMWaitEvaluateOrder;
+			sourceTree = "<group>";
+		};
+		123282311C1FE84800EA9DEE /* LMWaitPayOrder */ = {
+			isa = PBXGroup;
+			children = (
+				123282491C20044100EA9DEE /* LMWaitPayOrderVC.h */,
+				1232824A1C20044100EA9DEE /* LMWaitPayOrderVC.m */,
+				123282481C20042A00EA9DEE /* View */,
+			);
+			path = LMWaitPayOrder;
+			sourceTree = "<group>";
+		};
+		123282321C1FE84800EA9DEE /* LMWaitReceiveOrder */ = {
+			isa = PBXGroup;
+			children = (
+				123282561C20072D00EA9DEE /* LMWaitReceiveOrderVC.h */,
+				123282571C20072D00EA9DEE /* LMWaitReceiveOrderVC.m */,
+				123282551C20071400EA9DEE /* View */,
+			);
+			path = LMWaitReceiveOrder;
+			sourceTree = "<group>";
+		};
+		123282371C1FEBAB00EA9DEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		123282381C1FEBAB00EA9DEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1232823C1C1FEED600EA9DEE /* LMAllOrderListShopCell.h */,
+				1232823D1C1FEED600EA9DEE /* LMAllOrderListShopCell.m */,
+				1232823F1C1FF19800EA9DEE /* LMAllOrderGoodsListCell.h */,
+				123282401C1FF19800EA9DEE /* LMAllOrderGoodsListCell.m */,
+				123282451C1FF81500EA9DEE /* LMAllOrderUserHandleCell.h */,
+				123282461C1FF81500EA9DEE /* LMAllOrderUserHandleCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		123282421C1FF2C400EA9DEE /* LMOrderImg */ = {
+			isa = PBXGroup;
+			children = (
+				123282791C2025E000EA9DEE /* EvaluteEmptyImg@2x.png */,
+				1232827A1C2025E000EA9DEE /* EvaluteFullImg@2x.png */,
+				123282431C1FF2F000EA9DEE /* LMSellerIcon@2x.png */,
+			);
+			path = LMOrderImg;
+			sourceTree = "<group>";
+		};
+		123282481C20042A00EA9DEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1232824C1C2004CC00EA9DEE /* LMWaitPayOrderShopCell.h */,
+				1232824D1C2004CC00EA9DEE /* LMWaitPayOrderShopCell.m */,
+				1232824F1C20052E00EA9DEE /* LMWaitPayOrderGoodsCell.h */,
+				123282501C20052E00EA9DEE /* LMWaitPayOrderGoodsCell.m */,
+				123282521C2005CE00EA9DEE /* LMWaitPayOrderUserhandleCell.h */,
+				123282531C2005CE00EA9DEE /* LMWaitPayOrderUserhandleCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		123282551C20071400EA9DEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				123282591C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.h */,
+				1232825A1C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.m */,
+				1232825C1C200CFD00EA9DEE /* LMWaitReceiveOrderGoodsCell.h */,
+				1232825D1C200CFD00EA9DEE /* LMWaitReceiveOrderGoodsCell.m */,
+				1232825F1C200D4800EA9DEE /* LMWaitReceiveOrderUserHandleCell.h */,
+				123282601C200D4800EA9DEE /* LMWaitReceiveOrderUserHandleCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		123282621C20168700EA9DEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				123282721C201FDC00EA9DEE /* LMEvalute */,
+				123282661C2016E000EA9DEE /* LMWaitEvaluteOrderShopCell.h */,
+				123282671C2016E000EA9DEE /* LMWaitEvaluteOrderShopCell.m */,
+				123282691C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.h */,
+				1232826A1C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.m */,
+				1232826C1C2017FB00EA9DEE /* LMWaitEvaluteUserHandleCell.h */,
+				1232826D1C2017FB00EA9DEE /* LMWaitEvaluteUserHandleCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		123282721C201FDC00EA9DEE /* LMEvalute */ = {
+			isa = PBXGroup;
+			children = (
+				123282731C201FFC00EA9DEE /* LMEvaluteGoodsCell.h */,
+				123282741C201FFC00EA9DEE /* LMEvaluteGoodsCell.m */,
+				123282761C20226B00EA9DEE /* LMEvaluteUserHandleCell.h */,
+				123282771C20226B00EA9DEE /* LMEvaluteUserHandleCell.m */,
+			);
+			path = LMEvalute;
 			sourceTree = "<group>";
 		};
 		1232C1D31BEC8D630033DFA0 /* NewModel */ = {
@@ -7031,6 +7252,7 @@
 		2563B3E61AAAD74000C04227 /* RKWXT */ = {
 			isa = PBXGroup;
 			children = (
+				1232822C1C1FE65A00EA9DEE /* LMOrderList */,
 				12334FC91C1E5E22004BAE6B /* LMSellerClassify */,
 				12CEB4A71C1A7755004FA4B0 /* LMGoodsInfo */,
 				12DF795F1C19719000CD81B3 /* LMShoppingCart */,
@@ -7119,6 +7341,7 @@
 		2563B4861AAAFA7500C04227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				123282421C1FF2C400EA9DEE /* LMOrderImg */,
 				12A42FA91C16B56C005936F3 /* LmSellerInfo */,
 				1222F8611C0E9C4E0031DF33 /* LMShopInfoImg */,
 				12211F1A1C070D220016512A /* ShopUnionClassifyImg */,
@@ -8535,6 +8758,7 @@
 				1255C3AA1C15723900D08971 /* discountBack.png in Resources */,
 				128E29601BD5EF5100137688 /* T_BackWhite@2x.png in Resources */,
 				12F4227E1B1D5A2900643DD7 /* AddressCircle@2x.png in Resources */,
+				1232827C1C2025E000EA9DEE /* EvaluteFullImg@2x.png in Resources */,
 				1245354C1AE9D146004198C9 /* sign24@2x.png in Resources */,
 				124535461AE9D146004198C9 /* sign19@2x.png in Resources */,
 				12210C041C1917C200A2CE63 /* JuniorListUserHeadImg@2x.png in Resources */,
@@ -8768,6 +8992,7 @@
 				129D23451B4F984400008DA0 /* OrderInfoUserAdd@2x.png in Resources */,
 				1241E53F1AE9D89B00811D3F /* 1N@2x.png in Resources */,
 				12C12F431B81DD2200345BEE /* SharkRuleImg@2x.png in Resources */,
+				1232827B1C2025E000EA9DEE /* EvaluteEmptyImg@2x.png in Resources */,
 				12F46A401B20012000B8EC98 /* T_ShoppingCart@2x.png in Resources */,
 				1241E5361AE9D89B00811D3F /* callHistoryBtnImg@2x.png in Resources */,
 				120EB3D81B7B563B0036A77C /* Shake_01.png in Resources */,
@@ -8796,6 +9021,7 @@
 				12C64D861BF446850039CC39 /* SharkGoodsBtnImg@2x.png in Resources */,
 				1241E54A1AE9D89B00811D3F /* 6S@2x.png in Resources */,
 				12F3CC761B1DE82C00E64DE4 /* MyCallMoneyImg@2x.png in Resources */,
+				123282441C1FF2F000EA9DEE /* LMSellerIcon@2x.png in Resources */,
 				124535451AE9D146004198C9 /* sign18@2x.png in Resources */,
 				1241E55F1AE9D91400811D3F /* AboutUsLogo@2x.png in Resources */,
 				123316E91BCCE803004649DC /* FIndLvyou@2x.png in Resources */,
@@ -8857,6 +9083,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123282471C1FF81500EA9DEE /* LMAllOrderUserHandleCell.m in Sources */,
 				DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */,
 				775C583C1ABA5F31005B6B40 /* pinyin.c in Sources */,
 				12D96ED01BE84AE70043B219 /* AllCityModel.m in Sources */,
@@ -8881,6 +9108,7 @@
 				1221C1C71BD9DAAF004B681D /* CLassifyEntity.m in Sources */,
 				775842B81AB95A300039B129 /* WXUnreadSysMsgOBJ.m in Sources */,
 				775843331AB95A300039B129 /* WXUITableViewCell.m in Sources */,
+				123282711C2018B800EA9DEE /* LMOrderEvaluteVC.m in Sources */,
 				12A42F981C168C5A005936F3 /* LMSellerInfoVC.m in Sources */,
 				129EEBA31B97DC930062349E /* UIButton+WebCache.m in Sources */,
 				1211211A1BA277FA00651E4A /* MyRefereeEntity.m in Sources */,
@@ -8888,6 +9116,8 @@
 				DDB58F4B1AD3C6A2006248E9 /* WXContactOptEntity.m in Sources */,
 				775843271AB95A300039B129 /* WXUINavigationController+SubVCPosition.m in Sources */,
 				775842ED1AB95A300039B129 /* CSTWXNavigationView.m in Sources */,
+				123282511C20052E00EA9DEE /* LMWaitPayOrderGoodsCell.m in Sources */,
+				123282361C1FE91700EA9DEE /* LMHomeOrderVC.m in Sources */,
 				1220B4D01C03F2CB0053F734 /* WXUserCurrentCityCell.m in Sources */,
 				122743FD1C00449A0051938F /* WXCityListLocationCell.m in Sources */,
 				1277D0131AC5327A0008D9B6 /* ResetPwdModel.m in Sources */,
@@ -8961,6 +9191,7 @@
 				DD0E38BA1B1BE5AC00AB4DB9 /* SysMsgDetailVC.m in Sources */,
 				129EEBA51B97DC930062349E /* SDWebImageDownloader.m in Sources */,
 				121E8FA61BEB44360047373A /* LocalAreaModel.m in Sources */,
+				1232824B1C20044100EA9DEE /* LMWaitPayOrderVC.m in Sources */,
 				77D197621ABC246000FAA4CE /* RootViewController.m in Sources */,
 				12AA53011B7DF140003B893F /* LuckyGoodsDesCell.m in Sources */,
 				775842B71AB95A300039B129 /* WXTipMaskOBJ.m in Sources */,
@@ -9071,12 +9302,15 @@
 				775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */,
 				12F963311B3D4BDF00FF6A3E /* SBJsonStreamParser.m in Sources */,
 				7758430E1AB95A300039B129 /* WXError.m in Sources */,
+				123282651C2016A100EA9DEE /* LMWaitEvaluteOrderVC.m in Sources */,
 				DD1490181C0D496000D48663 /* CollectionListCell.m in Sources */,
 				776CFFA81AB1257B000A1D84 /* ARLabel.m in Sources */,
 				120EC77E1BB8F31800538637 /* bitstream.c in Sources */,
+				1232826E1C2017FB00EA9DEE /* LMWaitEvaluteUserHandleCell.m in Sources */,
 				775843551AB95FAC0039B129 /* NetTipDelay.m in Sources */,
 				12A0F5EC1B95985900CFF8E5 /* NewGoodsInfoBigImgView.m in Sources */,
 				775843101AB95A300039B129 /* WXMutiScanView.m in Sources */,
+				123282541C2005CE00EA9DEE /* LMWaitPayOrderUserhandleCell.m in Sources */,
 				775843C81AB9830F0039B129 /* WXBaseRemotImageView.m in Sources */,
 				775843C31AB971CF0039B129 /* WXTUIButton.m in Sources */,
 				12E471D71B1F270C00559995 /* WaitSendConsultCell.m in Sources */,
@@ -9105,6 +9339,7 @@
 				1265FBDB1BC2B39F007D354A /* DataVerifier.m in Sources */,
 				12AA52FB1B7DE10A003B893F /* LuckyGoodsInfoVC.m in Sources */,
 				12F46A2B1B1FFCD000B8EC98 /* NewGoodsInfoVC.m in Sources */,
+				1232825E1C200CFD00EA9DEE /* LMWaitReceiveOrderGoodsCell.m in Sources */,
 				775842F41AB95A300039B129 /* LoadMoreTableFooterView.m in Sources */,
 				7758432D1AB95A300039B129 /* WXUISearchDisplayController.m in Sources */,
 				1205952F1BCF994F009E6986 /* NLMainViewController.m in Sources */,
@@ -9154,6 +9389,7 @@
 				DDB58F481AD3C6A2006248E9 /* ContactBaseEntity+Detail.m in Sources */,
 				1295C5F51B299A66004C861D /* BonusOverdueVC.m in Sources */,
 				121804361ACB99AB009DB7E7 /* WXTFindCommmonCell.m in Sources */,
+				123282611C200D4800EA9DEE /* LMWaitReceiveOrderUserHandleCell.m in Sources */,
 				12B8651A1BD098000029692B /* CDSideBarController.m in Sources */,
 				1265FBD51BC2B39F007D354A /* APAuthV2Info.m in Sources */,
 				129D23391B4F738900008DA0 /* GoodsInfoVC.m in Sources */,
@@ -9163,6 +9399,7 @@
 				129EEB811B97DAF60062349E /* NewImageZoomView.m in Sources */,
 				123CDDF31C0FF2F300BAF5B2 /* LMShopInfoNewGoodsVC.m in Sources */,
 				12F180C31B4521B400B9A80D /* JPushMessageCenterVC.m in Sources */,
+				123282581C20072D00EA9DEE /* LMWaitReceiveOrderVC.m in Sources */,
 				120EC7991BB94DFA00538637 /* UserAliEntity.m in Sources */,
 				775843251AB95A300039B129 /* WXUIImageView.m in Sources */,
 				775C58C21ABA7B75005B6B40 /* ActData.m in Sources */,
@@ -9240,6 +9477,7 @@
 				12F46A501B20311100B8EC98 /* NewGoodsInfoDownCell.m in Sources */,
 				12C64D7B1BF42C170039CC39 /* WinningBackgroundView.m in Sources */,
 				120595331BCF994F009E6986 /* NLSubViewController.m in Sources */,
+				1232826B1C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.m in Sources */,
 				DD0E38B11B1BE5AC00AB4DB9 /* WXShopCartSqlite.m in Sources */,
 				129EEBAB1B97DD160062349E /* ClubNoImgPlaceholderView.m in Sources */,
 				775C58BD1ABA7B75005B6B40 /* WXGood.m in Sources */,
@@ -9288,6 +9526,7 @@
 				120A2BF11AB135DE006A28B1 /* UserBalanceVC.m in Sources */,
 				12F2CCF81B4D238A0085F78F /* RefundConsultCell.m in Sources */,
 				775C58361ABA5F31005B6B40 /* ChineseToPinyin.m in Sources */,
+				1232823B1C1FEBD200EA9DEE /* LMAllOrderListVC.m in Sources */,
 				12F2D8131B1F0E9D00C8017F /* OrderWaitPayConsultCell.m in Sources */,
 				1255C3B51C15723900D08971 /* StoreListInfoCell.m in Sources */,
 				775C583D1ABA5F31005B6B40 /* PinyinFormatter.m in Sources */,
@@ -9323,8 +9562,10 @@
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
 				1214B58D1BBA5F6200A7D810 /* WithdrawalsRecordListVC.m in Sources */,
+				1232825B1C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.m in Sources */,
 				1213FEB11BA2BCE000CAB746 /* MyClientPersonModel.m in Sources */,
 				1222F87A1C0ED22F0031DF33 /* ShopInfAllGoodsCell.m in Sources */,
+				123282781C20226B00EA9DEE /* LMEvaluteUserHandleCell.m in Sources */,
 				1261F0141AE6596A00693710 /* CallModel.m in Sources */,
 				775C58CC1ABA7B75005B6B40 /* SubShopModel.m in Sources */,
 				12F5722F1B4274DB00128294 /* NewSystemSettingVC.m in Sources */,
@@ -9440,6 +9681,7 @@
 				DDB58F521AD3C6A2006248E9 /* StrangerEntity.m in Sources */,
 				129D23481B4F9CB600008DA0 /* OrderInfoUserInfoCell.m in Sources */,
 				128767001B51012700A79320 /* AboutShopTopImgCell.m in Sources */,
+				1232824E1C2004CC00EA9DEE /* LMWaitPayOrderShopCell.m in Sources */,
 				12210C071C191F8E00A2CE63 /* LMSearchHistorySql.m in Sources */,
 				DDEA9ED51B1BF44A00530C1C /* WXTCartDetailViewController.m in Sources */,
 				12A347861B733F5600D10C17 /* UserCutVC.m in Sources */,
@@ -9452,6 +9694,7 @@
 				775C58D01ABA7B75005B6B40 /* WXContacterEntity+Detail.m in Sources */,
 				12B12E731C0841DA00F9BC5D /* MJRefreshConst.m in Sources */,
 				126CA3CE1AB2709D00E08A0B /* WXTUserOBJ.m in Sources */,
+				1232823E1C1FEED600EA9DEE /* LMAllOrderListShopCell.m in Sources */,
 				775C583E1ABA5F31005B6B40 /* PinYinForObjc.m in Sources */,
 				12D1E31A1B85E840004B88FB /* LuckyGoodsInfoModel.m in Sources */,
 				12211F191C06E9170016512A /* ShopUnionClassifyCell.m in Sources */,
@@ -9523,6 +9766,7 @@
 				128221851B18467A004613BB /* WxIntructionView.m in Sources */,
 				775842E41AB95A300039B129 /* WXMiltiViewCell.m in Sources */,
 				775843C01AB971CF0039B129 /* UIFont+WXT.m in Sources */,
+				123282751C201FFC00EA9DEE /* LMEvaluteGoodsCell.m in Sources */,
 				1282413E1B60C605001EE0BD /* WXWeiXinOBJ.m in Sources */,
 				775C583A1ABA5F31005B6B40 /* HanyuPinyinOutputFormat.m in Sources */,
 				128221841B18467A004613BB /* WxIntructionCell.m in Sources */,
@@ -9540,6 +9784,7 @@
 				12C2CE251BA12FFC00797DA4 /* MyClientInfoCell.m in Sources */,
 				DD0E38B31B1BE5AC00AB4DB9 /* SystemMessageEntity.m in Sources */,
 				775C58C71ABA7B75005B6B40 /* ShopDesc.m in Sources */,
+				123282411C1FF19800EA9DEE /* LMAllOrderGoodsListCell.m in Sources */,
 				775C58CD1ABA7B75005B6B40 /* AddressBook.m in Sources */,
 				12D0C8801AB6C0E60039A197 /* VersionEntity.m in Sources */,
 				DD0E38B51B1BE5AC00AB4DB9 /* WXSysMsgSqlite.m in Sources */,
@@ -9613,6 +9858,7 @@
 				127329171B5CE84E002AD4AE /* CompanyVC.m in Sources */,
 				12A0F5EF1B95BC1100CFF8E5 /* NetworkManager.m in Sources */,
 				775AB9E21ABFFD81003A339D /* WXTWebViewController.m in Sources */,
+				123282681C2016E000EA9DEE /* LMWaitEvaluteOrderShopCell.m in Sources */,
 				7758431E1AB95A300039B129 /* WXUIActivityIndicatorView.m in Sources */,
 				128221C51B184C3B004613BB /* ASIDataDecompressor.m in Sources */,
 			);
