@@ -123,10 +123,10 @@
     if(!oldStr){
         return nil;
     }
-    NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
-    if(![userName isEqualToString:oldStr]){
-        return [NSString stringWithFormat:@"%@(%@)",userName,oldStr];
-    }
+//    NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
+//    if(![userName isEqualToString:oldStr]){
+//        return [NSString stringWithFormat:@"%@(%@)",userName,oldStr];
+//    }
     
     NSString *newStr = nil;
     newStr = [oldStr substringWithRange:NSMakeRange(0, 3)];

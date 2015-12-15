@@ -470,6 +470,18 @@
 #pragma mark classifyDelegate
 -(void)clickClassifyBtnAtIndex:(NSInteger)index{
     NSLog(@"行业ID = %ld",(long)index);
+    for(ShopUnionClassifyEntity *entity in _model.classifyShopArr){
+        if(entity.industryID == index){
+            WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+            [userDefault setObject:entity.industryName forKey:@"industryName"];
+            
+            break;
+        }
+    }
+    
+    LMSellerClassifyVC *sellerClassifyVC = [[LMSellerClassifyVC alloc] init];
+    sellerClassifyVC.sellerClassifyArr = _model.classifyShopArr;
+    [self.wxNavigationController pushViewController:sellerClassifyVC];
 }
 
 #pragma mark shopActivityDelegate

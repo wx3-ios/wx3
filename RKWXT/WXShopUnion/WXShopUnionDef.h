@@ -24,8 +24,10 @@
 #import "WXShopUnionHotGoodsCell.h"
 
 #import "WXShopUnionModel.h"
+#import "ShopUnionClassifyEntity.h"
 
 #import "LMSearchListVC.h"
+#import "LMSellerClassifyVC.h"
 
 #define Size self.bounds.size
 #define ShopUnionClassifyRowHeight (165)

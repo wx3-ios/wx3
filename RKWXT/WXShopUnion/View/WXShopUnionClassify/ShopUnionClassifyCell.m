@@ -9,6 +9,7 @@
 #import "ShopUnionClassifyCell.h"
 #import "WXShopUnionDef.h"
 #import "ShopUnionClassifyEntity.h"
+#import "WXRemotionImgBtn.h"
 
 #define kTimerInterval (5.0)
 #define kOneCellShowNumber (5)
@@ -28,6 +29,7 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+        [self setUserInteractionEnabled:YES];
         CGRect rect = [self bounds];
         rect.size.height = ShopUnionClassifyRowHeight;
         _browser = [[UIScrollView alloc] initWithFrame:rect];
@@ -70,7 +72,7 @@
     CGRect rect = [self bounds];
     CGFloat btnWidth = rect.size.width/5;
     CGFloat btnHeight = ShopUnionClassifyRowHeight/2;
-    CGFloat yGap = 18;
+//    CGFloat yGap = 18;
     NSInteger count = 0;
     for(NSInteger j = 0; j < ([classifyArr count]/kOneCellShowNumber+([classifyArr count]%5>0?1:0)); j++){
         for(NSInteger i = 0; i < kOneCellShowNumber; i++){
@@ -79,30 +81,57 @@
             }
             ShopUnionClassifyEntity *entity = [classifyArr objectAtIndex:count];
             
-            WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-            [commonBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
-            [commonBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
-            commonBtn.frame = CGRectMake((count%5*btnWidth)+(count/(2*kOneCellShowNumber)*Size.width), j%2*(btnHeight), btnWidth, btnHeight);
-            [commonBtn setImage:[UIImage imageNamed:entity.industryImg] forState:UIControlStateNormal];
-            [commonBtn setTitle:entity.industryName forState:UIControlStateNormal];
-            [commonBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateNormal];
-            [commonBtn.titleLabel setFont:WXFont(10.0)];
-            commonBtn.tag = entity.industryID;
-            [commonBtn addTarget:self action:@selector(buttonImageClicked:) forControlEvents:UIControlEventTouchUpInside];
-            [baseView addSubview:commonBtn];
+            WXUIButton *bgImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+            bgImgBtn.frame = CGRectMake((count%5*btnWidth)+(count/(2*kOneCellShowNumber)*Size.width), j%2*(btnHeight), btnWidth, btnHeight);
+            [bgImgBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
+            [bgImgBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
+            [bgImgBtn setTag:entity.industryID];
+            [bgImgBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [baseView addSubview:bgImgBtn];
             [_merchantImgViewArray addObject:_browser];
             
-            CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(commonBtn.bounds), CGRectGetMidY(commonBtn.bounds));
-            CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(commonBtn.imageView.bounds));
-            CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(commonBtn.bounds)-CGRectGetMidY(commonBtn.titleLabel.bounds));
-            CGPoint startImageViewCenter = commonBtn.imageView.center;
-            CGPoint startTitleLabelCenter = commonBtn.titleLabel.center;
-            CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
-            CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
-            commonBtn.imageEdgeInsets = UIEdgeInsetsMake((j%2==1?(yGap-15):yGap), imageEdgeInsetsLeft, (j%2==1?40:25), imageEdgeInsetsRight);
-            CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
-            CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
-            commonBtn.titleEdgeInsets = UIEdgeInsetsMake(btnHeight-(j%2==1?40:25), titleEdgeInsetsLeft-8, (j%2==1?25:10), titleEdgeInsetsRight-8);
+            WXRemotionImgBtn *imgViewBtn = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((bgImgBtn.frame.size.width-40)/2, 10, 40, 40)];
+            [imgViewBtn setBorderRadian:40/2 width:1.0 color:[UIColor clearColor]];
+            [imgViewBtn setUserInteractionEnabled:NO];
+//            [imgViewBtn setCpxViewInfo:entity.industryImg];
+            [imgViewBtn setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+            [imgViewBtn load];
+            [bgImgBtn addSubview:imgViewBtn];
+            
+            WXUILabel *textLabel = [[WXUILabel alloc] init];
+            textLabel.frame = CGRectMake(0, 10+imgViewBtn.frame.size.height, bgImgBtn.frame.size.width, 20);
+            [textLabel setBackgroundColor:[UIColor clearColor]];
+            [textLabel setTextAlignment:NSTextAlignmentCenter];
+            [textLabel setTextColor:WXColorWithInteger(0x969696)];
+            [textLabel setFont:WXFont(10.0)];
+            [textLabel setText:entity.industryName];
+            [bgImgBtn addSubview:textLabel];
+            
+            
+//            WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+//            [commonBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
+//            [commonBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
+//            commonBtn.frame = CGRectMake((count%5*btnWidth)+(count/(2*kOneCellShowNumber)*Size.width), j%2*(btnHeight), btnWidth, btnHeight);
+//            [commonBtn setImage:[UIImage imageNamed:entity.industryImg] forState:UIControlStateNormal];
+//            [commonBtn setTitle:entity.industryName forState:UIControlStateNormal];
+//            [commonBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateNormal];
+//            [commonBtn.titleLabel setFont:WXFont(10.0)];
+//            commonBtn.tag = entity.industryID;
+//            [commonBtn addTarget:self action:@selector(buttonImageClicked:) forControlEvents:UIControlEventTouchUpInside];
+//            [baseView addSubview:commonBtn];
+//            [_merchantImgViewArray addObject:_browser];
+//            
+//            CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(commonBtn.bounds), CGRectGetMidY(commonBtn.bounds));
+//            CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(commonBtn.imageView.bounds));
+//            CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(commonBtn.bounds)-CGRectGetMidY(commonBtn.titleLabel.bounds));
+//            CGPoint startImageViewCenter = commonBtn.imageView.center;
+//            CGPoint startTitleLabelCenter = commonBtn.titleLabel.center;
+//            CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
+//            CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
+//            commonBtn.imageEdgeInsets = UIEdgeInsetsMake((j%2==1?(yGap-15):yGap), imageEdgeInsetsLeft, (j%2==1?40:25), imageEdgeInsetsRight);
+//            CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
+//            CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
+//            commonBtn.titleEdgeInsets = UIEdgeInsetsMake(btnHeight-(j%2==1?40:25), titleEdgeInsetsLeft-8, (j%2==1?25:10), titleEdgeInsetsRight-8);
             
             count++;
         }
@@ -125,7 +154,7 @@
 
 -(void)reload{
     CGFloat xOffset = 0;
-    CGFloat contentWidth = 0;
+    CGFloat contentWidth = Size.width;
     NSInteger pageCount = [_merchantImgViewArray count]/10+([_merchantImgViewArray count]%10>0?1:0);
     if(pageCount>1){
         xOffset += Size.width;
@@ -155,7 +184,7 @@
     _currentPage = page;
 }
 
-- (void)buttonImageClicked:(id)sender{
+- (void)btnClicked:(id)sender{
     WXUIButton *btn = sender;
     if(_delegate && [_delegate respondsToSelector:@selector(clickClassifyBtnAtIndex:)]){
         [_delegate clickClassifyBtnAtIndex:btn.tag];
