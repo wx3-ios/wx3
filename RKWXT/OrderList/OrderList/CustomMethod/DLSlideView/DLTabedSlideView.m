@@ -17,7 +17,7 @@
 
 @implementation DLTabedbarItem
 + (DLTabedbarItem *)itemWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage{
-    DLTabedbarItem *item = [[DLTabedbarItem alloc] init];
+    DLTabedbarItem *item = [[DLTabedbarItem alloc] init];s
     item.title = title;
     item.image = image;
     item.selectedImage = selectedImage;
