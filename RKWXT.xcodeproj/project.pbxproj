@@ -148,6 +148,10 @@
 		122743FD1C00449A0051938F /* WXCityListLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 122743FC1C00449A0051938F /* WXCityListLocationCell.m */; };
 		122743FF1C004D660051938F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 122743FE1C004D660051938F /* CoreLocation.framework */; };
 		122744021C0051B80051938F /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 122744011C0051B80051938F /* UserLocation.m */; };
+		122939B81C224A15005E4E6A /* LMSellerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939B71C224A15005E4E6A /* LMSellerListModel.m */; };
+		122939BB1C224F97005E4E6A /* LMSellerListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939BA1C224F97005E4E6A /* LMSellerListEntity.m */; };
+		122939C11C225959005E4E6A /* LMSellerInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939C01C225959005E4E6A /* LMSellerInfoModel.m */; };
+		122939C41C225E07005E4E6A /* LMSellerInfoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939C31C225E07005E4E6A /* LMSellerInfoEntity.m */; };
 		1229F6241BE1B2F900258B43 /* CLassifySearchListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F6231BE1B2F900258B43 /* CLassifySearchListVC.m */; };
 		1229F6271BE1B33600258B43 /* ClassifyResultListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */; };
 		1229F62A1BE1C40500258B43 /* GoodsListDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */; };
@@ -1395,6 +1399,14 @@
 		122743FE1C004D660051938F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		122744001C0051B80051938F /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
 		122744011C0051B80051938F /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
+		122939B61C224A15005E4E6A /* LMSellerListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerListModel.h; sourceTree = "<group>"; };
+		122939B71C224A15005E4E6A /* LMSellerListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerListModel.m; sourceTree = "<group>"; };
+		122939B91C224F97005E4E6A /* LMSellerListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerListEntity.h; sourceTree = "<group>"; };
+		122939BA1C224F97005E4E6A /* LMSellerListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerListEntity.m; sourceTree = "<group>"; };
+		122939BF1C225959005E4E6A /* LMSellerInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerInfoModel.h; sourceTree = "<group>"; };
+		122939C01C225959005E4E6A /* LMSellerInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerInfoModel.m; sourceTree = "<group>"; };
+		122939C21C225E07005E4E6A /* LMSellerInfoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerInfoEntity.h; sourceTree = "<group>"; };
+		122939C31C225E07005E4E6A /* LMSellerInfoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerInfoEntity.m; sourceTree = "<group>"; };
 		1229F6221BE1B2F900258B43 /* CLassifySearchListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLassifySearchListVC.h; sourceTree = "<group>"; };
 		1229F6231BE1B2F900258B43 /* CLassifySearchListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLassifySearchListVC.m; sourceTree = "<group>"; };
 		1229F6251BE1B33600258B43 /* ClassifyResultListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyResultListCell.h; sourceTree = "<group>"; };
@@ -5915,6 +5927,10 @@
 		12A42F941C168B60005936F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				122939BF1C225959005E4E6A /* LMSellerInfoModel.h */,
+				122939C01C225959005E4E6A /* LMSellerInfoModel.m */,
+				122939C21C225E07005E4E6A /* LMSellerInfoEntity.h */,
+				122939C31C225E07005E4E6A /* LMSellerInfoEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6563,6 +6579,10 @@
 		12DF79571C1967FE00CD81B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				122939B61C224A15005E4E6A /* LMSellerListModel.h */,
+				122939B71C224A15005E4E6A /* LMSellerListModel.m */,
+				122939B91C224F97005E4E6A /* LMSellerListEntity.h */,
+				122939BA1C224F97005E4E6A /* LMSellerListEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -9533,6 +9553,7 @@
 				7758432B1AB95A300039B129 /* WXUIScrollView.m in Sources */,
 				DD0E38B71B1BE5AC00AB4DB9 /* WXSqlite.m in Sources */,
 				775C58C31ABA7B75005B6B40 /* GuessYouLikeData.m in Sources */,
+				122939B81C224A15005E4E6A /* LMSellerListModel.m in Sources */,
 				12F4228C1B1D61E100643DD7 /* AddressBaseInfoCell.m in Sources */,
 				120A2BEB1AB135DD006A28B1 /* RechargeView.m in Sources */,
 				1265FBDE1BC2B39F007D354A /* openssl_wrapper.m in Sources */,
@@ -9581,6 +9602,7 @@
 				128672161B6A1857006391B2 /* WechatPayModel.m in Sources */,
 				775C58381ABA5F31005B6B40 /* KFLoger.m in Sources */,
 				12F963311B3D4BDF00FF6A3E /* SBJsonStreamParser.m in Sources */,
+				122939C41C225E07005E4E6A /* LMSellerInfoEntity.m in Sources */,
 				7758430E1AB95A300039B129 /* WXError.m in Sources */,
 				123282651C2016A100EA9DEE /* LMWaitEvaluteOrderVC.m in Sources */,
 				DD1490181C0D496000D48663 /* CollectionListCell.m in Sources */,
@@ -10053,6 +10075,7 @@
 				12B12E721C0841DA00F9BC5D /* MJRefreshBaseView.m in Sources */,
 				12F2D7D81B1EA96B00C8017F /* DLLRUCache.m in Sources */,
 				775C583B1ABA5F31005B6B40 /* NSString+PinYin4Cocoa.m in Sources */,
+				122939BB1C224F97005E4E6A /* LMSellerListEntity.m in Sources */,
 				DD0E38AF1B1BE5AC00AB4DB9 /* SysMsgSqlite.m in Sources */,
 				129F32A31B831299004DFFB1 /* LuckyGoodsMakeOrderCell.m in Sources */,
 				775C58BF1ABA7B75005B6B40 /* WXGoodEntity.m in Sources */,
@@ -10151,6 +10174,7 @@
 				12A3477D1B72EECF00D10C17 /* MakeOrderBananceSwitchCell.m in Sources */,
 				12BD30FC1B3E905A00170316 /* UserBonusModel.m in Sources */,
 				12C12F1C1B818C0700345BEE /* LuckyGoodsOrderListCell.m in Sources */,
+				122939C11C225959005E4E6A /* LMSellerInfoModel.m in Sources */,
 				128221B21B184ABB004613BB /* ASIHTTPRequest.m in Sources */,
 				1220140A1BA00C360080B994 /* UserHeaderModel.m in Sources */,
 				120E162A1B846718009401F2 /* LuckyOrderEntity.m in Sources */,

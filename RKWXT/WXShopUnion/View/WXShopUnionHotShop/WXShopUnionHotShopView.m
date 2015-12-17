@@ -10,6 +10,7 @@
 #import "WXShopUnionDef.h"
 #import "WXRemotionImgBtn.h"
 #import "WXShopUnionHotShopCell.h"
+#import "ShopUnionHotShopEntity.h"
 
 @interface WXShopUnionHotShopView(){
     WXRemotionImgBtn *_imgView;
@@ -66,9 +67,10 @@
 }
 
 -(void)load{
-    [_imgView setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+    ShopUnionHotShopEntity *entity = self.cpxViewInfo;
+    [_imgView setCpxViewInfo:entity.sellerLogo];
     [_imgView load];
-    [_nameLabel setText:self.cpxViewInfo];
+    [_nameLabel setText:entity.sellerName];
 }
 
 @end

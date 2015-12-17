@@ -52,8 +52,6 @@
     [self createRightNavBtn];
     [self createTopSearchView];
     
-    hotShopArr = @[@"我信云科技", @"蒂凡尼家居", @"辽宁"];
-    
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-ShopUnionDownVieHeight);
     [_tableView setDataSource:self];
@@ -416,6 +414,7 @@
 #pragma mark dataDelegate
 -(void)loadShopUnionDataSucceed{
     hotGoodsArr = _model.hotGoodsArr;
+    hotShopArr = _model.hotShopArr;
     [_tableView headerEndRefreshing];
     [_tableView reloadData];
 }
@@ -474,12 +473,12 @@
         if(entity.industryID == index){
             WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
             [userDefault setObject:entity.industryName forKey:@"industryName"];
-            
             break;
         }
     }
     
     LMSellerClassifyVC *sellerClassifyVC = [[LMSellerClassifyVC alloc] init];
+    sellerClassifyVC.industryID = index;
     sellerClassifyVC.sellerClassifyArr = _model.classifyShopArr;
     [self.wxNavigationController pushViewController:sellerClassifyVC];
 }
@@ -492,6 +491,8 @@
 #pragma mark hotShopTitleDelegate
 -(void)shopUnionHotShopTitleClicked{
     NSLog(@"查看更多商家");
+    LMSellerListVC *sellerVC = [[LMSellerListVC alloc] init];
+    [self.wxNavigationController pushViewController:sellerVC];
 }
 
 #pragma mark hotShopDelegate

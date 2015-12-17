@@ -9,17 +9,30 @@
 #import "LMSellerListVC.h"
 #import "MJRefresh.h"
 #import "LMSellerListCell.h"
+#import "LMSellerListModel.h"
+#import "LMSellerInfoVC.h"
+#import "LMSellerListEntity.h"
 
 #define Size self.bounds.size
 
-@interface LMSellerListVC ()<UITableViewDataSource,UITableViewDelegate>{
+@interface LMSellerListVC ()<UITableViewDataSource,UITableViewDelegate,LMSellerListModelDelegate>{
     UITableView *_tableView;
     NSArray *listArr;
+    LMSellerListModel *_model;
 }
 
 @end
 
 @implementation LMSellerListVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[LMSellerListModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +44,11 @@
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
-    [self setupRefresh];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    [_model loadAllSellerListData:0];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+//    [self setupRefresh];
 }
 
 //集成刷新控件
@@ -71,12 +88,21 @@
     if(!cell){
         cell = [[LMSellerListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    if([listArr count] > 0){
+        [cell setCellInfo:[listArr objectAtIndex:indexPath.row]];
+    }
     [cell load];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    
+    LMSellerListEntity *entity = [_model.sellerListArr objectAtIndex:row];
+    LMSellerInfoVC *sellerInfoVC = [[LMSellerInfoVC alloc] init];
+    sellerInfoVC.ssid = entity.sellerId;
+    [self.wxNavigationController pushViewController:sellerInfoVC];
 }
 
 #pragma mark mjrefresh
@@ -86,6 +112,21 @@
 
 -(void)footerRefreshing{
     
+}
+
+#pragma mark model
+-(void)loadLmSellerListDataSucceed{
+    [self unShowWaitView];
+    listArr = _model.sellerListArr;
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)loadLmSellerListDataFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 - (void)didReceiveMemoryWarning {

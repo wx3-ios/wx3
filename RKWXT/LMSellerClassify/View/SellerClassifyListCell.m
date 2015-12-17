@@ -8,6 +8,7 @@
 
 #import "SellerClassifyListCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMSellerListEntity.h"
 
 @interface SellerClassifyListCell(){
     WXRemotionImgBtn *imgView;
@@ -66,11 +67,12 @@
 }
 
 -(void)load{
-    [imgView setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+    LMSellerListEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.sellerImg];
     [imgView load];
-    [nameLabel setText:@"我信科技"];
-    [addressLabel setText:@"东美大厦"];
-    [distancelabel setText:@"1000m"];
+    [nameLabel setText:entity.sellerName];
+    [addressLabel setText:entity.address];
+    [distancelabel setText:[NSString stringWithFormat:@"%.2f",entity.distance]];
 }
 
 @end

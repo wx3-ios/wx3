@@ -9,5 +9,6 @@
 #import "WXUIViewController.h"
 
 @interface LMSellerInfoVC : WXUIViewController
+@property (nonatomic,assign) NSInteger ssid;
 
 @end

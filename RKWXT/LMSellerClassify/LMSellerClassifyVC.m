@@ -11,25 +11,35 @@
 #import "LMSellerClassifyTopView.h"
 #import "ShopUnionClassifyEntity.h"
 #import "SellerClassifyListCell.h"
+#import "LMSellerListModel.h"
 
 #define Size self.bounds.size
 #define ScrollViewHeight (44)
 
-@interface LMSellerClassifyVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface LMSellerClassifyVC()<UITableViewDataSource,UITableViewDelegate,LMSellerListModelDelegate>{
     UITableView *_tableView;
     NSArray *listArr;
     LMSellerClassifyTopView *topView;
+    
+    LMSellerListModel *_model;
 }
 @end
 
 @implementation LMSellerClassifyVC
 
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[LMSellerListModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"商家分类"];
     [self setBackgroundColor:[UIColor whiteColor]];
-    
-    listArr = @[@"", @""];
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, ScrollViewHeight+10, Size.width, Size.height-ScrollViewHeight-10);
@@ -41,6 +51,9 @@
     
     [self addOBS];
     [self initTopTableView];
+    
+    [_model loadAllSellerListData:_industryID];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)addOBS{
@@ -122,12 +135,29 @@
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark model
+-(void)loadLmSellerListDataSucceed{
+    [self unShowWaitView];
+    listArr = _model.sellerListArr;
+    [_tableView reloadData];
+}
+
+-(void)loadLmSellerListDataFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取商家列表失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
 #pragma mark classify
 -(void)changeSellerClassifyList:(NSNotification*)notification{
     NSString *name = notification.object;
     for(ShopUnionClassifyEntity *entity in _sellerClassifyArr){
         if([entity.industryName isEqualToString:name]){
             NSLog(@"行业 === %@",name);
+            [_model loadAllSellerListData:entity.industryID];
+            [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
         }
     }
 }

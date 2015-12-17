@@ -8,7 +8,7 @@
 
 #import "WXUITableViewCell.h"
 
-#define LMSellerListCellHeight (88)
+#define LMSellerListCellHeight (90)
 
 @interface LMSellerListCell : WXUITableViewCell
 

@@ -93,8 +93,7 @@
             WXRemotionImgBtn *imgViewBtn = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((bgImgBtn.frame.size.width-40)/2, 10, 40, 40)];
             [imgViewBtn setBorderRadian:40/2 width:1.0 color:[UIColor clearColor]];
             [imgViewBtn setUserInteractionEnabled:NO];
-//            [imgViewBtn setCpxViewInfo:entity.industryImg];
-            [imgViewBtn setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+            [imgViewBtn setCpxViewInfo:entity.industryImg];
             [imgViewBtn load];
             [bgImgBtn addSubview:imgViewBtn];
             

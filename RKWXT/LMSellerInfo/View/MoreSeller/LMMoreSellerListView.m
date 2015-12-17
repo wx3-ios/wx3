@@ -9,6 +9,7 @@
 #import "LMMoreSellerListView.h"
 #import "WXRemotionImgBtn.h"
 #import "LMMoreSellerListCell.h"
+#import "LMSellerInfoEntity.h"
 
 @interface LMMoreSellerListView(){
     WXRemotionImgBtn *_imgView;
@@ -52,7 +53,8 @@
 }
 
 -(void)load{
-    [_imgView setCpxViewInfo:nil];
+    LMSellerInfoEntity *entity = self.cpxViewInfo;
+    [_imgView setCpxViewInfo:entity.goodsImg];
     [_imgView load];
 }
 

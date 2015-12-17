@@ -8,6 +8,7 @@
 
 #import "LMMoreSellerTitleCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMSellerInfoEntity.h"
 
 @interface LMMoreSellerTitleCell(){
     WXRemotionImgBtn *imgView;
@@ -52,7 +53,10 @@
 }
 
 -(void)load{
-    
+    LMSellerInfoEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.shopImg];
+    [imgView load];
+    [nameLabel setText:entity.shopName];
 }
 
 @end

@@ -38,8 +38,8 @@
     return self;
 }
 
--(void)parseShopUnionData:(NSDictionary*)dic{
-    if(!dic){
+-(void)parseShopUnionData:(NSDictionary*)dic1{
+    if(!dic1){
         return;
     }
     [_hotGoodsArr removeAllObjects];
@@ -47,8 +47,9 @@
     [_classifyShopArr removeAllObjects];
     [_activityArr removeAllObjects];
     
-    NSArray *goodsArr = [dic objectForKey:@"goods"];
-    NSArray *classifyArr = [dic objectForKey:@"industry"];
+    NSArray *goodsArr = [dic1 objectForKey:@"goods"];
+    NSArray *classifyArr = [dic1 objectForKey:@"industry"];
+    NSArray *sellerArr = [dic1 objectForKey:@"seller"];
     
     for(NSDictionary *dic in goodsArr){
         ShopUnionHotGoodsEntity *entity = [ShopUnionHotGoodsEntity initHotGoodsEntityWithDic:dic];
@@ -58,7 +59,14 @@
     
     for(NSDictionary *dic in classifyArr){
         ShopUnionClassifyEntity *entity = [ShopUnionClassifyEntity initClassifyEntityWithDic:dic];
+        entity.industryImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.industryImg];
         [_classifyShopArr addObject:entity];
+    }
+    
+    for(NSDictionary *dic in sellerArr){
+        ShopUnionHotShopEntity *entity = [ShopUnionHotShopEntity initShopUnionHotShopEntity:dic];
+        entity.sellerLogo = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.sellerLogo];
+        [_hotShopArr addObject:entity];
     }
 }
 

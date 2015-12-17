@@ -10,5 +10,6 @@
 
 @interface LMSellerClassifyVC : WXUIViewController
 @property (nonatomic,strong) NSArray *sellerClassifyArr;
+@property (nonatomic,assign) NSInteger industryID;
 
 @end

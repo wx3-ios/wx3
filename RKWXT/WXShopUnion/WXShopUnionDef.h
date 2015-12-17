@@ -28,6 +28,7 @@
 
 #import "LMSearchListVC.h"
 #import "LMSellerClassifyVC.h"
+#import "LMSellerListVC.h"
 
 #define Size self.bounds.size
 #define ShopUnionClassifyRowHeight (165)

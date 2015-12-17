@@ -170,7 +170,7 @@
         }];
     }
     
-    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
     if(showDownView){
         WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
         NSInteger count = 0;

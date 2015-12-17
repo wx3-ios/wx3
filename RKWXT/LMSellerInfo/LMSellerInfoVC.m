@@ -12,17 +12,30 @@
 #import "LMMoreSellerActivityCell.h"
 #import "LMMoreSellerListCell.h"
 #import "LMMoreSellerTitleCell.h"
+#import "LMSellerInfoModel.h"
+#import "LMSellerInfoEntity.h"
 
 #define Size self.bounds.size
 
-@interface LMSellerInfoVC ()<UITableViewDataSource,UITableViewDelegate,LMSellerInfoDesCellDelegate>{
+@interface LMSellerInfoVC ()<UITableViewDataSource,UITableViewDelegate,LMSellerInfoDesCellDelegate,LMSellerInfoModelDelegate,LMMoreSellerListCellDelegate>{
     UITableView *_tableView;
     NSArray *shopArr;
+    NSArray *infoArr;
+    LMSellerInfoModel *_model;
 }
 
 @end
 
 @implementation LMSellerInfoVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[LMSellerInfoModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,8 +46,34 @@
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    [_model loadLMSellerInfoData:_ssid];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -45,7 +84,7 @@
     if(section == 0){
         return 2;
     }
-    return 3;
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -72,11 +111,25 @@
     return height;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    CGFloat height = 0;
+    if(section == 0){
+        height = 0;
+    }else{
+        height = 10;
+    }
+    return height;
+}
+
 -(WXUITableViewCell*)lmSellerInfoTopImgCell{
     static NSString *identifier = @"topImgCell";
     LMSellerInfoTopImgCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[LMSellerInfoTopImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    if([infoArr count] > 0){
+        LMSellerInfoEntity *entity = [infoArr objectAtIndex:0];
+        [cell setCellInfo:entity.imgUrlArr];
     }
     [cell load];
     return cell;
@@ -87,6 +140,10 @@
     LMSellerInfoDesCell *cell = [_tableView dequeueReusableCellWithIdentifier:identfier];
     if(!cell){
         cell = [[LMSellerInfoDesCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
+    }
+    if([infoArr count] > 0){
+        LMSellerInfoEntity *entity = [infoArr objectAtIndex:0];
+        [cell setCellInfo:entity];
     }
     [cell setDelegate:self];
     [cell load];
@@ -99,6 +156,9 @@
     if(!cell){
         cell = [[LMMoreSellerTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    if([shopArr count] > 0){
+        [cell setCellInfo:[shopArr objectAtIndex:section-1]];
+    }
     [cell load];
     return cell;
 }
@@ -109,7 +169,24 @@
     if(!cell){
         cell = [[LMMoreSellerListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell load];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    NSArray *goodArr = nil;
+    if([shopArr count] > 0){
+        LMSellerInfoEntity *entity = [shopArr objectAtIndex:section-1];
+        goodArr = entity.shopArr;
+    }
+    
+    NSMutableArray *rowArray = [NSMutableArray array];
+    NSInteger max = 0*3;
+    NSInteger count = [goodArr count];
+    if(max > count){
+        max = count;
+    }
+    for(NSInteger i = 0; i < count; i++){
+        [rowArray addObject:[goodArr objectAtIndex:i]];
+    }
+    [cell setDelegate:self];
+    [cell loadCpxViewInfos:rowArray];
     return cell;
 }
 
@@ -151,8 +228,28 @@
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark model
+-(void)loadLMSellerInfoDataSucceed{
+    [self unShowWaitView];
+    infoArr = _model.sellerInfoArr;
+    shopArr = _model.shopListArr;
+    [_tableView reloadData];
+}
+
+-(void)loadLMSellerInfoDataFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
 #pragma mark callBtnDelegate
 -(void)lmShopInfoDesCallBtnClicked:(NSString *)sellerPhone{
+    
+}
+
+-(void)moreSellerListBtnClicked:(id)entity{
     
 }
 

@@ -9,6 +9,7 @@
 #import "LMSellerInfoTopImgCell.h"
 #import "WXRemotionImgBtn.h"
 #import "CSTScrollBrowser.h"
+#import "LMSellerInfoEntity.h"
 
 #define kTimerInterval (5.0)
 @interface LMSellerInfoTopImgCell ()<UIScrollViewDelegate,WXRemotionImgBtnDelegate>{
@@ -27,7 +28,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         CGRect rect = [self bounds];
-        _browser = [[CSTScrollBrowser alloc] initWithFrame:rect];
+        _browser = [[CSTScrollBrowser alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
         [_browser setScrollDelegate:self];
         [_browser setGap:0.0];
         [self.contentView addSubview:_browser];
@@ -51,16 +52,16 @@
 }
 
 -(void)load{
-    NSArray *goodEntityArray = self.cellInfo;
+    NSArray *imgUrlArr = self.cellInfo;
     [self toInit];
     
-//    for(HomePageTopEntity *topADVEntity in goodEntityArray){
-//        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
-//        [imgView setCpxViewInfo:topADVEntity.topImg];
-//        [imgView load];
-//        [imgView setDelegate:self];
-//        [_merchantImgViewArray addObject:imgView];
-//    }
+    for(NSString *imgUrl in imgUrlArr){
+        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
+        [imgView setCpxViewInfo:imgUrl];
+        [imgView load];
+        [imgView setDelegate:self];
+        [_merchantImgViewArray addObject:imgView];
+    }
     
     [_browser setSubScrollViews:_merchantImgViewArray];
     [self setSubPageViews:_merchantImgViewArray];

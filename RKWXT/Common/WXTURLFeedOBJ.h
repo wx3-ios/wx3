@@ -102,6 +102,8 @@ typedef enum {
     
     //商家联盟
     WXT_UrlFeed_Type_Home_ShopUnion,
+    WXT_UrlFeed_Type_Home_LMSellerList,
+    WXT_UrlFeed_Type_Home_LMSellerInfo,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

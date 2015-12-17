@@ -7,6 +7,7 @@
 //
 
 #import "LMSellerInfoDesCell.h"
+#import "LMSellerInfoEntity.h"
 
 @interface LMSellerInfoDesCell(){
     WXUILabel *nameLabel;
@@ -61,12 +62,15 @@
 }
 
 -(void)load{
-
+    LMSellerInfoEntity *entity = self.cellInfo;
+    [nameLabel setText:entity.sellerName];
+    [desLabel setText:entity.address];
 }
 
 -(void)callSellerPhone{
+    LMSellerInfoEntity *entity = self.cellInfo;
     if(_delegate && [_delegate respondsToSelector:@selector(lmShopInfoDesCallBtnClicked:)]){
-        [_delegate lmShopInfoDesCallBtnClicked:nil];
+        [_delegate lmShopInfoDesCallBtnClicked:entity.sellerPhone];
     }
 }
 

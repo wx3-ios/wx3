@@ -255,6 +255,12 @@
         case WXT_UrlFeed_Type_Home_ShopUnion:
             url = @"/get_seller_union_home.php";
             break;
+        case WXT_UrlFeed_Type_Home_LMSellerList:
+            url = @"/get_seller_list.php";
+            break;
+        case WXT_UrlFeed_Type_Home_LMSellerInfo:
+            url = @"/get_sellerunion_seller_detail.php";
+            break;
         default:
             break;
     }

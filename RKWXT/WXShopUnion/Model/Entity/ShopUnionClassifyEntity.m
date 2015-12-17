@@ -25,6 +25,9 @@
         
         NSInteger classifyID = [[dic objectForKey:@"industry_id"] integerValue];
         [self setIndustryID:classifyID];
+        
+        NSString *imgUrl = [dic objectForKey:@"industry_ico"];
+        [self setIndustryImg:imgUrl];
     }
     return self;
 }
