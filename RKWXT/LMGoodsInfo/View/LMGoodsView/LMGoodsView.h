@@ -8,7 +8,13 @@
 
 #import "WXUIView.h"
 
+typedef enum{
+    LMGoodsView_Type_ShoppingCart = 0,
+    LMGoodsView_Type_Buy,
+}LMGoodsView_Type;
+
 @interface LMGoodsView : WXUIView
--(void)load;
+@property (nonatomic,assign) LMGoodsView_Type goodsViewType;
+-(void)loadGoodsStockInfo:(NSArray*)stockArr;
 
 @end

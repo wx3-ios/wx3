@@ -399,6 +399,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if(section == ShopUnion_Section_HotGoods){
+        ShopUnionHotGoodsEntity *entity = [hotGoodsArr objectAtIndex:row-1];
+        LMGoodsInfoVC *goodsInfoVC = [[LMGoodsInfoVC alloc] init];
+        goodsInfoVC.goodsId = entity.goodsID;
+        [self.wxNavigationController pushViewController:goodsInfoVC];
+    }
 }
 
 -(void)showAreaView{

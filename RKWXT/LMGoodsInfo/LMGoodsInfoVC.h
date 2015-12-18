@@ -6,8 +6,9 @@
 //  Copyright © 2015年 roderick. All rights reserved.
 //
 
-#import "WXUIViewController.h"
+#import "NLMainViewController.h"
 
-@interface LMGoodsInfoVC : WXUIViewController
+@interface LMGoodsInfoVC : NLMainViewController
+@property (nonatomic,assign) NSInteger goodsId;
 
 @end

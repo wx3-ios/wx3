@@ -25,10 +25,12 @@
 
 #import "WXShopUnionModel.h"
 #import "ShopUnionClassifyEntity.h"
+#import "ShopUnionHotGoodsEntity.h"
 
 #import "LMSearchListVC.h"
 #import "LMSellerClassifyVC.h"
 #import "LMSellerListVC.h"
+#import "LMGoodsInfoVC.h"
 
 #define Size self.bounds.size
 #define ShopUnionClassifyRowHeight (165)
@@ -48,16 +50,6 @@ enum{
     ShopUnion_Section_HotGoods,
     
     ShopUnion_Section_Invalid,
-};
-
-enum{
-    ShopUnionClassify_Hot = 0,
-    ShopUnionClassify_Dress,
-    ShopUnionClassify_Food,
-    ShopUnionClassify_Furniture,
-    ShopUnionClassify_Service,
-    
-    ShopUnionClassify_Invalid,
 };
 
 enum{

@@ -29,7 +29,7 @@
     
     _menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _menuButton.frame = CGRectMake(0, 0, 25, 25);
-    [_menuButton setImage:[UIImage imageNamed:@"T_ShareGoods.png"] forState:UIControlStateNormal];
+    [_menuButton setImage:[UIImage imageNamed:@"LMSharedImg.png"] forState:UIControlStateNormal];
     [_menuButton addTarget:self action:@selector(showMenu) forControlEvents:UIControlEventTouchUpInside];
     
     _backgroundMenuView = [[UIView alloc] init];

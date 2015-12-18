@@ -8,6 +8,7 @@
 
 #import "LMGoodsEvaluteCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMGoodsInfoEntity.h"
 
 @interface LMGoodsEvaluteCell(){
     WXRemotionImgBtn *imgView;
@@ -48,8 +49,8 @@
         timeLabel.frame = CGRectMake(xOffset, yOffset, labelWidth, labelHeight);
         [timeLabel setBackgroundColor:[UIColor clearColor]];
         [timeLabel setTextAlignment:NSTextAlignmentLeft];
-        [timeLabel setTextColor:WXColorWithInteger(0xfafafa)];
-        [timeLabel setFont:WXFont(10.0)];
+        [timeLabel setTextColor:WXColorWithInteger(0xb2b2b2)];
+        [timeLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:timeLabel];
         
         yOffset = imgHeight+2*10;
@@ -66,7 +67,22 @@
 }
 
 -(void)load{
+    LMGoodsInfoEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.userHeadImg];
+    [imgView load];
+    [nameLabel setText:entity.nickName];
+    [timeLabel setText:[UtilTool getDateTimeFor:entity.addTime type:2]];
+    [InfoLabel setText:entity.content];
     
+    CGRect rect = InfoLabel.frame;
+    rect.size.height = [entity.content stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-2*7];
+    [InfoLabel setFrame:rect];
+}
+
++(CGFloat)cellHeightOfInfo:(id)cellInfo{
+    LMGoodsInfoEntity *entity = cellInfo;
+    CGFloat height = [entity.content stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-2*7];
+    return height+60;
 }
 
 @end

@@ -152,6 +152,8 @@
 		122939BB1C224F97005E4E6A /* LMSellerListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939BA1C224F97005E4E6A /* LMSellerListEntity.m */; };
 		122939C11C225959005E4E6A /* LMSellerInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939C01C225959005E4E6A /* LMSellerInfoModel.m */; };
 		122939C41C225E07005E4E6A /* LMSellerInfoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939C31C225E07005E4E6A /* LMSellerInfoEntity.m */; };
+		122939C71C229C32005E4E6A /* LMGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939C61C229C32005E4E6A /* LMGoodsInfoModel.m */; };
+		122939CA1C22A540005E4E6A /* LMGoodsInfoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 122939C91C22A540005E4E6A /* LMGoodsInfoEntity.m */; };
 		1229F6241BE1B2F900258B43 /* CLassifySearchListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F6231BE1B2F900258B43 /* CLassifySearchListVC.m */; };
 		1229F6271BE1B33600258B43 /* ClassifyResultListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */; };
 		1229F62A1BE1C40500258B43 /* GoodsListDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */; };
@@ -415,6 +417,12 @@
 		1278C0AD1C21555100AAF097 /* LMShopCollectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1278C0AC1C21555100AAF097 /* LMShopCollectionTitleCell.m */; };
 		1278C0B01C2157C000AAF097 /* LMShopCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1278C0AF1C2157C000AAF097 /* LMShopCollectionCell.m */; };
 		1278C0B31C2157E700AAF097 /* LMShopCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1278C0B21C2157E700AAF097 /* LMShopCollectionView.m */; };
+		127F26C81C23B1A400583752 /* LMCarriageImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26C41C23B1A400583752 /* LMCarriageImg@2x.png */; };
+		127F26C91C23B1A400583752 /* LMGoodsInfoCartImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26C51C23B1A400583752 /* LMGoodsInfoCartImg@2x.png */; };
+		127F26CA1C23B1A400583752 /* LMGoodsInfoShopImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26C61C23B1A400583752 /* LMGoodsInfoShopImg@2x.png */; };
+		127F26CB1C23B1A400583752 /* LMUserCutImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26C71C23B1A400583752 /* LMUserCutImg@2x.png */; };
+		127F26CE1C23DDC700583752 /* LMGoodsStockNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F26CD1C23DDC700583752 /* LMGoodsStockNameCell.m */; };
+		127F26D01C23FFE500583752 /* LMSharedImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26CF1C23FFE500583752 /* LMSharedImg@2x.png */; };
 		127FDD771B57A76E0059BDB6 /* CallBtnDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD741B57A76E0059BDB6 /* CallBtnDownImg@2x.png */; };
 		127FDD781B57A76E0059BDB6 /* CallBtnUpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD751B57A76E0059BDB6 /* CallBtnUpImg@2x.png */; };
 		127FDD791B57A76E0059BDB6 /* ContactInfoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127FDD761B57A76E0059BDB6 /* ContactInfoCall@2x.png */; };
@@ -1407,6 +1415,10 @@
 		122939C01C225959005E4E6A /* LMSellerInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerInfoModel.m; sourceTree = "<group>"; };
 		122939C21C225E07005E4E6A /* LMSellerInfoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSellerInfoEntity.h; sourceTree = "<group>"; };
 		122939C31C225E07005E4E6A /* LMSellerInfoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSellerInfoEntity.m; sourceTree = "<group>"; };
+		122939C51C229C32005E4E6A /* LMGoodsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMGoodsInfoModel.h; sourceTree = "<group>"; };
+		122939C61C229C32005E4E6A /* LMGoodsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMGoodsInfoModel.m; sourceTree = "<group>"; };
+		122939C81C22A540005E4E6A /* LMGoodsInfoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMGoodsInfoEntity.h; sourceTree = "<group>"; };
+		122939C91C22A540005E4E6A /* LMGoodsInfoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMGoodsInfoEntity.m; sourceTree = "<group>"; };
 		1229F6221BE1B2F900258B43 /* CLassifySearchListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLassifySearchListVC.h; sourceTree = "<group>"; };
 		1229F6231BE1B2F900258B43 /* CLassifySearchListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLassifySearchListVC.m; sourceTree = "<group>"; };
 		1229F6251BE1B33600258B43 /* ClassifyResultListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyResultListCell.h; sourceTree = "<group>"; };
@@ -1887,6 +1899,13 @@
 		1278C0AF1C2157C000AAF097 /* LMShopCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShopCollectionCell.m; sourceTree = "<group>"; };
 		1278C0B11C2157E700AAF097 /* LMShopCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMShopCollectionView.h; sourceTree = "<group>"; };
 		1278C0B21C2157E700AAF097 /* LMShopCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShopCollectionView.m; sourceTree = "<group>"; };
+		127F26C41C23B1A400583752 /* LMCarriageImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMCarriageImg@2x.png"; sourceTree = "<group>"; };
+		127F26C51C23B1A400583752 /* LMGoodsInfoCartImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMGoodsInfoCartImg@2x.png"; sourceTree = "<group>"; };
+		127F26C61C23B1A400583752 /* LMGoodsInfoShopImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMGoodsInfoShopImg@2x.png"; sourceTree = "<group>"; };
+		127F26C71C23B1A400583752 /* LMUserCutImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMUserCutImg@2x.png"; sourceTree = "<group>"; };
+		127F26CC1C23DDC700583752 /* LMGoodsStockNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMGoodsStockNameCell.h; sourceTree = "<group>"; };
+		127F26CD1C23DDC700583752 /* LMGoodsStockNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMGoodsStockNameCell.m; sourceTree = "<group>"; };
+		127F26CF1C23FFE500583752 /* LMSharedImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMSharedImg@2x.png"; sourceTree = "<group>"; };
 		127FDD741B57A76E0059BDB6 /* CallBtnDownImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBtnDownImg@2x.png"; sourceTree = "<group>"; };
 		127FDD751B57A76E0059BDB6 /* CallBtnUpImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CallBtnUpImg@2x.png"; sourceTree = "<group>"; };
 		127FDD761B57A76E0059BDB6 /* ContactInfoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ContactInfoCall@2x.png"; sourceTree = "<group>"; };
@@ -3909,6 +3928,7 @@
 		1222F8611C0E9C4E0031DF33 /* LMShopInfoImg */ = {
 			isa = PBXGroup;
 			children = (
+				127F26CF1C23FFE500583752 /* LMSharedImg@2x.png */,
 				12BF6C991C1123F3000B7FF8 /* LMShopInfoNewGoodsBackImg@2x.png */,
 				123CDDF71C10158800BAF5B2 /* LMShopInfoNewGoodsTitleImg@2x.png */,
 				1222F8621C0E9C4E0031DF33 /* LMShopInfoSmallImg@2x.png */,
@@ -6257,6 +6277,10 @@
 		12CEB4A81C1A776A004FA4B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				122939C51C229C32005E4E6A /* LMGoodsInfoModel.h */,
+				122939C61C229C32005E4E6A /* LMGoodsInfoModel.m */,
+				122939C81C22A540005E4E6A /* LMGoodsInfoEntity.h */,
+				122939C91C22A540005E4E6A /* LMGoodsInfoEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6324,6 +6348,8 @@
 			children = (
 				12CEB4C31C1AC69C004FA4B0 /* LMGoodsView.h */,
 				12CEB4C41C1AC69C004FA4B0 /* LMGoodsView.m */,
+				127F26CC1C23DDC700583752 /* LMGoodsStockNameCell.h */,
+				127F26CD1C23DDC700583752 /* LMGoodsStockNameCell.m */,
 			);
 			path = LMGoodsView;
 			sourceTree = "<group>";
@@ -7104,6 +7130,10 @@
 		12F46A2C1B20012000B8EC98 /* T_GoodsInfo */ = {
 			isa = PBXGroup;
 			children = (
+				127F26C41C23B1A400583752 /* LMCarriageImg@2x.png */,
+				127F26C51C23B1A400583752 /* LMGoodsInfoCartImg@2x.png */,
+				127F26C61C23B1A400583752 /* LMGoodsInfoShopImg@2x.png */,
+				127F26C71C23B1A400583752 /* LMUserCutImg@2x.png */,
 				12B170EB1C043C6100CED803 /* LimitGoodsInfoClickBgImg@2x.png */,
 				12B170EC1C043C6100CED803 /* LimitGoodsInfoClickImg@2x.png */,
 				121EBCCD1BDDCB2700D1F307 /* GoodsInfoCutImg@2x.png */,
@@ -9092,6 +9122,7 @@
 				12CE5D021C0304AE001CB511 /* HomePageUnion@2x.png in Resources */,
 				1229F62B1BE1C40500258B43 /* GoodsListUpImg@2x.png in Resources */,
 				128083E11B622A6D00260B9F /* ShareQzoneImg@2x.png in Resources */,
+				127F26CA1C23B1A400583752 /* LMGoodsInfoShopImg@2x.png in Resources */,
 				12F46A3E1B20012000B8EC98 /* T_GoodsInfo@2x.png in Resources */,
 				12F465E61B6F0DE200A8F5AF /* guideIllustrate_2@2x.jpg in Resources */,
 				DDEA9EE41B1BFE5D00530C1C /* unreadBg@2x.png in Resources */,
@@ -9103,6 +9134,7 @@
 				1245350E1AE9D0BC004198C9 /* FindNormal@2x.png in Resources */,
 				12C0691A1B7C743600C05D42 /* FindWeatherImg@2x.png in Resources */,
 				128E29631BD6248200137688 /* ClassifySearchBtnImg@2x.png in Resources */,
+				127F26CB1C23B1A400583752 /* LMUserCutImg@2x.png in Resources */,
 				1245355F1AE9D146004198C9 /* SignNow@2x.png in Resources */,
 				12D52BBF1AC2EF4400C5CE71 /* dtmf-9.aif in Resources */,
 				124535591AE9D146004198C9 /* sign4@2x.png in Resources */,
@@ -9275,6 +9307,7 @@
 				2563B3F81AAAD74000C04227 /* Images.xcassets in Resources */,
 				1241E5401AE9D89B00811D3F /* 1S@2x.png in Resources */,
 				775842E71AB95A300039B129 /* countryOBJ in Resources */,
+				127F26C91C23B1A400583752 /* LMGoodsInfoCartImg@2x.png in Resources */,
 				12F67BB01B32BDA000F5BDE1 /* citySelectedImg@2x.png in Resources */,
 				12048C7B1B79FBF4000DF7F5 /* RechargeListImg@2x.png in Resources */,
 				1295C5E11B291D4F004C861D /* ResetPwdSelImg@2x.png in Resources */,
@@ -9290,6 +9323,7 @@
 				12F4227F1B1D5A2900643DD7 /* AddressDel@2x.png in Resources */,
 				12A42FAC1C16B56C005936F3 /* LMSellerInfoBgImg@2x.png in Resources */,
 				12D9F5FC1C0C43BC00D7C765 /* UserSecondClientImg@2x.png in Resources */,
+				127F26C81C23B1A400583752 /* LMCarriageImg@2x.png in Resources */,
 				1285850F1B3AA7E5005E240E /* MakeOrderUserNameImg@2x.png in Resources */,
 				128E29671BD6282600137688 /* ClassifySearchStoreImg@2x.png in Resources */,
 				124535401AE9D146004198C9 /* sign12@2x.png in Resources */,
@@ -9312,6 +9346,7 @@
 				12C64D861BF446850039CC39 /* SharkGoodsBtnImg@2x.png in Resources */,
 				1241E54A1AE9D89B00811D3F /* 6S@2x.png in Resources */,
 				12F3CC761B1DE82C00E64DE4 /* MyCallMoneyImg@2x.png in Resources */,
+				127F26D01C23FFE500583752 /* LMSharedImg@2x.png in Resources */,
 				123282441C1FF2F000EA9DEE /* LMSellerIcon@2x.png in Resources */,
 				124535451AE9D146004198C9 /* sign18@2x.png in Resources */,
 				1241E55F1AE9D91400811D3F /* AboutUsLogo@2x.png in Resources */,
@@ -9469,6 +9504,7 @@
 				2563B3ED1AAAD74000C04227 /* AppDelegate.m in Sources */,
 				12F2D8031B1EFA8F00C8017F /* OrderUserHandleCell.m in Sources */,
 				775843121AB95A300039B129 /* WXPopAlertView.m in Sources */,
+				127F26CE1C23DDC700583752 /* LMGoodsStockNameCell.m in Sources */,
 				128221831B18467A004613BB /* T_TopicalView.m in Sources */,
 				128221C81B184C3B004613BB /* ASIInputStream.m in Sources */,
 				122F5EC71C181C4F0045AF41 /* LMHotSearchListCell.m in Sources */,
@@ -9874,6 +9910,7 @@
 				77DB93EF1AAFE70D0021A816 /* PhoneData.m in Sources */,
 				775842DA1AB95A300039B129 /* UIDevice+screenType.m in Sources */,
 				1214B58D1BBA5F6200A7D810 /* WithdrawalsRecordListVC.m in Sources */,
+				122939CA1C22A540005E4E6A /* LMGoodsInfoEntity.m in Sources */,
 				1232825B1C200BD000EA9DEE /* LMWaitReceiveOrderShopCell.m in Sources */,
 				1213FEB11BA2BCE000CAB746 /* MyClientPersonModel.m in Sources */,
 				1222F87A1C0ED22F0031DF33 /* ShopInfAllGoodsCell.m in Sources */,
@@ -9901,6 +9938,7 @@
 				1278C0A71C214CF700AAF097 /* LMGoodsCollectionView.m in Sources */,
 				124A57661C084CAB00D4DEC6 /* HomeLimitBuyTitleCell.m in Sources */,
 				126ADA491C0FEABB00CD2050 /* LMShopInfoSalesView.m in Sources */,
+				122939C71C229C32005E4E6A /* LMGoodsInfoModel.m in Sources */,
 				129F32AC1B8318C4004DFFB1 /* LuckyGoodsMakeOrderDateCell.m in Sources */,
 				12B1F6961B789138009FBA6D /* RechargeListVC.m in Sources */,
 				12989F8D1B900F0100D0AA9F /* FTPManager.m in Sources */,

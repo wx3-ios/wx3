@@ -7,13 +7,13 @@
 //
 
 #import "LMGoodsDesCell.h"
+#import "LMGoodsInfoEntity.h"
 
 @interface LMGoodsDesCell(){
     WXUILabel *desLabel;
     WXUILabel *shopPrice;
     WXUILabel *marketPrice;
     WXUILabel *lineLabel;
-    WXUIButton *redpacketBtn;
     WXUIButton *usercutBtn;
     WXUIButton *carriageBtn;
 }
@@ -51,32 +51,27 @@
         marketPrice.frame = CGRectMake(IPHONE_SCREEN_WIDTH/2+20, yOffset, priceLabelWidth, priceLabelHeight);
         [marketPrice setBackgroundColor:[UIColor clearColor]];
         [marketPrice setTextAlignment:NSTextAlignmentLeft];
-        [marketPrice setTextColor:WXColorWithInteger(0xfafafa)];
+        [marketPrice setTextColor:WXColorWithInteger(0x9b9b9b)];
         [marketPrice setFont:WXFont(14.0)];
         [self.contentView addSubview:marketPrice];
         
         lineLabel = [[WXUILabel alloc] init];
-        lineLabel.frame = CGRectMake(0, yOffset+priceLabelHeight/2, priceLabelWidth, 0.5);
-        [lineLabel setBackgroundColor:WXColorWithInteger(0xfafafa)];
+        lineLabel.frame = CGRectMake(0, priceLabelHeight/2, priceLabelWidth/2, 0.5);
+        [lineLabel setBackgroundColor:[UIColor grayColor]];
         [marketPrice addSubview:lineLabel];
         
         yOffset += priceLabelHeight+13;
         CGFloat btnWidth = 70;
         CGFloat btnHieght = 18;
-        redpacketBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        redpacketBtn.frame = CGRectMake(xOffset, yOffset, btnWidth, btnHieght);
-        [redpacketBtn setBackgroundColor:[UIColor whiteColor]];
-        [redpacketBtn setBorderRadian:2.0 width:0.5 color:[UIColor grayColor]];
-        [redpacketBtn setTitle:@"使用红包" forState:UIControlStateNormal];
-        [redpacketBtn addTarget:self action:@selector(redpacketBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:redpacketBtn];
-        
-        xOffset += btnWidth+10;
         usercutBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         usercutBtn.frame = CGRectMake(xOffset, yOffset, btnWidth, btnHieght);
         [usercutBtn setBackgroundColor:[UIColor whiteColor]];
-        [usercutBtn setBorderRadian:2.0 width:0.5 color:[UIColor grayColor]];
+        [usercutBtn setBorderRadian:2.0 width:0.5 color:WXColorWithInteger(0xdbdbdb)];
+        [usercutBtn setImage:[UIImage imageNamed:@"LMUserCutImg.png"] forState:UIControlStateNormal];
         [usercutBtn setTitle:@"提成" forState:UIControlStateNormal];
+        [usercutBtn.titleLabel setFont:WXFont(9.0)];
+        [usercutBtn setTitleColor:WXColorWithInteger(0x000000) forState:UIControlStateNormal];
+        [usercutBtn setHidden:YES];
         [usercutBtn addTarget:self action:@selector(userCutBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:usercutBtn];
         
@@ -84,8 +79,12 @@
         carriageBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         carriageBtn.frame = CGRectMake(xOffset, yOffset, btnWidth, btnHieght);
         [carriageBtn setBackgroundColor:[UIColor whiteColor]];
-        [carriageBtn setBorderRadian:2.0 width:0.5 color:[UIColor grayColor]];
+        [carriageBtn setBorderRadian:2.0 width:0.5 color:WXColorWithInteger(0xdbdbdb)];
+        [carriageBtn setImage:[UIImage imageNamed:@"LMCarriageImg.png"] forState:UIControlStateNormal];
         [carriageBtn setTitle:@"包邮" forState:UIControlStateNormal];
+        [carriageBtn.titleLabel setFont:WXFont(9.0)];
+        [carriageBtn setHidden:YES];
+        [carriageBtn setTitleColor:WXColorWithInteger(0x000000) forState:UIControlStateNormal];
         [carriageBtn addTarget:self action:@selector(carriageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:carriageBtn];
     }
@@ -93,19 +92,50 @@
 }
 
 -(void)load{
+    LMGoodsInfoEntity *entity = self.cellInfo;
+    [desLabel setText:entity.goodsName];
     
+    NSString *marketPriceString = [NSString stringWithFormat:@"￥%.2f",entity.marketPrice];
+    [shopPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shopPrice]];
+    [marketPrice setText:marketPriceString];
+    
+    CGRect rect = lineLabel.frame;
+    rect.size.width = [self widthForString:marketPriceString fontSize:14.0 andHeight:20];
+    [lineLabel setFrame:rect];
+    
+    if(_userCut){
+        [usercutBtn setHidden:NO];
+    }
+    if(entity.postage == LMGoods_Postage_None && _userCut){
+        [carriageBtn setHidden:NO];
+    }
+    if(entity.postage == LMGoods_Postage_None && !_userCut){
+        [carriageBtn setHidden:NO];
+        CGRect rect = carriageBtn.frame;
+        rect.origin.x = 12;
+        [carriageBtn setFrame:rect];
+    }
+    if(entity.postage == LMGoods_Postage_Have && !_userCut){
+        [carriageBtn setHidden:YES];
+        [usercutBtn setHidden:YES];
+    }
 }
 
--(void)redpacketBtnClicked{
-    
+-(float)widthForString:(NSString *)value fontSize:(float)fontSize andHeight:(float)height{
+    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, height) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
+    return sizeToFit.width;
 }
 
 -(void)userCutBtnClicked{
-    
+    if(_delegate && [_delegate respondsToSelector:@selector(lmGoodsInfoDesCutBtnClicked)]){
+        [_delegate lmGoodsInfoDesCutBtnClicked];
+    }
 }
 
 -(void)carriageBtnClicked{
-    
+    if(_delegate && [_delegate respondsToSelector:@selector(lmGoodsInfoDesCarriageBtnClicked)]){
+        [_delegate lmGoodsInfoDesCarriageBtnClicked];
+    }
 }
 
 @end

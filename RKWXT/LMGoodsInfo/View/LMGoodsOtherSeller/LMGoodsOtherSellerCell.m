@@ -7,6 +7,7 @@
 //
 
 #import "LMGoodsOtherSellerCell.h"
+#import "LMGoodsInfoEntity.h"
 
 @interface LMGoodsOtherSellerCell(){
     WXUILabel *sellerNameLabel;
@@ -39,8 +40,8 @@
         sellerDesLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, namelabelHeight);
         [sellerDesLabel setBackgroundColor:[UIColor clearColor]];
         [sellerDesLabel setTextAlignment:NSTextAlignmentLeft];
-        [sellerDesLabel setTextColor:WXColorWithInteger(0xfafafa)];
-        [sellerDesLabel setFont:WXFont(10.0)];
+        [sellerDesLabel setTextColor:WXColorWithInteger(0xb2b2b2)];
+        [sellerDesLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:sellerDesLabel];
         
         CGFloat imgWidth = 15;
@@ -54,15 +55,18 @@
         distanceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth+imgWidth, yOffset, rightViewWidth-imgWidth, namelabelHeight);
         [distanceLabel setBackgroundColor:[UIColor clearColor]];
         [distanceLabel setTextAlignment:NSTextAlignmentLeft];
-        [distanceLabel setTextColor:WXColorWithInteger(0xfafafa)];
-        [distanceLabel setFont:WXFont(10.0)];
+        [distanceLabel setTextColor:WXColorWithInteger(0x9b9b9b)];
+        [distanceLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:distanceLabel];
     }
     return self;
 }
 
 -(void)load{
-    
+    LMGoodsInfoEntity *entity = self.cellInfo;
+    [sellerNameLabel setText:entity.shopName];
+    [sellerDesLabel setText:entity.shopAddress];
+    [distanceLabel setText:[NSString stringWithFormat:@"%.2f",entity.shopDistance]];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LMGoodsInfoCell.h"
+#import "LMGoodsInfoEntity.h"
 
 @interface LMGoodsInfoCell(){
     WXUILabel *nameLabel;
@@ -26,7 +27,7 @@
         nameLabel.frame = CGRectMake(xOffset, yOffset, IPHONE_SCREEN_WIDTH/3-xOffset, labelHeight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
         [nameLabel setTextAlignment:NSTextAlignmentLeft];
-        [nameLabel setTextColor:WXColorWithInteger(0xfafafa)];
+        [nameLabel setTextColor:WXColorWithInteger(0x888888)];
         [nameLabel setFont:WXFont(11.0)];
         [self.contentView addSubview:nameLabel];
         
@@ -34,15 +35,22 @@
         desLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH/3, yOffset, IPHONE_SCREEN_WIDTH*2/3-xOffset, labelHeight);
         [desLabel setBackgroundColor:[UIColor clearColor]];
         [desLabel setTextAlignment:NSTextAlignmentRight];
-        [desLabel setTextColor:WXColorWithInteger(0xfafafa)];
+        [desLabel setTextColor:WXColorWithInteger(0x888888)];
         [desLabel setFont:WXFont(11.0)];
         [self.contentView addSubview:desLabel];
+        
+        WXUILabel *lineLabel = [[WXUILabel alloc] init];
+        lineLabel.frame = CGRectMake(xOffset, yOffset+labelHeight+1, IPHONE_SCREEN_WIDTH-2*xOffset, 0.5);
+        [lineLabel setBackgroundColor:[UIColor grayColor]];
+        [self.contentView addSubview:lineLabel];
     }
     return self;
 }
 
 -(void)load{
-    
+    LMGoodsInfoEntity *entity = self.cellInfo;
+    [nameLabel setText:entity.attrName];
+    [desLabel setText:entity.attrValue];
 }
 
 @end
