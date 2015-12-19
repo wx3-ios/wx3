@@ -264,6 +264,12 @@
         case WXT_UrlFeed_Type_Home_LMGoodsInfo:
             url = @"/get_sellerunion_goods_detail.php";
             break;
+        case WXT_UrlFeed_Type_Home_LMShopInfo:
+            url = @"/get_sellerunion_shop_detail.php";
+            break;
+        case WXT_UrlFeed_Type_Home_LMShopInfoList:
+            url = @"/get_sellerunion_goods_list.php";
+            break;
         default:
             break;
     }

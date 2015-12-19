@@ -22,14 +22,14 @@
     self = [super initWithFrame:frame];
     if(self){
         CGFloat width = (IPHONE_SCREEN_WIDTH-4*8)/3;
-        CGFloat height = LMMoreSellerListCellHeight;
+        CGFloat height = LMMoreSellerListCellHeight-8;
         WXUIButton *bgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         bgBtn.frame = CGRectMake(0, 0.5, width, height);
         [bgBtn setBackgroundColor:[UIColor whiteColor]];
         [bgBtn addTarget:self action:@selector(moreSellerBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:bgBtn];
         
-        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+        _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, (LMMoreSellerListCellHeight-height)/2, width, height)];
         [_imgView setUserInteractionEnabled:NO];
         [self addSubview:_imgView];
     }

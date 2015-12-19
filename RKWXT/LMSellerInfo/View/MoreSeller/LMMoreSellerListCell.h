@@ -8,7 +8,7 @@
 
 #import "WXMiltiViewCell.h"
 
-#define LMMoreSellerListCellHeight (92)
+#define LMMoreSellerListCellHeight (100)
 
 @protocol LMMoreSellerListCellDelegate;
 @interface LMMoreSellerListCell : WXMiltiViewCell

@@ -8,6 +8,7 @@
 
 #import "LMShopInfoTrendsCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMShopInfoAllGoodsEntity.h"
 
 @interface LMShopInfoTrendsCell(){
     WXUILabel *titleLabel;
@@ -34,7 +35,7 @@
         
         WXUILabel *staticLabel = [[WXUILabel alloc] init];
         staticLabel.frame = CGRectMake(0, 0, smImgWidth, smImgHeight);
-        [staticLabel setText:@"上新"];
+        [staticLabel setText:@"动态"];
         [staticLabel setBackgroundColor:[UIColor clearColor]];
         [staticLabel setTextAlignment:NSTextAlignmentCenter];
         [staticLabel setTextColor:WXColorWithInteger(0xffffff)];
@@ -47,6 +48,7 @@
         titleLabel.frame = CGRectMake(xOffset, yOffset, titleLabelWidth, smImgHeight);
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleLabel setTextAlignment:NSTextAlignmentLeft];
+        [titleLabel setText:@"小店新品，欢迎选购"];
         [titleLabel setTextColor:WXColorWithInteger(0x000000)];
         [titleLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:titleLabel];
@@ -79,6 +81,7 @@
         [nameLabel setTextAlignment:NSTextAlignmentLeft];
         [nameLabel setTextColor:WXColorWithInteger(0x000000)];
         [nameLabel setFont:WXFont(12.0)];
+        [nameLabel setNumberOfLines:2];
         [self.contentView addSubview:nameLabel];
         
         yOffset += nameHeight+15;
@@ -88,7 +91,7 @@
         priceLabel.frame = CGRectMake(xOffset, yOffset, priceLabelWidth, priceLabelHeight);
         [priceLabel setBackgroundColor:[UIColor clearColor]];
         [priceLabel setTextAlignment:NSTextAlignmentLeft];
-        [priceLabel setTextColor:WXColorWithInteger(0xffffff)];
+        [priceLabel setTextColor:WXColorWithInteger(0x000000)];
         [priceLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:priceLabel];
     }
@@ -96,7 +99,12 @@
 }
 
 -(void)load{
-    
+    LMShopInfoAllGoodsEntity *entity = self.cellInfo;
+    [timeLabel setText:[UtilTool getDateTimeFor:entity.addTime type:2]];
+    [imgView setCpxViewInfo:entity.imgUrl];
+    [imgView load];
+    [nameLabel setText:entity.goodsName];
+    [priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.shopPrice]];
 }
 
 @end

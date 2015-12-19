@@ -11,7 +11,7 @@
 
 @protocol ToContactDetailVCDelegate;
 @interface WXContacterVC : WXUIViewController{
-    UILabel * _accessGrantedTip;
+//    UILabel * _accessGrantedTip;
 }
 @property (nonatomic,assign) id<ToContactDetailVCDelegate>detailDelegate;
 @end

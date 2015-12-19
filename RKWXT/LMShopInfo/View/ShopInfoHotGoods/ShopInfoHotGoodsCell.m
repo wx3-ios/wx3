@@ -8,7 +8,7 @@
 
 #import "ShopInfoHotGoodsCell.h"
 #import "LMShopInfoDef.h"
-#import "WXShopUnionHotShopView.h"
+#import "ShopInfoHotGoodsView.h"
 
 @implementation ShopInfoHotGoodsCell
 
@@ -30,7 +30,7 @@
 
 - (WXCpxBaseView *)createSubCpxView{
     CGSize size = [self cpxViewSize];
-    WXShopUnionHotShopView *merchandiseView = [[WXShopUnionHotShopView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    ShopInfoHotGoodsView *merchandiseView = [[ShopInfoHotGoodsView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     return merchandiseView;
 }
 

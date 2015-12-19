@@ -20,11 +20,11 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        CGFloat xOffset = 10;
-        CGFloat yOffset = 10;
-        imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, yOffset, IPHONE_SCREEN_WIDTH-2*xOffset, LMShopInfoActivityHeight-2*yOffset)];
-        [imgView setUserInteractionEnabled:NO];
-        [self.contentView addSubview:imgView];
+//        CGFloat xOffset = 10;
+//        CGFloat yOffset = 10;
+//        imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, yOffset, IPHONE_SCREEN_WIDTH-2*xOffset, LMShopInfoActivityHeight-2*yOffset)];
+//        [imgView setUserInteractionEnabled:NO];
+//        [self.contentView addSubview:imgView];
     }
     return self;
 }

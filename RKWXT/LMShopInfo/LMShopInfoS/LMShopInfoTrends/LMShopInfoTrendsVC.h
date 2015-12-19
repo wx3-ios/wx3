@@ -9,5 +9,6 @@
 #import "WXUIViewController.h"
 
 @interface LMShopInfoTrendsVC : WXUIViewController
+@property (nonatomic,assign) NSInteger sshop_id;
 
 @end

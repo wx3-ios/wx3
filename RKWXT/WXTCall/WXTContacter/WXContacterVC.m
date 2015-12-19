@@ -45,12 +45,12 @@
     [self.view addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-    if (![AddressBook sharedAddressBook].accessGranted) {
-        _accessGrantedTip = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, ScreenWidth - 2*20, 50)];
-        _accessGrantedTip.numberOfLines = 2;
-        _accessGrantedTip.text = @"设置路径: 设置 - 隐私 - 通讯录 - 我信通";
-        [self.view addSubview:_accessGrantedTip];
-    }
+//    if (![AddressBook sharedAddressBook].accessGranted) {
+//        _accessGrantedTip = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, ScreenWidth - 2*20, 50)];
+//        _accessGrantedTip.numberOfLines = 2;
+//        _accessGrantedTip.text = @"设置路径: 设置 - 隐私 - 通讯录 - 我信通";
+////        [self.view addSubview:_accessGrantedTip];
+//    }
     
     _searchBar = [[WXUISearchBar alloc] initWithFrame:CGRectMake(0, 0, size.width, kSearchBarHeight)];
     if ([AddressBook sharedAddressBook].count == 0) {

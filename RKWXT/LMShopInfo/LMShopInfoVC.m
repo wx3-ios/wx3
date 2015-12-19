@@ -8,12 +8,16 @@
 
 #import "LMShopInfoVC.h"
 #import "LMShopInfoDef.h"
+#import "LMShopInfoModel.h"
 
-@interface LMShopInfoVC()<UITableViewDataSource,UITableViewDelegate,CDSideBarControllerDelegate>{
+@interface LMShopInfoVC()<UITableViewDataSource,UITableViewDelegate,CDSideBarControllerDelegate,LMShopInfoModelDelegate,ShopInfAllGoodsCellDelegate,ShopInfoHotGoodsCellDelegate,LMShopInfoBaseFunctionCellDelegate>{
     UITableView *_tableView;
     CDSideBarController *sideBar;
+    LMShopInfoModel *_shopModel;
     
-    NSArray *evaluateArr;
+    NSArray *shopInfoArr;
+    NSArray *allGoodsArr;
+    NSArray *comGoodsArr;
 }
 @end
 
@@ -22,6 +26,15 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [sideBar insertMenuButtonOnView:self.view atPosition:CGPointMake(self.bounds.size.width-35, 66-35)];
+}
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _shopModel = [[LMShopInfoModel alloc] init];
+        [_shopModel setDelegate:self];
+    }
+    return self;
 }
 
 -(void)viewDidLoad{
@@ -34,16 +47,41 @@
     [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     //初始化分享
     [self initDropList];
+    [_shopModel loadLMShopInfoData:_sshop_id];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)initDropList{
     NSArray *imageList = @[[UIImage imageNamed:@"ShareQqImg.png"], [UIImage imageNamed:@"ShareQzoneImg.png"], [UIImage imageNamed:@"ShareWxFriendImg.png"], [UIImage imageNamed:@"ShareWxCircleImg.png"]];
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
+}
+
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -59,13 +97,10 @@
             row = 1;
             break;
         case LMShopInfo_Section_HotGoods:
-            row = 2;
+            row = [comGoodsArr count]/2+([comGoodsArr count]%2>0?1:0);
             break;
         case LMShopInfo_Section_AllGoods:
-            row = 2;
-            break;
-        case LMShopInfo_Section_Evaluate:
-            row = [evaluateArr count]+2;
+            row = [allGoodsArr count]/2+([allGoodsArr count]%2>0?1:0);
             break;
         default:
             break;
@@ -86,36 +121,67 @@
             height = LMShopInfoActivityHeight;
             break;
         case LMShopInfo_Section_HotGoods:
-        {
-            if(indexPath.row == 0){
-                height = LMShopInfoSectionTitleHeight;
-            }else{
-                height = LMShopInfoHotGoodsHeight;
-            }
-        }
+            height = LMShopInfoHotGoodsHeight;
             break;
         case LMShopInfo_Section_AllGoods:
-        {
-            if(indexPath.row == 0){
-                height = LMShopInfoSectionTitleHeight;
-            }else{
-                height = LMShopInfoHotGoodsHeight;
-            }
-        }
-            break;
-        case LMShopInfo_Section_Evaluate:
-        {
-            if(indexPath.row == 0 || indexPath.row == [evaluateArr count]-1){
-                height = LMShopInfoSectionTitleHeight;
-            }else{
-                height = [ShopInfoEvaluateCell cellHeightOfInfo:nil];
-            }
-        }
+            height = LMShopInfoHotGoodsHeight;
             break;
         default:
             break;
     }
     return height;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    CGFloat height = 0;
+    switch (section) {
+        case LMShopInfo_Section_HotGoods:
+        case LMShopInfo_Section_AllGoods:
+            height = LMShopInfoSectionTitleHeight;
+            break;
+        default:
+            break;
+    }
+    return height;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    CGFloat height = 0;
+    NSString *title = nil;
+    switch (section) {
+        case LMShopInfo_Section_HotGoods:
+            title = @"热销商品";
+            height = LMShopInfoSectionTitleHeight;
+            break;
+        case LMShopInfo_Section_AllGoods:
+            title = @"所有商品";
+            height = LMShopInfoSectionTitleHeight;
+            break;
+        default:
+            break;
+    }
+    
+    UIView *titleView = [[UIView alloc] init];
+    [titleView setBackgroundColor:[UIColor whiteColor]];
+    
+    WXUILabel *lineLabel = [[WXUILabel alloc] init];
+    lineLabel.frame = CGRectMake(0, 0, Size.width, 0.5);
+    [lineLabel setBackgroundColor:WXColorWithInteger(0x969696)];
+    [titleView addSubview:lineLabel];
+    
+    CGFloat labelHeight = 18;
+    CGFloat labelWidth = 100;
+    WXUILabel *textLabel = [[WXUILabel alloc] init];
+    textLabel.frame = CGRectMake(10, (height-labelHeight)/2, labelWidth, labelHeight);
+    [textLabel setBackgroundColor:[UIColor whiteColor]];
+    [textLabel setText:title];
+    [textLabel setTextAlignment:NSTextAlignmentLeft];
+    [textLabel setTextColor:WXColorWithInteger(0x000000)];
+    [textLabel setFont:WXFont(15.0)];
+    [titleView addSubview:textLabel];
+    
+    titleView.frame = CGRectMake(0, 0, Size.width, height);
+    return titleView;
 }
 
 //顶部大图
@@ -124,6 +190,10 @@
     LMShopInfoTopImgCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[LMShopInfoTopImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([shopInfoArr count] > 0){
+        [cell setCellInfo:[shopInfoArr objectAtIndex:0]];
     }
     [cell load];
     return cell;
@@ -136,6 +206,11 @@
     if(!cell){
         cell = [[LMShopInfoBaseFunctionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([shopInfoArr count] > 0){
+        [cell setCellInfo:[shopInfoArr objectAtIndex:0]];
+    }
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -151,17 +226,17 @@
     return cell;
 }
 
-//热销商品
--(WXUITableViewCell*)shopInfoHotGoodsTitleCell{
-    static NSString *identifier = @"hotGoodsTitleCell";
-    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    cell.textLabel.text = @"热销商品";
-    [cell.textLabel setFont:WXFont(15.0)];
-    return cell;
-}
+////热销商品
+//-(WXUITableViewCell*)shopInfoHotGoodsTitleCell{
+//    static NSString *identifier = @"hotGoodsTitleCell";
+//    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+//    if(!cell){
+//        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    cell.textLabel.text = @"热销商品";
+//    [cell.textLabel setFont:WXFont(15.0)];
+//    return cell;
+//}
 
 -(WXUITableViewCell*)shopInfoHotGoodsListCell:(NSInteger)row{
     static NSString *identifier = @"hotGoodsCell";
@@ -170,32 +245,31 @@
         cell = [[ShopInfoHotGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    NSMutableArray *rowArray = [NSMutableArray array];
-//    NSInteger max = row*3;
-//    NSInteger count = [ count];
-//    if(max > count){
-//        max = count;
-//    }
-//    for(NSInteger i = (row-1)*3; i < max; i++){
-//        [rowArray addObject:[hotShopArr objectAtIndex:i]];
-//    }
-//    [cell setDelegate:self];
-//    [cell loadCpxViewInfos:rowArray];
-    [cell load];
+    NSMutableArray *rowArray = [NSMutableArray array];
+    NSInteger max = (row+1)*2;
+    NSInteger count = [comGoodsArr count];
+    if(max > count){
+        max = count;
+    }
+    for(NSInteger i = row*2; i < max; i++){
+        [rowArray addObject:[comGoodsArr objectAtIndex:i]];
+    }
+    [cell setDelegate:self];
+    [cell loadCpxViewInfos:rowArray];
     return cell;
 }
 
-//所有商品
--(WXUITableViewCell*)shopInfoAllGoodsTitleCell{
-    static NSString *identifier = @"allGoodsTitleCell";
-    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    cell.textLabel.text = @"所有商品";
-    [cell.textLabel setFont:WXFont(15.0)];
-    return cell;
-}
+////所有商品
+//-(WXUITableViewCell*)shopInfoAllGoodsTitleCell{
+//    static NSString *identifier = @"allGoodsTitleCell";
+//    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+//    if(!cell){
+//        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    cell.textLabel.text = @"所有商品";
+//    [cell.textLabel setFont:WXFont(15.0)];
+//    return cell;
+//}
 
 -(WXUITableViewCell*)shopInfoAllGoodsListCell:(NSInteger)row{
     static NSString *identifier = @"allGoodsCell";
@@ -204,54 +278,53 @@
         cell = [[ShopInfAllGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    //    NSMutableArray *rowArray = [NSMutableArray array];
-    //    NSInteger max = row*3;
-    //    NSInteger count = [ count];
-    //    if(max > count){
-    //        max = count;
-    //    }
-    //    for(NSInteger i = (row-1)*3; i < max; i++){
-    //        [rowArray addObject:[hotShopArr objectAtIndex:i]];
-    //    }
-    //    [cell setDelegate:self];
-    //    [cell loadCpxViewInfos:rowArray];
-    [cell load];
+    NSMutableArray *rowArray = [NSMutableArray array];
+    NSInteger max = (row+1)*2;
+    NSInteger count = [allGoodsArr count];
+    if(max > count){
+        max = count;
+    }
+    for(NSInteger i = row*2; i < max; i++){
+        [rowArray addObject:[allGoodsArr objectAtIndex:i]];
+    }
+    [cell setDelegate:self];
+    [cell loadCpxViewInfos:rowArray];
     return cell;
 }
 
-//评价
--(WXUITableViewCell*)shopInfoEvaluateTitleCell{
-    static NSString *identifier = @"EvaluateTitleCell";
-    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    cell.textLabel.text = @"评价";
-    [cell.textLabel setFont:WXFont(14.0)];
-    return cell;
-}
+////评价
+//-(WXUITableViewCell*)shopInfoEvaluateTitleCell{
+//    static NSString *identifier = @"EvaluateTitleCell";
+//    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+//    if(!cell){
+//        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    cell.textLabel.text = @"评价";
+//    [cell.textLabel setFont:WXFont(14.0)];
+//    return cell;
+//}
+//
+//-(WXUITableViewCell*)shopInfoMoreEvaluateCell{
+//    static NSString *identifier = @"MoreEvaluateCell";
+//    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+//    if(!cell){
+//        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
+//    cell.textLabel.text = @"查看更多评价";
+//    [cell.textLabel setFont:WXFont(14.0)];
+//    return cell;
+//}
 
--(WXUITableViewCell*)shopInfoMoreEvaluateCell{
-    static NSString *identifier = @"MoreEvaluateCell";
-    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
-    cell.textLabel.text = @"查看更多评价";
-    [cell.textLabel setFont:WXFont(14.0)];
-    return cell;
-}
-
--(WXUITableViewCell*)shopInfoEvaluateListCell{
-    static NSString *identifier = @"evaluateListCell";
-    ShopInfoEvaluateCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell){
-        cell = [[ShopInfoEvaluateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    [cell load];
-    return cell;
-}
+//-(WXUITableViewCell*)shopInfoEvaluateListCell{
+//    static NSString *identifier = @"evaluateListCell";
+//    ShopInfoEvaluateCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+//    if(!cell){
+//        cell = [[ShopInfoEvaluateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    [cell load];
+//    return cell;
+//}
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WXUITableViewCell *cell = nil;
@@ -268,29 +341,10 @@
             cell = [self shopInfoActivityCell];
             break;
         case LMShopInfo_Section_HotGoods:
-        {
-            if(row == 0){
-                cell = [self shopInfoHotGoodsTitleCell];
-            }else{
-                cell = [self shopInfoHotGoodsListCell:row];
-            }
-        }
+            cell = [self shopInfoHotGoodsListCell:row];
             break;
         case LMShopInfo_Section_AllGoods:
-        {
-            if(row == 0){
-                cell = [self shopInfoAllGoodsTitleCell];
-            }else{
-                cell = [self shopInfoAllGoodsListCell:row];
-            }
-        }
-            break;
-        case LMShopInfo_Section_Evaluate:
-        {
-            if(row == 0){
-                cell = [self shopInfoEvaluateTitleCell];
-            }
-        }
+            cell = [self shopInfoAllGoodsListCell:row];
             break;
         default:
             break;
@@ -300,6 +354,23 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark data
+-(void)loadLMShopinfoDataSucceed{
+    [self unShowWaitView];
+    shopInfoArr = _shopModel.shopInfoArr;
+    allGoodsArr = _shopModel.allGoodsArr;
+    comGoodsArr = _shopModel.comGoodsArr;
+    [_tableView reloadData];
+}
+
+-(void)loadLMShopinfoDataFailed:(NSString *)errormsg{
+    [self unShowWaitView];
+    if(!errormsg){
+        errormsg = @"获取数据失败";
+    }
+    [UtilTool showAlertView:errormsg];
 }
 
 #pragma mark 分享
@@ -355,10 +426,46 @@
 }
 
 -(NSString*)sharedGoodsInfoUrlString{
-    NSString *strB = [[self sharedGoodsInfoTitle] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+//    NSString *strB = [[self sharedGoodsInfoTitle] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
 //    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?shop_id=%d&MerchantID=%d&go=good_detail&title=%@&goods_id=%ld&woxin_id=%@",WXTShareBaseUrl,kSubShopID,kMerchantID,strB,(long)_goodsId,userDefault.wxtID];
     return nil;
+}
+
+#pragma mark baseFunctionBtn
+-(void)lmShopInfoBaseFunctionBtnClicked:(NSInteger)index{
+    switch (index) {
+        case 0:
+        {
+            LMShopInfoAllGoodsVC *allGoodsVC = [[LMShopInfoAllGoodsVC alloc] init];
+            allGoodsVC.sshop_id = _sshop_id;
+            [self.wxNavigationController pushViewController:allGoodsVC];
+        }
+            break;
+        case 1:
+        {
+            LMShopInfoNewGoodsVC *newGoodsVC = [[LMShopInfoNewGoodsVC alloc] init];
+            newGoodsVC.sshop_id = _sshop_id;
+            [self.wxNavigationController pushViewController:newGoodsVC];
+        }
+            break;
+        case 3:
+        {
+            LMShopInfoTrendsVC *trendsVC = [[LMShopInfoTrendsVC alloc] init];
+            trendsVC.sshop_id = _sshop_id;
+            [self.wxNavigationController pushViewController:trendsVC];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)shopInfoAllGoodsCellBtnClicked:(id)sender{
+}
+
+-(void)shopInfoHotGoodsCellBtnClicked:(id)sender{
+    
 }
 
 @end

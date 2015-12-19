@@ -8,17 +8,29 @@
 
 #import "LMShopInfoAllGoodsVC.h"
 #import "LMShopInfoALlGoodsListCell.h"
+#import "MJRefresh.h"
+#import "LMShopInfoListModel.h"
 
 #define Size self.bounds.size
+#define EveryItmeLoadData (10)
 
-@interface LMShopInfoAllGoodsVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface LMShopInfoAllGoodsVC()<UITableViewDataSource,UITableViewDelegate,LMShopInfoListModelDelegate>{
     UITableView *_tableView;
-    
     NSArray *goodsList;
+    LMShopInfoListModel *_model;
 }
 @end
 
 @implementation LMShopInfoAllGoodsVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[LMShopInfoListModel alloc] init];
+        [_model setDelegate:self];
+    }
+    return self;
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -31,6 +43,25 @@
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self setupRefresh];
+    
+    [_model loadShopInfoListDataWith:LMShopInfo_DataType_AllGoods and:_sshop_id andStartItem:0 andLenth:EveryItmeLoadData];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+//集成刷新控件
+-(void)setupRefresh{
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [_tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
+    
+    //设置文字
+    _tableView.headerPullToRefreshText = @"下拉刷新";
+    _tableView.headerReleaseToRefreshText = @"松开刷新";
+    _tableView.headerRefreshingText = @"刷新中";
+    
+    _tableView.footerPullToRefreshText = @"上拉加载";
+    _tableView.footerReleaseToRefreshText = @"松开加载";
+    _tableView.footerRefreshingText = @"加载中";
 }
 
 //改变cell分割线置顶
@@ -72,13 +103,45 @@
     if(!cell){
         cell = [[LMShopInfoALlGoodsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    if([_model.data count] > 0){
+        [cell setCellInfo:[_model.data objectAtIndex:row]];
+    }
     [cell load];
     return cell;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WXUITableViewCell *cell = nil;
+    NSInteger row = indexPath.row;
+    cell = [self goodsListCell:row];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+//上拉加载
+-(void)footerRefreshing{
+    
+    [_model loadShopInfoListDataWith:LMShopInfo_DataType_AllGoods and:_sshop_id andStartItem:[goodsList count] andLenth:EveryItmeLoadData];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)loadShopListDataSucced{
+    [self unShowWaitView];
+    [_tableView footerEndRefreshing];
+    goodsList = _model.data;
+    [_tableView reloadData];
+}
+
+-(void)loadShopListDataFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    [_tableView footerEndRefreshing];
+    if(!errorMsg){
+        errorMsg = @"获取数据失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 @end

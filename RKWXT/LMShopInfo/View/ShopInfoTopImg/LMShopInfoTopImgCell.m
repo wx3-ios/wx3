@@ -9,6 +9,7 @@
 #import "LMShopInfoTopImgCell.h"
 #import "WXRemotionImgBtn.h"
 #import "LMShopInfoDef.h"
+#import "LMShopInfoEntity.h"
 
 @interface LMShopInfoTopImgCell(){
     WXRemotionImgBtn *imgView;
@@ -56,17 +57,17 @@
         
         yOffset += nameLabelHeight+7;
         _addressLabel = [[WXUILabel alloc] init];
-        _addressLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, nameLabelHeight);
+        _addressLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, 2*nameLabelHeight);
         [_addressLabel setTextAlignment:NSTextAlignmentLeft];
         [_addressLabel setBackgroundColor:[UIColor clearColor]];
         [_addressLabel setTextColor:WXColorWithInteger(0xe0e2e1)];
         [_addressLabel setFont:WXFont(10.0)];
-        [_addressLabel setNumberOfLines:0];
+        [_addressLabel setNumberOfLines:2];
         [bgImgView addSubview:_addressLabel];
         
         CGFloat lineHeight = 50;
         WXUILabel *lineLabel = [[WXUILabel alloc] init];
-        lineLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth, (bgViewHeight-lineHeight)/2, lineHeight, 0.5);
+        lineLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth, (bgViewHeight-lineHeight)/2, 0.5, lineHeight);
         [lineLabel setBackgroundColor:WXColorWithInteger(0xffffff)];
         [bgImgView addSubview:lineLabel];
         
@@ -82,11 +83,17 @@
 }
 
 -(void)load{
-
+    LMShopInfoEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.topImg];
+    [imgView load];
+    
+    [_nameLabel setText:entity.shopName];
+    [_addressLabel setText:entity.address];
 }
 
 -(void)callBtnClicked{
-    NSString *phone = [self phoneWithoutNumber:@""];
+    LMShopInfoEntity *entity = self.cellInfo;
+    NSString *phone = [self phoneWithoutNumber:entity.shopPhone];
     if(phone.length < 8 || phone.length > 12){
         return;
     }

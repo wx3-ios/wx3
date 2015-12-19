@@ -14,6 +14,7 @@
 #import "LMMoreSellerTitleCell.h"
 #import "LMSellerInfoModel.h"
 #import "LMSellerInfoEntity.h"
+#import "LMShopInfoVC.h"
 
 #define Size self.bounds.size
 
@@ -250,7 +251,10 @@
 }
 
 -(void)moreSellerListBtnClicked:(id)entity{
-    
+    LMSellerInfoEntity *sellerEntity = entity;
+    LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
+    shopInfoVC.sshop_id = sellerEntity.shopID;
+    [self.wxNavigationController pushViewController:shopInfoVC];
 }
 
 - (void)didReceiveMemoryWarning {

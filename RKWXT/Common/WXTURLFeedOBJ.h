@@ -105,6 +105,8 @@ typedef enum {
     WXT_UrlFeed_Type_Home_LMSellerList,
     WXT_UrlFeed_Type_Home_LMSellerInfo,
     WXT_UrlFeed_Type_Home_LMGoodsInfo,
+    WXT_UrlFeed_Type_Home_LMShopInfo,
+    WXT_UrlFeed_Type_Home_LMShopInfoList,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

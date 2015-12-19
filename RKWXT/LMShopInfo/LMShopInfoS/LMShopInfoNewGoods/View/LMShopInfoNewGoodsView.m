@@ -9,6 +9,7 @@
 #import "LMShopInfoNewGoodsView.h"
 #import "WXRemotionImgBtn.h"
 #import "LMShopInfoNewGoodsCell.h"
+#import "LMShopInfoAllGoodsEntity.h"
 
 @interface LMShopInfoNewGoodsView(){
     WXRemotionImgBtn *_imgView;
@@ -37,7 +38,7 @@
         [_imgView setUserInteractionEnabled:NO];
         [bgBtn addSubview:_imgView];
         
-        yOffset += imgHeight+10;
+        yOffset += imgHeight+4;
         CGFloat nameLabelWidth = imgWidth;
         CGFloat nameLabelHeight = 32;
         _nameLabel = [[WXUILabel alloc] init];
@@ -49,7 +50,7 @@
         [_nameLabel setNumberOfLines:0];
         [bgBtn addSubview:_nameLabel];
         
-        yOffset += nameLabelHeight+10;
+        yOffset += nameLabelHeight+5;
         _pricelabel = [[WXUILabel alloc] init];
         _pricelabel.frame = CGRectMake(0, yOffset, 120, 16);
         [_pricelabel setBackgroundColor:[UIColor clearColor]];
@@ -78,9 +79,11 @@
 }
 
 -(void)load{
-    [_imgView setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+    LMShopInfoAllGoodsEntity *entity = self.cpxViewInfo;
+    [_imgView setCpxViewInfo:entity.imgUrl];
     [_imgView load];
-    [_nameLabel setText:self.cpxViewInfo];
+    [_nameLabel setText:entity.goodsName];
+    [_pricelabel setText:[NSString stringWithFormat:@"￥%.2f",entity.shopPrice]];
 }
 
 @end

@@ -35,11 +35,12 @@
         yOffset += nameLabelHeight+10;
         CGFloat rightBtnWidth = 53;
         desLabel = [[WXUILabel alloc] init];
-        desLabel.frame = CGRectMake(xOffset, yOffset, IPHONE_SCREEN_WIDTH-rightBtnWidth-5, 41);
+        desLabel.frame = CGRectMake(xOffset, yOffset, IPHONE_SCREEN_WIDTH-rightBtnWidth-5-xOffset, 41);
         [desLabel setBackgroundColor:[UIColor clearColor]];
         [desLabel setTextAlignment:NSTextAlignmentLeft];
         [desLabel setTextColor:WXColorWithInteger(0x9b9b9b)];
         [desLabel setFont:WXFont(14.0)];
+        [desLabel setNumberOfLines:2];
         [self.contentView addSubview:desLabel];
         
         xOffset = IPHONE_SCREEN_WIDTH-rightBtnWidth-4;

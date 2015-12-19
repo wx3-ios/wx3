@@ -8,6 +8,13 @@
 
 #import "WXUITableViewCell.h"
 
+@protocol LMShopInfoBaseFunctionCellDelegate;
+
 @interface LMShopInfoBaseFunctionCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMShopInfoBaseFunctionCellDelegate>delegate;
+@end
+
+@protocol LMShopInfoBaseFunctionCellDelegate <NSObject>
+-(void)lmShopInfoBaseFunctionBtnClicked:(NSInteger)index;
 
 @end

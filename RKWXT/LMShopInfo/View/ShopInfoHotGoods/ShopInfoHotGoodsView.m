@@ -10,6 +10,7 @@
 #import "LMShopInfoDef.h"
 #import "WXRemotionImgBtn.h"
 #import "ShopInfoHotGoodsCell.h"
+#import "LMShopInfoEntity.h"
 
 @interface ShopInfoHotGoodsView(){
     WXRemotionImgBtn *_imgView;
@@ -39,7 +40,7 @@
         [bgBtn addSubview:_imgView];
         
         yOffset += imgHeight+10;
-        CGFloat nameLabelHeight = 32;
+        CGFloat nameLabelHeight = 30;
         _nameLabel = [[WXUILabel alloc] init];
         _nameLabel.frame = CGRectMake(0, yOffset, imgWidth, nameLabelHeight);
         [_nameLabel setBackgroundColor:[UIColor clearColor]];
@@ -49,7 +50,7 @@
         [_nameLabel setNumberOfLines:2];
         [bgBtn addSubview:_nameLabel];
         
-        yOffset += nameLabelHeight+10;
+        yOffset += nameLabelHeight;
         _priceLabel = [[WXUILabel alloc] init];
         _priceLabel.frame = CGRectMake(0, yOffset, imgWidth, 18);
         [_priceLabel setBackgroundColor:[UIColor clearColor]];
@@ -78,6 +79,11 @@
 }
 
 -(void)load{
+    LMShopInfoEntity *entity = self.cpxViewInfo;
+    [_imgView setCpxViewInfo:entity.com_goodsImg];
+    [_imgView load];
+    [_nameLabel setText:entity.com_goodsName];
+    [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.com_shopPrice]];
 }
 
 @end

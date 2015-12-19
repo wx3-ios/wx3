@@ -20,13 +20,17 @@
 #import "WXWeiXinOBJ.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 
+#import "LMShopInfoAllGoodsVC.h"
+#import "LMShopInfoNewGoodsVC.h"
+#import "LMShopInfoTrendsVC.h"
+
 #define Size self.bounds.size
 
 #define LMShopInfoTopImgHeight          (274)
 #define LMShopInfoBaseFunctionHeight    (48)
 #define LMShopInfoActivityHeight        (135)
 #define LMShopInfoSectionTitleHeight    (40)
-#define LMShopInfoHotGoodsHeight        (210)
+#define LMShopInfoHotGoodsHeight        (220)
 #define LMShopInfoEvaluateHeight        (90)
 
 enum{
@@ -35,7 +39,7 @@ enum{
     LMShopInfo_Section_Activity,
     LMShopInfo_Section_HotGoods,
     LMShopInfo_Section_AllGoods,
-    LMShopInfo_Section_Evaluate,
+//    LMShopInfo_Section_Evaluate,
     
     LMShopInfo_Section_Invalid,
 };

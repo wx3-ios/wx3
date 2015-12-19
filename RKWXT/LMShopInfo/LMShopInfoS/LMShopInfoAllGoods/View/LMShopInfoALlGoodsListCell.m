@@ -8,6 +8,7 @@
 
 #import "LMShopInfoALlGoodsListCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMShopInfoAllGoodsEntity.h"
 
 @interface LMShopInfoALlGoodsListCell(){
     WXRemotionImgBtn *imgView;
@@ -53,7 +54,12 @@
 }
 
 -(void)load{
+    LMShopInfoAllGoodsEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.imgUrl];
+    [imgView load];
     
+    [goodsName setText:entity.goodsName];
+    [priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.shopPrice]];
 }
 
 @end

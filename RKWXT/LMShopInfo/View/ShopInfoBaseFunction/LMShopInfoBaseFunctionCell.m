@@ -8,6 +8,7 @@
 
 #import "LMShopInfoBaseFunctionCell.h"
 #import "LMShopInfoDef.h"
+#import "LMShopInfoEntity.h"
 
 @interface LMShopInfoBaseFunctionCell(){
     WXUILabel *_allGoodsLabel;
@@ -24,7 +25,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        nameArr = @[@"全部商品", @"上新", @"促销", @"店铺动态"];
+        nameArr = @[@"全部商品", @"推荐", @"促销", @"店铺动态"];
         CGFloat btnWidth = IPHONE_SCREEN_WIDTH/4-1;
         CGFloat btnHeight = 44;
         CGFloat labelWidth = btnWidth;
@@ -36,6 +37,13 @@
             [button setTag:i];
             [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.contentView addSubview:button];
+            
+            if(i < [nameArr count]-1){
+                WXUILabel *lineLabel = [[WXUILabel alloc] init];
+                lineLabel.frame = CGRectMake(button.frame.origin.x+btnWidth, (LMShopInfoBaseFunctionHeight-30)/2, 0.5, 30);
+                [lineLabel setBackgroundColor:WXColorWithInteger(0x969696)];
+                [self.contentView addSubview:lineLabel];
+            }
             
             WXUILabel *commonLabel = [[WXUILabel alloc] init];
             switch (i) {
@@ -71,15 +79,28 @@
             [button addSubview:namelabel];
         }
     }
+    
+    WXUILabel *line = [[WXUILabel alloc] init];
+    line.frame = CGRectMake(0, LMShopInfoBaseFunctionHeight-1.5, Size.width, 0.5);
+    [line setBackgroundColor:WXColorWithInteger(0x969696)];
+    [self.contentView addSubview:line];
+    
     return self;
 }
 
 -(void)load{
-    
+    LMShopInfoEntity *entity = self.cellInfo;
+    [_allGoodsLabel setText:[NSString stringWithFormat:@"%ld",(long)entity.allGoodsNum]];
+    [_newGoodsLabel setText:[NSString stringWithFormat:@"%ld",(long)entity.comGoodsNum]];
+    [_activityGoodsLabel setText:[NSString stringWithFormat:@"%ld",(long)entity.proGoodsNum]];
+    [_shopInfoLabel setText:[NSString stringWithFormat:@"%ld",(long)entity.activeNum]];
 }
 
 -(void)buttonClicked:(id)sender{
     WXUIButton *btn = sender;
+    if(_delegate && [_delegate respondsToSelector:@selector(lmShopInfoBaseFunctionBtnClicked:)]){
+        [_delegate lmShopInfoBaseFunctionBtnClicked:btn.tag];
+    }
 }
 
 @end
