@@ -8,12 +8,15 @@
 
 #import "LMShopInfoVC.h"
 #import "LMShopInfoDef.h"
-#import "LMShopInfoModel.h"
 
 @interface LMShopInfoVC()<UITableViewDataSource,UITableViewDelegate,CDSideBarControllerDelegate,LMShopInfoModelDelegate,ShopInfAllGoodsCellDelegate,ShopInfoHotGoodsCellDelegate,LMShopInfoBaseFunctionCellDelegate>{
     UITableView *_tableView;
     CDSideBarController *sideBar;
+    WXUIButton *collectionBtn;
+    
     LMShopInfoModel *_shopModel;
+    LMDataCollectionModel *collectionModel;
+    BOOL collection;
     
     NSArray *shopInfoArr;
     NSArray *allGoodsArr;
@@ -26,6 +29,12 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [sideBar insertMenuButtonOnView:self.view atPosition:CGPointMake(self.bounds.size.width-35, 66-35)];
+    
+    collectionBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    collectionBtn.frame = CGRectMake(self.bounds.size.width-35-45, 64-35, 25, 25);
+    [collectionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+    [collectionBtn addTarget:self action:@selector(userCollectionBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:collectionBtn];
 }
 
 -(id)init{
@@ -33,6 +42,8 @@
     if(self){
         _shopModel = [[LMShopInfoModel alloc] init];
         [_shopModel setDelegate:self];
+        
+        collectionModel = [[LMDataCollectionModel alloc] init];
     }
     return self;
 }
@@ -41,6 +52,8 @@
     [super viewDidLoad];
     [self setCSTTitle:@"店铺详情"];
     [self setBackgroundColor:[UIColor whiteColor]];
+    
+    [self addOBS];
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
@@ -55,6 +68,12 @@
     [self initDropList];
     [_shopModel loadLMShopInfoData:_sshop_id];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(userCollectionShopSucceed) name:K_Notification_Name_ShopAddCollectionSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(userCancelCollectionShopSucceed) name:K_Notification_Name_ShopCancelCollectionSucceed object:nil];
 }
 
 -(void)initDropList{
@@ -226,18 +245,6 @@
     return cell;
 }
 
-////热销商品
-//-(WXUITableViewCell*)shopInfoHotGoodsTitleCell{
-//    static NSString *identifier = @"hotGoodsTitleCell";
-//    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-//    if(!cell){
-//        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//    }
-//    cell.textLabel.text = @"热销商品";
-//    [cell.textLabel setFont:WXFont(15.0)];
-//    return cell;
-//}
-
 -(WXUITableViewCell*)shopInfoHotGoodsListCell:(NSInteger)row{
     static NSString *identifier = @"hotGoodsCell";
     ShopInfoHotGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
@@ -258,18 +265,6 @@
     [cell loadCpxViewInfos:rowArray];
     return cell;
 }
-
-////所有商品
-//-(WXUITableViewCell*)shopInfoAllGoodsTitleCell{
-//    static NSString *identifier = @"allGoodsTitleCell";
-//    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
-//    if(!cell){
-//        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//    }
-//    cell.textLabel.text = @"所有商品";
-//    [cell.textLabel setFont:WXFont(15.0)];
-//    return cell;
-//}
 
 -(WXUITableViewCell*)shopInfoAllGoodsListCell:(NSInteger)row{
     static NSString *identifier = @"allGoodsCell";
@@ -363,6 +358,16 @@
     allGoodsArr = _shopModel.allGoodsArr;
     comGoodsArr = _shopModel.comGoodsArr;
     [_tableView reloadData];
+    
+    if([shopInfoArr count] > 0){
+        LMShopInfoEntity *entity = [shopInfoArr objectAtIndex:0];
+        collection = entity.collection;
+        if(collection){
+            [collectionBtn setImage:[UIImage imageNamed:@"LMGoodsAttention.png"] forState:UIControlStateNormal];
+        }else{
+            [collectionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+        }
+    }
 }
 
 -(void)loadLMShopinfoDataFailed:(NSString *)errormsg{
@@ -371,6 +376,27 @@
         errormsg = @"获取数据失败";
     }
     [UtilTool showAlertView:errormsg];
+}
+
+#pragma mark collection
+-(void)userCollectionBtnClicked{
+    if(!collection){
+        [collectionModel lmCollectionData:_sshop_id goods:0 type:LMCollection_Type_Shop dataType:CollectionData_Type_Add];
+    }else{
+        [collectionModel lmCollectionData:_sshop_id goods:0 type:LMCollection_Type_Shop dataType:CollectionData_Type_Deleate];
+    }
+}
+
+-(void)userCollectionShopSucceed{
+    collection = YES;
+    [collectionBtn setImage:[UIImage imageNamed:@"LMGoodsAttention.png"] forState:UIControlStateNormal];
+    [UtilTool showTipView:@"收藏成功"];
+}
+
+-(void)userCancelCollectionShopSucceed{
+    collection = NO;
+    [collectionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+    [UtilTool showTipView:@"取消收藏"];
 }
 
 #pragma mark 分享
@@ -461,11 +487,17 @@
     }
 }
 
+#pragma mark goodsBtnClicked
 -(void)shopInfoAllGoodsCellBtnClicked:(id)sender{
 }
 
 -(void)shopInfoHotGoodsCellBtnClicked:(id)sender{
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

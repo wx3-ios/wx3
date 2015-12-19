@@ -28,7 +28,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         CGRect rect = [self bounds];
-        _browser = [[CSTScrollBrowser alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
+        _browser = [[CSTScrollBrowser alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH/3)];
         [_browser setScrollDelegate:self];
         [_browser setGap:0.0];
         [self.contentView addSubview:_browser];
@@ -56,7 +56,7 @@
     [self toInit];
     
     for(NSString *imgUrl in imgUrlArr){
-        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH)];
+        WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_WIDTH/3)];
         [imgView setCpxViewInfo:imgUrl];
         [imgView load];
         [imgView setDelegate:self];

@@ -44,6 +44,12 @@
         
         NSString *merName = [dic objectForKey:@"meterage_name"];
         [self setMeterageName:merName];
+        
+        NSInteger collectionType = [[dic objectForKey:@"collect"] integerValue];
+        [self setCollectionType:collectionType];
+        
+        NSInteger shopId = [[dic objectForKey:@"shop_id"] integerValue];
+        [self setGoodshop_id:shopId];
     }
     return self;
 }

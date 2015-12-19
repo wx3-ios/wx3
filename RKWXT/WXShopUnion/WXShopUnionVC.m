@@ -158,7 +158,7 @@
             [userOrderBtn setTitle:@"订单" forState:UIControlStateNormal];
         }
         if(i == ShopUnionDownView_UserStore){
-            [userOrderBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
+            [userOrderBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
         }
         if(i == ShopUnionDownView_UserShoppingCar){
             [userOrderBtn setTitle:@"购物车" forState:UIControlStateNormal];

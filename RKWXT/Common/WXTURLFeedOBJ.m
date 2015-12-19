@@ -270,6 +270,9 @@
         case WXT_UrlFeed_Type_Home_LMShopInfoList:
             url = @"/get_sellerunion_goods_list.php";
             break;
+        case WXT_UrlFeed_Type_Home_LMCollection:
+            url = @"/set_user_collect.php";
+            break;
         default:
             break;
     }

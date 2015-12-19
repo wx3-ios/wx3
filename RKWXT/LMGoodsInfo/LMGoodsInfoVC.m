@@ -8,12 +8,13 @@
 
 #import "LMGoodsInfoVC.h"
 #import "LMGoodsInfoDef.h"
-#import "LMGoodsView.h"
 
 @interface LMGoodsInfoVC ()<UITableViewDataSource,UITableViewDelegate,MerchantImageCellDelegate,LMGoodsInfoModelDelegate,LMGoodsDesCellDelegate,CDSideBarControllerDelegate>{
     UITableView *_tableView;
     LMGoodsInfoModel *_model;
     BOOL userCut;
+    LMGoods_Collection collection_type;
+    LMDataCollectionModel *_collectionModel;
     
     CDSideBarController *sideBar;
     WXUIButton *collectionBtn;
@@ -47,6 +48,8 @@
     if(self){
         _model = [[LMGoodsInfoModel alloc] init];
         [_model setDelegate:self];
+        
+        _collectionModel = [[LMDataCollectionModel alloc] init];
     }
     return self;
 }
@@ -75,6 +78,8 @@
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(userBuyBtnClicked) name:K_Notification_Name_UserBuyGoods object:nil];
     [notificationCenter addObserver:self selector:@selector(userAddShoppingCartBtnClicked) name:K_Notification_Name_UserAddShoppingCart object:nil];
+    [notificationCenter addObserver:self selector:@selector(goodsCollectionSucceed) name:K_Notification_Name_GoodsAddCollectionSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(goodsCancelCollectionSucceed) name:K_Notification_Name_GoodsCancelCollectionSucceed object:nil];
 }
 
 -(void)initDropList{
@@ -480,6 +485,16 @@
             }
         }
     }
+    if([_model.goodsInfoArr count] > 0){
+        for(LMGoodsInfoEntity *entity in _model.goodsInfoArr){
+            collection_type = entity.collectionType;
+            if(entity.collectionType == LMGoods_Collection_None){
+                [collectionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+            }else{
+                [collectionBtn setImage:[UIImage imageNamed:@"LMGoodsAttention.png"] forState:UIControlStateNormal];
+            }
+        }
+    }
     [_tableView reloadData];
 }
 
@@ -520,8 +535,6 @@
     
 }
 
-//下单数据拼接
-//goods_id\goods_name\goods_img\goods_stock_id\goods_stock_name\sales_price\sales_number
 //购买
 -(void)userBuyBtnClicked{
     LMMakeOrderVC *makeOrderVC = [[LMMakeOrderVC alloc] init];
@@ -566,8 +579,30 @@
     [UtilTool showTipView:@"该商品有分成"];
 }
 
+#pragma mark collection
 -(void)userCollectionBtnClicked{
-    
+    LMGoodsInfoEntity *entity = nil;
+    if([_model.goodsInfoArr count] > 0){
+        entity = [_model.goodsInfoArr objectAtIndex:0];
+    }
+    if(collection_type == LMGoods_Collection_None){
+        [_collectionModel lmCollectionData:entity.goodshop_id goods:entity.goodsID type:LMCollection_Type_Goods dataType:CollectionData_Type_Add];
+    }
+    if(collection_type == LMGoods_Collection_Has){
+        [_collectionModel lmCollectionData:entity.goodshop_id goods:entity.goodsID type:LMCollection_Type_Goods dataType:CollectionData_Type_Deleate];
+    }
+}
+
+-(void)goodsCollectionSucceed{
+    collection_type = LMGoods_Collection_Has;
+    [collectionBtn setImage:[UIImage imageNamed:@"LMGoodsAttention.png"] forState:UIControlStateNormal];
+    [UtilTool showTipView:@"收藏成功"];
+}
+
+-(void)goodsCancelCollectionSucceed{
+    collection_type = LMGoods_Collection_None;
+    [collectionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+    [UtilTool showTipView:@"取消收藏"];
 }
 
 #pragma mark sharedDelegate

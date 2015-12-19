@@ -32,6 +32,7 @@
 @property (nonatomic,strong) NSString *topImg;
 @property (nonatomic,strong) NSString *shopName;
 @property (nonatomic,strong) NSString *shopPhone;
+@property (nonatomic,assign) NSInteger collection;  // 收藏
 
 +(LMShopInfoEntity*)initAllGoodsEntity:(NSDictionary*)dic;
 +(LMShopInfoEntity*)initComGoodsEntity:(NSDictionary*)dic;

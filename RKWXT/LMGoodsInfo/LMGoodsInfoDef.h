@@ -36,6 +36,7 @@ enum{
 #import "LMGoodsOtherSellerCell.h"
 #import "LMGoodsEvaluteCell.h"
 
+#import "LMGoodsView.h"
 #import "NewImageZoomView.h"
 #import "WXRemotionImgBtn.h"
 #import "NewGoodsInfoWebViewViewController.h"
@@ -46,6 +47,7 @@ enum{
 
 #import "LMGoodsInfoModel.h"
 #import "LMGoodsInfoEntity.h"
+#import "LMDataCollectionModel.h"
 
 #import "LMMakeOrderVC.h"
 

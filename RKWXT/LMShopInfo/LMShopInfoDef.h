@@ -20,13 +20,17 @@
 #import "WXWeiXinOBJ.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 
+#import "LMShopInfoModel.h"
+#import "LMShopInfoEntity.h"
+#import "LMDataCollectionModel.h"
+
 #import "LMShopInfoAllGoodsVC.h"
 #import "LMShopInfoNewGoodsVC.h"
 #import "LMShopInfoTrendsVC.h"
 
 #define Size self.bounds.size
 
-#define LMShopInfoTopImgHeight          (274)
+#define LMShopInfoTopImgHeight          IPHONE_SCREEN_WIDTH/3
 #define LMShopInfoBaseFunctionHeight    (48)
 #define LMShopInfoActivityHeight        (135)
 #define LMShopInfoSectionTitleHeight    (40)

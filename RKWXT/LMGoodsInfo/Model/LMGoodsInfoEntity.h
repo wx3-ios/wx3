@@ -13,6 +13,11 @@ typedef enum{
     LMGoods_Postage_None,       //包邮
 }LMGoods_Postage;
 
+typedef enum{
+    LMGoods_Collection_None = 0,  //未收藏
+    LMGoods_Collection_Has,
+}LMGoods_Collection;
+
 @interface LMGoodsInfoEntity : NSObject
 @property (nonatomic,strong) NSString *homeImg;
 @property (nonatomic,strong) NSString *goodsImg;
@@ -24,6 +29,8 @@ typedef enum{
 @property (nonatomic,assign) CGFloat shopPrice;
 @property (nonatomic,assign) NSInteger meterageID;
 @property (nonatomic,strong) NSString *meterageName;
+@property (nonatomic,assign) NSInteger goodshop_id;
+@property (nonatomic,assign) LMGoods_Collection collectionType;
 
 @property (nonatomic,strong) NSString *sellerAddress;
 @property (nonatomic,assign) CGFloat sellerLatitude;

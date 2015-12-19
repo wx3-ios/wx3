@@ -102,6 +102,9 @@
         
         NSString *phone = [dic objectForKey:@"telephone"];
         [self setShopPhone:phone];
+        
+        NSInteger collection = [[dic objectForKey:@"collect"] integerValue];
+        [self setCollection:collection];
     }
     return self;
 }

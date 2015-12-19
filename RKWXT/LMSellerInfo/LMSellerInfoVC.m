@@ -94,7 +94,7 @@
     NSInteger row = indexPath.row;
     if(section == 0){
         if(row == 0){
-            height = IPHONE_SCREEN_WIDTH;
+            height = IPHONE_SCREEN_WIDTH/3;
         }else{
             height = LMSellerInfoDesCellHeight;
         }
