@@ -8,6 +8,9 @@
 
 #import "WXUIView.h"
 
+#define K_Notification_Name_UserBuyGoods @"K_Notification_Name_UserBuyGoods"
+#define K_Notification_Name_UserAddShoppingCart @"K_Notification_Name_UserAddShoppingCart"
+
 typedef enum{
     LMGoodsView_Type_ShoppingCart = 0,
     LMGoodsView_Type_Buy,
@@ -15,6 +18,10 @@ typedef enum{
 
 @interface LMGoodsView : WXUIView
 @property (nonatomic,assign) LMGoodsView_Type goodsViewType;
+@property (nonatomic,assign) NSInteger buyNum;
+@property (nonatomic,assign) NSInteger stockID;
+@property (nonatomic,strong) NSString *stockName;
+@property (nonatomic,assign) CGFloat stockPrice;
 -(void)loadGoodsStockInfo:(NSArray*)stockArr;
 
 @end

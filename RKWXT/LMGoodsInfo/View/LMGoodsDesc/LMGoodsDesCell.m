@@ -100,7 +100,7 @@
     [marketPrice setText:marketPriceString];
     
     CGRect rect = lineLabel.frame;
-    rect.size.width = [self widthForString:marketPriceString fontSize:14.0 andHeight:20];
+    rect.size.width = [NSString widthForString:marketPriceString fontSize:14.0 andHeight:20];
     [lineLabel setFrame:rect];
     
     if(_userCut){
@@ -119,11 +119,6 @@
         [carriageBtn setHidden:YES];
         [usercutBtn setHidden:YES];
     }
-}
-
--(float)widthForString:(NSString *)value fontSize:(float)fontSize andHeight:(float)height{
-    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, height) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
-    return sizeToFit.width;
 }
 
 -(void)userCutBtnClicked{

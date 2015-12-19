@@ -10,6 +10,7 @@
 #import "LMMakeOrderDef.h"
 #import "NSString+Encrypt.h"
 #import "WXRemotionImgBtn.h"
+#import "LMGoodsInfoEntity.h"
 
 @interface LMMakeOrderShopCell(){
     WXRemotionImgBtn *imgView;
@@ -55,19 +56,18 @@
 }
 
 -(void)load{
-}
+    LMGoodsInfoEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.homeImg];
+    [nameLabel setText:entity.sellerName];
 
-- (CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{
-    if(!txt || [txt isKindOfClass:[NSNull class]]){
-        txt = @" ";
-    }
-    if(isIOS7){
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-        return [txt sizeWithAttributes:@{NSFontAttributeName: font}];
-#endif
-    }else{
-        return [txt sizeWithFont:font];
-    }
+    CGFloat width = [NSString widthForString:entity.sellerName fontSize:14.0 andHeight:18];
+    CGRect rect = nameLabel.frame;
+    rect.size.width = width;
+    [nameLabel setFrame:rect];
+    
+    CGRect rect1 = arrowImgView.frame;
+    rect.origin.x = nameLabel.frame.origin.x+width+2;
+    [arrowImgView setFrame:rect1];
 }
 
 @end

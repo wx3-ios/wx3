@@ -9,26 +9,70 @@
 #import "LMMakeOrderVC.h"
 #import "LMMakeOrderDef.h"
 
-@interface LMMakeOrderVC()<UITableViewDataSource,UITableViewDelegate,LMMakeOrderUserMsgCellDelegate>{
+@interface LMMakeOrderVC()<UITableViewDataSource,UITableViewDelegate,LMMakeOrderUserMsgCellDelegate,SearchCarriageMoneyDelegate>{
     UITableView *_tableView;
     WXUILabel *moneyLabel;
+    NSArray *listArr;
+    SearchCarriageMoney *carriageModel;
+    CGFloat goodsMoney;
 }
+@property (nonatomic,strong) NSString *userMessage;
 @end
 
 @implementation LMMakeOrderVC
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if(_tableView){
+        [self loadCarriageMoney];
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:LMMakeOrder_Section_UserAddress] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+-(id)init{
+    self = [super init];
+    if(self){
+        carriageModel = [[SearchCarriageMoney alloc] init];
+        [carriageModel setDelegate:self];
+    }
+    return self;
+}
+
+-(void)loadCarriageMoney{
+    BOOL is_postage = YES;  //默认包邮
+    NSInteger provinceID = [self parseUserAddressProvinceID];
+    NSString *goodsInfo = [[NSString alloc] init];
+    for(LMGoodsInfoEntity *entity in listArr){
+        if(goodsInfo.length > 0){
+            goodsInfo = [goodsInfo stringByAppendingString:@"^"];
+        }
+        goodsInfo = [goodsInfo stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld",(long)entity.goodsID,(long)entity.stockNum]];
+        
+        if(entity.postage == LMGoods_Postage_Have){
+            is_postage = NO;  //不包邮
+        }
+    }
+    if(!is_postage){
+        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    }
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"确认订单"];
-    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    
+    listArr = _goodsArr;
     
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
-    [_tableView setBackgroundColor:[UIColor whiteColor]];
+    _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-DownviewHeight);
+    [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [self addSubview:_tableView];
-    [_tableView setTableFooterView:[self createDownView]];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self addSubview:[self createDownView]];
 }
 
 -(WXUIView*)createDownView{
@@ -42,7 +86,7 @@
     WXUILabel *textlabel = [[WXUILabel alloc] init];
     textlabel.frame = CGRectMake(xOffset, (DownviewHeight-textLabelHeight)/2, textLabelWidth, textLabelHeight);
     [textlabel setBackgroundColor:[UIColor clearColor]];
-    [textlabel setText:@"实付款"];
+    [textlabel setText:@"实付款:"];
     [textlabel setTextAlignment:NSTextAlignmentLeft];
     [textlabel setTextColor:WXColorWithInteger(0x42433e)];
     [textlabel setFont:WXFont(15.0)];
@@ -57,6 +101,13 @@
     [moneyLabel setFont:WXFont(20.0)];
     [downView addSubview:moneyLabel];
     
+    if([listArr count] > 0){
+        for(LMGoodsInfoEntity *entity in listArr){
+            goodsMoney += entity.stockPrice;
+        }
+    }
+    [moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",goodsMoney]];
+    
     CGFloat btnWidth = 110;
     WXUIButton *submitBrn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     submitBrn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-btnWidth, 0, btnWidth, DownviewHeight);
@@ -69,6 +120,27 @@
     return downView;
 }
 
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return LMMakeOrder_Section_Invalid;
 }
@@ -76,7 +148,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     CGFloat row = 0;
     if(section == LMMakeOrder_Section_GoodsList){
-        row = 2;
+        row = [_goodsArr count];
     }else{
         row = 1;
     }
@@ -111,6 +183,25 @@
     return height;
 }
 
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    CGFloat height = 0;
+//    switch (section) {
+//        case LMMakeOrder_Section_GoodsMoney:
+//            height = 10;
+//            break;
+//        default:
+//            break;
+//    }
+//    return height;
+//}
+
+//-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UIView *view = [[UIView alloc] init];
+//    view.frame = CGRectMake(0, 0, Size.width, 10);
+//    [view setBackgroundColor:WXColorWithInteger(0xefeff4)];
+//    return view;
+//}
+
 //个人信息
 -(WXUITableViewCell*)tableViewForUserInfoCell{
     static NSString *identifier = @"userInfoCell";
@@ -119,7 +210,6 @@
         cell = [[LMMakeOrderUserInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell load];
     return cell;
 }
@@ -131,7 +221,9 @@
     if(!cell){
         cell = [[LMMakeOrderShopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
+    if([listArr count] > 0){
+        [cell setCellInfo:[listArr objectAtIndex:0]];
+    }
     [cell load];
     return cell;
 }
@@ -144,7 +236,9 @@
         cell = [[LMMakeOrderGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];;
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    [cell setCellInfo:[_goodsList objectAtIndex:row]];
+    if([listArr count] > 0){
+        [cell setCellInfo:[listArr objectAtIndex:row]];
+    }
     [cell load];
     return cell;
 }
@@ -174,15 +268,17 @@
 }
 
 //商品价格
--(WXUITableViewCell*)tableViewForGoodsMoneyInfoAtRow:(NSInteger)row{
+-(WXUITableViewCell*)tableViewForGoodsMoneyInfo{
     static NSString *identifier = @"allMoneyCell";
     LMMakeOrderGoodsMoneyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[LMMakeOrderGoodsMoneyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    [cell setCarriageMoney:carriageModel.carriageMoney];
-//    [cell setCellInfo:_goodsList];
+    [cell setCarriageMoney:carriageModel.carriageMoney];
+    if([listArr count] > 0){
+        [cell setCellInfo:listArr];
+    }
     [cell load];
     return cell;
 }
@@ -208,7 +304,7 @@
             cell = [self tableViewForUserMessageTextFieldCell];
             break;
         case LMMakeOrder_Section_GoodsMoney:
-            cell = [self tableViewForGoodsMoneyInfoAtRow:row];
+            cell = [self tableViewForGoodsMoneyInfo];
             break;
         default:
             break;
@@ -216,8 +312,53 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    if(section == LMMakeOrder_Section_UserAddress){
+        ManagerAddressVC *addressVC = [[ManagerAddressVC alloc] init];
+        [self.wxNavigationController pushViewController:addressVC];
+    }
+}
+
 -(void)submitOrder{
     
+}
+
+//省份ID
+-(NSInteger)parseUserAddressProvinceID{
+    for(AreaEntity *entity in [NewUserAddressModel shareUserAddress].userAddressArr){
+        if(entity.normalID == 1){
+            return entity.proID;
+        }
+    }
+    return 0;
+}
+
+#pragma mark carriageDelegate
+-(void)searchCarriageMoneySucceed{
+    [self unShowWaitView];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:LMMakeOrder_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
+    [moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",goodsMoney+carriageModel.carriageMoney]];
+}
+
+-(void)searchCarriageMoneyFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"获取运费失败";
+    }
+    [UtilTool showAlertView:errorMsg];
+}
+
+#pragma mark userMessageDelegate
+-(void)userMessageChanged:(LMMakeOrderUserMsgCell *)cell{
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    if(indexPath){
+        NSInteger section = indexPath.section;
+        if(section == LMMakeOrder_Section_UserMessage){
+            self.userMessage = cell.textField.text;
+        }
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

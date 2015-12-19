@@ -37,5 +37,14 @@ enum{
 #import "LMMakeOrderUserInfoCell.h"
 #import "LMMakeOrderUserMsgCell.h"
 
+#import "LMGoodsInfoEntity.h"
+
+#import "OrderPayVC.h"
+#import "ManagerAddressVC.h"
+//邮费
+#import "SearchCarriageMoney.h"
+#import "NewUserAddressModel.h"
+#import "AreaEntity.h"
+
 
 #endif /* LMMakeOrderDef_h */

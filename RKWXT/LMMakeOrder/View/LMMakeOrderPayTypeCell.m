@@ -21,7 +21,7 @@
         label.frame = CGRectMake(xOffset, (LMMakeOrderPayTypeCellHeight-labelHeight)/2, labelWidth, labelHeight);
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextAlignment:NSTextAlignmentLeft];
-        [label setTextColor:WXColorWithInteger(0xc2c33e)];
+        [label setTextColor:WXColorWithInteger(0x42433e)];
         [label setFont:WXFont(15.0)];
         [label setText:@"支付方式"];
         [self.contentView addSubview:label];
@@ -32,7 +32,7 @@
         [nameLabel setTextAlignment:NSTextAlignmentRight];
         [nameLabel setText:@"在线支付"];
         [nameLabel setFont:WXFont(14.0)];
-        [nameLabel setTextColor:WXColorWithInteger(0xc2c33e)];
+        [nameLabel setTextColor:WXColorWithInteger(0x42433e)];
         [self.contentView addSubview:nameLabel];
     }
     return self;

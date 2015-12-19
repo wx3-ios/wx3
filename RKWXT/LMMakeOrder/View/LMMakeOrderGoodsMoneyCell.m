@@ -8,7 +8,7 @@
 
 #import "LMMakeOrderGoodsMoneyCell.h"
 #import "LMMakeOrderDef.h"
-#import "GoodsInfoEntity.h"
+#import "LMGoodsInfoEntity.h"
 
 @interface LMMakeOrderGoodsMoneyCell(){
     UILabel *_money;
@@ -67,8 +67,8 @@
 -(void)load{
     CGFloat price = 0.0;
     NSArray *listArr = self.cellInfo;
-    for(GoodsInfoEntity *entity in listArr){
-        price += entity.buyNumber*entity.stockPrice;
+    for(LMGoodsInfoEntity *entity in listArr){
+        price += entity.stockPrice;
     }
     NSString *str = [NSString stringWithFormat:@"￥%.2f",price];
     [_money setText:str];

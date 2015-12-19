@@ -17,6 +17,8 @@
     
     CDSideBarController *sideBar;
     WXUIButton *collectionBtn;
+    
+    LMGoodsView *goodsView; //库存页面
 }
 
 @end
@@ -26,6 +28,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:YES animated:NO];
+    [self addOBS];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -68,6 +71,12 @@
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(userBuyBtnClicked) name:K_Notification_Name_UserBuyGoods object:nil];
+    [notificationCenter addObserver:self selector:@selector(userAddShoppingCartBtnClicked) name:K_Notification_Name_UserAddShoppingCart object:nil];
+}
+
 -(void)initDropList{
     NSArray *imageList = @[[UIImage imageNamed:@"ShareQqImg.png"], [UIImage imageNamed:@"ShareQzoneImg.png"], [UIImage imageNamed:@"ShareWxFriendImg.png"], [UIImage imageNamed:@"ShareWxCircleImg.png"]];
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
@@ -100,17 +109,19 @@
     WXUIButton *buyBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     buyBtn.frame = CGRectMake(xOffset, (DownViewHeight-btnHeight)/2, (IPHONE_SCREEN_WIDTH-xOffset)/2, btnHeight);
     [buyBtn setBackgroundColor:[UIColor clearColor]];
+    [buyBtn setTag:1];
     [buyBtn setTitle:@"立即购买" forState:UIControlStateNormal];
     [buyBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];
-    [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [buyBtn addTarget:self action:@selector(buyBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:buyBtn];
     
     WXUIButton *addBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     addBtn.frame = CGRectMake(xOffset+(IPHONE_SCREEN_WIDTH-xOffset)/2, (DownViewHeight-btnHeight)/2, (IPHONE_SCREEN_WIDTH-xOffset)/2, btnHeight);
+    [addBtn setTag:2];
     [addBtn setBackgroundColor:[UIColor clearColor]];
     [addBtn setTitle:@"加入购物车" forState:UIControlStateNormal];
     [addBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];
-    [addBtn addTarget:self action:@selector(addBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [addBtn addTarget:self action:@selector(buyBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:addBtn];
     
     downView.frame = CGRectMake(0, Size.height-DownViewHeight, Size.width, DownViewHeight);
@@ -278,7 +289,7 @@
     UIView *titleView = [[UIView alloc] init];
     [titleView setBackgroundColor:[UIColor whiteColor]];
     CGFloat labelHeight = 18;
-    CGFloat labelWidth = [self widthForString:title fontSize:11.0 andHeight:labelHeight];
+    CGFloat labelWidth = [NSString widthForString:title fontSize:11.0 andHeight:labelHeight];
     
     CGFloat lineWidth = IPHONE_SCREEN_WIDTH/2;
     WXUILabel *lineLabel = [[WXUILabel alloc] init];
@@ -489,21 +500,60 @@
     
 }
 
--(void)buyBtnClick{
-    LMGoodsView *goodsView = [[LMGoodsView alloc] init];
-    [goodsView setGoodsViewType:LMGoodsView_Type_Buy];
-    [goodsView loadGoodsStockInfo:_model.stockArr];
-    [self.view addSubview:goodsView];
-}
-
--(void)addBtnClick{
-    LMGoodsView *goodsView = [[LMGoodsView alloc] init];
-    [goodsView setGoodsViewType:LMGoodsView_Type_ShoppingCart];
+-(void)buyBtnClick:(id)sender{
+    if([_model.goodsInfoArr count] == 0){
+        [UtilTool showAlertView:@"数据加载失败"];
+        return;
+    }
+    WXUIButton *btn = sender;
+    goodsView = [[LMGoodsView alloc] init];
+    if(btn.tag == 1){
+        [goodsView setGoodsViewType:LMGoodsView_Type_Buy];
+    }else{
+        [goodsView setGoodsViewType:LMGoodsView_Type_ShoppingCart];
+    }
     [goodsView loadGoodsStockInfo:_model.stockArr];
     [self.view addSubview:goodsView];
 }
 
 -(void)searchMoreEvaluateData{
+    
+}
+
+//下单数据拼接
+//goods_id\goods_name\goods_img\goods_stock_id\goods_stock_name\sales_price\sales_number
+//购买
+-(void)userBuyBtnClicked{
+    LMMakeOrderVC *makeOrderVC = [[LMMakeOrderVC alloc] init];
+    makeOrderVC.goodsArr = [self makeOrderInfoArr];
+    [self.wxNavigationController pushViewController:makeOrderVC];
+}
+
+-(NSArray*)makeOrderInfoArr{
+    NSMutableArray *goodsInfoArr = [[NSMutableArray alloc] init];
+    LMGoodsInfoEntity *entity = nil;
+    if([_model.goodsInfoArr count] > 0){
+        entity = [_model.goodsInfoArr objectAtIndex:0];
+    }
+    if([_model.sellerArr count] > 0){
+        LMGoodsInfoEntity *ent = [_model.sellerArr objectAtIndex:0];
+        entity.sellerName = ent.sellerName;
+    }
+    if(!entity){
+        return nil;
+    }
+    entity.goodsID = _goodsId;
+    entity.stockID = goodsView.stockID;
+    entity.stockName = goodsView.stockName;
+    entity.stockPrice = goodsView.stockPrice;
+    entity.stockNum = goodsView.buyNum;
+    [goodsInfoArr addObject:entity];
+    
+    return goodsInfoArr;
+}
+
+//加入购物车
+-(void)userAddShoppingCartBtnClicked{
     
 }
 
@@ -519,12 +569,6 @@
 -(void)userCollectionBtnClicked{
     
 }
-
--(float)widthForString:(NSString *)value fontSize:(float)fontSize andHeight:(float)height{
-    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, height) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
-    return sizeToFit.width;
-}
-
 
 #pragma mark sharedDelegate
 -(void)menuButtonClicked:(int)index{
@@ -592,6 +636,12 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_model setDelegate:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

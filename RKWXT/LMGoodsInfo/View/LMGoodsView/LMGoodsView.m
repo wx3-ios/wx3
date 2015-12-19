@@ -88,6 +88,7 @@
     [buyBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
     [buyBtn setTitle:@"立即购买" forState:UIControlStateNormal];
     [buyBtn setTitleColor:WXColorWithInteger(0xffffff) forState:UIControlStateNormal];
+    [buyBtn addTarget:self action:@selector(buyBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:buyBtn];
     
     [self addSubview:downView];
@@ -270,6 +271,12 @@
         }else{
             stockNumber = entity.stockNum;
             stockPrice = entity.stockPrice;
+            
+            //外部变量
+            _stockID = entity.stockID;
+            _stockName = entity.stockName;
+            _buyNum = 1;
+            _stockPrice = entity.stockPrice;
         }
     }
     if(count == [listArr count]){
@@ -277,6 +284,12 @@
             entity.selected = YES;
             stockNumber = entity.stockNum;
             stockPrice = entity.stockPrice;
+            
+            //外部变量
+            _stockID = entity.stockID;
+            _stockName = entity.stockName;
+            _buyNum = 1;
+            _stockPrice = entity.stockPrice;
             break;
         }
     }
@@ -326,7 +339,12 @@
     for(LMGoodsInfoEntity *entity in listArr){
         if(entity.selected){
             money = entity.stockPrice;
+            
+            //外部变量
+            _stockID = entity.stockID;
+            _stockName = entity.stockName;
             if(buyNumber >= entity.stockNum){
+                [UtilTool showAlertView:[NSString stringWithFormat:@"库存已不足%ld件",(long)buyNumber+1]];
                 return;
             }
         }
@@ -334,6 +352,9 @@
     buyNumber ++;
     [buyNumLabel setText:[NSString stringWithFormat:@"%ld",(long)buyNumber]];
     [pricelaebl setText:[NSString stringWithFormat:@"￥%.2f",buyNumber*money]];
+    
+    _stockPrice = buyNumber*money;
+    _buyNum = buyNumber;
 }
 
 -(void)minusBtnClicked{
@@ -341,6 +362,10 @@
     for(LMGoodsInfoEntity *entity in listArr){
         if(entity.selected){
             money = entity.stockPrice;
+            
+            //外部变量
+            _stockID = entity.stockID;
+            _stockName = entity.stockName;
         }
     }
     if(buyNumber <= 1){
@@ -349,6 +374,9 @@
     buyNumber--;
     [buyNumLabel setText:[NSString stringWithFormat:@"%ld",(long)buyNumber]];
     [pricelaebl setText:[NSString stringWithFormat:@"￥%.2f",buyNumber*money]];
+    
+    _stockPrice = buyNumber*money;
+    _buyNum = buyNumber;
 }
 
 -(void)lmGoodsStockNameBtnClicked:(id)sender{
@@ -369,6 +397,15 @@
     [stockNumLabel setText:[NSString stringWithFormat:@"%ld",(long)entity.stockNum]];
     [buyNumLabel setText:[NSString stringWithFormat:@"%ld",(long)buyNumber]];
     [pricelaebl setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice]];
+}
+
+//立即购买或加入购物车
+-(void)buyBtnClicked{
+    if(_goodsViewType == LMGoodsView_Type_ShoppingCart){
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_UserAddShoppingCart object:nil];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_UserBuyGoods object:nil];
+    }
 }
 
 @end

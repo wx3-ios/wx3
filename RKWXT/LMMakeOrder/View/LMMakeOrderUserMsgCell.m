@@ -19,12 +19,12 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         CGFloat xOffset = 12;
-        CGFloat labelWidth = 70;
+        CGFloat labelWidth = 80;
         CGFloat labelHeight = 20;
         WXUILabel *nameLabel = [[WXUILabel alloc] initWithFrame:CGRectMake(xOffset, (LMMakeOrderUserMsgCellHeight-labelHeight)/2, labelWidth, labelHeight)];
         [nameLabel setBackgroundColor:[UIColor clearColor]];
-        [nameLabel setText:@"给商家留言:"];
-        [nameLabel setTextAlignment:NSTextAlignmentCenter];
+        [nameLabel setText:@"买家留言:"];
+        [nameLabel setTextAlignment:NSTextAlignmentLeft];
         [nameLabel setTextColor:WXColorWithInteger(0x42433e)];
         [nameLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:nameLabel];
@@ -32,10 +32,11 @@
         xOffset += labelWidth+2;
         CGFloat textHeight = 30;
         _textField = [[UITextField alloc] init];
-        _textField.frame = CGRectMake(xOffset, (LMMakeOrderUserInfoCellHeight-textHeight)/2, IPHONE_SCREEN_WIDTH-xOffset-10, textHeight);
+        _textField.frame = CGRectMake(xOffset, (LMMakeOrderUserMsgCellHeight-textHeight)/2, IPHONE_SCREEN_WIDTH-xOffset-10, textHeight);
         [_textField setTextAlignment:NSTextAlignmentLeft];
         [_textField setReturnKeyType:UIReturnKeyDone];
         [_textField setPlaceholder:@"请输入备注信息"];
+        [_textField setFont:WXFont(15.0)];
         [_textField setTextColor:WXColorWithInteger(0x646464)];
         [_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
         [_textField addTarget:self action:@selector(textfieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];

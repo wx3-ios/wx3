@@ -66,18 +66,12 @@
     [nameLabel setText:@"测试数据"];
     
     CGRect rect = nameLabel.frame;
-    rect.size.width = [[self class] widthForString:name fontSize:15.0 andHeight:20];
+    rect.size.width = [NSString widthForString:name fontSize:15.0 andHeight:20];
     [nameLabel setFrame:rect];
     
     CGRect rect1 = arrowImgView.frame;
     rect1.origin.x = rect.size.width+rect.origin.x+10;
     [arrowImgView setFrame:rect1];
-}
-
-
-+(float)widthForString:(NSString *)value fontSize:(float)fontSize andHeight:(float)height{
-    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, height) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
-    return sizeToFit.width;
 }
 
 @end

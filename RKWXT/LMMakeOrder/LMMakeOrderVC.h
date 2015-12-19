@@ -9,5 +9,6 @@
 #import "WXUIViewController.h"
 
 @interface LMMakeOrderVC : WXUIViewController
+@property (nonatomic,strong) id goodsArr;
 
 @end

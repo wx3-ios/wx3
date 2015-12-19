@@ -9,7 +9,7 @@
 #import "LMMakeOrderGoodsCell.h"
 #import "WXRemotionImgBtn.h"
 #import "LMMakeOrderDef.h"
-#import "GoodsInfoEntity.h"
+#import "LMGoodsInfoEntity.h"
 
 @interface LMMakeOrderGoodsCell(){
     WXRemotionImgBtn *_imgView;
@@ -78,11 +78,11 @@
 }
 
 -(void)load{
-    GoodsInfoEntity *entity = self.cellInfo;
-    [_imgView setCpxViewInfo:entity.smallImg];
+    LMGoodsInfoEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:entity.goodsImg];
     [_imgView load];
-    [_nameLabel setText:entity.intro];
-    [_numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.buyNumber]];
+    [_nameLabel setText:entity.goodsName];
+    [_numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.stockNum]];
     [_stockName setText:entity.stockName];
     [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice]];
 }
