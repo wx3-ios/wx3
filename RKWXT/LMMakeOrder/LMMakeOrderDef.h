@@ -46,5 +46,7 @@ enum{
 #import "NewUserAddressModel.h"
 #import "AreaEntity.h"
 
+#import "LMMakeOrderModel.h"
+
 
 #endif /* LMMakeOrderDef_h */

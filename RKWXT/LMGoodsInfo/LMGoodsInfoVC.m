@@ -597,12 +597,18 @@
     collection_type = LMGoods_Collection_Has;
     [collectionBtn setImage:[UIImage imageNamed:@"LMGoodsAttention.png"] forState:UIControlStateNormal];
     [UtilTool showTipView:@"收藏成功"];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setInteger:0 forKey:LMGoodsCollectionDataChange];
 }
 
 -(void)goodsCancelCollectionSucceed{
     collection_type = LMGoods_Collection_None;
     [collectionBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
     [UtilTool showTipView:@"取消收藏"];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setInteger:1 forKey:LMGoodsCollectionDataChange];
 }
 
 #pragma mark sharedDelegate

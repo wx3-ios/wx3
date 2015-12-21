@@ -23,7 +23,7 @@
         timeout = timeoutInterval;
     }
     
-    if(type == WXT_UrlFeed_Type_New_NewMakeOrder || type == WXT_UrlFeed_Type_NewMall_MakeOrder || type == WXT_UrlFeed_Type_New_LimitBuyMakeOrder){
+    if(type == WXT_UrlFeed_Type_New_NewMakeOrder || type == WXT_UrlFeed_Type_NewMall_MakeOrder || type == WXT_UrlFeed_Type_New_LimitBuyMakeOrder || type == WXT_UrlFeed_Type_Home_LMMakeOrder){
         NSArray *firstArr = [paramString componentsSeparatedByString:@"goods="];
         NSString *firstStr = [firstArr objectAtIndex:0];
         NSArray *newArr = [feed objectForKey:@"goods"];

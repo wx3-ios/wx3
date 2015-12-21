@@ -12,6 +12,8 @@
 #import "ShopUnionClassifyEntity.h"
 #import "SellerClassifyListCell.h"
 #import "LMSellerListModel.h"
+#import "LMSellerInfoVC.h"
+#import "LMSellerListEntity.h"
 
 #define Size self.bounds.size
 #define ScrollViewHeight (44)
@@ -133,6 +135,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    LMSellerListEntity *entity = [listArr objectAtIndex:section];
+    LMSellerInfoVC *sellerInfoVC = [[LMSellerInfoVC alloc] init];
+    sellerInfoVC.ssid = entity.sellerId;
+    [self.wxNavigationController pushViewController:sellerInfoVC];
 }
 
 #pragma mark model

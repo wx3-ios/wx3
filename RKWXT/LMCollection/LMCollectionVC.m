@@ -11,6 +11,11 @@
 #import "LMGoodsCollectionVC.h"
 #import "LMShopCollectionVC.h"
 
+#import "LMGoodsInfoVC.h"
+
+#import "LMGoodsCollectionEntity.h"
+#import "LMShopCollectionEntity.h"
+
 enum{
     LMCollection_Goods = 0,
     LMCollection_Shop,
@@ -29,6 +34,8 @@ enum{
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"收藏"];
+    
+    [self addOBS];
     
     tabedSlideView = [[DLTabedSlideView alloc] init];
     tabedSlideView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
@@ -50,6 +57,11 @@ enum{
     
     tabedSlideView.selectedIndex = 0;
     [self addSubview:tabedSlideView];
+}
+
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(jumpToGoodsInfoVC:) name:LMGoodsCollectionJump object:nil];
 }
 
 -(NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender{
@@ -74,6 +86,18 @@ enum{
             break;
     }
     return nil;
+}
+
+-(void)jumpToGoodsInfoVC:(NSNotification*)notification{
+    LMGoodsCollectionEntity *entity = notification.object;
+    LMGoodsInfoVC *goodsInfoVC = [[LMGoodsInfoVC alloc] init];
+    goodsInfoVC.goodsId = entity.goodsID;
+    [self.wxNavigationController pushViewController:goodsInfoVC];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

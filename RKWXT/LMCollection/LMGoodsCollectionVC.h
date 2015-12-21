@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+#define LMGoodsCollectionJump @"LMGoodsCollectionJump"
+
 @interface LMGoodsCollectionVC : WXUIViewController
 
 @end

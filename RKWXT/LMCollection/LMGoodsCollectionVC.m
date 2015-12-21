@@ -9,6 +9,7 @@
 #import "LMGoodsCollectionVC.h"
 #import "LMGoodsCollectionCell.h"
 #import "LMDataCollectionModel.h"
+#import "LMGoodsCollectionEntity.h"
 
 #define Size self.bounds.size
 
@@ -32,6 +33,22 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self addOBS];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if([userDefault integerForKey:LMGoodsCollectionDataChange] && _tableView){
+        listArr = [self changeGoodsCollectionData:[userDefault integerForKey:LMGoodsCollectionDataChange]];
+        [_tableView reloadData];
+    }
+}
+
+-(NSArray*)changeGoodsCollectionData:(NSInteger)goodsID{
+    NSMutableArray *comArr = [NSMutableArray arrayWithArray:listArr];
+    for(LMGoodsCollectionEntity *entity in comArr){
+        if(entity.goodsID == goodsID){
+            [comArr removeObject:entity];
+        }
+    }
+    return comArr;
 }
 
 -(void)viewDidLoad{
@@ -113,7 +130,8 @@
 
 #pragma mark
 -(void)lmGoodsCollectionCellBtnClicked:(id)sender{
-    
+    LMGoodsCollectionEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:LMGoodsCollectionJump object:entity];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

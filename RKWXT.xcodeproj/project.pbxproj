@@ -735,6 +735,7 @@
 		12E07FF71BEB7D410051DAD5 /* AreaDataSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF41BEB7D410051DAD5 /* AreaDataSql.m */; };
 		12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */; };
 		12E08BE01C278C510061442E /* LMGoodsCollectionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E08BDF1C278C510061442E /* LMGoodsCollectionEntity.m */; };
+		12E08BE31C27AA560061442E /* LMMakeOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E08BE21C27AA560061442E /* LMMakeOrderModel.m */; };
 		12E471C51B1F178D00559995 /* WaitReceiveGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471C41B1F178D00559995 /* WaitReceiveGoodsInfoCell.m */; };
 		12E471C81B1F187000559995 /* WaitReceiveConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471C71B1F187000559995 /* WaitReceiveConsultCell.m */; };
 		12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471CA1B1F19B700559995 /* WaitReceiveTitleCell.m */; };
@@ -2461,6 +2462,8 @@
 		12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaInsertData.m; sourceTree = "<group>"; };
 		12E08BDE1C278C510061442E /* LMGoodsCollectionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMGoodsCollectionEntity.h; sourceTree = "<group>"; };
 		12E08BDF1C278C510061442E /* LMGoodsCollectionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMGoodsCollectionEntity.m; sourceTree = "<group>"; };
+		12E08BE11C27AA560061442E /* LMMakeOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMMakeOrderModel.h; sourceTree = "<group>"; };
+		12E08BE21C27AA560061442E /* LMMakeOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMMakeOrderModel.m; sourceTree = "<group>"; };
 		12E471C31B1F178D00559995 /* WaitReceiveGoodsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitReceiveGoodsInfoCell.h; sourceTree = "<group>"; };
 		12E471C41B1F178D00559995 /* WaitReceiveGoodsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitReceiveGoodsInfoCell.m; sourceTree = "<group>"; };
 		12E471C61B1F187000559995 /* WaitReceiveConsultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitReceiveConsultCell.h; sourceTree = "<group>"; };
@@ -5144,6 +5147,8 @@
 		1278C07F1C21388800AAF097 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				12E08BE11C27AA560061442E /* LMMakeOrderModel.h */,
+				12E08BE21C27AA560061442E /* LMMakeOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -10217,6 +10222,7 @@
 				129D234E1B4FAA1B00008DA0 /* OrderInfoFactMOneyCell.m in Sources */,
 				775842D11AB95A300039B129 /* GTMBase64.m in Sources */,
 				12CEB4C51C1AC69C004FA4B0 /* LMGoodsView.m in Sources */,
+				12E08BE31C27AA560061442E /* LMMakeOrderModel.m in Sources */,
 				775842F91AB95A300039B129 /* PSCollectionViewCell.m in Sources */,
 				12F67BAE1B32B45700F5BDE1 /* RightVieGoodsInfoTypeCell.m in Sources */,
 				128221EC1B18716E004613BB /* T_HPSubBaseModel.m in Sources */,

@@ -9,12 +9,14 @@
 #import "LMMakeOrderVC.h"
 #import "LMMakeOrderDef.h"
 
-@interface LMMakeOrderVC()<UITableViewDataSource,UITableViewDelegate,LMMakeOrderUserMsgCellDelegate,SearchCarriageMoneyDelegate>{
+@interface LMMakeOrderVC()<UITableViewDataSource,UITableViewDelegate,LMMakeOrderUserMsgCellDelegate,SearchCarriageMoneyDelegate,LMMakeOrderDelegate>{
     UITableView *_tableView;
     WXUILabel *moneyLabel;
     NSArray *listArr;
     SearchCarriageMoney *carriageModel;
     CGFloat goodsMoney;
+    
+    LMMakeOrderModel *_makeOrderModel;
 }
 @property (nonatomic,strong) NSString *userMessage;
 @end
@@ -34,6 +36,9 @@
     if(self){
         carriageModel = [[SearchCarriageMoney alloc] init];
         [carriageModel setDelegate:self];
+        
+        _makeOrderModel = [[LMMakeOrderModel alloc] init];
+        [_makeOrderModel setDelegate:self];
     }
     return self;
 }
@@ -321,8 +326,49 @@
     }
 }
 
+#pragma mark makeOrder
 -(void)submitOrder{
+    if([listArr count] == 0){
+        return;
+    }
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for(LMGoodsInfoEntity *entity in listArr){
+        NSDictionary *dic = [self goodsDicWithEntity:entity];
+        [arr addObject:dic];
+    }
+    [_makeOrderModel submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:0 withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
+}
+
+-(NSDictionary*)goodsDicWithEntity:(LMGoodsInfoEntity*)entity{
+    NSString *goodsID = [NSString stringWithFormat:@"%ld",(long)entity.goodsID];
+    NSString *stockID = [NSString stringWithFormat:@"%ld",(long)entity.stockID];
+    NSString *stockName = [NSString stringWithFormat:@"%@",entity.stockName];
+    NSString *price = [NSString stringWithFormat:@"%f",entity.stockPrice/entity.stockNum];
+    NSString *number = [NSString stringWithFormat:@"%ld",(long)entity.stockNum];
+    NSInteger length = AllImgPrefixUrlString.length;
+    NSString *smallImgStr = [entity.homeImg substringFromIndex:length];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:goodsID ,@"goods_id", entity.goodsName, @"goods_name", smallImgStr, @"goods_img", stockID, @"goods_stock_id", stockName, @"goods_stock_name", price, @"sales_price", number, @"sales_number", nil];
+    return dic;
+}
+
+-(void)lmMakeOrderSucceed{
+    [self unShowWaitView];
+    [UtilTool showTipView:@"下单成功"];
     
+    OrderPayVC *payVC = [[OrderPayVC alloc] init];
+    payVC.orderpay_type = OrderPay_Type_ShopUnion;
+    payVC.payMoney = [self allGoodsTotalMoney];
+    payVC.orderID = _makeOrderModel.lmOrderID;
+    [self.wxNavigationController pushViewController:payVC];
+}
+
+-(void)lmMakeOrderFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"下单失败";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 //省份ID
@@ -333,6 +379,22 @@
         }
     }
     return 0;
+}
+
+//订单总金额
+-(CGFloat)allGoodsOldMoney{
+    CGFloat price = 0.0;
+    for(LMGoodsInfoEntity *entity in listArr){
+        price += entity.stockPrice;
+    }
+    return price;
+}
+
+//订单应付金额
+-(CGFloat)allGoodsTotalMoney{
+    CGFloat totalMoney = [self allGoodsOldMoney];
+    totalMoney += carriageModel.carriageMoney;
+    return totalMoney;
 }
 
 #pragma mark carriageDelegate
