@@ -158,7 +158,7 @@
             [userOrderBtn setTitle:@"订单" forState:UIControlStateNormal];
         }
         if(i == ShopUnionDownView_UserStore){
-            [userOrderBtn setImage:[UIImage imageNamed:@"T_Attention.png"] forState:UIControlStateNormal];
+            [userOrderBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
         }
         if(i == ShopUnionDownView_UserShoppingCar){
             [userOrderBtn setTitle:@"购物车" forState:UIControlStateNormal];
@@ -516,7 +516,10 @@
 #pragma mark downViewDelegate
 -(void)shopUnionDownViewBtnClicked:(id)sender{
     WXUIButton *btn = sender;
-    NSLog(@"用户按钮==%ld",(long)btn.tag);
+    if(btn.tag == ShopUnionDownView_UserStore){
+        LMCollectionVC *collectionVC = [[LMCollectionVC alloc] init];
+        [self.wxNavigationController pushViewController:collectionVC];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

@@ -8,6 +8,8 @@
 
 #import "LMCollectionVC.h"
 #import "DLTabedSlideView.h"
+#import "LMGoodsCollectionVC.h"
+#import "LMShopCollectionVC.h"
 
 enum{
     LMCollection_Goods = 0,
@@ -58,14 +60,14 @@ enum{
     switch (index) {
         case LMCollection_Goods:
         {
-//            LMAllOrderListVC *listAll = [[LMAllOrderListVC alloc] init];
-//            return listAll;
+            LMGoodsCollectionVC *listAll = [[LMGoodsCollectionVC alloc] init];
+            return listAll;
         }
             break;
         case LMCollection_Shop:
         {
-//            LMAllOrderListVC *listAll = [[LMAllOrderListVC alloc] init];
-//            return listAll;
+            LMShopCollectionVC *listAll = [[LMShopCollectionVC alloc] init];
+            return listAll;
         }
             break;
         default:

@@ -8,6 +8,7 @@
 
 #import "LMShopCollectionTitleCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMShopCollectionEntity.h"
 
 @interface LMShopCollectionTitleCell(){
     WXRemotionImgBtn *imgView;
@@ -64,7 +65,10 @@
 }
 
 -(void)load{
-    
+    LMShopCollectionEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.homeImg];
+    [namelabel setText:entity.shopName];
+    [scoreLabel setText:[NSString stringWithFormat:@"%.2f",entity.score]];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "LMGoodsCollectionView.h"
 #import "WXRemotionImgBtn.h"
 #import "LMGoodsCollectionCell.h"
+#import "LMGoodsCollectionEntity.h"
 
 @interface LMGoodsCollectionView(){
     WXRemotionImgBtn *_imgView;
@@ -42,7 +43,7 @@
         _nameLabel = [[WXUILabel alloc] init];
         _nameLabel.frame = CGRectMake(0, yOffset, imgWidth, nameHeight);
         [_nameLabel setBackgroundColor:[UIColor clearColor]];
-        [_nameLabel setTextAlignment:NSTextAlignmentCenter];
+        [_nameLabel setTextAlignment:NSTextAlignmentLeft];
         [_nameLabel setTextColor:WXColorWithInteger(0x595757)];
         [_nameLabel setFont:[UIFont systemFontOfSize:12.0]];
         [_nameLabel setNumberOfLines:2];
@@ -77,10 +78,11 @@
 }
 
 -(void)load{
-    [_imgView setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+    LMGoodsCollectionEntity *entity = self.cpxViewInfo;
+    [_imgView setCpxViewInfo:entity.homeImg];
     [_imgView load];
-    [_nameLabel setText:self.cpxViewInfo];
-    [pricelabel setText:@""];
+    [_nameLabel setText:entity.goodsName];
+    [pricelabel setText:[NSString stringWithFormat:@"￥%.2f",entity.marketPrice]];
 }
 
 @end
