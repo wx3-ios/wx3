@@ -8,8 +8,9 @@
 
 #import "LMEvaluteGoodsCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMOrderListEntity.h"
 
-@interface LMEvaluteGoodsCell(){
+@interface LMEvaluteGoodsCell()<WXUITextViewDelegate>{
     WXRemotionImgBtn *imgView;
 }
 @end
@@ -28,32 +29,29 @@
         
         xOffset += imgWidth+10;
         CGFloat textHeight = 60;
-        _textField = [[UITextField alloc] init];
+        _textField = [[WXUITextView alloc] init];
         _textField.frame = CGRectMake(xOffset, 15, IPHONE_SCREEN_WIDTH-xOffset-10, textHeight);
         [_textField setTextAlignment:NSTextAlignmentLeft];
         [_textField setReturnKeyType:UIReturnKeyDone];
-        [_textField setPlaceholder:@"请输入评价内容"];
+        [_textField setPlaceholder:@"请写下对商品的感受吧，对他人帮助很大哦!"];
         [_textField setTextColor:WXColorWithInteger(0x646464)];
-        [_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-        [_textField addTarget:self action:@selector(textfieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        [_textField addTarget:self action:@selector(textFiledValueDidChanged:) forControlEvents:UIControlEventEditingChanged];
+        [_textField setWxDelegate:self];
+//        [_textField addTarget:self action:@selector(textFiledValueDidChanged:) forControlEvents:UIControlEventEditingChanged];
         [self.contentView addSubview:_textField];
     }
     return self;
 }
 
--(void)textfieldDone:(id)sender{
-    [sender resignFirstResponder];
-}
-
--(void)textFiledValueDidChanged:(id)sender{
+-(void)wxTextViewDidChange:(WXUITextView *)textView{
     if(_delegate && [_delegate respondsToSelector:@selector(userEvaluteTextFieldChanged:)]){
         [_delegate userEvaluteTextFieldChanged:self];
     }
 }
 
 -(void)load{
-    
+    LMOrderListEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.goodsImg];
+    [imgView load];
 }
 
 @end

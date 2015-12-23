@@ -32,6 +32,7 @@
 #import "LMSellerListVC.h"
 #import "LMGoodsInfoVC.h"
 #import "LMCollectionVC.h"
+#import "LMHomeOrderVC.h"
 
 #define Size self.bounds.size
 #define ShopUnionClassifyRowHeight (165)

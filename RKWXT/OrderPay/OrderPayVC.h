@@ -13,7 +13,7 @@ typedef enum{
     OrderPay_Type_Order = 0,  //商城订单S
     OrderPay_Type_Recharge,   //话费充值R
     OrderPay_Type_Lucky,      //抽奖订单P
-    OrderPay_Type_ShopUnion,  //商家联盟
+    OrderPay_Type_ShopUnion,  //商家联盟S
 }OrderPay_Type;
 
 @interface OrderPayVC : WXUIViewController

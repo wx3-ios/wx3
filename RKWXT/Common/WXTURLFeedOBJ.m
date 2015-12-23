@@ -276,6 +276,9 @@
         case WXT_UrlFeed_Type_Home_LMMakeOrder:
             url = @"/insert_sellerunion_order.php";
             break;
+        case WXT_UrlFeed_Type_Home_LMorderList:
+            url = @"/get_sellerunion_order_info.php";
+            break;
         default:
             break;
     }

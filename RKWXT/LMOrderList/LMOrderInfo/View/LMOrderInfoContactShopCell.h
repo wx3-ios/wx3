@@ -10,6 +10,14 @@
 
 #define LMOrderInfoContactShopCellHeight (54)
 
+@protocol LMOrderInfoContactShopCellDelegate;
+
 @interface LMOrderInfoContactShopCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMOrderInfoContactShopCellDelegate>delegate;
+@end
+
+@protocol LMOrderInfoContactShopCellDelegate <NSObject>
+-(void)contactSellerWith:(NSString*)phone;
+-(void)userRefundBtnClicked;
 
 @end

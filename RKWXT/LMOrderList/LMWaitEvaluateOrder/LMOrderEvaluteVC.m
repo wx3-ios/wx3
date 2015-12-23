@@ -9,14 +9,16 @@
 #import "LMOrderEvaluteVC.h"
 #import "LMEvaluteGoodsCell.h"
 #import "LMEvaluteUserHandleCell.h"
+#import "LMOrderListEntity.h"
 
 #define Size self.bounds.size
 #define DownViewHeight (45)
 
 @interface LMOrderEvaluteVC()<UITableViewDataSource,UITableViewDelegate,LMEvaluteGoodsCellDelegate>{
     UITableView *_tableView;
-    NSArray *listArr;
+    LMOrderListEntity *entity;
 }
+@property (nonatomic,strong) NSString *userMessage;
 @end
 
 @implementation LMOrderEvaluteVC
@@ -26,11 +28,15 @@
     [self setCSTTitle:@"发表评论"];
     [self setBackgroundColor:[UIColor whiteColor]];
     
+    entity = _orderEntity;
+    
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-DownViewHeight);
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [self addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self createDownView];
 }
 
 -(void)createDownView{
@@ -38,6 +44,11 @@
     downView.frame = CGRectMake(0, Size.height-DownViewHeight, Size.width, DownViewHeight);
     [downView setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:downView];
+    
+    WXUILabel *lineLabel = [[WXUILabel alloc] init];
+    lineLabel.frame = CGRectMake(0, 0, Size.width, 0.5);
+    [lineLabel setBackgroundColor:WXColorWithInteger(0x9b9b9b)];
+    [downView addSubview:lineLabel];
     
     CGFloat btnWidth = 100;
     CGFloat btnHeight = 25;
@@ -49,8 +60,29 @@
     [downView addSubview:submitEvaluteBtn];
 }
 
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return [listArr count];
+    return [entity.goodsListArr count];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -68,11 +100,21 @@
     return height;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return 0;
+    }
+    return 10.0;
+}
+
 -(WXUITableViewCell*)evaluteGoodsCell:(NSInteger)section{
     static NSString *identfier = @"goodsCell";
     LMEvaluteGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identfier];
     if(!cell){
         cell = [[LMEvaluteGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
+    }
+    if([entity.goodsListArr count] > 0){
+        [cell setCellInfo:[entity.goodsListArr objectAtIndex:section]];
     }
     [cell setDelegate:self];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -104,12 +146,21 @@
     return cell;
 }
 
--(void)userEvaluteTextFieldChanged:(id)sender{
-    
+-(void)userEvaluteTextFieldChanged:(LMEvaluteGoodsCell*)cell{
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    if(indexPath){
+        NSInteger row = indexPath.row;
+        if(row == 1){
+            self.userMessage = cell.textField.text;
+        }
+    }
 }
 
 -(void)submitEvalute{
-    
+    [UtilTool showAlertView:@"评价成功"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_UserEvaluateOrderSucceed object:entity];
+    [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+    }];
 }
 
 @end

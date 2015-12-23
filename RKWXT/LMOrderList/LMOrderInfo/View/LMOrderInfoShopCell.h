@@ -8,7 +8,7 @@
 
 #import "WXUITableViewCell.h"
 
-#define LMOrderInfoShopCellHeight (44)
+#define LMOrderInfoShopCellHeight (40)
 
 @interface LMOrderInfoShopCell : WXUITableViewCell
 

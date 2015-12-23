@@ -10,6 +10,12 @@
 
 #define LMOrderInfoGoodsListCellHeight (110)
 
+@protocol LMOrderInfoGoodsListCellDelegate;
 @interface LMOrderInfoGoodsListCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMOrderInfoGoodsListCellDelegate>delgate;
+@end
+
+@protocol LMOrderInfoGoodsListCellDelegate <NSObject>
+-(void)refundBtnClicked;
 
 @end

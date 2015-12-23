@@ -8,7 +8,7 @@
 
 #import "WXUITableViewCell.h"
 
-#define LMOrderInfoOrderTimeCellHieght (90)
+#define LMOrderInfoOrderTimeCellHieght (100)
 
 @interface LMOrderInfoOrderTimeCell : WXUITableViewCell
 

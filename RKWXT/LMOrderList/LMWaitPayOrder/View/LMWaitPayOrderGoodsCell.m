@@ -8,6 +8,7 @@
 
 #import "LMWaitPayOrderGoodsCell.h"
 #import "WXRemotionImgBtn.h"
+#import "LMOrderListEntity.h"
 
 @interface LMWaitPayOrderGoodsCell(){
     WXRemotionImgBtn *imgView;
@@ -32,7 +33,7 @@
         
         xOffset += imgWidth+5;
         CGFloat yOffset = 10;
-        CGFloat nameLabelWidth = 160;
+        CGFloat nameLabelWidth = 150;
         CGFloat nameLabelHeight = 35;
         nameLabel = [[WXUILabel alloc] init];
         nameLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, nameLabelHeight);
@@ -45,7 +46,7 @@
         
         CGFloat labelHeight = 20;
         priceLabel = [[WXUILabel alloc] init];
-        priceLabel.frame = CGRectMake(xOffset+nameLabelWidth+10, yOffset, IPHONE_SCREEN_WIDTH-xOffset-nameLabelWidth-10-10, labelHeight);
+        priceLabel.frame = CGRectMake(xOffset+nameLabelWidth, yOffset, IPHONE_SCREEN_WIDTH-xOffset-nameLabelWidth-10, labelHeight);
         [priceLabel setBackgroundColor:[UIColor clearColor]];
         [priceLabel setTextAlignment:NSTextAlignmentRight];
         [priceLabel setTextColor:WXColorWithInteger(0x000000)];
@@ -66,14 +67,21 @@
         [stockLabel setBackgroundColor:[UIColor clearColor]];
         [stockLabel setTextAlignment:NSTextAlignmentLeft];
         [stockLabel setTextColor:WXColorWithInteger(0x969696)];
-        [stockLabel setFont:WXFont(2.0)];
+        [stockLabel setFont:WXFont(12.0)];
         [self.contentView addSubview:stockLabel];
     }
     return self;
 }
 
 -(void)load{
+    LMOrderListEntity *entity = self.cellInfo;
+    [imgView setCpxViewInfo:entity.goodsImg];
+    [imgView load];
     
+    [nameLabel setText:entity.goodsName];
+    [stockLabel setText:entity.stockName];
+    [priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice]];
+    [numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.buyNumber]];
 }
 
 @end

@@ -7,10 +7,10 @@
 //
 
 #import "LMOrderInfoShopCell.h"
-#import "WXRemotionImgBtn.h"
+#import "LMOrderListEntity.h"
 
 @interface LMOrderInfoShopCell(){
-    WXRemotionImgBtn *imgView;
+    WXUIImageView *imgView;
     WXUILabel *nameLabel;
 }
 @end
@@ -21,11 +21,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 10;
-        CGFloat imgWidth = 35;
+        CGFloat imgWidth = 15;
         CGFloat imgHeight = imgWidth;
-        imgView = [[WXRemotionImgBtn alloc] init];
+        imgView = [[WXUIImageView alloc] init];
         imgView.frame = CGRectMake(xOffset, (LMOrderInfoShopCellHeight-imgHeight)/2, imgWidth, imgHeight);
-        [imgView setUserInteractionEnabled:NO];
+        [imgView setImage:[UIImage imageNamed:@"LMSellerIcon.png"]];
         [self.contentView addSubview:imgView];
         
         xOffset += imgWidth+5;
@@ -43,7 +43,8 @@
 }
 
 -(void)load{
-    
+    LMOrderListEntity *entity = self.cellInfo;
+    [nameLabel setText:entity.shopName];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LMWaitPayOrderUserhandleCell.h"
+#import "LMOrderListEntity.h"
 
 @interface LMWaitPayOrderUserhandleCell(){
     WXUILabel *pricelabel;
@@ -45,13 +46,19 @@
         CGFloat btnHeight = 24;
         rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         rightBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-btnWidth, (LMWaitPayOrderUserhandleCellHeight-btnHeight)/2, btnWidth, btnHeight);
+        [rightBtn setHidden:YES];
         [rightBtn setBackgroundColor:WXColorWithInteger(0xff9c00)];
+        [rightBtn setBorderRadian:3.0 width:1.0 color:[UIColor clearColor]];
+        [rightBtn.titleLabel setFont:WXFont(10.0)];
         [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:rightBtn];
         
         leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         leftBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-2*(xOffset+btnWidth), (LMWaitPayOrderUserhandleCellHeight-btnHeight)/2, btnWidth, btnHeight);
-        [leftBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
+        [leftBtn setHidden:YES];
+        [leftBtn setBackgroundColor:WXColorWithInteger(0xff9c00)];
+        [leftBtn setBorderRadian:3.0 width:1.0 color:[UIColor clearColor]];
+        [leftBtn.titleLabel setFont:WXFont(10.0)];
         [leftBtn addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:leftBtn];
     }
@@ -59,15 +66,34 @@
 }
 
 -(void)load{
+    LMOrderListEntity *entity = self.cellInfo;
+    [pricelabel setText:[NSString stringWithFormat:@"￥%.2f",entity.orderMoney+entity.carriageMoney]];
     
+    [self userHandleBtnState];
+}
+
+-(void)userHandleBtnState{
+    LMOrderListEntity *entity = self.cellInfo;
+    if(entity.payType == LMorder_PayType_WaitPay && entity.orderState == LMorder_State_Normal){
+        [leftBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+        [leftBtn setHidden:NO];
+        [rightBtn setTitle:@"去支付" forState:UIControlStateNormal];
+        [rightBtn setHidden:NO];
+    }
 }
 
 -(void)rightBtnClicked{
-    
+    LMOrderListEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(userPayOrder:)]){
+        [_delegate userPayOrder:entity];
+    }
 }
 
 -(void)leftBtnClicked{
-    
+    LMOrderListEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(userCancelOrder:)]){
+        [_delegate userCancelOrder:entity];
+    }
 }
 
 @end

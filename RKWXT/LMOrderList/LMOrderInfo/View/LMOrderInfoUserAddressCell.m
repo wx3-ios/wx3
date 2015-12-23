@@ -7,7 +7,7 @@
 //
 
 #import "LMOrderInfoUserAddressCell.h"
-#import "OrderListEntity.h"
+#import "LMOrderListEntity.h"
 
 @interface LMOrderInfoUserAddressCell(){
     UILabel *_nameLabel;
@@ -69,20 +69,20 @@
 }
 
 -(void)load{
-    OrderListEntity *entity = self.cellInfo;
-    [_nameLabel setText:[NSString stringWithFormat:@"%@  %@",entity.consignee,entity.userPhone]];
-    [_address setText:entity.address];
+    LMOrderListEntity *entity = self.cellInfo;
+    [_nameLabel setText:[NSString stringWithFormat:@"%@  %@",entity.userName,entity.userPhone]];
+    [_address setText:entity.userAddress];
     
     CGRect rect = _address.frame;
-    rect.size.height = [entity.address stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-10];
+    rect.size.height = [entity.userAddress stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-10];
     [_address setFrame:rect];
 }
 
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{
-    OrderListEntity *entity = cellInfo;
-    CGFloat height = 42;
-    NSString *add = entity.address;
-    CGFloat addHeight = [add stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-10];
+    LMOrderListEntity *entity = cellInfo;
+    CGFloat height = 55;
+    NSString *add = entity.userAddress;
+    CGFloat addHeight = [add stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-30];
     height += addHeight;
     return height;
 }

@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+@class LMOrderListEntity;
 @interface LMOrderInfoVC : WXUIViewController
+@property (nonatomic,strong) LMOrderListEntity *orderEntity;
 
 @end

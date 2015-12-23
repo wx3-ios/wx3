@@ -13,11 +13,11 @@
 @protocol LMEvaluteGoodsCellDelegate;
 
 @interface LMEvaluteGoodsCell : WXUITableViewCell
-@property (nonatomic,strong) UITextField *textField;
+@property (nonatomic,strong) WXUITextView *textField;
 @property (nonatomic,assign) id<LMEvaluteGoodsCellDelegate>delegate;
 @end
 
 @protocol LMEvaluteGoodsCellDelegate <NSObject>
--(void)userEvaluteTextFieldChanged:(id)sender;
+-(void)userEvaluteTextFieldChanged:(LMEvaluteGoodsCell*)cell;
 
 @end

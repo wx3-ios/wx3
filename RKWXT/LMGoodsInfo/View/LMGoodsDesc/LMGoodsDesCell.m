@@ -95,7 +95,7 @@
     LMGoodsInfoEntity *entity = self.cellInfo;
     [desLabel setText:entity.goodsName];
     
-    NSString *marketPriceString = [NSString stringWithFormat:@"￥%.2f",entity.marketPrice];
+    NSString *marketPriceString = [NSString stringWithFormat:@"￥%.2f",entity.marketPrice];  //￥金额符号
     [shopPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.shopPrice]];
     [marketPrice setText:marketPriceString];
     

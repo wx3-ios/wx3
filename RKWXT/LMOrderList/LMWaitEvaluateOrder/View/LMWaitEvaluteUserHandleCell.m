@@ -7,10 +7,10 @@
 //
 
 #import "LMWaitEvaluteUserHandleCell.h"
+#import "LMOrderListEntity.h"
 
 @interface LMWaitEvaluteUserHandleCell(){
     WXUILabel *pricelabel;
-    WXUIButton *leftBtn;
     WXUIButton *rightBtn;
 }
 @end
@@ -45,29 +45,36 @@
         CGFloat btnHeight = 24;
         rightBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         rightBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset-btnWidth, (LMWaitEvaluteUserHandleCellHeight-btnHeight)/2, btnWidth, btnHeight);
+        [rightBtn setHidden:YES];
         [rightBtn setBackgroundColor:WXColorWithInteger(0xff9c00)];
+        [rightBtn setBorderRadian:3.0 width:1.0 color:[UIColor clearColor]];
+        [rightBtn.titleLabel setFont:WXFont(10.0)];
         [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:rightBtn];
-        
-        leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        leftBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-2*(xOffset+btnWidth), (LMWaitEvaluteUserHandleCellHeight-btnHeight)/2, btnWidth, btnHeight);
-        [leftBtn setBackgroundColor:WXColorWithInteger(0xdd2726)];
-        [leftBtn addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:leftBtn];
     }
     return self;
 }
 
 -(void)load{
+    LMOrderListEntity *entity = self.cellInfo;
+    [pricelabel setText:[NSString stringWithFormat:@"￥%.2f",entity.orderMoney+entity.carriageMoney]];
     
+    [self userHandleBtnState];
+}
+
+-(void)userHandleBtnState{
+    LMOrderListEntity *entity = self.cellInfo;
+    if(entity.evaluate == LMOrder_Evaluate_None && entity.orderState == LMorder_State_Complete){
+        [rightBtn setTitle:@"评价" forState:UIControlStateNormal];
+        [rightBtn setHidden:NO];
+    }
 }
 
 -(void)rightBtnClicked{
-    
-}
-
--(void)leftBtnClicked{
-    
+    LMOrderListEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(userEvaluateOrder:)]){
+        [_delegate userEvaluateOrder:entity];
+    }
 }
 
 @end

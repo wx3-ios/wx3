@@ -84,7 +84,7 @@
     [_nameLabel setText:entity.goodsName];
     [_numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.stockNum]];
     [_stockName setText:entity.stockName];
-    [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice]];
+    [_priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice/entity.stockNum]];
 }
 
 @end

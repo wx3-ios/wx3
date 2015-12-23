@@ -7,6 +7,7 @@
 //
 
 #import "LMOrderInfoOrderStateCell.h"
+#import "LMOrderListEntity.h"
 
 @interface LMOrderInfoOrderStateCell(){
     WXUILabel *nameLabel;
@@ -26,7 +27,7 @@
         [imgView setImage:[UIImage imageNamed:@"OrderInfoState.png"]];
         [self.contentView addSubview:imgView];
         
-        xOffset += imgWidth;
+        xOffset += imgWidth+3;
         CGFloat labelWidth = 56;
         CGFloat labelHeight = 16;
         WXUILabel *textLabel = [[WXUILabel alloc] init];
@@ -38,7 +39,7 @@
         [textLabel setFont:WXFont(13.0)];
         [self.contentView addSubview:textLabel];
         
-        xOffset += labelWidth;
+        xOffset += labelWidth+5;
         nameLabel = [[WXUILabel alloc] init];
         nameLabel.frame = CGRectMake(xOffset, (LMOrderInfoOrderStateCellHeight-labelHeight)/2, 150, labelHeight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
@@ -51,7 +52,75 @@
 }
 
 -(void)load{
+    LMOrderListEntity *entity = self.cellInfo;
+    [nameLabel setText:[self orderState:entity]];
+}
+
+-(NSString*)orderState:(LMOrderListEntity*)entity{
+    NSString *orderState = nil;
+    if(entity.orderState == LMorder_State_Cancel){
+        return @"已关闭";
+    }
+    if(entity.orderState == LMorder_State_Complete){
+        return @"已完成";
+    }
+    if(entity.orderState == LMorder_State_None){
+        return @"交易中";
+    }
+    //订单可操作，未付款
+    if(entity.orderState == LMorder_State_Normal && entity.payType == LMorder_PayType_WaitPay){
+        return @"未支付";
+    }
+    //订单已付款，可操作，未发货
+    if(entity.orderState == LMorder_State_Normal && entity.payType == LMorder_PayType_HasPay && entity.sendType == LMorder_SendType_WaitSend){
+        NSInteger count = 0;
+        for(LMOrderListEntity *ent in entity.goodsListArr){
+            if(ent.refundState == LMRefund_State_Being){
+                count++;
+            }
+            //全部申请退款
+            if(count==entity.goodsListArr.count){
+                return @"退款中";
+            }
+        }
+        return @"待发货";
+    }
+    //订单已付款，可操作，已发货
+    if(entity.orderState == LMorder_State_Normal && entity.payType == LMorder_PayType_HasPay && entity.sendType == LMorder_SendType_HasSend){
+        NSInteger number1 = 0;
+        NSInteger number2 = 0;
+        NSInteger number3 = 0;
+        NSInteger number4 = 0;
+        for(LMOrderListEntity *ent in entity.goodsListArr){
+            if(ent.refundState == LMRefund_State_Being && ent.shopDealType == LMShopDeal_Refund_Normal){
+                number1++;
+            }
+            if(number1==entity.goodsListArr.count){
+                return @"已申请退款";
+            }
+            if(ent.refundState == LMRefund_State_Being && ent.shopDealType == LMShopDeal_Refund_Refuse){
+                number2++;
+            }
+            if(number2==entity.goodsListArr.count){
+                return @"卖家拒绝退款";
+            }
+            if(ent.refundState == LMRefund_State_HasDone){
+                number3++;
+            }
+            if(number3==entity.goodsListArr.count){
+                return @"已退款";
+            }
+            if(ent.refundState == LMRefund_State_Being && ent.shopDealType == LMShopDeal_Refund_Agree){
+                number4++;
+            }
+            if(number4==entity.goodsListArr.count){
+                return @"退款中";
+            }
+        }
+        return @"已发货";
+    }
     
+    return orderState;
 }
 
 @end

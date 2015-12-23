@@ -7,6 +7,7 @@
 //
 
 #import "LMOrderInfoMoneyCell.h"
+#import "LMOrderListEntity.h"
 
 @interface LMOrderInfoMoneyCell(){
     WXUILabel *carriageLabel;
@@ -63,7 +64,9 @@
 }
 
 -(void)load{
-
+    LMOrderListEntity *entity = self.cellInfo;
+    [carriageLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.carriageMoney]];
+    [moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.payMoney]];
 }
 
 @end

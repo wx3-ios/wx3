@@ -520,6 +520,10 @@
         LMCollectionVC *collectionVC = [[LMCollectionVC alloc] init];
         [self.wxNavigationController pushViewController:collectionVC];
     }
+    if(btn.tag == ShopUnionDownView_UserOrder){
+        LMHomeOrderVC *orderListVC = [[LMHomeOrderVC alloc] init];
+        [self.wxNavigationController pushViewController:orderListVC];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

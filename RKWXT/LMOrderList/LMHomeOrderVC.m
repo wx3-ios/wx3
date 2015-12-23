@@ -18,6 +18,11 @@
 
 @implementation LMHomeOrderVC
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self addOBS];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"我的订单"];
@@ -46,6 +51,13 @@
     [self addSubview:tabedSlideView];
 }
 
+-(void)addOBS{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(jumpToLMGoodsInfoVC:) name:K_Notification_Name_JumpToLMGoodsInfo object:nil];
+    [notificationCenter addObserver:self selector:@selector(jumpToPayVC:) name:K_Notification_Name_JumpToPay object:nil];
+    [notificationCenter addObserver:self selector:@selector(jumpToEvaluate:) name:K_Notification_Name_JumpToEvaluate object:nil];
+}
+
 -(NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender{
     return showNumber;
 }
@@ -66,20 +78,51 @@
             break;
         case LMOrderList_Wait_Receive:
         {
-//            WaitSendGoodsListVC *sendList = [[WaitSendGoodsListVC alloc] init];
-//            return sendList;
+            LMWaitReceiveOrderVC *receiveList = [[LMWaitReceiveOrderVC alloc] init];
+            return receiveList;
         }
             break;
         case LMOrderList_Wait_Evaluate:
         {
-//            WaitReceiveOrderListVC *receiveList = [[WaitReceiveOrderListVC alloc] init];
-//            return receiveList;
+            LMWaitEvaluteOrderVC *evaluateList = [[LMWaitEvaluteOrderVC alloc] init];
+            return evaluateList;
         }
             break;
         default:
             break;
     }
     return nil;
+}
+
+//跳转到商家联盟订单详情页面
+-(void)jumpToLMGoodsInfoVC:(NSNotification*)notification{
+    LMOrderListEntity *entity = notification.object;
+    LMOrderInfoVC *orderInfoVC = [[LMOrderInfoVC alloc] init];
+    orderInfoVC.orderEntity = entity;
+    [self.wxNavigationController pushViewController:orderInfoVC];
+}
+
+//跳转到商家联盟订单支付页面
+-(void)jumpToPayVC:(NSNotification*)notification{
+    LMOrderListEntity *entity = notification.object;
+    OrderPayVC *payVC = [[OrderPayVC alloc] init];
+    payVC.orderpay_type = OrderPay_Type_ShopUnion;
+    payVC.payMoney = entity.orderMoney+entity.carriageMoney;
+    payVC.orderID = [NSString stringWithFormat:@"%ld",(long)entity.orderId];
+    [self.wxNavigationController pushViewController:payVC];
+}
+
+//跳转到订单评价页面
+-(void)jumpToEvaluate:(NSNotification*)notification{
+    LMOrderListEntity *entity = notification.object;
+    LMOrderEvaluteVC *evaluateVC = [[LMOrderEvaluteVC alloc] init];
+    evaluateVC.orderEntity = entity;
+    [self.wxNavigationController pushViewController:evaluateVC];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

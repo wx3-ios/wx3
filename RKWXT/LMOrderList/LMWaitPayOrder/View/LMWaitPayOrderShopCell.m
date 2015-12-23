@@ -7,6 +7,7 @@
 //
 
 #import "LMWaitPayOrderShopCell.h"
+#import "LMOrderListEntity.h"
 
 @interface LMWaitPayOrderShopCell(){
     WXUILabel *nameLabel;
@@ -62,16 +63,31 @@
 }
 
 -(void)load{
-    NSString *name = self.cellInfo;
-    [nameLabel setText:@"测试数据"];
+    LMOrderListEntity *entity = self.cellInfo;
+    
+    [nameLabel setText:entity.shopName];
     
     CGRect rect = nameLabel.frame;
-    rect.size.width = [NSString widthForString:name fontSize:15.0 andHeight:20];
+    rect.size.width = [NSString widthForString:entity.shopName fontSize:15.0 andHeight:20];
     [nameLabel setFrame:rect];
     
     CGRect rect1 = arrowImgView.frame;
     rect1.origin.x = rect.size.width+rect.origin.x+10;
     [arrowImgView setFrame:rect1];
+    
+    [stateLabel setText:[self orderState:entity]];
+}
+
+-(NSString*)orderState:(LMOrderListEntity*)entity{
+    NSString *orderState = nil;
+    if(entity.orderState == LMorder_State_Cancel){
+        return @"订单已关闭";
+    }
+    //订单可操作，未付款
+    if(entity.orderState == LMorder_State_Normal && entity.payType == LMorder_PayType_WaitPay){
+        return @"订单未支付";
+    }
+    return orderState;
 }
 
 @end

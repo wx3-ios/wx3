@@ -10,6 +10,13 @@
 
 #define LMWaitPayOrderUserhandleCellHeight (40)
 
+@protocol LMWaitPayOrderUserhandleCellDelegate;
 @interface LMWaitPayOrderUserhandleCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMWaitPayOrderUserhandleCellDelegate>delegate;
+@end
+
+@protocol LMWaitPayOrderUserhandleCellDelegate <NSObject>
+-(void)userCancelOrder:(id)sender;
+-(void)userPayOrder:(id)sender;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "WXUITableViewCell.h"
 
+#define LMOrderInfoMoneyCellHeight (58)
+
 @interface LMOrderInfoMoneyCell : WXUITableViewCell
 
 @end

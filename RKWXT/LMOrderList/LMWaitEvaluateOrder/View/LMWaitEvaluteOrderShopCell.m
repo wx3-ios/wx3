@@ -7,6 +7,7 @@
 //
 
 #import "LMWaitEvaluteOrderShopCell.h"
+#import "LMOrderListEntity.h"
 
 @interface LMWaitEvaluteOrderShopCell(){
     WXUILabel *nameLabel;
@@ -62,22 +63,27 @@
 }
 
 -(void)load{
-    NSString *name = self.cellInfo;
-    [nameLabel setText:@"测试数据"];
+    LMOrderListEntity *entity = self.cellInfo;
+    
+    [nameLabel setText:entity.shopName];
     
     CGRect rect = nameLabel.frame;
-    rect.size.width = [[self class] widthForString:name fontSize:15.0 andHeight:20];
+    rect.size.width = [NSString widthForString:entity.shopName fontSize:15.0 andHeight:20];
     [nameLabel setFrame:rect];
     
     CGRect rect1 = arrowImgView.frame;
     rect1.origin.x = rect.size.width+rect.origin.x+10;
     [arrowImgView setFrame:rect1];
+    
+    [stateLabel setText:[self orderState:entity]];
 }
 
-
-+(float)widthForString:(NSString *)value fontSize:(float)fontSize andHeight:(float)height{
-        CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, height) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
-        return sizeToFit.width;
+-(NSString*)orderState:(LMOrderListEntity*)entity{
+    NSString *orderState = nil;
+    if(entity.orderState == LMorder_State_Complete){
+        return @"订单已完成";
+    }
+    return orderState;
 }
 
 @end

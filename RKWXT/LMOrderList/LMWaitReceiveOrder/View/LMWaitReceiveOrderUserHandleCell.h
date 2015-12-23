@@ -10,6 +10,12 @@
 
 #define LMWaitReceiveOrderUserHandleCellHeight (40)
 
+@protocol LMWaitReceiveOrderUserHandleCellDelegate;
 @interface LMWaitReceiveOrderUserHandleCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMWaitReceiveOrderUserHandleCellDelegate>delegate;
+@end
+
+@protocol LMWaitReceiveOrderUserHandleCellDelegate <NSObject>
+-(void)userCompleteOrder:(id)sender;
 
 @end

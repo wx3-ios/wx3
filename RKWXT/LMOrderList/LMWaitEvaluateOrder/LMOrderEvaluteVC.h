@@ -8,6 +8,11 @@
 
 #import "WXUIViewController.h"
 
+#define K_Notification_Name_UserEvaluateOrderSucceed @"K_Notification_Name_UserEvaluateOrderSucceed"
+
+@class LMOrderListEntity;
+
 @interface LMOrderEvaluteVC : WXUIViewController
+@property (nonatomic,strong) LMOrderListEntity *orderEntity;
 
 @end

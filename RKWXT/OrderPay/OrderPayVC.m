@@ -15,6 +15,7 @@
 #import "WechatPayObj.h"
 #import "WechatPayModel.h"
 #import "WechatEntity.h"
+#import "LMHomeOrderVC.h"
 
 #define size self.bounds.size
 
@@ -208,6 +209,10 @@ enum{
         [self toLuckyGoodsOrderList];
         return;
     }
+    if(_orderpay_type == OrderPay_Type_ShopUnion){
+        [self toShopUnionOrderList];
+        return;
+    }
     [self toOrderList];
 }
 
@@ -219,6 +224,10 @@ enum{
     }
     if(_orderpay_type == OrderPay_Type_Lucky){
         [self toLuckyGoodsOrderList];
+        return;
+    }
+    if(_orderpay_type == OrderPay_Type_ShopUnion){
+        [self toShopUnionOrderList];
         return;
     }
     [self toOrderList];
@@ -251,10 +260,25 @@ enum{
     }
 }
 
+//去商家联盟列表
+-(void)toShopUnionOrderList{
+    WXUINavigationController *navigationController = [CoordinateController sharedNavigationController];
+    UIViewController *orderVC = [navigationController lastViewControllerOfClass:NSClassFromString(@"LMHomeOrderVC")];
+    if(orderVC){
+        [navigationController popToViewController:orderVC animated:YES Completion:^{
+        }];
+    }else{
+        [navigationController popToRootViewControllerAnimated:NO Completion:^{
+            [[CoordinateController sharedCoordinateController] toLMOrderList:navigationController.rootViewController animated:YES];
+        }];
+    }
+}
+
 -(NSString*)newChangeOrderID{
     NSString *newStr = nil;
     switch (_orderpay_type) {
         case OrderPay_Type_Order:
+        case OrderPay_Type_ShopUnion:
             newStr = [NSString stringWithFormat:@"S%@",_orderID];
             break;
         case OrderPay_Type_Recharge:

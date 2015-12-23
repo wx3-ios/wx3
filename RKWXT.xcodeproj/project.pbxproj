@@ -736,6 +736,8 @@
 		12E07FF81BEB7D410051DAD5 /* AreaInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E07FF61BEB7D410051DAD5 /* AreaInsertData.m */; };
 		12E08BE01C278C510061442E /* LMGoodsCollectionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E08BDF1C278C510061442E /* LMGoodsCollectionEntity.m */; };
 		12E08BE31C27AA560061442E /* LMMakeOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E08BE21C27AA560061442E /* LMMakeOrderModel.m */; };
+		12E08BE61C27D47C0061442E /* LMOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E08BE51C27D47C0061442E /* LMOrderListModel.m */; };
+		12E08BE91C27D9190061442E /* LMOrderListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E08BE81C27D9190061442E /* LMOrderListEntity.m */; };
 		12E471C51B1F178D00559995 /* WaitReceiveGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471C41B1F178D00559995 /* WaitReceiveGoodsInfoCell.m */; };
 		12E471C81B1F187000559995 /* WaitReceiveConsultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471C71B1F187000559995 /* WaitReceiveConsultCell.m */; };
 		12E471CB1B1F19B700559995 /* WaitReceiveTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E471CA1B1F19B700559995 /* WaitReceiveTitleCell.m */; };
@@ -2464,6 +2466,10 @@
 		12E08BDF1C278C510061442E /* LMGoodsCollectionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMGoodsCollectionEntity.m; sourceTree = "<group>"; };
 		12E08BE11C27AA560061442E /* LMMakeOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMMakeOrderModel.h; sourceTree = "<group>"; };
 		12E08BE21C27AA560061442E /* LMMakeOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMMakeOrderModel.m; sourceTree = "<group>"; };
+		12E08BE41C27D47C0061442E /* LMOrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMOrderListModel.h; sourceTree = "<group>"; };
+		12E08BE51C27D47C0061442E /* LMOrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMOrderListModel.m; sourceTree = "<group>"; };
+		12E08BE71C27D9190061442E /* LMOrderListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMOrderListEntity.h; sourceTree = "<group>"; };
+		12E08BE81C27D9190061442E /* LMOrderListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMOrderListEntity.m; sourceTree = "<group>"; };
 		12E471C31B1F178D00559995 /* WaitReceiveGoodsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitReceiveGoodsInfoCell.h; sourceTree = "<group>"; };
 		12E471C41B1F178D00559995 /* WaitReceiveGoodsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitReceiveGoodsInfoCell.m; sourceTree = "<group>"; };
 		12E471C61B1F187000559995 /* WaitReceiveConsultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitReceiveConsultCell.h; sourceTree = "<group>"; };
@@ -4207,6 +4213,10 @@
 		123282371C1FEBAB00EA9DEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				12E08BE41C27D47C0061442E /* LMOrderListModel.h */,
+				12E08BE51C27D47C0061442E /* LMOrderListModel.m */,
+				12E08BE71C27D9190061442E /* LMOrderListEntity.h */,
+				12E08BE81C27D9190061442E /* LMOrderListEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -9873,6 +9883,7 @@
 				1221C1D51BDA1B45004B681D /* ClassiftGoodsEntity.m in Sources */,
 				12F46A501B20311100B8EC98 /* NewGoodsInfoDownCell.m in Sources */,
 				12C64D7B1BF42C170039CC39 /* WinningBackgroundView.m in Sources */,
+				12E08BE61C27D47C0061442E /* LMOrderListModel.m in Sources */,
 				120595331BCF994F009E6986 /* NLSubViewController.m in Sources */,
 				1232826B1C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.m in Sources */,
 				DD0E38B11B1BE5AC00AB4DB9 /* WXShopCartSqlite.m in Sources */,
@@ -10160,6 +10171,7 @@
 				1240F67C1C252E6E00D4B685 /* LMShopInfoListModel.m in Sources */,
 				128136A71B33C0AF005F9929 /* SCartListModel.m in Sources */,
 				1282217B1B18467A004613BB /* T_ChangeCell.m in Sources */,
+				12E08BE91C27D9190061442E /* LMOrderListEntity.m in Sources */,
 				1232C1D61BEC8D810033DFA0 /* NewUserAddressModel.m in Sources */,
 				775C58C41ABA7B75005B6B40 /* TopADVData.m in Sources */,
 				775843351AB95A300039B129 /* WXUITextField.m in Sources */,
