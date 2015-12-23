@@ -18,10 +18,6 @@
 #define K_Notification_Name_LoadShopCollectionListSucceed @"K_Notification_Name_LoadShopCollectionListSucceed"  //获取收藏店铺列表
 #define K_Notification_Name_LoadShopCollectionListFailed @"K_Notification_Name_LoadShopCollectionListFailed"  //获取收藏店铺失败
 
-//商家联盟商品收藏临时存储变量
-#define LMGoodsCollectionDataChange @"LMGoodsCollectionDataChange"
-#define LMShopCollectionDataChange @"LMShopCollectionDataChange"
-
 typedef enum{
     LMCollection_Type_Goods = 1,  //商品  dtype
     LMCollection_Type_Shop,     //店铺

@@ -476,7 +476,6 @@
 
 #pragma mark classifyDelegate
 -(void)clickClassifyBtnAtIndex:(NSInteger)index{
-    NSLog(@"行业ID = %ld",(long)index);
     for(ShopUnionClassifyEntity *entity in _model.classifyShopArr){
         if(entity.industryID == index){
             WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
@@ -498,14 +497,16 @@
 
 #pragma mark hotShopTitleDelegate
 -(void)shopUnionHotShopTitleClicked{
-    NSLog(@"查看更多商家");
     LMSellerListVC *sellerVC = [[LMSellerListVC alloc] init];
     [self.wxNavigationController pushViewController:sellerVC];
 }
 
 #pragma mark hotShopDelegate
 -(void)shopUnionHotShopCellBtnClicked:(id)sender{
-    NSLog(@"推荐商家");
+    ShopUnionHotShopEntity *entity = sender;
+    LMSellerInfoVC *sellerInfoVC = [[LMSellerInfoVC alloc] init];
+    sellerInfoVC.ssid = entity.sellerID;
+    [self.wxNavigationController pushViewController:sellerInfoVC];
 }
 
 #pragma mark maskViewDelegate

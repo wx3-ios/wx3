@@ -58,6 +58,7 @@
 -(void)load{
     LMGoodsInfoEntity *entity = self.cellInfo;
     [imgView setCpxViewInfo:entity.homeImg];
+    [imgView load];
     [nameLabel setText:entity.sellerName];
 
     CGFloat width = [NSString widthForString:entity.sellerName fontSize:14.0 andHeight:18];

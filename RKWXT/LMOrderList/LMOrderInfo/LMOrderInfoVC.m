@@ -15,7 +15,6 @@
 #import "LMOrderInfoContactShopCell.h"
 #import "LMOrderInfoOrderTimeCell.h"
 #import "LMOrderListEntity.h"
-#import "LMGoodsInfoVC.h"
 #import "LMRefundOrderVC.h"
 #import "LMRefundOrderSucceedVC.h"
 #import "CallBackVC.h"
@@ -255,15 +254,11 @@ enum{
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     if(section == LMOrderInfo_Section_ShopName){
-        LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
-        shopInfoVC.sshop_id = entity.shopID;
-        [self.wxNavigationController pushViewController:shopInfoVC];
+        [[CoordinateController sharedCoordinateController] toLMShopInfoVC:self shopID:entity.shopID animated:YES];
     }
     if(section == LMOrderInfo_Section_GoodsList){
         LMOrderListEntity *ent = [entity.goodsListArr objectAtIndex:row];
-        LMGoodsInfoVC *goodsInfoVC = [[LMGoodsInfoVC alloc] init];
-        goodsInfoVC.goodsId = ent.goodsID;
-        [self.wxNavigationController pushViewController:goodsInfoVC];
+        [[CoordinateController sharedCoordinateController] toLMGoodsInfoVC:self goodsID:ent.goodsID animated:YES];
     }
 }
 

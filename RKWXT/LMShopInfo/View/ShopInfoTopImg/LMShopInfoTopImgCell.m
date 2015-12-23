@@ -93,24 +93,9 @@
 
 -(void)callBtnClicked{
     LMShopInfoEntity *entity = self.cellInfo;
-    NSString *phone = [self phoneWithoutNumber:entity.shopPhone];
-    if(phone.length < 8 || phone.length > 12){
-        return;
-    }
     if(_delegate && [_delegate respondsToSelector:@selector(shopCallBtnClicked:)]){
-        [_delegate shopCallBtnClicked:phone];
+        [_delegate shopCallBtnClicked:entity.shopPhone];
     }
-}
-
--(NSString*)phoneWithoutNumber:(NSString*)phone{
-    NSString *new = [[NSString alloc] init];
-    for(NSInteger i = 0; i < phone.length; i++){
-        char c = [phone characterAtIndex:i];
-        if(c >= '0' && c <= '9'){
-            new = [new stringByAppendingString:[NSString stringWithFormat:@"%c",c]];
-        }
-    }
-    return new;
 }
 
 @end

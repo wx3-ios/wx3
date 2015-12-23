@@ -11,6 +11,7 @@
 #import "LMShopInfoNewGoodsView.h"
 #import "LMShopInfoListModel.h"
 #import "MJRefresh.h"
+#import "LMShopInfoAllGoodsEntity.h"
 
 #define Size self.bounds.size
 #define EveryItmeLoadData (10)
@@ -114,7 +115,6 @@
 #pragma mark data
 -(void)footerRefreshing{
     [_model loadShopInfoListDataWith:LMShopInfo_DataType_ComGoods and:_sshop_id andStartItem:[listArr count] andLenth:EveryItmeLoadData];
-     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)loadShopListDataSucced{
@@ -134,7 +134,8 @@
 }
 
 -(void)lmShopInfoNewGoodsBtnClicked:(id)sender{
-    
+    LMShopInfoAllGoodsEntity *entity = sender;
+    [[CoordinateController sharedCoordinateController] toLMGoodsInfoVC:self goodsID:entity.goodsID animated:YES];
 }
 
 @end

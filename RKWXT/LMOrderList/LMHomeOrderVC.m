@@ -124,9 +124,7 @@
 //跳转到关于店铺页面
 -(void)jumpToShopInfo:(NSNotification*)notification{
     LMOrderListEntity *entity = notification.object;
-    LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
-    shopInfoVC.sshop_id = entity.shopID;
-    [self.wxNavigationController pushViewController:shopInfoVC];
+    [[CoordinateController sharedCoordinateController] toLMShopInfoVC:self shopID:entity.shopID animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

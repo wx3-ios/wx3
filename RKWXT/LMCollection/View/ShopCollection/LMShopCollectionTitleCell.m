@@ -29,8 +29,8 @@
         [imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:imgView];
         
-        xOffset += imgWidth;
-        CGFloat yOffset = 5;
+        xOffset += imgWidth+5;
+        CGFloat yOffset = 8;
         CGFloat labelWidth = 150;
         CGFloat labelHeight = 18;
         namelabel = [[WXUILabel alloc] init];
@@ -41,7 +41,7 @@
         [namelabel setFont:WXFont(14.0)];
         [self.contentView addSubview:namelabel];
         
-        yOffset += labelHeight+4;
+        yOffset += labelHeight+2;
         CGFloat width = 30;
         WXUILabel *textLabel = [[WXUILabel alloc] init];
         textLabel.frame = CGRectMake(xOffset, yOffset, width, labelHeight);
@@ -67,6 +67,7 @@
 -(void)load{
     LMShopCollectionEntity *entity = self.cellInfo;
     [imgView setCpxViewInfo:entity.homeImg];
+    [imgView load];
     [namelabel setText:entity.shopName];
     [scoreLabel setText:[NSString stringWithFormat:@"%.2f",entity.score]];
 }

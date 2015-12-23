@@ -79,7 +79,7 @@
 
 -(void)load{
     LMGoodsInfoEntity *entity = self.cellInfo;
-    [_imgView setCpxViewInfo:entity.goodsImg];
+    [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goodsImg]];
     [_imgView load];
     [_nameLabel setText:entity.goodsName];
     [_numLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.stockNum]];

@@ -324,6 +324,10 @@
         ManagerAddressVC *addressVC = [[ManagerAddressVC alloc] init];
         [self.wxNavigationController pushViewController:addressVC];
     }
+    if(section == LMMakeOrder_Section_ShopName){
+        LMGoodsInfoEntity *entity = [listArr objectAtIndex:0];
+        [[CoordinateController sharedCoordinateController] toLMShopInfoVC:self shopID:entity.goodshop_id animated:YES];
+    }
 }
 
 #pragma mark makeOrder

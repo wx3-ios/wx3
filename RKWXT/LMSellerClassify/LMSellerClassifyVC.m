@@ -38,6 +38,11 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self addOBS];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setCSTTitle:@"商家分类"];
@@ -51,7 +56,6 @@
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-    [self addOBS];
     [self initTopTableView];
     
     [_model loadAllSellerListData:_industryID];

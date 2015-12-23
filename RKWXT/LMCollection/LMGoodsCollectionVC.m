@@ -33,22 +33,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self addOBS];
-    
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    if([userDefault integerForKey:LMGoodsCollectionDataChange] && _tableView){
-        listArr = [self changeGoodsCollectionData:[userDefault integerForKey:LMGoodsCollectionDataChange]];
-        [_tableView reloadData];
-    }
-}
-
--(NSArray*)changeGoodsCollectionData:(NSInteger)goodsID{
-    NSMutableArray *comArr = [NSMutableArray arrayWithArray:listArr];
-    for(LMGoodsCollectionEntity *entity in comArr){
-        if(entity.goodsID == goodsID){
-            [comArr removeObject:entity];
-        }
-    }
-    return comArr;
 }
 
 -(void)viewDidLoad{
@@ -71,6 +55,7 @@
 -(void)addOBS{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadGoodsCollectionSucced) name:K_Notification_Name_LoadGoodsCollectionListSucceed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadGoodsCollectionFailed:) name:K_Notification_Name_LoadGoodsCollectionListFailed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userCancelCollectionGoodsSucceed) name:K_Notification_Name_GoodsCancelCollectionSucceed object:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -113,6 +98,7 @@
     return cell;
 }
 
+#pragma mark notification
 -(void)loadGoodsCollectionSucced{
     [self unShowWaitView];
     listArr = _model.goodsCollectionArr;
@@ -126,6 +112,11 @@
         errorMsg = @"获取数据失败";
     }
     [UtilTool showAlertView:errorMsg];
+}
+
+-(void)userCancelCollectionGoodsSucceed{
+    [_model lmCollectionData:0 goods:0 type:LMCollection_Type_Goods dataType:CollectionData_Type_Search];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 #pragma mark

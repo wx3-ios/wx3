@@ -19,6 +19,7 @@
 #import "CDSideBarController.h"
 #import "WXWeiXinOBJ.h"
 #import <TencentOpenAPI/QQApiInterface.h>
+#import "CallBackVC.h"
 
 #import "LMShopInfoModel.h"
 #import "LMShopInfoEntity.h"
@@ -27,6 +28,7 @@
 #import "LMShopInfoAllGoodsVC.h"
 #import "LMShopInfoNewGoodsVC.h"
 #import "LMShopInfoTrendsVC.h"
+#import "LMGoodsInfoVC.h"
 
 #define Size self.bounds.size
 

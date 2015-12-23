@@ -44,6 +44,7 @@
     for(NSDictionary *shopDic in [dic objectForKey:@"shop"]){
         [array removeAllObjects];
         LMSellerInfoEntity *entity = [LMSellerInfoEntity initShopInfoEtity:[shopDic objectForKey:@"shop"]];
+        entity.shopImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.shopImg];
         for(NSDictionary *goodsDic in [shopDic objectForKey:@"goods"]){
             LMSellerInfoEntity *ent = [LMSellerInfoEntity initShopListEntity:goodsDic];
             ent.goodsImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,ent.goodsImg];

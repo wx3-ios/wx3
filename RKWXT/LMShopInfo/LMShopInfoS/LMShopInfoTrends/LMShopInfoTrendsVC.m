@@ -122,11 +122,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    LMShopInfoAllGoodsEntity *entity = [listArr objectAtIndex:section];
+    [[CoordinateController sharedCoordinateController] toLMGoodsInfoVC:self goodsID:entity.goodsID animated:YES];
 }
 
 -(void)footerRefreshing{
     [_model loadShopInfoListDataWith:LMShopInfo_DataType_Active and:_sshop_id andStartItem:[listArr count] andLenth:EveryItmeLoadData];
-    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)loadShopListDataSucced{

@@ -33,6 +33,8 @@
 // 店铺收藏
 -(void)parseShopCollectionData:(NSArray*)arr{
     if([arr count] == 0){
+        [_shopCollectionArr removeAllObjects];
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_LoadShopCollectionListSucceed object:nil];
         return;
     }
     [_shopCollectionArr removeAllObjects];
@@ -47,6 +49,8 @@
 //商品收藏
 -(void)parseGoodsCollectionData:(NSArray*)arr{
     if([arr count] == 0){
+        [_goodsCollectionArr removeAllObjects];
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_LoadGoodsCollectionListSucceed object:nil];
         return;
     }
     [_goodsCollectionArr removeAllObjects];
@@ -87,14 +91,14 @@
                 [blockSelf parseGoodsCollectionData:[[retData.data objectForKey:@"data"] objectForKey:@"goods"]];
             }
         }else{
-            //解析收藏店铺数据
+            //获取收藏店铺信息失败
             if(lmCollectionType == LMCollection_Type_Shop && collectionDataType == CollectionData_Type_Search){
-                [blockSelf parseShopCollectionData:[[retData.data objectForKey:@"data"] objectForKey:@"shop"]];
+                [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_LoadShopCollectionListFailed object:nil];
             }
             
-            //解析收藏商品数据
+            //获取收藏商品信息失败
             if(lmCollectionType == LMCollection_Type_Goods && collectionDataType == CollectionData_Type_Search){
-                [blockSelf parseGoodsCollectionData:[[retData.data objectForKey:@"data"] objectForKey:@"goods"]];
+                [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_LoadGoodsCollectionListFailed object:nil];
             }
         }
     }];

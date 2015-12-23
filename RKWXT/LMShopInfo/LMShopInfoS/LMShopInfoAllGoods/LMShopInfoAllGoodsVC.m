@@ -9,6 +9,7 @@
 #import "LMShopInfoAllGoodsVC.h"
 #import "LMShopInfoALlGoodsListCell.h"
 #import "MJRefresh.h"
+#import "LMShopInfoAllGoodsEntity.h"
 #import "LMShopInfoListModel.h"
 
 #define Size self.bounds.size
@@ -119,13 +120,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    LMShopInfoAllGoodsEntity *entity = [_model.data objectAtIndex:row];
+    [[CoordinateController sharedCoordinateController] toLMGoodsInfoVC:self goodsID:entity.goodsID animated:YES];
 }
 
 //上拉加载
 -(void)footerRefreshing{
-    
     [_model loadShopInfoListDataWith:LMShopInfo_DataType_AllGoods and:_sshop_id andStartItem:[goodsList count] andLenth:EveryItmeLoadData];
-    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
 -(void)loadShopListDataSucced{

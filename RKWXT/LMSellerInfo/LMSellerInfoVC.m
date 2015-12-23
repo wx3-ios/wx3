@@ -15,14 +15,16 @@
 #import "LMSellerInfoModel.h"
 #import "LMSellerInfoEntity.h"
 #import "LMShopInfoVC.h"
+#import "CallBackVC.h"
 
 #define Size self.bounds.size
 
-@interface LMSellerInfoVC ()<UITableViewDataSource,UITableViewDelegate,LMSellerInfoDesCellDelegate,LMSellerInfoModelDelegate,LMMoreSellerListCellDelegate>{
+@interface LMSellerInfoVC ()<UITableViewDataSource,UITableViewDelegate,LMSellerInfoDesCellDelegate,LMSellerInfoModelDelegate,LMMoreSellerListCellDelegate,UIActionSheetDelegate>{
     UITableView *_tableView;
     NSArray *shopArr;
     NSArray *infoArr;
     LMSellerInfoModel *_model;
+    NSString *shopPhone;
 }
 
 @end
@@ -227,6 +229,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.section == 1 && indexPath.row == 0){
+        LMSellerInfoEntity *sellerEntity = [shopArr objectAtIndex:indexPath.section-1];
+        [[CoordinateController sharedCoordinateController] toLMShopInfoVC:self shopID:sellerEntity.shopID animated:YES];
+    }
 }
 
 #pragma mark model
@@ -247,14 +253,58 @@
 
 #pragma mark callBtnDelegate
 -(void)lmShopInfoDesCallBtnClicked:(NSString *)sellerPhone{
-    
+    NSString *phoneStr = [self phoneWithoutNumber:sellerPhone];
+    shopPhone = phoneStr;
+    [self showAlertView:shopPhone];
+}
+
+-(void)showAlertView:(NSString*)phone{
+    NSString *title = [NSString stringWithFormat:@"联系商家:%@",phone];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:title
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:[NSString stringWithFormat:@"使用%@",kMerchantName]
+                                  otherButtonTitles:@"系统", nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex > 2){
+        return;
+    }
+    if(shopPhone.length == 0){
+        return;
+    }
+    if(buttonIndex == 1){
+        [UtilTool callBySystemAPI:shopPhone];
+        return;
+    }
+    if(buttonIndex == 0){
+        CallBackVC *backVC = [[CallBackVC alloc] init];
+        backVC.phoneName = kMerchantName;
+        if([backVC callPhone:shopPhone]){
+            [self presentViewController:backVC animated:YES completion:^{
+            }];
+        }
+    }
+}
+
+-(NSString*)phoneWithoutNumber:(NSString*)phone{
+    NSString *new = [[NSString alloc] init];
+    for(NSInteger i = 0; i < phone.length; i++){
+        char c = [phone characterAtIndex:i];
+        if(c >= '0' && c <= '9'){
+            new = [new stringByAppendingString:[NSString stringWithFormat:@"%c",c]];
+        }
+    }
+    return new;
 }
 
 -(void)moreSellerListBtnClicked:(id)entity{
     LMSellerInfoEntity *sellerEntity = entity;
-    LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
-    shopInfoVC.sshop_id = sellerEntity.shopID;
-    [self.wxNavigationController pushViewController:shopInfoVC];
+    [[CoordinateController sharedCoordinateController] toLMShopInfoVC:self shopID:sellerEntity.shopID animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -24,7 +24,10 @@
 #import "JPushMessageInfoVC.h"
 #import "FindCommonVC.h"
 #import "LuckyGoodsOrderList.h"
+
 #import "LMHomeOrderVC.h"
+#import "LMGoodsInfoVC.h"
+#import "LMShopInfoVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -159,6 +162,20 @@
     webVC.webURl = webUrl;
     webVC.titleName = title;
     [vc.wxNavigationController pushViewController:webVC];
+}
+
+-(void)toLMGoodsInfoVC:(id)sender goodsID:(NSInteger)goodsID animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    LMGoodsInfoVC *goodsInfoVC = [[LMGoodsInfoVC alloc] init];
+    goodsInfoVC.goodsId = goodsID;
+    [vc.wxNavigationController pushViewController:goodsInfoVC];
+}
+
+-(void)toLMShopInfoVC:(id)sender shopID:(NSInteger)shopID animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
+    shopInfoVC.sshop_id = shopID;
+    [vc.wxNavigationController pushViewController:shopInfoVC];
 }
 
 @end

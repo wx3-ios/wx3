@@ -45,7 +45,6 @@ typedef enum {
 -(void)toRechargeVC:(id)sender animated:(BOOL)animated;//充值
 -(void)toOrderList:(id)sender selectedShow:(NSInteger)number animated:(BOOL)animated;//订单页面
 -(void)toLuckyOrderList:(id)sender animated:(BOOL)animated;//抽奖订单
--(void)toLMOrderList:(id)sender animated:(BOOL)animated;//商家联盟订单
 -(void)toGoodsInfoVC:(id)sender goodsID:(NSInteger)goodsID animated:(BOOL)animated;//商品详情
 -(void)toUserBonusVC:(id)sender animated:(BOOL)animated; //红包
 -(void)toMakeOrderVC:(id)sender orderInfo:(id)orderInfo animated:(BOOL)animated; //下单
@@ -57,4 +56,8 @@ typedef enum {
 -(void)toJPushCenterVC:(id)sender animated:(BOOL)animated; //消息中心
 -(void)toJPushMessageInfoVC:(id)sender messageID:(NSInteger)messageID animated:(BOOL)animated; //消息详情
 -(void)toWebVC:(id)sender url:(NSString*)webUrl title:(NSString*)title animated:(BOOL)animated; //跳转到网页
+
+-(void)toLMOrderList:(id)sender animated:(BOOL)animated;//商家联盟订单
+-(void)toLMGoodsInfoVC:(id)sender goodsID:(NSInteger)goodsID animated:(BOOL)animated; //商家联盟商品详情
+-(void)toLMShopInfoVC:(id)sender shopID:(NSInteger)shopID animated:(BOOL)animated; //店铺信息页面
 @end

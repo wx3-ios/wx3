@@ -72,10 +72,8 @@
     return cell;
 }
 
-
 #pragma mark goodsBtnDelegate
 -(void)lmShopInfoSaleGoodsBtnClicked:(id)sender{
-    
 }
 
 @end
