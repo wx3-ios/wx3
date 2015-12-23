@@ -8,7 +8,6 @@
 
 #import "LMRefundOrderGoodsListCell.h"
 #import "WXRemotionImgBtn.h"
-#import "OrderListEntity.h"
 
 @interface LMRefundOrderGoodsListCell(){
     WXUIButton *_circleBtn;
@@ -90,40 +89,44 @@
 }
 
 -(void)load{
-    OrderListEntity *entity = self.cellInfo;
-    [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goods_img]];
+    LMOrderListEntity *entity = self.cellInfo;
+    [_imgView setCpxViewInfo:[NSString stringWithFormat:@"%@",entity.goodsImg]];
     [_imgView load];
-    [_namelabel setText:entity.goods_name];
+    [_namelabel setText:entity.goodsName];
     
-    NSString *newPrice = [NSString stringWithFormat:@"￥%.2f",entity.sales_price];
+    NSString *newPrice = [NSString stringWithFormat:@"￥%.2f",entity.stockPrice];
     [_newPrice setText:newPrice];
     
-    NSString *number = [NSString stringWithFormat:@"X%ld",(long)entity.sales_num];
+    NSString *number = [NSString stringWithFormat:@"X%ld",(long)entity.buyNumber];
     [_numberLabel setText:number];
+    
+    if(entity.refundState != LMRefund_State_Normal){
+        [_circleBtn setHidden:YES];
+    }
     
     [self setCircleBtnImgWith:entity.selected];
     
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Normal){
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Normal){
         [_infoLabel setTitle:@"已申请退款" forState:UIControlStateNormal];
         [_infoLabel setHidden:NO];
     }
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Agree){
         [_infoLabel setTitle:@"退款中" forState:UIControlStateNormal];
-        [_infoLabel setHidden:NO];
+        [_infoLabel setHidden:YES];
     }
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Refuse){
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Refuse){
         [_infoLabel setTitle:@"商家拒绝退款" forState:UIControlStateNormal];
         [_infoLabel setHidden:NO];
     }
-    if(entity.refund_status == Refund_Status_HasDone){
+    if(entity.refundState == LMRefund_State_HasDone){
         [_infoLabel setTitle:@"已退款" forState:UIControlStateNormal];
-        [_infoLabel setHidden:NO];
+        [_infoLabel setHidden:YES];
     }
 }
 
 //选择按钮点击
 -(void)circleBtnClick{
-    OrderListEntity *entity = self.cellInfo;
+    LMOrderListEntity *entity = self.cellInfo;
     if(!selected){
         selected = YES;
         entity.selected = YES;
@@ -132,16 +135,23 @@
         entity.selected = NO;
     }
     
-    if(entity.refund_status != Refund_Status_Normal){
-        selected = NO;
-        entity.selected = NO;
-        [UtilTool showAlertView:@"该商品已经申请退款"];
+    NSInteger number = 0;
+    for(LMOrderListEntity *ent in _allEntity.goodsListArr){
+        if(ent.refundState == LMRefund_State_Normal && ent.selected){
+            number++;
+        }
+    }
+    if(number == [_allEntity.goodsListArr count]){
+        _allEntity.selectAll = YES;
+    }
+    if(number != [_allEntity.goodsListArr count]){
+        _allEntity.selectAll = NO;
     }
     
-    if(entity.refund_status == Refund_Status_Normal){
-//        if(_delegate && [_delegate respondsToSelector:@selector(selectGoods)]){
-//            [_delegate selectGoods];
-//        }
+    if(entity.refundState == LMRefund_State_Normal){
+        if(_delegate && [_delegate respondsToSelector:@selector(selectGoods)]){
+            [_delegate selectGoods];
+        }
     }
     
     [self setCircleBtnImgWith:selected];
@@ -156,11 +166,11 @@
 }
 
 -(void)searchRefundstate{
-    OrderListEntity *entity = self.cellInfo;
-    if(entity.refund_status == Refund_Status_Being/* && entity.shopDeal_status == ShopDeal_Refund_Agree*/){
-//        if(_delegate && [_delegate respondsToSelector:@selector(searchRefundStatus:)]){
-//            [_delegate searchRefundStatus:entity];
-//        }
+    LMOrderListEntity *entity = self.cellInfo;
+    if((entity.refundState == LMRefund_State_Being && entity.shopDealType == entity.shopDealType == LMShopDeal_Refund_Agree) || entity.refundState == LMRefund_State_HasDone){
+        if(_delegate && [_delegate respondsToSelector:@selector(searchRefundStatus:)]){
+            [_delegate searchRefundStatus:entity];
+        }
     }
 }
 

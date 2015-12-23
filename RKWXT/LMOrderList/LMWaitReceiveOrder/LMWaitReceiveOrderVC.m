@@ -68,6 +68,7 @@ enum{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(completeLMOrderListSucceed:) name:K_Notification_UserOderList_CompleteSucceed object:nil];
     [notificationCenter addObserver:self selector:@selector(completeLMOrderListFailed:) name:K_Notification_UserOderList_CompleteFailed object:nil];
+    [notificationCenter addObserver:self selector:@selector(applyRefundSucceed:) name:K_Notification_Name_RefundSucceed object:nil];
 }
 
 //集成刷新控件
@@ -211,10 +212,14 @@ enum{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
+    LMOrderListEntity *entity = [orderListArr objectAtIndex:section];
     if(row == Order_Show_Shop){
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_JumpToShopInfo object:entity];
         return;
     }
-    LMOrderListEntity *entity = [orderListArr objectAtIndex:section];
+    if(row == [entity.goodsListArr count]+1){
+        return;
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_JumpToLMGoodsInfo object:entity];
 }
 
@@ -304,9 +309,27 @@ enum{
     [UtilTool showAlertView:message];
 }
 
+-(void)applyRefundSucceed:(NSNotification*)notification{
+    LMOrderListEntity *entity = notification.object;
+    NSUInteger number = 0;
+    for(LMOrderListEntity *ent in entity.goodsListArr){
+        if(ent.refundState != LMRefund_State_Normal){
+            number++;
+        }
+    }
+    //如果该订单下所有商品都申请退款
+    if(number == [entity.goodsListArr count]){
+        [orderListArr removeObject:entity];
+        [_tableView reloadData];
+    }else{
+        [self setupRefresh];
+    }
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CompleteSucceed object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_UserOderList_CompleteFailed object:nil];
 }
 
 @end

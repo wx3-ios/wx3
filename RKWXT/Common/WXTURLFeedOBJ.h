@@ -110,6 +110,7 @@ typedef enum {
     WXT_UrlFeed_Type_Home_LMCollection,
     WXT_UrlFeed_Type_Home_LMMakeOrder,
     WXT_UrlFeed_Type_Home_LMorderList,
+    WXT_UrlFeed_Type_Home_OrderEvaluate,
     
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;

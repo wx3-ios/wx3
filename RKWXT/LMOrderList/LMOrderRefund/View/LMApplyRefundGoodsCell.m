@@ -8,7 +8,7 @@
 
 #import "LMApplyRefundGoodsCell.h"
 #import "WXRemotionImgBtn.h"
-#import "OrderListEntity.h"
+#import "LMOrderListEntity.h"
 
 @interface LMApplyRefundGoodsCell(){
     WXRemotionImgBtn *_goodsImg;
@@ -77,13 +77,13 @@
 }
 
 -(void)load{
-    OrderListEntity *entity = self.cellInfo;
-    [_goodsImg setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goods_img]];
+    LMOrderListEntity *entity = self.cellInfo;
+    [_goodsImg setCpxViewInfo:[NSString stringWithFormat:@"%@",entity.goodsImg]];
     [_goodsImg load];
-    [_goodsInfo setText:entity.goods_name];
+    [_goodsInfo setText:entity.goodsName];
     [_infoLabel setText:entity.stockName];
-    [_goodsPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.sales_price]];
-    [_goodsNum setText:[NSString stringWithFormat:@"×%ld",(long)entity.sales_num]];
+    [_goodsPrice setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice]];
+    [_goodsNum setText:[NSString stringWithFormat:@"×%ld",(long)entity.buyNumber]];
 }
 
 @end

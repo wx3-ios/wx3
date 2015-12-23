@@ -16,6 +16,6 @@
 @end
 
 @protocol LMOrderInfoGoodsListCellDelegate <NSObject>
--(void)refundBtnClicked;
+-(void)refundBtnClicked:(id)sender;
 
 @end

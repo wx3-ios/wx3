@@ -56,6 +56,7 @@
     [notificationCenter addObserver:self selector:@selector(jumpToLMGoodsInfoVC:) name:K_Notification_Name_JumpToLMGoodsInfo object:nil];
     [notificationCenter addObserver:self selector:@selector(jumpToPayVC:) name:K_Notification_Name_JumpToPay object:nil];
     [notificationCenter addObserver:self selector:@selector(jumpToEvaluate:) name:K_Notification_Name_JumpToEvaluate object:nil];
+    [notificationCenter addObserver:self selector:@selector(jumpToShopInfo:) name:K_Notification_Name_JumpToShopInfo object:nil];
 }
 
 -(NSInteger)numberOfTabsInDLTabedSlideView:(DLTabedSlideView *)sender{
@@ -118,6 +119,14 @@
     LMOrderEvaluteVC *evaluateVC = [[LMOrderEvaluteVC alloc] init];
     evaluateVC.orderEntity = entity;
     [self.wxNavigationController pushViewController:evaluateVC];
+}
+
+//跳转到关于店铺页面
+-(void)jumpToShopInfo:(NSNotification*)notification{
+    LMOrderListEntity *entity = notification.object;
+    LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
+    shopInfoVC.sshop_id = entity.shopID;
+    [self.wxNavigationController pushViewController:shopInfoVC];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

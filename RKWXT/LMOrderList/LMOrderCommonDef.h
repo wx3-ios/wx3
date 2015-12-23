@@ -12,6 +12,8 @@
 #define K_Notification_Name_JumpToLMGoodsInfo  @"K_Notification_Name_JumpToLMGoodsInfo"
 #define K_Notification_Name_JumpToPay          @"K_Notification_Name_JumpToPay"
 #define K_Notification_Name_JumpToEvaluate     @"K_Notification_Name_JumpToEvaluate"
+#define K_Notification_Name_RefundSucceed  @"K_Notification_Name_RefundSucceed"
+#define K_Notification_Name_JumpToShopInfo @"K_Notification_Name_JumpToShopInfo"
 
 enum{
     LMOrderList_All = 0,
@@ -32,5 +34,6 @@ enum{
 #import "LMOrderInfoVC.h"
 #import "OrderPayVC.h"
 #import "LMOrderEvaluteVC.h"
+#import "LMShopInfoVC.h"
 
 #endif /* LMOrderCommonDef_h */

@@ -18,6 +18,6 @@
 @end
 
 @protocol LMEvaluteGoodsCellDelegate <NSObject>
--(void)userEvaluteTextFieldChanged:(LMEvaluteGoodsCell*)cell;
+-(void)userEvaluteTextFieldChanged:(LMEvaluteGoodsCell*)cell goodsID:(NSInteger)goods_id;
 
 @end

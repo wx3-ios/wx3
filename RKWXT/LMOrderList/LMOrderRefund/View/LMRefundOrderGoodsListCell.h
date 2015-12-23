@@ -7,9 +7,19 @@
 //
 
 #import "WXUITableViewCell.h"
+#import "LMOrderListEntity.h"
 
 #define RefundGoodsListCellHeight (92)
 
+@protocol LMRefundSelectGoodsDelegate;
+
 @interface LMRefundOrderGoodsListCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMRefundSelectGoodsDelegate>delegate;
+@property (nonatomic,strong) LMOrderListEntity *allEntity;
+@end
+
+@protocol LMRefundSelectGoodsDelegate <NSObject>
+-(void)selectGoods;
+-(void)searchRefundStatus:(id)sender;
 
 @end

@@ -214,10 +214,14 @@ enum{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
+    LMOrderListEntity *entity = [orderListArr objectAtIndex:section];
     if(row == Order_Show_Shop){
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_JumpToShopInfo object:entity];
         return;
     }
-    LMOrderListEntity *entity = [orderListArr objectAtIndex:section];
+    if(row == [entity.goodsListArr count]+1){
+        return;
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_JumpToLMGoodsInfo object:entity];
 }
 

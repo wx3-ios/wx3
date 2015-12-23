@@ -36,15 +36,15 @@
         [_textField setPlaceholder:@"请写下对商品的感受吧，对他人帮助很大哦!"];
         [_textField setTextColor:WXColorWithInteger(0x646464)];
         [_textField setWxDelegate:self];
-//        [_textField addTarget:self action:@selector(textFiledValueDidChanged:) forControlEvents:UIControlEventEditingChanged];
         [self.contentView addSubview:_textField];
     }
     return self;
 }
 
 -(void)wxTextViewDidChange:(WXUITextView *)textView{
-    if(_delegate && [_delegate respondsToSelector:@selector(userEvaluteTextFieldChanged:)]){
-        [_delegate userEvaluteTextFieldChanged:self];
+    LMOrderListEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(userEvaluteTextFieldChanged:goodsID:)]){
+        [_delegate userEvaluteTextFieldChanged:self goodsID:entity.goodsID];
     }
 }
 

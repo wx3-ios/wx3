@@ -10,6 +10,14 @@
 
 #define LMRefundOrderHandleCellHeight (47)
 
+@protocol LMRefundAllBtnDelegate;
+
 @interface LMRefundOrderHandleCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMRefundAllBtnDelegate>delegate;
+@end
+
+@protocol LMRefundAllBtnDelegate <NSObject>
+-(void)selectAllGoods;
+-(void)lmRefundGoodsBtnClicked:(id)sender;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "LMRefundOrderHandleCell.h"
-#import "OrderListEntity.h"
+#import "LMOrderListEntity.h"
 
 @interface LMRefundOrderHandleCell(){
     WXUIButton *_circleBtn;
@@ -75,33 +75,34 @@
 }
 
 -(void)load{
-    OrderListEntity *entity = self.cellInfo;
+    LMOrderListEntity *entity = self.cellInfo;
     
     CGFloat price = 0.0;
-    for(OrderListEntity *ent in entity.goodsArr){
+    for(LMOrderListEntity *ent in entity.goodsListArr){
         if(ent.selected){
-            price += ent.factPayMoney;
+            price += ent.goodsValue;
         }else{
-            //            price = 0.0;
+            price += 0.0;
         }
     }
     [_pricelabel setText:[NSString stringWithFormat:@"合计: ￥%.2f",price]];
     [self setCircleBtnImgWith:entity.selectAll];
     
     NSInteger num = 0;
-    for(OrderListEntity *ent in entity.goodsArr){
-        if(ent.refund_status != Refund_Status_Normal){
+    for(LMOrderListEntity *ent in entity.goodsListArr){
+        if(ent.refundState != LMRefund_State_Normal){
             num++;
         }
     }
-    if(num == [entity.goodsArr count]){
+    if(num == [entity.goodsListArr count]){
         [btn setHidden:YES];
+        [_circleBtn setHidden:YES];
     }
 }
 
 //选择按钮点击
 -(void)circleBtnClick{
-    OrderListEntity *entity = self.cellInfo;
+    LMOrderListEntity *entity = self.cellInfo;
     if(!selected){
         selected = YES;
         entity.selectAll = YES;
@@ -109,15 +110,15 @@
         selected = NO;
         entity.selectAll = NO;
     }
-    for(OrderListEntity *ent in entity.goodsArr){
+    for(LMOrderListEntity *ent in entity.goodsListArr){
         ent.selected = entity.selectAll;
-        if(ent.refund_status != Refund_Status_Normal){
+        if(ent.refundState != LMRefund_State_Normal){
             ent.selected = NO;
         }
     }
-//    if(_delegate && [_delegate respondsToSelector:@selector(selectAllGoods)]){
-//        [_delegate selectAllGoods];
-//    }
+    if(_delegate && [_delegate respondsToSelector:@selector(selectAllGoods)]){
+        [_delegate selectAllGoods];
+    }
     [self setCircleBtnImgWith:selected];
 }
 
@@ -130,10 +131,10 @@
 }
 
 -(void)refundBtn{
-    OrderListEntity *entity = self.cellInfo;
-//    if(_delegate && [_delegate respondsToSelector:@selector(refundGoodsBtnClicked:)]){
-//        [_delegate refundGoodsBtnClicked:entity];
-//    }
+    LMOrderListEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(lmRefundGoodsBtnClicked:)]){
+        [_delegate lmRefundGoodsBtnClicked:entity];
+    }
 }
 
 @end

@@ -91,11 +91,39 @@
     [stockLabel setText:entity.stockName];
     [priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.stockPrice]];
     [numberLabel setText:[NSString stringWithFormat:@"X%ld",(long)entity.buyNumber]];
+    
+    [self setRefundBtnState:entity];
+}
+
+-(void)setRefundBtnState:(LMOrderListEntity*)entity{
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Normal){
+        [refundBtn setHidden:NO];
+        [refundBtn setEnabled:NO];
+        [refundBtn setTitle:@"已申请退款" forState:UIControlStateNormal];
+    }
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Agree){
+        [refundBtn setHidden:NO];
+        [refundBtn setEnabled:YES];
+        [refundBtn setTitle:@"退款中" forState:UIControlStateNormal];
+        [refundBtn setBackgroundColor:WXColorWithInteger(0xff9c00)];
+    }
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Refuse){
+        [refundBtn setHidden:NO];
+        [refundBtn setEnabled:YES];
+        [refundBtn setTitle:@"商家拒绝退款" forState:UIControlStateNormal];
+    }
+    if(entity.refundState == LMRefund_State_HasDone){
+        [refundBtn setHidden:NO];
+        [refundBtn setEnabled:YES];
+        [refundBtn setTitle:@"已退款" forState:UIControlStateNormal];
+        [refundBtn setBackgroundColor:WXColorWithInteger(0xff9c00)];
+    }
 }
 
 -(void)refundBtnClicke{
-    if(_delgate && [_delgate respondsToSelector:@selector(refundBtnClicked)]){
-        [_delgate refundBtnClicked];
+    LMOrderListEntity *entity = self.cellInfo;
+    if(_delgate && [_delgate respondsToSelector:@selector(refundBtnClicked:)]){
+        [_delgate refundBtnClicked:entity];
     }
 }
 

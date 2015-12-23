@@ -10,18 +10,34 @@
 #import "LMEvaluteGoodsCell.h"
 #import "LMEvaluteUserHandleCell.h"
 #import "LMOrderListEntity.h"
+#import "LMOrderEvaluateModel.h"
 
 #define Size self.bounds.size
 #define DownViewHeight (45)
 
-@interface LMOrderEvaluteVC()<UITableViewDataSource,UITableViewDelegate,LMEvaluteGoodsCellDelegate>{
+@interface LMOrderEvaluteVC()<UITableViewDataSource,UITableViewDelegate,LMEvaluteGoodsCellDelegate,LMOrderEvaluateModelDelegate,LMEvaluteUserHandleCellDelegate>{
     UITableView *_tableView;
     LMOrderListEntity *entity;
+    LMOrderEvaluateModel *_model;
+    
+    NSMutableDictionary *userMsgDic;
+    NSMutableDictionary *goodsScoreDic;
 }
-@property (nonatomic,strong) NSString *userMessage;
 @end
 
 @implementation LMOrderEvaluteVC
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _model = [[LMOrderEvaluateModel alloc] init];
+        [_model setDelegate:self];
+        
+        userMsgDic = [[NSMutableDictionary alloc] init];
+        goodsScoreDic = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -37,6 +53,17 @@
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self createDownView];
+    
+    [self userMsgDic];
+}
+
+//初始化评价
+-(void)userMsgDic{
+    for(LMOrderListEntity *ent in entity.goodsListArr){
+        NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)ent.goodsID];
+        [userMsgDic setObject:@"好评" forKey:goodsIDStr];
+        [goodsScoreDic setObject:@"5" forKey:goodsIDStr];
+    }
 }
 
 -(void)createDownView{
@@ -113,11 +140,11 @@
     if(!cell){
         cell = [[LMEvaluteGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if([entity.goodsListArr count] > 0){
         [cell setCellInfo:[entity.goodsListArr objectAtIndex:section]];
     }
     [cell setDelegate:self];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell load];
     return cell;
 }
@@ -129,6 +156,10 @@
         cell = [[LMEvaluteUserHandleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([entity.goodsListArr count] > 0){
+        [cell setCellInfo:[entity.goodsListArr objectAtIndex:section]];
+    }
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -146,21 +177,58 @@
     return cell;
 }
 
--(void)userEvaluteTextFieldChanged:(LMEvaluteGoodsCell*)cell{
+//评语
+-(void)userEvaluteTextFieldChanged:(LMEvaluteGoodsCell*)cell goodsID:(NSInteger)goods_id{
     NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     if(indexPath){
         NSInteger row = indexPath.row;
-        if(row == 1){
-            self.userMessage = cell.textField.text;
+        if(row == 0){
+            [userMsgDic setObject:cell.textField.text forKey:[NSString stringWithFormat:@"%ld",(long)goods_id]];
         }
     }
 }
 
+//评星
+-(void)userEvaluateGoods:(NSInteger)score goodsID:(NSInteger)goodsID{
+    NSString *scoreStr = [NSString stringWithFormat:@"%ld",(long)score];
+    NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)goodsID];
+    [goodsScoreDic setObject:scoreStr forKey:goodsIDStr];
+}
+
 -(void)submitEvalute{
-    [UtilTool showAlertView:@"评价成功"];
+    NSString *evaluateStr = [[NSString alloc] init];
+    NSInteger number = 0 ;
+    for(LMOrderListEntity *ent in entity.goodsListArr){
+        NSString *goodsIDStr = [NSString stringWithFormat:@"%ld",(long)ent.goodsID];
+        NSInteger scord = [[goodsScoreDic objectForKey:goodsIDStr] integerValue];
+        NSString *message = [userMsgDic objectForKey:goodsIDStr];
+        NSString *comStr = [NSString stringWithFormat:@"%ld^%ld^%@",(long)ent.goodsID,(long)scord,message];
+        
+        number++;
+        evaluateStr = [evaluateStr stringByAppendingString:comStr];
+        if(number < [ent.goodsListArr count]){
+            evaluateStr = [evaluateStr stringByAppendingString:@"^^"];
+        }
+    }
+    
+    [_model userEvaluateOrder:entity.orderId andInfo:evaluateStr type:OrderEvaluate_Type_Add];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)lmOrderEvaluateSucceed{
+    [self unShowWaitView];
+    [UtilTool showAlertView:@"谢谢您的评价"];
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_UserEvaluateOrderSucceed object:entity];
     [self.wxNavigationController popViewControllerAnimated:YES completion:^{
     }];
+}
+
+-(void)lmOrderEvaluateFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"评价失败，请重试";
+    }
+    [UtilTool showAlertView:errorMsg];
 }
 
 @end

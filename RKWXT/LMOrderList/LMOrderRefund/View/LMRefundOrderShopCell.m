@@ -7,11 +7,11 @@
 //
 
 #import "LMRefundOrderShopCell.h"
-#import "WXRemotionImgBtn.h"
+#import "LMOrderListEntity.h"
 
 @interface LMRefundOrderShopCell(){
-    WXRemotionImgBtn *imgView;
     WXUILabel *nameLabel;
+    WXUIImageView *arrowImgView;
 }
 @end
 
@@ -20,51 +20,49 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        CGFloat xOffset = 10.0;
-        CGFloat imgWidth = 20;
+        CGFloat xOffset = 10;
+        CGFloat imgWidth = 15;
         CGFloat imgHeight = imgWidth;
-        imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (LMRefundOrderShopCellHeight-imgHeight)/2, imgWidth, imgHeight)];
-        [imgView setUserInteractionEnabled:NO];
+        WXUIImageView *imgView = [[WXUIImageView alloc] init];
+        imgView.frame = CGRectMake(xOffset, (LMRefundOrderShopCellHeight-imgHeight)/2, imgWidth, imgHeight);
+        [imgView setImage:[UIImage imageNamed:@"LMSellerIcon.png"]];
         [self.contentView addSubview:imgView];
         
-        xOffset += imgWidth+4;
-        UIFont *font = WXFont(14.0);
-        CGSize nameSize = [self sizeOfString:kMerchantName font:font];
+        xOffset += imgWidth+10;
+        CGFloat nameLabelWidth = 150;
+        CGFloat nameLabelheight = 20;
         nameLabel = [[WXUILabel alloc] init];
-        nameLabel.frame = CGRectMake(xOffset, (LMRefundOrderShopCellHeight-nameSize.height)/2, nameSize.width, nameSize.height);
+        nameLabel.frame = CGRectMake(xOffset, (LMRefundOrderShopCellHeight-nameLabelheight)/2, nameLabelWidth, nameLabelheight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
-        [nameLabel setText:kMerchantName];
-        [nameLabel setTextAlignment:NSTextAlignmentCenter];
+        [nameLabel setTextAlignment:NSTextAlignmentLeft];
         [nameLabel setTextColor:WXColorWithInteger(0x000000)];
-        [nameLabel setFont:font];
+        [nameLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:nameLabel];
         
-        xOffset += nameSize.width+4;
-        CGFloat nextImgWidth = 8;
-        CGFloat nextImgHeight = 12;
-        UIImageView *nextImgView = [[UIImageView alloc] init];
-        nextImgView.frame = CGRectMake(xOffset, (LMRefundOrderShopCellHeight-nextImgHeight)/2, nextImgWidth, nextImgHeight);
-        [nextImgView setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];
-        [self.contentView addSubview:nextImgView];
+        xOffset += nameLabelWidth+10;
+        CGFloat width = 8;
+        CGFloat height = 12;
+        arrowImgView = [[WXUIImageView alloc] init];
+        arrowImgView.frame = CGRectMake(xOffset, (LMRefundOrderShopCellHeight-height)/2, width, height);
+        [arrowImgView setBackgroundColor:[UIColor clearColor]];
+        [arrowImgView setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];
+        [self.contentView addSubview:arrowImgView];
     }
     return self;
 }
 
 -(void)load{
+    LMOrderListEntity *entity = self.cellInfo;
     
-}
-
-- (CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{
-    if(!txt || [txt isKindOfClass:[NSNull class]]){
-        txt = @" ";
-    }
-    if(isIOS7){
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-        return [txt sizeWithAttributes:@{NSFontAttributeName: font}];
-#endif
-    }else{
-        return [txt sizeWithFont:font];
-    }
+    [nameLabel setText:entity.shopName];
+    
+    CGRect rect = nameLabel.frame;
+    rect.size.width = [NSString widthForString:entity.shopName fontSize:15.0 andHeight:20];
+    [nameLabel setFrame:rect];
+    
+    CGRect rect1 = arrowImgView.frame;
+    rect1.origin.x = rect.size.width+rect.origin.x+10;
+    [arrowImgView setFrame:rect1];
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "LMApplyRefundStateCell.h"
-#import "OrderListEntity.h"
+#import "LMOrderListEntity.h"
 
 @interface LMApplyRefundStateCell(){
     UILabel *_infoLabel;
@@ -45,23 +45,23 @@
 }
 
 -(void)load{
-    OrderListEntity *entity = self.cellInfo;
+    LMOrderListEntity *entity = self.cellInfo;
     [_infoLabel setText:[self refundStateWithType:entity]];
-    [_moneyLabel setText:[NSString stringWithFormat:@"应退款:%.2f元",entity.refundTotalMoney]];
+    [_moneyLabel setText:[NSString stringWithFormat:@"应退款:%.2f元",entity.refundMoney]];
 }
 
--(NSString *)refundStateWithType:(OrderListEntity*)entity{
+-(NSString *)refundStateWithType:(LMOrderListEntity*)entity{
     NSString *str = nil;
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Normal){
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Normal){
         str = @"已申请退款";
     }
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Agree){
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Agree){
         str = @"退款中";
     }
-    if(entity.refund_status == Refund_Status_HasDone){
+    if(entity.refundState == LMRefund_State_HasDone){
         str = @"已退款";
     }
-    if(entity.refund_status == Refund_Status_Being && entity.shopDeal_status == ShopDeal_Refund_Refuse){
+    if(entity.refundState == LMRefund_State_Being && entity.shopDealType == LMShopDeal_Refund_Refuse){
         str = @"拒绝退款";
     }
     return str;

@@ -7,13 +7,14 @@
 //
 
 #import "LMRefundOrderVC.h"
-#import "OrderListEntity.h"
-#import "RefundCompanyCell.h"
-#import "RefundGoodsListCell.h"
-#import "RefundConsultCell.h"
+#import "LMOrderListEntity.h"
+#import "LMRefundOrderShopCell.h"
+#import "LMRefundOrderGoodsListCell.h"
+#import "LMRefundOrderHandleCell.h"
 #import "OrderListModel.h"
 #import "RefundSucceedVC.h"
-#import "OrderCommonDef.h"
+#import "LMOrderCommonDef.h"
+#import "LMHomeOrderVC.h"
 
 #define TextViewHeight (65)
 #define Size self.bounds.size
@@ -26,9 +27,9 @@ enum{
     Refund_Section_Invalid,
 };
 
-@interface LMRefundOrderVC ()<UITableViewDataSource,UITableViewDelegate,SelectGoodsDelegate,SelectAllGoodsDelegate>{
+@interface LMRefundOrderVC ()<UITableViewDataSource,UITableViewDelegate,LMRefundSelectGoodsDelegate,LMRefundAllBtnDelegate>{
     UITableView *_tableView;
-    OrderListEntity *orderEntity;
+    LMOrderListEntity *orderEntity;
     
     WXUITextView *_textView;
 }
@@ -41,10 +42,9 @@ enum{
     [self setBackgroundColor:[UIColor whiteColor]];
     [self setCSTTitle:@"退款申请"];
     
-//    orderEntity = _entity;
+    orderEntity = _entity;
     
     [self createTextViewWithHeight:TextViewHeight];
-    
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, TextViewHeight+1, self.bounds.size.width, self.bounds.size.height-TextViewHeight);
     [_tableView setDelegate:self];
@@ -60,7 +60,7 @@ enum{
     CGFloat yOffset = 12;
     _textView = [[WXUITextView alloc] init];
     _textView.frame = CGRectMake(xOffset, yOffset, self.bounds.size.width-2*xOffset, TextViewHeight-2*yOffset);
-    [_textView setBackgroundColor:[UIColor grayColor]];
+    [_textView setBackgroundColor:WXColorWithInteger(0x9b9b9b)];
     [_textView setPlaceholder:@"给商家留言 (必填*)"];
     [_textView setPlaceholderColor:WXColorWithInteger(0xb8b8b8)];
     [_textView setTextAlignment:NSTextAlignmentLeft];
@@ -77,6 +77,27 @@ enum{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return Refund_Section_Invalid;
 }
@@ -89,7 +110,7 @@ enum{
             number = 1;
             break;
         case Refund_Section_GoodsInfo:
-            number = [orderEntity.goodsArr count];
+            number = [orderEntity.goodsListArr count];
             break;
         default:
             break;
@@ -101,13 +122,13 @@ enum{
     CGFloat height = 0.0;
     switch (indexPath.section) {
         case Refund_Section_Company:
-            height = RefundCompanyCellHeight;
+            height = LMRefundOrderShopCellHeight;
             break;
         case Refund_Section_GoodsInfo:
             height = RefundGoodsListCellHeight;
             break;
         case Refund_Section_Consult:
-            height = RefundConsultCellHeight;
+            height = LMRefundOrderHandleCellHeight;
             break;
         default:
             break;
@@ -117,23 +138,25 @@ enum{
 
 -(WXUITableViewCell *)tableViewForCompanyCell{
     static NSString *identifier = @"companyCell";
-    RefundCompanyCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    LMRefundOrderShopCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[RefundCompanyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LMRefundOrderShopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setCellInfo:orderEntity];
     [cell load];
     return cell;
 }
 
 -(WXUITableViewCell*)tableviewForGoodsInfoCell:(NSInteger)row{
     static NSString *identifier = @"goodsInfoCell";
-    RefundGoodsListCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    LMRefundOrderGoodsListCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[RefundGoodsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LMRefundOrderGoodsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    OrderListEntity *ent = [orderEntity.goodsArr objectAtIndex:row];
+    [cell setAllEntity:orderEntity];
+    OrderListEntity *ent = [orderEntity.goodsListArr objectAtIndex:row];
     [cell setCellInfo:ent];
     [cell setDelegate:self];
     [cell load];
@@ -142,9 +165,9 @@ enum{
 
 -(WXUITableViewCell*)tableviewForConsultCell{
     static NSString *identifier = @"consultCell";
-    RefundConsultCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    LMRefundOrderHandleCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[RefundConsultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LMRefundOrderHandleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setCellInfo:orderEntity];
@@ -189,13 +212,13 @@ enum{
     [_tableView reloadData];
 }
 
--(void)refundGoodsBtnClicked:(id)sender{
-    OrderListEntity *entity1 = sender;
+-(void)lmRefundGoodsBtnClicked:(id)sender{
+    LMOrderListEntity *entity1 = sender;
     NSInteger number = 0;
-    NSInteger goodsArrNum = [entity1.goodsArr count];
+    NSInteger goodsArrNum = [entity1.goodsListArr count];
     NSInteger refundOrderID = 0;
-    for(OrderListEntity *ent in entity1.goodsArr){
-        if(ent.selected && ent.refund_status == Refund_Status_Normal){
+    for(LMOrderListEntity *ent in entity1.goodsListArr){
+        if(ent.selected && ent.refundState == LMRefund_State_Normal){
             number ++;
             refundOrderID = ent.orderGoodsID;
         }
@@ -204,7 +227,7 @@ enum{
         [UtilTool showAlertView:@"请选择要退款的单品"];
         return;
     }
-    if(number != 1){
+    if(number != 1 && !entity1.selectAll){
         [UtilTool showAlertView:@"抱歉!每次只允许申请退一件单品"];
         return;
     }
@@ -212,12 +235,12 @@ enum{
         return;
     }
     if(number == 1){
-        [[OrderListModel shareOrderListModel] refundOrderWithRefundType:Refund_Type_Goods withOrderGoodsID:refundOrderID orderID:entity1.order_id withMessage:_textView.text];
+        [[OrderListModel shareOrderListModel] refundOrderWithRefundType:Refund_Type_Goods withOrderGoodsID:refundOrderID orderID:entity1.orderId withMessage:_textView.text];
         return;
     }
     
     if((entity1.selectAll || (number == goodsArrNum)) && [self checkUserMessage]){
-        [[OrderListModel shareOrderListModel] refundOrderWithRefundType:Refund_Type_Order withOrderGoodsID:0 orderID:entity1.order_id withMessage:_textView.text];
+        [[OrderListModel shareOrderListModel] refundOrderWithRefundType:Refund_Type_Order withOrderGoodsID:0 orderID:entity1.orderId withMessage:_textView.text];
     }
 }
 
@@ -235,10 +258,17 @@ enum{
 }
 
 -(void)refundOrderSucceed{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_RefundSucceed object:_entity];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_RefundSucceed object:_entity];
     [UtilTool showTipView:@"退款金额将在7个工作日内退还到您的账户，请注意查收!"];
-    [self.wxNavigationController popViewControllerAnimated:YES completion:^{
-    }];
+    NSArray *viewControllers = [[self wxNavigationController] viewControllers];
+    for( int i = 0; i < [viewControllers count]; i++){
+        id obj = [viewControllers objectAtIndex:[viewControllers count]-i-1];
+        if([obj isKindOfClass:[LMHomeOrderVC class]]){
+            [self.wxNavigationController popToViewController:obj animated:YES Completion:^{
+            }];
+            return;
+        }
+    }
 }
 
 -(void)refundOrderFailed:(NSNotification*)notification{

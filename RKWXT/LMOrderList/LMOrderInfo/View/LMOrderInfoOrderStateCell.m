@@ -64,29 +64,20 @@
     if(entity.orderState == LMorder_State_Complete){
         return @"已完成";
     }
-    if(entity.orderState == LMorder_State_None){
-        return @"交易中";
-    }
     //订单可操作，未付款
     if(entity.orderState == LMorder_State_Normal && entity.payType == LMorder_PayType_WaitPay){
         return @"未支付";
     }
     //订单已付款，可操作，未发货
     if(entity.orderState == LMorder_State_Normal && entity.payType == LMorder_PayType_HasPay && entity.sendType == LMorder_SendType_WaitSend){
-        NSInteger count = 0;
-        for(LMOrderListEntity *ent in entity.goodsListArr){
-            if(ent.refundState == LMRefund_State_Being){
-                count++;
-            }
-            //全部申请退款
-            if(count==entity.goodsListArr.count){
-                return @"退款中";
-            }
-        }
         return @"待发货";
     }
     //订单已付款，可操作，已发货
     if(entity.orderState == LMorder_State_Normal && entity.payType == LMorder_PayType_HasPay && entity.sendType == LMorder_SendType_HasSend){
+        return @"已发货";
+    }
+    //订单不可操作、已付款、未发货
+    if(entity.orderState == LMorder_State_None && entity.payType == LMorder_PayType_HasPay){
         NSInteger number1 = 0;
         NSInteger number2 = 0;
         NSInteger number3 = 0;
@@ -117,7 +108,7 @@
                 return @"退款中";
             }
         }
-        return @"已发货";
+        return @"交易中";
     }
     
     return orderState;

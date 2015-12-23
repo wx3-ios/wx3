@@ -7,12 +7,11 @@
 //
 
 #import "LMRefundOrderSucceedVC.h"
-#import "OrderGoodsCell.h"
-#import "OrderListEntity.h"
+#import "LMOrderListEntity.h"
 #import "RefundStateModel.h"
 #import "RefundStateEntity.h"
-#import "RefundSucceedConsultCell.h"
-#import "RefundSucceedGoodsListCell.h"
+#import "LMApplyRefundGoodsCell.h"
+#import "LMApplyRefundStateCell.h"
 
 enum{
     RefundSucceed_Section_Title = 0,
@@ -29,7 +28,7 @@ enum{
     UITableView *_tableView;
     NSArray *infoArr;
     NSMutableArray *_baseArr;
-    OrderListEntity *orderEntity;
+    LMOrderListEntity *orderEntity;
     RefundStateModel *_model;
 }
 
@@ -59,9 +58,30 @@ enum{
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-//    orderEntity = _entity;
+    orderEntity = _entity;
     [_model loadRefundInfoWith:orderEntity.orderGoodsID];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+//改变cell分割线置顶
+-(void)viewDidLayoutSubviews{
+    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -92,10 +112,10 @@ enum{
             height = 35;
             break;
         case RefundSucceed_Section_Consult:
-            height = RefundSucceedConsultCellHeight;
+            height = LMApplyRefundStateCellHeight;
             break;
         case RefundSucceed_Section_GoodsList:
-            height = RefundSucceedGoodsListCellheight;
+            height = LMApplyRefundGoodsCellHeight;
             break;
         case RefundSucceed_Section_Name:
         case RefundSucceed_Section_Phone:
@@ -116,11 +136,11 @@ enum{
     return height;
 }
 
--(WXTUITableViewCell *)tableViewForTitleCell{
+-(WXUITableViewCell *)tableViewForTitleCell{
     static NSString *identifier = @"titleCell";
-    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell.textLabel setText:@"我们已经收到您的退款申请，请将商品寄到以下地址"];
@@ -129,11 +149,11 @@ enum{
     return cell;
 }
 
--(WXTUITableViewCell *)tableViewForInfoCell:(NSInteger)section{
+-(WXUITableViewCell *)tableViewForInfoCell:(NSInteger)section{
     static NSString *identifier = @"infoCell";
-    WXTUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WXTUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if([_baseArr count] > 0){
@@ -145,24 +165,24 @@ enum{
     return cell;
 }
 
--(WXTUITableViewCell*)tableViewForConsultCell{
+-(WXUITableViewCell*)tableViewForConsultCell{
     static NSString *identifier = @"consultCell";
-    RefundSucceedConsultCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    LMApplyRefundStateCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[RefundSucceedConsultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LMApplyRefundStateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    [cell setCellInfo:_entity];
+    [cell setCellInfo:_entity];
     [cell load];
     return cell;
 }
 
 
--(WXTUITableViewCell*)tableViewForGoodsListCell{
+-(WXUITableViewCell*)tableViewForGoodsListCell{
     static NSString *identifier = @"goodsListCell";
-    RefundSucceedGoodsListCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    LMApplyRefundGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[RefundSucceedGoodsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LMApplyRefundGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setCellInfo:orderEntity];
@@ -172,7 +192,7 @@ enum{
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = indexPath.section;
-    WXTUITableViewCell *cell = nil;
+    WXUITableViewCell *cell = nil;
     switch (section) {
         case RefundSucceed_Section_Title:
             cell = [self tableViewForTitleCell];

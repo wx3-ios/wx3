@@ -10,6 +10,13 @@
 
 #define LMEvaluteUserHandleCellHeight (40)
 
+@protocol LMEvaluteUserHandleCellDelegate;
+
 @interface LMEvaluteUserHandleCell : WXUITableViewCell
+@property (nonatomic,assign) id<LMEvaluteUserHandleCellDelegate>delegate;
+@end
+
+@protocol LMEvaluteUserHandleCellDelegate <NSObject>
+-(void)userEvaluateGoods:(NSInteger)score goodsID:(NSInteger)goodsID;
 
 @end

@@ -80,7 +80,7 @@
 
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{
     LMOrderListEntity *entity = cellInfo;
-    CGFloat height = 55;
+    CGFloat height = 50;
     NSString *add = entity.userAddress;
     CGFloat addHeight = [add stringHeight:WXFont(12.0) width:IPHONE_SCREEN_WIDTH-30];
     height += addHeight;

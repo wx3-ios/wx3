@@ -76,7 +76,7 @@ typedef enum{
 @property (nonatomic,assign) LMShopDeal_State shopDealType;  //商家处理退款状态
 @property (nonatomic,assign) CGFloat refundMoney;            //退款金额
 @property (nonatomic,assign) CGFloat goodsShouldPay;         //商品应付金额
-@property (nonatomic,assign) CGFloat goodsValue;             //商品金额
+@property (nonatomic,assign) CGFloat goodsValue;             //商品实际付款
 @property (nonatomic,assign) CGFloat goodsRedPacket;         //商品实际使用红包
 @property (nonatomic,assign) NSInteger goodsID;              //商品id
 @property (nonatomic,strong) NSString *goodsName;            //商品名称
@@ -89,6 +89,10 @@ typedef enum{
 @property (nonatomic,assign) NSInteger goodsOrderID;         //商品订单id
 @property (nonatomic,assign) NSInteger buyNumber;            //购买数量
 @property (nonatomic,assign) CGFloat stockPrice;             //属性单价
+
+//商品退款使用临时变量
+@property (nonatomic,assign) BOOL selected;
+@property (nonatomic,assign) BOOL selectAll;
 
 +(LMOrderListEntity*)initLmOrderInfoEntity:(NSDictionary*)dic;
 +(LMOrderListEntity*)initLmOrderGoodsListEntity:(NSDictionary*)dic;

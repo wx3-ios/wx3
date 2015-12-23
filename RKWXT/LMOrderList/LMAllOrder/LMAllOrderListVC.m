@@ -76,7 +76,7 @@ enum{
     [notificationCenter addObserver:self selector:@selector(completeLMOrderListSucceed:) name:K_Notification_UserOderList_CompleteSucceed object:nil];
     [notificationCenter addObserver:self selector:@selector(completeLMOrderListFailed:) name:K_Notification_UserOderList_CompleteFailed object:nil];
     [notificationCenter addObserver:self selector:@selector(userEvaluateOrderSucceed:) name:K_Notification_Name_UserEvaluateOrderSucceed object:nil];
-//    [notificationCenter addObserver:self selector:@selector(applyRefundSucceed:) name:K_Notification_HomeOrder_RefundSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(applyRefundSucceed) name:K_Notification_Name_RefundSucceed object:nil];
 }
 
 //集成刷新控件
@@ -220,10 +220,14 @@ enum{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
+    LMOrderListEntity *entity = [orderListArr objectAtIndex:section];
     if(row == Order_Show_Shop){
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_JumpToShopInfo object:entity];
         return;
     }
-    LMOrderListEntity *entity = [orderListArr objectAtIndex:section];
+    if(row == [entity.goodsListArr count]+1){
+        return;
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_JumpToLMGoodsInfo object:entity];
 }
 
@@ -365,6 +369,7 @@ enum{
     [UtilTool showAlertView:message];
 }
 
+//评价成功
 -(void)userEvaluateOrderSucceed:(NSNotification*)notification{
     LMOrderListEntity *entity = notification.object;
     for(LMOrderListEntity *ent in orderListArr){
@@ -376,6 +381,11 @@ enum{
             }
         }
     }
+}
+
+//申请退款成功
+-(void)applyRefundSucceed{
+    [self setupRefresh];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+@class LMOrderListEntity;
 @interface LMRefundOrderSucceedVC : WXUIViewController
+@property (nonatomic,strong) LMOrderListEntity *entity;
 
 @end

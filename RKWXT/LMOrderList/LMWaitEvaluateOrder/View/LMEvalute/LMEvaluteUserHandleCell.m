@@ -7,6 +7,7 @@
 //
 
 #import "LMEvaluteUserHandleCell.h"
+#import "LMOrderListEntity.h"
 
 @interface LMEvaluteUserHandleCell(){
     WXUIButton *secondBtn;
@@ -118,6 +119,11 @@
         [thirdBtn setImage:[UIImage imageNamed:@"EvaluteFullImg.png"] forState:UIControlStateNormal];
         [forthBtn setImage:[UIImage imageNamed:@"EvaluteFullImg.png"] forState:UIControlStateNormal];
         [fivethBtn setImage:[UIImage imageNamed:@"EvaluteFullImg.png"] forState:UIControlStateNormal];
+    }
+    
+    LMOrderListEntity *entity = self.cellInfo;
+    if(_delegate && [_delegate respondsToSelector:@selector(userEvaluateGoods:goodsID:)]){
+        [_delegate userEvaluateGoods:sign goodsID:entity.goodsID];
     }
 }
 

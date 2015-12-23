@@ -16,6 +16,10 @@
 #import "LMOrderInfoOrderTimeCell.h"
 #import "LMOrderListEntity.h"
 #import "LMGoodsInfoVC.h"
+#import "LMRefundOrderVC.h"
+#import "LMRefundOrderSucceedVC.h"
+#import "CallBackVC.h"
+#import "LMShopInfoVC.h"
 
 #define Size self.bounds.size
 
@@ -31,9 +35,10 @@ enum{
     LMOrderInfo_Section_Invalid,
 };
 
-@interface LMOrderInfoVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface LMOrderInfoVC()<UITableViewDataSource,UITableViewDelegate,LMOrderInfoContactShopCellDelegate,LMOrderInfoGoodsListCellDelegate,UIActionSheetDelegate>{
     UITableView *_tableView;
     LMOrderListEntity *entity;
+    NSString *shopPhone;
 }
 @end
 
@@ -168,6 +173,7 @@ enum{
         cell = [[LMOrderInfoGoodsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     [cell setCellInfo:[entity.goodsListArr objectAtIndex:row]];
+    [cell setDelgate:self];
     [cell load];
     return cell;
 }
@@ -194,6 +200,7 @@ enum{
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setCellInfo:entity];
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -247,12 +254,80 @@ enum{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
+    if(section == LMOrderInfo_Section_ShopName){
+        LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
+        shopInfoVC.sshop_id = entity.shopID;
+        [self.wxNavigationController pushViewController:shopInfoVC];
+    }
     if(section == LMOrderInfo_Section_GoodsList){
         LMOrderListEntity *ent = [entity.goodsListArr objectAtIndex:row];
         LMGoodsInfoVC *goodsInfoVC = [[LMGoodsInfoVC alloc] init];
         goodsInfoVC.goodsId = ent.goodsID;
         [self.wxNavigationController pushViewController:goodsInfoVC];
     }
+}
+
+#pragma mark contactShop
+-(void)userRefundBtnClicked{
+    LMRefundOrderVC *refundVC = [[LMRefundOrderVC alloc] init];
+    refundVC.entity = entity;
+    [self.wxNavigationController pushViewController:refundVC];
+}
+
+-(void)refundBtnClicked:(id)sender{
+    LMRefundOrderSucceedVC *refundSucceedVC = [[LMRefundOrderSucceedVC alloc] init];
+    refundSucceedVC.entity = sender;
+    [self.wxNavigationController pushViewController:refundSucceedVC];
+}
+
+-(void)contactSellerWith:(NSString *)phone{
+    NSString *phoneStr = [self phoneWithoutNumber:entity.shopPhone];
+    shopPhone = phoneStr;
+    [self showAlertView:shopPhone];
+}
+
+-(void)showAlertView:(NSString*)phone{
+    NSString *title = [NSString stringWithFormat:@"联系商家:%@",phone];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:title
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:[NSString stringWithFormat:@"使用%@",kMerchantName]
+                                  otherButtonTitles:@"系统", nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex > 2){
+        return;
+    }
+    if(shopPhone.length == 0){
+        return;
+    }
+    if(buttonIndex == 1){
+        [UtilTool callBySystemAPI:shopPhone];
+        return;
+    }
+    if(buttonIndex == 0){
+        CallBackVC *backVC = [[CallBackVC alloc] init];
+        backVC.phoneName = kMerchantName;
+        if([backVC callPhone:shopPhone]){
+            [self presentViewController:backVC animated:YES completion:^{
+            }];
+        }
+    }
+}
+
+-(NSString*)phoneWithoutNumber:(NSString*)phone{
+    NSString *new = [[NSString alloc] init];
+    for(NSInteger i = 0; i < phone.length; i++){
+        char c = [phone characterAtIndex:i];
+        if(c >= '0' && c <= '9'){
+            new = [new stringByAppendingString:[NSString stringWithFormat:@"%c",c]];
+        }
+    }
+    return new;
 }
 
 @end
