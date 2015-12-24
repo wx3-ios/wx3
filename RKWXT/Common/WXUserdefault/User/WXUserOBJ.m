@@ -102,6 +102,11 @@
     [userDefault setFloat:longitude forkey:D_WXUserdefault_Location_Longitude];
 }
 
+-(void)setUserSelectedAreaID:(NSInteger)areaID{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    [userDefault setInteger:areaID forKey:D_WXUserdefault_UserSelectedAreaID];
+}
+
 - (NSString*)woxinID{
 	WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
 	return [userDefault textValueForKey:D_WXUserdefault_Key_tWoxinID];
@@ -235,6 +240,11 @@
 -(CGFloat)userLocationLongitude{
     WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
     return [userDefault floatValueForKey:D_WXUserdefault_Location_Longitude];
+}
+
+-(NSInteger)userSelectedAreaID{
+    WXUserDefault *userDefault = [WXUserDefault sharedWXUserDefault];
+    return [userDefault integerValueForKey:D_WXUserdefault_UserSelectedAreaID];
 }
 
 //合并账号信息

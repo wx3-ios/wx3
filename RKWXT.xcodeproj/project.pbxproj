@@ -158,6 +158,8 @@
 		1229F6271BE1B33600258B43 /* ClassifyResultListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */; };
 		1229F62A1BE1C40500258B43 /* GoodsListDownImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */; };
 		1229F62B1BE1C40500258B43 /* GoodsListUpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1229F6291BE1C40500258B43 /* GoodsListUpImg@2x.png */; };
+		1229FFE11C2B7C0D001B8CFB /* LMShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229FFE01C2B7C0D001B8CFB /* LMShoppingCartModel.m */; };
+		1229FFE41C2B99C3001B8CFB /* LMShoppingCartEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229FFE31C2B99C3001B8CFB /* LMShoppingCartEntity.m */; };
 		122F5EB11C17B7080045AF41 /* UserCutSourceArrowImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122F5EB01C17B7080045AF41 /* UserCutSourceArrowImg@2x.png */; };
 		122F5EB31C17BB6B0045AF41 /* UserCutRankingList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122F5EB21C17BB6B0045AF41 /* UserCutRankingList@2x.png */; };
 		122F5EB91C17CC9F0045AF41 /* LMSearchListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 122F5EB81C17CC9F0045AF41 /* LMSearchListVC.m */; };
@@ -1437,6 +1439,10 @@
 		1229F6261BE1B33600258B43 /* ClassifyResultListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyResultListCell.m; sourceTree = "<group>"; };
 		1229F6281BE1C40500258B43 /* GoodsListDownImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsListDownImg@2x.png"; sourceTree = "<group>"; };
 		1229F6291BE1C40500258B43 /* GoodsListUpImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsListUpImg@2x.png"; sourceTree = "<group>"; };
+		1229FFDF1C2B7C0D001B8CFB /* LMShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMShoppingCartModel.h; sourceTree = "<group>"; };
+		1229FFE01C2B7C0D001B8CFB /* LMShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShoppingCartModel.m; sourceTree = "<group>"; };
+		1229FFE21C2B99C3001B8CFB /* LMShoppingCartEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMShoppingCartEntity.h; sourceTree = "<group>"; };
+		1229FFE31C2B99C3001B8CFB /* LMShoppingCartEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShoppingCartEntity.m; sourceTree = "<group>"; };
 		122F5EB01C17B7080045AF41 /* UserCutSourceArrowImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCutSourceArrowImg@2x.png"; sourceTree = "<group>"; };
 		122F5EB21C17BB6B0045AF41 /* UserCutRankingList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCutRankingList@2x.png"; sourceTree = "<group>"; };
 		122F5EB71C17CC9F0045AF41 /* LMSearchListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSearchListVC.h; sourceTree = "<group>"; };
@@ -6709,6 +6715,10 @@
 		12DF79601C1971A400CD81B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1229FFDF1C2B7C0D001B8CFB /* LMShoppingCartModel.h */,
+				1229FFE01C2B7C0D001B8CFB /* LMShoppingCartModel.m */,
+				1229FFE21C2B99C3001B8CFB /* LMShoppingCartEntity.h */,
+				1229FFE31C2B99C3001B8CFB /* LMShoppingCartEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -9800,6 +9810,7 @@
 				775843C11AB971CF0039B129 /* UIImage+Render.m in Sources */,
 				775842DC1AB95A300039B129 /* UIImage+Extend.m in Sources */,
 				DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */,
+				1229FFE11C2B7C0D001B8CFB /* LMShoppingCartModel.m in Sources */,
 				12F916071B1950E600C94717 /* T_MenuEntity.m in Sources */,
 				12F2D7D91B1EA96B00C8017F /* DLCustomSlideView.m in Sources */,
 				1243CCBC1AE7D89A003E0943 /* YRSideViewController.m in Sources */,
@@ -9901,6 +9912,7 @@
 				120595331BCF994F009E6986 /* NLSubViewController.m in Sources */,
 				1232826B1C2017B100EA9DEE /* LMWaitEvaluteOrderGoodsCell.m in Sources */,
 				DD0E38B11B1BE5AC00AB4DB9 /* WXShopCartSqlite.m in Sources */,
+				1229FFE41C2B99C3001B8CFB /* LMShoppingCartEntity.m in Sources */,
 				129EEBAB1B97DD160062349E /* ClubNoImgPlaceholderView.m in Sources */,
 				775C58BD1ABA7B75005B6B40 /* WXGood.m in Sources */,
 				775842F31AB95A300039B129 /* EGORefreshTableHeaderView.m in Sources */,

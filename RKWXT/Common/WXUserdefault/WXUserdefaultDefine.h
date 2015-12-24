@@ -65,6 +65,7 @@
 #define D_WXUserdefault_UserCurrentCity @"D_WXUserdefault_UserCurrentCity"  //用户当前查看城市
 #define D_WXUserdefault_Location_Latitude @"D_WXUserdefault_Location_Latitude" //经纬度
 #define D_WXUserdefault_Location_Longitude @"D_WXUserdefault_Location_Longitude"
+#define D_WXUserdefault_UserSelectedAreaID @"D_WXUserdefault_UserSelectedAreaID" //区域ID
 
 #pragma mark 提示mask
 #define D_WXUserdefault_Key_bMaskHomePage           @"D_WXUserdefault_Key_bMaskHomePage"//主页面

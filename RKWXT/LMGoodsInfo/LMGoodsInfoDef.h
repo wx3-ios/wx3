@@ -48,8 +48,10 @@ enum{
 #import "LMGoodsInfoModel.h"
 #import "LMGoodsInfoEntity.h"
 #import "LMDataCollectionModel.h"
+#import "LMShoppingCartModel.h"
 
 #import "LMMakeOrderVC.h"
+#import "LMShoppingCartVC.h"
 
 enum{
     Share_Qq,

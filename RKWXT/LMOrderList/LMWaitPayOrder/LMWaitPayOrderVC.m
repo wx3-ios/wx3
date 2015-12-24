@@ -282,7 +282,8 @@ enum{
 #pragma mark notification
 //支付成功
 -(void)payOrderListSucceed{
-    for(LMOrderListEntity *entity in orderListArr){
+    NSArray *listA = [NSArray arrayWithArray:orderListArr];
+    for(LMOrderListEntity *entity in listA){
         if(entity.orderId == [[OrderListModel shareOrderListModel].orderID integerValue]){
             entity.payType = LMorder_PayType_HasPay;
             NSInteger index = [self indexPathOfOptCellWithOrder:entity];
@@ -299,7 +300,8 @@ enum{
 -(void)cancelLMOrderListSucceed:(NSNotification*)notification{
     [self unShowWaitView];
     NSString *orderID = notification.object;
-    for(LMOrderListEntity *entity in orderListArr){
+    NSArray *listA = [NSArray arrayWithArray:orderListArr];
+    for(LMOrderListEntity *entity in listA){
         if(entity.orderId == [orderID integerValue]){
             entity.orderState = LMorder_State_Cancel;
             NSInteger index = [self indexPathOfOptCellWithOrder:entity];

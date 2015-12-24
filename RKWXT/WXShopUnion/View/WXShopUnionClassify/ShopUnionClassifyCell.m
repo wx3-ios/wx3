@@ -22,6 +22,8 @@
     WXUIView *baseView;
     
     NSMutableArray *_merchantImgViewArray;
+    
+    WXUIActivityIndicatorView *waitView;
 }
 @end
 
@@ -42,6 +44,11 @@
         [baseView setBackgroundColor:WXColorWithInteger(0xffffff)];
         [_browser addSubview:baseView];
         
+        waitView = [[WXUIActivityIndicatorView alloc] init];
+        waitView.frame = CGRectMake((Size.width-30)/2, (ShopUnionClassifyRowHeight-30)/2, 30, 30);
+        [waitView setHidesWhenStopped:YES];
+        [waitView setBackgroundColor:[UIColor redColor]];
+        [self.contentView addSubview:waitView];
         
         CGFloat height = 20;
         CGFloat pageControlWidth = 60;
@@ -68,73 +75,52 @@
     
     classifyArr = self.cellInfo;
     
-    //leftView
     CGRect rect = [self bounds];
     CGFloat btnWidth = rect.size.width/5;
     CGFloat btnHeight = ShopUnionClassifyRowHeight/2;
-//    CGFloat yGap = 18;
-    NSInteger count = 0;
-    for(NSInteger j = 0; j < ([classifyArr count]/kOneCellShowNumber+([classifyArr count]%5>0?1:0)); j++){
-        for(NSInteger i = 0; i < kOneCellShowNumber; i++){
-            if(count > [classifyArr count]-1){
-                break;
+    __block NSInteger count = 0;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for(NSInteger j = 0; j < ([classifyArr count]/kOneCellShowNumber+([classifyArr count]%5>0?1:0)); j++){
+            for(NSInteger i = 0; i < kOneCellShowNumber; i++){
+                if(count > [classifyArr count]-1){
+                    break;
+                }
+                ShopUnionClassifyEntity *entity = [classifyArr objectAtIndex:count];
+                
+                WXUIButton *bgImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+                bgImgBtn.frame = CGRectMake((count%5*btnWidth)+(count/(2*kOneCellShowNumber)*Size.width), j%2*(btnHeight), btnWidth, btnHeight);
+                [bgImgBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
+                [bgImgBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
+                [bgImgBtn setTag:entity.industryID];
+                [bgImgBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [baseView addSubview:bgImgBtn];
+                [_merchantImgViewArray addObject:_browser];
+                
+                WXRemotionImgBtn *imgViewBtn = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((bgImgBtn.frame.size.width-40)/2, 10, 40, 40)];
+                [imgViewBtn setBorderRadian:40/2 width:1.0 color:[UIColor clearColor]];
+                [imgViewBtn setUserInteractionEnabled:NO];
+                [imgViewBtn setCpxViewInfo:entity.industryImg];
+                [imgViewBtn load];
+                [bgImgBtn addSubview:imgViewBtn];
+                
+                WXUILabel *textLabel = [[WXUILabel alloc] init];
+                textLabel.frame = CGRectMake(0, 10+imgViewBtn.frame.size.height, bgImgBtn.frame.size.width, 20);
+                [textLabel setBackgroundColor:[UIColor clearColor]];
+                [textLabel setTextAlignment:NSTextAlignmentCenter];
+                [textLabel setTextColor:WXColorWithInteger(0x969696)];
+                [textLabel setFont:WXFont(10.0)];
+                [textLabel setText:entity.industryName];
+                [bgImgBtn addSubview:textLabel];
+                
+                count++;
+                
+                [waitView startAnimating];
             }
-            ShopUnionClassifyEntity *entity = [classifyArr objectAtIndex:count];
-            
-            WXUIButton *bgImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-            bgImgBtn.frame = CGRectMake((count%5*btnWidth)+(count/(2*kOneCellShowNumber)*Size.width), j%2*(btnHeight), btnWidth, btnHeight);
-            [bgImgBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
-            [bgImgBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
-            [bgImgBtn setTag:entity.industryID];
-            [bgImgBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
-            [baseView addSubview:bgImgBtn];
-            [_merchantImgViewArray addObject:_browser];
-            
-            WXRemotionImgBtn *imgViewBtn = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((bgImgBtn.frame.size.width-40)/2, 10, 40, 40)];
-            [imgViewBtn setBorderRadian:40/2 width:1.0 color:[UIColor clearColor]];
-            [imgViewBtn setUserInteractionEnabled:NO];
-            [imgViewBtn setCpxViewInfo:entity.industryImg];
-            [imgViewBtn load];
-            [bgImgBtn addSubview:imgViewBtn];
-            
-            WXUILabel *textLabel = [[WXUILabel alloc] init];
-            textLabel.frame = CGRectMake(0, 10+imgViewBtn.frame.size.height, bgImgBtn.frame.size.width, 20);
-            [textLabel setBackgroundColor:[UIColor clearColor]];
-            [textLabel setTextAlignment:NSTextAlignmentCenter];
-            [textLabel setTextColor:WXColorWithInteger(0x969696)];
-            [textLabel setFont:WXFont(10.0)];
-            [textLabel setText:entity.industryName];
-            [bgImgBtn addSubview:textLabel];
-            
-            
-//            WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-//            [commonBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
-//            [commonBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
-//            commonBtn.frame = CGRectMake((count%5*btnWidth)+(count/(2*kOneCellShowNumber)*Size.width), j%2*(btnHeight), btnWidth, btnHeight);
-//            [commonBtn setImage:[UIImage imageNamed:entity.industryImg] forState:UIControlStateNormal];
-//            [commonBtn setTitle:entity.industryName forState:UIControlStateNormal];
-//            [commonBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateNormal];
-//            [commonBtn.titleLabel setFont:WXFont(10.0)];
-//            commonBtn.tag = entity.industryID;
-//            [commonBtn addTarget:self action:@selector(buttonImageClicked:) forControlEvents:UIControlEventTouchUpInside];
-//            [baseView addSubview:commonBtn];
-//            [_merchantImgViewArray addObject:_browser];
-//            
-//            CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(commonBtn.bounds), CGRectGetMidY(commonBtn.bounds));
-//            CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(commonBtn.imageView.bounds));
-//            CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(commonBtn.bounds)-CGRectGetMidY(commonBtn.titleLabel.bounds));
-//            CGPoint startImageViewCenter = commonBtn.imageView.center;
-//            CGPoint startTitleLabelCenter = commonBtn.titleLabel.center;
-//            CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
-//            CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
-//            commonBtn.imageEdgeInsets = UIEdgeInsetsMake((j%2==1?(yGap-15):yGap), imageEdgeInsetsLeft, (j%2==1?40:25), imageEdgeInsetsRight);
-//            CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
-//            CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
-//            commonBtn.titleEdgeInsets = UIEdgeInsetsMake(btnHeight-(j%2==1?40:25), titleEdgeInsetsLeft-8, (j%2==1?25:10), titleEdgeInsetsRight-8);
-            
-            count++;
         }
-    }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [waitView stopAnimating];
+        });
+    });
     
     NSInteger pageCount = [_merchantImgViewArray count]/10+([_merchantImgViewArray count]%10>0?1:0);
     if(pageCount){

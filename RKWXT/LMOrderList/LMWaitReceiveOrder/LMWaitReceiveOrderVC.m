@@ -287,7 +287,8 @@ enum{
 -(void)completeLMOrderListSucceed:(NSNotification*)notification{
     [self unShowWaitView];
     NSString *orderID = notification.object;
-    for(LMOrderListEntity *entity in orderListArr){
+    NSArray *listArr = [NSArray arrayWithArray:orderListArr];
+    for(LMOrderListEntity *entity in listArr){
         if(entity.orderId == [orderID integerValue]){
             entity.orderState = LMorder_State_None;  //确认收货完成为处理中
             NSInteger index = [self indexPathOfOptCellWithOrder:entity];

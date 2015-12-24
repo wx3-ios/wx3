@@ -7,16 +7,13 @@
 //
 
 #import "LMShoppingCartTitleCell.h"
-#import "WXRemotionImgBtn.h"
+#import "LMShoppingCartEntity.h"
 
 @interface LMShoppingCartTitleCell(){
     WXUIButton *selBtn;
-    WXRemotionImgBtn *imgView;
     WXUILabel *sellerName;
     WXUIImageView *arrowImg;
     WXUIButton *editBtn;
-    
-    BOOL editing;
 }
 @end
 
@@ -40,11 +37,11 @@
         [selBtn addTarget:self action:@selector(clrcleBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:selBtn];
         
-        xOffset += selBtnWidth+5;
-        CGFloat imgWidth = 34;
+        xOffset += selBtnWidth+10;
+        CGFloat imgWidth = 15;
         CGFloat imgHeight = imgWidth;
-        imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (LMShoppingCartTitleCellHieght-imgHeight)/2, imgWidth, imgHeight)];
-        [imgView setUserInteractionEnabled:NO];
+        WXUIImageView *imgView = [[WXUIImageView alloc] initWithFrame:CGRectMake(xOffset, (LMShoppingCartTitleCellHieght-imgHeight)/2, imgWidth, imgHeight)];
+        [imgView setImage:[UIImage imageNamed:@"LMSellerIcon.png"]];
         [self.contentView addSubview:imgView];
         
         xOffset += imgWidth+3;
@@ -70,7 +67,7 @@
         CGFloat lineHeight = 18;
         WXUILabel *lineLabel = [[WXUILabel alloc] init];
         lineLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap, (LMShoppingCartTitleCellHieght-lineHeight)/2, 0.5, lineHeight);
-        [lineLabel setBackgroundColor:[UIColor grayColor]];
+        [lineLabel setBackgroundColor:WXColorWithInteger(0x9b9b9b)];
         [self.contentView addSubview:lineLabel];
         
         CGFloat editBtnHeight = 20;
@@ -78,7 +75,8 @@
         editBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap, (LMShoppingCartTitleCellHieght-editBtnHeight)/2, xGap, editBtnHeight);
         [editBtn setBackgroundColor:[UIColor clearColor]];
         [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        [editBtn setTitleColor:WXColorWithInteger(0xefeff4) forState:UIControlStateNormal];
+        [editBtn.titleLabel setFont:WXFont(14.0)];
+        [editBtn setTitleColor:WXColorWithInteger(0x9b9b9b) forState:UIControlStateNormal];
         [editBtn addTarget:self action:@selector(editBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:editBtn];
     }
@@ -86,21 +84,59 @@
 }
 
 -(void)load{
+    LMShoppingCartEntity *entity = self.cellInfo;
+    [sellerName setText:entity.shopName];
     
+    CGRect rect = sellerName.frame;
+    rect.size.width = [NSString widthForString:entity.shopName fontSize:15.0 andHeight:20];
+    [sellerName setFrame:rect];
+    
+    CGRect rect1 = arrowImg.frame;
+    rect1.origin.x = rect.size.width+rect.origin.x+10;
+    [arrowImg setFrame:rect1];
+    
+    if(entity.selectAll){
+        [selBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
+    }else{
+        [selBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
+    }
+    
+    if(entity.edit){
+        [editBtn setTitle:@"完成" forState:UIControlStateNormal];
+    }
+    if(!entity.edit){
+        [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    }
 }
 
 -(void)clrcleBtnClicked{
-    if(editing){
-        editing = NO;
-        [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    LMShoppingCartEntity *entity = self.cellInfo;
+    if(entity.selectAll){
+        entity.selectAll = NO;
+        [selBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
     }else{
-        editing = YES;
-        [editBtn setTitle:@"完成" forState:UIControlStateNormal];
+        entity.selectAll = YES;
+        [selBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
+    }
+    
+    if(_delegate && [_delegate respondsToSelector:@selector(lmShoppingCartTitleCellCircleClicked:)]){
+        [_delegate lmShoppingCartTitleCellCircleClicked:entity];
     }
 }
 
 -(void)editBtnClicked{
+    LMShoppingCartEntity *entity = self.cellInfo;
+    if(entity.edit){
+        entity.edit = NO;
+        [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    }else{
+        entity.edit = YES;
+        [editBtn setTitle:@"完成" forState:UIControlStateNormal];
+    }
     
+    if(_delegate && [_delegate respondsToSelector:@selector(lmShoppingCartTitleCellEditClicked:)]){
+        [_delegate lmShoppingCartTitleCellEditClicked:entity];
+    }
 }
 
 @end

@@ -257,6 +257,7 @@ enum{
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     NSString *cityName = nil;
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
     if(_tableView == tableView){
         if(section >= CityList_Section_Invalid){
             NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-CityList_Section_Invalid];
@@ -264,11 +265,13 @@ enum{
             AreaEntity *ent = [cityList objectAtIndex:row];
             [self storageCurrentCity:ent.areaName];
             cityName = ent.areaName;
+            [userObj setUserSelectedAreaID:ent.areaID];
         }
     }else{
         AreaEntity *ent = [[LocalAreaModel shareLocalArea].searchCity objectAtIndex:row];
         [self storageCurrentCity:ent.areaName];
         cityName = ent.areaName;
+        [userObj setUserSelectedAreaID:ent.areaID];
     }
     [self storeUserCurrentCity:cityName];
 }
@@ -343,6 +346,7 @@ enum{
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
     [userObj setUserCurrentCity:cityName];
     [userObj setUserLocationArea:@""];
+    
     //回到上一页面
     [self closeCityListVC];
 }

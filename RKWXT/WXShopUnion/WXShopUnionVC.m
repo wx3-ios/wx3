@@ -32,7 +32,9 @@
     [super viewWillAppear:animated];
     [self addOBS];
     showAreaview = YES;
-    if(rightBtn){
+    
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    if(rightBtn && (userObj.userSelectedAreaID > 0)){
         [self changeCity];
     }
 }
@@ -438,7 +440,8 @@
 
 #pragma mark 刷新
 -(void)headerRefreshing{
-    [_model loadShopUnionData:0];
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [_model loadShopUnionData:userObj.userSelectedAreaID];
 }
 
 -(void)loadMoreGoods{
@@ -525,11 +528,18 @@
         LMHomeOrderVC *orderListVC = [[LMHomeOrderVC alloc] init];
         [self.wxNavigationController pushViewController:orderListVC];
     }
+    if(btn.tag == ShopUnionDownView_UserShoppingCar){
+        LMShoppingCartVC *shoppingCartVC = [[LMShoppingCartVC alloc] init];
+        [self.wxNavigationController pushViewController:shoppingCartVC];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [userObj setUserSelectedAreaID:0];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -542,8 +552,5 @@
     [self.wxNavigationController pushViewController:searchListVC];
 }
 
--(void)removeOBS{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 @end

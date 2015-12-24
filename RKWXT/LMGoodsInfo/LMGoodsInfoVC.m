@@ -9,7 +9,7 @@
 #import "LMGoodsInfoVC.h"
 #import "LMGoodsInfoDef.h"
 
-@interface LMGoodsInfoVC ()<UITableViewDataSource,UITableViewDelegate,MerchantImageCellDelegate,LMGoodsInfoModelDelegate,LMGoodsDesCellDelegate,CDSideBarControllerDelegate>{
+@interface LMGoodsInfoVC ()<UITableViewDataSource,UITableViewDelegate,MerchantImageCellDelegate,LMGoodsInfoModelDelegate,LMGoodsDesCellDelegate,CDSideBarControllerDelegate,LMShoppingCartModelDelegate>{
     UITableView *_tableView;
     LMGoodsInfoModel *_model;
     BOOL userCut;
@@ -20,6 +20,8 @@
     WXUIButton *collectionBtn;
     
     LMGoodsView *goodsView; //库存页面
+    
+    LMShoppingCartModel *cartModel;
 }
 
 @end
@@ -50,6 +52,9 @@
         [_model setDelegate:self];
         
         _collectionModel = [[LMDataCollectionModel alloc] init];
+        
+        cartModel = [[LMShoppingCartModel alloc] init];
+        [cartModel setDelegate:self];
     }
     return self;
 }
@@ -508,11 +513,15 @@
 
 #pragma mark downView
 -(void)sellerBtnClick{
-    
+    if([_model.goodsInfoArr count] > 0){
+        LMGoodsInfoEntity *entity = [_model.goodsInfoArr objectAtIndex:0];
+        [[CoordinateController sharedCoordinateController] toLMShopInfoVC:self shopID:entity.goodshop_id animated:YES];
+    }
 }
 
 -(void)cartBtnClick{
-    
+    LMShoppingCartVC *shoppingVC = [[LMShoppingCartVC alloc] init];
+    [self.wxNavigationController pushViewController:shoppingVC];
 }
 
 -(void)buyBtnClick:(id)sender{
@@ -551,6 +560,7 @@
     if([_model.sellerArr count] > 0){
         LMGoodsInfoEntity *ent = [_model.sellerArr objectAtIndex:0];
         entity.sellerName = ent.sellerName;
+        entity.sellerID = ent.sellerID;
     }
     if(!entity){
         return nil;
@@ -567,12 +577,36 @@
 
 //加入购物车
 -(void)userAddShoppingCartBtnClicked{
-    
+    LMGoodsInfoEntity *entity = nil;
+    if([_model.goodsInfoArr count] > 0){
+        entity = [_model.goodsInfoArr objectAtIndex:0];
+    }
+    [cartModel addLMShoppingCartType:LMSHoppingCart_Type_Add goodsID:_goodsId stockID:goodsView.stockID stockName:goodsView.stockName goodsName:entity.goodsName goodsImg:[self remoHomeImgPre:entity.homeImg] goodsPrice:goodsView.stockPrice/goodsView.buyNum goodsNum:goodsView.buyNum shopID:entity.goodshop_id];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(NSString*)remoHomeImgPre:(NSString*)homeImg{
+    NSInteger length = AllImgPrefixUrlString.length;
+    NSString *img = [homeImg substringWithRange:NSMakeRange(length, homeImg.length-length)];
+    return img;
+}
+
+-(void)addLMShoppingCartSucceed{
+    [self unShowWaitView];
+    [UtilTool showTipView:@"加入购物车成功"];
+}
+
+-(void)addLMShoppingCartFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    if(!errorMsg){
+        errorMsg = @"未能加入购物车";
+    }
+    [UtilTool showTipView:errorMsg];
 }
 
 #pragma mark desCellDelegate
 -(void)lmGoodsInfoDesCarriageBtnClicked{
-    [UtilTool showTipView:@"该商家免运费"];
+    [UtilTool showTipView:@"该商品免运费"];
 }
 
 -(void)lmGoodsInfoDesCutBtnClicked{

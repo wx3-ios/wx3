@@ -14,7 +14,7 @@
 @property (nonatomic,assign) id<LMMakeOrderDelegate>delegate;
 @property (nonatomic,strong) NSString *lmOrderID;
 
--(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString*)remark withProID:(NSInteger)proID withCarriage:(CGFloat)postage withGoodsList:(NSArray*)goodsList;
+-(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString *)remark withProID:(NSInteger)proID withCarriage:(CGFloat)postage withGoodsList:(NSArray *)goodsList shopID:(NSInteger)shopID;
 @end
 
 @protocol LMMakeOrderDelegate <NSObject>

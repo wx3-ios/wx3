@@ -337,11 +337,14 @@
     }
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     NSMutableArray *arr = [[NSMutableArray alloc] init];
+    NSInteger shopID = 0;
     for(LMGoodsInfoEntity *entity in listArr){
         NSDictionary *dic = [self goodsDicWithEntity:entity];
         [arr addObject:dic];
+        
+        shopID = entity.goodshop_id;
     }
-    [_makeOrderModel submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:0 withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
+    [_makeOrderModel submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:0 withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr shopID:shopID];
 }
 
 -(NSDictionary*)goodsDicWithEntity:(LMGoodsInfoEntity*)entity{

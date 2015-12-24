@@ -67,6 +67,7 @@
 - (void)setUserCurrentCity:(NSString*)currentCity;
 - (void)setUserLocationLatitude:(CGFloat)latitude;
 - (void)setUserLocationLongitude:(CGFloat)longitude;
+- (void)setUserSelectedAreaID:(NSInteger)areaID;
 
 - (NSString *)userLocationPro;
 - (NSString *)userLocationCity;
@@ -74,5 +75,6 @@
 - (NSString *)userCurrentCity;
 - (CGFloat)userLocationLatitude;
 - (CGFloat)userLocationLongitude;
+- (NSInteger)userSelectedAreaID;
 
 @end

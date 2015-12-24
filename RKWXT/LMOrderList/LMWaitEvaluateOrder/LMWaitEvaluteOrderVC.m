@@ -281,7 +281,8 @@ enum{
 
 -(void)userEvaluateOrderSucceed:(NSNotification*)notification{
     LMOrderListEntity *entity = notification.object;
-    for(LMOrderListEntity *ent in orderListArr){
+    NSArray *listArr = [NSArray arrayWithArray:orderListArr];
+    for(LMOrderListEntity *ent in listArr){
         if(entity.orderId == ent.orderId){
             entity.evaluate = LMOrder_Evaluate_Done;
             NSInteger index = [self indexPathOfOptCellWithOrder:entity];

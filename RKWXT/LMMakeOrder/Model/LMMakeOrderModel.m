@@ -15,7 +15,7 @@
 
 @implementation LMMakeOrderModel
 
--(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString *)remark withProID:(NSInteger)proID withCarriage:(CGFloat)postage withGoodsList:(NSArray *)goodsList{
+-(void)submitOneOrderWithAllMoney:(CGFloat)allMoney withTotalMoney:(CGFloat)totalMoney withRedPacket:(NSInteger)packet withRemark:(NSString *)remark withProID:(NSInteger)proID withCarriage:(CGFloat)postage withGoodsList:(NSArray *)goodsList shopID:(NSInteger)shopID{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     AreaEntity *entity = [self addressEntity];
     if(!entity){
@@ -32,12 +32,12 @@
                          [UtilTool newStringWithAddSomeStr:5 withOldStr:userObj.pwd], @"pwd",
                          [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts",
                          [UtilTool currentVersion], @"ver",
-                         [NSNumber numberWithInt:(int)kSubShopID], @"shop_id",
+                         [NSNumber numberWithInteger:shopID], @"shop_id",
                          userObj.wxtID, @"woxin_id",
                          entity.userName, @"consignee",
                          entity.userPhone, @"telephone",
                          address, @"address",
-                         [NSNumber numberWithInt:(int)kMerchantID], @"seller_id",
+                         [NSNumber numberWithInteger:kMerchantID], @"seller_id",
                          [NSNumber numberWithFloat:allMoney], @"order_total_money",
                          [NSNumber numberWithFloat:totalMoney], @"total_fee",
                          [NSNumber numberWithInt:(int)packet], @"red_packet",

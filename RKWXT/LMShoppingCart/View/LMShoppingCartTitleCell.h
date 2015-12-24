@@ -18,7 +18,6 @@
 
 @protocol LMShoppingCartTitleCellBtnDelegate <NSObject>
 -(void)lmShoppingCartTitleCellCircleClicked:(id)sender;
--(void)lmShoppingCartTitleCellSellerClicked:(id)sender;
 -(void)lmShoppingCartTitleCellEditClicked:(id)sender;
 
 @end
