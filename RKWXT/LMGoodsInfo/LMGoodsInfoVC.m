@@ -557,11 +557,6 @@
     if([_model.goodsInfoArr count] > 0){
         entity = [_model.goodsInfoArr objectAtIndex:0];
     }
-    if([_model.sellerArr count] > 0){
-        LMGoodsInfoEntity *ent = [_model.sellerArr objectAtIndex:0];
-        entity.sellerName = ent.sellerName;
-        entity.sellerID = ent.sellerID;
-    }
     if(!entity){
         return nil;
     }

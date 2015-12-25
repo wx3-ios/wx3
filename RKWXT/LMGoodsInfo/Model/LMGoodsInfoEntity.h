@@ -30,6 +30,7 @@ typedef enum{
 @property (nonatomic,assign) NSInteger meterageID;
 @property (nonatomic,strong) NSString *meterageName;
 @property (nonatomic,assign) NSInteger goodshop_id;
+@property (nonatomic,strong) NSString *goodsShopName;
 @property (nonatomic,assign) LMGoods_Collection collectionType;
 
 @property (nonatomic,strong) NSString *sellerAddress;

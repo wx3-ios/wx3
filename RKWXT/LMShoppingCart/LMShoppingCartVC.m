@@ -11,6 +11,8 @@
 #import "LMShoppingCartGoodsListCell.h"
 #import "LMShoppingCartModel.h"
 #import "LMShoppingCartEntity.h"
+#import "LMMakeOrderVC.h"
+#import "LMGoodsInfoEntity.h"
 
 #define Size self.bounds.size
 #define DownViewHeight (42)
@@ -80,7 +82,7 @@
     [moneyLabel setBackgroundColor:[UIColor clearColor]];
     [moneyLabel setTextAlignment:NSTextAlignmentLeft];
     [moneyLabel setTextColor:WXColorWithInteger(0xdd2726)];
-    [moneyLabel setText:@"￥29.00"];
+    [moneyLabel setText:@"￥0.00"];
     [moneyLabel setFont:WXFont(14.0)];
     [downView addSubview:moneyLabel];
     
@@ -232,11 +234,6 @@
     [UtilTool showAlertView:errorMsg];
 }
 
-#pragma mark balance
--(void)balanceBtnClicked{
-    
-}
-
 #pragma mark title
 -(void)lmShoppingCartTitleCellCircleClicked:(id)sender{
     LMShoppingCartEntity *entity = sender;
@@ -267,6 +264,9 @@
     }
     
     [_tableView reloadData];
+    
+    //修改底部合计的价格
+    [self setAllGoodsMoney:entity];
 }
 
 -(void)goodsCircleSellect:(id)sender{
@@ -305,6 +305,8 @@
             number++;
         }
         [_tableView reloadData];
+        //修改底部合计的价格
+        [self setAllGoodsMoney:entity];
     }
 }
 
@@ -342,17 +344,79 @@
 //        }
 //    }
     [_tableView reloadData];
+    [self setAllGoodsMoney:sender];
 }
 
 //减少按钮
 -(void)goodsMinusBtnClicked:(id)sender{
     [_tableView reloadData];
+    [self setAllGoodsMoney:sender];
 }
 
 -(void)goodsDelBtnClicked:(id)sender{
     LMShoppingCartEntity *entity = sender;
     [_model deleteLMShoppingCartGoods:entity.cartID];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    
+    [moneyLabel setText:@"￥0.00"];
+}
+
+#pragma mark goodsMoney
+-(void)setAllGoodsMoney:(LMShoppingCartEntity*)entity{
+//    if(!entity.selected){
+//        return;
+//    }
+    NSInteger index = 0;
+    for(NSArray *arr in listArr){
+        LMShoppingCartEntity *ent = [arr objectAtIndex:0];
+        index ++;
+        if(ent.shopID == entity.shopID){
+            break;
+        }
+    }
+    
+    if(index > 0){
+        CGFloat price = 0;
+        NSArray *arr = [listArr objectAtIndex:index-1];
+        for(LMShoppingCartEntity *entity in arr){
+            if(entity.selected){
+                price += entity.goodsPrice*entity.buyNumber;
+            }
+        }
+        [moneyLabel setText:[NSString stringWithFormat:@"￥%.2f",price]];
+    }
+}
+
+#pragma mark makeOrder
+-(void)balanceBtnClicked{
+    LMMakeOrderVC *makeOrderVC = [[LMMakeOrderVC alloc] init];
+    makeOrderVC.goodsArr = [self makeOrderInfoArr];
+    [self.wxNavigationController pushViewController:makeOrderVC];
+}
+
+-(NSArray*)makeOrderInfoArr{
+    NSMutableArray *goodsInfoArr = [[NSMutableArray alloc] init];
+    if([listArr count] > 0){
+        for(NSArray *arr in listArr){
+            for(LMShoppingCartEntity *ent in arr){
+                if(ent.selected){
+                    LMGoodsInfoEntity *entity = [[LMGoodsInfoEntity alloc] init];
+                    entity.goodsShopName = ent.shopName;
+                    entity.goodshop_id = ent.shopID;
+                    entity.goodsID = ent.goodsID;
+                    entity.stockID = ent.stockID;
+                    entity.goodsName = ent.goodsName;
+                    entity.goodsImg = ent.imgUrl;
+                    entity.stockName = ent.stockName;
+                    entity.stockPrice = ent.buyNumber*ent.goodsPrice;
+                    entity.stockNum = ent.buyNumber;
+                    entity.homeImg = ent.shopImg;
+                    [goodsInfoArr addObject:entity];
+                }
+            }
+        }
+    }
+    return goodsInfoArr;
 }
 
 - (void)didReceiveMemoryWarning {

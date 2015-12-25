@@ -8,8 +8,10 @@
 
 #import "LMShoppingCartTitleCell.h"
 #import "LMShoppingCartEntity.h"
+#import "WXRemotionImgBtn.h"
 
 @interface LMShoppingCartTitleCell(){
+    WXRemotionImgBtn *imgView;
     WXUIButton *selBtn;
     WXUILabel *sellerName;
     WXUIImageView *arrowImg;
@@ -25,12 +27,6 @@
         CGFloat xOffset = 8;
         CGFloat selBtnWidth = 18;
         CGFloat selBtnHeight = selBtnWidth;
-        
-//        if(select){
-//            [_circleBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
-//        }else{
-//            [_circleBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
-//        }
         selBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         selBtn.frame = CGRectMake(xOffset, (LMShoppingCartTitleCellHieght-selBtnHeight)/2, selBtnWidth, selBtnHeight);
         [selBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
@@ -40,8 +36,9 @@
         xOffset += selBtnWidth+10;
         CGFloat imgWidth = 15;
         CGFloat imgHeight = imgWidth;
-        WXUIImageView *imgView = [[WXUIImageView alloc] initWithFrame:CGRectMake(xOffset, (LMShoppingCartTitleCellHieght-imgHeight)/2, imgWidth, imgHeight)];
-        [imgView setImage:[UIImage imageNamed:@"LMSellerIcon.png"]];
+        imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (LMShoppingCartTitleCellHieght-imgHeight)/2, imgWidth, imgHeight)];
+//        [imgView setImage:[UIImage imageNamed:@"LMSellerIcon.png"]];
+        [imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:imgView];
         
         xOffset += imgWidth+3;
@@ -86,6 +83,8 @@
 -(void)load{
     LMShoppingCartEntity *entity = self.cellInfo;
     [sellerName setText:entity.shopName];
+    [imgView setCpxViewInfo:entity.shopImg];
+    [imgView load];
     
     CGRect rect = sellerName.frame;
     rect.size.width = [NSString widthForString:entity.shopName fontSize:15.0 andHeight:20];

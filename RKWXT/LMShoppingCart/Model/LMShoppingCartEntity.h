@@ -21,6 +21,7 @@
 @property (nonatomic,assign) NSInteger cartID;
 @property (nonatomic,assign) NSInteger shopID;
 @property (nonatomic,strong) NSString *shopName;
+@property (nonatomic,strong) NSString *shopImg;
 
 @property (nonatomic,strong) NSArray *goodsArr;
 

@@ -59,15 +59,15 @@
     LMGoodsInfoEntity *entity = self.cellInfo;
     [imgView setCpxViewInfo:entity.homeImg];
     [imgView load];
-    [nameLabel setText:entity.sellerName];
+    [nameLabel setText:entity.goodsShopName];
 
-    CGFloat width = [NSString widthForString:entity.sellerName fontSize:14.0 andHeight:18];
+    CGFloat width = [NSString widthForString:entity.goodsShopName fontSize:14.0 andHeight:18];
     CGRect rect = nameLabel.frame;
     rect.size.width = width;
     [nameLabel setFrame:rect];
     
     CGRect rect1 = arrowImgView.frame;
-    rect.origin.x = nameLabel.frame.origin.x+width+2;
+    rect.origin.x = nameLabel.frame.origin.x+width+5;
     [arrowImgView setFrame:rect1];
 }
 

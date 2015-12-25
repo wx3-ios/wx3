@@ -72,7 +72,7 @@
     NSMutableArray *comArr = [[NSMutableArray alloc] init];
     for(NSDictionary *dic in arr){
         LMShoppingCartEntity *entity = [LMShoppingCartEntity initLMShoppCartEntity:dic];
-        entity.imgUrl = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.imgUrl];
+        entity.shopImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.shopImg];
         [comArr addObject:entity];
         NSInteger number = 0 ;
         for(NSString *shopIDStr in shopIDArr){
@@ -102,7 +102,7 @@
 -(void)deleteLMShoppingCartGoods:(NSInteger)typeID{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:kSubShopID], @"shop_id", userObj.user, @"phone", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:4], @"type", [NSNumber numberWithInteger:typeID], @"cart_id", nil];
-    __block LMShoppingCartModel *blockSelf = self;
+//    __block LMShoppingCartModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_NewMall_ShoppingCart httpMethod:WXT_HttpMethod_Post timeoutIntervcal:10 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){
             if (_delegate && [_delegate respondsToSelector:@selector(deleteLMShoppingCartGoodsFailed:)]){

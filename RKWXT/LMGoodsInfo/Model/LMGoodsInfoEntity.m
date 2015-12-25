@@ -50,6 +50,9 @@
         
         NSInteger shopId = [[dic objectForKey:@"shop_id"] integerValue];
         [self setGoodshop_id:shopId];
+        
+        NSString *shopName = [dic objectForKey:@"shop_name"];
+        [self setGoodsShopName:shopName];
     }
     return self;
 }

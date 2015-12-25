@@ -141,7 +141,7 @@
 
 -(void)load{
     LMShoppingCartEntity *entity = self.cellInfo;
-    [imgView setCpxViewInfo:entity.imgUrl];
+    [imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.imgUrl]];
     [imgView load];
     
     [desLabel setText:entity.goodsName];

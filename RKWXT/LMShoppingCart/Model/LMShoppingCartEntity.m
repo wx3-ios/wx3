@@ -52,6 +52,9 @@
         
         NSInteger stockNum = [[dic objectForKey:@"stock_number"] integerValue];
         [self setStockNumber:stockNum];
+        
+        NSString *shopImg = [dic objectForKey:@"shop_home_img"];
+        [self setShopImg:shopImg];
     }
     return self;
 }
