@@ -60,4 +60,5 @@ typedef enum {
 -(void)toLMOrderList:(id)sender animated:(BOOL)animated;//商家联盟订单
 -(void)toLMGoodsInfoVC:(id)sender goodsID:(NSInteger)goodsID animated:(BOOL)animated; //商家联盟商品详情
 -(void)toLMShopInfoVC:(id)sender shopID:(NSInteger)shopID animated:(BOOL)animated; //店铺信息页面
+-(void)toLMSellerInfopVC:(id)sender sellerID:(NSInteger)sellerID animated:(BOOL)animated; //商家信息页面
 @end

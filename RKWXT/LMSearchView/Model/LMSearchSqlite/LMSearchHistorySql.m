@@ -45,7 +45,7 @@
             char *recordID = (char *)sqlite3_column_text(statement, 3); //记录的ID
             NSString *_recordID = [[NSString alloc] initWithUTF8String:recordID];
             
-            char *other = (char *)sqlite3_column_text(statement, 3);   //预留字段
+            char *other = (char *)sqlite3_column_text(statement, 4);   //预留字段
             NSString *_other = [[NSString alloc] initWithUTF8String:other];
             
             LMSearchHistoryEntity *entity = [[LMSearchHistoryEntity alloc] init];
@@ -82,6 +82,7 @@
     }
     sqlite3_bind_text(statement, 1, [RecordName UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 2, [RecordTime UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(statement, 3, [RecordID UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(statement, 3, [Other UTF8String], -1, SQLITE_TRANSIENT);
     success2 = sqlite3_step(statement);
     sqlite3_finalize(statement);

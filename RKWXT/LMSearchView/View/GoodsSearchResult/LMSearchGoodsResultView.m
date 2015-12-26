@@ -9,6 +9,7 @@
 #import "LMSearchGoodsResultView.h"
 #import "WXRemotionImgBtn.h"
 #import "LMSearchGoodsResultCell.h"
+#import "LMSearchGoodsEntity.h"
 
 @interface LMSearchGoodsResultView(){
     WXRemotionImgBtn *_imgView;
@@ -23,32 +24,32 @@
     self = [super initWithFrame:frame];
     if(self){
         CGFloat bgWidth = (IPHONE_SCREEN_WIDTH-3*10)/2;
-        CGFloat bgHeight = 215;
+        CGFloat bgHeight = 220;
         WXUIButton *bgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         bgBtn.frame = CGRectMake(0, 0, bgWidth, bgHeight);
         [bgBtn setBackgroundColor:[UIColor whiteColor]];
         [bgBtn addTarget:self action:@selector(forMeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:bgBtn];
         
-        CGFloat yOffset = 10;
+        CGFloat yOffset = 7;
         CGFloat imgWidth = 145;
         CGFloat imgHeight = imgWidth;
         _imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, yOffset, imgWidth, imgHeight)];
         [_imgView setUserInteractionEnabled:NO];
         [bgBtn addSubview:_imgView];
         
-        yOffset += imgHeight+10;
+        yOffset += imgHeight+7;
         CGFloat nameLabelHieght = 32;
         _nameLabel = [[WXUILabel alloc] init];
         _nameLabel.frame = CGRectMake(0, yOffset, imgWidth, nameLabelHieght);
         [_nameLabel setBackgroundColor:[UIColor clearColor]];
-        [_nameLabel setTextAlignment:NSTextAlignmentCenter];
+        [_nameLabel setTextAlignment:NSTextAlignmentLeft];
         [_nameLabel setTextColor:WXColorWithInteger(0x000000)];
         [_nameLabel setFont:[UIFont systemFontOfSize:12.0]];
         [_nameLabel setNumberOfLines:2];
         [bgBtn addSubview:_nameLabel];
         
-        yOffset += nameLabelHieght+10;
+        yOffset += nameLabelHieght+7;
         priceLabel = [[WXUILabel alloc] init];
         priceLabel.frame = CGRectMake(0, yOffset, imgWidth, 16);
         [priceLabel setBackgroundColor:[UIColor clearColor]];
@@ -77,10 +78,11 @@
 }
 
 -(void)load{
-    [_imgView setCpxViewInfo:@"http://oldyun.67call.com/wx3/Public/Uploads/20151118/20151118141759_471740.jpeg"];
+    LMSearchGoodsEntity *entity = self.cpxViewInfo;
+    [_imgView setCpxViewInfo:entity.goodsImg];
     [_imgView load];
-    [_nameLabel setText:self.cpxViewInfo];
-    [priceLabel setText:@"100.00"];
+    [_nameLabel setText:entity.goodsName];
+    [priceLabel setText:[NSString stringWithFormat:@"￥%.2f",entity.shopPrice]];
 }
 
 @end

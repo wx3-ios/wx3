@@ -282,6 +282,9 @@
         case WXT_UrlFeed_Type_Home_OrderEvaluate:
             url = @"/wx_order_evaluate.php";
             break;
+        case WXT_UrlFeed_Type_Home_LMSearch:
+            url = @"/app_sellerunion_search.php";
+            break;
         default:
             break;
     }

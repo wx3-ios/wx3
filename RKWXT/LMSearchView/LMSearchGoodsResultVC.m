@@ -8,6 +8,7 @@
 
 #import "LMSearchGoodsResultVC.h"
 #import "LMSearchGoodsResultCell.h"
+#import "LMSearchGoodsEntity.h"
 
 #define Size self.bounds.size
 
@@ -24,6 +25,8 @@
     [self setCSTTitle:_titleName];
     [self setBackgroundColor:[UIColor whiteColor]];
     
+    listArr = _searchList;
+    
     _tabelView = [[UITableView alloc] init];
     _tabelView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_tabelView setBackgroundColor:[UIColor whiteColor]];
@@ -39,11 +42,11 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [listArr count]/2+[listArr count]%2>0?1:0;
+    return [listArr count]/2+([listArr count]%2>0?1:0);
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 1;
+    return LMSearchGoodsResultCellHeight;
 }
 
 -(WXUITableViewCell *)searchGoodsResultCell:(NSInteger)row{
@@ -54,12 +57,12 @@
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     NSMutableArray *rowArray = [NSMutableArray array];
-    NSInteger max = row*2;
+    NSInteger max = (row+1)*2;
     NSInteger count = [listArr count];
     if(max > count){
         max = count;
     }
-    for(NSInteger i = (row-1)*2; i < max; i++){
+    for(NSInteger i = row*2; i < max; i++){
         [rowArray addObject:[listArr objectAtIndex:i]];
     }
     [cell setDelegate:self];
@@ -72,6 +75,11 @@
     NSInteger row = indexPath.row;
     cell = [self searchGoodsResultCell:row];
     return cell;
+}
+
+-(void)lmSearchGoodsBtnClicked:(id)sender{
+    LMSearchGoodsEntity *entity = sender;
+    [[CoordinateController sharedCoordinateController] toLMGoodsInfoVC:self  goodsID:entity.goodsID animated:YES];
 }
 
 @end

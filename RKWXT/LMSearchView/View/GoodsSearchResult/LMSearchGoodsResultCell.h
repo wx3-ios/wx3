@@ -8,7 +8,7 @@
 
 #import "WXMiltiViewCell.h"
 
-#define LMSearchGoodsResultCellHeight (215)
+#define LMSearchGoodsResultCellHeight (220)
 
 @protocol LMSearchGoodsResultCellDelegate;
 

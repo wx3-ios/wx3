@@ -13,6 +13,8 @@
 
 @interface LMSearchHistoryModel : NSObject
 @property (nonatomic,strong) NSArray *listArr;
+
+//本地搜索记录
 -(void)loadLMSearchHistoryList;
 -(void)deleteLMSearchRecordWith:(NSString*)recordName;
 -(void)deleteAll;

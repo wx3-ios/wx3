@@ -28,6 +28,7 @@
 #import "LMHomeOrderVC.h"
 #import "LMGoodsInfoVC.h"
 #import "LMShopInfoVC.h"
+#import "LMSellerInfoVC.h"
 @implementation CoordinateController
 
 + (CoordinateController*)sharedCoordinateController{
@@ -176,6 +177,13 @@
     LMShopInfoVC *shopInfoVC = [[LMShopInfoVC alloc] init];
     shopInfoVC.sshop_id = shopID;
     [vc.wxNavigationController pushViewController:shopInfoVC];
+}
+
+-(void)toLMSellerInfopVC:(id)sender sellerID:(NSInteger)sellerID animated:(BOOL)animated{
+    WXUIViewController *vc = sender;
+    LMSellerInfoVC *sellerInfoVC = [[LMSellerInfoVC alloc] init];
+    sellerInfoVC.ssid = sellerID;
+    [vc.wxNavigationController pushViewController:sellerInfoVC];
 }
 
 @end

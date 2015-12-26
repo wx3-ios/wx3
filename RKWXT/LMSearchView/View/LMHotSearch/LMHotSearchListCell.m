@@ -52,10 +52,10 @@
             [commonBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
             [commonBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
             commonBtn.frame = CGRectMake(xOffset+i*(xOffset+btnWidth), yGap+j*(btnHeight+yGap), btnWidth, btnHeight);
-            [commonBtn setBorderRadian:1.0 width:1.0 color:[UIColor blackColor]];
+            [commonBtn setBorderRadian:1.0 width:1.0 color:WXColorWithInteger(0xdbdbdb)];
             [commonBtn setTitle:[listArr objectAtIndex:count] forState:UIControlStateNormal];
-            [commonBtn setTitleColor:WXColorWithInteger(0x969696) forState:UIControlStateNormal];
-            [commonBtn.titleLabel setFont:WXFont(10.0)];
+            [commonBtn setTitleColor:WXColorWithInteger(0x000000) forState:UIControlStateNormal];
+            [commonBtn.titleLabel setFont:WXFont(12.0)];
 //            commonBtn.tag = entity.industryID;
             [commonBtn addTarget:self action:@selector(buttonImageClicked:) forControlEvents:UIControlEventTouchUpInside];
             [baseView addSubview:commonBtn];

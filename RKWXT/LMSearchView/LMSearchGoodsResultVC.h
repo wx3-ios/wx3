@@ -10,5 +10,6 @@
 
 @interface LMSearchGoodsResultVC : WXUIViewController
 @property (nonatomic,strong) NSString *titleName;
+@property (nonatomic,strong) NSArray *searchList;
 
 @end

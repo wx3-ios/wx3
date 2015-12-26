@@ -9,19 +9,40 @@
 #import "LMSearchListVC.h"
 #import "LMHotSearchListCell.h"
 
-//搜索
+//搜索历史
 #import "LMSearchInsertData.h"
 #include "LMSearchHistoryEntity.h"
 #import "LMSearchHistoryModel.h"
 
+//搜索
+#import "LMSearchDataModel.h"
+#import "LMSearchGoodsEntity.h"
+#import "LMSearchSellerEntity.h"
+#import "WXDropListView.h"
+
+//跳转
+#import "LMSearchGoodsResultVC.h"
+#import "LMSearchSellerResultVC.h"
+
 #define Size self.bounds.size
 
-@interface LMSearchListVC ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>{
+typedef enum{
+    LMSearch_Goods = 1,
+//    LMSearch_Shop = 2,
+    LMSearch_Seller = 3,
+}LMSearch;
+
+@interface LMSearchListVC ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,LMSearchDataModelDelegate,WXDropListViewDelegate>{
     WXUITextField *_textField;
+    WXUIButton *changeBtn;
+    LMSearch searchType;
+    WXDropListView *_dropListView;
+    
     UITableView *_tableView;
     
     BOOL showHistory;
-    LMSearchHistoryModel *_historyModel;
+    LMSearchHistoryModel *_historyModel;  //搜索历史
+    LMSearchDataModel *_searchModel; //搜索
     
     NSArray *hotSearchArr;  //热门搜索
     NSArray *searchHistoryArr; //搜索历史
@@ -31,6 +52,10 @@
 @end
 
 @implementation LMSearchListVC
+static NSString* g_dropItemList[2] ={
+    @"商品",
+    @"商家",
+};
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -39,6 +64,15 @@
         [self addOBS];
         [_historyModel loadLMSearchHistoryList];
     }
+}
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _searchModel = [[LMSearchDataModel alloc] init];
+        [_searchModel setDelegate:self];
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -61,6 +95,7 @@
     [self addOBS];
     _historyModel = [[LMSearchHistoryModel alloc] init];
     [_historyModel loadLMSearchHistoryList];
+    searchType = LMSearch_Goods;  //默认搜索商品
 }
 
 -(void)addOBS{
@@ -87,22 +122,63 @@
 }
 
 -(void)createSearchView{
-    CGFloat width = 3*Size.width/4;
+    CGFloat btnWidth = 50;
+    CGFloat btnHeight = 25;
+    CGFloat xOffset = 40;
+    changeBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    changeBtn.frame = CGRectMake(xOffset, 66-btnHeight-5, btnWidth, btnHeight);
+    [changeBtn setBackgroundColor:WXColorWithInteger(0xb01716)];
+    [changeBtn setBorderRadian:1.0 width:1.0 color:[UIColor clearColor]];
+    [changeBtn setTitleColor:WXColorWithInteger(0xc9c9c9) forState:UIControlStateNormal];
+    [changeBtn.titleLabel setFont:WXFont(13.0)];
+    [changeBtn setTitle:@"商品" forState:UIControlStateNormal];
+    [changeBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10)];
+    [changeBtn setImage:[UIImage imageNamed:@"LMSearchDropUp.png"] forState:UIControlStateNormal];
+    [changeBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 40, 0, 0)];
+    //    [changeBtn addTarget:self action:@selector(changeSearchTerm) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:changeBtn];
+    
+    CGFloat width = Size.width-xOffset-btnWidth-40;
     CGFloat height = 25;
-    _textField = [[WXUITextField alloc] initWithFrame:CGRectMake((Size.width-width)/2, 66-height-10, width, height)];
+    _textField = [[WXUITextField alloc] initWithFrame:CGRectMake(xOffset+btnWidth-1, 66-height-5, width, height)];
     [_textField setDelegate:self];
     [_textField setReturnKeyType:UIReturnKeySearch];
     [_textField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_textField addTarget:self action:@selector(changeInput) forControlEvents:UIControlEventEditingChanged];
-    [_textField setBackgroundColor:[UIColor yellowColor]];
-    [_textField setBorderRadian:9.0 width:1.0 color:[UIColor clearColor]];
+    [_textField setBackgroundColor:WXColorWithInteger(0xb01716)];
+    [_textField setBorderRadian:1.0 width:1.0 color:[UIColor clearColor]];
     [_textField setFont:WXFont(13.0)];
     [_textField becomeFirstResponder];
     [_textField setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_textField setTextColor:[UIColor whiteColor]];
     [_textField setTintColor:[UIColor whiteColor]];
-    [_textField setPlaceHolder:@"搜索商家、商品" color:WXColorWithInteger(0xffffff)];
+    [_textField setPlaceHolder:@"搜索商品" color:WXColorWithInteger(0xffffff)];
     [self addSubview:_textField];
+    
+    _dropListView = [self createDropListViewWith:changeBtn];
+    [_dropListView unshow:NO];
+    [self.view addSubview:_dropListView];
+}
+
+//下拉菜单
+- (WXDropListView*)createDropListViewWith:(WXUIButton*)btn{
+    NSInteger row = LMSearch_Seller;
+    CGFloat width = 100;
+    CGFloat height = 40;
+    CGRect rect = CGRectMake(90, 60, width, row*height);
+    WXDropListView *dropListView = [[WXDropListView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height+100) menuButton:btn dropListFrame:rect];
+    [dropListView setDelegate:self];
+    [dropListView setFont:[UIFont systemFontOfSize:15.0]];
+    [dropListView setDropDirection:E_DropDirection_Right];
+    
+    NSMutableArray *itemArray = [NSMutableArray array];
+    for (int i = 0; i < 2; i++) {
+        WXDropListItem *item = [[WXDropListItem alloc] init];
+        [item setTitle:g_dropItemList[i]];
+        [itemArray addObject:item];
+    }
+    [dropListView setDataList:itemArray];
+    return dropListView;
 }
 
 //改变cell分割线置顶
@@ -178,8 +254,8 @@
     textLabel.frame = CGRectMake(12, 0, 100, 20);
     [textLabel setBackgroundColor:[UIColor clearColor]];
     [textLabel setTextAlignment:NSTextAlignmentLeft];
-    [textLabel setTextColor:WXColorWithInteger(0x000000)];
-    [textLabel setFont:WXFont(13.0)];
+    [textLabel setTextColor:WXColorWithInteger(0x969696)];
+    [textLabel setFont:WXFont(12.0)];
     [view addSubview:textLabel];
     
     NSString *text = nil;
@@ -209,6 +285,7 @@
     return cell;
 }
 
+//搜索记录
 -(WXUITableViewCell*)searchHistoryListCell:(NSInteger)row{
     static NSString *identifier = @"historyListCell";
     WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
@@ -223,14 +300,30 @@
 }
 
 //搜索记录
--(WXUITableViewCell*)searchResultListCell:(NSInteger)row{
-    static NSString *identifier = @"resultListCell";
+//商品
+-(WXUITableViewCell*)searchGoodsResultListCell:(NSInteger)row{
+    static NSString *identifier = @"goodsResultListCell";
     WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    if(row > 0){
-        
+    if([searchListArr count] > 0){
+        LMSearchGoodsEntity *entity = [searchListArr objectAtIndex:row];
+        [cell.textLabel setText:entity.goodsName];
+    }
+    return cell;
+}
+
+//商家
+-(WXUITableViewCell*)searchSellerResultListCell:(NSInteger)row{
+    static NSString *identifier = @"sellerResultListCell";
+    WXUITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    if([searchListArr count] > 0){
+        LMSearchSellerEntity *entity = [searchListArr objectAtIndex:row];
+        [cell.textLabel setText:entity.sellerName];
     }
     return cell;
 }
@@ -246,13 +339,43 @@
             cell = [self searchHistoryListCell:row];
         }
     }else{
-        cell = [self searchResultListCell:row];
+        if(searchType == LMSearch_Goods){
+            cell = [self searchGoodsResultListCell:row];
+        }
+        if(searchType == LMSearch_Seller){
+            cell = [self searchSellerResultListCell:row];
+        }
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    if(showHistory){
+        if(section == 1){
+            LMSearchHistoryEntity *entity = [searchHistoryArr objectAtIndex:row];
+            [self insertHistoryData:entity.recordName andRecordID:[entity.recordID integerValue] searchType:[entity.other integerValue]];
+            if([entity.other integerValue] == LMSearch_Goods){
+                [[CoordinateController sharedCoordinateController] toLMGoodsInfoVC:self goodsID:[entity.recordID integerValue] animated:YES];
+            }
+            if([entity.other integerValue] == LMSearch_Seller){
+                [[CoordinateController sharedCoordinateController] toLMSellerInfopVC:self sellerID:[entity.recordID integerValue] animated:YES];
+            }
+        }
+    }else{
+        if(searchType == LMSearch_Goods){
+            LMSearchGoodsEntity *entity = [searchListArr objectAtIndex:row];
+            [self insertHistoryData:entity.goodsName andRecordID:entity.goodsID searchType:LMSearch_Goods];
+            [[CoordinateController sharedCoordinateController] toLMGoodsInfoVC:self goodsID:entity.goodsID animated:YES];
+        }
+        if(searchType == LMSearch_Seller){
+            LMSearchSellerEntity *entity = [searchListArr objectAtIndex:row];
+            [self insertHistoryData:entity.sellerName andRecordID:entity.sellerID searchType:LMSearch_Seller];
+            [[CoordinateController sharedCoordinateController] toLMSellerInfopVC:self sellerID:entity.sellerID animated:YES];
+        }
+    }
 }
 
 #pragma mark delete
@@ -285,17 +408,43 @@
         [_tableView reloadData];
     }else{
         showHistory = NO;
-        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        if(searchType == LMSearch_Goods){
+            [_searchModel lmSearchInputKeyword:_textField.text searchType:LMSearch_Type_Goods];
+        }
+        if(searchType == LMSearch_Seller){
+            [_searchModel lmSearchInputKeyword:_textField.text searchType:LMSearch_Type_Seller];
+        }
     }
+}
+
+-(void)lmSearchDataSucceed{
+    searchListArr = _searchModel.searchListArr;
+    [_tableView reloadData];
+}
+
+-(void)lmSearchDataFailed:(NSString *)errorMsg{
 }
 
 -(void)textFieldDone:(id)sender{
     [_textField resignFirstResponder];
-    [self insertHistoryData:_textField.text andRecordID:1];
+    
+    if([searchListArr count] > 0){
+        if(searchType == LMSearch_Goods){
+            LMSearchGoodsResultVC *searchListVC = [[LMSearchGoodsResultVC alloc] init];
+            searchListVC.searchList = searchListArr;
+            searchListVC.titleName = _textField.text;
+            [self.wxNavigationController pushViewController:searchListVC];
+        }
+        if(searchType == LMSearch_Seller){
+            LMSearchSellerResultVC *sellerVC = [[LMSearchSellerResultVC alloc] init];
+            sellerVC.listArr = searchListArr;
+            [self.wxNavigationController pushViewController:sellerVC];
+        }
+    }
 }
 
 #pragma mark 搜索
--(void)insertHistoryData:(NSString*)recordName andRecordID:(NSInteger)recordID{
+-(void)insertHistoryData:(NSString*)recordName andRecordID:(NSInteger)recordID searchType:(LMSearch)search{
     if(recordName.length == 0){
         return;
     }
@@ -307,7 +456,7 @@
             }
         }
         LMSearchInsertData *insertData = [[LMSearchInsertData alloc] init];
-        [insertData insertData:recordName withRecordID:[NSString stringWithFormat:@"%ld",(long)recordID] with:@""];
+        [insertData insertData:recordName withRecordID:[NSString stringWithFormat:@"%ld",(long)recordID] with:[NSString stringWithFormat:@"%ld",(long)search]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [_historyModel loadLMSearchHistoryList];
         });
@@ -320,7 +469,21 @@
 }
 
 -(void)delLMSearchHistoryOneRecordSucceed{
-    
+}
+
+//更改搜索方式
+-(void)menuClickAtIndex:(NSInteger)index{
+    if(index+1 == LMSearch_Goods){
+        searchType = LMSearch_Goods;
+        [changeBtn setTitle:@"商品" forState:UIControlStateNormal];
+        [_textField setPlaceHolder:@"搜索商品" color:WXColorWithInteger(0xffffff)];
+    }
+    //暂时屏蔽掉店铺
+    if(index+2 == LMSearch_Seller){
+        searchType = LMSearch_Seller;
+        [changeBtn setTitle:@"商家" forState:UIControlStateNormal];
+        [_textField setPlaceHolder:@"搜索商家" color:WXColorWithInteger(0xffffff)];
+    }
 }
 
 -(void)backToLastPage{
