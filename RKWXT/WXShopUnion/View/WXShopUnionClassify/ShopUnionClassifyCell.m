@@ -48,7 +48,7 @@
         waitView.frame = CGRectMake((Size.width-30)/2, (ShopUnionClassifyRowHeight-30)/2, 30, 30);
         [waitView setHidesWhenStopped:YES];
         [waitView setBackgroundColor:[UIColor redColor]];
-        [self.contentView addSubview:waitView];
+//        [self.contentView addSubview:waitView];
         
         CGFloat height = 20;
         CGFloat pageControlWidth = 60;
@@ -79,7 +79,7 @@
     CGFloat btnWidth = rect.size.width/5;
     CGFloat btnHeight = ShopUnionClassifyRowHeight/2;
     __block NSInteger count = 0;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for(NSInteger j = 0; j < ([classifyArr count]/kOneCellShowNumber+([classifyArr count]%5>0?1:0)); j++){
             for(NSInteger i = 0; i < kOneCellShowNumber; i++){
                 if(count > [classifyArr count]-1){
@@ -117,10 +117,10 @@
                 [waitView startAnimating];
             }
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [waitView stopAnimating];
-        });
-    });
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [waitView stopAnimating];
+//        });
+//    });
     
     NSInteger pageCount = [_merchantImgViewArray count]/10+([_merchantImgViewArray count]%10>0?1:0);
     if(pageCount){

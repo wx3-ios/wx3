@@ -11,7 +11,7 @@
 
 #define ShopUnionDownVieHeight (45)
 
-@interface WXShopUnionVC()<ShopUnionDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,WXShopUnionActivityCell,WXShopUnionHotShopTitleCellDelegate,WXShopUnionHotShopCellDelegate,WXShopUnionModelDelegate,ShopUnionClassifyCellDelegate>{
+@interface WXShopUnionVC()<ShopUnionDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,WXShopUnionActivityCell,WXShopUnionHotShopTitleCellDelegate,WXShopUnionHotShopCellDelegate,WXShopUnionModelDelegate,ShopUnionClassifyCellDelegate,LMHomeMoreHotGoodsModelDelegate>{
     WXShopUnionAreaView *_areaListView;
     BOOL showAreaview;
     WXUIButton *rightBtn;
@@ -23,6 +23,8 @@
     NSArray *hotShopArr;
     
     WXShopUnionModel *_model;
+    LMHomeMoreHotGoodsModel *_hotGoodsModel;
+    BOOL loadMoreHotGoods;
 }
 @end
 
@@ -44,6 +46,9 @@
     if(self){
         _model = [[WXShopUnionModel alloc] init];
         [_model setDelegate:self];
+        
+        _hotGoodsModel = [[LMHomeMoreHotGoodsModel alloc] init];
+        [_hotGoodsModel setDelegate:self];
     }
     return self;
 }
@@ -423,7 +428,6 @@
 
 #pragma mark dataDelegate
 -(void)loadShopUnionDataSucceed{
-    hotGoodsArr = _model.hotGoodsArr;
     hotShopArr = _model.hotShopArr;
     [_tableView headerEndRefreshing];
     [_tableView reloadData];
@@ -440,19 +444,41 @@
 
 #pragma mark 刷新
 -(void)headerRefreshing{
+    loadMoreHotGoods = NO;
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
     [_model loadShopUnionData:userObj.userSelectedAreaID];
+    if([hotGoodsArr count] == 0){
+        [_hotGoodsModel loadLMHomeMoreHotGoods:0 length:10];
+    }else{
+        [_hotGoodsModel loadLMHomeMoreHotGoods:0 length:[hotGoodsArr count]];
+    }
 }
 
 -(void)loadMoreGoods{
 }
 
 -(void)footerRefreshing{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_tableView reloadData];
+    loadMoreHotGoods = YES;
+    if([hotGoodsArr count] == 0){
+        [_hotGoodsModel loadLMHomeMoreHotGoods:0 length:10];
+    }else{
+        [_hotGoodsModel loadLMHomeMoreHotGoods:10 length:40];
+    }
+}
+
+#pragma mark moreHotGoods
+-(void)loadMoreHotGoodsSucceed{
+    if(loadMoreHotGoods){
         [_tableView footerEndRefreshing];
-//        [self loadMoreGoods];
-    });
+    }
+    hotGoodsArr = _hotGoodsModel.listArr;
+    [_tableView reloadData];
+}
+
+-(void)loadMoreHotGoodsFailed:(NSString *)errorMsg{
+    if(loadMoreHotGoods){
+        [_tableView footerEndRefreshing];
+    }
 }
 
 #pragma mark cityAreaDelegate

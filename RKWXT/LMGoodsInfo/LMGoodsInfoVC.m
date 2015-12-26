@@ -472,6 +472,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if(section == LMGoodsInfo_Section_SellerInfo){
+        LMGoodsInfoEntity *entity = [_model.sellerArr objectAtIndex:row];
+        [[CoordinateController sharedCoordinateController] toLMSellerInfopVC:self sellerID:entity.sellerID animated:YES];
+    }
+    if(section == LMGoodsInfo_Section_OtherShop){
+        LMGoodsInfoEntity *entity = [_model.otherShopArr objectAtIndex:row];
+        [[CoordinateController sharedCoordinateController] toLMShopInfoVC:self shopID:entity.shopID animated:YES];
+    }
 }
 
 #pragma mark dataDelegate

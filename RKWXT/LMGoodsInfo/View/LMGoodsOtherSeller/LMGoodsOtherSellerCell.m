@@ -45,14 +45,14 @@
         [self.contentView addSubview:sellerDesLabel];
         
         CGFloat imgWidth = 15;
-        CGFloat imgHeight = imgWidth;
+        CGFloat imgHeight = imgWidth+4;
         imgView = [[WXUIImageView alloc] init];
         imgView.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth, yOffset, imgWidth, imgHeight);
-        [imgView setImage:[UIImage imageNamed:@""]];
+        [imgView setImage:[UIImage imageNamed:@"LMGoodsInfoLocationImg.png"]];
         [self.contentView addSubview:imgView];
         
         distanceLabel = [[WXUILabel alloc] init];
-        distanceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth+imgWidth, yOffset, rightViewWidth-imgWidth, namelabelHeight);
+        distanceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth+imgWidth+4, yOffset, rightViewWidth-imgWidth-4, namelabelHeight);
         [distanceLabel setBackgroundColor:[UIColor clearColor]];
         [distanceLabel setTextAlignment:NSTextAlignmentLeft];
         [distanceLabel setTextColor:WXColorWithInteger(0x9b9b9b)];
@@ -66,7 +66,11 @@
     LMGoodsInfoEntity *entity = self.cellInfo;
     [sellerNameLabel setText:entity.shopName];
     [sellerDesLabel setText:entity.shopAddress];
-    [distanceLabel setText:[NSString stringWithFormat:@"%.2f",entity.shopDistance]];
+    CGFloat distance = entity.shopDistance;
+    if(entity.shopDistance > 1000){
+        distance = entity.shopDistance/1000;
+    }
+    [distanceLabel setText:[NSString stringWithFormat:@"%.2fkm",distance]];
 }
 
 @end

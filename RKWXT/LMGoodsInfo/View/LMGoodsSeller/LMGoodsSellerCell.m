@@ -12,7 +12,6 @@
 @interface LMGoodsSellerCell(){
     WXUILabel *sellerNameLabel;
     WXUILabel *sellerDesLabel;
-    WXUIImageView *imgView;
     WXUILabel *distanceLabel;
 }
 @end
@@ -46,10 +45,10 @@
         
         CGFloat imgWidth = 15;
         CGFloat imgHeight = imgWidth;
-        imgView = [[WXUIImageView alloc] init];
+        WXUIImageView *imgView = [[WXUIImageView alloc] init];
         imgView.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth, yOffset, imgWidth, imgHeight);
-        [imgView setImage:[UIImage imageNamed:@""]];
-        [self.contentView addSubview:imgView];
+        [imgView setImage:[UIImage imageNamed:@"LMGoodsInfoLocationImg.png"]];
+//        [self.contentView addSubview:imgView];
         
         distanceLabel = [[WXUILabel alloc] init];
         distanceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth+imgWidth, yOffset, rightViewWidth-imgWidth, namelabelHeight);

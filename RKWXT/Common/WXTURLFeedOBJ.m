@@ -285,6 +285,9 @@
         case WXT_UrlFeed_Type_Home_LMSearch:
             url = @"/app_sellerunion_search.php";
             break;
+        case WXT_UrlFeed_Type_Home_LoadMoreHot:
+            url = @"/get_hot_gss_list.php";
+            break;
         default:
             break;
     }

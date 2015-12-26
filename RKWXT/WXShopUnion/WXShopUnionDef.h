@@ -24,6 +24,7 @@
 #import "WXShopUnionHotGoodsCell.h"
 
 #import "WXShopUnionModel.h"
+#import "LMHomeMoreHotGoodsModel.h"
 #import "ShopUnionClassifyEntity.h"
 #import "ShopUnionHotGoodsEntity.h"
 #import "ShopUnionHotShopEntity.h"

@@ -42,7 +42,7 @@
         [nameLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:nameLabel];
         
-        CGFloat rightWidth = 50;
+        CGFloat rightWidth = 60;
         distancelabel = [[WXUILabel alloc] init];
         distancelabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightWidth, yOffset, rightWidth, namelabelHeight);
         [distancelabel setBackgroundColor:[UIColor clearColor]];
@@ -52,7 +52,7 @@
         [self.contentView addSubview:distancelabel];
         
         yOffset += namelabelHeight+6;
-        CGFloat disLabelWidth = IPHONE_SCREEN_WIDTH-xOffset-rightWidth;
+        CGFloat disLabelWidth = IPHONE_SCREEN_WIDTH-xOffset-10;
         CGFloat disLabelHeight = 32;
         addressLabel = [[WXUILabel alloc] init];
         addressLabel.frame = CGRectMake(xOffset, yOffset, disLabelWidth, disLabelHeight);
@@ -72,7 +72,12 @@
     [imgView load];
     [nameLabel setText:entity.sellerName];
     [addressLabel setText:entity.address];
-    [distancelabel setText:[NSString stringWithFormat:@"%.2f",entity.distance]];
+    
+    CGFloat distance = entity.distance;
+    if(entity.distance > 1000){
+        distance = entity.distance/1000;
+    }
+    [distancelabel setText:[NSString stringWithFormat:@"%.2fkm",distance]];
 }
 
 @end
