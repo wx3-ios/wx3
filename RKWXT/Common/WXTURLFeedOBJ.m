@@ -288,6 +288,9 @@
         case WXT_UrlFeed_Type_Home_LoadMoreHot:
             url = @"/get_hot_gss_list.php";
             break;
+        case WXT_UrlFeed_Type_Home_LMHotSearch:
+            url = @"/get_hot_search.php";
+            break;
         default:
             break;
     }

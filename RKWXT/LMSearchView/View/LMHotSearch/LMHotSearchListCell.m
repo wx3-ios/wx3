@@ -22,15 +22,19 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        baseView = [[WXUIView alloc] init];
-        baseView.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 50);
-        [baseView setBackgroundColor:WXColorWithInteger(0xffffff)];
-        [self.contentView addSubview:baseView];
     }
     return self;
 }
 
 -(void)load{
+    if(baseView){
+        [baseView removeFromSuperview];
+    }
+    baseView = [[WXUIView alloc] init];
+    baseView.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 50);
+    [baseView setBackgroundColor:WXColorWithInteger(0xffffff)];
+    [self.contentView addSubview:baseView];
+    
     listArr = self.cellInfo;
     if([listArr count] == 0){
         return;

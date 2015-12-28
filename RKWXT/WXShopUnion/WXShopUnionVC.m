@@ -458,6 +458,10 @@
 }
 
 -(void)footerRefreshing{
+    if([hotGoodsArr count] >= 40){
+        [_tableView footerEndRefreshing];
+        return;
+    }
     loadMoreHotGoods = YES;
     if([hotGoodsArr count] == 0){
         [_hotGoodsModel loadLMHomeMoreHotGoods:0 length:10];

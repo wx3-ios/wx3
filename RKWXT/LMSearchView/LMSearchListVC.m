@@ -24,6 +24,9 @@
 #import "LMSearchGoodsResultVC.h"
 #import "LMSearchSellerResultVC.h"
 
+#import "LMHotSearchModel.h"
+#import "LMSearchHotGoodsEntity.h"
+
 #define Size self.bounds.size
 
 typedef enum{
@@ -32,7 +35,7 @@ typedef enum{
     LMSearch_Seller = 3,
 }LMSearch;
 
-@interface LMSearchListVC ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,LMSearchDataModelDelegate,WXDropListViewDelegate>{
+@interface LMSearchListVC ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,LMSearchDataModelDelegate,WXDropListViewDelegate,LMHotSearchModelDelegate>{
     WXUITextField *_textField;
     WXUIButton *changeBtn;
     LMSearch searchType;
@@ -47,6 +50,8 @@ typedef enum{
     NSArray *hotSearchArr;  //热门搜索
     NSArray *searchHistoryArr; //搜索历史
     NSArray *searchListArr;  //搜索记录
+    
+    LMHotSearchModel *_hotSearchModel;
 }
 
 @end
@@ -71,6 +76,9 @@ static NSString* g_dropItemList[2] ={
     if(self){
         _searchModel = [[LMSearchDataModel alloc] init];
         [_searchModel setDelegate:self];
+        
+        _hotSearchModel = [[LMHotSearchModel alloc] init];
+        [_hotSearchModel setDelegate:self];
     }
     return self;
 }
@@ -83,8 +91,6 @@ static NSString* g_dropItemList[2] ={
     [self createNavigationBar];
     [self createSearchView];
     
-    hotSearchArr = @[@"你好", @"啊啊", @"不知道", @"可以", @"是的", @"放假", @"休息"];
-    
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 66, Size.width, Size.height-66);
     [_tableView setDelegate:self];
@@ -96,6 +102,9 @@ static NSString* g_dropItemList[2] ={
     _historyModel = [[LMSearchHistoryModel alloc] init];
     [_historyModel loadLMSearchHistoryList];
     searchType = LMSearch_Goods;  //默认搜索商品
+    
+    //获取热门搜索
+    [_hotSearchModel loadLMHotSearchData:LMSearchHot_Type_Goods];
 }
 
 -(void)addOBS{
@@ -140,7 +149,7 @@ static NSString* g_dropItemList[2] ={
     
     CGFloat width = Size.width-xOffset-btnWidth-40;
     CGFloat height = 25;
-    _textField = [[WXUITextField alloc] initWithFrame:CGRectMake(xOffset+btnWidth-1, 66-height-5, width, height)];
+    _textField = [[WXUITextField alloc] initWithFrame:CGRectMake(xOffset+btnWidth-1, 66-height-6, width, height)];
     [_textField setDelegate:self];
     [_textField setReturnKeyType:UIReturnKeySearch];
     [_textField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -163,8 +172,8 @@ static NSString* g_dropItemList[2] ={
 //下拉菜单
 - (WXDropListView*)createDropListViewWith:(WXUIButton*)btn{
     NSInteger row = LMSearch_Seller;
-    CGFloat width = 100;
-    CGFloat height = 40;
+    CGFloat width = 80;
+    CGFloat height = 28;
     CGRect rect = CGRectMake(90, 60, width, row*height);
     WXDropListView *dropListView = [[WXDropListView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height+100) menuButton:btn dropListFrame:rect];
     [dropListView setDelegate:self];
@@ -475,15 +484,26 @@ static NSString* g_dropItemList[2] ={
 -(void)menuClickAtIndex:(NSInteger)index{
     if(index+1 == LMSearch_Goods){
         searchType = LMSearch_Goods;
+        [_hotSearchModel loadLMHotSearchData:LMSearchHot_Type_Goods];
         [changeBtn setTitle:@"商品" forState:UIControlStateNormal];
         [_textField setPlaceHolder:@"搜索商品" color:WXColorWithInteger(0xffffff)];
     }
     //暂时屏蔽掉店铺
     if(index+2 == LMSearch_Seller){
         searchType = LMSearch_Seller;
+        [_hotSearchModel loadLMHotSearchData:LMSearchHot_Type_Seller];
         [changeBtn setTitle:@"商家" forState:UIControlStateNormal];
         [_textField setPlaceHolder:@"搜索商家" color:WXColorWithInteger(0xffffff)];
     }
+}
+
+//热门搜索
+-(void)loadLMHotSearchDataSucceed{
+    hotSearchArr = _hotSearchModel.hotSearchList;
+    [_tableView reloadData];
+}
+
+-(void)loadLMHotSearchDataFailed:(NSString *)errorMsg{
 }
 
 -(void)backToLastPage{
