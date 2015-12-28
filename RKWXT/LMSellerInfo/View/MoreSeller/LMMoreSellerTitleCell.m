@@ -29,11 +29,11 @@
         [imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:imgView];
         
-        xOffset += imgWidth+2;
+        xOffset += imgWidth+6;
         CGFloat yOffset = 10;
         CGFloat labelHeight = 16;
         nameLabel = [[WXUILabel alloc] init];
-        nameLabel.frame = CGRectMake(xOffset, yOffset, IPHONE_SCREEN_WIDTH-xOffset, labelHeight);
+        nameLabel.frame = CGRectMake(xOffset, (LMMoreSellerTitleCellHeight-labelHeight)/2, IPHONE_SCREEN_WIDTH-xOffset, labelHeight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
         [nameLabel setTextAlignment:NSTextAlignmentLeft];
         [nameLabel setTextColor:WXColorWithInteger(0x000000)];
@@ -47,7 +47,7 @@
         [desLabel setTextAlignment:NSTextAlignmentLeft];
         [desLabel setTextColor:WXColorWithInteger(0x9b9b9b)];
         [desLabel setFont:WXFont(10.0)];
-        [self.contentView addSubview:desLabel];
+//        [self.contentView addSubview:desLabel];
     }
     return self;
 }

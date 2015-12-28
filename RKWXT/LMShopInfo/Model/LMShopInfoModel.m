@@ -42,6 +42,7 @@
     
     LMShopInfoEntity *shopEntity = [LMShopInfoEntity initShopInfoEntity:[dic objectForKey:@"shop"]];
     shopEntity.topImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,shopEntity.topImg];
+    shopEntity.homeImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,shopEntity.homeImg];
     [_shopInfoArr addObject:shopEntity];
     
     for(NSDictionary *allGoodsDic in [dic objectForKey:@"all_goods"]){

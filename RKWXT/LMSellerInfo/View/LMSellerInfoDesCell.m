@@ -32,7 +32,7 @@
         [nameLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:nameLabel];
         
-        yOffset += nameLabelHeight+10;
+        yOffset += nameLabelHeight+6;
         CGFloat rightBtnWidth = 53;
         desLabel = [[WXUILabel alloc] init];
         desLabel.frame = CGRectMake(xOffset, yOffset, IPHONE_SCREEN_WIDTH-rightBtnWidth-5-xOffset, 41);

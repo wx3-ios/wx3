@@ -15,6 +15,7 @@
     WXRemotionImgBtn *imgView;
     WXUILabel *_nameLabel;
     WXUILabel *_addressLabel;
+    WXRemotionImgBtn *homeImgView;
 }
 @end
 
@@ -24,7 +25,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, LMShopInfoTopImgHeight)];
-        [imgView setUserInteractionEnabled:NO];
+//        [imgView setUserInteractionEnabled:NO];
         [self.contentView addSubview:imgView];
         
         CGFloat bgViewHeight = 65;
@@ -36,15 +37,14 @@
         CGFloat xOffset = 8;
         CGFloat imgWidth = 47;
         CGFloat imgHeight = imgWidth;
-        WXUIImageView *logoImgView = [[WXUIImageView alloc] init];
-        logoImgView.frame = CGRectMake(xOffset, (bgViewHeight-imgHeight)/2, imgWidth, imgHeight);
-        [logoImgView setImage:[UIImage imageNamed:@"Icon.png"]];
-        [bgImgView addSubview:logoImgView];
+        homeImgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake(xOffset, (bgViewHeight-imgHeight)/2, imgWidth, imgHeight)];
+        [homeImgView setUserInteractionEnabled:NO];
+        [bgImgView addSubview:homeImgView];
         
         CGFloat rightViewWidth = 50;
         
         xOffset += imgWidth+10;
-        CGFloat yOffset = 7;
+        CGFloat yOffset = 10;
         CGFloat nameLabelWidth = IPHONE_SCREEN_WIDTH-xOffset-rightViewWidth-10;
         CGFloat nameLabelHeight =  16;
         _nameLabel = [[WXUILabel alloc] init];
@@ -55,7 +55,7 @@
         [_nameLabel setTextColor:WXColorWithInteger(0xffffff)];
         [bgImgView addSubview:_nameLabel];
         
-        yOffset += nameLabelHeight+7;
+        yOffset += nameLabelHeight+5;
         _addressLabel = [[WXUILabel alloc] init];
         _addressLabel.frame = CGRectMake(xOffset, yOffset, nameLabelWidth, 2*nameLabelHeight);
         [_addressLabel setTextAlignment:NSTextAlignmentLeft];
@@ -74,10 +74,10 @@
         CGFloat callBtnWidth = 25;
         CGFloat callBtnHeight = 35;
         WXUIButton *callBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth+(rightViewWidth-callBtnWidth)/2, (bgViewHeight-callBtnHeight)/2, callBtnWidth, callBtnHeight);
-        [callBtn setImage:[UIImage imageNamed:@"ContactInfoCall.png"] forState:UIControlStateNormal];
+        callBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-rightViewWidth+(rightViewWidth-callBtnWidth)/2, (bgViewHeight-callBtnHeight)/2+LMShopInfoTopImgHeight-bgViewHeight, callBtnWidth, callBtnHeight);
+        [callBtn setImage:[UIImage imageNamed:@"LMWhiteCallImg.png"] forState:UIControlStateNormal];
         [callBtn addTarget:self action:@selector(callBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-        [bgImgView addSubview:callBtn];
+        [self.contentView addSubview:callBtn];
     }
     return self;
 }
@@ -86,6 +86,9 @@
     LMShopInfoEntity *entity = self.cellInfo;
     [imgView setCpxViewInfo:entity.topImg];
     [imgView load];
+    
+    [homeImgView setCpxViewInfo:entity.homeImg];
+    [homeImgView load];
     
     [_nameLabel setText:entity.shopName];
     [_addressLabel setText:entity.address];

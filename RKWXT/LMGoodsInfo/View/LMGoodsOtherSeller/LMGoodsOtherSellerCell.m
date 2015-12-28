@@ -69,8 +69,10 @@
     CGFloat distance = entity.shopDistance;
     if(entity.shopDistance > 1000){
         distance = entity.shopDistance/1000;
+        [distanceLabel setText:[NSString stringWithFormat:@"%.2fkm",distance]];
+    }else{
+        [distanceLabel setText:[NSString stringWithFormat:@"%.2fm",distance]];
     }
-    [distanceLabel setText:[NSString stringWithFormat:@"%.2fkm",distance]];
 }
 
 @end

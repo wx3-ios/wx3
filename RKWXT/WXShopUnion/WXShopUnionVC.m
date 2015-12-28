@@ -132,7 +132,7 @@
     [rightBtn.titleLabel setFont:WXFont(14.0)];
     [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 15)];
-    [rightBtn setImage:[UIImage imageNamed:@"GoodsListDownImg.png"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"LMSelectCityDownArrow.png"] forState:UIControlStateNormal];
     [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(0, btnWidth-15, 0, 0)];
     [rightBtn addTarget:self action:@selector(showAreaView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightBtn];
@@ -419,10 +419,10 @@
 -(void)showAreaView{
     if(showAreaview){
         showAreaview = NO;
-        [rightBtn setImage:[UIImage imageNamed:@"GoodsListUpImg.png"] forState:UIControlStateNormal];
+        [rightBtn setImage:[UIImage imageNamed:@"LMSelectCityUpArrow.png"] forState:UIControlStateNormal];
     }else{
         showAreaview = YES;
-        [rightBtn setImage:[UIImage imageNamed:@"GoodsListDownImg.png"] forState:UIControlStateNormal];
+        [rightBtn setImage:[UIImage imageNamed:@"LMSelectCityDownArrow.png"] forState:UIControlStateNormal];
     }
 }
 
@@ -501,7 +501,7 @@
 #pragma mark tocityList
 -(void)gotoCityListVC{
     [_areaListView unshow:YES];
-    [rightBtn setImage:[UIImage imageNamed:@"GoodsListDownImg.png"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"LMSelectCityDownArrow.png"] forState:UIControlStateNormal];
     WXShopCityListVC *cityListVC = [[WXShopCityListVC alloc] init];
     [self presentViewController:cityListVC animated:YES completion:^{
     }];

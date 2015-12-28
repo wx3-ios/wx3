@@ -8,7 +8,7 @@
 
 #import "WXMiltiViewCell.h"
 
-#define LMGoodsCollectionCellheight (222)
+#define LMGoodsCollectionCellheight (225)
 
 @protocol LMGoodsCollectionCellDelegate;
 @interface LMGoodsCollectionCell : WXMiltiViewCell

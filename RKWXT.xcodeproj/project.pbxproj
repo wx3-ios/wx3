@@ -123,9 +123,6 @@
 		12210C0D1C19220500A2CE63 /* LMSearchInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 12210C0C1C19220500A2CE63 /* LMSearchInsertData.m */; };
 		12210C101C1923E700A2CE63 /* LMSearchHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12210C0F1C1923E700A2CE63 /* LMSearchHistoryModel.m */; };
 		12211F191C06E9170016512A /* ShopUnionClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12211F181C06E9170016512A /* ShopUnionClassifyCell.m */; };
-		12211F1E1C070D220016512A /* ShopUnionDressImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12211F1B1C070D220016512A /* ShopUnionDressImg@2x.png */; };
-		12211F1F1C070D220016512A /* ShopUnionFoodImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12211F1C1C070D220016512A /* ShopUnionFoodImg@2x.png */; };
-		12211F201C070D220016512A /* ShopUnionHotImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12211F1D1C070D220016512A /* ShopUnionHotImg@2x.png */; };
 		1221C1C41BD9D4BB004B681D /* ClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1221C1C31BD9D4BB004B681D /* ClassifyModel.m */; };
 		1221C1C71BD9DAAF004B681D /* CLassifyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1221C1C61BD9DAAF004B681D /* CLassifyEntity.m */; };
 		1221C1CC1BDA169A004B681D /* ClassifyGoodsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1221C1CB1BDA169A004B681D /* ClassifyGoodsListVC.m */; };
@@ -681,6 +678,9 @@
 		12C2CE2B1BA1331C00797DA4 /* MyClientMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C2CE2A1BA1331C00797DA4 /* MyClientMoneyCell.m */; };
 		12C383651C30DFDC00409FA9 /* LMHotSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C383641C30DFDC00409FA9 /* LMHotSearchModel.m */; };
 		12C3836A1C30E07F00409FA9 /* LMSearchHotGoodsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C383691C30E07F00409FA9 /* LMSearchHotGoodsEntity.m */; };
+		12C3836C1C31065B00409FA9 /* LMWhiteCallImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C3836B1C31065B00409FA9 /* LMWhiteCallImg@2x.png */; };
+		12C3836F1C31121900409FA9 /* LMSelectCityDownArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C3836D1C31121900409FA9 /* LMSelectCityDownArrow@2x.png */; };
+		12C383701C31121900409FA9 /* LMSelectCityUpArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C3836E1C31121900409FA9 /* LMSelectCityUpArrow@2x.png */; };
 		12C64D781BF41F460039CC39 /* WinningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C64D771BF41F460039CC39 /* WinningView.m */; };
 		12C64D7B1BF42C170039CC39 /* WinningBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C64D7A1BF42C170039CC39 /* WinningBackgroundView.m */; };
 		12C64D7E1BF42F260039CC39 /* WXUIViewController+WinningPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C64D7D1BF42F260039CC39 /* WXUIViewController+WinningPopView.m */; };
@@ -1386,9 +1386,6 @@
 		12210C0F1C1923E700A2CE63 /* LMSearchHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSearchHistoryModel.m; sourceTree = "<group>"; };
 		12211F171C06E9170016512A /* ShopUnionClassifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopUnionClassifyCell.h; sourceTree = "<group>"; };
 		12211F181C06E9170016512A /* ShopUnionClassifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopUnionClassifyCell.m; sourceTree = "<group>"; };
-		12211F1B1C070D220016512A /* ShopUnionDressImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShopUnionDressImg@2x.png"; sourceTree = "<group>"; };
-		12211F1C1C070D220016512A /* ShopUnionFoodImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShopUnionFoodImg@2x.png"; sourceTree = "<group>"; };
-		12211F1D1C070D220016512A /* ShopUnionHotImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShopUnionHotImg@2x.png"; sourceTree = "<group>"; };
 		1221C1C21BD9D4BB004B681D /* ClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyModel.h; sourceTree = "<group>"; };
 		1221C1C31BD9D4BB004B681D /* ClassifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyModel.m; sourceTree = "<group>"; };
 		1221C1C51BD9DAAF004B681D /* CLassifyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLassifyEntity.h; sourceTree = "<group>"; };
@@ -2391,6 +2388,9 @@
 		12C383641C30DFDC00409FA9 /* LMHotSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHotSearchModel.m; sourceTree = "<group>"; };
 		12C383681C30E07F00409FA9 /* LMSearchHotGoodsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSearchHotGoodsEntity.h; sourceTree = "<group>"; };
 		12C383691C30E07F00409FA9 /* LMSearchHotGoodsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSearchHotGoodsEntity.m; sourceTree = "<group>"; };
+		12C3836B1C31065B00409FA9 /* LMWhiteCallImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMWhiteCallImg@2x.png"; sourceTree = "<group>"; };
+		12C3836D1C31121900409FA9 /* LMSelectCityDownArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMSelectCityDownArrow@2x.png"; sourceTree = "<group>"; };
+		12C3836E1C31121900409FA9 /* LMSelectCityUpArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMSelectCityUpArrow@2x.png"; sourceTree = "<group>"; };
 		12C64D761BF41F460039CC39 /* WinningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningView.h; sourceTree = "<group>"; };
 		12C64D771BF41F460039CC39 /* WinningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningView.m; sourceTree = "<group>"; };
 		12C64D791BF42C170039CC39 /* WinningBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningBackgroundView.h; sourceTree = "<group>"; };
@@ -3923,9 +3923,8 @@
 		12211F1A1C070D220016512A /* ShopUnionClassifyImg */ = {
 			isa = PBXGroup;
 			children = (
-				12211F1B1C070D220016512A /* ShopUnionDressImg@2x.png */,
-				12211F1C1C070D220016512A /* ShopUnionFoodImg@2x.png */,
-				12211F1D1C070D220016512A /* ShopUnionHotImg@2x.png */,
+				12C3836D1C31121900409FA9 /* LMSelectCityDownArrow@2x.png */,
+				12C3836E1C31121900409FA9 /* LMSelectCityUpArrow@2x.png */,
 			);
 			path = ShopUnionClassifyImg;
 			sourceTree = "<group>";
@@ -6123,6 +6122,7 @@
 		12A42FA91C16B56C005936F3 /* LmSellerInfo */ = {
 			isa = PBXGroup;
 			children = (
+				12C3836B1C31065B00409FA9 /* LMWhiteCallImg@2x.png */,
 				12A42FAA1C16B56C005936F3 /* LMSellerInfoBgImg@2x.png */,
 				12A42FAB1C16B56C005936F3 /* LMSellerInfoSmImg@2x.png */,
 			);
@@ -9274,7 +9274,6 @@
 				1240F6821C254D1300D4B685 /* LMGoodsAttention@2x.png in Resources */,
 				120EB3DC1B7B563B0036A77C /* shake_match.m4r in Resources */,
 				12D9F5FD1C0C43BC00D7C765 /* UserThirdClientImg@2x.png in Resources */,
-				12211F201C070D220016512A /* ShopUnionHotImg@2x.png in Resources */,
 				12210C021C190E6A00A2CE63 /* JuniorNumThird@2x.png in Resources */,
 				12F2D8061B1F01E900C8017F /* failedImage@2x.png in Resources */,
 				12A850EF1B880CD200276D2A /* SharkImg@2x.png in Resources */,
@@ -9287,6 +9286,7 @@
 				12F2D8071B1F01E900C8017F /* initImage@2x.png in Resources */,
 				12F3CC801B1DE82C00E64DE4 /* WaitGainGoods@2x.png in Resources */,
 				124535581AE9D146004198C9 /* sign3@2x.png in Resources */,
+				12C383701C31121900409FA9 /* LMSelectCityUpArrow@2x.png in Resources */,
 				124535131AE9D0BC004198C9 /* UserSelected@2x.png in Resources */,
 				1241E5521AE9D89B00811D3F /* delSel@2x.png in Resources */,
 				12C12F421B81DD2200345BEE /* SharkCenterImg@2x.png in Resources */,
@@ -9330,7 +9330,6 @@
 				775842AF1AB95A300039B129 /* CustomMade.plist in Resources */,
 				120EB3DD1B7B563B0036A77C /* SharkBlackImg.png in Resources */,
 				124535421AE9D146004198C9 /* sign14@2x.png in Resources */,
-				12211F1E1C070D220016512A /* ShopUnionDressImg@2x.png in Resources */,
 				127FDD781B57A76E0059BDB6 /* CallBtnUpImg@2x.png in Resources */,
 				DDFBC05E1BF9C4EF003E71A2 /* FindZhiwoyun@2x.png in Resources */,
 				121121101BA2775000651E4A /* MyCutTeam@2x.png in Resources */,
@@ -9434,6 +9433,7 @@
 				12BD30F91B3E79D700170316 /* OrderWechatImg@2x.png in Resources */,
 				124535431AE9D146004198C9 /* sign15@2x.png in Resources */,
 				12F180AB1B44D54900B9A80D /* PushConfig.plist in Resources */,
+				12C3836F1C31121900409FA9 /* LMSelectCityDownArrow@2x.png in Resources */,
 				1241E53D1AE9D89B00811D3F /* 0N@2x.png in Resources */,
 				12D52BB61AC2EF4400C5CE71 /* dtmf-0.aif in Resources */,
 				DDB5C22C1BFED226000925E8 /* time.png in Resources */,
@@ -9453,6 +9453,7 @@
 				1229474F1C2E27F40033B967 /* LMSearchDropDown@2x.png in Resources */,
 				1241E53A1AE9D89B00811D3F /* #S@2x.png in Resources */,
 				12F46A391B20012000B8EC98 /* T_Attention@2x.png in Resources */,
+				12C3836C1C31065B00409FA9 /* LMWhiteCallImg@2x.png in Resources */,
 				12210C001C190E6A00A2CE63 /* JuniorNumChampion@2x.png in Resources */,
 				12F3CC811B1DE82C00E64DE4 /* WaitingPayImg@2x.png in Resources */,
 				128221D71B184E84004613BB /* HomePageLeftBtn@2x.png in Resources */,
@@ -9477,7 +9478,6 @@
 				12BF6C9A1C1123F3000B7FF8 /* LMShopInfoNewGoodsBackImg@2x.png in Resources */,
 				120EB3DE1B7B563B0036A77C /* SharkBlackImg@2x.png in Resources */,
 				1285850C1B3AA7E5005E240E /* MakeOrderLinImg@2x.png in Resources */,
-				12211F1F1C070D220016512A /* ShopUnionFoodImg@2x.png in Resources */,
 				12D52BBC1AC2EF4400C5CE71 /* dtmf-6.aif in Resources */,
 				12BD30F81B3E79D700170316 /* OrderAlipayImg@2x.png in Resources */,
 				12F3CC751B1DE82C00E64DE4 /* AboutWxImg@2x.png in Resources */,

@@ -135,7 +135,7 @@ static NSString* g_dropItemList[2] ={
     CGFloat btnHeight = 25;
     CGFloat xOffset = 40;
     changeBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    changeBtn.frame = CGRectMake(xOffset, 66-btnHeight-5, btnWidth, btnHeight);
+    changeBtn.frame = CGRectMake(xOffset, 66-btnHeight-6, btnWidth, btnHeight);
     [changeBtn setBackgroundColor:WXColorWithInteger(0xb01716)];
     [changeBtn setBorderRadian:1.0 width:1.0 color:[UIColor clearColor]];
     [changeBtn setTitleColor:WXColorWithInteger(0xc9c9c9) forState:UIControlStateNormal];

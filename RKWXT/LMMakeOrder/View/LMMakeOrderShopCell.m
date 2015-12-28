@@ -48,7 +48,7 @@
         CGFloat arrowHeight = 12;
         UIImage *arrowImg = [UIImage imageNamed:@"MakeOrderNextPageImg.png"];
         arrowImgView = [[WXUIImageView alloc] init];
-        arrowImgView.frame = CGRectMake(xOffset, (LMMakeOrderShopNameCellHeight-arrowWidth)/2, arrowWidth, arrowHeight);
+        arrowImgView.frame = CGRectMake(xOffset, (LMMakeOrderShopNameCellHeight-arrowWidth)/2-1, arrowWidth, arrowHeight);
         [arrowImgView setImage:arrowImg];
         [self.contentView addSubview:arrowImgView];
     }
@@ -67,7 +67,7 @@
     [nameLabel setFrame:rect];
     
     CGRect rect1 = arrowImgView.frame;
-    rect.origin.x = nameLabel.frame.origin.x+width+5;
+    rect1.origin.x = nameLabel.frame.origin.x+width+2;
     [arrowImgView setFrame:rect1];
 }
 

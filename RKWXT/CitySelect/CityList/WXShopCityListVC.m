@@ -16,7 +16,8 @@
 #define NavViewHeight (64)
 #define kSearchBarHeight (44)
 
-#define UserCurrentSearchCity @"UserCurrentSearchCity"
+#define UserCurrentSearchCity @"UserCurrentSearchCity"  //存储用户最近访问的城市
+#define UserCurrentCityID     @"UserCurrentCityID"      //存储用户最近访问城市的id
 
 enum{
     CityList_Section_Location = 0,
@@ -32,6 +33,7 @@ enum{
     
     NSArray *currentCity;
 }
+
 @end
 
 @implementation WXShopCityListVC
@@ -40,8 +42,8 @@ enum{
     [super viewDidLoad];
     [self createNavView];
     
-    NSUserDefaults *userDrfault = [NSUserDefaults standardUserDefaults];
-    currentCity = [userDrfault arrayForKey:UserCurrentSearchCity];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    currentCity = [userDefaults objectForKey:UserCurrentSearchCity];
 
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, kSearchBarHeight+NavViewHeight, Size.width, Size.height-kSearchBarHeight-NavViewHeight);
@@ -256,50 +258,69 @@ enum{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    NSString *cityName = nil;
+    AreaEntity *comEntity = nil;
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
     if(_tableView == tableView){
         if(section >= CityList_Section_Invalid){
             NSString *c = [[[LocalAreaModel shareLocalArea] allKeys] objectAtIndex:section-CityList_Section_Invalid];
             NSArray *cityList = [[LocalAreaModel shareLocalArea].cityDic objectForKey:c];
             AreaEntity *ent = [cityList objectAtIndex:row];
-            [self storageCurrentCity:ent.areaName];
-            cityName = ent.areaName;
+            [self storageCurrentCity:ent];
+            comEntity = ent;
             [userObj setUserSelectedAreaID:ent.areaID];
         }
     }else{
         AreaEntity *ent = [[LocalAreaModel shareLocalArea].searchCity objectAtIndex:row];
-        [self storageCurrentCity:ent.areaName];
-        cityName = ent.areaName;
+        [self storageCurrentCity:ent];
+        comEntity = ent;
         [userObj setUserSelectedAreaID:ent.areaID];
     }
-    [self storeUserCurrentCity:cityName];
+    [self storeUserCurrentCity:comEntity];
 }
 
 #pragma mark 最近访问城市存储
 -(void)userCurrentCityCellBtnClicked:(NSInteger)number{
-    NSString *cityName = [currentCity objectAtIndex:number-1];
-    [self storageCurrentCity:cityName];
+    NSString *name = [currentCity objectAtIndex:number-1];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dic = [userDefaults objectForKey:UserCurrentCityID];
+    
+    AreaEntity *entity = [[AreaEntity alloc] init];
+    entity.areaName = name;
+    entity.areaID = [[dic objectForKey:name] integerValue];
+    [self storageCurrentCity:entity];
+    
+    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+    [userObj setUserSelectedAreaID:entity.areaID];
 }
 
--(void)storageCurrentCity:(NSString*)cityName{
-    if(cityName.length == 0){
+-(void)storageCurrentCity:(AreaEntity*)entity{
+    if(entity.areaName.length == 0){
         return;
     }
-    NSMutableArray *cityArr = [[NSMutableArray alloc] init];
-    [cityArr addObject:cityName];
+    NSUserDefaults *userDefaults1 = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:[userDefaults1 objectForKey:UserCurrentCityID]];   //存储城市id
+    if(!dic){
+        dic = [[NSMutableDictionary alloc] init];
+    }
+    
+    NSMutableArray *cityArr = [[NSMutableArray alloc] init];     //存储城市
+    [cityArr addObject:entity.areaName];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)entity.areaID] forKey:entity.areaName];
     for(NSString *name in currentCity){
-        if(![cityName isEqualToString:name]){
+        if(![entity.areaName isEqualToString:name]){
             [cityArr addObject:name];
+            [dic setObject:[NSString stringWithFormat:@"%ld",(long)entity.areaID] forKey:entity.areaName];
             if([cityArr count] == 3){
                 break;
             }
         }
     }
-    NSUserDefaults *userDrfault = [NSUserDefaults standardUserDefaults];
-    [userDrfault setObject:cityArr forKey:UserCurrentSearchCity];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:cityArr forKey:UserCurrentSearchCity];
+    [userDefaults setObject:dic forKey:UserCurrentCityID];
     
-    [self storeUserCurrentCity:cityName];
+    [self storeUserCurrentCity:entity];
 }
 
 #pragma mark search
@@ -335,16 +356,22 @@ enum{
 }
 
 #pragma mark locationBtnClicked
+//点击定位城市不保存到最近
 -(void)wxCityListLocationCellBtnCLicked{
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-    [self storageCurrentCity:userObj.userLocationCity];
+    
+    [userObj setUserCurrentCity:userObj.userLocationCity];
+    [userObj setUserLocationArea:@""];
+    
+    //回到上一页面
+    [self closeCityListVC];
 }
 
 #pragma mark changeCurrentCity
--(void)storeUserCurrentCity:(NSString*)cityName{
+-(void)storeUserCurrentCity:(AreaEntity*)entity{
     //选择城市后重新保存城市，并将区域置为空
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-    [userObj setUserCurrentCity:cityName];
+    [userObj setUserCurrentCity:entity.areaName];
     [userObj setUserLocationArea:@""];
     
     //回到上一页面

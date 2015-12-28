@@ -97,6 +97,9 @@
         NSString *img = [dic objectForKey:@"shop_carousel_img"];
         [self setTopImg:img];
         
+        NSString *homeImg = [dic objectForKey:@"shop_home_img"];
+        [self setHomeImg:homeImg];
+        
         NSString *name = [dic objectForKey:@"shop_name"];
         [self setShopName:name];
         

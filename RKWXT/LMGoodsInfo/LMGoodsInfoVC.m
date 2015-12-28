@@ -285,7 +285,7 @@
             height = LMGoodsOtherHeaderViewHeight;
             break;
         case LMGoodsInfo_Section_OtherShop:
-            title = @"推荐商家";
+            title = @"推荐店铺";
             height = LMGoodsOtherHeaderViewHeight;
             break;
         case LMGoodsInfo_Section_Evaluate:

@@ -30,6 +30,7 @@
 @property (nonatomic,assign) NSInteger comGoodsNum;   //推荐商品
 @property (nonatomic,assign) NSInteger proGoodsNum;   //促销商品
 @property (nonatomic,strong) NSString *topImg;
+@property (nonatomic,strong) NSString *homeImg; 
 @property (nonatomic,strong) NSString *shopName;
 @property (nonatomic,strong) NSString *shopPhone;
 @property (nonatomic,assign) NSInteger collection;  // 收藏

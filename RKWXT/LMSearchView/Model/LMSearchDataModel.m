@@ -28,7 +28,7 @@
 }
 
 -(void)parseSearchResultData:(LMSearch_Type)type with:(NSArray*)arr{
-    if(type > LMSearch_Type_Seller || [arr count] == 0){
+    if(type > LMSearch_Type_Seller){
         return;
     }
     [_searchListArr removeAllObjects];

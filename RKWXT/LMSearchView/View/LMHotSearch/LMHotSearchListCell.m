@@ -55,6 +55,7 @@
             WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
             [commonBtn setBackgroundColor:WXColorWithInteger(0xffffff)];
             [commonBtn setBackgroundImageOfColor:[UIColor colorWithRed:0.951 green:0.886 blue:0.793 alpha:1.000] controlState:UIControlStateHighlighted];
+            [commonBtn setEnabled:NO];
             commonBtn.frame = CGRectMake(xOffset+i*(xOffset+btnWidth), yGap+j*(btnHeight+yGap), btnWidth, btnHeight);
             [commonBtn setBorderRadian:1.0 width:1.0 color:WXColorWithInteger(0xdbdbdb)];
             [commonBtn setTitle:[listArr objectAtIndex:count] forState:UIControlStateNormal];

@@ -144,6 +144,7 @@
     if(!cell){
         cell = [[LMSellerInfoDesCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if([infoArr count] > 0){
         LMSellerInfoEntity *entity = [infoArr objectAtIndex:0];
         [cell setCellInfo:entity];

@@ -24,6 +24,7 @@
         _sellerBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         _sellerBtn.frame = CGRectMake(0, (40-25)/2, (IPHONE_SCREEN_WIDTH-5*10)/4, 25);
         [_sellerBtn setBackgroundColor:[UIColor clearColor]];
+        [_sellerBtn.titleLabel setFont:WXFont(14.0)];
         [_sellerBtn setTitleColor:WXColorWithInteger(0x9b9b9b) forState:UIControlStateNormal];
         [_sellerBtn addTarget:self action:@selector(sellerListClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_sellerBtn];

@@ -70,7 +70,9 @@
 }
 
 -(void)load{
-    [_merchantImgViewArray removeAllObjects];
+    if([_merchantImgViewArray count] > 0){
+        return;
+    }
     [self toInit];
     
     classifyArr = self.cellInfo;
