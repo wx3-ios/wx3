@@ -206,6 +206,7 @@
     if(!cell){
         cell = [[[BaseFunctionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell load];
     [cell setDelegate:self];
@@ -219,7 +220,6 @@
     if(!cell){
         cell = [[[WxIntructionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     NSMutableArray *rowArray = [NSMutableArray array];
     NSInteger max = (row+1)*WxIntructionShow;

@@ -384,7 +384,7 @@
 }
 
 //商品详情
--(WXUITableViewCell*)goodsInfoCell{
+-(WXUITableViewCell*)goodsInfoCell:(NSInteger)row{
     static NSString *identifier = @"infoCell";
     LMGoodsInfoCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
@@ -392,7 +392,7 @@
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     if([_model.attrArr count] > 0){
-        [cell setCellInfo:[_model.attrArr objectAtIndex:0]];
+        [cell setCellInfo:[_model.attrArr objectAtIndex:row]];
     }
     [cell load];
     return cell;
@@ -453,7 +453,7 @@
             cell = [self goodsDesCell];
             break;
         case LMGoodsInfo_Section_GoodsInfo:
-            cell = [self goodsInfoCell];
+            cell = [self goodsInfoCell:row];
             break;
         case LMGoodsInfo_Section_SellerInfo:
             cell = [self goodsSellerCell];

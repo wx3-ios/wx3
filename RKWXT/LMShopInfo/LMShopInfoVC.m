@@ -113,8 +113,10 @@
     switch (section) {
         case LMShopInfo_Section_TopImg:
         case LMShopInfo_Section_BaseFunction:
-        case LMShopInfo_Section_Activity:
             row = 1;
+            break;
+        case LMShopInfo_Section_Activity:
+            row = 0;
             break;
         case LMShopInfo_Section_HotGoods:
             row = [comGoodsArr count]/2+([comGoodsArr count]%2>0?1:0);
@@ -138,7 +140,8 @@
             height = LMShopInfoBaseFunctionHeight;
             break;
         case LMShopInfo_Section_Activity:
-            height = LMShopInfoActivityHeight;
+//            height = LMShopInfoActivityHeight;
+            height = 0;
             break;
         case LMShopInfo_Section_HotGoods:
             height = LMShopInfoHotGoodsHeight;
@@ -404,14 +407,14 @@
 #pragma mark 分享
 -(void)menuButtonClicked:(int)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
-//    if([_model.data count] > 0){
-//        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-//        NSURL *url = [NSURL URLWithString:entity.smallImg];
-//        NSData *data = [NSData dataWithContentsOfURL:url];
-//        if(data){
-//            image = [UIImage imageWithData:data];
-//        }
-//    }
+    if([_shopModel.shopInfoArr count] > 0){
+        LMShopInfoEntity *entity = [_shopModel.shopInfoArr objectAtIndex:0];
+        NSURL *url = [NSURL URLWithString:entity.homeImg];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if(data){
+            image = [UIImage imageWithData:data];
+        }
+    }
     if(index == Share_Friends){
         [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
     }

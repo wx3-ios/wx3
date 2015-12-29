@@ -85,7 +85,7 @@
         [self.contentView addSubview:nameLabel];
         
         yOffset += nameHeight+15;
-        CGFloat priceLabelWidth = 80;
+        CGFloat priceLabelWidth = 100;
         CGFloat priceLabelHeight = 17;
         priceLabel = [[WXUILabel alloc] init];
         priceLabel.frame = CGRectMake(xOffset, yOffset, priceLabelWidth, priceLabelHeight);

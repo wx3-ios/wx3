@@ -134,7 +134,8 @@
 -(void)loadShopListDataSucced{
     [self unShowWaitView];
     [_tableView footerEndRefreshing];
-    listArr = [self goodsAdTimeDownSort];
+    listArr = _model.data;
+//    listArr = [self goodsAdTimeDownSort];  //屏蔽排序的功能
     [_tableView reloadData];
 }
 

@@ -332,7 +332,7 @@
 
 //增加按钮
 -(void)goodsPlusBtnClicked:(id)sender{
-//    LMShoppingCartEntity *entity = sender;
+    LMShoppingCartEntity *entity = sender;
 //    for(NSArray *arr in listArr){
 //        LMShoppingCartEntity *ent = [arr objectAtIndex:0];
 //        if(ent.shopID == entity.shopID){
@@ -343,14 +343,19 @@
 //            }
 //        }
 //    }
-    [_tableView reloadData];
-    [self setAllGoodsMoney:sender];
+    if(entity.selected){
+        [_tableView reloadData];
+        [self setAllGoodsMoney:sender];
+    }
 }
 
 //减少按钮
 -(void)goodsMinusBtnClicked:(id)sender{
-    [_tableView reloadData];
-    [self setAllGoodsMoney:sender];
+    LMShoppingCartEntity *entity = sender;
+    if(entity.selected){
+        [_tableView reloadData];
+        [self setAllGoodsMoney:sender];
+    }
 }
 
 -(void)goodsDelBtnClicked:(id)sender{
