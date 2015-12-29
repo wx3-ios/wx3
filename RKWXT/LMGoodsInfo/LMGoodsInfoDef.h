@@ -52,6 +52,7 @@ enum{
 
 #import "LMMakeOrderVC.h"
 #import "LMShoppingCartVC.h"
+#import "LMGoodsMoreEvaluateVC.h"
 
 enum{
     Share_Qq,

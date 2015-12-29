@@ -11,7 +11,7 @@
 
 #define ShopUnionDownVieHeight (45)
 
-@interface WXShopUnionVC()<ShopUnionDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,WXShopUnionActivityCell,WXShopUnionHotShopTitleCellDelegate,WXShopUnionHotShopCellDelegate,WXShopUnionModelDelegate,ShopUnionClassifyCellDelegate,LMHomeMoreHotGoodsModelDelegate>{
+@interface WXShopUnionVC()<ShopUnionDropListViewDelegate,UITableViewDataSource,UITableViewDelegate,WXShopUnionActivityCell,WXShopUnionHotShopTitleCellDelegate,WXShopUnionHotShopCellDelegate,WXShopUnionModelDelegate,ShopUnionClassifyCellDelegate,LMHomeMoreHotGoodsModelDelegate,LMHomeHotGoodsCellDelegate>{
     WXShopUnionAreaView *_areaListView;
     BOOL showAreaview;
     WXUIButton *rightBtn;
@@ -63,6 +63,7 @@
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height-ShopUnionDownVieHeight);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self addSubview:[self createUnionDownView]];
@@ -78,20 +79,20 @@
 }
 
 -(void)createTopSearchView{
-    CGFloat xOffset = 60;
+    CGFloat xOffset = 68;
     CGFloat width = Size.width-xOffset-10-80;
     CGFloat height = 27;
     _textField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xOffset, 66-height-10, width, height)];
-    [_textField setBackgroundColor:WXColorWithInteger(0xefeff4)];
-    [_textField setBorderRadian:5.0 width:1.0 color:[UIColor whiteColor]];
+    [_textField setBackgroundColor:WXColorWithInteger(0xb01716)];
+    [_textField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
 //    [_textField addTarget:self action:@selector(textfiledStartInput) forControlEvents:UIControlEventEditingDidBegin];
-    [_textField setTextColor:WXColorWithInteger(0xda7c7b)];
+    [_textField setTextColor:WXColorWithInteger(0xea7f7f)];
     [_textField setTintColor:WXColorWithInteger(0xdd2726)];
     [_textField setEnabled:NO];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ClassifySearchImg.png"]];
     [_textField setLeftView:imgView leftGap:10 rightGap:0];
     [_textField setLeftViewMode:UITextFieldViewModeUnlessEditing];
-    [_textField setPlaceholder:@"搜索商家或商品"];
+    [_textField setPlaceholder:@" 搜索商家或商品"];
     [_textField setFont:WXFont(12.0)];
     [self.view addSubview:_textField];
     
@@ -165,7 +166,7 @@
             [userOrderBtn setTitle:@"订单" forState:UIControlStateNormal];
         }
         if(i == ShopUnionDownView_UserStore){
-            [userOrderBtn setImage:[UIImage imageNamed:@"T_AttentionSel.png"] forState:UIControlStateNormal];
+            [userOrderBtn setImage:[UIImage imageNamed:@"LMHasCollectionImg.png"] forState:UIControlStateNormal];
         }
         if(i == ShopUnionDownView_UserShoppingCar){
             [userOrderBtn setTitle:@"购物车" forState:UIControlStateNormal];
@@ -216,7 +217,7 @@
             row = 2;
             break;
         case ShopUnion_Section_HotGoods:
-            row = 1+[hotGoodsArr count];
+            row = 1+[hotGoodsArr count]/2+([hotGoodsArr count]%2>0?1:0);
             break;
         default:
             break;
@@ -358,13 +359,22 @@
 //推荐商品
 -(WXUITableViewCell*)shopUnionHotGoodsCell:(NSInteger)row{
     static NSString *identifier = @"hotGoodsCell";
-    WXShopUnionHotGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    LMHomeHotGoodsCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
-        cell = [[WXShopUnionHotGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LMHomeHotGoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    if([hotGoodsArr count] > 0){
-        [cell setCellInfo:[hotGoodsArr objectAtIndex:row-1]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    NSMutableArray *rowArray = [NSMutableArray array];
+    NSInteger max = row*2;
+    NSInteger count = [hotGoodsArr count];
+    if(max > count){
+        max = count;
     }
+    for(NSInteger i = (row-1)*2; i < max; i++){
+        [rowArray addObject:[hotGoodsArr objectAtIndex:i]];
+    }
+    [cell setDelegate:self];
+    [cell loadCpxViewInfos:rowArray];
     [cell load];
     return cell;
 }
@@ -406,14 +416,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    if(section == ShopUnion_Section_HotGoods){
-        ShopUnionHotGoodsEntity *entity = [hotGoodsArr objectAtIndex:row-1];
-        LMGoodsInfoVC *goodsInfoVC = [[LMGoodsInfoVC alloc] init];
-        goodsInfoVC.goodsId = entity.goodsID;
-        [self.wxNavigationController pushViewController:goodsInfoVC];
-    }
 }
 
 -(void)showAreaView{
@@ -540,6 +542,14 @@
     LMSellerInfoVC *sellerInfoVC = [[LMSellerInfoVC alloc] init];
     sellerInfoVC.ssid = entity.sellerID;
     [self.wxNavigationController pushViewController:sellerInfoVC];
+}
+
+#pragma mark hotGoodsDelegate
+-(void)lmHomeHotShopCellBtnClicked:(id)sender{
+    ShopUnionHotGoodsEntity *entity = sender;
+    LMGoodsInfoVC *goodsInfoVC = [[LMGoodsInfoVC alloc] init];
+    goodsInfoVC.goodsId = entity.goodsID;
+    [self.wxNavigationController pushViewController:goodsInfoVC];
 }
 
 #pragma mark maskViewDelegate

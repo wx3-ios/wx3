@@ -550,8 +550,11 @@
     [self.view addSubview:goodsView];
 }
 
+//查看更多评价
 -(void)searchMoreEvaluateData{
-    
+    LMGoodsMoreEvaluateVC *evaluateVC = [[LMGoodsMoreEvaluateVC alloc] init];
+    evaluateVC.goodsID = _goodsId;
+    [self.wxNavigationController pushViewController:evaluateVC];
 }
 
 //购买

@@ -21,7 +21,7 @@
 #import "WXShopUnionHotShopTitleCell.h"
 #import "WXShopUnionHotShopCell.h"
 #import "WXShopUnionHotGoodsTitleCell.h"
-#import "WXShopUnionHotGoodsCell.h"
+#import "LMHomeHotGoodsCell.h"
 
 #import "WXShopUnionModel.h"
 #import "LMHomeMoreHotGoodsModel.h"
@@ -42,11 +42,11 @@
 #define ShopUnionClassifyRowHeight (165)
 #define ShopUnionActivityRowHeight (115)
 
-#define ShopUnionHotShopTextHeight (25)
+#define ShopUnionHotShopTextHeight (40)
 #define ShopUnionHotShopListHeight (125)
 
-#define ShopUnionHotGoodsTextHeight (25)
-#define ShopUnionHotGoodsListHeight (115)
+#define ShopUnionHotGoodsTextHeight (40)
+#define ShopUnionHotGoodsListHeight (222)
 
 //商家联盟首页section
 enum{

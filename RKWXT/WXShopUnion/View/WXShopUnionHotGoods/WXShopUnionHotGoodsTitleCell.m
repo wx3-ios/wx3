@@ -22,9 +22,14 @@
         [textLabel setBackgroundColor:[UIColor clearColor]];
         [textLabel setText:@"热门商品"];
         [textLabel setTextAlignment:NSTextAlignmentLeft];
-        [textLabel setTextColor:WXColorWithInteger(0x595757)];
-        [textLabel setFont:WXFont(12.0)];
+        [textLabel setTextColor:WXColorWithInteger(0x323232)];
+        [textLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:textLabel];
+        
+        WXUILabel *lineLabel = [[WXUILabel alloc] init];
+        lineLabel.frame = CGRectMake(0, ShopUnionHotGoodsTextHeight-0.5, IPHONE_SCREEN_WIDTH, 0.5);
+        [lineLabel setBackgroundColor:WXColorWithInteger(0xefeff3)];
+        [self.contentView addSubview:lineLabel];
     }
     return self;
 }

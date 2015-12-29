@@ -35,7 +35,7 @@ typedef enum{
     LMSearch_Seller = 3,
 }LMSearch;
 
-@interface LMSearchListVC ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,LMSearchDataModelDelegate,WXDropListViewDelegate,LMHotSearchModelDelegate>{
+@interface LMSearchListVC ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,LMSearchDataModelDelegate,WXDropListViewDelegate,LMHotSearchModelDelegate,LMHotSearchListCellDelegate>{
     WXUITextField *_textField;
     WXUIButton *changeBtn;
     LMSearch searchType;
@@ -290,6 +290,7 @@ static NSString* g_dropItemList[2] ={
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setCellInfo:hotSearchArr];
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }
@@ -410,6 +411,16 @@ static NSString* g_dropItemList[2] ={
     [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
+#pragma mark hotSearch
+-(void)lmHotSearchlistBtnClicked:(NSInteger)index{
+    if(index > [hotSearchArr count]-1){
+        return;
+    }
+    NSString *name = [hotSearchArr objectAtIndex:index];
+    [_textField setText:name];
+    [self changeInput];
+}
+
 #pragma mark textfield Deleagte
 -(void)changeInput{
     if(_textField.text.length == 0){
@@ -482,6 +493,7 @@ static NSString* g_dropItemList[2] ={
 
 //更改搜索方式
 -(void)menuClickAtIndex:(NSInteger)index{
+    [_textField setText:@""];
     if(index+1 == LMSearch_Goods){
         searchType = LMSearch_Goods;
         [_hotSearchModel loadLMHotSearchData:LMSearchHot_Type_Goods];
