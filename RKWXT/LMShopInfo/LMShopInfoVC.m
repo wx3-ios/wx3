@@ -443,24 +443,23 @@
 
 -(NSString*)sharedGoodsInfoTitle{
     NSString *title = @"";
-//    if([_model.data count] > 0){
-//        GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-//        title = entity.intro;
-//    }
+    if([shopInfoArr count] > 0){
+        LMShopInfoEntity *entity = [shopInfoArr objectAtIndex:0];
+        title = entity.shopName;
+    }
     return title;
 }
 
 -(NSString*)sharedGoodsInfoDescription{
-    NSString *description = @"";
-    description = [NSString stringWithFormat:@"我在%@发现一个不错的商品，赶快来看看吧。",kMerchantName];
+    NSString *description = [NSString stringWithFormat:@"我发现一个很不错的店铺，赶快来看看。"];
     return description;
 }
 
 -(NSString*)sharedGoodsInfoUrlString{
-//    NSString *strB = [[self sharedGoodsInfoTitle] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-//    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?shop_id=%d&MerchantID=%d&go=good_detail&title=%@&goods_id=%ld&woxin_id=%@",WXTShareBaseUrl,kSubShopID,kMerchantID,strB,(long)_goodsId,userDefault.wxtID];
-    return nil;
+    NSString *strB = [[self sharedGoodsInfoTitle] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
+    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?sid=%ld&shop_id=%ld&go=su_shop&title=%@&sshop_id=%ld&woxin_id=%ld",WXTWebBaseUrl,(long)kMerchantID,(long)kSubShopID,strB,(long)_sshop_id,(long)userDefault.wxtID];
+    return urlString;
 }
 
 #pragma mark baseFunctionBtn

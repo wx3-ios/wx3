@@ -42,7 +42,7 @@ typedef enum{
     [super viewDidLoad];
     
     self.scrollView.contentSize = CGSizeMake(self.bounds.size.width, self.bounds.size.height+5);
-    _webView = [[WXUIWebView alloc] initWithFrame:self.bounds];
+    _webView = [[WXUIWebView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-100)];
     [_webView setDelegate:self];
     [self.scrollView addSubview:_webView];
     [self loadRootUrl:_urlFeedType paramDictionary:_paramDictionary];

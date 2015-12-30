@@ -268,12 +268,19 @@ enum{
             [self storageCurrentCity:ent];
             comEntity = ent;
             [userObj setUserSelectedAreaID:ent.areaID];
+            
+            
+            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+            [userDef setBool:YES forKey:LMShopUnionHomeViewChange];
         }
     }else{
         AreaEntity *ent = [[LocalAreaModel shareLocalArea].searchCity objectAtIndex:row];
         [self storageCurrentCity:ent];
         comEntity = ent;
         [userObj setUserSelectedAreaID:ent.areaID];
+        
+        NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+        [userDef setBool:YES forKey:LMShopUnionHomeViewChange];
     }
     [self storeUserCurrentCity:comEntity];
 }
@@ -292,6 +299,9 @@ enum{
     
     WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
     [userObj setUserSelectedAreaID:entity.areaID];
+    
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setBool:YES forKey:LMShopUnionHomeViewChange];
 }
 
 -(void)storageCurrentCity:(AreaEntity*)entity{

@@ -68,7 +68,7 @@
         [usercutBtn setBackgroundColor:[UIColor whiteColor]];
         [usercutBtn setBorderRadian:2.0 width:0.5 color:WXColorWithInteger(0xdbdbdb)];
         [usercutBtn setImage:[UIImage imageNamed:@"LMUserCutImg.png"] forState:UIControlStateNormal];
-        [usercutBtn setTitle:@"提成" forState:UIControlStateNormal];
+        [usercutBtn setTitle:@" 提成" forState:UIControlStateNormal];
         [usercutBtn.titleLabel setFont:WXFont(9.0)];
         [usercutBtn setTitleColor:WXColorWithInteger(0x000000) forState:UIControlStateNormal];
         [usercutBtn setHidden:YES];
@@ -81,7 +81,7 @@
         [carriageBtn setBackgroundColor:[UIColor whiteColor]];
         [carriageBtn setBorderRadian:2.0 width:0.5 color:WXColorWithInteger(0xdbdbdb)];
         [carriageBtn setImage:[UIImage imageNamed:@"LMCarriageImg.png"] forState:UIControlStateNormal];
-        [carriageBtn setTitle:@"包邮" forState:UIControlStateNormal];
+        [carriageBtn setTitle:@" 包邮" forState:UIControlStateNormal];
         [carriageBtn.titleLabel setFont:WXFont(9.0)];
         [carriageBtn setHidden:YES];
         [carriageBtn setTitleColor:WXColorWithInteger(0x000000) forState:UIControlStateNormal];

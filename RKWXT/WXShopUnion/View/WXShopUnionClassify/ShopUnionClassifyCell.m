@@ -98,7 +98,7 @@
                 [baseView addSubview:bgImgBtn];
                 [_merchantImgViewArray addObject:_browser];
                 
-                WXRemotionImgBtn *imgViewBtn = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((bgImgBtn.frame.size.width-40)/2, 10, 40, 40)];
+                WXRemotionImgBtn *imgViewBtn = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((bgImgBtn.frame.size.width-40)/2, 10-(j%2==1?6:0), 40, 40)];
                 [imgViewBtn setBorderRadian:40/2 width:1.0 color:[UIColor clearColor]];
                 [imgViewBtn setUserInteractionEnabled:NO];
                 [imgViewBtn setCpxViewInfo:entity.industryImg];
@@ -106,7 +106,7 @@
                 [bgImgBtn addSubview:imgViewBtn];
                 
                 WXUILabel *textLabel = [[WXUILabel alloc] init];
-                textLabel.frame = CGRectMake(0, 10+imgViewBtn.frame.size.height, bgImgBtn.frame.size.width, 20);
+                textLabel.frame = CGRectMake(0, 10+imgViewBtn.frame.size.height-(j%2==1?6:0), bgImgBtn.frame.size.width, 20);
                 [textLabel setBackgroundColor:[UIColor clearColor]];
                 [textLabel setTextAlignment:NSTextAlignmentCenter];
                 [textLabel setTextColor:WXColorWithInteger(0x969696)];

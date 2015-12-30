@@ -35,8 +35,8 @@
     [self addOBS];
     showAreaview = YES;
     
-    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-    if(rightBtn && (userObj.userSelectedAreaID > 0)){
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    if(rightBtn && ([userDef boolForKey:LMShopUnionHomeViewChange])){
         [self changeCity];
     }
 }
@@ -578,8 +578,11 @@
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
-    [userObj setUserSelectedAreaID:0];
+//    WXUserOBJ *userObj = [WXUserOBJ sharedUserOBJ];
+//    [userObj setUserSelectedAreaID:0];
+    
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setBool:NO forKey:LMShopUnionHomeViewChange];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{

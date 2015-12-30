@@ -8,6 +8,8 @@
 
 #import "WXUIViewController.h"
 
+#define LMShopUnionHomeViewChange @"LMShopUnionHomeViewChange"
+
 @interface WXShopCityListVC : WXUIViewController
 
 @end

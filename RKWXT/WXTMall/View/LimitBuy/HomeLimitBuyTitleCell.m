@@ -34,6 +34,13 @@
         [textLabel setFont:WXFont(12.0)];
         [textLabel setText:@"查看更多"];
         [self.contentView addSubview:textLabel];
+        
+        CGFloat imgWidth = 8;
+        CGFloat imgHeight = 12;
+        WXUIImageView *imgView = [[WXUIImageView alloc] init];
+        imgView.frame = CGRectMake(textLabel.frame.origin.x+textLabel.frame.size.width+3, (T_HomePageTextSectionHeight-imgHeight)/2, imgWidth, imgHeight);
+        [imgView setImage:[UIImage imageNamed:@"T_ArrowRight.png"]];
+        [self.contentView addSubview:imgView];
     }
     return self;
 }

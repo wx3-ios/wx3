@@ -24,13 +24,13 @@
         NSArray *textArr = @[@"抽奖",@"签到",@"红包",@"订单",@"充值",@"余额",@"提成",@"联盟"];
         NSArray *imgArr = @[@"HomePageShark.png",@"HomePageSign.png",@"HomePageWallet.png",@"HomePageOrderList.png",@"HomePageRecharge.png",@"HomePageBalance.png",@"HomePageCut.png",@"HomePageUnion.png"];
         CGFloat xgap = (IPHONE_SCREEN_WIDTH-4*OneFunctionWidth)/5;
-        CGFloat yOffset = 6;
+        CGFloat yOffset = 9;
         NSInteger count = 0;
         for(int j = 0; j < 2; j++){
             for(int i = 0; i < 4; i++){
                 count = (j==1?i+4:i);
                 _button = [WXUIButton buttonWithType:UIButtonTypeCustom];
-                _button.frame = CGRectMake(xgap+(xgap+OneFunctionWidth)*i, yOffset+(j==1?(5+OneFunctionHeight):0), OneFunctionWidth, OneFunctionHeight);
+                _button.frame = CGRectMake(xgap+(xgap+OneFunctionWidth)*i, yOffset+(j==1?(8+OneFunctionHeight):0), OneFunctionWidth, OneFunctionHeight);
                 _button.tag = count+1;
                 [_button setBackgroundColor:[UIColor clearColor]];
                 [_button setImage:[UIImage imageNamed:imgArr[count]] forState:UIControlStateNormal];

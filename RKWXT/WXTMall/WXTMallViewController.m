@@ -242,7 +242,6 @@
     if(!cell){
         cell = [[HomeLimitBuyTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
     }
-    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     [cell setBackgroundColor:WXColorWithInteger(HomePageBGColor)];
     [cell load];
     return cell;
