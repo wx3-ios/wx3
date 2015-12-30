@@ -12,6 +12,7 @@
 
 @interface LuckyGoodsModel(){
     NSMutableArray *_luckyGoodsArr;
+    NSInteger _startItem;
 }
 
 @end
@@ -31,7 +32,7 @@
     if(!arr){
         return;
     }
-    if(_type == LuckyGoods_Type_Normal || _type == LuckyGoods_Type_Refresh){
+    if(_startItem == 0){
         [_luckyGoodsArr removeAllObjects];
     }
     
@@ -44,6 +45,7 @@
 
 -(void)loadLuckyGoodsListWith:(NSInteger)startItem with:(NSInteger)length{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    _startItem = startItem;
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.sellerID, @"seller_user_id", userObj.wxtID, @"woxin_id", userObj.user, @"phone", [NSNumber numberWithInteger:kMerchantID], @"sid", [NSNumber numberWithInteger:startItem], @"start_item", [NSNumber numberWithInteger:length], @"length", nil];
     __block LuckyGoodsModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LuckyGoodsList httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {

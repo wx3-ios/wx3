@@ -10,22 +10,14 @@
 #import "LuckyGoodsShowCell.h"
 #import "LuckyGoodsModel.h"
 #import "NewGoodsInfoVC.h"
-#import "OrderListTableView.h"
 #import "LuckyGoodsEntity.h"
-
-typedef enum{
-    E_CellRefreshing_Nothing = 0,
-    E_CellRefreshing_UnderWay,
-    E_CellRefreshing_Finish,
-    
-    E_CellRefreshing_Invalid,
-}E_CellRefreshing;
+#import "MJRefresh.h"
 
 #define Size self.bounds.size
-#define EveryTimeLoadDataNumber 20
+#define EveryTimeLoadDataNumber 10
 
-@interface LuckyGoodsShowVC ()<UITableViewDataSource,UITableViewDelegate,LuckyGoodsModelDelegate,PullingRefreshTableViewDelegate>{
-    OrderListTableView *_tableView;
+@interface LuckyGoodsShowVC ()<UITableViewDataSource,UITableViewDelegate,LuckyGoodsModelDelegate>{
+    UITableView *_tableView;
     WXUIButton *rightBtn;
     NSArray *goodsArr;
     NSInteger orderlistCount;
@@ -35,7 +27,6 @@ typedef enum{
     
 //    NSMutableArray *totalLastTime;
 }
-@property (nonatomic,assign) E_CellRefreshing e_cellRefreshing;
 @end
 
 @implementation LuckyGoodsShowVC
@@ -53,22 +44,35 @@ typedef enum{
 //        [totalLastTime addObject:overDic];
 //    }
     
-    self.e_cellRefreshing = E_CellRefreshing_Nothing;
-    _tableView = [[OrderListTableView alloc] init];
+    _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
-    [_tableView setPullingDelegate:self];
     [self addSubview:_tableView];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self createRightBtn];
+    [self setupRefresh];
     
     _model = [[LuckyGoodsModel alloc] init];
     [_model setDelegate:self];
     
-    [_model setType:LuckyGoods_Type_Normal];
     [_model loadLuckyGoodsListWith:0 with:EveryTimeLoadDataNumber];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+//集成刷新控件
+-(void)setupRefresh{
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [_tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
+    
+    //设置文字
+    _tableView.headerPullToRefreshText = @"下拉刷新";
+    _tableView.headerReleaseToRefreshText = @"松开刷新";
+    _tableView.headerRefreshingText = @"刷新中";
+    
+    _tableView.footerPullToRefreshText = @"上拉加载";
+    _tableView.footerReleaseToRefreshText = @"松开加载";
+    _tableView.footerRefreshingText = @"加载中";
 }
 
 -(void)createRightBtn{
@@ -201,16 +205,17 @@ typedef enum{
 
 -(void)loadLuckyGoodsSuceeed{
     [self unShowWaitView];
-    if(orderlistCount == [_model.luckyGoodsArr count] && self.e_cellRefreshing != E_CellRefreshing_Finish){
-        _tableView.reachedTheEnd = YES;
-    }
-    self.e_cellRefreshing = E_CellRefreshing_Nothing;
     goodsArr = _model.luckyGoodsArr;
-    orderlistCount = [goodsArr count];
-    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [_tableView footerEndRefreshing];
+    [_tableView reloadData];
     
 //    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshLessTime) userInfo:nil repeats:YES];
 //    [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+}
+
+#pragma mark data
+-(void)footerRefreshing{
+    [_model loadLuckyGoodsListWith:[goodsArr count] with:EveryTimeLoadDataNumber];
 }
 
 //-(void)refreshLessTime{
@@ -230,58 +235,11 @@ typedef enum{
 #pragma mark luckyModelDelegate
 -(void)loadLuckyGoodsFailed:(NSString *)errorMsg{
     [self unShowWaitView];
+    [_tableView footerEndRefreshing];
     if(!errorMsg){
         errorMsg = @"获取商品失败";
     }
     [UtilTool showAlertView:errorMsg];
-    if([errorMsg isEqualToString:@"没有您要查询的数据"]){
-        _tableView.reachedTheEnd = YES;
-    }
-}
-
-#pragma mark pullingDelegate
--(void)pullingTableViewDidStartRefreshing:(OrderListTableView *)tableView{
-    self.e_cellRefreshing = E_CellRefreshing_UnderWay;
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
-}
-
--(NSDate*)pullingTableViewRefreshingFinishedDate{
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSString *dateStr = [UtilTool getCurDateTime:1];
-    NSDate *date = [df dateFromString:dateStr];
-    return date;
-}
-
--(void)pullingTableViewDidStartLoading:(OrderListTableView *)tableView{
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
-}
-
--(void)loadData{
-    if(self.e_cellRefreshing == E_CellRefreshing_UnderWay){
-        self.e_cellRefreshing = E_CellRefreshing_Finish;
-        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-        [_tableView tableViewDidFinishedLoadingWithMessage:@"刷新完成"];
-        [_model setType:LuckyGoods_Type_Refresh];
-        [_model loadLuckyGoodsListWith:0 with:[goodsArr count]];
-    }else{
-        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-        [_model setType:LuckyGoods_Type_Loading];
-        [_model loadLuckyGoodsListWith:[goodsArr count] with:EveryTimeLoadDataNumber];
-    }
-    if(!_tableView.reachedTheEnd){
-        [_tableView tableViewDidFinishedLoading];
-        _tableView.reachedTheEnd = NO;
-    }
-}
-
-#pragma mark - Scroll
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [_tableView tableViewDidScroll:scrollView];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    [_tableView tableViewDidEndDragging:scrollView];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
