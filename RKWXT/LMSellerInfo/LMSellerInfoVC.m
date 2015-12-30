@@ -312,4 +312,9 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_model setDelegate:nil];
+}
+
 @end

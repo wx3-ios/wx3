@@ -30,7 +30,7 @@
         WXUIButton *btn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(IPHONE_SCREEN_WIDTH-20-btnWidth, (ShopUnionHotShopTextHeight-textHeight)/2, btnWidth, textHeight);
         [btn setBackgroundColor:[UIColor clearColor]];
-        [btn setTitle:@"更多热门商家" forState:UIControlStateNormal];
+        [btn setTitle:@"更多商家" forState:UIControlStateNormal];
         [btn.titleLabel setFont:WXFont(11.0)];
         [btn setTitleColor:WXColorWithInteger(0x9b9b9b) forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(toSearchMoreHotShop) forControlEvents:UIControlEventTouchUpInside];

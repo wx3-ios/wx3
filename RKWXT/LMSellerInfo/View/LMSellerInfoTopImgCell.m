@@ -35,7 +35,7 @@
         
         CGFloat height = 20;
         CGFloat xOffset = 260;
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(xOffset, rect.size.height - height, rect.size.width-xOffset, height)];
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(xOffset, IPHONE_SCREEN_WIDTH/3 - height, rect.size.width-xOffset, height)];
         [self.contentView addSubview:_pageControl];
         
         _merchantImgViewArray = [[NSMutableArray alloc] init];

@@ -74,7 +74,7 @@
         xOffset += imgViewWidth+10;
         yOffset = imgView.frame.origin.y+imgViewHeight/4;
         CGFloat nameWidth = 180;
-        CGFloat nameHeight = 28;
+        CGFloat nameHeight = 32;
         nameLabel = [[WXUILabel alloc] init];
         nameLabel.frame = CGRectMake(xOffset, yOffset, nameWidth, nameHeight);
         [nameLabel setBackgroundColor:[UIColor clearColor]];
@@ -84,7 +84,7 @@
         [nameLabel setNumberOfLines:2];
         [self.contentView addSubview:nameLabel];
         
-        yOffset += nameHeight+15;
+        yOffset += nameHeight+8;
         CGFloat priceLabelWidth = 100;
         CGFloat priceLabelHeight = 17;
         priceLabel = [[WXUILabel alloc] init];

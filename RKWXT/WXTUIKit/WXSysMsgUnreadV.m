@@ -63,6 +63,7 @@
         
         _unreadLabel = [[WXUILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
         [_unreadLabel setFont:[UIFont systemFontOfSize:9.0]];
+        [_unreadLabel setTextColor:[UIColor whiteColor]];
         [_unreadNumberImgV addSubview:_unreadLabel];
         
         [self addOBS];
