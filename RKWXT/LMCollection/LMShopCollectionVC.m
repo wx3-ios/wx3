@@ -56,6 +56,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadShopCollectionSucced) name:K_Notification_Name_LoadShopCollectionListSucceed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadShopCollectionFailed:) name:K_Notification_Name_LoadShopCollectionListFailed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shopCancelCollectionSucceed) name:K_Notification_Name_ShopCancelCollectionSucceed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shopAddCollectionSucceed) name:K_Notification_Name_ShopAddCollectionSucceed object:nil];
 }
 
 //改变cell分割线置顶
@@ -155,6 +156,11 @@
 }
 
 -(void)shopCancelCollectionSucceed{
+    [_model lmCollectionData:0 goods:0 type:LMCollection_Type_Shop dataType:CollectionData_Type_Search];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)shopAddCollectionSucceed{
     [_model lmCollectionData:0 goods:0 type:LMCollection_Type_Shop dataType:CollectionData_Type_Search];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }

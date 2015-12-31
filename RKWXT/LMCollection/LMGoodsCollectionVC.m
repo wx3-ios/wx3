@@ -56,6 +56,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadGoodsCollectionSucced) name:K_Notification_Name_LoadGoodsCollectionListSucceed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadGoodsCollectionFailed:) name:K_Notification_Name_LoadGoodsCollectionListFailed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userCancelCollectionGoodsSucceed) name:K_Notification_Name_GoodsCancelCollectionSucceed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAddCollectionGoodsSucceed) name:K_Notification_Name_GoodsAddCollectionSucceed object:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -115,6 +116,11 @@
 }
 
 -(void)userCancelCollectionGoodsSucceed{
+    [_model lmCollectionData:0 goods:0 type:LMCollection_Type_Goods dataType:CollectionData_Type_Search];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+}
+
+-(void)userAddCollectionGoodsSucceed{
     [_model lmCollectionData:0 goods:0 type:LMCollection_Type_Goods dataType:CollectionData_Type_Search];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
