@@ -174,11 +174,11 @@ static NSString* g_dropItemList[2] ={
     NSInteger row = LMSearch_Seller;
     CGFloat width = 80;
     CGFloat height = 28;
-    CGRect rect = CGRectMake(90, 60, width, row*height);
+    CGRect rect = CGRectMake(7, 60, width, row*height);
     WXDropListView *dropListView = [[WXDropListView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height+100) menuButton:btn dropListFrame:rect];
     [dropListView setDelegate:self];
     [dropListView setFont:[UIFont systemFontOfSize:15.0]];
-    [dropListView setDropDirection:E_DropDirection_Right];
+    [dropListView setDropDirection:E_DropDirection_Left];
     
     NSMutableArray *itemArray = [NSMutableArray array];
     for (int i = 0; i < 2; i++) {

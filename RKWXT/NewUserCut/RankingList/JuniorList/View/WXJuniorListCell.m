@@ -113,9 +113,9 @@
         [imgView load];
     }
     
-    [nickName setText:[NSString stringWithFormat:@"%ld",(long)entity.wxID]];
+    [nickName setText:[NSString stringWithFormat:@"ID:%ld",(long)entity.wxID]];
     if(![entity.nickName isEqualToString:@""] && entity.nickName){
-        [nickName setText:[NSString stringWithFormat:@"%@(ID:%ld)",entity.nickName,(long)entity.wxID]];
+        [nickName setText:[NSString stringWithFormat:@"%@",entity.nickName]];
     }
     [userPhone setText:[self userPhoneChangedWithOldStr:entity.phone]];
     [juniorNumber setText:[NSString stringWithFormat:@"%ld",(long)entity.clientNums]];
