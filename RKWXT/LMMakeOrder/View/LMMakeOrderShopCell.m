@@ -56,14 +56,29 @@
 }
 
 -(void)load{
+    CGFloat xOffset = 0;
     LMGoodsInfoEntity *entity = self.cellInfo;
-    [imgView setCpxViewInfo:entity.homeImg];
-    [imgView load];
+    if([entity.homeImg isEqualToString:@""]){
+        [imgView setImage:[UIImage imageNamed:@"LMSellerIcon.png"]];
+
+        CGRect imgRect = imgView.frame;
+        imgRect.size.width = 13;
+        imgRect.size.height = 15;
+        imgRect.origin.x = 12;
+        imgRect.origin.y = (LMMakeOrderShopNameCellHeight-15)/2;
+        [imgView setFrame:imgRect];
+        
+        xOffset = 10;
+    }else{
+        [imgView setCpxViewInfo:entity.homeImg];
+        [imgView load];
+    }
     [nameLabel setText:entity.goodsShopName];
 
     CGFloat width = [NSString widthForString:entity.goodsShopName fontSize:14.0 andHeight:18];
     CGRect rect = nameLabel.frame;
     rect.size.width = width;
+    rect.origin.x -= xOffset;
     [nameLabel setFrame:rect];
     
     CGRect rect1 = arrowImgView.frame;

@@ -573,6 +573,7 @@
     if(!entity){
         return nil;
     }
+    entity.homeImg = @"";
     entity.goodsID = _goodsId;
     entity.stockID = goodsView.stockID;
     entity.stockName = goodsView.stockName;

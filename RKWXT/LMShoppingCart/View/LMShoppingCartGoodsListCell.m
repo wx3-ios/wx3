@@ -30,7 +30,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         CGFloat xOffset = 8;
-        CGFloat selBtnWidth = 15;
+        CGFloat selBtnWidth = 19;
         CGFloat selBtnHeight = selBtnWidth;
         selBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
         selBtn.frame = CGRectMake(xOffset, (LMShoppingCartGoodsListCellHeight-selBtnHeight)/2, selBtnWidth, selBtnHeight);

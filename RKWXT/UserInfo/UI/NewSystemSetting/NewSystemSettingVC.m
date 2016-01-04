@@ -10,6 +10,7 @@
 #import "WXTResetPwdVC.h"
 #import "T_SettingSwitchCell.h"
 #import "LoginVC.h"
+#import "NewUserAddressModel.h"
 
 #define KeyPadTone @"KeyPadTone"   //值为0默认开启,1为设置开启,2为设置关闭
 
@@ -203,6 +204,7 @@ enum{
         [fileManager removeItemAtPath:path error:nil];
     }
     [self performSelector:@selector(checkFile) withObject:nil afterDelay:1.0];
+    [[NewUserAddressModel shareUserAddress] toInit];
 }
 
 -(void)checkFile{

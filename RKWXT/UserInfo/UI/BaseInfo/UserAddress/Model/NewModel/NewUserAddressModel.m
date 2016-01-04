@@ -33,6 +33,11 @@
     return self;
 }
 
+-(void)toInit{
+    self.status = E_ModelDataStatus_Init;
+    [_userAddressArr removeAllObjects];
+}
+
 -(BOOL)shouldDataReload{
     return self.status == E_ModelDataStatus_Init || self.status == E_ModelDataStatus_LoadFailed;
 }

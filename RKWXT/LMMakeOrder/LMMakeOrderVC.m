@@ -9,7 +9,7 @@
 #import "LMMakeOrderVC.h"
 #import "LMMakeOrderDef.h"
 
-@interface LMMakeOrderVC()<UITableViewDataSource,UITableViewDelegate,LMMakeOrderUserMsgCellDelegate,SearchCarriageMoneyDelegate,LMMakeOrderDelegate>{
+@interface LMMakeOrderVC()<UITableViewDataSource,UITableViewDelegate,LMMakeOrderUserMsgCellDelegate,SearchCarriageMoneyDelegate,LMMakeOrderDelegate,UIAlertViewDelegate>{
     UITableView *_tableView;
     WXUILabel *moneyLabel;
     NSArray *listArr;
@@ -46,6 +46,9 @@
 -(void)loadCarriageMoney{
     BOOL is_postage = YES;  //默认包邮
     NSInteger provinceID = [self parseUserAddressProvinceID];
+    if(provinceID == 0){
+        return;
+    }
     NSString *goodsInfo = [[NSString alloc] init];
     for(LMGoodsInfoEntity *entity in listArr){
         if(goodsInfo.length > 0){
@@ -380,6 +383,10 @@
 
 //省份ID
 -(NSInteger)parseUserAddressProvinceID{
+    if([[NewUserAddressModel shareUserAddress].userAddressArr count] == 0){
+        [UtilTool showAlertView:@"温馨提示" message:@"您还没有设置收货人信息，赶快去设置吧?" delegate:self tag:0 cancelButtonTitle:@"下次再说" otherButtonTitles:@"马上去设置"];
+        return 0;
+    }
     for(AreaEntity *entity in [NewUserAddressModel shareUserAddress].userAddressArr){
         if(entity.normalID == 1){
             return entity.proID;
@@ -427,6 +434,14 @@
         if(section == LMMakeOrder_Section_UserMessage){
             self.userMessage = cell.textField.text;
         }
+    }
+}
+
+#pragma mark sheet
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1){
+        ManagerAddressVC *addressVC = [[ManagerAddressVC alloc] init];
+        [self.wxNavigationController pushViewController:addressVC];
     }
 }
 
