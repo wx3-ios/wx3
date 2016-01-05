@@ -42,7 +42,7 @@
 enum{
     LMShopInfo_Section_TopImg = 0,
     LMShopInfo_Section_BaseFunction,
-    LMShopInfo_Section_Activity,
+//    LMShopInfo_Section_Activity,
     LMShopInfo_Section_HotGoods,
     LMShopInfo_Section_AllGoods,
 //    LMShopInfo_Section_Evaluate,

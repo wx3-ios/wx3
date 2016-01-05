@@ -219,6 +219,9 @@
         case ShopUnion_Section_HotGoods:
             row = 1+[hotGoodsArr count]/2+([hotGoodsArr count]%2>0?1:0);
             break;
+//        case ShopUnion_Section_Activity:
+//            row = 0;
+//            break;
         default:
             break;
     }
@@ -233,9 +236,10 @@
         case ShopUnion_Section_Classify:
             height = ShopUnionClassifyRowHeight;
             break;
-        case ShopUnion_Section_Activity:
-            height = ShopUnionActivityRowHeight;
-            break;
+//        case ShopUnion_Section_Activity:
+//            height = ShopUnionActivityRowHeight;
+//            height = 0;
+//            break;
         case ShopUnion_Section_HotShop:
         {
             if(row == 0){
@@ -263,9 +267,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     CGFloat height = 0;
     switch (section) {
-        case ShopUnion_Section_Activity:
-            height = 5;
-            break;
+//        case ShopUnion_Section_Activity:
+//            height = 5;
+//            break;
         case ShopUnion_Section_HotShop:
             height = 10;
             break;
@@ -387,9 +391,9 @@
         case ShopUnion_Section_Classify:
             cell = [self shopUnionClassifyCell];
             break;
-        case ShopUnion_Section_Activity:
-            cell = [self shopUnionActivityCell];
-            break;
+//        case ShopUnion_Section_Activity:
+//            cell = [self shopUnionActivityCell];
+//            break;
         case ShopUnion_Section_HotShop:
         {
             if(row == 0){

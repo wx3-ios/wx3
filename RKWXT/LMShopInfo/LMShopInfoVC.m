@@ -115,9 +115,9 @@
         case LMShopInfo_Section_BaseFunction:
             row = 1;
             break;
-        case LMShopInfo_Section_Activity:
-            row = 0;
-            break;
+//        case LMShopInfo_Section_Activity:
+//            row = 0;
+//            break;
         case LMShopInfo_Section_HotGoods:
             row = [comGoodsArr count]/2+([comGoodsArr count]%2>0?1:0);
             break;
@@ -139,10 +139,10 @@
         case LMShopInfo_Section_BaseFunction:
             height = LMShopInfoBaseFunctionHeight;
             break;
-        case LMShopInfo_Section_Activity:
+//        case LMShopInfo_Section_Activity:
 //            height = LMShopInfoActivityHeight;
-            height = 0;
-            break;
+//            height = 0;
+//            break;
         case LMShopInfo_Section_HotGoods:
             height = LMShopInfoHotGoodsHeight;
             break;
@@ -337,9 +337,9 @@
         case LMShopInfo_Section_BaseFunction:
             cell = [self shopInfoBaseFunctionCell];
             break;
-        case LMShopInfo_Section_Activity:
-            cell = [self shopInfoActivityCell];
-            break;
+//        case LMShopInfo_Section_Activity:
+//            cell = [self shopInfoActivityCell];
+//            break;
         case LMShopInfo_Section_HotGoods:
             cell = [self shopInfoHotGoodsListCell:row];
             break;

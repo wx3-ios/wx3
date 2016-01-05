@@ -80,10 +80,10 @@
         }
     }
     
-    WXUILabel *line = [[WXUILabel alloc] init];
-    line.frame = CGRectMake(0, LMShopInfoBaseFunctionHeight-1.5, Size.width, 0.5);
-    [line setBackgroundColor:WXColorWithInteger(0x969696)];
-    [self.contentView addSubview:line];
+//    WXUILabel *line = [[WXUILabel alloc] init];
+//    line.frame = CGRectMake(0, LMShopInfoBaseFunctionHeight-1.5, Size.width, 0.5);
+//    [line setBackgroundColor:WXColorWithInteger(0x969696)];
+//    [self.contentView addSubview:line];
     
     return self;
 }

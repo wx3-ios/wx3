@@ -124,10 +124,13 @@
         return nil;
     }
     
-//    NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
-//    if(![userName isEqualToString:oldStr]){
-//        return [NSString stringWithFormat:@"%@(%@)",userName,oldStr];
-//    }
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    if(![userObj.user isEqualToString:@"15012800305"]){
+        NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
+        if(![userName isEqualToString:oldStr]){
+            return [NSString stringWithFormat:@"%@(%@)",userName,oldStr];
+        }
+    }
     NSString *newStr = nil;
     newStr = [oldStr substringWithRange:NSMakeRange(0, 3)];
     newStr = [newStr stringByAppendingString:@"****"];

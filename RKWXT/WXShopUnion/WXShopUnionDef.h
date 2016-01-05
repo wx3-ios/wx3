@@ -51,7 +51,7 @@
 //商家联盟首页section
 enum{
     ShopUnion_Section_Classify = 0,
-    ShopUnion_Section_Activity,
+//    ShopUnion_Section_Activity,
     ShopUnion_Section_HotShop,
     ShopUnion_Section_HotGoods,
     

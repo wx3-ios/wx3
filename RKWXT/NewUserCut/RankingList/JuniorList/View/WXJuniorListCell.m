@@ -125,10 +125,13 @@
     if(!oldStr){
         return nil;
     }
-//    NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
-//    if(![userName isEqualToString:oldStr]){
-//        return [NSString stringWithFormat:@"%@(%@)",userName,oldStr];
-//    }
+    WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
+    if(![userObj.user isEqualToString:@"15012800305"]){  //只有销售部一名成员遇到卡顿问题，所以暂时这样处理一下
+        NSString *userName = [self searchPhoneNameWithUserPhone:oldStr];
+        if(![userName isEqualToString:oldStr]){
+            return [NSString stringWithFormat:@"%@(%@)",userName,oldStr];
+        }
+    }
     
     NSString *newStr = nil;
     newStr = [oldStr substringWithRange:NSMakeRange(0, 3)];
