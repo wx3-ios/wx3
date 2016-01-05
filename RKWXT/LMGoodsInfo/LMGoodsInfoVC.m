@@ -573,7 +573,6 @@
     if(!entity){
         return nil;
     }
-    entity.homeImg = @"";
     entity.goodsID = _goodsId;
     entity.stockID = goodsView.stockID;
     entity.stockName = goodsView.stockName;
@@ -701,9 +700,13 @@
 }
 
 -(NSString*)sharedGoodsInfoUrlString{
+    LMGoodsInfoEntity *entity = nil;
+    if([_model.goodsInfoArr count] > 0){
+        entity = [_model.goodsInfoArr objectAtIndex:0];
+    }
     NSString *strB = [[self sharedGoodsInfoTitle] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     WXTUserOBJ *userDefault = [WXTUserOBJ sharedUserOBJ];
-    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?shop_id=%d&MerchantID=%d&go=good_detail&title=%@&goods_id=%ld&woxin_id=%@",WXTShareBaseUrl,kSubShopID,kMerchantID,strB,(long)_goodsId,userDefault.wxtID];
+    NSString *urlString = [NSString stringWithFormat:@"%@wx_html/index.php/Shop/index?shop_id=%d&sid=%d&go=su_good_detail&title=%@&goods_id=%ld&sshop_id=%ld&woxin_id=%@",WXTShareBaseUrl,kSubShopID,kMerchantID,strB,(long)_goodsId, (long)entity.goodshop_id, userDefault.wxtID];
     return urlString;
 }
 
