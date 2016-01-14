@@ -55,24 +55,30 @@
 }
 
 -(void)loadData{
-    if([_top dataNeedReload]){
-        [_top loadData];
-    }
-    if([_recommend dataNeedReload]){
-        [_recommend loadData];
-    }
-    if([_theme dataNeedReload]){
-        [_theme loadData];
-    }
-    if([_surprise dataNeedReload]){
-        [_surprise loadData];
-    }
-    if([_navModel dataNeedReload]){
-        [_navModel loadData];
-    }
-    if([_limitModel dataNeedReload]){
-        [_limitModel loadData];
-    }
+    [_top loadData];
+    [_recommend loadData];
+    [_theme loadData];
+    [_surprise loadData];
+    [_navModel loadData];
+    [_limitModel loadData];
+//    if([_top dataNeedReload]){
+//        [_top loadData];
+//    }
+//    if([_recommend dataNeedReload]){
+//        [_recommend loadData];
+//    }
+//    if([_theme dataNeedReload]){
+//        [_theme loadData];
+//    }
+//    if([_surprise dataNeedReload]){
+//        [_surprise loadData];
+//    }
+//    if([_navModel dataNeedReload]){
+//        [_navModel loadData];
+//    }
+//    if([_limitModel dataNeedReload]){
+//        [_limitModel loadData];
+//    }
 }
 
 @end

@@ -60,15 +60,16 @@
 }
 
 -(void)loadData{
-    if([self isDataEmpty]){
-        if(![self loadCache]){
-            [self loadDataFromWeb];
-        }else{
-            [self performSelector:@selector(loadCacheDataSucceed) onThread:[NSThread currentThread] withObject:nil waitUntilDone:NO];
-        }
-    }else{
-        [self loadDataFromWeb];
-    }
+    [self loadDataFromWeb];
+//    if([self isDataEmpty]){
+//        if(![self loadCache]){
+//            [self loadDataFromWeb];
+//        }else{
+//            [self performSelector:@selector(loadCacheDataSucceed) onThread:[NSThread currentThread] withObject:nil waitUntilDone:NO];
+//        }
+//    }else{
+//        [self loadDataFromWeb];
+//    }
 }
 
 -(void)loadDataFromWeb{

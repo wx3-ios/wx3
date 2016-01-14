@@ -160,6 +160,7 @@
     if(!cell){
         cell = [[LMMoreSellerTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     if([shopArr count] > 0){
         [cell setCellInfo:[shopArr objectAtIndex:section-1]];
     }
