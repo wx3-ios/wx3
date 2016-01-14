@@ -35,7 +35,7 @@
         [nameLabel setFont:WXFont(14.0)];
         [self.contentView addSubview:nameLabel];
         
-        yOffset += labelHeight+5;
+        yOffset += labelHeight;
         UILabel *desLabel = [[UILabel alloc] init];
         desLabel.frame = CGRectMake(xOffset, yOffset, labelWidth, labelHeight-3);
         [desLabel setBackgroundColor:[UIColor clearColor]];

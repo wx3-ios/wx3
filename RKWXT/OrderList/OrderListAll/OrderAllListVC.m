@@ -15,7 +15,7 @@
 #import "AliPayControl.h"
 #import "OrderCommonDef.h"
 
-#define GetOrderArrayEveryTime (5)
+#define GetOrderArrayEveryTime (15)
 
 typedef enum{
     E_CellRefreshing_Nothing = 0,
