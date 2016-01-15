@@ -373,6 +373,9 @@ enum{
     [userObj setUserCurrentCity:userObj.userLocationCity];
     [userObj setUserLocationArea:@""];
     
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setBool:YES forKey:LMShopUnionHomeViewChange];
+    
     //回到上一页面
     [self closeCityListVC];
 }
