@@ -102,7 +102,7 @@
         }
     }
     if(!is_postage){
-        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo];
+        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo shopID:kSubShopID];
         [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     }
 }

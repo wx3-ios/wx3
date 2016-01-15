@@ -50,6 +50,7 @@
         return;
     }
     NSString *goodsInfo = [[NSString alloc] init];
+    NSInteger shopID = 0;
     for(LMGoodsInfoEntity *entity in listArr){
         if(goodsInfo.length > 0){
             goodsInfo = [goodsInfo stringByAppendingString:@"^"];
@@ -59,9 +60,10 @@
         if(entity.postage == LMGoods_Postage_Have){
             is_postage = NO;  //不包邮
         }
+        shopID = entity.goodshop_id;
     }
     if(!is_postage){
-        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo];
+        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo shopID:shopID];
         [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     }
 }

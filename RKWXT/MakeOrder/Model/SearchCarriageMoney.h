@@ -13,7 +13,7 @@
 @interface SearchCarriageMoney : NSObject
 @property (nonatomic,assign) id<SearchCarriageMoneyDelegate>delegate;
 @property (nonatomic,assign) CGFloat carriageMoney;
--(void)searchCarriageMoneyWithProvinceID:(NSInteger)provinceID goodsInfo:(NSString*)goodsInfo;
+-(void)searchCarriageMoneyWithProvinceID:(NSInteger)provinceID goodsInfo:(NSString*)goodsInfo shopID:(NSInteger)shopID;
 @end
 
 @protocol SearchCarriageMoneyDelegate <NSObject>
