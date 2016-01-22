@@ -84,6 +84,22 @@
             }
         }
     }];
+    _callHistoryList = [NSMutableArray arrayWithArray:[self changeCallRecordOrder]];
+}
+
+-(NSArray*)changeCallRecordOrder{
+    NSArray *sortArray = [_callHistoryList sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        CallHistoryEntity *entity_0 = obj1;
+        CallHistoryEntity *entity_1 = obj2;
+        
+        if (entity_0.UID < entity_1.UID){
+            return NSOrderedDescending;
+        }else if (entity_0.UID > entity_1.UID){
+            return NSOrderedAscending;
+        }
+        return NSOrderedSame;
+    }];
+    return sortArray;
 }
 
 - (void)removeNotification{
