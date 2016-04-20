@@ -83,6 +83,9 @@
         NSString *address = [dic objectForKey:@"address"];
         [self setAddress:address];
         
+        NSInteger evaluate = [[dic objectForKey:@"is_evaluate"] integerValue];
+        [self setEvaluate:evaluate];
+        
         NSString *consignee = [dic objectForKey:@"consignee"];
         [self setConsignee:consignee];
         

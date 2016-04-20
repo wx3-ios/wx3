@@ -46,8 +46,9 @@
     DLTabedbarItem *item2 = [DLTabedbarItem itemWithTitle:@"待付款" image:nil selectedImage:nil];
     DLTabedbarItem *item3 = [DLTabedbarItem itemWithTitle:@"待发货" image:nil selectedImage:nil];
     DLTabedbarItem *item4 = [DLTabedbarItem itemWithTitle:@"待收货" image:nil selectedImage:nil];
+    DLTabedbarItem *item5 = [DLTabedbarItem itemWithTitle:@"待评价" image:nil selectedImage:nil];
     
-    [tabedSlideView setTabbarItems:@[item1,item2,item3,item4]];
+    [tabedSlideView setTabbarItems:@[item1,item2,item3,item4,item5]];
     [tabedSlideView buildTabbar];
     
     showNumber = [tabedSlideView.tabbarItems count];
@@ -64,6 +65,7 @@
     [notification addObserver:self selector:@selector(toOrderInfoVC:) name:K_Notification_HomeOrder_OrderInfo object:nil];
     [notification addObserver:self selector:@selector(toRefundSucceedVC:) name:K_Notification_HomeOrder_ToRefundSucceed object:nil];
     [notification addObserver:self selector:@selector(toGoodsInfoVC:) name:K_Notification_HomeOrder_ToGoodsInfo object:nil];
+    [notification addObserver:self selector:@selector(toEvaluateVC:) name:K_Notification_Name_JumpToEvaluate object:nil];
 }
 
 -(void)removeOBS{
@@ -93,6 +95,14 @@
 -(void)toGoodsInfoVC:(NSNotification*)notification{
     NSInteger goodsID = [notification.object integerValue];
     [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:goodsID animated:YES];
+}
+
+-(void)toEvaluateVC:(NSNotification*)notification{
+    OrderListEntity *entity = notification.object;
+    OrderEvaluateVC *evaluateVC = [[OrderEvaluateVC alloc] init];
+    evaluateVC.orderEntity = entity;
+    [self.wxNavigationController pushViewController:evaluateVC completion:^{
+    }];
 }
 
 -(void)callShopPhoneWithTelePhoneNumber:(NSNotification*)notification{
@@ -142,6 +152,12 @@
         {
             WaitReceiveOrderListVC *receiveList = [[WaitReceiveOrderListVC alloc] init];
             return receiveList;
+        }
+            break;
+        case OrderList_Wait_Evaluate:
+        {
+            WaitEvaluateOrderListVC *evaluateVC = [[WaitEvaluateOrderListVC alloc] init];
+            return evaluateVC;
         }
             break;
         default:

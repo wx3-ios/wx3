@@ -14,6 +14,7 @@
 #import "OrderPayVC.h"
 #import "AliPayControl.h"
 #import "OrderCommonDef.h"
+#import "OrderEvaluateVC.h"
 
 #define GetOrderArrayEveryTime (15)
 
@@ -80,6 +81,7 @@ typedef enum{
     [notificationCenter addObserver:self selector:@selector(completeOrderListSucceed:) name:K_Notification_UserOderList_CompleteSucceed object:nil];
     [notificationCenter addObserver:self selector:@selector(completeOrderListFailed:) name:K_Notification_UserOderList_CompleteFailed object:nil];
     [notificationCenter addObserver:self selector:@selector(applyRefundSucceed:) name:K_Notification_HomeOrder_RefundSucceed object:nil];
+    [notificationCenter addObserver:self selector:@selector(evaluateSucceed:) name:K_Notification_Name_EvaluateOrderSucceed object:nil];
 }
 
 -(void)removeOBS{
@@ -399,11 +401,31 @@ typedef enum{
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_HomeOrder_ToRefund object:entity];
 }
 
+-(void)userEvaluateBtnClicked:(id)sender{
+    OrderListEntity *entity = sender;
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_JumpToEvaluate object:entity];
+}
+
 //申请退款成功
 -(void)applyRefundSucceed:(NSNotification*)notification{
     OrderListEntity *ent = notification.object;
     for(OrderListEntity *entity in [OrderListModel shareOrderListModel].orderListAll){
         if(entity.order_id == ent.order_id){
+            NSInteger index = [self indexPathOfOptCellWithOrder:entity];
+            if (index>=0){
+                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        }
+    }
+}
+
+//用户评价成功
+-(void)evaluateSucceed:(NSNotification*)notification{
+    OrderListEntity *ent = notification.object;
+    orderListArr = [OrderListModel shareOrderListModel].orderListAll;
+    for(OrderListEntity *entity in orderListArr){
+        if(entity.order_id == ent.order_id){
+            entity.evaluate = Order_Evaluate_Done;
             NSInteger index = [self indexPathOfOptCellWithOrder:entity];
             if (index>=0){
                 [_tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];

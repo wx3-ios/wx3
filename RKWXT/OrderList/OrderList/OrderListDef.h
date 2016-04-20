@@ -14,6 +14,7 @@ enum{
     OrderList_Wait_Pay,
     OrderList_Wait_Send,
     OrderList_Wait_Receive,
+    OrderList_Wait_Evaluate,
     
     OrderList_Invalid
 };
@@ -23,5 +24,7 @@ enum{
 #import "WaitPayOrderListVC.h"
 #import "WaitReceiveOrderListVC.h"
 #import "WaitSendGoodsListVC.h"
+#import "WaitEvaluateOrderListVC.h"
+#import "OrderEvaluateVC.h"
 
 #endif

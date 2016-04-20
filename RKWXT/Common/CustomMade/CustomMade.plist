@@ -9,7 +9,7 @@
 	<key>D_KEY_APP_MERCHANTNAME</key>
 	<string>我信云</string>
 	<key>D_KEY_APP_SUBSHOPID</key>
-	<integer>100000</integer>
+	<integer>27</integer>
 	<key>D_KEY_FIND_NAME</key>
 	<string>发现</string>
 	<key>D_KEY_FIND_SHOWNAV</key>

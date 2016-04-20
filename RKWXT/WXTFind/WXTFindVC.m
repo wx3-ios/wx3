@@ -7,64 +7,34 @@
 
 
 #import "WXTFindVC.h"
-#import "FindCommonVC.h"
-#import "WXWebViewShareVC.h"
+#import "MJRefresh.h"
+#import "HomePageTopEntity.h"
+#import "WXHomeTopGoodCell.h"
+#import "WXTFindCommmonCell.h"
+#import "FindTopImgModel.h"
+#import "WXTFindModel.h"
+#import "FindEntity.h"
 
-#define FindCommonCellHeight (85)
 #define Size self.bounds.size
 
-@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate>{
+@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate,wxtFindModelDelegate,FindTopImgModelDelegate>{
     UITableView *_tableView;
-    
+    WXTFindModel *_comModel;
     NSArray *commonImgArr;
-    NSArray *commonImgName;
-    NSArray *commonUrl;
-    
-    NSArray *imgArr;
-    NSArray *nameArr;
-    NSArray *webUrl;
+    FindTopImgModel *_model;
 }
 @end
 
 @implementation WXTFindVC
 
-//微名片  http://wx3.67call.com/wx_html/index.php/Vcard/index
-//路演视频 http://wx3.67call.com/wx_html/index.php/Vcard/hsindex
-//oo直播 http://wx.1wili.com/livehouse.html
 -(id)init{
     self = [super init];
     if(self){
-        commonImgArr = @[@"FindShop.png", @"FindJingdong.png", @"FindTaobao.png"];
-        commonImgName = @[@"商家联盟", @"京东", @"淘宝网"];
-        commonUrl = @[@"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant", @"http://re.jd.com", @"http://www.taobao.com"];
+        _comModel = [[WXTFindModel alloc] init];
+        [_comModel setFindDelegate:self];
         
-        imgArr = @[@"FIndLvyou.png", @"FindWeather.png"];
-        nameArr = @[@"去哪儿网", @"天气"];
-        webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com"];
-        
-        if(kMerchantID == 10248){ //智我云要将商家联盟和微名片的位置交换
-            commonImgArr = @[@"FindZhiwoyun.png", @"FindJingdong.png", @"FindTaobao.png"];
-            commonImgName = @[@"微名片", @"京东", @"淘宝网"];
-            commonUrl = @[@"http://wx3.67call.com/wx_html/index.php/Vcard/index", @"http://re.jd.com", @"http://www.taobao.com"];
-            
-            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindShop.png"];
-            nameArr = @[@"去哪儿网", @"天气", @"商家联盟"];
-            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant"];
-        }
-        if(kMerchantID == 10233){ //10233 互生集团要将商家联盟和路演视频的位置交换
-            commonImgArr = @[@"FindVideoImg.png", @"FindJingdong.png", @"FindTaobao.png"];
-            commonImgName = @[@"路演视频", @"京东", @"淘宝网"];
-            commonUrl = @[@"http://wx3.67call.com/wx_html/index.php/Vcard/hsindex", @"http://re.jd.com", @"http://www.taobao.com"];
-            
-            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindShop.png"];
-            nameArr = @[@"去哪儿网", @"天气", @"商家联盟"];
-            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx3.67call.com/wx_html/index.php/Public/alliance_merchant"];
-        }
-        if(kMerchantID == 10249){
-            imgArr = @[@"FIndLvyou.png", @"FindWeather.png", @"FindHusheng.png"];
-            nameArr = @[@"去哪儿网", @"天气", @"OO直播"];
-            webUrl = @[@"http://flight.qunar.com", @"http://weather.html5.qq.com", @"http://wx.1wili.com/livehouse.html"];
-        }
+        _model = [[FindTopImgModel alloc] init];
+        [_model setDelegate:self];
     }
     return self;
 }
@@ -76,133 +46,133 @@
     
     _tableView = [[UITableView alloc] init];
     _tableView.frame = CGRectMake(0, 0, Size.width, Size.height);
-    [_tableView setBackgroundColor:WXColorWithInteger(0xefeff4)];
+    [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
-    [_tableView setTableHeaderView:[self commonFootView]];
-    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self addSubview:_tableView];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self setupRefresh];
+    
+    [_comModel loadFindData:FindData_Type_Load];
+    [_model loadFindTopImgData];
+    [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
 }
 
--(UIView *)commonFootView{
-    UIView *commonView = [[UIView alloc] init];
-    [commonView setBackgroundColor:WXColorWithInteger(0xefeff4)];
+//集成刷新控件
+-(void)setupRefresh{
+    [_tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    //    [_tableView addFooterWithTarget:self action:@selector(footerRefreshing)];
     
-    for(NSInteger i = 0; i < [commonImgArr count]; i++){
-        WXUIButton *bgImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        [bgImgBtn setBackgroundColor:[UIColor whiteColor]];
-        bgImgBtn.frame = CGRectMake(i*(Size.width/4)+Size.width/4, 0, Size.width/4-1, FindCommonCellHeight);
-        
-        [bgImgBtn setImage:[UIImage imageNamed:commonImgArr[i]] forState:UIControlStateNormal];
-        [bgImgBtn setTitle:commonImgName[i] forState:UIControlStateNormal];
-        [bgImgBtn setTitleColor:WXColorWithInteger(0x646464) forState:UIControlStateNormal];
-        [bgImgBtn.titleLabel setFont:WXFont(12.0)];
-        
-        bgImgBtn.tag = i;
-        [bgImgBtn addTarget:self action:@selector(gotoShopMertan:) forControlEvents:UIControlEventTouchUpInside];
-        [commonView addSubview:bgImgBtn];
-        
-        if(i == 0){
-            bgImgBtn.frame = CGRectMake(0, 0, Size.width/2-1, FindCommonCellHeight);
-        }
-        
-        CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(bgImgBtn.bounds), CGRectGetMidY(bgImgBtn.bounds));
-        CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(bgImgBtn.imageView.bounds));
-        CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(bgImgBtn.bounds)-CGRectGetMidY(bgImgBtn.titleLabel.bounds));
-        CGPoint startImageViewCenter = bgImgBtn.imageView.center;
-        CGPoint startTitleLabelCenter = bgImgBtn.titleLabel.center;
-        CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
-        CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
-        bgImgBtn.imageEdgeInsets = UIEdgeInsetsMake(20, imageEdgeInsetsLeft, FindCommonCellHeight/2, imageEdgeInsetsRight);
-        CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
-        CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
-        bgImgBtn.titleEdgeInsets = UIEdgeInsetsMake(FindCommonCellHeight/2-5, titleEdgeInsetsLeft, 0, titleEdgeInsetsRight);
-    }
-    
-    CGFloat yoffset = FindCommonCellHeight+1;
-    
-    for(NSInteger k = 0; k < [imgArr count]/4+([imgArr count]%4>0?1:0); k++){
-        for(NSInteger j = 0; j < 4; j++){
-            WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-            [commonBtn setBackgroundColor:[UIColor whiteColor]];
-            commonBtn.frame = CGRectMake(j*(Size.width/4), yoffset, Size.width/4-1, FindCommonCellHeight);
-            [commonBtn setBorderRadian:0 width:1 color:[UIColor clearColor]];
-            
-            [commonBtn setImage:[UIImage imageNamed:imgArr[j]] forState:UIControlStateNormal];
-            [commonBtn setTitle:nameArr[j] forState:UIControlStateNormal];
-            [commonBtn setTitleColor:WXColorWithInteger(0x646464) forState:UIControlStateNormal];
-            [commonBtn.titleLabel setFont:WXFont(12.0)];
-            
-            commonBtn.tag = j;
-            [commonBtn addTarget:self action:@selector(gotoCommonWeb:) forControlEvents:UIControlEventTouchUpInside];
-            [commonView addSubview:commonBtn];
-            
-            
-            CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(commonBtn.bounds), CGRectGetMidY(commonBtn.bounds));
-            CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(commonBtn.imageView.bounds));
-            CGPoint endTitleLabelCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetHeight(commonBtn.bounds)-CGRectGetMidY(commonBtn.titleLabel.bounds));
-            CGPoint startImageViewCenter = commonBtn.imageView.center;
-            CGPoint startTitleLabelCenter = commonBtn.titleLabel.center;
-            CGFloat imageEdgeInsetsLeft = endImageViewCenter.x - startImageViewCenter.x;
-            CGFloat imageEdgeInsetsRight = -imageEdgeInsetsLeft;
-            commonBtn.imageEdgeInsets = UIEdgeInsetsMake(20, imageEdgeInsetsLeft, FindCommonCellHeight/2, imageEdgeInsetsRight);
-            CGFloat titleEdgeInsetsLeft = endTitleLabelCenter.x - startTitleLabelCenter.x;
-            CGFloat titleEdgeInsetsRight = -titleEdgeInsetsLeft;
-            commonBtn.titleEdgeInsets = UIEdgeInsetsMake(FindCommonCellHeight/2-5, titleEdgeInsetsLeft, 0, titleEdgeInsetsRight);
-            
-            if(j == ([imgArr count]-4*k)-1){
-                break;
-            }
-        }
-        yoffset += FindCommonCellHeight+1;
-    }
-    
-    commonView.frame = CGRectMake(0, 0, Size.width, yoffset);
-    return commonView;
+    //设置文字
+    _tableView.headerPullToRefreshText = @"下拉刷新";
+    _tableView.headerReleaseToRefreshText = @"松开刷新";
+    _tableView.headerRefreshingText = @"刷新中";
 }
 
-#pragma mark tableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 0;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 0;
+    if(indexPath.section == 0){
+        height = IPHONE_SCREEN_WIDTH/2;
+    }else{
+        height = ([commonImgArr count]/3+([commonImgArr count]%3>0?1:0))*IPHONE_SCREEN_WIDTH/3;
+    }
+    return height;
+}
+
+///顶部导航
+-(WXUITableViewCell*)headImgCell{
+    static NSString *identifier = @"headImg";
+    WXHomeTopGoodCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell){
+        cell = [[WXHomeTopGoodCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell setCellInfo:_model.imgArr];
+    [cell load];
+    return cell;
+}
+
+-(WXUITableViewCell*)commonWebImgCell{
+    static NSString *identfier = @"commonCell";
+    WXTFindCommonCell *cell = [_tableView dequeueReusableCellWithIdentifier:identfier];
+    if(!cell){
+        cell = [[WXTFindCommonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identfier];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([commonImgArr count] > 0){
+        [cell setCellInfo:commonImgArr];
+    }
+    [cell load];
+    return cell;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WXUITableViewCell *cell = nil;
+    NSInteger section = indexPath.section;
+    switch (section) {
+        case 0:
+            cell = [self headImgCell];
+            break;
+        case 1:
+            cell = [self commonWebImgCell];
+            break;
+        default:
+            break;
+    }
     return cell;
 }
 
-#pragma mark
--(void)gotoShopMertan:(id)sender{
-    WXUIButton *btn = sender;
-    if((kMerchantID == 10248 || kMerchantID == 10233) && btn.tag == 0){
-        WXWebViewShareVC *vc = [[WXWebViewShareVC alloc] init];
-        vc.webUrlStr = [commonUrl objectAtIndex:0];
-        [self.wxNavigationController pushViewController:vc];
-        return;
-    }
-    FindCommonVC *commonVC = [[FindCommonVC alloc] init];
-    commonVC.webURl = [commonUrl objectAtIndex:btn.tag];
-    commonVC.titleName = [commonImgName objectAtIndex:btn.tag];
-    [self.wxNavigationController pushViewController:commonVC];
+#pragma mark findData
+-(void)initFinddataSucceed{
+    [self unShowWaitView];
+    [_tableView headerEndRefreshing];
+    commonImgArr = _comModel.findDataArr;
+    [_tableView reloadData];
 }
 
--(void)gotoCommonWeb:(id)sender{
-    WXUIButton *btn = sender;
-    if(btn.tag == 2 && (kMerchantID == 10248 || kMerchantID == 10233)){
-        FindCommonVC *commonVC = [[FindCommonVC alloc] init];
-        commonVC.webURl = [webUrl objectAtIndex:2];
-        commonVC.titleName = [nameArr objectAtIndex:2];
-        [self.wxNavigationController pushViewController:commonVC];
-        return;
+-(void)initFinddataFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    [_tableView headerEndRefreshing];
+    if(!errorMsg){
+        errorMsg = @"加载数据失败";
     }
-    FindCommonVC *commonVC = [[FindCommonVC alloc] init];
-    commonVC.webURl = [webUrl objectAtIndex:btn.tag];
-    commonVC.titleName = [nameArr objectAtIndex:btn.tag];
-    [self.wxNavigationController pushViewController:commonVC];
+    [UtilTool showAlertView:errorMsg];
+}
+
+-(void)clickClassifyBtnAtIndex:(NSInteger)index{
+    FindEntity *entity = nil;
+    for(FindEntity *ent in commonImgArr){
+        if(index == ent.classifyID){
+            entity = ent;
+            break;
+        }
+    }
+    [_comModel upLoadUserClickFindData:entity.classifyID];
+    [[CoordinateController sharedCoordinateController] toWebVC:self url:entity.webUrl title:entity.name animated:YES];
+}
+
+#pragma mark topImg
+-(void)findTopImgLoadedSucceed{
+    [self unShowWaitView];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)findTopImgLoadedFailed:(NSString *)error{
+    [self unShowWaitView];
+}
+
+#pragma mark refresh
+-(void)headerRefreshing{
+    [_comModel loadFindData:FindData_Type_Load];
+    [_model loadFindTopImgData];
 }
 
 @end

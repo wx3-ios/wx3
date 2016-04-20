@@ -723,6 +723,10 @@
     [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:3 animated:YES];
 }
 
+-(void)personalInfoToWaitEvaluateOrderList{
+    [[CoordinateController sharedCoordinateController] toOrderList:self selectedShow:4 animated:YES];
+}
+
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self removeOBS];

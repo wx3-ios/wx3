@@ -7,80 +7,94 @@
 //
 
 #import "WXTFindCommmonCell.h"
+#import "WXRemotionImgBtn.h"
+#import "FindEntity.h"
 
-@interface WXTFindCommmonCell(){
+#define EveryCellShowNumber (3)
+
+@interface WXTFindCommonCell(){
+    NSMutableArray *listArr;
 }
 @end
 
-@implementation WXTFindCommmonCell
+@implementation WXTFindCommonCell
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        UIImage *img = [UIImage imageNamed:@"FindShop.png"];
-        
-        CGSize size1 = [self sizeOfString:@"商家联盟" font:WXFont(12.0)];
-        WXUIButton *bgImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        bgImgBtn.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH/2, FindCommonCellHeight);
-        [bgImgBtn setImage:[UIImage imageNamed:@"FindShop.png"] forState:UIControlStateNormal];
-        [bgImgBtn setImageEdgeInsets:UIEdgeInsetsMake(15, (IPHONE_SCREEN_WIDTH/2-img.size.width)/2, FindCommonCellHeight/2, 0)];
-        [bgImgBtn setTitle:@"商家联盟" forState:UIControlStateNormal];
-        [bgImgBtn setBorderRadian:0 width:0.2 color:[UIColor grayColor]];
-        [bgImgBtn setTitleEdgeInsets:UIEdgeInsetsMake(FindCommonCellHeight/2, (IPHONE_SCREEN_WIDTH/2-size1.width)/4, 0, 0)];
-        [bgImgBtn setTitleColor:WXColorWithInteger(0x646464) forState:UIControlStateNormal];
-        [bgImgBtn.titleLabel setFont:WXFont(12.0)];
-        [bgImgBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        bgImgBtn.tag = 1;
-        [bgImgBtn addTarget:self action:@selector(gotoShopMertan:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:bgImgBtn];
-        
-        
-        WXUIButton *twoImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        twoImgBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH/2+5, 0, IPHONE_SCREEN_WIDTH/4, FindCommonCellHeight);
-        [twoImgBtn setImage:[UIImage imageNamed:@"FindJingdong.png"] forState:UIControlStateNormal];
-        [twoImgBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, FindCommonCellHeight/2, 0)];
-        [twoImgBtn setTitle:@"京东" forState:UIControlStateNormal];
-        [twoImgBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, FindCommonCellHeight/2, 0, 0)];
-        [twoImgBtn.titleLabel setTextColor:WXColorWithInteger(0x646464)];
-        [twoImgBtn.titleLabel setFont:WXFont(12.0)];
-        [twoImgBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        twoImgBtn.tag = 2;
-        [twoImgBtn addTarget:self action:@selector(gotoShopMertan:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:twoImgBtn];
-        
-        WXUIButton *threeImgBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-        threeImgBtn.frame = CGRectMake(IPHONE_SCREEN_WIDTH*3/4+0.5, 0, IPHONE_SCREEN_WIDTH/2, FindCommonCellHeight);
-        [threeImgBtn setImage:[UIImage imageNamed:@"FindTaobao.png"] forState:UIControlStateNormal];
-        [threeImgBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, FindCommonCellHeight/2, 0)];
-        [threeImgBtn setTitle:@"淘宝网" forState:UIControlStateNormal];
-        [threeImgBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, FindCommonCellHeight/2, 0, 0)];
-        threeImgBtn.tag = 3;
-        [threeImgBtn addTarget:self action:@selector(gotoShopMertan:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:threeImgBtn];
+        [self setUserInteractionEnabled:YES];
+        listArr = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 -(void)load{
-}
-
--(void)gotoShopMertan:(id)sender{
-    WXUIButton *btn = sender;
-    if(_delegate && [_delegate respondsToSelector:@selector(wxtFindCommonCellClicked:)]){
-        [_delegate wxtFindCommonCellClicked:btn.tag];
+    if([listArr count] > 0){
+        return;
     }
-}
-
-- (CGSize)sizeOfString:(NSString*)txt font:(UIFont*)font{
-    if(!txt || [txt isKindOfClass:[NSNull class]]){
-        txt = @" ";
-    }
-    if(isIOS7){
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-        return [txt sizeWithAttributes:@{NSFontAttributeName: font}];
-#endif
-    }else{
-        return [txt sizeWithFont:font];
+    
+    NSArray *dataArr = self.cellInfo;
+    
+    CGRect rect = [self bounds];
+    CGFloat btnWidth = rect.size.width/3-1;
+    CGFloat btnHeight = btnWidth;
+    __block NSInteger count = 0;
+    for(NSInteger i = 0; i < ([dataArr count]/3+([dataArr count]%3>0?1:0)); i++){
+        for(NSInteger j = 0; j < EveryCellShowNumber; j++){
+            if(count > [dataArr count]-1){
+                break;
+            }
+            FindEntity *entity = [dataArr objectAtIndex:count];
+            
+            WXUIButton *commonBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+            commonBtn.frame = CGRectMake(j*(btnWidth+1), i*(btnHeight+1), btnWidth, btnHeight);
+            [commonBtn setBackgroundColor:[UIColor whiteColor]];
+            //            [commonBtn setBackgroundImageOfColor:WXColorWithInteger(0xbababa) controlState:UIControlStateHighlighted];
+            commonBtn.tag = entity.classifyID;
+            [self.contentView addSubview:commonBtn];
+            [listArr addObject:entity];
+            
+            CGFloat imgWidth = 30;
+            CGFloat imgHeight = imgWidth;
+            WXRemotionImgBtn *imgView = [[WXRemotionImgBtn alloc] initWithFrame:CGRectMake((btnWidth-imgWidth)/2, 10+(btnHeight/2-imgHeight)/2, imgWidth, imgHeight)];
+            [imgView setUserInteractionEnabled:NO];
+            [imgView setCpxViewInfo:entity.icon_url];
+            [imgView load];
+            [commonBtn addSubview:imgView];
+            
+            CGFloat labelHeight = 15;
+            WXUILabel *namelabel = [[WXUILabel alloc] init];
+            namelabel.frame = CGRectMake(0, 18+btnHeight/2, btnWidth, labelHeight);
+            [namelabel setBackgroundColor:[UIColor clearColor]];
+            [namelabel setTextAlignment:NSTextAlignmentCenter];
+            [namelabel setTextColor:WXColorWithInteger(0x414141)];
+            [namelabel setFont:WXFont(12.0)];
+            [namelabel setText:entity.name];
+            [commonBtn addSubview:namelabel];
+            
+            //有可能没用
+            WXUILabel *desLabel = [[WXUILabel alloc] init];
+            desLabel.frame = CGRectMake(0, btnHeight/2+labelHeight+18, btnWidth, labelHeight);
+            [desLabel setBackgroundColor:[UIColor clearColor]];
+            [desLabel setTextAlignment:NSTextAlignmentCenter];
+            [desLabel setTextColor:WXColorWithInteger(0xbababa)];
+            [desLabel setFont:WXFont(9.0)];
+            [commonBtn addSubview:desLabel];
+            
+            if(j != 2){
+                WXUILabel *rightLine = [[WXUILabel alloc] init];
+                rightLine.frame = CGRectMake(commonBtn.frame.origin.x+btnWidth+0.2, commonBtn.frame.origin.y, 0.2, btnHeight);
+                [rightLine setBackgroundColor:WXColorWithInteger(0xbababa)];
+                [self.contentView addSubview:rightLine];
+            }
+            
+            WXUILabel *downLine = [[WXUILabel alloc] init];
+            downLine.frame = CGRectMake(commonBtn.frame.origin.x, commonBtn.frame.origin.y+btnHeight, btnWidth, 0.2);
+            [downLine setBackgroundColor:WXColorWithInteger(0xbababa)];
+            [self.contentView addSubview:downLine];
+            
+            count++;
+        }
     }
 }
 

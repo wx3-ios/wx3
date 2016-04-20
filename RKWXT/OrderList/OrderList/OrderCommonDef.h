@@ -16,5 +16,6 @@
 #define K_Notification_HomeOrder_ToGoodsInfo @"K_Notification_HomeOrder_ToGoodsInfo"  //去商品详情
 #define K_Notification_HomeOrder_CallShopPhone @"K_Notification_HomeOrder_CallShopPhone"  //催单
 #define K_Notification_HomeOrder_ToRefundSucceed @"K_Notification_HomeOrder_ToRefundSucceed"  //退款详情
+#define K_Notification_Name_JumpToEvaluate @"K_Notification_Name_JumpToEvaluate"  //去评价页面
 
 #endif
