@@ -124,7 +124,32 @@
     [label setTextColor:[UIColor blackColor]];
     [self addSubview:label];
     
+    [self createTopBackgroundView];
     [self createTextAndbtnView];
+}
+
+-(void)createTopBackgroundView{
+    WXUIView *backgroundView = [[WXUIView alloc] init];
+    backgroundView.frame = CGRectMake(0, 0, IPHONE_SCREEN_WIDTH, 64);
+    [backgroundView setBackgroundColor:WXColorWithInteger(0xdd2726)];
+    [self.view addSubview:backgroundView];
+    
+    WXUIButton *backBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(6, 35, 30, 20);
+    [backBtn setImage:[UIImage imageNamed:@"CommonArrowLeft.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backToLastPage) forControlEvents:UIControlEventTouchUpInside];
+    [backgroundView addSubview:backBtn];
+    
+    CGFloat nameWidth = 80;
+    CGFloat nameHeight = 20;
+    WXUILabel *nameLabel = [[WXUILabel alloc] init];
+    nameLabel.frame = CGRectMake((IPHONE_SCREEN_WIDTH-nameWidth)/2, 35, nameWidth, nameHeight);
+    [nameLabel setBackgroundColor:[UIColor clearColor]];
+    [nameLabel setText:@"摇一摇"];
+    [nameLabel setTextAlignment:NSTextAlignmentCenter];
+    [nameLabel setTextColor:WXColorWithInteger(0xffffff)];
+    [nameLabel setFont:WXFont(15.0)];
+    [backgroundView addSubview:nameLabel];
 }
 
 -(void)createTextAndbtnView{
@@ -338,6 +363,11 @@
     hasLucky = NO;
     [_model setDelegate:nil];
     [_numModel setDelegate:nil];
+}
+
+-(void)backToLastPage{
+    [self.wxNavigationController popViewControllerAnimated:YES completion:^{
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

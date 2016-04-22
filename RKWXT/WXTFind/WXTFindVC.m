@@ -17,7 +17,7 @@
 
 #define Size self.bounds.size
 
-@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate,wxtFindModelDelegate,FindTopImgModelDelegate>{
+@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate,wxtFindModelDelegate,FindTopImgModelDelegate,WXTFindCommonCellCellDelegate>{
     UITableView *_tableView;
     WXTFindModel *_comModel;
     NSArray *commonImgArr;
@@ -110,6 +110,7 @@
     if([commonImgArr count] > 0){
         [cell setCellInfo:commonImgArr];
     }
+    [cell setDelegate:self];
     [cell load];
     return cell;
 }

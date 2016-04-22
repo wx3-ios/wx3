@@ -51,6 +51,7 @@
             [commonBtn setBackgroundColor:[UIColor whiteColor]];
             //            [commonBtn setBackgroundImageOfColor:WXColorWithInteger(0xbababa) controlState:UIControlStateHighlighted];
             commonBtn.tag = entity.classifyID;
+            [commonBtn addTarget:self action:@selector(commonBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.contentView addSubview:commonBtn];
             [listArr addObject:entity];
             
@@ -95,6 +96,13 @@
             
             count++;
         }
+    }
+}
+
+-(void)commonBtnClicked:(id)sender{
+    WXUIButton *btn = sender;
+    if(_delegate && [_delegate respondsToSelector:@selector(clickClassifyBtnAtIndex:)]){
+        [_delegate clickClassifyBtnAtIndex:btn.tag];
     }
 }
 

@@ -8,6 +8,13 @@
 
 #import "WXUITableViewCell.h"
 
+@protocol WXTFindCommonCellCellDelegate;
 @interface WXTFindCommonCell : WXUITableViewCell
+@property (nonatomic,assign)id<WXTFindCommonCellCellDelegate>delegate;
+
+@end
+
+@protocol WXTFindCommonCellCellDelegate <NSObject>
+- (void)clickClassifyBtnAtIndex:(NSInteger)index;
 
 @end

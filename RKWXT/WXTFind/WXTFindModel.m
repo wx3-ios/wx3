@@ -56,9 +56,9 @@
 
 -(void)loadFindData:(FindData_Type)type{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.user, @"phone", @"ios", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:type], @"type", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UtilTool currentVersion], @"ver", @"ios", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [NSNumber numberWithInt:kMerchantID], @"sid", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:type], @"type", nil];
+    __block WXTFindModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_FindData httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
-        __block WXTFindModel *blockSelf = self;
         if (retData.code != 0){
             if (_findDelegate && [_findDelegate respondsToSelector:@selector(initFinddataFailed:)]){
                 [_findDelegate initFinddataFailed:retData.errorDesc];
@@ -74,7 +74,7 @@
 
 -(void)upLoadUserClickFindData:(NSInteger)discover_id{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:userObj.user, @"phone", @"ios", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:2], @"type", [NSNumber numberWithInteger:discover_id], @"discover_id", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UtilTool currentVersion], @"ver", @"ios", @"pid", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", [NSNumber numberWithInt:kMerchantID], @"sid", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:2], @"type", [NSNumber numberWithInt:discover_id], @"discover_id", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_FindData httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData){
     }];
 }
