@@ -28,6 +28,10 @@
         
         NSInteger isOk = [[dic objectForKey:@"validate"] integerValue];
         [self setUserali_type:isOk];
+        
+        if(isOk == UserAliCount_Type_Failed){
+            [self setRefuseMsg:[dic objectForKey:@"refusal_cause"]];
+        }
     }
     return self;
 }

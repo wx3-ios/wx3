@@ -23,6 +23,7 @@
 #import "WithdrawalsRecordListVC.h"
 #import "UserCutSourceListVC.h"
 #import "WXJuniorListVC.h"
+#import "UserAliApplyFailedVC.h"
 
 #import "WXDropListView.h"
 
@@ -527,12 +528,9 @@ static NSString* g_dropItemList[DropList_Section_Invalid] ={
     }
     //审核未通过
     if(userAliEntity.userali_type == UserAliCount_Type_Failed){
-        [UtilTool showAlertView:@"抱歉，您的支付宝账户信息审核未通过，请重新填写"];
-        
-        ConfirmUserAliPayVC *confirmVC = [[ConfirmUserAliPayVC alloc] init];
-        confirmVC.titleString = @"验证信息";
-        confirmVC.confirmType = Confirm_Type_Change;
-        [self.wxNavigationController pushViewController:confirmVC];
+        UserAliApplyFailedVC *applyFailedVC = [[UserAliApplyFailedVC alloc] init];
+        applyFailedVC.entity = userAliEntity;
+        [self.wxNavigationController pushViewController:applyFailedVC];
     }
 }
 

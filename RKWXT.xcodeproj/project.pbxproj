@@ -446,6 +446,8 @@
 		1278C0AD1C21555100AAF097 /* LMShopCollectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1278C0AC1C21555100AAF097 /* LMShopCollectionTitleCell.m */; };
 		1278C0B01C2157C000AAF097 /* LMShopCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1278C0AF1C2157C000AAF097 /* LMShopCollectionCell.m */; };
 		1278C0B31C2157E700AAF097 /* LMShopCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1278C0B21C2157E700AAF097 /* LMShopCollectionView.m */; };
+		127D50101CCDC34700CA3CBB /* UserAliApplyFailedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 127D500F1CCDC34700CA3CBB /* UserAliApplyFailedVC.m */; };
+		127D50121CCDC58500CA3CBB /* UserAliAccountFailed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127D50111CCDC58500CA3CBB /* UserAliAccountFailed@2x.png */; };
 		127F26C81C23B1A400583752 /* LMCarriageImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26C41C23B1A400583752 /* LMCarriageImg@2x.png */; };
 		127F26C91C23B1A400583752 /* LMGoodsInfoCartImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26C51C23B1A400583752 /* LMGoodsInfoCartImg@2x.png */; };
 		127F26CA1C23B1A400583752 /* LMGoodsInfoShopImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127F26C61C23B1A400583752 /* LMGoodsInfoShopImg@2x.png */; };
@@ -1994,6 +1996,9 @@
 		1278C0AF1C2157C000AAF097 /* LMShopCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShopCollectionCell.m; sourceTree = "<group>"; };
 		1278C0B11C2157E700AAF097 /* LMShopCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMShopCollectionView.h; sourceTree = "<group>"; };
 		1278C0B21C2157E700AAF097 /* LMShopCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMShopCollectionView.m; sourceTree = "<group>"; };
+		127D500E1CCDC34700CA3CBB /* UserAliApplyFailedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAliApplyFailedVC.h; sourceTree = "<group>"; };
+		127D500F1CCDC34700CA3CBB /* UserAliApplyFailedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAliApplyFailedVC.m; sourceTree = "<group>"; };
+		127D50111CCDC58500CA3CBB /* UserAliAccountFailed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserAliAccountFailed@2x.png"; sourceTree = "<group>"; };
 		127F26C41C23B1A400583752 /* LMCarriageImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMCarriageImg@2x.png"; sourceTree = "<group>"; };
 		127F26C51C23B1A400583752 /* LMGoodsInfoCartImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMGoodsInfoCartImg@2x.png"; sourceTree = "<group>"; };
 		127F26C61C23B1A400583752 /* LMGoodsInfoShopImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LMGoodsInfoShopImg@2x.png"; sourceTree = "<group>"; };
@@ -3677,6 +3682,8 @@
 			children = (
 				120EC78B1BB9177800538637 /* UserWithdrawalsVC.h */,
 				120EC78C1BB9177800538637 /* UserWithdrawalsVC.m */,
+				127D500E1CCDC34700CA3CBB /* UserAliApplyFailedVC.h */,
+				127D500F1CCDC34700CA3CBB /* UserAliApplyFailedVC.m */,
 				120EC7911BB91D9200538637 /* ConfirmUserAliPayVC.h */,
 				120EC7921BB91D9200538637 /* ConfirmUserAliPayVC.m */,
 				1214B5851BBA214300A7D810 /* ApplyAliWithdrawalsVC.h */,
@@ -3722,6 +3729,7 @@
 		120EC78E1BB9190500538637 /* withdrawals */ = {
 			isa = PBXGroup;
 			children = (
+				127D50111CCDC58500CA3CBB /* UserAliAccountFailed@2x.png */,
 				12210C031C1917C200A2CE63 /* JuniorListUserHeadImg@2x.png */,
 				12210BFD1C190E6A00A2CE63 /* JuniorNumChampion@2x.png */,
 				12210BFE1C190E6A00A2CE63 /* JuniorNumSecond@2x.png */,
@@ -9521,6 +9529,7 @@
 				DDEA9EE31B1BFE5D00530C1C /* sysPushMessageIcon@2x.png in Resources */,
 				128221DD1B184E84004613BB /* HomePageWallet@2x.png in Resources */,
 				124535491AE9D146004198C9 /* sign21@2x.png in Resources */,
+				127D50121CCDC58500CA3CBB /* UserAliAccountFailed@2x.png in Resources */,
 				12846A8D1B252D720021F9FE /* LoginUserPwd@2x.png in Resources */,
 				775842E91AB95A300039B129 /* ZoneCode in Resources */,
 				12D52BBD1AC2EF4400C5CE71 /* dtmf-7.aif in Resources */,
@@ -10178,6 +10187,7 @@
 				127329131B5CDDF4002AD4AE /* AboutVC.m in Sources */,
 				121EBCD51BDE049300D1F307 /* GoodsInfoDownView.m in Sources */,
 				12A42FC61C16EA4C005936F3 /* UserCutMoneyCell.m in Sources */,
+				127D50101CCDC34700CA3CBB /* UserAliApplyFailedVC.m in Sources */,
 				77DB93F01AAFE70D0021A816 /* RecentData.m in Sources */,
 				123282221C1FA12B00EA9DEE /* LMSellerClassifyDropListView.m in Sources */,
 				126CA3D21AB2744600E08A0B /* WXTUserDefault.m in Sources */,

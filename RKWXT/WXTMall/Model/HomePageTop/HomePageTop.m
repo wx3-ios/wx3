@@ -41,7 +41,9 @@
     for(NSDictionary *dic in datalist){
         HomePageTopEntity *entity = [HomePageTopEntity homePageTopEntityWithDictionary:dic];
         entity.topImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.topImg];
-        [_dataList addObject:entity];
+        if(entity.showPosition == 1){
+            [_dataList addObject:entity];
+        }
     }
 }
 

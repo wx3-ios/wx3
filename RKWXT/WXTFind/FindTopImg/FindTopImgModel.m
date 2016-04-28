@@ -40,7 +40,9 @@
     for(NSDictionary *dic in datalist){
         HomePageTopEntity *entity = [HomePageTopEntity homePageTopEntityWithDictionary:dic];
         entity.topImg = [NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.topImg];
-        [_imgArr addObject:entity];
+        if(entity.showPosition == 5){
+            [_imgArr addObject:entity];
+        }
     }
 }
 

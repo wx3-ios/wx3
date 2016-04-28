@@ -14,10 +14,12 @@
 #import "FindTopImgModel.h"
 #import "WXTFindModel.h"
 #import "FindEntity.h"
+#import "NewHomePageCommonDef.h"
+#import "ClassifyListVC.h"
 
 #define Size self.bounds.size
 
-@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate,wxtFindModelDelegate,FindTopImgModelDelegate,WXTFindCommonCellCellDelegate>{
+@interface WXTFindVC()<UITableViewDataSource,UITableViewDelegate,wxtFindModelDelegate,FindTopImgModelDelegate,WXTFindCommonCellCellDelegate,WXHomeTopGoodCellDelegate>{
     UITableView *_tableView;
     WXTFindModel *_comModel;
     NSArray *commonImgArr;
@@ -81,7 +83,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = 0;
     if(indexPath.section == 0){
-        height = IPHONE_SCREEN_WIDTH/2;
+        height = IPHONE_SCREEN_WIDTH/3;
     }else{
         height = ([commonImgArr count]/3+([commonImgArr count]%3>0?1:0))*IPHONE_SCREEN_WIDTH/3;
     }
@@ -95,6 +97,7 @@
     if(!cell){
         cell = [[WXHomeTopGoodCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setDelegate:self];
     [cell setCellInfo:_model.imgArr];
     [cell load];
     return cell;
@@ -158,6 +161,51 @@
     }
     [_comModel upLoadUserClickFindData:entity.classifyID];
     [[CoordinateController sharedCoordinateController] toWebVC:self url:entity.webUrl title:entity.name animated:YES];
+}
+
+//顶部导航
+-(void)clickTopGoodAtIndex:(NSInteger)index{
+    if(index > HomePageJump_Type_Invalid){
+        return;
+    }
+    HomePageTopEntity *entity = [_model.imgArr objectAtIndex:index];
+    switch (entity.topType) {
+        case HomePageJump_Type_GoodsInfo:
+        {
+            [[CoordinateController sharedCoordinateController] toGoodsInfoVC:self goodsID:entity.linkID animated:YES];
+        }
+            break;
+        case HomePageJump_Type_Catagary:
+        {
+            ClassifyListVC *webViewVC = [[ClassifyListVC alloc] init];
+            webViewVC.cat_id = entity.linkID;
+            [self.wxNavigationController pushViewController:webViewVC];
+        }
+            break;
+        case HomePageJump_Type_MessageCenter:
+        {
+            [[CoordinateController sharedCoordinateController] toJPushCenterVC:self animated:YES];
+        }
+            break;
+        case HomePageJump_Type_MessageInfo:
+        {
+            [[CoordinateController sharedCoordinateController] toJPushMessageInfoVC:self messageID:entity.linkID animated:YES];
+        }
+            break;
+        case HomePageJump_Type_UserBonus:
+        {
+            [[CoordinateController sharedCoordinateController] toUserBonusVC:self animated:YES];
+        }
+            break;
+        case HomePageJump_Type_BusinessAlliance:
+        {
+            NSString *shopUnionUrl = [NSString stringWithFormat:@"%@wx_html/index.php/Public/alliance_merchant",WXTWebBaseUrl];
+            [[CoordinateController sharedCoordinateController] toWebVC:self url:shopUnionUrl title:@"商家联盟" animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark topImg
