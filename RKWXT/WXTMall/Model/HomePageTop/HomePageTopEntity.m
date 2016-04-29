@@ -27,6 +27,9 @@
         
         NSInteger type = [[dic objectForKey:@"top_nav_type_id"] integerValue];
         [self setTopType:type];
+        
+        NSInteger show = [[dic objectForKey:@"show_position"] integerValue];
+        [self setShowPosition:show];
     }
     return self;
 }

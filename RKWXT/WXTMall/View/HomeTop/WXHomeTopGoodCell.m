@@ -13,7 +13,7 @@
 #import "HomePageTopEntity.h"
 #import "NewHomePageCommonDef.h"
 
-#define kTimerInterval (5.0)
+#define kTimerInterval (3.0)
 @interface WXHomeTopGoodCell ()<UIScrollViewDelegate,WXRemotionImgBtnDelegate>{
 	CSTScrollBrowser *_browser;
 	UIPageControl *_pageControl;

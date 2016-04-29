@@ -45,6 +45,7 @@ typedef enum{
 @property (nonatomic,readonly) NSArray *waitListArr;    //待付款列表
 @property (nonatomic,readonly) NSArray *waitSendListArr;   //待发货列表
 @property (nonatomic,readonly) NSArray *waitReceiveListArr; //待收货列表
+@property (nonatomic,readonly) NSArray *waitEvaluateListArr; //待评价列表
 
 +(OrderListModel*)shareOrderListModel;
 -(void)loadUserOrderList:(NSInteger)fromIndex to:(NSInteger)toIndex;

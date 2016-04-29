@@ -20,5 +20,6 @@
 -(void)personalInfoToShoppingCart;
 -(void)personalInfoToWaitPayOrderList;
 -(void)personalInfoToWaitReceiveOrderList;
+-(void)personalInfoToWaitEvaluateOrderList;
 
 @end

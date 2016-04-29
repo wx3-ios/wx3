@@ -22,5 +22,6 @@
 -(void)userHurryBtnClicked:(id)sender;  //催单
 -(void)userCancelBtnClicked:(id)sender;  //取消
 -(void)userCompleteBtnClicked:(id)sender; //完成
+-(void)userEvaluateBtnClicked:(id)sender; //评价
 
 @end

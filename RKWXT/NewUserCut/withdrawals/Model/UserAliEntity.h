@@ -19,6 +19,7 @@ typedef enum{
 @property (nonatomic,assign) UserAliCount_Type userali_type;
 @property (nonatomic,strong) NSString *aliCount;
 @property (nonatomic,strong) NSString *aliName;
+@property (nonatomic,strong) NSString *refuseMsg;
 
 +(UserAliEntity*)initUserAliAcountWithDic:(NSDictionary*)dic;
 

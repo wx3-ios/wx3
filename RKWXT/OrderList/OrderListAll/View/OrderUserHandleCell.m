@@ -58,7 +58,7 @@
         [_button1 setBackgroundColor:WXColorWithInteger(0xa5a3a3)];
         return;
     }
-    if(entity.order_status == Order_Status_Complete){
+    if(entity.order_status == Order_Status_Complete && entity.evaluate == Order_Evaluate_Done){
         [_button1 setHidden:NO];
         [_button2 setHidden:YES];
         [_button1 setTitle:@"已完成" forState:UIControlStateNormal];
@@ -103,6 +103,12 @@
         }
     }
     
+    if(entity.order_status == Order_Status_Complete && entity.evaluate == Order_Evaluate_None){
+        [_button1 setHidden:NO];
+        [_button2 setHidden:YES];
+        str1 = @"评价";
+    }
+    
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend && entity.order_status == Order_Status_Normal){
         [_button1 setHidden:NO];
         [_button2 setHidden:NO];
@@ -134,6 +140,11 @@
     if(entity.pay_status == Pay_Status_HasPay && entity.goods_status == Goods_Status_HasSend && entity.order_status == Order_Status_Normal){
         if(_delegate && [_delegate respondsToSelector:@selector(userCompleteBtnClicked:)]){
             [_delegate userCompleteBtnClicked:entity];
+        }
+    }
+    if(entity.pay_status == Pay_Status_HasPay && entity.order_status == Order_Status_Complete && entity.evaluate == Order_Evaluate_None){
+        if(_delegate && [_delegate respondsToSelector:@selector(userEvaluateBtnClicked:)]){
+            [_delegate userEvaluateBtnClicked:entity];
         }
     }
 }

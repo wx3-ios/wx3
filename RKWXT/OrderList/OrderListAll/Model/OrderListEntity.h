@@ -28,6 +28,12 @@ typedef enum{
     Order_Status_None,      //订单不可操作（可能由退款导致，此订单尚未交易完成）
 }Order_Status;
 
+//订单评价
+typedef enum{
+    Order_Evaluate_None = 0,  //未评价
+    Order_Evaluate_Done,      //已评价
+}Order_Evaluate;
+
 //退款
 typedef enum{
     Refund_Status_Normal = 0,  //未申请
@@ -48,6 +54,7 @@ typedef enum{
 @property (nonatomic,assign) Order_Status order_status;
 @property (nonatomic,assign) Refund_Status refund_status;
 @property (nonatomic,assign) ShopDeal_Status shopDeal_status;
+@property (nonatomic,assign) Order_Evaluate evaluate;  //订单评价
 @property (nonatomic,strong) NSArray *goodsArr;  //存放商品列表的数据
 
 //订单基础信息

@@ -121,6 +121,9 @@ typedef enum {
     WXT_UrlFeed_Type_Home_LoadMoreHot,
     WXT_UrlFeed_Type_Home_LMHotSearch,
     
+    //发现
+    WXT_UrlFeed_Type_New_FindData,
+    
     WXT_UrlFeed_Type_Invalid,
 }WXT_UrlFeed_Type;
 
