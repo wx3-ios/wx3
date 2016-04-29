@@ -30,6 +30,7 @@ typedef enum {
     WXT_UrlFeed_Type_NewMall_Surprise,
     WXT_UrlFeed_Type_NewMall_CatagaryList,
     WXT_UrlFeed_Type_NewMall_GoodsInfo,
+    WXT_UrlFeed_Type_NewMall_GoodsEvaluation,
     WXT_UrlFeed_Type_NewMall_ImgAndText,
     WXT_UrlFeed_Type_NewMall_ShoppingCart,
     WXT_UrlFeed_Type_NewMall_UserAddress,
@@ -65,6 +66,8 @@ typedef enum {
     WXT_UrlFeed_Type_New_SharedSucceed,
     WXT_UrlFeed_Type_New_UpdateUserHeader,
     WXT_UrlFeed_Type_New_LoadUserHeader,
+    WXT_UrlFeed_Type_New_ShopAction,
+    
     //提成
     WXT_UrlFeed_Type_New_LoadMyCutInfo,
     WXT_UrlFeed_Type_New_LoadMyClientPerson,
@@ -87,6 +90,7 @@ typedef enum {
     WXT_UrlFeed_Type_NewMall_NewUserAddress,
     WXT_UrlFeed_Type_New_SearchCarriageMoney,
     WXT_UrlFeed_Type_New_NewMakeOrder,
+    WXT_UrlFeed_Type_New_NewTooMakeOrder,
     WXT_UrlFeed_Type_New_LimitBuyMakeOrder,
     
     //限时购
@@ -94,8 +98,10 @@ typedef enum {
     //单个商品
     WXT_UrlFeed_Type_SingleTimeGoods,
     
+    
     //收藏
     WXT_UrlFeed_Type_New_PayAttention,
+    WXT_UrlFeed_Type_New_ShareInfo,
     
      //商家个人中心
     WXT_UrlFeed_Type_Store_Center,

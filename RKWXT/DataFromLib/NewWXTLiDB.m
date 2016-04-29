@@ -12,6 +12,7 @@
 #import "UserBonusModel.h"
 #import "OrderListModel.h"
 #import "UserHeaderModel.h"
+#import "ShopActivityModel.h"
 
 @implementation NewWXTLiDB
 
@@ -32,6 +33,7 @@
     [[NewUserAddressModel shareUserAddress] loadUserAddress];
     [[OrderListModel shareOrderListModel] loadUserOrderList:0 to:5];
     [[UserHeaderModel shareUserHeaderModel] loadUserHeaderImageWith];
+    [[ShopActivityModel shareShopActivity] loadShopActivity];
 }
 
 @end

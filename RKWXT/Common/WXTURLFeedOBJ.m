@@ -37,7 +37,8 @@
             url = @"/app_login.php";
             break;
         case WXT_UrlFeed_Type_Regist:
-            url = @"/app_register.php";
+//            url = @"/app_register.php";
+            url = @"/app_register_V2.php";
             break;
         case WXT_UrlFeed_Type_FetchPwd:
             url = @"";
@@ -290,6 +291,18 @@
             break;
         case WXT_UrlFeed_Type_Home_LMHotSearch:
             url = @"/get_hot_search.php";
+            break;
+        case WXT_UrlFeed_Type_New_ShareInfo:
+            url = @"/get_shareinfo.php";
+            break;
+        case WXT_UrlFeed_Type_New_ShopAction:
+            url = @"/get_shop_action.php";
+            break;
+        case WXT_UrlFeed_Type_NewMall_GoodsEvaluation:
+            url = @"/wx_order_evaluate.php";
+            break;
+        case WXT_UrlFeed_Type_New_NewTooMakeOrder:
+            url = @"/insert_order3.php";
             break;
         default:
             break;

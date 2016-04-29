@@ -62,6 +62,7 @@ typedef enum{
 + (void)showAlertView:(NSString*)title message:(NSString*)message delegate:(id)delegate tag:(NSInteger)tag cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles;
 + (void)showTipView:(NSString*)tip;
 + (void)showAlertView:(NSString*)message;
++ (void)showRoundView:(NSString*)tip;
 //种子~ 一些文字信息~
 + (void)feedDataInbackground:(NSString*)feedUrlString complete:(void(^)(NSData*))handle error:(void(^)(NSError**))error;
 

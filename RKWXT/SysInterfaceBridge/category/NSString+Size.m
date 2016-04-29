@@ -52,4 +52,16 @@
     CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, height) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
     return sizeToFit.width;
 }
+
++ (CGSize)sizeWithString:(NSString*)string font:(UIFont*)font{
+    return [self sizeWithString:string font:font maxW:MAXFLOAT];
+}
+
++ (CGSize)sizeWithString:(NSString*)string font:(UIFont*)font maxW:(CGFloat)maxW{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[NSFontAttributeName] = font;
+    CGSize size = CGSizeMake(maxW, MAXFLOAT);
+    return [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size ;
+    
+}
 @end

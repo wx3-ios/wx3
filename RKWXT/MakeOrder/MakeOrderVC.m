@@ -48,7 +48,8 @@
     [super viewWillAppear:animated];
     [self setCSTNavigationViewHidden:NO animated:NO];
     if(_tableView){
-        [self loadCarriageMoney];
+//        [self loadCarriageMoney];
+        [self loadGoodsEvaluation];
         [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_UserInfo] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
@@ -87,25 +88,76 @@
     limitEntity = _lEntity;
 }
 
--(void)loadCarriageMoney{
+//-(void)loadCarriageMoney{
+//  BOOL is_postage = YES;  //默认包邮
+//    NSInteger provinceID = [self parseUserAddressProvinceID];
+//    NSString *goodsInfo = [[NSString alloc] init];
+//    for(GoodsInfoEntity *entity in _goodsList){
+//        if(goodsInfo.length > 0){
+//            goodsInfo = [goodsInfo stringByAppendingString:@"^"];
+//        }
+//        goodsInfo = [goodsInfo stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld",(long)entity.goods_id,(long)entity.buyNumber]];
+//        
+//        if(entity.postage == Goods_Postage_Have){
+//            is_postage = NO;  //不包邮
+//        }
+//    }
+//    if(!is_postage){
+//        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo shopID:kSubShopID];
+//        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+//    }
+//}
+
+- (void)loadGoodsEvaluation{
     BOOL is_postage = YES;  //默认包邮
+    
     NSInteger provinceID = [self parseUserAddressProvinceID];
+    NSString *goodsInfo = [[NSString alloc] init];
+    
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default ) {
+        for(GoodsInfoEntity *entity in _goodsList){
+            if(goodsInfo.length > 0){
+                goodsInfo = [goodsInfo stringByAppendingString:@"^"];
+            }
+            goodsInfo = [goodsInfo stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld",(long)entity.goods_id,(long)entity.buyNumber]];
+            if(entity.postage == Goods_Postage_Have){
+                is_postage = NO;  //不包邮
+              }
+        }
+    }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate){ //有包邮活动
+        CGFloat price = 0.0;
+        for (GoodsInfoEntity *entity in _goodsList) { //遍历商品
+            price += entity.buyNumber*entity.stockPrice;
+        }
+        if (price < [ShopActivityEntity shareShopActionEntity].postage) {
+            is_postage = NO;
+            goodsInfo = [self goodsPostage];
+        }
+        
+    }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction){
+        is_postage = NO;
+        goodsInfo = [self goodsPostage];
+    }
+
+    if(!is_postage){
+        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo shopID:kSubShopID];
+        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
+    }
+}
+
+- (NSString*)goodsPostage{
     NSString *goodsInfo = [[NSString alloc] init];
     for(GoodsInfoEntity *entity in _goodsList){
         if(goodsInfo.length > 0){
             goodsInfo = [goodsInfo stringByAppendingString:@"^"];
         }
         goodsInfo = [goodsInfo stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld",(long)entity.goods_id,(long)entity.buyNumber]];
-        
-        if(entity.postage == Goods_Postage_Have){
-            is_postage = NO;  //不包邮
-        }
     }
-    if(!is_postage){
-        [carriageModel searchCarriageMoneyWithProvinceID:provinceID goodsInfo:goodsInfo shopID:kSubShopID];
-        [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-    }
+    return goodsInfo;
 }
+
+
+
 
 //可使用红包
 -(void)censusBonusValue{
@@ -325,8 +377,12 @@
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setDelegate:self];
-    [cell setCellInfo:[NSNumber numberWithInt:(userBonus?1:0)]];
     
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate || [ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction) { //包邮 //满减
+        [cell shutDownSwitch];
+    }else{
+    [cell setCellInfo:[NSNumber numberWithInt:(userBonus?1:0)]];
+    }
     [cell.textLabel setText:@"使用红包抵现"];
     [cell.textLabel setFont:WXFont(14.0)];
     [cell.textLabel setTextColor:WXColorWithInteger(0x646464)];
@@ -549,9 +605,9 @@
 
 #pragma mark useBonusDelegate
 -(void)switchValueChanged{
-    userBonus = !userBonus;
-    [self didSelectCellRowFirstDo:userBonus];
-    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
+        userBonus = !userBonus;
+        [self didSelectCellRowFirstDo:userBonus];
+        [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_GoodsMoney] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 //-(void)balanceSwitchValueChanged{
@@ -581,12 +637,58 @@
         return;
     }
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    
+    
+     NSString *goodsInfo = [[NSString alloc] init];
     for(GoodsInfoEntity *entity in _goodsList){
-        NSDictionary *dic = [self goodsDicWithEntity:entity];
-        [arr addObject:dic];
+        if(goodsInfo.length > 0){
+            goodsInfo = [goodsInfo stringByAppendingString:@"^"];
+        }
+        goodsInfo = [goodsInfo stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld",(long)entity.stockID,(long)entity.buyNumber]];
+     
     }
-    [_model submitOneOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
+    
+    [_model submitNewOrderWithAllMoney:[self allGoodsEvaluationMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:goodsInfo type:[self goodsEvaluationType]];
+}
+
+- (NSInteger)goodsEvaluationType{
+    NSInteger type;
+    CGFloat totalMoney = [self allGoodsMoney];
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+        type =  0;
+    }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate){
+       
+        if (totalMoney >= [ShopActivityEntity shareShopActionEntity].postage) {
+            type = 1;
+        }
+    }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction){
+        if (totalMoney >= [ShopActivityEntity shareShopActionEntity].full) {
+            type = 2;
+        }
+    }
+    return type;
+}
+
+- (CGFloat)allGoodsEvaluationMoney{
+    CGFloat price = 0.0;
+    for(GoodsInfoEntity *entity in _goodsList){
+        price += entity.buyNumber*entity.stockPrice;
+    }
+    allGoodsMoney = price;
+    
+    
+    price += carriageModel.carriageMoney;
+    
+    return price;
+}
+
+//商品价格
+-(CGFloat)allGoodsMoney{
+    CGFloat price = 0.0;
+    for(GoodsInfoEntity *entity in _goodsList){
+        price += entity.buyNumber*entity.stockPrice;
+    }
+    return price;
 }
 
 -(NSDictionary*)goodsDicWithEntity:(GoodsInfoEntity*)entity{
@@ -609,7 +711,7 @@
         NSDictionary *dic = [self limitGoodsDicWithEntity:entity];
         [arr addObject:dic];
     }
-    [_model submitLimitOrderWithAllMoney:[self allGoodsOldMoney] withTotalMoney:[self allGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
+    [_model submitLimitOrderWithAllMoney:[self alllimitGoodsOldMoner] withTotalMoney:[self allLimitGoodsTotalMoney] withRedPacket:(userBonus?_bonus:0) withRemark:(self.userMessage.length==0?@"无":self.userMessage) withProID:[self parseUserAddressProvinceID] withCarriage:carriageModel.carriageMoney withGoodsList:arr];
 }
 
 -(NSDictionary*)limitGoodsDicWithEntity:(GoodsInfoEntity*)entity{
@@ -643,16 +745,56 @@
     }
     allGoodsMoney = price;
     
+    price += carriageModel.carriageMoney;
+    
+    return price;
+}
+
+- (CGFloat)alllimitGoodsOldMoner{
+    CGFloat price = 0.0;
+    for(GoodsInfoEntity *entity in _goodsList){
+        price += entity.buyNumber*entity.stockPrice;
+    }
+    allGoodsMoney = price;
+    price += carriageModel.carriageMoney;
     return price;
 }
 
 //订单应付金额
 -(CGFloat)allGoodsTotalMoney{
-    CGFloat totalMoney = [self allGoodsOldMoney];
-    if(userBonus){
-        totalMoney -= _bonus;
+    CGFloat totalMoney = [self allGoodsMoney];
+    
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate) { //包邮
+        if (totalMoney < [ShopActivityEntity shareShopActionEntity].postage) {
+            totalMoney += carriageModel.carriageMoney;
+        }
+        
+    }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction){ //满减
+        
+        if (totalMoney >= [ShopActivityEntity shareShopActionEntity].full) {
+            totalMoney -= [ShopActivityEntity shareShopActionEntity].action;
+        }
+         totalMoney += carriageModel.carriageMoney;
+        
+    }else{
+        
+        if(userBonus){
+            totalMoney -= _bonus;
+        }
+        
+        totalMoney += carriageModel.carriageMoney; 
     }
-    totalMoney += carriageModel.carriageMoney;
+    
+    return totalMoney;
+}
+
+- (CGFloat)allLimitGoodsTotalMoney{
+    CGFloat totalMoney = [self alllimitGoodsOldMoner];
+    
+        if(userBonus){
+            totalMoney -= _bonus;
+        }
+    
     return totalMoney;
 }
 

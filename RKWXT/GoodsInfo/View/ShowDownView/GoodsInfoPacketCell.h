@@ -11,5 +11,4 @@
 #define GoodsInfoPacketCellHeight 44.0
 
 @interface GoodsInfoPacketCell : WXUITableViewCell
-
 @end

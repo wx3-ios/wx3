@@ -22,12 +22,17 @@
         return;
     }
     
+    if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [locationManager requestAlwaysAuthorization]; // 永久授权
+        [locationManager requestWhenInUseAuthorization]; //使用中授权
+    }
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = 10;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager requestAlwaysAuthorization];
     [locationManager startUpdatingLocation];
+    
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{

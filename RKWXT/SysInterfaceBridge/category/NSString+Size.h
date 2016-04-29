@@ -14,5 +14,5 @@
 - (CGSize)stringSize:(UIFont*)font;
 + (CGFloat)stringHeightOfFont:(UIFont*)font;
 +(float)widthForString:(NSString *)value fontSize:(float)fontSize andHeight:(float)height;
-
++ (CGSize)sizeWithString:(NSString*)string font:(UIFont*)font;
 @end
