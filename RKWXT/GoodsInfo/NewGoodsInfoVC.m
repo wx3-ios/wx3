@@ -350,14 +350,19 @@
             break;
         case T_GoodsInfo_DownView:
         {
-            if([_model.data count] > 0){
-                GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-                if(entity.use_cut || entity.use_red){
-                    return 1;
-                }else{
-                    return 0;
+            if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+                if([_model.data count] > 0){
+                    GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                    if(entity.use_cut || entity.use_red){
+                        return 1;
+                    }else{
+                        return 0;
+                    }
                 }
+            }else{
+                row = 1;
             }
+           
         }
             break;
         case T_GoodsInfo_BaseData:
@@ -409,14 +414,19 @@
             break;
         case T_GoodsInfo_DownView:
         {
-            if([_model.data count] > 0){
-                GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-                if(entity.use_cut || entity.use_red){
-                    return GoodsInfoPacketCellHeight;
-                }else{
-                    return 0;
+            if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+                if([_model.data count] > 0){
+                    GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                    if(entity.use_cut || entity.use_red){
+                        return GoodsInfoPacketCellHeight;
+                    }else{
+                        return 0;
+                    }
                 }
+            }else{
+                return GoodsInfoPacketCellHeight;
             }
+           
         }
             break;
 

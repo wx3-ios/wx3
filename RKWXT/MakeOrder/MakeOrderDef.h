@@ -46,4 +46,6 @@ enum{
 
 #import "ShopActivityEntity.h"
 
+#import "ManagerAddressVC.h"
+
 #endif

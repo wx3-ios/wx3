@@ -1175,6 +1175,7 @@
 		DDB58F561AD3C6A2006248E9 /* WXContacterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB58F421AD3C6A2006248E9 /* WXContacterVC.m */; };
 		DDB5C22C1BFED226000925E8 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C2261BFED226000925E8 /* time.png */; };
 		DDB5C2311BFED226000925E8 /* beg_time.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C22B1BFED226000925E8 /* beg_time.png */; };
+		DDC3A5B51CDC456600FCAFB4 /* GoodsFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC3A5B41CDC456600FCAFB4 /* GoodsFull@2x.png */; };
 		DDDAE9811ACAA88F00CC3FE9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9801ACAA88F00CC3FE9 /* CoreFoundation.framework */; };
 		DDDAE9831ACAA8A800CC3FE9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9821ACAA8A800CC3FE9 /* SystemConfiguration.framework */; };
 		DDDAE9851ACAA8B200CC3FE9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDAE9841ACAA8B200CC3FE9 /* CoreGraphics.framework */; };
@@ -3359,6 +3360,7 @@
 		DDB5C2261BFED226000925E8 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		DDB5C22B1BFED226000925E8 /* beg_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beg_time.png; sourceTree = "<group>"; };
 		DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		DDC3A5B41CDC456600FCAFB4 /* GoodsFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoodsFull@2x.png"; sourceTree = "<group>"; };
 		DDDAE97E1ACAA88700CC3FE9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DDDAE9801ACAA88F00CC3FE9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		DDDAE9821ACAA8A800CC3FE9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -7509,6 +7511,7 @@
 		12F46A2C1B20012000B8EC98 /* T_GoodsInfo */ = {
 			isa = PBXGroup;
 			children = (
+				DDC3A5B41CDC456600FCAFB4 /* GoodsFull@2x.png */,
 				DD0AE8131CCE038F000E5720 /* T_AttentionSel@2x.png */,
 				DD0AE8141CCE038F000E5720 /* T_Attention@2x.png */,
 				DD0AE8081CCDC7B7000E5720 /* grade.png */,
@@ -9686,6 +9689,7 @@
 				1241E5501AE9D89B00811D3F /* 9S@2x.png in Resources */,
 				128221D91B184E84004613BB /* HomePageOrderList@2x.png in Resources */,
 				1255C3AB1C15723900D08971 /* divider.png in Resources */,
+				DDC3A5B51CDC456600FCAFB4 /* GoodsFull@2x.png in Resources */,
 				1245355C1AE9D146004198C9 /* sign7@2x.png in Resources */,
 				DDB5C2311BFED226000925E8 /* beg_time.png in Resources */,
 				128BB7411B68A56C004FCE66 /* AddressNextImg@2x.png in Resources */,
@@ -10953,7 +10957,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wx.company.pushdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ecbe3675-2996-4447-9d48-7cc4805dbe4e";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

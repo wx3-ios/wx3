@@ -33,15 +33,15 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         CGFloat xOffset = 10;
-        CGFloat imgWidth = 10;
-        CGFloat imgHeight = 12;
+        CGFloat imgWidth = 14;
+        CGFloat imgHeight = 14;
         imgView1 = [[WXUIImageView alloc] init];
         imgView1.frame = CGRectMake(xOffset, (GoodsInfoPacketCellHeight-imgHeight)/2, imgWidth, imgHeight);
         [imgView1 setImage:[UIImage imageNamed:@"GoodsInfoRedImg.png"]];
         [self.contentView addSubview:imgView1];
         
         xOffset += imgWidth+3;
-        CGFloat labelWidth = 45;
+        CGFloat labelWidth = 65;
         CGFloat labelHeight = 18;
         label1 = [[WXUILabel alloc] init];
         label1.frame = CGRectMake(xOffset, (GoodsInfoPacketCellHeight-labelHeight)/2, labelWidth, labelHeight);
@@ -49,7 +49,7 @@
         [label1 setTextAlignment:NSTextAlignmentLeft];
 //        [label1 setText:@"使用红包"];
         [label1 setTextColor:WXColorWithInteger(0x000000)];
-        [label1 setFont:WXFont(8.0)];
+        [label1 setFont:WXFont(9.0)];
         [self.contentView addSubview:label1];
         
         xOffset += labelWidth+8;
@@ -65,7 +65,7 @@
         [label2 setTextAlignment:NSTextAlignmentLeft];
         [label2 setText:@"提成"];
         [label2 setTextColor:WXColorWithInteger(0x000000)];
-        [label2 setFont:WXFont(8.0)];
+        [label2 setFont:WXFont(9.0)];
         [self.contentView addSubview:label2];
         
         CGFloat btnWidth = 30;
@@ -82,9 +82,13 @@
 
 - (void)goodsInfoPackIsAccording:(NSInteger)type{
     if (type == 1) {
+        [imgView1 setImage:[UIImage imageNamed:@"GoodsFull.png"]];
         label1.text = [NSString stringWithFormat:@"满%.f元包邮",[ShopActivityEntity shareShopActionEntity].postage];
     }else if (type == 2){
+        [imgView1 setImage:[UIImage imageNamed:@"GoodsFull.png"]];
         label1.text = [NSString stringWithFormat:@"满%.f元减%.f元活动",[ShopActivityEntity shareShopActionEntity].full,[ShopActivityEntity shareShopActionEntity].action];
+    }else{
+        [imgView1 setImage:[UIImage imageNamed:@"GoodsInfoRedImg.png"]];
     }
 }
 

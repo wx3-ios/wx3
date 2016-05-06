@@ -23,7 +23,7 @@
 #define Size self.bounds.size
 #define DownViewHeight (59)
 
-@interface MakeOrderVC()<UITableViewDataSource,UITableViewDelegate,MakeOrderUserMsgTextFieldCellDelegate,WXUITableViewCellDelegate,MakeOrderSwitchCellDelegate,MakeOrderDelegate,SearchCarriageMoneyDelegate/*,MakeOrderBananceSwitchCellDelegate*/>{
+@interface MakeOrderVC()<UITableViewDataSource,UITableViewDelegate,MakeOrderUserMsgTextFieldCellDelegate,WXUITableViewCellDelegate,MakeOrderSwitchCellDelegate,MakeOrderDelegate,SearchCarriageMoneyDelegate,UIAlertViewDelegate/*,MakeOrderBananceSwitchCellDelegate*/>{
     UITableView *_tableView;
     MakeOrderModel *_model;
     
@@ -49,7 +49,10 @@
     [self setCSTNavigationViewHidden:NO animated:NO];
     if(_tableView){
 //        [self loadCarriageMoney];
-        [self loadGoodsEvaluation];
+        if ([[NewUserAddressModel shareUserAddress].userAddressArr count] != 0) {
+               [self loadGoodsEvaluation];
+        }
+    
         [_tableView reloadSections:[NSIndexSet indexSetWithIndex:Order_Section_UserInfo] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
@@ -72,6 +75,10 @@
     [self setBackgroundColor:[UIColor whiteColor]];
     userBonus = NO;
 //    userbalance = NO;
+    
+    if ([[NewUserAddressModel shareUserAddress].userAddressArr count] == 0) {
+        [self pushUserSiteVC];
+    }
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Size.width, Size.height-DownViewHeight) style:UITableViewStyleGrouped];
     [_tableView setDelegate:self];
@@ -156,7 +163,14 @@
     return goodsInfo;
 }
 
+- (void)pushUserSiteVC{
+    [UtilTool showAlertView:@"请设置收货地址" message:nil  delegate:self tag:0 cancelButtonTitle:@"确定" otherButtonTitles:nil];
+}
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    ManagerAddressVC *dress = [[ManagerAddressVC alloc]init];
+    [self.wxNavigationController pushViewController:dress];
+}
 
 
 //可使用红包
@@ -652,12 +666,11 @@
 }
 
 - (NSInteger)goodsEvaluationType{
-    NSInteger type;
+    NSInteger type = 0;
     CGFloat totalMoney = [self allGoodsMoney];
     if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
         type =  0;
     }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate){
-       
         if (totalMoney >= [ShopActivityEntity shareShopActionEntity].postage) {
             type = 1;
         }
@@ -729,9 +742,11 @@
 
 //省份ID
 -(NSInteger)parseUserAddressProvinceID{
-    for(AreaEntity *entity in [NewUserAddressModel shareUserAddress].userAddressArr){
-        if(entity.normalID == 1){
-            return entity.proID;
+    if ([[NewUserAddressModel shareUserAddress].userAddressArr count] != 0) {
+        for(AreaEntity *entity in [NewUserAddressModel shareUserAddress].userAddressArr){
+            if(entity.normalID == 1){
+                return entity.proID;
+            }
         }
     }
     return 0;

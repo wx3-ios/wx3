@@ -43,6 +43,7 @@ enum{
     UIView *_optShell;
     GainModel *_gainModel;
     BOOL _isUse;
+    WXTUIButton *_submitBtn;
 }
 @end
 
@@ -147,7 +148,7 @@ enum{
     CGFloat btnWidth1 = Size.width-2*xgap;
     CGFloat radian = 5.0;
     CGFloat titleSize = 18.0;
-    WXTUIButton *_submitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
+    _submitBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
     [_submitBtn setFrame:CGRectMake(xgap, yOffset, btnWidth1, btnHeight1)];
     [_submitBtn setTitle:@"立即注册" forState:UIControlStateNormal];
     [_submitBtn.titleLabel setFont:WXTFont(titleSize)];
@@ -536,7 +537,17 @@ enum{
     _isUse = !_isUse;
     if (_isUse) {
         [mentBtn setImage:[UIImage imageNamed:@"AddressSelNormal.png"] forState:UIControlStateNormal];
+        
+        _submitBtn.enabled = YES;
+        _submitBtn.backgroundColor = [UIColor clearColor];
+        [_submitBtn setBorderRadian:5.0 width:0.5 color:WXColorWithInteger(0xdd2726)];
+        [_submitBtn setTitleColor:WXColorWithInteger(0xdd2726) forState:UIControlStateNormal];
     }else{
+        _submitBtn.backgroundColor = [UIColor grayColor];
+        _submitBtn.enabled = NO;
+        [_submitBtn setBorderRadian:5.0 width:0.5 color:[UIColor whiteColor]];
+        [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+       
         [mentBtn setImage:[UIImage imageNamed:@"ShoppingCartCircle.png"] forState:UIControlStateNormal];
     }
 }

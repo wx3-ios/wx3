@@ -25,6 +25,7 @@
  成功返回: error ：0  data:数据
  失败返回：error ：1  msg:错误信息
  */
+
 + (void)shareInfoWith:(void(^)(NSString *share))str{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -38,7 +39,7 @@
         if (retData.code != 0){
            
         }else{
-         str(retData.data);
+         str(retData.data[@"app_share_info"]);
         }
     }];
 }

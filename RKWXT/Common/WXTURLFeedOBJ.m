@@ -292,8 +292,8 @@
         case WXT_UrlFeed_Type_Home_LMHotSearch:
             url = @"/get_hot_search.php";
             break;
-        case WXT_UrlFeed_Type_New_ShareInfo:
-            url = @"/get_shareinfo.php";
+        case WXT_UrlFeed_Type_New_FindData:
+            url = @"/get_discover.php";
             break;
         case WXT_UrlFeed_Type_New_ShopAction:
             url = @"/get_shop_action.php";
@@ -303,6 +303,9 @@
             break;
         case WXT_UrlFeed_Type_New_NewTooMakeOrder:
             url = @"/insert_order3.php";
+            break;
+        case WXT_UrlFeed_Type_New_ShareInfo:
+            url = @"/get_shareinfo.php";
             break;
         default:
             break;
