@@ -67,7 +67,7 @@
     [infoLabel setNumberOfLines:0];
     [self addSubview:infoLabel];
     
-    yOffset += labelHeight+10;
+    yOffset += labelHeight+30;
     CGFloat btnWidth = 150;
     CGFloat btnHeight = 35;
     WXUIButton *resetBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];

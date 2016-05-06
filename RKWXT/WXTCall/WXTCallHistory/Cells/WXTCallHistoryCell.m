@@ -57,7 +57,7 @@
         [self.contentView addSubview:_userPhone];
         
         xOffset = self.bounds.size.width*2/3-20;
-        CGFloat callTimeLabelWidth = 80;
+        CGFloat callTimeLabelWidth = 85;
         _callTime = [[UILabel alloc] init];
         _callTime.frame = CGRectMake(xOffset-5-10, (44-nameLabelHeight)/2, callTimeLabelWidth, nameLabelHeight);
         [_callTime setBackgroundColor:[UIColor clearColor]];
@@ -74,7 +74,7 @@
         
         UIImage *callImg = [UIImage imageNamed:@"callHistoryBtnImg.png"];
         callBtn = [WXTUIButton buttonWithType:UIButtonTypeCustom];
-        callBtn.frame = CGRectMake(xOffset+14, (44-callImg.size.height)/2, callImg.size.width, callImg.size.height);
+        callBtn.frame = CGRectMake(xOffset, (44-callImg.size.height)/2, callImg.size.width, callImg.size.height);
         [callBtn setBackgroundImage:callImg forState:UIControlStateNormal];
         [self.contentView addSubview:callBtn];
         
@@ -123,11 +123,11 @@
     CallHistoryEntity * entity = entityExt.callHistoryEntity;
     ContactBaseEntity * contactEntity = entityExt.contacterEntity;
     
-//    NSString *name = [contactEntity nameShow];
+    //    NSString *name = [contactEntity nameShow];
     if(!entity.name || [entity.name isEqualToString:@"我信"]){
         entity.name = entity.phoneNumber;
     }
-//
+    //
     NSArray *array = [contactEntity contactPhoneArray];
     ContactPhone *phone = nil;
     if([array count] > 0){
