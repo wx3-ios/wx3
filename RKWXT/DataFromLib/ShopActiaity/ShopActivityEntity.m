@@ -30,6 +30,7 @@
 
 + (void)shopWithactity{
      ShopActivityEntity *entity = [ShopActivityEntity shareShopActionEntity];
+    if ([entity.fullReduction isEqualToString:@""] || [entity.fullReduction isEqual:nil]) return;
     NSArray *arr = [entity.fullReduction componentsSeparatedByString:@":"];
     if ([arr count] <= 0) return;
     entity.full = [arr[0] floatValue];
