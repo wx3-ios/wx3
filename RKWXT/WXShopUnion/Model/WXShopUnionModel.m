@@ -70,6 +70,9 @@
     }
 }
 
+/*
+ select seller_id,seller_name,seller_logo,address,latitude,longitude from wx_seller where is_union=1 and municipality_id=4796 order by is_recommend desc limit 3
+ */
 -(void)loadShopUnionData:(NSInteger)areaID{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:kSubShopID], @"shop_id", [NSNumber numberWithInteger:kMerchantID], @"sid", [self userProvincialName], @"provincial_name", [self userCityName], @"municipality_name", [self userCountyName], @"county_name", [NSNumber numberWithFloat:[self userLatitude]], @"latitude", [NSNumber numberWithFloat:[self userLongitude]], @"longitude", [NSNumber numberWithInteger:areaID], @"area_id", nil];

@@ -56,6 +56,8 @@ typedef enum{
 @property (nonatomic,assign) ShopDeal_Status shopDeal_status;
 @property (nonatomic,assign) Order_Evaluate evaluate;  //订单评价
 @property (nonatomic,strong) NSArray *goodsArr;  //存放商品列表的数据
+//DONG 添加的订单详情数组
+@property (nonatomic,strong) NSArray *goodsInfoArr;  
 
 //订单基础信息
 @property (nonatomic,assign) NSInteger order_id;    //订单ID
@@ -84,6 +86,7 @@ typedef enum{
 @property (nonatomic,assign) NSInteger orderGoodsID; //退款所用专属id
 @property (nonatomic,assign) CGFloat refundTotalMoney; //退款金额
 @property (nonatomic,assign) CGFloat postage;   //订单运费
+@property (nonatomic,assign) CGFloat shouPayMonery; // 猜的：应支付金额
 
 @property (nonatomic,assign) BOOL selected;
 @property (nonatomic,assign) BOOL selectAll;

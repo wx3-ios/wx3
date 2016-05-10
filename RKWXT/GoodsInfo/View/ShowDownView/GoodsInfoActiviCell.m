@@ -86,7 +86,7 @@
         label1.text = [NSString stringWithFormat:@"满%.f元包邮",[ShopActivityEntity shareShopActionEntity].postage];
     }else if (type == 2){
         [imgView1 setImage:[UIImage imageNamed:@"GoodsFull.png"]];
-        label1.text = [NSString stringWithFormat:@"满%.f元减%.f元活动",[ShopActivityEntity shareShopActionEntity].full,[ShopActivityEntity shareShopActionEntity].action];
+        label1.text = [NSString stringWithFormat:@"满%.f元减%.f元",[ShopActivityEntity shareShopActionEntity].full,[ShopActivityEntity shareShopActionEntity].action];
     }else{
         [imgView1 setImage:[UIImage imageNamed:@"GoodsInfoRedImg.png"]];
     }

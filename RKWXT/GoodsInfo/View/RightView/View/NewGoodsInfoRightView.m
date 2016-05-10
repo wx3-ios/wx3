@@ -353,23 +353,27 @@ enum{
         }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate){
             CGFloat  posgate = [ShopActivityEntity shareShopActionEntity].postage;
             if (price < posgate) {
-                str = [NSString stringWithFormat:@"满%.f元包邮还差%.2f",posgate,posgate - price];
+                str = [NSString stringWithFormat:@"满%.f元包邮还差%.f",posgate,posgate - price];
             }else{
 //                str = [NSString stringWithFormat:@"满%.2f包邮",posgate];
-                str = @"已参加包邮活动";
+                str = @"已参加包邮";
             }
         }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction){
             if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction) {
                 CGFloat actionPrice = [ShopActivityEntity shareShopActionEntity].full;
                 CGFloat max = [ShopActivityEntity shareShopActionEntity].action;
                 if (price < actionPrice) {
-                    str = [NSString stringWithFormat:@"满%.f元减%.f元差%.2f元",actionPrice,max,actionPrice - price];
+                    str = [NSString stringWithFormat:@"满%.f元减%.f元,差%.2f元",actionPrice,max,actionPrice - price];
                 }else{
-                   str = [NSString stringWithFormat:@"已参加满%.f元减%.f元活动",actionPrice,max];
+                   str = [NSString stringWithFormat:@"满%.f元减%.f元,已优惠%d元",actionPrice,max,(int)max];
                 }
             }
         }
     _label.text = str;
+    
+    if (_type == RightGoodsInfo_LimitGoods) {
+        _label.hidden = YES;
+    }
 }
 
 -(void)buyNow{

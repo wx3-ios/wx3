@@ -81,7 +81,7 @@
         }
         
         
-        yOffset = 50;
+        yOffset = 60;
         xOffset = 10;
         _info = [[UILabel alloc]initWithFrame:CGRectMake(xOffset, yOffset, nameW, 0)];
         _info.font = WXFont(14.0);
@@ -151,7 +151,7 @@
     CGFloat marginH = 20;
     GoodsEvaluationEntity *entity = cellInfo;
     CGFloat labelH = [NSString sizeWithString:entity.enalContent font:[UIFont systemFontOfSize:14]].height;
-    CGFloat rowHeight = labelH + iconH + marginH;
+    CGFloat rowHeight = labelH + iconH + marginH + 10;
     return rowHeight;
 }
 

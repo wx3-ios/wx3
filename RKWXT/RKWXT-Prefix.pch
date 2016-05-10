@@ -18,10 +18,10 @@
 
 //线上服务器地址: 121.201.18.130  //wx3.67call.com
 //测试服务器地址: 192.168.16.209  //oldyun.67call.com
-#define AllImgPrefixUrlString @"http://oldyun.67call.com/wx3/Public/Uploads/"  //所有网络获取图片皆拼接此字符串前缀
-#define WXTBaseUrl @"http://oldyun.67call.com/"  //基地址
-#define WXTShareBaseUrl @"http://oldyun.67call.com/"  //分享的基地址
-#define WXTWebBaseUrl @"http://oldyun.67call.com/" //网页的基地址
+#define AllImgPrefixUrlString @"http://wx3.67call.com/wx3/Public/Uploads/"  //所有网络获取图片皆拼接此字符串前缀
+#define WXTBaseUrl @"http://wx3.67call.com/"  //基地址
+#define WXTShareBaseUrl @"http://wx3.67call.com/"  //分享的基地址
+#define WXTWebBaseUrl @"http://wx3.67call.com/" //网页的基地址
 
 #define KTabBarHeight (45.0)
 

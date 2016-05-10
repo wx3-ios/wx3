@@ -208,6 +208,7 @@
     CGFloat height = self.view.bounds.size.height;
     CGRect rect = CGRectMake(RightViewXGap, 0, width, height);
     rightView = [[NewGoodsInfoRightView alloc] initWithFrame:self.bounds menuButton:btn dropListFrame:rect];
+    rightView.type = _goodsInfo_type;
     return rightView;
 }
 
@@ -359,8 +360,8 @@
                         return 0;
                     }
                 }
-            }else{
-                row = 1;
+            }else if(self.goodsInfo_type == GoodsInfo_LimitGoods){
+                row = 0;
             }
            
         }
@@ -794,13 +795,15 @@
 
 -(void)goodsInfoModelLoadedSucceed{
     [self unShowWaitView];
-    [_tableView reloadData];
     rightView.dataArr = _model.data;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_LoadSucceed object:nil];
     [_model setDelegate:nil];
     
     //查询是否已收藏
     [attentionModel searchGoodsPayAttention:_goodsId limitID:[limitEntity.scare_buying_id integerValue]];
+    
+    
+    [_tableView reloadData];
 }
 
 -(void)refreshLessTime{

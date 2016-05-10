@@ -9,7 +9,7 @@
 	<key>D_KEY_APP_MERCHANTNAME</key>
 	<string>我信云</string>
 	<key>D_KEY_APP_SUBSHOPID</key>
-	<integer>27</integer>
+	<real>100000</real>
 	<key>D_KEY_FIND_NAME</key>
 	<string>发现</string>
 	<key>D_KEY_FIND_SHOWNAV</key>
@@ -17,6 +17,6 @@
 	<key>D_KEY_MERCHANTID</key>
 	<real>100000</real>
 	<key>D_KEY_SHOWCOMPANY</key>
-	<integer>1</integer>
+	<integer>0</integer>
 </dict>
 </plist>
