@@ -77,6 +77,7 @@
 #import "WXContactMonitor.h"
 #import "Appdelegate.h"
 #import "NSString+Size.h"
+#import "UIViewAdditions.h"
 
 #ifdef DEBUG
 #define debugLog(...)       NSLog(__VA_ARGS__)

@@ -62,6 +62,10 @@
         
         CGFloat refundTotalMoney = [[dic objectForKey:@"refund_total_money"] floatValue];
         [self setRefundTotalMoney:refundTotalMoney];
+        
+        CGFloat shouPayMonery = [[dic objectForKey:@"should_pay_money"] floatValue];
+        [self setShouPayMonery:shouPayMonery];
+        
     }
     return self;
 }

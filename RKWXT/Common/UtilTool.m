@@ -214,7 +214,12 @@
 + (void)showTipView:(NSString*)tip{
     WXPopAlertView *popAlertView = [[WXPopAlertView alloc] initWithTip:tip];
     [popAlertView show];
+}
 
++ (void)showRoundView:(NSString*)tip{
+    WXPopAlertView *popAlertView = [[WXPopAlertView alloc] initRoundWithTip:tip];
+    popAlertView.tipColor = [UIColor whiteColor];
+    [popAlertView show];
 }
 
 + (void)feedDataInbackground:(NSString*)feedUrlString complete:(void(^)(NSData*))handle error:(void(^)(NSError**))error{
@@ -280,7 +285,7 @@
 }
 
 + (NSString *)sharedURL{
-    NSString *urlString = @"http://121.201.18.130/wx_html/index.php/Public/app_download/sid/";
+    NSString *urlString = @"http://wx3.67call.com/wx_html/index.php/Public/app_download/sid/";
     NSString *str = [NSString stringWithFormat:@"%@%d",urlString,kMerchantID];
     return str;
 }

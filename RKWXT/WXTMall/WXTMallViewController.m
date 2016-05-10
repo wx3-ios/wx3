@@ -67,13 +67,18 @@
 
 -(void)createTopBtn{
     WXUIButton *leftBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn.frame = CGRectMake(20, 6, 60, 40);
+    leftBtn.frame = CGRectMake(18, 6, 60, 40);
     [leftBtn setImage:[UIImage imageNamed:@"HomePageLeftBtn.png"] forState:UIControlStateNormal];
     [leftBtn setTitle:@"分类" forState:UIControlStateNormal];
     [leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [leftBtn.titleLabel setFont:WXFont(10.0)];
-    [leftBtn addTarget:self action:@selector(homePageToCategaryView) forControlEvents:UIControlEventTouchUpInside];
+    [leftBtn addTarget:self action:@selector(homePageToCategaryView) forControlEvents:UIControlEventTouchDown];
     [self setLeftNavigationItem:leftBtn];
+    UIButton *didBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, 6, 60, 40)];
+    [didBtn setBackgroundColor:[UIColor clearColor]];
+    [didBtn addTarget:self action:@selector(homePageToCategaryView) forControlEvents:UIControlEventTouchDown];
+    [self addSubview:didBtn];
+    
     
     CGPoint buttonBoundsCenter = CGPointMake(CGRectGetMidX(leftBtn.titleLabel.bounds), CGRectGetMidY(leftBtn.titleLabel.bounds));
     CGPoint endImageViewCenter = CGPointMake(buttonBoundsCenter.x, CGRectGetMidY(leftBtn.imageView.bounds));

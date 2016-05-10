@@ -30,15 +30,16 @@ enum{
     T_GoodsInfo_DownView,
     T_GoodsInfo_WebShow,
     T_GoodsInfo_BaseData,
+    T_GoodsInfo_Evaluation,
     
     T_GoodsInfo_Invalid,
 };
 
 enum{
-    Share_Qq,
-    Share_Qzone,
     Share_Friends,
+    Share_Qq,
     Share_Clrcle,
+    Share_Qzone,
     
     Share_Invalid,
 };
@@ -48,6 +49,12 @@ enum{
 #import "NewGoodsInfoDesCell.h"
 #import "NewGoodsInfoDownCell.h"
 #import "NewGoodsInfoBDCell.h"
+#import "NewGoodsEvalTitleCell.h"
+#import "NewGEvalutionInfoCell.h"
 #import "MakeOrderVC.h"
+#import "GoodsInfoActiviCell.h"
+
+#import "GoodsEvaluationVC.h"
+#import "ShopActivityEntity.h"
 
 #endif

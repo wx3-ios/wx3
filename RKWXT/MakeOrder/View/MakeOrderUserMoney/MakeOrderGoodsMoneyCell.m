@@ -9,6 +9,7 @@
 #import "MakeOrderGoodsMoneyCell.h"
 #import "MakeOrderDef.h"
 #import "GoodsInfoEntity.h"
+#import "ShopActivityEntity.h"
 
 @interface MakeOrderGoodsMoneyCell(){
     UILabel *_money;
@@ -87,9 +88,9 @@
         [textLabel4 setBackgroundColor:[UIColor clearColor]];
         [textLabel4 setTextAlignment:NSTextAlignmentLeft];
         [textLabel4 setFont:WXFont(11.0)];
-        [textLabel4 setText:@"+余额抵用:"];
+        [textLabel4 setText:@"-立减:"];
         [textLabel4 setTextColor:WXColorWithInteger(0x6a6c6b)];
-//        [self.contentView addSubview:textLabel4];
+        [self.contentView addSubview:textLabel4];
         
         _balanceLabel = [[UILabel alloc] init];
         _balanceLabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap-width, yOffset, width, height);
@@ -97,7 +98,7 @@
         [_balanceLabel setTextAlignment:NSTextAlignmentRight];
         [_balanceLabel setFont:WXFont(11.0)];
         [_balanceLabel setTextColor:WXColorWithInteger(0xdd2726)];
-//        [self.contentView addSubview:_balanceLabel];
+        [self.contentView addSubview:_balanceLabel];
     }
     return self;
 }
@@ -114,11 +115,29 @@
     NSString *bonusStr = [NSString stringWithFormat:@"-%ld",(long)_bonusMoney];
     [_bonus setText:bonusStr];
     
-    NSString *carriageStr = [NSString stringWithFormat:@"+%.2f",_carriageMoney];
-    [_carriage setText:carriageStr];
     
-//    NSString *balanceStr = [NSString stringWithFormat:@"-%ld",(long)_balance];
-//    [_balanceLabel setText:balanceStr];
+    NSString *balanceStr = nil;
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction) {
+        if (price >= [ShopActivityEntity shareShopActionEntity].full) {
+            balanceStr = [NSString stringWithFormat:@"-%.2f",[ShopActivityEntity shareShopActionEntity].action];
+        }else{
+            balanceStr = @"-0.00";
+        }
+    }else{
+        balanceStr = @"-0.00";
+    }
+    [_balanceLabel setText:balanceStr];
+    
+    
+     NSString *carriageStr = [NSString stringWithFormat:@"+%.2f",_carriageMoney];
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate) {
+        if (price < [ShopActivityEntity shareShopActionEntity].postage) {
+             carriageStr = [NSString stringWithFormat:@"+%.2f",_carriageMoney];
+        }else{
+            carriageStr = @"+0.00";
+        }
+    }
+    [_carriage setText:carriageStr];
 }
 
 @end

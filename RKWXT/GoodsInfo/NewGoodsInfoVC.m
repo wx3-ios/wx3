@@ -25,6 +25,7 @@
 #import "GoodsInfoImageZoomView.h"
 #import "CDSideBarController.h"
 #import "NewGoodsInfoWebViewViewController.h"
+#import "ShareView.h"
 
 //底部
 #import "GoodsInfoPacketCell.h"
@@ -34,12 +35,13 @@
 #import "TimeShopData.h"
 //收藏
 #import "GoodsAttentionModel.h"
+#import "GoodsEvaluationModel.h"
 
 #define DownViewHeight (46)
 #define RightViewXGap (50)
 #define TopNavigationViewHeight (64)
 
-@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,CDSideBarControllerDelegate,NewGoodsInfoDesCellDelegate>{
+@interface NewGoodsInfoVC()<UITableViewDataSource,UITableViewDelegate,NewGoodsInfoModelDelegate,AddGoodsToShoppingCartDelegate,MerchantImageCellDelegate,NewGoodsInfoDesCellDelegate,ShareViewDelegate,GoodsEvaluationModelDelegate>{
     UITableView *_tableView;
     NewGoodsInfoRightView *rightView;
     WXUIImageView *topImgView;
@@ -50,6 +52,7 @@
     
     NewGoodsInfoModel *_model;
     ShoppingCartModel *_shopModel;
+    GoodsEvaluationModel *_evaltionModel;
     
     WXUIButton *buyNowBtn;
     WXUIButton *insertCartBtn;
@@ -63,6 +66,7 @@
     //收藏
     GoodsAttentionModel *attentionModel;
     BOOL isAttention;
+    BOOL _isEvaluation;  //YES 没有数据   NO有数据
 }
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end
@@ -86,6 +90,9 @@
         
         attentionModel = [[GoodsAttentionModel alloc] init];
         isAttention = NO;
+        
+        _evaltionModel = [[GoodsEvaluationModel alloc]init];
+        [_evaltionModel setDelegate:self];
     }
     return self;
 }
@@ -101,6 +108,7 @@
     }else{
         [_model loadGoodsInfo:_model.goodID];
     }
+    [_evaltionModel lookGoodsEvaluationGoodsID:_model.goodID start:0 length:2];
     [self showWaitViewMode:E_WaiteView_Mode_BaseViewBlock title:@""];
     [self initWebView];
     
@@ -154,9 +162,10 @@
 }
 
 -(void)initDropList{
-    NSArray *imageList = @[[UIImage imageNamed:@"ShareQqImg.png"], [UIImage imageNamed:@"ShareQzoneImg.png"], [UIImage imageNamed:@"ShareWxFriendImg.png"], [UIImage imageNamed:@"ShareWxCircleImg.png"]];
-    sideBar = [[CDSideBarController alloc] initWithImages:imageList];
-    sideBar.delegate = self;
+//    NSArray *imageList = @[[UIImage imageNamed:@"ShareQqImg.png"], [UIImage imageNamed:@"ShareQzoneImg.png"], [UIImage imageNamed:@"ShareWxFriendImg.png"], [UIImage imageNamed:@"ShareWxCircleImg.png"]];
+//    
+//    sideBar = [[CDSideBarController alloc] initWithImages:imageList];
+//    sideBar.delegate = self;
 }
 
 //改变cell分割线置顶
@@ -199,20 +208,21 @@
     CGFloat height = self.view.bounds.size.height;
     CGRect rect = CGRectMake(RightViewXGap, 0, width, height);
     rightView = [[NewGoodsInfoRightView alloc] initWithFrame:self.bounds menuButton:btn dropListFrame:rect];
+    rightView.type = _goodsInfo_type;
     return rightView;
 }
 
 -(void)crateTopNavigationView{
     WXUIView *topView = [[WXUIView alloc] init];
     topView.frame = CGRectMake(0, 0, self.bounds.size.width, TopNavigationViewHeight);
-    [topView setBackgroundColor:[UIColor clearColor]];
+    [topView setBackgroundColor:WXColorWithInteger(0xf74f35)];
     [self.view addSubview:topView];
     
     CGFloat xGap = 10;
     CGFloat yGap = 10;
     topImgView = [[WXUIImageView alloc] init];
     topImgView.frame = topView.frame;
-    [topImgView setBackgroundColor:[UIColor whiteColor]];
+    [topImgView setBackgroundColor:WXColorWithInteger(0xf74f35)];
     [topImgView setAlpha:0.1];
     [topView addSubview:topImgView];
     
@@ -233,8 +243,13 @@
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     [titleLabel setFont:WXFont(15.0)];
     [titleLabel setText:@"商品详情"];
-    [titleLabel setTextColor:WXColorWithInteger(0x000000)];
-//    [topView addSubview:titleLabel];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    
+    UIButton *shareBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.bounds.size.width - 40, TopNavigationViewHeight-yGap-btnHeight, 30, 25)];
+    [shareBtn setImage:[UIImage imageNamed:@"LMSharedImg.png"] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(clickShareBtn) forControlEvents:UIControlEventTouchDown];
+    [topView addSubview:shareBtn];
+    [topView addSubview:titleLabel];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -336,14 +351,19 @@
             break;
         case T_GoodsInfo_DownView:
         {
-            if([_model.data count] > 0){
-                GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-                if(entity.use_cut || entity.use_red){
-                    return 1;
-                }else{
-                    return 0;
+            if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+                if([_model.data count] > 0){
+                    GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                    if(entity.use_cut || entity.use_red){
+                        return 1;
+                    }else{
+                        return 0;
+                    }
                 }
+            }else if(self.goodsInfo_type == GoodsInfo_LimitGoods){
+                row = 0;
             }
+           
         }
             break;
         case T_GoodsInfo_BaseData:
@@ -362,6 +382,15 @@
             }
         }
             break;
+       case T_GoodsInfo_Evaluation:
+        {
+            if (_isEvaluation) {
+                row = 1;
+            }else{
+                row = [_evaltionModel.goAtionArr count] > 2 ? 3 : _evaltionModel.goAtionArr.count + 1;
+            }
+        }
+            break;
         default:
             break;
     }
@@ -371,6 +400,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = 0.0;
     NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
     switch (section) {
         case T_GoodsInfo_TopImg:
             height = T_GoodsInfoTopImgHeight;
@@ -385,14 +415,19 @@
             break;
         case T_GoodsInfo_DownView:
         {
-            if([_model.data count] > 0){
-                GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
-                if(entity.use_cut || entity.use_red){
-                    return GoodsInfoPacketCellHeight;
-                }else{
-                    return 0;
+            if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+                if([_model.data count] > 0){
+                    GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
+                    if(entity.use_cut || entity.use_red){
+                        return GoodsInfoPacketCellHeight;
+                    }else{
+                        return 0;
+                    }
                 }
+            }else{
+                return GoodsInfoPacketCellHeight;
             }
+           
         }
             break;
 
@@ -401,13 +436,25 @@
             break;
         case T_GoodsInfo_BaseData:
         {
-            if(indexPath.row == 0){
+            if(row == 0){
                 height = T_GoodsInfoOldBDCellHeight;
                 }else{
                 height = [NewGoodsInfoDownCell cellHeightOfInfo:nil];
             }
         }
             break;
+        case T_GoodsInfo_Evaluation:
+        {
+            if(row == 0){
+                height = T_GoodsInfoOldBDCellHeight;
+            }else{
+                if (_evaltionModel.goAtionArr.count != 0) {
+                    height = [NewGEvalutionInfoCell cellHeightOfInfo:_evaltionModel.goAtionArr[row-1]];
+                }else{
+                    height = 0;
+                }
+            }
+        }
         default:
             break;
     }
@@ -426,7 +473,7 @@
             }
         }
     }
-    if(section == T_GoodsInfo_WebShow){
+    if(section == T_GoodsInfo_WebShow  || section == T_GoodsInfo_Evaluation){
         height = 10.0;
     }
     return height;
@@ -507,6 +554,19 @@
     return cell;
 }
 
+//店铺有活动
+- (WXUITableViewCell*)tableViewIsActiviCell{
+    GoodsInfoActiviCell *cell = [GoodsInfoActiviCell GoodsInfoActiviCellWithTableView:_tableView];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if([_model.data count] > 0){
+        [cell setCellInfo:[_model.data objectAtIndex:0]];
+    }
+    [cell goodsInfoPackIsAccording:[ShopActivityEntity shareShopActionEntity].type];
+    [cell load];
+    return cell;
+}
+
+
 //图文详情
 -(WXUITableViewCell*)tableViewWebShowCell{
     static NSString *identifier = @"webShowCell";
@@ -552,7 +612,29 @@
     return cell;
 }
 
+
+// 评价
+- (WXUITableViewCell*)tableViewForNoEvalutionDataTitleCellWith:(BOOL)isShow{
+    NewGoodsEvalTitleCell *evalCell = [NewGoodsEvalTitleCell goodsEvalTitleCellWithTableView:_tableView];
+    [evalCell setDefaultAccessoryView:isShow ? E_CellDefaultAccessoryViewType_None : E_CellDefaultAccessoryViewType_HasNext];
+    [evalCell isShowGoodsEvaluation:isShow];
+    return evalCell;
+}
+
+
+
+- (WXUITableViewCell*)tableViewForEvalutionInfoCell:(NSInteger)row{
+    NewGEvalutionInfoCell *infoCell = [NewGEvalutionInfoCell goodsEvalInfoCellWithTableView:_tableView];
+    if ([_evaltionModel.goAtionArr count] != 0) {
+        [infoCell setCellInfo:_evaltionModel.goAtionArr[row]];
+    }
+    [infoCell load];
+    return infoCell;
+}
+
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat row = indexPath.row;
     if(_isOpen && indexPath.section == T_GoodsInfo_BaseData){
         static NSString *identifier = @"goodsInfoBDCell";
         NewGoodsInfoBDCell *cell = (NewGoodsInfoBDCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
@@ -580,14 +662,24 @@
                 cell = [self tableViewForGoodsInfoDescCell];
                 break;
             case T_GoodsInfo_DownView:
-                cell = [self tableViewShowPacketAndCut];
+                if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+                    cell = [self tableViewShowPacketAndCut];
+                }else{
+                    cell = [self tableViewIsActiviCell];
+                }
                 break;
             case T_GoodsInfo_WebShow:
-                cell = [self tableViewWebShowCell];
+                 cell = [self tableViewWebShowCell];
                 break;
             case T_GoodsInfo_BaseData:
                 cell = [self tableViewForBaseDataCell:indexPath];
                 break;
+            case T_GoodsInfo_Evaluation:
+                if (row == 0) {
+                    cell = [self tableViewForNoEvalutionDataTitleCellWith:_isEvaluation];
+                }else{
+                    cell = [self tableViewForEvalutionInfoCell:row - 1];
+                }
             default:
                 break;
         }
@@ -602,7 +694,9 @@
         [self gotoWebView];
     }
     if(section == T_GoodsInfo_DownView){
-        [self goodsInfoPacketCellBtnClicked];
+        if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+            [self goodsInfoPacketCellBtnClicked];
+        }
     }
     if(section == T_GoodsInfo_BaseData){
         if(indexPath.row == 0){
@@ -619,6 +713,13 @@
             }
         }
     }
+    if (section == T_GoodsInfo_Evaluation && indexPath.row == 0) {
+        if (_isEvaluation) return;
+        GoodsEvaluationVC *vc = [[GoodsEvaluationVC alloc]init];
+        vc.goodsID = self.goodsId;
+        [self.wxNavigationController pushViewController:vc];
+    }
+    
 }
 
 #pragma mark cell下拉
@@ -633,7 +734,7 @@
 }
 
 #pragma mark delegate
--(void)menuButtonClicked:(int)index{
+-(void)shareViewClickBtnTag:(NSInteger)tag{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
     if([_model.data count] > 0){
         GoodsInfoEntity *entity = [_model.data objectAtIndex:0];
@@ -643,13 +744,13 @@
             image = [UIImage imageWithData:data];
         }
     }
-    if(index == Share_Friends){
+    if(tag == Share_Friends){
         [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
     }
-    if(index == Share_Clrcle){
+    if(tag == Share_Clrcle){
         [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] linkURL:[self sharedGoodsInfoUrlString] thumbImage:image];
     }
-    if(index == Share_Qq){
+    if(tag == Share_Qq){
         NSData *data = UIImagePNGRepresentation(image);
         QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
@@ -658,7 +759,7 @@
             NSLog(@"qq好友分享成功");
         }
     }
-    if(index == Share_Qzone){
+    if(tag == Share_Qzone){
         NSData *data = UIImagePNGRepresentation(image);
         QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self sharedGoodsInfoUrlString]] title:[self sharedGoodsInfoTitle] description:[self sharedGoodsInfoDescription] previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
@@ -668,6 +769,7 @@
         }
     }
 }
+
 
 -(NSString*)sharedGoodsInfoTitle{
     NSString *title = @"";
@@ -693,13 +795,15 @@
 
 -(void)goodsInfoModelLoadedSucceed{
     [self unShowWaitView];
-    [_tableView reloadData];
     rightView.dataArr = _model.data;
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_GoodsInfo_LoadSucceed object:nil];
     [_model setDelegate:nil];
     
     //查询是否已收藏
     [attentionModel searchGoodsPayAttention:_goodsId limitID:[limitEntity.scare_buying_id integerValue]];
+    
+    
+    [_tableView reloadData];
 }
 
 -(void)refreshLessTime{
@@ -724,6 +828,11 @@
 -(void)goodsInfoPacketCellBtnClicked{
     CGFloat height = 0;
     GoodsInfoEntity *ent = [_model.data objectAtIndex:0];
+    
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate || [ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction) {
+        ent.use_red = NO;
+    }
+    
     if(ent.use_red && ent.use_cut){
         height = 283;
     }else{
@@ -929,5 +1038,28 @@
     [rightView removeNotification];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+// 分享
+- (void)clickShareBtn{
+    ShareView *sView = [[ShareView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    sView.delegate = self;
+    [sView addSuperView:self.view];
+}
+
+#pragma mark -- evalaution Delegate
+- (void)loadGoodsEvaluationSucceed{
+    [self unShowWaitView];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:T_GoodsInfo_Evaluation] withRowAnimation:UITableViewRowAnimationMiddle];
+}
+
+- (void)loadGoodsEvaluationFailed:(NSString *)errorMsg{
+    [self unShowWaitView];
+    [UtilTool showRoundView:errorMsg];
+}
+//  没有数据
+- (void)loadGoodsNoEvaluation{
+    _isEvaluation = YES;
+}
+
 
 @end

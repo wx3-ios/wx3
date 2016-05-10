@@ -190,7 +190,9 @@
 //    }
     
     if(entity.postage == Goods_Postage_None && !_isLucky){
-        [postageLabel setHidden:NO];
+        if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+            [postageLabel setHidden:NO];
+        }
         [limitBuyView setFrame:CGRectMake(0, 99, IPHONE_SCREEN_WIDTH, 44)];
     }else{
         CGRect rect = CGRectMake(0, 115, IPHONE_SCREEN_WIDTH, 44);
@@ -281,8 +283,10 @@
 
 +(CGFloat)cellHeightOfInfo:(id)cellInfo{
     GoodsInfoEntity *entity = cellInfo;
-    if(entity.postage == Goods_Postage_None){
-        return T_GoodsInfoDescHeight+25;
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+        if(entity.postage == Goods_Postage_None){
+            return T_GoodsInfoDescHeight+25;
+        }
     }
     return T_GoodsInfoDescHeight;
 }

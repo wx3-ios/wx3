@@ -71,6 +71,7 @@
                          goodsList, @"goods",
                          remark, @"remark",
                          nil];
+    NSLog(@"%@>>>>>>",dic);
     __block LimitBuyMakeOrderModel *blockSelf = nil;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_LimitBuyMakeOrder httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){

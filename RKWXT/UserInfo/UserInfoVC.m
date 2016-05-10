@@ -30,6 +30,7 @@
     
     NSArray *menuList;
 }
+@property (nonatomic,strong)NSString *share;
 @end
 
 @implementation UserInfoVC
@@ -651,6 +652,10 @@
 
 #pragma mark share
 -(void)showShareBrowerFromThumbView:(UIView*)thumb{
+    __block typeof(self) blockSelf = self;
+    [ShareModel shareInfoWith:^(NSString *share) {
+        blockSelf.share = share;
+    }];
     ShareBrowserView *pictureBrowse = [[ShareBrowserView alloc] init];
     pictureBrowse.delegate = self;
     [pictureBrowse showShareThumbView:thumb toDestview:self.view withImage:[UIImage imageNamed:@"TwoDimension.png"]];
@@ -658,15 +663,16 @@
 
 -(void)sharebtnClicked:(NSInteger)index{
     UIImage *image = [UIImage imageNamed:@"Icon-72.png"];
+    NSString *share = (self.share.length <= 0) ? [UtilTool sharedString] : self.share;
     if(index == Share_Type_WxFriends){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:kMerchantName description:[UtilTool sharedString] linkURL:[self userShareAppWIthString] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_Friend title:kMerchantName description:share linkURL:[self userShareAppWIthString] thumbImage:image];
     }
     if(index == Share_Type_WxCircle){
-        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:kMerchantName description:[UtilTool sharedString] linkURL:[self userShareAppWIthString] thumbImage:image];
+        [[WXWeiXinOBJ sharedWeiXinOBJ] sendMode:E_WeiXin_Mode_FriendGroup title:kMerchantName description:share linkURL:[self userShareAppWIthString] thumbImage:image];
     }
     if(index == Share_Type_Qq){
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self userShareAppWIthString]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self userShareAppWIthString]] title:kMerchantName description:share previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface sendReq:req];
         if(sent == EQQAPISENDSUCESS){
@@ -675,7 +681,7 @@
     }
     if(index == Share_Type_Qzone){
         NSData *data = UIImagePNGRepresentation(image);
-        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self userShareAppWIthString]] title:kMerchantName description:[UtilTool sharedString] previewImageData:data];
+        QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:[self userShareAppWIthString]] title:kMerchantName description:share previewImageData:data];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newObj];
         QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
         if(sent == EQQAPISENDSUCESS){
@@ -686,7 +692,7 @@
 
 -(NSString*)userShareAppWIthString{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
-    NSString *imgUrlStr = [NSString stringWithFormat:@"http://121.201.18.130/wx_html/index.php/Public/app_download/sid/%ld/woxin_id/%@",(long)kMerchantID,userObj.wxtID];
+    NSString *imgUrlStr = [NSString stringWithFormat:@"http://wx3.67call.com/wx_html/index.php/Public/app_download/sid/%ld/woxin_id/%@",(long)kMerchantID,userObj.wxtID];
     return imgUrlStr;
 }
 

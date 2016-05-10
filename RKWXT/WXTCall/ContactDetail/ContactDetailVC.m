@@ -13,7 +13,7 @@
 #import "UIView+Render.h"
 #import "CallBackVC.h"
 
-#define DownLoadUrl @"http://121.201.18.130/wx_html/index.php/Public/app_download/sid/"
+#define DownLoadUrl @"http://wx3.67call.com/wx_html/index.php/Public/app_download/sid/"
 
 #define UserBgImageViewHeight (180)
 #define Size self.bounds.size

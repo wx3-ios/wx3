@@ -33,6 +33,8 @@
 #import "LuckyGoodsOrderList.h"
 #import "CollectionListVC.h"
 
+#import "ShareModel.h"
+
 enum{
     PersonalInfo_Order = 0,
 //    PersonalInfo_Money,

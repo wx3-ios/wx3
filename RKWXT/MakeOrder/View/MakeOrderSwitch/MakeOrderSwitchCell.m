@@ -40,5 +40,9 @@
         [_delegate switchValueChanged];
     }
 }
+- (void)shutDownSwitch{
+    _switch.onTintColor = [UIColor grayColor];
+    _switch.userInteractionEnabled = NO;
+}
 
 @end

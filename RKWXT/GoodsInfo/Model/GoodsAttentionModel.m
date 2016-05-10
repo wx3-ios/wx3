@@ -30,6 +30,7 @@
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:[UtilTool timeChange]], @"ts", [NSNumber numberWithInt:5], @"type", userObj.sellerID, @"seller_user_id", [NSNumber numberWithInt:kSubShopID], @"shop_id", [NSNumber numberWithInt:goodsID], @"goods_id", [NSNumber numberWithInt:limitID], @"scare_buying_id", nil];
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_PayAttention httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if(retData.code != 0){
+            
         }else{
             [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Name_SearchGoodsAttentionSucceed object:retData.data];
         }

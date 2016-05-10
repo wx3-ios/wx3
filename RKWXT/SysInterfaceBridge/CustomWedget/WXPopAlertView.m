@@ -127,6 +127,33 @@
 //    return [[UIApplication sharedApplication] keyWindow];
 }
 
+- (instancetype)initRoundWithTip:(NSString*)tip{
+    if(self = [super init]){
+        _direction = WXPopAlertDirection_Center;
+        
+        UIWindow *window = [self keyWindow];
+        CGSize sizeKeyWindow = window.frame.size;
+        [self setFrame:CGRectMake(0, 0, sizeKeyWindow.width, sizeKeyWindow.height)];
+        
+        _baseView = [[WXUIView alloc] initWithFrame:CGRectMake(0, 0, 150, 10)];
+        UIImage *bgImage = [UIImage imageFromColor:[UIColor colorWithHexString:@"f74f35"]];
+        [_baseView setBorderRadian:15 width:0 color:[UIColor colorWithHexString:@"f74f35"]];
+        [_baseView setBackgroundImage:bgImage];
+        [self addSubview:_baseView];
+        
+        _tipLabel = [[WXUILabel alloc] initWithFrame:CGRectMake(kTipXGap, kTipYGap, kTipWidth, 20)];
+        [_tipLabel setTextAlignment:NSTextAlignmentCenter];
+        [_tipLabel setMutiLine];
+        _tipLabel.textColor = [UIColor whiteColor];
+        [_tipLabel setText:tip];
+        [_baseView addSubview:_tipLabel];
+        
+        [self setAlpha:0.0];
+    }
+    return self;
+}
+
+
 - (void)show{
     UIFont *aTipFont = [self tipFont];
     CGFloat tipWidth = kTipWidth;

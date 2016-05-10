@@ -27,4 +27,5 @@ typedef enum {
 
 - (id)initWithTip:(NSString*)tip;
 - (void)show;
+- (instancetype)initRoundWithTip:(NSString*)tip;
 @end

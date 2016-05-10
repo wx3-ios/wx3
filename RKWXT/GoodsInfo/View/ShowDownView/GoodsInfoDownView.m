@@ -8,6 +8,7 @@
 
 #import "GoodsInfoDownView.h"
 #import "GoodsInfoEntity.h"
+#import "ShopActivityEntity.h"
 
 #define kAnimateDefaultDuration (0.3)
 #define kMaskShellDefaultAlpha (0.6)
@@ -93,6 +94,12 @@
     [textLabel setTextColor:WXColorWithInteger(0x000000)];
     [_baseView addSubview:textLabel];
     
+    
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate || [ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction) {
+        entity.use_red = NO;
+    }
+    
+    
     yOffset += textLabelHeight+18;
     if(entity.use_red){
         WXUIImageView *imgView1 = [[WXUIImageView alloc] init];
@@ -133,6 +140,7 @@
         }
         yOffset += 0.5+10;
     }
+    
     if(entity.use_cut){
         WXUIImageView *imgView2 = [[WXUIImageView alloc] init];
         imgView2.frame = CGRectMake(15, yOffset+5, 10, 10);

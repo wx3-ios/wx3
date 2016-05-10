@@ -150,13 +150,7 @@
     CGRect downViewRect = CGRectMake(0, 0, Size.width, kLoginDownViewHeight);
     [self createDownView:downViewRect];
     
-//    if (!_bWithOutGuide && kIsGuideEnabled){
-//        [self.baseView setAlpha:0.3];
-//        [self.baseView setTransform:CGAffineTransformMakeScale(0.5, 0.5)];
-//        _loginMaskView = [[LoginMaskView alloc] initWithFrame:self.bounds];
-//        [_loginMaskView setDelegate:self];
-//        [self.view addSubview:_loginMaskView];
-//    }
+
 }
 
 - (void)createUserAndPwdTable:(CGRect)rect{
@@ -173,7 +167,6 @@
     _userTextField = [[WXTUITextField alloc] initWithFrame:CGRectMake(xGap, yOffset, width, height)];
     [_userTextField setReturnKeyType:UIReturnKeyDone];
     [_userTextField setKeyboardType:UIKeyboardTypePhonePad];
-//    [_userTextField addTarget:self action:@selector(textFieldDone:)  forControlEvents:UIControlEventEditingDidEndOnExit];
     [_userTextField addTarget:self action:@selector(showKeyBoardDur:)  forControlEvents:UIControlEventEditingDidBegin];
     [_userTextField setBorderRadian:5.0 width:1.0 color:[UIColor clearColor]];
     [_userTextField setTextColor:WXColorWithInteger(0xda7c7b)];

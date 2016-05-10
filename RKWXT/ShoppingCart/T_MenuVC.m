@@ -12,8 +12,9 @@
 #import "SCartListModel.h"
 #import "ShoppingCartEntity.h"
 #import "GoodsInfoEntity.h"
+#import "ShopActivityEntity.h"
 
-#define FootViewheight (40)
+#define FootViewheight (44)
 
 @interface T_MenuVC()<UITableViewDataSource,UITableViewDelegate,deleteStoreGoods>{
     WXUITableView *_tableView;
@@ -25,6 +26,7 @@
     WXUIButton *_circleBtn;
     WXUILabel *_sumPrice;
     WXUIButton *_sumBtn;
+    UILabel *_pointLabel;
     
     CGFloat _allPrice;       //所有结算商品总价
     NSInteger _allNumber;    //所有结算商品数量
@@ -124,46 +126,12 @@
     [selLabel setFont:[UIFont systemFontOfSize:14.0]];
     [footView addSubview:selLabel];
     RELEASE_SAFELY(selLabel);
+   
+    [self shopActivityWithxOffset:xOffset + 50 + 10 superView:footView];
     
-    CGFloat yOffset = 6;
-    xOffset = 130;
-    CGFloat sumWidth = 40;
-    CGFloat sumHeight = 16;
-    WXUILabel *sumLabel = [[WXUILabel alloc] init];
-    sumLabel.frame = CGRectMake(xOffset, yOffset, sumWidth, sumHeight);
-    [sumLabel setBackgroundColor:[UIColor clearColor]];
-    [sumLabel setTextAlignment:NSTextAlignmentRight];
-    [sumLabel setText:@"合计:"];
-    [sumLabel setFont:[UIFont systemFontOfSize:10.0]];
-    [sumLabel setTextColor:WXColorWithInteger(0xdd2726)];
-    [footView addSubview:sumLabel];
-    RELEASE_SAFELY(sumLabel);
-    
-    
-    xOffset += sumWidth;
-    _sumPrice = [[WXUILabel alloc] init];
-    _sumPrice.frame = CGRectMake(xOffset, yOffset-1, 70, sumHeight);
-    [_sumPrice setBackgroundColor:[UIColor clearColor]];
-    [_sumPrice setTextAlignment:NSTextAlignmentLeft];
-    [_sumPrice setText:@"￥0.00"];
-    [_sumPrice setFont:[UIFont systemFontOfSize:12.0]];
-    [_sumPrice setTextColor:WXColorWithInteger(0xdd2726)];
-    [footView addSubview:_sumPrice];
-    
-    yOffset += sumHeight;
-    WXUILabel *textLabel = [[WXUILabel alloc] init];
-    textLabel.frame = CGRectMake(xOffset-5, yOffset, 80, sumHeight);
-    [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setText:@"不含运费"];
-    [textLabel setFont:[UIFont systemFontOfSize:10.0]];
-    [textLabel setTextColor:WXColorWithInteger(0x646464)];
-    [textLabel setTextAlignment:NSTextAlignmentLeft];
-    [footView addSubview:textLabel];
-    RELEASE_SAFELY(textLabel);
-    
-    xOffset += 66;
     CGFloat btnWidth = 73;
     CGFloat btnHeight = 35;
+    xOffset = self.view.width - btnWidth - 10;
     _sumBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
     _sumBtn.frame = CGRectMake(xOffset, (footHeight-btnHeight)/2, btnWidth, btnHeight);
     [_sumBtn setBorderRadian:3.0 width:0.5 color:WXColorWithInteger(0xff9c00)];
@@ -178,6 +146,73 @@
     footView.frame = CGRectMake(0, size.height-FootViewheight, IPHONE_SCREEN_WIDTH, FootViewheight);
     return footView;
 }
+
+- (void)shopActivityWithxOffset:(CGFloat)xOffset superView:(UIView*)superView{
+    
+    
+    CGFloat yOffset = 6;
+    CGFloat sumWidth = 30;
+    CGFloat sumHeight = 16;
+    WXUILabel *sumLabel = [[WXUILabel alloc] init];
+    sumLabel.frame = CGRectMake(xOffset, yOffset, sumWidth, sumHeight);
+    [sumLabel setBackgroundColor:[UIColor clearColor]];
+    [sumLabel setTextAlignment:NSTextAlignmentLeft];
+    [sumLabel setText:@"合计:"];
+    [sumLabel setFont:[UIFont systemFontOfSize:13.0]];
+    [sumLabel setTextColor:WXColorWithInteger(0xdd2726)];
+    [superView addSubview:sumLabel];
+    RELEASE_SAFELY(sumLabel);
+    
+    
+    xOffset += sumWidth;
+    _sumPrice = [[WXUILabel alloc] init];
+    _sumPrice.frame = CGRectMake(xOffset, yOffset-1, 70, sumHeight);
+    [_sumPrice setBackgroundColor:[UIColor clearColor]];
+    [_sumPrice setTextAlignment:NSTextAlignmentLeft];
+    [_sumPrice setText:@"￥0.00"];
+    [_sumPrice setFont:[UIFont systemFontOfSize:14.0]];
+    [_sumPrice setTextColor:WXColorWithInteger(0xdd2726)];
+    [superView addSubview:_sumPrice];
+    
+    yOffset += sumHeight;
+    xOffset -= sumWidth;
+    _pointLabel = [[WXUILabel alloc] init];
+    _pointLabel.frame = CGRectMake(xOffset, yOffset, 120, sumHeight);
+    [_pointLabel setBackgroundColor:[UIColor clearColor]];
+    [_pointLabel setFont:[UIFont systemFontOfSize:11.0]];
+    [_pointLabel setTextColor:WXColorWithInteger(0x646464)];
+    [_pointLabel setTextAlignment:NSTextAlignmentLeft];
+    [superView addSubview:_pointLabel];
+    _pointLabel.text = [self accordingLabel];
+}
+
+- (NSString *)accordingLabel{
+    NSString *str = nil;
+    CGFloat price = _allPrice;
+    
+    if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+       str = @"不含运费";
+    }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate){
+        CGFloat  posgate = [ShopActivityEntity shareShopActionEntity].postage;
+        if (price < posgate) {
+            str = [NSString stringWithFormat:@"满%.f元包邮还差%.2f",posgate,posgate - price];
+        }else{
+            str = @"已参加包邮活动";
+        }
+    }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction){
+        if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction) {
+            CGFloat actionPrice = [ShopActivityEntity shareShopActionEntity].full;
+            CGFloat max = [ShopActivityEntity shareShopActionEntity].action;
+            if (price < actionPrice) {
+                str = [NSString stringWithFormat:@"满%.f元减%.f元差%.2f元",actionPrice,max,actionPrice - price];
+            }else{
+                str = [NSString stringWithFormat:@"已参加满%.f元减%.f元活动",actionPrice,max];
+            }
+        }
+    }
+    return  str;
+}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -311,7 +346,11 @@
     [_sumPrice setText:[NSString stringWithFormat:@"￥%.2f",_allPrice]];
     NSString *number = [NSString stringWithFormat:@"结算(%ld)",(long)_allNumber];
     [_sumBtn setTitle:number forState:UIControlStateNormal];
+    
+    _pointLabel.text = [self accordingLabel];
 }
+
+
 
 //全选
 -(void)selectAllBtnClicked{

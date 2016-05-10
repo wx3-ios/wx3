@@ -62,6 +62,20 @@
     OrderListEntity *entity = self.cellInfo;
     for(OrderListEntity *ent in entity.goodsArr){
         number += ent.sales_num;
+        price = ent.shouPayMonery - ent.factRedPacket;
+    }
+    
+    price += entity.postage;
+    [_goodsNum setText:[NSString stringWithFormat:@"共%ld件商品",(long)number]];
+    [_consult setText:[NSString stringWithFormat:@"￥%.2f",price]];
+    number = 0;
+    price = 0;
+}
+
+- (void)fact_red_packet{
+    OrderListEntity *entity = self.cellInfo;
+    for(OrderListEntity *ent in entity.goodsArr){
+        number += ent.sales_num;
         price += ent.factPayMoney;
     }
     price += entity.postage;

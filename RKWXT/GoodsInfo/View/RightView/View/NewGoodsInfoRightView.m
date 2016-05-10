@@ -13,9 +13,11 @@
 #import "RightGoodsStoreCell.h"
 #import "RightGoodsSelNumCell.h"
 #import "GoodsInfoEntity.h"
+#import "ShopActivityEntity.h"
 
 #define kAnimatedDur 0.3
 #define kMaskMaxAlpha 0.6
+#define downHeight (86)
 
 typedef enum{
     DropListStatus_close = 0,
@@ -43,6 +45,7 @@ enum{
     
     GoodsInfoEntity *ent;
     NSInteger selNumber;
+    UILabel *_label;
 }
 @property (nonatomic,strong) UIButton *menuBtn;
 @end
@@ -66,8 +69,10 @@ enum{
         [_clipeview setClipsToBounds:YES];
         [self addSubview:_clipeview];
         
+        //默认购买数量为1
+        selNumber = 1;
         
-        CGRect rect = CGRectMake(_clipeview.bounds.origin.x, _clipeview.bounds.origin.y, _clipeview.bounds.size.width, _clipeview.bounds.size.height-46);
+        CGRect rect = CGRectMake(_clipeview.bounds.origin.x, _clipeview.bounds.origin.y, _clipeview.bounds.size.width, _clipeview.bounds.size.height - downHeight);
         _tableView = [[UITableView alloc] init];
         _tableView.frame = rect;
         [_tableView setDelegate:self];
@@ -98,15 +103,23 @@ enum{
 -(UIView *)tableViewForFootView{
     UIView *footView = [[UIView alloc] init];
     [footView setBackgroundColor:[UIColor whiteColor]];
+    footView.alpha = 0.9;
+    
+    _label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _originListRect.size.width, 40)];
+    _label.textAlignment = NSTextAlignmentCenter;
+    _label.font = WXFont(14.0);
+    _label.backgroundColor = [UIColor grayColor];
+    _label.textColor = [UIColor whiteColor];
+    [footView addSubview:_label];
     
     WXUIButton *buyBtn = [WXUIButton buttonWithType:UIButtonTypeCustom];
-    buyBtn.frame = CGRectMake(0, 0, _originListRect.size.width, 46);
+    buyBtn.frame = CGRectMake(0, _label.bottom, _originListRect.size.width, 46);
     [buyBtn setBackgroundColor:WXColorWithInteger(0xbb2726)];
     [buyBtn setTitle:@"确  定" forState:UIControlStateNormal];
     [buyBtn addTarget:self action:@selector(buyNow) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:buyBtn];
     
-    footView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT-46, _originListRect.size.width, 46);
+    footView.frame = CGRectMake(0, IPHONE_SCREEN_HEIGHT - downHeight, _originListRect.size.width, downHeight);
     return footView;
 }
 
@@ -263,6 +276,7 @@ enum{
     [cell setCellInfo:ent];
     [cell setNumber:selNumber];
     [cell load];
+    [self accordingLabel];
     return cell;
 }
 
@@ -306,6 +320,9 @@ enum{
     ent = sender;
     _stockID = ent.stockID;
     _stockName = ent.stockName;
+    
+    [self accordingLabel];
+    
     [_tableView reloadData];
 }
 
@@ -317,10 +334,46 @@ enum{
     selNumber = number;
     _goodsNum = number;
     [_tableView reloadData];
+    
+    [self accordingLabel];
 }
 
 -(void)loadGoodsInfoSucceed{
+    [self accordingLabel];
+    
     [_tableView reloadData];
+}
+
+- (void)accordingLabel{
+        NSString *str = nil;
+       CGFloat price = ent.stockPrice * selNumber;
+    
+        if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Default) {
+            _label.hidden = YES;
+        }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate){
+            CGFloat  posgate = [ShopActivityEntity shareShopActionEntity].postage;
+            if (price < posgate) {
+                str = [NSString stringWithFormat:@"满%.f元包邮还差%.f",posgate,posgate - price];
+            }else{
+//                str = [NSString stringWithFormat:@"满%.2f包邮",posgate];
+                str = @"已参加包邮";
+            }
+        }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction){
+            if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction) {
+                CGFloat actionPrice = [ShopActivityEntity shareShopActionEntity].full;
+                CGFloat max = [ShopActivityEntity shareShopActionEntity].action;
+                if (price < actionPrice) {
+                    str = [NSString stringWithFormat:@"满%.f元减%.f元,差%.2f元",actionPrice,max,actionPrice - price];
+                }else{
+                   str = [NSString stringWithFormat:@"满%.f元减%.f元,已优惠%d元",actionPrice,max,(int)max];
+                }
+            }
+        }
+    _label.text = str;
+    
+    if (_type == RightGoodsInfo_LimitGoods) {
+        _label.hidden = YES;
+    }
 }
 
 -(void)buyNow{

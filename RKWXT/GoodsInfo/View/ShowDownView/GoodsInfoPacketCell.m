@@ -8,6 +8,7 @@
 
 #import "GoodsInfoPacketCell.h"
 #import "GoodsInfoEntity.h"
+#import "ShopActivityEntity.h"
 
 @interface GoodsInfoPacketCell(){
     WXUIImageView *imgView1;
@@ -31,7 +32,7 @@
         [self.contentView addSubview:imgView1];
         
         xOffset += imgWidth+3;
-        CGFloat labelWidth = 38;
+        CGFloat labelWidth = 45;
         CGFloat labelHeight = 18;
         label1 = [[WXUILabel alloc] init];
         label1.frame = CGRectMake(xOffset, (GoodsInfoPacketCellHeight-labelHeight)/2, labelWidth, labelHeight);
@@ -90,6 +91,8 @@
         [label2 setFrame:rect1];
     }
 }
+
+
 
 -(void)load{
 }

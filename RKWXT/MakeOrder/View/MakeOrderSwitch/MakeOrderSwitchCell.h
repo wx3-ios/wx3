@@ -12,6 +12,7 @@
 
 @interface MakeOrderSwitchCell : WXUITableViewCell
 @property (nonatomic,assign) id<MakeOrderSwitchCellDelegate>delegate;
+- (void)shutDownSwitch;
 @end
 
 @protocol MakeOrderSwitchCellDelegate <NSObject>

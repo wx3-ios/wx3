@@ -8,6 +8,7 @@
 
 #import "MakeOrderAllGoodsMoneyCell.h"
 #import "GoodsInfoEntity.h"
+#import "ShopActivityEntity.h"
 
 @interface MakeOrderAllGoodsMoneyCell(){
     UILabel *_money;
@@ -20,7 +21,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        CGFloat xGap = 140;
+        CGFloat xGap = 125;
         CGFloat yOffset = 12;
         CGFloat upHeight = 20;
         CGFloat labelWidth = 55;
@@ -43,7 +44,7 @@
         [self.contentView addSubview:_money];
         
         yOffset += upHeight+8;
-        CGFloat xOffset = 170;
+        CGFloat xOffset = 180;
         CGFloat dateWidth = 50;
         CGFloat dateHeight = 15;
         UILabel *datelabel = [[UILabel alloc] init];
@@ -73,7 +74,29 @@
     for(GoodsInfoEntity *entity in listArr){
         price += entity.buyNumber*entity.stockPrice;
     }
-    NSString *moneyStr = [NSString stringWithFormat:@"￥%.2f",price-_bonusMoney+_carriageMoney];
+    
+    NSString *moneyStr = nil;
+     if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_IsPosgate) { //包邮
+         
+         if (price >= [ShopActivityEntity shareShopActionEntity].postage) { //总价 >= 包邮价格
+             moneyStr = [NSString stringWithFormat:@"￥%.2f",price];
+         }else{
+             moneyStr = [NSString stringWithFormat:@"￥%.2f",price + _carriageMoney];
+         }
+         
+     }else if ([ShopActivityEntity shareShopActionEntity].type == ShopActivityType_Reduction){ //满减
+         
+         if (price >= [ShopActivityEntity shareShopActionEntity].full) {
+             moneyStr = [NSString stringWithFormat:@"￥%.2f",price - [ShopActivityEntity shareShopActionEntity].action + _carriageMoney];
+         }else{
+             moneyStr = [NSString stringWithFormat:@"￥%.2f",price + _carriageMoney];
+         }
+     }else{
+         price -= _bonusMoney;
+         moneyStr = [NSString stringWithFormat:@"￥%.2f",price + _carriageMoney];
+     }
+         
+   
     [_money setText:moneyStr];
     
     NSInteger time = [UtilTool timeChange];

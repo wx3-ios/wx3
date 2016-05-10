@@ -100,6 +100,7 @@
             }
         }
         entity.goodsArr = localArr;
+        entity.goodsInfoArr = _orderInfoArr;
         [_orderListAll addObject:entity];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_UserOderList_LoadSucceed object:nil];
