@@ -59,11 +59,15 @@
 }
 
 -(void)load{
+    CGFloat payMonery = 0.0;
+    CGFloat fact = 0.0f;
     OrderListEntity *entity = self.cellInfo;
     for(OrderListEntity *ent in entity.goodsArr){
         number += ent.sales_num;
-        price = ent.shouPayMonery - ent.factRedPacket;
+        payMonery += ent.shouPayMonery;
+        fact += ent.factRedPacket;
     }
+    price = payMonery - fact;
     price += entity.postage;
     [pricelabel setText:[NSString stringWithFormat:@"￥%.2f",price]];
     number = 0;

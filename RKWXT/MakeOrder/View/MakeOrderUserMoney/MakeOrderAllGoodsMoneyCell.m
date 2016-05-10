@@ -34,9 +34,9 @@
         [uptextLabel setFont:WXFont(15.0)];
         [self.contentView addSubview:uptextLabel];
         
-        xGap -= labelWidth;
+        xGap -= labelWidth - 10;
         _money = [[UILabel alloc] init];
-        _money.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap, yOffset, IPHONE_SCREEN_WIDTH-xGap, upHeight);
+        _money.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xGap, yOffset, IPHONE_SCREEN_WIDTH-xGap + 10, upHeight);
         [_money setBackgroundColor:[UIColor clearColor]];
         [_money setTextAlignment:NSTextAlignmentLeft];
         [_money setFont:WXFont(15.0)];
