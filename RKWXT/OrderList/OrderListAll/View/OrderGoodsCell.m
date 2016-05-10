@@ -55,7 +55,7 @@
         [self.contentView addSubview:_infoLabel];
         
         CGFloat xGap = 15;
-        CGFloat priceWidth = 80;
+        CGFloat priceWidth = 85;
         CGFloat priceHeight = 20;
         _goodsPrice = [[UILabel alloc] init];
         _goodsPrice.frame = CGRectMake(size.width-xGap-priceWidth, yOffset, priceWidth, priceHeight);

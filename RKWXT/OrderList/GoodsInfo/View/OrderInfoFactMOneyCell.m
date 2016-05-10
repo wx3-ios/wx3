@@ -67,12 +67,29 @@
     return self;
 }
 
+// 这里价格是猜的，数量 * 单价 - 红包 + 邮费
 -(void)load{
     OrderListEntity *entity = self.cellInfo;
     CGFloat price = 0.0;
     for(OrderListEntity *ent in entity.goodsArr){
         price += ent.sales_price*ent.sales_num;
+        price -= ent.factRedPacket;
     }
+     price += entity.postage;
+    NSString *moneyStr = [NSString stringWithFormat:@"￥%.2f",price];
+    [_money setText:moneyStr];
+    
+    [_dateLabel setText:[UtilTool getDateTimeFor:entity.add_time type:1]];
+}
+
+// 原来的
+- (void)test{
+    OrderListEntity *entity = self.cellInfo;
+    CGFloat price = 0.0;
+    for(OrderListEntity *ent in entity.goodsArr){
+        price += ent.sales_price*ent.sales_num;
+    }
+   
     NSString *moneyStr = [NSString stringWithFormat:@"￥%.2f",entity.total_fee];
     [_money setText:moneyStr];
     

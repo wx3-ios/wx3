@@ -84,8 +84,7 @@
         if (error){
             NSInteger code = error.code;
             retFeedData.code = code;
-//            NSString *errorDesc = @"网络请求失败,请稍后再试试";
-            NSString *errorDesc = nil;
+            NSString *errorDesc = @"网络请求失败,请稍后再试试";
             switch (code){
                 case NSURLErrorTimedOut:
                     errorDesc = @"请求超时";

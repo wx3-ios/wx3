@@ -62,7 +62,7 @@
     OrderListEntity *entity = self.cellInfo;
     for(OrderListEntity *ent in entity.goodsArr){
         number += ent.sales_num;
-        price += ent.factPayMoney;
+        price = ent.shouPayMonery - ent.factRedPacket;
     }
     price += entity.postage;
     [pricelabel setText:[NSString stringWithFormat:@"￥%.2f",price]];
