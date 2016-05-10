@@ -77,6 +77,9 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if([_model.imgArr count] == 0 && section == 0){
+        return 0;
+    }
     return 1;
 }
 
@@ -84,6 +87,9 @@
     CGFloat height = 0;
     if(indexPath.section == 0){
         height = IPHONE_SCREEN_WIDTH/3;
+        if([_model.imgArr count] == 0){
+            height = 0;
+        }
     }else{
         height = ([commonImgArr count]/3+([commonImgArr count]%3>0?1:0))*IPHONE_SCREEN_WIDTH/3;
     }
