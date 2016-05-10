@@ -50,7 +50,7 @@
 
 -(void)load{
     OrderListEntity *entity = self.cellInfo;
-    [imgView setCpxViewInfo:entity.goods_img];
+    [imgView setCpxViewInfo:[NSString stringWithFormat:@"%@%@",AllImgPrefixUrlString,entity.goods_img]];
     [imgView load];
 }
 

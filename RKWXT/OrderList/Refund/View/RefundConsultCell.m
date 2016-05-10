@@ -60,13 +60,13 @@
         [btn addTarget:self action:@selector(refundBtn) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn];
         
-        CGFloat priceLabelWidth = 85;
+        CGFloat priceLabelWidth = 95;
         CGFloat priceLabelHeight = 18;
         xOffset += btnwidth+20+priceLabelWidth;
         _pricelabel = [[WXUILabel alloc] init];
         _pricelabel.frame = CGRectMake(IPHONE_SCREEN_WIDTH-xOffset, (RefundConsultCellHeight-priceLabelHeight)/2, priceLabelWidth, priceLabelHeight);
         [_pricelabel setBackgroundColor:[UIColor clearColor]];
-        [_pricelabel setTextAlignment:NSTextAlignmentRight];
+        [_pricelabel setTextAlignment:NSTextAlignmentLeft];
         [_pricelabel setTextColor:WXColorWithInteger(0xdd2726)];
         [_pricelabel setFont:WXFont(15.0)];
         [self.contentView addSubview:_pricelabel];
@@ -85,7 +85,10 @@
 //            price = 0.0;
         }
     }
+    _pricelabel.frame = CGRectMake(self.frame.size.width - 95 - 20 - 72, (self.frame.size.height - 18) / 2, 95, 18);
     [_pricelabel setText:[NSString stringWithFormat:@"合计: ￥%.2f",price]];
+    
+    
     [self setCircleBtnImgWith:entity.selectAll];
     
     NSInteger num = 0;
