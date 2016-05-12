@@ -1147,6 +1147,7 @@
 		DD1C649E1BFB28A700F962FC /* TimeShopModer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C649D1BFB28A700F962FC /* TimeShopModer.m */; };
 		DD24C6691CD0469D005DB9CB /* GoodsEvaluationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24C6681CD0469D005DB9CB /* GoodsEvaluationVC.m */; };
 		DD30FF8D1CC7894F00163FBE /* ShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD30FF8C1CC7894F00163FBE /* ShareModel.m */; };
+		DD34F5961CE43075009C40DD /* NewGoodsNoDataTtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34F5951CE43075009C40DD /* NewGoodsNoDataTtitle.m */; };
 		DD3CC40A1CD1E8C600B8492C /* GoodsInfoEvaluationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3CC4091CD1E8C600B8492C /* GoodsInfoEvaluationCell.m */; };
 		DD4723DD1ADE128800278A5C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBF43001ADD0E4C0063B763 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD7EB5801B27D5F90005A97C /* WXTAPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB57F1B27D5F90005A97C /* WXTAPNViewController.m */; };
@@ -3305,6 +3306,8 @@
 		DD24C6681CD0469D005DB9CB /* GoodsEvaluationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsEvaluationVC.m; sourceTree = "<group>"; };
 		DD30FF8B1CC7894F00163FBE /* ShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModel.h; sourceTree = "<group>"; };
 		DD30FF8C1CC7894F00163FBE /* ShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModel.m; sourceTree = "<group>"; };
+		DD34F5941CE43075009C40DD /* NewGoodsNoDataTtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGoodsNoDataTtitle.h; sourceTree = "<group>"; };
+		DD34F5951CE43075009C40DD /* NewGoodsNoDataTtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGoodsNoDataTtitle.m; sourceTree = "<group>"; };
 		DD351C571AD8B85000DF0C7E /* libPods-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaLumberjack.a"; path = "Pods/../build/Release-iphoneos/libPods-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		DD3CC4081CD1E8C600B8492C /* GoodsInfoEvaluationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsInfoEvaluationCell.h; sourceTree = "<group>"; };
 		DD3CC4091CD1E8C600B8492C /* GoodsInfoEvaluationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsInfoEvaluationCell.m; sourceTree = "<group>"; };
@@ -8984,6 +8987,8 @@
 				DD0AE8001CCDB7D0000E5720 /* NewGoodsEvalTitleCell.m */,
 				DD0AE8021CCDBACF000E5720 /* NewGEvalutionInfoCell.h */,
 				DD0AE8031CCDBACF000E5720 /* NewGEvalutionInfoCell.m */,
+				DD34F5941CE43075009C40DD /* NewGoodsNoDataTtitle.h */,
+				DD34F5951CE43075009C40DD /* NewGoodsNoDataTtitle.m */,
 			);
 			path = Evaluation;
 			sourceTree = "<group>";
@@ -10666,6 +10671,7 @@
 				12F4228F1B1D61F900643DD7 /* AddressManagerCell.m in Sources */,
 				DDFBC09C1BFA05D6003E71A2 /* HeardGoodsView.m in Sources */,
 				1222F8681C0EC1DD0031DF33 /* LMShopInfoTopImgCell.m in Sources */,
+				DD34F5961CE43075009C40DD /* NewGoodsNoDataTtitle.m in Sources */,
 				DD1490141C0D496000D48663 /* CollectionListVC.m in Sources */,
 				DDB58F511AD3C6A2006248E9 /* CallHistoryEntityExt.m in Sources */,
 				1262E2C61ACA50B600667C54 /* WXTFindModel.m in Sources */,

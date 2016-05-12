@@ -56,5 +56,6 @@ enum{
 
 #import "GoodsEvaluationVC.h"
 #import "ShopActivityEntity.h"
+#import "NewGoodsNoDataTtitle.h"
 
 #endif

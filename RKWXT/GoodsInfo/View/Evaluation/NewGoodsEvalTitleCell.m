@@ -12,13 +12,15 @@
 {
     UILabel *_title;
     UILabel *_ecalable;
+    
+    BOOL _isShow;
 }
 @end
 
 @implementation NewGoodsEvalTitleCell
 
 + (instancetype)goodsEvalTitleCellWithTableView:(UITableView*)tableView{
-    static NSString *identifier = @"NewGoodsEvalTitleCell";
+    static NSString *identifier = @"NewGoodsEval11111sEval11111TitleCell";
     NewGoodsEvalTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell){
         cell = [[NewGoodsEvalTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -30,23 +32,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         
-        
         [self.textLabel setText:@"评价"];
         [self.textLabel setFont:WXFont(14.0)];
         [self.textLabel setTextColor:WXColorWithInteger(0x000000)];
         
-        CGFloat titW = 100;
-        CGFloat titX = self.width - titW;
-        _title = [[UILabel alloc] init];
-        _title.frame = CGRectMake(titX,0 , titW , self.height);
-        [_title setBackgroundColor:[UIColor clearColor]];
-        [_title setTextAlignment:NSTextAlignmentCenter];
-        [_title setTextColor:[UIColor colorWithHexString:@"969696"]];
-        [_title setFont:WXFont(14.0)];
-        _title.text = @"商品暂无评价";
-        [self.contentView addSubview:_title];
-        
-//        CGFloat xOffset = 100;
+
         CGFloat moneyWidth = 100;
         CGFloat commonLabelHeight = 18;
         CGFloat xGap = 25;
@@ -63,11 +53,21 @@
 }
 
 - (void)isShowGoodsEvaluation:(BOOL)IsShow{
-    _title.hidden = !IsShow;
-    _title.center = self.center;
-    self.textLabel.hidden = IsShow;
-    _ecalable.hidden = IsShow;
+           _isShow = IsShow;
+    if (IsShow) {
+        _title.hidden = !IsShow;
+        _title.center = self.center;
+        self.textLabel.hidden = IsShow;
+        _ecalable.hidden = IsShow;
+    }else{
+        _title.hidden = YES;
+        self.textLabel.hidden = NO;
+        _ecalable.hidden = NO;
+    }
+    
 }
+
+
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated{
     

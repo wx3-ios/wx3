@@ -114,7 +114,7 @@
     
     CGSize size = self.bounds.size;
     _tableView = [[UITableView alloc] init];
-    _tableView.frame = CGRectMake(0, 0, size.width, size.height);
+    _tableView.frame = CGRectMake(0, 64, size.width, size.height - 64);
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [self.scrollView addSubview:_tableView];
@@ -128,7 +128,7 @@
     }
     if(_goodsInfo_type == GoodsInfo_LuckyGoods){
         _isLucky = YES;
-        _tableView.frame = CGRectMake(0, 0, size.width, size.height);
+        _tableView.frame = CGRectMake(0, 64, size.width, size.height - 64);
     }
     if(_goodsInfo_type == GoodsInfo_LimitGoods){
         [self.view addSubview:[self createLimitBuyDownView]];
@@ -614,14 +614,16 @@
 
 
 // 评价
-- (WXUITableViewCell*)tableViewForNoEvalutionDataTitleCellWith:(BOOL)isShow{
+- (WXUITableViewCell*)tableViewForNoEvalutionDataTitleCell{
     NewGoodsEvalTitleCell *evalCell = [NewGoodsEvalTitleCell goodsEvalTitleCellWithTableView:_tableView];
-    [evalCell setDefaultAccessoryView:isShow ? E_CellDefaultAccessoryViewType_None : E_CellDefaultAccessoryViewType_HasNext];
-    [evalCell isShowGoodsEvaluation:isShow];
+    [evalCell setDefaultAccessoryView:E_CellDefaultAccessoryViewType_HasNext];
     return evalCell;
 }
 
-
+- (WXUITableViewCell*)tableViewForNoEvalutionNODataTitleCell{
+    NewGoodsNoDataTtitle *evalCell = [NewGoodsNoDataTtitle NewGoodsNoDataTtitleWithTableView:_tableView];
+    return evalCell;
+}
 
 - (WXUITableViewCell*)tableViewForEvalutionInfoCell:(NSInteger)row{
     NewGEvalutionInfoCell *infoCell = [NewGEvalutionInfoCell goodsEvalInfoCellWithTableView:_tableView];
@@ -676,7 +678,11 @@
                 break;
             case T_GoodsInfo_Evaluation:
                 if (row == 0) {
-                    cell = [self tableViewForNoEvalutionDataTitleCellWith:_isEvaluation];
+                    if (_isEvaluation) {
+                        cell = [self tableViewForNoEvalutionNODataTitleCell];
+                    }else{
+                        cell = [self tableViewForNoEvalutionDataTitleCell];
+                    }
                 }else{
                     cell = [self tableViewForEvalutionInfoCell:row - 1];
                 }
