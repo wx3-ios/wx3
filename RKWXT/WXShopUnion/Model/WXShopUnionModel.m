@@ -76,6 +76,9 @@
 -(void)loadShopUnionData:(NSInteger)areaID{
     WXTUserOBJ *userObj = [WXTUserOBJ sharedUserOBJ];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"iOS", @"pid", [UtilTool currentVersion], @"ver", [NSNumber numberWithInt:(int)[UtilTool timeChange]], @"ts", userObj.wxtID, @"woxin_id", [NSNumber numberWithInt:kSubShopID], @"shop_id", [NSNumber numberWithInteger:kMerchantID], @"sid", [self userProvincialName], @"provincial_name", [self userCityName], @"municipality_name", [self userCountyName], @"county_name", [NSNumber numberWithFloat:[self userLatitude]], @"latitude", [NSNumber numberWithFloat:[self userLongitude]], @"longitude", [NSNumber numberWithInteger:areaID], @"area_id", nil];
+    
+    NSLog(@"%@",dic);
+    
     __block WXShopUnionModel *blockSelf = self;
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_Home_ShopUnion httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if(retData.code != 0){
