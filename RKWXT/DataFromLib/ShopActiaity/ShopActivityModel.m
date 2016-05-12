@@ -52,6 +52,7 @@
     dic[@"woxin_id"] = userObj.wxtID;
     dic[@"shop_id"] = [NSNumber numberWithInt:(int)kSubShopID];
     __block ShopActivityEntity *entity = [ShopActivityEntity shareShopActionEntity];
+    NSLog(@"%@",dic);
     
     [[WXTURLFeedOBJ sharedURLFeedOBJ] fetchNewDataFromFeedType:WXT_UrlFeed_Type_New_ShopAction httpMethod:WXT_HttpMethod_Post timeoutIntervcal:-1 feed:dic completion:^(URLFeedData *retData) {
         if (retData.code != 0){

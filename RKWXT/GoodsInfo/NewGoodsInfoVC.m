@@ -362,6 +362,8 @@
                 }
             }else if(self.goodsInfo_type == GoodsInfo_LimitGoods){
                 row = 0;
+            }else{
+                return 1;
             }
            
         }
